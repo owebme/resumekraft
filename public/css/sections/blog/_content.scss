@@ -1,0 +1,189 @@
+blog-content {
+    &.blog {
+        @extend .bg-white;
+        padding-bottom:145px;
+
+        &:after {
+            @extend .content-empty;
+            @extend .pos-bl;
+            @extend .w100p;
+            @extend .h10;
+            @extend .bg-blueLight;
+        }
+    }
+    .blog__header {
+        &:before {
+            top:auto;
+            @extend .pos-bl;
+            @extend .bg-white;
+            height:15vh;
+            background-image:none;
+            mask:url(https://blog.marvelapp.com/wp-content/themes/marvel/assets/images/mask-bottom.svg) center bottom;
+            mask-size:cover;
+            mask-repeat:repeat-x;
+            @extend .zIndex-1;
+            @extend .animation-none;
+            transform:scaleY(-1) scaleX(-1) rotate(2deg) translate3d(-0.5vh, -1.2vh, 0);
+        }
+        &__image {
+            @include abs();
+            @extend .bg-cover-center;
+            transform:scale(1.2);
+            filter:blur(14px);
+        }
+    }
+}
+.blog__item {
+    @extend .pos-rel;
+    @include flex("column", "center", "flex-start");
+    margin-top:200px;
+    height:300px;
+    @extend .pr-m;
+
+    &__image {
+        @extend .pos-abs;
+        @extend .t0;
+        @extend .r100;
+        @extend .borderRadius-circle;
+        @extend .bg-cover;
+        width:120px;
+        height:120px;
+        transform:translate3d(-80px, -20px, 0);
+    }
+    &__back {
+        @extend .pos-abs;
+        @extend .t0;
+        @extend .b100;
+        @extend .text-uppercase;
+        @extend .fontWeight-8;
+        transform:translate3d(-5px, -60px, 0);
+        transition:transform 0.2s;
+
+        &:before {
+            @extend .content-empty;
+            @extend .display-inlineBlock;
+            @extend .vAlign-middle;
+            @extend .opacity-70;
+            @include ui-icon(back_white, 24px, 24px);
+            transform:translate3d(-5px, -2px, 0);
+        }
+        &:hover {
+            transform:translate3d(-10px, -60px, 0);
+        }
+    }
+    &__date {
+        @extend .fontWeight-8;
+        @extend .opacity-70;
+        @extend .text-uppercase;
+        @extend .mb-xxs;
+    }
+    &__title {
+        @extend .fontSize-72;
+        @extend .fontWeight-8;
+        @extend .mb-m;
+        @extend .pb-xs;
+        line-height:72px;
+        text-shadow:0 2px 1px rgba(42,49,57,.6);
+    }
+    &__tags {
+        @extend .c-yellow;
+        @extend .fontSize-20;
+        @extend .text-uppercase;
+        @extend .fontWeight-8;
+        @extend .letterSpacing--s;
+        text-shadow:0 2px 1px rgba(42,49,57,.4);
+    }
+    &__avatar {
+        @extend .pos-tl;
+        transform:translate3d(-80px, -50px, 0);
+
+        &__image {
+            @extend .borderRadius-circle;
+            @extend .w90;
+            @extend .h90;
+        }
+        &__title {
+            @extend .display-inlineBlock;
+            @extend .c-gray;
+            @extend .fontSize-18;
+            @extend .pl-s;
+            transform:translateY(10px);
+        }
+    }
+    &__nearby {
+        height:170px;
+        margin-right:-20px;
+        will-change:transform, box-shadow;
+        transition:transform .3s $cubic28, box-shadow .3s $cubic28;
+
+        &:first-child {
+            margin-right:0;
+            margin-left:-20px;
+        }
+        &:hover {
+            box-shadow:0 20px 25px rgba(31,35,37,.15);
+            transform:translateY(-15px);
+        }
+    }
+}
+.blog__content {
+    &__wrapper {
+        @extend .c-blackLight;
+        @extend .pt-xl;
+        @extend .mt-m;
+        @extend .pr-l;
+        @extend .fontFamily-helvetica;
+        @extend .fontSize-18;
+        @extend .lineHeight-xxl;
+    }
+    h1 {
+        @extend .c-blue;
+        @extend .fontWeight-8;
+        @extend .mb-l;
+        @extend .fontFamily-futura;
+        margin-left:-15px;
+    }
+    h2, h3, h4 {
+        @extend .pos-rel;
+        font-size:38px;
+        line-height:42px;
+        @extend .c-blue;
+        @extend .fontFamily-futura;
+        @extend .fontWeight-8;
+        @extend .letterSpacing--xl;
+        @extend .mb-l;
+        max-width:80%;
+        margin-left:-15px;
+
+        &:before {
+            @extend .content-empty;
+            @extend .display-inlineBlock;
+            @extend .vAlign-middle;
+        }
+    }
+    p {
+        @extend .mb-l;
+        @extend .pb-xs;
+    }
+    img {
+        margin:20px auto;
+        @extend .borderRadius-xl;
+        will-change:transform, box-shadow;
+        transition:transform .3s $cubic28, box-shadow .3s $cubic28;
+
+        &:hover {
+            box-shadow:0 20px 25px rgba(31,35,37,.15);
+            transform:translateY(-15px);
+        }
+    }
+    blockquote {
+        @extend .p-m;
+        @extend .pl-l;
+        @extend .mb-l;
+        @extend .c-blue;
+        @extend .fontFamily-futura;
+        @extend .fontSize-22;
+        @extend .fontWeight-normal;
+        border-left:5px solid $blue;
+    }
+}

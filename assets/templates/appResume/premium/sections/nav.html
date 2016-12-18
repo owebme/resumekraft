@@ -1,0 +1,141 @@
+<section-nav class="nav">
+
+    <div name="container" class="container nav__container">
+        <div onClick={ onChange } each={ item in items } no-reorder class="col-md-3">
+            <div class="nav__item" data-active={ item.step == step } data-step={ item.step }>{ item.title }</div>
+        </div>
+        <div name="slider" class="nav__slider"></div>
+    </div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root),
+    $container = $$($.container);
+
+    $.items = [];
+    $.step = 1;
+    $.left = 0;
+    $.sliding = false;
+
+    $.on("mount", function(){
+        if (!app.device.isMobile){
+            $afterlag.run(function(){
+                $.render();
+
+                var _onScroll = _.debounce($.onScroll, 50);
+
+                app.$dom.window.on("scroll", function(){
+                    _onScroll();
+                });
+
+                $.on("updated", function(){
+                    $.onSlide($.step);
+                });
+            });
+        }
+    });
+
+    $.render = function(){
+        $.items = [];
+
+        $Resume.el.find(".screen").each(function(i, item){
+            var $section = $$(this),
+                title = $section.attr("data-section");
+
+            if (title == "main"){
+                title = "Общее";
+            }
+            else {
+                title = $store.resume.select("sections").get({"name": title}).short;
+            }
+            $.items.push({
+                title: title,
+                step: i + 1,
+                offset: $section.offset().top
+            })
+        });
+
+        $.update();
+    };
+
+    $.onChange = function(){
+        $.step = this.item.step;
+
+        var delta = Math.abs(this.item.offset - app.$dom.document.scrollTop()),
+        duration = delta / 5;
+        duration = duration < 500 ? 500 : duration;
+
+        $.onSlide($.step, duration);
+
+        app.$dom.body.animate({scrollTop: this.item.offset}, duration);
+    };
+
+    $.onSlide = function(step, duration){
+        $.sliding = true;
+
+        var $item = $scope.find(".nav__item[data-step='" + step + "']");
+        if (!$item.length || $item.length && $.left == $item.offset().left){
+            $.sliding = false;
+            return;
+        }
+
+        $.left = $item.offset().left;
+        $.slider.style[app.prefixed['transition-duration']] = duration ? duration + "ms" : "";
+        $.slider.style[app.prefixed.transform] = 'translate3d(' + ($.left - $container.offset().left) + 'px, 0, 0)';
+        $.slider.style.width = $item.width() + "px";
+
+        _.onEndTransition($.slider, function(){
+            $.sliding = false;
+            $.onScroll();
+        });
+    };
+
+    $.onScroll = function(){
+        if ($.sliding) return;
+
+        var scroll = app.$dom.document.scrollTop(),
+            delta = app.sizes.height / 1.3,
+            step = _.findWhere($.items, {"step": $.step}),
+            next = _.findWhere($.items, {"step": $.step + 1}),
+            prev = $.step > 1 ? _.findWhere($.items, {"step": $.step - 1}) : null;
+
+        if (next && scroll + delta > next.offset){
+            var find = false;
+            _.each(_.sortArray($.items, "step", "desc"), function(item){
+                if (!find){
+                    if (scroll + delta > item.offset){
+                        find = true;
+                        $.update({
+                            step: item.step
+                        });
+                    }
+                }
+            });
+        }
+        else if (prev && scroll + delta < step.offset){
+            var find = false;
+            _.each($.items, function(item){
+                if (!find){
+                    if (scroll - delta < item.offset){
+                        find = true;
+                        $.update({
+                            step: item.step
+                        });
+                    }
+                }
+            });
+        }
+    };
+
+    $.refresh = function(){
+        if (!app.device.isMobile){
+            $afterlag.run(function(){
+                $.render();
+            });
+        }
+    };
+
+</script>
+
+</section-nav>

@@ -1,0 +1,105 @@
+.control__colors {
+    @extend .display-block;
+    @include accelerate();
+    @extend .cursor-default;
+    @extend .userSelect-none;
+    position:fixed;
+    top:120px;
+    right:30px;
+    width:70px;
+    height:70px;
+    overflow:hidden;
+    padding-right:20px;
+    transition:width 0s 0.4s, height 0s 0.4s;
+    z-index:100;
+
+    .d-phone & {
+        top:90px;
+        right:5px;
+    }
+    &__item {
+        @extend .pos-rel;
+        @extend .display-inlineBlock;
+        @extend .overflow-hidden;
+        width:40px;
+        height:40px;
+        @extend .borderRadius-circle;
+        @extend .boxShadow-15;
+        @extend .ml-xs;
+        @extend .mb-xs;
+        transition:transform 0.4s $bounceSoft 0.2s, background-color 0.2s linear, box-shadow 0.08s linear;
+        transform:translate3d(0, 0, 0) scale(0);
+
+        &:not(.control__colors__item--active){
+            &:after {
+        		@include abs();
+        		@extend .content-empty;
+        		@extend .bg-black;
+        		@extend .borderRadius-circle;
+        		@extend .opacity-0;
+                @extend .cursor-pointer;
+        		transition:opacity 0.2s $cubic215;
+                z-index:1;
+        	}
+        	.m-no-touch &:hover {
+                @extend .boxShadow-default;
+
+                &:after {
+        		    @extend .opacity-10;
+                }
+        	}
+            &:before {
+                @include abs();
+                @extend .content-empty;
+                @extend .bg-white;
+                @extend .opacity-20;
+                transform:translateX(-50%);
+            }
+        }
+        &--active {
+            @extend .float-right;
+            @extend .boxShadow-default;
+            @extend .transition-none;
+            transform:translate3d(0, 0, 0) scale(1);
+
+            &:after {
+                @extend .content-empty;
+                @extend .pos-centered;
+                @extend .w10;
+                @extend .h10;
+                @extend .bg-white;
+                @extend .borderRadius-circle;
+            }
+        }
+    }
+    &__items {
+        @extend .inline;
+        @extend .pointerEvents-none;
+        position:absolute;
+        top:0;
+        right:70px;
+
+        .m-touch & {
+            @extend .display-none;
+        }
+    }
+    .m-no-touch &:hover {
+        overflow:visible;
+        width:170px;
+        height:250px;
+        transition:width 0s, height 0s;
+
+        .control__colors__items {
+            @extend .pointerEvents-all;
+        }
+        .control__colors__item {
+            transform:translate3d(0, 0, 0) scale(1);
+            transition:transform 0.4s $bounceSoft 0.1s, background-color 0.2s linear, box-shadow 0.08s linear;
+
+            &:active:not(.control__colors__item--active) {
+                transition:transform 0.2s $cubic215, background-color 0.2s linear, box-shadow 0.08s linear;
+                transform:translate3d(0, 2px, 0) scale(0.85);
+            }
+        }
+    }
+}

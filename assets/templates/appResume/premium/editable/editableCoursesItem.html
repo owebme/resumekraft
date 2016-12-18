@@ -1,0 +1,34 @@
+<editable-courses-item>
+
+    <div class="row mb-m mt-m">
+        <div class="col-md-12">
+            <div class="pos-rel">
+                <span class="input-title">год окончания</span>
+                <div class="select select-l">
+                    <select onChange={ $Editable.component.autoCommitItems } data-name="year">
+                        <option each={ item in _.range(1940, new Date().getFullYear() + 1) } value={ item } selected={ editing.year == item }>{ item }</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 xsm-mt-m">
+            <input onInput={ $Editable.component.autoCommitItems } class="input input-l" type="text" placeholder="Название площадки / школы" data-name="name" autocomplete="off" value={ opts.item.name }>
+        </div>
+    </div>
+    <div class="row mb-m">
+        <div class="col-md-24">
+            <input onInput={ $Editable.component.autoCommitItems } class="input input-l" type="text" placeholder="Название курса" data-name="title" autocomplete="off" value={ opts.item.title }>
+        </div>
+    </div>
+
+    <div class="hr pt-m"></div>
+
+<script>
+
+    this.on("update", function(){
+        this.editing = this.opts.item;
+    });
+
+</script>
+
+</editable-courses-item>

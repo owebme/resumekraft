@@ -1,0 +1,128 @@
+<resume-list-mobile class="resume__list-m" data-hidden={ hidden }>
+
+    <div class="resume__list-m__wrapper">
+
+        <div onClick={ open.menu } class="resume__list-m__menu"></div>
+
+        <div class="container borderBottomWidth-1 borderStyle-solid borderColor-smoke">
+            <div class="row">
+                <div class="col-xs-offset-5 col-xs-19 pt-l pb-m">
+                    <div class="resume__list-m__title">Мои резюмешки</div>
+                    <div class="resume__list-m__subtitle">Чтобы создать резюме нажмите на крестик в круге в правом нижнем углу.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div onClick={ open.createResume } onUpdate="none" each={ item, i in data } class="row resume__list-m__item">
+                <div class="col-xs-5 flex-centered resume__list-m__item__cell">
+                    <div class="resume__list-m__item__cover">{ get.coverPost(item) }</div>
+                </div>
+                <div class="col-xs-12 flex-row-left-center resume__list-m__item__cell">
+                    <div class="resume__list-m__item__title">{ item.post }</div>
+                </div>
+                <div class="col-xs-4 flex-centered resume__list-m__item__cell resume__list-m__item__percent">{ item.percent }%</div>
+                <div class="col-xs-3 flex-centered resume__list-m__item__cell">
+                    <div class="resume__list-m__item__menu"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div onClick={ open.createResume } onUpdate="none" class="resume__list-m__btn__create"></div>
+
+<script>
+
+    var $ = this;
+
+    $.hidden = false;
+
+    $.animate = true;
+
+    $.data = [
+        {
+            _id: "1",
+            post: "Web-Designer, Art-director, Illustrator, Web-разработчик",
+            percent: 98
+        },
+        {
+            _id: "2",
+            post: "разработчик Frontend/Backend",
+            percent: 76
+        },
+        {
+            _id: "1",
+            post: "Web-Designer, Art-director, Illustrator",
+            percent: 98
+        },
+        {
+            _id: "2",
+            post: "Web-разработчик",
+            percent: 76
+        }
+    ]
+
+    $.on("mount", function(){
+        // setTimeout(function(){
+        //     $.animate = true;
+        //     $.update();
+        // }, 20);
+    });
+
+    $.get = {
+        coverPost: function(item){
+            return item.post[0];
+        }
+    }
+
+    $.open = {
+
+        menu: function(){
+            $Sections.menu.show();
+        },
+
+        stat: function(){
+            $.hide();
+            $Sections.resume.stat.show(function(){
+                $.show();
+            });
+        },
+
+        createResume: function(){
+            $Sections.resume.edit.show();
+            //$Sections.offers.plan.show();
+        },
+
+        profile: function(){
+            $.hide();
+            $Sections.profile.section.show(function(){
+                $.show();
+            });
+        },
+
+        jqtest: function(){
+            $.hide();
+            $Sections.jqtest.section.show(function(){
+                $.show();
+            });
+        },
+
+        payment: function(){
+            $Sections.payment.section.show();
+        }
+    };
+
+    $.show = function(){
+        $.hidden = false;
+        $.update();
+    };
+
+    $.hide = function(){
+        $.hidden = true;
+        $.update();
+    };
+
+</script>
+
+</resume-list-mobile>

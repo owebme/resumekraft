@@ -1,0 +1,13 @@
+{
+  "watch" : ["*.*", "/public/*.*", "/public/**/*.*", "/assets/API/*.*", "/assets/API/**/*.*"],
+  "ignore": [
+      "/assets/css/**",
+      "/assets/files/**",
+      "/assets/images/**",
+      "/assets/js/**",
+      "/assets/styleguide/**",
+      "/assets/templates/**",
+      "/assets/video/**",
+      "/public/js/*.js"
+  ]
+}

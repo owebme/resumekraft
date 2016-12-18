@@ -1,0 +1,25 @@
+@import 'main';
+
+// UI elements
+@import 'ui/main';
+@import 'ui/editplace';
+@import 'ui/social';
+@import 'ui/button';
+@import 'ui/input';
+@import 'ui/textarea';
+@import 'ui/select';
+@import 'ui/tags';
+
+// Resume control
+@import 'control/fonts';
+@import 'control/colors';
+@import 'control/sections';
+
+// Resume sections
+@import 'sections/editable/sectionMenu';
+@import 'sections/editable/sectionEditable';
+
+// Resume templates
+@import 'templates/colors';
+@import 'templates/fonts';
+@import 'templates/template1';

@@ -1,0 +1,33 @@
+<ux-tags class="component">
+
+    <btn-editable if={ $mode === "editing" } data={ $resume.tags }></btn-editable>
+
+    <div onClick={ openEditable } onUpdate="none" class="{ opts.classname } { blur : !$resume.tags }">
+        <div class="tag" each={ item in ($resume.tags ? $resume.tags : $store.resume.placeholder.tags) }>{ item }</div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.openEditable = function(){
+        if ($mode === "editing"){
+            $Editable.show("tags", {
+                active: $store.resume.select('sections').get({'name': 'tags'}).active,
+                title: $.opts.title,
+                tags: $resume.tags,
+                callback: function(active, tags){
+                    $store.resume.select('sections', {'name': 'tags'}).set('active', active);
+                    $resume.tags = tags ? tags : null;
+                    $.update({
+                        editable: false
+                    });
+                }
+            });
+            $.editable = true;
+        }
+    };
+
+</script>
+
+</ux-tags>

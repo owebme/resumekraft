@@ -1,0 +1,53 @@
+<editable-visible class="col-sm-24 col-md-offset-1 col-md-22 col-lg-offset-4 col-lg-18 section__editable__container" data-editing="visible">
+
+    <div class="title title-main">{ title }</div>
+
+    <div class="row">
+        <virtual each={ item, i in items }>
+            <div class="col-xs-18 col-sm-8 transition-default { opacity-50 : !item.active } mb-s">
+                <div class="title title-m text-truncate">{ item.title }</div>
+            </div>
+            <div class="col-xs-6 col-sm-4 pt-xs xs-pt-xxs mb-s { app.device.isPhone ? 'text-right' : 'text-left' }">
+                <ui-switcher commit="autoCommitValue" i={ i } value={ item.active }></ui-switcher>
+            </div>
+        </virtual>
+    </div>
+    <div class="section__editable__footer text-center pt-xs pr-l sm-pr-m xs-pr0">
+        <button onClick={ onCancel } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper" type="button">Отменить</button>
+        <button onClick={ onSave } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper ml-xs" type="button">Сохранить</button>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.init = function(data){
+        $.update({
+            title: data.title,
+            sections: data.sections,
+            items: _.copyArray(data.sections),
+            callback: data.callback
+        });
+    };
+
+    $.autoCommitValue = function(value, i){
+        $.items[i].active = value;
+    };
+
+    $.onCancel = function(){
+        $.callback($.sections);
+        $.hide();
+    };
+
+    $.onSave = function(){
+        $.callback($.items);
+        $.hide();
+    };
+
+    $.hide = function(){
+        $Editable.hide();
+    };
+
+</script>
+
+</editable-visible>

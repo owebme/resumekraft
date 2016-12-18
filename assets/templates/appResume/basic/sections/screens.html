@@ -1,0 +1,31 @@
+<resume-screens class="screens screens-mobile screens-desktop text-left">
+
+    <resume-screen-commons title="Общие данные" step="1"></resume-screen-commons>
+    <resume-screen-education title="Образование" step="2"></resume-screen-education>
+    <resume-screen-langs title="Владение языками" step="3"></resume-screen-langs>
+    <resume-screen-jobs title="Работа в компаниях" step="4"></resume-screen-jobs>
+    <resume-screen-about title="Достижения, о себе" step="5"></resume-screen-about>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    $.on("mount", function(){
+
+        $.parent.screens = $.el = new app.plugins.screens($scope);
+
+        $.el.init();
+    });
+
+    $.hide = function(){
+        $scope.attr("data-hidden", true);
+    };
+
+    $.show = function(){
+        $scope.attr("data-hidden", false);
+    };
+
+</script>
+
+</resume-screens>

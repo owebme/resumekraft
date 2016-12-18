@@ -1,0 +1,58 @@
+<editable-languages class="col-sm-24 col-md-offset-1 col-md-22 col-lg-offset-4 col-lg-18 section__editable__container" data-editing="languages">
+
+    <ui-switcher id="activity" commit="true"></ui-switcher>
+
+    <div class="section__editable__content { hide : !switcher.value }">
+
+        <div class="title title-main">{ title }</div>
+
+        <div class="pos-rel mb-l">
+            <span class="input-title">название секции</span>
+            <input onInput={ $Editable.component.autoCommit } class="input input-xl" data-name="title" name="title_data" type="text" placeholder="Название секции" autocomplete="off" value={ data && data.title ? data.title : $store.resume.placeholder.languages.title }>
+        </div>
+        <div class="row">
+            <div class="col-xs-24 col-sm-24 col-md-11">
+                <div class="pos-rel mb-l">
+                    <span class="input-title">вступительный текст</span>
+                    <textarea style="height:265px" onInput={ $Editable.component.autoCommit } class="textarea textarea-xl" data-name="text" name="text_data" autocomplete="off">{ data.text }</textarea>
+                </div>
+            </div>
+            <div class="col-xs-24 col-sm-24 col-md-13">
+                <div class="pl-m">
+                    <div each={ item, i in data.items } class="row mb-m">
+                        <div class="col-xs-10">
+                            <div class="title title-l">{ $store.languages.getTitleById(item.title) }</div>
+                        </div>
+                        <div class="col-xs-14">
+                            <div class="select select-l">
+                                <select if={ item.title == "native" } onChange={ autoCommitValue } data-name="value">
+                                    <option each={ lang in $store.languages.native.get() } selected={ lang._id == item.value } value={ lang._id }>{ lang.title }</option>
+                                </select>
+                                <select if={ item.title != "native" } onChange={ autoCommitValue } data-name="value">
+                                    <option each={ lang in $store.languages.select.get() } selected={ lang._id == item.value } value={ lang._id }>{ lang.title }</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="section__editable__footer text-center">
+        <button onClick={ $Editable.component.onCancel } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper" type="button">Отменить</button>
+        <button onClick={ $Editable.component.onSave } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper ml-xs" type="button">Сохранить</button>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.autoCommitValue = function(e){
+        $.data.items[this.i].value = e.target.value;
+    };
+
+</script>
+
+</editable-languages>

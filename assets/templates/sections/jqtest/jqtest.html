@@ -1,0 +1,48 @@
+<section-jqtest class="oScreen__section zIndex-2" data-open={ active } data-show="down">
+
+    <div class="oScreen__section__content overflow-hidden bg-white">
+
+        <div class="oScreen__section__buttons zIndex-0" data-pos="top-right">
+            <div onClick={ hide } onUpdate="none" class="button__close" data-color="gray"></div>
+        </div>
+
+        <jqtest-list></jqtest-list>
+
+        <jqtest-content></jqtest-content>
+
+        <jqtest-result></jqtest-result>
+
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.el = $$($.root);
+
+    $.active = false;
+
+    $.on("before-mount", function(){
+        $.sections = {
+            list: $.tags["jqtest-list"],
+            test: $.tags["jqtest-content"],
+            result: $.tags["jqtest-result"]
+        };
+    });
+
+    $.show = function(callback){
+        $.active = true;
+        $.update();
+        $.callback = callback;
+    };
+
+    $.hide = function(){
+        $.active = false;
+        $.update();
+
+        if (_.isFunction($.callback)) $.callback();
+    };
+
+</script>
+
+</section-jqtest>

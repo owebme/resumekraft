@@ -1,0 +1,282 @@
+<jqtest-content class="oScreen" data-open={ active } data-show="down">
+
+    <div class="oScreen__content overflow-hidden bg-{ bg }">
+
+        <div class="screen bg-blackLight" data-screen="begin" data-active={ screen == "begin" } data-hidden={ hidden == "begin" }>
+            <div class="container pos-centered">
+                <div class="row c-white fontSize-24">
+                    <div class="col-xs-24 col-lg-offset-5 col-lg-14">
+                        <div class="xs-plr-m">
+                            <div class="ui-icon-hand_cursor_white w95 h95 mlr-auto mb-l"></div>
+                            <div class="mb-l">Необходимо помнить, результат будет зависеть от того, насколько честно вы отвечаете на все вопросы.</div>
+                            <button onClick={ next.beginText } class="btn btn-xxl btn-white-hover">Готов начать</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="screen bg-blue" data-screen="beginText" data-active={ screen == "beginText" } data-hidden={ hidden == "beginText" }>
+            <div class="container pos-centered">
+                <div class="row c-white fontSize-28 lineHeight-xxl">
+                    <div class="col-xs-24 col-lg-offset-5 col-lg-14">
+                        <div class="xs-plr-m">
+                            <div class="mb-l">Вам будут предложены 24 пары ответов, вам нужно выбрать один вариант из пары, близкий вашим убеждениям.</div>
+                            <button onClick={ next.test } class="btn btn-xxl c-blue btn-white-hover">Понятно</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="rows screen bg-white" data-screen="test" data-active={ screen == "test" } data-hidden={ hidden == "test" } data-hide={ reload.hide } data-show={ reload.show }>
+            <div class="row">
+                <div onClick={ select.q1 } class="que col-xs-24 col-sm-12">
+                    <div class="que__item que__item1" name="que__item">
+                        <div class="que__text">{ que.q1() }</div>
+                    </div>
+                </div>
+                <div onClick={ select.q2 } class="que col-xs-24 col-sm-12">
+                    <div class="que__item que__item2">
+                        <div class="que__text">{ que.q2() }</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="screen bg-blue { showAnim : animate }" name="finish" data-screen="finish" data-active={ screen == "finish" } data-hidden={ hidden == "finish" }>
+            <div class="pos-centered">
+                <div name="circuful" class="circuful anim anim-scale" data-duration={ 'm' : app.device.isPhone }></div>
+            </div>
+        </div>
+
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.active = false;
+    $.screen = null;
+    $.beginText = null;
+    $.hidden = null;
+    $.cursor = null;
+    $.result = [];
+    $.reload = {
+        show: true,
+        hide: false
+    };
+    $.bg = null;
+    $.animate = null;
+    $.circuful = $$($["circuful"]);
+
+    $.on("before-mount", function(){
+        $.cursor = $.data.root.down();
+    });
+
+    $.show = function(){
+        $.next.begin();
+        $.update({
+            active: true
+        });
+    };
+
+    $.next = {
+        begin: function(){
+            $.screen = "begin";
+            $.bg = "blackLight";
+        },
+        beginText: function(){
+            $.hidden = $.screen;
+            $.screen = "beginText";
+            $.bg = "blue";
+        },
+        test: function(){
+            $.hidden = $.screen;
+            $.screen = "test";
+            $.bg = "white";
+        },
+        finish: function(){
+            $.hidden = $.screen;
+            $.screen = "finish";
+            $.bg = "blue";
+
+            _.onEndTransition($["finish"], function(){
+                $.update({
+                    animate: true
+                });
+                $.circuful.circliful({
+                    animation: 1,
+                    animationStep: 2.25,
+                    foregroundBorderWidth: app.device.isPhone ? 8 : 9.5,
+                    backgroundBorderWidth: app.device.isPhone ? 3.5 : 5,
+                    percentageTextSize: 28,
+                    percent: 100,
+                    backgroundColor: 'rgba(255,255,255,.2)',
+                    foregroundColor: '#68fb98',
+                    fontColor: '#fff'
+                }, function(){
+                    $.trigger('loaded');
+                });
+            });
+
+            $.one('loaded', function() {
+                //alert("1");
+            });
+        }
+    }
+
+    $.select = {
+        q1: function(){
+            $.select.update("1");
+        },
+        q2: function(){
+            $.select.update("2");
+        },
+        update: function(q){
+            if ($.reload.hide) return;
+
+            $.result.push(q);
+
+            $.reload = {
+                show: false,
+                hide: true
+            }
+            _.onEndTransition($["que__item"], function(){
+                //$.cursor = null;
+                $.cursor = $.cursor.right();
+
+                if ($.cursor){
+                    $.update({
+                        reload: {
+                            show: false,
+                            hide: false
+                        }
+                    });
+                    setTimeout(function(){
+                        $.update({
+                            reload: {
+                                show: true,
+                                hide: false
+                            }
+                        });
+                    }, 5);
+                }
+                else {
+                    $.next.finish();
+                    $.update();
+                }
+            });
+        }
+    }
+
+    $.que = {
+        q1: function(){
+            return $.cursor.get().q1;
+        },
+        q2: function(){
+            return $.cursor.get().q2;
+        }
+    }
+
+    $.data = new Baobab([
+        {
+            q1:'Мне легко в любое время организовать какое-нибудь многолюдное мероприятие.',
+            q2:'Мне проще выполнять локальные поручения в организованных другими мероприятиях.'
+        },
+        {
+            q1:'В компании незнакомых людей я охотно принимаю участие в коллективных обсуждениях.',
+            q2:'Мне интереснее и проще вести локальную беседу с тем, кого всерьез интересует тема разговора.'
+        },
+        {
+            q1:'В компании я, как правило, первым завожу беседу.',
+            q2:'В компании я, как правило, жду, когда со мной заговорят.'
+        },
+        {
+            q1:'Мне интересно и у меня это легко получается - свободно расширять свою деятельность, привлекая смежные области.',
+            q2:'Мне проще погружаться в одну свою деятельность, углублять  и далее осваивать ее.'
+        },
+        {
+            q1:'Чтобы быстрее снять усталость, мне необходима компания и общение с людьми.',
+            q2:'Чтобы быстрее снять усталость, мне необходимо немного побыть в одиночестве для восстановления энергии.'
+        },
+        {
+            q1:'Чем бы я не был занят, я как правило, замечаю, что делают окружающие люди.',
+            q2:'Если, я занят, то практически не замечаю, что делают окружающие меня люди.'
+        },
+        {
+            q1:'Как бы не изменились обстоятельства, я всегда довожу начатое дело до конца.',
+            q2:'Меня угнетает необходимость доводить дело до конца, когда оно уже не актуально.'
+        },
+        {
+            q1:'Я думаю, что здравый смысл и логика редко ошибаются.',
+            q2:'Я думаю, что инерция прошлого опыта может помешать во время перемен.'
+        },
+        {
+            q1:'Если необходимо принять решение, то я чаще опираюсь на  проверенные временем принципами.',
+            q2:'Если необходимо принять решение, то я чаще руководствуюсь своим собственным опытом и видением ситуации.'
+        },
+        {
+            q1:'Я ставлю в жизни конкретные цели и ищу способы их достичь.',
+            q2:'Я стараюсь не упустить возможности, подвернувшиеся «заодно».'
+        },
+        {
+            q1:'Чтобы принять решение я должен заранее удостовериться, что все подготовлено и улажено.',
+            q2:'Я чаще принимаю решение по наитию, полагаясь на интуицию.'
+        },
+        {
+            q1:'Мне кажется, что не так уж плохо придерживаться «проторенной дорожки».',
+            q2:'Мне кажется, что не так уж плохо «витать в облаках».'
+        },
+        {
+            q1:'Я предпочитаю конкретность и определенность.',
+            q2:'Я предпочитаю открытость, многовариантность.'
+        },
+        {
+            q1:'Мне проще действовать, как человеку практичному.',
+            q2:'Я чаще действую, как человек оригинальный.'
+        },
+        {
+            q1:'Я больше доверяю тому, что попробовал.',
+            q2:'Я предпочитаю пробовать новое.'
+        },
+        {
+            q1:'Меня больше привлекают вопросы производства и сбыта товаров.',
+            q2:'Меня больше привлекают вопросы проектирования и исследования.'
+        },
+        {
+            q1:'Моя работоспособность, как правило, равномерна.',
+            q2:'Моя работоспособность подвержена периодическим подъемам и спадам.'
+        },
+        {
+            q1:'На мою территорию никто не претендует (по крайней мере второй раз).',
+            q2:'Я стараюсь оградить себя от возможных покушенийна мою территорию заранее.'
+        },
+        {
+            q1:'Общаясь с людьми, я стараюсь соблюдать общепринятые правила этикета.',
+            q2:'Общаясь с людьми, я стараюсь проявлять свое личное обаяние.'
+        },
+        {
+            q1:'Мне нравится проявлять себя в стройных логических построениях.',
+            q2:'Мне нравится проявлять себя в гармонизации человеческих отношений.'
+        },
+        {
+            q1:'Мне кажется, что самое неприятное в людях — ненадежность, нарушение договоров.',
+            q2:'Мне кажется, что самое неприятное в людях — формализм, расчетливость.'
+        },
+        {
+            q1:'Свои отношения с людьми я строю, учитывая взаимные интересы.',
+            q2:'Свои отношения с людьми я строю, принимая во внимание только чувства и настроения.'
+        },
+        {
+            q1:'Мне приносит удовлетворение выявление истины в спорном вопросе.',
+            q2:'Мне приносит удовлетворение достижение согласия по спорным вопросам.'
+        },
+        {
+            q1:'Я считаю, что наибольшего одобрения заслуживает разумный подход к проблемам.',
+            q2:'Я считаю, что наибольшего одобрения заслуживает способность с сопереживанию.'
+        }
+    ]);
+</script>
+
+</jqtest-content>

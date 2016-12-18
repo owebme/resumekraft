@@ -1,0 +1,48 @@
+.resumeBasic {
+    .steps {
+        @extend .pos-tr;
+        @extend .pos-centered-v;
+        @extend .pr-l;
+        @extend .userSelect-none;
+        @extend .zIndex-2;
+
+        .d-tablet.r-portrait &,
+        .d-phone & {
+            @extend .display-none;
+        }
+        &__item {
+            @extend .pos-rel;
+            @extend .mb-xs;
+
+            &__button {
+                @include accelerate(true);
+                @extend .flex-centered;
+                @extend .w40;
+                @extend .h40;
+                @extend .borderRadius-circle;
+                @extend .c-gray;
+                @extend .fontSize-20;
+                @extend .fontWeight-bold;
+                @extend .borderWidth-1;
+                @extend .borderStyle-solid;
+                @extend .borderColor-grayLighten;
+                @extend .cursor-default;
+                @extend .willChange-transform;
+                transition:all .08s, transform .5s $cubic075;
+
+                &[data-active="true"] {
+                    @extend .bg-blue;
+                    @extend .c-white;
+                    @extend .borderColor-blue;
+                    @extend .fontWeight-8;
+                }
+                &:not([data-active="true"]):hover {
+                    @extend .c-blue;
+                    @extend .borderColor-blue;
+                    @extend .cursor-pointer;
+                    transform:scale(1.15);
+                }
+            }
+        }
+    }
+}

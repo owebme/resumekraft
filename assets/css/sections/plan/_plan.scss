@@ -1,0 +1,38 @@
+.plan__list {
+    @extend .pos-rel;
+    height:827px;
+
+    &__item {
+        @include accelerate();
+        @extend .pos-tl;
+        @extend .w100p;
+        @extend .borderRadius-xl;
+        @extend .h50v;
+        @extend .overflow-hidden;
+        background-color:rgba($smoke,.3);
+        border:1px solid $smokeDark;
+        @extend .willChange-transform;
+        transform:translate3d(0, -30px, 0) scale(0.95);
+        transition:transform 0.5s $cubic089, height 0s 0.5s;
+
+        &__wrapper {
+            @extend .display-none;
+        }
+        &[data-active="true"]{
+            @extend .bg-white;
+            @extend .h-auto;
+            @extend .transform-default;
+            @extend .zIndex-1;
+            transition:transform 0.5s $cubic089, height 0s;
+
+            .plan__list__item__wrapper {
+                @extend .display-block;
+            }
+        }
+        &__footer {
+            @extend .bg-blue;
+            padding:25px 20px 40px;
+            @extend .borderRadiusBottom-xl;
+        }
+    }
+}

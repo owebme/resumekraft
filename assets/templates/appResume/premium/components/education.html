@@ -1,0 +1,61 @@
+<ux-education class="component">
+
+    <h3 class="title anim" data-anim="bt">{ $resume.education && $resume.education.title ? $resume.education.title : opts.title }</h3>
+
+    <btn-editable if={ $mode === "editing" } data={ $resume.education }></btn-editable>
+
+    <div onClick={ openEditable } onUpdate="none" class="{ blur : !$resume.education } { transition-none : editable }">
+
+        <p if={ !$resume.education || $resume.education && $resume.education.text } class="mb-l anim" data-anim="bt">{ $resume.education && $resume.education.text ? $resume.education.text : $store.resume.placeholder.education.text }</p>
+
+        <div>
+            <div if={ $resume.education && $resume.education.items } each={ item, i in _.sortArray($resume.education.items, "year", "desc") } class="education-item mtb-xl"  data-id={ item._id }>
+
+                <h3 class="c-primary mb-s anim" data-anim="lr"><strong>{ item.year }</strong> &ndash; { $store.education.getTitleById(item.level) }</h3>
+
+                <p class="mb-s anim" style="line-height:28px" data-anim="lr">{ item.title }<span if={ item.level != "8" && item.faculty } class="h4 c-black">, { item.faculty }</span></p>
+
+                <h3 if={ item.level != "8" && item.speciality } class="c-black mb-s anim" data-anim="lr">Специальность &ndash; <strong>{ item.speciality }</strong></h3>
+
+            </div>
+        </div>
+
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.openEditable = function(e){
+        $Editable.open(e, "education", $,
+            {
+                root: function(){
+                    return  {
+                        title: null,
+                        text: null,
+                        items: null
+                    }
+                },
+                item: function(){
+                    return  {
+                        _id: _.newId(),
+                        level: "1",
+                        title: null,
+                        faculty: null,
+                        speciality: null,
+                        year: new Date().getFullYear()
+                    }
+                }
+            },
+            [
+                {
+                    field: "title",
+                    alert: "Введите название учебного заведения"
+                }
+            ]
+        );
+    };
+
+</script>
+
+</ux-education>

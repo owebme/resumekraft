@@ -1,0 +1,26 @@
+{
+  "name": "circliful",
+  "version": "1.0.2",
+  "homepage": "https://github.com/pguso/jquery-plugin-circliful",
+  "authors": [
+    "Patric Gutersohn <pguso@gmx.de>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jquery": ">= 1.5.0"
+  },
+  "main": [
+    "js/jquery.circliful.min.js",
+    "css/jquery.circliful.css"
+  ],
+  "_release": "1.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.2",
+    "commit": "d4202d5a35eae5246a207e7bbdee67e26c83797d"
+  },
+  "_source": "https://github.com/pguso/jquery-plugin-circliful.git",
+  "_target": "^1.0.2",
+  "_originalSource": "circliful",
+  "_direct": true
+}

@@ -1,0 +1,33 @@
+<section-profile class="oScreen zIndex-2" data-open={ active } data-show="left">
+
+    <div class="oScreen__buttons" data-pos="top-right">
+        <div onClick={ hide } class="button__close"></div>
+    </div>
+
+    <div class="oScreen__content bg-white">
+
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.active = false;
+
+    $.show = function(callback){
+        $.update({
+            active: true
+        })
+        $.callback = callback;
+    };
+
+    $.hide = function(){
+        $.update({
+            active: false
+        })
+        if (_.isFunction($.callback)) $.callback();
+    };
+
+</script>
+
+</section-profile>

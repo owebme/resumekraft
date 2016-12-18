@@ -1,0 +1,252 @@
+#t2 {
+    font-family:'HelveticaNeue', Arial, Helvetica, sans-serif;
+    font-size:19px;
+    line-height:25px;
+    color:#313232;
+    padding:0 0 80px 0;
+
+    .t-gray {
+        color:#989898 !important;
+    }
+    #t-header {
+        position:relative;
+        margin:0 40px 21px;
+        min-height:459px;
+        text-align:left;
+        border-bottom:4px solid #d9d9d9;
+    }
+    #t-header-names {
+        position:relative;
+        color:#222625;
+        padding-top:132px;
+        padding-left:105px;
+        margin-left:65px;
+        margin-bottom:3px;
+        height:394px;
+        box-sizing:border-box;
+    }
+    #t-header-stroke {
+        position:absolute;
+        top:0;
+        left:0;
+        width:82px;
+        height:100%;
+        background-color:#b4d92a;
+        background:-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #b4d92a), color-stop(100%, #bee432));
+        background:-webkit-linear-gradient(#b4d92a 80%, #bee432 100%);
+        background:-moz-linear-gradient(#b4d92a 80%, #bee432 100%);
+        background:-o-linear-gradient(#b4d92a 80%, #bee432 100%);
+        background:linear-gradient(#b4d92a 80%, #bee432 100%);
+        border-radius:0 0 18px 18px;
+    }
+    #t-header-stroke div {
+        position:absolute;
+        bottom:0;
+        left:0;
+        width:100%;
+        height:20px;
+        background:#222625;
+        border-radius:0 0 18px 18px;
+    }
+    .t-header-name.small {
+        font:112px/92px 'PFSquareLight';
+        letter-spacing:-1.4px;
+        text-transform:uppercase;
+    }
+    .t-header-name.big {
+        font:202px/172px 'PFSquareRegular';
+        letter-spacing:-12.2px;
+        margin-left:-7px;
+        text-transform:uppercase;
+    }
+    #t-header-contacts {
+        position:absolute;
+        top:102px;
+        right:-40px;
+        background:#f6f6f6;
+        padding:18px 32px 25px 30px;
+        width:326px;
+        font-size:23px;
+        line-height:24px;
+        text-align:right;
+        box-sizing:border-box;
+    }
+    #t-header-city {
+        margin-bottom:4px;
+    }
+    #t-header-phone {
+        font-size:24px;
+        font-family:'PFSquareMedium';
+        letter-spacing:-0.1px;
+        margin-bottom:2px;
+    }
+    #t-header-skype {
+        font-size:24px;
+        font-family:'PFSquareRegular';
+        letter-spacing:-0.2px;
+    }
+    #t-header-string {
+        font-size:26px;
+        line-height:34px;
+        font-family:'HelveticaNeue';
+        margin:0 20px 25px 190px;
+        letter-spacing:-0.1px;
+    }
+    .t-header-string-element {
+        display:inline-block;
+        margin-right:20px;
+    }
+    .t-header-string-element.email {
+        font-size:29px;
+        line-height:34px;
+        font-family:'PFSquareRegular';
+    }
+    .t-header-string-element .age {
+        color:#989898;
+    }
+    .t-header-salary {
+        font:bold 26px 'Roboto';
+        white-space:nowrap;
+    }
+    .t-header-salary sup {
+        display:inline-block;
+        color:#fff;
+        font:bold 16px/16px 'Roboto';
+        background-color:#b4d92a;
+        padding:4px 9px;
+        border-radius:100px;
+        margin-left:5px;
+    }
+    #t-container-wrapper {
+        padding-left:149px;
+        position:relative;
+    }
+    #t-container-post {
+        color:#646464;
+        font:42px/46px 'PFSquareMedium';
+        letter-spacing:-1px;
+        text-transform:uppercase;
+        text-align:right;
+        padding:0 60px 0 300px;
+    }
+    .t-container {
+        position:relative;
+        margin:58px 0;
+    }
+    .t-container.t-container-edu {
+        margin-top:-12px;
+    }
+    .t-container.t-container-lang {
+        margin-bottom:38px;
+    }
+    .t-container.t-container-job {
+        margin-top:38px;
+    }
+    .t-container-stroke {
+        position:absolute;
+        top:5px;
+        right:0;
+        width:15px;
+        height:100%;
+        background-color:#b4d92a;
+    }
+    .t-container-item {
+        display:table;
+        width:95.5%;
+        margin:0 0 22px -109px;
+    }
+    .t-container-name {
+        color:#b4d92a;
+        font:bold 41px/40px 'Proxima';
+        text-transform:uppercase;
+        margin-bottom:25px;
+        letter-spacing:-0.4px;
+    }
+    .t-container-dates {
+        display:table-cell;
+        text-align:right;
+        padding-right:20px;
+        vertical-align:top;
+    }
+    .t-container-dates-year {
+        font:36px 'PFDin';
+        letter-spacing:-2px;
+    }
+    .t-container-dates-title {
+        font-size:20px;
+    }
+    .t-container-desc {
+        display:table-cell;
+        width:80%;
+        text-align:left;
+        vertical-align:top;
+        background:#f6f6f6;
+        padding:18px 20px 20px 20px;
+        box-sizing:border-box;
+    }
+    .t-container-desc-text {
+        width:92%;
+        padding:12px 0 5px 10px;
+        line-height:28px;
+        box-sizing:border-box;
+        white-space:pre-line;
+    }
+    .t-container-desc-title {
+        font:26px/27px 'PTSansNarrow';
+        border-bottom:2px solid #d4d4d4;
+        padding:0 10px 6px 10px;
+        width:90%;
+    }
+    .t-container-desc-title.not-line {
+        border:none;
+        padding-bottom:0px;
+    }
+    .t-container-desc-name {
+        color:#646464;
+        font-size:22px;
+        padding:10px 0 0 10px;
+    }
+    .t-container-lang .t-container-dates-title {
+        padding-top:1px;
+        font:26px/30px 'PFDin';
+        letter-spacing:-0.8px;
+        text-transform:uppercase;
+        border-color:#d9d9d9;
+    }
+    .t-container-lang .t-container-desc {
+        padding-top:6px;
+        background:none;
+    }
+    .t-container-lang .t-container-desc-title {
+        font:22px/26px 'HelveticaNeue';
+        width:100%;
+    }
+    .t-container-lang .t-container-item {
+        margin-bottom:0px;
+    }
+    .t-container-job .t-container-desc-name {
+        padding-top:0px;
+        padding-bottom:2px;
+    }
+    .t-container-job .t-container-desc-title {
+        font-size:28px;
+        line-height:30px;
+    }
+    .t-container-about .t-container-desc-text {
+        padding-top:2px;
+    }
+    .t-container-desc-length {
+        position:relative;
+        color:#646464;
+        font:24px/27px 'PTSansNarrow';
+        text-transform:uppercase;
+    }
+    .t-container-desc-length div {
+        position:absolute;
+        top:0;
+        left:100%;
+        margin-left:37px;
+        width:100px;
+        text-align:right;
+    }
+}

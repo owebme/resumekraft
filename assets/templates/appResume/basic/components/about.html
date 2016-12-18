@@ -1,0 +1,29 @@
+<resume-screen-about class="screen" data-marquee={ opts.step }>
+
+    <div class="screen__content">
+
+        <div class="title">{ opts.title }</div>
+
+        <div class="container content" data-content="about">
+            <div class="row">
+                <div class="col-xs-24">
+                    <ui-textarea update="about" cursor={ $resume.select() } size="larger"></ui-textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div onClick={ finish } onUpdate="none" class="screen__button__finish">
+        <div class="screen__button__finish__text">Закончить редактирование</div>
+    </div>
+
+<script>
+
+    this.finish = function(){
+        $Sections.resume.edit.section.sections.finish.show();
+    }
+
+</script>
+
+</resume-screen-about>

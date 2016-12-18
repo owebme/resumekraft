@@ -1,0 +1,64 @@
+<root-main class="appResume" data-color="{ theme }" data-font="{ font }" data-mode={ $mode } data-app="premium">
+
+    <section-nav></section-nav>
+
+    <section-info if={ $mode !== "editing" }></section-info>
+
+    <sections-control if={ $mode === "editing" }>
+
+        <section-menu></section-menu>
+
+        <control-fonts></control-fonts>
+        <control-colors></control-colors>
+        <control-sections></control-sections>
+
+        <section-editable></section-editable>
+
+    </sections-control>
+
+    <resume-template1></resume-template1>
+
+<script>
+
+    $root = this;
+
+    $$ = window.jQuery || window.Zepto;
+
+    $mode = "edit1ing";
+
+    $lang = "en";
+
+    $resume = $store.resume.get();
+
+    this.theme = "#0084ff";
+
+    this.font = "futura";
+
+    this.on("mount", function(){
+
+        $Menu = $root.tags["section-menu"];
+        $Nav = $root.tags["section-nav"];
+        $Editable = $root.tags["section-editable"];
+
+        $Control = {
+            fonts: $root.tags["control-fonts"],
+            colors: $root.tags["control-colors"],
+            sections: $root.tags["control-sections"]
+        }
+
+        $Resume = $root.tags["resume-template1"];
+
+        $store.resume.select('sections').on('update', function(e){
+            $Control.sections.refresh();
+        });
+
+        $store.resume.on("write", function(){
+            $Nav.refresh();
+        });
+
+        app.$dom.body.removeClass("appLoading");
+    });
+
+</script>
+
+</root-main>

@@ -1,0 +1,415 @@
+.template1 {
+    @extend .fontFamily-helvetica;
+
+    .overlay {
+        @extend .pos-tl-fixed;
+        @extend .h100p;
+        @extend .bg-primary;
+        @extend .zIndex-1;
+    }
+    .main-line {
+        @extend .pos-abs;
+        @extend .t100;
+        @extend .l0;
+        height:7000px;
+        @extend .zIndex-3;
+
+        &:before {
+            @extend .content-empty;
+            @extend .pos-abs;
+            @extend .t0;
+            right:174px;
+            @extend .h100p;
+            border-left:2px dashed $white;
+            @extend .opacity-40;
+        }
+    }
+    .d-no-phone & {
+        section {
+            margin-bottom:195px;
+        }
+        .screen--first {
+            padding-top:250px;
+        }
+    }
+    .photo {
+        @extend .display-inlineBlock;
+        width:440px;
+        height:620px;
+        @extend .boxShadow-30;
+        @extend .bg-cover;
+        @extend .userSelect-none;
+        @extend .mt-xxs;
+
+        &-changer {
+            @extend .pos-rel;
+            @extend .display-inlineBlock;
+            @extend .cursor-pointer;
+
+            &-bg {
+                @extend .pos-bl;
+                @extend .w100p;
+                @extend .text-center;
+                @extend .opacity-0;
+                will-change:opacity;
+                transition:opacity 0.3s ease;
+                @extend .h35p;
+            }
+            &-title {
+                @extend .display-inlineBlock;
+                @extend .c-white;
+                @extend .m0;
+                @extend .fontFamily-futura;
+                @extend .letterSpacing--m;
+                @extend .willChange-transform;
+                transform:translate3d(0, 30px, 0);
+                transition:transform 0.3s ease;
+                font-size:35px;
+                line-height:4em;
+
+                &:before {
+                    @extend .content-empty;
+                    @extend .display-inlineBlock;
+                    @include ui-icon(upload_white, 54px, 54px);
+                    @extend .ml--30;
+                    @extend .mr-xs;
+                    transform:translate3d(0, 12px, 0);
+                    @extend .opacity-80;
+                }
+            }
+            .m-no-touch &:hover {
+                .photo-changer {
+                    &-bg {
+                        @extend .opacity-100;
+                        transition:opacity 0.3s ease 0.1s;
+                    }
+                    &-title {
+                        @extend .transform-default;
+                        transition:transform 0.3s $cubic25 0.1s;
+                    }
+                }
+            }
+        }
+        &-placeholder {
+            @extend .pos-rel;
+            @extend .display-inlineBlock;
+            @extend .bg-snow;
+            @extend .text-center;
+            @extend .nowrap;
+            @extend .userSelect-none;
+            width:446px;
+            height:593px;
+            @extend .boxShadow-30;
+
+            &-icon {
+                @include accelerate();
+                @extend .pos-centered;
+                @extend .cursor-pointer;
+                width:132px;
+                height:132px;
+
+                &-svg {
+                    @extend .pos-centered;
+                    width:96px;
+                    height:96px;
+                    @extend .mt-xxs;
+
+                    &-color {
+                        @extend .fill-primary;
+                    }
+                }
+                &:before {
+                    @include accelerate();
+                    @extend .content-empty;
+                    @include abs();
+                    border:2px dashed;
+                    @extend .border-primary;
+                    @extend .borderRadius-circle;
+                }
+            }
+            &-title {
+                @extend .pos-abs;
+                @extend .t100;
+                @extend .l0;
+                @extend .fontSize-20;
+                @extend .fontWeight-bold;
+                @extend .letterSpacing--s;
+                @extend .pt-xs;
+                @extend .c-primary;
+            }
+            &:hover {
+                .photo-placeholder-icon:before {
+                    animation:spinner linear 0.6s infinite;
+                }
+            }
+        }
+    }
+    .screen1 {
+        &-col-left {
+            @extend .text-right;
+            @extend .pt-l;
+            @extend .fontSize-0;
+        }
+        &-col-right {
+            @extend .pl-xl;
+            @extend .pr-l;
+        }
+    }
+    .screen {
+        &:before,
+        .work-items:before,
+        .job-items:before {
+            @extend .bg-primary;
+        }
+        .d-no-phone & {
+            @extend .pos-rel;
+
+            .work-items,
+            .job-items {
+                @extend .pos-rel;
+
+                &:before {
+                    @extend .content-empty;
+                    @extend .pos-abs;
+                    @extend .b100;
+                    @extend .bg-cover;
+                    @extend .zIndex-5;
+                }
+            }
+            .work-items {
+                &:before {
+                    @extend .l-s;
+                    width:167px;
+                    height:167px;
+                    @extend .trY-l;
+                    background-image:url(/assets/images/resume/works_white.svg);
+                }
+            }
+            .job-items {
+                &:before {
+                    @extend .l-xs;
+                    width:192px;
+                    height:192px;
+                    @extend .trY-m;
+                    background-image:url(/assets/images/resume/jobs_white.svg);
+                }
+            }
+            &[data-section="main"],
+            &[data-section="contacts"]{
+                @extend .zIndex-4;
+            }
+            &[data-section="contacts"]{
+                margin:0 -9px;
+            }
+            &[data-section="works"],
+            &[data-section="jobs"]{
+                @extend .zIndex-3;
+
+                .edit-pointer {
+                	@extend .l0;
+                }
+            }
+            &[data-section="jobs"]{
+                @extend .mt--50;
+            }
+            &[data-section="skills"],
+            &[data-section="education"],
+            &[data-section="courses"],
+            &[data-section="languages"],
+            &[data-section="hobby"]{
+                margin-top:-195px;
+                padding-top:145px;
+
+                .edit-pointer {
+                	left:-45px;
+                }
+                &:before {
+                    @extend .content-empty;
+                    @extend .pos-abs;
+                    @extend .t0;
+                    @extend .l--xs;
+                    @extend .bg-cover;
+                    @extend .zIndex-5;
+                }
+            }
+            &[data-section="skills"]{
+                padding-bottom:145px;
+
+                &:before {
+                    width:192px;
+                    height:192px;
+                    @extend .trY-l;
+                    background-image:url(/assets/images/resume/skills_white.svg);
+                }
+            }
+            &[data-section="education"]{
+                margin-bottom:170px;
+
+                &:before {
+                    width:192px;
+                    height:192px;
+                    transform:translateY(70px);
+                    background-image:url(/assets/images/resume/education_white.svg);
+                }
+            }
+            &[data-section="courses"]{
+                margin-top:-275px;
+                margin-bottom:170px;
+
+                &:before {
+                    @extend .t-xl;
+                    @extend .l-xs;
+                    width:148px;
+                    height:202px;
+                    @extend .trY-xs;
+                    background-image:url(/assets/images/resume/courses_white.svg);
+                }
+            }
+            &[data-section="languages"]{
+                margin-top:-105px;
+                padding-bottom:105px;
+
+                &:before {
+                    @extend .l-xs;
+                    width:164px;
+                    height:164px;
+                    transform:translateY(70px);
+                    background-image:url(/assets/images/resume/languages_white.svg);
+                }
+            }
+            &[data-section="hobby"]{
+                &:before {
+                    width:164px;
+                    height:164px;
+                    @extend .trY-l;
+                    background-image:url(/assets/images/resume/hobby_white.svg);
+                }
+            }
+        }
+        .d-phone &[data-section="works"],
+        .d-phone &[data-section="jobs"]{
+            .screen__content {
+                @extend .pb0;
+            }
+        }
+    }
+    .screen__inner {
+        @extend .pl-l;
+        @extend .pr-m;
+    }
+    .d-tablet & {
+        .screen2 {
+            &-col-right {
+                @extend .plr0;
+            }
+        }
+    }
+    .d-tablet.r-portrait & {
+        .screen--first {
+            padding-top:200px;
+        }
+        .screen__content {
+            @extend .plr-l;
+        }
+        .photo {
+            width:600px;
+            height:800px;
+            @extend .mt0;
+        }
+        .screen1 {
+            &-col-left {
+                @extend .pt0;
+                @extend .pb-l;
+            }
+            &-col-right {
+                @extend .pt-m;
+                @extend .plr0;
+            }
+        }
+        .screen__inner {
+            @extend .plr0;
+        }
+    }
+    .d-phone & {
+        .screen--first {
+            @extend .bg-black;
+
+            .screen__content {
+                @include abs();
+            }
+        }
+        .screen:not(.screen--first) {
+            @extend .plr-m;
+
+            .screen__content {
+                padding:120px 12.5px 95px 12.5px;
+            }
+        }
+        .screen__post {
+            @extend .pos-bl;
+            @extend .w100p;
+            @extend .ptb-l;
+            @extend .pl-l;
+            @extend .pr-s;
+            @extend .c-white;
+            @extend .fontFamily-helvetica;
+            @extend .fontWeight-5;
+            @extend .letterSpacing--m;
+            text-shadow:0 2px 5px rgba($blackDark,.5);
+            min-height:200px;
+            font-size:38px;
+            line-height:44px;
+            background:linear-gradient(to top, $blackDark, rgba($blackDark,0));
+            @extend .zIndex-1;
+        }
+        .photo {
+            @include abs();
+            @extend .mtb0;
+
+            &-changer {
+                @include abs();
+
+                &-bg {
+                    @extend .display-none;
+                }
+            }
+            &-placeholder {
+                @include abs();
+
+                &-icon {
+                    @extend .t40;
+
+                    &:before {
+                        animation:spinner linear 0.6s infinite;
+                    }
+                }
+            }
+        }
+        .screen1 {
+            &-col-left {
+                @extend .text-center;
+                @extend .plr0;
+            }
+            &-col-right {
+                @extend .plr0;
+            }
+        }
+        .screen2 {
+            &-col-right {
+                @extend .pl0;
+                @extend .pt-xs;
+            }
+        }
+        .screen__inner {
+            @extend .plr0;
+        }
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .screens {
+        margin-left:-236px;
+        padding-left:25%;
+        width:calc(1200px + 25%);
+    }
+}

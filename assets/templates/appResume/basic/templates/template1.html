@@ -1,0 +1,121 @@
+<resume-basic-template1 id="t1">
+
+	<div id="t-header">
+		<div if={ $resume.get('contacts', 'city') } id="t-header-city">г. { $resume.get('contacts', 'city') }</div>
+		<div id="t-header-names">
+			<div if={ $resume.get('surname').length > $resume.get('name').length }>
+				<div id="t-header-name" class="{ short : $resume.get('name').length > 9 }">{ $resume.get('name') }</div>
+				<div id="t-header-surname" class="{ short : $resume.get('surname').length > 9 }">{ $resume.get('surname') }</div>
+			</div>
+			<div if={ $resume.get("name").length > $resume.get("surname").length }>
+				<div id="t-header-surname" class="{ short : $resume.get('surname').length > 9 }">{ $resume.get('surname') }</div>
+				<div id="t-header-name" class="{ short : $resume.get('name').length > 9 }">{ $resume.get('name') }</div>
+			</div>
+		</div>
+		<div id="t-header-string">
+			<div if={ $resume.get('salary', 'active') && $resume.get('salary', 'amount') } class="t-header-string-element t-header-salary">{ $resume.take.salary.amount() } { $resume.take.salary.currency() } <sup>{ $resume.take.salary.worktime() }</sup></div>
+			<div if={ $resume.get('contacts', 'skype').length } class="t-header-string-element">Skype: { $resume.get('contacts', 'skype') }</div>
+			<div if={ $resume.get('contacts', 'phone').length } class="t-header-string-element">{ $resume.get('contacts', 'phone') }</div>
+			<div if={ $resume.get('contacts', 'email').length } class="t-header-string-element">{ $resume.get('contacts', 'email') }</div>
+			<div class="t-header-string-element">
+				<span if={ !$resume.get('birthday', 'hidden') }>{ $resume.take.birthday.date() }</span>
+				<span class="t-gray">({ $resume.take.birthday.age() })</span>
+			</div>
+		</div>
+		<div if={ $resume.get('post').length } id="t-header-post" class="t-gray">{ $resume.get('post') }</div>
+	</div>
+	<div id="t-container-wrapper">
+		<div if={ $resume.get('education', 'items').length } class="t-container t-container-edu">
+			<div class="t-container-name">Образование</div>
+			<div each={ edu, i in $resume.take.education.items() } class="t-container-item">
+				<div class="t-container-dates">
+					<div class="t-container-dates-year t-gray">{ edu.year }</div>
+					<div class="t-container-dates-title">{ $store.education.getTitleById(edu.level) }</div>
+				</div>
+				<div if={ edu.level != 8 } class="t-container-desc">
+					<div class="t-container-desc-title">{ edu.title }</div>
+					<div if={ edu.faculty } class="t-container-desc-name">{ edu.faculty }</div>
+					<div if={ edu.speciality } class="t-container-desc-name">Специальность &ndash; { edu.speciality }</div>
+				</div>
+				<div if={ edu.level == 8 } class="t-container-desc">
+					<div class="t-container-desc-title">{ edu.title }</div>
+				</div>
+			</div>
+		</div>
+		<div class="t-container t-container-lang">
+			<div class="t-container-name">Владение языками</div>
+			<div each={ lang, i in $resume.get('languages', 'items') } class="t-container-item">
+				<div class="t-container-dates">
+					<div class="t-container-dates-title { 't-gray' : lang.title != 'native' && lang.value == '1' }">{ $store.languages.getTitleById(lang.title) }</div>
+				</div>
+				<div class="t-container-desc">
+					<div if={ lang.title == "native" } class="t-container-desc-title">
+						{ $store.languages.native.getTitleById(lang.value) }
+					</div>
+					<div if={ lang.title != "native" } class="t-container-desc-title { 't-gray' : lang.value == '1' }">
+						{ $store.languages.select.getTitleById(lang.value) }
+					</div>
+				</div>
+			</div>
+		</div>
+		<div if={ $resume.get('jobs', 'items').length } class="t-container t-container-job">
+			<div class="t-container-name">Место работы</div>
+			<div each={ job, i in $resume.take.jobs.items() } class="t-container-item">
+				<div class="t-container-dates">
+					<div class="t-container-dates-company"><span>{ job.company }</span></div>
+					<div class="t-container-dates-city">{ job.city }</div>
+					<div class="t-container-dates-period">
+						<div>{ $store.month.getTitleById(job.from.month) } { job.from.year } &mdash;</div>
+						<div if={ job.last }>по настоящее время</div>
+						<div if={ !job.last }>{ $store.month.getTitleById(job.to.month) } { job.to.year }</div>
+					</div>
+					<div class="t-container-dates-length">
+						{ $resume.take.jobs.period(job, true) }
+					</div>
+					<div class="t-container-dates-post">{ job.post }</div>
+				</div>
+				<div class="t-container-desc">
+				   { job.text }
+				</div>
+			</div>
+		</div>
+		<div if={ $resume.get('aboutText').length } class="t-container t-container-about">
+			<div class="t-container-item">
+				<div class="t-container-dates">
+					<div class="t-container-dates-about">Достижения, о себе</div>
+				</div>
+				<div class="t-container-desc">
+				   { $resume.get('aboutText') }
+				</div>
+			</div>
+		</div>
+		<div id="t-container-colors">
+			<div id="t-color1" class="t-container-colors-item"></div>
+			<div id="t-color2" class="t-container-colors-item"></div>
+			<div id="t-color3" class="t-container-colors-item"></div>
+			<div id="t-color4" class="t-container-colors-item"></div>
+			<div id="t-color5" class="t-container-colors-item"></div>
+			<div id="t-color6" class="t-container-colors-item"></div>
+		</div>
+	</div>
+
+<style>
+
+@font-face {
+  font-family: 'LynoCyr';
+  src: url('/assets/css/appResume/basic/templates/template1/fonts/Lyno_Stan_CYR.eot');
+  src: local('O'), url('/assets/css/appResume/basic/templates/template1/fonts/Lyno_Stan_CYR.woff') format('woff'), url('/assets/css/appResume/basic/templates/template1/fonts/Lyno_Stan_CYR.ttf') format('truetype'), url('/assets/css/appResume/basic/templates/template1/fonts/Lyno_Stan_CYR.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PFDin';
+  src: url('/assets/css/appResume/basic/templates/template1/fonts/pfdintextcondpro-medium-webfont.eot');
+  src: url('/assets/css/appResume/basic/templates/template1/fonts/pfdintextcondpro-medium-webfont.eot?#iefix') format('embedded-opentype'), url('/assets/css/appResume/basic/templates/template1/fonts/pfdintextcondpro-medium-webfont.woff') format('woff'), url('/assets/css/appResume/basic/templates/template1/fonts/pfdintextcondpro-medium-webfont.ttf') format('truetype'), url('/assets/css/appResume/basic/templates/template1/fonts/pfdintextcondpro-medium-webfont.svg#PFDinTextCondProRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+</style>
+
+</resume-basic-template1>

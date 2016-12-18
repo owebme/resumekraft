@@ -1,0 +1,130 @@
+<resume-screen-commons class="screen screen--active" data-marquee={ opts.step }>
+
+    <div class="screen__content">
+
+        <div class="title">{ opts.title }</div>
+
+        <div class="container content" data-content="commons">
+            <div class="row mb-m">
+                <div class="hidden-xs col-sm-8 pt-xs pr-m">
+                    <span class="c-gray fontSize-28">Должность</span>
+                </div>
+                <div class="col-xs-24 col-sm-16">
+                    <ui-input update="post" cursor={ $resume.select() } size="xl"></ui-input>
+                </div>
+            </div>
+            <div class="row mb-m { row-hidden : !$resume.get('salary', 'active') }">
+                <div class="hidden-xs col-sm-8 pt-xs pr-m">
+                    <span class="visible-md visible-lg c-gray fontSize-28">Желаемая зарплата</span>
+                    <span class="visible-sm c-gray fontSize-28">Зарплата</span>
+                </div>
+                <div class="col-xs-16 col-sm-7">
+                    <ui-slider update="amount" cursor={ $resume.select('salary') } size="xl" min="1000" max="250000" step="1000"></ui-slider>
+                </div>
+                <div class="col-xs-8 col-sm-3 xs-mb-m">
+                    <ui-select update="currency" cursor={ $resume.select('salary') } items={ $store.currency.get() } size="xl" short></ui-select>
+                </div>
+                <div class="col-xs-24 col-sm-6">
+                    <ui-select update="worktime" cursor={ $resume.select('salary') } items={ $store.worktime.get() } size="xl"></ui-select>
+                </div>
+            </div>
+            <div class="row mb-l">
+                <div class="hidden-xs col-sm-8 pr-m"></div>
+                <div class="col-sm-16 text-left pt-s">
+                    <ui-checkbox update="active" onUpdate="parent" cursor={ $resume.select('salary') } title="Показывать зарплату" size="xxl" theme="blue"></ui-checkbox>
+                </div>
+            </div>
+            <div class="row mb-m">
+                <div class="hidden-xs col-sm-8 pt-xs pr-m">
+                    <span class="c-gray fontSize-28">Фамилия</span>
+                </div>
+                <div class="col-sm-16">
+                    <ui-input update="surname" cursor={ $resume.select() } size="xl"></ui-input>
+                </div>
+            </div>
+            <div class="row mb-m">
+                <div class="hidden-xs col-sm-8 pt-xs pr-m">
+                    <span class="c-gray fontSize-28">Имя</span>
+                </div>
+                <div class="col-sm-16">
+                    <ui-input update="name" cursor={ $resume.select() } size="xl"></ui-input>
+                </div>
+            </div>
+            <div class="row mb-m">
+                <div class="hidden-xs col-sm-8 pt-xs pr-m">
+                    <span class="c-gray fontSize-28">Дата рождения</span>
+                </div>
+                <div class="col-xs-8 col-sm-4">
+                    <ui-select update="day" cursor={ $resume.select('birthday') } items={ _.range(1, 32) } size="xl"></ui-select>
+                </div>
+                <div class="col-xs-16 col-sm-6 xs-mb-m">
+                    <ui-select update="month" cursor={ $resume.select('birthday') } items={ $store.month.get() } size="xl"></ui-select>
+                </div>
+                <div class="col-xs-24 col-sm-6">
+                    <ui-select update="year" cursor={ $resume.select('birthday') } items={ _.range(1940, new Date().getFullYear() + 1) } size="xl"></ui-select>
+                </div>
+            </div>
+            <div class="row mb-m pt-xxs">
+                <div class="hidden-xs col-sm-8 pr-m"></div>
+                <div class="col-xs-24 col-sm-16 text-left pt-s">
+                    <ui-checkbox update="hidden" cursor={ $resume.select('birthday') } title="Показывать только возраст" size="xxl" theme="blue"></ui-checkbox>
+                </div>
+            </div>
+            <div class="row mb-l pt-xxs">
+                <div class="hidden-xs col-sm-8 pt-s pr-m">
+                    <span class="c-gray fontSize-28">Пол</span>
+                </div>
+                <div class="col-xs-12 col-sm-5 text-left pt-s">
+                    <ui-checkbox update="gender" cursor={ $resume.select() } group="gender" title="Мужской" size="xxl" theme="blue" value="male"></ui-checkbox>
+                </div>
+                <div class="col-xs-12 col-sm-5 text-left pt-s">
+                    <ui-checkbox update="gender" cursor={ $resume.select() } group="gender" title="Женский" size="xxl" theme="blue" value="female"></ui-checkbox>
+                </div>
+            </div>
+            <div class="row mb-m">
+                <div class="hidden-xs col-sm-8 pt-xs pr-m">
+                    <span class="visible-md visible-lg c-gray fontSize-28">Электронная почта</span>
+                    <span class="visible-sm c-gray fontSize-28">Эл. почта</span>
+                </div>
+                <div class="col-sm-16">
+                    <ui-input update="email" cursor={ $resume.select('contacts') } size="xl"></ui-input>
+                </div>
+            </div>
+            <div class="row mb-m">
+                <div class="hidden-xs col-sm-8 pt-xs pr-m">
+                    <span class="visible-md visible-lg c-gray fontSize-28">Город проживания</span>
+                    <span class="visible-sm c-gray fontSize-28">Город</span>
+                </div>
+                <div class="col-xs-24 col-sm-16">
+                    <ui-input update="city" cursor={ $resume.select('contacts') } size="xl"></ui-input>
+                </div>
+            </div>
+            <div class="row mb-m">
+                <div class="hidden-xs col-sm-8 pt-xs pr-m">
+                    <span class="visible-md visible-lg c-gray fontSize-28">Мобильный телефон</span>
+                    <span class="visible-sm c-gray fontSize-28">Телефон</span>
+                </div>
+                <div class="col-xs-24 col-sm-16">
+                    <ui-input update="phone" cursor={ $resume.select('contacts') } size="xl"></ui-input>
+                </div>
+            </div>
+            <div class="row mb-m">
+                <div class="hidden-xs col-sm-8 pt-xs pr-m">
+                    <span class="c-gray fontSize-28">Skype</span>
+                </div>
+                <div class="col-xs-24 col-sm-16">
+                    <ui-input update="skype" cursor={ $resume.select('contacts') } size="xl"></ui-input>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+</script>
+
+</resume-screen-commons>

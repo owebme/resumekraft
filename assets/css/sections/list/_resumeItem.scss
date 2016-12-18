@@ -1,0 +1,152 @@
+.resume__item {
+    @extend .display-block;
+    @extend .pos-rel;
+    @extend .bg-white;
+    @extend .mlr-xss;
+    @extend .md-mlr-xs;
+    @extend .mb-l;
+    @extend .borderRadius-xl;
+    @include accelerate(true);
+    box-shadow:5px 8.66px 30px 0 rgba(31,35,37,.078);
+    will-change:box-shadow, transform;
+    transition:box-shadow .4s, transform .4s;
+
+    .d-no-phone & {
+        height:354px;
+    }
+    .d-phone &:not(.resume__item--new) {
+        @extend .aspectRatio-100;
+    }
+    .m-no-touch &:hover {
+        // box-shadow:0 5px 40px rgba(0,0,0,.16);
+        // box-shadow:0 20px 40px rgba(0,0,0,.16);
+        box-shadow:0 20px 25px rgba(0,0,0,.15);
+        transform:translateY(-15px);
+    }
+    &--new {
+        @extend .flex-column-centered;
+        @extend .c-blue;
+        @extend .pb-xs;
+        @extend .letterSpacing--s;
+        @extend .cursor-pointer;
+        font-size:26px;
+
+        .m-no-touch &:hover:before {
+            animation:spinner 0.6s;
+        }
+        &:before {
+            @extend .content-empty;
+            @extend .display-block;
+            @extend .mb-xxs;
+            @include ui-icon(plus, 48px, 48px);
+        }
+        .d-phone & {
+            height:333px;
+        }
+    }
+    &__header {
+        @extend .pos-tl;
+        @extend .w100p;
+        @extend .bg-cover;
+        @extend .c-white;
+        @extend .p-l;
+        @extend .cursor-pointer;
+        height:calc(100% - 130px);
+        border-radius:10px 10px 0 0;
+
+        &:before {
+            @include abs();
+            @extend .content-empty;
+            @extend .bg-blueLight;
+            @extend .opacity-95;
+            border-radius:10px 10px 0 0;
+        }
+        .d-phone & {
+            padding:30px 35px 0 25px;
+        }
+    }
+    &__control {
+        position:absolute;
+        top:20px;
+        right:14px;
+        width:30px;
+        @include flex("column", "flex-start", "center");
+
+        &__btn {
+            @extend .mb-m;
+            @extend .cursor-pointer;
+            @extend .opacity-85;
+            @extend .btn-active;
+            @extend .btn-hover;
+        }
+        &__edit {
+            @include ui-icon(pencil_white, 22px, 22px);
+        }
+        &__remove {
+            @include ui-icon(minus_white, 27px, 27px);
+        }
+        &__menu {
+            @include ui-icon(more_v_white, 26px, 26px);
+        }
+    }
+    &__photo {
+        @extend .w60;
+        @extend .h60;
+        @extend .bg-cover;
+        @extend .borderRadius-circle;
+
+        .d-phone & {
+            width:44px;
+            height:44px;
+        }
+    }
+    &__title {
+        @extend .fontSize-22;
+        @extend .fontWeight-bold;
+        @extend .mb-xs;
+    }
+    &__date {
+        @extend .opacity-70;
+        @extend .mb-m;
+    }
+    &__salary {
+        @extend .fontSize-28;
+        @extend .fontWeight-8;
+        @extend .letterSpacing-0;
+    }
+    &__stat {
+        @extend .pos-bl;
+        @extend .w100p;
+        @extend .overflow-hidden;
+        height:130px;
+        border-radius:0 0 10px 10px;
+
+        &__wrapper {
+            @include flex("row", "flex-start", "stretch");
+            @extend .h100p;
+        }
+        &__cell {
+            @extend .text-center;
+            @extend .flex-centered;
+            font-size:30px;
+        }
+        &__button {
+            @extend .pos-rel;
+            @extend .bg-white;
+            @extend .borderRadius-xxl;
+            z-index:1;
+        }
+        &__graph {
+            position:absolute;
+            top:-10px;
+            left:-30px;
+            width:220px;
+            height:220px;
+            @extend .opacity-15;
+
+            &__color {
+                @extend .fill-blueLight;
+            }
+        }
+    }
+}

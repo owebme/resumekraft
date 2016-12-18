@@ -1,0 +1,144 @@
+<resume-basic-template2 id="t2">
+
+	<div id="t-header">
+		<div id="t-header-contacts">
+			<div if={ $resume.get('contacts', 'city') } id="t-header-city">г. { $resume.get('contacts', 'city') }</div>
+			<div if={ $resume.get('contacts', 'phone') } id="t-header-phone">{ $resume.get('contacts', 'phone') }</div>
+			<div if={ $resume.get('contacts', 'skype') } id="t-header-skype">Skype: { $resume.get('contacts', 'skype') }</div>
+		</div>
+		<div id="t-header-names">
+			<div id="t-header-stroke"><div></div></div>
+			<div if={ $resume.get('surname').length > $resume.get('name').length }>
+				<div id="t-header-surname" class="t-header-name small">{ $resume.get('surname') }</div>
+				<div id="t-header-name" class="t-header-name big">{ $resume.get('name') }</div>
+			</div>
+			<div if={ $resume.get("name").length > $resume.get("surname").length }>
+				<div id="t-header-name" class="t-header-name small">{ $resume.get('name') }</div>
+				<div id="t-header-surname" class="t-header-name big">{ $resume.get('surname') }</div>
+			</div>
+		</div>
+		<div id="t-header-string">
+			<div if={ $resume.get('contacts', 'email').length } class="t-header-string-element email">{ $resume.get('contacts', 'email') }</div>
+			<div class="t-header-string-element">
+				<span if={ !$resume.get('birthday', 'hidden') }>{ $resume.take.birthday.date() }</span>
+				<span class="age">({ $resume.take.birthday.age() })</span>
+			</div>
+			<div if={ $resume.get('salary', 'active') && $resume.get('salary', 'amount') } class="t-header-string-element t-header-salary">{ $resume.take.salary.amount() } { $resume.take.salary.currency() } <sup>{ $resume.take.salary.worktime() }</sup></div>
+		</div>
+	</div>
+	<div id="t-container-wrapper">
+		<div if={ $resume.get('post').length } id="t-container-post">{ $resume.get('post') }</div>
+		<div if={ $resume.get('education', 'items').length } class="t-container t-container-edu">
+			<div class="t-container-name">Образование</div>
+			<div each={ edu, i in $resume.take.education.items() } class="t-container-item">
+				<div class="t-container-dates">
+					<div class="t-container-dates-year">{ edu.year }</div>
+					<div class="t-container-dates-title">{ $store.education.getTitleById(edu.level) }</div>
+				</div>
+				<div if={ edu.level != 8 } class="t-container-desc">
+					<div class="t-container-desc-title">{ edu.title }</div>
+					<div if={ edu.faculty } class="t-container-desc-name">{ edu.faculty }</div>
+					<div if={ edu.speciality } class="t-container-desc-name">Специальность &ndash; { edu.speciality }</div>
+				</div>
+				<div if={ edu.level == 8 } class="t-container-desc">
+					<div class="t-container-desc-title not-line">{ edu.title }</div>
+				</div>
+			</div>
+		</div>
+		<div class="t-container t-container-lang">
+			<div class="t-container-name">Владение языками</div>
+			<div each={ lang, i in $resume.get('languages', 'items') } class="t-container-item">
+				<div class="t-container-dates">
+					<div class="t-container-dates-title { 't-gray' : lang.title != 'native' && lang.value == '1' }">{ $store.languages.getTitleById(lang.title) }</div>
+				</div>
+				<div class="t-container-desc">
+					<div if={ lang.title == "native" } class="t-container-desc-title">
+						{ $store.languages.native.getTitleById(lang.value) }
+					</div>
+					<div if={ lang.title != "native" } class="t-container-desc-title { 't-gray' : lang.value == '1' }">
+						{ $store.languages.select.getTitleById(lang.value) }
+					</div>
+				</div>
+			</div>
+		</div>
+		<div if={ $resume.get('jobs', 'items').length } class="t-container t-container-job">
+			<div class="t-container-name">Место работы</div>
+			<div each={ job, i in $resume.take.jobs.items() } class="t-container-item">
+				<div class="t-container-dates">
+					<div class="t-container-dates-year">
+						{ job.from.year }-<span if={ job.last }>NOW</span><span if={ !job.last }>{ job.to.year }</span>
+					</div>
+					<div class="t-container-dates-city">{ job.city }</div>
+				</div>
+				<div class="t-container-desc">
+					<div class="t-container-desc-length">
+						<div>{ $resume.take.jobs.period(job, true) }</div>
+					</div>
+					<div class="t-container-desc-name">{ job.company }</div>
+					<div class="t-container-desc-title">{ job.post }</div>
+					<div class="t-container-desc-text">
+						{ job.text }
+					</div>
+				</div>
+			</div>
+		</div>
+		<div if={ $resume.get('aboutText').length } class="t-container t-container-about">
+			<div class="t-container-name">Достижения, о себе</div>
+			<div class="t-container-item">
+				<div class="t-container-dates">
+				</div>
+				<div class="t-container-desc">
+					<div class="t-container-desc-text">
+						 { $resume.get('aboutText') }
+					</div>
+				</div>
+			</div>
+			<div class="t-container-stroke"></div>
+		</div>
+	</div>
+
+<style>
+
+@font-face {
+  font-family: 'PFSquareLight';
+  src: url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-light-webfont.eot');
+  src: url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-light-webfont.eot?#iefix') format('embedded-opentype'), url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-light-webfont.woff') format('woff'), url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-light-webfont.ttf') format('truetype'), url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-light-webfont.svg#PFSquareSansProLight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PFSquareRegular';
+  src: url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-regular-webfont.eot');
+  src: url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-regular-webfont.eot?#iefix') format('embedded-opentype'), url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-regular-webfont.woff') format('woff'), url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-regular-webfont.ttf') format('truetype'), url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-regular-webfont.svg#PFSquareSansProRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PFSquareMedium';
+  src: url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-medium-webfont.eot');
+  src: url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-medium-webfont.eot?#iefix') format('embedded-opentype'), url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-medium-webfont.woff') format('woff'), url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-medium-webfont.ttf') format('truetype'), url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-medium-webfont.svg#PFSquareSansProMedium') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PTSansNarrow';
+  src: url('/assets/css/appResume/basic/templates/template2/fonts/ptsans-narrowbold-webfont.eot'); /* IE9 Compat Modes */
+  src: url('/assets/css/appResume/basic/templates/template2/fonts/ptsans-narrowbold-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/assets/css/appResume/basic/templates/template2/fonts/ptsans-narrowbold-webfont.woff2') format('woff2'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template2/fonts/ptsans-narrowbold-webfont.woff') format('woff'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template2/fonts/ptsans-narrowbold-webfont.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/assets/css/appResume/basic/templates/template2/fonts/ptsans-narrowbold-webfont.svg') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PFDin';
+  src: url('/assets/css/appResume/basic/templates/template2/fonts/pfdintextcondpro-medium-webfont.eot');
+  src: url('/assets/css/appResume/basic/templates/template2/fonts/pfdintextcondpro-medium-webfont.eot?#iefix') format('embedded-opentype'), url('/assets/css/appResume/basic/templates/template2/fonts/pfdintextcondpro-medium-webfont.woff') format('woff'), url('/assets/css/appResume/basic/templates/template2/fonts/pfdintextcondpro-medium-webfont.ttf') format('truetype'), url('/assets/css/appResume/basic/templates/template2/fonts/pfdintextcondpro-medium-webfont.svg#PFDinTextCondProRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+</style>
+
+</resume-basic-template2>

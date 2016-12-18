@@ -1,0 +1,43 @@
+.home__section1__container,
+.home__section2__container,
+.home__section3__container {
+    height:720px;
+}
+.home__section1__container,
+.home__section2__container,
+.home__section3__container {
+    .d-phone & {
+        @extend .h-auto;
+    }
+}
+.home__section1__container__inner {
+    .d-phone & {
+        @extend .m0;
+        @extend .p0;
+    }
+}
+.home__section2__container {
+    .d-tablet.r-portrait & {
+        height:620px;
+    }
+}
+.home__section1__header {
+    padding-top:100px;
+}
+.home__section1__image {
+    height:752px;
+    transform:translate3d(0, 105px, 0);
+}
+.home__section2__image {
+    height:710px;
+    transform:translate3d(-15px, 80px, 0);
+
+    .d-mobile & {
+        transform:translate3d(0, 60px, 0);
+    }
+}
+.home__section2__plan__container {
+    .d-mobile & {
+        @extend .text-center;
+    }
+}

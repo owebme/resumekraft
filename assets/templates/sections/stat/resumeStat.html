@@ -1,0 +1,133 @@
+<resume-stat class="resume__stat" data-open="{ active }">
+
+    <div class="resume__stat__wrapper" name="wrapper">
+
+        <div onClick={ hide } class="button__close"></div>
+
+        <div class="resume__stat__container container">
+            <div class="row">
+                <div class="col-md-18">
+                    <div class="resume__stat__title">{ $store.resume.get('post') }</div>
+                </div>
+                <div class="col-md-6 text-left pt-xs">
+                    <div class="btn-group">
+                        <button class="btn btn-s btn-upper btn-primary">неделя</button>
+                        <button class="btn btn-s btn-upper btn-primary-hover">месяц</button>
+                        <button class="btn btn-s btn-upper btn-primary-hover">квартал</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 text-center">
+                    <div class="chart__radial mt-l" name="chartRadial">
+                        <div class="chart__radial__graph mb-m">
+                            <div class="chart__radial__graph1"></div>
+                            <div class="chart__radial__graph2"></div>
+                            <div class="chart__radial__graph3"></div>
+                        </div>
+                        <div class="chart__radial__labels pl-m">
+                            <div class="chart__radial__label mb-xxs">
+                                <div class="chart__radial__label__color"></div> &mdash; настольные ПК
+                            </div>
+                            <div class="chart__radial__label mb-xxs">
+                                <div class="chart__radial__label__color"></div> &mdash; планшеты
+                            </div>
+                            <div class="chart__radial__label mb-xxs">
+                                <div class="chart__radial__label__color"></div> &mdash; мобильные телефоны
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-18">
+                    <div class="resume__stat__chart" name="chart"></div>
+                </div>
+            </div>
+        </div>
+
+        <resume-stat-offer></resume-stat-offer>
+
+    </div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    $.active = false;
+
+    $.offer = $.tags["resume-stat-offer"];
+
+    $.init = function(){
+
+        var chart = new Chartist.Line($.chart,
+            {
+                labels: ["26 сен", "27 сен", "28 сен", "29 сен", "30 сен", "1 окт", "2 окт", "26 сен", "27 сен", "28 сен", "29 сен", "30 сен", "1 окт", "2 окт"],
+                series: [
+                    [5, 9, 7, 8, 5, 3, 5, 4, 5, 9, 7, 8, 5, 3, 5, 4, 5, 9, 7, 8, 5, 3, 5, 4]
+                ]
+            },
+            {
+                showArea: true,
+                showLine: true,
+                showPoint: true,
+                fullWidth: true,
+                axisY: {
+                    showLabel: true,
+                    showGrid: true
+                },
+                axisX: {
+                    showLabel: true,
+                    showGrid: false
+                }
+            }
+        );
+
+        chart.on('draw', function(data){
+            if (data.type === 'line' || data.type === 'area'){
+                data.element.animate({
+                    d: {
+                        begin: 2000 * data.index,
+                        dur: 2000,
+                        from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+                        to: data.path.clone().stringify(),
+                        easing: Chartist.Svg.Easing.easeOutQuint
+                    }
+                });
+            }
+        });
+
+        // app.plugins.chart.init($$($.chartRadial), [_.random(5, 87), _.random(5, 87), _.random(5, 87)]);
+    };
+
+    $.show = function(callback){
+
+        $.active = true;
+
+        $.update();
+
+        _.onEndTransition($.wrapper, function(){
+            $.init();
+            $.offer.show();
+        });
+
+        $.callback = callback;
+
+        app.$dom.document.on("keydown.closeResumeStat", function(e){
+            if (e.which == KEY.ESC){
+                $.hide();
+            }
+        });
+    };
+
+    $.hide = function(){
+        $.update({
+            active: false,
+            animate: false
+        });
+        app.$dom.document.off("keydown.closeResumeStat");
+        if (_.isFunction($.callback)) $.callback();
+    };
+
+</script>
+
+</resume-stat>

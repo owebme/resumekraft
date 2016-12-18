@@ -1,0 +1,283 @@
+<section-editable class="section__editable" data-open="false">
+
+    <div onClick={ onClose } class="section__editable__close hidden-sm hidden-xs"></div>
+
+    <div class="section__editable__scroll" name="scroll">
+        <div name="wrapper" class="section__editable__wrapper container">
+            <div class="row">
+                <editable-photo id="{ active : editable === 'photo' }"></editable-photo>
+                <editable-text id="{ active : editable === 'text' }"></editable-text>
+                <editable-salary id="{ active : editable === 'salary' }"></editable-salary>
+                <editable-tags id="{ active : editable === 'tags' }"></editable-tags>
+                <editable-social id="{ active : editable === 'social' }"></editable-social>
+                <editable-works id="{ active : editable === 'works' }"></editable-works>
+                <editable-skills id="{ active : editable === 'skills' }"></editable-skills>
+                <editable-education id="{ active : editable === 'education' }"></editable-education>
+                <editable-courses id="{ active : editable === 'courses' }"></editable-courses>
+                <editable-languages id="{ active : editable === 'languages' }"></editable-languages>
+                <editable-jobs id="{ active : editable === 'jobs' }"></editable-jobs>
+                <editable-visible id="{ active : editable === 'visible' }"></editable-visible>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    $.editable = null;
+
+    $.on("mount", function(){
+        if (app.device.isMobile && app.device.isTablet){
+            $.scrollPos = app.$dom.document.scrollTop();
+            app.$dom.window.on("scroll", function(){
+                $.scrollPos = app.$dom.document.scrollTop();
+            });
+        }
+    });
+
+    $.show = function(editable, data, component){
+        if (component){
+            $.component.init($.tags["editable-" + editable], data);
+        }
+        else {
+            $.tags["editable-" + editable].init(data);
+        }
+        $.update({
+            editable: editable
+        });
+
+        $.scrollTo();
+
+        $.root.setAttribute("data-open", true);
+
+        if (!app.device.isPhone){
+            if (app.device.isMobile && app.device.isTablet){
+                $.savedScrollPos = $.scrollPos;
+                $Resume.el.css({
+                    "transform": "translateY(" + (-$.savedScrollPos) + "px)"
+                })
+                app.$dom.html.addClass("overflow-hidden");
+            }
+            app.$dom.body.addClass("no-scroll");
+        }
+    };
+
+    $.hide = function(callback){
+        $.root.setAttribute("data-open", false);
+
+        if (app.device.isPhone){
+            $Resume.screens.refresh();
+        }
+        else {
+            app.$dom.body.removeClass("no-scroll");
+
+            if (app.device.isMobile && app.device.isTablet){
+                $Resume.el.removeAttr("style");
+                app.$dom.html.removeClass("overflow-hidden");
+                app.$dom.document.scrollTop($.savedScrollPos);
+            }
+        }
+        if (callback){
+            _.onEndTransition($.wrapper, function(){
+                callback();
+            });
+        }
+    };
+
+    $.open = function(e, component, $, defaults, requires){
+        if ($mode === "editing"){
+            var visible = $store.resume.select('sections').get({'name': component}).active;
+
+            $Editable.show(component, {
+                active: visible,
+                title: $.opts.title,
+                component: component,
+                store: $resume[component],
+                defaults: defaults,
+                requires: requires,
+                target: e && e.target,
+                callback: function(active, data){
+                    $store.resume.select('sections', {'name': component}).set('active', active);
+                    $resume[component] = _.any(_.values(_.omit(data, "title"))) ? data : null;
+                    $.update({
+                        editable: false
+                    });
+                    if (visible !== active){
+                        $root.update();
+
+                        if (app.device.isPhone){
+                            $Resume.screens.refresh();
+                        }
+                    }
+                }
+            }, true);
+
+            $.editable = true;
+        }
+    };
+
+    $.onClose = function(){
+        if ($.tags["editable-" + $.editable].hide){
+            $.tags["editable-" + $.editable].hide();
+        }
+        else {
+            $Editable.hide();
+        }
+    };
+
+    $.component = {
+
+        tag: null,
+
+        name: null,
+
+        editing: null,
+
+        init: function(tag, params){
+
+            this.tag = tag;
+
+            tag.switcher = tag.tags["ui-switcher"];
+
+            this.name = params.component;
+
+            tag.switcher.value = params.active;
+
+            if (params.target && params.store){
+                var $item = $$(params.target).closest("." + params.component + "-item");
+                if ($item && $item.length && $item.data("id")){
+                    var item = _.findWhere(params.store.items, {"_id": String($item.data("id"))});
+                    if (item) this.editing = _.copyArray(item);
+                }
+            }
+            if (!params.store && params.defaults) {
+                params.store = params.defaults.root();
+            }
+            tag.update({
+                active: params.active,
+                title: params.title,
+                store: params.store,
+                data: _.copyArray(params.store),
+                defaults: params.defaults,
+                requires: params.requires,
+                callback: params.callback ? params.callback : null
+            });
+        },
+
+        createItem: function(){
+            $.component.editing = this.defaults.item();
+            $.scrollTo("content");
+        },
+
+        editItem: function(){
+            $.component.editing = _.copyArray(this.data.items[this.i]);
+            $.scrollTo("content");
+        },
+
+        removeItem: function(){
+            this.data.items.splice(this.i, 1);
+            if ($.component.editing && $.component.editing._id == this.item._id){
+                $.component.cancelEditing();
+            }
+        },
+
+        cancelEditing: function(){
+            $.component.editing = null;
+            $.scrollTo();
+        },
+
+        autoCommit: function(e){
+            this.data[e.target.getAttribute("data-name")] = _.clean(e.target.value);
+        },
+
+        autoCommitItems: function(e){
+            var parts = e.target.getAttribute("data-name").split("."),
+                item = $.component.editing,
+                value = _.clean(e.target.value),
+                i;
+
+            for (i = 0; i < parts.length; i++) {
+                if (i == parts.length - 1){
+                    item[parts[i]] = value;
+                }
+                else {
+                    item = item[parts[i]];
+                }
+            }
+        },
+
+        saveItem: function(){
+            var next = true;
+            if (this.requires && this.requires.length){
+                _.each(this.requires, function(item) {
+                    if (next && !_.clean($.component.editing[item.field])){
+                        next = false;
+                        alert(item.alert);
+                    }
+                });
+            }
+            if (next){
+                var item = _.findWhere(this.data.items, {"_id": $.component.editing._id});
+                if (item){
+                    var i = _.indexOf(this.data.items, item);
+                    this.data.items[i] = _.copyArray($.component.editing);
+                }
+                else {
+                    if (!_.isArray(this.data.items)) this.data.items = [];
+                    this.data.items.push($.component.editing);
+                }
+                $.component.editing = null;
+                $.scrollTo();
+            }
+        },
+
+        onCancel: function(){
+            if (this.callback) {
+                if (this.store.items && !this.store.items.length){
+                    this.store.items = null;
+                }
+                this.callback(this.active, this.store);
+            }
+            if (this["title_data"]) this["title_data"].value = this.store && this.store.title ? this.store.title : $store.resume.placeholder[$.component.name].title;
+            if (this["text_data"]) this["text_data"].value = this.store && this.store.text ? this.store.text : '';
+            $Editable.hide(function(){
+                $.component.editing = null;
+            });
+        },
+
+        onSave: function(){
+            if ($.component.editing){
+                $.component.saveItem.call(this);
+            }
+            if (this.callback) {
+                if (this.data && this.data.items){
+                    if (this.data.items.length && this.data.items[0].title){
+                        for (var i = 0; i < this.data.items.length; i++){
+                            if (!_.clean(this.data.items[i].title)){
+                                this.data.items.splice(i, 1);
+                                i--;
+                            }
+                        }
+                    }
+                    this.data.items = this.data.items.length ? this.data.items : null;
+                }
+                this.callback(this.switcher.value, this.data);
+            }
+            $Editable.hide(function(){
+                $.component.editing = null;
+            });
+        }
+    };
+
+    $.scrollTo = function(scroll){
+        var top = app.device.isPhone ? 80 : 120,
+            scroll = scroll ? (scroll === "content" ? top : scroll) : 0;
+
+        $.scroll.scrollTop = scroll;
+    };
+
+</script>
+
+</section-editable>

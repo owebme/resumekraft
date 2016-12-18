@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'LynoCyr';
+  src: url('/assets/css/appResume/basic/templates/template1/fonts/Lyno_Stan_CYR.eot');
+  src: local('O'), url('/assets/css/appResume/basic/templates/template1/fonts/Lyno_Stan_CYR.woff') format('woff'), url('/assets/css/appResume/basic/templates/template1/fonts/Lyno_Stan_CYR.ttf') format('truetype'), url('/assets/css/appResume/basic/templates/template1/fonts/Lyno_Stan_CYR.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: url('/assets/css/appResume/basic/templates/template1/fonts/HelveticaNeueCyrRoman.eot'); /* IE9 Compat Modes */
+  src: url('/assets/css/appResume/basic/templates/template1/fonts/HelveticaNeueCyrRoman.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/assets/css/appResume/basic/templates/template1/fonts/HelveticaNeueCyrRoman.woff2') format('woff2'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template1/fonts/HelveticaNeueCyrRoman.woff') format('woff'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template1/fonts/HelveticaNeueCyrRoman.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/assets/css/appResume/basic/templates/template1/fonts/HelveticaNeueCyrRoman.svg') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PFDin';
+  src: url('/assets/css/appResume/basic/templates/template1/fonts/pfdintextcondpro-medium-webfont.eot');
+  src: url('/assets/css/appResume/basic/templates/template1/fonts/pfdintextcondpro-medium-webfont.eot?#iefix') format('embedded-opentype'), url('/assets/css/appResume/basic/templates/template1/fonts/pfdintextcondpro-medium-webfont.woff') format('woff'), url('/assets/css/appResume/basic/templates/template1/fonts/pfdintextcondpro-medium-webfont.ttf') format('truetype'), url('/assets/css/appResume/basic/templates/template1/fonts/pfdintextcondpro-medium-webfont.svg#PFDinTextCondProRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Avant';
+  src: url('/assets/css/appResume/basic/templates/template1/fonts/avantgardectt-boldallfontru.eot'); /* IE9 Compat Modes */
+  src: url('/assets/css/appResume/basic/templates/template1/fonts/avantgardectt-boldallfontru.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/assets/css/appResume/basic/templates/template1/fonts/avantgardectt-boldallfontru.woff2') format('woff2'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template1/fonts/avantgardectt-boldallfontru.woff') format('woff'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template1/fonts/avantgardectt-boldallfontru.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/assets/css/appResume/basic/templates/template1/fonts/avantgardectt-boldallfontru.svg') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}

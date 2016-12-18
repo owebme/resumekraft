@@ -1,0 +1,178 @@
+.section__editable {
+    .input {
+        color:$white;
+        @extend .fontFamily-roboto;
+        @extend .fontWeight-5;
+        background-color:transparent;
+        box-shadow:0 0 0 2px rgba($white,.5);
+
+        .d-no-phone & {
+            &::-webkit-input-placeholder {
+                color:rgba($white,.6);
+                font-weight:normal;
+            }
+            &::-moz-input-placeholder {
+                color:rgba($white,.6);
+                font-weight:normal;
+            }
+        }
+        .d-phone & {
+            &::-webkit-input-placeholder {
+                font-family:$helvetica;
+                font-weight:normal;
+            }
+            &::-moz-input-placeholder {
+                font-family:$helvetica;
+                font-weight:normal;
+            }
+        }
+        &:hover {
+            box-shadow:0 0 0 2px rgba($white,.7);
+        }
+        &:focus {
+            box-shadow:0 0 0 2px rgba($white,.9);
+        }
+        &-xl {
+            font-size:25px;
+            letter-spacing:-0.2px;
+        }
+        &-l {
+            font-size:20px;
+
+            &::-webkit-input-placeholder {
+                font-size:16.5px;
+            }
+            &::-moz-input-placeholder {
+                font-size:16.5px;
+            }
+        }
+        &-title {
+            @extend .pos-tl;
+            @extend .plr-xs;
+            @extend .fontWeight-bold;
+            @extend .text-uppercase;
+            @extend .c-primary;
+            @extend .letterSpacing--s;
+            font-size:11px;
+            line-height:17px;
+            height:16px;
+            border-radius:7px 7px 0 0;
+
+            .d-no-mobile & {
+                @extend .bg-white;
+                transform:translate3d(2px, -17px, 0);
+            }
+            .d-mobile & {
+                color:$white !important;
+                transform:translate3d(-5px, -17px, 0);
+            }
+            .d-tablet.r-landscape & {
+                transform:translate3d(-5px, -22px, 0);
+            }
+        }
+        &-svg {
+            &-link {
+                width:18px;
+                height:18px;
+            }
+            &-image,
+            &-video {
+                margin-top:4px;
+            }
+            &-social {
+                width:62px;
+                height:62px;
+                transform:scale(1.8);
+            }
+            &-vk {
+                transform:translateY(-1px) scale(1.8);
+            }
+            &-dk {
+                transform:translateY(-2px) scale(1.8);
+            }
+            &-gl {
+                transform:scale(0.6);
+            }
+            &-color {
+                @extend .opacity-70;
+
+                .d-no-phone & {
+                    @extend .fill-white;
+                }
+                .d-phone & {
+                    @extend .fill-primary;
+                }
+            }
+        }
+        &-group-icon .input-l {
+            padding-left:50px;
+
+            ~ .input-icon {
+                width:50px;
+
+                .input-svg {
+                    width:30px;
+                    height:30px;
+
+                    &-link {
+                        width:22px;
+                        height:22px;
+                    }
+                    &-in {
+                        width:12px;
+                        height:12px;
+                    }
+                    &-lk {
+                        width:12px;
+                        height:12px;
+                    }
+                }
+            }
+        }
+        &-group-addon {
+            &-svg {
+                @extend .cursor-pointer;
+                @extend .btn-active;
+                width:22px;
+                height:22px;
+                margin-left:-3px;
+
+                &-color {
+                    .d-no-phone & {
+                        fill:$white;
+                    }
+                }
+            }
+            &.addons {
+                @extend .w75;
+
+                .input-group-addon-svg {
+                    @extend .mr-s;
+                    @extend .ml0;
+                }
+                ~ .input {
+                    @extend .pr-xl;
+                    @extend .text-truncate;
+                }
+            }
+        }
+        &:focus {
+            + .input-icon .input-svg-color {
+                .d-no-phone & {
+                    fill:$white;
+                }
+                @extend .opacity-100;
+            }
+        }
+        .d-phone & {
+            @extend .fontWeight-normal;
+            @extend .c-black;
+            @extend .bg-white;
+            box-shadow:0 0 0 2px $white;
+
+            &-xl {
+                font-size:24px;
+            }
+        }
+    }
+}

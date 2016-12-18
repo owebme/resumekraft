@@ -1,0 +1,22 @@
+#app {
+	@extend .display-block;
+
+	&[data-app="private"]{
+		@extend .bg-blackDark;
+		@extend .overflow-hidden;
+		perspective:500px;
+	}
+	&[data-focus="resume-edit"]{
+		app-sections {
+			@extend .display-none;
+		}
+	}
+}
+#loader {
+	@extend .loader;
+}
+.appLoading {
+	#loader {
+		@extend .loader[data-show="true"];
+	}
+}

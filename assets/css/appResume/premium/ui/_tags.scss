@@ -1,0 +1,108 @@
+.tag {
+    @extend .pos-rel;
+    @extend .display-inlineBlock;
+    @extend .vAlign-middle;
+    @extend .plr-s;
+    @extend .h40;
+    @extend .borderRadius-xxl;
+    @extend .c-blackLight;
+    @extend .f-primary;
+    @extend .text-truncate;
+    @extend .bg-blackLight-transparent;
+    @extend .fontSize-16;
+    max-width:200px;
+    margin:5px 6px 5px 0;
+
+    &:not(.tag-input){
+        @extend .cursor-default;
+        @extend .userSelect-none;
+        @extend .fontWeight-bold;
+        line-height:40px;
+    }
+    &.tag-white {
+        @extend .c-white;
+        background:none;
+        margin-right:10px;
+        margin-bottom:15px;
+        @extend .transition-default;
+        box-shadow:0 0 0 2px rgba($white,.8);
+
+        &:hover {
+            box-shadow:0 0 0 2px $white;
+        }
+    }
+    &-remove {
+        @extend .display-inlineBlock;
+        @extend .vAlign-textBottom;
+        @extend .opacity-90;
+        @extend .btn-active;
+        @include ui-icon(remove_fill_white, 21px, 21px);
+        margin-left:6px;
+        margin-right:-2px;
+
+        &:hover {
+            @extend .opacity-100;
+        }
+    }
+    &-input {
+        @extend .tag;
+        @extend .tag-white;
+        @extend .lineHeight-1;
+        @extend .border-none;
+        font-family:$roboto !important;
+        width:180px;
+        @extend .pr-l;
+
+        &::-webkit-input-placeholder {
+            color:rgba($white,.7);
+            @extend .lineHeight-1;
+        }
+        &::-moz-input-placeholder {
+            color:rgba($white,.7);
+            @extend .lineHeight-1;
+        }
+        &:focus {
+            box-shadow:0 0 0 2px $white;
+        }
+    }
+    &.isAvail {
+        animation:tag__isAvail 1.4s linear;
+    }
+    @keyframes tag__isAvail {
+        25%, 75% {
+            color:$blackLight;
+            box-shadow:0 0 0 2px $white;
+            background:$white;
+        }
+    }
+    &-list {
+        @extend .inline;
+        margin:1px -6px -5px;
+
+        &-add {
+            @extend .pos-rel;
+
+            &Button {
+                position:absolute;
+                top:4px;
+                right:8px;
+                @extend .bg-white;
+                width:40px;
+                height:42px;
+                @extend .btn-active;
+                border-radius:0 20px 20px 0;
+
+                &-svg {
+                    @extend .pos-centered;
+                    width:23px;
+                    height:23px;
+                    margin-left:-1px;
+
+                    &-color {
+                        @extend .fill-primary;
+                    }
+                }
+            }
+        }
+    }
+}

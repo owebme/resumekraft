@@ -1,0 +1,26 @@
+.resumeBasic {
+    .input-xl {
+        @extend .fontFamily-proxima;
+        @extend .fontWeight-normal;
+        color:$blackDark;
+        font-size:22px;
+    }
+    input[type="number"] {
+        @extend .c-blue;
+        @extend .fontFamily-futura;
+        @extend .fontWeight-bold;
+        font-size:25px;
+    }
+    .input-title {
+        @extend .visible-xs;
+        @extend .fontFamily-futura;
+        @extend .fontWeight-bold;
+        @extend .text-uppercase;
+        @extend .c-blue;
+        @extend .letterSpacing--s;
+        @extend .text-left;
+        font-size:12px;
+        line-height:17px;
+        margin:-7.5px 0 2px 1px;
+    }
+}

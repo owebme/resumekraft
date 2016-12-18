@@ -1,0 +1,88 @@
+<resume-list-item class="resume__item">
+
+    <div class="resume__item__header" style="background-image:url('{ $store.resume.get('photo') }')">
+        <div class="resume__item__control">
+            <div onClick={ onRemove } class="resume__item__control__btn resume__item__control__remove"></div>
+            <div onClick={ show.dropMenu } class="resume__item__control__btn resume__item__control__menu"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-5 col-sm-6">
+                <div class="resume__item__photo" style="background-image:url('{ $store.resume.get('photo') }')"></div>
+            </div>
+            <div class="col-xs-19 col-sm-18">
+                <div class="resume__item__title">{ $store.resume.get('post') }</div>
+                <div class="resume__item__date">Обновлен: 28 сентября 2016</div>
+                <div class="resume__item__salary">
+                    { _.numberFormat($store.resume.get('salary').amount, 0, ".", ".") } { $store.currency.getTitleById($store.resume.get('salary').currency) }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="resume__item__stat">
+        <div class="resume__item__stat__wrapper row">
+            <div class="resume__item__stat__cell col-xs-15 col-sm-16">
+                <btn-stat onClick={ parent.open.stat }></btn-stat>
+                <svg-stat></svg-stat>
+            </div>
+            <div class="resume__item__stat__cell bg-yellow c-blackLight col-xs-9 col-sm-8">
+                98%
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.onRemove = function(){
+        $Alert.show({
+            title: "Удалить резюме?",
+            subtitle: "Вы уверены?",
+            success: {
+                callback: function(){
+                    // app.request('delDataListRemove', [id]);
+                    // $store.data.select({'_id': id}).unset();
+                    // $.refresh();
+                }
+            }
+        });
+    };
+
+    $.show = {
+        dropMenu: function(e){
+            $DropMenu.show({
+                id: _.newId(),
+                elem: $$(e.currentTarget),
+                menu: [
+                    {
+                        title: "Редактировать",
+                        callback: function(){
+                            alert("Редактировать");
+                        }
+                    },
+                    {
+                        title: "Сохранить в PDF",
+                        callback: function(){
+                            alert("Сохранить в PDF");
+                        }
+                    },
+                    {
+                        title: "Распечатать",
+                        callback: function(){
+                            alert("Распечатать");
+                        }
+                    },
+                    {
+                        title: "Удалить",
+                        callback: function(){
+                            alert("Редактировать");
+                        }
+                    }
+                ]
+            });
+        }
+    };
+
+</script>
+
+</resume-list-item>

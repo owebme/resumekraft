@@ -1,0 +1,399 @@
+.resumeBasic {
+    .title {
+        @extend .pos-abs;
+        @extend .c-blue;
+        @extend .fontFamily-gotham;
+        font-size:42px;
+        line-height:44px;
+        margin-left:-2px;
+        @extend .fontWeight-bold;
+        @extend .letterSpacing--xl;
+        @extend .t-l;
+        @extend .l-xl;
+        @extend .pt-s;
+        @extend .pl-l;
+
+        .d-phone & {
+            @extend .pos-rel;
+            @extend .t0;
+            @extend .l0;
+            @extend .ptb-l;
+            @extend .pl-m;
+            @extend .pr-s;
+            font-size:38px;
+            line-height:38px;
+            margin-left:3px;
+        }
+    }
+    .content {
+        width:780px;
+        @extend .text-right;
+        padding:215px 0;
+
+        &[data-content="commons"]{
+            .d-tablet.r-portrait & {
+                @extend .trX--m;
+            }
+            .d-phone & {
+                @extend .pt-xs;
+            }
+        }
+        &[data-content="education"],
+        &[data-content="jobs"]{
+            padding:245px 7.5px 215px;
+
+            .d-tablet.r-portrait & {
+                width:620px;
+                padding:225px 0 145px;
+            }
+            .d-phone & {
+                @extend .pt-l;
+                @extend .mt-s;
+                padding-bottom:105px;
+            }
+            .btn-l2 {
+                .d-phone & {
+                    padding-left:30px;
+                    padding-right:30px;
+                }
+            }
+        }
+        .d-tablet.r-landscape & {
+            width:750px;
+        }
+        .d-tablet.r-portrait & {
+            width:700px;
+            padding:195px 0 215px;
+        }
+        .d-phone & {
+            @extend .w100p;
+            padding:0 20px 105px;
+        }
+        h2, h3 {
+            .d-phone & {
+                @extend .ml0;
+            }
+        }
+    }
+    .row-hidden {
+        @extend .pos-rel;
+        @extend .opacity-50;
+
+        &:before {
+            @extend .content-empty;
+            @extend .display-block;
+            @extend .pos-tl;
+            @extend .w100p;
+            @extend .zIndex-10;
+            height:130%;
+        }
+    }
+    .dateToNow .fontSize-22 {
+        .d-tablet.r-portrait & {
+            @extend .fontSize-0;
+            @extend .pl-m;
+        }
+    }
+    .percentage {
+        @extend .pos-abs;
+        @extend .b-l;
+        @extend .l-l;
+        @extend .ml-m;
+        @extend .zIndex-2;
+        @extend .h80v;
+
+        .d-tablet &,
+        .d-phone & {
+            @extend .display-none;
+        }
+        &__container {
+            @extend .pos-bl;
+            @extend .h100p;
+            @extend .willChange-transform;
+            transition:transform 0.4s $bounce;
+
+            &:before {
+                @extend .content-empty;
+                @extend .pos-tl;
+                @extend .h100p;
+                @extend .opacity-40;
+                border-left:2px dashed $gray;
+                transform:translate3d(-10px, 50px, 0);
+            }
+        }
+        &__score {
+            @extend .pos-tl;
+            @extend .fontSize-38;
+            @extend .fontWeight-8;
+            @extend .c-blue;
+        }
+    }
+    .section__num {
+        @extend .pos-tl;
+        @extend .flex-centered;
+        @extend .w50;
+        @extend .h50;
+        @extend .borderRadius-circle;
+        @extend .borderWidth-1;
+        @extend .borderStyle-solid;
+        @extend .borderColor-blue;
+        @extend .c-blue;
+        @extend .fontSize-24;
+        @extend .fontWeight-8;
+        transform:translate3d(-70px, -55px, 0);
+
+        &:after {
+            @extend .content-empty;
+            @extend .pos-abs;
+            @extend .t50;
+            @extend .l100;
+            @extend .w100;
+            border-bottom:1px solid $blue;
+
+            .d-phone & {
+                @extend .display-none;
+            }
+        }
+        .d-tablet.r-portrait & {
+            transform:translate3d(-30px, -55px, 0);
+        }
+        .d-phone & {
+            transform:translate3d(0, -55px, 0);
+            padding-top:1px;
+        }
+    }
+    .section__btn__edit,
+    .section__btn__close {
+        @extend .pos-tr;
+        @extend .flex-centered;
+        @extend .w35;
+        @extend .h35;
+        @extend .borderRadius-circle;
+        @extend .borderWidth-1;
+        @extend .borderStyle-solid;
+        @extend .borderColor-blue;
+        @extend .cursor-pointer;
+        @extend .transition-default;
+        transform:translate3d(70px, -48px, 0);
+
+        &:before {
+            @extend .content-empty;
+            @extend .display-block;
+        }
+        &:after {
+            @extend .content-empty;
+            @extend .pos-abs;
+            @extend .t50;
+            @extend .r100;
+            @extend .w80;
+            border-bottom:1px solid $blue;
+
+            .d-phone & {
+                @extend .w50;
+                @extend .mr-xs;
+            }
+        }
+        .m-no-touch &:hover {
+            @extend .bg-blue;
+        }
+        .d-tablet.r-landscape & {
+            transform:translate3d(20px, -48px, 0);
+        }
+        .d-tablet.r-portrait & {
+            transform:translate3d(30px, -48px, 0);
+        }
+        .d-phone & {
+            transform:translate3d(0, -48px, 0);
+        }
+    }
+    .section__btn__edit {
+        &:before {
+            @include ui-icon(pencil, 18px, 18px);
+        }
+        .m-no-touch &:hover {
+            &:before {
+                @include ui-icon(pencil_white);
+            }
+        }
+    }
+    .section__btn__close {
+        &:before {
+            @include ui-icon(close_strong, 28px, 28px);
+        }
+        .m-no-touch &:hover {
+            &:before {
+                @include ui-icon(close_strong_white);
+            }
+        }
+    }
+    .section__btn__plus {
+        @include flex("row", "flex-end", "center");
+        @extend .float-right;
+        @extend .pos-rel;
+        @extend .c-blue;
+        @extend .fontSize-28;
+        @extend .cursor-pointer;
+
+        &__icon {
+            @extend .flex-centered;
+            @extend .w50;
+            @extend .h50;
+            @extend .borderRadius-circle;
+            @extend .borderWidth-1;
+            @extend .borderStyle-solid;
+            @extend .borderColor-blue;
+            @extend .mr-s;
+            @extend .transition-default;
+
+            &:before {
+                @extend .content-empty;
+                @extend .display-block;
+                @include ui-icon(plus_thin, 28px, 28px);
+            }
+        }
+        .m-no-touch &:hover {
+            .section__btn__plus__icon {
+                @extend .bg-blue;
+
+                &:before {
+                    @include ui-icon(plus_thin_white);
+                }
+            }
+        }
+        .d-phone & {
+            @include flex("row", "center", "center");
+            @extend .float-none;
+        }
+    }
+    .shareButton {
+        .d-phone & {
+            @extend .display-none;
+        }
+    }
+    .checkbox {
+        .d-phone & {
+            @extend .ml-xxs;
+        }
+    }
+    .screen__lines {
+        @include abs();
+
+        .d-phone & {
+            @extend .display-none;
+        }
+        &__item {
+            @extend .pos-abs;
+            @extend .b0;
+            @extend .w15;
+            @extend .bg-white;
+            @extend .borderRadiusTop-xxxxxl;
+
+            &:nth-child(1){
+                @extend .h20p;
+                @extend .l5;
+            }
+            &:nth-child(2){
+                @extend .h50p;
+                @extend .l10;
+            }
+            &:nth-child(3){
+                @extend .h35p;
+                @extend .l15;
+            }
+            &:nth-child(4){
+                @extend .h25p;
+                @extend .l20;
+            }
+        }
+    }
+    .screen__button__finish {
+        @extend .pos-abs;
+        @extend .borderRadius-circle;
+        @extend .bg-blue;
+        @extend .cursor-pointer;
+        @extend .t100;
+        @extend .l50;
+        width:260px;
+        height:260px;
+        box-shadow:0 20px 25px rgba(31,35,37,.7);
+        transform:translate3d(-50%, -112px, 0);
+
+        &:after {
+            @include accelerate();
+            @extend .content-empty;
+            @include abs_50(48, 48);
+            @include ui-icon(plus_thin_white, 48px, 48px);
+            transform:translateY(5px);
+            transition:transform 0.4s $bounceSoft;
+        }
+        &__text {
+            @include accelerate();
+            @extend .pos-centered-h;
+            @extend .t15;
+            @extend .c-white;
+            @extend .fontSize-24;
+            line-height:28px;
+            @extend .text-center;
+            transition:transform 0.4s $bounceSoft;
+        }
+        &:hover {
+            &:after {
+                transform:translateY(-60px) rotate(45deg);
+            }
+            .screen__button__finish__text {
+                transform:translate3d(-50%, 70px, 0);
+            }
+        }
+    }
+    .screen-finish {
+        .circuful {
+            width:550px;
+            height:550px;
+            margin-left:-400px;
+
+            .d-tablet.r-landscape & {
+                width:480px;
+                height:480px;
+                margin-left:-320px;
+            }
+            .d-tablet.r-portrait & {
+                margin-top:200px;
+                margin-left:-360px;
+            }
+            .d-phone & {
+                width:480px;
+                height:480px;
+                margin-left:-320px;
+                @extend .opacity-30;
+            }
+        }
+    }
+    .ui-scroll__bar,
+    .ui-scroll__handle__inner {
+    	@extend .bg-blue;
+    }
+    .ui-scroll:after {
+        @extend .content-empty;
+        @include abs();
+        width:15px;
+        @extend .zIndex--1;
+    }
+    .ui-scroll:hover {
+        width:12px;
+    }
+}
+.screen-convert-pdf {
+    .circuful {
+        width:550px;
+        height:550px;
+
+        .d-tablet.r-landscape & {
+            width:480px;
+            height:480px;
+        }
+        .d-phone & {
+            width:480px;
+            height:480px;
+        }
+    }
+}

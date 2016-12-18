@@ -1,0 +1,98 @@
+.control__fonts {
+    @extend .display-block;
+    @include accelerate();
+    @extend .cursor-default;
+    @extend .userSelect-none;
+    position:fixed;
+    top:40px;
+    right:20px;
+    width:90px;
+    height:80px;
+    overflow:hidden;
+    padding-right:20px;
+    transition:width 0s 0.4s;
+    z-index:100;
+
+    .d-phone & {
+        top:15px;
+        right:-5px;
+    }
+    &__item {
+        @extend .display-inlineBlock;
+        @extend .vAlign-middle;
+        width:60px;
+        height:60px;
+        @extend .borderRadius-circle;
+        @extend .text-center;
+        @extend .c-white;
+        @extend .ml-xs;
+        font-size:28px;
+        transition:transform 0.4s $bounceSoft 0.2s, background-color 0.08s linear;
+        transform:translate3d(0, 0, 0) scale(0);
+
+        &:before {
+            content:"";
+            @extend .display-inlineBlock;
+            @extend .vAlign-middle;
+            @extend .h100p;
+            width:0;
+        }
+        &:not(.control__fonts__item--active){
+            @extend .bg-smoke;
+            @extend .c-primary;
+            @extend .cursor-pointer;
+            box-shadow:0 8px 16px -10px rgba($black,.06);
+        }
+        &--active {
+            @extend .float-right;
+            @extend .bg-primary;
+            @extend .transition-none;
+            @extend .boxShadow-default;
+            transform:translate3d(0, 0, 0) scale(1);
+        }
+        .m-no-touch &:hover {
+            @extend .c-white;
+            @extend .bg-primary;
+        }
+    }
+    &__items {
+        @extend .inline;
+        @extend .pointerEvents-none;
+        position:absolute;
+        top:0;
+        right:90px;
+
+        .m-touch & {
+            @extend .display-none;
+        }
+    }
+    .m-no-touch &:hover {
+        overflow:visible;
+        width:440px;
+        transition:width 0s;
+
+        .control__fonts__items {
+            @extend .pointerEvents-all;
+        }
+        .control__fonts__item {
+            transform:translate3d(0, 0, 0) scale(1);
+            transition:transform 0.4s $bounceSoft 0.1s, background-color 0.08s linear;
+
+            &:active:not(.control__fonts__item--active) {
+                transition:transform 0.2s $cubic215, background-color 0.08s linear;
+                transform:translate3d(0, 2px, 0) scale(0.8);
+            }
+        }
+    }
+    .fontFamily-futura {
+        font-size:32px;
+        padding-top:3px;
+    }
+    .fontFamily-avant {
+        font-size:26px;
+    }
+    .fontFamily-myriad {
+        font-size:31px;
+        padding-top:2px;
+    }
+}

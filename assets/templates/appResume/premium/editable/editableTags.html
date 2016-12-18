@@ -1,0 +1,123 @@
+<editable-tags class="col-sm-offset-2 col-sm-20 col-md-offset-4 col-md-16 col-lg-offset-6 col-lg-13 section__editable__container" data-editing="tags">
+
+    <ui-switcher id="activity" commit="true"></ui-switcher>
+
+    <div class="section__editable__content { hide : !switcher.value }">
+
+        <div class="title title-main">{ title }</div>
+
+        <div class="tag-list">
+            <div class="tag-list-add">
+                <input onKeydown={ onKeydown } name="input" class="tag-input" type="text" placeholder="Название навыка" autocomplete="off">
+                <div onClick={ addTag } class="tag-list-addButton">
+                    <svg class="tag-list-addButton-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                        <path class="tag-list-addButton-svg-color" d="M 23 9 L 23 23 L 9 23 L 9 27 L 23 27 L 23 41 L 27 41 L 27 27 L 41 27 L 41 23 L 27 23 L 27 9 L 23 9 z"></path>
+                    </svg>
+                </div>
+            </div>
+            <div each={ item, i in items } no-reorder class="tag tag-white">
+                { item }<span onClick={ removeTag } class="tag-remove"></span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="section__editable__footer">
+        <button onClick={ onCancel } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper" type="button">Отменить</button>
+        <button onClick={ onSave } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper ml-xs" type="button">Сохранить</button>
+    </div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    $.switcher = $.tags["ui-switcher"];
+
+    $.init = function(data){
+        $.switcher.value = data.active;
+        $.update({
+            active: data.active,
+            title: data.title,
+            items: _.copyArray(data.tags),
+            _tags: data.tags,
+            callback: data.callback ? data.callback : null
+        });
+        setTimeout(function(){
+            $["input"].focus();
+        }, 100);
+    };
+
+    $.addTag = function(){
+        var value = _.clean($["input"].value),
+            length = value && value.length;
+
+        if (value && value.length){
+            $.checkAndInsert(value);
+        }
+    };
+
+    $.onKeydown = function(e){
+        if (!app.device.isMobile){
+            var value = _.clean($["input"].value),
+                length = value && value.length;
+
+            if (e.which === KEY.ENTER && length){
+        		e.preventDefault();
+                $.checkAndInsert(value);
+        	}
+        }
+        return true;
+    };
+
+    $.removeTag = function(){
+        $.items.splice(this.i, 1);
+    };
+
+    $.checkAndInsert = function(value){
+        var _value = value.toLowerCase(),
+            _items = _.map($.items, function(item){
+                return item.toLowerCase();
+            });
+
+        if (_.inArray(_items, _value)){
+            if (app.device.isPhone){
+                alert('В списков навыков "'+ value +'" уже был добавлен');
+            }
+            else {
+                $scope.find(".tag").each(function(){
+                    var $tag = $$(this);
+                    if ($tag.text().toLowerCase().trim() == _value){
+                        $tag.addClass("isAvail");
+                        _.onEndAnimation(this, function(){
+                            $tag.removeClass("isAvail");
+                        });
+                    }
+                });
+            }
+        }
+        else {
+            $.items.push(value);
+            $["input"].value = "";
+            $["input"].focus();
+        }
+    };
+
+    $.onCancel = function(){
+        if ($.callback) $.callback($.active, $._tags);
+        $.items = _.copyArray($._tags),
+        $.hide();
+    };
+
+    $.onSave = function(){
+        if ($.callback) $.callback($.switcher.value, $.items);
+        $.hide();
+    };
+
+    $.hide = function(){
+        $Editable.hide();
+    };
+
+</script>
+
+</editable-tags>

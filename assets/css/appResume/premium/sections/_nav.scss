@@ -1,0 +1,41 @@
+.nav {
+    @extend .pos-bl-fixed;
+    @extend .w100p;
+    @extend .h60;
+    @extend .bg-white;
+    @extend .c-blackLight;
+    @extend .userSelect-none;
+    @extend .zIndex-6;
+
+    &__container {
+        @extend .pos-rel;
+        @extend .flex-row-left-center;
+    }
+    &__slider {
+        @extend .pos-tl;
+        @extend .w50;
+        @extend .h100p;
+        @extend .bg-primary;
+        will-change:transform, width;
+        transition:transform 0.5s $cubic345, width 0.5s $cubic345;
+    }
+    &__item {
+        @extend .pos-rel;
+        @extend .flex-centered;
+        @extend .w100p;
+        @extend .h60;
+        @extend .text-uppercase;
+        @extend .cursor-pointer;
+        transition:all 0.08s linear 0.1s;
+        @extend .zIndex-1;
+
+        &:hover {
+            @extend .c-primary;
+        }
+        &[data-active="true"]{
+            @extend .c-white;
+            @extend .fontWeight-8;
+            @extend .pointerEvents-none;
+        }
+    }
+}

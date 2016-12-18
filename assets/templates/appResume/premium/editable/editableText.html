@@ -1,0 +1,66 @@
+<editable-text class="col-sm-offset-4 col-sm-18 col-md-offset-5 col-md-14 col-lg-offset-7 col-lg-12 section__editable__container" data-editing={ 'textarea' : type === 'textarea' }>
+
+    <ui-switcher if={ active !== null } id="activity" commit="true"></ui-switcher>
+
+    <div class="section__editable__content { hide : active !== null && !switcher.value }">
+
+        <div class="title title-main">{ title }</div>
+
+        <div if={ type === "input" }>
+            <input onInput={ typing } class="input input-xl" name="input_data" type="text" autocomplete="off" value={ editing }>
+        </div>
+        <div if={ type === "textarea" }>
+            <textarea onInput={ typing } class="textarea textarea-xl" name="textarea_data" autocomplete="off">{ editing }</textarea>
+        </div>
+
+    </div>
+
+    <div class="section__editable__footer">
+        <button onClick={ onCancel } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper" type="button">Отменить</button>
+        <button onClick={ onSave } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper ml-xs" type="button">Сохранить</button>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.switcher = $.tags["ui-switcher"];
+
+    $.init = function(data){
+        $.switcher.value = data.active;
+        $.update({
+            active: data.active,
+            title: data.title,
+            type: data.type,
+            editing: data.editing,
+            typing: data.typing ? data.typing : null,
+            callback: data.callback ? data.callback : null
+        });
+        setTimeout(function(){
+            $[$.type + "_data"].focus();
+        }, 100);
+    };
+
+    $.onCancel = function(){
+        if ($.callback) $.callback($.active, $.editing);
+        $[$.type + "_data"].value = $.editing ? $.editing : '';
+        $.hide();
+    };
+
+    $.onSave = function(){
+        if ($.callback) {
+            $.callback(
+                ($.active !== null ? $.switcher.value : null),
+                $[$.type + "_data"].value
+            );
+        }
+        $.hide();
+    };
+
+    $.hide = function(){
+        $Editable.hide();
+    };
+
+</script>
+
+</editable-text>

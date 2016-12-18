@@ -1,0 +1,9 @@
+.resumeBasic {
+    .textarea-xl {
+        min-height:220px;
+    }
+    .textarea-larger {
+        @extend .textarea-xl;
+        min-height:320px;
+    }
+}

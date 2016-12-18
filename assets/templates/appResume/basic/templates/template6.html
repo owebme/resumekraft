@@ -1,0 +1,99 @@
+<resume-basic-template6 id="t6">
+
+	<div id="t-header">
+		<div id="t-header-names">
+			{ $resume.get('surname') } { $resume.get('name') }
+		</div>
+		<div id="t-header-post">
+			{ $resume.get('post') }
+		</div>
+		<div if={ $resume.get('salary', 'active') && $resume.get('salary', 'amount') } id="t-header-salary">
+			{ $resume.take.salary.amount() } { $resume.take.salary.currency() } <sup class="t-header-salary-currency">{ $resume.take.salary.worktime() }</sup>
+		</div>
+	</div>
+	<div id="t-container-wrapper">
+		<div class="t-container-string t-container-table">
+			<div class="t-container-string-left">
+				<div class="t-container-string-element">
+					<span class="cell cell-name">Возраст:</span>
+					<span class="cell"><virtual if={ !$resume.get('birthday', 'hidden') }>{ $resume.take.birthday.date() }&nbsp;</virtual>({ $resume.take.birthday.age() })</span>
+				</div>
+				<div if={ $resume.get('contacts', 'city') } class="t-container-string-element">
+					<span class="cell cell-name">Город:</span>
+					<span class="cell">{ $resume.get('contacts', 'city') }</span>
+				</div>
+			</div>
+			<div class="t-container-string-left">
+				<div if={ $resume.get('contacts', 'email') } class="t-container-string-element">
+					<span class="cell cell-name">Email:</span>
+					<span class="cell cell-email">{ $resume.get('contacts', 'email') }</span>
+				</div>
+				<div if={ $resume.get('contacts', 'phone') } class="t-container-string-element">
+					<span class="cell cell-name">Телефон:</span>
+					<span class="cell">{ $resume.get('contacts', 'phone') }</span>
+				</div>
+				<div if={ $resume.get('contacts', 'skype') } class="t-container-string-element">
+					<span class="cell cell-name">Skype:</span>
+					<span class="cell">{ $resume.get('contacts', 'skype') }</span>
+				</div>
+			</div>
+		</div>
+		<div if={ $resume.get('education', 'items').length } class="t-container-string t-container-string-edu">
+			<virtual each={ edu, i in $resume.take.education.items() }>
+				<div if={ edu.level != 8 } class="t-container-string-element">
+					<span class="cell cell-name">{ 'Образование' : i == 0 }</span>
+					<span class="cell cell-text">
+						<strong>{ edu.year }, { $store.education.getTitleById(edu.level) }</strong>
+						<div>{ edu.title }</div>
+						<div><strong>{ edu.faculty }</strong></div>
+						<div if={ edu.speciality } class="speciality"><strong>Специальность</strong> &ndash; { edu.speciality }</div>
+					</span>
+				</div>
+				<div if={ edu.level == 8 } class="t-container-string-element">
+					<span class="cell cell-name">{ 'Образование' : i == 0 }</span>
+					<span class="cell cell-text">
+						<strong>{ edu.year }, { $store.education.getTitleById(edu.level) }</strong>
+						<div>{ edu.title }</div>
+						<div>{ edu.faculty }</div>
+						<div if={ edu.speciality } class="speciality"><strong>Специальность</strong> &ndash; { edu.speciality }</div>
+					</span>
+				</div>
+			</virtual>
+		</div>
+		<div class="t-container-string t-container-string-lang">
+			<virtual each={ lang, i in $resume.get('languages', 'items') }>
+				<div if={ lang.title == "native" } class="t-container-string-element mt-10">
+					<span class="cell cell-name">Языки</span>
+					<span class="cell">
+						<div><strong class="t-container-string-lang-title">{ $store.languages.getTitleById(lang.title) }</strong>&nbsp; &nbsp; { $store.languages.native.getTitleById(lang.value) }</div>
+					</span>
+				</div>
+				<div if={ lang.title != "native" } class="t-container-string-element mt-10">
+					<span class="cell cell-name"></span>
+					<span class="cell cell-text">
+						<div><strong class="t-container-string-lang-title">{ $store.languages.getTitleById(lang.title) }</strong>&nbsp; &nbsp; { $store.languages.select.getTitleById(lang.value) }</div>
+					</span>
+				</div>
+			</virtual>
+		</div>
+		<div if={ $resume.get('jobs', 'items').length } class="t-container-string t-container-string-job">
+			<div each={ job, i in $resume.take.jobs.items() } class="t-container-string-element { 'mt-10' : i != 1 }">
+				<span class="cell cell-name">{ 'Место работы' : i == 0 }</span>
+				<span class="cell cell-text">
+					<div><strong>{ job.company }</strong></div>
+					<div>{ job.city }</div>
+					<div><strong>{ job.post }</strong></div>
+					<div>{ $resume.take.jobs.period(job) }</div>
+					<div class="mt5">{ job.text }</div>
+				</span>
+			</div>
+		</div>
+		<div if={ $resume.get('aboutText').length } class="t-container-string t-container-string-about">
+			<div class="t-container-string-element">
+				<span class="cell cell-name">О себе</span>
+				<span class="cell cell-text">{ $resume.get('aboutText') }</span>
+			</div>
+		</div>
+	</div>
+
+</resume-basic-template6>

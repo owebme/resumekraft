@@ -1,0 +1,13 @@
+.section__editable {
+    .textarea {
+        &-xl {
+            min-height:200px;
+            box-shadow:0 0 0 2px $white;
+
+            .d-phone & {
+                padding-top:8px;
+                padding-bottom:10px;
+            }
+        }
+    }
+}

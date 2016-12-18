@@ -1,0 +1,171 @@
+jqtest-result-columns {
+    .chart {
+        @extend .fontSize-0;
+
+        &__title {
+            @include accelerate();
+            @extend .opacity-0;
+            @extend .pos-abs;
+            @extend .t-xl;
+            @extend .l0;
+            @extend .fontSize-20;
+            @extend .fontWeight-8;
+            @extend .nowrap;
+            @extend .text-uppercase;
+            letter-spacing:2.5px;
+            will-change:opacity, transform;
+            transition:transform 0.3s $cubic32, opacity 0.2s $cubic215;
+
+            &[data-active="true"]{
+                @extend .opacity-100;
+            }
+        }
+        &__titles {
+            @extend .pos-centered-v;
+            @extend .l-l;
+            @extend .pt-xl;
+
+            &__item {
+                @include accelerate();
+                @include flex("row", "flex-start", "center");
+                @extend .c-blackLight;
+                @extend .fontSize-16;
+                @extend .h55;
+                letter-spacing:5.5px;
+                transition:all 0.2s $cubic215;
+                @extend .text-uppercase;
+
+                .d-mobile & {
+                    @extend .transition-none;
+                }
+                &[data-active="true"]{
+                    @extend .c-blue;
+                    @extend .fontSize-20;
+                    @extend .fontWeight-8;
+                    @extend .opacity-100;
+                    letter-spacing:4px;
+                }
+            }
+        }
+        &__columns {
+            @extend .pos-centered;
+            @extend .nowrap;
+        }
+        &__column {
+            @include accelerate();
+            @extend .display-inlineBlock;
+            @extend .vAlign-middle;
+            @extend .text-center;
+            @extend .w40;
+            @extend .cursor-pointer;
+            @extend .willChange-transform;
+            transform:scale3d(0, 0, 1) translateZ(0);
+            transition:transform .4s $cubic28;
+            margin:0 12.5px;
+
+            @for $i from 2 through 10 {
+                &:nth-child(#{$i}){
+                    transition-delay:#{($i / 15)}s;
+                }
+            }
+            &:hover {
+                .chart__column__item {
+                    transform:translate3d(0, -50%, 0) scale(1.2);
+                    transition:transform .3s $cubic215 0.05s;
+
+                    &:after {
+                        @extend .opacity-100;
+                        transform:translate3d(-50%, 0, 0);
+                        transition:transform .3s $cubic215 0.2s, opacity .3s $cubic215 0.2s;
+                    }
+                    &__count {
+                        @extend .c-blackLight;
+                        transform:translate3d(-50%, 90px, 0);
+                        transition:transform .3s $cubic215 0.2s, color .3s $cubic215 0.2s;
+                    }
+                }
+            }
+            &__item {
+                @include accelerate(true);
+                @extend .pos-centered-v;
+                @extend .w100p;
+                @extend .borderRadius-xxxxxl;
+                @extend .willChange-transform;
+                transition:transform .3s $cubic215 0.1s;
+
+                &:after {
+                    @extend .opacity-01;
+                    @extend .content-empty;
+                    @extend .pos-abs;
+                    @extend .t-l;
+                    @extend .w1px;
+                    @extend .h100p;
+                    will-change:opacity, transform;
+                    border-left:2px dashed $white;
+                    transform:translate3d(-50%, 40px, 0);
+                    transition:transform .3s $cubic215 0.1s, opacity .3s $cubic215 0.1s;
+                }
+                &__count {
+                    @include accelerate();
+                    @extend .pos-abs;
+                    @extend .b0;
+                    color:darken($smokeLight,20%);
+                    @extend .fontSize-34;
+                    @extend .fontWeight-8;
+                    @extend .m0;
+                    will-change:color, transform;
+                    transition:transform .3s $cubic215 0.1s, color .3s $cubic215 0.1s;
+                    transform:translate3d(-50%, 55px, 0);
+                    @extend .zIndex-1;
+                }
+            }
+        }
+        &.showChart {
+            .chart__titles__item,
+            .chart__column {
+                @extend .opacity-100;
+                transform:scale3d(1, 1, 1) translateZ(0);
+            }
+        }
+    }
+}
+jqtest-result {
+    $i:0;
+    @each $color in (#00b4f6, #AA8CE4, #00D2EB, #93CF48, #F889C3){
+    $i: $i + 1;
+        .chart__title {
+            &[data-level="#{$i}"]{
+                @if $i == 3 {
+                    color:darken(saturate($color,20%),5%);
+                }
+                @else if $i == 4 {
+                    color:darken(saturate($color,20%),13%);
+                }
+                @else {
+                    color:darken(saturate($color,20%),8%);
+                }
+            }
+        }
+        .chart__column__item {
+            &[data-level="#{$i}"]{
+                background:saturate($color,12%);
+            }
+        }
+        .skills__item__line {
+            &[data-level="#{$i}"]{
+                background:saturate($color,20%);
+                box-shadow:0 12px 20px -10px rgba(saturate($color,20%), 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(saturate($color,20%), 0.2);
+            }
+        }
+        .skills__item__title {
+            &[data-level="#{$i}"]{
+                .d-tablet.r-portrait & {
+                    background-color:rgba(saturate($color,20%),.33);
+                }
+                .d-phone & {
+                    background-color:rgba(saturate($color,20%),.5);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,86 @@
+#app {
+    @each $color in ($blue, $blueLight, $green, $emerald, $orange, $red, $violet, $violetLight, $brown, $pink){
+        &[data-color="#{$color}"]{
+            .fill-white {
+                fill:$white;
+            }
+            .c-primary {
+                color:$color;
+            }
+            .bg-primary {
+                background-color:$color;
+            }
+            .bg-primaryDarken {
+                background-color:darken($color,9%);
+            }
+            .border-primary {
+                border-color:$color;
+            }
+            .fill-primary {
+                fill:$color;
+            }
+            svg[fill-color="primary"]{
+                path, rect, polygon, circle {
+                    fill:$color;
+                }
+            }
+            .btn-primary {
+                background-color:$color;
+
+                &:hover {
+                    background-color:darken($color,9%);
+                }
+            }
+            .link-primary {
+                color:$color;
+
+                &:after {
+                    background-color:rgba($color,.5);
+                }
+            }
+            .c-white {
+                color:$white;
+            }
+            .photo-changer-bg {
+                background:linear-gradient(to top, $color, rgba($color,0));
+            }
+            .section__editable {
+                background-color:rgba($color,.9);
+
+                &:before {
+                    background:linear-gradient(to top, $color, rgba($color,0));
+                }
+                .btn:hover {
+                    @extend .c-primary;
+                }
+                .input-group-addon {
+                    &-svg-color {
+                        .d-phone & {
+                            fill:$color;
+                        }
+                    }
+                }
+                .input-svg-color {
+                    .d-phone & {
+                        fill:$color;
+                    }
+                }
+                .input:focus {
+                    .input-svg-color {
+                        .d-phone & {
+                            fill:$color;
+                        }
+                    }
+                }
+            }
+            .control__fonts {
+                &__item:hover {
+                    @extend .c-white;
+                }
+            }
+            .select:after {
+                border-top-color:$color;
+            }
+        }
+    }
+}

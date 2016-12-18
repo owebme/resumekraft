@@ -1,0 +1,68 @@
+<resume-control-buttons class="section control__buttons" data-hidden={ !active }>
+
+    <div onClick={ parent.open.preview } onUpdate="none" class="control__buttons__item" data-balloon="Предпросмотр" data-balloon-color="blue" data-balloon-pos="down">
+        <div class="control__buttons__item__icon">
+            <icon-eye size="s" color="blue"></icon-eye>
+        </div>
+    </div>
+    <div onClick={ parent.open.photoUpload } onUpdate="none" class="control__buttons__item" data-balloon="Загрузить фото" data-balloon-color="blue" data-balloon-pos="down">
+        <div class="control__buttons__item__icon">
+            <icon-camera size="s" color="blue"></icon-camera>
+        </div>
+    </div>
+    <div onClick={ parent.open.design.basic } onUpdate="none" class="control__buttons__item" data-balloon="Выбор шаблона" data-balloon-color="blue" data-balloon-pos="down">
+        <div class="control__buttons__item__icon">
+            <icon-design size="s" color="blue"></icon-design>
+        </div>
+    </div>
+    <div onClick={ parent.open.print } onUpdate="none" class="control__buttons__item" data-balloon="Распечатать" data-balloon-color="blue" data-balloon-pos="down">
+        <div class="control__buttons__item__icon">
+            <icon-print size="s" color="blue"></icon-print>
+        </div>
+    </div>
+    <div onClick={ parent.get.pdf } onUpdate="none" class="control__buttons__item" data-balloon="Сохранить в PDF" data-balloon-color="blue" data-balloon-pos="down">
+        <div class="control__buttons__item__icon">
+            <icon-pdf size="s" color="blue"></icon-pdf>
+        </div>
+    </div>
+    <div onClick={ parent.open.design.premium } onUpdate="none" class="control__buttons__item" data-balloon="Premium аккаунт" data-balloon-color="blue" data-balloon-size="medium" data-balloon-pos="down">
+        <div class="control__buttons__item__icon">
+            <icon-control size="s" color="blue"></icon-control>
+        </div>
+    </div>
+    <div onClick={ parent.open.menu } onUpdate="none" class="control__buttons__item control__buttons__opener">
+        <div class="control__buttons__item__icon control__buttons__opener__icon"></div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.active = true;
+
+    $.on("mount", function(){
+        var _onScroll = _.throttle($.onScroll, 100),
+            scroll = $.parent.screens.get("scroll");
+
+        (function animationLoop(){
+            app.utils.raf(animationLoop);
+            _onScroll(app.utils.getScroll(scroll));
+        })();
+    });
+
+    $.onScroll = function(scroll){
+        if (!$.active && scroll.y < 20){
+            $.update({
+                active: true
+            });
+        }
+        else if ($.active && scroll.y > 19){
+            $.update({
+                active: false
+            });
+        }
+    };
+
+</script>
+
+</resume-control-buttons>

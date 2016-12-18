@@ -1,0 +1,27 @@
+<ux-hobby class="component">
+
+    <h3 class="title anim" data-anim="bt">{ $resume.hobby && $resume.hobby.title ? $resume.hobby.title : opts.title }</h3>
+
+    <btn-editable if={ $mode === "editing" } data={ $resume.hobby }></btn-editable>
+
+    <div onClick={ openEditable } onUpdate="none" class="{ blur : !$resume.hobby } { transition-none : editable }">
+
+        <p if={ !$resume.hobby || $resume.hobby && $resume.hobby.text } class="mb-l anim" data-anim="bt">{ $resume.hobby && $resume.hobby.text ? $resume.hobby.text : $store.resume.placeholder.hobby.text }</p>
+
+        <div class="row">
+            <div each={ item in $resume.hobby.items } no-reorder class="col-md-6">
+                <div class="hobby-item">
+                    <div class="hobby-icon icon-hobby icon-hobby-{ item }"></div>
+                    <div class="hobby-title">{ $store.hobby.getTitleById(item) }</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+</script>
+
+</ux-hobby>

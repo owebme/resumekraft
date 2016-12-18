@@ -1,0 +1,26 @@
+<resume-screen-langs class="screen" data-marquee={ opts.step }>
+
+    <div class="screen__content pb-l">
+
+        <div class="title">{ opts.title }</div>
+
+        <div class="container content" data-content="languages">
+            <div each={ item, i in $resume.select("languages", "items").get() } class="row mb-m">
+                <div class="hidden-xs col-sm-8 pt-xs pr-m">
+                    <span class="c-gray fontSize-28">{ $store.languages.getTitleById(item.title) }</span>
+                </div>
+                <div class="col-xs-24 col-sm-16">
+                    <span class="input-title">{ $store.languages.getTitleById(item.title) }</span>
+                    <div if={ item.title == "native" }>
+                        <ui-select update="value" cursor={ $resume.select("languages", "items", {"title": item.title}) } items={ $store.languages.native.get() } size="xl"></ui-select>
+                    </div>
+                    <div if={ item.title != "native" }>
+                        <ui-select update="value" cursor={ $resume.select("languages", "items", {"title": item.title}) } items={ $store.languages.select.get() } size="xl"></ui-select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</resume-screen-langs>

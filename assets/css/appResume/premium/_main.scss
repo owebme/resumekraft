@@ -1,0 +1,34 @@
+body {
+	.d-tablet.d-ios & {
+		&:before {
+			content:"";
+			width:1px;
+			float:left;
+			height:calc(100% + 100px);
+			margin-left:-1px;
+		}
+		&:after {
+			content:"";
+			width:100%;
+			clear:both;
+		}
+	}
+}
+#app[data-app="premium"]{
+    // .d-phone &,
+    // &[data-mode="editing"]{
+        .anim {
+            @extend .transition-none;
+            @extend .transform-default;
+            @extend .opacity-100;
+        }
+    //}
+	@extend .overflowX-hidden;
+}
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, strong {
+    @extend .f-primary;
+}
+.ui-scroll__bar,
+.ui-scroll__handle__inner {
+	@extend .bg-primary;
+}

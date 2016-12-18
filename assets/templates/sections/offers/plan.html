@@ -1,0 +1,91 @@
+<offer-plan class="oScreen" data-open="{ active }">
+
+    <div class="bg-blue c-white pt-xl anim-group1 { app.device.isPhone ? 'pos-bl h50p w100p anim-bt-full' : 'pos-tl h100p w50p anim-lr-full' }">
+
+        <div class="pos-centered w100p">
+
+            <h1 class="mb-m anim-group2 anim-scale">Ваш аккаунт</h1>
+
+            <p class="fontSize-20 mb-xl xs-mb-l anim-group2 anim-scale anim-delay-xs">Обычные шаблоны на выбор</p>
+
+            <div class="hidden-xs w100p mb-l" style="height:280px">
+                <div class="pos-centered pt-l opacity-70">
+                    <img src="http://resumekraft.ru/makets/images/1004.png" style="width:220px; transform:rotate(15deg)">
+                </div>
+                <div class="pos-centered pt-l opacity-80">
+                    <img src="http://resumekraft.ru/makets/images/1003.png" style="width:220px; transform:rotate(-15deg)">
+                </div>
+                <div class="pos-centered pt-l opacity-90">
+                    <img src="http://resumekraft.ru/makets/images/1002.png" style="width:220px; transform:rotate(9deg)">
+                </div>
+                <div class="pos-centered pt-l">
+                    <img src="http://resumekraft.ru/makets/images/1001.png" style="width:220px; transform:rotate(-9deg)">
+                </div>
+            </div>
+
+            <div class="anim-group2 anim-scale anim-delay-s">
+                <button onClick={ open.selectResume } class="btn btn-xxl btn-white-hover">Остаться</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="bg-white overflow-hidden pt-xl plr-xl xs-plr-m anim-group1 { app.device.isPhone ? 'pos-tl h50p w100p anim-tb-full' : 'pos-tr h100p w50p anim-rl-full' }">
+
+        <div class="{ 'pos-centered w100p' : app.device.isPhone }">
+
+            <h1 class="c-blue mb-l xs-mb-m anim-group3 anim-scale">Premium аккаунт</h1>
+
+            <p class="visible-xs fontSize-20 mb-xl xs-mb-l anim-group3 anim-scale anim-delay-xs">Создание крутой резюме-презентации.</p>
+
+            <p class="hidden-xs c-blackLight fontSize-20 lineHeight-xxl mb-xl anim-group3 anim-scale anim-delay-xs">Создание классного резюме-презентации с крутым дизайном. Просмотр на всех устройствах, анимация, обратная связь, статистика и многое другое</p>
+
+            <img class="hidden-xs pos-bl" style="height:420px; transform:translate3d(-540px, 110px, 0)" src="http://images.apple.com/ru/ios/what-is/images/everywhere_large_2x.jpg">
+
+            <img class="hidden-xs pos-br" style="height:480px; transform:translate3d(-50px, 100px, 0)" src="http://images.apple.com/ru/ios/what-is/images/easytouse_large_2x.jpg">
+
+            <div class="pos-bl w100p h100" style="background:linear-gradient(to top, #fff, rgba(255,255,255,.0))"></div>
+
+            <div class="{ 'pos-bl w100p pb-xl' : !app.device.isPhone } anim-group3 anim-scale anim-delay-s">
+                <button onClick={ open.promoPremium } class="btn btn-xxl btn-primary">Узнать больше</button>
+            </div>
+
+        </div>
+
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.on("mount", function(){
+        $.animate = new app.plugins.animate($.root);
+    });
+
+    $.show = function(){
+        $.update({
+            active: true
+        })
+        $.animate.show();
+    };
+
+    $.open = {
+        selectResume: function(){
+            $.hide(function(){
+                $Sections.resume.select.show("basic");
+            });
+        },
+        promoPremium: function(){
+            $Sections.overview.premium.show();
+        }
+    };
+
+    $.hide = function(callback){
+        $.active = false;
+        $.animate.hide(callback);
+    };
+
+</script>
+
+</offer-plan>

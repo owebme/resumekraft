@@ -1,0 +1,116 @@
+<resume-screen-jobs class="screen" data-marquee={ opts.step }>
+
+    <div class="screen__content pb-l">
+
+        <div class="title">{ opts.title }</div>
+
+        <div class="container content" data-content="jobs">
+            <div class="pos-rel pb-l mb-xs" each={ item, i in sort($resume.select("jobs", "items").get()) } no-reorder>
+                <div class="section__num">{ i + 1 }</div>
+                <div if={ editing == item._id } onClick={ close } class="section__btn__close"></div>
+                <div if={ editing != item._id } onClick={ edit } class="section__btn__edit"></div>
+                <resume-screen-jobs-item item={ item } active={ editing && editing == item._id }></resume-screen-jobs-item>
+            </div>
+            <div class="row">
+                <div class="col-xs-24">
+                    <div if={ !editing } onClick={ create } class="section__btn__plus">
+                        <div class="section__btn__plus__icon"></div>
+                        <span class="hidden-xs">Добавить место работы</span>
+                        <span class="visible-xs">Место работы</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.editing = null;
+
+    $.on("updated", function(){
+        $Sections.resume.edit.section.refresh();
+    });
+
+    $.sort = function(items){
+        return _.sortBy(items, function(item){
+			return $.get.year(item);
+		}).reverse();
+    };
+
+    $.get = {
+        year: function(item){
+            if (item.last){
+                return new Date().getFullYear();
+            }
+            else {
+                return item.to.year;
+            }
+        }
+    };
+
+    $.create = function(){
+        $.editing = _.newId();
+
+        $resume.select("jobs", "items").push(
+            {
+                _id: $.editing,
+                company: null,
+                city: null,
+                post: null,
+                from: {
+                    month: "1",
+                    year: "2000"
+                },
+                to: {
+                    month: "1",
+                    year: "2000"
+                },
+                text: null,
+                last: false
+            }
+        );
+    };
+
+    $.edit = function(){
+        if ($.editing){
+            $Alert.show({
+                title: "Вы не закончили редактирование",
+                subtitle: "Закончите пожалуйста"
+            });
+        }
+        else {
+            $.editing = this.item._id;
+        }
+    };
+
+    $.saved = function(){
+        if (!_.clean(this.item.post) || !_.clean(this.item.company)){
+            $Alert.show({
+                title: "Вы не заполнили поля",
+                subtitle: "Заполните пожалуйста"
+            });
+        }
+        else {
+            $.editing = null;
+            $.update();
+        }
+    };
+
+    $.close = function(){
+        if (!_.clean(this.item.post) && !_.clean(this.item.company)){
+            $.remove.call(this);
+        }
+        $.editing = null;
+    };
+
+    $.remove = function(){
+        $resume.select("jobs", "items", {_id: this.item._id}).unset();
+        $.editing = null;
+    };
+
+</script>
+
+</resume-screen-jobs>

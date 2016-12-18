@@ -1,0 +1,244 @@
+#t3 {
+    font-family:'HelveticaNeue', Arial, Helvetica, sans-serif;
+    font-size:20px;
+    line-height:26px;
+    color:#313232;
+    padding:0 0 80px 0;
+
+    .t-gray {
+        color:#989898 !important;
+    }
+    #t-header {
+        float:right;
+        position:relative;
+        min-width:54.2%;
+        height:257px;
+        text-align:left;
+        background-color:#f0f0f0;
+        background:-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f5f5f5), color-stop(100%, #f0f0f0));
+        background:-webkit-linear-gradient(#f5f5f5, #f0f0f0);
+        background:-moz-linear-gradient(#f5f5f5, #f0f0f0);
+        background:-o-linear-gradient(#f5f5f5, #f0f0f0);
+        background:linear-gradient(#f5f5f5, #f0f0f0);
+        margin-bottom:25px;
+        padding-right:60px;
+        white-space:nowrap;
+        box-sizing:border-box;
+
+        &:after {
+            clear:both;
+        }
+        &:after,
+        &:before {
+            display:table;
+            content:" ";
+        }
+    }
+    #t-header-names {
+        padding-top:88px;
+
+        .t-header-name:last-child {
+            margin-top:-0.23em;
+        }
+        .t-header-name.small {
+            font:102px/110px 'PFSquareLight';
+            letter-spacing:-4.7px;
+            text-transform:uppercase;
+        }
+        .t-header-name.big {
+            font:110px/110px 'NeoSansProMedium';
+            letter-spacing:-8px;
+            text-transform:uppercase;
+        }
+    }
+    #t-header-contacts {
+        position:absolute;
+        bottom:4px;
+        right:100%;
+        width:50%;
+        margin-right:22px;
+        text-align:right;
+        font:24px/32px 'FuturaB';
+    }
+    #t-header-phone {
+        margin-top:5px;
+    }
+    #t-container-string {
+        padding:20px 0 0 47%;
+        font:23px/30px 'NeoSansProRegular';
+        margin-bottom:25px;
+    }
+    .t-container-string-element {
+        margin-bottom:18px;
+    }
+    #t-container-post {
+        color:#646464;
+        font:44px/50px "NeoSansProMedium";
+        letter-spacing:-1.4px;
+        padding-left:47%;
+        padding-right:50px;
+        margin-bottom:41px;
+        text-align:left;
+    }
+    #t-container-salary {
+        color:#646464;
+        font:bold 35px/35px 'Roboto';
+        padding-right:50px;
+        margin-bottom:-10px;
+        text-align:right;
+        white-space:nowrap;
+    }
+    #t-container-salary sup {
+        display:inline-block;
+        color:#fff;
+        font:bold 16px/24px 'Roboto';
+        background-color:#02bdf3;
+        padding:0 9px;
+        height:24px;
+        border-radius:100px;
+        margin-left:5px;
+        transform:translateY(-5px);
+    }
+    .t-container {
+        position:relative;
+        margin:58px 0 58px 0;
+    }
+    .t-container.t-container-edu {
+        margin-top:27px;
+    }
+    .t-container-name {
+        position:absolute;
+        top:0;
+        left:0;
+        color:#646464;
+        font:24px/25px 'NeoSansProMedium';
+        letter-spacing:-0.2px;
+        padding-left:40px;
+        text-transform:uppercase;
+    }
+    .t-container-name i {
+        display:block;
+        position:absolute;
+        top:-8px;
+        left:0;
+        width:20px;
+        height:42px;
+        font-style:normal;
+        border-radius:0 4px 4px 0;
+    }
+    .t-container-edu .t-container-name i,
+    .t-container-edu .t-container-dates div {
+        background:#02bdf3;
+    }
+    .t-container-edu .t-container-desc-name {
+        margin-bottom:4px;
+    }
+    .t-container-lang .t-container-name i,
+    .t-container-lang .t-container-dates div {
+        background:#ed0089;
+    }
+    .t-container-lang .t-container-item {
+        margin-bottom:7px;
+    }
+    .t-container-lang .t-container-dates-title {
+        font-size:20px;
+        border-radius:4px 0 0 4px;
+    }
+    .t-container-lang .t-container-desc {
+        padding-top:0;
+    }
+    .t-container-lang .t-container-desc-title {
+        font:22px/26px 'NeoSansProRegular';
+        letter-spacing:0px;
+        text-transform:uppercase;
+        margin-bottom:0px;
+        padding-top:8px;
+    }
+    .t-container-job .t-container-name i,
+    .t-container-job .t-container-dates div {
+        background:#fdf200;
+        color:#313232;
+    }
+    .t-container-job .t-container-dates div {
+        padding:10px 10px 10px 14px;
+        border-radius:4px 0 0 4px;
+
+        &:first-child {
+            margin-bottom:-10px;
+        }
+        &:nth-child(3) {
+            padding-top:5px;
+        }
+    }
+    .t-container-job .t-container-desc-title {
+        color:#646464;
+        margin-bottom:2px;
+    }
+    .t-container-job .t-container-dates-name {
+        font:22px/24px 'HelveticaNeue';
+    }
+    .t-container-about .t-container-name i,
+    .t-container-about .t-container-dates div {
+        background:#000;
+        color:#fff;
+    }
+    .t-container-item {
+        display:table;
+        width:100%;
+        margin:0 0 22px 0;
+    }
+    .t-container-dates {
+        display:table-cell;
+        text-align:right;
+        padding-right:20px;
+        padding-left:100px;
+        vertical-align:top;
+    }
+    .t-container-dates div {
+        display:inline-block;
+        color:#fff;
+    }
+    .t-container-dates-year {
+        font:25px/25px 'FuturaB';
+        padding:8px 10px 9px 12px;
+        margin-bottom:-3px;
+        border-radius:4px 0 0 0;
+    }
+    .t-container-dates-title {
+        font:bold 21px/24px 'Avant';
+        padding:6px 10px 6px 10px;
+        text-transform:uppercase;
+    }
+    .t-container-dates-title.t-gray {
+        color:#444 !important;
+        background:#eaeaea !important;
+    }
+    .t-container-dates-name {
+        font:22px/22px 'NeoSansProRegular';
+        padding:11px 10px 9px 12px;
+        margin-top:-6px;
+        border-radius:4px 0 0 4px;
+    }
+    .t-container-desc {
+        display:table-cell;
+        width:53%;
+        text-align:left;
+        vertical-align:top;
+        padding:10px 50px 20px 0px;
+        box-sizing:border-box;
+    }
+    .t-container-desc-title {
+        font:23px/29px 'NeoSansProRegular';
+        letter-spacing:-0.2px;
+        margin-bottom:4px;
+    }
+    .t-container-desc-name {
+        font:22px/31px 'NeoSansProMedium';
+        text-transform:uppercase;
+        margin-top:8px;
+    }
+    .t-container-desc-text {
+        padding-top:5px;
+        line-height:28px;
+    }
+}

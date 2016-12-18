@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,300,500,700&subset=cyrillic-ext,latin');
+@import '../../assets/css/fonts/Futura/style';
+@import '../../assets/css/fonts/HelveticaNeue/style';
+
+.fontFamily-roboto {
+    font-family:$roboto;
+}
+.fontFamily-futura {
+    font-family:$futura;
+}
+.fontFamily-helvetica {
+    font-family:$helvetica;
+}
+.fontFamily-arial {
+    font-family:$arial;
+}

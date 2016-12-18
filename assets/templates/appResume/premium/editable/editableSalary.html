@@ -1,0 +1,110 @@
+<editable-salary class="col-sm-offset-4 col-sm-18 col-md-offset-5 col-md-14 col-lg-offset-7 col-lg-12 section__editable__container">
+
+    <ui-switcher id="activity" commit="true"></ui-switcher>
+
+    <div class="section__editable__content { hide : !switcher.value }">
+
+        <div class="title title-main">{ title }</div>
+
+        <div class="row">
+            <div class="col-xs-18 col-sm-12">
+                <ui-slider commit="autoCommitValue" size="xl" value={ salary.amount } min="5000" max="250000" step="1000" color="white"></ui-slider>
+            </div>
+            <div class="col-xs-6 col-sm-4">
+                <div class="select select-xl short">
+                    <select onChange={ autoCommit } name="currency">
+                        <option each={ item in $store.currency.get() } selected={ item._id == salary.currency } value={ item._id }>{ item.title }</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-24 col-sm-8 xs-mt-m">
+                <div class="select select-xl">
+                    <select onChange={ autoCommit } name="worktime">
+                        <option each={ item in $store.worktime.get() } selected={ item._id == salary.worktime } value={ item._id }>{ item.title }</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="section__editable__footer">
+        <button onClick={ onCancel } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper" type="button">Отменить</button>
+        <button onClick={ onSave } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper ml-xs" type="button">Сохранить</button>
+    </div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    $.switcher = $.tags["ui-switcher"];
+
+    this.on("before-mount", function(){
+        if (!$.slider) {
+            $.slider = $.tags["ui-slider"];
+        }
+    });
+
+    $.init = function(data){
+        $.switcher.value = data.active;
+
+        if (!data.salary){
+            $.salary = {
+                amount: "50000",
+                currency: "1",
+                worktime: "1"
+            }
+            if (app.device.isPhone){
+                setTimeout(function(){
+                    $.slider.input.focus();
+                }, 100);
+            }
+        }
+        else {
+            $.salary = data.salary;
+        }
+
+        $.update({
+            active: data.active,
+            title: data.title,
+            data: _.copyArray($.salary),
+            callback: data.callback ? data.callback : null
+        });
+
+        $.slider.change($.salary.amount);
+    };
+
+    $.autoCommit = function(e){
+        $.data[e.target.getAttribute("name")] = e.target.value;
+    };
+
+    $.autoCommitValue = function(value){
+        if ($.data && $.data.amount) $.data.amount = value;
+    };
+
+    $.onCancel = function(){
+        if ($.callback) $.callback($.active, $.salary);
+        $.slider.value = $.salary.amount;
+        $["currency"].value = $.salary.currency;
+        $["worktime"].value = $.salary.worktime;
+        $.hide();
+    };
+
+    $.onSave = function(){
+        if ($.callback) {
+            if (app.device.isPhone){
+                $.data.amount = $.slider.value;
+            }
+            $.callback($.switcher.value, $.data);
+        }
+        $.hide();
+    };
+
+    $.hide = function(){
+        $Editable.hide();
+    };
+
+</script>
+
+</editable-salary>

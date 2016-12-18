@@ -1,0 +1,191 @@
+#t1 {
+    font-family:'HelveticaNeue', Arial, Helvetica, sans-serif;
+    font-size:20px;
+    line-height:26px;
+    color:#313232;
+    padding:0 49px 80px 0;
+
+    .t-gray {
+        color:#989898 !important;
+    }
+    #t-header {
+        padding:70px 15px 0 64px;
+        text-align:right;
+    }
+    #t-header-city {
+        color:#494949;
+        font-size:26px;
+        padding-right:4px;
+    }
+    #t-header-names {
+        margin-bottom:25px;
+    }
+    #t-header-names .short {
+        letter-spacing:-6.7px;
+    }
+    #t-header-surname {
+        font:144px/112px 'LynoCyr';
+        text-transform:uppercase;
+        margin-right:-4px;
+    }
+    #t-header-name {
+        font:144px/112px 'LynoCyr';
+        text-transform:uppercase;
+        margin-right:-4px;
+    }
+    #t-header-string {
+        font-size:26px;
+        margin:0 -20px 9px 0;
+    }
+    .t-header-string-element {
+        display:inline-block;
+        margin-right:20px;
+    }
+    .t-header-salary {
+        color:#00aeef;
+        font:bold 26px/20px 'Roboto';
+        white-space:nowrap;
+    }
+    .t-header-salary sup {
+        display:inline-block;
+        color:#fff;
+        font:bold 16px/24px 'Roboto';
+        background-color:#00aeef;
+        padding:0 9px;
+        height:24px;
+        border-radius:100px;
+        margin-left:5px;
+    }
+    #t-header-post {
+        color:#666666;
+        font:53px/53px 'LynoCyr';
+        text-transform:uppercase;
+        margin:0 0 6px 0;
+    }
+    #t-container-wrapper {
+        position:relative;
+        width:100%;
+        overflow:hidden;
+    }
+    #t-container-colors {
+        position:absolute;
+        top:0;
+        left:0;
+        width:15px;
+        height:100%;
+        min-height:1200px;
+    }
+    .t-container-colors-item {
+        width:15px;
+        height:16.66%;
+    }
+    .t-container-colors-item#t-color1 {
+        background:#c9e9e5;
+    }
+    .t-container-colors-item#t-color2 {
+        background:#cdeeaa;
+    }
+    .t-container-colors-item#t-color3 {
+        background:#f9f0a8;
+    }
+    .t-container-colors-item#t-color4 {
+        background:#e0cfdf;
+    }
+    .t-container-colors-item#t-color5 {
+        background:#faced2;
+    }
+    .t-container-colors-item#t-color6 {
+        background:#bcd8f0;
+    }
+    .t-container {
+        position:relative;
+        line-height:28px;
+        margin:68px 0 68px 110px;
+    }
+    .t-container.t-container-edu {
+        margin-top:22px;
+    }
+    .t-container-edu .t-container-desc-title {
+        margin-bottom:2px;
+    }
+    .t-container-name {
+        position:absolute;
+        top:0;
+        left:0;
+        color:#989898;
+        font:bold 23px/25px 'Avant';
+        text-transform:uppercase;
+    }
+    .t-container-item {
+        display:table;
+        width:100%;
+        margin-bottom:25px;
+    }
+    .t-container-job .t-container-item {
+        margin-bottom:31px;
+    }
+    .t-container-dates {
+        display:table-cell;
+        text-align:right;
+        padding-right:22px;
+        vertical-align:top;
+    }
+    .t-container-desc {
+        display:table-cell;
+        width:54%;
+        text-align:left;
+        vertical-align:top;
+        white-space:pre-line;
+        transform:translateY(-1px);
+    }
+    .t-container-desc-title {
+        font:23px/25px 'PFDin';
+        text-transform:uppercase;
+    }
+    .t-container-desc-name {
+        color:#666666;
+        font-size:22px;
+    }
+    .t-container-dates-company {
+        font:26px/26px 'PFDin';
+        text-transform:uppercase;
+    }
+    .t-container-dates-company span {
+        display:inline-block;
+        text-align:right;
+        width:260px;
+    }
+    .t-container-dates-city {
+        margin-bottom:7px;
+    }
+    .t-container-dates-period {
+        color:#444;
+        font:23px/25px 'PFDin';
+        text-transform:uppercase;
+    }
+    .t-container-dates-length {
+        margin-bottom:7px;
+    }
+    .t-container-dates-post {
+        color:#00aeef;
+        font:bold 22px/27px 'Avant';
+        text-transform:uppercase;
+    }
+    .t-container-dates-year {
+        font:28px/24px 'PFDin';
+        text-transform:uppercase;
+        margin-bottom:5px;
+    }
+    .t-container-dates-title {
+        font:26px/24px 'PFDin';
+        text-transform:uppercase;
+    }
+    .t-container-dates-about {
+        color:#ed008c;
+        font:bold 23px/25px 'Avant';
+        text-transform:uppercase;
+    }
+    .t-container-about {
+        margin-top:78px;
+    }
+}

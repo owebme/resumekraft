@@ -1,0 +1,89 @@
+.info {
+    @extend .display-block;
+    @extend .pos-fixed;
+    @extend .zIndex-10;
+
+    &-opener {
+        @include accelerate();
+        @extend .pos-abs;
+        @extend .t-l;
+        @extend .l-l;
+        @extend .w60;
+        @extend .h60;
+        @extend .userSelect-none;
+        @extend .flex-centered;
+        @extend .cursor-pointer;
+        @extend .btn-active;
+        @extend .bg-blackLight;
+        @extend .borderRadius-circle;
+        @extend .transition-default;
+        @extend .boxShadow-default;
+
+        &-icon {
+            @extend .display-block;
+            width:29px;
+            height:29px;
+
+            &-color {
+                @extend .fill-white;
+                @extend .transition-default;
+            }
+        }
+        &:hover {
+            @extend .bg-white;
+
+            .info-opener-icon-color {
+                @extend .fill-primary;
+            }
+        }
+    }
+    &-wrapper {
+        @include accelerate();
+        @extend .pos-abs;
+        @extend .t-m;
+        @extend .l-l;
+        @extend .fontFamily-helvetica;
+        @extend .fontSize-16;
+        @extend .c-steel;
+        border-radius:15px;
+        @extend .bg-white;
+        @extend .boxShadow-30;
+        transition:transform .4s $cubic40, opacity .4s $cubic40;
+        @extend .ptb-m;
+        @extend .pl30;
+        @extend .pr30;
+        @extend .pointerEvents-none;
+        @extend .scale-0;
+        width:330px;
+
+        #app[data-font="gotham"] &,
+        #app[data-font="myriad"] & {
+            @extend .pt-m;
+        }
+    }
+    &-name {
+        @extend .c-primary;
+        @extend .f-primary;
+        @extend .fontSize-20;
+        @extend .fontWeight-bold;
+    }
+    &-salary {
+        @extend .fontFamily-helvetica;
+        @extend .nowrap;
+    }
+    &-phone {
+        @extend .fontSize-18;
+        @extend .fontWeight-bold;
+    }
+    &-city {
+        @extend .fontSize-16;
+        @extend .fontWeight-normal;
+    }
+    &-close {
+        @extend .pos-abs;
+        @extend .t-xs;
+        @extend .r-xs;
+        @extend .btn-active;
+        @include ui-icon(close_fill_gray, 25px, 25px);
+    }
+}

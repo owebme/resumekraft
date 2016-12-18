@@ -1,0 +1,6 @@
+http://coding.dp.ua/php/2395-ne-rabotaet-yandeks-pogoda-cherez-xml.html
+
+https://api.weather.yandex.ru/v1/forecast?geoid=2&lang=ru
+https://export.yandex.ru/bar/reginfo.xml?region=1.xml
+https://export.yandex.ru/bar/reginfo.xml
+https://yandex.ru/yaca/geo.c2n - коды городов

@@ -1,0 +1,132 @@
+<resume-edit-content>
+
+    <resume-screens></resume-screens>
+
+    <resume-control-percentage></resume-control-percentage>
+
+    <resume-control-step></resume-control-step>
+
+    <resume-control-buttons></resume-control-buttons>
+
+    <resume-control-menu></resume-control-menu>
+
+    <share-button pos="bottom-right"></share-button>
+
+    <resume-preview></resume-preview>
+
+    <resume-photo-upload></resume-photo-upload>
+
+    <resume-convert-pdf></resume-convert-pdf>
+
+    <resume-edit-finish></resume-edit-finish>
+
+<script>
+
+    var $ = this;
+
+    $.on("before-mount", function(){
+
+        $.scope = $.opts.scope;
+        $.scroll = $.opts.scroll;
+        $.content = $.opts.content;
+
+        $.sections = {
+            screens: $.tags["resume-screens"],
+            menu: $.tags["resume-control-menu"],
+            steps: $.tags["resume-control-step"],
+            buttons: $.tags["resume-control-buttons"],
+            percentage: $.tags["resume-control-percentage"],
+            preview: $.tags["resume-preview"],
+            photo: $.tags["resume-photo-upload"],
+            pdf: $.tags["resume-convert-pdf"],
+            finish: $.tags["resume-edit-finish"],
+            shareButton: $.tags["share-button"]
+        };
+    });
+
+    $.on("mount", function(){
+
+        $$($.sections.shareButton.root).on("mouseenter mouseleave", function(e){
+            if (e.type === "mouseenter"){
+                $.scope.root.setAttribute("data-overlay", "true");
+            }
+            else {
+                $.scope.root.setAttribute("data-overlay", "false");
+            }
+        });
+    });
+
+    $.refresh = function(){
+        $.screens.refresh();
+        $.sections.steps.refresh();
+    };
+
+    $.open = {
+        menu: function(){
+            $.sections.menu.show();
+        },
+        preview: function(){
+            $.sections.preview.show();
+        },
+        photoUpload: function(){
+            $.sections.photo.show(function(image){
+                $resume.select("photo").set(image);
+                $.sections.preview.template.update();
+            });
+        },
+        design: {
+            basic: function(){
+                $Sections.resume.select.show("basic");
+            },
+            premium: function(){
+                $Sections.resume.select.show("premium");
+            }
+        },
+        print: function(){
+
+        }
+    };
+
+    $.get = {
+        pdf: function(){
+
+            $.sections.pdf.show();
+
+            var photo = $resume.get("photo");
+
+            app.request('addResumeConvertPdf', {
+                id: $resume.get("_id"),
+                plan: $resume.get("plan"),
+                template: $resume.get("template"),
+                photo: photo.match(/^data:image\/jpeg;base64,/) ? photo : null,
+                content: $.sections.preview.get.content()
+            })
+            .then(function(data){
+                if (data && data.pdf){
+                    var oReq = new XMLHttpRequest();
+                    oReq.open("GET", data.pdf, true);
+                    oReq.responseType = "arraybuffer";
+                    oReq.onload = function() {
+                        var response = this.response;
+
+                        $.sections.pdf.hide(function(){
+                            if (data.photo){
+                                $resume.select("photo").set(data.photo);
+                            }
+                            var file = new Blob([response], {type: "application/pdf"});
+                            saveAs(file, "example.pdf");
+                        });
+                    };
+                    oReq.send();
+                }
+            });
+        }
+    };
+
+    $.on("unmount", function(){
+        $.screens.destroy();
+    });
+
+</script>
+
+</resume-edit-content>

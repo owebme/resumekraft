@@ -1,0 +1,73 @@
+.home__header {
+    @extend .pos-rel;
+    height:105vh;
+    @extend .text-center;
+    @extend .c-white;
+    @extend .overflow-hidden;
+
+    &__video {
+        @extend .pos-tl;
+        @extend .minWH-100p;
+        transform:scale(1.34);
+
+        .d-mobile & {
+            left:50%;
+            transform:translateX(-50%) scale(1.2);
+        }
+    }
+    &:after {
+        @extend .content-empty;
+        @include abs();
+        background-color:rgba($blue,.85);
+    }
+    &__text {
+        @include accelerate();
+        @extend .pos-rel;
+        padding-top:29.6vh;
+        @extend .zIndex-2;
+
+        .d-tablet & {
+            padding-top:27.6vh;
+        }
+        .d-phone & {
+            padding-top:30px;
+            @extend .pos-centered;
+        }
+    }
+    &__title {
+        @extend .fontSize-72;
+        @extend .fontWeight-8;
+        @extend .mb-l;
+        @extend .textShadow-light;
+        letter-spacing:-0.04em;
+
+        .d-tablet.r-landscape & {
+            @extend .letterSpacing--xxxl;
+            margin-left:-10px;
+            margin-right:-10px;
+        }
+        .d-phone & {
+            font-size:66px;
+            line-height:66px;
+            margin-left:0;
+        }
+    }
+    &__subtitle {
+        font-size:30px;
+        line-height:1.3;
+        letter-spacing:-1.4px;
+        @extend .mb-l;
+    }
+    .btn-white-hover {
+        // .d-phone & {
+        //     @extend .c-lime;
+        //     box-shadow:inset 0 0 0 2px $lime;
+        // }
+        .d-phone &,
+        &:hover {
+            @extend .bg-lime;
+            @extend .c-blackLight;
+            box-shadow:none;
+        }
+    }
+}

@@ -1,0 +1,49 @@
+<jqtest-result-finish class="screen" data-screen="finish">
+
+    <div class="container ptb-xl">
+        <div class="row pb-l mb-m">
+            <div class="col-md-10 flex-centered anim-scroll anim anim-scale">
+                <div class="ui-icon-hand_cursor_white" style="width:144px; height:144px; transform:scale3d(1.05, 1, 1)"></div>
+            </div>
+            <div class="col-md-14 xsm-pt-l text-center-sm anim-scroll anim anim-rl">
+                <div class="fontFamily-gotham fontWeight-8 fontSize-34 lineHeight-xxxxl pr-l xsm-pr0">Релевантность результатов теста 100% зависит от искренности ваших ответов.</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="visible-lg col-lg-8 button__cell anim-scroll anim anim-bt" data-delay="xs" data-delta="xs">
+                <div class="button button__print">
+                    <div class="button__icon">
+                        <icon-print size="xl"></icon-print>
+                    </div>
+                    <div class="button__text">Распечатать</div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-8 button__cell anim-scroll anim anim-bt" data-delay="s" data-delta="xs">
+                <div onClick={ open.payment } class="button button__repeat">
+                    <div class="button__text">Пройти тест повторно</div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-8 button__cell anim-scroll anim anim-bt" data-delay="m" data-delta="xs">
+                <div class="button button__pdf">
+                    <div class="button__icon">
+                        <icon-pdf size="xl"></icon-pdf>
+                    </div>
+                    <div class="button__text">Сохранить в PDF</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.open = {
+        payment: function(){
+            $Sections.payment.section.show("premium");
+        }
+    };
+
+</script>
+
+</jqtest-result-finish>

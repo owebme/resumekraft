@@ -1,0 +1,22 @@
+.resumeBasic {
+    .select-xl {
+        select {
+            color:$black;
+            font-size:22px;
+            @extend .letterSpacing--s;
+            @extend .fontFamily-proxima;
+            @extend .fontWeight-normal;
+            padding-right:45px;
+        }
+        &[update="currency"].short select {
+            font-size:27px;
+
+            .d-mobile & {
+                @extend .fontFamily-roboto;
+            }
+        }
+        &.short select {
+            padding-right:40px;
+        }
+    }
+}

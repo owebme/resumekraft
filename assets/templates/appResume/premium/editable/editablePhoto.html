@@ -1,0 +1,115 @@
+<editable-photo class="col-sm-offset-0 col-sm-24 col-md-offset-1 col-md-22 col-lg-offset-4 col-lg-20 section__editable__container" data-editing="photo" data-uploaded="{ uploaded }">
+
+    <div if={ !uploaded } onClick={ hide } class="section__editable__close visible-sm visible-xs"></div>
+
+    <div class="title title-main" if={ uploaded && title }>{ title }</div>
+
+    <div class="row image-editor">
+        <div class="{ uploaded ? 'col-xs-24 col-sm-15 col-md-13 col-lg-12' : 'col-md-24 col-lg-20 pt-l xs-pt0 text-center' }">
+            <div class="editable__photo cropit-preview { editable__photo--empty : !uploaded }">
+                <input name="upload" type="file" class="editable__photo__input cropit-image-input { display-none : uploaded }">
+                <div if={ app.device.isMobile } class="editable__photo__text">{ $resume.photo ? 'Сменить фото' : 'Выбрать файл' }</div>
+                <div if={ !app.device.isMobile } class="editable__photo__text">
+                    Выберите файл
+                    <div class="editable__photo__text__or">или</div>
+                    перетащите его сюда
+                </div>
+            </div>
+        </div>
+        <div class="editable__photo__control col-xs-24 col-sm-9 col-md-10 col-lg-10 { display-none : !uploaded }">
+            <div class="pl-s pt-l sm-pl-m xs-p0">
+                <button class="btn btn-m btn-upper btn-uploadImage mb-l hidden-xs">Другой файл...</button>
+                <div class="c-white fontSize-24 fontFamily-futura mb-m">Масштабирование</div>
+                <div class="mb-l">
+                    <input type="range" class="editable__photo__slider cropit-image-zoom-input">
+                </div>
+                <div>
+                    <button onClick={ onCancel } class="btn btn-l btn-upper sm-mb-m" type="button">Отменить</button>
+                    <button onClick={ onSave } class="btn btn-l btn-upper ml-xs sm-ml0 { btn-loading : saved }" type="button">Сохранить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    $.on("mount", function(){
+        if ($.imageEditor) return;
+
+        $.imageEditor = $scope.find('.image-editor');
+
+        $.imageEditor.cropit({
+            maxHeight: $store.resume.config.photo.maxHeight,
+            onSmallImage: function(size){
+                alert($store.resume.config.photo.alertSmallImage);
+                $.upload.value = "";
+            },
+            onImageLoaded: function(){
+                if (!$.uploaded){
+                    $.update({
+                        uploaded: true
+                    });
+                }
+                $.upload.value = "";
+            }
+        });
+
+        $scope.find('.btn-uploadImage').on("click", function(){
+            $$($.upload).trigger("click");
+        });
+    });
+
+    $.init = function(data){
+
+        $.update({
+            uploaded: false,
+            title: data.title,
+            callback: data.callback ? data.callback : null
+        });
+
+        if (!app.device.isPhone){
+            $scope.on("click", function(e){
+                if ($.uploaded) $scope.off("click");
+                else if (e.target.tagName.toLowerCase() != "input"){
+                    $.hide();
+                }
+            });
+        }
+    };
+
+    $.onCancel = function(){
+        $.hide();
+    };
+
+    $.onSave = function(){
+        if ($.saved) return;
+
+        $.saved = true;
+
+        var imageData = $.imageEditor.cropit(
+            'export',
+            $store.resume.config.photo.export
+        );
+
+        setTimeout(function(){
+            $.update({
+                saved: false
+            })
+            $.hide();
+        }, 300);
+
+        $.callback(imageData);
+    };
+
+    $.hide = function(){
+        $scope.off("click");
+        $.upload.value = "";
+        $Editable.hide();
+    };
+
+</script>
+
+</editable-photo>

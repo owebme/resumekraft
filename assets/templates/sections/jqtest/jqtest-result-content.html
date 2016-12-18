@@ -1,0 +1,99 @@
+<jqtest-result-content>
+
+    <jqtest-result-columns if={ !app.device.isPhone }></jqtest-result-columns>
+
+    <jqtest-result-orientation if={ !app.device.isPhone }></jqtest-result-orientation>
+
+    <jqtest-result-skills-mobile if={ app.device.isPhone }></jqtest-result-skills-mobile>
+
+    <jqtest-result-orientation-mobile if={ app.device.isPhone }></jqtest-result-orientation-mobile>
+
+    <jqtest-result-stimulus></jqtest-result-stimulus>
+
+    <jqtest-result-humps if={ !app.device.isMobile }></jqtest-result-humps>
+
+    <jqtest-result-graph></jqtest-result-graph>
+
+    <jqtest-result-specialties></jqtest-result-specialties>
+
+    <jqtest-result-notengage></jqtest-result-notengage>
+
+    <jqtest-result-strengths></jqtest-result-strengths>
+
+    <jqtest-result-weaksides></jqtest-result-weaksides>
+
+    <jqtest-result-development></jqtest-result-development>
+
+    <jqtest-result-personality></jqtest-result-personality>
+
+    <!--<jqtest-result-finish></jqtest-result-finish> -->
+
+<script>
+
+    var $ = this;
+
+    $.on("before-mount", function(){
+
+        $.scope = $.opts.scope;
+        $.scroll = $.opts.scroll;
+        $.content = $.opts.content;
+
+        $.sections = {
+            columns: $.tags["jqtest-result-columns"],
+            orientation: $.tags["jqtest-result-orientation"],
+            stimulus: $.tags["jqtest-result-stimulus"],
+            humps: $.tags["jqtest-result-humps"],
+            graph: $.tags["jqtest-result-graph"],
+            specialties: $.tags["jqtest-result-specialties"],
+            notengage: $.tags["jqtest-result-notengage"]
+        };
+    });
+
+    $.on("mount", function(){
+
+        if (!app.device.isPhone){
+
+            $.scrollAnimate = new app.plugins.scroll.animate({
+                scroll: $.scroll,
+                container: $.scope,
+                elems: ".anim-scroll",
+                delta: "s",
+                scenario: [
+                    {
+                        elem: ".humps",
+                        callback: function(elem){
+                            elem.addClass("showHumps");
+                        }
+                    },
+                    {
+                        elem: ".graph",
+                        callback: function(elem){
+                            elem.addClass("showGraph");
+                        }
+                    }
+                ]
+            });
+        }
+
+        $.scrollFix = new app.plugins.scroll.fix({
+            scroll: $.scroll,
+            container: $.content
+        });
+
+        $.scrollFix.init();
+    });
+
+    $.get = {
+        text: function(tag, text){
+            tag.root.innerHTML = text.replace(/\[b\]/, '<span class="larger">').replace(/\[\/b\]/, '</span>').replace(/\[i\]/, '<span class="marker">').replace(/\[\/i\]/, '</span>');
+        }
+    };
+
+    $.on("unmount", function(){
+        if ($.scrollAnimate) $.scrollAnimate.destroy();
+        $.scrollFix.destroy();
+    });
+
+</script>
+
+</jqtest-result-content>

@@ -1,0 +1,81 @@
+<resume-edit class="oScreen__section resumeBasic zIndex-2" data-open={ active } data-loader={ loading } data-show="down" data-overlay="false">
+
+    <div name="scroll" class="oScreen__section__content overflow-hidden bg-blackDark">
+
+        <div class="section__overlay"></div>
+
+        <div class="oScreen__section__buttons" data-pos="top-right">
+            <div onClick={ close } onUpdate="none" class="button__close"></div>
+        </div>
+
+        <oScreen-loader></oScreen-loader>
+
+        <div name="content" class="oScreen__section__content__fadeIn"></div>
+
+    </div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    $.active = false;
+
+    $.loading = false;
+
+    $.scroll = $$($["scroll"]);
+
+    $.on("before-mount", function(){
+        $.loader = $.tags["oscreen-loader"];
+    });
+
+    $.on("mount", function(){
+        // setTimeout(function(){
+        //     $.show();
+        // }, 500);
+    });
+
+    $.show = function(){
+        if ($.loading || $.active) return;
+
+        $resume = $store.resume;
+
+        $.loader.show(
+            {
+                scope: $.scroll,
+                content: $.content,
+                start: function(){
+                    $.scroll[0].style.backgroundColor = '#ffffff';
+                },
+                tag: function(){
+                    return $.section = riot.mount($.content, "resume-edit-content", {
+                        scope: $,
+                        scroll: $.scroll,
+                        content: $.content
+                    })[0];
+                },
+                callback: function(){
+                    $.scroll[0].style.backgroundColor = '';
+                    $root.focus("resume-edit");
+                }
+            }
+        );
+    };
+
+    $.close = function(){
+        $.section.sections.finish.show();
+    };
+
+    $.hide = function(){
+        $.update({
+            active: false
+        })
+        _.onEndTransition($.scroll[0], function(){
+            $.section.unmount(true);
+            $root.focus("resume-list");
+        });
+    };
+
+</script>
+
+</resume-edit>

@@ -1,0 +1,150 @@
+<resume-basic-template5 id="t5">
+
+	<div id="t-header">
+		<div id="t-header-names">
+			<div if={ $resume.get('name').length > $resume.get('surname').length }>
+				<div id="t-header-surname" class="t-header-name bold">{ $resume.get('surname') }</div>
+				<div id="t-header-name" class="t-header-name">{ $resume.get('name') }</div>
+			</div>
+			<div if={ $resume.get("surname").length > $resume.get("name").length }>
+				<div id="t-header-name" class="t-header-name bold">{ $resume.get('name') }</div>
+				<div id="t-header-surname" class="t-header-name">{ $resume.get('surname') }</div>
+			</div>
+		</div>
+		<div id="t-header-string">
+			<div class="t-header-string-left">
+				<div if={ $resume.get('salary', 'active') && $resume.get('salary', 'amount') } class="t-header-string-element t-header-string-salary">{ $resume.take.salary.amount() } { $resume.take.salary.currency() } <sup>{ $resume.take.salary.worktime() }</sup></div>
+				<div class="t-header-string-element"><span>Возраст:</span> <virtual if={ !$resume.get('birthday', 'hidden') }>{ $resume.take.birthday.date() }&nbsp;</virtual>({ $resume.take.birthday.age() })</div>
+				<div if={ $resume.get('contacts', 'city') } class="t-header-string-element"><span>Город:</span> { $resume.get('contacts', 'city') }</div>
+				<div if={ $resume.get('contacts', 'skype') } class="t-header-string-element"><span>Skype:</span> { $resume.get('contacts', 'skype') }</div>
+			</div>
+			<div class="t-header-string-right">
+				<div if={ $resume.get('contacts', 'phone') } class="t-header-string-element"><span>Телефон:</span> { $resume.get('contacts', 'phone') }</div>
+				<div if={ $resume.get('contacts', 'email') } class="t-header-string-element"><span>Email:</span> { $resume.get('contacts', 'email') }</div>
+			</div>
+		</div>
+		<div if={ $resume.get('post').length } id="t-header-post">{ $resume.get('post') }</div>
+	</div>
+	<div id="t-container-wrapper">
+		<div if={ $resume.get('education', 'items').length } class="t-container t-container-edu">
+			<div class="t-container-name">Образование</div>
+			<virtual each={ edu, i in $resume.take.education.items() }>
+				<div if={ edu.level != 8 } class="t-container-item">
+					<div class="t-container-title"><span>{ edu.faculty }</span> &nbsp; { edu.year }, { $store.education.getTitleById(edu.level) }</div>
+					<div class="t-container-desc">
+						<div class="t-container-desc-title">{ edu.title }</div>
+						<div if={ edu.speciality } class="t-container-desc-title speciality"><span>Специальность</span> &ndash; { edu.speciality }</div>
+					</div>
+				</div>
+				<div if={ edu.level == 8 } class="t-container-item">
+					<div class="t-container-title"><span>{ edu.title }</span> &nbsp; { edu.year }, { $store.education.getTitleById(edu.level) }</div>
+				</div>
+			</virtual>
+		</div>
+		<div class="t-container t-container-lang">
+			<div class="t-container-name">Языки</div>
+			<div each={ lang, i in $resume.get('languages', 'items') } class="t-container-item">
+				<div if={ lang.title == "native" } class="t-container-title">
+					<span>{ $store.languages.getTitleById(lang.title) }</span>
+					{ $store.languages.native.getTitleById(lang.value) }
+				</div>
+				<div if={ lang.title != "native" } class="t-container-title { 't-gray' : lang.value == '1' }">
+					<span>{ $store.languages.getTitleById(lang.title) }</span>
+					{ $store.languages.select.getTitleById(lang.value) }
+				</div>
+			</div>
+		</div>
+		<div if={ $resume.get('jobs', 'items').length } class="t-container t-container-job">
+			<div class="t-container-name">Место работы</div>
+			<div each={ job, i in $resume.take.jobs.items() } class="t-container-item">
+				<div class="t-container-year">
+					<div class="t-container-job-cell t-container-job-cell-left">
+						{ $store.month.getTitleById(job.from.month) } { job.from.year } —
+						<span if={ job.last }>по настоящее время</span>
+						<span if={ !job.last }>{ $store.month.getTitleById(job.to.month) } { job.to.year }</span>
+					</div>
+					<div class="t-container-job-cell t-container-job-cell-line">
+						<div class="t-container-job-line"><i></i></div>
+					</div>
+					<div class="t-container-job-cell t-container-job-cell-right">
+						<div class="t-container-length">{ $resume.take.jobs.period(job, true) }</div>
+					</div>
+				</div>
+				<div class="t-container-title"><span>{ job.company }</span>&nbsp; — &nbsp;{ job.city }</div>
+				<div class="t-container-post">{ job.post }</div>
+				<div class="t-container-desc">
+					<div class="t-container-desc-text">
+						{ job.text }
+					</div>
+				</div>
+			</div>
+		</div>
+		<div if={ $resume.get('aboutText').length } class="t-container t-container-about">
+			<div class="t-container-name">Достижения, о себе</div>
+			<div class="t-container-item">
+				<div class="t-container-desc">
+					<div class="t-container-desc-text">
+						{ $resume.get('aboutText') }
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<style>
+
+@font-face {
+  font-family: 'HypatiaLight';
+  src: url('/assets/css/appResume/basic/templates/template5/fonts/HypatiaSansPro-Light.eot'); /* IE9 Compat Modes */
+  src: url('/assets/css/appResume/basic/templates/template5/fonts/HypatiaSansPro-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/assets/css/appResume/basic/templates/template5/fonts/HypatiaSansPro-Light.woff2') format('woff2'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template5/fonts/HypatiaSansPro-Light.woff') format('woff'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template5/fonts/HypatiaSansPro-Light.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/assets/css/appResume/basic/templates/template5/fonts/HypatiaSansPro-Light.svg') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'HypatiaRegular';
+  src: url('/assets/css/appResume/basic/templates/template5/fonts/HypatiaSansPro-Regular.eot'); /* IE9 Compat Modes */
+  src: url('/assets/css/appResume/basic/templates/template5/fonts/HypatiaSansPro-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/assets/css/appResume/basic/templates/template5/fonts/HypatiaSansPro-Regular.woff2') format('woff2'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template5/fonts/HypatiaSansPro-Regular.woff') format('woff'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template5/fonts/HypatiaSansPro-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/assets/css/appResume/basic/templates/template5/fonts/HypatiaSansPro-Regular.svg') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'HypatiaSemibold';
+  src: url('/assets/css/appResume/basic/templates/template5/fonts/HypatiaSansPro-Semibold.eot'); /* IE9 Compat Modes */
+  src: url('/assets/css/appResume/basic/templates/template5/fonts/HypatiaSansPro-Semibold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/assets/css/appResume/basic/templates/template5/fonts/HypatiaSansPro-Semibold.woff2') format('woff2'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template5/fonts/HypatiaSansPro-Semibold.woff') format('woff'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template5/fonts/HypatiaSansPro-Semibold.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/assets/css/appResume/basic/templates/template5/fonts/HypatiaSansPro-Semibold.svg') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'MyriadThin';
+  font-style: normal;
+  font-weight: 200;
+  src: url("/assets/css/appResume/basic/templates/template5/fonts/myriad-set-pro_text.eot?") format("eot"), url("/assets/css/appResume/basic/templates/template5/fonts/myriad-set-pro_thin.woff") format("woff"), url("/assets/css/appResume/basic/templates/template5/fonts/myriad-set-pro_thin.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'MyriadRegular';
+  font-style: normal;
+  font-weight: 400;
+  src: url("/assets/css/appResume/basic/templates/template5/fonts/myriad-set-pro_text.eot?") format("eot"), url("/assets/css/appResume/basic/templates/template5/fonts/myriad-set-pro_text.woff") format("woff"), url("/assets/css/appResume/basic/templates/template5/fonts/myriad-set-pro_text.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'MyriadSemibold';
+  font-style: normal;
+  font-weight: 600;
+  src: url("/assets/css/appResume/basic/templates/template5/fonts/myriad-set-pro_text.eot?") format("eot"), url("/assets/css/appResume/basic/templates/template5/fonts/myriad-set-pro_semibold.woff") format("woff"), url("/assets/css/appResume/basic/templates/template5/fonts/myriad-set-pro_semibold.ttf") format("truetype");
+}
+
+</style>
+
+</resume-basic-template5>

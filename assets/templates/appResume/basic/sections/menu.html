@@ -1,0 +1,80 @@
+<resume-control-menu class="section__menu bg-blue zIndex-2" data-pos="right" data-color="white" data-open={ active }>
+
+    <div onClick={ hide } onUpdate="none" class="button__close" data-color="white"></div>
+
+    <div class="section__menu__title">Меню</div>
+
+    <div onClick={ parent.open.preview } onUpdate="none" class="section__menu__item">
+        <div class="section__menu__item__icon">
+            <icon-glass size="l" color="white"></icon-glass>
+        </div>
+        <div class="section__menu__item__title">Предпросмотр</div>
+    </div>
+    <div onClick={ parent.open.photoUpload } onUpdate="none" class="section__menu__item">
+        <div class="section__menu__item__icon">
+            <icon-camera size="l" color="white"></icon-camera>
+        </div>
+        <div class="section__menu__item__title">Загрузить фото</div>
+    </div>
+    <div onClick={ parent.open.design.basic } onUpdate="none" class="section__menu__item">
+        <div class="section__menu__item__icon">
+            <icon-design size="l" color="white"></icon-design>
+        </div>
+        <div class="section__menu__item__title">Выбор шаблона</div>
+    </div>
+    <div onClick={ parent.get.pdf } onUpdate="none" class="section__menu__item">
+        <div class="section__menu__item__icon">
+            <icon-pdf size="l" color="white"></icon-pdf>
+        </div>
+        <div class="section__menu__item__title">Сохранить в PDF</div>
+    </div>
+    <div class="section__menu__item">
+        <div class="section__menu__item__icon">
+            <icon-crown size="l" color="white"></icon-crown>
+        </div>
+        <div class="section__menu__item__title">Premium резюме</div>
+    </div>
+    <div class="section__menu__item">
+        <div class="section__menu__item__icon">
+            <icon-feedback size="l" color="white"></icon-feedback>
+        </div>
+        <div class="section__menu__item__title">Отправить на почту</div>
+    </div>
+    <div class="section__menu__item">
+        <div class="section__menu__item__icon">
+            <icon-share size="l" color="white"></icon-share>
+        </div>
+        <div class="section__menu__item__title">Поделиться резюме</div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.active = false;
+
+    // $.on("mount", function(){
+    //     $.show();
+    // });
+
+    $.show = function(){
+
+        $.parent.sections.screens.hide();
+
+        $.update({
+            active: true
+        })
+    };
+
+    $.hide = function(){
+
+        $.parent.sections.screens.show();
+
+        $.update({
+            active: false
+        })
+    };
+
+</script>
+
+</resume-control-menu>

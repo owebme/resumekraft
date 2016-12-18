@@ -1,0 +1,63 @@
+.control__sections {
+    @extend .display-block;
+    @include accelerate();
+    @extend .cursor-pointer;
+    @extend .bg-white;
+    @extend .borderRadius-circle;
+    @extend .boxShadow-default;
+    @extend .userSelect-none;
+    will-change:transform;
+    transform:translate3d(0, 0, 0) scale(0);
+    transition:transform .2s $cubic215;
+    position:fixed;
+    top:180px;
+    right:40px;
+    width:60px;
+    height:60px;
+    z-index:101;
+
+    .d-phone & {
+        top:145px;
+        right:21px;
+        width:48px;
+        height:48px;
+    }
+    &[data-active="true"]{
+        transform:translate3d(0, 0, 0) scale(1);
+
+        &:active {
+            transform:translate3d(0, 2px, 0) scale(0.8);
+        }
+    }
+    &__svg {
+        @extend .pos-centered;
+        width:48px;
+        height:48px;
+        margin:5px 0 0 0;
+
+        .d-phone & {
+            width:44px;
+            height:44px;
+        }
+    }
+    &__badge {
+        @extend .pos-tr;
+        @extend .bg-red;
+        @extend .c-white;
+        @extend .borderRadius-circle;
+        @extend .text-center;
+        @extend .fontFamily-roboto;
+        @extend .fontWeight-bold;
+        font-size:14px;
+        width:18px;
+        height:18px;
+        transform:translate3d(-7px, 6px, 0);
+        z-index:1;
+
+        .d-phone & {
+            font-size:13px;
+            width:16px;
+            height:16px;
+        }
+    }
+}

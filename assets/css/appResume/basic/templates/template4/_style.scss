@@ -1,0 +1,249 @@
+#t4 {
+  font-family: 'HypatiaLight', Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  line-height: 27px;
+  color: #555;
+  padding: 0 0 80px 0;
+}
+#t4 .t-gray {
+  color: #aaa !important;
+}
+#t4 #t-header {
+  text-align: left;
+  min-width: 1084px;
+  padding-left: 134px;
+  padding-right: 98px;
+  box-sizing: border-box;
+  margin-bottom: 47px;
+}
+#t4 #t-header:after {
+  clear: both;
+}
+#t4 #t-header:after,
+#t4 #t-header:before {
+  display: table;
+  content: " ";
+}
+#t4 #t-header-names {
+  padding-top: 98px;
+  margin-left: -13px;
+  margin-bottom: -4px;
+  white-space: nowrap;
+}
+#t4 .t-header-name {
+  display: inline-block;
+  color: #919190;
+  font: 114px/117px 'SegoeL';
+  letter-spacing: -10.3px;
+  text-transform: uppercase;
+}
+#t4 .t-header-name.bold {
+  color: #1F8CEB;
+  font: 117px/117px 'HypatiaRegular';
+  letter-spacing: -10.6px;
+  text-transform: uppercase;
+}
+#t4 #t-header-surname {
+  padding-left: 8px;
+}
+#t4 #t-header-string {
+  width: 1000px;
+  margin-bottom: 22px;
+}
+#t4 .t-header-string-element {
+  position: relative;
+  display: inline-block;
+  padding-right: 11px;
+  padding-left: 21px;
+  font-size: 23px;
+  letter-spacing: -0.25px;
+}
+#t4 .t-header-string-element:first-child {
+  padding-left: 0px;
+}
+#t4 .t-header-string-element:first-child i {
+  background: none;
+}
+#t4 .t-header-string-element i {
+  display: block;
+  position: absolute;
+  top: 9px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  font-style: normal;
+  background: #1F8CEB;
+}
+#t4 .t-header-string-salary {
+    font:23px/24px 'HypatiaRegular';
+    white-space:nowrap;
+}
+#t4 .t-header-string-salary sup {
+    display:inline-block;
+    color:#fff;
+    font:16px/28px 'HypatiaSemibold';
+    background-color:#1F8CEB;
+    padding:0 9px;
+    height:24px;
+    border-radius:100px;
+    margin-left:5px;
+    transform:translateY(-5px);
+}
+#t4 #t-header-post {
+  color: #1F8CEB;
+  font: 42px/44px 'HypatiaRegular';
+  letter-spacing: -2.15px;
+  text-align: right;
+  text-transform: uppercase;
+  padding-left: 20%;
+}
+#t4 #t-container-salary {
+  color: #919190;
+  font: 42px/40px 'HypatiaRegular';
+  text-align: right;
+  text-transform: uppercase;
+  margin-top: -1px;
+  margin-bottom: -30px;
+}
+#t4 #t-container-salary span {
+  font-family: 'SegoeL';
+  padding-right: 3px;
+}
+#t4 #t-container-salary em {
+  display: inline-block;
+  position: relative;
+  font-style: normal;
+}
+#t4 #t-container-salary i {
+  font-size: 38px;
+  position: absolute;
+  top: 3px;
+  left: -3px;
+}
+#t4 #t-container-wrapper {
+  padding: 0 100px 0 134px;
+  clear: both;
+}
+#t4 .t-container {
+  position: relative;
+  margin: 68px 0;
+}
+#t4 .t-container-name {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  color: #1F8CEB;
+  font: 24px/24px 'HypatiaSemibold';
+  letter-spacing: -0.5px;
+  width: 190px;
+  text-align: left;
+  text-transform: uppercase;
+}
+#t4 .t-container-item {
+  position: relative;
+  padding-top:2px;
+  padding-left: 224px;
+  margin-bottom: 22px;
+}
+#t4 .t-container-title,
+#t4 .t-container-desc-title span {
+  font: 24px/24px 'HypatiaRegular';
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+#t4 .t-container-title span {
+  color: #1F8CEB;
+  font: 25px/24px 'HypatiaSemibold';
+  letter-spacing: -1.2px;
+}
+#t4 .t-container-desc-text {
+  font-size: 21px;
+  line-height:29px;
+}
+#t4 .t-container-edu.t-container {
+    margin-top:38px;
+}
+#t4 .t-container-edu .speciality {
+    margin-top:4px;
+}
+#t4 .t-container-edu .t-container-item {
+  padding-right: 65px;
+}
+#t4 .t-container-edu .t-container-title span {
+  line-height: 28px;
+}
+#t4 .t-container-lang .t-container-item {
+  margin-bottom: 30px;
+}
+#t4 .t-container-lang .t-container-title {
+  font-size: 23px;
+  text-transform: uppercase;
+  color: #646464;
+}
+#t4 .t-container-lang .t-container-title span {
+  font-size: 25px;
+  display: inline-block;
+  width: 168px;
+  text-transform: none;
+}
+#t4 .t-container-lang .t-container-title.t-gray span {
+  color: #aaa;
+}
+#t4 .t-container-job .t-container-item {
+  margin-bottom: 40px;
+}
+#t4 .t-container-year {
+  display:table;
+  width:100%;
+  font: 22px/25px 'HypatiaLight';
+  margin-bottom: 9px;
+  white-space:nowrap;
+}
+#t4 .t-container-job-cell {
+  display:table-cell;
+  vertical-align:top;
+}
+#t4 .t-container-job-cell-left {
+  padding-right:20px;
+}
+#t4 .t-container-job-cell-line {
+    width:100%;
+    vertical-align:middle;
+}
+#t4 .t-container-job-cell-right {
+  padding-left:20px;
+}
+#t4 .t-container-job-line {
+    position:relative;
+    display:inline-block;
+    width:100%;
+    height:1px;
+    background-color:#1F8CEB;
+    vertical-align:middle;
+    margin-bottom:1px;
+}
+#t4 .t-container-job-line i {
+    display: block;
+    position: absolute;
+    top: -3px;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    font-style: normal;
+    background: #1F8CEB;
+}
+#t4 .t-container-post {
+  font: 24px/24px 'HypatiaRegular';
+  margin-bottom: 7px;
+}
+#t4 .t-container-length {
+  color:#1F8CEB;
+  font: 22px/25px 'HypatiaRegular';
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+#t4 .t-container-about {
+    margin-top:78px;
+}

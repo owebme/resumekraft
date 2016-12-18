@@ -1,0 +1,9 @@
+#app {
+    @each $font in ('futura', 'avant', 'helvetica', 'gotham', 'proxima', 'myriad'){
+        &[data-font="#{$font}"]{
+            .f-primary {
+                font-family:$font;
+            }
+        }
+    }
+}

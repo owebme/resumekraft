@@ -1,0 +1,340 @@
+.resume {
+    p, .p {
+        @extend .c-gray;
+
+        .d-no-phone & {
+            @extend .fontSize-18;
+            @extend .lineHeight-l;
+        }
+        .d-phone & {
+            @extend .fontSize-20;
+            @extend .lineHeight-xl;
+        }
+        .d-tablet.r-landscape & {
+            line-height:38px;
+        }
+        .d-tablet.r-portrait & {
+            @extend .lineHeight-xxl;
+        }
+        &.c-black {
+            @extend .c-black;
+        }
+    }
+    .title {
+        @extend .pos-rel;
+        @extend .c-black;
+        @extend .fontSize-34;
+        @extend .mb-l;
+        @extend .pb25;
+
+        &:after {
+            @extend .content-empty;
+            @extend .pos-bl;
+            @extend .w80;
+            @extend .h2px;
+            @extend .bg-primary;
+
+            #app[data-color="#26272d"] &,
+            #app[data-color="#7f8c8d"] & {
+                @extend .bg-blue;
+            }
+        }
+    }
+    .larger {
+        @extend .c-primary;
+        @extend .fontWeight-normal;
+        @extend .fontSize-24;
+        @extend .lineHeight-xxl;
+        letter-spacing:0 !important;
+
+        .d-tablet.r-portrait & {
+            @extend .lineHeight-xxxl;
+        }
+    }
+    .name {
+        @extend .c-black;
+        @extend .fontSize-72;
+        @extend .fontWeight-8;
+        @extend .letterSpacing--xl;
+        @extend .mb-xs;
+
+        .d-phone & {
+            @extend .fontWeight-bold;
+            @extend .lineHeight-xxxxxl;
+            @extend .letterSpacing--xxl;
+            @extend .mb-m;
+        }
+    }
+    .post {
+        @extend .c-primary;
+        @extend .mb-l;
+
+        #app[data-font="futura"] &,
+        #app[data-font="myriad"] & {
+            font-size:26px;
+        }
+        .d-phone & {
+            @extend .pt-xxs;
+        }
+    }
+    .salary {
+        @extend .pos-rel;
+        @extend .display-inlineBlock;
+        @extend .c-black;
+        @extend .f-primary;
+        @extend .fontSize-46;
+        @extend .fontWeight-8;
+        @extend .letterSpacing-0;
+        @extend .mb-l;
+        @extend .zIndex-1;
+
+        &:before {
+            @extend .content-empty;
+            @extend .pos-bl;
+            @extend .w100p;
+            height:8px;
+            @extend .bg-smoke;
+            transform:translateY(-5px) scale3d(1.05, 1, 1);
+            @extend .zIndex--1;
+        }
+        sup {
+            #app[data-color="#26272d"] &,
+            #app[data-color="#7f8c8d"] & {
+                @extend .bg-blue;
+            }
+        }
+    }
+    .tag-list {
+        @extend .ptb-xxs;
+        @extend .mb-m;
+    }
+    .progress-line {
+        @extend .bg-primary;
+    }
+    .bg-section {
+        @include accelerate();
+        @extend .pos-abs-full;
+        @extend .w100v;
+
+        .d-tablet.r-portrait & {
+            width:120vw;
+            left:-20vw;
+        }
+    }
+    .work-items,
+    .job-items {
+        @extend .fontSize-0;
+
+        .d-phone & {
+            margin-left:-32.5px;
+        }
+        .d-tablet.r-portrait & {
+            @extend .mt-l;
+        }
+    }
+    .works-item,
+    .jobs-item {
+        @include accelerate(true);
+    }
+    .works-item {
+        @extend .display-inlineBlock;
+        @extend .vAlign-top;
+        @extend .float-none;
+        @extend .mb-xl;
+
+        .d-no-phone & {
+            @extend .pr-l;
+            min-height:140px;
+        }
+        .d-tablet.r-portrait & {
+            @extend .pr0;
+        }
+    }
+    .work-item {
+        &-links {
+            @extend .pos-rel;
+            @extend .mt-l;
+
+            &:before {
+                @extend .content-empty;
+                @extend .display-block;
+                @extend .w75;
+                @extend .h2px;
+                @extend .bg-white;
+            }
+            &-container {
+                @extend .pos-tl;
+                @extend .fontSize-0;
+                @extend .text-left;
+                transform:translate(105px, -12px);
+            }
+        }
+        &-link {
+            @include accelerate();
+            @extend .pos-rel;
+            @extend .display-inlineBlock;
+            @extend .vAlign-top;
+            @extend .mr-m;
+
+            &[data-icon="url"] {
+                @include ui-icon(link_white, 24px, 24px);
+            }
+            &[data-icon="image"] {
+                @include ui-icon(images_white, 30px, 30px);
+                margin-top:-3px;
+            }
+            &[data-icon="video"] {
+                @include ui-icon(video_white, 30px, 30px);
+                margin-top:-3px;
+            }
+        }
+    }
+    .work-title {
+        @extend .c-white;
+        @extend .mb-xs;
+    }
+    .job-title {
+        @extend .c-white;
+        @extend .mb-xxs;
+    }
+    .job-subtitle {
+        @extend .c-white;
+        @extend .mb-m;
+        @extend .opacity-70;
+    }
+    .work-text,
+    .job-text {
+        @extend .lineHeight-l;
+        @extend .c-white;
+        @extend .opacity-85;
+
+        .d-no-phone & {
+            font-size:18px;
+            line-height:30px;
+        }
+        .d-phone & {
+            @extend .fontSize-18;
+            @extend .lineHeight-xl;
+        }
+        .d-tablet.r-portrait & {
+            @extend .lineHeight-xxl;
+        }
+    }
+    .job-text {
+        &:after {
+            @extend .content-empty;
+            @extend .display-block;
+            @extend .w75;
+            @extend .h2px;
+            @extend .bg-white;
+            @extend .mt-l;
+        }
+    }
+    .work-num,
+    .job-year {
+        @extend .c-white;
+        @extend .pos-abs;
+        @extend .t-l;
+        @extend .l--s;
+        font-size:100px;
+        @extend .lineHeight-1;
+        @extend .f-primary;
+        @extend .fontWeight-8;
+        @extend .letterSpacing--xl;
+        @extend .opacity-10;
+    }
+    .hobby {
+        &-item {
+            @extend .flex-column-centered;
+            @extend .pt-xs;
+        }
+        &-icon {
+            @extend .c-primary;
+            font-size:96px;
+        }
+        &-title {
+            @extend .f-primary;
+            @extend .fontSize-22;
+            @extend .mt-m;
+            @extend .pt-xxs;
+        }
+    }
+    .form {
+        @extend .c-white;
+
+        &-item {
+            @extend .pos-rel;
+            @extend .mb-l;
+            @extend .overflow-hidden;
+
+            &:before {
+                @extend .content-empty;
+                @extend .pos-bl;
+                @extend .h2px;
+                @extend .w100p;
+                @extend .bg-white;
+                @extend .opacity-85;
+            }
+            &:after {
+                @extend .content-empty;
+                @extend .pos-bl;
+                @extend .h2px;
+                @extend .w100p;
+                @extend .bg-primary;
+                @extend .willChange-transform;
+                transform:translate3d(-100%, 0, 0);
+                transition:transform 0.4s;
+            }
+            &.focus {
+                &:after {
+                    @extend .transform-default;
+                }
+                .form-title {
+                    @extend .c-primary;
+                }
+            }
+        }
+        &-title {
+            @extend .display-block;
+            @extend .c-grayLight;
+            @extend .f-primary;
+            @extend .fontSize-13;
+            @extend .fontWeight-bold;
+            @extend .mb-xxs;
+            transition:color 0.4s;
+
+            &:after {
+                content:"*";
+                @extend .pl-xxs;
+                @extend .c-red;
+            }
+        }
+        &-input,
+        &-textarea {
+            @extend .display-block;
+            @extend .c-white;
+            @extend .bg-none;
+            @extend .border-none;
+            @extend .lineHeight-1;
+            @extend .w100p;
+            @extend .plr-xs;
+        }
+        &-input {
+            @extend .h40;
+        }
+        &-textarea {
+            height:140px;
+            @extend .pb-s;
+            @extend .lineHeight-l;
+        }
+    }
+    #map {
+        h3 {
+            @extend .fontSize-20;
+            @extend .c-primary;
+        }
+        p {
+            @extend .fontSize-16;
+        }
+    }
+}

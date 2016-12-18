@@ -1,0 +1,115 @@
+$navHeight: 94px;
+
+.nav {
+    @extend .display-block;
+    @extend .pos-tl;
+    @extend .w100p;
+    @extend .c-white;
+    @extend .zIndex-5;
+    height:$navHeight;
+    will-change:height, border-color, background-color, box-shadow;
+    transition:all 0.4s $cubic28;
+    border-bottom:1px solid rgba(189,189,189,.2);
+
+    &[data-color="blueLight"] {
+        .nav__langs__item[data-active="true"]{
+            @extend .c-blackLight;
+        }
+        &:before {
+            @extend .content-empty;
+            @include abs();
+            background:linear-gradient(to bottom, rgba(42,49,57,.3), rgba(42,49,57,0));
+        }
+    }
+    &__cell {
+        @extend .flex-row-left-center;
+        height:$navHeight;
+    }
+    &__border {
+        @extend .w1px;
+        height:$navHeight;
+        background-color:rgba(189,189,189,.2);
+    }
+    &__logotype {
+        width:140px;
+        height:52px;
+        @extend .bg-cover;
+        transform:translateY(3px);
+        background-image:url(/public/images/logotype_w.png);
+    }
+    &__menu {
+        @include flex("row", "flex-end", "center");
+        height:$navHeight;
+        @extend .w100p;
+        @extend .pr-l;
+        @extend .sm-pr-m;
+
+        &__item {
+            @extend .pos-rel;
+            @extend .display-block;
+            @extend .text-uppercase;
+            @extend .fontWeight-8;
+            @extend .cursor-pointer;
+            @extend .opacity-70;
+            @extend .ml-l;
+
+            &:after {
+                @extend .content-empty;
+                @extend .pos-bl;
+                @extend .w0;
+                @extend .h2px;
+                @extend .bg-lime;
+                margin-bottom:-4px;
+                transition:width .4s;
+
+                .nav[data-color="blueLight"] & {
+                    @extend .bg-blueLight;
+                }
+            }
+            &[data-active="true"],
+            &:hover {
+                @extend .opacity-100;
+
+                &:after {
+                    @extend .w100p;
+                }
+            }
+        }
+    }
+    &__button {
+        @extend .fontWeight-8;
+        padding-top:1px;
+        margin-top:-1px;
+
+        &:hover {
+            .m-no-touch & {
+                color:$blue !important;
+            }
+        }
+    }
+    &__langs {
+        @extend .pos-abs;
+        @extend .t0;
+        @extend .l100;
+        @extend .pl-xxs;
+        @extend .flex-centered;
+        padding-top:2px;
+
+        &__item {
+            @extend .flex-centered;
+            @extend .ml-s;
+            @extend .borderRadius-circle;
+            @extend .fontWeight-bold;
+            @extend .cursor-pointer;
+            font-size:15px;
+            width:32px;
+            height:32px;
+
+            &[data-active="true"]{
+                @extend .bg-white;
+                @extend .c-blue;
+                @extend .cursor-default;
+            }
+        }
+    }
+}

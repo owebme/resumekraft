@@ -1,0 +1,62 @@
+<resume-stat-offer class="oScreen { showAnim : animate } zIndex-5" data-open="{ active }">
+
+    <div onClick={ hide } class="button__close" data-color="white"></div>
+
+    <div class="pos-centered">
+        <div class="container pt-xl">
+            <div class="row mb-l">
+                <h1 class="c-white mb-xl anim anim-scale">Хотите просматривать статистику?</h1>
+                <div class="pt-xs anim anim-scale anim-delay-m">
+                    <button onClick={ open.payment } class="btn btn-xxl btn-white-hover">Да, хочу</button>
+                </div>
+            </div>
+            <div class="row pt-m mb-l">
+                <div class="col-md-12">
+                    <div class="plr-xl">
+                        <h3 class="c-yellow pl-xl anim anim-scale anim-delay-xs">Видеть с каких устройств просматривали ваше резюме</h3>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="plr-xl">
+                        <h3 class="c-lime pr-xl anim anim-scale anim-delay-s">Наблюдать сколько уникальных посетителей перешло</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="anim anim-scale anim-delay-l">
+                    <p class="c-white fontSize-20 opacity-60">Для просмотра статистики вам нужен premium аккаунт</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    $.active = false;
+    $.animate = false;
+
+    $.show = function(){
+        $afterlag.run(function(){
+            $.update({
+                active: true,
+                animate: true
+            })
+        });
+    };
+
+    $.hide = function(){
+        $.parent.hide();
+    };
+
+    $.open = {
+        payment: function(){
+            $Sections.payment.section.show("premium");
+        }
+    };
+
+</script>
+
+</resume-stat-offer>

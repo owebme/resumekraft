@@ -1,0 +1,102 @@
+.component {
+	@extend .display-block;
+	@extend .pos-rel;
+	@extend .cursor-default;
+
+	&:before {
+		content:"";
+		position:absolute;
+		top:-10px;
+		left:-40px;
+		width:60px;
+		height:100%;
+	}
+}
+.edit-pointer {
+	position:absolute;
+	top:-15px;
+	left:-35px;
+	will-change:transform;
+	transform:translate3d(0, 0, 0) scale(0);
+	transition:transform 0.3s $cubic23;
+
+	&-item {
+		width:35px;
+		height:35px;
+		@extend .flex-centered;
+		@extend .boxShadow-default;
+		@extend .borderRadius-circle;
+		@extend .cursor-pointer;
+		@extend .btn-active;
+		background-color:$blue;
+
+		&:after {
+			content:"";
+			@extend .pos-rel;
+			@extend .display-block;
+			@include ui-icon(pencil_white, 17px, 17px);
+		}
+		&:before {
+			@include abs();
+			@extend .content-empty;
+			@extend .bg-black;
+			@extend .borderRadius-circle;
+			@extend .opacity-0;
+			transition:opacity 0.2s $cubic215;
+		}
+		&:hover:before {
+			@extend .opacity-10;
+		}
+	}
+}
+.component {
+	&:hover {
+		.edit-pointer {
+			transform:translate3d(0, 0, 0) scale(1);
+			transition:transform 0.3s $cubic23 0.1s;
+		}
+	}
+}
+.editable-container {
+	@extend .display-block;
+}
+.editable {
+	@extend .display-block;
+	z-index:2;
+
+	&.hide {
+		@extend .display-none;
+	}
+}
+.d-no-mobile {
+	.blur {
+		@include accelerate();
+		@extend .userSelect-none;
+		@extend .pointerEvents-none;
+		filter:blur(15px);
+		opacity:0.3;
+		will-change:transform, filter, opacity;
+		transform:translate3d(0, 0, 0) scale(1);
+		transition:all 0.4s $cubic215;
+	}
+	.editable-container {
+		&:hover {
+			~ .blur {
+				filter:blur(7px);
+				opacity:0.6;
+				transform:translate3d(0, 0, 0) scale(1.1);
+			}
+		}
+	}
+}
+.d-mobile {
+	.blur {
+		opacity:0;
+	}
+}
+.d-phone {
+	.blur {
+		max-height:180px;
+		overflow:hidden;
+	}
+}

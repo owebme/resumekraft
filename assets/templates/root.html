@@ -1,0 +1,137 @@
+<root-main class="pos-abs-full" data-app="private">
+
+    <resume-list if={ !app.device.isPhone }></resume-list>
+    <resume-list-mobile if={ app.device.isPhone }></resume-list-mobile>
+    <resume-edit></resume-edit>
+    <resume-select></resume-select>
+    <section-notify></section-notify>
+    <section-alert></section-alert>
+
+    <app-sections>
+        <resume-stat></resume-stat>
+        <section-menu></section-menu>
+
+        <offer-plan></offer-plan>
+        <offer-votes></offer-votes>
+        <offer-jqtest></offer-jqtest>
+
+        <overview-premium></overview-premium>
+        <overview-jqtest></overview-jqtest>
+        <overview-functions></overview-functions>
+
+        <section-profile></section-profile>
+        <section-jqtest></section-jqtest>
+        <section-payment if={ !app.device.isPhone }></section-payment>
+        <section-payment-mobile if={ app.device.isPhone }></section-payment-mobile>
+
+        <!-- <section-tutorial></section-tutorial> -->
+        <section-loader></section-loader>
+
+        <ui-dropmenu></ui-dropmenu>
+    </app-sections>
+
+<script>
+
+    $$ = window.jQuery || window.Zepto;
+
+    $root = this;
+    $rootScope = $$(this.root);
+
+    $lang = "en";
+
+    this.on("mount", function(){
+
+        $Sections = {
+            profile: {
+                section: $root.tags["section-profile"]
+            },
+            resume: {
+                list: app.device.isPhone ? $root.tags["resume-list-mobile"] : $root.tags["resume-list"],
+                edit: $root.tags["resume-edit"],
+                stat: $root.tags["resume-stat"],
+                select: $root.tags["resume-select"]
+            },
+            offers: {
+                plan: $root.tags["offer-plan"],
+                jqtest: $root.tags["offer-jqtest"],
+                votes: $root.tags["offer-votes"]
+            },
+            overview: {
+                premium: $root.tags["overview-premium"],
+                jqtest: $root.tags["overview-jqtest"],
+                functions: $root.tags["overview-functions"]
+            },
+            jqtest: {
+                section: $root.tags["section-jqtest"],
+                list: $root.tags["section-jqtest"].tags["jqtest-list"],
+                test: $root.tags["section-jqtest"].tags["jqtest-content"],
+                result: $root.tags["section-jqtest"].tags["jqtest-result"]
+            },
+            payment: {
+                section: app.device.isPhone ? $root.tags["section-payment-mobile"] : $root.tags["section-payment"],
+            },
+            menu: $root.tags["section-menu"]
+        };
+
+        $Tutorial = $root.tags["section-tutorial"];
+        $Notify = $root.tags["section-notify"];
+        $Loader = $root.tags["section-loader"];
+        $Alert = $root.tags["section-alert"];
+        $DropMenu = $root.tags["ui-dropmenu"];
+
+        app.$dom.body.removeClass("appLoading");
+    });
+
+    this.focus = function(value){
+        $rootScope.attr("data-focus", value);
+    };
+
+    this.on("mount", function(){
+        // $afterlag.xl(function(){
+        //     if (app.device.isPhone){
+        //         $Sections.jqtest.section.show();
+        //         $Sections.jqtest.result.show();
+        //     }
+        //     else {
+        //         $Sections.overview.jqtest.show();
+        //     }
+        // });
+    });
+
+    this.on("before-mount", function(){
+        if (app.config.changeStyles){
+            app.plugins.styles.init({
+                elem: "#styles",
+                default: "normal",
+                screens: [
+                    {
+                        title: "small",
+                        maxWidth: 360,
+                        path: "/assets/css/style.smallScreen.css"
+                    },
+                    {
+                        title: "normal",
+                        minWidth: 360,
+                        maxWidth: 1440,
+                        path: "/assets/css/style.css"
+                    },
+                    {
+                        title: "large",
+                        minWidth: 1440,
+                        path: "/assets/css/style.largeScreen.css"
+                    }
+                ],
+                callback: function(screen){
+                    if ($Sections && $Sections.resume && $Sections.resume.edit && $Sections.resume.edit.active){
+                        $afterlag.run(function(){
+                            $Sections.resume.edit.section.refresh();
+                        });
+                    }
+                }
+            });
+        }
+    });
+
+</script>
+
+</root-main>

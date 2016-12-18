@@ -1,0 +1,17 @@
+.resume__preview {
+    @extend .display-block;
+    @extend .pos-rel;
+    margin:1.64vw auto 2.34vw;
+    width:95.15vw;
+    @extend .bg-white;
+    @extend .cursor-default;
+    @extend .overflow-hidden;
+    @extend .text-left;
+    // @extend .pointerEvents-none;
+    box-shadow:0 20px 25px rgba(31,35,37,.3);
+
+    .d-phone & {
+        margin-top:2.34vw;
+        min-height:96.7vh;
+    }
+}

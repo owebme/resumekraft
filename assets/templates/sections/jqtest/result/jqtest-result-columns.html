@@ -1,0 +1,83 @@
+<jqtest-result-columns class="hidden-sm screen" data-screen="columns">
+
+    <div class="chart container">
+        <div class="row">
+            <div class="col-md-8 h100v">
+                <div name="pointer" class="chart__title" data-active={ titleShow }>{ title }</div>
+                <div class="chart__titles" name="titles">
+                    <div class="chart__titles__item anim anim-lr" data-level="5">увеличенный</div>
+                    <div class="chart__titles__item anim anim-lr" data-delay="xs" data-level="4">высокий</div>
+                    <div class="chart__titles__item anim anim-lr" data-delay="s" data-level="3">средний</div>
+                    <div class="chart__titles__item anim anim-lr" data-delay="m" data-level="2">низкий</div>
+                </div>
+            </div>
+            <div class="col-md-16 h100v">
+                <div onmouseleave={ mouseleave } class="chart__columns" name="columns">
+                    <div onmouseenter={ mouseenter } each={ item, i in items } class="chart__column" data-level="{ item.value }" style="height:{ maxHeight }px">
+                        <div class="chart__column__item" data-level="{ item.value }" style="height:{ maxHeight / (maxValue / item.value) }px"></div>
+                        <span class="chart__column__item__count">{ item.value }</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.title = null;
+
+    $.on("mount", function(){
+        $.pointer = $$($["pointer"]);
+        $.titles = $$($["titles"]);
+        $.columns = $$($["columns"]);
+    });
+
+    $.on("update", function(){
+        $.items = $jqResult.profile;
+
+        $.maxHeight = window.innerHeight / 1.8;
+
+        $.maxValue = _.max($.items, function(item){
+            return item.value;
+        }).value;
+    });
+
+    $.mouseenter = function(){
+
+        var level = this.root.getAttribute("data-level");
+
+        $.titles
+        .find(".chart__titles__item[data-level=" + level + "]")
+        .attr("data-active", true)
+        .siblings()
+        .removeAttr("data-active");
+
+        var offset = $$(this.root).offset(),
+            left = app.device.isTablet && this.i < 2 ? offset.left + 80 : offset.left;
+
+        $.update({
+            title: this.item.title,
+            titleShow: true
+        })
+
+        $.pointer.css({
+            transform: "translateX(" + (left - $.pointer.width() - 80) + "px)"
+        })
+        .attr("data-level", level);
+    };
+
+    $.mouseleave = function(){
+        $.titles
+        .find(".chart__titles__item")
+        .removeAttr("data-active");
+
+        $.update({
+            titleShow: false
+        })
+    };
+
+</script>
+
+</jqtest-result-columns>

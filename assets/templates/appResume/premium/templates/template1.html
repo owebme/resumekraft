@@ -1,0 +1,170 @@
+<resume-template1 class="screens screens-mobile container resume template1">
+
+    <div class="hidden-xs hidden-sm overlay col-sm-6"></div>
+    <div class="hidden-xs hidden-sm main-line col-sm-6"></div>
+
+    <section if={ app.device.isPhone } class="screen screen--first screen--active" data-section="main">
+        <div class="screen__content">
+            <ux-photo></ux-photo>
+            <div class="screen__post">{ $resume.post }</div>
+        </div>
+    </section>
+
+    <section class="screen { 'screen--first' : !app.device.isPhone }" data-section="main">
+        <div class="screen__content">
+            <div class="row">
+                <div if={ !app.device.isPhone } class="col-xs-24 col-md-11 screen1-col-left">
+                    <ux-photo title="Ваша фотография"></ux-photo>
+                </div>
+                <div class="col-xs-24 col-md-13 screen1-col-right">
+
+                    <ux-text classname="h1 name" editing="name" title="Ваше имя и фамилия" type="input"></ux-text>
+
+                    <ux-text classname="h3 post" editing="post" title="Должность" type="input"></ux-text>
+
+                    <ux-salary if={ $store.resume.select("sections").get({"name": "salary"}).active } classname="salary" title={ $store.resume.select("sections").get({"name": "salary"}).title }></ux-salary>
+
+                    <ux-tags if={ $store.resume.select("sections").get({"name": "tags"}).active } classname="tag-list" title={ $store.resume.select("sections").get({"name": "tags"}).title }></ux-tags>
+
+                    <ux-text if={ $store.resume.select("sections").get({"name": "appeal"}).active } classname="larger mb-l" center="true" size="l" editing="appeal" activity="true" title={ $store.resume.select("sections").get({"name": "appeal"}).title } type="textarea"></ux-text>
+
+                    <ux-text if={ $store.resume.select("sections").get({"name": "about"}).active } classname="p mb-l" center="true" editing="about" activity="true" title={ $store.resume.select("sections").get({"name": "about"}).title } type="textarea"></ux-text>
+
+                    <ux-social if={ $store.resume.select("sections").get({"name": "social"}).active } classname="social" title={ $store.resume.select("sections").get({"name": "social"}).title }></ux-social>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen" data-section="works" if={ $store.resume.select("sections").get({"name": "works"}).active }>
+        <div class="screen__content">
+            <ux-works title={ $store.resume.select("sections").get({"name": "works"}).title } center="true" size="xl"></ux-works>
+        </div>
+    </section>
+
+    <section class="screen" data-section="skills" if={ $store.resume.select("sections").get({"name": "skills"}).active }>
+        <div class="bg-section bg-snow hidden-xs"></div>
+        <div class="screen__content">
+            <div class="row">
+                <div class="col-xs-24 col-md-18 col-md-offset-6">
+                    <div class="screen__inner">
+                        <ux-skills title={ $store.resume.select("sections").get({"name": "skills"}).title } center="true" size="xl"></ux-skills>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen" data-section="education" if={ $store.resume.select("sections").get({"name": "education"}).active }>
+        <div class="screen__content">
+            <div class="row">
+                <div class="col-xs-24 col-md-18 col-md-offset-6">
+                    <div class="screen__inner">
+                        <ux-education title={ $store.resume.select("sections").get({"name": "education"}).title } center="true" size="xl"></ux-education>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen" data-section="courses" if={ $store.resume.select("sections").get({"name": "courses"}).active }>
+        <div class="screen__content">
+            <div class="row">
+                <div class="col-xs-24 col-md-18 col-md-offset-6">
+                    <div class="screen__inner">
+                        <ux-courses title={ $store.resume.select("sections").get({"name": "courses"}).title } center="true" size="xl"></ux-courses>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen" data-section="languages" if={ $store.resume.select("sections").get({"name": "languages"}).active }>
+        <div class="bg-section bg-snow hidden-xs"></div>
+        <div class="screen__content">
+            <div class="row">
+                <div class="col-xs-24 col-md-18 col-md-offset-6">
+                    <div class="screen__inner">
+                        <ux-languages title={ $store.resume.select("sections").get({"name": "languages"}).title } center="true" size="xl"></ux-languages>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen" data-section="jobs" if={ $store.resume.select("sections").get({"name": "jobs"}).active }>
+        <div class="screen__content">
+            <ux-jobs title={ $store.resume.select("sections").get({"name": "jobs"}).title } center="true" size="xl"></ux-jobs>
+        </div>
+    </section>
+
+    <section class="screen" data-section="hobby" if={ $store.resume.select("sections").get({"name": "hobby"}).active }>
+        <div class="screen__content">
+            <div class="row">
+                <div class="col-xs-24 col-md-18 col-md-offset-6">
+                    <div class="screen__inner">
+                        <ux-hobby title={ $store.resume.select("sections").get({"name": "hobby"}).title } center="true" size="xl"></ux-hobby>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen" data-section="contacts" if={ $store.resume.select("sections").get({"name": "contacts"}).active }>
+        <div class="screen__content">
+            <ux-contacts></ux-contacts>
+        </div>
+    </section>
+
+<script>
+
+    var $ = this;
+
+    $.el = $$(this.root);
+
+    $.on("before-mount", function(){
+        $.sections = {
+            photo: $.tags["ux-photo"],
+            salary: $.tags["ux-salary"],
+            tags: $.tags["ux-tags"],
+            social: $.tags["ux-social"],
+            works: $.tags["ux-works"],
+            skills: $.tags["ux-skills"],
+            education: $.tags["ux-education"],
+            languages: $.tags["ux-languages"],
+            jobs: $.tags["ux-jobs"],
+            hobby: $.tags["ux-hobby"],
+            contacts: $.tags["ux-contacts"]
+        }
+        $.sections.social.on("updated", function(){
+            $.sections.contacts.update();
+        });
+    });
+
+    $.on("mount", function(){
+        if ($mode !== "editing"){
+            _.each(this.tags, function(item) {
+                if (item.root && item.root.tagName && item.root.tagName.toLowerCase().match(/^ux-/)){
+                    var name = item.root.tagName.toLowerCase().match(/^ux-(.+)/)[1];
+                    if (name != "text"){
+                        if (!$store.resume.get(name)) $$(item.root).remove();
+                        else $$(item.root).children().unwrap();
+                    }
+                }
+            });
+            this.el.find(".screen").each(function(){
+                var $screen = $$(this);
+                if ($screen.find(".screen__content").html().length < 3){
+                    $screen.remove();
+                }
+            });
+        }
+        if (app.device.isPhone){
+            $.screens = new app.plugins.screens($.el);
+            $.screens.init();
+        }
+    });
+
+</script>
+
+</resume-template1>

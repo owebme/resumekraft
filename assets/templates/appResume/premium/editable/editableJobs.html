@@ -1,0 +1,68 @@
+<editable-jobs class="col-sm-24 col-md-offset-1 col-md-22 col-lg-offset-4 col-lg-18 section__editable__container" data-editing="jobs">
+
+    <ui-switcher id="activity" commit="true"></ui-switcher>
+
+    <div class="section__editable__content { hide : !switcher.value }">
+
+        <div class="title title-main">{ title }</div>
+
+        <div class="row mb-m">
+            <div class="col-md-12">
+                <div if={ !$Editable.component.editing } class="pos-rel">
+                    <span class="input-title">название секции</span>
+                    <input onInput={ $Editable.component.autoCommit } class="input { app.device.isPhone ? 'input-l' : 'input-xl' }" data-name="title" name="title_data" type="text" placeholder="Название секции" autocomplete="off" value={ data && data.title ? data.title : $store.resume.placeholder.jobs.title }>
+                </div>
+                <div if={ $Editable.component.editing }>
+                    <div class="title title-xl">Редактирование</div>
+                </div>
+            </div>
+            <div class="col-md-12 xs-mt-m sm-mt-m">
+                <div if={ !$Editable.component.editing }>
+                    <ui-button-plus onClick={ $Editable.component.createItem } content="Место работы" size="{ app.device.isPhone ? 'l' : 'xl' }"></ui-button-plus>
+                </div>
+                <div if={ $Editable.component.editing } class="row">
+                    <div class="col-xs-12">
+                        <ui-button-edit onClick={ $Editable.component.saveItem } content="Сохранить" size="l"></ui-button-edit>
+                    </div>
+                    <div class="col-xs-12">
+                        <button onClick={ $Editable.component.cancelEditing } class="btn btn-l btn-upper w100p text-center borderRadius-m" type="button">Отменить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div if={ $Editable.component.editing } class="row mb-m">
+            <div class="col-xs-24">
+                <editable-jobs-item item={ $Editable.component.editing }></editable-jobs-item>
+            </div>
+        </div>
+
+        <div if={ !$Editable.component.editing } class="row mb-m mt-l">
+            <div class="col-xs-24">
+                <div class="pos-rel">
+                    <span class="input-title">вступительный текст</span>
+                    <textarea onInput={ $Editable.component.autoCommit } class="textarea textarea-xl" data-name="text" name="text_data" autocomplete="off">{ data.text }</textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div each={ item, i in data.items } class="col-md-12 mb-m">
+                <div class="pos-rel">
+                    <div class="input-group-addon addons">
+                        <input-addon-edit onClick={ $Editable.component.editItem }></input-addon-edit>
+                        <input-addon-remove onClick={ $Editable.component.removeItem }></input-addon-remove>
+                    </div>
+                    <div class="input input-l">{ item.post }</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="section__editable__footer text-center">
+        <button onClick={ $Editable.component.onCancel } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper" type="button">Отменить</button>
+        <button onClick={ $Editable.component.onSave } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper ml-xs" type="button">Сохранить</button>
+    </div>
+
+</editable-jobs>

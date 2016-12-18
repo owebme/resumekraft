@@ -1,0 +1,177 @@
+.overview {
+    &__section {
+        @extend .maxW-100v;
+        @extend .overflow-hidden;
+        margin-bottom:145px;
+
+        &[data-bg="gradient-tb"]{
+            background:linear-gradient(to bottom, #fff 0%, #fff 68%, #f2f2f2 100%);
+        }
+        &[data-section="phone"]{
+            min-height:1014px;
+            @extend .mb--l;
+        }
+        &.mb105 {
+            margin-bottom:105px;
+        }
+        &.mb195 {
+            margin-bottom:195px;
+        }
+        &.mb245 {
+            margin-bottom:245px;
+        }
+        &.mb295 {
+            margin-bottom:295px;
+        }
+        h1 {
+            @extend .c-blue;
+            @extend .lineHeight-xxxxl;
+            @extend .letterSpacing--xl;
+            // @extend .fontWeight-8;
+            font-size:45px;
+
+            &.large {
+                font-size:63px;
+                @extend .letterSpacing--xxl;
+            }
+            &.main {
+                font-size:48px;
+                // letter-spacing:-2.5px;
+                // @extend .fontWeight-8;
+            }
+        }
+        h2 {
+            font-size:38px;
+            line-height:46px;
+        }
+        h4 {
+            @extend .display-block;
+            @extend .c-blue;
+            @extend .fontSize-24;
+            @extend .letterSpacing-xxxxl;
+            @extend .fontWeight-8;
+            @extend .text-uppercase;
+        }
+        small {
+            @extend .display-block;
+            @extend .c-gray;
+            @extend .fontSize-16;
+            letter-spacing:5.5px;
+            @extend .text-uppercase;
+        }
+        p {
+            @extend .c-gray;
+            @extend .lineHeight-xxxl;
+            @extend .letterSpacing--m;
+            font-size:23px;
+        }
+        .v-lineRight {
+            &:after {
+                @extend .content-empty;
+                @extend .pos-abs;
+                @extend .t0;
+                @extend .r0;
+                @extend .h100p;
+                @extend .w1px;
+                background:linear-gradient(to bottom, rgba($smoke,0), rgba($smokeDark,.8), rgba($smoke,0));
+            }
+        }
+        .c-white {
+            @extend .c-white;
+        }
+        .c-blue {
+            @extend .c-blue;
+        }
+        .fontFamily-avant {
+            .fontSize-34 {
+                font-size:30px;
+                letter-spacing:-1.4px;
+            }
+            .fontSize-24 {
+                font-size:19px;
+            }
+        }
+        .fontFamily-gotham {
+            .fontSize-34 {
+                font-size:30px;
+                letter-spacing:-2px;
+            }
+            .fontSize-24 {
+                font-size:19px;
+                letter-spacing:-1.4px;
+            }
+        }
+        .fontFamily-proxima {
+            .fontSize-34 {
+                font-size:30px;
+                letter-spacing:-2px;
+            }
+            .fontSize-24 {
+                font-size:21px;
+            }
+        }
+        .fontFamily-myriad {
+            .fontSize-24 {
+                font-size:23px;
+            }
+        }
+    }
+    &__phone {
+        @include accelerate();
+        @extend .pos-rel;
+        width:613px;
+        height:994px;
+
+        &:before {
+            @include accelerate();
+            @extend .content-empty;
+            @include abs();
+            @extend .bg-cover;
+            @extend .opacity-75;
+            @extend .zIndex-0;
+            transform:translate3d(-30px, 50px, 0);
+            background-image:url(/assets/images/promo/phone_shadow.png);
+        }
+        &:after {
+            @include accelerate();
+            @extend .content-empty;
+            @include abs();
+            @extend .bg-cover;
+            @extend .zIndex-0;
+        }
+        &__screen {
+            @include accelerate();
+            @extend .pos-abs;
+            @extend .borderRadius-xs;
+            @extend .zIndex-1;
+        }
+        &[data-align="left"]{
+            transform:translateX(-65px);
+        }
+        &[data-align="right"]{
+            transform:translateX(-115px);
+        }
+        &[data-color="white"]{
+            &:after {
+                background-image:url(/assets/images/promo/phone_white_clear.png);
+            }
+            .overview__phone__screen {
+                top:157px;
+                left:169px;
+                width:318px;
+                height:565px;
+            }
+        }
+        &[data-color="black"]{
+            &:after {
+                background-image:url(/assets/images/promo/phone_black_shadow.png);
+            }
+            .overview__phone__screen {
+                top:158px;
+                left:172px;
+                width:316px;
+                height:562px;
+            }
+        }
+    }
+}

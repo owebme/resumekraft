@@ -1,0 +1,282 @@
+.section__editable {
+    display:block;
+    opacity:0.001;
+    @include abs(fixed);
+    @include accelerate();
+    @extend .userSelect-none;
+    visibility:hidden;
+    will-change:opacity;
+    transition:opacity 0.2s $cubic57, visibility 0s 0.25s;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:101;
+
+    &__scroll {
+        @include abs();
+        @include accelerate();
+        overflow-y:scroll;
+        -webkit-overflow-scrolling: touch;
+        z-index:1000;
+    }
+    &__wrapper {
+        @include accelerate();
+        @extend .pos-rel;
+        @extend .pb-l;
+        min-height:480px;
+
+        .d-no-mobile & {
+            will-change:transform;
+            transform-style:preserve-3d;
+            transform:translate3d(0, -10%, 0) perspective(500px) rotateX(30deg) scale3d(0.8, 0.8, 1);
+            transition:transform 0.25s $cubic25b;
+        }
+    }
+    &__container {
+        @extend .display-none;
+        @include accelerate();
+        margin-top:28.6vh;
+
+        &#active {
+            @extend .display-block;
+        }
+        &[data-editing="textarea"],
+        &[data-editing="tags"]{
+            margin-top:25.6vh;
+        }
+        &[data-editing="social"]{
+            margin-top:14.6vh;
+        }
+        &[data-editing="works"],
+        &[data-editing="skills"],
+        &[data-editing="jobs"] {
+            margin-top:7.2vh;
+        }
+        &[data-editing="visible"]{
+            margin-top:17.6vh;
+        }
+        &[data-editing="education"],
+        &[data-editing="courses"],
+        &[data-editing="languages"] {
+            margin-top:8.6vh;
+        }
+        &[data-editing="photo"]{
+            margin-top:8.6vh;
+
+            .d-phone & {
+                @extend .pos-tl;
+                @extend .overflow-hidden;
+                @extend .w100v;
+                @extend .h100v;
+                margin:0;
+                padding:0;
+            }
+        }
+        .d-phone &[data-uploaded="true"]{
+            @extend .bg-black;
+        }
+    }
+    &__content {
+        @extend .pos-rel;
+        will-change:opacity;
+        transition:opacity .25s $cubic215;
+
+        &.hide {
+            @extend .opacity-50;
+            @extend .userSelect-none;
+            @extend .pointerEvents-none;
+
+            &:after {
+                @extend .content-empty;
+                @include abs();
+                z-index:10;
+            }
+        }
+    }
+    &__footer {
+        text-align:right;
+        @extend .nowrap;
+        @extend .mt-l;
+
+        &.text-center {
+            .btn {
+                .d-no-phone & {
+                    @extend .mlr-xs;
+                }
+            }
+        }
+    }
+    &__close {
+        @extend .pos-tr;
+        @extend .cursor-pointer;
+        @include ui-icon(minus_white, 38px, 38px);
+        transform:translate3d(-22px, 22px, 0);
+        z-index:1001;
+
+        &:after {
+            @extend .content-empty;
+            @include abs();
+            transform:scale(2);
+        }
+        .d-phone & {
+            transform:translate3d(-12px, 15px, 0);
+        }
+    }
+    &:before {
+        @extend .content-empty;
+        @extend .pos-bl;
+        @extend .w100p;
+        @extend .h50p;
+    }
+    &[data-open="true"]{
+        opacity:1;
+        visibility:visible;
+        pointer-events:all;
+        transition:opacity 0.25s $cubic2501, visibility 0s;
+
+        .d-no-mobile & {
+            .section__editable__wrapper {
+                transform:translate3d(0, 0, 0) perspective(500px) rotateX(0deg) scale3d(1, 1, 1);
+                transition:transform 0.4s $cubic25b;
+            }
+        }
+    }
+    #activity {
+        position:absolute;
+        z-index:1;
+
+        .d-no-phone & {
+            top:13px;
+            right:7.5px;
+        }
+        .d-phone & {
+            top:-5px;
+            right:0;
+        }
+    }
+    .title {
+        @extend .c-white;
+        @extend .fontWeight-bold;
+
+        &-main {
+            @extend .letterSpacing--xl;
+            @extend .mb-l;
+
+            .d-no-phone & {
+                font-size:46px;
+                line-height:46px;
+                margin-left:-3px;
+            }
+            .d-phone & {
+                font-size:34px;
+                line-height:38px;
+                margin-left:-2px;
+                @extend .pt-xs;
+            }
+        }
+        &-xl {
+            height:60px;
+            font-size:34px;
+            line-height:38px;
+            margin-left:-3px;
+            @extend .letterSpacing--l;
+
+            .d-phone & {
+                height:40px;
+                line-height:40px;
+                margin-left:-2px;
+            }
+        }
+        &-l {
+            height:50px;
+            font-size:28px;
+            line-height:50px;
+            margin-left:-2px;
+            @extend .letterSpacing--m;
+        }
+        &-m {
+            height:40px;
+            font-size:24px;
+            line-height:40px;
+            @extend .letterSpacing--m;
+        }
+        &-s {
+            height:30px;
+            font-size:22px;
+            line-height:30px;
+            @extend .letterSpacing--m;
+        }
+    }
+    .hr {
+        @extend .w100p;
+        @extend .mtb-m;
+        border-bottom:3px dashed rgba($white,.5);
+    }
+	.btn {
+        @extend .c-white;
+		box-shadow:0 0 0 2px rgba($white,.5);
+		background-color:transparent;
+
+		&:hover {
+            @extend .bg-white;
+			box-shadow:0 0 0 2px $white;
+		}
+        &-loading {
+            color:$white !important;
+            box-shadow:0 0 0 2px rgba($white,.5) !important;
+
+            &:before {
+                border-color:$white;
+                border-right-color:transparent;
+            }
+        }
+        &-svg-plus {
+            width:24px;
+            height:24px;
+            margin-left:-11px;
+            transform:translate3d(2px, 0, 0);
+        }
+        &-svg-edit {
+            width:22px;
+            height:22px;
+            margin-left:-11px;
+            transform:translate3d(-1px, -2px, 0);
+
+            .d-phone & {
+                width:20px;
+                height:20px;
+            }
+        }
+        span {
+            @extend .display-inlineBlock;
+            transform:translateY(1px);
+        }
+	}
+}
+
+.d-phone {
+    .section__editable {
+        .btn {
+            padding-left:30px;
+            padding-right:30px;
+        }
+        &__container {
+            @extend .pt-xs;
+            @extend .mt-m;
+            @extend .mlr-xs;
+
+            &[data-editing="visible"]{
+                @extend .mlr-s;
+            }
+        }
+        &__footer {
+            @extend .text-center;
+        }
+    }
+}
+.d-tablet.r-portrait {
+    .section__editable {
+        &__container {
+            @extend .plr-s;
+        }
+    }
+}

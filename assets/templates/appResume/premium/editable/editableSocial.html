@@ -1,0 +1,131 @@
+<editable-social class="col-sm-offset-2 col-sm-20 col-md-offset-4 col-md-16 col-lg-offset-6 col-lg-13 section__editable__container" data-editing="social">
+
+    <ui-switcher id="activity" commit="true"></ui-switcher>
+
+    <div class="section__editable__content { hide : !switcher.value }">
+
+        <div class="title title-main">{ title }</div>
+
+        <div class="pos-rel mb-m">
+            <span class="input-title">заголовок</span>
+            <input onInput={ $Editable.component.autoCommit } class="input input-xl" data-name="title" name="title_data" type="text" autocomplete="off" value={ data && data.title ? data.title : $store.resume.placeholder.social.title }>
+        </div>
+        <div class="row mb-m">
+            <div class="col-xs-12">
+                <div class="input-group input-group-icon">
+                    <input onInput={ autoCommitValue } data-title="fb" class="input input-l" type="text" placeholder="{ 'Ссылка на профиль' : !app.device.isPhone } Facebook" autocomplete="off" value={ data &&  _.findWhere(data.items, {"title": "fb"}).value }>
+                    <div class="input-icon">
+                        <svg class="input-svg input-svg-social input-svg-fb" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 100 100"><path class="input-svg-color" d="M60.5 32.5c-1.7-.6-4.8-.7-6.5-.7-5.1 0-7.2 4.1-7.2 8.9v3.2h-3v6.4h3V68H53V50.3h6v-6.4h-6v-3.8c0-1.6 2.6-2.4 3.7-2.4 1 0 2 .2 2.9.5l.9-5.7"></path></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="input-group input-group-icon">
+                    <input onInput={ autoCommitValue } data-title="vk" class="input input-l" type="text" placeholder="{ 'Ссылка на профиль' : !app.device.isPhone } ВКонтакте" autocomplete="off" value={ data && _.findWhere(data.items, {"title": "vk"}).value }>
+                    <div class="input-icon">
+                        <svg class="input-svg input-svg-social input-svg-vk" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 100 100"><path class="input-svg-color" d="M56.7 49.5v-.1c2.3-1 3.5-3.1 3.5-5.6 0-5.6-5.2-6-9.5-6h-9.9v26h10.8c5.1 0 10.3-2 10.3-8 0-3.4-2-5.6-5.2-6.3zm-8.9-7h1.9c1.9 0 3.9.2 3.9 2.6 0 2.7-2 2.9-4.1 2.9h-1.8v-5.5h.1zM50 59h-2.2v-6.5h3c2.3 0 4.5.3 4.5 3.2 0 3.1-2.9 3.3-5.3 3.3z"></path></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-m">
+            <div class="col-xs-12">
+                <div class="input-group input-group-icon">
+                    <input onInput={ autoCommitValue } data-title="dk" class="input input-l" type="text" placeholder="{ 'Ссылка на профиль' : !app.device.isPhone } Одноклассники" autocomplete="off" value={ data && _.findWhere(data.items, {"title": "dk"}).value }>
+                    <div class="input-icon">
+                        <svg class="input-svg input-svg-social input-svg-dk" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 100 100"><path class="input-svg-color" d="M56.3 52.2c-2 .9-4.1 1.5-6.3 1.5-2.3 0-4.1-.6-6.2-1.5-.4-.2-.8-.3-1.3-.3-1.5 0-2.7 1.2-2.7 2.6 0 2.6 4.5 3.5 6.6 4l-5.3 4.9c-.5.5-.8 1.1-.8 1.8 0 1.4 1.2 2.6 2.7 2.6.7 0 1.4-.2 1.9-.7l5-4.7 5 4.7c.5.5 1.2.7 1.9.7 1.5 0 2.7-1.2 2.7-2.6 0-.7-.3-1.3-.8-1.8l-5.3-4.9c2.2-.4 6.6-1.5 6.6-4 0-1.3-1.2-2.6-2.7-2.6-.2-.1-.6 0-1 .3M50.1 34.3c-5.3 0-9.2 4-9.2 8.7 0 4.6 4 8.7 9.2 8.7 5.3 0 9.2-4 9.2-8.7 0-4.6-4-8.7-9.2-8.7zm0 12.3c-2.2 0-3.8-1.7-3.8-3.6 0-1.9 1.7-3.6 3.8-3.6 2.2 0 3.8 1.7 3.8 3.6 0 1.9-1.7 3.6-3.8 3.6z"></path></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="input-group input-group-icon">
+                    <input onInput={ autoCommitValue } data-title="tw" class="input input-l" type="text" placeholder="{ 'Ссылка на профиль' : !app.device.isPhone } Twitter" autocomplete="off" value={ data && _.findWhere(data.items, {"title": "tw"}).value }>
+                    <div class="input-icon">
+                        <svg class="input-svg input-svg-social input-svg-tw" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 100 100"><path class="input-svg-color" d="M63.8 41.8c1.5-.8 2.6-2.1 3.1-3.6-1.4.7-2.9 1.3-4.5 1.6-1.3-1.3-3.2-2-5.1-2-3.9 0-7 2.9-7 6.5 0 .5 0 1 .2 1.5-5.6-.4-10.9-2.8-14.5-6.9-.6 1-.9 2.1-.9 3.3 0 2.2 1.2 4.2 3.1 5.4-1.2 0-2.2-.3-3.2-.8v.1c-.1 3.1 2.3 5.7 5.6 6.3-.6.2-1.2.2-1.9.2-.4 0-.9 0-1.3-.1.9 2.6 3.6 4.5 6.5 4.5-2.5 1.8-5.5 2.8-8.7 2.8-.5 0-1.1 0-1.6-.1 3.2 1.9 6.9 2.9 10.8 2.9 8.1 0 14.9-4 18.2-10.9 1.1-2.4 1.8-4.9 1.8-7.5v-.9c1.4-.9 2.6-2 3.5-3.3-1.4.5-2.7.9-4.1 1z"></path></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-m">
+            <div class="col-xs-12">
+                <div class="input-group input-group-icon">
+                    <input onInput={ autoCommitValue } data-title="gl" class="input input-l" type="text" placeholder="{ 'Ссылка на профиль' : !app.device.isPhone } Google+" autocomplete="off" value={ data && _.findWhere(data.items, {"title": "gl"}).value }>
+                    <div class="input-icon">
+                        <svg class="input-svg input-svg-social input-svg-gl" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path class="input-svg-color" d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032 c0-3.331,2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2 C7.021,2,2.543,6.477,2.543,12c0,5.523,4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="input-group input-group-icon">
+                    <input onInput={ autoCommitValue } data-title="in" class="input input-l" type="text" placeholder="{ 'Ссылка на профиль' : !app.device.isPhone } Instagram" autocomplete="off" value={ data && _.findWhere(data.items, {"title": "in"}).value }>
+                    <div class="input-icon">
+                        <svg class="input-svg input-svg-social input-svg-in" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                            <path class="input-svg-color" d="M 15 2 C 7.832 2 2 7.832 2 15 L 2 35 C 2 42.168 7.832 48 15 48 L 35 48 C 42.168 48 48 42.168 48 35 L 48 15 C 48 7.832 42.168 2 35 2 L 15 2 z M 38 10 C 39.105 10 40 10.895 40 12 C 40 13.105 39.105 14 38 14 C 36.895 14 36 13.105 36 12 C 36 10.895 36.895 10 38 10 z M 25 13 C 31.617 13 37 18.383 37 25 C 37 31.617 31.617 37 25 37 C 18.383 37 13 31.617 13 25 C 13 18.383 18.383 13 25 13 z M 25 15 C 19.486 15 15 19.486 15 25 C 15 30.514 19.486 35 25 35 C 30.514 35 35 30.514 35 25 C 35 19.486 30.514 15 25 15 z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="input-group input-group-icon">
+                    <input onInput={ autoCommitValue } data-title="lk" class="input input-l" type="text" placeholder="{ 'Ссылка на профиль' : !app.device.isPhone } Linkedin" autocomplete="off" value={ data && _.findWhere(data.items, {"title": "lk"}).value }>
+                    <div class="input-icon">
+                        <svg class="input-svg input-svg-social input-svg-lk" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                            <path class="input-svg-color" d="M40,0H10C4.486,0,0,4.486,0,10v30c0,5.514,4.486,10,10,10h30c5.514,0,10-4.486,10-10V10C50,4.486,45.514,0,40,0z M16,34.9 V42H8V19h8V34.9z M12,16.5c-2.4,0-4-1.7-4-3.8C8,10.6,9.6,9,12,9s3.9,1.6,4,3.7C16,14.8,14.5,16.5,12,16.5z M42,42h-8 c0,0,0-12.1,0-13s-0.1-4-3.5-4c-3,0-3.5,2.9-3.5,4s0,13,0,13h-8V19h8v3.1c0,0,1.6-3.1,6.3-3.1c4.8,0,8.7,3.3,8.7,10V42z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="section__editable__footer">
+        <button onClick={ $Editable.component.onCancel } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper" type="button">Отменить</button>
+        <button onClick={ onSave } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper ml-xs" type="button">Сохранить</button>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.autoCommitValue = function(e){
+        var title = e.target.getAttribute("data-title"),
+            value = e.target.value,
+            item = _.findWhere($.data.items, {"title": title});
+
+        if (!item){
+            item = {
+                title: title,
+                value: value
+            }
+            $.data.items.push(item);
+        }
+        else {
+            $.data.items[_.indexOf($.data.items, item)].value = value;
+        }
+    };
+
+    $.onSave = function(){
+        for (var i = 0; i < this.data.items.length; i++){
+            if (!_.clean(this.data.items[i].value)){
+                this.data.items.splice(i, 1);
+                i--;
+            }
+        }
+        this.data.items = this.data.items.length ? this.data.items : null;
+
+        this.callback(this.switcher.value, this.data);
+
+        $Editable.hide(function(){
+            $Editable.component.editing = null;
+        });
+    };
+
+</script>
+
+</editable-social>

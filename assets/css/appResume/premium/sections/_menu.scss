@@ -1,0 +1,43 @@
+.menu {
+    @extend .display-block;
+    @extend .pos-fixed;
+    @extend .t-l;
+    @extend .l-l;
+    @extend .zIndex-10;
+
+    .d-phone & {
+        @extend .t-m;
+        @extend .l-m;
+    }
+    &__opener {
+        @include accelerate();
+        @extend .w60;
+        @extend .h60;
+        @extend .userSelect-none;
+        @extend .flex-centered;
+        @extend .cursor-pointer;
+        @extend .btn-active;
+        @extend .bg-blackLight;
+        @extend .borderRadius-circle;
+        @extend .transition-default;
+
+        &__icon {
+            @extend .display-block;
+            width:29px;
+            height:29px;
+            transform:translateY(2px);
+
+            &__color {
+                @extend .fill-white;
+                @extend .transition-default;
+            }
+        }
+        &:hover {
+            @extend .bg-white;
+
+            .menu__opener__icon__color {
+                @extend .fill-primary;
+            }
+        }
+    }
+}

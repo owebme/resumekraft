@@ -1,0 +1,153 @@
+<offer-votes class="section section-hidden bg-blue c-white pos-bl w100p ptb-xs zIndex-2 overflow-hidden" data-pos="bottom" data-short={ !app.device.isPhone } data-slow={ app.device.isPhone } data-shadow="true" data-open={ active }>
+
+    <div onClick={ hide } onUpdate="none" class="button__close small" data-color="white"></div>
+
+    <div class="pos-rel p-l xs-plr-s text-center { showAnim-group1: step[0], showAnim-group2: step[1], showAnim-group3: step[2], showAnim-group4: step[3], showAnim-group5: step[4] }">
+        <div class="anim-group1 anim-bt">
+            <div class="fontSize-38 mb-m">Пожалуйста, оцените наш сервис</div>
+            <div class="fontSize-34 mb-l">&star; <span class="fontSize-46 plr-xss">&#9733;</span> &star;</div>
+            <p class="opacity-75 fontSize-16 lineHeght-m text-uppercase letterSpacing-xxxl">Ваш голос нам поможет сделать его еще лучше.</p>
+        </div>
+        <div class="pos-centered maxW-100v { visibility-hidden : !step[1] }">
+            <div class="anim-group2 anim-tb">
+                <div class="fontSize-38 mb-m">Оцените по 10-ти бальной шкале</div>
+                <div name="votes" class="cursor-pointer fontSize-34 mb-l mlr-auto pb-xxs">
+                    <span each={ item in stars } class="plr-xss xs-plr0 { opacity-50 : !item }">&star;</span>
+                </div>
+                <p class="opacity-75 fontSize-16 lineHeght-m text-uppercase letterSpacing-xxxl">Вы оцениваете качество и удобство сервиса</p>
+            </div>
+        </div>
+        <div class="pos-centered { visibility-hidden : !step[2] }">
+            <div class="anim-group3 anim-scale">
+                <div class="fontWeight-8 mb-l" style="font-size:110px; line-height:110px; letter-spacing:-1.4px">{ raiting }.0</div>
+                <p class="opacity-75 fontSize-16 text-uppercase letterSpacing-xxxl">Спасибо за вашу оценку!</p>
+            </div>
+        </div>
+        <div class="pos-centered { visibility-hidden : !step[3] }">
+            <div class="anim-group4 anim-showRight-rotate">
+                <div class="fontSize-34 mb-l">У вас есть желание оставить комментарий?</div>
+                <button onClick={ comments.show } class="btn btn-xl2 btn-strong btn-white-hover mlr-s xs-mb-xs">Да, хочу</button>
+                <button onClick={ hide } onUpdate="none" class="btn btn-xl2 btn-strong btn-white-hover mlr-s">Нет, спасибо</button>
+            </div>
+        </div>
+        <div class="pos-centered { visibility-hidden : !step[4] }">
+            <div class="anim-group5 anim-scale">
+                <textarea class="textarea textarea-xl borderRadius-xl mb-m" style="min-height:150px;"></textarea>
+                <button onClick={ comments.send } onUpdate="none" class="btn btn-xl2 btn-strong btn-white-hover mlr-s">Отправить</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root),
+    $votes = $$($.votes);
+
+    $.active = false;
+    $.step = _.range(1, 6);
+    $.step = _.map($.step, function(item, i){
+        if (i > 0) return item = false;
+        else return item = true;
+    });
+    $.raiting = 0;
+    $.voted = false;
+    $.stars = _.range(1, 11);
+    $.stars = _.map($.stars, function(item){
+        return item = false;
+    });
+
+    $.on("mount", function(){
+        // $afterlag.xl(function(){
+        //     $.show();
+        // });
+
+        $scope.on("mouseenter mouseleave", function(e){
+            if (e.type === "mouseenter"){
+                $.step[0] = false;
+                $.step[1] = true;
+                $.update();
+            }
+            else if (e.type === "mouseleave"){
+                $.step[0] = true;
+                $.step[1] = false;
+                $.update();
+            }
+        });
+
+        var size = $votes.width();
+
+        $votes.on("mousemove", function(e){
+            var x = (e.pageX - $votes.offset().left),
+            val = x / size;
+            val *= 10;
+            val = Math.floor(val);
+            val += 1;
+
+            if (!$.voted && $.raiting != val){
+                $.raiting = val;
+                _.each($.stars, function(item, i){
+                    if ($.raiting < i + 1){
+                        $.stars[i] = false;
+                    }
+                    else {
+                        $.stars[i] = true;
+                    }
+                });
+                $.update();
+            }
+        });
+
+        $votes.one("click", function(e){
+            if ($.raiting > 0){
+                $scope.off();
+                $votes.off();
+                $.step[1] = false;
+                $.step[2] = true;
+                $.update();
+                $afterlag.m(function(){
+                    if (app.device.isPhone){
+                        $.hide();
+                    }
+                    else {
+                        $.step[2] = false;
+                        $.step[3] = true;
+                        $.update();
+                    }
+                }, {
+                    delay: 750,
+                    timeout: 1000
+                });
+            }
+        });
+    });
+
+    $.comments = {
+        show: function(){
+            $afterlag.m(function(){
+                $.step[3] = false;
+                $.step[4] = true;
+                $.update();
+            });
+        },
+
+        send: function(){
+            $.hide();
+        }
+    };
+
+    $.show = function(){
+        $.update({
+            active: true
+        })
+    };
+
+    $.hide = function(){
+        $.update({
+            active: false
+        })
+    };
+
+</script>
+
+</offer-votes>

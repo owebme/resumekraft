@@ -1,0 +1,110 @@
+.auth {
+    @extend .pos-centered;
+    @extend .pointerEvents-none;
+    @extend .visibility-hidden;
+    transition:visibility 0s 0.5s;
+
+    &[data-active="true"]{
+        @extend .pointerEvents-all;
+        @extend .visibility-visible;
+        @extend .transition-none;
+        @extend .zIndex-1;
+    }
+    &[data-form="signin"]{
+        .auth__body {
+            width:550px;
+        }
+    }
+    &[data-form="signup"]{
+        .auth__body {
+            width:575px;
+            @extend .pb-m;
+        }
+    }
+    &[data-form="remember"]{
+        .auth__body {
+            width:600px;
+            @extend .pt0;
+            @extend .pb-xs;
+        }
+    }
+    &__form {
+        @extend .pos-rel;
+        @extend .c-gray;
+        @extend .bg-white;
+        @extend .borderRadius-xxl;
+        @extend .text-center;
+        @extend .pt-xxs;
+        @extend .pb-l;
+    }
+    &__header {
+        @extend .c-blue;
+        @extend .ptb-m;
+        @extend .mb-l;
+        @extend .fontWeight-8;
+        @extend .letterSpacing--l;
+        @extend .borderBottomWidth-1;
+        @extend .borderStyle-solid;
+        @extend .borderColor-smoke;
+        font-size:40px;
+        @extend .overflow-hidden;
+    }
+    &__subtitle {
+        @extend .c-gray;
+        @extend .fontWeight-normal;
+        @extend .fontSize-20;
+        @extend .letterSpacing-0;
+    }
+    &__close {
+        @extend .pos-abs;
+        top:10px;
+        right:-50px;
+
+        &__button {
+            @include ui-icon(close_fill_white, 38px, 38px);
+            @extend .opacity-60;
+            @extend .btn-active;
+            @extend .cursor-pointer;
+
+            &:hover {
+                @extend .opacity-100;
+            }
+        }
+    }
+    &__body {
+        padding:20px 60px 0;
+    }
+    &__social {
+        @extend .pos-abs;
+        @extend .t0;
+        @extend .r100;
+        transform:translate3d(-20px, 40px, 0);
+
+        &__button {
+            @extend .flex-centered;
+            @extend .bg-blue;
+            @extend .w60;
+            @extend .h60;
+            @extend .cursor-pointer;
+            will-change:transform;
+            transition:transform .3s $cubic075, background-color .2s;
+            @extend .borderRadius-circle;
+            @extend .mb-s;
+            @extend .pt-xxs;
+            @extend .ml-xs;
+
+            &:hover {
+                transform:scale(1.2);
+                @extend .bg-white;
+
+                path {
+                    @extend .fill-blue;
+                }
+            }
+            &:active {
+                @extend .transition-default;
+                transform:translate3d(0, 2px, 0) scale(1);
+            }
+        }
+    }
+}

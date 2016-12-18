@@ -1,0 +1,129 @@
+<resume-basic-template3 id="t3">
+
+	<div id="t-header">
+		<div id="t-header-contacts">
+			<div if={ $resume.get('contacts', 'city') } id="t-header-city">г. { $resume.get('contacts', 'city') }</div>
+			<div if={ $resume.get('contacts', 'phone') } id="t-header-phone">{ $resume.get('contacts', 'phone') }</div>
+			<div if={ $resume.get('contacts', 'skype') } id="t-header-skype">Skype: { $resume.get('contacts', 'skype') }</div>
+		</div>
+		<div id="t-header-names">
+			<div if={ $resume.get('name').length > $resume.get('surname').length }>
+				<div id="t-header-surname" class="t-header-name small">{ $resume.get('surname') }</div>
+				<div id="t-header-name" class="t-header-name big">{ $resume.get('name') }</div>
+			</div>
+			<div if={ $resume.get("surname").length > $resume.get("name").length }>
+				<div id="t-header-name" class="t-header-name small">{ $resume.get('name') }</div>
+				<div id="t-header-surname" class="t-header-name big">{ $resume.get('surname') }</div>
+			</div>
+		</div>
+	</div>
+	<div id="t-container-wrapper">
+		<div id="t-container-string">
+			<div if={ $resume.get('contacts', 'email').length } class="t-container-string-element">{ $resume.get('contacts', 'email') }</div>
+			<div class="t-container-string-element birthday">
+				<span if={ !$resume.get('birthday', 'hidden') }>{ $resume.take.birthday.date() }</span>
+				<span class="age t-gray">({ $resume.take.birthday.age() })</span>
+			</div>
+		</div>
+		<div if={ $resume.get('post').length } id="t-container-post">{ $resume.get('post') }</div>
+		<div if={ $resume.get('salary', 'active') && $resume.get('salary', 'amount') } id="t-container-salary">{ $resume.take.salary.amount() } { $resume.take.salary.currency() } <sup>{ $resume.take.salary.worktime() }</sup></div>
+		<div if={ $resume.get('education', 'items').length } class="t-container t-container-edu">
+			<div class="t-container-name"><i></i>Образование</div>
+			<div each={ edu, i in $resume.take.education.items() } class="t-container-item">
+				<div class="t-container-dates">
+					<div class="t-container-dates-year">{ edu.year }</div><br>
+					<div class="t-container-dates-name">{ $store.education.getTitleById(edu.level) }</div>
+				</div>
+				<div if={ edu.level != 8 } class="t-container-desc">
+					<div class="t-container-desc-title">{ edu.title }</div>
+					<div if={ edu.faculty } class="t-container-desc-name">{ edu.faculty }</div>
+					<div if={ edu.speciality } class="t-container-desc-title">Специальность &ndash; { edu.speciality }</div>
+				</div>
+				<div if={ edu.level == 8 } class="t-container-desc">
+					<div class="t-container-desc-title">{ edu.title }</div>
+				</div>
+			</div>
+		</div>
+		<div class="t-container t-container-lang">
+			<div class="t-container-name"><i></i>Владение языками</div>
+			<div each={ lang, i in $resume.get('languages', 'items') } class="t-container-item">
+				<div class="t-container-dates">
+					<div class="t-container-dates-title { 't-gray' : lang.title != 'native' && lang.value == '1' }">{ $store.languages.getTitleById(lang.title) }</div>
+				</div>
+				<div class="t-container-desc">
+					<div if={ lang.title == "native" } class="t-container-desc-title">
+						{ $store.languages.native.getTitleById(lang.value) }
+					</div>
+					<div if={ lang.title != "native" } class="t-container-desc-title { 't-gray' : lang.value == '1' }">
+						{ $store.languages.select.getTitleById(lang.value) }
+					</div>
+				</div>
+			</div>
+		</div>
+		<div if={ $resume.get('jobs', 'items').length } class="t-container t-container-job">
+			<div class="t-container-name"><i></i>Место работы</div>
+			<div each={ job, i in $resume.take.jobs.items() } class="t-container-item">
+				<div class="t-container-dates">
+					<div class="t-container-dates-year">{ $store.month.getTitleById(job.from.month) } { job.from.year } &mdash;</div><br>
+					<div if={ job.last } class="t-container-dates-year">по настоящее время</div><div if={ !job.last } class="t-container-dates-year">{ $store.month.getTitleById(job.to.month) } { job.to.year }</div><br>
+					<div class="t-container-dates-title">{ job.company }</div><br>
+					<div class="t-container-dates-name">{ job.city }</div>
+				</div>
+				<div class="t-container-desc">
+					<div class="t-container-desc-title">{ $resume.take.jobs.period(job, true) }</div>
+					<div class="t-container-desc-name">{ job.post }</div>
+					<div class="t-container-desc-text">
+						{ job.text }
+					</div>
+				</div>
+			</div>
+		</div>
+		<div if={ $resume.get('aboutText').length } class="t-container t-container-about">
+			<div class="t-container-name"><i></i>Достижения, о себе</div>
+			<div class="t-container-item">
+				<div class="t-container-dates">
+				</div>
+				<div class="t-container-desc">
+					<div class="t-container-desc-text">
+						 { $resume.get('aboutText') }
+					</div>
+				</div>
+			</div>
+			<div class="t-container-stroke"></div>
+		</div>
+	</div>
+
+<style>
+
+@font-face {
+  font-family: 'PFSquareLight';
+  src: url('/assets/css/appResume/basic/templates/template3/fonts/pfsquaresanspro-light-webfont.eot');
+  src: url('/assets/css/appResume/basic/templates/template3/fonts/pfsquaresanspro-light-webfont.eot?#iefix') format('embedded-opentype'), url('/assets/css/appResume/basic/templates/template3/fonts/pfsquaresanspro-light-webfont.woff') format('woff'), url('/assets/css/appResume/basic/templates/template3/fonts/pfsquaresanspro-light-webfont.ttf') format('truetype'), url('/assets/css/appResume/basic/templates/template3/fonts/pfsquaresanspro-light-webfont.svg#PFSquareSansProLight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'NeoSansProRegular';
+  src: url('/assets/css/appResume/basic/templates/template3/fonts/NeoSansPro-Regular.eot');
+  src: local('O'), url('/assets/css/appResume/basic/templates/template3/fonts/NeoSansPro-Regular.woff') format('woff'), url('/assets/css/appResume/basic/templates/template3/fonts/NeoSansPro-Regular.ttf') format('truetype'), url('/assets/css/appResume/basic/templates/template3/fonts/NeoSansPro-Regular.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'NeoSansProMedium';
+  src: url('/assets/css/appResume/basic/templates/template3/fonts/NeoSansPro-Medium.eot');
+  src: local('O'), url('/assets/css/appResume/basic/templates/template3/fonts/NeoSansPro-Medium.woff') format('woff'), url('/assets/css/appResume/basic/templates/template3/fonts/NeoSansPro-Medium.ttf') format('truetype'), url('/assets/css/appResume/basic/templates/template3/fonts/NeoSansPro-Medium.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'FuturaB';
+  src: url('/assets/css/appResume/basic/templates/template3/fonts/ikea_sans-webfont.eot');
+  src: url('/assets/css/appResume/basic/templates/template3/fonts/ikea_sans-webfont.eot?#iefix') format('embedded-opentype'), url('/assets/css/appResume/basic/templates/template3/fonts/ikea_sans-webfont.woff') format('woff'), url('/assets/css/appResume/basic/templates/template3/fonts/ikea_sans-webfont.ttf') format('truetype'), url('/assets/css/appResume/basic/templates/template3/fonts/ikea_sans-webfont.svg#ikea_sansregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+</style>
+
+</resume-basic-template3>

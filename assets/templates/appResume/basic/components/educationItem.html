@@ -1,0 +1,86 @@
+<resume-screen-education-item>
+
+    <div class="{ opts.active ? 'display-block' : 'display-none' }">
+        <div class="row mb-m xs-pt-m">
+            <div class="hidden-xs col-sm-8 pt-xs pr-m">
+                <span class="visible-lg c-gray fontSize-28">Уровень образования</span>
+                <span class="visible-sm visible-md c-gray fontSize-28">Степень</span>
+            </div>
+            <div class="col-xs-24 col-sm-16">
+                <ui-select onUpdate="all" update="level" cursor={ $resume.select("education", "items", {"_id": opts.item._id}) } items={ $store.education.get() } size="xl"></ui-select>
+            </div>
+        </div>
+        <div class="row mb-m">
+            <div class="hidden-xs col-sm-8 pt-xs pr-m">
+                <span class="nowrap c-gray fontSize-28">Учебное заведение</span>
+            </div>
+            <div class="col-xs-24 col-sm-16">
+                <ui-input update="title" cursor={ $resume.select("education", "items", {"_id": opts.item._id}) } size="xl"></ui-input>
+            </div>
+        </div>
+        <div if={ get.level() != "8" } class="row mb-m">
+            <div class="hidden-xs col-sm-8 pt-xs pr-m">
+                <span class="c-gray fontSize-28">Факультет</span>
+            </div>
+            <div class="col-xs-24 col-sm-16">
+                <ui-input update="faculty" cursor={ $resume.select("education", "items", {"_id": opts.item._id}) } size="xl"></ui-input>
+            </div>
+        </div>
+        <div if={ get.level() != "8" } class="row mb-m">
+            <div class="hidden-xs col-sm-8 pt-xs pr-m">
+                <span class="c-gray fontSize-28">Специальность</span>
+            </div>
+            <div class="col-xs-24 col-sm-16">
+                <ui-input update="speciality" cursor={ $resume.select("education", "items", {"_id": opts.item._id}) } size="xl"></ui-input>
+            </div>
+        </div>
+        <div class="row mb-m">
+            <div class="hidden-xs col-sm-8 pt-xs pr-m">
+                <span class="c-gray fontSize-28">Год окончания</span>
+            </div>
+            <div class="col-xs-24 col-sm-16">
+                <ui-select update="year" cursor={ $resume.select("education", "items", {"_id": opts.item._id}) } items={ _.range(1940, new Date().getFullYear() + 1) } size="xl"></ui-select>
+            </div>
+        </div>
+        <div if={ opts.active } class="row mb-xl">
+            <div class="col-xs-24 text-center-xs xs-pt-xs inline">
+                <button onClick={ parent.remove } class="btn btn-l2 btn-upper btn-danger-hover mr-s">Удалить</button>
+                <button onClick={ parent.saved } onUpdate="none" class="btn btn-l2 btn-upper btn-primary">Сохранить</button>
+            </div>
+        </div>
+    </div>
+    <div class="{ opts.active ? 'display-none' : 'display-block text-left pt-m pb-l mb-s' }">
+        <div class="row pos-rel">
+            <div class="pos-centered-h fontSize-38 fontWeight-bold c-grayLighten opacity-75 letterSpacing-0">
+                <div class="trY--xl pt-xs">{ opts.item.year }</div>
+            </div>
+            <div class="col-xs-24 col-sm-10">
+                <h2 class="c-blue mb-m xs-mb-s">{ $store.education.getTitleById(opts.item.level) }</h2>
+            </div>
+            <div class="col-xs-24 col-sm-14 text-right">
+                <h3 if={ opts.item.level != "8" && opts.item.speciality } class="c-blue mb-s pt-xxs">Специальность &ndash; { opts.item.speciality }</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-24">
+                <p class="c-gray fontSize-22 lineHeight-xl">{ opts.item.title }<strong if={ opts.item.level != "8" && opts.item.faculty } class="c-blue">&nbsp; { opts.item.faculty }</strong></p>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.get = {
+        cursor: function(){
+            return $resume.select("education", "items", {"_id": $.opts.item._id});
+        },
+        level: function(){
+            return $resume.select("education", "items", {"_id": $.opts.item._id}).get("level");
+        }
+    };
+
+</script>
+
+</resume-screen-education-item>

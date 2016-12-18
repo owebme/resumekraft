@@ -1,0 +1,104 @@
+.overview__functions {
+    &__item {
+        @include accelerate(true);
+        @extend .mb-l;
+        will-change:transform;
+        transition:transform 0.35s $cubic23;
+
+        path, rect, polygon {
+            transition:fill 0.35s $cubic23;
+        }
+        &__icon {
+            @extend .flex-centered;
+            @extend .w100p;
+            height:148px;
+
+            .d-phone & {
+                height:124px;
+                transform:scale(0.912);
+            }
+            path, rect, polygon {
+                .d-phone & {
+                    @extend .fill-lime;
+                }
+            }
+        }
+        &__title {
+            @extend .pos-abs;
+            @extend .t100;
+            @extend .l0;
+            @extend .w100p;
+            @extend .c-blackLight;
+            @extend .fontSize-24;
+            will-change:opacity, transform;
+            transition:all 0.5s $cubic22 0.3s;
+            transform:translate3d(0, 0, 0);
+
+            .d-phone & {
+                @extend .c-white;
+                @extend .m0;
+                font-size:23.5px;
+            }
+        }
+        &__text {
+            @include accelerate();
+            @extend .pos-bl;
+            @extend .w100p;
+            @extend .plr-m;
+            @extend .pb-l;
+            @extend .bg-white;
+            @extend .borderRadius-xl;
+            @extend .opacity-0;
+            @extend .zIndex--1;
+            font-size:19.5px;
+            padding-top:185px;
+            height:297px;
+            will-change:opacity, box-shadow, transform;
+            transition:all 0.35s $cubic23;
+            transform:translate3d(0, 120px, 0) scale(0.95);
+        }
+        .m-no-touch & {
+            &:hover {
+                transform:translateY(-15px);
+
+                .overview__functions__item__title {
+                    @extend .opacity-0;
+                    transition:none;
+                    transform:translate3d(0, 20px, 0);
+                }
+                .overview__functions__item__text {
+                    @extend .opacity-100;
+                    box-shadow:0 20px 25px rgba(31,35,37,.15);
+                    transform:translate3d(0, 120px, 0) scale(1);
+                }
+                path, rect, polygon {
+                    @extend .fill-blue;
+                }
+            }
+        }
+    }
+    &__close {
+        @extend .pos-abs;
+        @extend .borderRadius-circle;
+        @extend .bg-white;
+        @extend .cursor-pointer;
+        top:100%;
+        left:50%;
+        width:260px;
+        height:260px;
+        transform:translate3d(-50%, -112px, 0);
+
+        &:after {
+            @extend .content-empty;
+            @include abs_50(48, 48);
+            @include ui-icon(plus_thin, 48px, 48px);
+            transform:translateY(-60px);
+            transition:transform 0.4s $bounce;
+        }
+        &:hover {
+            &:after {
+                transform:translateY(-60px) rotate(45deg);
+            }
+        }
+    }
+}

@@ -1,0 +1,49 @@
+<resume-preview class="oScreen zIndex-10" data-color="blue" data-open="false" data-show="down">
+
+    <div name="scroll" class="oScreen__content">
+        <resume-basic-template name="content" class="resume__preview"></resume-basic-template>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.on("mount", function(){
+        $.change($resume.get("template"));
+
+        $$($["scroll"]).on("click", "#upload-photo", function(e){
+            $.parent.open.photoUpload();
+        });
+
+        $$($["scroll"]).on("click", function(e){
+            if (!$.parent.sections.photo.active){
+                $.hide();
+            }
+        });
+    });
+
+    $.show = function(){
+        $.template.update();
+        $["scroll"].scrollTop = 0;
+        $.root.setAttribute("data-open", true);
+    };
+
+    $.change = function(num){
+        $.template = riot.mount("resume-basic-template", "resume-basic-template" + num)[0];
+        $resume.set("template", num);
+    };
+
+    $.hide = function(){
+        $.root.setAttribute("data-open", false);
+    };
+
+    $.get = {
+        content: function(){
+            $.template.update();
+            return $["content"].innerHTML;
+        }
+    };
+
+</script>
+
+</resume-preview>

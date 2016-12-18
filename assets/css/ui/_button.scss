@@ -1,0 +1,147 @@
+.buttons-angle {
+    @extend .inline;
+
+    div[class^="button"]{
+        @extend .pos-rel;
+        @extend .btn-hover;
+        @extend .btn-active;
+        @extend .cursor-pointer;
+        margin:0 0 0 15px;
+    }
+    &-tr, &[data-pos="top-right"] {
+        @extend .pos-tr;
+        transform:translate3d(-17px, 15px, 0);
+
+        .d-phone & {
+            transform:translate3d(-10px, 12px, 0);
+        }
+    }
+    &-tl, &[data-pos="top-left"] {
+        @extend .pos-tl;
+        transform:translate3d(17px, 15px, 0);
+
+        .d-phone & {
+            transform:translate3d(10px, 12px, 0);
+        }
+    }
+    &-bl, &[data-pos="bottom-left"] {
+        @extend .pos-bl;
+        transform:translate3d(17px, -15px, 0);
+
+        .d-phone & {
+            transform:translate3d(10px, -12px, 0);
+        }
+    }
+    &-br, &[data-pos="bottom-right"] {
+        @extend .pos-br;
+        transform:translate3d(-17px, -15px, 0);
+
+        .d-phone & {
+            transform:translate3d(-10px, -12px, 0);
+        }
+    }
+    &.zIndex-0 {
+        @extend .zIndex-0;
+    }
+}
+.button {
+    &__close {
+        @extend .pos-tr;
+        @extend .cursor-pointer;
+        @extend .btn-hover;
+        @extend .btn-active;
+        @extend .zIndex-2;
+        width:38px;
+        height:38px;
+        @include ui-icon(minus);
+        margin:15px 17px 0 0;
+
+        &[data-color="white"]{
+            @include ui-icon(minus_white);
+        }
+        &[data-color="gray"]{
+            @include ui-icon(close_fill_gray);
+        }
+        &[data-color="blue"]{
+            @extend .opacity-100;
+            @include ui-icon(close_fill);
+        }
+        .oScreen__scroll & {
+            @extend .pos-fixed;
+        }
+        &.small {
+            width:32px;
+            height:32px;
+        }
+        .d-phone & {
+            margin:12px 10px 0 0;
+        }
+    }
+    &__help {
+        width:32px;
+        height:32px;
+        @include ui-icon(help);
+        @extend .borderRadius-circle;
+        border:1px solid $blue;
+        transform:translate3d(0, -3px, 0);
+    }
+}
+.main {
+    &__button {
+        @extend .pos-abs;
+        @extend .t-m;
+        @extend .l-m;
+        @include accelerate();
+        @extend .w60;
+        @extend .h60;
+        @extend .userSelect-none;
+        @extend .flex-centered;
+        @extend .cursor-pointer;
+        @extend .btn-active;
+        @extend .borderRadius-circle;
+
+        &[data-color="white"] {
+            @extend .bg-white;
+
+            &:hover {
+                @extend .bg-blue;
+
+                &:after {
+                    @include ui-icon("menu_white", 28px, 28px);
+                }
+            }
+        }
+        &[data-color="black"] {
+            @extend .bg-blackLight;
+            @extend .boxShadow-15;
+
+            &:after {
+                @extend .opacity-60;
+            }
+            &[data-icon="menu"]:after {
+                @include ui-icon("menu_white", 28px, 28px);
+            }
+        }
+        &[data-icon="menu"]:after {
+            @include ui-icon("menu", 28px, 28px);
+        }
+        &:after {
+            @extend .content-empty;
+            transition:opacity 0.3s $cubic215;
+            transform:translateY(2px);
+        }
+        &:hover:after {
+            @extend .opacity-100;
+        }
+        .d-mobile & {
+            top:15px;
+            left:15px;
+            width:56px;
+            height:56px;
+
+            &:after {
+                @extend .opacity-70;
+            }
+        }
+    }
+}

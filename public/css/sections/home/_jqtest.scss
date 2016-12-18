@@ -1,0 +1,31 @@
+.home__jqtest {
+    @extend .text-center;
+
+    h1 {
+        font-size:63px;
+        @extend .lineHeight-xxxxl;
+        @extend .letterSpacing--xxl;
+    }
+    p {
+        @extend .lineHeight-xxxl;
+        @extend .letterSpacing--m;
+        font-size:23px;
+    }
+    &__header__container {
+        padding-top:100px;
+        padding-bottom:100px;
+
+        .d-tablet.r-landscape & {
+            padding-top:90px;
+            padding-bottom:80px;
+        }
+        .d-tablet.r-portrait & {
+            padding-top:60px;
+            padding-bottom:60px;
+        }
+    }
+    &__grid__item {
+        @extend .bg-cover;
+        height:360px;
+    }
+}

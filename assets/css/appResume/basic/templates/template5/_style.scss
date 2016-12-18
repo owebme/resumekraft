@@ -1,0 +1,172 @@
+#t5 {
+  font-family: 'MyriadRegular', Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  line-height: 27px;
+  color: #727272;
+  padding: 0 0 80px 116px;
+}
+#t5 .t-gray {
+  color: #aaa !important;
+}
+#t5 #t-header {
+  position: relative;
+  text-align: left;
+}
+#t5 #t-header-names {
+  padding-top: 105px;
+  color: #007aff;
+  font: 59px/59px 'MyriadThin';
+  letter-spacing: -2.557px;
+  white-space: nowrap;
+  margin-left: -3px;
+  margin-bottom: 16px;
+}
+#t5 #t-header-surname {
+  display: inline-block;
+}
+#t5 #t-header-name {
+  display: inline-block;
+}
+#t5 #t-header-string {
+  display: table;
+  width: 75%;
+  margin-bottom: 95px;
+}
+#t5 .t-header-string-left {
+  display: table-cell;
+  width: 50%;
+}
+#t5 .t-header-string-right {
+  display: table-cell;
+  width: 50%;
+}
+#t5 .t-header-string-element {
+  padding-top: 36px;
+}
+#t5 .t-header-string-element span {
+  color: #007aff;
+  font: 24.5px/22px 'MyriadSemibold';
+  letter-spacing: -0.8px;
+}
+#t5 #t-header-post {
+  position: absolute;
+  right: 83px;
+  top: 78px;
+  color:#555;
+  font: 32px/30px "MyriadThin";
+  text-align: right;
+  width: 50%;
+}
+#t5 .t-header-string-salary {
+    color:#555;
+    font:25px/24px 'HypatiaSemibold';
+    white-space:nowrap;
+}
+#t5 .t-header-string-salary sup {
+    display:inline-block;
+    color:#fff;
+    font:16px/28px 'HypatiaSemibold';
+    background-color:#007aff;
+    padding:0 9px;
+    height:24px;
+    border-radius:100px;
+    margin-left:5px;
+    transform:translateY(-5px);
+}
+#t5 #t-container-wrapper {
+  padding: 0 100px 0 0;
+  clear: both;
+}
+#t5 .t-container {
+  position: relative;
+  margin: 68px 0;
+}
+#t5 .t-container-name {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  color: #007aff;
+  font: 24px/24px 'MyriadSemibold';
+  letter-spacing: -0.5px;
+  width: 190px;
+  text-align: left;
+  text-transform: uppercase;
+}
+#t5 .t-container-item {
+  position: relative;
+  padding-top:5px;
+  padding-left: 224px;
+  margin-bottom: 22px;
+}
+#t5 .t-container-title {
+  color: #646464;
+  font: 24px/24px 'MyriadRegular';
+  letter-spacing: -0.2px;
+  margin-bottom: 6px;
+}
+#t5 .t-container-title span {
+  color: #007aff;
+  font: 24px/24px 'MyriadSemibold';
+  letter-spacing: -1px;
+}
+#t5 .t-container-edu.t-container {
+    margin-top:38px;
+}
+#t5 .t-container-edu .speciality {
+    margin-top:4px;
+}
+#t5 .t-container-edu .t-container-item {
+  padding-right: 65px;
+}
+#t5 .t-container-edu .t-container-title span {
+  line-height: 28px;
+}
+#t5 .t-container-lang .t-container-item {
+  margin-bottom: 30px;
+}
+#t5 .t-container-lang .t-container-title {
+  font-size: 24px;
+  color: #646464;
+}
+#t5 .t-container-lang .t-container-title span {
+  font-size: 24px;
+  display: inline-block;
+  width: 168px;
+  text-transform: none;
+}
+#t5 .t-container-lang .t-container-title.t-gray span {
+  color: #aaa;
+}
+#t5 .t-container-job .t-container-item {
+  margin-bottom: 40px;
+}
+#t5 .t-container-job .t-container-title {
+  font-size: 23px;
+  margin-bottom: 5px;
+}
+#t5 .t-container-year {
+  font: 23px/25px 'MyriadRegular';
+  margin-bottom: 8px;
+}
+#t5 .t-container-post {
+  color:#555;
+  font: 23px/24px 'MyriadSemibold';
+  letter-spacing: -0.25px;
+  margin-bottom: 5px;
+}
+#t5 .t-container-length {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  color:#007aff;
+  font: 22px/24px 'MyriadRegular';
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+#t5 .t-container-desc-text {
+    font-size: 21px;
+    line-height:29px;
+}
+#t5 .t-container-about {
+    margin-top:78px;
+}

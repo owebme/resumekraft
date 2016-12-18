@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'HypatiaLight';
+  src: url('/assets/css/appResume/basic/templates/template4/fonts/HypatiaSansPro-Light.eot'); /* IE9 Compat Modes */
+  src: url('/assets/css/appResume/basic/templates/template4/fonts/HypatiaSansPro-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/assets/css/appResume/basic/templates/template4/fonts/HypatiaSansPro-Light.woff2') format('woff2'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template4/fonts/HypatiaSansPro-Light.woff') format('woff'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template4/fonts/HypatiaSansPro-Light.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/assets/css/appResume/basic/templates/template4/fonts/HypatiaSansPro-Light.svg') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'HypatiaRegular';
+  src: url('/assets/css/appResume/basic/templates/template4/fonts/HypatiaSansPro-Regular.eot'); /* IE9 Compat Modes */
+  src: url('/assets/css/appResume/basic/templates/template4/fonts/HypatiaSansPro-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/assets/css/appResume/basic/templates/template4/fonts/HypatiaSansPro-Regular.woff2') format('woff2'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template4/fonts/HypatiaSansPro-Regular.woff') format('woff'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template4/fonts/HypatiaSansPro-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/assets/css/appResume/basic/templates/template4/fonts/HypatiaSansPro-Regular.svg') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'HypatiaSemibold';
+  src: url('/assets/css/appResume/basic/templates/template4/fonts/HypatiaSansPro-Semibold.eot'); /* IE9 Compat Modes */
+  src: url('/assets/css/appResume/basic/templates/template4/fonts/HypatiaSansPro-Semibold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/assets/css/appResume/basic/templates/template4/fonts/HypatiaSansPro-Semibold.woff2') format('woff2'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template4/fonts/HypatiaSansPro-Semibold.woff') format('woff'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template4/fonts/HypatiaSansPro-Semibold.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/assets/css/appResume/basic/templates/template4/fonts/HypatiaSansPro-Semibold.svg') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SegoeL';
+  src: url('/assets/css/appResume/basic/templates/template4/fonts/SegoeL.eot'); /* IE9 Compat Modes */
+  src: url('/assets/css/appResume/basic/templates/template4/fonts/SegoeL.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/assets/css/appResume/basic/templates/template4/fonts/SegoeL.woff2') format('woff2'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template4/fonts/SegoeL.woff') format('woff'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template4/fonts/SegoeL.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/assets/css/appResume/basic/templates/template4/fonts/SegoeL.svg') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}

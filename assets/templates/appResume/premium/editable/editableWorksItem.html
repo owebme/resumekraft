@@ -1,0 +1,72 @@
+<editable-works-item>
+
+    <div class="row mb-s">
+        <div class="col-xs-9 col-sm-6">
+            <div class="select select-l">
+                <select onChange={ $Editable.component.autoCommitItems } data-name="year">
+                    <option each={ item in _.range(1940, new Date().getFullYear() + 1) } value={ item } selected={ editing.year == item }>{ item }</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-15 col-sm-18">
+            <input onInput={ $Editable.component.autoCommitItems } class="input input-l" type="text" placeholder="Название проекта" data-name="title" autocomplete="off" value={ opts.item.title }>
+        </div>
+    </div>
+    <div class="row mb-s">
+        <div class="col-xs-24">
+            <textarea onInput={ $Editable.component.autoCommitItems } class="textarea textarea-xl" placeholder="Краткое описание" data-name="text" autocomplete="off">{ opts.item.text }</textarea>
+        </div>
+    </div>
+    <div class="row mb-xs">
+        <div class="col-xs-12">
+            <div class="input-group input-group-icon">
+                <input onInput={ $Editable.component.autoCommitItems } class="input input-l" type="text" placeholder="{ app.device.isPhone ? 'Ссылка' : 'Просто ссылка' }" data-name="links.url.value" autocomplete="off" value={ opts.item.links.url.value }>
+                <div class="input-icon">
+                    <svg class="input-svg input-svg-link" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                        <path class="input-svg-color" d="M 39.59375 0.03125 C 36.82475 0.03125 34.205 1.13775 32.25 3.09375 C 31.728 3.61375 26.45175 8.891 26.09375 9.25 C 23.04775 12.295 22.29775 16.77525 23.84375 20.53125 L 27.125 17.28125 C 26.923 15.39425 27.52925 13.46975 28.90625 12.09375 C 29.26325 11.73575 34.56475 6.43125 35.09375 5.90625 C 36.29775 4.70225 37.89275 4.03125 39.59375 4.03125 C 41.29475 4.03125 42.88975 4.70225 44.09375 5.90625 C 45.29775 7.11025 45.96875 8.70425 45.96875 10.40625 C 45.96875 12.10725 45.29675 13.70225 44.09375 14.90625 L 37.90625 21.09375 C 36.70325 22.29675 35.10825 22.96875 33.40625 22.96875 C 33.17625 22.96875 32.94675 22.93125 32.71875 22.90625 L 29.46875 26.15625 C 30.70475 26.66625 32.02925 26.96875 33.40625 26.96875 C 36.17625 26.96875 38.793 25.86325 40.75 23.90625 L 46.90625 17.75 C 48.86425 15.793 49.9375 13.17425 49.9375 10.40625 C 49.9375 7.63625 48.86425 5.05175 46.90625 3.09375 C 44.94925 1.13675 42.36075 0.03125 39.59375 0.03125 z M 32.96875 14.96875 A 2.0002 2.0002 0 0 0 31.59375 15.59375 L 15.59375 31.59375 A 2.0002 2.0002 0 1 0 18.40625 34.40625 L 34.40625 18.40625 A 2.0002 2.0002 0 0 0 32.96875 14.96875 z M 16.53125 23.09375 C 13.76125 23.09375 11.17575 24.168 9.21875 26.125 L 3.03125 32.3125 C 1.07425 34.2685 0 36.857 0 39.625 C 0.002 42.395 1.07325 45.01175 3.03125 46.96875 C 4.98825 48.92575 7.607 50 10.375 50 C 13.144 50 15.7325 48.92475 17.6875 46.96875 C 18.2095 46.44775 23.517 41.14025 23.875 40.78125 C 26.918 37.73825 27.666 33.254 26.125 29.5 L 22.84375 32.78125 C 23.04275 34.66425 22.40525 36.59475 21.03125 37.96875 C 20.67425 38.32575 15.404 43.599 14.875 44.125 C 13.671 45.328 12.076 46 10.375 46 C 8.674 46 7.079 45.329 5.875 44.125 C 4.671 42.922 4 41.326 4 39.625 C 4 37.924 4.64075 36.328 5.84375 35.125 L 12.03125 28.9375 C 13.23425 27.7345 14.82925 27.09375 16.53125 27.09375 C 16.76625 27.09375 17.019 27.098 17.25 27.125 L 20.5 23.875 C 19.261 23.363 17.91125 23.09375 16.53125 23.09375 z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <input onInput={ $Editable.component.autoCommitItems } class="input input-l" type="text" placeholder="Пояснение { 'к ссылке' : !app.device.isPhone }" data-name="links.url.title" autocomplete="off" value={ opts.item.links.url.title }>
+        </div>
+    </div>
+    <div class="row mb-xs">
+        <div class="col-xs-12">
+            <div class="input-group input-group-icon">
+                <input onInput={ $Editable.component.autoCommitItems } class="input input-l" type="text" placeholder="Ссылка { 'к фотографиям' : !app.device.isPhone }" data-name="links.image.value" autocomplete="off" value={ opts.item.links.image.value }>
+                <div class="input-icon">
+                    <svg class="input-svg input-svg-image" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><path class="input-svg-color" d="M93.3,30.6l-3.2-1.1l-1.3-9.3c-0.7-5.3-5.1-9.2-10.4-9.4c-0.6,0-1.2,0-1.8,0.1l-28.4,3.9l-20.1-7c-3.2-1.1-6.7,0.6-7.8,3.8  l-2.6,7.5l-3.9,0.5c-2.9,0.4-5.4,1.9-7.2,4.2c-1.7,2.3-2.5,5.2-2.1,8L7,49.8L2.9,61.6c-1.1,3.2,0.6,6.7,3.8,7.8l3.2,1.1l1.3,9.3  c0.7,5.3,5.1,9.2,10.4,9.4c0.6,0,1.2,0,1.8-0.1l28.4-3.9l20.1,7c3.2,1.1,6.7-0.6,7.8-3.8l2.6-7.5l3.9-0.5c5.9-0.8,10.1-6.3,9.3-12.2  L93,50.2l4.1-11.8C98.2,35.2,96.5,31.7,93.3,30.6z M71.1,47.2c-1.3-1-3.2-0.7-4.2,0.6L58.4,59L38.6,44c-1.3-1-3.2-0.7-4.2,0.6  L18.7,65.4l-4.8-34.7c-0.1-0.5,0.1-0.9,0.3-1.1c0.2-0.2,0.5-0.5,1-0.6l62.8-8.7c0.1,0,0.2,0,0.3,0c0.6,0,1.3,0.5,1.4,1.2l5,35.8  L71.1,47.2z M63.9,34.6c0.5,3.9-2.2,7.5-6.1,8.1c-3.9,0.5-7.5-2.2-8.1-6.1s2.2-7.5,6.1-8.1C59.8,28,63.4,30.7,63.9,34.6z"/></svg>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <input onInput={ $Editable.component.autoCommitItems } class="input input-l" type="text" placeholder="Пояснение { 'к ссылке' : !app.device.isPhone }" data-name="links.image.title" autocomplete="off" value={ opts.item.links.image.title }>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="input-group input-group-icon">
+                <input onInput={ $Editable.component.autoCommitItems } class="input input-l" type="text" placeholder="Ссылка { 'к видео' : !app.device.isPhone }" data-name="links.video.value" autocomplete="off" value={ opts.item.links.video.value }>
+                <div class="input-icon">
+                    <svg class="input-svg input-svg-video" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><path class="input-svg-color" fill-rule="evenodd" clip-rule="evenodd" d="M97.942,26.338c-0.795-7.177-5.913-12.648-13.119-13.118  c-31.149-2.035-38.497-2.035-69.647,0C7.97,13.69,2.853,19.159,2.058,26.338c-2.418,21.825-2.417,25.499,0,47.324  C2.853,80.841,7.973,86.31,15.176,86.78c31.151,2.035,38.498,2.035,69.647,0c7.204-0.47,12.324-5.941,13.119-13.118  C100.359,51.837,100.36,48.163,97.942,26.338z M64.609,51.886L37.664,68.123c-0.699,0.421-1.672,0.432-2.382,0.03  c-0.71-0.4-1.282-1.101-1.282-1.916V33.763c0-0.815,0.572-1.516,1.282-1.917c0.71-0.401,1.602-0.39,2.301,0.031l26.985,16.237  c0.68,0.41,1.086,1.092,1.086,1.886C65.654,50.794,65.289,51.477,64.609,51.886z"/></svg>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <input onInput={ $Editable.component.autoCommitItems } class="input input-l" type="text" placeholder="Пояснение { 'к ссылке' : !app.device.isPhone }" data-name="links.video.title" autocomplete="off" value={ opts.item.links.video.title }>
+        </div>
+    </div>
+
+    <div class="hr pt-m"></div>
+
+<script>
+
+    this.on("update", function(){
+        this.editing = this.opts.item;
+    });
+
+</script>
+
+</editable-works-item>

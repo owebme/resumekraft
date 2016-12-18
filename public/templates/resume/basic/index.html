@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+<style>
+* {margin:0; padding:0}
+body {
+	background: #fff;
+}
+.stamp {
+	display:block;
+	position:absolute;
+	bottom:0;
+	right:0;
+	width:160px;
+	height:160px;
+	background:url(/assets/images/stamp.png) 0 0 / cover;
+	z-index:1;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/css/appResume/basic/templates/template{{ num }}/fonts.css" />
+<link rel="stylesheet" type="text/css" href="/assets/css/appResume/basic/templates/style.css" />
+</head>
+<body id="t{{ num }}">
+
+    {{ content | safe }}
+
+	<a href="http://resumekraft.ru" class="stamp"></a>
+
+</body>
+</html>

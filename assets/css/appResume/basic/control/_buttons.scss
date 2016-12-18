@@ -1,0 +1,147 @@
+.resumeBasic {
+    .control__buttons {
+        @include accelerate(true);
+        @include flex("row", "flex-end", "flex-start");
+        @extend .pos-abs;
+        @extend .t-l;
+        @extend .r-m;
+        @extend .pt-xxs;
+        @extend .pr-l;
+        width:560px;
+        height:120px;
+        @extend .overflow-hidden;
+        @extend .zIndex-2;
+
+        .d-tablet.r-portrait &,
+        .d-phone & {
+            @extend .pr0;
+            @extend .r0;
+        }
+        &:before {
+            @extend .content-empty;
+            @extend .pos-tr;
+            @extend .h60;
+            @extend .w60;
+            @extend .zIndex--1;
+        }
+        &__item {
+            @extend .pos-rel;
+            will-change:transform;
+            transition:transform .7s $bounceSoft;
+
+            &__icon {
+                @include accelerate(true);
+                @extend .flex-centered;
+                @extend .w60;
+                @extend .h60;
+                @extend .borderRadius-circle;
+                @extend .borderWidth-1;
+                @extend .borderStyle-solid;
+                @extend .borderColor-grayLighten;
+                @extend .mlr-xs;
+                @extend .c-blue;
+                @extend .btn-active;
+                padding-top:4px;
+
+                .m-no-touch &:hover {
+                    @extend .c-white;
+                    @extend .bg-blue;
+                    @extend .borderColor-blue;
+
+                    path, rect, polygon, circle {
+                        @extend .fill-white;
+                    }
+                }
+            }
+            &__jq {
+                @extend .fontFamily-proxima;
+                font-size:30px;
+                @extend .fontWeight-8;
+                @extend .letterSpacing--m;
+                transform:translate3d(-1px, -1px, 0);
+            }
+        }
+        &__opener {
+            @extend .pos-tr;
+            @extend .opacity-0;
+            transform:scale(0);
+            margin:5px 40px 0 0;
+
+            .d-tablet.r-landscape & {
+                margin:35px 0 0 0;
+            }
+            .d-tablet.r-portrait & {
+                margin:20px -5px 0 0;
+            }
+            .d-phone & {
+                margin:10px -12px 0 0;
+            }
+            &__icon {
+                .d-tablet.r-portrait &,
+                .d-phone & {
+                    @extend .border-none;
+                }
+                &:after {
+                    @extend .content-empty;
+                    @extend .display-block;
+                    @include ui-icon(more_h, 32px, 32px);
+                    transform:translateY(-2px);
+
+                    .d-tablet &,
+                    .d-phone & {
+                        @include ui-icon(more_v);
+                    }
+                }
+            }
+        }
+        &[data-hidden="true"],
+        .d-tablet.r-portrait &,
+        .d-phone & {
+            width:120px;
+            height:70px;
+            transition:width 0s 0.4s, height 0s 0.4s;
+
+            .d-tablet & {
+                height:100px;
+            }
+            .control__buttons__item {
+                transition:transform .5s $bounceSoft;
+            }
+            .control__buttons__item:not(.control__buttons__opener){
+                @extend .opacity-0;
+                @extend .pointerEvents-none;
+                transform:scale(0.4);
+
+                .d-phone & {
+                    @extend .display-none;
+                }
+            }
+            .control__buttons__opener {
+                @extend .opacity-100;
+                @extend .transform-none;
+            }
+            .m-no-touch &:hover {
+                width:560px;
+                height:120px;
+                transition:width 0s, height 0s;
+
+                .control__buttons__item__icon {
+                    @extend .bg-white;
+
+                    &:hover {
+                        @extend .bg-blue;
+                    }
+                }
+                .control__buttons__item:not(.control__buttons__opener){
+                    @extend .opacity-100;
+                    @extend .pointerEvents-all;
+                    @extend .transform-none;
+                }
+                .control__buttons__opener {
+                    @extend .opacity-0;
+                    transform:scale(0);
+                }
+            }
+        }
+    }
+}

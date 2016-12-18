@@ -1,0 +1,87 @@
+<jqtest-result class="oScreen" data-open={ active } data-loader={ loading } data-show="down">
+
+    <div class="oScreen__buttons" data-pos="top-right">
+        <div onClick={ hide } onUpdate="none" class="button__close" data-color="gray"></div>
+    </div>
+
+    <div name="scroll" class="oScreen__content { app.device.isPhone ? 'notAnim-scroll' : 'bg-white' }">
+
+        <oScreen-loader></oScreen-loader>
+
+        <div name="content" class="screens screens-phone"></div>
+
+    </div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    $.active = false;
+
+    $.loading = false;
+
+    $.scroll = $$($["scroll"]);
+
+    $.on("before-mount", function(){
+        $.loader = $.tags["oscreen-loader"];
+    });  
+
+    $.show = function(){
+        if ($.loading || $.active) return;
+
+        $jqResult = $store.jqtest.jq1;
+
+        $.loader.show(
+            {
+                scope: $.scroll,
+                content: $.content,
+                start: function(){
+                    if (app.device.isPhone){
+                        $.content.style.backgroundColor = '#ffffff';
+                    }
+                },
+                tag: function(){
+                    return $.section = riot.mount($.content, "jqtest-result-content", {
+                        scope: $scope,
+                        scroll: $.scroll,
+                        content: $.content
+                    })[0];
+                },
+                callback: function(){
+                    if (app.device.isPhone){
+                        $.content.style.backgroundColor = '';
+                        $afterlag.run(function() {
+                            $.screens = new app.plugins.screens($["content"]);
+                            $.screens.init();
+                        });
+                    }
+                    else {
+                        $afterlag.run(function(){
+                            $scope.find(".chart").addClass("showChart");
+                            $.section.scrollAnimate.start();
+                        });
+                    }
+                }
+            }
+        );
+    };
+
+    $.hide = function(){
+        $.update({
+            active: false
+        })
+        _.onEndTransition($.scroll[0], function(){
+            $.section.unmount(true);
+        });
+    };
+
+    $.get = {
+        text: function(tag, text){
+            tag.root.innerHTML = text.replace(/\[b\]/, '<span class="larger">').replace(/\[\/b\]/, '</span>').replace(/\[i\]/, '<span class="marker">').replace(/\[\/i\]/, '</span>');
+        }
+    };
+
+</script>
+
+</jqtest-result>

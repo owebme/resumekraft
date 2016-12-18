@@ -1,0 +1,21 @@
+<jqtest-result-orientation-mobile class="screen" data-marquee="orientation">
+
+    <div class="screen__content container">
+        <div class="row">
+            <div class="col-xs-24">
+                <p class="text c-gray"><strong class="title c-blue">Ориентация на деятельность</strong>&nbsp; &mdash; &nbsp;<jqtest-result-text></jqtest-result-text></p>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.on("update", function(){
+        $.parent.get.text($.tags["jqtest-result-text"], $jqResult.orientation);
+    });
+
+</script>
+
+</jqtest-result-orientation-mobile>

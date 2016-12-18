@@ -1,0 +1,254 @@
+<section-payment class="oScreen zIndex-100 { showAnim-group1 : active }" data-color="dark" data-open={ active }>
+
+    <div class="anim-group1 anim-rl" data-duration="l" delay-show="m">
+        <div onClick={ hide } class="button__close opacity-40" data-color="white"></div>
+    </div>
+
+    <div name="popup" class="pos-centered" style="width:984px; height:636px">
+        <div class="rows h100p bg-white borderRadius-xl text-left anim-group1 anim-bt-soft" duration-show="m" duration-hide="s" delay-show="xs">
+            <div class="row flex-row-center-stretch h100p">
+                <div class="col-md-16">
+                    <div class="ptb-l pl-l pr-m">
+                        <div class="fontSize-28 c-blue mb-m"><span class="c-gray fontWeight-bold">Выбор</span> тарифного плана</div>
+                        <div class="pos-rel">
+                            <div name="table-cursor" class="pos-abs borderRadius-l borderWidth-1 borderStyle-solid borderColor-blue pointerEvents-none h100p transition-m transition-delay-xxs { animate ? 'opacity-30' : 'opacity-0' }"></div>
+                            <table name="table" class="table table-l">
+                                <thead class="table-header">
+                                    <th class="table-header-item w40p">Тариф</th>
+                                    <th class="table-header-item w30p" data-active={ plan == "free" } data-plan="free">
+                                        <ui-checkbox title="Простой" group="1" color={ 'blue' : plan == "free" } theme="blue" value={ plan == "free" } size="xl"></ui-checkbox>
+                                    </th>
+                                    <th class="table-header-item w30p" data-active={ plan == "premium" } data-plan="premium">
+                                        <ui-checkbox title="Premium" group="1" color={ 'blue' : plan == "premium" } theme="blue" value={ plan == "premium" } size="xl"></ui-checkbox>
+                                    </th>
+                                </thead>
+                                <tbody class="table-body cursor-default">
+                                    <tr class="table-row">
+                                        <td class="table-cell">
+                                            <div class="pos-rel" data-balloon="Резюме на двух языках, на русском и английских языках" data-balloon-length="large" data-balloon-fontSize="medium">На 2-х языках</div>
+                                        </td>
+                                        <td class="table-cell text-center pt-xxs">
+                                            <div class="display-inlineBlock w25 h1px bg-gray mb-xxs"></div>
+                                        </td>
+                                        <td class="table-cell text-center pt-xxs">
+                                            <icon-globe size="s"></icon-globe>
+                                        </td>
+                                    </tr>
+                                    <tr class="table-row">
+                                        <td class="table-cell">
+                                            <div class="pos-rel" data-balloon="Резюме-презентация с современным дизайном и анимацией" data-balloon-length="large" data-balloon-fontSize="medium">Стильный дизайн</div>
+                                        </td>
+                                        <td class="table-cell text-center pt-xxs">
+                                            <div class="display-inlineBlock w25 h1px bg-gray mb-xxs"></div>
+                                        </td>
+                                        <td class="table-cell text-center pt-xxs">
+                                            <icon-glass size="s"></icon-glass>
+                                        </td>
+                                    </tr>
+                                    <tr class="table-row">
+                                        <td class="table-cell">
+                                            <div class="pos-rel" data-balloon="Удобная статистика по дням, посещения вашего резюме" data-balloon-length="large" data-balloon-fontSize="medium">Статистика</div>
+                                        </td>
+                                        <td class="table-cell text-center pt-xxs">
+                                            <div class="display-inlineBlock w25 h1px bg-gray mb-xxs"></div>
+                                        </td>
+                                        <td class="table-cell text-center pt-xxs">
+                                            <icon-chart size="s"></icon-chart>
+                                        </td>
+                                    </tr>
+                                    <tr class="table-row">
+                                        <td class="table-cell">
+                                            <div class="pos-rel" data-balloon="Получате обратную связь от вашего работадателя" data-balloon-length="large" data-balloon-fontSize="medium">Обратная связь</div>
+                                        </td>
+                                        <td class="table-cell text-center pt-xxs">
+                                            <div class="display-inlineBlock w25 h1px bg-gray mb-xxs"></div>
+                                        </td>
+                                        <td class="table-cell text-center pt-xxs">
+                                            <icon-feedback size="s"></icon-feedback>
+                                        </td>
+                                    </tr>
+                                    <tr class="table-row">
+                                        <td class="table-cell">
+                                            <div class="pos-rel" data-balloon="100% адаптация для всех мобильных и не мобильных устройств" data-balloon-length="large" data-balloon-fontSize="medium">Поддержка Mobile</div>
+                                        </td>
+                                        <td class="table-cell text-center pt-xxs">
+                                            <div class="display-inlineBlock w25 h1px bg-gray mb-xxs"></div>
+                                        </td>
+                                        <td class="table-cell text-center pt-xxs">
+                                            <icon-devices size="s"></icon-devices>
+                                        </td>
+                                    </tr>
+                                    <tr class="table-row">
+                                        <td class="table-cell">
+                                            <div class="pos-rel" data-balloon="Удобно сохранить и сконвертировать в PDF-формат" data-balloon-length="large" data-balloon-fontSize="medium">Сохранить в PDF</div>
+                                        </td>
+                                        <td class="table-cell text-center pt-xxs">
+                                            <icon-pdf size="s"></icon-pdf>
+                                        </td>
+                                        <td class="table-cell text-center pt-xxs">
+                                            <icon-pdf size="s"></icon-pdf>
+                                        </td>
+                                    </tr>
+                                    <tr class="table-row">
+                                        <td class="table-cell">
+                                            <div class="pos-rel" data-balloon="Возможность распечатать созданное резюме" data-balloon-length="large" data-balloon-fontSize="medium">Распечатать</div>
+                                        </td>
+                                        <td class="table-cell text-center pt-xxs">
+                                            <icon-print size="s"></icon-print>
+                                        </td>
+                                        <td class="table-cell text-center pt-xxs">
+                                            <icon-print size="s"></icon-print>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 bg-blue c-white borderRadiusRight-xl">
+                    <div class="p-l">
+                        <div class="fontSize-22">Ваш тариф: <strong>Простой</strong></div>
+                    </div>
+                    <div class="pos-bl w100p p-l { hovered == 'free' ? 'showAnim-group2' : 'pointerEvents-none' }">
+                        <div class="anim-group2 anim-bt plr-xss" data-duration="m" delay-show="xs">
+                            <div class="fontSize-28">Тариф: <strong>Простой</strong></div>
+                            <div class="h1px bg-white opacity-50 mtb-m"></div>
+                            <div class="fontSize-20 pb-l">Доступных функций: <strong>4 из 12</strong></div>
+                            <div class="h1px bg-white opacity-50 mtb-m"></div>
+                            <div class="fontSize-22 pb-l">Ежемесячная оплата: <strong>0 ₽</strong></div>
+                        </div>
+                    </div>
+                    <div class="pos-bl w100p pl-l pb-l pr-m { hovered == 'premium' ? 'showAnim-group3' : 'pointerEvents-none' }">
+                        <div class="anim-group3 anim-bt plr-xss" data-duration="m" delay-show="xs">
+                            <div class="fontSize-24">Тариф: <strong>Premium</strong></div>
+                            <div class="h1px bg-white opacity-50 mtb-m"></div>
+                            <div class="fontSize-18">Доступных функций: <strong>12 из 12</strong></div>
+                            <div class="h1px bg-white opacity-50 mtb-m"></div>
+                            <div class="p-m borderRadius-xl borderWidth-1 borderColor-white borderStyle-solid mb-xs transition-xs { bg-white : varPay == '1' }">
+                                <ui-checkbox commit={ changePay } i="1" title="Ежемесячная оплата" group="2" color={ varPay == "1" ? 'blue' : 'white' } theme="blue" size="xl" value={ varPay == "1" }></ui-checkbox>
+                            </div>
+                            <div class="p-m borderRadius-xl borderWidth-1 borderColor-white borderStyle-solid transition-xs { bg-white : varPay == '2' }">
+                                <ui-checkbox commit={ changePay } i="2" title="Оплатить один раз" group="2" color={ varPay == "2" ? 'blue' : 'white' } theme="blue" size="xl" value={ varPay == "2" }></ui-checkbox>
+                            </div>
+                            <div class="h1px bg-white opacity-50 mtb-m"></div>
+                            <div class="fontSize-22 pb-l">Итого к оплате: <strong>{ varPay == '1' ? '169' : '369' } ₽</strong></div>
+                            <button class="display-block btn c-blue btn-l2 btn-white-hover-success btn-strong mlr-auto">Перейти к оплате</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.active = false;
+    $.ready = false;
+    $.animate = false;
+    $.popup = $$($.popup);
+    $.table = $$($.table);
+    $.cursor = $$($["table-cursor"]);
+    $.plan = $.hovered = "free";
+    $.varPay = "1";
+
+    var offset = {};
+
+    // $.on("mount", function(){
+    //     setTimeout(function(){
+    //         $.show();
+    //     }, 200);
+    // });
+
+    $.show = function(plan){
+        if ($.active) return;
+
+        if (plan && plan != $.plan) {
+            $.plan = plan;
+            $.hovered = plan;
+            if ($.ready) $.updateCursor(plan);
+        }
+
+        $.update({
+            active: true
+        })
+        if (!$.ready){
+            _.onEndTransition($.root, function(){
+                $.update({
+                    animate: true
+                })
+                $.init();
+            });
+        }
+    };
+
+    $.init = function(){
+        if ($.ready) return;
+
+        $.ready = true;
+
+        $.table.find("thead .table-header-item").each(function(){
+            var $item = $$(this),
+                plan = $item.attr("data-plan");
+
+            if (plan){
+                offset[plan] = {
+                    index: $item.index(),
+                    name: plan,
+                    width: parseInt($item.innerWidth()),
+                    left: parseInt($item.offset().left) - $.popup.offset().left - 47.5
+                }
+            }
+        });
+
+        $.updateCursor($.plan);
+
+        $.table.on("mouseenter click", "td, th", function(e){
+            var index = e.currentTarget.cellIndex;
+            if (e.type === "mouseenter" && $.plan !== "premium"){
+                if (index > 0 && offset[$.hovered].index != index){
+                    $.hovered = _.findWhere(offset, {"index": index}).name;
+                    $.updateCursor($.hovered);
+                }
+            }
+            else if (e.type === "click"){
+                if (index > 0 && offset[$.plan].index != index){
+                    $.plan = _.findWhere(offset, {"index": index}).name;
+                    $.hovered = $.plan;
+                    $.updateCursor($.plan);
+                }
+            }
+        });
+
+        $.table.on("mouseleave", function(e){
+            if ($.hovered != $.plan){
+                $.hovered = $.plan;
+                $.updateCursor($.plan);
+            }
+        });
+    };
+
+    $.updateCursor = function(plan){
+        $.cursor.css({
+            transform: "translateX(" + offset[plan].left + "px)",
+            width: offset[plan].width + "px"
+        });
+        $.update();
+    };
+
+    $.changePay = function(value, i){
+        $.update({
+            varPay: i
+        });
+    };
+
+    $.hide = function(){
+        $.update({
+            active: false
+        })
+    };
+
+</script>
+
+</section-payment>

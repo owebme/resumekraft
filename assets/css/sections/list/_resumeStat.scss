@@ -1,0 +1,54 @@
+.resume__stat {
+    @include abs();
+    @extend .display-block;
+    @extend .visibility-hidden;
+    @extend .pointerEvents-none;
+    @extend .zIndex-2;
+    transition:visibility 0s 0.45s;
+
+    &:before {
+        @extend .content-empty;
+        @extend .opacity-0;
+        @include abs();
+        @include accelerate(true);
+        background:rgba(darken($grayDark,15%),.7);
+        will-change:opacity;
+        transition:opacity 0.4s $cubic40;
+    }
+    &__wrapper {
+        @include accelerate();
+        @extend .pos-tl;
+        @extend .w100p;
+        @extend .bg-smoke;
+        @extend .pt-m;
+        @extend .overflow-hidden;
+        height:560px;
+        will-change:transform;
+        transform-origin:50% 0;
+        transform:translate3d(0, -560px, 0);
+        transition:transform 0.5s $cubic40;
+    }
+    &__title {
+        @extend .fontSize-34;
+        @extend .mb-l;
+        @extend .c-gray;
+    }
+    &__chart {
+        @extend .w100p;
+        @extend .mt-m;
+        height:400px;
+    }
+    &[data-open="true"]{
+        @extend .visibility-visible;
+        @extend .pointerEvents-all;
+        transition:visibility 0s;
+
+        &:before {
+            @extend .opacity-100;
+        }
+        .resume__stat__wrapper {
+            @extend .transform-default;
+            transition:transform 0.5s $cubic645;
+        }
+    }
+}

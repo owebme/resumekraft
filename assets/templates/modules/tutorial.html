@@ -1,0 +1,186 @@
+<section-tutorial class="tutorial" data-open="{ active }" active-zone="{ step.activeZone }">
+
+    <div class="tutorial__shape" name="shape" style="{ step.style }"></div>
+
+    <div class="tutorial__message__wrapper" style="{ message.style }">
+        <div class="tutorial__message" data-position="{ message.position }" data-active={ message.active }>
+            <p class="pos-tr p-m p-gray fontSize-18">{ num } из { steps.get().length }</p>
+            <h3 class="tutorial__message__title">{ step.title }</h3>
+            <p class="tutorial__message__text">{ step.text }</p>
+            <div class="fontSize-0">
+                <button onClick={ nextStep } class="btn btn-m { endShow ? 'btn-success' : 'btn-default-hover-success' } mr-xs">
+                    <svg if={ endShow } class="btn-svg btn-svg-repeat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                        <path class="fill-white" d="M 39.78125 5.96875 A 2.0002 2.0002 0 0 0 38 8 L 38 12.5625 C 34.722701 9.1373523 30.10346 7 25 7 C 15.082241 7 7 15.082241 7 25 A 2.0002 2.0002 0 1 0 11 25 C 11 17.243759 17.243759 11 25 11 C 28.816123 11 32.256876 12.535728 34.78125 15 L 31 15 A 2.0002 2.0002 0 1 0 31 19 L 40 19 L 42 19 L 42 17 L 42 8 A 2.0002 2.0002 0 0 0 39.96875 5.96875 A 2.0002 2.0002 0 0 0 39.78125 5.96875 z M 40.78125 22.96875 A 2.0002 2.0002 0 0 0 39 25 C 39 32.757363 32.756392 39 25 39 C 21.184399 39 17.742551 37.46305 15.21875 35 L 19 35 A 2.0002 2.0002 0 1 0 19 31 L 10 31 L 8 31 L 8 33 L 8 42 A 2.0002 2.0002 0 1 0 12 42 L 12 37.4375 C 15.276425 40.860887 19.895994 43 25 43 C 34.917608 43 43 34.918637 43 25 A 2.0002 2.0002 0 0 0 40.96875 22.96875 A 2.0002 2.0002 0 0 0 40.78125 22.96875 z"></path>
+                    </svg>
+                    { endShow ? 'Повторить' : 'Далее' }
+                </button>
+                <button onClick={ hide } class="btn btn-m btn-primary-hover">Выйти</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.active = false;
+    $.steps = new Baobab([]).root;
+    $.borderColor = "#0084ff";
+
+    $.on("before-mount", function(){
+        $.reset();
+    });
+
+    $.reset = function(){
+        $.scope = null;
+        $.message = {
+            active: false,
+            style: "clear:both",
+            position: null
+        };
+        $.cursor = null;
+        $.target = null;
+        $.num = 1;
+        $.step = {
+            activeZone: false,
+            style: "clear:both"
+        };
+        $.endShow = false;
+    };
+
+    $.show = function(scope, tutorial){
+        if (app.plugins.tutorial[tutorial]){
+
+            $.steps.set(app.plugins.tutorial[tutorial]);
+            $.scope = $$(scope);
+
+            $.active = true;
+
+            $.nextStep();
+
+            var reRender = _.debounce($.render, 100);
+
+            app.$dom.window.on("resize.tutorial", function(){
+                reRender();
+            });
+        }
+        else {
+            console.log("Not found tutorial: " + tutorial);
+        }
+    };
+
+    $.nextStep = function(){
+        if (!$.cursor) $.message.active = true;
+        else $.message.active = false;
+
+        if (!$.cursor || !$.cursor.right()) {
+            $.cursor = $.steps.down();
+        }
+        else {
+            $.actions($.step, $.target, true);
+            $.cursor = $.cursor.right();
+        }
+
+        $.step = $.cursor.get().call();
+        $.target = $.scope.find($.step.target);
+
+        $.render();
+
+        _.onEndTransition($["shape"], function(){
+            setTimeout(function(){
+
+                $.message.position = $.step.position;
+                $.message.active = true;
+
+                if (!$.cursor.right()) $.endShow = true;
+                else $.endShow = false;
+
+                $.update();
+
+                if ($.endShow) $.num = 1;
+                else $.num++;
+
+                $.actions($.step, $.target);
+
+            }, 5);
+        });
+    };
+
+    $.render = function(){
+        var offset = $.target.offset(),
+            _width = $.target.data("width"),
+            _height = $.target.data("height"),
+            _zoom = $.target.data("zoom"),
+            padding = $.target.data("padding"),
+            width = _width ? parseInt(_width) : (padding ? $.target.outerWidth() + parseInt(padding) * 2 : $.target.outerWidth()),
+            height = _height ? parseInt(_height) : (padding ? $.target.outerHeight() + parseInt(padding) * 2 : $.target.outerHeight()),
+            zoom = _zoom ? parseFloat(_zoom) : 1,
+            arbitrarySize = 300,
+            halfSize = arbitrarySize / 2,
+            centerX = (padding ? offset.left - parseInt(padding) : offset.left) + width / 2,
+            centerY = (padding ? offset.top - parseInt(padding) : offset.top) + height / 2,
+            centerXMinusHalfSize = centerX - halfSize,
+            centerYMinusHalfSize = centerY - halfSize,
+            rectangleScaleFactor = (width / arbitrarySize) * zoom,
+            rectangleHeight = (height / width * arbitrarySize) * zoom,
+            borderSize = Math.ceil(5 / rectangleScaleFactor),
+            shadowSize = 5 * borderSize,
+            rectangleBorderRadius = 1e4 + 20 / rectangleScaleFactor,
+            style = null;
+
+        if ($.step.figure == "square"){
+            centerYMinusHalfSize = centerY - rectangleHeight / 2;
+            style = "-webkit-transform: translateX(" + centerXMinusHalfSize + "px) translateY(" + centerYMinusHalfSize + "px) translateZ(0) scale(" + rectangleScaleFactor + "); transform: translateX(" + centerXMinusHalfSize + "px) translateY(" + centerYMinusHalfSize + "px) translateZ(0) scale(" + rectangleScaleFactor + "); width: " + arbitrarySize + "px; height: " + rectangleHeight + "px; box-shadow: inset 0 0 0 " + borderSize + "px " + $.borderColor + ", inset 0 0 " + shadowSize + "px rgba(0,0,0,0.4); border-radius: " + rectangleBorderRadius + "px";
+        }
+        else if ($.step.figure == "circle"){
+            var radius = Math.sqrt(2) * Math.max(width, height) / 2,
+                diametr = radius * 2,
+                scaleFactor = (diametr / arbitrarySize) * zoom,
+                borderSize = Math.ceil(5 / scaleFactor),
+                shadowSize = 5 * borderSize;
+
+            style = "-webkit-transform: translateX(" + centerXMinusHalfSize + "px) translateY(" + centerYMinusHalfSize + "px) translateZ(0) scale(" + scaleFactor + "); transform: translateX(" + centerXMinusHalfSize + "px) translateY(" + centerYMinusHalfSize + "px) translateZ(0) scale(" + scaleFactor + "); width: " + arbitrarySize + "px; height: " + arbitrarySize + "px; box-shadow: inset 0 0 0 " + borderSize + "px " + $.borderColor + ", inset 0 0 " + shadowSize + "px rgba(0,0,0,0.4)";
+        }
+
+        $.step.style = style;
+
+        if (!$.message.active) $.update();
+
+        if ($.step.position == "right"){
+            $.message.style = "top:" + offset.top + "px; left:" + (offset.left + width) + "px";
+        }
+        else if ($.step.position == "left" || $.step.position == "up"){
+            $.message.style = "top:" + offset.top + "px; left:" + offset.left + "px";
+        }
+        else if ($.step.position == "down"){
+            $.message.style = "top:" + (offset.top + height) + "px; left:" + offset.left + "px";
+        }
+
+        if ($.message.active) $.update();
+    };
+
+    $.actions = function(step, $target, force){
+        if (step.actions){
+            if (step.actions.toggle){
+                setTimeout(function(){
+                    step.actions.toggle($target);
+                }, force ? 0 : 650);
+            }
+        }
+    };
+
+    $.hide = function(){
+        $.active = false;
+
+        _.onEndTransition($.root, function(){
+            $.actions($.step, $.target, true);
+            $.reset();
+            $.update();
+        });
+
+        app.$dom.window.off("resize.tutorial");
+    };
+
+</script>
+
+</section-tutorial>

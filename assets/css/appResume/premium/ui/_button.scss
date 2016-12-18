@@ -1,0 +1,81 @@
+.resume {
+    .btn-editable {
+        @extend .borderWidth-1;
+        @extend .borderStyle-dashed;
+
+        &:not(:hover){
+            @extend .border-primary;
+            @extend .boxShadow-none;
+            @extend .c-primary;
+            background-color:rgba($white,.22);
+        }
+        .d-mobile & {
+            min-width:50px;
+            height:50px;
+            font-size:17px;
+            line-height:48px;
+        }
+        .btn-svg {
+            transform:translateY(-1px);
+        }
+        &.btn-white {
+            @extend .bg-none;
+            border:2px dashed rgba($white,.5) !important;
+            @extend .c-white;
+
+            .btn-svg-color {
+                @extend .fill-white;
+            }
+            &:hover {
+                @extend .bg-white;
+                @extend .c-primary;
+
+                .btn-svg-color {
+                    @extend .fill-primary;
+                }
+            }
+        }
+        &.btn-l {
+            .btn-svg {
+                width:18px;
+                height:18px;
+            }
+        }
+        &.btn-xl {
+            .btn-svg {
+                width:20px;
+                height:20px;
+            }
+            .d-mobile & {
+                padding-left:35px;
+                padding-right:35px;
+            }
+        }
+        &:not(.btn-white) {
+            .btn-svg-color {
+                @extend .fill-primary;
+            }
+            &:hover {
+                @extend .c-white;
+                @extend .bg-primary;
+                @extend .border-primary;
+
+                .btn-svg-color {
+                    @extend .fill-white;
+                }
+            }
+        }
+    }
+}
+.section__editable {
+    .btn {
+        .btn-svg-color {
+            @extend .fill-white;
+        }
+        &:hover {
+            .btn-svg-color {
+                @extend .fill-primary;
+            }
+        }
+    }
+}

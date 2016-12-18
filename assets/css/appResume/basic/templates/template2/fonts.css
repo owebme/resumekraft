@@ -1,0 +1,60 @@
+@font-face {
+  font-family: 'PFSquareLight';
+  src: url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-light-webfont.eot');
+  src: url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-light-webfont.eot?#iefix') format('embedded-opentype'), url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-light-webfont.woff') format('woff'), url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-light-webfont.ttf') format('truetype'), url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-light-webfont.svg#PFSquareSansProLight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PFSquareRegular';
+  src: url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-regular-webfont.eot');
+  src: url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-regular-webfont.eot?#iefix') format('embedded-opentype'), url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-regular-webfont.woff') format('woff'), url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-regular-webfont.ttf') format('truetype'), url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-regular-webfont.svg#PFSquareSansProRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PFSquareMedium';
+  src: url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-medium-webfont.eot');
+  src: url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-medium-webfont.eot?#iefix') format('embedded-opentype'), url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-medium-webfont.woff') format('woff'), url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-medium-webfont.ttf') format('truetype'), url('/assets/css/appResume/basic/templates/template2/fonts/pfsquaresanspro-medium-webfont.svg#PFSquareSansProMedium') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Proxima";
+  src: url("/assets/css/appResume/basic/templates/template2/fonts/ProximaNova-Bold-webfont.eot");
+  src: url("/assets/css/appResume/basic/templates/template2/fonts/ProximaNova-Bold-webfont.eot?#iefix") format("embedded-opentype"),
+       url("/assets/css/appResume/basic/templates/template2/fonts/ProximaNova-Bold-webfont.woff") format("woff"),
+       url("/assets/css/appResume/basic/templates/template2/fonts/ProximaNova-Bold-webfont.ttf") format("truetype"),
+       url("/assets/css/appResume/basic/templates/template2/fonts/ProximaNova-Bold-webfont.svg#proxima_nova_rgbold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PTSansNarrow';
+  src: url('/assets/css/appResume/basic/templates/template2/fonts/ptsans-narrowbold-webfont.eot'); /* IE9 Compat Modes */
+  src: url('/assets/css/appResume/basic/templates/template2/fonts/ptsans-narrowbold-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/assets/css/appResume/basic/templates/template2/fonts/ptsans-narrowbold-webfont.woff2') format('woff2'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template2/fonts/ptsans-narrowbold-webfont.woff') format('woff'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template2/fonts/ptsans-narrowbold-webfont.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/assets/css/appResume/basic/templates/template2/fonts/ptsans-narrowbold-webfont.svg') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: url('/assets/css/appResume/basic/templates/template2/fonts/HelveticaNeueCyrRoman.eot'); /* IE9 Compat Modes */
+  src: url('/assets/css/appResume/basic/templates/template2/fonts/HelveticaNeueCyrRoman.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/assets/css/appResume/basic/templates/template2/fonts/HelveticaNeueCyrRoman.woff2') format('woff2'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template2/fonts/HelveticaNeueCyrRoman.woff') format('woff'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template2/fonts/HelveticaNeueCyrRoman.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/assets/css/appResume/basic/templates/template2/fonts/HelveticaNeueCyrRoman.svg') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PFDin';
+  src: url('/assets/css/appResume/basic/templates/template2/fonts/pfdintextcondpro-medium-webfont.eot');
+  src: url('/assets/css/appResume/basic/templates/template2/fonts/pfdintextcondpro-medium-webfont.eot?#iefix') format('embedded-opentype'), url('/assets/css/appResume/basic/templates/template2/fonts/pfdintextcondpro-medium-webfont.woff') format('woff'), url('/assets/css/appResume/basic/templates/template2/fonts/pfdintextcondpro-medium-webfont.ttf') format('truetype'), url('/assets/css/appResume/basic/templates/template2/fonts/pfdintextcondpro-medium-webfont.svg#PFDinTextCondProRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

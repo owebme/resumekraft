@@ -1,0 +1,43 @@
+<resume-settings class="oScreen screen-settings c-white zIndex-10 { showAnim : active }" data-color="blue" data-open={ active }>
+
+    <div class="pos-centered">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-24"><h1>Настройки</h1></div>
+            </div>
+            <div class="row">
+                <div class="hidden-xs col-sm-8 pt-xs pr-m">
+                    <span class="c-gray fontSize-28">Должность</span>
+                </div>
+                <div class="col-xs-24 col-sm-16">
+                    <ui-input update="post" cursor={ $resume.select() } size="xl"></ui-input>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.active = false;
+
+    $.on("mount", function(){
+        $.show();
+    });
+
+    $.show = function(){
+        $.update({
+            active: true
+        })
+    };
+
+    $.hide = function(){
+        $.update({
+            active: false
+        })
+    };
+
+</script>
+
+</resume-settings>

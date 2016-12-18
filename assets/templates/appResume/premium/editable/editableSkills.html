@@ -1,0 +1,83 @@
+<editable-skills class="col-sm-24 col-md-offset-1 col-md-22 col-lg-offset-4 col-lg-18 section__editable__container" data-editing="skills">
+
+    <ui-switcher id="activity" commit="true"></ui-switcher>
+
+    <div class="section__editable__content { hide : !switcher.value }">
+
+        <div class="title title-main">{ title }</div>
+
+        <div class="pos-rel mb-l">
+            <span class="input-title">название секции</span>
+            <input onInput={ $Editable.component.autoCommit } class="input input-xl" data-name="title" name="title_data" type="text" placeholder="Название секции" autocomplete="off" value={ data && data.title ? data.title : $store.resume.placeholder.skills.title }>
+        </div>
+        <div class="pos-rel mb-l">
+            <span class="input-title">жирный заголовок</span>
+            <input onInput={ $Editable.component.autoCommit } class="input input-xl" data-name="header" name="header_data" type="text" placeholder="Жирный заголовок" autocomplete="off" value={ data.header }>
+        </div>
+        <div class="row">
+            <div class="col-md-12 xs-mb-m sm-mb-l">
+                <div class="pos-rel">
+                    <span class="input-title">описание навыков</span>
+                    <textarea onInput={ $Editable.component.autoCommit } class="textarea textarea-xl" style="height:330px" data-name="text" name="text_data" autocomplete="off">{ data.text }</textarea>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="pl-m xsm-pl0">
+                    <div each={ item, i in data.items } class="row mb-m">
+                        <div class="col-xs-18">
+                            <div class="pos-rel">
+                                <div onClick={ removeSkill } class="input-group-addon">
+                                    <input-addon-remove></input-addon-remove>
+                                </div>
+                                <input onInput={ autoCommitTitle } class="input input-l" type="text" placeholder="Введите название навыка" autocomplete="off" value={ item.title }>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <ui-slider commit="autoCommitValue" i={ i } size="l" strict="true" phone="true" color="white" value={ item.value } ed="%" min="1" max="100" step="1" small></ui-slider>
+                        </div>
+                    </div>
+                    <div class="row mb-m">
+                        <div class="col-xs-24">
+                            <ui-button-plus onClick={ createSkill } content="Добавить навык" size="l"></ui-button-plus>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="section__editable__footer text-center">
+        <button onClick={ $Editable.component.onCancel } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper" type="button">Отменить</button>
+        <button onClick={ $Editable.component.onSave } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper ml-xs" type="button">Сохранить</button>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.autoCommitTitle = function(e){
+        $.data.items[this.i].title = e.target.value;
+    };
+
+    $.autoCommitValue = function(value, i){
+        $.data.items[i].value = value;
+    };
+
+    $.createSkill = function(){
+        if (!$.data.items){
+            $.data.items = [];
+        }
+        $.data.items.push({
+            title: "",
+            value: "100"
+        });
+    };
+
+    $.removeSkill = function(){
+        $.data.items.splice(this.i, 1);
+    };
+
+</script>
+
+</editable-skills>

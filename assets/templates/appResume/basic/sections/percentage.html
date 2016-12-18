@@ -1,0 +1,78 @@
+<resume-control-percentage class="section percentage">
+
+    <div class="percentage__container" style="transform:translateY({ 100 - p }%)">
+        <div class="percentage__score">{ p }%</div>
+    </div>
+
+<script>
+
+    var $ = this,
+    array = ["name", "surname", "post", "aboutText", "contacts"];
+
+    $.on("before-mount", function(){
+        $.calc();
+    });
+
+    $.on("mount", function(){
+        var recalc = _.debounce($.calc, 100);
+
+        $resume.on("update", function(e){
+            recalc();
+        });
+    });
+
+    $.calc = function(){
+        var p = 0,
+            all = 0;
+
+        _.each($resume.get(), function(value, key){
+            if (_.indexOf(array, key)){
+                if (key == "contacts"){
+                    _.each(value, function(v){
+                        if (v && v.length) p++;
+                        all++;
+                    });
+                }
+                else if (key == "aboutText"){
+                    if (value && value.length) p += 3;
+                }
+                else if (key == "education"){
+                    if (value.items.length > 3) p += 3;
+                    else p += value.items.length;
+                    all += 3;
+                }
+                else if (key == "languages"){
+                    _.each(value.items, function(v, k){
+                        if (v.title != "native" && v.value > 1) p++;
+                    });
+                    all += 3;
+                }
+                else if (key == "jobs"){
+                    if (value.items.length > 3) p += 3;
+                    else p += value.items.length;
+                    all += 3;
+                }
+                else {
+                    if (value && value.length) p++;
+                    all++;
+                }
+            }
+        });
+
+        if ($resume.get('photo')){
+            p++;
+        }
+        if ($resume.get('salary', 'active')){
+            p++;
+        }
+
+        var result = Math.floor((p / all) * 100);
+
+        $.update({
+            p: result > 100 ? 100 : result
+        });
+    };
+
+</script>
+
+</resume-control-percentage>

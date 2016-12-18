@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ResumeKraft.Private</title>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="screen-orientation" content="portrait">
+    <!-- ya-title=#fff <meta name="msapplication-TileColor" content="#fff"/>
+    <meta name="theme-color" content="#fff"/> -->
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="width" />
+    <meta name="apple-mobile-web-app-title" content="ResumeKraft">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+	<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="format-detection" content="telephone=no" />
+	<meta name="google" content="notranslate" />
+    <link rel="manifest" href="/manifest.json">
+    <link id="styles" rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/appResume/basic/templates/style.view.css">
+</head>
+<body class="appLoading">
+
+    <root-main id="app"></root-main>
+
+    <div id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!--/ VENDORS /-->
+    <!-- <script src="/assets/js/libs/jquery.min.js"></script>
+    <script src="/assets/js/libs/jquery.mobile.custom.min.js"></script>
+    <script src="/assets/js/libs/modernizr.custom.js"></script>
+    <script src="/assets/js/libs/fastclick.min.js"></script>
+    <script src="/assets/js/libs/riot/riot+compiler.update.js"></script>
+    <script src="/assets/js/libs/baobab.js"></script>
+    <script src="/assets/js/libs/underscore-min.js"></script>
+    <script src="/assets/js/libs/iscroll.js"></script>
+    <script src="/assets/js/libs/rangeslider.js"></script>
+    <script src="/assets/js/libs/jquery.cropit.js"></script>
+    <script src="/assets/js/libs/moment.min.js"></script>
+    <script src="/assets/js/libs/moment.ru.js"></script>
+    <script src="/assets/js/libs/chartist.min.js"></script>
+    <script src="/assets/js/libs/circliful/js/jquery.circliful.js"></script>
+    <script src="/assets/js/libs/TweenLite-1.19.0.min.js"></script>
+    <script src="/assets/js/libs/file-saver/FileSaver.min.js"></script>
+    <script src="/assets/js/libs/afterlag-js/dist/afterlag.min.js"></script>
+    <script src="/assets/js/libs/imagesloaded/imagesloaded.pkgd.min.js"></script> -->
+
+    <script src="/assets/js/libs.js"></script>
+
+    <!--/ Templates /-->
+    <script src="/assets/templates/root.html" type="riot/tag"></script>
+
+    <script src="/assets/templates/sections/menu/menu.html" type="riot/tag"></script>
+
+    <!--/ Section resume /-->
+    <script src="/assets/templates/sections/list/resumeList.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/list/resumeItem.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/list/resumeItemNew.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/list/resumeItemBlank.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/list/resumeSelect.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/list/buttonStat.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/list/svgStat.html" type="riot/tag"></script>
+
+    <script src="/assets/templates/sections/list/mobile/resumeList.html" type="riot/tag"></script>
+
+    <!--/ Section create basic resume /-->
+    <script src="/assets/templates/appResume/basic/section.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/section-content.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/sections/finish.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/sections/preview.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/sections/photoUpload.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/sections/percentage.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/sections/buttons.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/sections/steps.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/sections/menu.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/sections/convert.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/sections/screens.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/components/commons.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/components/education.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/components/educationItem.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/components/languages.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/components/jobs.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/components/jobsItem.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/components/about.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/templates/template1.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/templates/template2.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/templates/template3.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/templates/template4.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/templates/template5.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/templates/template6.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/basic/templates/template7.html" type="riot/tag"></script>
+
+    <!--/ Offers /-->
+    <script src="/assets/templates/sections/offers/plan.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/offers/votes.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/offers/jqtest.html" type="riot/tag"></script>
+
+    <!--/ Overview /-->
+    <script src="/assets/templates/sections/overview/premium/overviewPremium.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/overview/premium/overviewPremiumContent.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/overview/jqtest/overviewJqtest.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/overview/jqtest/overviewJqtestContent.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/overview/overviewFunctions.html" type="riot/tag"></script>
+
+    <!--/ Profile /-->
+    <script src="/assets/templates/sections/profile/profile.html" type="riot/tag"></script>
+
+    <!--/ Payment /-->
+    <script src="/assets/templates/sections/payment/payment.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/payment/mobile/payment.html" type="riot/tag"></script>
+
+    <!--/ JQ-test /-->
+    <script src="/assets/templates/sections/jqtest/jqtest.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/jqtest/jqtest-content.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/jqtest/jqtest-result.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/jqtest/jqtest-result-content.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/jqtest/result/jqtest-result-columns.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/jqtest/result/jqtest-result-orientation.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/jqtest/result/jqtest-result-stimulus.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/jqtest/result/jqtest-result-humps.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/jqtest/result/jqtest-result-graph.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/jqtest/result/jqtest-result-specialties.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/jqtest/result/jqtest-result-notengage.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/jqtest/result/jqtest-result-strengths.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/jqtest/result/jqtest-result-weaksides.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/jqtest/result/jqtest-result-development.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/jqtest/result/jqtest-result-personality.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/jqtest/result/jqtest-result-finish.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/jqtest/result/jqtest-result-text.html" type="riot/tag"></script>
+
+    <script src="/assets/templates/sections/jqtest/result/mobile/jqtest-result-skills.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/jqtest/result/mobile/jqtest-result-orientation.html" type="riot/tag"></script>
+
+    <!--/ Modules /-->
+    <script src="/assets/templates/modules/alert.html" type="riot/tag"></script>
+    <script src="/assets/templates/modules/tutorial.html" type="riot/tag"></script>
+    <script src="/assets/templates/modules/loader.html" type="riot/tag"></script>
+    <script src="/assets/templates/modules/notify.html" type="riot/tag"></script>
+    <script src="/assets/templates/modules/shareButton.html" type="riot/tag"></script>
+    <script src="/assets/templates/modules/oScreenLoader.html" type="riot/tag"></script>
+
+    <!--/ Section resumeStat /-->
+    <script src="/assets/templates/sections/stat/resumeStat.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/stat/resumeStatOffer.html" type="riot/tag"></script>
+
+    <!--/ UI elements /-->
+    <script src="/assets/templates/ui/input.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/textarea.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/select.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/slider.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/dropMenu.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/checkbox.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-globe.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-control.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-play.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-chart.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-devices.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-feedback.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-pdf.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-print.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-glass.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-eye.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-crown.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-colors.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-design.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-test.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-share.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-camera.html" type="riot/tag"></script>
+    <script src="/public/templates/icons/social/icon-fb.tag" type="riot/tag"></script>
+    <script src="/public/templates/icons/social/icon-vk.tag" type="riot/tag"></script>
+    <script src="/public/templates/icons/social/icon-tw.tag" type="riot/tag"></script>
+    <script src="/public/templates/icons/social/icon-dk.tag" type="riot/tag"></script>
+    <script src="/public/templates/icons/social/icon-gl.tag" type="riot/tag"></script>
+
+    <!--/ JS components /-->
+    <!-- <script src="/assets/js/components/app.js"></script>
+    <script src="/assets/js/components/common.js"></script>
+    <script src="/assets/js/components/config.js"></script>
+    <script src="/assets/js/components/request.js"></script>
+    <script src="/assets/js/components/fetch.js"></script>
+    <script src="/assets/js/components/modules.js"></script>
+    <script src="/assets/js/components/utils.js"></script>
+
+    <script src="/assets/js/plugins/chart.js"></script>
+    <script src="/assets/js/plugins/animate.js"></script>
+    <script src="/assets/js/plugins/slider.js"></script>
+    <script src="/assets/js/plugins/styles.js"></script>
+    <script src="/assets/js/plugins/marquee.js"></script>
+    <script src="/assets/js/plugins/screens.js"></script>
+    <script src="/assets/js/plugins/scroll/scroll.Fix.js"></script>
+    <script src="/assets/js/plugins/scroll/scroll.Progress.js"></script>
+    <script src="/assets/js/plugins/scroll/scroll.Animate.js"></script>
+    <script src="/assets/js/plugins/tutorial/selectResumePremium.js"></script>
+
+    <script src="/assets/js/store/resume.js"></script>
+    <script src="/assets/js/store/fonts.js"></script>
+    <script src="/assets/js/store/colors.js"></script>
+    <script src="/assets/js/store/salary.js"></script>
+    <script src="/assets/js/store/education.js"></script>
+    <script src="/assets/js/store/languages.js"></script>
+    <script src="/assets/js/store/month.js"></script>
+
+    <script src="/assets/js/components/init.js"></script> -->
+
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/jqtest/jq1.js"></script>
+    <script src="/assets/js/jqtest/jq2.js"></script>
+    <script src="/assets/js/jqtest/jq3.js"></script>
+    <script src="/assets/js/jqtest/jq4.js"></script>
+    <script src="/assets/js/jqtest/jq5.js"></script>
+    <script src="/assets/js/jqtest/jq6.js"></script>
+    <script src="/assets/js/components/afterlag.js"></script>
+    <script src="/assets/js/components/init.js"></script>
+
+    <!-- <script src="/assets/js/libs.js"></script>
+    <script src="/assets/js/templates.js"></script>
+    <script src="/assets/js/app.js"></script>     -->
+
+</body>
+</html>

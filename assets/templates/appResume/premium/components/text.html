@@ -1,0 +1,49 @@
+<ux-text class="component">
+
+    <btn-editable if={ $mode === "editing" } data={ $resume[opts.editing] }></btn-editable>
+
+    <div onClick={ openEditable } onUpdate="none" class="{ opts.classname } { blur : !$resume[opts.editing] } { transition-none : editable }">{ $resume[opts.editing] ? $resume[opts.editing] : $store.resume.placeholder[opts.editing] }</div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    $.editable = false;
+
+    this.on("mount", function(){
+        if ($mode !== "editing"){
+            if (!$store.resume.get($.opts.editing)) $scope.remove();
+            else $scope.children().unwrap();
+        }
+    });
+
+    $.openEditable = function(){
+        if ($mode === "editing"){
+            $Editable.show("text", {
+                active: $.opts.activity ? $store.resume.select('sections').get({'name': $.opts.editing}).active : null,
+                title: $.opts.title,
+                type: $.opts.type,
+                editing: $store.resume.get($.opts.editing),
+                typing: function(e){
+                    if (e && e.target && !app.device.isMobile){
+                        $resume[$.opts.editing] = e.target.value ? e.target.value : null;
+                        $.update();
+                    }
+                },
+                callback: function(active, data){
+                    if (active !== null){
+                        $store.resume.select('sections', {'name': $.opts.editing}).set('active', active);
+                    }
+                    $resume[$.opts.editing] = data ? data : null;
+                    $.editable = false;
+                    $.update();
+                }
+            });
+            $.editable = true;
+        }
+    };
+
+</script>
+
+</ux-text>

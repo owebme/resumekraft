@@ -1,0 +1,74 @@
+.rangeslider {
+    @extend .pos-bl;
+    @extend .w100p;
+    z-index:1;
+
+    &-handle {
+        position:absolute;
+        width:20px;
+        height:20px;
+        border-radius:0 0 3px 3px;
+        transform:translateY(-4px);
+        @extend .bg-blue;
+        @extend .cursor-pointer;
+
+        .m-touch & {
+            &:before {
+                content:"";
+                @include abs();
+                transform:scale(2.5);
+            }
+        }
+        &:after {
+            @extend .w100p;
+            content:"";
+            position:absolute;
+            top:-12px;
+            left:0;
+            border-top:0;
+            border-bottom:12px solid $blue;
+            border-right:9px solid transparent;
+            border-left:9px solid transparent;
+        }
+        .d-phone & {
+            @extend .bg-yellow;
+
+            &:after {
+                border-bottom-color:$yellow;
+            }
+        }
+    }
+    &.small {
+        .rangeslider-handle {
+            width:16px;
+            height:16px;
+            border-radius:0 0 2px 2px;
+            @extend .transform-default;
+
+            &:after {
+                top:-10px;
+                border-bottom-width:10px;
+                border-right-width:7px;
+                border-left-width:7px;
+            }
+        }
+    }
+    &-color {
+        &-white {
+            .rangeslider-handle {
+                @extend .bg-white;
+
+                &:after {
+                    border-bottom-color:$white;
+                }
+                .d-phone & {
+                    @extend .bg-yellow;
+
+                    &:after {
+                        border-bottom-color:$yellow;
+                    }
+                }
+            }
+        }
+    }
+}
