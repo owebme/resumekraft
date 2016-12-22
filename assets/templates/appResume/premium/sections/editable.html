@@ -5,18 +5,18 @@
     <div class="section__editable__scroll" name="scroll">
         <div name="wrapper" class="section__editable__wrapper container">
             <div class="row">
-                <editable-photo id="{ active : editable === 'photo' }"></editable-photo>
-                <editable-text id="{ active : editable === 'text' }"></editable-text>
-                <editable-salary id="{ active : editable === 'salary' }"></editable-salary>
-                <editable-tags id="{ active : editable === 'tags' }"></editable-tags>
-                <editable-social id="{ active : editable === 'social' }"></editable-social>
-                <editable-works id="{ active : editable === 'works' }"></editable-works>
-                <editable-skills id="{ active : editable === 'skills' }"></editable-skills>
-                <editable-education id="{ active : editable === 'education' }"></editable-education>
-                <editable-courses id="{ active : editable === 'courses' }"></editable-courses>
-                <editable-languages id="{ active : editable === 'languages' }"></editable-languages>
-                <editable-jobs id="{ active : editable === 'jobs' }"></editable-jobs>
-                <editable-visible id="{ active : editable === 'visible' }"></editable-visible>
+                <editable-photo></editable-photo>
+                <editable-text></editable-text>
+                <editable-salary></editable-salary>
+                <editable-tags></editable-tags>
+                <editable-social></editable-social>
+                <editable-works></editable-works>
+                <editable-skills></editable-skills>
+                <editable-education></editable-education>
+                <editable-courses></editable-courses>
+                <editable-languages></editable-languages>
+                <editable-jobs></editable-jobs>
+                <editable-visible></editable-visible>
             </div>
         </div>
     </div>
@@ -27,6 +27,7 @@
     $scope = $$($.root);
 
     $.editable = null;
+    $.editSimple = ['photo', 'text', 'salary', 'tags', 'social'];
 
     $.on("mount", function(){
         if (app.device.isMobile && app.device.isTablet){
@@ -37,6 +38,25 @@
         }
     });
 
+    $.on("editable", function(editable){
+        if (editable === false){
+            if ($.editable){
+                $scope.find("editable-" + $.editable).removeAttr("id");
+            }
+            else {
+                $scope.find(".section__editable__container#active").removeAttr("id");
+            }
+            $.wrapper.setAttribute("data-large", false);
+        }
+        else {
+            if (!app.device.isPhone && $.editSimple.indexOf(editable) !== 1){
+                $.wrapper.setAttribute("data-large", true);
+            }
+            $scope.find("editable-" + editable).attr("id", "active");
+        }
+        $.editable = editable;
+    });
+
     $.show = function(editable, data, component){
         if (component){
             $.component.init($.tags["editable-" + editable], data);
@@ -44,9 +64,7 @@
         else {
             $.tags["editable-" + editable].init(data);
         }
-        $.update({
-            editable: editable
-        });
+        $.trigger("editable", editable);
 
         $.scrollTo();
 
@@ -67,10 +85,7 @@
     $.hide = function(callback){
         $.root.setAttribute("data-open", false);
 
-        if (app.device.isPhone){
-            $Resume.screens.refresh();
-        }
-        else {
+        if (!app.device.isPhone){
             app.$dom.body.removeClass("no-scroll");
 
             if (app.device.isMobile && app.device.isTablet){
@@ -79,15 +94,19 @@
                 app.$dom.document.scrollTop($.savedScrollPos);
             }
         }
-        if (callback){
-            _.onEndTransition($.wrapper, function(){
-                callback();
-            });
+        else {
+            $.trigger("editable", false);
         }
+        _.onEndTransition($.wrapper, function(){
+            if (!app.device.isPhone){
+                $.trigger("editable", false);
+            }
+            if (callback) callback();
+        });
     };
 
     $.open = function(e, component, $, defaults, requires){
-        if ($mode === "editing"){
+        if ($State.get('mode') === "editing"){
             var visible = $store.resume.select('sections').get({'name': component}).active;
 
             $Editable.show(component, {
@@ -101,16 +120,7 @@
                 callback: function(active, data){
                     $store.resume.select('sections', {'name': component}).set('active', active);
                     $resume[component] = _.any(_.values(_.omit(data, "title"))) ? data : null;
-                    $.update({
-                        editable: false
-                    });
-                    if (visible !== active){
-                        $root.update();
-
-                        if (app.device.isPhone){
-                            $Resume.screens.refresh();
-                        }
-                    }
+                    $.trigger("editable", false);
                 }
             }, true);
 
@@ -214,7 +224,15 @@
                 _.each(this.requires, function(item) {
                     if (next && !_.clean($.component.editing[item.field])){
                         next = false;
-                        alert(item.alert);
+                        if (!app.device.isPhone && window.$Notify){
+                            $Notify.show({
+                                color: "dark",
+                                text: item.alert
+                            })
+                        }
+                        else {
+                            alert(item.alert);
+                        }
                     }
                 });
             }
@@ -234,12 +252,6 @@
         },
 
         onCancel: function(){
-            if (this.callback) {
-                if (this.store.items && !this.store.items.length){
-                    this.store.items = null;
-                }
-                this.callback(this.active, this.store);
-            }
             if (this["title_data"]) this["title_data"].value = this.store && this.store.title ? this.store.title : $store.resume.placeholder[$.component.name].title;
             if (this["text_data"]) this["text_data"].value = this.store && this.store.text ? this.store.text : '';
             $Editable.hide(function(){
@@ -255,7 +267,7 @@
                 if (this.data && this.data.items){
                     if (this.data.items.length && this.data.items[0].title){
                         for (var i = 0; i < this.data.items.length; i++){
-                            if (!_.clean(this.data.items[i].title)){
+                            if (!_.clean(this.data.items[i].title) || this.data.items[i].title && this.data.items[i].value !== 'undefined' && !_.clean(this.data.items[i].value)){
                                 this.data.items.splice(i, 1);
                                 i--;
                             }
@@ -268,6 +280,9 @@
             $Editable.hide(function(){
                 $.component.editing = null;
             });
+            if ($Resume.tags["ux-" + $.component.name]){
+                $Resume.tags["ux-" + $.component.name].update();
+            }
         }
     };
 

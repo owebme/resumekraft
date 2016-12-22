@@ -1,10 +1,15 @@
-<root-main class="appResume" data-color="{ theme }" data-font="{ font }" data-mode={ $mode } data-app="premium">
+<root-main class="appResume section" data-color="{ $State.get('color') }" data-font="{ $State.get('font') }" data-mode={ $State.get('mode')} data-app="premium">
 
-    <section-nav></section-nav>
+    <section-nav if={ !app.device.isMobile }></section-nav>
 
-    <section-info if={ $mode !== "editing" }></section-info>
+    <section-info if={ $State.get('mode') !== "editing" }></section-info>
+    <section-sendmail if={ $State.get('mode') !== "editing" }></section-sendmail>
+    <salary-graph-opener if={ $State.get('mode') !== "editing" && $resume.salary.graph.active }></salary-graph-opener>
+    <salary-graph></salary-graph>
 
-    <sections-control if={ $mode === "editing" }>
+    <section-notify if={ $State.get('mode') === "editing" }></section-notify>
+
+    <sections-control if={ $State.get('mode') === "editing" }>
 
         <section-menu></section-menu>
 
@@ -18,46 +23,90 @@
 
     <resume-template1></resume-template1>
 
+    <div class="section__overlay zIndex-7"></div>
+
 <script>
 
     $root = this;
 
     $$ = window.jQuery || window.Zepto;
 
-    $mode = "edit1ing";
-
-    $lang = "en";
-
     $resume = $store.resume.get();
 
-    this.theme = "#0084ff";
-
-    this.font = "futura";
+    $State = new Baobab({
+        mode: "editing",
+        lang: "ru",
+        color: "#0084ff",
+        font: "futura",
+    },
+    { autoCommit: true });
 
     this.on("mount", function(){
 
         $Menu = $root.tags["section-menu"];
         $Nav = $root.tags["section-nav"];
+        $Info = $root.tags["section-info"];
+        $Sendmail = $root.tags["section-sendmail"];
         $Editable = $root.tags["section-editable"];
+        $Notify = $root.tags["section-notify"];
 
         $Control = {
             fonts: $root.tags["control-fonts"],
             colors: $root.tags["control-colors"],
             sections: $root.tags["control-sections"]
         }
+        $Salary = {
+            opener: $root.tags["salary-graph-opener"],
+            graph: $root.tags["salary-graph"]
+        }
 
         $Resume = $root.tags["resume-template1"];
 
-        $store.resume.select('sections').on('update', function(e){
-            $Control.sections.refresh();
-        });
-
-        $store.resume.on("write", function(){
-            $Nav.refresh();
-        });
-
         app.$dom.body.removeClass("appLoading");
     });
+
+    this.on("mode", function(mode, value){
+        if (mode == "hidden"){
+            if (app.device.isPhone){
+                $Resume.root.setAttribute("data-hidden", value);
+            }
+            else {
+                $root.root.setAttribute("data-overlay", value);
+            }
+        }
+    });
+
+    if (app.config.changeStyles){
+        app.plugins.styles.init({
+            elem: "#styles",
+            default: "normal",
+            screens: [
+                {
+                    title: "small",
+                    maxWidth: 360,
+                    path: "/assets/css/premium.smallScreen.css?" + _.newId()
+                },
+                {
+                    title: "phone",
+                    minWidth: 360,
+                    maxWidth: 767,
+                    reload: true
+                },
+                {
+                    title: "normal",
+                    minWidth: 1025,
+                    maxWidth: 1400,
+                    path: "/assets/css/premium.css?" + _.newId(),
+                    reload: true
+                },
+                {
+                    title: "large",
+                    minWidth: 1400,
+                    path: "/assets/css/premium.largeScreen.css?" + _.newId()
+                }
+            ]
+        });
+    }
 
 </script>
 

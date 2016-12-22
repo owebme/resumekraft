@@ -19,17 +19,17 @@
             </div>
             <div class="col-xs-24 col-sm-24 col-md-13">
                 <div class="pl-m">
-                    <div each={ item, i in data.items } class="row mb-m">
+                    <div each={ item, i in data.items } no-reorder class="row mb-m">
                         <div class="col-xs-10">
                             <div class="title title-l">{ $store.languages.getTitleById(item.title) }</div>
                         </div>
                         <div class="col-xs-14">
                             <div class="select select-l">
                                 <select if={ item.title == "native" } onChange={ autoCommitValue } data-name="value">
-                                    <option each={ lang in $store.languages.native.get() } selected={ lang._id == item.value } value={ lang._id }>{ lang.title }</option>
+                                    <option each={ lang in $store.languages.native.get() } no-reorder selected={ lang._id == item.value } value={ lang._id }>{ lang.title }</option>
                                 </select>
                                 <select if={ item.title != "native" } onChange={ autoCommitValue } data-name="value">
-                                    <option each={ lang in $store.languages.select.get() } selected={ lang._id == item.value } value={ lang._id }>{ lang.title }</option>
+                                    <option each={ lang in $store.languages.select.get() } no-reorder selected={ lang._id == item.value } value={ lang._id }>{ lang.title }</option>
                                 </select>
                             </div>
                         </div>

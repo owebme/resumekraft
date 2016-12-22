@@ -1,8 +1,8 @@
 <control-colors class="control__colors">
 
-    <div onClick={ changeColor } class="control__colors__item bg-{ $store.colors.getTitleByColor($root.theme) } control__colors__item--active"></div>
+    <div onClick={ changeColor } class="control__colors__item bg-{ $store.colors.getTitleByColor($State.get('color')) } control__colors__item--active"></div>
     <div class="control__colors__items">
-        <div onClick={ onSelect } each={ item in $store.colors.get() } class="control__colors__item bg-{ item.title }"></div>
+        <div onClick={ onSelect } each={ item in $store.colors.get() } no-reorder class="control__colors__item bg-{ item.title }"></div>
     </div>
 
 <script>
@@ -13,13 +13,13 @@
 
     this.onChange = function(color){
         $root.root.setAttribute("data-color", color);
-        $root.theme = color;
+        $State.select('color').set(color);
     };
 
     this.changeColor = function(){
         if (app.device.isMobile){
             var item = $store.colors
-                .select({'color': $root.theme})
+                .select({'color': $State.get('color')})
                 .right();
 
             if (!item) item = $store.colors.get(0);

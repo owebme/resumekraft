@@ -68,6 +68,7 @@ app.plugins.marquee = function($frame, settings){
 		// screen
 		var screen = {
 			index: i,
+			title: $block[0].getAttribute("data-" + (settings.dataAttr ? settings.dataAttr : "marquee")),
 			block: $block,
 			fake: $('<div class="'+settings.spaceClass+'__screen" />'),
 			api: api,
@@ -110,6 +111,7 @@ app.plugins.marquee = function($frame, settings){
 		});
 	};
 	resize();
+
 	// scroll
 	var scroll = new IScroll($frame[0], {
 		marquee: true,
@@ -436,24 +438,32 @@ app.plugins.marquee = function($frame, settings){
 	marquee.get = function(parameter){
 		return marquee[parameter];
 	};
-	marquee.hideScreen = function(index, resize){
-		if (screensVisible[index].enable){
+	marquee.hideScreen = function(index){
+		if (settings.controlInvisible && screensVisible[index].enable){
 			screensVisible[index].enable = false;
+			screensVisible[index].block.css("display", "none");
+			screensVisible[index].fake.remove();
 			marquee.callScreensVisible();
-			if (resize) marquee.resize();
+			marquee.resize();
 		}
 	};
-	marquee.showScreen = function(index, resize){
-		if (!screensVisible[index].enable){
+	marquee.showScreen = function(index){
+		if (settings.controlInvisible && !screensVisible[index].enable){
 			screensVisible[index].enable = true;
+			screensVisible[index].fake = $('<div class="'+settings.spaceClass+'__screen" />');
+			$fake.find('.'+settings.spaceClass+'__screen:eq('+(index - 1)+')').after(screensVisible[index].fake);
 			marquee.callScreensVisible();
-			if (resize) marquee.resize();
+			marquee.resize();
 		}
 	};
 	marquee.callScreensVisible = function(){
-		var _screens = [];
+		var _screens = [], index = 0;
 		for (var i=0; i<screensVisible.length; i++) {
-			if (screensVisible[i].enable) _screens.push(screensVisible[i]);
+			if (screensVisible[i].enable){
+				_screens.push(screensVisible[i]);
+				_screens[index].index = index;
+				index++;
+			}
 		}
 		if (_screens.length !== screens.length) screens = _screens;
 	};
@@ -471,26 +481,26 @@ app.plugins.marquee = function($frame, settings){
 		$scroll.find('.iScrollIndicator').addClass('ui-scroll__handle').prepend('<div class="ui-scroll__handle__inner" />');
 	};
 	// {event} click on prev
-	if (settings.navPrev) settings.navPrev.on(app.events.click, function(){
-		marquee.prev();
+	if (settings.navPrev) settings.navPrev.on('click', function(){
+		marquee.prev(app.device.isPhone ? 500 : 700);
 	});
 	// {event} click on next
-	if (settings.navNext) settings.navNext.on(app.events.click, function(){
-		marquee.next();
+	if (settings.navNext) settings.navNext.on('click', function(){
+		marquee.next(app.device.isPhone ? 500 : 700);
 	});
 	// {event} enable keyboard
-	var keyboardEventName = 'keydown.marquee-' + (name ? name : '') + (settings.vertical ? 'v' : 'h');
+	var keyboardEventName = 'keydown.marquee-' + String(Math.round(new Date().getTime() / 1000)) + (settings.vertical ? 'v' : 'h');
 	marquee.enableKeyboard = function(){
-		if (!app.device.support.touch) $document.on(keyboardEventName, function(e){
+		if (!app.device.support.touch) app.$dom.document.on(keyboardEventName, function(e){
 			if (!$(e.target).is('input,textarea,select')) {
-				if (e.which==(settings.vertical ? 38 : 37)) marquee.prev();
-				if (e.which==(settings.vertical ? 40 : 39)) marquee.next();
+				if (e.which==(settings.vertical ? 38 : 37)) marquee.prev(app.device.isPhone ? 500 : 700);
+				if (e.which==(settings.vertical ? 40 : 39)) marquee.next(app.device.isPhone ? 500 : 700);
 			}
 		});
 	};
 	// {event} disable keyboard
 	marquee.disableKeyboard = function(){
-		if (!app.device.support.touch) $document.off(keyboardEventName);
+		if (!app.device.support.touch) app.$dom.document.off(keyboardEventName);
 	};
 
 	marquee.scroll = scroll;

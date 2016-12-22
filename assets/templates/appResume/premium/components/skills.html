@@ -1,20 +1,20 @@
 <ux-skills class="component">
 
-    <h3 class="title anim" data-anim="bt">{ $resume.skills && $resume.skills.title ? $resume.skills.title : opts.title }</h3>
+    <h3 class="title">{ $resume.skills && $resume.skills.title ? $resume.skills.title : opts.title }</h3>
 
-    <btn-editable if={ $mode === "editing" } data={ $resume.skills }></btn-editable>
+    <btn-editable if={ $State.get('mode') === "editing" } data={ $resume.skills }></btn-editable>
 
     <div onClick={ openEditable } onUpdate="none" class="{ blur : !$resume.skills } { transition-none : editable }">
         <div class="row">
             <div if={ $resume.skills && $resume.skills.header } class="col-md-24 col-lg-12">
                 <div class="screen2-col-left">
-                    <h2 class="lineHeight-xxxl c-primary mb-l sm-mb-xl anim" data-anim="lr">{ $resume.skills && $resume.skills.header ? $resume.skills.header : $store.resume.placeholder.skills.header }</h2>
+                    <h2 class="lineHeight-xxxl c-primary mb-l sm-mb-xl">{ $resume.skills && $resume.skills.header ? $resume.skills.header : $store.resume.placeholder.skills.header }</h2>
                 </div>
             </div>
             <div if={ $resume.skills && $resume.skills.items || !$resume.skills } class="col-md-21 { $resume.skills.header ? 'col-lg-12' : 'col-lg-17 mt-m' }">
                 <div class="screen2-col-right pb-l { 'pl-m' : $resume.skills.header }">
                     <div class="progress progress-m w100p">
-                        <div each={ item in ($resume.skills && $resume.skills.items ? $resume.skills.items : (!$resume.skills ? $store.resume.placeholder.skills.items : [])) } class="progress-item mb-m anim" data-anim="rl">
+                        <div each={ item in ($resume.skills && $resume.skills.items ? $resume.skills.items : (!$resume.skills ? $store.resume.placeholder.skills.items : [])) } no-reorder class="progress-item mb-m">
                             <div class="progress-title f-primary">{ item.title }</div>
                             <div class="progress-score">{ item.value }%</div>
                             <div class="progress-line" style="width:{ item.value }%"></div>
@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div if={ !$resume.skills || $resume.skills && $resume.skills.text } class="col-xs-24">
-                <p class="clear anim" data-anim="lr">{ $resume.skills && $resume.skills.text ? $resume.skills.text : $store.resume.placeholder.skills.text }</p>
+                <p class="clear">{ $resume.skills && $resume.skills.text ? $resume.skills.text : $store.resume.placeholder.skills.text }</p>
             </div>
         </div>
     </div>

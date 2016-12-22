@@ -1,9 +1,9 @@
 <ux-tags class="component">
 
-    <btn-editable if={ $mode === "editing" } data={ $resume.tags }></btn-editable>
+    <btn-editable if={ $State.get('mode') === "editing" } data={ $resume.tags }></btn-editable>
 
-    <div onClick={ openEditable } onUpdate="none" class="{ opts.classname } { blur : !$resume.tags }">
-        <div class="tag" each={ item in ($resume.tags ? $resume.tags : $store.resume.placeholder.tags) }>{ item }</div>
+    <div onClick={ openEditable } onUpdate="none" class="{ opts.classname } { blur : !$resume.tags } { transition-none : editable }">
+        <div class="tag" each={ item in ($resume.tags ? $resume.tags : $store.resume.placeholder.tags) } no-reorder>{ item }</div>
     </div>
 
 <script>
@@ -11,7 +11,7 @@
     var $ = this;
 
     $.openEditable = function(){
-        if ($mode === "editing"){
+        if ($State.get('mode') === "editing"){
             $Editable.show("tags", {
                 active: $store.resume.select('sections').get({'name': 'tags'}).active,
                 title: $.opts.title,

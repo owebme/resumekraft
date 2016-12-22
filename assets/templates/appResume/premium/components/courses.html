@@ -1,19 +1,19 @@
 <ux-courses class="component">
 
-    <h3 class="title anim" data-anim="bt">{ $resume.courses && $resume.courses.title ? $resume.courses.title : opts.title }</h3>
+    <h3 class="title">{ $resume.courses && $resume.courses.title ? $resume.courses.title : opts.title }</h3>
 
-    <btn-editable if={ $mode === "editing" } data={ $resume.courses }></btn-editable>
+    <btn-editable if={ $State.get('mode') === "editing" } data={ $resume.courses }></btn-editable>
 
     <div onClick={ openEditable } onUpdate="none" class="{ blur : !$resume.courses } { transition-none : editable }">
 
-        <p if={ !$resume.courses || $resume.courses && $resume.courses.text } class="mb-l anim" data-anim="bt">{ $resume.courses && $resume.courses.text ? $resume.courses.text : $store.resume.placeholder.courses.text }</p>
+        <p if={ !$resume.courses || $resume.courses && $resume.courses.text } class="mb-l">{ $resume.courses && $resume.courses.text ? $resume.courses.text : $store.resume.placeholder.courses.text }</p>
 
         <div>
             <div if={ $resume.courses && $resume.courses.items } each={ item, i in _.sortArray($resume.courses.items, "year", "desc") } class="courses-item mtb-xl" data-id={ item._id }>
 
-                <h3 class="c-primary mb-s anim" data-anim="lr"><strong>{ item.year }</strong> &ndash; { item.name }</h3>
+                <h3 class="c-primary mb-s"><strong>{ item.year }</strong> &ndash; { item.name }</h3>
 
-                <h3 class="c-black mb-s anim" data-anim="lr"><strong>{ item.title }</strong></h3>
+                <h3 class="c-black mb-s"><strong>{ item.title }</strong></h3>
 
             </div>
         </div>

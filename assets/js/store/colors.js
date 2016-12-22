@@ -6,7 +6,7 @@ $store.colors = _.extend(new Baobab([
     {
         color: "#265cdc",
         title: "blue"
-    },    
+    },
     {
         color: "#74b027",
         title: "green"
@@ -24,7 +24,7 @@ $store.colors = _.extend(new Baobab([
         title: "red"
     },
     {
-        color: "#c2a36f",
+        color: "#c1a16b",
         title: "brown"
     },
     {

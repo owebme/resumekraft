@@ -104,7 +104,6 @@
     };
 
     $.onCancel = function(){
-        if ($.callback) $.callback($.active, $._tags);
         $.items = _.copyArray($._tags),
         $.hide();
     };

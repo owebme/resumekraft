@@ -46,8 +46,9 @@
         &--active {
             @extend .float-right;
             @extend .bg-primary;
-            @extend .transition-none;
             @extend .boxShadow-default;
+            will-change:color, background-color;
+            transition:color 0.2s $cubic215, background-color 0.2s $cubic215;
             transform:translate3d(0, 0, 0) scale(1);
         }
         .m-no-touch &:hover {

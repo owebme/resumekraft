@@ -15,9 +15,12 @@
 
     &:not(.tag-input){
         @extend .cursor-default;
-        @extend .userSelect-none;
         @extend .fontWeight-bold;
         line-height:40px;
+
+        #app[data-mode="editing"]{
+            @extend .userSelect-none;
+        }
     }
     &.tag-white {
         @extend .c-white;
@@ -71,8 +74,8 @@
     @keyframes tag__isAvail {
         25%, 75% {
             color:$blackLight;
-            box-shadow:0 0 0 2px $white;
-            background:$white;
+            box-shadow:0 0 0 2px $lime;
+            background:$lime;
         }
     }
     &-list {

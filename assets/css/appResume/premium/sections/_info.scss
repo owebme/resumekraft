@@ -1,8 +1,32 @@
 .info {
+    @include accelerate();
     @extend .display-block;
     @extend .pos-fixed;
     @extend .zIndex-10;
+    perspective:500px;
 
+    &[data-open="true"]{
+        .info-opener {
+            .d-no-phone & {
+                @extend .scale-0;
+                @extend .pointerEvents-none;
+            }
+            .d-phone & {
+                .info-opener-icon {
+                    @extend .scale-0;
+                }
+                &:before {
+                    @extend .scale-100;
+                }
+            }
+        }
+        .info-wrapper {
+            @extend .opacity-100;
+            @extend .scale-100;
+            @extend .pointerEvents-all;
+            transition:transform .3s $cubic345, opacity .3s $cubic345;
+        }
+    }
     &-opener {
         @include accelerate();
         @extend .pos-abs;
@@ -12,13 +36,28 @@
         @extend .h60;
         @extend .userSelect-none;
         @extend .flex-centered;
-        @extend .cursor-pointer;
         @extend .btn-active;
         @extend .bg-blackLight;
         @extend .borderRadius-circle;
-        @extend .transition-default;
         @extend .boxShadow-default;
+        transition:transform .3s $cubic345;
 
+        .d-phone & {
+            @extend .t-m;
+            @extend .l-m;
+            @extend .w40;
+            @extend .h40;
+            @extend .bg-primary;
+            @extend .transition-default;
+
+            &:before {
+                @extend .content-empty;
+                @include abs_50(33, 33);
+                @extend .scale-0;
+                @include ui-icon("close_strong_white", 33px, 33px);
+                transition:transform .3s $cubic345;
+            }
+        }
         &-icon {
             @extend .display-block;
             width:29px;
@@ -28,56 +67,136 @@
                 @extend .fill-white;
                 @extend .transition-default;
             }
-        }
-        &:hover {
-            @extend .bg-white;
-
-            .info-opener-icon-color {
-                @extend .fill-primary;
+            .d-phone & {
+                width:28px;
+                height:28px;
+                transition:transform .3s $cubic345;
             }
         }
     }
     &-wrapper {
         @include accelerate();
         @extend .pos-abs;
-        @extend .t-m;
+        @extend .t-l;
         @extend .l-l;
         @extend .fontFamily-helvetica;
         @extend .fontSize-16;
         @extend .c-steel;
-        border-radius:15px;
         @extend .bg-white;
         @extend .boxShadow-30;
-        transition:transform .4s $cubic40, opacity .4s $cubic40;
         @extend .ptb-m;
         @extend .pl30;
         @extend .pr30;
         @extend .pointerEvents-none;
-        @extend .scale-0;
-        width:330px;
+        @extend .opacity-0;
+        @extend .willChange-transform;
+        border-radius:15px;
+        transform-origin:0% 50%;
+        transform:translate3d(-20%, 0, 0) scale3d(1, 0.5, 1);
+        transition:transform .2s $cubic345, opacity .2s $cubic345;
+        width:340px;
 
+        .d-phone & {
+            @extend .t-xl;
+            @extend .l--s;
+            @extend .pl-l;
+            @extend .pr-s;
+            @extend .c-white;
+            @extend .bg-primary;
+            @extend .fontSize-18;
+            @extend .mt-m;
+            @extend .w100v;
+            box-shadow:5px 10px 35px 0 rgba(31,35,37,.35);
+        }
         #app[data-font="gotham"] &,
         #app[data-font="myriad"] & {
             @extend .pt-m;
         }
     }
+    &-photo {
+        @extend .pos-abs;
+        @extend .b100;
+        @extend .borderRadius-circle;
+        @extend .bg-cover;
+        @extend .trY-m;
+        box-shadow:0 0 0 3px rgba($white,.6), 5px 10px 30px 0 rgba(31,35,37,.15);
+
+        .d-no-phone & {
+            @extend .l-m;
+            @extend .w40;
+            @extend .h40;
+        }
+        .d-phone & {
+            @extend .r-l;
+            width:46px;
+            height:46px;
+        }
+    }
     &-name {
-        @extend .c-primary;
         @extend .f-primary;
         @extend .fontSize-20;
         @extend .fontWeight-bold;
+
+        .d-no-phone & {
+            @extend .c-primary;
+        }
+        .d-phone & {
+            @extend .fontSize-24;
+            @extend .ptb-xxs;
+        }
     }
     &-salary {
         @extend .fontFamily-helvetica;
         @extend .nowrap;
     }
+    &-email {
+        @extend .pb-xs;
+
+        .d-no-phone & {
+            @extend .c-primary;
+
+            a {
+                @extend .border-primary;
+            }
+        }
+        .d-phone & {
+            @extend .c-white;
+            @extend .fontSize-20;
+
+            a {
+                @extend .borderColor-white;
+            }
+        }
+        a {
+            @extend .borderStyle-solid;
+            @extend .borderBottomWidth-1;
+        }
+    }
     &-phone {
         @extend .fontSize-18;
+        @extend .mb-xxs;
         @extend .fontWeight-bold;
+
+        .d-phone & {
+            @extend .fontSize-22;
+            @extend .pt-xxs;
+            @extend .mb-xs;
+        }
     }
-    &-city {
-        @extend .fontSize-16;
-        @extend .fontWeight-normal;
+    &-post {
+        .d-phone & {
+            @extend .pb-xxs;
+        }
+    }
+    &-social {
+        @extend .pt-s;
+
+        .d-no-phone & {
+            @extend .mb--xxs;
+        }
+        .social-btn {
+            @extend .bg-smoke;
+        }
     }
     &-close {
         @extend .pos-abs;
@@ -85,5 +204,9 @@
         @extend .r-xs;
         @extend .btn-active;
         @include ui-icon(close_fill_gray, 25px, 25px);
+
+        .d-phone & {
+            @extend .display-none;
+        }
     }
 }

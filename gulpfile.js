@@ -93,6 +93,40 @@ gulp.task('premium.css', function() {
 	}));
 });
 
+gulp.task('premium.css.largeScreen', function() {
+	return combiner(
+		gulp.src('assets/css/premium.css'),
+		px2vw({
+			width: 1400,
+			minPx: 2,
+			maxPx: 10000,
+			replace: true
+		}),
+		rename("premium.largeScreen.css"),
+		gulp.dest('assets/css'),
+		browserSync.stream()
+	).on('error', notify.onError({
+		"sound": false,
+	}));
+});
+
+gulp.task('premium.css.smallScreen', function() {
+	return combiner(
+		gulp.src('assets/css/premium.css'),
+		px2vw({
+			width: 360,
+			minPx: 2,
+			maxPx: 10000,
+			replace: true
+		}),
+		rename("premium.smallScreen.css"),
+		gulp.dest('assets/css'),
+		browserSync.stream()
+	).on('error', notify.onError({
+		"sound": false,
+	}));
+});
+
 gulp.task('templates.basic', function() {
 	return combiner(
 		gulp.src('assets/css/appResume/basic/templates/style.scss'),
@@ -194,13 +228,14 @@ gulp.task('private.libs', function() {
 });
 
 gulp.task('private.app', function() {
-	return gulp.src(['assets/js/components/app.js',
-		'assets/js/components/common.js',
+	return gulp.src(['assets/js/components/commons/app.js',
+		'assets/js/components/commons/common.js',
+		'assets/js/components/commons/request.js',
+		'assets/js/components/commons/modules.js',
+		'assets/js/components/commons/utils.js',
+		'assets/js/components/commons/afterlag.js',
 		'assets/js/components/config.js',
-		'assets/js/components/request.js',
 		'assets/js/components/fetch.js',
-		'assets/js/components/modules.js',
-		'assets/js/components/utils.js',
 		'assets/js/plugins/chart.js',
 	    'assets/js/plugins/animate.js',
 	    'assets/js/plugins/slider.js',
@@ -211,13 +246,14 @@ gulp.task('private.app', function() {
 	    'assets/js/plugins/scroll/scroll.Progress.js',
 	    'assets/js/plugins/scroll/scroll.Animate.js',
 	    'assets/js/plugins/tutorial/selectResumePremium.js',
-		'assets/js/resume/store/resume.js',
-		'assets/js/resume/store/fonts.js',
-		'assets/js/resume/store/colors.js',
-		'assets/js/resume/store/salary.js',
-		'assets/js/resume/store/education.js',
-		'assets/js/resume/store/languages.js',
-		'assets/js/resume/store/month.js'])
+		'assets/js/store/resume.js',
+		'assets/js/store/fonts.js',
+		'assets/js/store/colors.js',
+		'assets/js/store/salary.js',
+		'assets/js/store/education.js',
+		'assets/js/store/languages.js',
+		'assets/js/store/month.js',
+		'assets/js/store/hobby.js'])
 		.pipe(concat('app.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest('./assets/js'));
@@ -290,7 +326,7 @@ gulp.task('watch', function() {
 	], gulp.series('public.css'));
 });
 
-gulp.task('css.build', gulp.series('private.css', 'public.css', gulp.parallel('private.css.largeScreen', 'private.css.smallScreen', 'templates.basic', 'templates.basic.view')));
+gulp.task('css.build', gulp.series('private.css', 'premium.css', 'public.css', gulp.parallel('private.css.largeScreen', 'private.css.smallScreen', 'premium.css.largeScreen', 'premium.css.smallScreen', 'templates.basic', 'templates.basic.view')));
 
 gulp.task('private.js.build', gulp.parallel('private.libs', 'private.app', 'private.templates'));
 
@@ -299,6 +335,6 @@ gulp.task('build', gulp.series(
 ));
 
 gulp.task('dev', gulp.series(
-	gulp.parallel('private.css', 'premium.css'),
+	gulp.parallel('private.css', 'private.app', 'premium.css'),
 	gulp.parallel('serve', 'watch')
 ));

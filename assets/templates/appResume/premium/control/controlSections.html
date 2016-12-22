@@ -18,8 +18,9 @@
             title: "Активные секции",
             sections: $resume.sections,
             callback: function(sections){
-                $store.resume.select('sections').set(sections);
-                $root.update();
+                if (sections){
+                    $store.resume.select('sections').set(sections);
+                }
             }
         });
     };

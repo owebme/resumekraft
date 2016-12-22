@@ -1,9 +1,29 @@
+// https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/18235126033139.5634e8d8b1adc.jpg
+// https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/750ee935139279.5852ed2f4dd5f.jpg
+// https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/091df946261671.584e198a52ec6.jpg
+// http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/vertical20.jpg
+// http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/vertical15.jpg
+// https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/6612ee41993431.57bc86ef27ea9.jpg
+// http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/vertical9.jpg
+// http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/vertical3.jpg
+// http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/horizontal10.jpg
+// http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/horizontal15.jpg
+// http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/horizontal8.jpg
+// http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/horizontal2.jpg
+// http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/apollo13_images/cover5-6fkzrkng4ltfpc2rzfdl225u36rb5s8mj6.jpg
+// http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/vertical5.jpg
+// https://scontent-arn2-1.cdninstagram.com/t51.2885-15/e35/14592068_1825528711058860_6525389476905091072_n.jpg?ig_cache_key=MTQwODE3NjcxNjcyODA3ODA5Ng%3D%3D.2
+// http://demo.massivedynamic.co/fashion-photography/wp-content/uploads/2015/10/16_02.jpg
+// http://nodia-foto.ru/sites/default/files/BarberHerman_06_internet.jpg
+// http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/vertical18.jpg
+
+
 $store.resume = _.extend(new Baobab({
         _id: _.newId(),
         plan: "basic",
         template: "7",
         lang: "ru",
-        photo: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/18235126033139.5634e8d8b1adc.jpg",
+        photo: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/091df946261671.584e198a52ec6.jpg",
         name: "Виктория",
         surname: "Юртаева",
         gender: "male",
@@ -12,6 +32,10 @@ $store.resume = _.extend(new Baobab({
             amount: "125000",
             currency: "1",
             worktime: "1",
+            graph: {
+                active: true,
+                items: [40000,50000,70000,90000,110000,120000]
+            },
             active: true
         },
         tags: [
@@ -314,48 +338,56 @@ $store.resume = _.extend(new Baobab({
                 name: "works",
                 title: "Мои проекты",
                 short: "Проекты",
+                screen: true,
                 active: true
             },
             {
                 name: "skills",
                 title: "Основные компетенции",
                 short: "Навыки",
+                screen: true,
                 active: true
             },
             {
                 name: "education",
                 title: "Образование",
                 short: "Учеба",
+                screen: true,
                 active: true
             },
             {
                 name: "courses",
                 title: "Курсы",
                 short: "Курсы",
+                screen: true,
                 active: true
             },
             {
                 name: "languages",
                 title: "Владение языками",
                 short: "Языки",
+                screen: true,
                 active: true
             },
             {
                 name: "jobs",
                 title: "Работа в компаниях",
                 short: "Карьера",
+                screen: true,
                 active: true
             },
             {
                 name: "hobby",
                 title: "Мои хобби",
                 short: "Хобби",
+                screen: true,
                 active: true
             },
             {
                 name: "contacts",
                 title: "Контакты",
                 short: "Контакты",
+                screen: true,
                 active: true
             }
         ]

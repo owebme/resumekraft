@@ -4,14 +4,14 @@
         <div class="col-xs-24 col-md-18 col-md-offset-6">
             <div class="screen__inner">
 
-                <btn-editable if={ $mode === "editing" } data={ $resume.jobs }></btn-editable>
+                <btn-editable if={ $State.get('mode') === "editing" } data={ $resume.jobs }></btn-editable>
 
-                <h3 class="title anim" data-anim="bt">{ $resume.jobs && $resume.jobs.title ? $resume.jobs.title : opts.title }</h3>
+                <h3 class="title">{ $resume.jobs && $resume.jobs.title ? $resume.jobs.title : opts.title }</h3>
 
                 <div if={ !$resume.jobs || $resume.jobs && $resume.jobs.text } onClick={ openEditable } onUpdate="none" class="{ blur : !$resume.jobs } { transition-none : editable }">
                     <div class="row mb-l">
                         <div class="col-xs-24 pb-xs">
-                            <p class="anim" data-anim="lr">{ $resume.jobs && $resume.jobs.text ? $resume.jobs.text : $store.resume.placeholder.jobs.text }</p>
+                            <p>{ $resume.jobs && $resume.jobs.text ? $resume.jobs.text : $store.resume.placeholder.jobs.text }</p>
                         </div>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
         <div class="col-xs-24 col-lg-22 col-lg-offset-2">
             <div class="pt-xl pb-m plr-l sm-plr0 xs-pt-l xs-plr-xxs xs-pb-l bg-primary">
                 <div class="bg-section bg-primary"></div>
-                <div if={ $mode === "editing" && (!$resume.jobs || !$resume.jobs.items) } class="aspectRatio-169">
+                <div if={ $State.get('mode') === "editing" && (!$resume.jobs || !$resume.jobs.items) } class="aspectRatio-169">
                     <div class="pos-centered pb-xl xs-pb-m">
                         <button class="btn btn-xl btn-editable btn-white btn-upper" type="button"><svg class="btn-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><path class="btn-svg-color" d="M87.754,45.284H54.716V12.246c0-2.605-2.111-4.716-4.716-4.716c-1.302,0-2.481,0.528-3.334,1.382 c-0.853,0.853-1.381,2.032-1.382,3.334v33.038l-33.038,0c-1.302,0-2.481,0.528-3.334,1.382C8.058,47.519,7.53,48.698,7.53,50 c0,2.605,2.111,4.716,4.716,4.716l33.038,0l0,33.038c0,2.605,2.111,4.716,4.716,4.716c2.604,0,4.716-2.112,4.716-4.716l0-33.038 h33.038c2.604,0,4.716-2.112,4.716-4.716C92.47,47.395,90.359,45.284,87.754,45.284z"></path></svg>Добавить место работы</button>
                     </div>
@@ -31,17 +31,17 @@
                 <div each={ item in sort($resume.jobs.items) } class="jobs-item" data-id={ item._id }>
                     <div class="row pl-m pt-xxs sm-pl0">
                         <div class="col-md-14">
-                            <h3 class="job-title anim" data-anim="lr">{ item.post }</h3>
-                            <h4 class="job-subtitle anim" data-anim="lr">{ get.period(item) }</h4>
+                            <h3 class="job-title">{ item.post }</h3>
+                            <h4 class="job-subtitle">{ get.period(item) }</h4>
                         </div>
                         <div class="col-md-10">
                             <div class="job-year">{ get.year(item) }</div>
-                            <h3 class="job-title anim" data-anim="lr">{ item.company } &ndash; { item.city }</h3>
+                            <h3 class="job-title">{ item.company } &ndash; { item.city }</h3>
                         </div>
                     </div>
                     <div class="row pl-m pt-xxs pb-xl sm-pl0">
                         <div class="col-xs-24 col-lg-22">
-                            <div class="job-text" data-anim="lr">
+                            <div class="job-text">
                                 { item.text }
                             </div>
                         </div>

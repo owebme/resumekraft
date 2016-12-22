@@ -6,7 +6,7 @@
                 <span class="input-title">год окончания</span>
                 <div class="select select-xl">
                     <select onChange={ $Editable.component.autoCommitItems } data-name="year">
-                        <option each={ item in _.range(1940, new Date().getFullYear() + 1) } value={ item } selected={ editing.year == item }>{ item }</option>
+                        <option each={ item in _.range(1940, new Date().getFullYear() + 1) } no-reorder value={ item } selected={ editing.year == item }>{ item }</option>
                     </select>
                 </div>
             </div>
@@ -17,10 +17,10 @@
                 <div class="select select-xl">
                     <select onChange={ $Editable.component.autoCommitItems } data-name="level">
                         <optgroup label="Высшее образование">
-                            <option if={ item.parent == "1" || item._id == "1" } each={ item in $store.education.get() } value={ item._id } selected={ editing.level == item._id }>{ item.title }</option>
+                            <option if={ item.parent == "1" || item._id == "1" } each={ item in $store.education.get() } value={ item._id } no-reorder selected={ editing.level == item._id }>{ item.title }</option>
                         </optgroup>
                         <optgroup label="Среднее образование">
-                            <option if={ item.parent == "0" && item._id != "1" } each={ item in $store.education.get() } value={ item._id } selected={ editing.level == item._id }>{ item.title }</option>
+                            <option if={ item.parent == "0" && item._id != "1" } each={ item in $store.education.get() } value={ item._id } no-reorder selected={ editing.level == item._id }>{ item.title }</option>
                         </optgroup>
                     </select>
                 </div>

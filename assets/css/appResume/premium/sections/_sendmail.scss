@@ -1,0 +1,36 @@
+.sendmail {
+    @extend .display-block;
+    @extend .pos-fixed;
+    @extend .t-l;
+    @extend .r-l;
+    @extend .zIndex-5;
+
+    .d-phone & {
+        @extend .t-s;
+        @extend .r-s;
+    }
+    &-button {
+        @extend .w70;
+        @extend .h70;
+        @extend .userSelect-none;
+        @extend .flex-centered;
+        @extend .btn-active;
+        @extend .borderRadius-circle;
+        @extend .boxShadow-default;
+        @extend .bg-primary;
+
+        .d-phone & {
+            @extend .w60;
+            @extend .h60;
+        }
+        icon-email {
+            @extend .display-block;
+        }
+        path {
+            @extend .fill-white;
+        }
+        &:hover {
+            @extend .bg-white;
+        }
+    }
+}

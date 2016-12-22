@@ -21,7 +21,10 @@
 
     var $ = this;
 
+    $.data = null;
+
     $.init = function(data){
+        $.data = data;
         $.update({
             title: data.title,
             sections: data.sections,
@@ -35,13 +38,23 @@
     };
 
     $.onCancel = function(){
-        $.callback($.sections);
         $.hide();
     };
 
     $.onSave = function(){
+        var find = false;
+
+        _.each($.items, function(item){
+            var section = _.findWhere($.data.sections, {"name": item.name});
+            if (!item.screen && item.active !== section.active){
+                find = true;
+            }
+        });
+
         $.callback($.items);
         $.hide();
+
+        if (find) $Resume.update();
     };
 
     $.hide = function(){

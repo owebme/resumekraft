@@ -6,7 +6,7 @@
                 <span class="input-title">год окончания</span>
                 <div class="select select-l">
                     <select onChange={ $Editable.component.autoCommitItems } data-name="year">
-                        <option each={ item in _.range(1940, new Date().getFullYear() + 1) } value={ item } selected={ editing.year == item }>{ item }</option>
+                        <option each={ item in _.range(1940, new Date().getFullYear() + 1) } no-reorder value={ item } selected={ editing.year == item }>{ item }</option>
                     </select>
                 </div>
             </div>

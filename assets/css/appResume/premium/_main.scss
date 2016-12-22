@@ -13,6 +13,12 @@ body {
 			clear:both;
 		}
 	}
+	.d-phone & {
+		&.d-no-ios {
+			perspective:500px;
+		}
+		background-color:#171719;
+	}
 }
 #app[data-app="premium"]{
     // .d-phone &,
@@ -23,7 +29,9 @@ body {
             @extend .opacity-100;
         }
     //}
-	@extend .overflowX-hidden;
+	.d-no-phone & {
+		@extend .overflowX-hidden;
+	}
 }
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, strong {
     @extend .f-primary;

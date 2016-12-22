@@ -1,9 +1,10 @@
-<resume-template1 class="screens screens-mobile container resume template1">
+<resume-template1 class="screens screens-phone container resume template1">
 
     <div class="hidden-xs hidden-sm overlay col-sm-6"></div>
     <div class="hidden-xs hidden-sm main-line col-sm-6"></div>
+    <div class="hidden-xs hidden-sm main-line-bg col-sm-6"></div>
 
-    <section if={ app.device.isPhone } class="screen screen--first screen--active" data-section="main">
+    <section if={ app.device.isPhone } class="screen screen--first screen--active" data-section="cover">
         <div class="screen__content">
             <ux-photo></ux-photo>
             <div class="screen__post">{ $resume.post }</div>
@@ -43,7 +44,7 @@
     </section>
 
     <section class="screen" data-section="skills" if={ $store.resume.select("sections").get({"name": "skills"}).active }>
-        <div class="bg-section bg-snow hidden-xs"></div>
+        <div class="bg-section hidden-xs { bg-show : $store.resume.select('sections').get({'name': 'works'}).active }"></div>
         <div class="screen__content">
             <div class="row">
                 <div class="col-xs-24 col-md-18 col-md-offset-6">
@@ -122,27 +123,25 @@
 
     $.el = $$(this.root);
 
+    $.screenItems = null;
+    $.screenColor = null;
+    $.controlColor = "primary";
+
     $.on("before-mount", function(){
         $.sections = {
-            photo: $.tags["ux-photo"],
             salary: $.tags["ux-salary"],
-            tags: $.tags["ux-tags"],
             social: $.tags["ux-social"],
-            works: $.tags["ux-works"],
-            skills: $.tags["ux-skills"],
-            education: $.tags["ux-education"],
-            languages: $.tags["ux-languages"],
-            jobs: $.tags["ux-jobs"],
-            hobby: $.tags["ux-hobby"],
             contacts: $.tags["ux-contacts"]
         }
         $.sections.social.on("updated", function(){
-            $.sections.contacts.update();
+            if (!app.device.isPhone){
+                $.sections.contacts.update();
+            }
         });
     });
 
     $.on("mount", function(){
-        if ($mode !== "editing"){
+        if ($State.get('mode') !== "editing"){
             _.each(this.tags, function(item) {
                 if (item.root && item.root.tagName && item.root.tagName.toLowerCase().match(/^ux-/)){
                     var name = item.root.tagName.toLowerCase().match(/^ux-(.+)/)[1];
@@ -159,11 +158,156 @@
                 }
             });
         }
+
+        var onScroll = _.throttle($.onScroll, 50),
+            render = _.debounce($.render, 300);
+
         if (app.device.isPhone){
-            $.screens = new app.plugins.screens($.el);
-            $.screens.init();
+            $afterlag.run(function(){
+                $.screens = new app.plugins.screens($.el, {
+                    dataAttr: "section",
+                    controlInvisible: true
+                });
+                $.screens.init();
+                $.render();
+                $.initScroll();
+
+                (function animationLoop(){
+                    app.utils.raf(animationLoop);
+                    onScroll(app.utils.getScroll($.scroll));
+                })();
+            });
+        }
+        else {
+            $.render();
+            app.$dom.window.on("scroll", function(){
+                onScroll();
+            });
+        }
+
+        app.$dom.window.on("resize", function(){
+            render();
+        });
+
+        if ($State.get('mode') === "editing"){
+            _.bbUpdate($store.resume, function(prop, value, e){
+                if (prop == "sections" && $Resume.screenItems){
+                    var find = false;
+
+                    _.each(e.data.currentData.sections, function(item){
+                        var section = _.findWhere($Resume.screenItems, {"section": item.name});
+                        if (!section) section = { active: false };
+                        if (item.screen && item.active !== section.active){
+                            find = true;
+                        }
+                    });
+
+                    if (find){
+                        $Resume.update();
+                        if (app.device.isPhone){
+                            $Resume.screens.refreshAll();
+                            $Resume.initScroll();
+                        }
+                    }
+                    else {
+                        if (app.device.isPhone){
+                            $Resume.screens.refresh();
+                        }
+                    }
+                    $Control.sections.refresh();
+                }
+                else {
+                    $Resume.screens.refresh();
+                }
+                $Resume.render();
+            });
+
+            _.bbUpdate($State, function(prop, value, e){
+                if (prop == "color"){
+                    $Resume.sections.salary.graph.refresh();
+                }
+                else if (prop == "font"){
+                    $Resume.render();
+                }
+            });
         }
     });
+
+    $.initScroll = function(){
+        $.scroll = $Resume.screens.get("scroll");
+    };
+
+    $.render = function(){
+        var items = [];
+        $.screenColor = [];
+
+        setTimeout(function(){
+            if (app.device.isPhone){
+                var screens = $Resume.screens.scope.data('marquee').screens;
+            }
+            $Resume.el.find(".screen").each(function(i, item){
+                var $section = $$(this),
+                    section = this.getAttribute("data-section");
+
+                if (section == "works" || section == "jobs"){
+                    if (app.device.isPhone){
+                        $.screenColor.push({
+                            height: screens[i].size - 120,
+                            offset: screens[i].offset + 120
+                        });
+                    }
+                    else {
+                        var $bgSection = $$(this).find(".bg-section");
+                        $.screenColor.push({
+                            height: $bgSection.height(),
+                            offset: $bgSection.offset().top - 80
+                        })
+                    }
+                }
+                var title = null;
+                if (section == "main"){
+                    title = "Общее";
+                }
+                else {
+                    var name = $store.resume.select("sections").get({"name": section});
+                    if (name && name.short) title = name.short;
+                }
+                var item = _.findWhere($resume.sections, {"name": section});
+                items.push({
+                    title: title,
+                    section: section,
+                    step: i + 1,
+                    offset: $section.offset().top,
+                    active: item ? item.active : true
+                })
+            });
+
+            $.screenItems = items;
+
+            if (!app.device.isMobile && $Nav) $Nav.refresh();
+
+        }, 5);
+    };
+
+    $.onScroll = function(scroll){
+        var scroll = scroll && scroll.y || app.$dom.document.scrollTop(),
+            find = false;
+
+        _.each($.screenColor, function(item){
+            if (!find){
+                if (scroll > item.offset && scroll < item.offset + item.height){
+                    find = true;
+                    if ($.controlColor != "white"){
+                        $root.root.setAttribute("data-control-color", "white");
+                    }
+                }
+            }
+        });
+
+        if (!find && $.color != "primary"){
+            $root.root.setAttribute("data-control-color", "primary");
+        }
+    };
 
 </script>
 

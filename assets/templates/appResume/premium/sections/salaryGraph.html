@@ -1,0 +1,64 @@
+<salary-graph class="section-hidden salary-graph" data-pos="right" data-short={ !app.device.isPhone } data-open={ active }>
+
+    <div onClick={ hide } onUpdate="none" class="button__close opacity-100" data-color="gray"></div>
+
+    <div class="salary-graph-title">Желаемый график роста оплаты труда</div>
+
+    <div class="salary-graph-content">
+        <div each={ item, i in _.copyArray($resume.salary.graph.items).reverse() } no-reorder class="salary-graph-item">
+            <div class="salary-graph-item-month">{ get.month(i) } месяц</div>
+            <div class="salary-graph-item-amount" style="margin-right:{ get.padding(item) }%">{ item / 1000 }K
+                <span if={ $resume.salary.currency != "1" }>{ $store.currency.getTitleById($resume.salary.currency) }</span>
+                <svg if={ $resume.salary.currency == "1" } class="salary-graph-item-amount-ruble" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><path class="salary-graph-item-amount-ruble-color" d="M58.464,57.316c8.139,0,14.264-2.073,18.374-6.218C80.945,46.951,83,41.146,83,33.674  c0-7.468-2.055-13.277-6.163-17.421c-4.109-4.146-10.235-6.22-18.374-6.22H27.771v38.32H17.267v8.963h10.504v8.544H17.267v8.962  h10.504v15.211h10.644V74.822h28.746V65.86H38.415v-8.544H58.464z M38.415,18.998h16.462c6.05,0,10.477,1.251,13.277,3.754  c2.803,2.503,4.203,6.145,4.203,10.922c0,4.782-1.4,8.424-4.203,10.925c-2.8,2.503-7.227,3.754-13.277,3.754H38.415V18.998z"/></svg>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.active = false;
+    $.max = _.max($resume.salary.graph.items);
+
+    $.get = {
+        month: function(i){
+                 if (i == 0) return "24";
+            else if (i == 1) return "18";
+            else if (i == 2) return "12";
+            else if (i == 3) return "6";
+            else if (i == 4) return "3";
+            else if (i == 5) return "1";
+        },
+        padding: function(value){
+            return (1 - value / $.max) * 75;
+        }
+    };
+
+    $.show = function(){
+        $.infoActive = $Info.active;
+
+        $root.trigger("mode", "hidden", true);
+        $.update({
+            active: true
+        })
+        if (!$.infoActive && !app.device.isPhone){
+            if (!app.device.isMobile || app.device.isTablet && app.device.orientation == "landscape"){
+                _.onEndTransition($.root, function(){
+                    $Info.show();
+                });
+            }
+        }
+    };
+
+    $.hide = function(){
+        $root.trigger("mode", "hidden", false);
+        $.update({
+            active: false
+        })
+        if (!$.infoActive && !app.device.isPhone) $Info.hide();
+    };
+
+</script>
+
+</salary-graph>

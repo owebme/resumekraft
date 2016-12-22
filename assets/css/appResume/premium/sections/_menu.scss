@@ -6,8 +6,8 @@
     @extend .zIndex-10;
 
     .d-phone & {
-        @extend .t-m;
-        @extend .l-m;
+        @extend .t-s;
+        @extend .l-s;
     }
     &__opener {
         @include accelerate();

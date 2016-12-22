@@ -7,10 +7,10 @@
         <div class="title title-main">{ title }</div>
 
         <div if={ type === "input" }>
-            <input onInput={ typing } class="input input-xl" name="input_data" type="text" autocomplete="off" value={ editing }>
+            <input class="input input-xl" name="input_data" type="text" autocomplete="off" value={ editing }>
         </div>
         <div if={ type === "textarea" }>
-            <textarea onInput={ typing } class="textarea textarea-xl" name="textarea_data" autocomplete="off">{ editing }</textarea>
+            <textarea class="textarea textarea-xl" name="textarea_data" autocomplete="off">{ editing }</textarea>
         </div>
 
     </div>
@@ -33,16 +33,11 @@
             title: data.title,
             type: data.type,
             editing: data.editing,
-            typing: data.typing ? data.typing : null,
             callback: data.callback ? data.callback : null
         });
-        setTimeout(function(){
-            $[$.type + "_data"].focus();
-        }, 100);
     };
 
     $.onCancel = function(){
-        if ($.callback) $.callback($.active, $.editing);
         $[$.type + "_data"].value = $.editing ? $.editing : '';
         $.hide();
     };

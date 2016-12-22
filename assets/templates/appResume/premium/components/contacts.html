@@ -1,12 +1,14 @@
 <ux-contacts class="component">
 
+    <h3 class="visible-xs title">Связаться</h3>
+
     <div class="row">
         <div class="col-xs-24 col-lg-23 col-lg-offset-2 p0">
             <div class="row flex-row-center-stretch">
-                <div class="col-lg-8 p-l bg-blackLight pb-xl">
-                    <div class="p-m">
-                        <div class="c-grayLight f-primary fontSize-20 fontWeight-bold mb-xs">Связаться</div>
-                        <div class="c-white f-primary fontSize-30 fontWeight-8 mb-l">Отправить приглашение</div>
+                <div class="form-wrapper col-xs-24 col-sm-12 col-md-12 col-lg-8 p-l pb-xl xs-p0 zIndex-1" data-color="{ app.device.isPhone ? 'white' : 'black' }">
+                    <div class="p-m xs-p0">
+                        <div class="hidden-xs c-grayLight f-primary fontSize-20 fontWeight-bold mb-xs">Связаться</div>
+                        <div class="hidden-xs c-white f-primary fontSize-30 fontWeight-8 mb-l">Отправить приглашение</div>
                         <div class="form mb-m">
                             <div class="form-item">
                                 <label class="form-title">Представтесь / Компания</label>
@@ -21,10 +23,10 @@
                                 <textarea class="form-textarea"></textarea>
                             </div>
                         </div>
-                        <button class="btn btn-l btn-primary">Отправить</button>
+                        <button class="btn btn-{ app.device.isPhone ? 'xl display-block centered' : 'l' } btn-primary">Отправить</button>
                     </div>
                 </div>
-                <div class="col-lg-8 p-l bg-snow">
+                <div class="hidden-xs col-sm-12 col-md-12 col-lg-8 p-l bg-snow zIndex-1">
                     <div class="p-m">
                         <div class="c-primary f-primary fontSize-20 fontWeight-bold mb-xs">Моя</div>
                         <div class="c-blackLight f-primary fontSize-30 fontWeight-8 mb-l">Контактная информация</div>
@@ -52,12 +54,12 @@
                             </div>
                         </div>
                         <div if={ $resume.social } class="mt-m">
-                            <ux-social-items classname="social small"></ui-social-items>
+                            <ux-social-items classname="social social-s"></ui-social-items>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8 p0">
-                    <div class="pos-abs-full" id="map"></div>
+                <div class="hidden-xs hidden-sm hidden-md col-lg-8 p0">
+                    <div class="map" style="background-image:url('/assets/images/resume/bg4.jpg')"></div>
                 </div>
             </div>
         </div>
@@ -70,14 +72,18 @@
 
     $.on("mount", function(){
 
-        $scope.find(".form-input, .form-textarea").on("focus blur", function(e){
-            var $item = $$(this).parent();
-            if (e.type === "focus"){
-                $item.addClass("focus");
-            }
-            else {
-                $item.removeClass("focus");
-            }
+        $afterlag.run(function(){
+            $Resume.el.find(".screen[data-section='contacts']")
+            .find(".form-input, .form-textarea")
+            .on("focus blur", function(e){
+                var $item = $$(this).parent();
+                if (e.type === "focus"){
+                    $item.addClass("focus");
+                }
+                else {
+                    $item.removeClass("focus");
+                }
+            });
         });
 
 		try

@@ -1,22 +1,23 @@
 .section__editable {
-    display:block;
-    opacity:0.001;
+    @extend .display-block;
+    @extend .opacity-01;
     @include abs(fixed);
     @include accelerate();
     @extend .userSelect-none;
-    visibility:hidden;
+    @extend .visibility-hidden;
     will-change:opacity;
     transition:opacity 0.2s $cubic57, visibility 0s 0.25s;
-    overflow:hidden;
-    pointer-events:none;
-    z-index:101;
+    @extend .overflow-hidden;
+    @extend .pointerEvents-none;
+    @extend .zIndex-100;
 
     &__scroll {
         @include abs();
         @include accelerate();
-        overflow-y:scroll;
-        -webkit-overflow-scrolling: touch;
-        z-index:1000;
+        @extend .overflowY-scroll;
+        @extend .overflowX-hidden;
+        -webkit-overflow-scrolling:touch;
+        @extend .zIndex-1;
     }
     &__wrapper {
         @include accelerate();
@@ -25,51 +26,69 @@
         min-height:480px;
 
         .d-no-mobile & {
-            will-change:transform;
+            @extend .willChange-transform;
             transform-style:preserve-3d;
             transform:translate3d(0, -10%, 0) perspective(500px) rotateX(30deg) scale3d(0.8, 0.8, 1);
             transition:transform 0.25s $cubic25b;
+
+            &[data-large="true"]{
+                transform:translate3d(0, 0, 0) scale3d(0.95, 0.95, 1);
+            }
         }
     }
     &__container {
         @extend .display-none;
         @include accelerate();
-        margin-top:28.6vh;
+        @extend .willChange-transform;
+        transform:translateY(28.6vh);
+        margin-bottom:28.6vh;
+        transition:transform 0.6s $cubic28;
 
         &#active {
             @extend .display-block;
         }
         &[data-editing="textarea"],
         &[data-editing="tags"]{
-            margin-top:25.6vh;
+            transform:translateY(25.6vh);
+            margin-bottom:25.6vh;
         }
-        &[data-editing="social"]{
-            margin-top:14.6vh;
+        &[data-editing="social"],
+        &[data-editing="salaryGraph"]{
+            transform:translateY(14.6vh);
+            margin-bottom:14.6vh;
         }
         &[data-editing="works"],
         &[data-editing="skills"],
         &[data-editing="jobs"] {
-            margin-top:7.2vh;
+            transform:translateY(7.2vh);
+            margin-bottom:7.2vh;
         }
         &[data-editing="visible"]{
-            margin-top:17.6vh;
+            transform:translateY(17.6vh);
+            margin-bottom:17.6vh;
         }
         &[data-editing="education"],
         &[data-editing="courses"],
         &[data-editing="languages"] {
-            margin-top:8.6vh;
+            transform:translateY(8.6vh);
+            margin-bottom:8.6vh;
         }
         &[data-editing="photo"]{
-            margin-top:8.6vh;
+            transform:translateY(8.6vh);
+            margin-bottom:8.6vh;
 
             .d-phone & {
                 @extend .pos-tl;
                 @extend .overflow-hidden;
                 @extend .w100v;
                 @extend .h100v;
-                margin:0;
-                padding:0;
+                @extend .m0;
+                @extend .p0;
             }
+        }
+        .d-phone & {
+            @extend .transform-default;
+            @extend .mtb0;
         }
         .d-phone &[data-uploaded="true"]{
             @extend .bg-black;
@@ -88,7 +107,148 @@
             &:after {
                 @extend .content-empty;
                 @include abs();
-                z-index:10;
+                @extend .zIndex-10;
+            }
+        }
+        &__screen {
+            @extend .pos-tl;
+            @include accelerate();
+            @extend .opacity-0;
+            @extend .visibility-hidden;
+            will-change:transform, opacity;
+            transition:transform 0.6s $cubic345, opacity 0.3s $cubic345, visibility 0s 0.6s;
+
+            &[data-pos="left"]{
+                transform:translate3d(-100%, 0, 0) scale3d(0.7, 0.4, 1);
+            }
+            &[data-pos="right"]{
+                transform:translate3d(100%, 0, 0) scale3d(0.7, 0.4, 1);
+            }
+            &[data-active="true"]{
+                @extend .pos-static;
+                @extend .opacity-100;
+                @extend .visibility-visible;
+                transform:translate3d(0, 0, 0) scale3d(1, 1, 1);
+                transition:transform 0.6s $cubic345, opacity 0.3s $cubic345, visibility 0s;
+            }
+            .d-phone & {
+                @extend .pt-xs;
+                @extend .visibility-visible;
+                @extend .pointerEvents-none;
+                transition:opacity 0.3s $cubic2501;
+
+                &[data-active="true"]{
+                    @extend .transform-default;
+                }
+                #activity {
+                    top:5px !important;
+                }
+            }
+            .d-phone .section__editable[data-open="true"] & {
+                &[data-active="true"]{
+                    @extend .pointerEvents-all;
+                }
+            }
+        }
+    }
+    &__arrow {
+        @include accelerate();
+        @extend .flex-centered;
+        @extend .pos-abs;
+        @extend .t0;
+        @extend .c-white;
+        @extend .fontFamily-futura;
+        font-size:24px;
+        @extend .opacity-0;
+        @extend .cursor-pointer;
+        @extend .pointerEvents-none;
+        @extend .letterSpacing--s;
+        @extend .mt-l;
+        width:242px;
+        will-change:transform, opacity;
+        transition:transform 0.3s $cubic345, opacity 0.3s $cubic345;
+
+        .d-phone & {
+            @extend .flex-row-left-center;
+            @extend .t-s;
+            @extend .mt0;
+            @extend .w-auto;
+            font-size:18px;
+            @extend .text-uppercase;
+            @extend .fontWeight-bold;
+            @extend .transition-none;
+            border-bottom:3px solid rgba($lime,.7);
+            @extend .zIndex-1;
+        }
+        &:after {
+            @extend .content-empty;
+            @extend .pos-abs;
+            @extend .t50;
+            @extend .willChange-transform;
+            @include ui-icon("back_white", 48px, 48px);
+            transition:transform 0.35s $cubic215;
+
+            .d-phone & {
+                @include ui-icon("back_lime", 30px, 30px);
+                @extend .transition-none;
+            }
+        }
+        .d-phone & {
+            &[data-pos="left"],
+            &[data-pos="right"]{
+                @extend .l-l;
+                @extend .r-auto;
+                @extend .ml0;
+                @extend .mt0;
+                @extend .plr-xxs;
+                @extend .trX--xs;
+
+                &:after {
+                    @extend .l--l;
+                    @extend .r-auto;
+                    transform:translate3d(10px, -50%, 0);
+                    @extend .transition-none;
+                }
+            }
+        }
+        &[data-pos="left"]{
+            @extend .r100;
+            @extend .mr-l;
+            @extend .pl-xl;
+            @extend .pr-m;
+            transform:translate3d(-100%, 0, 0);
+
+            &:after {
+                @extend .l-s;
+                transform:translate3d(0, -50%, 0);
+            }
+        }
+        &[data-pos="right"]{
+            @extend .l100;
+            @extend .ml-l;
+            @extend .plr-l;
+            transform:translate3d(100%, 0, 0);
+
+            &:after {
+                @extend .r-s;
+                transform:translate3d(0, -50%, 0) scaleX(-1);
+            }
+        }
+        &[data-active="true"]{
+            @extend .opacity-100;
+            @extend .pointerEvents-all;
+            @extend .transform-default;
+        }
+        &:hover {
+            &[data-pos="left"]{
+                &:after {
+                    transform:translate3d(-12px, -50%, 0) scale3d(1, 1.35, 1);
+                }
+            }
+            &[data-pos="right"]{
+                &:after {
+                    transform:translate3d(12px, -50%, 0) scale3d(-1, 1.35, 1);
+                }
             }
         }
     }
@@ -104,13 +264,18 @@
                 }
             }
         }
+        .btn {
+            .d-phone & {
+                font-size:17px;
+            }
+        }
     }
     &__close {
         @extend .pos-tr;
         @extend .cursor-pointer;
         @include ui-icon(minus_white, 38px, 38px);
         transform:translate3d(-22px, 22px, 0);
-        z-index:1001;
+        @extend .zIndex-1001;
 
         &:after {
             @extend .content-empty;
@@ -128,29 +293,33 @@
         @extend .h50p;
     }
     &[data-open="true"]{
-        opacity:1;
-        visibility:visible;
-        pointer-events:all;
+        @extend .opacity-100;
+        @extend .visibility-visible;
+        @extend .pointerEvents-all;
         transition:opacity 0.25s $cubic2501, visibility 0s;
 
         .d-no-mobile & {
             .section__editable__wrapper {
                 transform:translate3d(0, 0, 0) perspective(500px) rotateX(0deg) scale3d(1, 1, 1);
                 transition:transform 0.4s $cubic25b;
+
+                &[data-large="true"]{
+                    transform:translate3d(0, 0, 0) perspective(1000px) rotateX(0deg) scale3d(1, 1, 1);
+                }
             }
         }
     }
     #activity {
-        position:absolute;
-        z-index:1;
+        @extend .pos-abs;
+        @extend .zIndex-1;
 
         .d-no-phone & {
             top:13px;
-            right:7.5px;
+            @extend .r-xss;
         }
         .d-phone & {
-            top:-5px;
-            right:0;
+            @extend .t-s;
+            @extend .r0;
         }
     }
     .title {
@@ -170,7 +339,8 @@
                 font-size:34px;
                 line-height:38px;
                 margin-left:-2px;
-                @extend .pt-xs;
+                @extend .pt-l;
+                @extend .mb-m;
             }
         }
         &-xl {
@@ -256,13 +426,14 @@
 .d-phone {
     .section__editable {
         .btn {
-            padding-left:30px;
-            padding-right:30px;
+            @extend .pl30;
+            @extend .pr30;
         }
         &__container {
             @extend .pt-xs;
             @extend .mt-m;
             @extend .mlr-xs;
+            @extend .transform-default;
 
             &[data-editing="visible"]{
                 @extend .mlr-s;

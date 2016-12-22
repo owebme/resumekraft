@@ -13,50 +13,28 @@
     $scope = $$($.root),
     $container = $$($.container);
 
-    $.items = [];
     $.step = 1;
     $.left = 0;
     $.sliding = false;
 
     $.on("mount", function(){
-        if (!app.device.isMobile){
-            $afterlag.run(function(){
-                $.render();
+        var onScroll = _.debounce($.onScroll, 50);
 
-                var _onScroll = _.debounce($.onScroll, 50);
-
-                app.$dom.window.on("scroll", function(){
-                    _onScroll();
-                });
-
-                $.on("updated", function(){
-                    $.onSlide($.step);
-                });
-            });
-        }
-    });
-
-    $.render = function(){
-        $.items = [];
-
-        $Resume.el.find(".screen").each(function(i, item){
-            var $section = $$(this),
-                title = $section.attr("data-section");
-
-            if (title == "main"){
-                title = "Общее";
-            }
-            else {
-                title = $store.resume.select("sections").get({"name": title}).short;
-            }
-            $.items.push({
-                title: title,
-                step: i + 1,
-                offset: $section.offset().top
-            })
+        app.$dom.window.on("scroll", function(){
+            onScroll();
         });
 
-        $.update();
+        $.on("updated", function(){
+            if ($.items) $.onSlide($.step);
+        });
+    });
+
+    $.refresh = function(){
+        if (!app.device.isPhone){
+            $.update({
+                items: $Resume.screenItems
+            })
+        }
     };
 
     $.onChange = function(){
@@ -124,14 +102,6 @@
                         });
                     }
                 }
-            });
-        }
-    };
-
-    $.refresh = function(){
-        if (!app.device.isMobile){
-            $afterlag.run(function(){
-                $.render();
             });
         }
     };

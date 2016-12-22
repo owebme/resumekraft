@@ -81,12 +81,11 @@
             </div>
         </div>
 
-
     </div>
 
     <div class="section__editable__footer">
         <button onClick={ $Editable.component.onCancel } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper" type="button">Отменить</button>
-        <button onClick={ onSave } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper ml-xs" type="button">Сохранить</button>
+        <button onClick={ $Editable.component.onSave } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper ml-xs" type="button">Сохранить</button>
     </div>
 
 <script>
@@ -108,22 +107,6 @@
         else {
             $.data.items[_.indexOf($.data.items, item)].value = value;
         }
-    };
-
-    $.onSave = function(){
-        for (var i = 0; i < this.data.items.length; i++){
-            if (!_.clean(this.data.items[i].value)){
-                this.data.items.splice(i, 1);
-                i--;
-            }
-        }
-        this.data.items = this.data.items.length ? this.data.items : null;
-
-        this.callback(this.switcher.value, this.data);
-
-        $Editable.hide(function(){
-            $Editable.component.editing = null;
-        });
     };
 
 </script>

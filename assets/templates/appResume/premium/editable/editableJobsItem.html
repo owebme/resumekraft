@@ -9,14 +9,14 @@
                 <div class="col-md-10 sm-mt-xs">
                     <div class="select select-l">
                         <select onChange={ $Editable.component.autoCommitItems } data-name="from.year">
-                            <option each={ item in _.range(1940, new Date().getFullYear() + 1) } value={ item } selected={ editing.from.year == item }>{ item }</option>
+                            <option each={ item in _.range(1940, new Date().getFullYear() + 1) } no-reorder value={ item } selected={ editing.from.year == item }>{ item }</option>
                         </select>
                     </div>
                 </div>
             </div>
             <div class="select select-l mt-s">
                 <select onChange={ $Editable.component.autoCommitItems } data-name="from.month">
-                    <option each={ item in _.range(1, 13) } value={ item } selected={ editing.from.month == item }>{ $store.month.getTitleById(item) }</option>
+                    <option each={ item in _.range(1, 13) } value={ item } no-reorder selected={ editing.from.month == item }>{ $store.month.getTitleById(item) }</option>
                 </select>
             </div>
         </div>
@@ -28,14 +28,14 @@
                 <div class="col-md-10 sm-mt-xs">
                     <div class="select select-l">
                         <select onChange={ $Editable.component.autoCommitItems } data-name="to.year">
-                            <option each={ item in _.range(1940, new Date().getFullYear() + 1) } value={ item } selected={ editing.to.year == item }>{ item }</option>
+                            <option each={ item in _.range(1940, new Date().getFullYear() + 1) } no-reorder value={ item } selected={ editing.to.year == item }>{ item }</option>
                         </select>
                     </div>
                 </div>
             </div>
             <div class="select select-l mt-s">
                 <select onChange={ $Editable.component.autoCommitItems } data-name="to.month">
-                    <option each={ item in _.range(1, 13) } value={ item } selected={ editing.to.month == item }>{ $store.month.getTitleById(item) }</option>
+                    <option each={ item in _.range(1, 13) } value={ item } no-reorder selected={ editing.to.month == item }>{ $store.month.getTitleById(item) }</option>
                 </select>
             </div>
             <div if={ editing.last } class="pos-abs-full"></div>

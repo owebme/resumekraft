@@ -1,12 +1,12 @@
 .rangeslider {
     @extend .pos-bl;
     @extend .w100p;
-    z-index:1;
+    @extend .zIndex-1;
 
     &-handle {
-        position:absolute;
-        width:20px;
-        height:20px;
+        @extend .pos-abs;
+        @extend .w20;
+        @extend .h20;
         border-radius:0 0 3px 3px;
         transform:translateY(-4px);
         @extend .bg-blue;
@@ -14,27 +14,30 @@
 
         .m-touch & {
             &:before {
-                content:"";
+                @extend .content-empty;
                 @include abs();
                 transform:scale(2.5);
             }
         }
         &:after {
             @extend .w100p;
-            content:"";
-            position:absolute;
+            @extend .content-empty;
+            @extend .pos-abs;
             top:-12px;
-            left:0;
+            @extend .l0;
             border-top:0;
             border-bottom:12px solid $blue;
             border-right:9px solid transparent;
             border-left:9px solid transparent;
         }
         .d-phone & {
-            @extend .bg-yellow;
+            @extend .bg-lime;
+            transform:translateY(-1px);
+            border-radius:0 0 4px 4px;
+            box-shadow:0 12px 20px -10px rgba($lime, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba($lime, 0.2);
 
             &:after {
-                border-bottom-color:$yellow;
+                border-bottom-color:$lime;
             }
         }
     }
@@ -45,8 +48,21 @@
             border-radius:0 0 2px 2px;
             @extend .transform-default;
 
+            .d-phone & {
+                width:18px;
+                height:18px;
+                border-radius:0 0 4px 4px;
+                transform:translateY(-2px);
+
+                &:after {
+                    top:-11px;
+                    border-bottom-width:11px;
+                    border-right-width:8px;
+                    border-left-width:8px;
+                }
+            }
             &:after {
-                top:-10px;
+                @extend .t--xs;
                 border-bottom-width:10px;
                 border-right-width:7px;
                 border-left-width:7px;
@@ -62,10 +78,10 @@
                     border-bottom-color:$white;
                 }
                 .d-phone & {
-                    @extend .bg-yellow;
+                    @extend .bg-lime;
 
                     &:after {
-                        border-bottom-color:$yellow;
+                        border-bottom-color:$lime;
                     }
                 }
             }

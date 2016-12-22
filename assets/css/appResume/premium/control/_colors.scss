@@ -59,7 +59,8 @@
         &--active {
             @extend .float-right;
             @extend .boxShadow-default;
-            @extend .transition-none;
+            will-change:background-color;
+            transition:background-color 0.2s $cubic215;
             transform:translate3d(0, 0, 0) scale(1);
 
             &:after {
@@ -69,6 +70,8 @@
                 @extend .h10;
                 @extend .bg-white;
                 @extend .borderRadius-circle;
+                will-change:background-color;
+                transition:background-color 0.2s $cubic215;
             }
         }
     }

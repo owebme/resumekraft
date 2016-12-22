@@ -1,36 +1,69 @@
 <editable-salary class="col-sm-offset-4 col-sm-18 col-md-offset-5 col-md-14 col-lg-offset-7 col-lg-12 section__editable__container">
 
-    <ui-switcher id="activity" commit="true"></ui-switcher>
+    <div onClick={ show.salary } class="section__editable__arrow" data-pos="left" data-active={ screen == "graph" }> { 'Желаемая' : !app.device.isPhone } зарплата</div>
+    <div onClick={ show.graph } class="section__editable__arrow" data-pos="right" data-active={ screen == "salary" }>График роста { 'оплаты труда' : !app.device.isPhone }</div>
 
-    <div class="section__editable__content { hide : !switcher.value }">
+    <div class="section__editable__content__screen" data-pos="left" data-active={ screen == "salary" }>
 
-        <div class="title title-main">{ title }</div>
-
-        <div class="row">
-            <div class="col-xs-18 col-sm-12">
-                <ui-slider commit="autoCommitValue" size="xl" value={ salary.amount } min="5000" max="250000" step="1000" color="white"></ui-slider>
-            </div>
-            <div class="col-xs-6 col-sm-4">
-                <div class="select select-xl short">
-                    <select onChange={ autoCommit } name="currency">
-                        <option each={ item in $store.currency.get() } selected={ item._id == salary.currency } value={ item._id }>{ item.title }</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-xs-24 col-sm-8 xs-mt-m">
-                <div class="select select-xl">
-                    <select onChange={ autoCommit } name="worktime">
-                        <option each={ item in $store.worktime.get() } selected={ item._id == salary.worktime } value={ item._id }>{ item.title }</option>
-                    </select>
-                </div>
-            </div>
+        <div id="activity">
+            <ui-switcher name="switcherSalary" commit="true"></ui-switcher>
         </div>
 
+        <div class="section__editable__content { hide : !switcherSalary.value }">
+
+            <div class="title title-main">{ title }</div>
+
+            <div class="row">
+                <div class="col-xs-18 col-sm-12">
+                    <ui-slider phone="true" name="sliderSalary" commit="autoCommitValue" size="xl" value={ salary.amount } min="5000" max="300000" step="1000" color="white"></ui-slider>
+                </div>
+                <div class="col-xs-6 col-sm-4">
+                    <div class="select select-xl short">
+                        <select onChange={ autoCommit } name="currency">
+                            <option each={ item in $store.currency.get() } no-reorder selected={ item._id == salary.currency } value={ item._id }>{ item.title }</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-24 col-sm-8 xs-mt-m">
+                    <div class="select select-xl">
+                        <select onChange={ autoCommit } name="worktime">
+                            <option each={ item in $store.worktime.get() } no-reorder selected={ item._id == salary.worktime } value={ item._id }>{ item.title }</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="section__editable__footer">
+            <button onClick={ onCancel } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper" type="button">Отменить</button>
+            <button onClick={ onSave } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper ml-xs" type="button">Сохранить</button>
+        </div>
     </div>
 
-    <div class="section__editable__footer">
-        <button onClick={ onCancel } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper" type="button">Отменить</button>
-        <button onClick={ onSave } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper ml-xs" type="button">Сохранить</button>
+    <div class="section__editable__content__screen" data-pos="right" data-active={ screen == "graph" }>
+
+        <div id="activity">
+            <ui-switcher name="switcherGraph" commit="true"></ui-switcher>
+        </div>
+
+        <div class="section__editable__content { hide : !switcherGraph.value }">
+
+            <div class="title title-main">График роста зарплаты</div>
+
+            <div each={ item, i in _.copyArray(data.graph.items).reverse() } no-reorder class="row mb-xs">
+                <div class="col-xs-8 col-md-6">
+                    <div class="title title-m pt-xxs nowrap-xs">{ get.month(i) } месяц</div>
+                </div>
+                <div class="col-xs-16 col-md-18">
+                    <ui-slider phone="true" name="salaryGraphSlider_{ i }" commit="autoCommitGraphValue" size="l" value={ item } i={ i } min="5000" max="300000" step="1000" color="white"></ui-slider>
+                </div>
+            </div>
+
+        </div>
+        <div class="section__editable__footer">
+            <button onClick={ onCancel } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper" type="button">Отменить</button>
+            <button onClick={ onSave } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper ml-xs" type="button">Сохранить</button>
+        </div>
     </div>
 
 <script>
@@ -38,31 +71,60 @@
     var $ = this,
     $scope = $$($.root);
 
-    $.switcher = $.tags["ui-switcher"];
+    $.screen = "salary";
 
     this.on("before-mount", function(){
-        if (!$.slider) {
-            $.slider = $.tags["ui-slider"];
-        }
+        $.slider = $.sliderSalary._tag;
+        $.switcherSalary = $.switcherSalary._tag;
+        $.switcherGraph = $.switcherGraph._tag;
     });
 
+    $.show = {
+        salary: function(){
+            $.screen = "salary";
+            $.root.setAttribute("data-editing", false);
+        },
+        graph: function(){
+            $.screen = "graph";
+            $.root.setAttribute("data-editing", "salaryGraph");
+        }
+    };
+
+    $.get = {
+        month: function(i){
+                 if (i == 0) return "24";
+            else if (i == 1) return "18";
+            else if (i == 2) return "12";
+            else if (i == 3) return "6";
+            else if (i == 4) return "3";
+            else if (i == 5) return "1";
+        }
+    };
+
     $.init = function(data){
-        $.switcher.value = data.active;
+        $.switcherSalary.value = data.active;
+        $.switcherGraph.value = data.salary.graph.active;
 
         if (!data.salary){
             $.salary = {
                 amount: "50000",
                 currency: "1",
-                worktime: "1"
-            }
-            if (app.device.isPhone){
-                setTimeout(function(){
-                    $.slider.input.focus();
-                }, 100);
+                worktime: "1",
+                graph: {
+                    active: false,
+                    items: ["50000", "50000", "50000", "50000", "50000", "50000"]
+                }
             }
         }
         else {
             $.salary = data.salary;
+        }
+
+        if ($.salary.currency != 1){
+            $.refreshCurrency($.salary.currency);
+        }
+        if (data.screen && $.screen != data.screen && $.show[data.screen]){
+            $.show[data.screen].call();
         }
 
         $.update({
@@ -72,19 +134,65 @@
             callback: data.callback ? data.callback : null
         });
 
-        $.slider.change($.salary.amount);
+        _.each($.tags["ui-slider"], function(item){
+            item.change(item.value);
+        });
     };
 
     $.autoCommit = function(e){
-        $.data[e.target.getAttribute("name")] = e.target.value;
+        var value = e.target.value,
+            name = e.target.getAttribute("name");
+
+        $.data[name] = value;
+
+        if (name == "currency"){
+            $.refreshCurrency(value);
+        }
+    };
+
+    $.refreshCurrency = function(value){
+        if (value != 1){
+            var options = {
+                min: "500",
+                max: "20000",
+                step: "500"
+            };
+            $.slider.refresh(options);
+            _.each($.tags["ui-slider"], function(item){
+                item.refresh(options);
+            });
+        }
+        else {
+            var options = {
+                min: "5000",
+                max: "300000",
+                step: "1000"
+            };
+            $.slider.refresh(options);
+            _.each($.tags["ui-slider"], function(item){
+                item.refresh(options);
+            });
+        }
     };
 
     $.autoCommitValue = function(value){
-        if ($.data && $.data.amount) $.data.amount = value;
+        if ($.data && $.data.amount){
+            $.data.amount = value;
+            var tag = $["salaryGraphSlider_" + 5]._tag;
+            if (tag && !tag.changed){
+                tag.change(value);
+            }
+        }
+    };
+
+    $.autoCommitGraphValue = function(value, i){
+        if ($.data && $.data.graph && $.data.graph.items){
+            $.data.graph.items[5 - i] = value;
+            if (i == 5 && !$.slider.changed) $.slider.change(value, true);
+        }
     };
 
     $.onCancel = function(){
-        if ($.callback) $.callback($.active, $.salary);
         $.slider.value = $.salary.amount;
         $["currency"].value = $.salary.currency;
         $["worktime"].value = $.salary.worktime;
@@ -96,13 +204,17 @@
             if (app.device.isPhone){
                 $.data.amount = $.slider.value;
             }
-            $.callback($.switcher.value, $.data);
+            $.data.graph.active = $.switcherGraph.value;
+            $.callback($.switcherSalary.value, $.data);
         }
         $.hide();
     };
 
     $.hide = function(){
-        $Editable.hide();
+        $Editable.hide(function(){
+            $.show.salary();
+            $.update();
+        });
     };
 
 </script>

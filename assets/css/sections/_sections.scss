@@ -8,15 +8,15 @@
         @extend .pointerEvents-none;
         @extend .opacity-0;
         will-change:opacity;
-        transition:opacity .3s $cubic28, visibility 0s .3s;
+        transition:opacity 0.3s $cubic28, visibility 0.3s 0s;
         @extend .zIndex-5;
     }
-    &[data-overlay="true"] {
+    &[data-overlay="true"]{
         .section__overlay {
             @extend .opacity-100;
+			@extend .pointerEvents-all;
             @extend .visibility-visible;
-            @extend .pointerEvents-all;
-            transition:opacity .3s $cubic28;
+            transition:opacity 0.3s $cubic28;
         }
     }
 	&-hidden {
@@ -27,20 +27,20 @@
 		@extend .willChange-transform;
 		transition:transform .5s $cubic645, visibility 0s .5s;
 
-		.d-phone & {
+		.d-mobile & {
 			transition:transform .42s $cubic645, visibility 0s .42s;
 		}
 		&[data-short="true"]{
 			transition:transform .4s $cubic40, visibility 0s .4s;
 
-			.d-phone & {
+			.d-mobile & {
 				transition:transform .3s $cubic28, visibility 0s .3s;
 			}
 		}
 		&[data-slow="true"]{
 			transition:transform .7s $cubic60, visibility 0s .7s;
 
-			.d-phone & {
+			.d-mobile & {
 				transition:transform .4s $cubic40, visibility 0s .4s;
 			}
 		}
@@ -96,7 +96,7 @@
 			@extend .transform-default;
 			transition:transform .7s $cubic60, visibility 0s;
 
-			.d-phone & {
+			.d-mobile & {
 				transition:transform .42s $cubic645, visibility 0s;
 			}
 			&[data-notfully="true"] {
@@ -106,14 +106,14 @@
 				@extend .transform-default;
 				transition:transform .55s $cubic28, visibility 0s;
 
-				.d-phone & {
+				.d-mobile & {
 					transition:transform .42s $cubic645, visibility 0s;
 				}
 			}
 			&[data-slow="true"]{
 				transition:transform 1s $cubic60, visibility 0s;
 
-				.d-phone & {
+				.d-mobile & {
 					transition:transform .5s $cubic32, visibility 0s;
 				}
 			}
@@ -124,4 +124,27 @@
 			}
 		}
 	}
+	&[data-hidden="false"]{
+		.section__content {
+			@include accelerate(true);
+			perspective:500px;
+	        will-change:transform, opacity;
+	        transform-origin:0% 50%;
+	        transition:transform 0.5s $cubic40, opacity 0.5s $cubic40;
+		}
+	}
+	&[data-hidden="true"]{
+		.section__content {
+			@include accelerate();
+			perspective:500px;
+	        will-change:transform, opacity;
+	        transform-origin:0% 50%;
+			@extend .opacity-50;
+			transform:perspective(500px) scale(.96) translateX(4%) rotateY(4deg);
+			transition:transform 0.42s $cubic645, opacity 0.42s $cubic645;
+		}
+	}
+	&__content {
+        @include abs();
+    }
 }

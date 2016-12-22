@@ -2,7 +2,7 @@
 
     <span if={ opts.title } class="input-title">{ opts.title }</span>
     <input class="display-none" name="slider_input" type="range" value={ opts.value } min="{ opts.min }" max="{ opts.max }" step="{ opts.step }">
-    <input class="input input-{ opts.size ? opts.size : 'm' }" onKeyup={ onKeySlider } name="slider_data" type="number" autocomplete="off" value={ opts.value }>
+    <input class="input input-{ opts.size ? opts.size : 'm' }" onBlur={ onBlur } name="slider_data" type="number" autocomplete="off" value={ opts.value }>
     <div if={ opts.ed && !app.device.isPhone } class="pos-tr fontSize-20 fontWeight-5 fontFamily-roboto c-white flex-centered w40 h100p">{ opts.ed }</div>
 
 <script>
@@ -45,6 +45,7 @@
     });
 
     $.change = function(value){
+        $.changed = true;
         if ($.slider) {
             $.slider.val(value).change();
         }
@@ -53,9 +54,11 @@
         }
         $.value = value;
         $.fnCommit(value);
+        $.changed = false;
     };
 
-    $.onKeySlider = function(e){
+    $.onBlur = function(e){
+        if (!$.opts.phone && app.device.isPhone) return;
         var value = e.target.value;
         $.value = value;
         $.fnCommit(value);
@@ -71,6 +74,13 @@
         }
         if ($.opts.update && $.opts.cursor){
             $.opts.cursor.set($.opts.update, value);
+        }
+    };
+
+    $.refresh = function(options){
+        if (!_.isEmpty(options)){
+            $.slider.attr(options)
+            .rangeslider('update', true);
         }
     };
 

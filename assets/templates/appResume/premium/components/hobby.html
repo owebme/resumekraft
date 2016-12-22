@@ -1,15 +1,15 @@
 <ux-hobby class="component">
 
-    <h3 class="title anim" data-anim="bt">{ $resume.hobby && $resume.hobby.title ? $resume.hobby.title : opts.title }</h3>
+    <h3 class="title">{ $resume.hobby && $resume.hobby.title ? $resume.hobby.title : opts.title }</h3>
 
-    <btn-editable if={ $mode === "editing" } data={ $resume.hobby }></btn-editable>
+    <btn-editable if={ $State.get('mode') === "editing" } data={ $resume.hobby }></btn-editable>
 
     <div onClick={ openEditable } onUpdate="none" class="{ blur : !$resume.hobby } { transition-none : editable }">
 
-        <p if={ !$resume.hobby || $resume.hobby && $resume.hobby.text } class="mb-l anim" data-anim="bt">{ $resume.hobby && $resume.hobby.text ? $resume.hobby.text : $store.resume.placeholder.hobby.text }</p>
+        <p if={ !$resume.hobby || $resume.hobby && $resume.hobby.text }>{ $resume.hobby && $resume.hobby.text ? $resume.hobby.text : $store.resume.placeholder.hobby.text }</p>
 
-        <div class="row">
-            <div each={ item in $resume.hobby.items } no-reorder class="col-md-6">
+        <div class="row hobby-items">
+            <div each={ item in $resume.hobby.items } no-reorder class="col-xs-12 col-md-6">
                 <div class="hobby-item">
                     <div class="hobby-icon icon-hobby icon-hobby-{ item }"></div>
                     <div class="hobby-title">{ $store.hobby.getTitleById(item) }</div>
@@ -21,6 +21,24 @@
 <script>
 
     var $ = this;
+
+    $.openEditable = function(e){
+        if ($State.get('mode') === "editing"){
+            $Editable.show("hobby", {
+                active: $store.resume.select('sections').get({'name': 'hobby'}).active,
+                title: $.opts.title,
+                hobby: $resume.hobby,
+                callback: function(active, hobby){
+                    $store.resume.select('sections', {'name': 'hobby'}).set('active', active);
+                    $resume.hobby = hobby ? hobby : null;
+                    $.update({
+                        editable: false
+                    });
+                }
+            });
+            $.editable = true;
+        }
+    };
 
 </script>
 

@@ -33,6 +33,9 @@
 .pos-fixed {
     position:fixed;
 }
+.pos-static {
+    position:static;
+}
 .pos-abs-full {
     @extend .pos-abs;
     @extend .t0;

@@ -16,40 +16,7 @@
         transition:transform 0.5s $cubic40, opacity 0.5s $cubic40;
         @extend .zIndex-1;
 
-        // &:after,
-        // &:before {
-        //     content:"";
-        //     opacity:0;
-        //     @include abs();
-        //     will-change:opacity;
-        //     transform:translate3d(999em, 0, 0);
-        //     transition:none;
-        //     z-index:10;
-        // }
-        // &:after {
-        //     @include abs_50(58, 58);
-        //     // @include ui-loading(white);
-        //     will-change:opacity, transform;
-        //     z-index:10;
-        // }
-        // &:before {
-        //     background-color:rgba($blackDark,.4);
-        // }
-        // &[data-loading="true"] {
-        //     &:after,
-        //     &:before {
-        //         opacity:1;
-        //         transform:translate3d(0, 0, 0);
-        //         transition:opacity 0.3s $cubic34, transform 0s;
-        //     }
-        //     &:after {
-        //         animation:WD__section__spinner 1s infinite linear;
-        //     }
-        // }
         &[data-hidden="true"] {
-            // opacity:0.4;
-            // transform:translate3d(10%, 0, 0) scale(.83);
-            // transition:transform 0.6s $cubic645 0.1s, opacity 0.6s $cubic645 0.1s;
             @extend .opacity-50;
             transform:perspective(500px) scale(.96) translateX(4%) rotateY(4deg);
             transition:transform 0.42s $cubic645, opacity 0.42s $cubic645;
@@ -116,6 +83,6 @@
     }
     .ui-scroll__bar,
     .ui-scroll__handle__inner {
-        transition:background-color .6s;
+        transition:background-color .2s;
     }
 }
