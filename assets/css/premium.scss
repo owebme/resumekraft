@@ -54,6 +54,9 @@
 @import 'appResume/premium/ui/textarea';
 @import 'appResume/premium/ui/select';
 @import 'appResume/premium/ui/tags';
+@import 'appResume/premium/ui/hobby';
+@import 'appResume/premium/ui/editing';
+// @import 'appResume/premium/ui/noise';
 
 // Resume control
 @import 'appResume/premium/control/fonts';
@@ -61,7 +64,9 @@
 @import 'appResume/premium/control/sections';
 
 // Resume sections
-@import 'appResume/premium/sections/menu';
+@import 'appResume/premium/sections/menu/menu';
+@import 'appResume/premium/sections/menu/sections';
+@import 'appResume/premium/sections/menu/items';
 @import 'appResume/premium/sections/nav';
 @import 'appResume/premium/sections/info';
 @import 'appResume/premium/sections/sendmail';

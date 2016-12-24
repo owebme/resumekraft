@@ -19,17 +19,17 @@
                 </div>
                 <div class="col-xs-24 col-md-13 screen1-col-right">
 
-                    <ux-text classname="h1 name" editing="name" title="Ваше имя и фамилия" type="input"></ux-text>
+                    <ux-text classname="h1 name" update="name" cursor={ $store.resume.select('commons') } title="Ваше имя и фамилия" type="input"></ux-text>
 
-                    <ux-text classname="h3 post" editing="post" title="Должность" type="input"></ux-text>
+                    <ux-text classname="h3 post" update="post" cursor={ $store.resume.select() } title="Должность" type="input"></ux-text>
 
                     <ux-salary if={ $store.resume.select("sections").get({"name": "salary"}).active } classname="salary" title={ $store.resume.select("sections").get({"name": "salary"}).title }></ux-salary>
 
                     <ux-tags if={ $store.resume.select("sections").get({"name": "tags"}).active } classname="tag-list" title={ $store.resume.select("sections").get({"name": "tags"}).title }></ux-tags>
 
-                    <ux-text if={ $store.resume.select("sections").get({"name": "appeal"}).active } classname="larger mb-l" center="true" size="l" editing="appeal" activity="true" title={ $store.resume.select("sections").get({"name": "appeal"}).title } type="textarea"></ux-text>
+                    <ux-text if={ $store.resume.select("sections").get({"name": "appeal"}).active } classname="larger mb-l" center="true" size="l" update="appeal" cursor={ $store.resume.select() } activity="true" title={ $store.resume.select("sections").get({"name": "appeal"}).title } type="textarea"></ux-text>
 
-                    <ux-text if={ $store.resume.select("sections").get({"name": "about"}).active } classname="p mb-l" center="true" editing="about" activity="true" title={ $store.resume.select("sections").get({"name": "about"}).title } type="textarea"></ux-text>
+                    <ux-text if={ $store.resume.select("sections").get({"name": "about"}).active } classname="p mb-l" center="true" update="about" cursor={ $store.resume.select() } activity="true" title={ $store.resume.select("sections").get({"name": "about"}).title } type="textarea"></ux-text>
 
                     <ux-social if={ $store.resume.select("sections").get({"name": "social"}).active } classname="social" title={ $store.resume.select("sections").get({"name": "social"}).title }></ux-social>
                 </div>
@@ -191,6 +191,7 @@
 
         if ($State.get('mode') === "editing"){
             _.bbUpdate($store.resume, function(prop, value, e){
+                console.log(prop);
                 if (prop == "sections" && $Resume.screenItems){
                     var find = false;
 
@@ -217,7 +218,9 @@
                     $Control.sections.refresh();
                 }
                 else {
-                    $Resume.screens.refresh();
+                    if (app.device.isPhone){
+                        $Resume.screens.refresh();
+                    }
                 }
                 $Resume.render();
             });

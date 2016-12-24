@@ -1,0 +1,91 @@
+.m-no-touch #app[data-mode="editing"]{
+    .editing {
+        &:after {
+            box-sizing:content-box;
+            @extend .opacity-0;
+            @extend .content-empty;
+            @include abs();
+            @extend .borderRadius-xxl;
+            @extend .cursor-pointer;
+            @extend .borderWidth-2;
+            @extend .borderStyle-dashed;
+            will-change:opacity, transform;
+            transition:opacity 0.25s $bounce, transform 0.35s $bounce;
+            transform:translate3d(-20px, -20px, 0) scale(0.95);
+
+            &.editing-text {
+                @extend .pr-m;
+            }
+            &.editing-commons-text {
+                @extend .mt-xss;
+                @extend .pb25;
+            }
+            &.editing-social {
+                &-items {
+                    @extend .mt-xxs;
+                    @extend .pb25;
+                }
+            }
+            &.editing-works,
+            &.editing-jobs {
+                &-text {
+                    @extend .pb25;
+                }
+                &-item {
+                    @extend .borderColor-white;
+                }
+            }
+            &.editing-works-item {
+                @extend .pb50;
+            }
+            &.editing-jobs-item {
+                @extend .h95p;
+            }
+            &.editing-skills {
+                &-header {
+                    @extend .pr15;
+                }
+                &-text {
+                    @extend .pb-l;
+                }
+                &-progress {
+                    @extend .mt--xxs;
+                    @extend .ml-m;
+                }
+            }
+            &.editing-edu,
+            &.editing-courses {
+                &-text {
+                    @extend .mt-xxs;
+                    @extend .pb30;
+                }
+                &-item {
+                    @extend .pb-l;
+                }
+            }
+            &.editing-lang {
+                &-items {
+                    @extend .ml--xs;
+                    @extend .pr30;
+                    @extend .pb-m;
+                }
+            }
+            &.editing-hobby {
+                &-text {
+                    @extend .mt-xxs;
+                    @extend .pb30;
+                }
+                &-items {
+                    @extend .mt-l;
+                    @extend .pb-s;
+                }
+            }
+        }
+        &:hover {
+            &:after {
+                @extend .opacity-100;
+                transform:translate3d(-20px, -20px, 0) scale(1);
+            }
+        }
+    }
+}

@@ -288,33 +288,6 @@
         @extend .letterSpacing--xl;
         @extend .opacity-10;
     }
-    .hobby {
-        &-items {
-            .d-phone & {
-                @extend .ml--m;
-                @extend .mr--m;
-            }
-        }
-        &-item {
-            @extend .flex-column-centered;
-            @extend .pt-xs;
-            @extend .mt-l;
-        }
-        &-icon {
-            @extend .c-primary;
-            font-size:96px;
-
-            .d-phone & {
-                font-size:84px;
-            }
-        }
-        &-title {
-            @extend .f-primary;
-            @extend .fontSize-22;
-            @extend .mt-m;
-            @extend .pt-xxs;
-        }
-    }
     .form {
         &-wrapper {
             &[data-color="black"]{

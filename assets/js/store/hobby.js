@@ -1,203 +1,258 @@
 $store.hobby = _.extend(new Baobab([
     {
         _id: "airplane",
-        title: "Путешествия"
+        title: "Путешествия",
+        value: 27353
     },
     {
         _id: "basketball",
-        title: "Баскетбол"
+        title: "Баскетбол",
+        value: 40611
     },
     {
         _id: "books",
-        title: "Чтение"
+        title: "Чтение",
+        value: 4062
     },
     {
         _id: "camera",
-        title: "Фото/видео"
+        title: "Фото/видео",
+        value: 1999599
     },
     {
         _id: "car",
-        title: "Автомобили"
+        title: "Автомобили",
+        value: 347560
     },
     {
         _id: "palette",
-        title: "Рисование"
+        title: "Рисование",
+        value: 23534
     },
     {
         _id: "comedy",
-        title: "Театр"
+        title: "Театр",
+        value: 27906
     },
     {
         _id: "cooking",
-        title: "Кулинария"
+        title: "Кулинария",
+        value: 22545
     },
     {
         _id: "cyclist",
-        title: "Велосипед"
+        title: "Велосипед",
+        value: 2286
     },
     {
         _id: "dancer",
-        title: "Танцы"
+        title: "Танцы",
+        value: 150088
     },
     {
         _id: "happy",
-        title: "Шоппинг"
+        title: "Шоппинг",
+        value: 5173
     },
     {
         _id: "mirrors",
-        title: "Клубы"
+        title: "Клубы",
+        value: 23979
     },
     {
         _id: "movie",
-        title: "Кино"
+        title: "Кино",
+        value: 909743
     },
     {
         _id: "musical",
-        title: "Музыка"
+        title: "Музыка",
+        value: 1605498
     },
     {
         _id: "poker",
-        title: "Азартные игры"
+        title: "Азартные игры",
+        value: 6535
     },
     {
         _id: "running",
-        title: "Бег"
+        title: "Бег",
+        value: 5867
     },
     {
         _id: "snowboard",
-        title: "Сноуборд"
+        title: "Сноуборд",
+        value: 16734
     },
     {
         _id: "soccer",
-        title: "Футбол"
+        title: "Футбол",
+        value: 793657
     },
     {
         _id: "sport",
-        title: "Лыжи"
+        title: "Лыжи",
+        value: 12032
     },
     {
         _id: "swimmer",
-        title: "Плавание"
+        title: "Плавание",
+        value: 10735
     },
     {
         _id: "typewriter",
-        title: "Писательство"
+        title: "Писательство",
+        value: 5882
     },
     {
         _id: "volleyball",
-        title: "Волейбол"
+        title: "Волейбол",
+        value: 61144
     },
     {
         _id: "programming",
-        title: "Программирование"
+        title: "Программирование",
+        value: 10038
     },
     {
         _id: "weightlifting",
-        title: "Тренажерный зал"
+        title: "Тренажерный зал",
+        value: 7819
     },
     {
         _id: "tennis",
-        title: "Теннис / Сквош"
+        title: "Теннис / Сквош",
+        value: 20252
     },
     {
         _id: "bowling",
-        title: "Боулинг"
+        title: "Боулинг",
+        value: 12713
     },
     {
         _id: "yoga",
-        title: "Йога"
+        title: "Йога",
+        value: 38675
     },
     {
         _id: "hunting",
-        title: "Охота"
+        title: "Охота",
+        value: 35739
     },
     {
         _id: "boxing",
-        title: "Бокс"
+        title: "Бокс",
+        value: 113534
     },
     {
         _id: "fencing",
-        title: "Фехтование"
+        title: "Фехтование",
+        value: 5399
     },
     {
         _id: "needlework",
-        title: "Рукоделие"
+        title: "Рукоделие",
+        value: 13249
     },
     {
         _id: "skydiving",
-        title: "Прыжки с парашютом"
+        title: "Прыжки с парашютом",
+        value: 4365
     },
     {
         _id: "pets",
-        title: "Домашние животные"
+        title: "Домашние животные",
+        value: 24673
     },
     {
         _id: "boardgames",
-        title: "Настольные игры"
+        title: "Настольные игры",
+        value: 36111
     },
     {
         _id: "bath",
-        title: "Баня"
+        title: "Баня",
+        value: 28067
     },
     {
         _id: "computergames",
-        title: "Компьютерные игры"
+        title: "Компьютерные игры",
+        value: 9987
     },
     {
         _id: "singing",
-        title: "Пение"
+        title: "Пение",
+        value: 1851
     },
     {
         _id: "decoration",
-        title: "Декор"
+        title: "Декор",
+        value: 7587
     },
     {
         _id: "surfing",
-        title: "Серфинг"
+        title: "Серфинг",
+        value: 4231
     },
     {
         _id: "chess",
-        title: "Шахматы"
+        title: "Шахматы",
+        value: 139555
     },
     {
         _id: "horsebackriding",
-        title: "Верховая езда"
+        title: "Верховая езда",
+        value: 1609
+    },
+    {
+        _id: "icehockey",
+        title: "Хоккей",
+        value: 132542
     },
     {
         _id: "collecting",
-        title: "Хоккей"
+        title: "Собирательство",
+        value: 1086
     },
     {
         _id: "floristics",
-        title: "Флористика"
+        title: "Флористика",
+        value: 2962
     },
     {
         _id: "billiards",
-        title: "Бильярд"
+        title: "Бильярд",
+        value: 22939
     },
     {
         _id: "skateboarding",
-        title: "Скейтбординг"
+        title: "Скейтбординг",
+        value: 1078
     },
     {
         _id: "rollers",
-        title: "Ролики"
+        title: "Ролики",
+        value: 15993
     },
     {
         _id: "mindgames",
-        title: "Интеллектуальные игры"
+        title: "Интеллектуальные игры",
+        value: 6647
     },
     {
         _id: "poetry",
-        title: "Поэзия"
+        title: "Поэзия",
+        value: 3672
     },
     {
         _id: "hikes",
-        title: "Походы / каякинг"
+        title: "Походы / каякинг",
+        value: 2991
     },
     {
         _id: "rockclimbing",
-        title: "Альпинизм"
+        title: "Альпинизм",
+        value: 1434
     }
     ]),
     {

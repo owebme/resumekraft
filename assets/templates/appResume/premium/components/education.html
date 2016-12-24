@@ -4,12 +4,12 @@
 
     <btn-editable if={ $State.get('mode') === "editing" } data={ $resume.education }></btn-editable>
 
-    <div onClick={ openEditable } onUpdate="none" class="{ blur : !$resume.education } { transition-none : editable }">
+    <div onClick={ openEditable } onUpdate="none" class="{ blur : !$resume.education }">
 
-        <p if={ !$resume.education || $resume.education && $resume.education.text } class="mb-l">{ $resume.education && $resume.education.text ? $resume.education.text : $store.resume.placeholder.education.text }</p>
+        <p if={ !$resume.education || $resume.education && $resume.education.text } class="mb-l pos-rel editing editing-text editing-edu-text">{ $resume.education && $resume.education.text ? $resume.education.text : $store.resume.placeholder.education.text }</p>
 
         <div>
-            <div if={ $resume.education && $resume.education.items } each={ item, i in _.sortArray($resume.education.items, "year", "desc") } class="education-item mtb-xl"  data-id={ item._id }>
+            <div if={ $resume.education && $resume.education.items } each={ item, i in _.sortArray($resume.education.items, "year", "desc") } class="pos-rel education-item mtb-xl editing editing-text editing-edu-item" data-id={ item._id }>
 
                 <h3 class="c-primary mb-s"><strong>{ item.year }</strong> &ndash; { $store.education.getTitleById(item.level) }</h3>
 

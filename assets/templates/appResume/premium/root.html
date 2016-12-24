@@ -12,11 +12,9 @@
     <sections-control if={ $State.get('mode') === "editing" }>
 
         <section-menu></section-menu>
-
         <control-fonts></control-fonts>
         <control-colors></control-colors>
         <control-sections></control-sections>
-
         <section-editable></section-editable>
 
     </sections-control>
@@ -35,9 +33,16 @@
 
     $State = new Baobab({
         mode: "editing",
+        public: true,
         lang: "ru",
         color: "#0084ff",
         font: "futura",
+        photo: {
+            minWidth: 440,
+            maxHeight: 620,
+            noise: false
+        },
+        feedback: true
     },
     { autoCommit: true });
 
@@ -61,6 +66,10 @@
         }
 
         $Resume = $root.tags["resume-template1"];
+
+        $afterlag.m(function(){
+            $Menu.show();
+        });
 
         app.$dom.body.removeClass("appLoading");
     });

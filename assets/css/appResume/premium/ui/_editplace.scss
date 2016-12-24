@@ -4,34 +4,35 @@
 	@extend .cursor-default;
 
 	&:before {
-		content:"";
-		position:absolute;
-		top:-10px;
-		left:-40px;
-		width:60px;
-		height:100%;
+		@extend .content-empty;
+		@extend .pos-abs;
+		@extend .t--xs;
+		@extend .l--l;
+		@extend .w60;
+		@extend .h100p;
 	}
 }
 .edit-pointer {
-	position:absolute;
-	top:-15px;
+	@extend .pos-abs;
+	@extend .t--s;
 	left:-35px;
-	will-change:transform;
-	transform:translate3d(0, 0, 0) scale(0);
+	@extend .willChange-transform;
+	@extend .scale-0;
 	transition:transform 0.3s $cubic23;
+	@extend .zIndex-1;
 
 	&-item {
-		width:35px;
-		height:35px;
+		@extend .w35;
+		@extend .h35;
 		@extend .flex-centered;
 		@extend .boxShadow-default;
 		@extend .borderRadius-circle;
 		@extend .cursor-pointer;
 		@extend .btn-active;
-		background-color:$blue;
+		@extend .bg-blue;
 
 		&:after {
-			content:"";
+			@extend .content-empty;
 			@extend .pos-rel;
 			@extend .display-block;
 			@include ui-icon(pencil_white, 17px, 17px);
@@ -52,7 +53,7 @@
 .component {
 	&:hover {
 		.edit-pointer {
-			transform:translate3d(0, 0, 0) scale(1);
+			@extend .scale-100;
 			transition:transform 0.3s $cubic23 0.1s;
 		}
 	}
@@ -62,7 +63,7 @@
 }
 .editable {
 	@extend .display-block;
-	z-index:2;
+	@extend .zIndex-2;
 
 	&.hide {
 		@extend .display-none;
@@ -73,17 +74,17 @@
 		@include accelerate();
 		@extend .userSelect-none;
 		@extend .pointerEvents-none;
-		filter:blur(15px);
-		opacity:0.3;
+		@extend .opacity-30;
+		@extend .scale-100;
 		will-change:transform, filter, opacity;
-		transform:translate3d(0, 0, 0) scale(1);
+		filter:blur(15px);
 		transition:all 0.4s $cubic215;
 	}
 	.editable-container {
 		&:hover {
 			~ .blur {
+				@extend .opacity-60;
 				filter:blur(7px);
-				opacity:0.6;
 				transform:translate3d(0, 0, 0) scale(1.1);
 			}
 		}
@@ -91,12 +92,12 @@
 }
 .d-mobile {
 	.blur {
-		opacity:0;
+		@extend .opacity-0;
 	}
 }
 .d-phone {
 	.blur {
 		max-height:180px;
-		overflow:hidden;
+		@extend .overflow-hidden;
 	}
 }

@@ -34,6 +34,12 @@
 .whiteSpace-preLine {
     white-space:pre-line;
 }
+.breakWord {
+    word-break:break-word;
+}
+.breakWord-all {
+    word-break:break-all;
+}
 .textShadow {
     text-shadow:0 2px 1px rgba(#000,.6);
 }

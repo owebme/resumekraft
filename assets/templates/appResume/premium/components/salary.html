@@ -2,7 +2,7 @@
 
     <btn-editable if={ $State.get('mode') === "editing" } data={ $resume.salary }></btn-editable>
 
-    <div class="{ blur : !$resume.salary } { transition-none : editable }">
+    <div class="{ blur : !$resume.salary }">
         <div class="row">
             <div onClick={ openEditable } onUpdate="none" data-screen="salary" class="col-xs-24 col-sm-12 col-md-24">
                 <div class="{ opts.classname }">

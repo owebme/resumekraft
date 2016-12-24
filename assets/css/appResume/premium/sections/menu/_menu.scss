@@ -1,0 +1,124 @@
+.menu {
+    @include accelerate(true);
+    @extend .display-block;
+    @extend .pos-tl-fixed;
+    @extend .zIndex-10;
+
+    .d-no-mobile & {
+        perspective:500px;
+    }
+    &[data-open="true"]{
+        .menu {
+            &__opener {
+                @extend .bg-white;
+
+                &__icon {
+                    @extend .scale-0;
+                }
+            }
+            &__close {
+                @extend .scale-100;
+            }
+            &__sections {
+                @extend .opacity-100;
+                @extend .scale-100;
+                @extend .pointerEvents-all;
+                transition:transform .3s $cubic345, opacity .3s $cubic345;
+            }
+            &__items {
+                @extend .visibility-visible;
+                @extend .pointerEvents-all;
+                @extend .transition-none;
+            }
+            &__item {
+                @extend .opacity-100;
+                @extend .transform-default;
+                transition:transform .6s $cubic32, opacity .3s $cubic32;
+
+                &:nth-child(1) {
+                    transition-delay:0.3s;
+                }
+                &:nth-child(2) {
+                    transition-delay:0.4s;
+                }
+                &:nth-child(3) {
+                    transition-delay:0.5s;
+                }
+                &:nth-child(4) {
+                    transition-delay:0.6s;
+                }
+            }
+            &__overlay {
+                @extend .visibility-visible;
+                @extend .pointerEvents-all;
+                @extend .opacity-95;
+                transition:opacity .2s $cubic345, visibility 0s;
+            }
+        }
+    }
+    &__overlay {
+        @include accelerate(true);
+        @extend .pos-fixed;
+        @extend .w100v;
+        @extend .h100v;
+        @extend .bg-primary;
+        @extend .visibility-hidden;
+        @extend .pointerEvents-none;
+        @extend .opacity-0;
+        will-change:opacity;
+        transition:opacity .2s $cubic345, visibility 0s .2s;
+    }
+    &__opener {
+        @extend .display-block;
+        @extend .pos-abs;
+        @extend .t-l;
+        @extend .l-l;
+        @include accelerate();
+        @extend .w60;
+        @extend .h60;
+        @extend .userSelect-none;
+        @extend .flex-centered;
+        @extend .cursor-pointer;
+        @extend .btn-active;
+        @extend .bg-blackLight;
+        @extend .borderRadius-circle;
+        @extend .transition-default;
+        @extend .zIndex-2;
+
+        .d-phone & {
+            @extend .t-s;
+            @extend .l-s;
+        }
+        &__icon {
+            @extend .display-block;
+            width:29px;
+            height:29px;
+            transform:translateY(2px) scale(1);
+            transition:transform .3s $cubic345;
+
+            &__color {
+                @extend .fill-white;
+                @extend .transition-default;
+            }
+        }
+        &:hover {
+            @extend .bg-white;
+
+            .menu__opener__icon__color {
+                @extend .fill-primary;
+            }
+        }
+    }
+    &__close {
+        @extend .content-empty;
+        @include abs_50(42, 42);
+        @extend .scale-0;
+        width:42px;
+        height:42px;
+        transition:transform .3s $cubic345;
+
+        &__color {
+            @extend .fill-primary;
+        }
+    }
+}

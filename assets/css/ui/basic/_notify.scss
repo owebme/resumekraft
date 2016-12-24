@@ -5,6 +5,7 @@
     @extend .borderRadius-l;
     @extend .pointerEvents-none;
     @extend .zIndex-101;
+    min-width:280px;
     padding:28px 25px 30px 80px;
     transition:transform .4s $cubic40, opacity .4s $cubic40;
 
@@ -39,6 +40,7 @@
         @extend .pos-fixed;
         @extend .visibility-hidden;
         @extend .zIndex-101;
+        max-width:340px;
         transition:visibility 0s .4s;
 
         &[data-pos="top-center"]{

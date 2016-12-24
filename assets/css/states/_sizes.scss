@@ -55,6 +55,9 @@
 .maxW-100v {
     max-width:100vw;
 }
+.maxW-auto {
+    max-width:auto;
+}
 .h16p {
     height:16.33%;
 }
@@ -76,6 +79,9 @@
 .maxH-100v {
     max-height:100vh;
 }
+.maxH-auto {
+    max-height:auto;
+}
 .minWH-100p {
     @extend .minW-100p;
     @extend .minH-100p;
@@ -91,6 +97,10 @@
 .maxWH-100v {
     @extend .maxW-100v;
     @extend .maxH-100v;
+}
+.maxWH-auto {
+    @extend .maxW-auto;
+    @extend .maxH-auto;
 }
 .w16v {
     width:16.33vw;

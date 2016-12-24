@@ -8,6 +8,8 @@
     will-change:opacity;
     transition:opacity 0.2s $cubic57, visibility 0s 0.25s;
     @extend .overflow-hidden;
+    @extend .c-white;
+    @extend .fontFamily-futura;
     @extend .pointerEvents-none;
     @extend .zIndex-100;
 
@@ -28,7 +30,7 @@
         .d-no-mobile & {
             @extend .willChange-transform;
             transform-style:preserve-3d;
-            transform:translate3d(0, -10%, 0) perspective(500px) rotateX(30deg) scale3d(0.8, 0.8, 1);
+            transform:translate3d(0, -10vh, 0) perspective(500px) rotateX(30deg) scale3d(0.8, 0.8, 1);
             transition:transform 0.25s $cubic25b;
 
             &[data-large="true"]{
@@ -59,11 +61,13 @@
         }
         &[data-editing="works"],
         &[data-editing="skills"],
-        &[data-editing="jobs"] {
+        &[data-editing="jobs"],
+        &[data-editing="hobby"]{
             transform:translateY(7.2vh);
             margin-bottom:7.2vh;
         }
-        &[data-editing="visible"]{
+        &[data-editing="visible"],
+        &[data-editing="hobbyText"]{
             transform:translateY(17.6vh);
             margin-bottom:17.6vh;
         }
@@ -156,24 +160,24 @@
         @extend .flex-centered;
         @extend .pos-abs;
         @extend .t0;
-        @extend .c-white;
-        @extend .fontFamily-futura;
         font-size:24px;
+        line-height:30px;
         @extend .opacity-0;
         @extend .cursor-pointer;
         @extend .pointerEvents-none;
         @extend .letterSpacing--s;
-        @extend .mt-l;
+        @extend .mt45;
         width:242px;
         will-change:transform, opacity;
         transition:transform 0.3s $cubic345, opacity 0.3s $cubic345;
 
         .d-phone & {
             @extend .flex-row-left-center;
-            @extend .t-s;
+            @extend .t-m;
             @extend .mt0;
             @extend .w-auto;
             font-size:18px;
+            line-height:1;
             @extend .text-uppercase;
             @extend .fontWeight-bold;
             @extend .transition-none;
@@ -202,6 +206,7 @@
                 @extend .mt0;
                 @extend .plr-xxs;
                 @extend .trX--xs;
+                @extend .text-left;
 
                 &:after {
                     @extend .l--l;
@@ -211,11 +216,24 @@
                 }
             }
         }
+        .d-no-phone & {
+            &[data-closer="true"]{
+                @extend .mt65;
+
+                &[data-pos="left"]{
+                    @extend .mr--l;
+                }
+                &[data-pos="right"]{
+                    @extend .ml--l;
+                }
+            }
+        }
         &[data-pos="left"]{
             @extend .r100;
             @extend .mr-l;
             @extend .pl-xl;
             @extend .pr-m;
+            @extend .text-left;
             transform:translate3d(-100%, 0, 0);
 
             &:after {
@@ -226,7 +244,9 @@
         &[data-pos="right"]{
             @extend .l100;
             @extend .ml-l;
-            @extend .plr-l;
+            @extend .pl-m;
+            @extend .pr-xl;
+            @extend .text-right;
             transform:translate3d(100%, 0, 0);
 
             &:after {
@@ -323,7 +343,6 @@
         }
     }
     .title {
-        @extend .c-white;
         @extend .fontWeight-bold;
 
         &-main {

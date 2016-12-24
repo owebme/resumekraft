@@ -1,0 +1,96 @@
+<editable-hobby class="col-sm-24 col-md-22 col-lg-18 centered section__editable__container" data-editing="hobby">
+
+    <ui-switcher id="activity" commit="true"></ui-switcher>
+
+    <div onClick={ show.hobby } class="section__editable__arrow" data-pos="left" data-active={ screen == "text" } data-closer="true">Выбрать хобби</div>
+    <div onClick={ show.text } class="section__editable__arrow" data-pos="right" data-active={ screen == "hobby" } data-closer="true">Описание увлечений</div>
+
+    <div class="section__editable__content__screen" data-pos="left" data-active={ screen == "hobby" }>
+        <div class="section__editable__content col-lg-offset-1 { hide : !switcher.value }">
+
+            <div class="flex-row-left-center">
+                <div class="title title-main">Выберите { '4-е' : app.device.isPhone } хобби</div>
+                <div class="hidden-xs pl-l mb-m pb-xs fontSize-22">не более 4-х основных увлечений</div>
+            </div>
+
+            <div class="row hobby-items">
+                <div each={ item in _.sortArray($store.hobby.get(), "value", "desc") } no-reorder class="col-xs-8 col-sm-6 col-md-4 plr-xxs">
+                    <div onClick={ onSelect } class="hobby-item" data-active={ parent.data.items.indexOf(item._id) !== -1 }>
+                        <div class="hobby-icon icon-hobby icon-hobby-{ item._id }"></div>
+                        <div class="hobby-title">{ item.title }</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section__editable__footer text-center col-lg-offset-1">
+            <button onClick={ $Editable.component.onCancel } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper" type="button">Отменить</button>
+            <button onClick={ $Editable.component.onSave } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper ml-xs" type="button">Сохранить</button>
+        </div>
+    </div>
+
+    <div class="section__editable__content__screen" data-pos="right" data-active={ screen == "text" }>
+        <div class="section__editable__content col-md-offset-2 col-lg-offset-3 { hide : !switcher.value }">
+
+            <div class="title title-main">{ title }</div>
+
+            <div class="pos-rel mb-l">
+                <span class="input-title">название секции</span>
+                <input onInput={ $Editable.component.autoCommit } class="input input-xl" data-name="title" name="title_data" type="text" placeholder="Название секции" autocomplete="off" value={ data && data.title ? data.title : $store.resume.placeholder.hobby.title }>
+            </div>
+            <div class="pos-rel">
+                <span class="input-title">описание хобби</span>
+                <textarea onInput={ $Editable.component.autoCommit } class="textarea textarea-xl" data-name="text" name="text_data" autocomplete="off">{ data.text }</textarea>
+            </div>
+        </div>
+        <div class="section__editable__footer text-center col-md-offset-2 col-lg-offset-3">
+            <button onClick={ $Editable.component.onCancel } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper" type="button">Отменить</button>
+            <button onClick={ $Editable.component.onSave } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper ml-xs" type="button">Сохранить</button>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.screen = "hobby";
+
+    $.alert = 'Вы уже выбрали 4 своих увлечения';
+
+    $.show = {
+        hobby: function(){
+            $.screen = "hobby";
+            $.root.setAttribute("data-editing", "hobby");
+        },
+        text: function(){
+            $.screen = "text";
+            $.root.setAttribute("data-editing", "hobbyText");
+        }
+    };
+
+    $.onSelect = function(){
+        if ($.data.items && $.data.items.indexOf(this.item._id) !== -1){
+            $.data.items.splice($.data.items.indexOf(this.item._id), 1);
+        }
+        else {
+            if ($.data.items && $.data.items.length == 4){
+                if (!app.device.isPhone && window.$Notify){
+                    $Notify.show({
+                        color: "dark",
+                        text: $.alert
+                    })
+                }
+                else {
+                    alert($.alert);
+                }
+            }
+            else {
+                if (!$.data.items) $.data.items = [];
+                $.data.items.push(this.item._id);
+            }
+        }
+    };
+
+</script>
+
+</editable-hobby>

@@ -315,6 +315,13 @@
                     background-image:url(/assets/images/resume/hobby_white.svg);
                 }
             }
+            &[data-section="contacts"]{
+                .edit-pointer {
+                    @extend .t-xxs;
+                    @extend .l-auto;
+                    @extend .r0;
+                }
+            }
         }
         .d-phone &[data-section="works"],
         .d-phone &[data-section="jobs"]{

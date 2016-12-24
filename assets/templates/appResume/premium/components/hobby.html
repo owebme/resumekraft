@@ -4,15 +4,17 @@
 
     <btn-editable if={ $State.get('mode') === "editing" } data={ $resume.hobby }></btn-editable>
 
-    <div onClick={ openEditable } onUpdate="none" class="{ blur : !$resume.hobby } { transition-none : editable }">
+    <div class="{ blur : !$resume.hobby }">
 
-        <p if={ !$resume.hobby || $resume.hobby && $resume.hobby.text }>{ $resume.hobby && $resume.hobby.text ? $resume.hobby.text : $store.resume.placeholder.hobby.text }</p>
+        <p onClick={ openEditable } onUpdate="none" data-target="text" if={ !$resume.hobby || $resume.hobby && $resume.hobby.text } class="pos-rel editing editing-text editing-hobby-text">{ $resume.hobby && $resume.hobby.text ? $resume.hobby.text : $store.resume.placeholder.hobby.text }</p>
 
-        <div class="row hobby-items">
-            <div each={ item in $resume.hobby.items } no-reorder class="col-xs-12 col-md-6">
-                <div class="hobby-item">
-                    <div class="hobby-icon icon-hobby icon-hobby-{ item }"></div>
-                    <div class="hobby-title">{ $store.hobby.getTitleById(item) }</div>
+        <div onClick={ openEditable } onUpdate="none" data-target="hobby" class="pos-rel editing editing-text editing-hobby-items">
+            <div class="row hobby-items">
+                <div each={ item in $resume.hobby.items } no-reorder class="col-xs-12 col-md-6">
+                    <div class="hobby-item">
+                        <div class="hobby-icon icon-hobby icon-hobby-{ item }"></div>
+                        <div class="hobby-title">{ $store.hobby.getTitleById(item) }</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -23,21 +25,24 @@
     var $ = this;
 
     $.openEditable = function(e){
-        if ($State.get('mode') === "editing"){
-            $Editable.show("hobby", {
-                active: $store.resume.select('sections').get({'name': 'hobby'}).active,
-                title: $.opts.title,
-                hobby: $resume.hobby,
-                callback: function(active, hobby){
-                    $store.resume.select('sections', {'name': 'hobby'}).set('active', active);
-                    $resume.hobby = hobby ? hobby : null;
-                    $.update({
-                        editable: false
-                    });
+        $Editable.open(e, "hobby", $,
+            {
+                root: function(){
+                    return  {
+                        title: null,
+                        text: null,
+                        items: null
+                    }
                 }
-            });
-            $.editable = true;
-        }
+            },
+            false,
+            {
+                before: function($){
+                    var target = e.currentTarget.getAttribute("data-target");
+                    if (target) $.show[target].call();
+                }
+            }
+        );
     };
 
 </script>

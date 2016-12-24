@@ -1,8 +1,8 @@
-<editable-courses class="col-sm-24 col-md-offset-2 col-md-20 col-lg-offset-5 col-lg-16 section__editable__container" data-editing="courses">
+<editable-courses class="col-sm-24 col-md-21 col-lg-17 centered section__editable__container" data-editing="courses">
 
     <ui-switcher id="activity" commit="true"></ui-switcher>
 
-    <div class="section__editable__content { hide : !switcher.value }">
+    <div class="section__editable__content col-md-offset-1 col-lg-offset-2 { hide : !switcher.value }">
 
         <div class="title title-main">{ title }</div>
 
@@ -61,7 +61,7 @@
 
     </div>
 
-    <div class="section__editable__footer text-center">
+    <div class="section__editable__footer text-center col-md-offset-1 col-lg-offset-2">
         <button onClick={ $Editable.component.onCancel } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper" type="button">Отменить</button>
         <button onClick={ $Editable.component.onSave } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper ml-xs" type="button">Сохранить</button>
     </div>

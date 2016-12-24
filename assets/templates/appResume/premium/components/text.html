@@ -1,8 +1,10 @@
 <ux-text class="component">
 
-    <btn-editable if={ $State.get('mode') === "editing" } data={ $resume[opts.editing] }></btn-editable>
+    <btn-editable if={ $State.get('mode') === "editing" } data={ opts.cursor.get(opts.update) }></btn-editable>
 
-    <div onClick={ openEditable } onUpdate="none" class="{ opts.classname } { blur : !$resume[opts.editing] } { transition-none : editable }">{ $resume[opts.editing] ? $resume[opts.editing] : $store.resume.placeholder[opts.editing] }</div>
+    <div onClick={ openEditable } onUpdate="none" class="{ opts.classname } { blur : !opts.cursor.get(opts.update) }">
+        <div class={ 'editing editing-text editing-commons-text' : opts.update != "name" && opts.update != "post" }>{ opts.cursor.get(opts.update) ? opts.cursor.get(opts.update) : $store.resume.placeholder[opts.update] }</div>
+    </div>
 
 <script>
 
@@ -11,7 +13,7 @@
 
     this.on("mount", function(){
         if ($State.get('mode') !== "editing"){
-            if (!$store.resume.get($.opts.editing)) $scope.remove();
+            if (!$.opts.cursor.get($.opts.update)) $scope.remove();
             else $scope.children().unwrap();
         }
     });
@@ -19,15 +21,15 @@
     $.openEditable = function(){
         if ($State.get('mode') === "editing"){
             $Editable.show("text", {
-                active: $.opts.activity ? $store.resume.select('sections').get({'name': $.opts.editing}).active : null,
+                active: $.opts.activity ? $store.resume.select('sections').get({'name': $.opts.update}).active : null,
                 title: $.opts.title,
                 type: $.opts.type,
-                editing: $store.resume.get($.opts.editing),
+                editing: $.opts.cursor.get($.opts.update),
                 callback: function(active, data){
                     if (active !== null){
-                        $store.resume.select('sections', {'name': $.opts.editing}).set('active', active);
+                        $store.resume.select('sections', {'name': $.opts.update}).set('active', active);
                     }
-                    $resume[$.opts.editing] = data ? data : null;
+                    $.opts.cursor.set($.opts.update, data ? data : null);
                     $.update({
                         editable: false
                     });

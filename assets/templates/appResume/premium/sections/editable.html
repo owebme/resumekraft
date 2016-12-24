@@ -16,6 +16,7 @@
                 <editable-courses></editable-courses>
                 <editable-languages></editable-languages>
                 <editable-jobs></editable-jobs>
+                <editable-hobby></editable-hobby>
                 <editable-visible></editable-visible>
             </div>
         </div>
@@ -58,6 +59,7 @@
     });
 
     $.show = function(editable, data, component){
+        if ($State.get('mode') !== "editing") return;
         if (component){
             $.component.init($.tags["editable-" + editable], data);
         }
@@ -105,32 +107,39 @@
         });
     };
 
-    $.open = function(e, component, $, defaults, requires){
-        if ($State.get('mode') === "editing"){
-            var visible = $store.resume.select('sections').get({'name': component}).active;
+    $.open = function(e, component, $, defaults, requires, callback){
+        if ($State.get('mode') !== "editing") return;
 
-            $Editable.show(component, {
-                active: visible,
-                title: $.opts.title,
-                component: component,
-                store: $resume[component],
-                defaults: defaults,
-                requires: requires,
-                target: e && e.target,
-                callback: function(active, data){
-                    $store.resume.select('sections', {'name': component}).set('active', active);
-                    $resume[component] = _.any(_.values(_.omit(data, "title"))) ? data : null;
-                    $.trigger("editable", false);
-                }
-            }, true);
+        if (callback && callback.before) callback.before($Editable.tags["editable-" + component]);
 
-            $.editable = true;
-        }
+        var visible = $store.resume.select('sections').get({'name': component}).active;
+
+        $Editable.show(component, {
+            active: visible,
+            title: $.opts.title,
+            component: component,
+            store: $resume[component],
+            defaults: defaults,
+            requires: requires,
+            target: e && e.target,
+            callback: function(active, data){
+                $store.resume.select('sections', {'name': component}).set('active', active);
+                $resume[component] = _.any(_.values(_.omit(data, "title"))) ? data : null;
+                $.trigger("editable", false);
+            }
+        }, true);
+
+        if (callback && callback.after) callback.after($Editable.tags["editable-" + component]);
+
+        $.editable = true;
     };
 
     $.onClose = function(){
         if ($.tags["editable-" + $.editable].hide){
             $.tags["editable-" + $.editable].hide();
+        }
+        else if ($.component.tag){
+            $.component.onCancel.call($.component.tag);
         }
         else {
             $Editable.hide();
@@ -267,7 +276,7 @@
                 if (this.data && this.data.items){
                     if (this.data.items.length && this.data.items[0].title){
                         for (var i = 0; i < this.data.items.length; i++){
-                            if (!_.clean(this.data.items[i].title) || this.data.items[i].title && this.data.items[i].value !== 'undefined' && !_.clean(this.data.items[i].value)){
+                            if (!_.clean(this.data.items[i].title) || this.data.items[i].title && this.data.items[i].value !== undefined && !_.clean(this.data.items[i].value)){
                                 this.data.items.splice(i, 1);
                                 i--;
                             }

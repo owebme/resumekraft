@@ -1,0 +1,20 @@
+$store.contactsPrimary = _.extend(new Baobab([
+    {
+        _id: "email",
+        title: "Электронная почта"
+    },
+    {
+        _id: "phone",
+        title: "Мобильный телефон"
+    },
+    {
+        _id: "skype",
+        title: "Skype"
+    }
+    ]),
+    {
+        getTitleById: function(id){
+            return _.findWhere($store.contactsPrimary.get(), {"id": id}).title;
+        }
+    }
+);

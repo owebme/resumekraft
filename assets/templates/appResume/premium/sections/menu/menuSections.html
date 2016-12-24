@@ -1,0 +1,51 @@
+<menu-sections class="menu__sections">
+
+    <div name="title" class="menu__sections__header">Контактные данные</div>
+    <div name="wrapper" class="menu__sections__wrapper" data-section="contacts">
+        <menu-section-contacts></menu-section-contacts>
+        <menu-section-settings></menu-section-settings>
+    </div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    $.sections = {};
+
+    $.on("before-mount", function(){
+        $.contacts = $.tags['menu-section-contacts'];
+        $.settings = $.tags['menu-section-settings'];
+    });
+
+    $.on("mount", function(){
+        if (!app.device.isPhone){
+            $scope.find(".menu__sections__item").each(function(){
+                var $item = $$(this),
+                    item = $item.attr("data-item");
+
+                $.sections[item] = new app.plugins.scroll.content($item);
+                $.sections[item].init();
+            });
+        }
+    });
+
+    $.change = function(section){
+        if (section == "contacts"){
+            $.title.innerHTML = 'Контактные данные';
+        }
+        else if (section == "settings"){
+            $.title.innerHTML = 'Настройки';
+        }
+        $.wrapper.setAttribute("data-section", section);
+    };
+
+    $.refresh = function(){
+        $.contacts.data.set($store.resume.select('commons').clone());
+        $.contacts.update();
+        $.sections.contacts.refresh();
+    };
+
+</script>
+
+</menu-sections>

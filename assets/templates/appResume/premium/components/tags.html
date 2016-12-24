@@ -2,7 +2,7 @@
 
     <btn-editable if={ $State.get('mode') === "editing" } data={ $resume.tags }></btn-editable>
 
-    <div onClick={ openEditable } onUpdate="none" class="{ opts.classname } { blur : !$resume.tags } { transition-none : editable }">
+    <div onClick={ openEditable } onUpdate="none" class="{ opts.classname } { blur : !$resume.tags }">
         <div class="tag" each={ item in ($resume.tags ? $resume.tags : $store.resume.placeholder.tags) } no-reorder>{ item }</div>
     </div>
 

@@ -6,15 +6,15 @@
     @extend .borderRadius-circle;
     @extend .boxShadow-default;
     @extend .userSelect-none;
-    will-change:transform;
-    transform:translate3d(0, 0, 0) scale(0);
-    transition:transform .2s $cubic215;
-    position:fixed;
+    @extend .willChange-transform;
+    @extend .scale-0;
+    @extend .pos-fixed;
     top:180px;
-    right:40px;
-    width:60px;
-    height:60px;
-    z-index:101;
+    @extend .r-l;
+    @extend .w60;
+    @extend .h60;
+    @extend .zIndex-10;
+    transition:transform .2s $cubic215;
 
     .d-phone & {
         top:145px;
@@ -23,7 +23,7 @@
         height:48px;
     }
     &[data-active="true"]{
-        transform:translate3d(0, 0, 0) scale(1);
+        @extend .scale-100;
 
         &:active {
             transform:translate3d(0, 2px, 0) scale(0.8);
@@ -33,7 +33,7 @@
         @extend .pos-centered;
         width:48px;
         height:48px;
-        margin:5px 0 0 0;
+        @extend .mt-xxs;
 
         .d-phone & {
             width:44px;
@@ -52,7 +52,7 @@
         width:18px;
         height:18px;
         transform:translate3d(-7px, 6px, 0);
-        z-index:1;
+        @extend .zIndex-1;
 
         .d-phone & {
             font-size:13px;

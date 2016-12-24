@@ -27,34 +27,39 @@
                     </div>
                 </div>
                 <div class="hidden-xs col-sm-12 col-md-12 col-lg-8 p-l bg-snow zIndex-1">
-                    <div class="p-m">
-                        <div class="c-primary f-primary fontSize-20 fontWeight-bold mb-xs">Моя</div>
-                        <div class="c-blackLight f-primary fontSize-30 fontWeight-8 mb-l">Контактная информация</div>
-                        <p class="mb-m">A decade ago, we founded Melinda with the goal of creating meaningful digital experiences that connect with people.</p>
-                        <div class="flex-row-left-center w100p">
-                            <div class="flex-centered w80 h80 ml--m">
-                                <icon-city color="primary"></icon-city>
+                    <div class="pos-rel p-m">
+                        <btn-editable if={ $State.get('mode') === "editing" } data="true"></btn-editable>
+                        <div onClick={ openEditable } onUpdate="none">
+                            <div class="c-primary f-primary fontSize-20 fontWeight-bold mb-xs">Моя</div>
+                            <div class="c-blackLight f-primary fontSize-30 fontWeight-8 mb-l">Контактная информация</div>
+                            <p class="mb-m">A decade ago, we founded Melinda with the goal of creating meaningful digital experiences that connect with people.</p>
+                            <div class="flex-row-left-center w100p">
+                                <div class="flex-centered w80 h80 ml--m">
+                                    <icon-city color="primary"></icon-city>
+                                </div>
+                                <div class="h80 c-blackLight fontSize-18 pt-s">
+                                    { $store.resume.get('contacts', 'city') }
+                                </div>
                             </div>
-                            <div class="h80 c-blackLight fontSize-18 pt-s">Москва</div>
-                        </div>
-                        <div class="flex-row-left-center w100p">
-                            <div class="flex-centered w80 h80 ml--m pt-xxs">
-                                <icon-phone color="primary"></icon-phone>
+                            <div class="flex-row-left-center w100p">
+                                <div class="flex-centered w80 h80 ml--m pt-xxs">
+                                    <icon-phone color="primary"></icon-phone>
+                                </div>
+                                <div class="h80 c-blackLight f-primary fontSize-20 fontWeight-bold pt-m">
+                                    { $store.resume.get('contacts', 'phone') }
+                                </div>
                             </div>
-                            <div class="h80 c-blackLight f-primary fontSize-20 fontWeight-bold pt-m">
-                                +7 916 017 20 86
+                            <div class="flex-row-left-center w100p">
+                                <div class="flex-centered w80 h80 ml--m">
+                                    <icon-feedback color="primary"></icon-feedback>
+                                </div>
+                                <div class="h80 pt-m">
+                                    <a class="fontSize-18 link-primary link-underline { pointerEvents-none : $State.get('mode') === 'editing' }" href="mailto:{ $store.resume.get('contacts', 'email') }">{ $store.resume.get('contacts', 'email') }</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="flex-row-left-center w100p">
-                            <div class="flex-centered w80 h80 ml--m">
-                                <icon-feedback color="primary"></icon-feedback>
+                            <div if={ $resume.social } class="mt-m">
+                                <ux-social-items classname="social social-s"></ui-social-items>
                             </div>
-                            <div class="h80 pt-m">
-                                <a class="fontSize-18 link-primary link-underline" href="mailto:owebme@gmail.com">owebme@gmail.com</a>
-                            </div>
-                        </div>
-                        <div if={ $resume.social } class="mt-m">
-                            <ux-social-items classname="social social-s"></ui-social-items>
                         </div>
                     </div>
                 </div>
@@ -71,7 +76,6 @@
     $scope = $$($.root);
 
     $.on("mount", function(){
-
         $afterlag.run(function(){
             $Resume.el.find(".screen[data-section='contacts']")
             .find(".form-input, .form-textarea")
@@ -85,32 +89,11 @@
                 }
             });
         });
-
-		try
-		{
-            // ymaps.ready(function(){
-            //
-            //     var geoMap = new ymaps.Map('map', {
-            //         center: [55.751574, 37.573856],
-            //         zoom: 9
-            //     }, {
-            //         searchControlProvider: 'yandex#search'
-            //     });
-            //
-            //     var myGeocoder = ymaps.geocode("г Москва");
-            //     myGeocoder.then(
-            //         function (res) {
-            //             //console.dir(res.geoObjects);
-            //             geoMap.geoObjects.add(res.geoObjects);
-            //         },
-            //         function (err) {
-            //             // обработка ошибки
-            //         }
-            //     );
-            // });
-        }
-		catch(e){};
     });
+
+    $.openEditable = function(){
+
+    };
 
 </script>
 

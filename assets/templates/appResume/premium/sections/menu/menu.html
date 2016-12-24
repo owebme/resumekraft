@@ -1,0 +1,46 @@
+<section-menu class="menu" data-open="false">
+
+    <div class="menu__overlay"></div>
+
+    <menu-opener></menu-opener>
+
+    <menu-items></menu-items>
+
+    <menu-sections></menu-sections>
+
+<script>
+
+    var $ = this;
+
+    $.active = false;
+
+    $.on("before-mount", function(){
+        $.sections = $.tags['menu-sections'];
+        $.items = $.tags['menu-items'];
+    });
+
+    $.show = function(section){
+        if (!$.active){
+            $.active = true;
+            $.sections.refresh();
+            app.$dom.body.addClass("no-scroll");
+            $.root.setAttribute("data-open", true);
+
+            if (section && $.items.open[section]){
+                $.items.open[section].call();
+            }
+        }
+        else {
+            $.hide();
+        }
+    };
+
+    $.hide = function(){
+        $.active = false;
+        $.root.setAttribute("data-open", false);
+        app.$dom.body.removeClass("no-scroll");
+    };
+
+</script>
+
+</section-menu>

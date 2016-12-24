@@ -1,0 +1,87 @@
+.menu {
+    &__items {
+        @include accelerate(true);
+        @extend .display-block;
+        @extend .pos-abs;
+        @extend .t-m;
+        left:calc(50vw + 25px);
+        width:calc(50vw - 45px);
+        @extend .h100v;
+        @extend .userSelect-none;
+        @extend .visibility-hidden;
+        @extend .pointerEvents-none;
+        transition:visibility 0s .3s;
+
+        .rows {
+            @extend .pos-centered-v;
+            @extend .w100p;
+        }
+    }
+    &__item {
+        @include accelerate();
+        @extend .opacity-0;
+        @extend .p-m;
+        @extend .trX-l;
+        transition:transform .2s $cubic345, opacity .2s $cubic345;
+
+        &__button {
+            @include accelerate(true);
+            @extend .pos-rel;
+            @extend .aspectRatio-100;
+            @extend .borderRadius-xxl;
+            @extend .c-white;
+            @extend .cursor-pointer;
+            box-shadow:inset 0 0 0 1px rgba($white,.6);
+            will-change:box-shadow, transform;
+            transition:box-shadow .4s, transform .4s;
+
+            &[data-active="true"]{
+                @extend .c-primary;
+                @extend .bg-white;
+                @extend .pointerEvents-none;
+
+                path, rect, polygon, circle {
+                    @extend .fill-primary;
+                }
+            }
+            &:hover {
+                transform:translateY(-15px);
+                box-shadow:inset 0 0 0 1px rgba($white,.6), 0 12px 20px -10px rgba($white,.28), 0 4px 20px 0px rgba($white,.12), 0 7px 8px -5px rgba($white,.2);
+            }
+        }
+        &__icon {
+            @extend .flex-centered;
+            @extend .pos-tl;
+            @extend .w100p;
+            @extend .h75p;
+
+            svg {
+                width:124px;
+                height:124px;
+                @extend .mt45;
+
+                &[data-icon="pdf"] {
+                    width:118px;
+                    height:118px;
+                    @extend .mt40;
+                }
+                &[data-icon="close"] {
+                    @extend .w85;
+                    @extend .h85;
+                    @extend .mt40;
+                }
+            }
+            path, rect, polygon, circle {
+                @extend .fill-white;
+            }
+        }
+        &__title {
+            @extend .pos-bl;
+            @extend .w100p;
+            @extend .h25p;
+            @extend .fontSize-22;
+            @extend .text-center;
+            @extend .plr-m;
+        }
+    }
+}

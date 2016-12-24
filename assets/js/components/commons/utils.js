@@ -298,7 +298,7 @@
 	};
 
 	utils.trim = function(text) {
-		return (text || '').replace(/^\s+|\s+$/g, '');
+		return (text && String(text) || '').replace(/^\s+|\s+$/g, '');
 	};
 
 	utils.underscored = function(str) {

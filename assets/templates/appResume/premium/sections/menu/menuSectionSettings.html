@@ -1,0 +1,24 @@
+<menu-section-settings class="menu__sections__item" data-item="settings">
+
+    <div class="rows menu__sections__inner">
+        <div class="row mb-m">
+            <div class="hidden-xs col-sm-8 pt-xs pr-m">
+                <span class="title">Имя</span>
+            </div>
+            <div class="col-sm-16">
+                <ui-input update="name" cursor={ data.select() } size="l"></ui-input>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.onSave = function(){
+        $Menu.hide();
+    };
+
+</script>
+
+</menu-section-settings>

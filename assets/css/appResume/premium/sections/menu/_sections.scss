@@ -1,0 +1,118 @@
+.menu {
+    &__sections {
+        @extend .display-block;
+        @include accelerate();
+        @extend .pos-abs;
+        top:30px;
+        left:25px;
+        @extend .fontFamily-helvetica;
+        @extend .fontSize-18;
+        @extend .bg-white;
+        @extend .boxShadow-30;
+        border-radius:15px;
+        width:calc(50vw - 20px);
+        height:calc(100vh - 20px);
+        @extend .overflow-hidden;
+        @extend .pointerEvents-none;
+        @extend .opacity-0;
+        @extend .willChange-transform;
+        transform-origin:0% 50%;
+        transform:translate3d(-20%, 0, 0) scale3d(1, 0.5, 1);
+        transition:transform .2s $cubic345, opacity .2s $cubic345;
+        @extend .zIndex-1;
+
+        &__header {
+            @extend .flex-row-right-center;
+            @extend .pos-tl;
+            @extend .w100p;
+            @extend .h55;
+            @extend .pr-l;
+            @extend .bg-white;
+            @extend .fontWeight-bold;
+            @extend .fontFamily-gotham;
+            @extend .fontSize-18;
+            @extend .letterSpacing--m;
+            @extend .text-uppercase;
+            @extend .c-primary;
+            @extend .boxShadow-close;
+            @extend .zIndex-1;
+        }
+        &__wrapper {
+            @include accelerate();
+            @include abs();
+            @extend .willChange-transform;
+            transition:transform .7s $cubic345;
+
+            &[data-section="contacts"]{
+                transform:translate3d(0, 0, 0);
+            }
+            &[data-section="settings"]{
+                transform:translate3d(0, -100%, 0);
+            }
+        }
+        &__item {
+            @extend .display-block;
+            @include abs();
+            @extend .bg-white;
+
+            &[data-item="settings"]{
+                transform:translate3d(0, 100%, 0);
+            }
+            .iScrollVerticalScrollbar {
+                @extend .pos-tr;
+                @extend .h100p;
+                @extend .w4px;
+                transition:width .175s;
+                @extend .overflow-visible;
+
+                &:hover {
+                    @extend .w10;
+                }
+            }
+            .iScrollIndicator {
+                @extend .pos-tl;
+                @extend .w100p;
+                @extend .bg-primary;
+                @extend .opacity-40;
+                @extend .borderRadius-m;
+
+                &:before {
+                    @extend .content-empty;
+                    @extend .pos-abs;
+                    @extend .t--m;
+                    @extend .b--m;
+                    @extend .r0;
+                    @extend .w20;
+                }
+            }
+        }
+        &__inner {
+            @extend .pt100;
+            @extend .pb70;
+            @extend .plr-l;
+            @extend .willChange-transform;
+        }
+        .title {
+            @extend .c-primary;
+        }
+        .select {
+            &:after {
+                right:12px;
+            }
+            select {
+                @extend .pr30;
+            }
+        }
+        .btn {
+            &.cancel {
+                @extend .text-uppercase;
+                @extend .c-primary;
+                @extend .bg-white;
+            }
+            &.success {
+                @extend .c-white;
+                @extend .bg-primary;
+            }
+        }
+    }
+}

@@ -23,11 +23,28 @@ $store.resume = _.extend(new Baobab({
         plan: "basic",
         template: "7",
         lang: "ru",
-        photo: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/091df946261671.584e198a52ec6.jpg",
-        name: "Виктория",
-        surname: "Юртаева",
-        gender: "male",
         post: "Web-Designer, Art-director, Illustrator",
+        photo: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/091df946261671.584e198a52ec6.jpg",
+        commons: {
+            name: "Виктория",
+            surname: "Юртаева",
+            gender: "male",
+            birthday: {
+                day: "25",
+                month: "8",
+                year: "1986",
+                hidden: false
+            },
+            contacts: {
+                city: "Москва",
+                email: "owebme@gmail.com",
+                phone: "9260172086",
+                primary: "email",
+                relocate: false,
+                site: "http://web-projects.me",
+                skype: null
+            }
+        },
         salary: {
             amount: "125000",
             currency: "1",
@@ -43,19 +60,6 @@ $store.resume = _.extend(new Baobab({
         ],
         appeal: "Award winning interdisciplinary Designer & Art director. Currently pursuing a perfect blend of style and function for a wide range of interactive product design.",
         about: "Your brand is how your customers see your business. It’s shaped by the way you represent yourself – professionally, socially and visually. It’s what makes you unique. It’s what makes you desirable. It’s shorthand for everything that brings your business together.",
-        birthday: {
-            day: "25",
-            month: "8",
-            year: "1986",
-            hidden: false
-        },
-        contacts: {
-            city: "Москва",
-            email: "owebme@gmail.com",
-            phone: "9260172086",
-            site: "http://web-projects.me",
-            skype: null
-        },
         social: null,
         works: {
             title: "Мои проекты",
@@ -303,6 +307,10 @@ $store.resume = _.extend(new Baobab({
             text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
             items: ['airplane', 'basketball', 'books', 'camera']
         },
+        coverletter: {
+            text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+            color: "1"
+        },
         sections: [
             {
                 name: "salary",
@@ -387,6 +395,13 @@ $store.resume = _.extend(new Baobab({
                 name: "contacts",
                 title: "Контакты",
                 short: "Контакты",
+                screen: true,
+                active: true
+            },
+            {
+                name: "coverletter",
+                title: "Сопроводительное письмо",
+                short: "Письмо",
                 screen: true,
                 active: true
             }

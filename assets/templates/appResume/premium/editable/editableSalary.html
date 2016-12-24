@@ -1,6 +1,6 @@
 <editable-salary class="col-sm-offset-4 col-sm-18 col-md-offset-5 col-md-14 col-lg-offset-7 col-lg-12 section__editable__container">
 
-    <div onClick={ show.salary } class="section__editable__arrow" data-pos="left" data-active={ screen == "graph" }> { 'Желаемая' : !app.device.isPhone } зарплата</div>
+    <div onClick={ show.salary } class="section__editable__arrow" data-pos="left" data-active={ screen == "graph" }>{ 'Желаемая' : !app.device.isPhone } зарплата</div>
     <div onClick={ show.graph } class="section__editable__arrow" data-pos="right" data-active={ screen == "salary" }>График роста { 'оплаты труда' : !app.device.isPhone }</div>
 
     <div class="section__editable__content__screen" data-pos="left" data-active={ screen == "salary" }>
@@ -211,10 +211,7 @@
     };
 
     $.hide = function(){
-        $Editable.hide(function(){
-            $.show.salary();
-            $.update();
-        });
+        $Editable.hide();
     };
 
 </script>

@@ -1,0 +1,85 @@
+.resume {
+    .hobby {
+        &-items {
+            .d-phone & {
+                @extend .ml--m;
+                @extend .mr--m;
+            }
+        }
+        &-item {
+            @extend .flex-column-centered;
+            @extend .pt-xs;
+            @extend .mt-l;
+        }
+        &-icon {
+            @extend .c-primary;
+            font-size:96px;
+
+            .d-phone & {
+                font-size:84px;
+            }
+        }
+        &-title {
+            @extend .f-primary;
+            @extend .fontSize-22;
+            @extend .mt-m;
+            @extend .pt-xxs;
+        }
+    }
+}
+.section__editable {
+    .hobby {
+        &-item {
+            @include accelerate(true);
+            @extend .pos-rel;
+            height:140px;
+            @extend .borderRadius-xl;
+            @extend .flex-column-centered;
+            @extend .cursor-pointer;
+            @extend .transition-default;
+            @extend .mb-xxs;
+            @extend .xs-mt-xxs;
+
+            .m-no-touch &:hover {
+                @extend .bg-primary;
+                box-shadow:0 0 0 1px $white, 0 12px 20px -10px rgba($white,.28), 0 4px 20px 0px rgba($white,.12), 0 7px 8px -5px rgba($white,.2);
+            }
+            &:after {
+                @extend .content-empty;
+                @extend .pos-abs;
+                @extend .t-xs;
+                @extend .r-xs;
+                @extend .scale-0;
+                @include ui-icon("check_circle_lime", 24px, 24px);
+                transition:transform .3s $cubic089;
+
+                .d-phone & {
+                    width:28px;
+                    height:28px;
+                }
+            }
+            &[data-active="true"]{
+                &:after {
+                    @extend .scale-100;
+                }
+            }
+        }
+        &-icon {
+            @extend .c-white;
+            font-size:60px;
+
+            .d-mobile & {
+                font-size:64px;
+            }
+        }
+        &-title {
+            font-size:17px;
+            line-height:20px;
+            @extend .letterSpacing--s;
+            @extend .text-center;
+            @extend .plr-xs;
+            @extend .mt-s;
+            @extend .breakWord;
+        }
+    }
+}

@@ -3,8 +3,10 @@
     <btn-editable if={ $State.get('mode') === "editing" } data={ $resume.social }></btn-editable>
 
     <div onClick={ openEditable } onUpdate="none" class="{ blur : !$resume.social }">
-        <p class="c-black text-uppercase f-primary fontWeight-bold mb-m">{ $resume.social && $resume.social.title ? $resume.social.title : $store.resume.placeholder.social.title }</p>
-        <ux-social-items classname={ opts.classname }></ui-social-items>
+        <div class="pos-rel editing editing-text editing-social-items">
+            <p class="c-black text-uppercase f-primary fontWeight-bold mb-m">{ $resume.social && $resume.social.title ? $resume.social.title : $store.resume.placeholder.social.title }</p>
+            <ux-social-items classname={ opts.classname }></ui-social-items>
+        </div>
     </div>
 
 <script>

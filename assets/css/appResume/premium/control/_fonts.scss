@@ -3,25 +3,25 @@
     @include accelerate();
     @extend .cursor-default;
     @extend .userSelect-none;
-    position:fixed;
-    top:40px;
-    right:20px;
-    width:90px;
-    height:80px;
-    overflow:hidden;
-    padding-right:20px;
+    @extend .pos-fixed;
+    @extend .t-l;
+    @extend .r-m;
+    @extend .w90;
+    @extend .h80;
+    @extend .overflow-hidden;
+    @extend .pr-m;
     transition:width 0s 0.4s;
-    z-index:100;
+    @extend .zIndex-5;
 
     .d-phone & {
-        top:15px;
-        right:-5px;
+        @extend .t-s;
+        @extend .r--xxs;
     }
     &__item {
         @extend .display-inlineBlock;
         @extend .vAlign-middle;
-        width:60px;
-        height:60px;
+        @extend .w60;
+        @extend .h60;
         @extend .borderRadius-circle;
         @extend .text-center;
         @extend .c-white;
@@ -31,11 +31,11 @@
         transform:translate3d(0, 0, 0) scale(0);
 
         &:before {
-            content:"";
+            @extend .content-empty;
             @extend .display-inlineBlock;
             @extend .vAlign-middle;
             @extend .h100p;
-            width:0;
+            @extend .w0;
         }
         &:not(.control__fonts__item--active){
             @extend .bg-smoke;
@@ -59,8 +59,8 @@
     &__items {
         @extend .inline;
         @extend .pointerEvents-none;
-        position:absolute;
-        top:0;
+        @extend .pos-abs;
+        @extend .t0;
         right:90px;
 
         .m-touch & {
@@ -68,7 +68,7 @@
         }
     }
     .m-no-touch &:hover {
-        overflow:visible;
+        @extend .overflow-visible;
         width:440px;
         transition:width 0s;
 
