@@ -2353,3 +2353,13 @@
 {"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T23:56:14.266Z"}
 {"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T23:57:25.361Z"}
 {"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T23:57:26.121Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-25T23:57:37.560Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-25T23:57:37.582Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-25T23:57:37.588Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-25T23:57:41.381Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-25T23:57:41.403Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-25T23:57:41.411Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T23:58:06.927Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T23:58:10.712Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T23:58:10.847Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T23:58:41.134Z"}
