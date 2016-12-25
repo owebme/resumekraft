@@ -217,6 +217,17 @@
             box-shadow:0 0 0 2px rgba($white,.9);
         }
     }
+    &-title {
+        @extend .visible-xs;
+        @extend .fontFamily-futura;
+        @extend .fontWeight-bold;
+        @extend .text-uppercase;
+        @extend .letterSpacing--s;
+        @extend .text-left;
+        font-size:12px;
+        line-height:17px;
+        margin:-7.5px 0 2px 1px;
+    }
 }
 div.input {
     &-xl {

@@ -28,12 +28,6 @@
         height:#{$i}px;
     }
 }
-.w-auto {
-    width:auto;
-}
-.w0 {
-    width:0;
-}
 .w16p {
     width:16.33%;
 }
@@ -42,21 +36,6 @@
 }
 .w66p {
     width:66.66%;
-}
-.minW-100p {
-    min-width:100%;
-}
-.maxW-100p {
-    max-width:100%;
-}
-.minW-100v {
-    min-width:100vw;
-}
-.maxW-100v {
-    max-width:100vw;
-}
-.maxW-auto {
-    max-width:auto;
 }
 .h16p {
     height:16.33%;
@@ -67,20 +46,31 @@
 .h66p {
     height:66.66%;
 }
-.minH-100p {
-    min-height:100%;
-}
-.maxH-100p {
-    max-height:100%;
-}
-.minH-100v {
-    min-height:100vh;
-}
-.maxH-100v {
-    max-height:100vh;
-}
-.maxH-auto {
-    max-height:auto;
+@for $i from 1 through 20 {
+    .minW-#{$i * 5}v {
+        min-width:$i * 5vw;
+    }
+    .minW-#{$i * 5}p {
+        min-width:$i * 5%;
+    }
+    .minH-#{$i * 5}v {
+        min-height:$i * 5vh;
+    }
+    .minH-#{$i * 5}p {
+        min-height:$i * 5%;
+    }
+    .maxW-#{$i * 5}v {
+        max-width:$i * 5vw;
+    }
+    .maxW-#{$i * 5}p {
+        max-width:$i * 5%;
+    }
+    .maxH-#{$i * 5}v {
+        max-height:$i * 5vh;
+    }
+    .maxH-#{$i * 5}p {
+        max-height:$i * 5%;
+    }
 }
 .minWH-100p {
     @extend .minW-100p;
@@ -138,8 +128,20 @@
 .h300v {
     height:300vh;
 }
+.maxW-auto {
+    max-width:auto;
+}
+.maxH-auto {
+    max-height:auto;
+}
+.w-auto {
+    width:auto;
+}
 .h-auto {
     height:auto;
+}
+.w0 {
+    width:0;
 }
 .h0 {
     height:0;

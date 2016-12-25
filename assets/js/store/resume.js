@@ -39,10 +39,10 @@ $store.resume = _.extend(new Baobab({
                 city: "Москва",
                 email: "owebme@gmail.com",
                 phone: "9260172086",
-                primary: "email",
+                primary: "any",
                 relocate: false,
                 site: "http://web-projects.me",
-                skype: null
+                skype: "owebme"
             }
         },
         salary: {
@@ -399,6 +399,13 @@ $store.resume = _.extend(new Baobab({
                 active: true
             },
             {
+                name: "feedback",
+                title: "Обратная связь",
+                short: "Обратная связь",
+                screen: true,
+                active: true
+            },
+            {
                 name: "coverletter",
                 title: "Сопроводительное письмо",
                 short: "Письмо",
@@ -411,7 +418,6 @@ $store.resume = _.extend(new Baobab({
     }),
     {
         config: {
-            feedback: true,
             photo: {
                 minWidth: 440,
                 maxHeight: 620,

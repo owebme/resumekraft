@@ -3,104 +3,72 @@
         @extend .display-block;
         @include accelerate();
         @extend .pos-abs;
-        top:30px;
-        left:25px;
         @extend .fontFamily-helvetica;
         @extend .fontSize-18;
-        @extend .bg-white;
-        @extend .boxShadow-30;
-        border-radius:15px;
-        width:calc(50vw - 20px);
-        height:calc(100vh - 20px);
         @extend .overflow-hidden;
-        @extend .pointerEvents-none;
-        @extend .opacity-0;
-        @extend .willChange-transform;
-        transform-origin:0% 50%;
-        transform:translate3d(-20%, 0, 0) scale3d(1, 0.5, 1);
-        transition:transform .2s $cubic345, opacity .2s $cubic345;
         @extend .zIndex-1;
 
-        &__header {
-            @extend .flex-row-right-center;
-            @extend .pos-tl;
-            @extend .w100p;
-            @extend .h55;
-            @extend .pr-l;
+        .d-no-phone & {
+            top:30px;
+            left:25px;
+            width:calc(50vw - 20px);
+            height:calc(100vh - 20px);
+            @extend .pointerEvents-none;
+            @extend .opacity-0;
             @extend .bg-white;
+            @extend .boxShadow-30;
+            @extend .willChange-transform;
+            border-radius:15px;
+            transform-origin:0% 50%;
+            transform:translate3d(-20%, 0, 0) scale3d(1, 0.5, 1);
+            transition:transform .2s $cubic345, opacity .2s $cubic345;
+        }
+        .d-phone & {
+            @extend .t0;
+            @extend .l0;
+            @extend .w100p;
+            @extend .h100v;
+        }
+        &__navbar {
+            @extend .h55;
             @extend .fontWeight-bold;
             @extend .fontFamily-gotham;
             @extend .fontSize-18;
             @extend .letterSpacing--m;
             @extend .text-uppercase;
             @extend .c-primary;
-            @extend .boxShadow-close;
-            @extend .zIndex-1;
-        }
-        &__wrapper {
-            @include accelerate();
-            @include abs();
-            @extend .willChange-transform;
-            transition:transform .7s $cubic345;
 
-            &[data-section="contacts"]{
-                transform:translate3d(0, 0, 0);
-            }
-            &[data-section="settings"]{
-                transform:translate3d(0, -100%, 0);
+            &:after {
+                @extend .borderTop-primary;
+                transform:translateY(-1px);
             }
         }
-        &__item {
-            @extend .display-block;
-            @include abs();
-            @extend .bg-white;
-
-            &[data-item="settings"]{
-                transform:translate3d(0, 100%, 0);
-            }
-            .iScrollVerticalScrollbar {
-                @extend .pos-tr;
-                @extend .h100p;
-                @extend .w4px;
-                transition:width .175s;
-                @extend .overflow-visible;
-
-                &:hover {
-                    @extend .w10;
-                }
-            }
-            .iScrollIndicator {
-                @extend .pos-tl;
-                @extend .w100p;
-                @extend .bg-primary;
-                @extend .opacity-40;
-                @extend .borderRadius-m;
-
-                &:before {
-                    @extend .content-empty;
-                    @extend .pos-abs;
-                    @extend .t--m;
-                    @extend .b--m;
-                    @extend .r0;
-                    @extend .w20;
-                }
-            }
-        }
-        &__inner {
-            @extend .pt100;
-            @extend .pb70;
-            @extend .plr-l;
-            @extend .willChange-transform;
+        .iScrollIndicator {
+            @extend .bg-primary;
+            @extend .opacity-40;
         }
         .title {
+            &:not(.black){
+                @extend .c-primary;
+            }
+            &.black {
+                @extend .c-blackLight;
+            }
+        }
+        .input-title {
             @extend .c-primary;
         }
-        .select {
+        .select.short {
             &:after {
                 right:12px;
             }
             select {
                 @extend .pr30;
+            }
+        }
+        .select-uppercase {
+            select {
+                @extend .text-capitalize;
             }
         }
         .btn {
@@ -112,6 +80,34 @@
             &.success {
                 @extend .c-white;
                 @extend .bg-primary;
+            }
+        }
+        .switcher {
+            box-shadow:0 0 0 1px $grayLighten;
+
+            &[active="true"]{
+                .switch {
+                    &-label {
+                        @extend .bg-primary;
+                    }
+                    &-left,
+                    &-right {
+                        @extend .c-primary;
+                    }
+                }
+            }
+            .d-phone & {
+                transform:translateY(-4px);
+            }
+        }
+        .switch {
+            &-label {
+                background:$grayLighten;
+                @extend .boxShadow-none;
+            }
+            &-left,
+            &-right {
+                @extend .c-grayLight;
             }
         }
     }

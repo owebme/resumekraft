@@ -1726,3 +1726,630 @@
 {"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T02:01:23.364Z"}
 {"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T02:02:13.025Z"}
 {"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T02:03:28.960Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-24T02:04:10.447Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-24T02:04:10.468Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-24T02:04:10.475Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-24T02:04:15.684Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-24T02:04:15.705Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-24T02:04:15.710Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T02:04:54.774Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T02:05:15.486Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T02:05:22.256Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T02:13:01.928Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T02:15:21.129Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T02:22:40.025Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T02:22:46.677Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T02:41:26.464Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T02:52:16.793Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T03:10:44.101Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T03:10:57.492Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T03:23:30.504Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T03:23:39.170Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T03:30:35.276Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T03:30:37.582Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T03:30:59.921Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T03:32:46.692Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T03:34:30.560Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T03:35:13.246Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T03:35:48.408Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T03:36:02.616Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T03:42:29.063Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T03:43:37.671Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T03:50:21.178Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T03:50:59.552Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T03:59:25.377Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T04:00:53.135Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T04:03:02.413Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T04:05:58.872Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T04:06:16.321Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T04:34:34.499Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T04:34:49.460Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T04:37:15.611Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T04:46:00.110Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T04:46:27.022Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T04:47:02.606Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T04:47:48.878Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:07:21.106Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:08:06.295Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:08:24.080Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:08:28.892Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:11:06.063Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:12:25.881Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:14:55.109Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:15:10.437Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:16:34.908Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:17:02.213Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:17:26.971Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:17:44.009Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:17:56.511Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:18:15.285Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:20:40.165Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:26:18.198Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:28:22.228Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:29:56.279Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:31:23.158Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:31:27.482Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:31:28.262Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:31:28.851Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:31:33.318Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:31:49.258Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:32:33.329Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:33:30.748Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:33:44.087Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:35:05.704Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:36:08.877Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:36:49.198Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:38:26.565Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:38:37.077Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:41:28.387Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:41:41.589Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:45:21.661Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:49:42.678Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:53:26.934Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T05:53:28.595Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:08:54.167Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:12:24.917Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:19:04.029Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:24:58.448Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:26:01.700Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:27:30.189Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:27:44.753Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:28:57.856Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:29:11.279Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:30:32.763Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:30:54.716Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:31:10.785Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:31:29.460Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:31:54.648Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:32:07.361Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:39:45.432Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:39:45.441Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:39:45.447Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:39:45.460Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:39:46.054Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:39:46.195Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:39:46.248Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:39:46.347Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:40:04.524Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:40:04.524Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:40:04.525Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:40:04.552Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:40:05.007Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:40:05.115Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:40:05.165Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:40:05.225Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:40:06.449Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-24T06:41:31.651Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-24T06:41:31.756Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-24T06:41:31.795Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:41:35.322Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-24T06:43:01.032Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-24T06:43:01.134Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-24T06:43:01.148Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:43:07.157Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:43:31.039Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-24T06:45:42.714Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-24T06:45:42.760Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-24T06:45:42.774Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-24T06:45:45.260Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-24T06:45:45.295Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-24T06:45:45.302Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:45:46.828Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:46:16.505Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-24T06:46:49.727Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-24T06:46:49.748Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-24T06:46:49.753Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-24T06:46:51.917Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-24T06:46:51.953Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-24T06:46:51.970Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-24T06:46:53.926Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-24T06:46:53.954Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-24T06:46:53.960Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-24T06:46:59.681Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-24T06:46:59.720Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-24T06:46:59.730Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-24T06:47:01.438Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-24T06:47:01.476Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-24T06:47:01.481Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:47:04.631Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-24T06:47:11.804Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-24T06:47:11.850Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-24T06:47:11.858Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-24T06:47:13.960Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-24T06:47:14.070Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-24T06:47:14.089Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:47:16.369Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-24T06:47:21.607Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-24T06:47:21.641Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-24T06:47:21.647Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-24T06:47:23.210Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-24T06:47:23.245Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-24T06:47:23.250Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:47:33.211Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:47:57.882Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T06:48:55.267Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T17:00:23.148Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T18:01:37.573Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T18:01:39.896Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T18:02:10.670Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T18:02:58.371Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T18:04:45.235Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T18:07:30.932Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T18:25:47.069Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T18:26:05.234Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T18:26:37.958Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T18:27:14.116Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T18:27:47.663Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T18:54:59.040Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T19:14:06.492Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T19:19:21.511Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T19:20:48.257Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T19:20:58.263Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T19:29:11.771Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T19:30:05.325Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T19:30:13.186Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T19:30:25.710Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T19:30:40.186Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T19:31:07.232Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T19:33:03.734Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T19:55:45.514Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T19:55:48.107Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T19:55:59.154Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T20:17:43.925Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T20:17:48.866Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T20:25:40.537Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T20:26:57.160Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T20:29:25.792Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T20:32:02.101Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T20:33:37.662Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T20:42:43.234Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T20:43:16.979Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T20:44:10.549Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T20:45:31.243Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T20:45:43.246Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T20:48:27.970Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T21:14:23.898Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T21:19:16.561Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T21:19:20.149Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T21:19:26.299Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T21:19:35.090Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T21:39:42.273Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T21:57:50.947Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T21:58:02.818Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T21:58:40.032Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T21:58:48.234Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:06:03.278Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:14:25.843Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:15:13.638Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:17:32.593Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:18:35.218Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:20:23.659Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:21:22.957Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:21:30.479Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:21:36.474Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:22:23.020Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:24:09.702Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:25:57.364Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:26:24.470Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:28:12.184Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:29:18.307Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:30:20.806Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:31:07.301Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:32:12.307Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:32:42.520Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:34:28.580Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:34:53.514Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:35:04.807Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:36:42.207Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:37:09.961Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:37:24.336Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:37:52.279Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:38:49.976Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:38:57.066Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:39:12.188Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:39:30.346Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:39:44.794Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:44:58.403Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:46:35.255Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:47:31.387Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:47:36.629Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:48:04.949Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:48:18.848Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:48:18.865Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:48:19.010Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:48:19.023Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:48:20.389Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:48:20.462Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:54:43.854Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T22:57:26.285Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:03:10.091Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:03:30.596Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:04:53.715Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:06:39.686Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:08:37.986Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:08:58.634Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:09:46.343Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:10:10.521Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:10:55.546Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:11:38.275Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:12:04.574Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:13:09.833Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:14:44.038Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:15:15.656Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:19:05.767Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:19:17.939Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:20:07.183Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:20:54.258Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:21:45.917Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:22:02.897Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:22:58.105Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:23:05.400Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:24:19.290Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:24:48.999Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:25:31.854Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:27:15.848Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:29:35.925Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:30:34.682Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:32:15.563Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:33:01.051Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:34:00.164Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-24T23:42:35.857Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-24T23:42:35.977Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-24T23:42:35.983Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:43:01.169Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:44:07.714Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:44:24.220Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:44:37.175Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:46:30.265Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:46:56.974Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:47:15.577Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:47:21.460Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:49:04.975Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:49:32.077Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:50:40.402Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:50:45.831Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:50:56.805Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:52:22.583Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:52:48.670Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:53:33.221Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:53:50.818Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-24T23:54:28.666Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T00:20:59.530Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T00:21:03.229Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T00:21:27.123Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T00:22:04.839Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T00:22:42.455Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T00:24:22.205Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T00:25:49.008Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T00:26:29.223Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T00:27:04.437Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T00:27:51.443Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T00:28:15.702Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T00:28:59.891Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T00:29:36.391Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T00:33:38.506Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T00:36:29.717Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T00:38:24.163Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T00:38:56.411Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T00:39:46.720Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T00:40:39.650Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T00:42:12.760Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T00:42:57.602Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T00:43:06.646Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T01:27:51.264Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T01:28:21.013Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T01:28:27.686Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T01:28:31.552Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T01:32:42.641Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T01:33:02.708Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T01:41:13.797Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T01:42:15.713Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T01:44:39.440Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T01:59:33.743Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T01:59:53.425Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:00:15.178Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:01:14.883Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:01:31.066Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:02:11.322Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:02:36.549Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:02:42.011Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:03:26.916Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:03:54.099Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:04:19.458Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:04:28.671Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:04:51.626Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:05:02.080Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:05:19.368Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:07:13.120Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:08:29.493Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:08:39.678Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:08:43.544Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:08:57.824Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:09:13.270Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:11:38.528Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:12:02.466Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:12:09.547Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:13:02.199Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:13:27.413Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:17:24.728Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:17:50.588Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:18:15.483Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:18:28.080Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:33:49.900Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:41:28.996Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:46:55.524Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:47:06.904Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:50:51.476Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:51:18.540Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:51:59.359Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:55:20.930Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:55:37.617Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:55:53.698Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:56:03.356Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:56:22.783Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:56:44.713Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:57:00.812Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:57:05.595Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T02:57:36.676Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:00:21.678Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:01:24.339Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:01:58.660Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:03:04.588Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:10:32.741Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:11:31.280Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:11:58.568Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:12:30.508Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:13:18.352Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:13:30.190Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:18:32.865Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:19:20.859Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:20:21.996Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:20:32.276Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:21:07.904Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:21:55.586Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:25:46.801Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:45:49.875Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:45:52.680Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:47:24.354Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:47:56.229Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:50:10.404Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:50:16.712Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:50:39.047Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:50:56.847Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:51:46.345Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:59:04.028Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T03:59:35.430Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T04:04:21.901Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T04:04:30.682Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T04:06:07.553Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T04:09:44.682Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T06:07:58.114Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T06:10:46.301Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T06:14:00.187Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T06:14:24.305Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T06:47:18.112Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T06:47:57.603Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T06:49:47.799Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T06:51:47.055Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T06:53:42.840Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T06:55:10.615Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T07:09:34.738Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T07:11:09.344Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T07:11:40.548Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T07:13:05.658Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T07:29:47.341Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T07:33:16.464Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T07:36:28.485Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T07:36:54.813Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T07:37:42.733Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T07:37:46.797Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-25T07:48:45.501Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-25T07:48:45.617Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-25T07:48:45.623Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T07:49:11.447Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T07:49:49.954Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T07:50:30.453Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T07:55:05.279Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T07:56:08.740Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T07:58:13.415Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T07:59:04.229Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:00:10.135Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:00:47.362Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:01:11.865Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:04:22.264Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:04:46.118Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:08:56.706Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:09:00.672Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:17:52.576Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:20:15.202Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:21:19.636Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:21:36.246Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:25:49.643Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:27:46.375Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:28:41.458Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:34:10.368Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:35:06.303Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:37:07.499Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:39:10.782Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:40:26.128Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:40:43.166Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:40:50.392Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:41:21.505Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:41:45.230Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:42:14.339Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:46:25.222Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:53:42.340Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T08:59:58.520Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T09:01:01.352Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-25T09:03:46.078Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-25T09:03:46.106Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-25T09:03:46.113Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-25T09:07:22.572Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-25T09:07:22.598Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-25T09:07:22.605Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T17:27:57.783Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T17:27:59.199Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T17:28:03.584Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T17:37:10.650Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T17:37:59.322Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T17:40:36.100Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T17:41:29.886Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T17:41:44.555Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T17:44:27.668Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T17:44:33.962Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T17:45:16.569Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T17:48:03.735Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-25T17:50:21.062Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-25T17:50:21.091Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-25T17:50:21.103Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T17:53:07.333Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T18:12:40.138Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T18:16:33.812Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T18:16:36.959Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T18:16:43.417Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T18:16:53.200Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T18:17:49.496Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T18:17:55.264Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T18:18:34.038Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T18:19:34.248Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T18:19:40.111Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T18:19:43.414Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T18:21:33.879Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T18:21:36.935Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T18:21:41.650Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T19:16:08.946Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T19:18:45.801Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T19:33:28.263Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T19:33:35.180Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T19:40:02.830Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T19:44:08.249Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T19:44:15.433Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T19:44:23.440Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T20:02:01.624Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T20:02:46.458Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T20:03:00.223Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T20:03:28.571Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T20:04:32.253Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T20:05:51.755Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T20:05:54.817Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T20:06:14.751Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T20:07:26.598Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T20:07:33.663Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T20:09:58.461Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T20:10:48.671Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T20:11:20.355Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T20:11:42.243Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T20:11:55.309Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T20:12:24.622Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T20:12:52.312Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T20:13:03.439Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T20:13:26.454Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T20:15:17.556Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T20:16:18.499Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T20:59:31.658Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:01:11.965Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:02:52.252Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:04:19.676Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:05:34.136Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:08:07.936Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:08:12.009Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:08:21.972Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:08:27.494Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:10:08.290Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:10:37.707Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:10:50.141Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:12:19.378Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:12:27.798Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:12:53.542Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:13:09.866Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:13:33.375Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:13:52.701Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:14:19.019Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:14:47.037Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:15:08.401Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:15:18.794Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:17:12.414Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:19:26.373Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:19:35.012Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:20:24.704Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:20:31.231Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:21:48.148Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:22:10.606Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:22:15.401Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:22:22.572Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:22:58.024Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:24:05.296Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:24:29.570Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:25:05.411Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:25:13.035Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:27:36.965Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:28:30.283Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:29:05.539Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:30:04.134Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:31:03.574Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:31:13.243Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:31:25.675Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:32:27.791Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:33:26.842Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:33:38.882Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:35:17.474Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:36:08.392Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:37:34.544Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:38:13.557Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:38:32.548Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:38:41.165Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:38:49.177Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:39:29.056Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:39:52.985Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:40:05.407Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:40:43.083Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:41:03.004Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:41:23.497Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:42:39.800Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:42:39.862Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:43:23.868Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:43:23.920Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:43:23.936Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:43:52.479Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:44:00.598Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:59:24.883Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T21:59:46.256Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T22:09:30.781Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T22:10:37.532Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T22:11:01.459Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T22:11:42.100Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T22:12:02.948Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2016-12-25T22:17:48.320Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2016-12-25T22:17:48.344Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2016-12-25T22:17:48.356Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T22:25:08.677Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T22:25:25.991Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T22:40:02.853Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T22:40:49.646Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T23:49:04.171Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T23:49:09.261Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T23:49:21.539Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T23:56:13.475Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T23:56:14.266Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T23:57:25.361Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2016-12-25T23:57:26.121Z"}

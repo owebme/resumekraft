@@ -1,9 +1,10 @@
 <menu-sections class="menu__sections">
 
-    <div name="title" class="menu__sections__header">Контактные данные</div>
-    <div name="wrapper" class="menu__sections__wrapper" data-section="contacts">
+    <div class="section__slider__navbar menu__sections__navbar"></div>
+    <div class="section__slider__container">
         <menu-section-contacts></menu-section-contacts>
         <menu-section-settings></menu-section-settings>
+        <menu-section-coverletter></menu-section-coverletter>
     </div>
 
 <script>
@@ -11,39 +12,59 @@
     var $ = this,
     $scope = $$($.root);
 
-    $.sections = {};
+    $.items = [
+        {
+            _id: "contacts",
+            title: "Контактные данные"
+        },
+        {
+            _id: "settings",
+            title: "Настройки"
+        },
+        {
+            _id: "coverletter",
+            title: (app.device.isPhone ? 'Сопровод-ное' : 'Сопроводительное') + ' письмо'
+        }
+    ];
 
     $.on("before-mount", function(){
         $.contacts = $.tags['menu-section-contacts'];
         $.settings = $.tags['menu-section-settings'];
+        $.coverletter = $.tags['menu-section-coverletter'];
     });
 
     $.on("mount", function(){
-        if (!app.device.isPhone){
-            $scope.find(".menu__sections__item").each(function(){
-                var $item = $$(this),
-                    item = $item.attr("data-item");
-
-                $.sections[item] = new app.plugins.scroll.content($item);
-                $.sections[item].init();
+        if (app.device.isPhone){
+            $scope.on('swiperight', function(){
+                $Menu.hide();
             });
         }
+        $afterlag.run(function(){
+            $.slider = new app.plugins.scroll.slider($scope, {
+                items: $.items,
+                scroll: true
+            });
+
+            $.slider.init();
+
+            if (!app.device.isPhone){
+                $.slider.on("change", function(id, title){
+                    if ($Menu.items){
+                        $Menu.items.update({
+                            section: id
+                        })
+                    }
+                });
+            }
+        });
     });
 
-    $.change = function(section){
-        if (section == "contacts"){
-            $.title.innerHTML = 'Контактные данные';
-        }
-        else if (section == "settings"){
-            $.title.innerHTML = 'Настройки';
-        }
-        $.wrapper.setAttribute("data-section", section);
-    };
-
     $.refresh = function(){
-        $.contacts.data.set($store.resume.select('commons').clone());
+        $.contacts.data.set($store.resume.select('commons').deepClone());
+        $.coverletter.data.set($store.resume.select('coverletter').deepClone());
+        $.coverletter.active = $store.resume.select("sections").get({"name": "coverletter"}).active;
         $.contacts.update();
-        $.sections.contacts.refresh();
+        $.coverletter.update();
     };
 
 </script>

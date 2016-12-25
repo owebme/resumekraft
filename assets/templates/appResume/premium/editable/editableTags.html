@@ -1,6 +1,6 @@
 <editable-tags class="col-sm-offset-2 col-sm-20 col-md-offset-4 col-md-16 col-lg-offset-6 col-lg-13 section__editable__container" data-editing="tags">
 
-    <ui-switcher id="activity" commit="true"></ui-switcher>
+    <ui-switcher id="activity" value={ active } commit="true"></ui-switcher>
 
     <div class="section__editable__content { hide : !switcher.value }">
 
@@ -35,7 +35,6 @@
     $.switcher = $.tags["ui-switcher"];
 
     $.init = function(data){
-        $.switcher.value = data.active;
         $.update({
             active: data.active,
             title: data.title,

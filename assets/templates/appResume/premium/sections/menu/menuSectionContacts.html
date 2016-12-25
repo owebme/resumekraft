@@ -1,6 +1,6 @@
-<menu-section-contacts class="menu__sections__item" data-item="contacts">
+<menu-section-contacts class="section__slider__item">
 
-    <div class="rows menu__sections__inner">
+    <div class="rows section__slider__item__content">
         <div class="row mb-m">
             <div class="hidden-xs col-sm-8 pt-xs pr-m">
                 <span class="title">Имя</span>
@@ -22,13 +22,13 @@
                 <span class="title">Дата рождения</span>
             </div>
             <div class="col-xs-8 col-sm-4">
-                <ui-select update="day" cursor={ data.select('birthday') } items={ _.range(1, 32) } size="l"></ui-select>
+                <ui-select update="day" cursor={ data.select('birthday') } items={ _.range(1, 32) } size="l" short></ui-select>
             </div>
             <div class="col-xs-16 col-sm-6 xs-mb-m">
-                <ui-select update="month" cursor={ data.select('birthday') } items={ $store.month.get() } size="l"></ui-select>
+                <ui-select update="month" cursor={ data.select('birthday') } items={ $store.month.get() } size="l" short></ui-select>
             </div>
             <div class="col-xs-24 col-sm-6">
-                <ui-select update="year" cursor={ data.select('birthday') } items={ _.range(1940, new Date().getFullYear() + 1) } size="l"></ui-select>
+                <ui-select update="year" cursor={ data.select('birthday') } items={ _.range(1940, new Date().getFullYear() + 1) } size="l" short></ui-select>
             </div>
         </div>
         <div class="row mb-m">
@@ -39,7 +39,7 @@
         </div>
         <div class="row mb-l pt-xxs">
             <div class="hidden-xs col-sm-8 pt-s pr-m">
-                <span class="title">Пол</span>
+                <span class="title">Ваш пол</span>
             </div>
             <div class="col-xs-12 col-sm-7 text-left pt-s">
                 <ui-checkbox update="gender" cursor={ data.select() } group="gender" title="Мужской" size="l" theme="blue" value="male"></ui-checkbox>
@@ -89,7 +89,7 @@
                 <ui-input update="skype" cursor={ data.select('contacts') } size="l"></ui-input>
             </div>
         </div>
-        <div class="row mb-m">
+        <div class="row mb-m xs-pb-xxs">
             <div class="hidden-xs col-sm-8 pt-xs pr-m">
                 <span class="title">Предпочитаемый вид связи</span>
             </div>
@@ -98,9 +98,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-24 text-right">
-                <button onClick={ $Menu.hide } onUpdate="none" class="btn btn-xl cancel mr-xs">Отменить</button>
-                <button onClick={ onSave } onUpdate="none" class="btn btn-xl success">Сохранить</button>
+            <div class="col-xs-24 { app.device.isPhone ? 'flex-centered' : 'text-right' }">
+                <button onClick={ onCancel } onUpdate="none" class="btn btn-{ app.device.isPhone ? 'l2 h55' : 'xl' } cancel mr-xs xs-plr-m">Отменить</button>
+                <button onClick={ onSave } onUpdate="none" class="btn btn-{ app.device.isPhone ? 'l2 h55' : 'xl' } success">Сохранить</button>
             </div>
         </div>
     </div>
@@ -109,11 +109,15 @@
 
     var $ = this;
 
-    $.data = new Baobab($store.resume.select('commons').clone());
+    $.data = new Baobab($store.resume.select('commons').deepClone());
 
     $.onSave = function(){
         $store.resume.select("commons").set($.data.get());
         $Resume.update();
+        $Menu.hide();
+    };
+
+    $.onCancel = function(){
         $Menu.hide();
     };
 

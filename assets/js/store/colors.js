@@ -1,48 +1,48 @@
 $store.colors = _.extend(new Baobab([
     {
-        color: "#0084ff",
+        _id: "#0084ff",
         title: "blueLight"
     },
     {
-        color: "#265cdc",
+        _id: "#265cdc",
         title: "blue"
     },
     {
-        color: "#74b027",
+        _id: "#74b027",
         title: "green"
     },
     {
-        color: "#0bb5b7",
+        _id: "#0bb5b7",
         title: "emerald"
     },
     {
-        color: "#ff7272",
+        _id: "#ff7272",
         title: "pink"
     },
     {
-        color: "#d93663",
+        _id: "#d93663",
         title: "red"
     },
     {
-        color: "#c1a16b",
+        _id: "#c1a16b",
         title: "brown"
     },
     {
-        color: "#ea7f07",
+        _id: "#ea7f07",
         title: "orange"
     },
     {
-        color: "#ab81cd",
+        _id: "#ab81cd",
         title: "violetLight"
     },
     {
-        color: "#5c0bb7",
+        _id: "#5c0bb7",
         title: "violet"
     }
     ]),
     {
-        getTitleByColor: function(color){
-            return _.findWhere($store.colors.get(), {"color": color}).title;
+        getTitleById: function(id){
+            return _.findWhere($store.colors.get(), {"_id": id}).title;
         }
     }
 );

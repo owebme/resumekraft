@@ -127,6 +127,26 @@ gulp.task('premium.css.smallScreen', function() {
 	}));
 });
 
+gulp.task('premium.libs', function() {
+	return gulp.src(['assets/js/libs/jquery.min.js',
+		'assets/js/libs/jquery.mobile.custom.min.js',
+		'assets/js/libs/modernizr.custom.js',
+		'assets/js/libs/fastclick.min.js',
+		'assets/js/libs/riot/riot+compiler.update.js',
+		'assets/js/libs/baobab.js',
+		'assets/js/libs/underscore-min.js',
+		'assets/js/libs/iscroll.js',
+		'assets/js/libs/rangeslider.js',
+		'assets/js/libs/jquery.cropit.js',
+		'assets/js/libs/moment.min.js',
+		'assets/js/libs/moment.ru.js',
+		'assets/js/libs/peity/jquery.peity.min.js',
+		'assets/js/libs/afterlag-js/dist/afterlag.min.js'])
+		.pipe(concat('premium.libs.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest('./assets/js'));
+});
+
 gulp.task('templates.basic', function() {
 	return combiner(
 		gulp.src('assets/css/appResume/basic/templates/style.scss'),

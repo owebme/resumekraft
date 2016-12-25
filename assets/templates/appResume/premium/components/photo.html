@@ -1,7 +1,7 @@
 <ux-photo onClick={ openEditable } onUpdate="none" class="display-block">
 
     <div if={ $resume.photo } class="{ photo-changer : $State.get('mode') === 'editing' }">
-        <div class="photo" style="background-image:url('{ $resume.photo }')"></div>
+        <div class="photo" style="background-image:url('{ $resume.photo }')" data-noise={ $State.get('photo', 'noise') }></div>
         <div if={ $State.get('mode') === "editing" } class="photo-changer-bg">
             <div class="photo-changer-title">Сменить фото</div>
         </div>

@@ -6,7 +6,7 @@
     <div class="section__editable__content__screen" data-pos="left" data-active={ screen == "salary" }>
 
         <div id="activity">
-            <ui-switcher name="switcherSalary" commit="true"></ui-switcher>
+            <ui-switcher name="switcherSalary" value={ active } commit="true"></ui-switcher>
         </div>
 
         <div class="section__editable__content { hide : !switcherSalary.value }">
@@ -43,7 +43,7 @@
     <div class="section__editable__content__screen" data-pos="right" data-active={ screen == "graph" }>
 
         <div id="activity">
-            <ui-switcher name="switcherGraph" commit="true"></ui-switcher>
+            <ui-switcher name="switcherGraph" value={ data.graph.active } commit="true"></ui-switcher>
         </div>
 
         <div class="section__editable__content { hide : !switcherGraph.value }">
@@ -102,9 +102,6 @@
     };
 
     $.init = function(data){
-        $.switcherSalary.value = data.active;
-        $.switcherGraph.value = data.salary.graph.active;
-
         if (!data.salary){
             $.salary = {
                 amount: "50000",

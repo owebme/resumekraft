@@ -1,12 +1,51 @@
-<menu-section-settings class="menu__sections__item" data-item="settings">
+<menu-section-settings class="section__slider__item">
 
-    <div class="rows menu__sections__inner">
-        <div class="row mb-m">
-            <div class="hidden-xs col-sm-8 pt-xs pr-m">
-                <span class="title">Имя</span>
+    <div class="rows section__slider__item__content">
+        <div class="row mb-s">
+            <div class="col-xs-17 col-sm-12 pr-m">
+                <span class="title black">Опубликовать резюме</span>
             </div>
-            <div class="col-sm-16">
-                <ui-input update="name" cursor={ data.select() } size="l"></ui-input>
+            <div class="col-xs-7 col-sm-12">
+                <ui-switcher commit="true" update="public" cursor={ $State.select() }></ui-switcher>
+            </div>
+        </div>
+        <div class="row mb-l xs-mb-m xs-pb-s">
+            <div class="col-xs-24">
+                <input class="input input-m { $State.get('public') ? 'c-primary' : 'c-gray opacity-50' }" value="http://resumekraft.ru/resume/4a170ef2fc400bd89c618b2de1e3674e18757d32">
+            </div>
+        </div>
+        <div class="row mb-m">
+            <div class="hidden-xs col-sm-12 pt-xs pr-m">
+                <span class="title black">Семейство шрифта</span>
+            </div>
+            <div class="col-xs-24 col-sm-12 select-uppercase">
+                <span class="input-title">Семейство шрифта</span>
+                <ui-select update="font" cursor={ $State.select() } items={ $store.fonts.get() } size="l"></ui-select>
+            </div>
+        </div>
+        <div class="row mb-m xs-pb-xxs">
+            <div class="hidden-xs col-sm-12 pt-xs pr-m">
+                <span class="title black">Цветовая схема</span>
+            </div>
+            <div class="col-xs-24 col-sm-12 select-uppercase">
+                <span class="input-title">Цветовая схема</span>
+                <ui-select update="color" cursor={ $State.select() } items={ $store.colors.get() } size="l"></ui-select>
+            </div>
+        </div>
+        <div class="row h50 mb-m">
+            <div class="col-xs-17 col-sm-12 pt-xs pr-m">
+                <span class="title black">Форма обратной связи</span>
+            </div>
+            <div class="col-xs-7 col-sm-12 pt-xs">
+                <ui-switcher commit={ autoCommit.feedback } value={ $store.resume.select("sections").get({"name": "feedback"}).active }></ui-switcher>
+            </div>
+        </div>
+        <div class="row h50">
+            <div class="col-xs-17 col-sm-12 pt-xs pr-m">
+                <span class="title black">Киноэффект на фото</span>
+            </div>
+            <div class="col-xs-7 col-sm-12 pt-xs">
+                <ui-switcher update="noise" cursor={ $State.select("photo") }></ui-switcher>
             </div>
         </div>
     </div>
@@ -15,8 +54,10 @@
 
     var $ = this;
 
-    $.onSave = function(){
-        $Menu.hide();
+    $.autoCommit = {
+        feedback: function(value){
+            $store.resume.select("sections", {"name": "feedback"}).set("active", value);
+        }
     };
 
 </script>

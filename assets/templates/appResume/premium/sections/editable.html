@@ -162,8 +162,6 @@
 
             this.name = params.component;
 
-            tag.switcher.value = params.active;
-
             if (params.target && params.store){
                 var $item = $$(params.target).closest("." + params.component + "-item");
                 if ($item && $item.length && $item.data("id")){

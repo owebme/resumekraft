@@ -147,4 +147,118 @@
 	&__content {
         @include abs();
     }
+	&__slider {
+		&__navbar {
+		    @extend .w100p;
+			@extend .plr-l;
+            @extend .xs-plr-m;
+			@extend .bg-white;
+			@extend .boxShadow-close;
+		    @extend .zIndex-3;
+
+			&[data-pos="top"] {
+				@extend .pos-tl;
+			}
+			&[data-pos="bottom"] {
+				@extend .pos-bl;
+			}
+			&[data-align="left"] {
+				@extend .flex-row-left-center;
+			}
+			&[data-align="right"] {
+				@extend .flex-row-right-center;
+			}
+			&[data-align="center"] {
+				@extend .flex-centered;
+			}
+			&[data-select="true"] {
+				&:after {
+					@extend .content-empty;
+					@extend .display-block;
+					@extend .borderRadius-s;
+					@extend .ml-xs;
+					border-style:solid;
+					border-top-width:10px;
+					border-right-width:10px;
+					border-left-width:10px;
+					border-right-color:transparent;
+					border-left-color:transparent;
+					border-bottom:none;
+					@extend .pointerEvents-none;
+				}
+			}
+			&__select {
+				@extend .pos-abs;
+				@extend .t0;
+				@extend .h100p;
+				@extend .opacity-0;
+
+				.d-phone & {
+					@extend .l0;
+					@extend .w100p;
+				}
+            }
+		}
+		&__container {
+            @include accelerate();
+            @include abs();
+            @extend .willChange-transform;
+            transition:transform .7s $cubic345;
+
+			@for $i from 1 through 10 {
+				&[data-slide="#{$i}"]{
+					transform:translate3d(0, ($i - 1) * -100#{%}, 0);
+				}
+            }
+        }
+		&__item {
+            @extend .display-block;
+            @include abs();
+            @extend .bg-white;
+
+			@for $i from 1 through 10 {
+				&[data-item="#{$i}"]{
+					transform:translate3d(0, ($i - 1) * 100#{%}, 0);
+				}
+            }
+            .iScrollVerticalScrollbar {
+                @extend .pos-tr;
+                @extend .h100p;
+                @extend .w4px;
+                transition:width .175s;
+                @extend .overflow-visible;
+
+                &:hover {
+                    @extend .w10;
+                }
+            }
+            .iScrollIndicator {
+                @extend .pos-tl;
+                @extend .w100p;
+                @extend .borderRadius-m;
+
+                &:before {
+                    @extend .content-empty;
+                    @extend .pos-abs;
+                    @extend .t--m;
+                    @extend .b--m;
+                    @extend .r0;
+                    @extend .w20;
+                }
+            }
+			&__content {
+	            @extend .pt100;
+	            @extend .pb70;
+	            @extend .xs-pb-l;
+
+	            .d-no-phone & {
+	                @extend .plr-l;
+	            }
+	            .d-phone & {
+	                @extend .pl25;
+	                @extend .pr25;
+	            }
+	        }
+		}
+	}
 }

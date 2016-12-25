@@ -1,31 +1,30 @@
 <control-colors class="control__colors">
 
-    <div onClick={ changeColor } class="control__colors__item bg-{ $store.colors.getTitleByColor($State.get('color')) } control__colors__item--active"></div>
+    <div onClick={ changeColor } onUpdate="none" class="control__colors__item bg-{ $store.colors.getTitleById($State.get('color')) } control__colors__item--active"></div>
     <div class="control__colors__items">
-        <div onClick={ onSelect } each={ item in $store.colors.get() } no-reorder class="control__colors__item bg-{ item.title }"></div>
+        <div onClick={ onSelect } onUpdate="none" each={ item in $store.colors.get() } no-reorder class="control__colors__item bg-{ item.title }"></div>
     </div>
 
 <script>
 
     this.onSelect = function(){
-        this.onChange(this.item.color);
+        this.onChange(this.item._id);
     };
 
     this.onChange = function(color){
-        $root.root.setAttribute("data-color", color);
         $State.select('color').set(color);
     };
 
     this.changeColor = function(){
         if (app.device.isMobile){
             var item = $store.colors
-                .select({'color': $State.get('color')})
+                .select({'_id': $State.get('color')})
                 .right();
 
             if (!item) item = $store.colors.get(0);
             else item = item.get()
 
-            this.onChange(item.color);
+            this.onChange(item._id);
         }
     };
 

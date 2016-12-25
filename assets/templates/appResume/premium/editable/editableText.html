@@ -1,6 +1,6 @@
 <editable-text class="col-sm-offset-4 col-sm-18 col-md-offset-5 col-md-14 col-lg-offset-7 col-lg-12 section__editable__container" data-editing={ 'textarea' : type === 'textarea' }>
 
-    <ui-switcher if={ active !== null } id="activity" commit="true"></ui-switcher>
+    <ui-switcher if={ active !== null } id="activity" value={ active } commit="true"></ui-switcher>
 
     <div class="section__editable__content { hide : active !== null && !switcher.value }">
 
@@ -27,7 +27,6 @@
     $.switcher = $.tags["ui-switcher"];
 
     $.init = function(data){
-        $.switcher.value = data.active;
         $.update({
             active: data.active,
             title: data.title,

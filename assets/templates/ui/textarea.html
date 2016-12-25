@@ -1,6 +1,6 @@
 <ui-textarea>
 
-    <textarea onInput={ onInput } onUpdate={ opts.onupdate ? opts.onupdate : "none" } class="textarea textarea-{ opts.size ? opts.size : 'm' }" disabled={ typeof opts.disabled !== 'undefined' }>{ value }</textarea>
+    <textarea name="textarea" onInput={ onInput } onUpdate={ opts.onupdate ? opts.onupdate : "none" } class="textarea textarea-{ opts.size ? opts.size : 'm' }" placeholder={ opts.placeholder } disabled={ typeof opts.disabled !== 'undefined' }>{ value }</textarea>
 
 <script>
 
@@ -16,26 +16,28 @@
     });
 
     $.on("update", function(){
-        if (!$.opts.value && $.opts.update && $.opts.cursor){
+        if ((!$.opts.value || !$.opts.onupdate) && $.opts.update && $.opts.cursor){
             $.value = $.opts.cursor.get($.opts.update);
+            $.textarea.value = $.value;
         }
         else if ($.opts.value && $.opts.value !== $.value){
             $.value = $.opts.value;
+            $.textarea.value = $.value;
         }
     });
 
     $.onInput = function(e){
         var value = e.target.value;
 
+        if ($.opts.update && $.opts.cursor){
+            $.opts.cursor.set($.opts.update, value);
+        }
         if ($.opts.commit === true || $.opts.commit == "true") $.parent.update();
         else if (_.isFunction($.opts.commit)) {
             $.opts.commit.call(this, value, $.opts.i);
         }
         else if ($.opts.commit && $.parent[$.opts.commit]){
             $.parent[$.opts.commit](value, $.opts.i);
-        }
-        if ($.opts.update && $.opts.cursor){
-            $.opts.cursor.set($.opts.update, value);
         }
     };
 

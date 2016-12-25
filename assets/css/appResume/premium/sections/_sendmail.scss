@@ -18,6 +18,7 @@
         @extend .borderRadius-circle;
         @extend .boxShadow-default;
         @extend .bg-primary;
+        will-change:transform, background-color;
 
         .d-phone & {
             @extend .w60;

@@ -63,7 +63,7 @@
         margin:3px -15px;
         border-radius:12px;
         will-change:margin, width;
-        transition:all 0.25s ease-out;
+        transition:margin 0.25s ease-out, width 0.25s ease-out;
         z-index:1;
     }
     &-input {
@@ -72,12 +72,12 @@
     &-left,
     &-right {
         @extend .pos-rel;
-        @extend .c-white;
         @extend .float-left;
         @extend .m0;
         @extend .w50p;
         @extend .text-center;
         @extend .fontWeight-normal;
+        color:$white;
         font-size:11px;
         height:28px;
         line-height:15px;
@@ -85,7 +85,6 @@
         padding-top:7px;
         text-indent:-10px;
         z-index:1;
-        transition:all 0.25s ease-out;
     }
     &-left {
         // background-color:#23CCEF;

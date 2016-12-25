@@ -47,15 +47,15 @@
 
     $.open = {
         contacts: function(){
-            $Menu.sections.change('contacts');
+            $Menu.sections.slider.nav('contacts');
             $.open._update('contacts');
         },
         settings: function(){
-            $Menu.sections.change('settings');
+            $Menu.sections.slider.nav('settings');
             $.open._update('settings');
         },
         coverletter: function(){
-            $Menu.sections.change('coverletter');
+            $Menu.sections.slider.nav('coverletter');
             $.open._update('coverletter');
         },
         _update: function(section){

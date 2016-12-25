@@ -1,12 +1,10 @@
-<section-menu class="menu" data-open="false">
+<section-menu class="menu { section-hidden : app.device.isPhone }" data-pos="right" data-open="false">
 
-    <div class="menu__overlay"></div>
-
-    <menu-opener></menu-opener>
-
-    <menu-items></menu-items>
+    <div class="hidden-xs menu__overlay"></div>
 
     <menu-sections></menu-sections>
+
+    <menu-items if={ !app.device.isPhone }></menu-items>
 
 <script>
 
@@ -22,13 +20,21 @@
     $.show = function(section){
         if (!$.active){
             $.active = true;
-            $.sections.refresh();
-            app.$dom.body.addClass("no-scroll");
-            $.root.setAttribute("data-open", true);
 
-            if (section && $.items.open[section]){
+            if (app.device.isPhone){
+                $.root.setAttribute("data-open", true);
+                $root.trigger("mode", "hidden", true);
+            }
+            else {
+                app.$dom.body.addClass("no-scroll");
+                $root.trigger("mode", "menu", true);
+            }
+            if (section && $.items && $.items.open[section]){
                 $.items.open[section].call();
             }
+            _.onEndTransition($.sections.root, function(){
+                $.sections.settings.update();
+            });
         }
         else {
             $.hide();
@@ -37,8 +43,20 @@
 
     $.hide = function(){
         $.active = false;
-        $.root.setAttribute("data-open", false);
-        app.$dom.body.removeClass("no-scroll");
+
+        if (app.device.isPhone){
+            $.root.setAttribute("data-open", false);
+            $root.trigger("mode", "hidden", false);
+        }
+        else {
+            $root.trigger("mode", "menu", false);
+            app.$dom.body.removeClass("no-scroll");
+        }
+        _.onEndTransition((app.device.isPhone ? $.root : $.sections.root), function(){
+            $afterlag.run(function(){
+                $.sections.refresh();
+            });
+        });
     };
 
 </script>

@@ -151,6 +151,7 @@
         @extend .boxShadow-default;
         @extend .zIndex-5;
         @extend .bg-primary;
+        will-change:transform, background-color;
 
         .d-phone & {
             top:90px;

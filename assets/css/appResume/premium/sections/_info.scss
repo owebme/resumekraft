@@ -15,7 +15,7 @@
                 .info-opener-icon {
                     @extend .scale-0;
                 }
-                &:before {
+                .info-opener-close {
                     @extend .scale-100;
                 }
             }
@@ -24,7 +24,7 @@
             @extend .opacity-100;
             @extend .scale-100;
             @extend .pointerEvents-all;
-            transition:transform .3s $cubic345, opacity .3s $cubic345;
+            transition:transform .3s $cubic345, opacity .3s $cubic345, background-color 0.2s $cubic215;
         }
     }
     &-opener {
@@ -40,7 +40,8 @@
         @extend .bg-blackLight;
         @extend .borderRadius-circle;
         @extend .boxShadow-default;
-        transition:transform .3s $cubic345;
+        will-change:transform, background-color;
+        transition:transform .3s $cubic345, background-color 0.2s $cubic215;
 
         .d-phone & {
             @extend .t-m;
@@ -50,12 +51,18 @@
             @extend .bg-primary;
             @extend .transition-default;
 
-            &:before {
-                @extend .content-empty;
-                @include abs_50(33, 33);
+            .info-opener-close {
+                @include abs_50(40, 40);
+                margin-top:-16px;
                 @extend .scale-0;
-                @include ui-icon("close_strong_white", 33px, 33px);
+                width:40px;
+                height:40px;
                 transition:transform .3s $cubic345;
+
+                &-color {
+                    @extend .fill-white;
+                    @extend .transition-default;
+                }
             }
         }
         &-icon {
@@ -89,7 +96,7 @@
         @extend .pr30;
         @extend .pointerEvents-none;
         @extend .opacity-0;
-        @extend .willChange-transform;
+        will-change:transform, opacity, background-color;
         border-radius:15px;
         transform-origin:0% 50%;
         transform:translate3d(-20%, 0, 0) scale3d(1, 0.5, 1);

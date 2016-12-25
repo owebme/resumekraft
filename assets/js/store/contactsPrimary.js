@@ -1,5 +1,9 @@
 $store.contactsPrimary = _.extend(new Baobab([
     {
+        _id: "any",
+        title: "Любой"
+    },
+    {
         _id: "email",
         title: "Электронная почта"
     },

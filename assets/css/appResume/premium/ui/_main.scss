@@ -19,6 +19,12 @@
         &.c-black {
             @extend .c-black;
         }
+        &.c-blackLight {
+            @extend .c-blackLight;
+        }
+        &.c-white {
+            @extend .c-white;
+        }
     }
     .title {
         @extend .pos-rel;
@@ -38,6 +44,9 @@
             #app[data-color="#7f8c8d"] & {
                 @extend .bg-blue;
             }
+        }
+        .d-phone #app:not([data-font="futura"]) & {
+            line-height:38px;
         }
     }
     .larger {
@@ -290,6 +299,8 @@
     }
     .form {
         &-wrapper {
+            @extend .display-block;
+
             &[data-color="black"]{
                 @extend .bg-blackLight;
                 @extend .c-white;
@@ -316,8 +327,6 @@
             }
             &[data-color="white"]{
                 .form {
-                    padding:0 12.5px;
-
                     &-item {
                         &:before {
                             @extend .bg-steel;
@@ -408,6 +417,13 @@
             @include abs();
             @extend .bg-overlay;
             @extend .opacity-10;
+        }
+    }
+    ux-contacts[data-feedback="false"]{
+        margin-left:-17.5px;
+
+        .map {
+            width:150%;
         }
     }
 }

@@ -6,7 +6,7 @@
 
     <section if={ app.device.isPhone } class="screen screen--first screen--active" data-section="cover">
         <div class="screen__content">
-            <ux-photo></ux-photo>
+            <ux-photo phone="true"></ux-photo>
             <div class="screen__post">{ $resume.post }</div>
         </div>
     </section>
@@ -111,7 +111,21 @@
         </div>
     </section>
 
-    <section class="screen" data-section="contacts" if={ $store.resume.select("sections").get({"name": "contacts"}).active }>
+    <section class="screen" data-section="contacts" if={ app.device.isPhone && $store.resume.select("sections").get({"name": "contacts"}).active }>
+        <div class="screen__content">
+            <h3 class="title">Контактная информация</h3>
+            <ux-contacts-content></ux-contacts-content>
+        </div>
+    </section>
+
+    <section class="screen" data-section="feedback" if={ app.device.isPhone && $store.resume.select("sections").get({"name": "feedback"}).active }>
+        <div class="screen__content">
+            <h3 class="title">Связаться</h3>
+            <ux-feedback></ux-feedback>
+        </div>
+    </section>
+
+    <section class="screen" data-section="contacts" if={ !app.device.isPhone && $store.resume.select("sections").get({"name": "contacts"}).active }>
         <div class="screen__content">
             <ux-contacts></ux-contacts>
         </div>
@@ -129,13 +143,23 @@
 
     $.on("before-mount", function(){
         $.sections = {
+            photo: _.filter($.tags["ux-photo"], function(item){
+                if (app.device.isPhone){
+                    return item.opts && item.opts.phone;
+                }
+                else {
+                    return item.opts && !item.opts.phone;
+                }
+            })[0],
             salary: $.tags["ux-salary"],
             social: $.tags["ux-social"],
-            contacts: $.tags["ux-contacts"]
+            contacts: $.tags["ux-contacts"],
+            contactsContent: app.device.isPhone ? $.tags["ux-contacts-content"] : $.tags["ux-contacts"].tags["ux-contacts-content"],
+            feedback: app.device.isPhone ? $.tags["ux-feedback"] : $.tags["ux-contacts"].tags["ux-feedback"]
         }
         $.sections.social.on("updated", function(){
-            if (!app.device.isPhone){
-                $.sections.contacts.update();
+            if ($.sections.contactsContent){
+                $.sections.contactsContent.update();
             }
         });
     });
@@ -145,7 +169,7 @@
             _.each(this.tags, function(item) {
                 if (item.root && item.root.tagName && item.root.tagName.toLowerCase().match(/^ux-/)){
                     var name = item.root.tagName.toLowerCase().match(/^ux-(.+)/)[1];
-                    if (name != "text"){
+                    if (name != "text" && name != "feedback" && name != "contacts-content"){
                         if (!$store.resume.get(name)) $$(item.root).remove();
                         else $$(item.root).children().unwrap();
                     }
@@ -165,8 +189,7 @@
         if (app.device.isPhone){
             $afterlag.run(function(){
                 $.screens = new app.plugins.screens($.el, {
-                    dataAttr: "section",
-                    controlInvisible: true
+                    dataAttr: "section"
                 });
                 $.screens.init();
                 $.render();
@@ -176,12 +199,18 @@
                     app.utils.raf(animationLoop);
                     onScroll(app.utils.getScroll($.scroll));
                 })();
+
+                $root.trigger("ready");
             });
         }
         else {
             $.render();
+
             app.$dom.window.on("scroll", function(){
                 onScroll();
+            });
+            $afterlag.run(function(){
+                $root.trigger("ready");
             });
         }
 
@@ -191,7 +220,6 @@
 
         if ($State.get('mode') === "editing"){
             _.bbUpdate($store.resume, function(prop, value, e){
-                console.log(prop);
                 if (prop == "sections" && $Resume.screenItems){
                     var find = false;
 
@@ -205,6 +233,7 @@
 
                     if (find){
                         $Resume.update();
+
                         if (app.device.isPhone){
                             $Resume.screens.refreshAll();
                             $Resume.initScroll();
@@ -227,10 +256,17 @@
 
             _.bbUpdate($State, function(prop, value, e){
                 if (prop == "color"){
+                    $Control.colors.update();
+                    $root.root.setAttribute("data-color", value);
                     $Resume.sections.salary.graph.refresh();
                 }
                 else if (prop == "font"){
+                    $Control.fonts.update();
+                    $root.root.setAttribute("data-font", value);
                     $Resume.render();
+                }
+                else if (prop == "photo"){
+                    $Resume.sections.photo.update();
                 }
             });
         }

@@ -16,10 +16,19 @@
 
 <script>
 
-    var $ = this;
+    var $ = this,
+    $scope = $$($.root);
 
     $.active = false;
     $.max = _.max($resume.salary.graph.items);
+
+    $.on("mount", function(){
+        if (app.device.isMobile){
+            $scope.on('swiperight', function(){
+                $.hide();
+            });
+        }
+    });
 
     $.get = {
         month: function(i){

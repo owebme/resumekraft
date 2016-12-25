@@ -61,6 +61,11 @@
         @extend .userSelect-none;
         @extend .mt-xxs;
 
+        &[data-noise="true"]{
+            @extend .pos-rel;
+            @extend .effect-noise;
+            @extend .overflow-hidden;
+        }
         &-changer {
             @extend .pos-rel;
             @extend .display-inlineBlock;
@@ -319,7 +324,7 @@
                 .edit-pointer {
                     @extend .t-xxs;
                     @extend .l-auto;
-                    @extend .r0;
+                    @extend .r-l;
                 }
             }
         }

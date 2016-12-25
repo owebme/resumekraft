@@ -1,5 +1,5 @@
 .control__sections {
-    @extend .display-block;
+    @extend .flex-centered;
     @include accelerate();
     @extend .cursor-pointer;
     @extend .bg-white;
@@ -13,7 +13,7 @@
     @extend .r-l;
     @extend .w60;
     @extend .h60;
-    @extend .zIndex-10;
+    @extend .zIndex-5;
     transition:transform .2s $cubic215;
 
     .d-phone & {
@@ -30,14 +30,13 @@
         }
     }
     &__svg {
-        @extend .pos-centered;
-        width:48px;
-        height:48px;
-        @extend .mt-xxs;
+        width:52px;
+        height:52px;
+        transform:translate3d(-2px, 5px, 0) scaleX(-1);
 
         .d-phone & {
-            width:44px;
-            height:44px;
+            width:46px;
+            height:46px;
         }
     }
     &__badge {

@@ -31,8 +31,8 @@ $navHeight: 94px;
         background-color:rgba(189,189,189,.2);
     }
     &__logotype {
-        width:140px;
-        height:52px;
+        width:130px;
+        height:48px;
         @extend .bg-cover;
         transform:translateY(3px);
         background-image:url(/public/images/logotype_w.png);

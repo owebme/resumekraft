@@ -1,0 +1,66 @@
+<menu-section-coverletter class="section__slider__item">
+
+    <div class="rows section__slider__item__content">
+        <div class="row xs-mb-m">
+            <div class="col-xs-17 col-sm-12 pr-m">
+                <span class="title black">Активный</span>
+            </div>
+            <div class="col-xs-7 col-sm-12">
+                <ui-switcher commit={ autoCommit.visible } value={ active }></ui-switcher>
+            </div>
+        </div>
+        <div class="pos-rel pt-m xs-pt-xs xs-pb-xxs">
+            <div class="row mb-m">
+                <div class="hidden-xs col-sm-8 pt-xs pr-m">
+                    <span class="title black">Цветовая схема</span>
+                </div>
+                <div class="col-xs-24 col-sm-16">
+                    <span class="input-title">Цветовая схема</span>
+                    <ui-select update="color" cursor={ data.select() } items={ $store.coverletter.get() } size="l"></ui-select>
+                </div>
+            </div>
+            <div class="row mb-m">
+                <div class="col-xs-24">
+                    <ui-textarea update="text" placeholder="Содержание" cursor={ data.select() } size="xl"></ui-textarea>
+                </div>
+            </div>
+            <div class="pos-abs-full zIndex-1 bg-white transition-s { active ? 'opacity-0 pointerEvents-none' : 'opacity-75' }"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-24 { app.device.isPhone ? 'flex-centered' : 'text-right' }">
+                <button onClick={ onCancel } onUpdate="none" class="btn btn-{ app.device.isPhone ? 'l2 h55' : 'xl' } cancel mr-xs xs-plr-m">Отменить</button>
+                <button onClick={ onSave } onUpdate="none" class="btn btn-{ app.device.isPhone ? 'l2 h55' : 'xl' } success">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.active = $store.resume.select("sections").get({"name": "coverletter"}).active;
+
+    $.data = new Baobab($store.resume.select('coverletter').clone());
+
+    $.autoCommit = {
+        visible: function(value){
+            $.update({
+                active: value
+            })
+        }
+    };
+
+    $.onSave = function(){
+        $store.resume.select("coverletter").set($.data.get());
+        $store.resume.select("sections", {"name": "coverletter"}).set("active", $.active);
+        if ($Resume.sections.coverletter) $Resume.sections.coverletter.update();
+        $Menu.hide();
+    };
+
+    $.onCancel = function(){
+        $Menu.hide();
+    };
+
+</script>
+
+</menu-section-coverletter>

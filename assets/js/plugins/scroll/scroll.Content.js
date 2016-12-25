@@ -24,15 +24,17 @@
                 scrollY: true,
                 click: false,
                 tap: false,
+                preventDefault: true,
+                eventPassthrough: 'horizontal',
                 scrollbars: 'custom',
                 interactiveScrollbars: !app.device.support.touch,
-                probeType: 3
+                probeType: app.device.support.touch ? false : 3,
             }
             if (this.options) _.extend(options, this.options);
 
         	this.scroll = new IScroll(this.scope[0], options);
 
-            if (options.keyboard) this.keyboard();
+            if (options.keyboard && !app.device.support.touch) this.keyboard();
         	this.embeds();
 
             this.active = true;
@@ -130,49 +132,19 @@
         },
 
         embeds: function(){
-            var scroll = this.scroll,
-                $block = $(scroll.wrapper),
-        	    isScrolled = false,
-        	    grabTimer;
+            var scroll = this.scroll;
 
-            $dom.window.on('resize', function(){
-        		if ($block.css('position') != 'static') scroll.refresh();
-        	});
+            scroll.enable();
 
-        	var start = function(){
-        		clearTimeout(grabTimer);
-        		if (!isScrolled) {
-        			$block.addClass('i-scrolling');
-        			isScrolled = true;
-        		}
-        	};
-        	var end = function(){
-        		clearTimeout(grabTimer);
-        		if (isScrolled) {
-        			$block.removeClass('i-scrolling');
-        			isScrolled = false;
-        		}
-        	};
-
-        	scroll.on('grab', function(){
-        		start();
-        		grabTimer = setTimeout(function(){
-        			scroll.reset();
-        			end();
-        		}, 500);
-        	});
-
-        	scroll.on('scroll', function(){
-        		if (scroll.moved) start();
-        	});
-
-        	scroll.on('scrollEnd', function(){
-        		end();
+            $dom.window.on('resize.scrollable-content', function(){
+                if (app.device.isPhone) scroll.scrollTo(0,0);
+        		scroll.refresh();
         	});
         },
 
         destroy: function(){
             this.scroll.destroy();
+            $dom.window.off('resize.scrollable-content');
             this.active = false;
         }
     };

@@ -1,11 +1,11 @@
 $store.coverletter = _.extend(new Baobab([
     {
         _id: "1",
-        title: "Белый текст на темном"
+        title: "Белым по черному"
     },
     {
         _id: "2",
-        title: "Черный текст на светлом"
+        title: "Черным по белому"
     }
     ]),
     {

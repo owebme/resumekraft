@@ -1,6 +1,6 @@
 <ui-input>
 
-    <input onInput={ onInput } onUpdate={ opts.onupdate ? opts.onupdate : "none" } class="input input-{ opts.size ? opts.size : 'm' }" value={ value } disabled={ typeof opts.disabled !== 'undefined' }>
+    <input name="input" onInput={ onInput } onUpdate={ opts.onupdate ? opts.onupdate : "none" } class="input input-{ opts.size ? opts.size : 'm' }" value={ value } placeholder={ opts.placeholder } disabled={ typeof opts.disabled !== 'undefined' }>
 
 <script>
 
@@ -16,26 +16,28 @@
     });
 
     $.on("update", function(){
-        if (!$.opts.value && $.opts.update && $.opts.cursor){
+        if ((!$.opts.value || !$.opts.onupdate) && $.opts.update && $.opts.cursor){
             $.value = $.opts.cursor.get($.opts.update);
+            $.input.value = $.value;
         }
         else if ($.opts.value && $.opts.value !== $.value){
             $.value = $.opts.value;
+            $.input.value = $.value;
         }
     });
 
     $.onInput = function(e){
         var value = e.target.value;
 
+        if ($.opts.update && $.opts.cursor){
+            $.opts.cursor.set($.opts.update, value);
+        }
         if ($.opts.commit === true || $.opts.commit == "true") $.parent.update();
         else if (_.isFunction($.opts.commit)) {
             $.opts.commit.call(this, value, $.opts.i);
         }
         else if ($.opts.commit && $.parent[$.opts.commit]){
             $.parent[$.opts.commit](value, $.opts.i);
-        }
-        if ($.opts.update && $.opts.cursor){
-            $.opts.cursor.set($.opts.update, value);
         }
     };
 

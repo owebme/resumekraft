@@ -60,7 +60,7 @@
                 _this.state = _this.marquee.section;
             });
 
-            if (screen !== 'undefined') this.nav(screen, 0);
+            if (screen !== undefined) this.nav(screen, 0);
 
             this.active = true;
         },
