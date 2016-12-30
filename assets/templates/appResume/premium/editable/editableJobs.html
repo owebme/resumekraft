@@ -16,7 +16,7 @@
                     <div class="title title-xl">Редактирование</div>
                 </div>
             </div>
-            <div class="col-md-12 xs-mt-m sm-mt-m">
+            <div class="col-md-12 xs-mt-m sm-mt-m target-visible">
                 <div if={ !$Editable.component.editing }>
                     <ui-button-plus onClick={ $Editable.component.createItem } content="Место работы" size="{ app.device.isPhone ? 'l' : 'xl' }"></ui-button-plus>
                 </div>
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div if={ $Editable.component.editing } class="row mb-m">
+        <div if={ $Editable.component.editing } class="row mb-m target-visible">
             <div class="col-xs-24">
                 <editable-jobs-item item={ $Editable.component.editing }></editable-jobs-item>
             </div>
@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row target-hidden">
             <div each={ item, i in data.items } no-reorder class="col-md-12 mb-m">
                 <div class="pos-rel">
                     <div class="input-group-addon addons">

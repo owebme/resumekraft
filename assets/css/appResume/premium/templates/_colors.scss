@@ -56,6 +56,24 @@
                 &:before {
                     background:linear-gradient(to top, $color, rgba($color,0));
                 }
+                &:not([data-helper="true"]){
+                    .help__opener__btn {
+                        color:$color;
+                        background-color:$white;
+                        box-shadow:0 0 0 2px $white;
+                    }
+                }
+                &[data-helper="true"]{
+                    .help__opener__btn {
+                        color:$white;
+                        background-color:$color;
+                        box-shadow:0 0 0 2px $color;
+
+                        &:hover {
+                            color:$white;
+                        }
+                    }
+                }
                 .btn:hover,
                 &__footer .btn:last-child {
                     color:$color;
@@ -144,6 +162,9 @@
                             fill:$color;
                         }
                     }
+                }
+                &__item__button[data-item="user"]{
+                    @extend .c-steel;
                 }
             }
         }

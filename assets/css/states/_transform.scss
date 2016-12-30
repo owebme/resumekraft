@@ -17,6 +17,9 @@
         transform:translate3d(0, 0, 0) scale(($i * 5) / 100);
     }
 }
+.scale-100-3d {
+    transform:translate3d(0, 0, 0) scale3d(1, 1, 1);
+}
 .scale-0 {
     transform:translate3d(0, 0, 0) scale(0);
 }

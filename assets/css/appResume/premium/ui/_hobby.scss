@@ -1,6 +1,8 @@
 .resume {
     .hobby {
         &-items {
+            @extend .text-center;
+            
             .d-phone & {
                 @extend .ml--m;
                 @extend .mr--m;

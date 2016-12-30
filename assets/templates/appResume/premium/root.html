@@ -33,8 +33,10 @@
 
     $resume = $store.resume.get();
 
+    var mode = app.demo ? app.demo : "editing";
+
     $State = new Baobab({
-        mode: "editing",
+        mode: mode,
         public: true,
         lang: "ru",
         color: "#0084ff",
@@ -54,6 +56,7 @@
         $Info = $root.tags["section-info"];
         $Sendmail = $root.tags["section-sendmail"];
         $Editable = $root.tags["section-editable"];
+        $Helper = $Editable.tags["ui-help"];
         $Notify = $root.tags["section-notify"];
 
         $Control = {
@@ -71,6 +74,23 @@
 
     this.one("ready", function(){
         app.$dom.body.removeClass("appLoading");
+
+        if (app.demo){
+            if (window.parent && window.parent){
+                window.parent.postMessage('ready', '*');
+            }
+            app.$dom.window.on("message", function(e){
+                var data = e.originalEvent.data;
+                if (data){
+                    if (data.color){
+                        $State.select('color').set(data.color);
+                    }
+                }
+            });
+            $store.resume.select('photo')
+            .set("/preview/images/photo/photo_" + app.device.is + ".jpg");
+            $Resume.sections.photo.update();
+        }
     });
 
     this.on("mode", function(mode, value){

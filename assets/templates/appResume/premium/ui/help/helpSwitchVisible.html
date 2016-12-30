@@ -1,0 +1,40 @@
+<ui-help-switch-visible class="help__for__switch__visible" data-active={ active }>
+
+    <icon-arrow color="white" size="xl"></icon-arrow>
+    <div class="help__for__switch__visible__text">Управление активностью секции</div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    $.notShow = ['photo', 'text', 'salary', 'tags', 'social', 'hobby', 'visible'];
+
+    $.active = false;
+
+    $.on("mount", function(){
+        $Editable.on("editable", function(editable){
+            if (editable === "showAnimated" && $.notShow.indexOf($Editable.editable) === -1 || editable === "hide" && $.active){
+                $.toggle();
+            }
+        });
+    });
+
+    $.toggle = function(){
+        if (!$.active){
+            var $el = $Editable.el.find(".section__editable__container#active"),
+                offset = $el.offset();
+
+            $scope.css({
+                "top": (offset.top - app.$dom.document.scrollTop() + $Editable.scroll.scrollTop) + "px",
+                "left": (offset.left + $el.width()) + "px"
+            })
+        }
+        $.update({
+            active: !$.active
+        })
+    };
+
+</script>
+
+</ui-help-switch-visible>

@@ -180,6 +180,11 @@
             @extend .pr-l;
         }
     }
+    .screen2 {
+        &-col-left {
+            @extend .pr-s;
+        }
+    }
     .screen {
         &:before,
         .work-items:before,

@@ -13,7 +13,7 @@
 
                 <h3 class="c-primary mb-s"><strong>{ item.year }</strong> &ndash; { $store.education.getTitleById(item.level) }</h3>
 
-                <p class="mb-s" style="line-height:28px">{ item.title }<span if={ item.level != "8" && item.faculty } class="h4 c-black">, { item.faculty }</span></p>
+                <p class="mb-s" style="line-height:28px">{ item.title }<span if={ item.level != "8" && item.faculty } class="h4 c-primary"><br>{ item.faculty }</span></p>
 
                 <h3 if={ item.level != "8" && item.speciality } class="c-black mb-s">Специальность &ndash; <strong>{ item.speciality }</strong></h3>
 

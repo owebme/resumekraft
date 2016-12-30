@@ -1,30 +1,10 @@
-// https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/18235126033139.5634e8d8b1adc.jpg
-// https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/750ee935139279.5852ed2f4dd5f.jpg
-// https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/091df946261671.584e198a52ec6.jpg
-// http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/vertical20.jpg
-// http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/vertical15.jpg
-// https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/6612ee41993431.57bc86ef27ea9.jpg
-// http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/vertical9.jpg
-// http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/vertical3.jpg
-// http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/horizontal10.jpg
-// http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/horizontal15.jpg
-// http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/horizontal8.jpg
-// http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/horizontal2.jpg
-// http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/apollo13_images/cover5-6fkzrkng4ltfpc2rzfdl225u36rb5s8mj6.jpg
-// http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/vertical5.jpg
-// https://scontent-arn2-1.cdninstagram.com/t51.2885-15/e35/14592068_1825528711058860_6525389476905091072_n.jpg?ig_cache_key=MTQwODE3NjcxNjcyODA3ODA5Ng%3D%3D.2
-// http://demo.massivedynamic.co/fashion-photography/wp-content/uploads/2015/10/16_02.jpg
-// http://nodia-foto.ru/sites/default/files/BarberHerman_06_internet.jpg
-// http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/vertical18.jpg
-
-
 $store.resume = _.extend(new Baobab({
         _id: _.newId(),
         plan: "basic",
         template: "7",
         lang: "ru",
         post: "Web-Designer, Art-director, Illustrator",
-        photo: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/091df946261671.584e198a52ec6.jpg",
+        photo: "/preview/images/photo/photo_phone.jpg",
         commons: {
             name: "Виктория",
             surname: "Юртаева",
@@ -51,19 +31,39 @@ $store.resume = _.extend(new Baobab({
             worktime: "1",
             graph: {
                 active: true,
-                items: [40000,50000,70000,90000,110000,120000]
+                items: [80000,100000,125000,150000,175000,195000]
             },
             active: true
         },
         tags: [
-            'Adobe Photoshop', 'Ajax', 'Bootstrap', 'CSS3', 'Gulp', 'HTML5', 'JavaScript', 'jQuery', 'JSON', 'Less', 'MySQL'
+            'Adobe Photoshop', 'InDesign', 'Illustrator', 'Sketch App', 'MS PowerPoint', 'HTML5', 'JavaScript', 'jQuery', 'UI/UX'
         ],
-        appeal: "Award winning interdisciplinary Designer & Art director. Currently pursuing a perfect blend of style and function for a wide range of interactive product design.",
-        about: "Your brand is how your customers see your business. It’s shaped by the way you represent yourself – professionally, socially and visually. It’s what makes you unique. It’s what makes you desirable. It’s shorthand for everything that brings your business together.",
-        social: null,
+        appeal: "Я графический дизайнер. В дизайне предпочитаю лаконичный стиль. В тексте — информационный. Убираю всё, что мешает увидеть суть.",
+        about: "Высокий уровень ответсвенности, исполнительности, умение работать с людьми, высокий уровень социальной коммуникации. Открытость, порядочность, честность, любовь к порядку, педантичность, аккуратность, любовь к мелочам и деталям.\n\n Широкий круг интересов: иностранные языки, программирование, психология. Свободное время провожу с семьей или за чтением книг.",
+        social: {
+            title: 'Я в социальных медиа',
+            items: [
+                {
+                    title: 'fb',
+                    value: 'http://facebook.com'
+                },
+                {
+                    title: 'vk',
+                    value: 'http://vk.com'
+                },
+                {
+                    title: 'in',
+                    value: 'http://instagram.com'
+                },
+                {
+                    title: 'lk',
+                    value: 'http://linkedin.com'
+                }
+            ]
+        },
         works: {
             title: "Мои проекты",
-            text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. ullam et eros ornare, porttitor urna sed, auctor lacus. Morbi viverra lorem at neque tincidunt consequat. Aenean massa.",
+            text: "Наличие деловых контактов с представителями различных сфер таких как бизнесмены, журналисты, работники творческих профессий (продюсеры, художники, скульпторы, музыканты, и пр.)",
             items: [
                 {
                     _id: "1",
@@ -72,16 +72,16 @@ $store.resume = _.extend(new Baobab({
                     text: "Idea, design UI/UX, Single Page App on JS, jQuery, Ajax, catching on client side, templates with mustache, css transform/transition, SVG, responsive, smacss, bem, gulp. Later in the task of writing Rest Full API on backend.",
                     links: {
                         url: {
-                            title: null,
-                            value: null
+                            title: 'Портфолио',
+                            value: 'http://behance.net'
                         },
                         image: {
-                            title: null,
-                            value: null
+                            title: 'Еще материалы',
+                            value: 'http://dribbble.com'
                         },
                         video: {
-                            title: null,
-                            value: null
+                            title: 'Видео материалы',
+                            value: 'http://vimeo.com'
                         }
                     }
                 },
@@ -92,16 +92,16 @@ $store.resume = _.extend(new Baobab({
                     text: "Idea, design UI/UX, ModPerl, frontend only native JS, HTML5, canvas, Ajax, catching on client side, css transform/transition, responsive, smacss, gulp.",
                     links: {
                         url: {
-                            title: null,
-                            value: null
+                            title: 'Портфолио',
+                            value: 'http://behance.net'
                         },
                         image: {
-                            title: null,
-                            value: null
+                            title: 'Еще материалы',
+                            value: 'http://dribbble.com'
                         },
                         video: {
-                            title: null,
-                            value: null
+                            title: 'Видео материалы',
+                            value: 'http://vimeo.com'
                         }
                     }
                 },
@@ -112,16 +112,16 @@ $store.resume = _.extend(new Baobab({
                     text: "Idea, design UI/UX, JS, jQuery, Ajax, css transform/transition, responsive, less, gulp.",
                     links: {
                         url: {
-                            title: null,
-                            value: null
+                            title: 'Портфолио',
+                            value: 'http://behance.net'
                         },
                         image: {
-                            title: null,
-                            value: null
+                            title: 'Еще материалы',
+                            value: 'http://dribbble.com'
                         },
                         video: {
-                            title: null,
-                            value: null
+                            title: 'Видео материалы',
+                            value: 'http://vimeo.com'
                         }
                     }
                 },
@@ -132,16 +132,16 @@ $store.resume = _.extend(new Baobab({
                     text: "ModPerl, catching on server side, JS (jQuery), bootstrap, fontawesome.",
                     links: {
                         url: {
-                            title: null,
-                            value: null
+                            title: 'Портфолио',
+                            value: 'http://behance.net'
                         },
                         image: {
-                            title: null,
-                            value: null
+                            title: 'Еще материалы',
+                            value: 'http://dribbble.com'
                         },
                         video: {
-                            title: null,
-                            value: null
+                            title: 'Видео материалы',
+                            value: 'http://vimeo.com'
                         }
                     }
                 },
@@ -152,16 +152,16 @@ $store.resume = _.extend(new Baobab({
                     text: "Perl, JS (jQuery), bootstrap, fontawesome, connection APIs: YandexMetrica, YandexWebmaster, Sape, eTXT.",
                     links: {
                         url: {
-                            title: null,
-                            value: null
+                            title: 'Портфолио',
+                            value: 'http://behance.net'
                         },
                         image: {
-                            title: null,
-                            value: null
+                            title: 'Еще материалы',
+                            value: 'http://dribbble.com'
                         },
                         video: {
-                            title: null,
-                            value: null
+                            title: 'Видео материалы',
+                            value: 'http://vimeo.com'
                         }
                     }
                 },
@@ -172,16 +172,16 @@ $store.resume = _.extend(new Baobab({
                     text: "Idea, design UI/UX, Perl, JS (jQuery), connection API YandexDirect. 18 modules.",
                     links: {
                         url: {
-                            title: null,
-                            value: null
+                            title: 'Портфолио',
+                            value: 'http://behance.net'
                         },
                         image: {
-                            title: null,
-                            value: null
+                            title: 'Еще материалы',
+                            value: 'http://dribbble.com'
                         },
                         video: {
-                            title: null,
-                            value: null
+                            title: 'Видео материалы',
+                            value: 'http://vimeo.com'
                         }
                     }
                 }
@@ -189,62 +189,76 @@ $store.resume = _.extend(new Baobab({
         },
         skills: {
             title: "Основные компетенции",
-            header: "We’re full service which means we’ve got you covered on design and content right through to digital.",
-            text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. ullam et eros ornare, porttitor urna sed, auctor lacus. Morbi viverra lorem at neque tincidunt consequat. Aenean massa.",
+            header: "Работаю в Illustrator, Adobe Photoshop и InDesign. Мой профиль — айдентика, web и promo. Разработка UI/UX.",
+            text: "С любовью справляюсь с командой. Разработка дизайна интерфейсов для мобильных приложений на базе iOS, android. Создание иконок для приложений, дизайн сайтов. Дизайн деловой документации, дизайн полиграфической продукции, дизайн рекламных макетов. Разработка рекламных кампаний, фирменных стилей.",
             items: [
                 {
-                    title: "Development",
+                    title: "Креативность",
                     value: "90"
                 },
                 {
-                    title: "Design",
+                    title: "Управление проектами",
                     value: "95"
                 },
                 {
-                    title: "Marketing",
+                    title: "Графический дизайн",
                     value: "79"
                 },
                 {
-                    title: "WordPress",
+                    title: "Векторная графика",
                     value: "86"
                 }
             ]
         },
         education: {
             title: "Образование",
-            text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. ullam et eros ornare, porttitor urna sed, auctor lacus. Morbi viverra lorem at neque tincidunt consequat. Aenean massa.",
+            text: "Люблю учиться и повышать свои профессиональные навыки.",
             items: [
                 {
                     _id: "1",
                     level: "1",
-                    title: "Южно-Российский государственный технический университет (Новочеркасский политехнический институт), Новочеркасск",
-                    faculty: 'Факультет информационных технологий и управления',
-                    speciality: "АСУ",
-                    year: "2008"
+                    title: "Российская академия народного хозяйства и государственной службы при Президенте РФ, Москва",
+                    faculty: 'Инновационно-технологического бизнеса',
+                    speciality: "Инновационный менеджмент",
+                    year: "2013"
                 },
                 {
                     _id: "2",
-                    level: "8",
-                    title: "Школа №1001",
-                    year: "2003"
+                    level: "1",
+                    title: "Международная академия бизнеса и управления (МУБиУ), Москва",
+                    faculty: 'Институт дизайна и рекламы',
+                    speciality: "Дизайн архитектурной среды",
+                    year: "2011"
                 }
             ]
         },
         courses: {
             title: "Курсы",
-            text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. ullam et eros ornare, porttitor urna sed, auctor lacus. Morbi viverra lorem at neque tincidunt consequat. Aenean massa.",
+            text: "Тяга к исследовательской деятельности, постоянному образованию, поиску и внедрению нестандартных решений.",
             items: [
                 {
                     _id: "1",
-                    name: "Название школы / площадки",
-                    title: "Название курса",
+                    name: "Тренинговое Агентство «Мастер-Класс», Москва",
+                    title: "Семинар «Эффективная рекламная деятельность фирмы»",
                     year: "2008"
+                },
+                {
+                    _id: "2",
+                    name: "Тренинговое Агентство «Мастер-Класс», Москва",
+                    title: "Тренинг «Эффективное руководство сотрудниками»",
+                    year: "2008"
+                },
+                {
+                    _id: "3",
+                    name: "DIGITAL PAINTING / Painter, Москва",
+                    title: "Школа Real Time",
+                    year: "2006"
                 }
             ]
         },
         languages: {
             title: "Владение языками",
-            text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+            text: "Широкий круг интересов: иностранные языки, программирование, психология. Профессиональную деятельность считаю высшей степенью самореализации.",
             items: [
                 {
                     title: "native",
@@ -252,7 +266,7 @@ $store.resume = _.extend(new Baobab({
                 },
                 {
                     title: "en",
-                    value: "2"
+                    value: "4"
                 },
                 {
                     title: "de",
@@ -260,51 +274,67 @@ $store.resume = _.extend(new Baobab({
                 },
                 {
                     title: "fr",
-                    value: "1"
+                    value: "2"
                 }
             ]
         },
         jobs: {
             title: "Работа в компаниях",
-            text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+            text: "Стабильность и ответственность, способность закрывать участки работ гарантируя полную надежность и прозрачность процесса, принимать ответственные решения, грамотно мотивировать людей, снижать риски и достигать поставленных целей.",
             items: [
                 {
                     _id: "1",
-                    company: "e-Commerce",
+                    company: "Технопарк Сколково, ООО",
                     city: "Москва",
-                    post: "Web-разработка/интерфейсы, e-Commerce",
+                    post: "Специалист по коммуникациям",
                     from: {
-                        month: "3",
+                        month: "4",
                         year: "2014"
                     },
                     to: {
                         month: "1",
                         year: "2000"
                     },
-                    text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+                    text: "— Разработка дизайна промо-презентаций и презентаций для внутрикорпоративного использования\n— Разработка дизайна печатной и сувенирной продукции компании\n— Разработка дизайна электронных рассылок\n— Участие в разработке дизайна печатной продукции для Startup Village и Startup Tour\n— Авторский надзор за визуальной концепцией печатной продукции и рекламными кампаниями мероприятий (IASP 2016 Moscow, Открытые инновации)\n— Создание дизайна и контента страниц сайта компании",
                     last: true
                 },
                 {
                     _id: "2",
-                    company: "IT-компания",
+                    company: "ООО НПП «Тензосенсор»",
                     city: "Москва",
-                    post: "Front/backend разработка, SEO, продукты, сервисы",
+                    post: "Финансовый директор",
                     from: {
-                        month: "9",
+                        month: "2",
+                        year: "2011"
+                    },
+                    to: {
+                        month: "12",
+                        year: "2013"
+                    },
+                    text: "Взаимодействовала со Сколково в рамках развития проекта\nКоординировала работу финансового подразделения компании (2 человека)\nГотовила финансовую отчетность по проектам\nПредставляла компанию и её разработки на российских и зарубежных выставках (Финляндия, Франция, США)\nРазработала контент и дизайн-макеты рекламной продукции компании (презентации, буклеты)\nСоздала контент сайта компании и его дизайн\nРазработала дизайн логотипа компании\nПисала новости компании для публикации на сайте компании",
+                    last: false
+                },
+                {
+                    _id: "3",
+                    company: "ООО НТЦ «Интрофизика»",
+                    city: "Москва",
+                    post: "Заместитель директора по маркетингу",
+                    from: {
+                        month: "7",
                         year: "2010"
                     },
                     to: {
                         month: "1",
-                        year: "2014"
+                        year: "2011"
                     },
-                    text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. ullam et eros ornare, porttitor urna sed, auctor lacus. Morbi viverra lorem at neque tincidunt consequat. Aenean massa.",
+                    text: "Участие в подготовке конкурсной документации НИОКР, в разработке стратегии компании относительно участия в тендерах.\nПодготовка аналитических отчетов о деятельности компании, подготовка отчетов об исследовании рынка и потенциале внедрения продуктов компании на рынок с учетом текущих тенденций развития.\nМатематические расчеты, построение прогнозных данных.",
                     last: false
                 }
             ]
         },
         hobby: {
             title: "Мои хобби",
-            text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+            text: "Много читаю разнообразной литературы, путешествую, вдохновляюсь культурой в зарубежных странах. Люблю обучаться новому.",
             items: ['airplane', 'basketball', 'books', 'camera']
         },
         coverletter: {
@@ -338,7 +368,7 @@ $store.resume = _.extend(new Baobab({
             },
             {
                 name: "social",
-                title: "Ссылки в соц. сетях",
+                title: "Аккаунты в соц. сетях",
                 short: "Соц. ссылки",
                 active: true
             },
@@ -603,7 +633,10 @@ $store.resume = _.extend(new Baobab({
                         title: "fr",
                         value: "1"
                     }
-                ]
+                ],
+                help: {
+                    text: 'Здесь вы можете более подробно написать уровень владения языком и/или указать сертификаты и баллы за них.'
+                }
             },
             jobs: {
                 title: "Работа в компаниях",

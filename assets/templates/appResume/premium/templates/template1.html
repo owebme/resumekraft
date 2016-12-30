@@ -169,7 +169,7 @@
             _.each(this.tags, function(item) {
                 if (item.root && item.root.tagName && item.root.tagName.toLowerCase().match(/^ux-/)){
                     var name = item.root.tagName.toLowerCase().match(/^ux-(.+)/)[1];
-                    if (name != "text" && name != "feedback" && name != "contacts-content"){
+                    if (name != "text" && name != "contacts" && name != "feedback" && name != "contacts-content"){
                         if (!$store.resume.get(name)) $$(item.root).remove();
                         else $$(item.root).children().unwrap();
                     }
@@ -267,6 +267,15 @@
                 }
                 else if (prop == "photo"){
                     $Resume.sections.photo.update();
+                }
+            });
+        }
+        else if (app.demo){
+            _.bbUpdate($State, function(prop, value, e){
+                if (prop == "color"){
+                    $Control.colors.update();
+                    $root.root.setAttribute("data-color", value);
+                    $Resume.sections.salary.graph.refresh();
                 }
             });
         }

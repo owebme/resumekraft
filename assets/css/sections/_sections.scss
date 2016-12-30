@@ -144,6 +144,35 @@
 			transition:transform 0.42s $cubic645, opacity 0.42s $cubic645;
 		}
 	}
+	&-scroll {
+		.iScrollVerticalScrollbar {
+			@extend .pos-tr;
+			@extend .h100p;
+			@extend .w4px;
+			transition:width .175s;
+			@extend .overflow-visible;
+
+			&:hover {
+				@extend .w10;
+			}
+		}
+		.iScrollIndicator {
+			@extend .pos-tl;
+			@extend .w100p;
+			@extend .borderRadius-m;
+			background-color:silver;
+			@extend .zIndex-1;
+
+			&:before {
+				@extend .content-empty;
+				@extend .pos-abs;
+				@extend .t--m;
+				@extend .b--m;
+				@extend .r0;
+				@extend .w20;
+			}
+		}
+	}
 	&__content {
         @include abs();
     }
@@ -215,36 +244,12 @@
             @extend .display-block;
             @include abs();
             @extend .bg-white;
+			@extend .section-scroll;
 
 			@for $i from 1 through 10 {
 				&[data-item="#{$i}"]{
 					transform:translate3d(0, ($i - 1) * 100#{%}, 0);
 				}
-            }
-            .iScrollVerticalScrollbar {
-                @extend .pos-tr;
-                @extend .h100p;
-                @extend .w4px;
-                transition:width .175s;
-                @extend .overflow-visible;
-
-                &:hover {
-                    @extend .w10;
-                }
-            }
-            .iScrollIndicator {
-                @extend .pos-tl;
-                @extend .w100p;
-                @extend .borderRadius-m;
-
-                &:before {
-                    @extend .content-empty;
-                    @extend .pos-abs;
-                    @extend .t--m;
-                    @extend .b--m;
-                    @extend .r0;
-                    @extend .w20;
-                }
             }
 			&__content {
 	            @extend .pt100;

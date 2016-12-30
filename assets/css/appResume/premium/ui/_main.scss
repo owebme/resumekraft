@@ -1,6 +1,7 @@
 .resume {
     p, .p {
         @extend .c-gray;
+        @extend .whiteSpace-preLine;
 
         .d-no-phone & {
             @extend .fontSize-18;
@@ -24,6 +25,9 @@
         }
         &.c-white {
             @extend .c-white;
+        }
+        &.whiteSpace-normal {
+            @extend .whiteSpace-normal;
         }
     }
     .title {
@@ -258,6 +262,7 @@
     }
     .work-text,
     .job-text {
+        @extend .whiteSpace-preLine;
         @extend .lineHeight-l;
         @extend .c-white;
         @extend .opacity-85;

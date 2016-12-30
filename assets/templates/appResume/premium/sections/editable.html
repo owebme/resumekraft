@@ -20,13 +20,17 @@
                 <editable-visible></editable-visible>
             </div>
         </div>
+        <ui-help-switch-visible if={ !app.device.isPhone }></ui-help-switch-visible>
     </div>
+
+    <ui-help if={ !app.device.isPhone }></ui-help>
 
 <script>
 
     var $ = this,
     $scope = $$($.root);
 
+    $.el = $scope;
     $.editable = null;
     $.editSimple = ['photo', 'text', 'salary', 'tags', 'social'];
 
@@ -39,8 +43,19 @@
         }
     });
 
-    $.on("editable", function(editable){
-        if (editable === false){
+    $.on("editTarget", function(active){
+        $.root.setAttribute("data-target", active);
+    });
+
+    $.on("editable", function(ev, editable){
+        if (ev == "show" && editable){
+            if (!app.device.isPhone && $.editSimple.indexOf(editable) === -1){
+                $.wrapper.setAttribute("data-large", true);
+            }
+            $scope.find("editable-" + editable).attr("id", "active");
+            $.editable = editable;
+        }
+        else if (ev == "hideAnimated"){
             if ($.editable){
                 $scope.find("editable-" + $.editable).removeAttr("id");
             }
@@ -48,14 +63,8 @@
                 $scope.find(".section__editable__container#active").removeAttr("id");
             }
             $.wrapper.setAttribute("data-large", false);
+            $.editable = false;
         }
-        else {
-            if (!app.device.isPhone && $.editSimple.indexOf(editable) !== 1){
-                $.wrapper.setAttribute("data-large", true);
-            }
-            $scope.find("editable-" + editable).attr("id", "active");
-        }
-        $.editable = editable;
     });
 
     $.show = function(editable, data, component){
@@ -66,7 +75,7 @@
         else {
             $.tags["editable-" + editable].init(data);
         }
-        $.trigger("editable", editable);
+        $.trigger("editable", "show", editable, data.update);
 
         $.scrollTo();
 
@@ -82,10 +91,16 @@
             }
             app.$dom.body.addClass("no-scroll");
         }
+        _.onEndTransition($.wrapper, function(){
+            $.trigger("editable", "showAnimated", editable, data.update);
+        });
     };
 
     $.hide = function(callback){
         $.root.setAttribute("data-open", false);
+
+        if (app.device.isPhone) $.trigger("editable", "hideAnimated");
+        else $.trigger("editable", "hide");
 
         if (!app.device.isPhone){
             app.$dom.body.removeClass("no-scroll");
@@ -96,12 +111,13 @@
                 app.$dom.document.scrollTop($.savedScrollPos);
             }
         }
-        else {
-            $.trigger("editable", false);
-        }
         _.onEndTransition($.wrapper, function(){
             if (!app.device.isPhone){
-                $.trigger("editable", false);
+                $.trigger("editable", "hideAnimated");
+            }
+            if ($.component.editing){
+                $.trigger("editTarget", false);
+                $.component.editing = null;
             }
             if (callback) callback();
         });
@@ -125,7 +141,7 @@
             callback: function(active, data){
                 $store.resume.select('sections', {'name': component}).set('active', active);
                 $resume[component] = _.any(_.values(_.omit(data, "title"))) ? data : null;
-                $.trigger("editable", false);
+                $.trigger("editable", "hide");
             }
         }, true);
 
@@ -166,7 +182,10 @@
                 var $item = $$(params.target).closest("." + params.component + "-item");
                 if ($item && $item.length && $item.data("id")){
                     var item = _.findWhere(params.store.items, {"_id": String($item.data("id"))});
-                    if (item) this.editing = _.copyArray(item);
+                    if (item){
+                        $.trigger("editTarget", true);
+                        $.component.editing = _.copyArray(item);
+                    }
                 }
             }
             if (!params.store && params.defaults) {
@@ -189,6 +208,7 @@
         },
 
         editItem: function(){
+            $.trigger("editTarget", true);
             $.component.editing = _.copyArray(this.data.items[this.i]);
             $.scrollTo("content");
         },
@@ -201,6 +221,7 @@
         },
 
         cancelEditing: function(){
+            $.trigger("editTarget", false);
             $.component.editing = null;
             $.scrollTo();
         },
@@ -253,6 +274,7 @@
                     if (!_.isArray(this.data.items)) this.data.items = [];
                     this.data.items.push($.component.editing);
                 }
+                $.trigger("editTarget", false);
                 $.component.editing = null;
                 $.scrollTo();
             }
@@ -261,9 +283,7 @@
         onCancel: function(){
             if (this["title_data"]) this["title_data"].value = this.store && this.store.title ? this.store.title : $store.resume.placeholder[$.component.name].title;
             if (this["text_data"]) this["text_data"].value = this.store && this.store.text ? this.store.text : '';
-            $Editable.hide(function(){
-                $.component.editing = null;
-            });
+            $Editable.hide();
         },
 
         onSave: function(){
@@ -284,9 +304,7 @@
                 }
                 this.callback(this.switcher.value, this.data);
             }
-            $Editable.hide(function(){
-                $.component.editing = null;
-            });
+            $Editable.hide();
             if ($Resume.tags["ux-" + $.component.name]){
                 $Resume.tags["ux-" + $.component.name].update();
             }
@@ -294,7 +312,7 @@
     };
 
     $.scrollTo = function(scroll){
-        var top = app.device.isPhone ? 80 : 120,
+        var top = app.device.isPhone ? 80 : 100,
             scroll = scroll ? (scroll === "content" ? top : scroll) : 0;
 
         $.scroll.scrollTop = scroll;

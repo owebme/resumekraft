@@ -24,6 +24,7 @@
                 active: $.opts.activity ? $store.resume.select('sections').get({'name': $.opts.update}).active : null,
                 title: $.opts.title,
                 type: $.opts.type,
+                update: $.opts.update,
                 editing: $.opts.cursor.get($.opts.update),
                 callback: function(active, data){
                     if (active !== null){

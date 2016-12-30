@@ -1,0 +1,166 @@
+.button__like {
+    @extend .pos-abs;
+    @extend .t-m;
+    @extend .l-m;
+    @extend .m-xxs;
+
+    &:after {
+        @extend .content-empty;
+        @extend .display-block;
+        @extend .w40;
+        @extend .h40;
+        @extend .ml-xxs;
+        @extend .bg-cover;
+        @extend .opacity-50;
+        @extend .cursor-pointer;
+        @extend .transition-default;
+        @extend .scale-0;
+        @extend .pointerEvents-none;
+        @extend .willChange-transform;
+        background:url(/preview/images/like_fill.svg);
+    }
+    &:not([data-open="true"]){
+        body[data-help="true"] &:after {
+            @extend .scale-100;
+            @extend .pointerEvents-all;
+            transition:transform .55s $bounceForce, opacity .08s;
+        }
+    }
+    &__container {
+        @extend .pos-tl;
+        @extend .nowrap;
+        @extend .scale-0;
+        @extend .pointerEvents-all;
+        transform-origin:50% 0%;
+        transition:transform .25s $cubic345;
+
+        a {
+            @extend .outline-none;
+        }
+    }
+    &:after:hover {
+        @extend .opacity-80;
+    }
+    &:after:active {
+        @extend .scale-80;
+    }
+    &[data-open="true"]{
+        &:after {
+            @extend .scale-0;
+            @extend .pointerEvents-none;
+        }
+        body[data-help="true"] & {
+            .button__like__container {
+                @extend .scale-100;
+                @extend .pointerEvents-all;
+                transition:transform .55s $bounceForce;
+            }
+        }
+    }
+}
+.addUser {
+    @extend .pos-centered-v;
+    right:-7px;
+    @extend .w80;
+    @extend .h80;
+    @extend .bg-blackLight;
+    @extend .cursor-pointer;
+    border-radius:50% 0 0 50%;
+    box-shadow:0 8.66px 30px 0 rgba(31,35,37,.078);
+    @extend .zIndex-1;
+
+    &:after {
+        @extend .content-empty;
+        @include abs_50(42, 45);
+        margin-left:-17px;
+        @extend .bg-cover;
+        background:url(/preview/images/addUser.svg);
+        // animation:pulseIcon 5.5s ease-in-out infinite;
+        // animation-delay:5s;
+    }
+    &__help {
+        @extend .t100;
+        right:30px;
+        width:150px;
+        @extend .mt60;
+        transform-origin:0% 0%;
+
+        &:after {
+            top:-110px;
+            left:-10px;
+            transform:scale3d(1, -1, 1) rotate(90deg);
+        }
+    }
+    &__help__color {
+        @extend .b100;
+        @extend .r-s;
+        @extend .mb90;
+        width:150px;
+        transform-origin:0% 100%;
+
+        &:after {
+            @extend .l--xxs;
+            bottom:-115px;
+            transform:scale3d(1, 1, 1) rotate(110deg);
+        }
+    }
+}
+.scroll {
+    @extend .pos-abs;
+    @extend .t50;
+    left:80.2%;
+    transform:translate3d(-50%, -50%, 0) scale(0);
+    @extend .w100;
+    @extend .h100;
+    @extend .opacity-80;
+    @extend .pointerEvents-none;
+    transition:transform .25s $cubic345;
+
+    path {
+        @extend .fill-blackLight;
+    }
+    &__arrow {
+        @extend .willChange-tp;
+        transform:translate3d(0, 66%, 0);
+        animation:scroll__arrow 1.4s infinite;
+    }
+}
+
+@keyframes scroll__arrow {
+    from {
+        transform:translate3d(0, -33%, 0);
+    }
+    to {
+        transform:translate3d(0, 66%, 0);
+        opacity:0;
+    }
+}
+@keyframes pulseIcon {
+    0% {
+        transform: rotate(0deg) translate3d(0, -3px, 0) skew(1deg);
+    }
+    2.5% {
+        transform: rotate(-25deg) translate3d(0, -3px, 0) skew(1deg);
+    }
+    5% {
+        transform: rotate(25deg) translate3d(0, -3px, 0) skew(1deg);
+    }
+    7.5% {
+        transform: rotate(-25deg) translate3d(0, -3px, 0) skew(1deg);
+    }
+    10% {
+        transform: rotate(25deg) translate3d(0, -3px, 0) skew(1deg);
+    }
+    12.5% {
+        transform: rotate(-25deg) translate3d(0, -3px, 0) skew(1deg);
+    }
+    15% {
+        transform: rotate(25deg) translate3d(0, -3px, 0) skew(1deg);
+    }
+    17.5% {
+        transform: rotate(-25deg) translate3d(0, -3px, 0) skew(1deg);
+    }
+    100%, 20% {
+        transform: rotate(0deg) translate3d(0, -3px, 0) skew(1deg);
+    }
+}

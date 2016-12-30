@@ -1,0 +1,49 @@
+.help__item,
+.help__text {
+    @extend .scale-0;
+    @extend .willChange-transform;
+    @extend .pointerEvents-none;
+    transition:transform .25s $cubic345;
+}
+.help__item {
+    @extend .pos-abs;
+
+    &:after {
+        @extend .content-empty;
+        @extend .pos-abs;
+        width:128px;
+        height:128px;
+        background-image:url(/preview/images/arrow.svg);
+        @extend .bg-cover;
+        @extend .opacity-85;
+    }
+}
+.help__text {
+    transform-origin:25% 0%;
+}
+body[data-help="true"] {
+    .help__item,
+    .help__text {
+        @extend .scale-100;
+        @extend .pointerEvents-all;
+    }
+    .scroll {
+        transform:translate3d(-50%, -50%, 0) scale(1);
+    }
+    .help__item,
+    .scroll {
+        transition:transform .55s $bounceForce .3s;
+    }
+    .help__text {
+        transition:transform .55s $bounceForce .4s;
+    }
+    .control__device__help {
+        transition-delay:0.2s;
+    }
+    .addUser__help {
+        transition-delay:0.4s;
+    }
+    .addUser__help__color {
+        transition-delay:0.6s;
+    }
+}

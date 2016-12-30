@@ -44,6 +44,14 @@
                     @extend .fill-primary;
                 }
             }
+            &[data-item="user"]{
+                box-shadow:inset 0 0 0 1px $lime;
+                @extend .bg-lime;
+
+                path, rect, polygon, circle {
+                    @extend .fill-primary;
+                }
+            }
             &:hover {
                 transform:translateY(-15px);
                 box-shadow:inset 0 0 0 1px rgba($white,.6), 0 12px 20px -10px rgba($white,.28), 0 4px 20px 0px rgba($white,.12), 0 7px 8px -5px rgba($white,.2);
@@ -70,6 +78,11 @@
                     @extend .h85;
                     @extend .mt40;
                 }
+                &[data-icon="user"] {
+                    width:102px;
+                    height:102px;
+                    @extend .mt50;
+                }
             }
             path, rect, polygon, circle {
                 @extend .fill-white;
@@ -81,7 +94,7 @@
             @extend .h25p;
             @extend .fontSize-22;
             @extend .text-center;
-            @extend .plr-m;
+            @extend .plr-l;
         }
     }
 }

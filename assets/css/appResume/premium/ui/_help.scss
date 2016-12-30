@@ -1,0 +1,256 @@
+.help {
+    @include accelerate();
+    @extend .pos-abs;
+    bottom:30px;
+    left:35px;
+    @extend .zIndex-3;
+
+    .d-no-safari &,
+    .d-no-ios & {
+        perspective:500px;
+    }
+    &__icon {
+        @include accelerate();
+        @extend .pos-abs;
+        @extend .b10;
+        @extend .l50;
+        margin-left:-110px;
+        width:230px;
+        height:230px;
+        transform-origin:25% 100%;
+        @extend .scale-0;
+        @extend .opacity-85;
+        @extend .willChange-transform;
+        transition:transform 0.2s $cubic345;
+
+        path, rect, polygon, circle {
+            @extend .fill-white;
+        }
+    }
+    &__opener {
+        @include accelerate();
+        @extend .pos-rel;
+        transform-origin:75% 100%;
+        transform:translate3d(0, 100%, 0) scale3d(0, 0.4, 1);
+        transition:transform 0.2s $cubic345;
+        @extend .willChange-transform;
+        @extend .zIndex-1;
+
+        &__btn {
+            @extend .text-uppercase;
+
+            &:before {
+                @extend .display-inlineBlock;
+                content:"?";
+                @extend .pr-xss;
+                @extend .ml--xxs;
+                @extend .fontSize-30;
+                transform:rotate(-15deg);
+            }
+        }
+    }
+    &__message {
+        @include accelerate();
+        @extend .pos-abs;
+        @extend .b100;
+        @extend .mb-l;
+        @extend .l--xs;
+        width:400px;
+        height:calc(100vh - 160px);
+        @extend .scale-0;
+        @extend .opacity-0;
+        @extend .bg-white;
+        @extend .c-black;
+        @extend .borderRadius-xxl;
+        @extend .pointerEvents-none;
+        @extend .visibility-hidden;
+        @extend .overflow-hidden;
+        @extend .fontFamily-helvetica;
+        @extend .lineHeight-xl;
+        @extend .boxShadow-default;
+        @extend .section-scroll;
+        will-change:transform, opacity;
+        transform-origin:50% 100%;
+        transition:transform 0.2s $cubic345, opacity 0.2s $cubic345, visibility 0s 0.2s;
+
+        &__content {
+            @include accelerate();
+            @extend .pt55;
+            @extend .plr-l;
+            @extend .pb60;
+
+            h3 {
+                @extend .c-primary;
+                font-size:27px;
+                @extend .mb-s;
+            }
+            p {
+                @extend .mb25;
+            }
+            a {
+                @extend .c-primary;
+                @extend .text-underline;
+            }
+            .strong {
+                @extend .pos-rel;
+                @extend .display-inlineBlock;
+                @extend .c-white;
+                @extend .plr-xs;
+
+                &:before {
+                    @extend .content-empty;
+                    @include abs();
+                    @extend .borderRadius-l;
+                    @extend .zIndex--1;
+                    @extend .bg-primary;
+                    transform:skewX(-6deg);
+                }
+            }
+        }
+        &:after {
+            @extend .content-empty;
+            @extend .pos-bl;
+            @extend .w100p;
+            @extend .h100;
+            background:linear-gradient(to top, $white, rgba($white,0));
+        }
+        &__close {
+            @extend .mt-s;
+            @extend .mr-s;
+            @extend .w35;
+            @extend .h35;
+        }
+        .iScrollIndicator {
+            @extend .bg-primary;
+            @extend .opacity-40;
+        }
+        &__screen {
+            @include accelerate();
+            @extend .pos-abs;
+            @extend .b100;
+            @extend .mb-l;
+            left:505px;
+            width:calc(100vw - 725px);
+            height:calc(100vh - 160px);
+            @extend .opacity-0;
+            @extend .pointerEvents-none;
+            @extend .visibility-hidden;
+            will-change:transform, opacity;
+            transform-origin:0% 50%;
+            transform:translate3d(-2vw, 0, 0) scale3d(1, 0, 1);
+            transition:transform 0.2s $cubic345, opacity 0.2s $cubic345, visibility 0s 0.2s;
+
+            &__content {
+                @extend .pos-centered-v;
+                @extend .l0;
+                @extend .w100p;
+                @extend .text-left;
+
+                h2 {
+                    @extend .mb-s;
+
+                    &.not {
+                        @extend .c-pink;
+                        @extend .pt-l;
+                    }
+                    &.can {
+                        @extend .c-lime;
+                        @extend .pt-s;
+                    }
+                }
+                p {
+                    @extend .mb25;
+                    @extend .fontSize-22;
+                    @extend .lineHeight-l;
+                }
+                &:empty ~ icon-bubble {
+                    @extend .display-none;
+                }
+            }
+            .icon-bubble {
+                @extend .pos-centered;
+                width:630px;
+                height:550px;
+                @extend .opacity-70;
+                @extend .zIndex--1;
+
+                path {
+                    @extend .fill-primary;
+                }
+            }
+        }
+    }
+    &[data-active="true"] {
+        .help {
+            &__icon {
+                @extend .scale-100;
+                transition:transform 0.55s $bounceSoft, opacity 0.2s $cubic345;
+            }
+            &__opener {
+                @extend .scale-100-3d;
+                transition:transform 0.4s $cubic345 0.1s;
+            }
+        }
+    }
+}
+.section__editable {
+    &[data-helper="true"] {
+        .help[data-active="true"] {
+            .help__message,
+            .help__message__screen {
+                @extend .opacity-100;
+                @extend .scale-100-3d;
+                @extend .pointerEvents-all;
+                @extend .visibility-visible;
+            }
+            .help__message {
+                transition:transform 0.5s $bounceSoft, opacity 0.3s $cubic345, visibility 0s;
+            }
+            .help__message__screen {
+                transition:transform 0.6s $cubic345 0.25s, opacity 0s, visibility 0s;
+            }
+            .help__icon {
+                @extend .opacity-0;
+            }
+        }
+        .section__editable__scroll {
+            @extend .pointerEvents-none;
+            transform:translate3d(100px, 0, 0) perspective(1000px) rotateY(-30deg);
+        }
+        @extend .section__editable--overlay;
+    }
+}
+.help__for__switch__visible {
+    @extend .pos-abs;
+    @extend .w100;
+    @extend .fontSize-18;
+    @extend .scale-0;
+    @extend .zIndex-1;
+    @extend .willChange-transform;
+    @extend .mt85;
+    @extend .ml50;
+    transform-origin:100% 100%;
+    transition:transform .2s $cubic345;
+
+    .icon {
+        @extend .pos-abs;
+        @extend .b100;
+        @extend .r20;
+        transform:scaleX(-1) scaleY(-1) rotate(80deg);
+    }
+    &__text {
+        @extend .scale-0;
+        @extend .willChange-transform;
+        transform-origin:25% 0%;
+        transition:transform .2s $cubic345;
+    }
+    &[data-active="true"] {
+        @extend .scale-100;
+        transition:transform .55s $bounceSoft .3s;
+
+        .help__for__switch__visible__text {
+            @extend .scale-100;
+            transition:transform .55s $bounceSoft .45s;
+        }
+    }
+}

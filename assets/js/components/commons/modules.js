@@ -56,6 +56,17 @@
 
 	/* --- Mobile --- */
 	device.isMobile = device.support.touch;
+
+	var params = window.Url && Url.parseQuery();
+
+	if (params && params.demo){
+		app.demo = params.demo;
+
+		if ($dom.window.width() < 1025){
+			device.isMobile = true;
+			$dom.html.removeClass("m-no-touch").addClass("m-touch");
+		}
+	}
 	$dom.html.addClass(device.isMobile ? 'd-mobile' : 'd-no-mobile');
 
 	/* --- Retina --- */
@@ -75,6 +86,7 @@
 		.removeClass(device.isTablet ? 'd-no-tablet' : 'd-tablet')
 		.addClass(device.orientation === "landscape" ? 'r-landscape' : 'r-portrait')
 		.removeClass(device.orientation !== "landscape" ? 'r-landscape' : 'r-portrait');
+		device.is = device.isPhone ? 'phone' : (device.isTablet ? 'tablet' : 'desktop');
 	};
 	$dom.window.on('resize.sizeCheck', sizeCheck);
 	sizeCheck();

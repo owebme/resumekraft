@@ -14,7 +14,7 @@
 
     $.on("before-mount", function(){
         $.sections = $.tags['menu-sections'];
-        $.items = $.tags['menu-items'];
+        $.items = app.device.isPhone ? null : $.tags['menu-items'];
     });
 
     $.show = function(section){

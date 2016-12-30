@@ -39,22 +39,15 @@
     <script src="/assets/js/libs/moment.min.js"></script>
     <script src="/assets/js/libs/peity/jquery.peity.min.js"></script>
     <script src="/assets/js/libs/afterlag-js/dist/afterlag.min.js"></script>
+    <script src="/assets/js/libs/url.min.js"></script>
 
     <!--/ templates /-->
     <script src="/assets/templates/appResume/premium/root.html" type="riot/tag"></script>
-
-    <script src="/assets/templates/ui/slider.html" type="riot/tag"></script>
-    <script src="/assets/templates/ui/switcher.html" type="riot/tag"></script>
-    <script src="/assets/templates/ui/checkbox.html" type="riot/tag"></script>
-    <script src="/assets/templates/ui/icons/icon-city.html" type="riot/tag"></script>
-    <script src="/assets/templates/ui/icons/icon-feedback.html" type="riot/tag"></script>
-    <script src="/assets/templates/ui/icons/icon-phone.html" type="riot/tag"></script>
-    <script src="/assets/templates/ui/icons/icon-email.html" type="riot/tag"></script>
-    <script src="/assets/templates/ui/icons/icon-skype.html" type="riot/tag"></script>
     <script src="/assets/templates/appResume/premium/ui/buttonEditable.html" type="riot/tag"></script>
     <script src="/assets/templates/appResume/premium/ui/buttonEdit.html" type="riot/tag"></script>
     <script src="/assets/templates/appResume/premium/ui/buttonPlus.html" type="riot/tag"></script>
-    <script src="/assets/templates/appResume/premium/ui/buttonHelp.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/premium/ui/help/help.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/premium/ui/help/helpSwitchVisible.html" type="riot/tag"></script>
     <script src="/assets/templates/appResume/premium/ui/inputAddonEdit.html" type="riot/tag"></script>
     <script src="/assets/templates/appResume/premium/ui/inputAddonRemove.html" type="riot/tag"></script>
 
@@ -114,11 +107,23 @@
     <script src="/assets/templates/appResume/premium/templates/template1.html" type="riot/tag"></script>
 
     <!--/ Modules /-->
+    <script src="/assets/templates/modules/notify.html" type="riot/tag"></script>
+
+    <!--/ UI components /-->
+    <script src="/assets/templates/ui/slider.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/switcher.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/checkbox.html" type="riot/tag"></script>
     <script src="/assets/templates/ui/input.html" type="riot/tag"></script>
     <script src="/assets/templates/ui/textarea.html" type="riot/tag"></script>
     <script src="/assets/templates/ui/select.html" type="riot/tag"></script>
     <script src="/assets/templates/ui/checkbox.html" type="riot/tag"></script>
-    <script src="/assets/templates/modules/notify.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-city.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-feedback.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-phone.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-email.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-skype.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-arrow.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-bubble.html" type="riot/tag"></script>
 
     <!--/ JS components /-->
     <script src="/assets/js/components/commons/app.js"></script>
@@ -126,6 +131,26 @@
     <script src="/assets/js/components/commons/modules.js"></script>
     <script src="/assets/js/components/commons/utils.js"></script>
     <script src="/assets/js/components/commons/afterlag.js"></script>
+    <script src="/assets/js/components/help/resume/premium/photo.js"></script>
+    <script src="/assets/js/components/help/resume/premium/post.js"></script>
+    <script src="/assets/js/components/help/resume/premium/salary.js"></script>
+    <script src="/assets/js/components/help/resume/premium/tags.js"></script>
+    <script src="/assets/js/components/help/resume/premium/about.js"></script>
+    <script src="/assets/js/components/help/resume/premium/social.js"></script>
+    <script src="/assets/js/components/help/resume/premium/works.js"></script>
+    <script src="/assets/js/components/help/resume/premium/skills.js"></script>
+    <script src="/assets/js/components/help/resume/premium/education.js"></script>
+    <script src="/assets/js/components/help/resume/premium/courses.js"></script>
+    <script src="/assets/js/components/help/resume/premium/languages.js"></script>
+    <script src="/assets/js/components/help/resume/premium/jobs.js"></script>
+    <script src="/assets/js/components/config.js"></script>
+    <script src="/assets/js/plugins/eventsEmitter.js"></script>
+    <script src="/assets/js/plugins/marquee.js"></script>
+    <script src="/assets/js/plugins/screens.js"></script>
+    <script src="/assets/js/plugins/styles.js"></script>
+    <script src="/assets/js/plugins/scroll/scroll.Slider.js"></script>
+    <script src="/assets/js/plugins/scroll/scroll.Content.js"></script>
+    <!-- <script src="/assets/js/components/anim.js"></script> -->
     <script src="/assets/js/store/resume.js"></script>
     <script src="/assets/js/store/fonts.js"></script>
     <script src="/assets/js/store/colors.js"></script>
@@ -136,19 +161,10 @@
     <script src="/assets/js/store/hobby.js"></script>
     <script src="/assets/js/store/coverletter.js"></script>
     <script src="/assets/js/store/contactsPrimary.js"></script>
-    <script src="/assets/js/plugins/eventsEmitter.js"></script>
-    <script src="/assets/js/plugins/marquee.js"></script>
-    <script src="/assets/js/plugins/screens.js"></script>
-    <script src="/assets/js/plugins/styles.js"></script>
-    <script src="/assets/js/plugins/scroll/scroll.Slider.js"></script>
-    <script src="/assets/js/plugins/scroll/scroll.Content.js"></script>
-    <!-- <script src="/assets/js/components/anim.js"></script> -->
-    <script src="/assets/js/components/config.js"></script>
     <script src="/assets/js/components/init.js"></script>
 
     <!-- <script src="/assets/js/libs.js"></script>
-    <script src="/assets/js/templates.js"></script>
-    <script src="/assets/js/app.js"></script>     -->
+    <script src="/assets/js/premium/app.build.js"></script> -->
 
 </body>
 </html>

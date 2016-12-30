@@ -74,6 +74,12 @@
 .willChange-transform {
 	will-change:transform;
 }
+.willChange-opacity {
+	will-change:opacity;
+}
+.willChange-tp {
+	will-change:transform, opacity;
+}
 .bg-none {
 	background:none;
 }

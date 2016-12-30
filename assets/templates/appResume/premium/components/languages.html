@@ -10,7 +10,7 @@
 
         <div class="row">
             <div class="editing editing-text editing-lang-items">
-                <div each={ item in ($resume.languages && $resume.languages.items ? $resume.languages.items : $store.resume.placeholder.languages.items ) } no-reorder class="col-xs-24 col-sm-24 col-md-12">
+                <div each={ item in ($resume.languages && $resume.languages.items ? $resume.languages.items : $store.resume.placeholder.languages.items ) } no-reorder class="col-xs-24 col-sm-24 col-md-{ item.title == 'native' || item.title == 'de' ? '11' : '13' }">
                     <h3 class="{ 'c-primary' : item.title == 'native' } mb-l">{ $store.languages.getTitleById(item.title) }<span class="plr-xs">&ndash;</span>
                         <strong if={ item.title == "native" }>
                             { $store.languages.native.getTitleById(item.value) }

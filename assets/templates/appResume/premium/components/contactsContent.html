@@ -9,7 +9,7 @@
                 <div class="flex-centered { app.device.isPhone ? 'w100' : 'w80' } h80 ml--m">
                     <icon-city color="primary" size="{ app.device.isPhone ? 'l' : 'm' }"></icon-city>
                 </div>
-                <div class="p h80 c-blackLight pt-s">
+                <div class="p h80 c-blackLight pt-s whiteSpace-normal">
                     { $store.resume.get('commons', 'contacts', 'city') }
                 </div>
             </div>
@@ -25,16 +25,16 @@
                 <div class="flex-centered { app.device.isPhone ? 'w100' : 'w80' } h80 ml--m">
                     <icon-feedback color="primary" size="{ app.device.isPhone ? 'l' : 'm' }"></icon-feedback>
                 </div>
-                <div class="h80 pt-m text-truncate maxW-70p">
-                    <a class="p link-primary link-underline { pointerEvents-none : $State.get('mode') === 'editing' }" href="mailto:{ $store.resume.get('contacts', 'email') }">{ $store.resume.get('commons', 'contacts', 'email') }</a>
+                <div class="h80 pt-m text-truncate minW-70p maxW-70p">
+                    <a class="p link-primary link-underline { pointerEvents-none : $State.get('mode') === 'editing' } whiteSpace-normal" href="mailto:{ $store.resume.get('contacts', 'email') }">{ $store.resume.get('commons', 'contacts', 'email') }</a>
                 </div>
             </div>
             <div class="flex-row-left-center w100p xs-mb-m">
                 <div class="flex-centered { app.device.isPhone ? 'w100' : 'w80' } h80 ml--m pb-xxs">
                     <icon-skype color="primary" size="{ app.device.isPhone ? 'l' : 'm' }"></icon-skype>
                 </div>
-                <div class="h80 pt-m text-truncate maxW-70p">
-                    <a class="p link-primary { pointerEvents-none : $State.get('mode') === 'editing' }" href="skype:{ $store.resume.get('contacts', 'skype') }">{ $store.resume.get('commons', 'contacts', 'skype') }</a>
+                <div class="h80 pt-m text-truncate minW-70p maxW-70p">
+                    <a class="p link-primary { pointerEvents-none : $State.get('mode') === 'editing' } whiteSpace-normal" href="skype:{ $store.resume.get('contacts', 'skype') }">{ $store.resume.get('commons', 'contacts', 'skype') }</a>
                 </div>
             </div>
             <div if={ $resume.social } class="mt-m">
