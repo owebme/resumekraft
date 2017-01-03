@@ -8,7 +8,7 @@
 	visibility:hidden;
 	opacity:0.001;
 	margin-left:-999em;
-	will-change:opacity, transform;
+	@extend .willChange-tp;
     @include accelerate();
     transition:opacity 0.2s $cubic215, transform 0.2s $cubic215, margin-left 0s 0.2s, visibility 0s 0.2s;
 	transform-origin:50% 0%;

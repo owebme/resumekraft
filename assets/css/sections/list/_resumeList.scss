@@ -10,11 +10,11 @@
     }
     &__buttons {
         @extend .pos-abs;
-        top:20px;
-        right:30px;
+        @extend .t-m;
+        @extend .r-35;
     }
     .main__button {
-        left:30px;
+        @extend .l-30;
     }
     &__title {
         @extend .pos-abs;

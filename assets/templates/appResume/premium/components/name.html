@@ -1,0 +1,42 @@
+<ux-name class="component">
+
+    <btn-editable if={ $State.get('mode') === "editing" } data={ $store.resume.get("commons", "name") }></btn-editable>
+
+    <div onClick={ openEditable } onUpdate="none" class="{ opts.classname } { blur : !$store.resume.get('commons', 'name') }">
+        { $store.resume.get("commons", "name") ? $store.resume.get("commons", "name") + ' ' + $store.resume.get("commons", "surname") : $store.resume.placeholder.name }
+    </div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    this.on("mount", function(){
+        if ($State.get('mode') !== "editing"){
+            $scope.children().unwrap();
+        }
+    });
+
+    $.openEditable = function(){
+        if ($State.get('mode') === "editing"){
+            $Editable.show("name", {
+                title: $.opts.title,
+                data: {
+                    name: $store.resume.get("commons", "name"),
+                    surname: $store.resume.get("commons", "surname")
+                },
+                callback: function(data){
+                    $store.resume.select("commons", "name").set(_.clean(data.name, ""));
+                    $store.resume.select("commons", "surname").set(_.clean(data.surname, ""));
+                    $.update();
+                }
+            });
+        }
+        else {
+            return true;
+        }
+    };
+
+</script>
+
+</ux-name>

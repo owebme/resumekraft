@@ -2,7 +2,7 @@
     @extend .pos-tr-fixed;
     width:720px;
     @extend .h100p;
-    padding-top:100px;
+    @extend .pt100;
     @extend .pr-m;
     @extend .bg-white;
     @extend .zIndex-8;
@@ -141,7 +141,7 @@
         @extend .display-block;
         @extend .pos-fixed;
         top:130px;
-        right:45px;
+        @extend .r-45;
         @extend .w60;
         @extend .h60;
         @extend .userSelect-none;
@@ -154,7 +154,7 @@
         will-change:transform, background-color;
 
         .d-phone & {
-            top:90px;
+            @extend .t-90;
             @extend .r-m;
             @extend .w50;
             @extend .h50;

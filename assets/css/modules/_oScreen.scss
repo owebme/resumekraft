@@ -26,7 +26,7 @@
         @include accelerate();
         @extend .opacity-01;
         transition:opacity .4s $cubic40;
-        will-change:opacity;
+        @extend .willChange-opacity;
         @extend .zIndex-2;
 
         &[data-pos="top-right"]{
@@ -115,7 +115,7 @@
     @extend .h20p;
     @extend .visibility-hidden;
     @extend .transition-default;
-    will-change:opacity;
+    @extend .willChange-opacity;
     @extend .zIndex-2;
 
     &__progress {

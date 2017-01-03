@@ -13,7 +13,7 @@ jqtest-result-columns {
             @extend .nowrap;
             @extend .text-uppercase;
             letter-spacing:2.5px;
-            will-change:opacity, transform;
+            @extend .willChange-tp;
             transition:transform 0.3s $cubic32, opacity 0.2s $cubic215;
 
             &[data-active="true"]{
@@ -100,7 +100,7 @@ jqtest-result-columns {
                     @extend .t-l;
                     @extend .w1px;
                     @extend .h100p;
-                    will-change:opacity, transform;
+                    @extend .willChange-tp;
                     border-left:2px dashed $white;
                     transform:translate3d(-50%, 40px, 0);
                     transition:transform .3s $cubic215 0.1s, opacity .3s $cubic215 0.1s;

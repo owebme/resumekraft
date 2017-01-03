@@ -11,7 +11,7 @@
         @extend .overflow-hidden;
         background-color:#171719;
         perspective:500px;
-        will-change:transform, opacity;
+        @extend .willChange-tp;
         transform-origin:0% 50%;
         transition:transform 0.5s $cubic40, opacity 0.5s $cubic40;
         @extend .zIndex-1;
@@ -27,7 +27,7 @@
         @include accelerate(true);
         opacity:0;
         @extend .bg-white;
-        will-change:transform, opacity;
+        @extend .willChange-tp;
         @extend .overflow-hidden;
 
         &--long {

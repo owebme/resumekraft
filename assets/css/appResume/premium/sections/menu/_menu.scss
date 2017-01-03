@@ -85,7 +85,7 @@
         @extend .visibility-hidden;
         @extend .pointerEvents-none;
         @extend .opacity-0;
-        will-change:opacity;
+        @extend .willChange-opacity;
         transition:opacity .2s $cubic345, visibility 0s .2s;
     }
     &__opener {

@@ -25,35 +25,40 @@
     var $ = this;
 
     $.openEditable = function(e){
-        $Editable.open(e, "courses", $,
-            {
-                root: function(){
-                    return  {
-                        title: null,
-                        text: null,
-                        items: null
+        if ($State.get('mode') === "editing"){
+            $Editable.open(e, "courses", $,
+                {
+                    root: function(){
+                        return  {
+                            title: null,
+                            text: null,
+                            items: null
+                        }
+                    },
+                    item: function(){
+                        return  {
+                            _id: _.newId(),
+                            name: null,
+                            title: null,
+                            year: new Date().getFullYear()
+                        }
                     }
                 },
-                item: function(){
-                    return  {
-                        _id: _.newId(),
-                        name: null,
-                        title: null,
-                        year: new Date().getFullYear()
+                [
+                    {
+                        field: "name",
+                        alert: "Название площадки или школы"
+                    },
+                    {
+                        field: "title",
+                        alert: "Введите название курса"
                     }
-                }
-            },
-            [
-                {
-                    field: "name",
-                    alert: "Название площадки или школы"
-                },
-                {
-                    field: "title",
-                    alert: "Введите название курса"
-                }
-            ]
-        );
+                ]
+            );
+        }
+        else {
+            return true;
+        }
     };
 
 </script>

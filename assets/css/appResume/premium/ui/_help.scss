@@ -1,8 +1,8 @@
 .help {
     @include accelerate();
     @extend .pos-abs;
-    bottom:30px;
-    left:35px;
+    @extend .b-30;
+    @extend .l-35;
     @extend .zIndex-3;
 
     .d-no-safari &,
@@ -69,7 +69,7 @@
         @extend .lineHeight-xl;
         @extend .boxShadow-default;
         @extend .section-scroll;
-        will-change:transform, opacity;
+        @extend .willChange-tp;
         transform-origin:50% 100%;
         transition:transform 0.2s $cubic345, opacity 0.2s $cubic345, visibility 0s 0.2s;
 
@@ -135,7 +135,7 @@
             @extend .opacity-0;
             @extend .pointerEvents-none;
             @extend .visibility-hidden;
-            will-change:transform, opacity;
+            @extend .willChange-tp;
             transform-origin:0% 50%;
             transform:translate3d(-2vw, 0, 0) scale3d(1, 0, 1);
             transition:transform 0.2s $cubic345, opacity 0.2s $cubic345, visibility 0s 0.2s;

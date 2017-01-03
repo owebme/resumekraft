@@ -61,49 +61,54 @@
     var $ = this;
 
     $.openEditable = function(e){
-        $Editable.open(e, "works", $,
-            {
-                root: function(){
-                    return  {
-                        title: null,
-                        text: null,
-                        items: null
-                    }
-                },
-                item: function(){
-                    return  {
-                        _id: _.newId(),
-                        year: new Date().getFullYear(),
-                        title: null,
-                        text: null,
-                        links: {
-                            url: {
-                                title: null,
-                                value: null
-                            },
-                            image: {
-                                title: null,
-                                value: null
-                            },
-                            video: {
-                                title: null,
-                                value: null
+        if ($State.get('mode') === "editing"){
+            $Editable.open(e, "works", $,
+                {
+                    root: function(){
+                        return  {
+                            title: null,
+                            text: null,
+                            items: null
+                        }
+                    },
+                    item: function(){
+                        return  {
+                            _id: _.newId(),
+                            year: new Date().getFullYear(),
+                            title: null,
+                            text: null,
+                            links: {
+                                url: {
+                                    title: null,
+                                    value: null
+                                },
+                                image: {
+                                    title: null,
+                                    value: null
+                                },
+                                video: {
+                                    title: null,
+                                    value: null
+                                }
                             }
                         }
                     }
-                }
-            },
-            [
-                {
-                    field: "title",
-                    alert: "Введите название проекта"
                 },
-                {
-                    field: "text",
-                    alert: "Введите описание проекта"
-                }
-            ]
-        );
+                [
+                    {
+                        field: "title",
+                        alert: "Введите название проекта"
+                    },
+                    {
+                        field: "text",
+                        alert: "Введите описание проекта"
+                    }
+                ]
+            );
+        }
+        else {
+            return true;
+        }        
     };
 
     $.isYears = function(){

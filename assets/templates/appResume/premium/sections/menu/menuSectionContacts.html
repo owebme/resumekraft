@@ -6,7 +6,7 @@
                 <span class="title">Имя</span>
             </div>
             <div class="col-sm-16">
-                <ui-input update="name" cursor={ data.select() } size="l"></ui-input>
+                <ui-input placeholder="Имя" update="name" cursor={ data.select() } size="l"></ui-input>
             </div>
         </div>
         <div class="row mb-m">
@@ -14,7 +14,7 @@
                 <span class="title">Фамилия</span>
             </div>
             <div class="col-sm-16">
-                <ui-input update="surname" cursor={ data.select() } size="l"></ui-input>
+                <ui-input placeholder="Фамилия" update="surname" cursor={ data.select() } size="l"></ui-input>
             </div>
         </div>
         <div class="row mb-s">
@@ -78,7 +78,7 @@
                 <span class="visible-sm title">Телефон</span>
             </div>
             <div class="col-xs-24 col-sm-16">
-                <ui-input update="phone" cursor={ data.select('contacts') } size="l"></ui-input>
+                <ui-input update="phone" cursor={ data.select('contacts') } mask="phone" size="l"></ui-input>
             </div>
         </div>
         <div class="row mb-m">

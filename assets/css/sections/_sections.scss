@@ -7,7 +7,7 @@
         @extend .visibility-hidden;
         @extend .pointerEvents-none;
         @extend .opacity-0;
-        will-change:opacity;
+        @extend .willChange-opacity;
         transition:opacity 0.3s $cubic28, visibility 0.3s 0s;
         @extend .zIndex-5;
     }
@@ -128,7 +128,7 @@
 		.section__content {
 			@include accelerate(true);
 			perspective:500px;
-	        will-change:transform, opacity;
+	        @extend .willChange-tp;
 	        transform-origin:0% 50%;
 	        transition:transform 0.5s $cubic40, opacity 0.5s $cubic40;
 		}
@@ -137,7 +137,7 @@
 		.section__content {
 			@include accelerate();
 			perspective:500px;
-	        will-change:transform, opacity;
+	        @extend .willChange-tp;
 	        transform-origin:0% 50%;
 			@extend .opacity-50;
 			transform:perspective(500px) scale(.96) translateX(4%) rotateY(4deg);
@@ -178,6 +178,7 @@
     }
 	&__slider {
 		&__navbar {
+			@include accelerate();
 		    @extend .w100p;
 			@extend .plr-l;
             @extend .xs-plr-m;
@@ -222,7 +223,7 @@
 				@extend .h100p;
 				@extend .opacity-0;
 
-				.d-phone & {
+				.d-mobile & {
 					@extend .l0;
 					@extend .w100p;
 				}

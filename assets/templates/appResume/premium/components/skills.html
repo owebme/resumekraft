@@ -8,7 +8,7 @@
         <div class="row">
             <div if={ $resume.skills && $resume.skills.header } class="col-md-24 col-lg-12">
                 <div class="screen2-col-left">
-                    <h2 class="lineHeight-xxxl c-primary mb-l sm-mb-xl editing editing-text editing-skills-header">{ $resume.skills && $resume.skills.header ? $resume.skills.header : $store.resume.placeholder.skills.header }</h2>
+                    <h2 class="lineHeight-xxxl c-primary mb-l sm-mb-xl md-pr-l editing editing-text editing-skills-header">{ $resume.skills && $resume.skills.header ? $resume.skills.header : $store.resume.placeholder.skills.header }</h2>
                 </div>
             </div>
             <div if={ $resume.skills && $resume.skills.items || !$resume.skills } class="col-md-21 { $resume.skills.header ? 'col-lg-12' : 'col-lg-17 mt-m' }">
@@ -33,31 +33,36 @@
     var $ = this;
 
     $.openEditable = function(e){
-        var items = [];
-        for (var i=0; i < 4; i++){
-            items.push({
-                title: "",
-                value: "100"
-            })
-        }
-        $Editable.open(e, "skills", $,
-            {
-                root: function(){
-                    return  {
-                        title: null,
-                        header: null,
-                        text: null,
-                        items: items
-                    }
-                },
-                item: function(){
-                    return  {
-                        title: "",
-                        value: "100"
+        if ($State.get('mode') === "editing"){
+            var items = [];
+            for (var i=0; i < 4; i++){
+                items.push({
+                    title: "",
+                    value: "100"
+                })
+            }
+            $Editable.open(e, "skills", $,
+                {
+                    root: function(){
+                        return  {
+                            title: null,
+                            header: null,
+                            text: null,
+                            items: items
+                        }
+                    },
+                    item: function(){
+                        return  {
+                            title: "",
+                            value: "100"
+                        }
                     }
                 }
-            }
-        );
+            );
+        }
+        else {
+            return true;
+        }
     };
 
 </script>

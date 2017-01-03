@@ -2,7 +2,7 @@
 
 	<div id="t-header">
 		<div id="t-header-names">
-			{ $resume.get('surname') } { $resume.get('name') }
+			{ $resume.get('commons', 'surname') } { $resume.get('commons', 'name') }
 		</div>
 		<div id="t-header-post">
 			{ $resume.get('post') }
@@ -16,25 +16,25 @@
 			<div class="t-container-string-left">
 				<div class="t-container-string-element">
 					<span class="cell cell-name">Возраст:</span>
-					<span class="cell"><virtual if={ !$resume.get('birthday', 'hidden') }>{ $resume.take.birthday.date() }&nbsp;</virtual>({ $resume.take.birthday.age() })</span>
+					<span class="cell"><virtual if={ !$resume.get('commons', 'birthday', 'hidden') }>{ $resume.take.birthday.date() }&nbsp;</virtual>({ $resume.take.birthday.age() })</span>
 				</div>
-				<div if={ $resume.get('contacts', 'city') } class="t-container-string-element">
+				<div if={ $resume.get('commons', 'contacts', 'city') } class="t-container-string-element">
 					<span class="cell cell-name">Город:</span>
-					<span class="cell">{ $resume.get('contacts', 'city') }</span>
+					<span class="cell">{ $resume.get('commons', 'contacts', 'city') }</span>
 				</div>
 			</div>
 			<div class="t-container-string-left">
-				<div if={ $resume.get('contacts', 'email') } class="t-container-string-element">
+				<div if={ $resume.get('commons', 'contacts', 'email') } class="t-container-string-element">
 					<span class="cell cell-name">Email:</span>
-					<span class="cell cell-email">{ $resume.get('contacts', 'email') }</span>
+					<span class="cell cell-email">{ $resume.get('commons', 'contacts', 'email') }</span>
 				</div>
-				<div if={ $resume.get('contacts', 'phone') } class="t-container-string-element">
+				<div if={ $resume.get('commons', 'contacts', 'phone') } class="t-container-string-element">
 					<span class="cell cell-name">Телефон:</span>
-					<span class="cell">{ $resume.get('contacts', 'phone') }</span>
+					<span class="cell">{ $resume.get('commons', 'contacts', 'phone') }</span>
 				</div>
-				<div if={ $resume.get('contacts', 'skype') } class="t-container-string-element">
+				<div if={ $resume.get('commons', 'contacts', 'skype') } class="t-container-string-element">
 					<span class="cell cell-name">Skype:</span>
-					<span class="cell">{ $resume.get('contacts', 'skype') }</span>
+					<span class="cell">{ $resume.get('commons', 'contacts', 'skype') }</span>
 				</div>
 			</div>
 		</div>
@@ -84,14 +84,14 @@
 					<div>{ job.city }</div>
 					<div><strong>{ job.post }</strong></div>
 					<div>{ $resume.take.jobs.period(job) }</div>
-					<div class="mt5">{ job.text }</div>
+					<div class="mt5 preline">{ job.text }</div>
 				</span>
 			</div>
 		</div>
-		<div if={ $resume.get('aboutText').length } class="t-container-string t-container-string-about">
+		<div if={ $resume.get('about').length } class="t-container-string t-container-string-about">
 			<div class="t-container-string-element">
 				<span class="cell cell-name">О себе</span>
-				<span class="cell cell-text">{ $resume.get('aboutText') }</span>
+				<span class="cell cell-text preline">{ $resume.get('about') }</span>
 			</div>
 		</div>
 	</div>

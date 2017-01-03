@@ -27,13 +27,18 @@
 
         _.each($resume.get(), function(value, key){
             if (_.indexOf(array, key)){
-                if (key == "contacts"){
-                    _.each(value, function(v){
-                        if (v && v.length) p++;
+                if (key == "commons"){
+                    _.each(value, function(v, k){
+                        if (k == "contacts"){
+                            _.each(v, function(val){
+                                if (val && val.length) p++;
+                            });
+                        }
+                        else if (v && v.length) p++;
                         all++;
                     });
                 }
-                else if (key == "aboutText"){
+                else if (key == "about"){
                     if (value && value.length) p += 3;
                 }
                 else if (key == "education"){

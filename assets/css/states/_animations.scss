@@ -1,7 +1,7 @@
 .anim {
     opacity:0.001;
     @include accelerate();
-    will-change:opacity, transform;
+    @extend .willChange-tp;
 
     &-scale {
         transform:translate3d(0, 0, 0) scale(1.5);

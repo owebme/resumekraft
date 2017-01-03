@@ -305,6 +305,20 @@
 		return utils.trim(str).replace(/([a-z\d])([A-Z]+)/g, '$1_$2').replace(/[-\s]+/g, '_').toLowerCase();
 	};
 
+	utils.deepExtend = function(target, source) {
+	    for (var prop in source) {
+	        if (source.hasOwnProperty(prop)) {
+	            if (target[prop] && typeof source[prop] === 'object') {
+	                utils.deepExtend(target[prop], source[prop]);
+	            }
+	            else {
+	                target[prop] = source[prop];
+	            }
+	        }
+	    }
+	    return target;
+	};
+
 	utils.numberFormat = function(number, dec, dsep, tsep) {
 		if (isNaN(number) || number == null) return '';
 
@@ -320,7 +334,7 @@
 
 	utils.clean = function(field, def) {
 		field = _.escape(utils.trim(field));
-		return field ? field : (def ? def : null);
+		return field ? field : (def !== undefined ? def : null);
 	};
 
 	utils.isObject = function(obj) { return Object.prototype.toString.call(obj) === '[object Object]'};

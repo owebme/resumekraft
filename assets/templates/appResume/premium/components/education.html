@@ -27,33 +27,38 @@
     var $ = this;
 
     $.openEditable = function(e){
-        $Editable.open(e, "education", $,
-            {
-                root: function(){
-                    return  {
-                        title: null,
-                        text: null,
-                        items: null
+        if ($State.get('mode') === "editing"){
+            $Editable.open(e, "education", $,
+                {
+                    root: function(){
+                        return  {
+                            title: null,
+                            text: null,
+                            items: null
+                        }
+                    },
+                    item: function(){
+                        return  {
+                            _id: _.newId(),
+                            level: "1",
+                            title: null,
+                            faculty: null,
+                            speciality: null,
+                            year: new Date().getFullYear()
+                        }
                     }
                 },
-                item: function(){
-                    return  {
-                        _id: _.newId(),
-                        level: "1",
-                        title: null,
-                        faculty: null,
-                        speciality: null,
-                        year: new Date().getFullYear()
+                [
+                    {
+                        field: "title",
+                        alert: "Введите название учебного заведения"
                     }
-                }
-            },
-            [
-                {
-                    field: "title",
-                    alert: "Введите название учебного заведения"
-                }
-            ]
-        );
+                ]
+            );
+        }
+        else {
+            return true;
+        }
     };
 
 </script>

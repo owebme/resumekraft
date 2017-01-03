@@ -9,8 +9,8 @@
         @extend .zIndex-1;
 
         .d-no-phone & {
-            top:30px;
-            left:25px;
+            @extend .t-30;
+            @extend .l-25;
             width:calc(50vw - 20px);
             height:calc(100vh - 20px);
             @extend .pointerEvents-none;
@@ -28,6 +28,12 @@
             @extend .l0;
             @extend .w100p;
             @extend .h100v;
+        }
+        .d-tablet.r-landscape & {
+            width:calc(70vw - 20px);
+        }
+        .d-tablet.r-portrait & {
+            width:calc(100vw - 50px);
         }
         &__navbar {
             @extend .h55;

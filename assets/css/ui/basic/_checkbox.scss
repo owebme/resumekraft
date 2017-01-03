@@ -64,7 +64,7 @@
             @extend .display-inlineBlock;
             @extend .opacity-0;
             transform:scale3d(0.5, 0, 1);
-            will-change:opacity, transform;
+            @extend .willChange-tp;
             transition:opacity .5s $cubic089, transform .5s $cubic089;
             @include ui-icon(check_black);
         }

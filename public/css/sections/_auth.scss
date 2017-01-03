@@ -57,7 +57,7 @@
     }
     &__close {
         @extend .pos-abs;
-        top:10px;
+        @extend .t-xxs;
         right:-50px;
 
         &__button {

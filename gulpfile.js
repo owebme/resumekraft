@@ -168,7 +168,8 @@ gulp.task('templates.basic.view', function() {
 		gulp.src('assets/css/appResume/basic/templates/style.css'),
 		px2vw({
 			width: 1280,
-			minPx: 0.0001,
+			minPx: 2,
+			maxPx: 10000,
 			replace: true
 		}),
 		rename("style.view.css"),
@@ -441,7 +442,7 @@ gulp.task('watch', function() {
 	gulp.watch([
 		'assets/css/style.scss',
 		'assets/css/**/*.scss'
-	], {debounceDelay: 1000} , gulp.parallel('premium.css'));
+	], {debounceDelay: 1000} , gulp.parallel('private.css'));
 
 	gulp.watch([
 		'assets/css/**/templates/style.scss',

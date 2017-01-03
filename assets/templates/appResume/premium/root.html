@@ -33,21 +33,14 @@
 
     $resume = $store.resume.get();
 
-    var mode = app.demo ? app.demo : "editing";
+    var mode = app.demo ? app.demo : "edit1ing",
+        config = $store.resume.select("config").deepClone();
 
-    $State = new Baobab({
-        mode: mode,
-        public: true,
-        lang: "ru",
-        color: "#0084ff",
-        font: "futura",
-        photo: {
-            minWidth: 440,
-            maxHeight: 620,
-            noise: false
-        }
-    },
-    { autoCommit: true });
+    config.mode = mode;
+    config.public = $store.resume.get("public");
+    config.lang = $store.resume.get("lang");
+
+    $State = new Baobab(config, { autoCommit: true });
 
     this.on("before-mount", function(){
 
@@ -73,7 +66,8 @@
     });
 
     this.one("ready", function(){
-        app.$dom.body.removeClass("appLoading");
+        app.$dom.body.removeClass("appLoading")
+        .attr("id", "ready");
 
         if (app.demo){
             if (window.parent && window.parent){

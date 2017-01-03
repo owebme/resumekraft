@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div if={ $resume.social } class="mt-m">
-                <ux-social-items classname="social social-s"></ui-social-items>
+                <ux-social-items classname="social social-{ app.device.isPhone ? 'm' : 's' }"></ui-social-items>
             </div>
         </div>
     </div>
@@ -48,7 +48,12 @@
     var $ = this;
 
     $.openEditable = function(){
-        $Menu.show('contacts');
+        if ($State.get('mode') === "editing"){
+            $Menu.show('contacts');
+        }
+        else {
+            return true;
+        }
     };
 
 </script>

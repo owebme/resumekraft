@@ -3,7 +3,7 @@
     <btn-editable if={ $State.get('mode') === "editing" } data={ opts.cursor.get(opts.update) }></btn-editable>
 
     <div onClick={ openEditable } onUpdate="none" class="{ opts.classname } { blur : !opts.cursor.get(opts.update) }">
-        <div class={ 'editing editing-text editing-commons-text' : opts.update != "name" && opts.update != "post" }>{ opts.cursor.get(opts.update) ? opts.cursor.get(opts.update) : $store.resume.placeholder[opts.update] }</div>
+        <div class={ 'editing editing-text editing-commons-text' : opts.update != "post" }>{ opts.cursor.get(opts.update) ? opts.cursor.get(opts.update) : $store.resume.placeholder[opts.update] }</div>
     </div>
 
 <script>
@@ -37,6 +37,9 @@
                 }
             });
             $.editable = true;
+        }
+        else {
+            return true;
         }
     };
 

@@ -24,6 +24,32 @@
         right:-$size;
     }
 }
+@for $i from 1 through 20 {
+    .t-#{$i * 5} {
+        top:$i * 5px;
+    }
+    .b-#{$i * 5} {
+        bottom:$i * 5px;
+    }
+    .l-#{$i * 5} {
+        left:$i * 5px;
+    }
+    .r-#{$i * 5} {
+        right:$i * 5px;
+    }
+    .t--#{$i * 5} {
+        top:-$i * 5px;
+    }
+    .b--#{$i * 5} {
+        bottom:-$i * 5px;
+    }
+    .l--#{$i * 5} {
+        left:-$i * 5px;
+    }
+    .r--#{$i * 5} {
+        right:-$i * 5px;
+    }
+}
 .pos-rel {
     position:relative;
 }

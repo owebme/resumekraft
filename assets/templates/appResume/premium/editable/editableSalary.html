@@ -1,7 +1,7 @@
 <editable-salary class="col-sm-offset-4 col-sm-18 col-md-offset-5 col-md-14 col-lg-offset-7 col-lg-12 section__editable__container">
 
-    <div onClick={ show.salary } class="section__editable__arrow" data-pos="left" data-active={ screen == "graph" }>{ 'Желаемая' : !app.device.isPhone } зарплата</div>
-    <div onClick={ show.graph } class="section__editable__arrow" data-pos="right" data-active={ screen == "salary" }>График роста { 'оплаты труда' : !app.device.isPhone }</div>
+    <div onClick={ show.salary } class="hidden-sm section__editable__arrow" data-pos="left" data-active={ screen == "graph" } data-closer={ app.device.isMobile }>{ 'Желаемая' : !app.device.isPhone } зарплата</div>
+    <div onClick={ show.graph } class="hidden-sm section__editable__arrow" data-pos="right" data-active={ screen == "salary" } data-closer={ app.device.isMobile }>График роста { 'оплаты труда' : !app.device.isPhone }</div>
 
     <div class="section__editable__content__screen" data-pos="left" data-active={ screen == "salary" }>
 
@@ -175,17 +175,17 @@
     $.autoCommitValue = function(value){
         if ($.data && $.data.amount){
             $.data.amount = value;
-            var tag = $["salaryGraphSlider_" + 5]._tag;
-            if (tag && !tag.changed){
-                tag.change(value);
-            }
+            // var tag = $["salaryGraphSlider_" + 5]._tag;
+            // if (tag && !tag.changed){
+            //     tag.change(value);
+            // }
         }
     };
 
     $.autoCommitGraphValue = function(value, i){
         if ($.data && $.data.graph && $.data.graph.items){
             $.data.graph.items[5 - i] = value;
-            if (i == 5 && !$.slider.changed) $.slider.change(value, true);
+            // if (i == 5 && !$.slider.changed) $.slider.change(value, true);
         }
     };
 

@@ -1,6 +1,7 @@
 .social {
 	@extend .inline;
-	margin:0 -20px 0 -10px;
+	@extend .ml--xs;
+	@extend .mr--m;
 
 	&-s {
 		margin:0 -8px;
@@ -40,6 +41,7 @@
 		}
 	}
 	&-btn {
+		@extend .display-inlineBlock;
 		width:62px;
 		height:62px;
 		@extend .vAlign-top;
@@ -50,7 +52,7 @@
 		@extend .transition-default;
 		margin:0 6px 10px;
 
-		&:hover {
+		.m-no-touch &:hover {
 			@extend .bg-primary;
 
 			path {

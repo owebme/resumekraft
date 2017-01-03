@@ -431,4 +431,97 @@
             width:150%;
         }
     }
+    section[data-section="coverletter"] {
+        &[data-color="black"]{
+            .coverletter__text {
+                @extend .c-white;
+            }
+        }
+        &[data-color="white"]{
+            @extend .bg-white;
+
+            .coverletter__text {
+                @extend .c-blackLight;
+            }
+        }
+    }
+    .coverletter {
+        @extend .display-block;
+
+        &__text {
+            @extend .fontSize-22;
+            @extend .lineHeight-xxl;
+            @extend .text-center;
+            @extend .whiteSpace-preLine;
+        }
+    }
+}
+
+.d-no-phone {
+    .resume {
+        section[data-section="coverletter"] {
+            @include abs("fixed");
+            @extend .willChange-opacity;
+            @extend .pointerEvents-none;
+            @extend .visibility-hidden;
+            @extend .opacity-0;
+            transition:opacity .35s $cubic32, visibility 0s .35s;
+            @extend .zIndex-101;
+
+            &[data-color="black"]{
+                background:radial-gradient(rgba(64,64,75,.9), rgba(17,17,24,.9)) rgba(34,34,40,.52);
+            }
+            .screen__content {
+                @extend .pos-centered;
+                @extend .container;
+            }
+        }
+        &[data-coverletter="true"]{
+            section[data-section="coverletter"] {
+                @extend .pointerEvents-all;
+                @extend .visibility-visible;
+                @extend .opacity-100;
+                @extend .transition-none;
+            }
+        }
+        .coverletter {
+            &__text {
+                @extend .willChange-tp;
+                @extend .opacity-0;
+                @extend .scale-110;
+                transition:transform .35s $cubic32, opacity .35s $cubic32;
+            }
+        }
+    }
+}
+.d-phone {
+    .resume {
+        section[data-section="coverletter"] {
+            &[data-color="black"]{
+                @extend .bg-blackLight;
+            }
+            .screen__content {
+                @extend .h100v;
+                @extend .pt-l;
+                @extend .pb-xl;
+                @extend .flex-centered;
+            }
+        }
+    }
+}
+body#ready {
+    .resume[data-coverletter="true"]{
+        .d-no-mobile & {
+            section[data-section="commons"] {
+                filter:blur(14px);
+            }
+        }
+        .coverletter {
+            &__text {
+                @extend .opacity-100;
+                @extend .scale-100;
+                transition:transform .6s $cubic32 .2s, opacity .6s $cubic32 .2s;
+            }
+        }
+    }
 }

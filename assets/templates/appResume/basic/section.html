@@ -30,9 +30,9 @@
     });
 
     $.on("mount", function(){
-        // setTimeout(function(){
-        //     $.show();
-        // }, 500);
+        $afterlag.run(function(){
+            $.show();
+        });
     });
 
     $.show = function(){

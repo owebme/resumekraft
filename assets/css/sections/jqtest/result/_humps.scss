@@ -76,7 +76,7 @@ jqtest-result-humps {
     .humpText,
     .humpLevel {
         @extend .opacity-0;
-        will-change:opacity;
+        @extend .willChange-opacity;
         transition:opacity 0.4s $cubic28;
     }
 }

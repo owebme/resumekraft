@@ -14,7 +14,7 @@
     @extend .zIndex-5;
 
     .d-phone & {
-        top:90px;
+        @extend .t-90;
         right:5px;
     }
     &__item {

@@ -83,7 +83,7 @@
         @extend .pointerEvents-none;
         @extend .cursor-pointer;
         padding-top:2px;
-        will-change:transform, opacity;
+        @extend .willChange-tp;
         transition:transform .5s $cubic075, opacity .5s $cubic075, background-color .2s;
         @extend .borderRadius-circle;
 

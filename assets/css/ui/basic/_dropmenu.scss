@@ -4,7 +4,7 @@
     @extend .userSelect-none;
     @extend .visibility-hidden;
     @extend .pointerEvents-none;
-    will-change:opacity, transform;
+    @extend .willChange-tp;
     @include accelerate();
     transition:opacity 0.2s $cubic215, transform 0.25s $bounceSoft, visibility 0s 0.25s;
     transform:scale(0);

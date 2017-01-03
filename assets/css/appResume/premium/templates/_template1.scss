@@ -6,6 +6,10 @@
         @extend .h100p;
         @extend .bg-primary;
         @extend .zIndex-1;
+
+        .d-tablet.r-landscape & {
+            @extend .ml--25;
+        }
     }
     .main-line {
         @include accelerate(true);
@@ -76,7 +80,7 @@
                 @extend .w100p;
                 @extend .text-center;
                 @extend .opacity-0;
-                will-change:opacity;
+                @extend .willChange-opacity;
                 transition:opacity 0.3s ease;
                 @extend .h35p;
             }
@@ -190,6 +194,7 @@
         .work-items:before,
         .job-items:before {
             @extend .bg-primary;
+            @extend .md-ml--m;
 
             .d-tablet.r-portrait &,
             .d-phone & {
@@ -234,7 +239,7 @@
                     background-image:url(/assets/images/resume/jobs_white.svg);
                 }
             }
-            &[data-section="main"],
+            &[data-section="commons"],
             &[data-section="contacts"]{
                 @extend .zIndex-4;
             }
@@ -302,6 +307,7 @@
                     width:148px;
                     height:202px;
                     @extend .trY-xs;
+                    @extend .md-ml0;
                     background-image:url(/assets/images/resume/courses_white.svg);
                 }
             }
@@ -314,6 +320,7 @@
                     width:164px;
                     height:164px;
                     transform:translateY(70px);
+                    @extend .md-ml--xxs;
                     background-image:url(/assets/images/resume/languages_white.svg);
                 }
             }
@@ -322,6 +329,7 @@
                     width:164px;
                     height:164px;
                     @extend .trY-l;
+                    @extend .md-ml-xxs;
                     background-image:url(/assets/images/resume/hobby_white.svg);
                 }
             }
@@ -339,12 +347,30 @@
                 @extend .pb0;
             }
         }
+        .d-phone &[data-section="coverletter"]{
+            .screen__content {
+                @extend .ptb-l;
+            }
+        }
+        .d-phone &[data-section="feedback"]{
+            .screen__content {
+                @extend .pb50;
+            }
+        }
     }
     .screen__inner {
         @extend .pl-l;
         @extend .pr-m;
+        @extend .md-pl-m;
     }
     .d-tablet & {
+        .screen2 {
+            &-col-right {
+                @extend .plr0;
+            }
+        }
+    }
+    .d-tablet.r-landscape & {
         .screen2 {
             &-col-right {
                 @extend .plr0;

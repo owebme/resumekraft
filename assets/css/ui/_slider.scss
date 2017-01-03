@@ -7,7 +7,7 @@
         @extend .display-inlineBlock;
         @extend .vAlign-top;
         @extend .float-none;
-        will-change:opacity, transform;
+        @extend .willChange-tp;
         transform:translate3d(400%, 0, 0) rotate(-10deg);
 
         .showSlides:not(.largeSlides) & {

@@ -2,8 +2,8 @@
 
     <ui-switcher id="activity" value={ active } commit="true"></ui-switcher>
 
-    <div onClick={ show.hobby } class="section__editable__arrow" data-pos="left" data-active={ screen == "text" } data-closer="true">Выбрать хобби</div>
-    <div onClick={ show.text } class="section__editable__arrow" data-pos="right" data-active={ screen == "hobby" } data-closer="true">Описание увлечений</div>
+    <div onClick={ show.hobby } class="hidden-sm hidden-md section__editable__arrow" data-pos="left" data-active={ screen == "text" } data-closer="true">Выбрать хобби</div>
+    <div onClick={ show.text } class="hidden-sm hidden-md section__editable__arrow" data-pos="right" data-active={ screen == "hobby" } data-closer="true">Описание увлечений</div>
 
     <div class="section__editable__content__screen" data-pos="left" data-active={ screen == "hobby" }>
         <div class="section__editable__content col-lg-offset-1 { hide : !switcher.value }">

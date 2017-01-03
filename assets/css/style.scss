@@ -44,7 +44,8 @@
 
 // Sections
 @import 'sections/sections';
-@import 'sections/menu';
+@import 'sections/menu/menu';
+@import 'sections/menu/menuMobile';
 
 // jqtest
 @import 'sections/jqtest/jqtest';

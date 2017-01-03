@@ -42,7 +42,21 @@
 <script>
 
     var $ = this,
-    $scope = $$($.root);
+    $scope = $$($.root),
+    minWidth = $store.resume.get("config", "photo", "minWidth"),
+    maxHeight = $store.resume.get("config", "photo", "maxHeight");
+
+    $.config = {
+        minWidth: minWidth,
+        maxHeight: maxHeight,
+        alertSmallImage: 'Загружаемое фото слишком маленькое, минимально допустимый размер по ширине ' + minWidth + 'px',
+        export: {
+            type: "image/jpeg",
+            quality: 0.9,
+            originalSize: true,
+            maxZoom: 1.5
+        }
+    };
 
     $.active = false;
 
@@ -52,9 +66,9 @@
         $.imageEditor = $scope.find('.image-editor');
 
         $.imageEditor.cropit({
-            maxHeight: $store.resume.config.photo.maxHeight,
+            maxHeight: $.config.maxHeight,
             onSmallImage: function(size){
-                alert($store.resume.config.photo.alertSmallImage);
+                alert($.config.alertSmallImage);
                 $.upload.value = "";
             },
             onImageLoaded: function(){
@@ -68,8 +82,8 @@
         });
 
         $.imageEditor.find(".cropit-preview").css({
-            "width": ($store.resume.config.photo.maxWidth + 6) + "px",
-            "height": ($store.resume.config.photo.maxHeight + 6) + "px"
+            "width": ($.config.maxWidth + 6) + "px",
+            "height": ($.config.maxHeight + 6) + "px"
         });
 
         $scope.find('.btn-uploadImage').on("click", function(){
@@ -108,7 +122,7 @@
         setTimeout(function(){
             var imageData = $.imageEditor.cropit(
                 'export',
-                $store.resume.config.photo.export
+                $.config.export
             );
 
             setTimeout(function(){

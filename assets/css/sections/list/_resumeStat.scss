@@ -12,7 +12,7 @@
         @include abs();
         @include accelerate(true);
         background:rgba(darken($grayDark,15%),.7);
-        will-change:opacity;
+        @extend .willChange-opacity;
         transition:opacity 0.4s $cubic40;
     }
     &__wrapper {

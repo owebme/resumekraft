@@ -23,7 +23,7 @@
                 <div class="mb-l">
                     <input type="range" class="editable__photo__slider cropit-image-zoom-input">
                 </div>
-                <div>
+                <div class="nowrap-md">
                     <button onClick={ onCancel } class="btn btn-l btn-upper sm-mb-m" type="button">Отменить</button>
                     <button onClick={ onSave } class="btn btn-l btn-upper ml-xs sm-ml0 { btn-loading : saved }" type="button">Сохранить</button>
                 </div>
@@ -34,7 +34,21 @@
 <script>
 
     var $ = this,
-    $scope = $$($.root);
+    $scope = $$($.root),
+    minWidth = $store.resume.get("config", "photo", "minWidth"),
+    maxHeight = $store.resume.get("config", "photo", "maxHeight");
+
+    $.config = {
+        minWidth: minWidth,
+        maxHeight: maxHeight,
+        alertSmallImage: 'Загружаемое фото слишком маленькое, минимально допустимый размер по ширине ' + minWidth + 'px',
+        export: {
+            type: "image/jpeg",
+            quality: 0.9,
+            originalSize: true,
+            maxZoom: 1.5
+        }
+    };
 
     $.on("mount", function(){
         if ($.imageEditor) return;
@@ -42,9 +56,9 @@
         $.imageEditor = $scope.find('.image-editor');
 
         $.imageEditor.cropit({
-            maxHeight: $store.resume.config.photo.maxHeight,
+            maxHeight: $.config.maxHeight,
             onSmallImage: function(size){
-                alert($store.resume.config.photo.alertSmallImage);
+                alert($.config.alertSmallImage);
                 $.upload.value = "";
             },
             onImageLoaded: function(){
@@ -91,7 +105,7 @@
 
         var imageData = $.imageEditor.cropit(
             'export',
-            $store.resume.config.photo.export
+            $.config.export
         );
 
         setTimeout(function(){

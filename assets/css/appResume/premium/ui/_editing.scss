@@ -9,7 +9,7 @@
             @extend .cursor-pointer;
             @extend .borderWidth-2;
             @extend .borderStyle-dashed;
-            will-change:opacity, transform;
+            @extend .willChange-tp;
             transition:opacity 0.25s $bounce, transform 0.35s $bounce;
             transform:translate3d(-20px, -20px, 0) scale(0.95);
 

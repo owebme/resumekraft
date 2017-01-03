@@ -1,9 +1,9 @@
-<editable-visible class="col-sm-24 col-md-offset-1 col-md-22 col-lg-offset-4 col-lg-18 section__editable__container" data-editing="visible">
+<editable-visible class="col-sm-24 col-md-offset-2 col-md-22 col-lg-offset-4 col-lg-18 section__editable__container" data-editing="visible">
 
     <div class="title title-main">{ title }</div>
 
     <div class="row">
-        <virtual each={ item, i in items }>
+        <virtual each={ item, i in _.where(items, {"control": true}) }>
             <div class="col-xs-18 col-sm-8 transition-default { opacity-50 : !item.active } mb-s">
                 <div class="title title-m text-truncate">{ item.title }</div>
             </div>

@@ -25,24 +25,29 @@
     var $ = this;
 
     $.openEditable = function(e){
-        $Editable.open(e, "hobby", $,
-            {
-                root: function(){
-                    return  {
-                        title: null,
-                        text: null,
-                        items: null
+        if ($State.get('mode') === "editing"){
+            $Editable.open(e, "hobby", $,
+                {
+                    root: function(){
+                        return  {
+                            title: null,
+                            text: null,
+                            items: null
+                        }
+                    }
+                },
+                false,
+                {
+                    before: function($){
+                        var target = e.currentTarget.getAttribute("data-target");
+                        if (target) $.show[target].call();
                     }
                 }
-            },
-            false,
-            {
-                before: function($){
-                    var target = e.currentTarget.getAttribute("data-target");
-                    if (target) $.show[target].call();
-                }
-            }
-        );
+            );
+        }
+        else {
+            return true;
+        }
     };
 
 </script>

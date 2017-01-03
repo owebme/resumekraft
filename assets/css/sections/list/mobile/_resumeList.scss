@@ -1,6 +1,6 @@
 .resume__list-m {
     @extend .display-block;
-    will-change:opacity;
+    @extend .willChange-opacity;
     transition:opacity 0.5s $cubic40;
 
     &[data-hidden="true"] {

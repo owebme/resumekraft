@@ -181,7 +181,9 @@
                     });
                 }
                 else {
-                    $.hide();
+                    $.hide(function(){
+                        $Sections.resume.edit.show();
+                    });
                 }
             },
             premium: function(){

@@ -44,7 +44,7 @@
         @extend .opacity-0;
         @extend .pointerEvents-all;
         box-shadow:0 20px 25px rgba(31,35,37,.15);
-        will-change:opacity;
+        @extend .willChange-opacity;
         transition:opacity .3s ease;
         width:440px;
 

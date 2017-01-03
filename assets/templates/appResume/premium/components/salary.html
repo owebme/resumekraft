@@ -26,7 +26,7 @@
 
     $.on("mount", function(){
         if (!_.isEmpty($resume.salary.graph)){
-            var $graph = $Resume.el.find(".screen[data-section='main']").find(".salary-graph-mini"),
+            var $graph = $Resume.el.find(".screen[data-section='commons']").find(".salary-graph-mini"),
                 width = app.device.isPhone ? (app.sizes.width - 157.5) + "px" : "220px";
 
             $graph.css("width", width);
@@ -72,6 +72,9 @@
                 }
             });
             $.editable = true;
+        }
+        else {
+            return true;
         }
     };
 

@@ -49,7 +49,7 @@
     $.onChange = function(){
         $.sliding = true;
         $.step = this.item.step;
-        $.parent.screens.nav($.step);
+        $.parent.screens.nav($.step - 1);
 
         setTimeout(function(){
             $.sliding = false;

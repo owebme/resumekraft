@@ -26,7 +26,7 @@
         font-size:0;
         margin-top:8px;
         min-width:90px;
-        will-change:opacity, transform;
+        @extend .willChange-tp;
         transform-origin:50% 0%;
         transform:translate3d(-50%, 0, 0) scale(0);
         transition:opacity 0.2s $cubic215, transform 0.25s $bounceSoft;

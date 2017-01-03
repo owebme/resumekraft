@@ -30,34 +30,39 @@
     var $ = this;
 
     $.openEditable = function(e){
-        $Editable.open(e, "languages", $,
-            {
-                root: function(){
-                    return  {
-                        title: null,
-                        text: null,
-                        items: [
-                            {
-                                title: "native",
-                                value: "4"
-                            },
-                            {
-                                title: "en",
-                                value: "1"
-                            },
-                            {
-                                title: "de",
-                                value: "1"
-                            },
-                            {
-                                title: "fr",
-                                value: "1"
-                            }
-                        ]
+        if ($State.get('mode') === "editing"){
+            $Editable.open(e, "languages", $,
+                {
+                    root: function(){
+                        return  {
+                            title: null,
+                            text: null,
+                            items: [
+                                {
+                                    title: "native",
+                                    value: "4"
+                                },
+                                {
+                                    title: "en",
+                                    value: "1"
+                                },
+                                {
+                                    title: "de",
+                                    value: "1"
+                                },
+                                {
+                                    title: "fr",
+                                    value: "1"
+                                }
+                            ]
+                        }
                     }
                 }
-            }
-        );
+            );
+        }
+        else {
+            return true;
+        }
     };
 
 </script>

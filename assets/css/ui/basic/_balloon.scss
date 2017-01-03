@@ -2,7 +2,7 @@
 [data-balloon]:after {
   opacity: 0;
   pointer-events: none;
-  will-change:opacity, transform;
+  @extend .willChange-tp;
   transition:transform 0.25s $cubic345, opacity 0.25s $cubic345;
   bottom: 100%;
   left: 50%;

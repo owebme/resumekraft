@@ -2,24 +2,24 @@
 
 	<div id="t-header">
 		<div id="t-header-names">
-			<div if={ $resume.get('name').length > $resume.get('surname').length }>
-				<div id="t-header-surname" class="t-header-name bold">{ $resume.get('surname') }</div>
-				<div id="t-header-name" class="t-header-name">{ $resume.get('name') }</div>
+			<div if={ $resume.get('commons', 'name').length > $resume.get('commons', 'surname').length }>
+				<div id="t-header-surname" class="t-header-name bold">{ $resume.get('commons', 'surname') }</div>
+				<div id="t-header-name" class="t-header-name">{ $resume.get('commons', 'name') }</div>
 			</div>
-			<div if={ $resume.get("surname").length > $resume.get("name").length }>
-				<div id="t-header-name" class="t-header-name bold">{ $resume.get('name') }</div>
-				<div id="t-header-surname" class="t-header-name">{ $resume.get('surname') }</div>
+			<div if={ $resume.get('commons', 'surname').length > $resume.get('commons', 'name').length }>
+				<div id="t-header-name" class="t-header-name bold">{ $resume.get('commons', 'name') }</div>
+				<div id="t-header-surname" class="t-header-name">{ $resume.get('commons', 'surname') }</div>
 			</div>
 		</div>
 		<div id="t-header-string">
 			<div class="t-header-string-element">
-				<i></i><span if={ !$resume.get('birthday', 'hidden') }>{ $resume.take.birthday.date() }&nbsp;</span><span class="age">({ $resume.take.birthday.age() })</span>
+				<i></i><span if={ !$resume.get('commons', 'birthday', 'hidden') }>{ $resume.take.birthday.date() }&nbsp;</span><span class="age">({ $resume.take.birthday.age() })</span>
 			</div>
-			<div if={ $resume.get('contacts', 'city') || $resume.get('contacts', 'phone') } class="t-header-string-element">
-				<i></i><span if={ $resume.get('contacts', 'city') }>г. { $resume.get('contacts', 'city') }</span><span if={ $resume.get('contacts', 'phone') }>&nbsp;, { $resume.get('contacts', 'phone') }</span>
+			<div if={ $resume.get('commons', 'contacts', 'city') || $resume.get('commons', 'contacts', 'phone') } class="t-header-string-element">
+				<i></i><span if={ $resume.get('commons', 'contacts', 'city') }>г. { $resume.get('commons', 'contacts', 'city') }</span><span if={ $resume.get('commons', 'contacts', 'phone') }>&nbsp;, { $resume.get('commons', 'contacts', 'phone') }</span>
 			</div>
-			<div if={ $resume.get('contacts', 'email') } class="t-header-string-element"><i></i>{ $resume.get('contacts', 'email') }</div>
-			<div if={ $resume.get('contacts', 'skype') } class="t-header-string-element"><i></i>Skype: { $resume.get('contacts', 'skype') }</div>
+			<div if={ $resume.get('commons', 'contacts', 'email') } class="t-header-string-element"><i></i>{ $resume.get('commons', 'contacts', 'email') }</div>
+			<div if={ $resume.get('commons', 'contacts', 'skype') } class="t-header-string-element"><i></i>Skype: { $resume.get('commons', 'contacts', 'skype') }</div>
 			<div if={ $resume.get('salary', 'active') && $resume.get('salary', 'amount') } class="t-header-string-element t-header-string-salary"><i></i>{ $resume.take.salary.amount() } { $resume.take.salary.currency() } <sup>{ $resume.take.salary.worktime() }</sup></div>
 		</div>
 		<div if={ $resume.get('post').length } id="t-header-post">{ $resume.get('post') }</div>
@@ -78,12 +78,12 @@
 				</div>
 			</div>
 		</div>
-		<div if={ $resume.get('aboutText').length } class="t-container t-container-about">
+		<div if={ $resume.get('about').length } class="t-container t-container-about">
 			<div class="t-container-name">Достижения, о себе</div>
 			<div class="t-container-item">
 				<div class="t-container-desc">
-					<div class="t-container-desc-text">
-						{ $resume.get('aboutText') }
+					<div class="t-container-desc-text preline">
+						{ $resume.get('about') }
 					</div>
 				</div>
 			</div>

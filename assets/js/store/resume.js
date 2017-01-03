@@ -1,26 +1,27 @@
 $store.resume = _.extend(new Baobab({
         _id: _.newId(),
+        public: true,
         plan: "basic",
-        template: "7",
+        template: "1",
         lang: "ru",
         post: "Web-Designer, Art-director, Illustrator",
         photo: "/preview/images/photo/photo_phone.jpg",
         commons: {
             name: "Виктория",
-            surname: "Юртаева",
-            gender: "male",
+            surname: "",
+            gender: "female",
             birthday: {
                 day: "25",
                 month: "8",
                 year: "1986",
-                hidden: false
+                hidden: true
             },
             contacts: {
                 city: "Москва",
                 email: "owebme@gmail.com",
-                phone: "9260172086",
+                phone: "(926) 017-2086",
                 primary: "any",
-                relocate: false,
+                relocate: true,
                 site: "http://web-projects.me",
                 skype: "owebme"
             }
@@ -335,10 +336,10 @@ $store.resume = _.extend(new Baobab({
         hobby: {
             title: "Мои хобби",
             text: "Много читаю разнообразной литературы, путешествую, вдохновляюсь культурой в зарубежных странах. Люблю обучаться новому.",
-            items: ['airplane', 'basketball', 'books', 'camera']
+            items: ['airplane', 'comedy', 'swimmer', 'musical']
         },
         coverletter: {
-            text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+            text: "Привет ;)\n Я графический дизайнер. В дизайне предпочитаю лаконичный стиль. В тексте — информационный. Убираю всё, что мешает увидеть суть.",
             color: "1"
         },
         sections: [
@@ -346,30 +347,35 @@ $store.resume = _.extend(new Baobab({
                 name: "salary",
                 title: "Желаемая зарплата",
                 short: "Зарплата",
+                control: true,
                 active: true
             },
             {
                 name: "tags",
                 title: "Ключевые навыки",
                 short: "Навыки",
+                control: true,
                 active: true
             },
             {
                 name: "appeal",
                 title: "Заголовок-обращение",
                 short: "Обращение",
+                control: true,
                 active: true
             },
             {
                 name: "about",
                 title: "О себе текст",
                 short: "О себе",
+                control: true,
                 active: true
             },
             {
                 name: "social",
                 title: "Аккаунты в соц. сетях",
                 short: "Соц. ссылки",
+                control: true,
                 active: true
             },
             {
@@ -377,6 +383,7 @@ $store.resume = _.extend(new Baobab({
                 title: "Мои проекты",
                 short: "Проекты",
                 screen: true,
+                control: true,
                 active: true
             },
             {
@@ -384,6 +391,7 @@ $store.resume = _.extend(new Baobab({
                 title: "Основные компетенции",
                 short: "Навыки",
                 screen: true,
+                control: true,
                 active: true
             },
             {
@@ -391,6 +399,7 @@ $store.resume = _.extend(new Baobab({
                 title: "Образование",
                 short: "Учеба",
                 screen: true,
+                control: true,
                 active: true
             },
             {
@@ -398,6 +407,7 @@ $store.resume = _.extend(new Baobab({
                 title: "Курсы",
                 short: "Курсы",
                 screen: true,
+                control: true,
                 active: true
             },
             {
@@ -405,6 +415,7 @@ $store.resume = _.extend(new Baobab({
                 title: "Владение языками",
                 short: "Языки",
                 screen: true,
+                control: true,
                 active: true
             },
             {
@@ -412,6 +423,7 @@ $store.resume = _.extend(new Baobab({
                 title: "Работа в компаниях",
                 short: "Карьера",
                 screen: true,
+                control: true,
                 active: true
             },
             {
@@ -419,6 +431,7 @@ $store.resume = _.extend(new Baobab({
                 title: "Мои хобби",
                 short: "Хобби",
                 screen: true,
+                control: true,
                 active: true
             },
             {
@@ -426,6 +439,7 @@ $store.resume = _.extend(new Baobab({
                 title: "Контакты",
                 short: "Контакты",
                 screen: true,
+                control: true,
                 active: true
             },
             {
@@ -433,6 +447,7 @@ $store.resume = _.extend(new Baobab({
                 title: "Обратная связь",
                 short: "Обратная связь",
                 screen: true,
+                control: true,
                 active: true
             },
             {
@@ -440,34 +455,31 @@ $store.resume = _.extend(new Baobab({
                 title: "Сопроводительное письмо",
                 short: "Письмо",
                 screen: true,
-                active: true
+                control: false,
+                active: false
             }
-        ]
+        ],
+        config: {
+            color: "#0084ff",
+            font: "futura",
+            photo: {
+                minWidth: 440,
+                maxHeight: 620,
+                noise: false
+            }
+        }
     }, {
         autoCommit: true
     }),
     {
-        config: {
-            photo: {
-                minWidth: 440,
-                maxHeight: 620,
-                alertSmallImage: 'Загружаемое фото слишком маленькое, минимально допустимый размер по ширине 440px',
-                export: {
-                    type: "image/jpeg",
-                    quality: 0.9,
-                    originalSize: true,
-                    maxZoom: 1.5
-                }
-            }
-        },
         take: {
             birthday: {
                 date: function(){
-                    var b = $store.resume.get('birthday');
+                    var b = $store.resume.get('commons', 'birthday');
                     return moment(b.year + "-" + b.month + "-" + b.day).format('D MMMM YYYY');
                 },
                 age: function(){
-                    var b = $store.resume.get('birthday'),
+                    var b = $store.resume.get('commons', 'birthday'),
                         years = moment().diff(moment(b.year + "-" + b.month + "-" + b.day), 'years');
 
                     if (years == "1") years = years + " год";
@@ -521,6 +533,7 @@ $store.resume = _.extend(new Baobab({
                         years = Math.floor(months / 12);
                         if (years == "1") years = years + " год";
                         else if (years > 1 && years < 5) years = years + " года";
+                        else if (years < 1) years = "";
                         else years = years + " лет";
                     }
                     if (months){
@@ -560,7 +573,12 @@ $store.resume = _.extend(new Baobab({
                         return $store.resume.take.jobs.year(item);
                     }).reverse();
                 }
-            }
+            },
+            coverletter: {
+                color: function(){
+                    return $store.coverletter.getColorById($store.resume.get('coverletter', 'color'));
+                }
+            },
         },
         placeholder: {
             name: "Виктория Юртаева",

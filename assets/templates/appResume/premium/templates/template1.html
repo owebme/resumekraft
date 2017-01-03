@@ -1,17 +1,23 @@
-<resume-template1 class="screens screens-phone container resume template1">
+<resume-template1 class="screens screens-phone container resume template1" data-coverletter={ $State.get('mode') !== "editing" && $store.resume.select("sections").get({"name": "coverletter"}).active }>
 
-    <div class="hidden-xs hidden-sm overlay col-sm-6"></div>
-    <div class="hidden-xs hidden-sm main-line col-sm-6"></div>
-    <div class="hidden-xs hidden-sm main-line-bg col-sm-6"></div>
+    <div if={ !app.device.isPhone } class="hidden-xs hidden-sm overlay col-sm-6"></div>
+    <div if={ !app.device.isPhone } class="hidden-xs hidden-sm main-line col-sm-6"></div>
+    <div if={ !app.device.isPhone } class="hidden-xs hidden-sm main-line-bg col-sm-6"></div>
 
-    <section if={ app.device.isPhone } class="screen screen--first screen--active" data-section="cover">
+    <section class="screen screen--active" data-section="coverletter" data-color={ $store.resume.take.coverletter.color() } if={ $State.get('mode') !== "editing" && $store.resume.select("sections").get({"name": "coverletter"}).active }>
+        <div class="screen__content">
+            <ux-coverletter></ux-coverletter>
+        </div>
+    </section>
+
+    <section if={ app.device.isPhone } class="screen screen--first { 'screen--active' : !$store.resume.select('sections').get({'name': 'coverletter'}).active }" data-section="cover">
         <div class="screen__content">
             <ux-photo phone="true"></ux-photo>
             <div class="screen__post">{ $resume.post }</div>
         </div>
     </section>
 
-    <section class="screen { 'screen--first' : !app.device.isPhone }" data-section="main">
+    <section class="screen { 'screen--first' : !app.device.isPhone }" data-section="commons">
         <div class="screen__content">
             <div class="row">
                 <div if={ !app.device.isPhone } class="col-xs-24 col-md-11 screen1-col-left">
@@ -19,7 +25,7 @@
                 </div>
                 <div class="col-xs-24 col-md-13 screen1-col-right">
 
-                    <ux-text classname="h1 name" update="name" cursor={ $store.resume.select('commons') } title="Ваше имя и фамилия" type="input"></ux-text>
+                    <ux-name classname="h1 name" title="Ваше имя и фамилия"></ux-name>
 
                     <ux-text classname="h3 post" update="post" cursor={ $store.resume.select() } title="Должность" type="input"></ux-text>
 
@@ -169,7 +175,7 @@
             _.each(this.tags, function(item) {
                 if (item.root && item.root.tagName && item.root.tagName.toLowerCase().match(/^ux-/)){
                     var name = item.root.tagName.toLowerCase().match(/^ux-(.+)/)[1];
-                    if (name != "text" && name != "contacts" && name != "feedback" && name != "contacts-content"){
+                    if (name != "name" && name != "text" && name != "contacts" && name != "feedback" && name != "contacts-content"){
                         if (!$store.resume.get(name)) $$(item.root).remove();
                         else $$(item.root).children().unwrap();
                     }
@@ -297,6 +303,7 @@
                 var $section = $$(this),
                     section = this.getAttribute("data-section");
 
+                if (section == "coverletter") return;
                 if (section == "works" || section == "jobs"){
                     if (app.device.isPhone){
                         $.screenColor.push({
@@ -313,7 +320,7 @@
                     }
                 }
                 var title = null;
-                if (section == "main"){
+                if (section == "commons"){
                     title = "Общее";
                 }
                 else {

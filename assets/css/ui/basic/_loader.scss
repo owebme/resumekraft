@@ -4,7 +4,7 @@
     @extend .visibility-hidden;
     @extend .bg-blue;
     @extend .zIndex-102;
-    will-change:opacity;
+    @extend .willChange-opacity;
 
     &-spinner {
         @include accelerate(true);

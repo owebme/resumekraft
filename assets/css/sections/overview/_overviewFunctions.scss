@@ -30,7 +30,7 @@
             @extend .w100p;
             @extend .c-blackLight;
             @extend .fontSize-24;
-            will-change:opacity, transform;
+            @extend .willChange-tp;
             transition:all 0.5s $cubic22 0.3s;
             transform:translate3d(0, 0, 0);
 

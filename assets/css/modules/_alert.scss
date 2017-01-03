@@ -16,7 +16,7 @@
         @include abs();
         @include accelerate(true);
         background:rgba(darken($grayDark,15%),.7);
-        will-change:opacity;
+        @extend .willChange-opacity;
         transition:opacity 0.15s $cubic2501;
 
         .d-phone & {
@@ -34,7 +34,7 @@
         border-radius:12px;
         background-color:#fcfcfc;
         @extend .boxShadow-24;
-        will-change:transform, opacity;
+        @extend .willChange-tp;
         transition:opacity 0.15s $cubic2501;
 
         .d-phone & {

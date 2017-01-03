@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-md-10">
                             <div class="job-year">{ get.year(item) }</div>
-                            <h3 class="job-title">{ item.company } &ndash; { item.city }</h3>
+                            <h3 class="job-title text-right">{ item.company } &ndash; { item.city }</h3>
                         </div>
                     </div>
                     <div class="row pl-m pt-xxs pb-xl sm-pl0">
@@ -111,53 +111,58 @@
     };
 
     $.openEditable = function(e){
-        $Editable.open(e, "jobs", $,
-            {
-                root: function(){
-                    return  {
-                        title: null,
-                        text: null,
-                        items: null
+        if ($State.get('mode') === "editing"){
+            $Editable.open(e, "jobs", $,
+                {
+                    root: function(){
+                        return  {
+                            title: null,
+                            text: null,
+                            items: null
+                        }
+                    },
+                    item: function(){
+                        return  {
+                            _id: _.newId(),
+                            company: null,
+                            city: null,
+                            post: null,
+                            from: {
+                                month: "1",
+                                year: "2000"
+                            },
+                            to: {
+                                month: "1",
+                                year: "2000"
+                            },
+                            text: null,
+                            last: false
+                        }
                     }
                 },
-                item: function(){
-                    return  {
-                        _id: _.newId(),
-                        company: null,
-                        city: null,
-                        post: null,
-                        from: {
-                            month: "1",
-                            year: "2000"
-                        },
-                        to: {
-                            month: "1",
-                            year: "2000"
-                        },
-                        text: null,
-                        last: false
+                [
+                    {
+                        field: "post",
+                        alert: "Введите должность"
+                    },
+                    {
+                        field: "company",
+                        alert: "Введите название компании"
+                    },
+                    {
+                        field: "city",
+                        alert: "Введите город"
+                    },
+                    {
+                        field: "text",
+                        alert: "Введите описание"
                     }
-                }
-            },
-            [
-                {
-                    field: "post",
-                    alert: "Введите должность"
-                },
-                {
-                    field: "company",
-                    alert: "Введите название компании"
-                },
-                {
-                    field: "city",
-                    alert: "Введите город"
-                },
-                {
-                    field: "text",
-                    alert: "Введите описание"
-                }
-            ]
-        );
+                ]
+            );
+        }
+        else {
+            return true;
+        }
     };
 
 </script>

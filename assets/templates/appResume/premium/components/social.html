@@ -14,16 +14,21 @@
     var $ = this;
 
     $.openEditable = function(e){
-        $Editable.open(e, "social", $,
-            {
-                root: function(){
-                    return  {
-                        title: null,
-                        items: []
+        if ($State.get('mode') === "editing"){
+            $Editable.open(e, "social", $,
+                {
+                    root: function(){
+                        return  {
+                            title: null,
+                            items: []
+                        }
                     }
                 }
-            }
-        );
+            );
+        }
+        else {
+            return true;
+        }
     };
 
 </script>

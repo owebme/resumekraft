@@ -39,7 +39,7 @@
                     <span class="c-gray fontSize-28">Фамилия</span>
                 </div>
                 <div class="col-sm-16">
-                    <ui-input update="surname" cursor={ $resume.select() } size="xl"></ui-input>
+                    <ui-input update="surname" cursor={ $resume.select('commons') } size="xl"></ui-input>
                 </div>
             </div>
             <div class="row mb-m">
@@ -47,7 +47,7 @@
                     <span class="c-gray fontSize-28">Имя</span>
                 </div>
                 <div class="col-sm-16">
-                    <ui-input update="name" cursor={ $resume.select() } size="xl"></ui-input>
+                    <ui-input update="name" cursor={ $resume.select('commons') } size="xl"></ui-input>
                 </div>
             </div>
             <div class="row mb-m">
@@ -55,19 +55,19 @@
                     <span class="c-gray fontSize-28">Дата рождения</span>
                 </div>
                 <div class="col-xs-8 col-sm-4">
-                    <ui-select update="day" cursor={ $resume.select('birthday') } items={ _.range(1, 32) } size="xl"></ui-select>
+                    <ui-select update="day" cursor={ $resume.select('commons', 'birthday') } items={ _.range(1, 32) } size="xl"></ui-select>
                 </div>
                 <div class="col-xs-16 col-sm-6 xs-mb-m">
-                    <ui-select update="month" cursor={ $resume.select('birthday') } items={ $store.month.get() } size="xl"></ui-select>
+                    <ui-select update="month" cursor={ $resume.select('commons', 'birthday') } items={ $store.month.get() } size="xl"></ui-select>
                 </div>
                 <div class="col-xs-24 col-sm-6">
-                    <ui-select update="year" cursor={ $resume.select('birthday') } items={ _.range(1940, new Date().getFullYear() + 1) } size="xl"></ui-select>
+                    <ui-select update="year" cursor={ $resume.select('commons', 'birthday') } items={ _.range(1940, new Date().getFullYear() + 1) } size="xl"></ui-select>
                 </div>
             </div>
             <div class="row mb-m pt-xxs">
                 <div class="hidden-xs col-sm-8 pr-m"></div>
                 <div class="col-xs-24 col-sm-16 text-left pt-s">
-                    <ui-checkbox update="hidden" cursor={ $resume.select('birthday') } title="Показывать только возраст" size="xxl" theme="blue"></ui-checkbox>
+                    <ui-checkbox update="hidden" cursor={ $resume.select('commons', 'birthday') } title="Показывать только возраст" size="xxl" theme="blue"></ui-checkbox>
                 </div>
             </div>
             <div class="row mb-l pt-xxs">
@@ -75,10 +75,10 @@
                     <span class="c-gray fontSize-28">Пол</span>
                 </div>
                 <div class="col-xs-12 col-sm-5 text-left pt-s">
-                    <ui-checkbox update="gender" cursor={ $resume.select() } group="gender" title="Мужской" size="xxl" theme="blue" value="male"></ui-checkbox>
+                    <ui-checkbox update="gender" cursor={ $resume.select('commons') } group="gender" title="Мужской" size="xxl" theme="blue" value="male"></ui-checkbox>
                 </div>
                 <div class="col-xs-12 col-sm-5 text-left pt-s">
-                    <ui-checkbox update="gender" cursor={ $resume.select() } group="gender" title="Женский" size="xxl" theme="blue" value="female"></ui-checkbox>
+                    <ui-checkbox update="gender" cursor={ $resume.select('commons') } group="gender" title="Женский" size="xxl" theme="blue" value="female"></ui-checkbox>
                 </div>
             </div>
             <div class="row mb-m">
@@ -87,7 +87,7 @@
                     <span class="visible-sm c-gray fontSize-28">Эл. почта</span>
                 </div>
                 <div class="col-sm-16">
-                    <ui-input update="email" cursor={ $resume.select('contacts') } size="xl"></ui-input>
+                    <ui-input update="email" cursor={ $resume.select('commons', 'contacts') } size="xl"></ui-input>
                 </div>
             </div>
             <div class="row mb-m">
@@ -96,7 +96,7 @@
                     <span class="visible-sm c-gray fontSize-28">Город</span>
                 </div>
                 <div class="col-xs-24 col-sm-16">
-                    <ui-input update="city" cursor={ $resume.select('contacts') } size="xl"></ui-input>
+                    <ui-input update="city" cursor={ $resume.select('commons', 'contacts') } size="xl"></ui-input>
                 </div>
             </div>
             <div class="row mb-m">
@@ -105,7 +105,7 @@
                     <span class="visible-sm c-gray fontSize-28">Телефон</span>
                 </div>
                 <div class="col-xs-24 col-sm-16">
-                    <ui-input update="phone" cursor={ $resume.select('contacts') } size="xl"></ui-input>
+                    <ui-input update="phone" cursor={ $resume.select('commons', 'contacts') } size="xl"></ui-input>
                 </div>
             </div>
             <div class="row mb-m">
@@ -113,7 +113,7 @@
                     <span class="c-gray fontSize-28">Skype</span>
                 </div>
                 <div class="col-xs-24 col-sm-16">
-                    <ui-input update="skype" cursor={ $resume.select('contacts') } size="xl"></ui-input>
+                    <ui-input update="skype" cursor={ $resume.select('commons', 'contacts') } size="xl"></ui-input>
                 </div>
             </div>
         </div>

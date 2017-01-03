@@ -6,6 +6,7 @@
         <div name="wrapper" class="section__editable__wrapper container">
             <div class="row">
                 <editable-photo></editable-photo>
+                <editable-name></editable-name>
                 <editable-text></editable-text>
                 <editable-salary></editable-salary>
                 <editable-tags></editable-tags>
@@ -32,7 +33,7 @@
 
     $.el = $scope;
     $.editable = null;
-    $.editSimple = ['photo', 'text', 'salary', 'tags', 'social'];
+    $.editSimple = ['photo', 'name', 'text', 'salary', 'tags', 'social'];
 
     $.on("mount", function(){
         if (app.device.isMobile && app.device.isTablet){
@@ -99,7 +100,7 @@
     $.hide = function(callback){
         $.root.setAttribute("data-open", false);
 
-        if (app.device.isPhone) $.trigger("editable", "hideAnimated");
+        if (app.device.isMobile) $.trigger("editable", "hideAnimated");
         else $.trigger("editable", "hide");
 
         if (!app.device.isPhone){
@@ -112,7 +113,7 @@
             }
         }
         _.onEndTransition($.wrapper, function(){
-            if (!app.device.isPhone){
+            if (!app.device.isMobile){
                 $.trigger("editable", "hideAnimated");
             }
             if ($.component.editing){

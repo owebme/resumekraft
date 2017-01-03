@@ -12,7 +12,7 @@
         transform:translateX(-$size);
     }
 }
-@for $i from 1 through 20 {
+@for $i from 1 through 22 {
     .scale-#{$i * 5} {
         transform:translate3d(0, 0, 0) scale(($i * 5) / 100);
     }

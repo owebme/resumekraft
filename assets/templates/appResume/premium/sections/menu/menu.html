@@ -4,7 +4,7 @@
 
     <menu-sections></menu-sections>
 
-    <menu-items if={ !app.device.isPhone }></menu-items>
+    <menu-items if={ !app.device.isMobile }></menu-items>
 
 <script>
 
@@ -14,7 +14,7 @@
 
     $.on("before-mount", function(){
         $.sections = $.tags['menu-sections'];
-        $.items = app.device.isPhone ? null : $.tags['menu-items'];
+        $.items = app.device.isMobile ? null : $.tags['menu-items'];
     });
 
     $.show = function(section){

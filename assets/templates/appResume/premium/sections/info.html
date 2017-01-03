@@ -9,11 +9,11 @@
 
     <div name="wrapper" class="info-wrapper">
         <div class="info-photo" style="background-image:url('{ $resume.photo }')"></div>
-        <div class="info-name">Виктория Юртаева, <span class="info-salary">125K ₽</span></div>
-        <div class="info-city">Москва, готов к переезду,</div>
-        <div class="info-email"><a href="mailto:owebme@gmail.com">owebme@gmail.com</a></div>
-        <div class="info-phone"><a href="tel:89160172086">+7 916 017 20 86</a></div>
-        <div class="info-post">Web-Designer, Art-director, Illustrator</div>
+        <div class="info-name">{ $resume.commons.name } { $resume.commons.surname }, <span if={ $store.resume.get("sections", {"name": "salary"}).active } class="info-salary">{ $resume.salary.amount / 1000 }K ₽</span></div>
+        <div class="info-city">{ $resume.commons.birthday.hidden ? $store.resume.take.birthday.age() : $store.resume.take.birthday.date() }, { $resume.commons.contacts.city }, { get.relocate() }</div>
+        <div class="info-email" if={ $resume.commons.contacts.email }><a href="mailto:{ $resume.commons.contacts.email }">{ $resume.commons.contacts.email }</a></div>
+        <div class="info-phone" if={ $resume.commons.contacts.phone }><a href="tel:{ $resume.commons.contacts.phone }">{ $resume.commons.contacts.phone }</a></div>
+        <div class="info-post" if={ $resume.post }>{ $resume.post }</div>
         <div class="info-social">
             <ux-social-items classname="social { app.device.isPhone ? 'social-s' : 'social-xs' }"></ui-social-items>
         </div>
@@ -32,6 +32,19 @@
             });
         }
     });
+
+    $.get = {
+        relocate: function(){
+            if ($resume.commons.contacts.relocate){
+                if ($resume.commons.gender == "male"){
+                    return '\nготов к переезду,';
+                }
+                else if ($resume.commons.gender == "female"){
+                    return '\nготова к переезду,';
+                }
+            }
+        }
+    };
 
     $.show = function(){
         $.update({

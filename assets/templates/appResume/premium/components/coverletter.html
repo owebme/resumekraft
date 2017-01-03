@@ -1,0 +1,18 @@
+<ux-coverletter class="coverletter">
+
+    <div class="row coverletter__text">
+        <div class="col-xs-24 col-md-15 centered">
+            <div class="mb30 xs-mb0">{ $resume.coverletter.text }</div>
+            <button onClick={ hide } class="hidden-xs btn btn-xl btn-{ $resume.coverletter.color == '1' ? 'white-hover' : 'primary' } text-uppercase">Перейти к резюме</button>
+        </div>
+    </div>
+
+<script>
+
+    this.hide = function(){
+        $Resume.el.attr("data-coverletter", false);
+    };
+
+</script>
+
+</ux-coverletter>

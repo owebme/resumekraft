@@ -11,7 +11,7 @@
         border:2px solid;
         border-left:none;
         border-bottom:none;
-        will-change:transform, opacity;
+        @extend .willChange-tp;
     }
     &-up:before {
         transform:translate3d(0, 125%, 0) rotate(-45deg);

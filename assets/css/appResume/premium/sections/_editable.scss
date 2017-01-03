@@ -5,7 +5,7 @@
     @include accelerate();
     @extend .userSelect-none;
     @extend .visibility-hidden;
-    will-change:opacity;
+    @extend .willChange-opacity;
     transform-style:preserve-3d;
     transition:opacity 0.2s $cubic57, visibility 0s 0.25s;
     @extend .overflow-hidden;
@@ -140,7 +140,7 @@
     }
     &__content {
         @extend .pos-rel;
-        will-change:opacity;
+        @extend .willChange-opacity;
         transition:opacity .25s $cubic215;
 
         &.hide {
@@ -159,7 +159,7 @@
             @include accelerate();
             @extend .opacity-0;
             @extend .visibility-hidden;
-            will-change:transform, opacity;
+            @extend .willChange-tp;
             transition:transform 0.6s $cubic345, opacity 0.3s $cubic345, visibility 0s 0.6s;
 
             &[data-pos="left"]{
@@ -212,7 +212,7 @@
         @extend .letterSpacing--s;
         @extend .mt45;
         width:242px;
-        will-change:transform, opacity;
+        @extend .willChange-tp;
         transition:transform 0.3s $cubic345, opacity 0.3s $cubic345;
 
         .d-phone & {
@@ -269,6 +269,16 @@
                 }
                 &[data-pos="right"]{
                     @extend .ml--l;
+                }
+            }
+        }
+        .d-tablet & {
+            &[data-closer="true"]{
+                &[data-pos="left"]{
+                    @extend .mr0;
+                }
+                &[data-pos="right"]{
+                    @extend .ml0;
                 }
             }
         }

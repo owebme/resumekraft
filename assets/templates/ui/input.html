@@ -15,6 +15,21 @@
         }
     });
 
+    $.on("mount", function(){
+        if (!window.$$) return;
+        if ($.opts.pattern || $.opts.mask){
+            var $input = $$($.input);
+            if ($.opts.pattern){
+                $input.mask($.opts.pattern);
+            }
+            else if ($.opts.mask){
+                if ($.opts.mask == "phone"){
+                    $input.mask("(000) 000-0000");
+                }
+            }
+        }
+    });
+
     $.on("update", function(){
         if ((!$.opts.value || !$.opts.onupdate) && $.opts.update && $.opts.cursor){
             $.value = $.opts.cursor.get($.opts.update);
@@ -40,6 +55,12 @@
             $.parent[$.opts.commit](value, $.opts.i);
         }
     };
+
+    $.on("unmount", function(){
+        if ($.opts.pattern || $.opts.mask){
+            $$($.input).unmask();
+        }
+    });
 
 </script>
 

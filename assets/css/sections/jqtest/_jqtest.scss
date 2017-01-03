@@ -113,7 +113,7 @@ jqtest-content {
         }
         &__item {
             @extend .opacity-0;
-            will-change:transform, opacity;
+            @extend .willChange-tp;
             transform:translate3d(0, 50vh, 0);
 
             .d-phone & {

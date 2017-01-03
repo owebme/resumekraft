@@ -1,0 +1,55 @@
+<editable-name class="col-sm-offset-4 col-sm-18 col-md-offset-5 col-md-14 col-lg-offset-7 col-lg-12 section__editable__container">
+
+    <div class="section__editable__content">
+
+        <div class="title title-main">{ title }</div>
+
+        <input class="input input-xl mb-m" name="name_data" type="text" placeholder="Имя" autocomplete="off" value={ data.name }>
+        <input class="input input-xl" name="surname_data" type="text" placeholder="Фамилия" autocomplete="off" value={ data.surname }>
+
+    </div>
+
+    <div class="section__editable__footer">
+        <button onClick={ onCancel } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper" type="button">Отменить</button>
+        <button onClick={ onSave } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper ml-xs" type="button">Сохранить</button>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.init = function(data){
+        $.update({
+            title: data.title,
+            data: data.data,
+            callback: data.callback ? data.callback : null
+        });
+    };
+
+    $.onCancel = function(){
+        $.hide();
+    };
+
+    $.onSave = function(){
+        $.data.name = $["name_data"].value;
+        $.data.surname = $["surname_data"].value;
+
+        if ($.callback) {
+            $.callback({
+                name: $.data.name,
+                surname: $.data.surname
+            });
+        }
+        $.hide();
+    };
+
+    $.hide = function(){
+        $["name_data"].value = $.data.name ? $.data.name : '';
+        $["surname_data"].value = $.data.surname ? $.data.surname : '';
+
+        $Editable.hide();
+    };
+
+</script>
+
+</editable-name>
