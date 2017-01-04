@@ -3,7 +3,7 @@ $store.resume = _.extend(new Baobab({
         public: true,
         plan: "basic",
         template: "1",
-        lang: "ru",
+        lang: "en",
         post: "Web-Designer, Art-director, Illustrator",
         photo: "/preview/images/photo/photo_phone.jpg",
         commons: {
@@ -479,12 +479,13 @@ $store.resume = _.extend(new Baobab({
                     return moment(b.year + "-" + b.month + "-" + b.day).format('D MMMM YYYY');
                 },
                 age: function(){
-                    var b = $store.resume.get('commons', 'birthday'),
+                    var lang = $store.resume.get("lang"),
+                        b = $store.resume.get('commons', 'birthday'),
                         years = moment().diff(moment(b.year + "-" + b.month + "-" + b.day), 'years');
 
-                    if (years == "1") years = years + " год";
-                    else if (years > 1 && years < 5) years = years + " года";
-                    else years = years + " лет";
+                    if (years == "1") years = years + (lang == "ru" ? " год" : " age");
+                    else if (years > 1 && years < 5) years = years + (lang == "ru" ? " года" :  "age");
+                    else years = years + (lang == "ru" ? " лет" : " age");
 
                     return years;
                 }
@@ -515,13 +516,14 @@ $store.resume = _.extend(new Baobab({
                     return $store.resume.take.jobs.sort($store.resume.get('jobs', 'items'));
                 },
                 period: function(item, short){
-                    var day = new Date().getDate(),
+                    var lang = $store.resume.get("lang"),
+                        day = new Date().getDate(),
                         months = 0,
                         years = 0,
                         f = $store.month.getTitleById(item.from.month) + " " + item.from.year;
 
                     if (item.last){
-                        var t = 'по настоящее время';
+                        var t = (lang == "ru" ? 'по настоящее время' : 'until now'),
                         months = moment().diff(item.from.year + '-' + (item.from.month < 10 ? '0' + item.from.month : item.from.month) + '-' + (day < 10 ? '0' + day : day), 'month');
                     }
                     else {
@@ -531,16 +533,16 @@ $store.resume = _.extend(new Baobab({
 
                     if (months > 0){
                         years = Math.floor(months / 12);
-                        if (years == "1") years = years + " год";
-                        else if (years > 1 && years < 5) years = years + " года";
+                        if (years == "1") years = years + (lang == "ru" ? ' год' : ' year');
+                        else if (years > 1 && years < 5) years = years + (lang == "ru" ? ' года' : ' year');
                         else if (years < 1) years = "";
-                        else years = years + " лет";
+                        else years = years + (lang == "ru" ? ' лет' : ' year');
                     }
                     if (months){
                         months = months - Math.floor(months / 12) * 12;
-                        if (months == "1") months = months + " месяц";
-                        else if (months > 1 && months < 5) months = months + " месяца";
-                        else months = months + " месяцев";
+                        if (months == "1") months = months + (lang == "ru" ? ' месяц' : ' month');
+                        else if (months > 1 && months < 5) months = months + (lang == "ru" ? ' месяца' : ' months');
+                        else months = months + (lang == "ru" ? ' месяцев' : ' months');
                     }
                     if (years){
                         if (short){

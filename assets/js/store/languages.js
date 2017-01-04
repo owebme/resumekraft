@@ -1,24 +1,44 @@
 $store.languages = _.extend(new Baobab([
     {
         _id: "native",
-        title: "Родной язык"
+        title: {
+            en: "Native language",
+            ru: "Родной язык"
+        }
     },
     {
         _id: "en",
-        title: "Английский"
+        title: {
+            en: "English",
+            ru: "Английский"
+        }
     },
     {
         _id: "de",
-        title: "Немецкий"
+        title: {
+            en: "German",
+            ru: "Немецкий"
+        }
     },
     {
         _id: "fr",
-        title: "Французский"
+        title: {
+            en: "French",
+            ru: "Французский"
+        }
     }
     ]),
     {
+        getItems: function(){
+            return _.map($store.languages.get(), function(item){
+                return {
+                    _id: item._id,
+                    title: item.title[$store.resume.get("lang")]
+                }
+            });
+        },
         getTitleById: function(id){
-            return _.findWhere($store.languages.get(), {"_id": id}).title;
+            return $store.languages.get({"_id": id}, "title", $store.resume.get("lang"));
         }
     }
 );
@@ -26,24 +46,51 @@ $store.languages = _.extend(new Baobab([
 $store.languages.select = _.extend(new Baobab([
     {
         _id: "1",
-        title: "Не владею"
+        title: {
+            en: "No knowledge",
+            ru: "Не владею"
+        }
     },
     {
         _id: "2",
-        title: "Базовые знания"
+        title: {
+            en: "Basic knowledge",
+            ru: "Базовые знания"
+        }
     },
     {
         _id: "3",
-        title: "Читаю литературу"
+        title: {
+            en: "I read literature",
+            ru: "Читаю литературу"
+        }
     },
     {
         _id: "4",
-        title: "Могу проходить интервью"
+        title: {
+            en: "Can attend an interview",
+            ru: "Могу проходить интервью"
+        }
+    },
+    {
+        _id: "5",
+        title: {
+            en: "I am a fluent speaker",
+            ru: "Свободно владею"
+        }
     }
     ]),
     {
+        getItems: function(){
+            return _.map($store.languages.select.get(), function(item){
+                return {
+                    _id: item._id,
+                    title: item.title[$store.resume.get("lang")]
+                }
+            });
+        },
         getTitleById: function(id){
-            return _.findWhere($store.languages.select.get(), {"_id": id}).title;
+            return $store.languages.select.get({"_id": id}, "title", $store.resume.get("lang"));
         }
     }
 );

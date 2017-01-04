@@ -51,7 +51,7 @@
         if ($.opts.commit === true || $.opts.commit == "true"){
             $.parent.update();
         }
-        else if (_.isFunction($.opts.commit)) {
+        if (_.isFunction($.opts.commit)) {
             $.opts.commit.call(this, $.value, $.opts.i);
         }
         else if ($.opts.commit && $.parent[$.opts.commit]){

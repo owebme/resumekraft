@@ -26,7 +26,6 @@
 @import 'ui/basic/table';
 @import 'ui/button';
 @import 'ui/typography';
-@import 'ui/fontSize';
 @import 'ui/rangeslider';
 @import 'ui/switcher';
 @import 'ui/spinner';
@@ -47,6 +46,7 @@
 
 // UI elements
 @import 'appResume/premium/ui/main';
+@import 'appResume/premium/ui/fontSize';
 @import 'appResume/premium/ui/editplace';
 @import 'appResume/premium/ui/social';
 @import 'appResume/premium/ui/button';

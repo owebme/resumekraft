@@ -40,6 +40,9 @@
 
         $resume = $store.resume;
 
+        $i18n.lang($resume.get("lang"));
+        moment.locale($resume.get("lang"));
+
         $.loader.show(
             {
                 scope: $.scroll,

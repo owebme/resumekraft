@@ -7,13 +7,13 @@
     @extend .c-gray;
     @extend .nowrap;
     @extend .cursor-pointer;
-    padding-left:45px;
+    @extend .pl45;
     line-height:30px;
 
     .checkbox-control {
         @include accelerate();
-        width:30px;
-        height:30px;
+        @extend .w30;
+        @extend .h30;
 
         &:after {
             @include accelerate();
@@ -22,12 +22,12 @@
         }
     }
     &.small {
-        padding-left:30px;
+        @extend .pl30;
         line-height:20px;
 
         .checkbox-control {
-            width:20px;
-            height:20px;
+            @extend .w20;
+            @extend .h20;
 
             &:after {
                 width:14px;
@@ -37,7 +37,7 @@
     }
     &:hover {
         .checkbox-control {
-            background-color:$smoke;
+            @extend .bg-smoke;
         }
     }
     &-control {
@@ -56,11 +56,11 @@
             @extend .borderRadius-circle;
             @extend .willChange-transform;
             @extend .bg-smoke;
-            transform:translate3d(0, 0, 0) scale(0);
+            @extend .scale-0;
             transition:transform .5s $cubic089;
         }
         &:after {
-            content:"";
+            @extend .content-empty;
             @extend .display-inlineBlock;
             @extend .opacity-0;
             transform:scale3d(0.5, 0, 1);
@@ -78,11 +78,11 @@
         .checkbox-control {
             &:before {
                 @extend .bg-lime;
-                transform:translate3d(0, 0, 0) scale(1);
+                @extend .scale-100;
             }
             &:after {
                 @extend .opacity-100;
-                transform:scale3d(1, 1, 1);
+                @extend .scale3d-100;
                 transition:opacity .35s $cubic089 .2s, transform .35s $cubic089 .2s;
             }
         }
@@ -90,12 +90,12 @@
     &[data-color="blue"] {
         .checkbox-control:after {
             @include ui-icon(check_white);
-        }        
+        }
         input:checked ~ {
             .checkbox-control {
                 &:before {
                     @extend .bg-blue;
-                    transform:translate3d(0, 0, 0) scale(1);
+                    @extend .scale-100;
                 }
             }
         }
@@ -107,7 +107,7 @@
         input:checked ~ {
             .checkbox-control {
                 @extend .bg-white;
-                transform:translate3d(0, 0, 0) scale(1);
+                @extend .scale-100;
             }
         }
     }

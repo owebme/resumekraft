@@ -2,18 +2,38 @@
 
     <div class="shareButton__opener"></div>
     <div class="shareButton__items">
-        <div class="shareButton__item" data-share="fb" data-balloon="Поделиться в Facebook" data-balloon-color="blue">
+        <div class="shareButton__item" data-social="fb" data-balloon={ 'Поделиться в Facebook' : opts.tooltip } data-balloon-color="blue">
             <icon-fb></icon-fb>
         </div>
-        <div class="shareButton__item" data-share="vk" data-balloon="Поделиться в ВКонтакте" data-balloon-pos="left" data-balloon-color="blue">
+        <div class="shareButton__item" data-social="vk" data-balloon={ 'Поделиться в ВКонтакте' : opts.tooltip } data-balloon-pos="left" data-balloon-color="blue">
             <icon-vk></icon-vk>
         </div>
-        <div class="shareButton__item" data-share="tw" data-balloon="Поделиться в Twitter" data-balloon-pos="left" data-balloon-color="blue">
+        <div class="shareButton__item" data-social="tw" data-balloon={ 'Поделиться в Twitter' : opts.tooltip } data-balloon-pos="left" data-balloon-color="blue">
             <icon-tw></icon-tw>
         </div>
-        <div class="shareButton__item" data-share="dk" data-balloon="Поделиться в Одноклассниках" data-balloon-pos="left" data-balloon-color="blue">
+        <div class="shareButton__item" data-social="dk" data-balloon={ 'Поделиться в Одноклассниках' : opts.tooltip } data-balloon-pos="left" data-balloon-color="blue">
             <icon-dk></icon-dk>
         </div>
     </div>
+
+<script>
+
+    this.on("mount", function(){
+        this.share = new app.plugins.share(this.root, {
+            buttons: ".shareButton__item",
+            url: 'http://resumekraft.ru',
+            share: {
+                title: function(){
+                    return $resume.get('post');
+                }
+            }
+        })
+    });
+
+    this.on("unmount", function(){
+        this.share.destroy();
+    });
+
+</script>
 
 </share-button>

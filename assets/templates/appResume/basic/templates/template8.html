@@ -1,0 +1,125 @@
+<link rel="stylesheet" type="text/css" href="/makets/template8/style.css" />
+<div id="t8" class="template-resume">
+	<div id="t-circle-bg"></div>
+	<div id="t-header"> 
+		[%- IF r_photo %]
+		<div id="upload-photo-box" class="t-header-photo">
+			<img src="[% r_photo %]">
+			[%- IF VIEW != "site" && VIEW != "print" %]
+			<i class="icon"></i>
+			<input id="upload-photo" type="file" data-size="3">
+			[%- END %]
+			<div class="img-shadow"></div>
+		</div>
+		[%- ELSE %]
+		<div id="upload-photo-box" class="t-header-photo place">
+			<i class="icon"></i>
+			<span>загрузите свою фотографию</span>
+			<input id="upload-photo" type="file" data-size="3">
+		</div>
+		[%- END %]
+		<div id="t-header-names">
+			<div class="t-header-name">[% name_f %] <span>[% name_i %]</span></div>
+		</div>
+		<div id="t-header-post">[% r_name %]</div>
+		[%- IF r_salary > 0 %]
+		<div id="t-header-salary">
+			[% digitsFormat(r_salary) %] <em>P<i>–</i></em>
+		</div>
+		[%- END %]
+		<div id="t-header-string">
+			<div class="t-header-string-container">
+				[% IF city %]<div class="t-header-string-element"><span>Город:</span> [% city %]</div>[% END %]
+				<div class="t-header-string-element"><span>Возраст:</span> [% getAge(birthday) %] [% IF !birthday_hide %]([% monthRus(birthday) %])[% END %]</div>
+			</div>                   
+			<div class="t-header-string-container">
+				[% IF phone %]<div class="t-header-string-element"><span>Телефон:</span> [% phone %]</div>[% END %]
+				[% IF email %]<div class="t-header-string-element"><span>Email:</span> <u>[% email %]</u></div>[% END %]
+			</div>
+			[%- IF soc_profile or skype %]
+			<div class="t-header-string-container">
+				[% IF soc_profile %]<div class="t-header-string-element"><span>Social:</span> [% soc_profile %]</div>[% END %]
+				[% IF skype %]<div class="t-header-string-element"><span>Skype:</span> <u>[% skype %]</u></div>[% END %]
+			</div>			
+			[%- END %]
+		</div>
+	</div>
+	<div id="t-container-wrapper">
+		<div id="t-column-left">
+			<div class="t-container t-container-about">
+				<h3>О себе <span>достижения</span></h3>
+				[% html_escape(mark_raw(str_escape_html(r_about_me))) %]
+			</div>
+			[%- IF r_lang_native %]
+			<div class="t-container t-container-lang">
+				<h3>Знание <span>языков</span></h3>
+				<div class="t-container-item">
+					<div class="t-container-item-title">Родной язык</div>
+					<div class="t-container-item-value">[% r_lang_native %]</div>                   
+				</div>
+				<div class="t-container-item">
+					<div class="t-container-item-title">Английский</div>
+					<div class="t-container-item-value[% IF r_lang_en == "1" %] t-gray[% END %]">[% selLanguage(r_lang_en, 1) %]</div>                   
+				</div>
+				<div class="t-container-item">
+					<div class="t-container-item-title">Немецкий</div>
+					<div class="t-container-item-value[% IF r_lang_de == "1" %] t-gray[% END %]">[% selLanguage(r_lang_de, 1) %]</div>                   
+				</div>
+				<div class="t-container-item">
+					<div class="t-container-item-title">Французский</div>
+					<div class="t-container-item-value[% IF r_lang_fr == "1" %] t-gray[% END %]">[% selLanguage(r_lang_fr, 1) %]</div>                   
+				</div>                 
+			</div>
+			[%- END %]
+		</div>
+		<div id="t-container-content">
+			[%- IF educationItems %]
+			<div class="t-container t-container-edu">
+				<h3>Образование</h3>
+				[%- FOREACH item IN educationItems %]
+				[%- IF item.r_education != "secondary" %]
+				<div class="t-container-item">
+					<div class="t-container-dates">                            
+						<div class="t-container-dates-year">[% item.r_primaryEducation_year %]</div>
+						<div class="t-container-dates-title">[% educationList(item.r_education, 1) %]</div>
+					</div>
+					<div class="t-container-desc">
+						<div class="t-container-desc-title">[% item.r_primaryEducation_name %]</div>
+						<div class="t-container-desc-name">[% item.r_primaryEducation_faculty %]</div>
+					</div>
+				</div>
+				[%- ELSE %]
+				<div class="t-container-item">
+					<div class="t-container-dates">                            
+						<div class="t-container-dates-year">[% item.r_secondaryEducation_year %]</div>
+						<div class="t-container-dates-title">[% educationList(item.r_education, 1) %]</div>
+					</div>
+					<div class="t-container-desc">
+						<div class="t-container-desc-title">[% item.r_secondaryEducation_name %]</div>
+					</div>
+				</div>				
+				[%- END %]
+				[%- END %]                            
+			</div>
+			[%- END %]
+			[%- IF jobItems %]
+			<div class="t-container t-container-job">
+				<h3>Место работы</h3>
+				[%- FOREACH item IN jobItems %]
+				<div class="t-container-item">
+					<div class="t-container-dates">                            
+						<div class="t-container-dates-year">[% item.r_job_year_from %]-[% IF loop == "0" && !item.r_job_year_to %]NOW[% ELSE %][% item.r_job_year_to %][% END %]</div>
+						<div class="t-container-dates-title">[% cityName(item.r_job_city) %]</div>
+					</div>
+					<div class="t-container-desc">
+						<div class="t-container-desc-title">[% item.r_job_company %]</div>
+						<div class="t-container-desc-name">[% item.r_job_post %] <span>// [%- IF loop == "0" && !item.r_job_year_to %][% dateFormatRus(getExpYear(item.r_job_year_from, item.r_job_month_from, "now"), "YM", "comma") %][%- ELSE %][% dateFormatRus(getExpYear(item.r_job_year_from, item.r_job_month_from, item.r_job_year_to, item.r_job_month_to), "YM", "comma") %][%- END %]</span></div>
+						<div class="t-container-desc-text">[% html_escape(mark_raw(str_escape_html(item.r_job_desc))) %]</div>
+					</div>                    
+				</div> 
+				[%- END %]                        
+			</div>
+			[%- END %]
+		</div> 
+	</div>           
+</div>

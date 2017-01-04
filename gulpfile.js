@@ -230,6 +230,7 @@ gulp.task('private.libs', function() {
 		'assets/js/libs/modernizr.custom.js',
 		'assets/js/libs/fastclick.min.js',
 		'assets/js/libs/riot/riot+compiler.update.js',
+		'assets/js/libs/riot/riot-i18n.js',
 		'assets/js/libs/baobab.js',
 		'assets/js/libs/underscore-min.js',
 		'assets/js/libs/iscroll.js',
@@ -237,6 +238,7 @@ gulp.task('private.libs', function() {
 		'assets/js/libs/jquery.cropit.js',
 		'assets/js/libs/moment.min.js',
 		'assets/js/libs/moment.ru.js',
+		'assets/js/libs/jquery.mask.min.js',
 		'assets/js/libs/chartist.min.js',
 		'assets/js/libs/circliful/js/jquery.circliful.js',
 		'assets/js/libs/peity/jquery.peity.min.js',
@@ -450,6 +452,7 @@ gulp.task('watch', function() {
 	], gulp.series('templates.basic', 'templates.basic.view'));
 
 	gulp.watch([
+		'assets/css/ui/_icons.scss',
 		'public/css/style.scss',
 		'public/css/**/*.scss'
 	], gulp.series('public.css'));

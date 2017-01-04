@@ -187,7 +187,7 @@
                 transition:transform 0.55s $bounceSoft, opacity 0.2s $cubic345;
             }
             &__opener {
-                @extend .scale-100-3d;
+                @extend .scale3d-100;
                 transition:transform 0.4s $cubic345 0.1s;
             }
         }
@@ -199,7 +199,7 @@
             .help__message,
             .help__message__screen {
                 @extend .opacity-100;
-                @extend .scale-100-3d;
+                @extend .scale3d-100;
                 @extend .pointerEvents-all;
                 @extend .visibility-visible;
             }

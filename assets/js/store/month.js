@@ -1,56 +1,100 @@
 $store.month = _.extend(new Baobab([
     {
         _id: "1",
-        title: "Январь"
+        title: {
+            en: "January",
+            ru: "Январь"
+        }
     },
     {
         _id: "2",
-        title: "Февраль"
+        title: {
+            en: "February",
+            ru: "Февраль"
+        }
     },
     {
         _id: "3",
-        title: "Март"
+        title: {
+            en: "March",
+            ru: "Март"
+        }
     },
     {
         _id: "4",
-        title: "Апрель"
+        title: {
+            en: "April",
+            ru: "Апрель"
+        }
     },
     {
         _id: "5",
-        title: "Май"
+        title: {
+            en: "May",
+            ru: "Май"
+        }
     },
     {
         _id: "6",
-        title: "Июнь"
+        title: {
+            en: "June",
+            ru: "Июнь"
+        }
     },
     {
         _id: "7",
-        title: "Июль"
+        title: {
+            en: "July",
+            ru: "Июль"
+        }
     },
     {
         _id: "8",
-        title: "Август"
+        title: {
+            en: "August",
+            ru: "Август"
+        }
     },
     {
         _id: "9",
-        title: "Сентябрь"
+        title: {
+            en: "September",
+            ru: "Сентябрь"
+        }
     },
     {
         _id: "10",
-        title: "Октябрь"
+        title: {
+            en: "October",
+            ru: "Октябрь"
+        }
     },
     {
         _id: "11",
-        title: "Ноябрь"
+        title: {
+            en: "November",
+            ru: "Ноябрь"
+        }
     },
     {
         _id: "12",
-        title: "Декабрь"
+        title: {
+            en: "December",
+            ru: "Декабрь"
+        }
     }
     ]),
     {
+        getItems: function(){
+            return _.map($store.month.get(), function(item){
+                return {
+                    _id: item._id,
+                    title: item.title[$store.resume.get("lang")]
+                }
+            });
+        },
         getTitleById: function(id){
-            return _.findWhere($store.month.get(), {"_id": String(id)}).title;
+            return $store.month.get({"_id": id}, "title", $store.resume.get("lang"));
         }
     }
 );

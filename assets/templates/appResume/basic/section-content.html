@@ -14,11 +14,15 @@
 
     <resume-preview></resume-preview>
 
+    <resume-settings></resume-settings>
+
     <resume-photo-upload></resume-photo-upload>
 
     <resume-convert-pdf></resume-convert-pdf>
 
     <resume-edit-finish></resume-edit-finish>
+
+    <div if={ !app.device.isPhone } class="share__text">Поделиться своим резюме в социальных сетях</div>
 
 <script>
 
@@ -37,6 +41,7 @@
             buttons: $.tags["resume-control-buttons"],
             percentage: $.tags["resume-control-percentage"],
             preview: $.tags["resume-preview"],
+            settings: $.tags["resume-settings"],
             photo: $.tags["resume-photo-upload"],
             pdf: $.tags["resume-convert-pdf"],
             finish: $.tags["resume-edit-finish"],
@@ -84,6 +89,9 @@
         },
         print: function(){
 
+        },
+        settings: function(){
+            $.sections.settings.show();
         }
     };
 

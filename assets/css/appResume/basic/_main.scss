@@ -53,8 +53,8 @@
             }
             .btn-l2 {
                 .d-phone & {
-                    padding-left:30px;
-                    padding-right:30px;
+                    @extend .pl30;
+                    @extend .pr30;
                 }
             }
         }
@@ -275,37 +275,6 @@
             @extend .ml-xxs;
         }
     }
-    .screen__lines {
-        @include abs();
-
-        .d-phone & {
-            @extend .display-none;
-        }
-        &__item {
-            @extend .pos-abs;
-            @extend .b0;
-            @extend .w15;
-            @extend .bg-white;
-            @extend .borderRadiusTop-xxxxxl;
-
-            &:nth-child(1){
-                @extend .h20p;
-                @extend .l5;
-            }
-            &:nth-child(2){
-                @extend .h50p;
-                @extend .l10;
-            }
-            &:nth-child(3){
-                @extend .h35p;
-                @extend .l15;
-            }
-            &:nth-child(4){
-                @extend .h25p;
-                @extend .l20;
-            }
-        }
-    }
     .screen__button__finish {
         @extend .pos-abs;
         @extend .borderRadius-circle;
@@ -347,9 +316,9 @@
     }
     .screen-finish {
         .circuful {
-            width:550px;
-            height:550px;
-            margin-left:-400px;
+            width:500px;
+            height:500px;
+            margin-left:-380px;
 
             .d-tablet.r-landscape & {
                 width:480px;
@@ -367,6 +336,39 @@
                 @extend .opacity-30;
             }
         }
+        &-icon {
+            @extend .pos-abs;
+            @extend .b-xs;
+            @extend .l-l;
+
+            &:after {
+                @extend .display-block;
+                @extend .content-empty;
+                @include ui-icon("resume_white", 274px, 274px);
+            }
+            .d-tablet & {
+                &:after {
+                    width:320px;
+                    height:320px;
+                }
+            }
+            .d-tablet.r-landscape & {
+                @extend .l--55;
+                @extend .b0;
+            }
+            .d-tablet.r-portrait & {
+                left:-120px;
+                @extend .b-l;
+            }
+            .d-phone & {
+                left:-200px;
+                @extend .b0;
+
+                &:after {
+                    @extend .opacity-50;
+                }
+            }
+        }
     }
     .ui-scroll__bar,
     .ui-scroll__handle__inner {
@@ -375,11 +377,31 @@
     .ui-scroll:after {
         @extend .content-empty;
         @include abs();
-        width:15px;
+        @extend .w15;
         @extend .zIndex--1;
     }
     .ui-scroll:hover {
         width:12px;
+    }
+    .share__text {
+        @extend .pos-centered;
+        @extend .c-white;
+        @extend .fontSize-46;
+        @extend .fontWeight-8;
+        @extend .overflow-hidden;
+        @extend .pointerEvents-none;
+        @extend .opacity-0;
+        width:560px;
+        transition:opacity 0.3s $cubic28, visibility 0s .3s;
+        @extend .zIndex-5;
+    }
+    &[data-overlay="true"]{
+        .share__text {
+            @extend .opacity-100;
+            @extend .overflow-visible;
+            @extend .pointerEvents-all;
+            transition:opacity 0.3s $cubic28, visibility 0s;
+        }
     }
 }
 .screen-convert-pdf {

@@ -228,6 +228,56 @@
         line-height:17px;
         margin:-7.5px 0 2px 1px;
     }
+    &-white {
+        &.input {
+            @extend .c-white;
+            @extend .fontFamily-roboto;
+            @extend .fontWeight-5;
+            background-color:transparent;
+            box-shadow:0 0 0 2px rgba($white,.5);
+
+            .d-no-phone & {
+                &::-webkit-input-placeholder {
+                    color:rgba($white,.6);
+                    font-weight:normal;
+                }
+                &::-moz-input-placeholder {
+                    color:rgba($white,.6);
+                    font-weight:normal;
+                }
+            }
+            .d-phone & {
+                &::-webkit-input-placeholder {
+                    font-family:$helvetica;
+                    font-weight:normal;
+                }
+                &::-moz-input-placeholder {
+                    font-family:$helvetica;
+                    font-weight:normal;
+                }
+            }
+            &:hover {
+                box-shadow:0 0 0 2px rgba($white,.7);
+            }
+            &:focus {
+                box-shadow:0 0 0 2px rgba($white,.9);
+            }
+            &-xl {
+                font-size:25px;
+                letter-spacing:-0.2px;
+            }
+            &-l {
+                font-size:20px;
+
+                &::-webkit-input-placeholder {
+                    font-size:16.5px;
+                }
+                &::-moz-input-placeholder {
+                    font-size:16.5px;
+                }
+            }
+        }
+    }
 }
 div.input {
     &-xl {

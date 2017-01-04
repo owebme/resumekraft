@@ -22,12 +22,7 @@
         </div>
     </div>
 
-    <div class="screen__lines">
-        <div class="screen__lines__item anim anim-bt" delay-show="s" data-duration="m"></div>
-        <div class="screen__lines__item anim anim-bt" delay-show="m" data-duration="m"></div>
-        <div class="screen__lines__item anim anim-bt" delay-show="l" data-duration="m"></div>
-        <div class="screen__lines__item anim anim-bt" delay-show="xl" data-duration="m"></div>
-    </div>
+    <div class="screen-finish-icon anim anim-scale" delay-show="s" data-duration={ m : app.device.isPhone }></div>
 
 <script>
 
@@ -59,7 +54,7 @@
     };
 
     $.chartRadial = function(){
-        $.circuful.circliful({
+        $.circuful.empty().circliful({
             animation: 1,
             animationStep: 6,
             foregroundBorderWidth: app.device.isMobile ? 8 : 9,

@@ -1,6 +1,6 @@
 <ui-input>
 
-    <input name="input" onInput={ onInput } onUpdate={ opts.onupdate ? opts.onupdate : "none" } class="input input-{ opts.size ? opts.size : 'm' }" value={ value } placeholder={ opts.placeholder } disabled={ typeof opts.disabled !== 'undefined' }>
+    <input name="input" onInput={ onInput } onUpdate={ opts.onupdate ? opts.onupdate : "none" } class="input input-{ opts.size ? opts.size : 'm' } { opts.color }" value={ value } placeholder={ opts.placeholder } disabled={ typeof opts.disabled !== 'undefined' }>
 
 <script>
 
@@ -16,7 +16,7 @@
     });
 
     $.on("mount", function(){
-        if (!window.$$) return;
+        if (!window.$$ || window.$$ && !$$.fn.mask) return;
         if ($.opts.pattern || $.opts.mask){
             var $input = $$($.input);
             if ($.opts.pattern){

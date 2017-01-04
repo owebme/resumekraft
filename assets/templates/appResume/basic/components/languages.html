@@ -15,7 +15,7 @@
                         <ui-select update="value" cursor={ $resume.select("languages", "items", {"title": item.title}) } items={ $store.languages.native.get() } size="xl"></ui-select>
                     </div>
                     <div if={ item.title != "native" }>
-                        <ui-select update="value" cursor={ $resume.select("languages", "items", {"title": item.title}) } items={ $store.languages.select.get() } size="xl"></ui-select>
+                        <ui-select update="value" cursor={ $resume.select("languages", "items", {"title": item.title}) } items={ $store.languages.select.getItems() } size="xl"></ui-select>
                     </div>
                 </div>
             </div>

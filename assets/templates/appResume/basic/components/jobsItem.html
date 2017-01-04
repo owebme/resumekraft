@@ -33,13 +33,13 @@
                 <span class="input-title">Начало работы</span>
             </div>
             <div class="col-xs-12 col-sm-7 col-md-6">
-                <ui-select update="month" cursor={ get.cursor().select("from") } items={ $store.month.get() } size="xl"></ui-select>
+                <ui-select update="month" cursor={ get.cursor().select("from") } items={ $store.month.getItems() } size="xl"></ui-select>
             </div>
             <div class="col-xs-12 col-sm-7 col-md-4">
                 <ui-select update="year" cursor={ get.cursor().select("from") } items={ _.range(1940, new Date().getFullYear() + 1) } size="xl"></ui-select>
             </div>
             <div class="col-xs-24 col-sm-2 col-md-6 pt-s xs-pr-xs dateToNow">
-                <ui-checkbox onUpdate="parent" update="last" cursor={ get.cursor() } title="По настоящее" size="xl2" theme="blue"></ui-checkbox>
+                <ui-checkbox onUpdate="parent" update="last" cursor={ get.cursor() } title="По настоящее" size="20" theme="blue"></ui-checkbox>
             </div>
         </div>
         <div class="row mb-m">
@@ -48,7 +48,7 @@
                 <span class="input-title">Окончание</span>
             </div>
             <div class="col-xs-12 col-sm-7 col-md-6">
-                <ui-select update="month" cursor={ get.cursor().select("to") } items={ $store.month.get() } size="xl" disable={ get.cursor().get('last') }></ui-select>
+                <ui-select update="month" cursor={ get.cursor().select("to") } items={ $store.month.getItems() } size="xl" disable={ get.cursor().get('last') }></ui-select>
             </div>
             <div class="col-xs-12 col-sm-7 col-md-4">
                 <ui-select update="year" cursor={ get.cursor().select("to") } items={ _.range(1940, new Date().getFullYear() + 1) } size="xl" disable={ get.cursor().get('last') }></ui-select>

@@ -7,7 +7,7 @@
                 <span class="visible-sm visible-md c-gray fontSize-28">Степень</span>
             </div>
             <div class="col-xs-24 col-sm-16">
-                <ui-select onUpdate="all" update="level" cursor={ $resume.select("education", "items", {"_id": opts.item._id}) } items={ $store.education.get() } size="xl"></ui-select>
+                <ui-select onUpdate="all" update="level" cursor={ $resume.select("education", "items", {"_id": opts.item._id}) } items={ $store.education.getItems() } size="xl"></ui-select>
             </div>
         </div>
         <div class="row mb-m">

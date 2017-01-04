@@ -1,16 +1,55 @@
 <resume-settings class="oScreen screen-settings c-white zIndex-10 { showAnim : active }" data-color="blue" data-open={ active }>
 
-    <div class="pos-centered">
-        <div class="container">
+    <div onClick={ hide } onUpdate="none" class="button__close" data-color="white"></div>
+
+    <div class="{ pos-centered : !app.device.isPhone } pb25">
+        <div class="container content anim anim-bt-soft" duration-show="m" duration-hide="s">
             <div class="row">
-                <div class="col-md-24"><h1>Настройки</h1></div>
-            </div>
-            <div class="row">
-                <div class="hidden-xs col-sm-8 pt-xs pr-m">
-                    <span class="c-gray fontSize-28">Должность</span>
+                <div class="col-xs-24 text-center pb50">
+                    <h1>Настройки резюме</h1>
                 </div>
-                <div class="col-xs-24 col-sm-16">
-                    <ui-input update="post" cursor={ $resume.select() } size="xl"></ui-input>
+            </div>
+            <div class="row mb-m text-left">
+                <div class="col-xs-17 col-sm-12 pr-m transition-s { opacity-50 : !$resume.get('public') }">
+                    <span class="fontSize-28">Опубликовать резюме</span>
+                </div>
+                <div class="col-xs-7 col-sm-12 pt-xxs text-left">
+                    <ui-switcher commit={ true } update="public" cursor={ $resume.select() }></ui-switcher>
+                </div>
+            </div>
+            <div class="row mb25 text-left">
+                <div class="col-xs-24 col-sm-18">
+                    <input class="input input-l input-white { opacity-50 : !$resume.get('public') }" value="http://resumekraft.ru/resume/4a170ef2fc400bd89c618b2de1e3674e18757d32">
+                </div>
+            </div>
+            <div class="row mb-m text-left">
+                <div class="col-xs-17 col-sm-12 pr-m transition-s { opacity-50 : !config.get('logotype') }">
+                    <span class="fontSize-28">Оставлять логотип (PDF)</span>
+                </div>
+                <div class="col-xs-7 col-sm-12 pt-xxs text-left">
+                    <ui-switcher update="logotype" i="logotype" commit={ change } cursor={ config.select() }></ui-switcher>
+                </div>
+            </div>
+            <div class="row mb-m text-left">
+                <div class="col-xs-17 col-sm-12 pr-m transition-s { opacity-50 : !config.get('stat') }">
+                    <span class="fontSize-28">Собирать статистику</span>
+                </div>
+                <div class="col-xs-7 col-sm-12 pt-xxs text-left">
+                    <ui-switcher update="stat" i="stat" commit={ change } cursor={ config.select() }></ui-switcher>
+                </div>
+            </div>
+            <div class="row mb50 text-left">
+                <div class="col-xs-17 col-sm-12 pr-m transition-s { opacity-50 : !config.get('lang') }">
+                    <span class="fontSize-28">Резюме на иностранном языке</span>
+                </div>
+                <div class="col-xs-7 col-sm-12 pt-xxs text-left">
+                    <ui-switcher update="lang" i="lang" commit={ change } cursor={ config.select() }></ui-switcher>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-xs-24">
+                    <button onClick={ onCancel } class="btn btn-xxl c-blue btn-white-hover mlr-xs">Отменить</button>
+                    <button onClick={ onSave } class="btn btn-xxl c-blue btn-white mlr-xs">Сохранить</button>
                 </div>
             </div>
         </div>
@@ -22,14 +61,56 @@
 
     $.active = false;
 
-    $.on("mount", function(){
-        $.show();
+    $.config = new Baobab({
+        logotype: true,
+        stat: false,
+        lang: false
     });
+
+    // $.on("mount", function(){
+    //     $.show();
+    // });
 
     $.show = function(){
         $.update({
             active: true
         })
+    };
+
+    $.change = function(value, i){
+        var text = "";
+
+        if (i == "logotype") text = "Чтобы убрать логотип вам нужен другой аккаунт";
+        else if (i == "stat") text = "Чтобы собирать статистику вам нужен другой аккаунт";
+        else if (i == "lang") text = "Чтобы создать резюме на другом языке вам нужен другой аккаунт";
+
+        if (!value && i == "logotype" || i != "logotype" && value){
+            $Alert.show({
+                title: "Перейти на Premium?",
+                subtitle: text,
+                success: {
+                    title: "Перейти",
+                    callback: function(){
+                        $Sections.payment.section.show();
+                    }
+                },
+                cancel: {
+                    callback: function(){
+                        $.config.select(i).set(i == "logotype" ? true : false);
+                        $.update();
+                    }
+                }
+            });
+        }
+        $.update();
+    };
+
+    $.onCancel = function(){
+        $.hide();
+    };
+
+    $.onSave = function(){
+        $.hide();
     };
 
     $.hide = function(){

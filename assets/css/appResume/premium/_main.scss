@@ -21,14 +21,6 @@ body {
 	}
 }
 #app[data-app="premium"]{
-    // .d-phone &,
-    // &[data-mode="editing"]{
-        .anim {
-            @extend .transition-none;
-            @extend .transform-default;
-            @extend .opacity-100;
-        }
-    //}
 	.d-no-phone & {
 		@extend .overflowX-hidden;
 	}

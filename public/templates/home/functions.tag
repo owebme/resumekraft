@@ -34,10 +34,10 @@
                         <icon-play size="xl" color="blue"></icon-play>
                     </div>
                     <div class="overview__functions__item__title">
-                        Анимация
+                        Презентация
                     </div>
                     <div class="overview__functions__item__text">
-                        Просто оживить резюме, анимация эллементов
+                        Резюме в виде презентации на PREMIUM аккаунте
                     </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                         Стильный дизайн
                     </div>
                     <div class="overview__functions__item__text">
-                        100% адаптация для всех мобильных и не мобильных устройств
+                        Яркие и стильный дизайн на выбор, легко сменить и настроить
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
                         Обратная связь
                     </div>
                     <div class="overview__functions__item__text">
-                        100% адаптация для всех мобильных и не мобильных устройств
+                        Получайте обратную связь от своих работадателей
                     </div>
                 </div>
             </div>
@@ -89,7 +89,7 @@
                         Сохранить в PDF
                     </div>
                     <div class="overview__functions__item__text">
-                        100% адаптация для всех мобильных и не мобильных устройств
+                        Скачать резюме в PDF-формате 1:1 каким его сделали вы
                     </div>
                 </div>
             </div>
@@ -102,7 +102,7 @@
                         Распечатать
                     </div>
                     <div class="overview__functions__item__text">
-                        100% адаптация для всех мобильных и не мобильных устройств
+                        Сохранить и распечатать свое резюме
                     </div>
                 </div>
             </div>
@@ -128,7 +128,7 @@
                         Free & Premium
                     </div>
                     <div class="overview__functions__item__text">
-                        100% адаптация для всех мобильных и не мобильных устройств
+                        Два продвинутых аккаунта Free & Premium на выбор
                     </div>
                 </div>
             </div>
@@ -141,20 +141,20 @@
                         Прямая ссылка
                     </div>
                     <div class="overview__functions__item__text">
-                        100% адаптация для всех мобильных и не мобильных устройств
+                        Получить прямую ссылку на резюме или поделиться им в соц. сетях
                     </div>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-8 col-md-6 mb-xl xs-mb-l anim-group3 anim-showRight anim-delay-m">
                 <div class="overview__functions__item">
                     <div class="overview__functions__item__icon">
-                        <icon-test size="xl" color="blue"></icon-test>
+                        <icon-help size="xl" color="blue"></icon-help>
                     </div>
                     <div class="overview__functions__item__title">
-                        Тестирование
+                        Помощь в написании
                     </div>
                     <div class="overview__functions__item__text">
-                        100% адаптация для всех мобильных и не мобильных устройств
+                        Советы наших экспертов помогут получить качественное резюме
                     </div>
                 </div>
             </div>
