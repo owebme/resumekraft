@@ -29,6 +29,17 @@
   margin-left: -13px;
   margin-bottom: -4px;
   white-space: nowrap;
+
+  &[data-long="true"]{
+      .t-header-name {
+          font-size:102px;
+          line-height:117px;
+      }
+      .t-header-name.bold {
+          font-size:105px;
+          line-height:117px;
+      }
+  }
 }
 #t4 .t-header-name {
   display: inline-block;
@@ -53,6 +64,8 @@
 #t4 .t-header-string-element {
   position: relative;
   display: inline-block;
+  vertical-align:top;
+  height:26px;
   padding-right: 11px;
   padding-left: 21px;
   font-size: 23px;
@@ -67,7 +80,7 @@
 #t4 .t-header-string-element i {
   display: block;
   position: absolute;
-  top: 9px;
+  bottom: 10px;
   left: 0;
   width: 7px;
   height: 7px;
@@ -76,19 +89,26 @@
   background: #1F8CEB;
 }
 #t4 .t-header-string-salary {
-    font:23px/24px 'HypatiaRegular';
+    font:500 22px/24px 'Roboto';
     white-space:nowrap;
+
+    rub:after {
+        content:"₽";
+        display:inline-block;
+        vertical-align:top;
+    }
 }
 #t4 .t-header-string-salary sup {
     display:inline-block;
+    vertical-align:top;
     color:#fff;
-    font:16px/28px 'HypatiaSemibold';
+    font:500 15px/25px 'Roboto';
     background-color:#1F8CEB;
     padding:0 9px;
     height:24px;
     border-radius:100px;
     margin-left:5px;
-    transform:translateY(-5px);
+    margin-top:-5px;
 }
 #t4 #t-header-post {
   color: #1F8CEB;

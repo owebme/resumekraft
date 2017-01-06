@@ -12,10 +12,13 @@
     $scope = $$($.root);
 
     $.on("mount", function(){
+        $afterlag.run(function(){
+            $.parent.screens = $.el = new app.plugins.screens($scope);
+            $.el.init();
 
-        $.parent.screens = $.el = new app.plugins.screens($scope);
-
-        $.el.init();
+            $.parent.sections.steps.init();
+            $.parent.sections.buttons.init();
+        });
     });
 
     $.hide = function(){

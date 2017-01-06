@@ -2,48 +2,59 @@
 
     <div onClick={ hide } onUpdate="none" class="button__close" data-color="white"></div>
 
-    <div class="{ pos-centered : !app.device.isPhone } pb25">
-        <div class="container content anim anim-bt-soft" duration-show="m" duration-hide="s">
-            <div class="row">
-                <div class="col-xs-24 text-center pb50">
-                    <h1>Настройки резюме</h1>
+    <div class="{ pos-centered : !app.device.isPhone }">
+        <div class="container content anim anim-bt-soft pt30" data-content="settings" duration-show="m" duration-hide="s">
+            <div class="row text-center mb25">
+                <div class="col-xs-24 col-sm-12 transition-s { opacity-50 : !config.get('public') }">
+                    <div class="pos-rel aspectRatio-169 mtb-s mlr-m">
+                        <div class="pos-abs-full borderRadius-xl borderWidth-1 borderStyle-solid borderColor-white opacity-50"></div>
+                        <div class="pos-centered mt--l">
+                            <ui-switcher update="public" commit={ true } cursor={ config.select() }></ui-switcher>
+                        </div>
+                        <div class="pos-centered-h b-30 w100p">
+                            <div class="fontSize-28 mb-xs">Опубликовать резюме</div>
+                            <div class="fontSize-20 plr-m { display-none : showLink }">Получить <span onClick={ open.link } class="link-underline link-lime">прямую ссылку</span> на резюме</div>
+                            <div class="plr-m mb--xs { display-none : !showLink }">
+                                <input class="input input-m input-white { opacity-50 : !$resume.get('public') }" value="http://resumekraft.ru/resume/4a170ef2fc400bd89c618b2de1e3674e18757d32">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="row mb-m text-left">
-                <div class="col-xs-17 col-sm-12 pr-m transition-s { opacity-50 : !$resume.get('public') }">
-                    <span class="fontSize-28">Опубликовать резюме</span>
+                <div class="col-xs-24 col-sm-12 transition-s { opacity-50 : !config.get('logotype') }">
+                    <div class="pos-rel aspectRatio-169 mtb-s mlr-m">
+                        <div class="pos-abs-full borderRadius-xl borderWidth-1 borderStyle-solid borderColor-white opacity-50"></div>
+                        <div class="pos-centered mt--l">
+                            <ui-switcher update="logotype" i="logotype" commit={ change } cursor={ config.select() }></ui-switcher>
+                        </div>
+                        <div class="pos-centered-h b-30 w100p">
+                            <div class="fontSize-28 mb-xs">Оставлять логотип</div>
+                            <div class="fontSize-20 plr-m">Логотип на PDF файле</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-xs-7 col-sm-12 pt-xxs text-left">
-                    <ui-switcher commit={ true } update="public" cursor={ $resume.select() }></ui-switcher>
+                <div class="col-xs-24 col-sm-12 transition-s { opacity-50 : !config.get('stat') }">
+                    <div class="pos-rel aspectRatio-169 mtb-s mlr-m">
+                        <div class="pos-abs-full borderRadius-xl borderWidth-1 borderStyle-solid borderColor-white opacity-50"></div>
+                        <div class="pos-centered mt--l">
+                            <ui-switcher update="stat" i="stat" commit={ change } cursor={ config.select() }></ui-switcher>
+                        </div>
+                        <div class="pos-centered-h b-30 w100p">
+                            <div class="fontSize-28 mb-xs">Собирать статистику</div>
+                            <div class="fontSize-20 plr-m">Просмотры резюме работодателями</div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="row mb25 text-left">
-                <div class="col-xs-24 col-sm-18">
-                    <input class="input input-l input-white { opacity-50 : !$resume.get('public') }" value="http://resumekraft.ru/resume/4a170ef2fc400bd89c618b2de1e3674e18757d32">
-                </div>
-            </div>
-            <div class="row mb-m text-left">
-                <div class="col-xs-17 col-sm-12 pr-m transition-s { opacity-50 : !config.get('logotype') }">
-                    <span class="fontSize-28">Оставлять логотип (PDF)</span>
-                </div>
-                <div class="col-xs-7 col-sm-12 pt-xxs text-left">
-                    <ui-switcher update="logotype" i="logotype" commit={ change } cursor={ config.select() }></ui-switcher>
-                </div>
-            </div>
-            <div class="row mb-m text-left">
-                <div class="col-xs-17 col-sm-12 pr-m transition-s { opacity-50 : !config.get('stat') }">
-                    <span class="fontSize-28">Собирать статистику</span>
-                </div>
-                <div class="col-xs-7 col-sm-12 pt-xxs text-left">
-                    <ui-switcher update="stat" i="stat" commit={ change } cursor={ config.select() }></ui-switcher>
-                </div>
-            </div>
-            <div class="row mb50 text-left">
-                <div class="col-xs-17 col-sm-12 pr-m transition-s { opacity-50 : !config.get('lang') }">
-                    <span class="fontSize-28">Резюме на иностранном языке</span>
-                </div>
-                <div class="col-xs-7 col-sm-12 pt-xxs text-left">
-                    <ui-switcher update="lang" i="lang" commit={ change } cursor={ config.select() }></ui-switcher>
+                <div class="col-xs-24 col-sm-12 transition-s { opacity-50 : !config.get('lang') }">
+                    <div class="pos-rel aspectRatio-169 mtb-s mlr-m">
+                        <div class="pos-abs-full borderRadius-xl borderWidth-1 borderStyle-solid borderColor-white opacity-50"></div>
+                        <div class="pos-centered mt--l">
+                            <ui-switcher update="lang" i="lang" commit={ change } cursor={ config.select() }></ui-switcher>
+                        </div>
+                        <div class="pos-centered-h b-30 w100p">
+                            <div class="fontSize-28 mb-xs">Резюме на англ. языке</div>
+                            <div class="fontSize-20 plr-m">Изменить язык</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row text-center">
@@ -62,23 +73,35 @@
     $.active = false;
 
     $.config = new Baobab({
-        logotype: true,
-        stat: false,
-        lang: false
+        public: $store.resume.get("public"),
+        logotype: $store.resume.get("config", "pdf", "logotype"),
+        stat: $store.resume.get("config", "stat"),
+        lang: $store.resume.get("lang") == "en" ? true : false
     });
 
-    // $.on("mount", function(){
-    //     $.show();
-    // });
+    $.showLink = false;
 
     $.show = function(){
+        $.store = $.config.clone();
+
         $.update({
             active: true
         })
     };
 
+    $.open = {
+        link: function(){
+            $.showLink = true;
+        }
+    };
+
     $.change = function(value, i){
         var text = "";
+
+        if ($account.get('plan') == "premium"){
+            $.update();
+            return;
+        }
 
         if (i == "logotype") text = "Чтобы убрать логотип вам нужен другой аккаунт";
         else if (i == "stat") text = "Чтобы собирать статистику вам нужен другой аккаунт";
@@ -106,17 +129,41 @@
     };
 
     $.onCancel = function(){
-        $.hide();
+        $.hide(function(){
+            $.config.set($.store);
+            $.update();
+        });
     };
 
     $.onSave = function(){
-        $.hide();
+        $.hide(function(){
+            $store.resume.select("public")
+            .set($.config.get("public"));
+
+            if ($account.get('plan') == "premium"){
+                $store.resume.select("config", "pdf", "logotype")
+                .set($.config.get("logotype"));
+
+                $store.resume.select("config", "stat")
+                .set($.config.get("stat"));
+
+                if ($.store.lang !== $.config.get("lang")){
+                    $store.resume.select("lang")
+                    .set($.config.get("lang") ? "en" : "ru");
+                }
+            }
+        });
     };
 
-    $.hide = function(){
+    $.hide = function(callback){
         $.update({
             active: false
         })
+        if (_.isFunction(callback)){
+            _.onEndTransition($.root, function(){
+                callback();
+            });
+        }
     };
 
 </script>

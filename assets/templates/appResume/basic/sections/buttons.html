@@ -40,7 +40,7 @@
 
     $.active = true;
 
-    $.on("mount", function(){
+    $.init = function(){
         var _onScroll = _.throttle($.onScroll, 100),
             scroll = $.parent.screens.get("scroll");
 
@@ -48,7 +48,7 @@
             app.utils.raf(animationLoop);
             _onScroll(app.utils.getScroll(scroll));
         })();
-    });
+    };
 
     $.onScroll = function(scroll){
         if (!$.active && scroll.y < 20){

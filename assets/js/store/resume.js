@@ -3,7 +3,7 @@ $store.resume = _.extend(new Baobab({
         public: true,
         plan: "basic",
         template: "1",
-        lang: "en",
+        lang: "ru",
         post: "Web-Designer, Art-director, Illustrator",
         photo: "/preview/images/photo/photo_phone.jpg",
         commons: {
@@ -466,7 +466,11 @@ $store.resume = _.extend(new Baobab({
                 minWidth: 440,
                 maxHeight: 620,
                 noise: false
-            }
+            },
+            pdf: {
+                logotype: true
+            },
+            stat: false
         }
     }, {
         autoCommit: true
@@ -483,9 +487,9 @@ $store.resume = _.extend(new Baobab({
                         b = $store.resume.get('commons', 'birthday'),
                         years = moment().diff(moment(b.year + "-" + b.month + "-" + b.day), 'years');
 
-                    if (years == "1") years = years + (lang == "ru" ? " год" : " age");
-                    else if (years > 1 && years < 5) years = years + (lang == "ru" ? " года" :  "age");
-                    else years = years + (lang == "ru" ? " лет" : " age");
+                    if (years == "1") years = years + (lang == "ru" ? " год" : " year");
+                    else if (years > 1 && years < 5) years = years + (lang == "ru" ? " года" :  "year");
+                    else years = years + (lang == "ru" ? " лет" : " year");
 
                     return years;
                 }
@@ -523,7 +527,7 @@ $store.resume = _.extend(new Baobab({
                         f = $store.month.getTitleById(item.from.month) + " " + item.from.year;
 
                     if (item.last){
-                        var t = (lang == "ru" ? 'по настоящее время' : 'until now'),
+                        var t = (lang == "ru" ? 'по настоящее время' : 'Until Now'),
                         months = moment().diff(item.from.year + '-' + (item.from.month < 10 ? '0' + item.from.month : item.from.month) + '-' + (day < 10 ? '0' + day : day), 'month');
                     }
                     else {

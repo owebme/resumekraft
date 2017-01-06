@@ -21,7 +21,7 @@
         // box-shadow:0 5px 40px rgba(0,0,0,.16);
         // box-shadow:0 20px 40px rgba(0,0,0,.16);
         box-shadow:0 20px 25px rgba(0,0,0,.15);
-        transform:translateY(-15px);
+        @extend .trY--s;
     }
     &--new {
         @extend .flex-column-centered;
@@ -62,14 +62,16 @@
             border-radius:10px 10px 0 0;
         }
         .d-phone & {
-            padding:30px 35px 0 25px;
+            @extend .pt30;
+            @extend .pr35;
+            @extend .pl25;
         }
     }
     &__control {
-        position:absolute;
-        top:20px;
+        @extend .pos-abs;
+        @extend .t-m;
         right:14px;
-        width:30px;
+        @extend .w30;
         @include flex("column", "flex-start", "center");
 
         &__btn {
@@ -83,7 +85,7 @@
             @include ui-icon(pencil_white, 22px, 22px);
         }
         &__remove {
-            @include ui-icon(minus_white, 27px, 27px);
+            @include ui-icon(minus_white, 30px, 30px);
         }
         &__menu {
             @include ui-icon(more_v_white, 26px, 26px);
@@ -134,12 +136,12 @@
             @extend .pos-rel;
             @extend .bg-white;
             @extend .borderRadius-xxl;
-            z-index:1;
+            @extend .zIndex-1;
         }
         &__graph {
-            position:absolute;
-            top:-10px;
-            left:-30px;
+            @extend .pos-abs;
+            @extend .t--xs;
+            @extend .l--30;
             width:220px;
             height:220px;
             @extend .opacity-15;

@@ -51,7 +51,9 @@
 
     $.on("mount", function(){
 
-        $$($.sections.shareButton.root).on("mouseenter mouseleave", function(e){
+        $.shareButtonEl = $$($.sections.shareButton.root);
+
+        $.shareButtonEl.on("mouseenter mouseleave", function(e){
             if (e.type === "mouseenter"){
                 $.scope.root.setAttribute("data-overlay", "true");
             }
@@ -59,9 +61,27 @@
                 $.scope.root.setAttribute("data-overlay", "false");
             }
         });
+
+        $store.resume.on("write", function(e){
+            var prop = e.data.path[0];
+            if (prop == "lang"){
+                $i18n.lang($resume.get("lang"));
+                moment.locale($resume.get("lang"));
+                $.update();
+            }
+        });
+
+        // if (!app.device.isPhone){
+        //     _.onEndTransition($.content, function(){
+        //         $Tutorial.show($$($.scope.root), "resumeBasic", {
+        //             animate: false
+        //         });
+        //     });
+        // }
     });
 
     $.refresh = function(){
+        if (!$.screens) return;
         $.screens.refresh();
         $.sections.steps.refresh();
     };
@@ -133,6 +153,8 @@
 
     $.on("unmount", function(){
         $.screens.destroy();
+        $store.resume.off("write");
+        $.shareButtonEl.off();
     });
 
 </script>

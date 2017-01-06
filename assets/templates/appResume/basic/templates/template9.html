@@ -1,0 +1,183 @@
+<resume-basic-template9 id="t9">
+
+	<div id="t-header">
+		<div id="t-header-names" data-long={ $resume.get('commons', 'name').length > 9 || $resume.get('commons', 'surname').length > 9 }>
+			<div if={ !$resume.get('commons', 'surname') } class="t-header-name">
+				<span>{ $resume.get('commons', 'name') }</span>
+			</div>
+			<div if={ $resume.get('commons', 'surname') } class="t-header-name">
+				{ $resume.get('commons', 'name') } <span>{ $resume.get('commons', 'surname') }</span>
+			</div>
+		</div>
+		<div id="t-header-post">{ $resume.get('post') }</div>
+		<div if={ $resume.get('salary', 'active') && $resume.get('salary', 'amount') } id="t-header-salary">
+			{ $resume.take.salary.amount() }
+			<rub if={ $resume.get('salary', 'currency') == "1" }></rub>
+			<valuta if={ $resume.get('salary', 'currency') != "1" }>{ $resume.take.salary.currency() }</valuta>
+			<sup class="t-header-salary-currency">{ $resume.take.salary.worktime() }</sup>
+		</div>
+		<div id="t-header-string">
+			<div if={ $resume.get('commons', 'contacts', 'phone') } class="t-header-string-element"><span>{ $i18n("resume.basic.template.Phone") }:</span> { $resume.get('commons', 'contacts', 'phone') }</div>
+			<div if={ $resume.get('commons', 'contacts', 'skype') } class="t-header-string-element"><span>Skype:</span> { $resume.get('commons', 'contacts', 'skype') }</div>
+			<div if={ $resume.get('commons', 'contacts', 'email') } class="t-header-string-element"><span>Email:</span> <u>{ $resume.get('commons', 'contacts', 'email') }</u></div>
+		</div>
+	</div>
+	<div id="t-container-wrapper">
+		<div id="t-container-shadow"></div>
+		<div id="t-container-content">
+			<div if={ $resume.get('education', 'items').length } class="t-container t-container-edu">
+				<div class="t-container-line"></div>
+				<div class="t-container-edu-corner"></div>
+				<div class="t-container-name">{ $i18n("resume.basic.template.Education") }</div>
+				<virtual each={ edu, i in $resume.take.education.items() }>
+					<div if={ edu.level != 8 } class="t-container-item { i % 2 ? '' : 'right' }">
+						<div class="t-container-dates">
+							<div class="t-container-dates-year">{ edu.year }</div>
+							<div class="t-container-dates-title">{ $store.education.getTitleById(edu.level) }</div>
+						</div>
+						<div class="t-container-desc">
+							<div class="t-container-desc-title">{ edu.title }</div>
+							<div if={ edu.faculty } class="t-container-desc-name">{ edu.faculty }</div>
+							<div if={ edu.speciality } class="t-container-desc-name">{ $i18n("resume.basic.template.Specialty") } &ndash; { edu.speciality }</div>
+						</div>
+					</div>
+					<div if={ edu.level == 8 } class="t-container-item { i % 2 ? '' : 'right' }">
+						<div class="t-container-dates">
+							<div class="t-container-dates-year">{ edu.year }</div>
+							<div class="t-container-dates-title">{ $store.education.getTitleById(edu.level) }</div>
+						</div>
+						<div class="t-container-desc">
+							<div class="t-container-desc-title big">{ edu.title }</div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</virtual>
+			</div>
+			<div if={ $resume.get('jobs', 'items').length } class="t-container t-container-job">
+				<div class="t-container-name">{ $i18n("resume.basic.template.Experience") }</div>
+				<div class="t-container-line"></div>
+				<div class="t-container-job-corner"></div>
+				<virtual each={ job, i in $resume.take.jobs.items() }>
+					<div class="t-container-item { i % 2 ? '' : 'right' }">
+						<div class="t-container-dates">
+							<div class="t-container-dates-year">{ job.company }</div>
+							<div class="t-container-dates-title">{ job.city }</div>
+							<div class="t-container-dates-length">
+								{ $store.month.getTitleById(job.from.month) } { job.from.year } &mdash;
+								<virtual if={ job.last }>{ $i18n("resume.basic.template.Until Now") }</virtual>
+								<virtual if={ !job.last }>{ $store.month.getTitleById(job.to.month) } { job.to.year }</virtual>
+								<span>{ $resume.take.jobs.period(job, true) }</span>
+							</div>
+						</div>
+						<div class="t-container-desc">
+							<div class="t-container-desc-title">{ job.post }</div>
+							<div class="t-container-desc-text preline">
+								{ job.text }
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</virtual>
+			</div>
+		</div>
+		<div id="t-column-right">
+			<div id="t-column-right-line"></div>
+			<div id="t-column-right-border"></div>
+			<div id="t-column-right-corner"></div>
+			<div id="t-column-right-content">
+				<div if={ $resume.get('photo') } id="upload-photo" class="t-column-right-photo">
+					<div class="t-column-right-photo-image" style="background-image:url({ $resume.get('photo') })"></div>
+					<i class="icon"></i>
+					<div class="img-shadow"></div>
+				</div>
+				<div if={ !$resume.get('photo') } id="upload-photo" class="t-column-right-photo place">
+					<i class="icon"></i>
+					<span>загрузить свою фотографию</span>
+				</div>
+				<div class="t-container-about">
+					<div class="t-container-about-title">
+						{ $resume.get('commons', 'contacts', 'city') },
+						<span>
+							{ $resume.take.birthday.age() }
+							<em if={ !$resume.get('commons', 'birthday', 'hidden') }>
+								({ $resume.take.birthday.date() })
+							</em>
+						</span>
+					</div>
+					<div class="t-container-about-desc preline">
+						{ $resume.get('about') }
+					</div>
+				</div>
+				<div class="t-container t-container-lang">
+					<div class="t-container-name">{ $i18n("resume.basic.template.Languages") }</div>
+					<virtual each={ lang, i in $resume.get('languages', 'items') }>
+						<div if={ lang.title == "native" } class="t-container-item">
+							<div class="t-container-item-title">{ $store.languages.getTitleById(lang.title) }</div>
+							<div class="t-container-item-value">{ $store.languages.native.getTitleById(lang.value) }</div>
+						</div>
+						<div if={ lang.title != "native" } class="t-container-item">
+							<div class="t-container-item-title">{ $store.languages.getTitleById(lang.title) }</div>
+							<div class="t-container-item-value { 't-gray' : lang.value == '1' }">{ $store.languages.select.getTitleById(lang.value) }</div>
+						</div>
+					</virtual>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<style>
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('/assets/css/appResume/basic/templates/template9/fonts/raleway-light.eot'); /* IE9 Compat Modes */
+  src: url('/assets/css/appResume/basic/templates/template9/fonts/raleway-light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/assets/css/appResume/basic/templates/template9/fonts/raleway-light.woff2') format('woff2'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template9/fonts/raleway-light.woff') format('woff'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template9/fonts/raleway-light.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/assets/css/appResume/basic/templates/template9/fonts/raleway-light.svg') format('svg'); /* Legacy iOS */
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: url('/assets/css/appResume/basic/templates/template9/fonts/raleway-regular.eot'); /* IE9 Compat Modes */
+  src: url('/assets/css/appResume/basic/templates/template9/fonts/raleway-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/assets/css/appResume/basic/templates/template9/fonts/raleway-regular.woff2') format('woff2'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template9/fonts/raleway-regular.woff') format('woff'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template9/fonts/raleway-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/assets/css/appResume/basic/templates/template9/fonts/raleway-regular.svg') format('svg'); /* Legacy iOS */
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: url('/assets/css/appResume/basic/templates/template9/fonts/raleway-medium.eot'); /* IE9 Compat Modes */
+  src: url('/assets/css/appResume/basic/templates/template9/fonts/raleway-medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/assets/css/appResume/basic/templates/template9/fonts/raleway-medium.woff2') format('woff2'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template9/fonts/raleway-medium.woff') format('woff'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template9/fonts/raleway-medium.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/assets/css/appResume/basic/templates/template9/fonts/raleway-medium.svg') format('svg'); /* Legacy iOS */
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: url('/assets/css/appResume/basic/templates/template9/fonts/raleway-semibold.eot'); /* IE9 Compat Modes */
+  src: url('/assets/css/appResume/basic/templates/template9/fonts/raleway-semibold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/assets/css/appResume/basic/templates/template9/fonts/raleway-semibold.woff2') format('woff2'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template9/fonts/raleway-semibold.woff') format('woff'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template9/fonts/raleway-semibold.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/assets/css/appResume/basic/templates/template9/fonts/raleway-semibold.svg') format('svg'); /* Legacy iOS */
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url(/assets/css/appResume/basic/templates/template9/fonts/xjAJXh38I15wypJXxuGMBhLwxQbNcFnuWuPk3YnjToI.woff2) format('woff2'), url(/assets/css/appResume/basic/templates/template9/fonts/xjAJXh38I15wypJXxuGMBmOb2gHztoQeulij-1lvl-8.woff) format('woff');
+}
+
+</style>
+
+</resume-basic-template9>

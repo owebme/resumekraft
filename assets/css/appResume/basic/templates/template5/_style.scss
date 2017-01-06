@@ -59,13 +59,17 @@
 }
 #t5 .t-header-string-salary {
     color:#555;
-    font:25px/24px 'HypatiaSemibold';
+    font:500 25px/24px 'Roboto';
     white-space:nowrap;
+
+    rub:after {
+        content:"₽";
+    }
 }
 #t5 .t-header-string-salary sup {
     display:inline-block;
     color:#fff;
-    font:16px/28px 'HypatiaSemibold';
+    font:500 15px/25px 'Roboto';
     background-color:#007aff;
     padding:0 9px;
     height:24px;

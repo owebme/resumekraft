@@ -1,3 +1,6 @@
+html, body {
+    @extend .overflow-hidden;
+}
 .resumeBasic {
     .title {
         @extend .pos-abs;

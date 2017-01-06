@@ -24,6 +24,19 @@
         margin-bottom:3px;
         height:394px;
         box-sizing:border-box;
+
+        &[data-long="true"]{
+            padding-top:150px;
+
+            .t-header-name.small {
+                font-size:102px;
+                line-height:82px;
+            }
+            .t-header-name.big {
+                font-size:182px;
+                line-height:162px;
+            }
+        }
     }
     #t-header-stroke {
         position:absolute;
@@ -107,15 +120,19 @@
     .t-header-salary {
         font:bold 26px 'Roboto';
         white-space:nowrap;
-    }
-    .t-header-salary sup {
-        display:inline-block;
-        color:#fff;
-        font:bold 16px/16px 'Roboto';
-        background-color:#b4d92a;
-        padding:4px 9px;
-        border-radius:100px;
-        margin-left:5px;
+
+        rub:after {
+            content:"₽";
+        }
+        sup {
+            display:inline-block;
+            color:#fff;
+            font:bold 16px/16px 'Roboto';
+            background-color:#b4d92a;
+            padding:4px 9px;
+            border-radius:100px;
+            margin-left:5px;
+        }
     }
     #t-container-wrapper {
         padding-left:149px;

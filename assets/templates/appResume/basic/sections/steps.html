@@ -12,7 +12,7 @@
     $.items = [];
     $.sliding = false;
 
-    $.on("mount", function(){
+    $.init = function(){
         var screens = $.parent.screens.scope.data('marquee').screens;
 
         _.each($.parent.sections.screens.tags, function(item, key){
@@ -35,7 +35,7 @@
             app.utils.raf(animationLoop);
             _onScroll(app.utils.getScroll(scroll));
         })();
-    });
+    };
 
     $.refresh = function(){
         var screens = $.parent.screens.scope.data('marquee').screens;

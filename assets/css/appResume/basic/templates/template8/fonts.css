@@ -1,0 +1,65 @@
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: url('/assets/css/appResume/basic/templates/template6/fonts/HelveticaNeueCyrRoman.eot'); /* IE9 Compat Modes */
+  src: url('/assets/css/appResume/basic/templates/template6/fonts/HelveticaNeueCyrRoman.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/assets/css/appResume/basic/templates/template6/fonts/HelveticaNeueCyrRoman.woff2') format('woff2'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template6/fonts/HelveticaNeueCyrRoman.woff') format('woff'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template6/fonts/HelveticaNeueCyrRoman.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/assets/css/appResume/basic/templates/template6/fonts/HelveticaNeueCyrRoman.svg') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: url('/assets/css/appResume/basic/templates/template6/fonts/HelveticaNeueCyr-Bold.eot'); /* IE9 Compat Modes */
+  src: url('/assets/css/appResume/basic/templates/template6/fonts/HelveticaNeueCyr-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/assets/css/appResume/basic/templates/template6/fonts/HelveticaNeueCyr-Bold.woff2') format('woff2'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template6/fonts/HelveticaNeueCyr-Bold.woff') format('woff'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template6/fonts/HelveticaNeueCyr-Bold.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/assets/css/appResume/basic/templates/template6/fonts/HelveticaNeueCyr-Bold.svg') format('svg'); /* Legacy iOS */
+  font-weight:700;
+  font-style:normal;
+}
+@font-face {
+    font-family: "Proxima Nova";
+    src: url("/assets/css/appResume/basic/templates/template8/fonts/ProximaNova-Reg-webfont.eot");
+    src: url("/assets/css/appResume/basic/templates/template8/fonts/ProximaNova-Reg-webfont.eot?#iefix") format("embedded-opentype"),
+         url("/assets/css/appResume/basic/templates/template8/fonts/ProximaNova-Reg-webfont.woff") format("woff"),
+         url("/assets/css/appResume/basic/templates/template8/fonts/ProximaNova-Reg-webfont.ttf") format("truetype"),
+         url("/assets/css/appResume/basic/templates/template8/fonts/ProximaNova-Reg-webfont.svg#proxima_nova_rgregular") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Proxima Nova";
+    src: url("/assets/css/appResume/basic/templates/template8/fonts/ProximaNova-Bold-webfont.eot");
+    src: url("/assets/css/appResume/basic/templates/template8/fonts/ProximaNova-Bold-webfont.eot?#iefix") format("embedded-opentype"),
+         url("/assets/css/appResume/basic/templates/template8/fonts/ProximaNova-Bold-webfont.woff") format("woff"),
+         url("/assets/css/appResume/basic/templates/template8/fonts/ProximaNova-Bold-webfont.ttf") format("truetype"),
+         url("/assets/css/appResume/basic/templates/template8/fonts/ProximaNova-Bold-webfont.svg#proxima_nova_rgbold") format("svg");
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+  font-family: 'Bebas';
+  src: url('/assets/css/appResume/basic/templates/template8/fonts/bebasneue-regular.eot'); /* IE9 Compat Modes */
+  src: url('/assets/css/appResume/basic/templates/template8/fonts/bebasneue-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/assets/css/appResume/basic/templates/template8/fonts/bebasneue-regular.woff2') format('woff2'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template8/fonts/bebasneue-regular.woff') format('woff'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template8/fonts/bebasneue-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/assets/css/appResume/basic/templates/template8/fonts/bebasneue-regular.svg') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Condensed Bold'), local('RobotoCondensed-Bold'), url(/assets/css/appResume/basic/templates/template8/fonts/b9QBgL0iMZfDSpmcXcE8nBV4f1rh352p76gXHS_gk9g.woff2) format('woff2'), url(/assets/css/appResume/basic/templates/template8/fonts/b9QBgL0iMZfDSpmcXcE8nANHRvH4E1CCxguZf4zS03A.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url(/assets/css/appResume/basic/templates/template8/fonts/xjAJXh38I15wypJXxuGMBhLwxQbNcFnuWuPk3YnjToI.woff2) format('woff2'), url(/assets/css/appResume/basic/templates/template8/fonts/xjAJXh38I15wypJXxuGMBmOb2gHztoQeulij-1lvl-8.woff) format('woff');
+}

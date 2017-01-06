@@ -5,29 +5,69 @@
     </div>
 
     <div class="oScreen__content bg-white">
-        <div class="menu__items">
-            <div class="container">
-                <div class="row">
-                    <div class="">
-                        <div class="col-md-8 plr-l">
-                            <div class="menu__item" data-item="1">
-                                <icon-user color="yellow" size="xl"></icon-user>
-                                <div class="menu__item__title">Мой профиль</div>
+        <div class="container">
+            <div class="row profile__header">
+                <div class="col-md-16">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div if={ $account.get('photo') } class="profile__photo">
+                                <div class="profile__photo__image" style="background-image:url({ $account.get('photo') })"></div>
+                            </div>
+                            <div if={ !$account.get('photo') } class="profile__photo" data-place="true">
+                                <span class="profile__photo__text">загрузить свою фотографию</span>
                             </div>
                         </div>
-                        <div class="col-md-8 plr-l">
-                            <div class="menu__item" data-item="2">
-                                <icon-control color="blueLight" size="xl"></icon-control>
-                                <div class="menu__item__title">Настройки</div>
-                            </div>
-                        </div>
-                        <div class="col-md-8 plr-l">
-                            <div class="menu__item" data-item="3">
-                                <icon-crown color="green" size="xl"></icon-crown>
-                                <div class="menu__item__title">Тариф</div>
+                        <div class="col-md-14">
+                            <div class="profile__personal__data fontSize-22 pt-l">
+                                <div class="fontSize-34 mb-m">
+                                    <span class="c-blue fontWeight-bold">{ $account.get('name') }</span> { $account.get('surname') }
+                                </div>
+                                <div if={ $account.get('gender') == "male" } class="text-uppercase fontSize-20">муж.</div>
+                                <div if={ $account.get('gender') == "female" } class="text-uppercase fontSize-20">жен.</div>
+                                <div if={ $account.get('contacts', 'city') }>{ $account.get('contacts', 'city') }</div>
+                                <span class="display-inlineBlock link-underline link-default-hover-warning mt-xs">Изменить персональные данные</span>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="profile__column__right fontSize-20 pt45">
+                        <div class="fontSize-28 mb-s">Ваш тариф: <span class="c-blue fontWeight-bold">Free</span></div>
+                        <div>
+                            <span class="link-underline link-default-hover-warning">Сменить тариф</span>
+                        </div>
+                        <div class="mt-xxs">
+                            <span class="link-underline link-default-hover-warning">Сменить пароль</span>
+                        </div>
+                        <div class="c-gray mt-s">Последний визит: сегодня в 3:17</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-l">
+                <div class="col-md-8">
+                    <div class="title c-gray fontWeight-bold fontSize-28 mb-m opacity-80" data-icon="phone">
+                        Номер телефона
+                    </div>
+                    <div class="c-gray fontSize-14 text-uppercase mb-xss">Основной:</div>
+                    <div class="fontSize-22 fontWeight-bold mb-m">{ $account.get('contacts', 'phone') }</div>
+                    <button class="btn btn-m btn-default-hover-warning">Изменить</button>
+                </div>
+                <div class="col-md-8">
+                    <div class="title c-gray fontWeight-bold fontSize-28 mb-m opacity-80" data-icon="phone">
+                        Электронная почта
+                    </div>
+                    <div class="c-gray fontSize-14 text-uppercase mb-xss">Основная:</div>
+                    <div class="mb-m">
+                        <span class="fontSize-22 link-underline link-default-hover-warning">{ $account.get('contacts', 'email') }</span>
+                    </div>
+                    <button class="btn btn-m btn-default-hover-warning">Изменить</button>
+                </div>
+                <div class="col-md-8">
+                    <div class="title c-gray fontWeight-bold fontSize-28 mb35 opacity-80" data-icon="phone">
+                        Ваш баланс
+                    </div>
+                    <div class="fontSize-34 fontWeight-8 mb-m">{ $account.get('balance') } ₽</div>
+                    <button class="btn btn-m btn-default-hover-success">Пополнить</button>
                 </div>
             </div>
         </div>
@@ -38,6 +78,12 @@
     var $ = this;
 
     $.active = false;
+
+    $.on("mount", function(){
+        $afterlag.run(function(){
+            $.show();
+        });
+    });
 
     $.show = function(callback){
         $.update({

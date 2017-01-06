@@ -29,11 +29,11 @@
         $.loader = $.tags["oscreen-loader"];
     });
 
-    $.on("mount", function(){
-        $afterlag.run(function(){
-            $.show();
-        });
-    });
+    // $.on("mount", function(){
+    //     $afterlag.run(function(){
+    //         $.show();
+    //     });
+    // });
 
     $.show = function(){
         if ($.loading || $.active) return;

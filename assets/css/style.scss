@@ -37,14 +37,14 @@
 @import 'modules/chart/chartRadial';
 @import 'modules/oScreen';
 @import 'modules/screens';
-// @import 'modules/tutorial';
+@import 'modules/tutorial';
 @import 'modules/shareButton';
 @import 'modules/uploadPhoto';
 
 // Sections
 @import 'sections/sections';
-@import 'sections/menu/menu';
-@import 'sections/menu/menuMobile';
+@import 'sections/menu';
+@import 'sections/profile/profile';
 
 // jqtest
 @import 'sections/jqtest/jqtest';

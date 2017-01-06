@@ -45,16 +45,20 @@
         color:#00aeef;
         font:bold 26px/20px 'Roboto';
         white-space:nowrap;
-    }
-    .t-header-salary sup {
-        display:inline-block;
-        color:#fff;
-        font:bold 16px/24px 'Roboto';
-        background-color:#00aeef;
-        padding:0 9px;
-        height:24px;
-        border-radius:100px;
-        margin-left:5px;
+
+        rub:after {
+            content:"₽";
+        }
+        sup {
+            display:inline-block;
+            color:#fff;
+            font:bold 16px/24px 'Roboto';
+            background-color:#00aeef;
+            padding:0 9px;
+            height:24px;
+            border-radius:100px;
+            margin-left:5px;
+        }
     }
     #t-header-post {
         color:#666666;

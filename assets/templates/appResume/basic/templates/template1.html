@@ -13,7 +13,12 @@
 			</div>
 		</div>
 		<div id="t-header-string">
-			<div if={ $resume.get('salary', 'active') && $resume.get('salary', 'amount') } class="t-header-string-element t-header-salary">{ $resume.take.salary.amount() } { $resume.take.salary.currency() } <sup>{ $resume.take.salary.worktime() }</sup></div>
+			<div if={ $resume.get('salary', 'active') && $resume.get('salary', 'amount') } class="t-header-string-element t-header-salary">
+				{ $resume.take.salary.amount() }
+				<rub if={ $resume.get('salary', 'currency') == "1" }></rub>
+				<valuta if={ $resume.get('salary', 'currency') != "1" }>{ $resume.take.salary.currency() }</valuta>
+				<sup>{ $resume.take.salary.worktime() }</sup>
+			</div>
 			<div if={ $resume.get('commons', 'contacts', 'skype').length } class="t-header-string-element">Skype: { $resume.get('commons', 'contacts', 'skype') }</div>
 			<div if={ $resume.get('commons', 'contacts', 'phone').length } class="t-header-string-element">{ $resume.get('commons', 'contacts', 'phone') }</div>
 			<div if={ $resume.get('commons', 'contacts', 'email').length } class="t-header-string-element">{ $resume.get('commons', 'contacts', 'email') }</div>
@@ -66,7 +71,7 @@
 					<div class="t-container-dates-city">{ job.city }</div>
 					<div class="t-container-dates-period">
 						<div>{ $store.month.getTitleById(job.from.month) } { job.from.year } &mdash;</div>
-						<div if={ job.last }>{ $store.resume.get("lang") == "ru" ? 'по настоящее время' : 'until now' }</div>
+						<div if={ job.last }>{ $i18n("resume.basic.template.Until Now") }</div>
 						<div if={ !job.last }>{ $store.month.getTitleById(job.to.month) } { job.to.year }</div>
 					</div>
 					<div class="t-container-dates-length">

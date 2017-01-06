@@ -157,6 +157,26 @@ $i:0;
         border-color:$color;
     }
 }
+.link-lime.link-underline {
+    @extend .pos-rel;
+    @extend .c-lime;
+    @extend .opacity-100;
+    @extend .cursor-pointer;
+
+    &:after {
+        @extend .content-empty;
+        @extend .pos-bl;
+        @extend .h1px;
+        @extend .opacity-60;
+        @extend .w100p;
+        transform:translateY(4px);
+        background-color:rgba($lime,.5);
+        transition:opacity .2s, background-color .08s;
+    }
+    &:hover:after {
+        @extend .opacity-100;
+    }
+}
 .btn-default {
     @extend .btn-primary-hover;
 

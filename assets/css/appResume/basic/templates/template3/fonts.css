@@ -1,4 +1,15 @@
 @font-face {
+  font-family: 'HelveticaNeue';
+  src: url('/assets/css/appResume/basic/templates/template3/fonts/HelveticaNeueCyrRoman.eot'); /* IE9 Compat Modes */
+  src: url('/assets/css/appResume/basic/templates/template3/fonts/HelveticaNeueCyrRoman.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/assets/css/appResume/basic/templates/template3/fonts/HelveticaNeueCyrRoman.woff2') format('woff2'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template3/fonts/HelveticaNeueCyrRoman.woff') format('woff'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template3/fonts/HelveticaNeueCyrRoman.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/assets/css/appResume/basic/templates/template3/fonts/HelveticaNeueCyrRoman.svg') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
   font-family: 'PFSquareLight';
   src: url('/assets/css/appResume/basic/templates/template3/fonts/pfsquaresanspro-light-webfont.eot');
   src: url('/assets/css/appResume/basic/templates/template3/fonts/pfsquaresanspro-light-webfont.eot?#iefix') format('embedded-opentype'), url('/assets/css/appResume/basic/templates/template3/fonts/pfsquaresanspro-light-webfont.woff') format('woff'), url('/assets/css/appResume/basic/templates/template3/fonts/pfsquaresanspro-light-webfont.ttf') format('truetype'), url('/assets/css/appResume/basic/templates/template3/fonts/pfsquaresanspro-light-webfont.svg#PFSquareSansProLight') format('svg');
@@ -34,17 +45,6 @@
   font-family: 'FuturaB';
   src: url('/assets/css/appResume/basic/templates/template3/fonts/ikea_sans-webfont.eot');
   src: url('/assets/css/appResume/basic/templates/template3/fonts/ikea_sans-webfont.eot?#iefix') format('embedded-opentype'), url('/assets/css/appResume/basic/templates/template3/fonts/ikea_sans-webfont.woff') format('woff'), url('/assets/css/appResume/basic/templates/template3/fonts/ikea_sans-webfont.ttf') format('truetype'), url('/assets/css/appResume/basic/templates/template3/fonts/ikea_sans-webfont.svg#ikea_sansregular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'HelveticaNeue';
-  src: url('/assets/css/appResume/basic/templates/template3/fonts/HelveticaNeueCyrRoman.eot'); /* IE9 Compat Modes */
-  src: url('/assets/css/appResume/basic/templates/template3/fonts/HelveticaNeueCyrRoman.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('/assets/css/appResume/basic/templates/template3/fonts/HelveticaNeueCyrRoman.woff2') format('woff2'), /* Modern Browsers */
-    url('/assets/css/appResume/basic/templates/template3/fonts/HelveticaNeueCyrRoman.woff') format('woff'), /* Modern Browsers */
-    url('/assets/css/appResume/basic/templates/template3/fonts/HelveticaNeueCyrRoman.ttf') format('truetype'), /* Safari, Android, iOS */
-    url('/assets/css/appResume/basic/templates/template3/fonts/HelveticaNeueCyrRoman.svg') format('svg'); /* Legacy iOS */
   font-weight: normal;
   font-style: normal;
 }

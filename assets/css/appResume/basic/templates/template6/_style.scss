@@ -32,13 +32,16 @@
 }
 #t6 #t-header-salary {
   font-weight:bold;
-  font-size: 24px;
-  line-height: 24px;
+  font:bold 24px/24px 'Roboto';
+
+  rub:after {
+      content:"₽";
+  }
 }
 #t6 .t-header-salary-currency {
     display:inline-block;
     color:#fff;
-    font:bold 15px/27px 'HelveticaNeue';
+    font:bold 15px/25px 'Roboto';
     background-color:#265cdc;
     padding:0 9px;
     height:24px;

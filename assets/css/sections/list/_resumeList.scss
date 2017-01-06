@@ -29,7 +29,7 @@
     &__container {
         @include accelerate(true);
         transform-origin:50% 0;
-        will-change:transform;
+        @extend .willChange-transform;
         transition:transform 0.5s $cubic40 0.1s;
 
         &[data-hidden="true"]{
@@ -39,8 +39,8 @@
     }
     &__wrapper {
         .d-no-mobile & {
-            margin-left:-25px;
-            margin-right:-25px;
+            @extend .ml--25;
+            @extend .mr--25;
         }
     }
 }

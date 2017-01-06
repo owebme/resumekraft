@@ -1,125 +1,136 @@
-<link rel="stylesheet" type="text/css" href="/makets/template8/style.css" />
-<div id="t8" class="template-resume">
+<resume-basic-template8 id="t8">
+
 	<div id="t-circle-bg"></div>
-	<div id="t-header"> 
-		[%- IF r_photo %]
-		<div id="upload-photo-box" class="t-header-photo">
-			<img src="[% r_photo %]">
-			[%- IF VIEW != "site" && VIEW != "print" %]
+	<div id="t-header">
+		<div if={ $resume.get('photo') } id="upload-photo" class="t-header-photo">
+			<div class="t-header-photo-image" style="background-image:url({ $resume.get('photo') })"></div>
 			<i class="icon"></i>
-			<input id="upload-photo" type="file" data-size="3">
-			[%- END %]
 			<div class="img-shadow"></div>
 		</div>
-		[%- ELSE %]
-		<div id="upload-photo-box" class="t-header-photo place">
+		<div if={ !$resume.get('photo') } id="upload-photo" class="t-header-photo place">
 			<i class="icon"></i>
-			<span>загрузите свою фотографию</span>
-			<input id="upload-photo" type="file" data-size="3">
+			<span>загрузить свою фотографию</span>
 		</div>
-		[%- END %]
-		<div id="t-header-names">
-			<div class="t-header-name">[% name_f %] <span>[% name_i %]</span></div>
+		<div id="t-header-names" data-long={ $resume.get('commons', 'name').length > 9 || $resume.get('commons', 'surname').length > 9 }>
+			<div if={ !$resume.get('commons', 'surname') } class="t-header-name">
+				{ $resume.get('commons', 'name') }
+			</div>
+			<div if={ $resume.get('commons', 'surname') } class="t-header-name">
+				{ $resume.get('commons', 'surname') } <span>{ $resume.get('commons', 'name') }</span>
+			</div>
 		</div>
-		<div id="t-header-post">[% r_name %]</div>
-		[%- IF r_salary > 0 %]
-		<div id="t-header-salary">
-			[% digitsFormat(r_salary) %] <em>P<i>–</i></em>
+		<div id="t-header-post">
+			{ $resume.get('post') }
 		</div>
-		[%- END %]
+		<div if={ $resume.get('salary', 'active') && $resume.get('salary', 'amount') } id="t-header-salary">
+			{ $resume.take.salary.amount() }
+			<rub if={ $resume.get('salary', 'currency') == "1" }></rub>
+			<valuta if={ $resume.get('salary', 'currency') != "1" }>{ $resume.take.salary.currency() }</valuta>
+			<sup class="t-header-salary-currency">{ $resume.take.salary.worktime() }</sup>
+		</div>
 		<div id="t-header-string">
 			<div class="t-header-string-container">
-				[% IF city %]<div class="t-header-string-element"><span>Город:</span> [% city %]</div>[% END %]
-				<div class="t-header-string-element"><span>Возраст:</span> [% getAge(birthday) %] [% IF !birthday_hide %]([% monthRus(birthday) %])[% END %]</div>
-			</div>                   
-			<div class="t-header-string-container">
-				[% IF phone %]<div class="t-header-string-element"><span>Телефон:</span> [% phone %]</div>[% END %]
-				[% IF email %]<div class="t-header-string-element"><span>Email:</span> <u>[% email %]</u></div>[% END %]
+				<div if={ $resume.get('commons', 'contacts', 'city') } class="t-header-string-element"><span>{ $i18n("resume.basic.template.City") }:</span> { $resume.get('commons', 'contacts', 'city') }</div>
+				<div class="t-header-string-element"><span>{ $i18n("resume.basic.template.Age") }:</span> <virtual if={ !$resume.get('commons', 'birthday', 'hidden') }>{ $resume.take.birthday.date() }&nbsp;</virtual>({ $resume.take.birthday.age() })</div>
 			</div>
-			[%- IF soc_profile or skype %]
 			<div class="t-header-string-container">
-				[% IF soc_profile %]<div class="t-header-string-element"><span>Social:</span> [% soc_profile %]</div>[% END %]
-				[% IF skype %]<div class="t-header-string-element"><span>Skype:</span> <u>[% skype %]</u></div>[% END %]
-			</div>			
-			[%- END %]
+				<div if={ $resume.get('commons', 'contacts', 'phone') } class="t-header-string-element"><span>{ $i18n("resume.basic.template.Phone") }:</span> { $resume.get('commons', 'contacts', 'phone') }</div>
+				<div if={ $resume.get('commons', 'contacts', 'email') } class="t-header-string-element"><span>Email:</span> <u>{ $resume.get('commons', 'contacts', 'email') }</u></div>
+			</div>
+			<div if={ $resume.get('commons', 'contacts', 'skype') } class="t-header-string-container">
+				<div class="t-header-string-element"><span>Skype:</span> <u>{ $resume.get('commons', 'contacts', 'skype') }</u></div>
+			</div>
 		</div>
 	</div>
 	<div id="t-container-wrapper">
 		<div id="t-column-left">
 			<div class="t-container t-container-about">
-				<h3>О себе <span>достижения</span></h3>
-				[% html_escape(mark_raw(str_escape_html(r_about_me))) %]
+				<h3>{ $i18n("resume.basic.template.About me") }</h3>
+				<div class="preline">{ $resume.get('about') }</div>
 			</div>
-			[%- IF r_lang_native %]
 			<div class="t-container t-container-lang">
-				<h3>Знание <span>языков</span></h3>
-				<div class="t-container-item">
-					<div class="t-container-item-title">Родной язык</div>
-					<div class="t-container-item-value">[% r_lang_native %]</div>                   
-				</div>
-				<div class="t-container-item">
-					<div class="t-container-item-title">Английский</div>
-					<div class="t-container-item-value[% IF r_lang_en == "1" %] t-gray[% END %]">[% selLanguage(r_lang_en, 1) %]</div>                   
-				</div>
-				<div class="t-container-item">
-					<div class="t-container-item-title">Немецкий</div>
-					<div class="t-container-item-value[% IF r_lang_de == "1" %] t-gray[% END %]">[% selLanguage(r_lang_de, 1) %]</div>                   
-				</div>
-				<div class="t-container-item">
-					<div class="t-container-item-title">Французский</div>
-					<div class="t-container-item-value[% IF r_lang_fr == "1" %] t-gray[% END %]">[% selLanguage(r_lang_fr, 1) %]</div>                   
-				</div>                 
+				<h3>{ $i18n("resume.basic.template.Languages") }</h3>
+				<virtual each={ lang, i in $resume.get('languages', 'items') }>
+					<div if={ lang.title == "native" } class="t-container-item">
+						<div class="t-container-item-title">{ $store.languages.getTitleById(lang.title) }</div>
+						<div class="t-container-item-value">{ $store.languages.native.getTitleById(lang.value) }</div>
+					</div>
+					<div if={ lang.title != "native" } class="t-container-item">
+						<div class="t-container-item-title">{ $store.languages.getTitleById(lang.title) }</div>
+						<div class="t-container-item-value { 't-gray' : lang.value == '1' }">{ $store.languages.select.getTitleById(lang.value) }</div>
+					</div>
+				</virtual>
 			</div>
-			[%- END %]
 		</div>
 		<div id="t-container-content">
-			[%- IF educationItems %]
-			<div class="t-container t-container-edu">
-				<h3>Образование</h3>
-				[%- FOREACH item IN educationItems %]
-				[%- IF item.r_education != "secondary" %]
-				<div class="t-container-item">
-					<div class="t-container-dates">                            
-						<div class="t-container-dates-year">[% item.r_primaryEducation_year %]</div>
-						<div class="t-container-dates-title">[% educationList(item.r_education, 1) %]</div>
+			<div if={ $resume.get('education', 'items').length } class="t-container t-container-edu">
+				<h3>{ $i18n("resume.basic.template.Education") }</h3>
+				<virtual each={ edu, i in $resume.take.education.items() }>
+					<div if={ edu.level != 8 } class="t-container-item">
+						<div class="t-container-dates">
+							<div class="t-container-dates-year">{ edu.year }</div>
+							<div class="t-container-dates-title">{ $store.education.getTitleById(edu.level) }</div>
+						</div>
+						<div class="t-container-desc">
+							<div class="t-container-desc-title">{ edu.title }</div>
+							<div if={ edu.faculty } class="t-container-desc-name">{ edu.faculty }</div>
+							<div if={ edu.speciality } class="t-container-desc-name">{ $i18n("resume.basic.template.Specialty") } &ndash; { edu.speciality }</div>
+						</div>
+					</div>
+					<div if={ edu.level == 8 } class="t-container-item">
+						<div class="t-container-dates">
+							<div class="t-container-dates-year">{ edu.year }</div>
+							<div class="t-container-dates-title">{ $store.education.getTitleById(edu.level) }</div>
+						</div>
+						<div class="t-container-desc">
+							<div class="t-container-desc-title">{ edu.title }</div>
+						</div>
+					</div>
+				</virtual>
+			</div>
+			<div if={ $resume.get('jobs', 'items').length } class="t-container t-container-job">
+				<h3>{ $i18n("resume.basic.template.Experience") }</h3>
+				<div each={ job, i in $resume.take.jobs.items() } class="t-container-item">
+					<div class="t-container-dates">
+						<div class="t-container-dates-year">{ job.from.year }-<span if={ job.last }>NOW</span><span if={ !job.last }>{ job.to.year }</span></div>
+						<div class="t-container-dates-title">{ job.city }</div>
 					</div>
 					<div class="t-container-desc">
-						<div class="t-container-desc-title">[% item.r_primaryEducation_name %]</div>
-						<div class="t-container-desc-name">[% item.r_primaryEducation_faculty %]</div>
+						<div class="t-container-desc-title">{ job.company }</div>
+						<div class="t-container-desc-name">{ job.post } <span>// { $resume.take.jobs.period(job, true) }</span></div>
+						<div class="t-container-desc-text preline">{ job.text }</div>
 					</div>
 				</div>
-				[%- ELSE %]
-				<div class="t-container-item">
-					<div class="t-container-dates">                            
-						<div class="t-container-dates-year">[% item.r_secondaryEducation_year %]</div>
-						<div class="t-container-dates-title">[% educationList(item.r_education, 1) %]</div>
-					</div>
-					<div class="t-container-desc">
-						<div class="t-container-desc-title">[% item.r_secondaryEducation_name %]</div>
-					</div>
-				</div>				
-				[%- END %]
-				[%- END %]                            
 			</div>
-			[%- END %]
-			[%- IF jobItems %]
-			<div class="t-container t-container-job">
-				<h3>Место работы</h3>
-				[%- FOREACH item IN jobItems %]
-				<div class="t-container-item">
-					<div class="t-container-dates">                            
-						<div class="t-container-dates-year">[% item.r_job_year_from %]-[% IF loop == "0" && !item.r_job_year_to %]NOW[% ELSE %][% item.r_job_year_to %][% END %]</div>
-						<div class="t-container-dates-title">[% cityName(item.r_job_city) %]</div>
-					</div>
-					<div class="t-container-desc">
-						<div class="t-container-desc-title">[% item.r_job_company %]</div>
-						<div class="t-container-desc-name">[% item.r_job_post %] <span>// [%- IF loop == "0" && !item.r_job_year_to %][% dateFormatRus(getExpYear(item.r_job_year_from, item.r_job_month_from, "now"), "YM", "comma") %][%- ELSE %][% dateFormatRus(getExpYear(item.r_job_year_from, item.r_job_month_from, item.r_job_year_to, item.r_job_month_to), "YM", "comma") %][%- END %]</span></div>
-						<div class="t-container-desc-text">[% html_escape(mark_raw(str_escape_html(item.r_job_desc))) %]</div>
-					</div>                    
-				</div> 
-				[%- END %]                        
-			</div>
-			[%- END %]
-		</div> 
-	</div>           
-</div>
+		</div>
+	</div>
+
+<style>
+
+@font-face {
+  font-family: 'Bebas';
+  src: url('/assets/css/appResume/basic/templates/template8/fonts/bebasneue-regular.eot'); /* IE9 Compat Modes */
+  src: url('/assets/css/appResume/basic/templates/template8/fonts/bebasneue-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/assets/css/appResume/basic/templates/template8/fonts/bebasneue-regular.woff2') format('woff2'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template8/fonts/bebasneue-regular.woff') format('woff'), /* Modern Browsers */
+    url('/assets/css/appResume/basic/templates/template8/fonts/bebasneue-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/assets/css/appResume/basic/templates/template8/fonts/bebasneue-regular.svg') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Condensed Bold'), local('RobotoCondensed-Bold'), url(/assets/css/appResume/basic/templates/template8/fonts/b9QBgL0iMZfDSpmcXcE8nBV4f1rh352p76gXHS_gk9g.woff2) format('woff2'), url(/assets/css/appResume/basic/templates/template8/fonts/b9QBgL0iMZfDSpmcXcE8nANHRvH4E1CCxguZf4zS03A.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url(/assets/css/appResume/basic/templates/template8/fonts/xjAJXh38I15wypJXxuGMBhLwxQbNcFnuWuPk3YnjToI.woff2) format('woff2'), url(/assets/css/appResume/basic/templates/template8/fonts/xjAJXh38I15wypJXxuGMBmOb2gHztoQeulij-1lvl-8.woff) format('woff');
+}
+
+</style>
+
+</resume-basic-template8>

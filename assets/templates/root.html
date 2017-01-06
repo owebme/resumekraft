@@ -8,6 +8,7 @@
     <resume-select></resume-select>
     <section-notify></section-notify>
     <section-alert></section-alert>
+    <section-tutorial></section-tutorial>
 
     <app-sections>
         <resume-stat></resume-stat>
@@ -24,7 +25,6 @@
         <section-profile></section-profile>
         <section-jqtest></section-jqtest>
 
-        <!-- <section-tutorial></section-tutorial> -->
         <section-loader></section-loader>
 
         <ui-dropmenu></ui-dropmenu>
@@ -97,6 +97,28 @@
     });
 
     this.on("before-mount", function(){
+
+        $account = new Baobab({
+            plan: "premium",
+            balance: "169",
+            photo: "/preview/images/photo/photo_phone.jpg",
+            name: "Виктория",
+            surname: "Юртаева",
+            gender: "female",
+            birthday: {
+                day: "25",
+                month: "8",
+                year: "1986"
+            },
+            contacts: {
+                city: "Москва",
+                email: "owebme@gmail.com",
+                phone: "(926) 017-2086",
+                site: "http://web-projects.me",
+                skype: "owebme"
+            }
+        });
+
         if (app.config.changeStyles){
             app.plugins.styles.init({
                 elem: "#styles",
