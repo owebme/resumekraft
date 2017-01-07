@@ -5,7 +5,7 @@
     </div>
 
     <div name="popup" class="pos-centered" style="width:984px; height:636px">
-        <div class="rows h100p bg-white borderRadius-xl text-left anim-group1 anim-bt-soft" duration-show="m" duration-hide="s" delay-show="xs">
+        <div class="rows h100p bg-white borderRadius-xl text-left anim-group1 anim-bt-soft" duration-show="s" duration-hide="xs" delay-show="xs">
             <div class="row flex-row-center-stretch h100p">
                 <div class="col-md-16">
                     <div class="ptb-l pl-l pr-m">
@@ -16,7 +16,7 @@
                                 <thead class="table-header">
                                     <th class="table-header-item w40p">Тариф</th>
                                     <th class="table-header-item w30p" data-active={ plan == "free" } data-plan="free">
-                                        <ui-checkbox title="Простой" group="1" color={ 'blue' : plan == "free" } theme="blue" value={ plan == "free" } size="xl"></ui-checkbox>
+                                        <ui-checkbox title="Free" group="1" color={ 'blue' : plan == "free" } theme="blue" value={ plan == "free" } size="xl"></ui-checkbox>
                                     </th>
                                     <th class="table-header-item w30p" data-active={ plan == "premium" } data-plan="premium">
                                         <ui-checkbox title="Premium" group="1" color={ 'blue' : plan == "premium" } theme="blue" value={ plan == "premium" } size="xl"></ui-checkbox>
@@ -106,19 +106,19 @@
                     </div>
                 </div>
                 <div class="col-md-8 bg-blue c-white borderRadiusRight-xl">
-                    <div class="p-l">
-                        <div class="fontSize-22">Ваш тариф: <strong>Простой</strong></div>
+                    <div class="p-l pl35">
+                        <div class="fontSize-22">Ваш тариф: <strong class="text-capitalize">{ $account.get('plan') }</strong></div>
                     </div>
-                    <div class="pos-bl w100p p-l { hovered == 'free' ? 'showAnim-group2' : 'pointerEvents-none' }">
+                    <div class="pos-bl w100p p-l pl35 { hovered == 'free' ? 'showAnim-group2' : 'pointerEvents-none' }">
                         <div class="anim-group2 anim-bt plr-xss" data-duration="m" delay-show="xs">
-                            <div class="fontSize-28">Тариф: <strong>Простой</strong></div>
+                            <div class="fontSize-28">Тариф: <strong>Free</strong></div>
                             <div class="h1px bg-white opacity-50 mtb-m"></div>
                             <div class="fontSize-20 pb-l">Доступных функций: <strong>4 из 12</strong></div>
                             <div class="h1px bg-white opacity-50 mtb-m"></div>
                             <div class="fontSize-22 pb-l">Ежемесячная оплата: <strong>0 ₽</strong></div>
                         </div>
                     </div>
-                    <div class="pos-bl w100p pl-l pb-l pr-m { hovered == 'premium' ? 'showAnim-group3' : 'pointerEvents-none' }">
+                    <div class="pos-bl w100p pl35 pb-l pr-m { hovered == 'premium' ? 'showAnim-group3' : 'pointerEvents-none' }">
                         <div class="anim-group3 anim-bt plr-xss" data-duration="m" delay-show="xs">
                             <div class="fontSize-24">Тариф: <strong>Premium</strong></div>
                             <div class="h1px bg-white opacity-50 mtb-m"></div>
@@ -128,11 +128,15 @@
                                 <ui-checkbox commit={ changePay } i="1" title="Ежемесячная оплата" group="2" color={ varPay == "1" ? 'blue' : 'white' } theme="blue" size="xl" value={ varPay == "1" }></ui-checkbox>
                             </div>
                             <div class="p-m borderRadius-xl borderWidth-1 borderColor-white borderStyle-solid transition-xs { bg-white : varPay == '2' }">
-                                <ui-checkbox commit={ changePay } i="2" title="Оплатить один раз" group="2" color={ varPay == "2" ? 'blue' : 'white' } theme="blue" size="xl" value={ varPay == "2" }></ui-checkbox>
+                                <ui-checkbox commit={ changePay } i="2" title="Оплатить на 1 год" group="2" color={ varPay == "2" ? 'blue' : 'white' } theme="blue" size="xl" value={ varPay == "2" }></ui-checkbox>
                             </div>
                             <div class="h1px bg-white opacity-50 mtb-m"></div>
-                            <div class="fontSize-22 pb-l">Итого к оплате: <strong>{ varPay == '1' ? '169' : '369' } ₽</strong></div>
-                            <button class="display-block btn c-blue btn-l2 btn-white-hover-success btn-strong mlr-auto">Перейти к оплате</button>
+                            <div class="fontSize-22 pb-l nowrap">
+                                <span class="letterSpacing--s">К оплате:</span>
+                                <strong if={ varPay == '1' }>&nbsp;169 ₽</strong>
+                                <strong if={ varPay != '1' }>&nbsp;369 ₽ &nbsp;<span class="c-yellowLight text-strike" data-color="red">1269 ₽</span></strong>
+                            </div>
+                            <button class="display-block btn c-blue btn-l2 btn-success btn-strong mlr-auto">Перейти к оплате</button>
                         </div>
                     </div>
                 </div>

@@ -30,6 +30,7 @@
 @import 'ui/switcher';
 @import 'ui/spinner';
 @import 'ui/slider';
+@import 'states/fontSize';
 
 // modules
 @import 'modules/alert';
@@ -48,6 +49,7 @@
 
 // jqtest
 @import 'sections/jqtest/jqtest';
+@import 'sections/jqtest/jqtestEnter';
 @import 'sections/jqtest/result/main';
 @import 'sections/jqtest/result/columns';
 @import 'sections/jqtest/result/skills';
@@ -89,7 +91,6 @@
 @import 'states/text';
 @import 'states/padding';
 @import 'states/margin';
-@import 'states/fontSize';
 @import 'states/lineHeight';
 @import 'states/fontWeight';
 @import 'states/letterSpacing';

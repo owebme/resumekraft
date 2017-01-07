@@ -26,21 +26,17 @@
         @extend .fontWeight-8;
         @extend .text-uppercase;
     }
-    &__container {
+    &__slider {
+        @extend .pos-rel;
         @include accelerate(true);
         transform-origin:50% 0;
         @extend .willChange-transform;
+        width:1190px;
         transition:transform 0.5s $cubic40 0.1s;
 
         &[data-hidden="true"]{
             transform:perspective(500px) scale(0.8);
             transition:transform 0.6s $cubic645;
-        }
-    }
-    &__wrapper {
-        .d-no-mobile & {
-            @extend .ml--25;
-            @extend .mr--25;
         }
     }
 }

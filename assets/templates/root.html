@@ -23,6 +23,7 @@
         <overview-functions></overview-functions>
 
         <section-profile></section-profile>
+        <section-profile-data></section-profile-data>
         <section-jqtest></section-jqtest>
 
         <section-loader></section-loader>
@@ -41,7 +42,8 @@
 
         $Sections = {
             profile: {
-                section: $root.tags["section-profile"]
+                section: $root.tags["section-profile"],
+                data: $root.tags["section-profile-data"]
             },
             resume: {
                 list: app.device.isPhone ? $root.tags["resume-list-mobile"] : $root.tags["resume-list"],
@@ -96,29 +98,29 @@
         // });
     });
 
+    $account = new Baobab({
+        plan: "free",
+        balance: "169",
+        photo: "/preview/images/photo/photo_phone.jpg",
+        name: "Виктория",
+        surname: "Юртаева",
+        gender: "female",
+        birthday: {
+            day: "25",
+            month: "8",
+            year: "1986",
+            hidden: true
+        },
+        contacts: {
+            city: "Москва",
+            email: "owebme@gmail.com",
+            phone: "(926) 017-2086",
+            site: "http://web-projects.me",
+            skype: "owebme"
+        }
+    });    
+
     this.on("before-mount", function(){
-
-        $account = new Baobab({
-            plan: "premium",
-            balance: "169",
-            photo: "/preview/images/photo/photo_phone.jpg",
-            name: "Виктория",
-            surname: "Юртаева",
-            gender: "female",
-            birthday: {
-                day: "25",
-                month: "8",
-                year: "1986"
-            },
-            contacts: {
-                city: "Москва",
-                email: "owebme@gmail.com",
-                phone: "(926) 017-2086",
-                site: "http://web-projects.me",
-                skype: "owebme"
-            }
-        });
-
         if (app.config.changeStyles){
             app.plugins.styles.init({
                 elem: "#styles",

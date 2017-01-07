@@ -1,6 +1,8 @@
 .profile {
+    @extend .pos-centered;
+    @extend .pb-l;
+
     &__header {
-        @extend .mt60;
         min-height:300px;
         @extend .pb-l;
         @extend .c-blackLight;
@@ -15,6 +17,13 @@
         @extend .cursor-pointer;
         @extend .overflow-hidden;
 
+        &:before {
+            @include abs();
+            @extend .content-empty;
+            @extend .borderRadius-circle;
+            box-shadow: 0 0 21px rgba(31,35,37,.2) inset;
+            @extend .zIndex-1;
+        }
         &__image {
             @include abs();
             @extend .borderRadius-circle;
@@ -46,7 +55,7 @@
             background:url(/assets/images/ui/ui-upload_white.svg) no-repeat 0 0 / cover;
             transition:all 0.25s ease;
             @extend .opacity-0;
-            @extend .zIndex-1;
+            @extend .zIndex-2;
         }
         &[data-place="true"] {
             border:3px dashed rgba(#265cdc,.8);
@@ -65,6 +74,9 @@
                 @extend .text-uppercase;
                 font:bold 14px/22px "Gotham", Helvetica;
             }
+            &:before {
+                @extend .display-none;
+            }
             &:after {
                 @extend .t50;
                 margin:-80px 0 0 -54px;
@@ -75,5 +87,19 @@
                 @extend .transition-none;
             }
         }
+    }
+    .btn-edit {
+        &:before {
+            @extend .content-empty;
+            @extend .display-inlineBlock;
+            @extend .vAlign-middle;
+            @extend .mr-xss;
+            @extend .ml--xss;
+            @include ui-icon("pencil_white", 14px, 14px);
+            transform:translateY(-2px);
+        }
+    }
+    .btn-balance {
+        margin-top:1px;
     }
 }

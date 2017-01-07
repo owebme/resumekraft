@@ -74,7 +74,15 @@
         },
 
         hide: function(callback){
+            var _this = this;
+
             if (this.groups.length){
+                if (this.options && this.options.hide && this.options.hide == "noanimate"){
+                    this.scope.addClass("transitionAll-none");
+                    setTimeout(function(){
+                        _this.scope.removeClass("transitionAll-none");
+                    }, 50);
+                }
                 this.scope.removeClass(
                     _.map(_.pluck(this.groups, "num"), function(num){
                         return "showAnim-group" + num;

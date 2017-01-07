@@ -50,6 +50,7 @@
 
         $.titles
         .find(".chart__titles__item[data-level=" + level + "]")
+        .removeAttr("data-delay")
         .attr("data-active", true)
         .siblings()
         .removeAttr("data-active");

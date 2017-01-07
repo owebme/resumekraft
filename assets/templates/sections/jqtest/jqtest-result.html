@@ -25,9 +25,9 @@
 
     $.on("before-mount", function(){
         $.loader = $.tags["oscreen-loader"];
-    });  
+    });
 
-    $.show = function(){
+    $.show = function(callback){
         if ($.loading || $.active) return;
 
         $jqResult = $store.jqtest.jq1;
@@ -61,6 +61,9 @@
                             $scope.find(".chart").addClass("showChart");
                             $.section.scrollAnimate.start();
                         });
+                    }
+                    if (_.isFunction(callback)){
+                        callback();
                     }
                 }
             }

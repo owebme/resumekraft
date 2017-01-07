@@ -22,6 +22,11 @@
         transition-timing-function:$cubic40;
         transition-duration:.4s;
     }
+    &-bt-ease {
+        transform:translate3d(0, 5vw, 0);
+        transition-timing-function:$cubic345;
+        transition-duration:.5s;
+    }
     &-showLeft,
     &-lr {
         transform:translate3d(-2vw, 0, 0);
@@ -97,19 +102,7 @@
     &-showRight-rotate {
         transform:translate3d(200%, 0, 0) rotate(-10deg);
         transition-timing-function:$bounceSofter;
-
-        &:nth-of-type(1) {
-            transition-duration:.55s;
-        }
-        &:nth-of-type(2) {
-            transition-duration:.53s;
-        }
-        &:nth-of-type(3) {
-            transition-duration:.5s;
-        }
-        &:nth-of-type(4) {
-            transition-duration:.48s;
-        }
+        transition-duration:.5s;
     }
     @each $title, $time in (none: 0s, xs: .2s, s: .3s, m: .5s, l: .7s, xl: 1s){
         &-duration-#{$title},
@@ -189,4 +182,7 @@
 .notAnim-scroll .anim-scroll {
     @extend .opacity-100;
     @extend .transform-default;
+}
+.animation-none {
+    animation:none;
 }

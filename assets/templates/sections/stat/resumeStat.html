@@ -19,24 +19,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 text-center">
-                    <div class="chart__radial mt-l" name="chartRadial">
-                        <div class="chart__radial__graph mb-m">
-                            <div class="chart__radial__graph1"></div>
-                            <div class="chart__radial__graph2"></div>
-                            <div class="chart__radial__graph3"></div>
-                        </div>
-                        <div class="chart__radial__labels pl-m">
-                            <div class="chart__radial__label mb-xxs">
-                                <div class="chart__radial__label__color"></div> &mdash; настольные ПК
-                            </div>
-                            <div class="chart__radial__label mb-xxs">
-                                <div class="chart__radial__label__color"></div> &mdash; планшеты
-                            </div>
-                            <div class="chart__radial__label mb-xxs">
-                                <div class="chart__radial__label__color"></div> &mdash; мобильные телефоны
-                            </div>
-                        </div>
-                    </div>
+                    <div class="chart__radial mt-l" name="chartRadialEl"></div>
                 </div>
                 <div class="col-md-18">
                     <div class="resume__stat__chart" name="chart"></div>
@@ -56,6 +39,31 @@
     $.active = false;
 
     $.offer = $.tags["resume-stat-offer"];
+
+    $.on("mount", function(){
+        $scope.on('swipeUp', function(){
+            $.hide();
+        });
+        $.chartRadial = new app.plugins.chartRadial($.chartRadialEl, {
+            container: "chart__radial__graph mb-m",
+            labels: "chart__radial__labels pl-m",
+            labelItem: "chart__radial__label mb-xxs"
+        });
+        $.chartRadial.render([
+            {
+                title: "настольные ПК",
+                value: _.random(5, 87)
+            },
+            {
+                title: "планшеты",
+                value: _.random(5, 87)
+            },
+            {
+                title: "мобильные телефоны",
+                value: _.random(5, 87)
+            }
+        ]);
+    });
 
     $.init = function(){
 
@@ -96,7 +104,7 @@
             }
         });
 
-        // app.plugins.chart.init($$($.chartRadial), [_.random(5, 87), _.random(5, 87), _.random(5, 87)]);
+        $.chartRadial.render([_.random(5, 87), _.random(5, 87), _.random(5, 87)]);
     };
 
     $.show = function(callback){

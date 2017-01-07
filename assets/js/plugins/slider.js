@@ -11,15 +11,16 @@
             next: this.scope.find(".slider__nav__next")
         };
 
+        this.init();
         this.render();
     };
 
     app.plugins.slider.prototype = {
 
-        render: function(){
+        init: function(){
             var _this = this;
 
-        	this.nav.next.on('click', function(){
+            this.nav.next.on('click', function(){
         		_this.nextSlides();
         	});
 
@@ -38,14 +39,26 @@
                     _this.prevSlides();
                 }
             });
+        },
+
+        render: function(){
+            var _this = this;
 
             this.firstSlide = this.slider.find(".slider__item:first");
             this.widthSlide = this.firstSlide.width();
-            this.cnt = Math.floor((app.sizes.width < 1140 ? app.sizes.width : 1140) / this.widthSlide);
+            this.cnt = Math.floor((app.sizes.width < 1190 ? app.sizes.width : 1190) / this.widthSlide);
             if (!this.cnt) this.cnt = 1;
 
             if (this.cnt == 1 && !this.scope.hasClass("largeSlides")){
                 this.scope.addClass("largeSlides")
+            }
+            else {
+                if (this.slider.find(".slider__item").length < 4){
+                    this.nav.next.addClass('slider__nav--hidden');
+                }
+                else {
+                    this.nav.next.removeClass('slider__nav--hidden');
+                }
             }
             this.nav.prev.addClass('slider__nav--hidden');
             this.firstSlide.addClass("current");

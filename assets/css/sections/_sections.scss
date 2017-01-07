@@ -160,6 +160,7 @@
 			@extend .pos-tl;
 			@extend .w100p;
 			@extend .borderRadius-m;
+			@extend .willChange-transform;
 			background-color:silver;
 			@extend .zIndex-1;
 

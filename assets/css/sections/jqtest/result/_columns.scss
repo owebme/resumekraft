@@ -86,7 +86,7 @@ jqtest-result-columns {
                 }
             }
             &__item {
-                @include accelerate(true);
+                @include accelerate();
                 @extend .pos-centered-v;
                 @extend .w100p;
                 @extend .borderRadius-xxxxxl;

@@ -60,15 +60,15 @@
     &__nav {
         @include accelerate();
         @extend .flex-centered;
-        position:absolute;
-        top:50%;
+        @extend .pos-abs;
+        @extend .t50;
         @extend .w80;
         @extend .h80;
         @extend .borderRadius-circle;
         @extend .cursor-pointer;
+        @extend .mt--l;
+        @extend .willChange-transform;
         background-color:rgba($black,.2);
-        margin-top:-40px;
-        will-change:transform;
         transform:scale(0);
         @extend .zIndex-1;
 
@@ -83,10 +83,10 @@
             @include ui-icon("back_white");
         }
         &__prev {
-            left:-20px;
+            @extend .l--m;
         }
         &__next {
-            right:-20px;
+            @extend .r--m;
 
             &:before {
                 transform:scaleX(-1);
@@ -102,7 +102,7 @@
         @include accelerate(true);
         @extend .nowrap;
         @extend .fontSize-0;
-        will-change:transform;
+        @extend .willChange-transform;
         transition:transform 0.5s;
 
         .largeSlides & {

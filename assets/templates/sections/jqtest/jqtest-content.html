@@ -1,6 +1,6 @@
 <jqtest-content class="oScreen" data-open={ active } data-show="down">
 
-    <div class="oScreen__content overflow-hidden bg-{ bg }">
+    <div class="oScreen__content overflow-hidden { bg ? 'bg-' + bg : '' }">
 
         <div class="screen bg-blackLight" data-screen="begin" data-active={ screen == "begin" } data-hidden={ hidden == "begin" }>
             <div class="container pos-centered">
@@ -56,23 +56,27 @@
 
     var $ = this;
 
-    $.active = false;
-    $.screen = null;
-    $.beginText = null;
-    $.hidden = null;
-    $.cursor = null;
     $.result = [];
-    $.reload = {
-        show: true,
-        hide: false
-    };
-    $.bg = null;
-    $.animate = null;
+
     $.circuful = $$($["circuful"]);
 
     $.on("before-mount", function(){
-        $.cursor = $.data.root.down();
+        $.reset();
     });
+
+    $.reset = function(update){
+        $.active = false;
+        $.screen = null;
+        $.hidden = null;
+        $.cursor = $.data.root.down();
+        $.reload = {
+            show: true,
+            hide: false
+        };
+        $.bg = null;
+        $.animate = null;
+        if (update) $.update();
+    };
 
     $.show = function(){
         $.next.begin();
@@ -101,7 +105,7 @@
             $.screen = "finish";
             $.bg = "blue";
 
-            _.onEndTransition($["finish"], function(){
+            $afterlag.xl(function(){
                 $.update({
                     animate: true
                 });
@@ -116,12 +120,20 @@
                     foregroundColor: '#68fb98',
                     fontColor: '#fff'
                 }, function(){
-                    $.trigger('loaded');
+                    $.trigger('readyCircuful');
                 });
             });
 
-            $.one('loaded', function() {
-                //alert("1");
+            $.one('readyCircuful', function() {
+                $.next.result();
+            });
+        },
+        result: function(){
+            $.animate = false;
+            $.update();
+
+            $Sections.jqtest.result.show(function(){
+                $.reset(true);
             });
         }
     }
@@ -143,8 +155,8 @@
                 hide: true
             }
             _.onEndTransition($["que__item"], function(){
-                //$.cursor = null;
-                $.cursor = $.cursor.right();
+                $.cursor = null;
+                //$.cursor = $.cursor.right();
 
                 if ($.cursor){
                     $.update({

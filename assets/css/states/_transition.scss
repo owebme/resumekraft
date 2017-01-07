@@ -14,3 +14,26 @@
         transition-timing-function:$fn;
     }
 }
+.transition-none,
+.transition-none-a:after,
+.transition-none-b:before {
+    transition:none !important;
+    transition-delay:0s !important;
+}
+.transition-none-ab,
+.transition-none-ba {
+	&:after, &:before {
+		transition:none !important;
+        transition-delay:0s !important;
+	}
+}
+.transitionAll-none,
+.transitionAll-none * {
+    transition:none !important;
+    transition-delay:0s !important;
+}
+.transition-default {
+	transition-timing-function:linear;
+    transition-duration:80ms;
+    transition-property:all;
+}

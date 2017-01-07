@@ -1,12 +1,12 @@
 <section-jqtest class="oScreen__section zIndex-2" data-open={ active } data-show="down">
 
-    <div class="oScreen__section__content overflow-hidden bg-white">
+    <div name="content" class="oScreen__section__content overflow-hidden bg-white">
 
         <div class="oScreen__section__buttons zIndex-0" data-pos="top-right">
             <div onClick={ hide } onUpdate="none" class="button__close" data-color="gray"></div>
         </div>
 
-        <jqtest-list></jqtest-list>
+        <jqtest-enter></jqtest-enter>
 
         <jqtest-content></jqtest-content>
 
@@ -24,23 +24,42 @@
 
     $.on("before-mount", function(){
         $.sections = {
-            list: $.tags["jqtest-list"],
+            enter: $.tags["jqtest-enter"],
             test: $.tags["jqtest-content"],
             result: $.tags["jqtest-result"]
         };
+    });
+
+    $.on("mount", function(){
+        $.el.on('swipeDown', function(){
+            $.hide();
+        });
+        // $afterlag.run(function(){
+        //     $.show();
+        //     $Sections.jqtest.result.show();
+        // });
     });
 
     $.show = function(callback){
         $.active = true;
         $.update();
         $.callback = callback;
+
+        _.onEndTransition($.content, function(){
+            $.sections.enter.show();
+        });
     };
 
     $.hide = function(){
         $.active = false;
         $.update();
 
+        $.trigger("hide");
+
         if (_.isFunction($.callback)) $.callback();
+        _.onEndTransition($.content, function(){
+            $.trigger("hideAnimated");
+        });
     };
 
 </script>

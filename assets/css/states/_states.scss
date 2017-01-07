@@ -1,32 +1,6 @@
 .disable__hover * {
 	pointer-events:none !important;
 }
-.animation-none {
-    animation:none;
-}
-.transition-none,
-.transition-none-a:after,
-.transition-none-b:before {
-    transition:none !important;
-}
-.transition-none-ab,
-.transition-none-ba {
-	&:after, &:before {
-		transition:none !important;
-	}
-}
-.transitionAll-none,
-.transitionAll-none * {
-    transition:none !important;
-}
-.transition-default {
-	transition-timing-function:linear;
-    transition-duration:80ms;
-    transition-property:all;
-}
-.transform-default {
-	transform:translateZ(0);
-}
 .nativeScroll {
 	-webkit-overflow-scrolling:touch;
 }

@@ -80,36 +80,37 @@
         <div class="slide5-1 bg-cover"></div>
     </section>
 
-    <section class="overview__section bg-snow pb-xl mb0">
+    <section class="overview__section bg-snow pb-xl mb0 overflow-visible">
         <div class="container pt-xl">
             <div class="row pt-l">
                 <div class="col-md-10 text-left zIndex-1">
                     <small class="mb-l">Доступная статистика</small>
                     <h1 class="mb-l pt-l">Отслеживате просмотры вашего резюме.</h1>
                     <p class="pb-l">Какой бы iPad Pro вы ни выбрали, для него есть клавиатура Smart Keyboard.2 Сочетание новых технологий и материалов позволило нам создать компактную и удивительно тонкую клавиатуру, которая также служит прочной и лёгкой обложкой. А благодаря интерфейсу Smart Connector вы забудете о проводах, разъёмах и необходимости создавать пару. Просто присоедините клавиатуру и начинайте работать.</p>
-                    <div class="chart__radial mt-m anim anim-scale" name="chartRadial">
-                        <div class="chart__radial__graph mb-m">
-                            <div class="chart__radial__graph1"></div>
-                            <div class="chart__radial__graph2"></div>
-                            <div class="chart__radial__graph3"></div>
-                        </div>
-                        <div class="chart__radial__labels c-blackLight">
-                            <div class="chart__radial__label mb-xxs">
-                                <div class="chart__radial__label__color"></div> &mdash; настольные ПК
-                            </div>
-                            <div class="chart__radial__label mb-xxs">
-                                <div class="chart__radial__label__color"></div> &mdash; планшеты
-                            </div>
-                            <div class="chart__radial__label mb-xxs">
-                                <div class="chart__radial__label__color"></div> &mdash; мобильные телефоны
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <script>
+                    <div class="chart__radial mt-m anim anim-scale" name="chartRadialEl"></div>
+                    <script>
                         this.on("mount", function(){
-                            app.plugins.chart.init($$(this.chartRadial), [_.random(5, 87), _.random(5, 87), _.random(5, 87)]);
+                            this.chartRadial = new app.plugins.chartRadial(this.chartRadialEl, {
+                                container: "chart__radial__graph mb-m",
+                                labels: "chart__radial__labels c-blackLight",
+                                labelItem: "chart__radial__label mb-xxs"
+                            });
+                            this.chartRadial.render([
+                                {
+                                    title: "настольные ПК",
+                                    value: _.random(5, 87)
+                                },
+                                {
+                                    title: "планшеты",
+                                    value: _.random(5, 87)
+                                },
+                                {
+                                    title: "мобильные телефоны",
+                                    value: _.random(5, 87)
+                                }
+                            ]);
                         });
-                    </script> -->
+                    </script>
                     <small class="pos-bl w100p" style="transform:translate3d(280px, 140px, 0); line-height:38px;">Какой бы iPad Pro вы ни выбрали, для него есть клавиатура Smart Keyboard. Какой бы iPad Pro вы ни выбрали, для него есть клавиатура Smart Keyboard.</small>
                 </div>
                 <div class="slide6__wrapper col-md-14">
@@ -122,7 +123,7 @@
         </div>
     </section>
 
-    <section class="overview__section bg-snow pt-xl mb0">
+    <section class="overview__section bg-snow pt-xl mb0 overflow-visible">
         <div class="container pt-xl">
             <div class="row pt-l">
                 <div class="slide7__wrapper col-md-14">

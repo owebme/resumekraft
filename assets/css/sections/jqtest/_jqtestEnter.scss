@@ -1,0 +1,85 @@
+.oScreen__jqtest__enter {
+    @extend .display-block;
+    @include abs();
+
+    &__angle__link {
+        @extend .flex-centered;
+        @extend .pos-abs;
+        @extend .t-25;
+        @extend .l-l;
+        @extend .h35;
+        @extend .c-blue;
+        @extend .bg-smokeLight;
+        @extend .plr-xs;
+        @extend .fontSize-13;
+        @extend .text-uppercase;
+        @extend .fontWeight-bold;
+        @extend .borderRadius-l;
+        @extend .cursor-pointer;
+        @extend .zIndex-1;
+
+        &:after {
+            @extend .content-empty;
+            @extend .pos-abs;
+            @extend .t85;
+            @extend .l0;
+            border-width:0 0 20px 20px;
+            border-style:solid;
+            border-color:transparent;
+            border-bottom-color:$smokeLight;
+            border-left-color:$smokeLight;
+            border-radius:0 0 0 4px;
+            @extend .zIndex--1;
+        }
+    }
+    &__text {
+        @extend .pos-rel;
+        @extend .pb50;
+        @extend .overflow-visible;
+
+        &__line {
+            @extend .pos-centered-h;
+            @extend .t100;
+
+            &__item {
+                &:after {
+                    @extend .display-block;
+                    @extend .content-empty;
+                    @extend .w2px;
+                    @extend .h50v;
+                    @extend .bg-gray;
+                    @extend .opacity-40;
+                }
+            }
+        }
+    }
+    &__phone {
+        &__left {
+            @extend .pos-abs;
+            left:-205px;
+            bottom:-480px;
+            @extend .willChange-transform;
+            transform:translate3d(-20vw, 20vw, 0) rotate(0deg);
+        }
+        &__right {
+            @extend .pos-abs;
+            right:-330px;
+            bottom:-490px;
+            @extend .willChange-transform;
+            transform:translate3d(25vw, 25vw, 0) rotate(-35deg);
+        }
+    }
+    &.showAnim-group1 {
+        .oScreen__jqtest__enter__phone {
+            &__left {
+                transform:translate3d(0, 0, 0) rotate(31deg);
+                transition:transform 0.7s $cubic25b;
+            }
+            &__right {
+                transform:translate3d(0, 0, 0) rotate(-35deg);
+                transition:transform 0.7s $cubic25b;
+                transition-delay:0.4s;
+            }
+        }
+    }
+}
