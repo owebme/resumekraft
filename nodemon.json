@@ -1,12 +1,22 @@
 {
-  "watch" : ["*.*", "/public/*.*", "/public/**/*.*", "/assets/API/*.*", "/assets/API/**/*.*"],
+  "watch" : [
+      "*.*",
+      "/public/index.html",
+      "/public/*/**",
+      "/assets/templates/sections/overview/premium/overviewPremiumContent.tag",
+      "/assets/templates/sections/overview/jqtest/overviewJqtestContent.tag",
+      "/assets/templates/sections/jqtest/jqtest-enter-content.tag",
+      "/assets/API/*.*",
+      "/assets/API/**/*.*"
+  ],
   "ignore": [
       "/assets/css/**",
       "/assets/files/**",
       "/assets/images/**",
       "/assets/js/**",
       "/assets/styleguide/**",
-      "/assets/templates/**",
+      "/assets/templates/root.html",
+      "/assets/templates/**/*.html",
       "/assets/video/**",
       "/public/js/*.js"
   ]

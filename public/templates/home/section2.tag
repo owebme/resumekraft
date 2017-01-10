@@ -8,7 +8,7 @@
         </div>
         <div class="home__section2__plan__container col-sm-12 col-md-7 col-lg-6 bg-blackLight pt-xl plr-l md-plr-m">
             <div class="pt-m plr-xxs rellax" data-rellax-speed="0.8">
-                <small class="home__section2__header c-white mb-l nowrap">premium аккаунт</small>
+                <small class="home__section2__header c-white mb-l nowrap">Premium аккаунт</small>
                 <h1 class="c-white mb-l nowrap" style="font-size:100px; line-height:100px; letter-spacing:-1.4px">169 ₽</h1>
                 <p class="c-white fontSize-xl lineHeight-xl pb-l">A decade ago, we founded Melinda with the goal of creating meaningful digital experiences that connect with people.</p>
                 <button class="btn btn-l2 btn-upper c-blue btn-default-hover-success">Выбрать Premium</button>
@@ -16,7 +16,7 @@
         </div>
         <div class="home__section2__plan__container col-sm-12 col-md-7 col-lg-6 bg-blue pt-xl plr-l md-plr-m">
             <div class="pt-m plr-xs rellax" data-rellax-speed="0.8">
-                <small class="home__section2__header c-white mb-l nowrap">простой аккаунт</small>
+                <small class="home__section2__header c-white mb-l nowrap">Free аккаунт</small>
                 <h1 class="c-white mb-l nowrap" style="font-size:100px; line-height:100px; letter-spacing:-1.4px">0 ₽</h1>
                 <p class="c-white fontSize-xl lineHeight-xl pb-l">A decade ago, we founded Melinda with the goal of creating meaningful digital experiences that connect with people.</p>
                 <button class="btn btn-l2 btn-upper c-blue btn-white-hover-success">Выбрать простой</button>

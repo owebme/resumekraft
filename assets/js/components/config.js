@@ -5,5 +5,9 @@ app.config = {
         method: "addLog",
         report: false
     },
+    uploadPhoto: {
+        minWidth: 440,
+        maxHeight: 620,
+    },
     changeStyles: true
 };

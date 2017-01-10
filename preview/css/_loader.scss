@@ -2,8 +2,15 @@ body.apploading {
     @extend .pointerEvents-none;
 
     .loader {
-        @extend .opacity-100;
         @extend .pointerEvents-all;
+
+        &:after,
+        &-spinner {
+            @extend .opacity-100;
+        }
+        &-bg {
+            @extend .bg-blue;
+        }
     }
     #frame {
         @extend .opacity-01;
@@ -17,10 +24,7 @@ body.apploading {
 .loader {
     @include abs();
     @include accelerate();
-    @extend .opacity-0;
-    @extend .willChange-opacity;
     @extend .pointerEvents-none;
-    transition:opacity 0.3s ease-out;
 
     &[data-device="phone"]:after {
         width:88px;
@@ -45,35 +49,61 @@ body.apploading {
         width:54px;
         height:64px;
         @extend .bg-cover;
+        @extend .willChange-opacity;
+        @extend .opacity-0;
+        transition:opacity 0.3s ease-out;
     }
     &-bg {
         @include abs();
         @include accelerate();
-        @extend .bg-blue;
-        @extend .willChange-transform;
+        background-color:transparent;
+        will-change:transform, background-color, border-radius;
+        transition:background-color 0.3s ease-out, border-radius 0.3s ease-out;
+        box-shadow: 0 45px 100px rgba(0, 0, 0, 0.4);
 
+        // &:before {
+        //     @extend .content-empty;
+        //     @include abs();
+        //     @include accelerate();
+        //     @extend .willChange-opacity;
+        //     @extend .zIndex-1;
+        //     @extend .opacity-0;
+        //     transition:opacity 0.3s ease-out;
+        //     background:linear-gradient(135deg, rgba(255,255,255,.2) 0%,rgba(255,255,255,0) 60%);
+        //
+        //     body[data-device="phone"] & {
+        //         @extend .opacity-100;
+        //     }
+        // }
         &[data-resize="true"]{
-            transition:transform 0.6s;
+            transition:transform 0.6s, background-color 0.3s ease-out;
         }
     }
     &-spinner {
-        @include abs_50(280, 280);
-        @extend .willChange-transform;
-    	clip:rect(0, 280px, 280px, 140px);
-        animation:loader-animate1 1.1s linear infinite;
+        @include abs();
+        @extend .opacity-0;
+        @extend .willChange-opacity;
         @extend .zIndex-1;
+        transition:opacity 0.3s ease-out;
 
-        &:after {
-            @extend .content-empty;
-            @extend .pos-abs;
-            width:280px;
-            height:280px;
-            box-shadow:inset #fff 0 0 0 2px;
-            clip:rect(0, 280px, 280px, 140px);
-            animation:loader-animate2 1.1s ease-in-out infinite;
-            @extend .borderRadius-circle;
+        &-item {
+            @include abs_50(280, 280);
             @extend .willChange-transform;
-    	}
+        	clip:rect(0, 280px, 280px, 140px);
+            animation:loader-animate1 1.1s linear infinite;
+
+            &:after {
+                @extend .content-empty;
+                @extend .pos-abs;
+                width:280px;
+                height:280px;
+                box-shadow:inset #fff 0 0 0 2px;
+                clip:rect(0, 280px, 280px, 140px);
+                animation:loader-animate2 1.1s ease-in-out infinite;
+                @extend .borderRadius-circle;
+                @extend .willChange-transform;
+        	}
+        }
     }
 }
 

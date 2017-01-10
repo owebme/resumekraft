@@ -74,7 +74,7 @@ body {
         }
         #device {
             width:375px;
-            height:640px;
+            height:667px;
         }
     }
     &[data-device="tablet"]{
@@ -94,12 +94,10 @@ body {
         #device {
             width:1024px;
             height:640px;
-            @extend .borderRadius-l;
         }
-        &:not(.appLoading){
-            #device {
-                @extend .overflow-hidden;
-            }
+        .frame-container,
+        .loader-bg {
+            @extend .borderRadius-l;
         }
     }
     &[data-device="desktop"]{

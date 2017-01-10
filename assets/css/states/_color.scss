@@ -7,7 +7,7 @@ $i:0;
         }
     }
 }
-@each $title, $color in (white: $white, blue: $blue, blueLight: $blueLight, blueDark: $blueDark, brown: $brown, red: $red, redDark: $redDark, pink: $pink, orange: $orange, orangeDark: $orangeDark, yellow: $yellow, yellowLight: $yellowLight, violet: $violet, violetLight: $violetLight, green: $green, greenDark: $greenDark, lime: $lime, breeze: $breeze, emerald: $emerald, black: $black, blackDark: $blackDark, blackLight: $blackLight, steel: $steel, steelDark: $steelDark, gray: $gray, grayDark: $grayDark, grayLight: $grayLight, grayLighten: $grayLighten, smoke: $smoke, smokeLight: $smokeLight, smokeDark: $smokeDark, snow: $snow){
+@each $title, $color in (white: $white, blue: $blue, blueLight: $blueLight, blueDark: $blueDark, brown: $brown, red: $red, redDark: $redDark, pink: $pink, orange: $orange, orangeDark: $orangeDark, yellow: $yellow, yellowLight: $yellowLight, violet: $violet, violetLight: $violetLight, green: $green, greenDark: $greenDark, lime: $lime, breeze: $breeze, emerald: $emerald, black: $black, blackDark: $blackDark, blackLight: $blackLight, steel: $steel, steelDark: $steelDark, gray: $gray, grayDark: $grayDark, grayLight: $grayLight, grayLighten: $grayLighten, smoke: $smoke, smokeLight: $smokeLight, smokeDark: $smokeDark, snow: $snow, snowLight: $snowLight){
     .bg-#{$title},
     .text-strike[data-color=#{$title}]:after {
         background-color:$color;

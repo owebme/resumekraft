@@ -1,14 +1,9 @@
 (function(){
 
     if (app.device.isMobile){
-        location.replace("/resume.html");
+        location.replace("/premium/editing");
         return;
     }
-
-    var params = window.Url && Url.parseQuery(),
-        mode = "true";
-
-	if (params && params.editing) mode = "editing";
 
     var $body = app.$dom.body,
         $control = {
@@ -16,10 +11,16 @@
             colors: $(".control__colors")
         },
         $device = $("#device"),
-        $frame = $('<iframe id="frame" src="/resume.html?demo=' + mode + '" frameborder="none"/>').prependTo("#device"),
+        $container = $device.find(".frame-container"),
+        $frame = $('<iframe id="frame" src="/premium/editing?demo=true" frameborder="none"/>').prependTo($container),
         $loader = $device.find(".loader"),
         $loaderBg = $loader.find(".loader-bg"),
-        $shareOpener = $(".button__like");
+        $share = $(".button__like"),
+        $menu = $(".menu");
+
+    $share.opener = $share.find(".button__like__opener"),
+    $menu.opener = $(".menu__opener");
+    $menu.close = $menu.find(".menu__close");
 
     $State = new Baobab({
         device: "phone",
@@ -72,8 +73,16 @@
         }
     ];
 
-    $shareOpener.on("click", function(){
-        $(this).attr("data-open", true);
+    $menu.opener.on("click", function(){
+        $menu.attr("data-open", true);
+    });
+
+    $menu.close.on("click", function(){
+        $menu.attr("data-open", false);
+    });
+
+    $share.opener.on("click", function(){
+        $share.attr("data-open", true);
     });
 
     $control.device.on("click", function(){
@@ -154,6 +163,17 @@
 
     frameOnLoad(function(){
         $body.attr("data-help", true);
+    });
+
+    new app.plugins.share($share, {
+        buttons: '.button__like__item',
+        share: {
+            title: "Премиальное резюме на ResumeKraft.ru"
+        }
+    });
+
+    riot.compile(function(e){
+        riot.mount("*");
     });
 
 })();

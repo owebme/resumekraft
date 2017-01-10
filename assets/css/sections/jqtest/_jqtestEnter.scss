@@ -1,7 +1,34 @@
 .oScreen__jqtest__enter {
     @extend .display-block;
+    @extend .text-center;
     @include abs();
+    @extend .overflow-hidden;
 
+    #renderServer & {
+        jqtest-enter-content {
+            @extend .display-block;
+            @extend .pos-abs;
+            @extend .t-60;
+            @extend .l0;
+            @extend .w100p;
+            @extend .h100p;
+        }
+    }
+    .oScreen__jqtest__enter__faces {
+        @extend .pos-abs;
+        @extend .t0;
+        @extend .r-xs;
+
+        &:after {
+            @extend .display-block;
+            @extend .content-empty;
+            width:377px;
+            height:338px;
+            transform:scale(0.85);
+            @extend .bg-cover;
+            background-image:url(/assets/images/visitors@2x2.png);
+        }
+    }
     &__angle__link {
         @extend .flex-centered;
         @extend .pos-abs;

@@ -1,0 +1,37 @@
+.home__testdrive {
+    &__container {
+        @extend .pt100;
+        @extend .pb100;
+
+        .d-tablet.r-landscape & {
+            @extend .pt90;
+            @extend .pb80;
+        }
+        .d-tablet.r-portrait & {
+            @extend .pt60;
+            @extend .pb60;
+        }
+    }
+    &__icons {
+        @extend .w80p;
+        @extend .centered;
+        @extend .mt60;
+        @extend .mb60;
+
+        &__cell {
+            @extend .flex-centered;
+            @extend .h100;
+        }
+        // &__item {
+        //     &[data-icon="phone"]{
+        //         @include ui-icon("device_phones_white", 72px, 88px);
+        //     }
+        //     &[data-icon="desktop"]{
+        //         @include ui-icon("device_desktop_white", 136px, 72px);
+        //     }
+        //     &[data-icon="tablet"]{
+        //         @include ui-icon("device_tablet_white", 65px, 94px);
+        //     }
+        // }
+    }
+}

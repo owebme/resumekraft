@@ -1,14 +1,151 @@
+.menu {
+    @include abs();
+    @include accelerate();
+    @extend .bg-white;
+    @extend .text-center;
+    @extend .zIndex-5;
+    @extend .opacity-0;
+    @extend .visibility-hidden;
+    @extend .pointerEvents-none;
+    @extend .willChange-opacity;
+    transition:opacity 0.35s $cubic40 0.1s, visibility 0.45s 0s;
+
+    &__items {
+        width:600px;
+        @extend .pos-centered;
+    }
+    &__item {
+        @include accelerate();
+        @extend .mt50;
+        @extend .mb50;
+        @extend .opacity-0;
+        @extend .willChange-tp;
+        transform-origin:50% 0;
+        transform:translate3d(0, -35px, 0) scale3d(0.7, 0.4, 0);
+        transition:transform 0.4s $bounceForce, opacity 0.4s $bounceForce;
+
+        &__link {
+            @extend .c-blueLight;
+            @extend .fontSize-20;
+            @extend .fontWeight-8;
+            @extend .letterSpacing-xxxxl;
+            @extend .text-uppercase;
+            @extend .textDecoration-none;
+            transition:letter-spacing 0.35s $cubic215;
+
+            &:hover {
+                letter-spacing:7.5px;
+            }
+        }
+    }
+    &__opener {
+        @extend .pos-abs;
+        @extend .t-25;
+        @extend .l-30;
+        @extend .transition-default;
+        @extend .scale-0;
+        @extend .opacity-70;
+        @extend .pointerEvents-none;
+        @extend .willChange-transform;
+        @extend .cursor-pointer;
+        transition:transform .25s $cubic345;
+
+        &__line {
+            width:29px;
+            @extend .h4px;
+            @extend .bg-steel;
+            @extend .mb-xxs;
+            @extend .borderRadius-xs;
+            transition:transform 0.35s $cubic215;
+        }
+        &:hover {
+            @extend .opacity-100;
+
+            .menu__opener__line {
+                &:first-child {
+                    transform:translateY(-2px);
+                }
+                &:last-child {
+                    transform:translateY(2px);
+                }
+            }
+        }
+        body[data-help="true"] & {
+            @extend .scale-100;
+            @extend .pointerEvents-all;
+            transition:transform .55s $bounceForce, opacity .08s;
+        }
+    }
+    &__close {
+        @extend .pos-centered-h;
+        @extend .t-l;
+        width:32px;
+        height:32px;
+        @extend .cursor-pointer;
+
+        &:before,
+        &:after {
+            @extend .content-empty;
+            @extend .pos-abs;
+            @extend .t50;
+            @extend .l50;
+            @extend .w100p;
+            @extend .h2px;
+            @extend .bg-blueLight;
+            @extend .opacity-0;
+            @extend .willChange-tp;
+            transition:transform 0.4s $cubic215, opacity 0.4s $cubic215;
+        }
+        &:before {
+            transform:translate3d(-50%, -50%, 0) rotate(0deg);
+        }
+        &:after {
+            transform:translate3d(-50%, -50%, 0) rotate(0deg);
+        }
+    }
+    &[data-open="true"]{
+        @extend .opacity-100;
+        @extend .visibility-visible;
+        @extend .pointerEvents-all;
+        transition:opacity 0.35s $cubic40, visibility 0s;
+
+        .menu {
+            &__item {
+                @extend .opacity-100;
+                transform:translate3d(0, 0, 0) scale3d(1, 1, 1);
+                transition:transform 0.6s $bounceForce, opacity 0.35s $cubic40;
+
+                @for $i from 1 through 6 {
+                    &:nth-child(#{$i}){
+                        transition-delay:#{($i / 20)}s;
+                    }
+                }
+            }
+            &__close {
+                &:before,
+                &:after {
+                    @extend .opacity-100;
+                    transition-delay:.5s;
+                }
+                &:before {
+                    transform:translate3d(-50%, -50%, 0) rotate(45deg);
+                }
+                &:after {
+                    transform:translate3d(-50%, -50%, 0) rotate(-45deg);
+                }
+            }
+        }
+    }
+}
 .button__like {
     @extend .pos-abs;
-    @extend .t-m;
-    @extend .l-m;
-    @extend .m-xxs;
+    top:22px;
+    left:77px;
 
-    &:after {
-        @extend .content-empty;
+    &__opener {
         @extend .display-block;
-        @extend .w40;
-        @extend .h40;
+        @extend .w35;
+        @extend .h35;
         @extend .ml-xxs;
         @extend .bg-cover;
         @extend .opacity-50;
@@ -18,39 +155,58 @@
         @extend .pointerEvents-none;
         @extend .willChange-transform;
         background:url(/preview/images/like_fill.svg);
+
+        &:hover {
+            @extend .opacity-80;
+        }
+        &:active {
+            @extend .scale-80;
+        }
     }
     &:not([data-open="true"]){
-        body[data-help="true"] &:after {
+        body[data-help="true"] & .button__like__opener {
             @extend .scale-100;
             @extend .pointerEvents-all;
             transition:transform .55s $bounceForce, opacity .08s;
         }
     }
-    &__container {
+    &__items {
+        @extend .flex-row-left-center;
         @extend .pos-tl;
         @extend .nowrap;
         @extend .scale-0;
         @extend .pointerEvents-all;
-        transform-origin:50% 0%;
+        margin-top:-2px;
+        transform-origin:50% 100%;
         transition:transform .25s $cubic345;
 
         a {
             @extend .outline-none;
         }
     }
-    &:after:hover {
-        @extend .opacity-80;
-    }
-    &:after:active {
-        @extend .scale-80;
+    &__item {
+        @extend .pos-rel;
+        @include accelerate(true);
+        @extend .flex-centered;
+        @extend .w55;
+        @extend .cursor-pointer;
+        @extend .willChange-transform;
+        transition:transform .5s $cubic075;
+
+        &:hover {
+            transform:translate3d(0, 0, 0) scale(1.25);
+        }
+        &:active {
+            transform:translate3d(0, 1px, 0) scale(0.9);
+        }
     }
     &[data-open="true"]{
-        &:after {
+        .button__like__opener {
             @extend .scale-0;
             @extend .pointerEvents-none;
         }
         body[data-help="true"] & {
-            .button__like__container {
+            .button__like__items {
                 @extend .scale-100;
                 @extend .pointerEvents-all;
                 transition:transform .55s $bounceForce;
@@ -58,20 +214,25 @@
         }
     }
 }
-.button__testdrive {
+.button__editable {
     @extend .flex-centered;
-    @extend .pos-abs;
-    @extend .t-m;
-    @extend .r-m;
-    @extend .m-xxs;
+    @extend .pos-tr;
+    @extend .fontWeight-bold;
     @extend .fontSize-14;
     @extend .text-uppercase;
     @extend .cursor-pointer;
-    @extend .c-steel;
     @extend .textDecoration-none;
     @extend .scale-0;
     @extend .willChange-transform;
     @extend .pointerEvents-none;
+    @extend .h40;
+    @extend .pl25;
+    @extend .pr-m;
+    @extend .c-white;
+    @extend .bg-blueLight;
+    padding-bottom:2px;
+    border-radius:0 0 0 100px;
+    box-shadow:0 8.66px 30px 0 rgba(31,35,37,.078);
     transition:transform .25s $cubic345;
 
     body[data-help="true"] & {
@@ -79,34 +240,15 @@
         @extend .pointerEvents-all;
         transition:transform .55s $bounceForce;
     }
-    &:hover {
-        @extend .c-black;
-
-        &:after {
-            transform:scaleX(-1) translateX(-5px);
-        }
-    }
     &:before {
         @extend .content-empty;
         @extend .display-block;
-        width:24px;
-        height:24px;
+        width:16px;
+        height:16px;
         @extend .mr-xs;
         @extend .bg-cover;
         @extend .opacity-70;
-        background-image:url(/preview/images/debug.svg);
-    }
-    &:after {
-        @extend .content-empty;
-        @extend .display-block;
-        @extend .w20;
-        @extend .h20;
-        @extend .ml-xxs;
-        @extend .bg-cover;
-        @extend .opacity-50;
-        background-image:url(/preview/images/back.svg);
-        transform:scaleX(-1);
-        transition:transform 0.35s $cubic215;
+        background-image:url(/preview/images/pencil_white.svg);
     }
 }
 .addUser {
@@ -126,8 +268,6 @@
         margin-left:-17px;
         @extend .bg-cover;
         background:url(/preview/images/addUser.svg);
-        // animation:pulseIcon 5.5s ease-in-out infinite;
-        // animation-delay:5s;
     }
     &__help {
         @extend .t100;
@@ -176,6 +316,49 @@
         animation:scroll__arrow 1.4s infinite;
     }
 }
+.vk__like {
+    @extend .pos-abs;
+    @extend .b-l;
+    @extend .r-m;
+}
+.icon {
+    @extend .display-inlineBlock;
+    @extend .vAlign-middle;
+
+    path, rect, polygon, circle {
+        transition:fill 0.08s;
+    }
+    &-fb {
+        &.icon-m {
+            width:24px;
+            height:24px;
+        }
+    }
+    &-dk {
+        &.icon-m {
+            width:24px;
+            height:24px;
+        }
+    }
+    &-vk {
+        &.icon-m {
+            width:30px;
+            height:30px;
+        }
+    }
+    &-tw {
+        &.icon-m {
+            width:24px;
+            height:24px;
+        }
+    }
+    &-gl {
+        &.icon-m {
+            width:32px;
+            height:32px;
+        }
+    }
+}
 
 @keyframes scroll__arrow {
     from {
@@ -184,34 +367,5 @@
     to {
         transform:translate3d(0, 66%, 0);
         opacity:0;
-    }
-}
-@keyframes pulseIcon {
-    0% {
-        transform: rotate(0deg) translate3d(0, -3px, 0) skew(1deg);
-    }
-    2.5% {
-        transform: rotate(-25deg) translate3d(0, -3px, 0) skew(1deg);
-    }
-    5% {
-        transform: rotate(25deg) translate3d(0, -3px, 0) skew(1deg);
-    }
-    7.5% {
-        transform: rotate(-25deg) translate3d(0, -3px, 0) skew(1deg);
-    }
-    10% {
-        transform: rotate(25deg) translate3d(0, -3px, 0) skew(1deg);
-    }
-    12.5% {
-        transform: rotate(-25deg) translate3d(0, -3px, 0) skew(1deg);
-    }
-    15% {
-        transform: rotate(25deg) translate3d(0, -3px, 0) skew(1deg);
-    }
-    17.5% {
-        transform: rotate(-25deg) translate3d(0, -3px, 0) skew(1deg);
-    }
-    100%, 20% {
-        transform: rotate(0deg) translate3d(0, -3px, 0) skew(1deg);
     }
 }

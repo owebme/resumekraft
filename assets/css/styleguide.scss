@@ -9,22 +9,22 @@
 @import 'base/main';
 
 // UI elements
-@import 'ui/highlight';
+@import 'ui/basic/highlight';
 @import 'ui/icons';
-@import 'ui/button';
-@import 'ui/form';
-@import 'ui/input';
-@import 'ui/textarea';
-@import 'ui/select';
-@import 'ui/checkbox';
-@import 'ui/switcher';
-@import 'ui/tabs';
-@import 'ui/table';
-@import 'ui/tags';
-@import 'ui/list';
-@import 'ui/datepicker';
-@import 'ui/clockpicker';
-@import 'ui/pagination';
+@import 'ui/basic/button';
+@import 'ui/basic/form';
+@import 'ui/basic/input';
+@import 'ui/basic/textarea';
+@import 'ui/basic/select';
+@import 'ui/basic/checkbox';
+@import 'ui/basic/switcher';
+@import 'ui/basic/tabs';
+@import 'ui/basic/table';
+@import 'ui/basic/tags';
+@import 'ui/basic/list';
+@import 'ui/basic/datepicker';
+@import 'ui/basic/clockpicker';
+@import 'ui/basic/pagination';
 // @import 'ui/badge';
 // @import 'ui/dropmenu';
 // @import 'ui/filter';

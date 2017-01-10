@@ -42,12 +42,8 @@ app.set('view cache', false);
 app.swig = swig;
 
 // require all the riot tags
-glob(path.join(__dirname, 'public/templates', '**', '*.tag'), function(err, tags) {
-    tags.forEach(function(tag) {
-        var name = tag.replace(/.+\/(.+)\.tag/g, "$1");
-        app.tags[name] = require(tag);
-    })
-})
+require('./public/templates')(app);
+
 app.use(favicon(path.join(__dirname, '/', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json({limit: '2mb'}));
@@ -66,7 +62,8 @@ app.checkAuth = require('./public/router/checkAuth');
 
 app.appClient = {
     utils: app.utils,
-    moment: app.moment
+    moment: app.moment,
+    isServer: true
 }
 app.use(function(req, res, next) {
     app.appClient.device = new MobileDetect(req.headers['user-agent']);

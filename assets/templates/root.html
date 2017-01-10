@@ -24,6 +24,7 @@
 
         <section-profile></section-profile>
         <section-profile-data></section-profile-data>
+        <photo-upload></photo-upload>
         <section-jqtest></section-jqtest>
 
         <section-loader></section-loader>
@@ -70,7 +71,8 @@
             payment: {
                 section: app.device.isPhone ? $root.tags["section-payment-mobile"] : $root.tags["section-payment"],
             },
-            menu: $root.tags["section-menu"]
+            menu: $root.tags["section-menu"],
+            photoUpload: $root.tags["photo-upload"]
         };
 
         $Tutorial = $root.tags["section-tutorial"];
@@ -118,7 +120,7 @@
             site: "http://web-projects.me",
             skype: "owebme"
         }
-    });    
+    });
 
     this.on("before-mount", function(){
         if (app.config.changeStyles){

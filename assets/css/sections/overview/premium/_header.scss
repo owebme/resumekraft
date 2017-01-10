@@ -1,0 +1,283 @@
+.premium__header {
+    @extend .pos-rel;
+    @extend .w100p;
+    @extend .h100v;
+    @extend .text-center;
+    @extend .fontSize-0;
+    @extend .bg-snowLight;
+    @extend .transform-default;
+    @extend .zIndex-1;
+}
+.premium__header__layers {
+    @include abs();
+    @extend .overflow-hidden;
+
+    &__wrapper {
+        @extend .pos-centered;
+        @extend .w100p;
+        height:842px;
+    }
+}
+.premium__header__layer {
+    @include accelerate();
+    @extend .pos-abs;
+    @extend .t0;
+    @extend .l50;
+    transform:translate3d(-50%, 0, 0);
+    opacity:0.001;
+    @extend .willChange-tp;
+
+    &--animate {
+        @extend .opacity-100;
+        transition:opacity 1s $cubic2501, transform 1s $cubic2501;
+    }
+    &1 {
+        transform:translate3d(-645px, -70px, 0px);
+
+        .premium__header__layer__iphone__screen {
+            background-image:url("/public/images/promo/premium/header/screen1_large_2x.png");
+        }
+    }
+    &2 {
+        transform:translate3d(-323px, -245px, 0px);
+
+        .premium__header__layer__iphone__screen {
+            background-image:url("/public/images/promo/premium/header/screen2_large_2x.png");
+        }
+    }
+    &3 {
+        transform:translate3d(0px, -110px, 0px);
+
+        .premium__header__layer__iphone__screen {
+            background-image:url("/public/images/promo/premium/header/screen3_large_2x.png");
+        }
+    }
+    &4 {
+        transform:translate3d(582px, 466px, 0px);
+
+        .premium__header__layer__ipad__screen {
+            background-image:url("/public/images/promo/premium/hardware/screen4_large_2x.jpg");
+        }
+    }
+    &5 {
+        transform:translate3d(-645px, 567px, 0px);
+
+        .premium__header__layer__iphone__screen {
+            background-image:url("/public/images/promo/premium/header/screen5_large_2x.png");
+        }
+    }
+    &6 {
+        transform:translate3d(-323px, 392px, 0px);
+
+        .premium__header__layer__iphone__screen {
+            background-image:url("/public/images/promo/premium/header/screen6_large_2x.png");
+        }
+    }
+    &7 {
+        transform:translate3d(0px, 527px, 0px);
+
+        .premium__header__layer__iphone__screen {
+            background-image:url("/public/images/promo/premium/header/screen7_large_2x.png");
+        }
+    }
+    &8 {
+        transform:translate3d(323px, -175px, 0px);
+
+        .premium__header__layer__iphone__screen {
+            background-image:url("/public/images/promo/premium/header/screen8_large_2x.png");
+        }
+    }
+    &9 {
+        transform:translate3d(645px, -268px, 0px);
+
+        .premium__header__layer__iphone__screen {
+            background-image:url("/public/images/promo/premium/header/screen9_large_2x.png");
+        }
+    }
+    &10 {
+        transform:translate3d(-323px, 1126px, 0px);
+
+        .premium__header__layer__iphone__screen {
+            background-image:url("/public/images/promo/premium/hardware/screen10_large_2x.jpg");
+        }
+    }
+    &__iphone {
+        width:351px;
+        height:660px;
+        background-size:351px 660px;
+        background-repeat:no-repeat;
+        background-image:url("/public/images/promo/premium/hardware/hardware_full_silver_large.png");
+        margin-left:-175.5px;
+
+        &__screen {
+            float:left;
+            width:260px;
+            height:462px;
+            background-size:260px 462px;
+            background-repeat:no-repeat;
+            transform:translate(47px, 86px);
+        }
+    }
+    &__ipad {
+        width:855px;
+        height:1196px;
+        background-size:855px 1196px;
+        background-repeat:no-repeat;
+        background-image: url("/public/images/promo/premium/hardware/hero_hardware_ipad_large.png");
+        margin-left:-427.5px;
+
+        &__screen {
+            float:left;
+            width: 705px;
+            height: 940px;
+            background-size: 705px 940px;
+            background-repeat: no-repeat;
+            transform:translate(74px, 111px);
+        }
+    }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx), (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi){
+    .premium__header__layer__iphone {
+        background-image:url("/public/images/promo/premium/hardware/hardware_full_silver_large_2x.png");
+    }
+    .premium__header__layer__ipad {
+        background-image:url("/public/images/promo/premium/hardware/hero_hardware_ipad_large_2x.png");
+    }
+}
+@media only screen and (max-width: $w1024){
+    .premium__logo {
+        transform:translate3d(0px, 376px, 0px);
+
+        &__text {
+            transform:scale(0.754);
+        }
+    }
+    .premium__header__layer {
+        &1 {transform:translate3d(-500px, 50px, 0px);}
+        &2 {transform:translate3d(-252px, -95px, 0px);}
+        &3 {transform:translate3d(0px, -187px, 0px);}
+        &4 {transform:translate3d(450px, 462px, 0px);}
+        &5 {transform:translate3d(-500px, 540px, 0px);}
+        &6 {transform:translate3d(-252px, 396px, 0px);}
+        &7 {transform:translate3d(0px, 535px, 0px);}
+        &8 {transform:translate3d(252px, -38px, 0px);}
+        &9 {transform:translate3d(500px, -126px, 0px);}
+        &10 {transform:translate3d(-252px, 974px, 0px);}
+    }
+    .premium__header__layer__iphone {
+        width:282px;
+        height:522px;
+        background-size:282px 522px;
+        background-image:url("/public/images/promo/premium/hardware/hardware_full_silver_medium_2x.png");
+        margin-left:-141px;
+
+        &__screen {
+            width:200px;
+            height:356px;
+            background-size:200px 356px;
+            transform:translate(40px, 75px);
+        }
+    }
+    .premium__header__layer__ipad {
+        width:668px;
+        height:925px;
+        background-size:668px 925px;
+        background-image:url("/public/images/promo/premium/hardware/hero_hardware_ipad_medium_2x.png");
+        margin-left:-334px;
+
+        &__screen {
+            width:542px;
+            height:723px;
+            background-size:542px 723px;
+            transform:translate(63px, 87px);
+        }
+    }
+}
+@media only screen and (max-width: $w767){
+    .premium__logo {
+        transform:translate3d(0px, 380px, 0px);
+
+        &__text {
+            transform:scale(0.594);
+        }
+        .subcaption {
+            display:none;
+        }
+    }
+    .premium__header__layer {
+        &1 {transform:translate3d(-173px, -18px, 0px);}
+        &2 {transform:translate3d(-173px, 276px, 0px);}
+        &3 {transform:translate3d(0px, 28px, 0px);}
+        &4 {transform:translate3d(118px, 834px, 0px);}
+        &5 {transform:translate3d(173px, -68px, 0px);}
+        &6 {transform:translate3d(-173px, 606px, 0px);}
+        &7 {transform:translate3d(0px, 484px, 0px);}
+        &8 {transform:translate3d(173px, 226px, 0px);}
+        &9 {transform:translate3d(-173px, 896px, 0px);}
+        &10 {transform:translate3d(173px, 520px, 0px);}
+    }
+    .premium__header__layer__iphone {
+        width:193px;
+        height:340px;
+        background-size:193px 340px;
+        background-image:url("/public/images/promo/premium/hardware/hero_hardware_full_silver_small_2x.png");
+        margin-left:-96.5px;
+
+        &__screen {
+            width:119px;
+            height:212px;
+            background-size:119px 212px;
+            transform:translate(37px, 64px);
+        }
+    }
+    .premium__header__layer__ipad {
+        width:415px;
+        height:571px;
+        background-size:415px 571px;
+        background-image:url("/public/images/promo/premium/hardware/hero_hardware_ipad_small_2x.png");
+        margin-left:-207.5px;
+
+        &__screen {
+            width:323px;
+            height:430px;
+            background-size:323px 430px;
+            transform:translate(47px, 57px);
+        }
+    }
+}
+@keyframes premium__logo-dot {
+    0% {
+        color:#5856d6;
+    }
+    10% {
+        color:#007aff;
+    }
+    20% {
+        color:#34aadc;
+    }
+    30% {
+        color:#5ac8fa;
+    }
+    40% {
+        color:#4cd964;
+    }
+    50% {
+        color:#ff2d55;
+    }
+    60% {
+        color:#ff3b30;
+    }
+    70% {
+        color:#ff9500;
+    }
+    80% {
+        color:#ffcc00;
+    }
+    90% {
+        color:#8e8e93;
+    }
+    100% {
+        color:#5856d6;
+    }
+}

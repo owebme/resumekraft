@@ -6,9 +6,9 @@
 
         init: function(){
 
-            this.el = $dom.body.find("section-home");
+            this.el = $dom.body.children("section-home");
 
-            if (this.el) this.render();
+            if (this.el.length) this.render();
         },
 
         render: function(){
@@ -16,17 +16,24 @@
             if (app.device.isPhone) app.screens.init();
 
             if (!app.device.isMobile){
-                setTimeout(function(){
+                $afterlag.run(function(){
 
-                    var animHeader = new app.plugins.animate(WD.el.find('.home__header'));
+                    var $sectionFunctions = WD.el.find('.home__functions'),
+                        offsetTop = $sectionFunctions.offset().top,
+                        animHeader = new app.plugins.animate(WD.el.find('.home__header')),
+                        animFunctions = new app.plugins.animate($sectionFunctions, {
+                            showAfter: 1
+                        });
 
                     animHeader.show();
 
-                    var animFunctions = new app.plugins.animate(WD.el.find('.home__functions'), {
-                        showAfter: 1
+                    app.$dom.window.on("scroll.animFunctions", function(){
+                        var scroll = app.$dom.document.scrollTop() + (app.sizes.height / 1.3);
+                        if (scroll > offsetTop){
+                            app.$dom.window.off("scroll.animFunctions");
+                            animFunctions.show();
+                        }
                     });
-
-                    animFunctions.show();
 
                     var scrollAnimate = new app.plugins.scroll.animate({
                         scroll: app.$dom.window,
@@ -34,8 +41,7 @@
                     });
 
                     scrollAnimate.start();
-
-                }, 100);
+                });
             }
             else {
                 var video = document.getElementById('video'),

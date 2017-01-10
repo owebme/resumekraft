@@ -8,11 +8,17 @@
     .fill-#{$title} {
         fill:$color;
     }
+    svg[fill-color="#{$title}"]{
+        path, rect, polygon, circle {
+            fill:$color;
+        }
+    }    
 }
 body {
     @each $color in ($blue, $blueLight, $green, $emerald, $orange, $red, $violet, $violetLight, $brown, $pink){
         &[data-color="#{$color}"]{
-            .control__colors__item {
+            .control__colors__item,
+            .button__editable {
                 background-color:$color;
             }
         }

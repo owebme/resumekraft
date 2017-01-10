@@ -7,6 +7,7 @@
 @import '../../assets/css/base/mixins';
 @import '../../assets/css/base/responsive';
 @import '../../assets/css/base/main';
+@import 'base/main';
 
 // UI elements
 @import '../../assets/css/ui/icons';
@@ -39,8 +40,20 @@
 @import 'sections/home/functions';
 @import 'sections/home/jqtest';
 @import 'sections/home/sections';
+@import 'sections/home/testdrive';
 @import 'sections/home/footer';
-@import 'sections/home/parallax';
+// @import 'sections/home/parallax';
+
+// jqtest
+@import '../../assets/css/sections/jqtest/jqtest';
+@import '../../assets/css/sections/jqtest/jqtestEnter';
+@import '../../assets/css/sections/jqtest/result/main';
+@import '../../assets/css/sections/jqtest/result/columns';
+@import '../../assets/css/sections/jqtest/result/skills';
+@import '../../assets/css/sections/jqtest/result/humps';
+@import '../../assets/css/sections/jqtest/result/graph';
+@import '../../assets/css/sections/jqtest/result/specialties';
+@import '../../assets/css/sections/jqtest/result/path';
 
 // blog
 @import 'sections/blog/blog';
@@ -52,6 +65,7 @@
 @import 'sections/blog/social';
 
 // modules
+@import '../../assets/css/modules/chart/chartRadial';
 @import '../../assets/css/modules/oScreen';
 
 // Sections
@@ -59,7 +73,9 @@
 
 // overview
 @import '../../assets/css/sections/overview/main';
+@import '../../assets/css/sections/overview/premium/header';
 @import '../../assets/css/sections/overview/premium/slides';
+@import '../../assets/css/sections/overview/jqtest/slides';
 @import '../../assets/css/sections/overview/overviewFunctions';
 
 // states

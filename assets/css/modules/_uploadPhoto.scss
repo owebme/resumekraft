@@ -5,8 +5,8 @@
     @extend .fontSize-0;
     @extend .borderRadius-xl;
     cursor:grab;
-    width:446px;
-    height:626px;
+    width:440px;
+    height:620px;
     border:3px dashed $white;
 
     .d-phone & {
@@ -40,7 +40,7 @@
 
             &[data-uploaded="true"]{
                 @extend .bg-black;
-            }            
+            }
         }
     }
     &.cropit-image-loading {

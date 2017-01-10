@@ -5,7 +5,7 @@
     upload_white, video_white, images_white, link_white, more_h, more_v, more_v_white,
     back, back_white, back_lime, help, close_fill, close_fill_gray, close_fill_white, arrow_curved_white,
     info_white, check, check_black, check_white, check_gray, check_muted, check_circle_lime, edit,
-    edit_white, share, share_white, hand_cursor_white, repeat, resume_white, feedback_white
+    edit_white, share, share_white, hand_cursor_white, repeat, resume_white, feedback_white, addUser, addUser_white
 ){
     .ui-icon-#{$icon} {
         background:url('/assets/images/ui/ui-#{$icon}.svg') no-repeat 0 0 / cover;
@@ -186,6 +186,24 @@
             margin-top:-11px;
             margin-bottom:-11px;
             transform:translateY(11px);
+        }
+    }
+    &-device-desktop {
+        &.icon-xl {
+            width:136px;
+            height:72px;
+        }
+    }
+    &-device-tablet {
+        &.icon-xl {
+            width:65px;
+            height:94px;
+        }
+    }
+    &-device-phones {
+        &.icon-xl {
+            width:72px;
+            height:88px;
         }
     }
     &-feedback {

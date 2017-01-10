@@ -8,13 +8,17 @@
 
             this.el = $dom.body.find("section-nav");
 
-            if (this.el) this.render();
+            if (this.el.length) this.render();
         },
 
         render: function(){
 
             this.el.find("#openAuth").on("click", function(){
                 app.tag("section-auth").open("signin");
+            });
+
+            this.el.find("#openReg").on("click", function(){
+                app.tag("section-auth").open("signup");
             });
         }
     };

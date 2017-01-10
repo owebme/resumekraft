@@ -6,9 +6,9 @@
 
         init: function(){
 
-            this.el = $dom.body.find("blog-content");
+            this.el = $dom.body.children("blog-content");
 
-            if (this.el) this.render();
+            if (this.el.length) this.render();
         },
 
         render: function(){

@@ -11,10 +11,10 @@
                     <div class="col-md-16">
                         <div class="row">
                             <div class="col-md-10">
-                                <div if={ $account.get('photo') } class="profile__photo">
+                                <div onClick={ open.photoUpload } onUpdate="none" if={ $account.get('photo') } class="profile__photo">
                                     <div class="profile__photo__image" style="background-image:url({ $account.get('photo') })"></div>
                                 </div>
-                                <div if={ !$account.get('photo') } class="profile__photo" data-place="true">
+                                <div onClick={ open.photoUpload } onUpdate="none" if={ !$account.get('photo') } class="profile__photo" data-place="true">
                                     <span class="profile__photo__text">загрузить свою фотографию</span>
                                 </div>
                             </div>
@@ -52,19 +52,29 @@
                         <div class="title c-gray fontWeight-bold fontSize-28 mb-m opacity-80" data-icon="phone">
                             Номер телефона
                         </div>
-                        <div class="c-gray fontSize-14 text-uppercase mb-xss">Основной:</div>
-                        <div class="fontSize-22 fontWeight-bold mb-m">{ $account.get('contacts', 'phone') }</div>
-                        <button class="btn btn-edit btn-m btn-default-hover-warning">Изменить</button>
+                        <div class="{ display-none : !editable.phone } centered mb-m w70p">
+                            <ui-input placeholder="Введите свой телефон" update="phone" align="center" cursor={ $account.select('contacts') } size="l" rounded="true" mask="phone"></ui-input>
+                        </div>
+                        <div class="{ display-none : editable.phone }">
+                            <div class="c-gray fontSize-14 text-uppercase mb-xss">Основной:</div>
+                            <div class="fontSize-22 fontWeight-bold mb-m">{ $account.get('contacts', 'phone') }</div>
+                        </div>
+                        <button onClick={ edit.phone } class="btn btn-edit btn-m btn-default-hover-warning">{ editable.phone ? 'Сохранить' : 'Изменить' }</button>
                     </div>
                     <div class="col-md-8">
                         <div class="title c-gray fontWeight-bold fontSize-28 mb-m opacity-80" data-icon="phone">
                             Электронная почта
                         </div>
-                        <div class="c-gray fontSize-14 text-uppercase mb-xss">Основная:</div>
-                        <div class="mb-m">
-                            <span class="fontSize-22 link-underline link-default-hover-warning">{ $account.get('contacts', 'email') }</span>
+                        <div class="{ display-none : !editable.email } centered mb-m w80p">
+                            <ui-input update="email" align="center" cursor={ $account.select('contacts') } size="l" rounded="true"></ui-input>
                         </div>
-                        <button class="btn btn-edit btn-m btn-default-hover-warning">Изменить</button>
+                        <div class="{ display-none : editable.email }">
+                            <div class="c-gray fontSize-14 text-uppercase mb-xss">Основная:</div>
+                            <div class="mb-m">
+                                <span class="fontSize-22 link-underline link-default-hover-warning">{ $account.get('contacts', 'email') }</span>
+                            </div>
+                        </div>
+                        <button onClick={ edit.email } class="btn btn-edit btn-m btn-default-hover-warning">{ editable.email ? 'Сохранить' : 'Изменить' }</button>
                     </div>
                     <div class="col-md-8">
                         <div class="title c-gray fontWeight-bold fontSize-28 mb30 opacity-80" data-icon="phone">
@@ -83,7 +93,12 @@
     var $ = this,
     $scope = $$($.root);
 
-    $.active = false;
+    $.active = true;
+
+    $.editable = {
+        phone: false,
+        email: false
+    };
 
     $.on("mount", function(){
         $scope.on('swipeleft', function(){
@@ -101,7 +116,21 @@
         $.callback = callback;
     };
 
+    $.edit = {
+        phone: function(){
+            $.editable.phone = !$.editable.phone;
+        },
+        email: function(){
+            $.editable.email = !$.editable.email;
+        }
+    };
+
     $.open = {
+        photoUpload: function(){
+            $Sections.photoUpload.show(function(image){
+                $account.select("photo").set(image);
+            });
+        },
         personalData: function(){
             $Sections.profile.data.show();
         },

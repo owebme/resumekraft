@@ -26,6 +26,8 @@ $navHeight: 94px;
         height:$navHeight;
     }
     &__border {
+        @extend .pos-tl;
+        @extend .h100p;
         @extend .w1px;
         height:$navHeight;
         background-color:rgba(189,189,189,.2);
@@ -49,6 +51,7 @@ $navHeight: 94px;
             @extend .display-block;
             @extend .text-uppercase;
             @extend .fontWeight-8;
+            @extend .letterSpacing--xs;
             @extend .cursor-pointer;
             @extend .opacity-70;
             @extend .ml-l;
@@ -77,6 +80,7 @@ $navHeight: 94px;
         }
     }
     &__button {
+        @extend .pos-rel;
         @extend .fontWeight-8;
         padding-top:1px;
         margin-top:-1px;
@@ -86,30 +90,40 @@ $navHeight: 94px;
                 color:$blue !important;
             }
         }
-    }
-    &__langs {
-        @extend .pos-abs;
-        @extend .t0;
-        @extend .l100;
-        @extend .pl-xxs;
-        @extend .flex-centered;
-        padding-top:2px;
-
-        &__item {
-            @extend .flex-centered;
-            @extend .ml-s;
-            @extend .borderRadius-circle;
-            @extend .fontWeight-bold;
-            @extend .cursor-pointer;
-            font-size:15px;
-            width:32px;
-            height:32px;
-
-            &[data-active="true"]{
-                @extend .bg-white;
-                @extend .c-blue;
-                @extend .cursor-default;
+        &__reg {
+            &:after {
+                @extend .content-empty;
+                @extend .pos-centered;
+                @include ui-icon("addUser_white", 34px, 34px);
+            }
+            &:hover:after {
+                @include ui-icon("addUser");
             }
         }
     }
+    // &__langs {
+    //     @extend .pos-abs;
+    //     @extend .t0;
+    //     @extend .l100;
+    //     @extend .pl-xxs;
+    //     @extend .flex-centered;
+    //     padding-top:2px;
+    //
+    //     &__item {
+    //         @extend .flex-centered;
+    //         @extend .ml-s;
+    //         @extend .borderRadius-circle;
+    //         @extend .fontWeight-bold;
+    //         @extend .cursor-pointer;
+    //         font-size:15px;
+    //         width:32px;
+    //         height:32px;
+    //
+    //         &[data-active="true"]{
+    //             @extend .bg-white;
+    //             @extend .c-blue;
+    //             @extend .cursor-default;
+    //         }
+    //     }
+    // }
 }

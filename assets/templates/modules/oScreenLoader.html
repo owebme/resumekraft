@@ -19,7 +19,9 @@
 
         $.start = options.start || $$.noop;
         $.end = options.end || $$.noop;
-        $.callback = options.callback || $$.noop;
+        $.callMount = options.mount || $$.noop;
+        $.callBeforeUnmount = options.beforeUnmount || $$.noop;
+        $.callUnmount = options.unmount || $$.noop;
         $.scope = $$(options.scope)[0];
 
         $.reset();
@@ -106,7 +108,16 @@
         })
         $.end();
         _.onEndTransition($.scope, function(){
-            $.callback();
+            $.callMount($.html);
+
+            $.html.one("before-unmount", function(){
+                $.callBeforeUnmount($.html);
+            });
+
+            $.html.one("unmount", function(){
+                $.callUnmount($.html);
+            });
+
         });
         $.reset();
     };

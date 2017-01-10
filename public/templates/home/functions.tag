@@ -73,10 +73,10 @@
                         <icon-feedback size="xl" color="blue"></icon-feedback>
                     </div>
                     <div class="overview__functions__item__title">
-                        Обратная связь
+                        Получение откликов
                     </div>
                     <div class="overview__functions__item__text">
-                        Получайте обратную связь от своих работадателей
+                        Получайте приглашения от своих работадателей
                     </div>
                 </div>
             </div>
@@ -141,7 +141,7 @@
                         Прямая ссылка
                     </div>
                     <div class="overview__functions__item__text">
-                        Получить прямую ссылку на резюме или поделиться им в соц. сетях
+                        Получить прямую ссылку на резюме и поделиться им в соц. сетях
                     </div>
                 </div>
             </div>

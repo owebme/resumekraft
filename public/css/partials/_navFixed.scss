@@ -30,7 +30,9 @@ $navHeightSmall: 60px;
         @extend .l0;
         background-color:rgba(#fff,.97);
         height:$navHeightSmall;
-        // border-bottom-color:transparent;
+        @extend .boxShadow-close;
+        border-bottom-color:transparent;
+        // box-shadow:0 0 12px rgba(28,28,28,.25);
         // box-shadow:5px 8.66px 30px 0 rgba(31,35,37,.078);
 
         .nav__cell {
@@ -65,6 +67,14 @@ $navHeightSmall: 60px;
             &:hover {
                 @extend .bg-blue;
                 color:$white !important;
+            }
+            &__reg {
+                &:after {
+                    @include ui-icon("addUser");
+                }
+                &:hover:after {
+                    @include ui-icon("addUser_white");
+                }
             }
         }
         .nav__langs {

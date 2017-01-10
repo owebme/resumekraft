@@ -7,12 +7,17 @@
                     <div onClick={ hide } onUpdate="none" class="button__close" data-color="gray"></div>
                     <div name="content" class="pos-rel maxH-95v overflow-hidden section-scroll bg-white borderRadius-xl zIndex-1">
                         <div class="pt70 pb100 pl45 pr45 text-left fontSize-20 c-gray willChange-transform">
+                            <div if={ firstShow } class="row">
+                                <div class="col-xs-24">
+                                    <p class="c-blue mt--m mb-l plr-l text-center">Заполнение своего профиля. Вводите свои реальные данные, в дальнейшем ваше имя и фамилию изменить будет нельзя.</p>
+                                </div>
+                            </div>
                             <div class="row mb-m">
                                 <div class="hidden-xs col-sm-8 pt-xs pr-m">
                                     <span class="title">Имя</span>
                                 </div>
                                 <div class="col-sm-16">
-                                    <ui-input placeholder="Имя" update="name" cursor={ data.select() } size="l"></ui-input>
+                                    <ui-input placeholder="Имя" update="name" cursor={ data.select() } size="l" disabled={ !data.select("name").length }></ui-input>
                                 </div>
                             </div>
                             <div class="row mb-m">
@@ -20,7 +25,7 @@
                                     <span class="title">Фамилия</span>
                                 </div>
                                 <div class="col-sm-16">
-                                    <ui-input placeholder="Фамилия" update="surname" cursor={ data.select() } size="l"></ui-input>
+                                    <ui-input placeholder="Фамилия" update="surname" cursor={ data.select() } size="l" disabled={ !data.select("surname").length }></ui-input>
                                 </div>
                             </div>
                             <div class="row mb-s">
@@ -81,7 +86,7 @@
                                     <ui-input update="phone" cursor={ data.select('contacts') } mask="phone" size="l"></ui-input>
                                 </div>
                             </div>
-                            <div class="row mb-m">
+                            <div class="row mb-l">
                                 <div class="hidden-xs col-sm-8 pt-xs pr-m">
                                     <span class="title">Skype</span>
                                 </div>
@@ -92,8 +97,8 @@
                         </div>
                         <div class="pos-tl bg-gradient-tb-white w100p h80"></div>
                         <div class="bg-white pos-bl text-right w100p h90 pr45 pt-s zIndex-2 borderRadiusBottom-xl">
-                            <button onClick={ hide } onUpdate="none" class="btn btn-l2 btn-primary-hover mr-xs xs-plr-m">Отменить</button>
                             <button onClick={ onSave } onUpdate="none" class="btn btn-l2 btn-success">Сохранить</button>
+                            <button onClick={ hide } onUpdate="none" class="btn btn-l2 btn-primary-hover ml-xs xs-plr-m">{ firstShow ? 'Заполнить позже' : 'Отменить' }</button>
                         </div>
                     </div>
                 </div>
@@ -104,6 +109,8 @@
 <script>
 
     var $ = this;
+
+    $.firstShow = false;
 
     $.data = new Baobab($account.deepClone());
 
@@ -116,10 +123,11 @@
 
     $.show = function(){
         $.data.set($account.deepClone());
-
+        $.firstShow = true;
         $.update({
             active: true
         })
+        $.scroll.refresh();
     };
 
     $.onSave = function(){
@@ -131,6 +139,7 @@
         $.update({
             active: false
         })
+        $.firstShow = false;
     };
 
     $.handleClickOutside = function(e){

@@ -25,6 +25,19 @@ module.exports = function(app){
         res.render('index', {content: output});
     });
 
+    app.get('/premium/workflow', function(req, res) {
+        res.render('workflow');
+    });
+
+    app.get('/premium/editing', function(req, res) {
+        res.render('editing');
+    });
+
+    app.get('/jq-test/', function(req, res) {
+        var output = app.riot.render(app.tags.jqtest, app.appClient);
+        res.render('index', {content: output});
+    });
+
     app.get('/blog/', app.controllers.blog.index);
     app.get('/blog/page_:page', app.controllers.blog.index);
     app.get('/blog/:alias', app.controllers.blog.content);

@@ -48,6 +48,40 @@
                         scroll: $.scroll,
                         content: $.content
                     })[0];
+                },
+                mount: function(tag){
+                    tag.scrollFix = new app.plugins.scroll.fix({
+                        scroll: $.scroll,
+                        container: $.content
+                    });
+
+                    // tag.scroll.scrollTop($$(tag.root).find("#section").offset().top);
+
+                    tag.scrollFix.init();
+
+                    tag.chartRadial = new app.plugins.chartRadial(tag.chartRadialEl, {
+                        container: "chart__radial__graph mb-m",
+                        labels: "chart__radial__labels c-blackLight",
+                        labelItem: "chart__radial__label mb-xxs"
+                    });
+                    tag.chartRadial.render([
+                        {
+                            title: "настольные ПК",
+                            value: _.random(5, 87)
+                        },
+                        {
+                            title: "планшеты",
+                            value: _.random(5, 87)
+                        },
+                        {
+                            title: "мобильные телефоны",
+                            value: _.random(5, 87)
+                        }
+                    ]);
+                },
+                beforeUnmount: function(tag){
+                    tag.chartRadial.destroy();
+                    tag.scrollFix.destroy();
                 }
             }
         );

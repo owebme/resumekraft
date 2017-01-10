@@ -16,7 +16,7 @@
 	<meta name="google" content="notranslate" />
     <link id="styles" rel="stylesheet" href="/public/css/style.css">
 </head>
-<body>
+<body id="renderServer">
 
     {{ content | safe }}
 
@@ -32,6 +32,8 @@
     <script src="/assets/js/libs/riot/riot+compiler.js"></script>
     <script src="/assets/js/libs/underscore-min.js"></script>
     <script src="/assets/js/libs/iscroll.js"></script>
+    <script src="/assets/js/libs/TweenLite-1.19.0.min.js"></script>
+    <script src="/assets/js/libs/afterlag-js/dist/afterlag.min.js"></script>
 
     <!--/ templates /-->
     <script src="/public/templates/modules/auth/auth.tag" type="riot/tag"></script>
@@ -48,6 +50,7 @@
     <script src="/public/templates/icons/social/icon-gl.tag" type="riot/tag"></script>
 
     <!--/ JS components /-->
+    <script src="/assets/js/components/commons/afterlag.js"></script>
     <script src="/assets/js/components/commons/app.js"></script>
     <script src="/assets/js/components/commons/common.js"></script>
     <script src="/assets/js/components/commons/modules.js"></script>
@@ -60,11 +63,13 @@
     <script src="/assets/js/plugins/slider.js"></script>
     <script src="/assets/js/plugins/scroll/scroll.Progress.js"></script>
     <script src="/assets/js/plugins/scroll/scroll.Animate.js"></script>
-    <script src="/assets/js/libs/rellax/rellax.js"></script>
+    <!-- <script src="/assets/js/libs/rellax/rellax.js"></script> -->
     <script src="/public/js/libs/skycons/skycons.js"></script>
     <script src="/public/js/sections.js"></script>
     <script src="/public/js/nav.js"></script>
     <script src="/public/js/home.js"></script>
+    <script src="/public/js/premium.js"></script>
+    <script src="/public/js/jqtest.js"></script>
     <script src="/public/js/blog.js"></script>
     <script src="/public/js/blogContent.js"></script>
     <script src="/public/js/init.js"></script>
