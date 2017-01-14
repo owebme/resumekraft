@@ -1,5 +1,9 @@
 .screens {
     @extend .display-block;
+
+    .d-safari & {
+        perspective:none !important;
+    }
 }
 .d-mobile .screens-mobile,
 .d-phone .screens-phone,
@@ -32,17 +36,34 @@
 
         &--long {
             @extend .h-auto;
-            min-height:100%;
+            @extend .minH-100p;
         }
         &--active {
             @extend .display-block;
             @extend .opacity-100;
         }
     }
+    &[data-static="true"] {
+        .screen {
+            @extend .pos-rel;
+            @extend .opacity-100;
+        }
+    }
+    &[data-fixed="true"] {
+        .screen {
+            @extend .pos-rel;
+            @extend .opacity-100;
+            @extend .h100v;
+            @extend .overflow-hidden;
+        }
+    }
+    .screens__content {
+        margin:0 -7.5px;
+        @extend .willChange-transform;
+    }
     .screen__content {
         @extend .display-block;
         @extend .pos-rel;
-        @extend .w100p;
     }
     .vertical__space,
     .horizontal__space {
@@ -73,12 +94,10 @@
     .ui-scroll__bar {
         @extend .content-empty;
         @extend .h100p;
-        // @extend .bg-white;
         @extend .opacity-10;
     }
     .ui-scroll__handle__inner {
         @include abs();
-        // @extend .bg-white;
         @extend .opacity-95;
     }
     .ui-scroll__bar,

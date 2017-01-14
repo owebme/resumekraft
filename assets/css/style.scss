@@ -24,6 +24,7 @@
 @import 'ui/basic/arrowPointer';
 @import 'ui/basic/dropMenu';
 @import 'ui/basic/table';
+@import 'ui/basic/caret';
 @import 'ui/button';
 @import 'ui/typography';
 @import 'ui/rangeslider';
@@ -61,9 +62,14 @@
 // plan
 @import 'sections/plan/plan';
 
+// inbox
+@import 'sections/inbox/inbox';
+
 // overview
 @import 'sections/overview/main';
+@import 'sections/overview/premium/header';
 @import 'sections/overview/premium/slides';
+@import 'sections/overview/premium/devices';
 @import 'sections/overview/jqtest/slides';
 @import 'sections/overview/overviewFunctions';
 

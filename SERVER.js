@@ -22,7 +22,11 @@ var app = express();
 app.express = express;
 app.config = config;
 app.riot = riot;
-app.tags = {};
+app._tags = {
+    commons: {},
+    default: {},
+    mobile: {}
+};
 app.async = require('async');
 app.db = require('./libs/db/mongoose')(log, config);
 app.mysql = require('./libs/db/mysql')(log, config);
@@ -66,8 +70,10 @@ app.appClient = {
     isServer: true
 }
 app.use(function(req, res, next) {
-    app.appClient.device = new MobileDetect(req.headers['user-agent']);
+    app.device = new MobileDetect(req.headers['user-agent']);
+    app.appClient.device = app.device;
     app.appClient.user = req.session.user;
+    app.debug = req.query.debug ? req.query.debug : false;
     next();
 });
 

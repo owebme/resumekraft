@@ -7,13 +7,15 @@
         <div class="resume__stat__container container">
             <div class="row">
                 <div class="col-md-18">
-                    <div class="resume__stat__title">{ $store.resume.get('post') }</div>
+                    <div onClick={ open.changeResume } onUpdate="none" class="resume__stat__title">
+                        <div class="resume__stat__title__value">{ $store.data.get(0).post }</div>
+                    </div>
                 </div>
                 <div class="col-md-6 text-left pt-xs">
                     <div class="btn-group">
                         <button class="btn btn-s btn-upper btn-primary">неделя</button>
+                        <button class="btn btn-s btn-upper btn-primary-hover">2 недели</button>
                         <button class="btn btn-s btn-upper btn-primary-hover">месяц</button>
-                        <button class="btn btn-s btn-upper btn-primary-hover">квартал</button>
                     </div>
                 </div>
             </div>
@@ -51,16 +53,13 @@
         });
         $.chartRadial.render([
             {
-                title: "настольные ПК",
-                value: _.random(5, 87)
+                title: "настольные ПК"
             },
             {
-                title: "планшеты",
-                value: _.random(5, 87)
+                title: "планшеты"
             },
             {
-                title: "мобильные телефоны",
-                value: _.random(5, 87)
+                title: "мобильные телефоны"
             }
         ]);
     });
@@ -81,7 +80,8 @@
                 fullWidth: true,
                 axisY: {
                     showLabel: true,
-                    showGrid: true
+                    showGrid: true,
+                    onlyInteger: true
                 },
                 axisX: {
                     showLabel: true,
@@ -115,7 +115,7 @@
 
         _.onEndTransition($.wrapper, function(){
             $.init();
-            $.offer.show();
+            //$.offer.show();
         });
 
         $.callback = callback;
@@ -125,6 +125,33 @@
                 $.hide();
             }
         });
+    };
+
+    $.open = {
+        changeResume: function(e){
+            $DropMenu.show({
+                id: "1",
+                elem: $$(e.currentTarget),
+                pos: "down-right",
+                offset: {
+                    left: -20
+                },
+                isSelect: true,
+                menu: [
+                    {
+                        _id: "1",
+                        title: "Web-Designer, Art-director, Illustrator"
+                    },
+                    {
+                        _id: "2",
+                        title: "Менеджер по продажам"
+                    }
+                ],
+                callback: function(id){
+                    console.dir(id);
+                }
+            });
+        }
     };
 
     $.hide = function(){

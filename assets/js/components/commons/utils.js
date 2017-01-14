@@ -102,6 +102,19 @@
 		}
 	};
 
+	utils.sortByDate = function(arr, field, direction){
+		if (!window.moment) return arr;
+		var data = _.sortBy(arr, function(item){
+			return moment(item[field]).format("X");
+		});
+		if (direction === "desc"){
+			return data.reverse();
+		}
+		else {
+			return data;
+		}
+	};
+
 	utils.isArray = function(arr){
 		if (arr && Object.prototype.toString.call(arr) === '[object Array]'){
 		    return true;

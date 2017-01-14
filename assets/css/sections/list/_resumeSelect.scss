@@ -114,14 +114,14 @@
                 @extend .flex-centered;
                 width:26px;
                 height:26px;
-                @extend .bg-white;
+                @extend .bg-blackLight;
                 @extend .borderRadius-circle;
                 transition:background 0.2s $cubic215;
 
                 &:after {
                     @extend .content-empty;
                     @extend .display-block;
-                    @include ui-icon(plus_thin_black, 16px, 16px);
+                    @include ui-icon(plus_thin_white, 16px, 16px);
                 }
             }
             &:hover {
@@ -150,7 +150,7 @@
 
                             &[data-image="front"]{
                                 @extend .opacity-0;
-                                transform:translate3d(-15px, -75px, 0) scaleX(-1) scale(0.95);
+                                transform:translate3d(-15px, -75px, 0) scale(0.95);
                             }
                             &[data-image="back"]{
                                 @extend .opacity-100;
@@ -162,7 +162,7 @@
                 .tutorial-current & {
                     &[data-image="front"]{
                         @extend .opacity-0;
-                        transform:translate3d(-15px, -75px, 0) scaleX(-1) scale(0.95);
+                        transform:translate3d(-15px, -75px, 0) scale(0.95);
                     }
                     &[data-image="back"]{
                         @extend .opacity-100;
@@ -170,7 +170,7 @@
                     }
                 }
                 &[data-image="front"]{
-                    transform:translate3d(-15px, -75px, 0) scaleX(-1);
+                    transform:translate3d(-15px, -75px, 0);
                 }
                 &[data-image="back"]{
                     @extend .opacity-0;

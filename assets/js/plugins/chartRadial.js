@@ -58,7 +58,7 @@
             if (this.rendered){
                 _.each(this.items, function(item, i){
                     item.reset();
-                    item.start(data[i].value ? data[i].value : data[i]);
+                    item.start(_.isNumber(data[i].value) ? data[i].value : (_.isNumber(data[i]) ? data[i] : 0));
                 });
             }
             else {

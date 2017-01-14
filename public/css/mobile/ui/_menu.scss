@@ -1,0 +1,133 @@
+.menu {
+    @include abs();
+    @include accelerate();
+    @extend .bg-white;
+    @extend .text-center;
+    @extend .zIndex-5;
+    @extend .opacity-0;
+    @extend .visibility-hidden;
+    @extend .pointerEvents-none;
+    @extend .willChange-opacity;
+    transition:opacity 0.25s $cubic40 0.1s, visibility 0.25s 0s;
+
+    &__items {
+        @extend .pos-centered;
+        @extend .w100p;
+        @extend .mt-m;
+    }
+    &__item {
+        @include accelerate();
+        margin:8vh 0;
+        @extend .opacity-0;
+        @extend .willChange-tp;
+        transform-origin:50% 0;
+        transform:translate3d(0, -35px, 0) scale3d(0.7, 0.4, 0);
+        transition:transform 0.3s $cubic345, opacity 0.3s $cubic345;
+
+        &__link {
+            @extend .c-blue;
+            @extend .fontFamily-helvetica;
+            font-size:17.5px;
+            @extend .fontWeight-bold;
+            @extend .letterSpacing-xxl;
+            @extend .text-uppercase;
+            @extend .textDecoration-none;
+        }
+    }
+    &__opener {
+        @extend .pos-tr;
+        @extend .pb30;
+        @extend .pl25;
+        @extend .pr25;
+        @extend .transition-default;
+        @extend .willChange-transform;
+        transition:transform .25s $cubic345;
+
+        &__line {
+            @extend .w30;
+            @extend .h4px;
+            @extend .bg-blue;
+            margin-bottom:4px;
+            transition:transform 0.35s $cubic215;
+        }
+        &[data-color="white"]{
+            .menu__opener__line {
+                @extend .bg-white;
+            }
+        }
+    }
+    &__close {
+        @extend .pos-centered-h;
+        top:5vh;
+        width:32px;
+        height:32px;
+        @extend .cursor-pointer;
+
+        &:before,
+        &:after {
+            @extend .content-empty;
+            @extend .pos-abs;
+            @extend .t50;
+            @extend .l50;
+            @extend .w100p;
+            @extend .h2px;
+            @extend .bg-steel;
+            @extend .opacity-0;
+            @extend .willChange-tp;
+            transition:transform 0.3s $cubic215, opacity 0.3s $cubic215;
+        }
+        &:before {
+            transform:translate3d(-50%, -50%, 0) rotate(0deg);
+        }
+        &:after {
+            transform:translate3d(-50%, -50%, 0) rotate(0deg);
+        }
+    }
+    &[data-open="true"]{
+        @extend .opacity-100;
+        @extend .visibility-visible;
+        @extend .pointerEvents-all;
+        transition:opacity 0.3s $cubic345, visibility 0s;
+
+        .menu {
+            &__item {
+                @extend .opacity-100;
+                transform:translate3d(0, 0, 0) scale3d(1, 1, 1);
+                transition:transform 0.3s $cubic345, opacity 0.3s $cubic40;
+
+                @for $i from 1 through 6 {
+                    &:nth-child(#{$i}){
+                        transition-delay:#{($i / 30)}s;
+                    }
+                }
+            }
+            &__close {
+                &:before,
+                &:after {
+                    @extend .opacity-35;
+                    transition-delay:.35s;
+                }
+                &:before {
+                    transform:translate3d(-50%, -50%, 0) rotate(45deg);
+                }
+                &:after {
+                    transform:translate3d(-50%, -50%, 0) rotate(-45deg);
+                }
+            }
+        }
+    }
+}
+@media screen and (max-height: 565px) {
+    .menu {
+        &__opener {
+            padding-top:25px;
+        }
+    }
+}
+@media screen and (min-height: 565px) {
+    .menu {
+        &__opener {
+            padding-top:30px;
+        }
+    }
+}

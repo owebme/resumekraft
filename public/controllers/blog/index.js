@@ -59,7 +59,7 @@ module.exports = function(app){
                     return item;
                 });
 
-                var output = app.riot.render(app.tags.blog, app.appClient);
+                var output = app.riot.render(app.tags("blog"), app.appClient);
                 res.render('index', {content: output});
             }
         });

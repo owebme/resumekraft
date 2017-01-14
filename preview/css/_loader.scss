@@ -61,20 +61,20 @@ body.apploading {
         transition:background-color 0.3s ease-out, border-radius 0.3s ease-out;
         box-shadow: 0 45px 100px rgba(0, 0, 0, 0.4);
 
-        // &:before {
-        //     @extend .content-empty;
-        //     @include abs();
-        //     @include accelerate();
-        //     @extend .willChange-opacity;
-        //     @extend .zIndex-1;
-        //     @extend .opacity-0;
-        //     transition:opacity 0.3s ease-out;
-        //     background:linear-gradient(135deg, rgba(255,255,255,.2) 0%,rgba(255,255,255,0) 60%);
-        //
-        //     body[data-device="phone"] & {
-        //         @extend .opacity-100;
-        //     }
-        // }
+        &:before {
+            @extend .content-empty;
+            @include abs();
+            @include accelerate();
+            @extend .willChange-opacity;
+            @extend .zIndex-1;
+            @extend .opacity-0;
+            transition:opacity 0.3s ease-out;
+            background:linear-gradient(135deg, rgba(255,255,255,.2) 0%,rgba(255,255,255,0) 60%);
+
+            body[data-device="phone"] & {
+                @extend .opacity-100;
+            }
+        }
         &[data-resize="true"]{
             transition:transform 0.6s, background-color 0.3s ease-out;
         }

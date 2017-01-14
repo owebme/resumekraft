@@ -1,0 +1,28 @@
+h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+    @extend .c-blue;
+    @extend .fontFamily-gotham;
+}
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, strong {
+	@extend .fontWeight-bold;
+}
+h1, .h1 {
+	@extend .fontSize-46;
+}
+h2, .h2 {
+	@extend .fontSize-34;
+}
+h3, .h3 {
+	@extend .fontSize-24;
+}
+h4, .h4 {
+	@extend .fontSize-20;
+}
+p {
+    @extend .c-gray;
+    @extend .fontFamily-helvetica;
+    @extend .fontSize-18;
+    @extend .lineHeight-l;
+}
+sup, sub {
+	font-size:75%;
+}

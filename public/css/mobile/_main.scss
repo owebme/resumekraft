@@ -1,0 +1,20 @@
+.d-mobile .screens.screens-mobile {
+    @extend .bg-white;
+
+    // .iScrollVerticalScrollbar {
+    //     @extend .w5;
+    // }
+}
+.ui-scroll__bar,
+.ui-scroll__handle__inner {
+	// background-color:#cdb388;
+    @extend .bg-green;
+}
+#loader {
+	@extend .loader;
+}
+.appLoading {
+	#loader {
+		@extend .loader[data-show="true"];
+	}
+}

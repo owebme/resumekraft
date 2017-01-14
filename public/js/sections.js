@@ -6,6 +6,13 @@
             _.each(app.sections, function(item){
                 if (item.init) item.init();
             });
+            if (app.device.isPhone){
+                $afterlag.run(function(){
+                    $dom.body.removeClass("appLoading");
+                }, {
+                    timeout: 5000
+                });
+            }
         }
     };
 

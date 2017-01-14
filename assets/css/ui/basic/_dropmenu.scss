@@ -1,16 +1,17 @@
 .dropmenu {
+    @include accelerate();
     @extend .opacity-01;
     @extend .pos-tl;
     @extend .userSelect-none;
     @extend .visibility-hidden;
     @extend .pointerEvents-none;
     @extend .willChange-tp;
-    @include accelerate();
-    transition:opacity 0.2s $cubic215, transform 0.25s $bounceSoft, visibility 0s 0.25s;
+    transition:opacity 0.2s $cubic215, transform 0.25s $bounceForce, visibility 0s 0.25s;
     transform:scale(0);
     @extend .zIndex-2;
 
     &__wrapper {
+        @include accelerate();
         @extend .pos-centered-h;
         @extend .borderRadius-xl;
         @extend .bg-white;
@@ -20,23 +21,12 @@
         background-clip:padding-box;
         min-width:160px;
 
-        &:before {
-            @extend .content-empty;
-            @extend .display-inlineBlock;
-            @extend .pos-abs;
-            @extend .l50;
-            top:-11px;
-            border-bottom:11px solid rgba(0, 0, 0, 0.2);
-            border-left:11px solid rgba(0, 0, 0, 0);
-            border-right:11px solid rgba(0, 0, 0, 0);
-            transform:translate3d(-50%, 0, 0);
-        }
         &:after {
             @extend .content-empty;
             @extend .display-inlineBlock;
             @extend .pos-abs;
             @extend .l50;
-            top:-10px;
+            top:-11px;
             border-bottom:11px solid $white;
             border-left:11px solid rgba(0, 0, 0, 0);
             border-right:11px solid rgba(0, 0, 0, 0);
@@ -47,8 +37,9 @@
         @extend .pos-rel;
         @extend .text-left;
         @extend .text-truncate;
-        @extend .c-blue;
+        @extend .c-steel;
         @extend .fontSize-16;
+        @extend .fontFamily-helvetica;
         @extend .cursor-pointer;
         padding:8px 38px 8px 20px;
 
@@ -62,11 +53,11 @@
             @extend .pos-abs;
             @extend .t50;
             @extend .r-xs;
-            margin-top:-11px;
+            transform:translateY(-13px);
             @include ui-icon(check, 23px, 23px);
         }
         &.selected {
-            @extend .c-blackLight;
+            @extend .c-blue;
 
             &:after {
                 @extend .display-block;
@@ -86,7 +77,7 @@
             @extend .pb-xs;
             @extend .borderRadiusBottom-xl;
         }
-        .dropmenu[data-type="radio"] & {
+        .dropmenu[data-select="true"] & {
             padding-left:50px;
             padding-right:20px;
 
@@ -99,8 +90,17 @@
             &:hover:after {
                 @include ui-icon(check_gray);
             }
-            &.selected:after {
-                @include ui-icon(check);
+            &.selected {
+                &:after {
+                    @include ui-icon(check);
+                }
+                &:hover {
+                    @extend .c-white;
+
+                    &:after {
+                        @include ui-icon(check_white);
+                    }
+                }
             }
         }
         &__color {
@@ -174,12 +174,6 @@
             @extend .mr-xs;
             transform:translate3d(0, -50%, 0);
 
-            &:before {
-                @extend .l-auto;
-                @extend .t50;
-                right:-17px;
-                transform:translate3d(0, -50%, 0) rotate(90deg);
-            }
             &:after {
                 @extend .l-auto;
                 @extend .t50;
@@ -197,12 +191,6 @@
             @extend .mr-xs;
             transform:translate3d(0, -30px, 0);
 
-            &:before {
-                @extend .l-auto;
-                @extend .t0;
-                right:-17px;
-                transform:translate3d(0, 25px, 0) rotate(90deg);
-            }
             &:after {
                 @extend .l-auto;
                 @extend .t0;
@@ -219,11 +207,6 @@
             @extend .ml-xs;
             transform:translate3d(0, -50%, 0);
 
-            &:before {
-                @extend .t50;
-                left:-17px;
-                transform:translate3d(0, -50%, 0) rotate(-90deg);
-            }
             &:after {
                 @extend .t50;
                 left:-16px;
@@ -238,16 +221,10 @@
             @extend .mt0;
             @extend .mb-m;
 
-            &:before,
             &:after {
                 @extend .t-auto;
-                transform:translate3d(-50%, 0, 0) rotate(180deg);
-            }
-            &:before {
-                bottom:-11px;
-            }
-            &:after {
                 bottom:-10px;
+                transform:translate3d(-50%, 0, 0) rotate(180deg);
             }
         }
     }
@@ -255,7 +232,7 @@
         @extend .opacity-100;
         @extend .visibility-visible;
         @extend .pointerEvents-all;
-        transition:opacity 0.2s $cubic215, transform 0.25s $bounceSoft, visibility 0s;
+        transition:opacity 0.2s $cubic215, transform 0.3s $bounceForce, visibility 0s;
         @extend .transform-none;
     }
 }

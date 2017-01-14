@@ -4,9 +4,15 @@ app.fetch.API = function(method){
 
 app.fetch.API.getDataInit = function(){
     return new Promise(function(resolve, reject){
-        app.request('getDataInit').then(function(data){
-            
-            resolve(data);
+        app.request('getDataInit').then(function(res){
+
+            $account = new Baobab(res.account ? res.account : {});
+            $store.data = new Baobab(res.data ? res.data : []);
+            $store.inbox = new Baobab(res.inbox ? res.inbox : []);
+
+            console.dir(res);
+
+            resolve(res);
         });
     });
 };

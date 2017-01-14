@@ -1,5 +1,5 @@
 .anim {
-    opacity:0.001;
+    opacity:0.0009;
     @include accelerate();
     @extend .willChange-tp;
 
@@ -36,7 +36,7 @@
     &-showLeft-soft,
     &-lr-soft {
         transform:translate3d(-100px, 0, 0);
-        transition-timing-function:$cubic25b;
+        transition-timing-function:$cubic2501;
         transition-duration:1s;
     }
     &-showRight,
@@ -48,7 +48,7 @@
     &-showRight-soft,
     &-rl-soft {
         transform:translate3d(100px, 0, 0);
-        transition-timing-function:$cubic25b;
+        transition-timing-function:$cubic2501;
         transition-duration:1s;
     }
     &-showUp,
@@ -60,7 +60,7 @@
     &-showUp-soft,
     &-tb-soft {
         transform:translate3d(0, -100px, 0);
-        transition-timing-function:$cubic25b;
+        transition-timing-function:$cubic2501;
         transition-duration:1s;
     }
     &-showDown,
@@ -72,7 +72,7 @@
     &-showDown-soft,
     &-bt-soft {
         transform:translate3d(0, 100px, 0);
-        transition-timing-function:$cubic25b;
+        transition-timing-function:$cubic2501;
         transition-duration:1s;
     }
     &-tb-full {

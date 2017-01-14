@@ -100,11 +100,11 @@
         .oScreen__jqtest__enter__phone {
             &__left {
                 transform:translate3d(0, 0, 0) rotate(31deg);
-                transition:transform 0.7s $cubic25b;
+                transition:transform 0.7s $cubic2501;
             }
             &__right {
                 transform:translate3d(0, 0, 0) rotate(-35deg);
-                transition:transform 0.7s $cubic25b;
+                transition:transform 0.7s $cubic2501;
                 transition-delay:0.4s;
             }
         }

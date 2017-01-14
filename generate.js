@@ -4,38 +4,92 @@ var utils = require(libs + 'utils');
 var validator = require('validator');
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
+var ACCOUNT_ID = ObjectId();
+var resume = require(libs + 'resume')(ACCOUNT_ID, validator.toDate("2017-01-12 13:21"), validator.toDate("2017-01-12 14:21"));
 
 MongoClient.connect(config.get('mongodb:uri'), function(err, db) {
 
-	db.collection('accounts').drop();
-	db.collection('accounts').insert(accounts);
+	// db.collection('accounts').drop();
+	// db.collection('accounts').insert(accounts);
+	// db.collection('resumes').drop();
+	// db.collection('resumes').insert([resume]);
+	db.collection('inbox').drop();
+	db.collection('inbox').insert(inbox);
 });
 
-var ACCOUNT_ID = ObjectId();
+var inbox = [
+	{
+		_id: "343435345435",
+		accountId: ObjectId('58785acdfabeed550a9b8b65'),
+		resumeId: "1243242424332",
+		new: false,
+		title: "YouDo",
+		from: "info@webinspired.ru",
+		text: 'Мы ознакомились с резюме и ваша кандидатура нас очень заинтересовала.',
+		color: 'blueLight',
+		create: validator.toDate("2017-01-10 12:00")
+	},
+	{
+		_id: "2343242342111112",
+		accountId: ObjectId('58785acdfabeed550a9b8b65'),
+		resumeId: "1243242424332",
+		new: false,
+		title: "FTL-consulting",
+		from: "info@webinspired.ru",
+		text: 'Компания FTL-consulting ищет кандидата на вакансию "Разработчик Perl".',
+		color: 'emerald',
+		create: validator.toDate("2017-01-11 11:00")
+	},
+	{
+		_id: "234234234",
+		accountId: ObjectId('58785acdfabeed550a9b8b65'),
+		resumeId: "1243242424332",
+		new: true,
+		title: "С&L Consulting Co Ltd",
+		from: "info@webinspired.ru",
+		text: 'Компания С&L Consulting Co Ltd ищет кандидата на вакансию "Ведущий Frontend Разработчик".',
+		color: 'pink',
+		create: validator.toDate("2017-01-11 12:00")
+	},
+	{
+		_id: "111423423423",
+		accountId: ObjectId('58785acdfabeed550a9b8b65'),
+		resumeId: "1243242424332",
+		new: true,
+		title: "Independent developers LTD",
+		from: "info@webinspired.ru",
+		text: 'Здравствуйте, Александр!\n\nКомпания FTL-consulting ищет кандидата на вакансию "Разработчик Perl".\nВаше резюме показалось нам очень интересным.\nПодробное описание вакансии Вы можете найти на сайте https://hh.ru\nЗайдите под своим логином и паролем, и на странице "Отклики на вакансии" Вы найдете ссылку на описание вакансии.\nЕсли наше предложение Вам интересно, перезвоните, пожалуйста, в рабочее время по телефону +7 (495) 544-48-63 (Кобякова Мария).\n\nС уважением,\nКобякова Мария\nМосква, Мосфильмовская улица, 38А',
+		color: 'blue',
+		create: validator.toDate("2017-01-12 14:00")
+	}
+];
 
 var accounts = [
 	{
 		_id: ACCOUNT_ID,
-        name: "Александр",
-        surname: "Юртаев",
-        gender: "male",
+		plan: "free",
+        balance: "369",
+        photo: "/preview/images/photo/photo_phone.jpg",
+        name: "Виктория",
+        surname: "Юртаева",
+        gender: "female",
         birthday: {
             day: "25",
             month: "8",
             year: "1986",
-            hidden: false
+            hidden: true
         },
         contacts: {
             city: "Москва",
             email: "owebme@gmail.com",
-            phone: "9260172086",
+            phone: "(926) 017-2086",
             site: "http://web-projects.me",
-            skype: null
+            skype: "owebme"
         },
-        balance: "0.00",
         login: "maxfull@mail.ru",
         password: utils.cryptoPass("123456"),
-        create: validator.toDate("2016-04-22 11:21"),
-        visite: validator.toDate("2016-04-22 11:21")
+        create: validator.toDate("2017-01-12 11:21"),
+		update: validator.toDate("2017-01-12 12:21"),
+        visite: validator.toDate("2017-01-12 12:21")
 	}
 ];

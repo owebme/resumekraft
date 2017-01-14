@@ -1,0 +1,26 @@
+.logotype {
+    @extend .pos-abs;
+    @extend .bg-cover;
+    background-image:url(/public/images/logotype_b.png);
+    @extend .zIndex-5;
+
+    &[data-color="white"]{
+        background-image:url(/public/images/logotype_w.png);
+    }
+}
+@media screen and (max-height: 565px) {
+    .logotype {
+        top:23px;
+        left:22px;
+        width:86px;
+        height:32px;
+    }
+}
+@media screen and (min-height: 565px) {
+    .logotype {
+        top:26px;
+        left:25px;
+        width:96px;
+        height:36px;
+    }
+}

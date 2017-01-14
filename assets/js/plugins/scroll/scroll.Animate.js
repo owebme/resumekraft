@@ -6,7 +6,6 @@
 
         if (!options || options && !options.scroll) return;
 
-        this.active = false;
         this.ready = false;
         this.delay = options.delay;
         this.elems = options.elems ? options.elems : ".anim";
@@ -21,8 +20,6 @@
 
         start: function(render){
             var _this = this;
-
-            if (this.active) return;
 
             if (!this.ready || render) this.render();
 
@@ -61,7 +58,7 @@
                 delta = elem.getAttribute("data-delta");
 
             if (delta) delta = _this.deltaValues.getValueByTitle(delta);
-            else delta = _this.delta ? _this.delta : 0.6;
+            else delta = _this.delta ? _this.delta : 0.55;
 
             _this.items.push({
                 elem: $elem,
@@ -91,6 +88,7 @@
                     item.elem.removeClass("animated");
                 }
             });
+            this.ready = false;
         },
 
         deltaValues: {
@@ -102,19 +100,19 @@
                 },
                 {
                     title: "s",
-                    value: 0.8
+                    value: 0.7
                 },
                 {
                     title: "m",
-                    value: 0.6
+                    value: 0.55
                 },
                 {
                     title: "l",
-                    value: 0.4
+                    value: 0.38
                 },
                 {
                     title: "xl",
-                    value: 0.2
+                    value: 0.25
                 }
             ],
 

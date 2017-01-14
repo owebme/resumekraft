@@ -47,7 +47,7 @@ module.exports = function(app){
             else {
                 data.item.date = app.appClient.moment(data.item.date_update).format("D/MM, YYYY в HH:MM");
                 app.appClient.data = data;
-                var output = app.riot.render(app.tags.blogContent, app.appClient);
+                var output = app.riot.render(app.tags("blogContent"), app.appClient);
                 res.render('index', {content: output});
             }
         });

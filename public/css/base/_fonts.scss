@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,300,500,700&subset=cyrillic-ext,latin');
 @import '../../assets/css/fonts/Futura/style';
+@import '../../assets/css/fonts/Gotham/style';
 @import '../../assets/css/fonts/HelveticaNeue/style';
 
 .fontFamily-roboto {
@@ -7,6 +8,9 @@
 }
 .fontFamily-futura {
     font-family:$futura;
+}
+.fontFamily-gotham {
+    font-family:$gotham;
 }
 .fontFamily-helvetica {
     font-family:$helvetica;

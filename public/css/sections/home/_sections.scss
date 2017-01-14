@@ -24,16 +24,83 @@
 .home__section1__header {
     padding-top:100px;
 }
-.home__section1__image {
+.home__section1__phone {
+    @extend .pos-rel;
+    @extend .centered;
+    width:370px;
     height:752px;
     transform:translate3d(0, 105px, 0);
+    @extend .bg-cover;
+    background-image:url(/public/images/home/phone_black.png);
+
+    &__viewport {
+        @include accelerate();
+        @extend .pos-abs;
+        top:91px;
+        left:26px;
+        width:318px;
+        height:564px;
+        border:1px solid #000;
+        @extend .overflow-hidden;
+
+        &:after {
+            @extend .content-empty;
+            @extend .pos-tl;
+            @extend .w100p;
+            height:135px;
+            @extend .bg-cover;
+            background-image:url(/public/images/home/phone_nav.png);
+        }
+    }
+    &__screen {
+        @include accelerate(true);
+        @extend .pos-tl;
+        @extend .w100p;
+        @extend .willChange-transform;
+    }
 }
-.home__section2__image {
-    height:710px;
-    transform:translate3d(-15px, 80px, 0);
+.home__section2__ipad {
+    @extend .pos-rel;
+    @extend .centered;
+    width:582px;
+    height:720px;
+    transform:translate3d(-15px, 67px, 0);
+    @extend .bg-cover;
+    background-image:url(/public/images/home/ipad_portrait.png);
 
     .d-mobile & {
         transform:translate3d(0, 60px, 0);
+    }
+    &__viewport {
+        @include accelerate();
+        @extend .pos-abs;
+        top:90px;
+        left:134px;
+        width:404px;
+        height:539px;
+        @extend .overflow-hidden;
+
+        &:after {
+            @extend .content-empty;
+            @extend .pos-tl;
+            @extend .w100p;
+            height:110px;
+            @extend .bg-cover;
+            background-image:url(/public/images/home/ipad_portrait_nav.png);
+        }
+    }
+    &__screen {
+        @include accelerate(true);
+        @extend .pos-tl;
+        @extend .w100p;
+        @extend .willChange-transform;
+    }
+    &__overphone {
+        @extend .pos-bl;
+        width:269px;
+        height:516px;
+        @extend .bg-cover;
+        background-image:url(/public/images/home/ipad_overphone.png);
     }
 }
 .home__section2__plan__container {

@@ -12,6 +12,12 @@
         @extend .pos-abs;
         @extend .t-m;
         @extend .r-35;
+
+        .btn-primary-hover {
+            .btn-badge {
+                @extend .scale-0;
+            }
+        }
     }
     .main__button {
         @extend .l-30;

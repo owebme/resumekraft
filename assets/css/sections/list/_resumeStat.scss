@@ -29,9 +29,30 @@
         transition:transform 0.5s $cubic40;
     }
     &__title {
-        @extend .fontSize-34;
-        @extend .mb-l;
-        @extend .c-gray;
+        @extend .float-left;
+        @extend .pos-rel;
+        @extend .mb-s;
+        @extend .pb25;
+        @extend .userSelect-none;
+        @extend .caret;
+        @extend .caret-l;
+        @extend .cursor-pointer;
+
+        &:after {
+            transform:translateY(3px);
+        }
+        &__value {
+            @extend .display-inlineBlock;
+            @extend .vAlign-middle;
+            @extend .c-gray;
+            @extend .fontSize-34;
+        }
+    }
+    &__select {
+        @extend .opacity-0;
+        @extend .pos-abs;
+        @extend .t100;
+        @extend .r0;
     }
     &__chart {
         @extend .w100p;

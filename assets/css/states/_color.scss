@@ -1,13 +1,16 @@
 $i:0;
 @each $color in (#9471DB, #4D71DB, #FFB84D, #B871B8, #71B84D, #FFDB71, #4DB8B8, #4DB8DB, #DB94DB, #FFACC5, #FF944D, #B8DB4D, #FF7194, #6AD19F){
     $i: $i + 1;
+    .cover__bg#{$i} {
+        background-color:$color;
+    }
     svg[fill-color="fill#{$i}"]{
         path, rect, polygon, circle {
             fill:saturate(complement($color),5%);
         }
     }
 }
-@each $title, $color in (white: $white, blue: $blue, blueLight: $blueLight, blueDark: $blueDark, brown: $brown, red: $red, redDark: $redDark, pink: $pink, orange: $orange, orangeDark: $orangeDark, yellow: $yellow, yellowLight: $yellowLight, violet: $violet, violetLight: $violetLight, green: $green, greenDark: $greenDark, lime: $lime, breeze: $breeze, emerald: $emerald, black: $black, blackDark: $blackDark, blackLight: $blackLight, steel: $steel, steelDark: $steelDark, gray: $gray, grayDark: $grayDark, grayLight: $grayLight, grayLighten: $grayLighten, smoke: $smoke, smokeLight: $smokeLight, smokeDark: $smokeDark, snow: $snow, snowLight: $snowLight){
+@each $title, $color in (white: $white, blue: $blue, blueLight: $blueLight, blueDark: $blueDark, brown: $brown, red: $red, redDark: $redDark, pink: $pink, orange: $orange, orangeDark: $orangeDark, yellow: $yellow, yellowLight: $yellowLight, violet: $violet, violetLight: $violetLight, green: $green, greenLight: $greenLight, greenDark: $greenDark, lime: $lime, breeze: $breeze, emerald: $emerald, black: $black, blackDark: $blackDark, blackLight: $blackLight, steel: $steel, steelDark: $steelDark, gray: $gray, grayDark: $grayDark, grayLight: $grayLight, grayLighten: $grayLighten, smoke: $smoke, smokeLight: $smokeLight, smokeDark: $smokeDark, snow: $snow, snowLight: $snowLight, snowDark: $snowDark){
     .bg-#{$title},
     .text-strike[data-color=#{$title}]:after {
         background-color:$color;

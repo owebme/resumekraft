@@ -1,4 +1,4 @@
-<overview-premium class="oScreen zIndex-3 { showAnim-group1 : active }" data-open={ active } data-loader={ loading } data-show="down">
+<overview-premium class="oScreen zIndex-5 { showAnim-group1 : active }" data-open={ active } data-loader={ loading } data-show="down">
 
     <div class="oScreen__buttons" data-pos="top-right">
         <div onClick={ hide } class="button__close" data-color="gray"></div>
@@ -8,7 +8,7 @@
         <button onClick={ hide } class="btn btn-l btn-upper btn-default-hover-success">Подключить</button>
     </div>
 
-    <div class="oScreen__content bg-white showAnim" name="scroll">
+    <div class="oScreen__content bg-white" name="scroll">
 
         <oScreen-loader></oScreen-loader>
 
@@ -55,32 +55,15 @@
                         container: $.content
                     });
 
-                    // tag.scroll.scrollTop($$(tag.root).find("#section").offset().top);
-
                     tag.scrollFix.init();
 
-                    tag.chartRadial = new app.plugins.chartRadial(tag.chartRadialEl, {
-                        container: "chart__radial__graph mb-m",
-                        labels: "chart__radial__labels c-blackLight",
-                        labelItem: "chart__radial__label mb-xxs"
+                    $afterlag.run(function(){
+                        app.features.premium.init($.scroll, $.content);
                     });
-                    tag.chartRadial.render([
-                        {
-                            title: "настольные ПК",
-                            value: _.random(5, 87)
-                        },
-                        {
-                            title: "планшеты",
-                            value: _.random(5, 87)
-                        },
-                        {
-                            title: "мобильные телефоны",
-                            value: _.random(5, 87)
-                        }
-                    ]);
+                    // tag.scroll.scrollTop($$(tag.root).find("#section").offset().top);
                 },
                 beforeUnmount: function(tag){
-                    tag.chartRadial.destroy();
+                    app.features.premium.destroy();
                     tag.scrollFix.destroy();
                 }
             }

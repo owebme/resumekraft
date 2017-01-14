@@ -35,6 +35,7 @@
                 </div>
             </div>
         </div>
+        <div class="premium__header__overlay"></div>
     </section>
 
     <section class="overview__section">
@@ -42,13 +43,13 @@
             <div class="row">
                 <div class="col-md-offset-4 col-md-16">
                     <small class="mb-xl">premium аккаунт</small>
-                    <h1 class="mb-l mlr-m plr-l pt-m">Для тех кто хочет видеть свое резюме ещё современней.</h1>
-                    <p class="fontSize-24 lineHeight-xxxl c-gray">Всё, что вы любите в iPhone и iPad, было бы невозможно без iOS — операционной системы, которая обеспечивает уникальные функции этих устройств. Она прекрасно выглядит и отлично работает. Её предложения разумны и полезны. А передовые технологии гарантируют надёжную защиту и полную конфиденциальность ваших данных. Вы сразу поймёте, почему так много людей любят iPhone и iPad, как только познакомитесь с iOS.</p>
+                    <h1 class="mb-l mlr-m plr-l pt-m">Совершенно новый формат резюме для продвинутых соискателей.</h1>
+                    <p class="fontSize-24 lineHeight-xxxl c-gray">Хорошее резюме интересно читать, хочется дочитать до конца. Каждая фраза в резюме усиливает желание его купить. В нём очень простая и понятная навигация (разделы). Кроме того, резюме должно соответствовать общепринятым нормам. Поэтому, если ты не дизайнер и не представитель креативной профессии, никаких фоновых рисунков в резюме.</p>
                 </div>
             </div>
         </div>
         <div class="clear"></div>
-        <div class="slide1-1 bg-cover"></div>
+        <div class="slide1-1 bg-cover anim anim-scale-soft"></div>
     </section>
 
     <section class="overview__section">
@@ -61,7 +62,7 @@
                     </div>
                     <h1 class="mb-l pt-m">Не нужно объяснять.</h1>
                     <p class="pb-l">Зачем что-то объяснять когда все работает интуитивно понятно для вас. Вы легко освоитесь в нем со своим устройством iOS, как только возьмёте его в руки. Включите камеру, смахнув от правого края экрана блокировки. Или пролистайте весь ваш фотоальбом за считаные секунды. В iOS всё великолепно смотрится и работает выше всяких похвал.</p>
-                    <div class="slide2-1 bg-cover"></div>
+                    <div class="slide2-1 bg-cover anim anim-rl-soft" data-duration="xl"></div>
                 </div>
             </div>
         </div>
@@ -79,7 +80,7 @@
                     <p class="pb-l">iOS создана специально для iPhone и iPad, именно поэтому они работают так быстро и плавно. Чтобы получить максимум графической производительности, мы применили технологию Metal. Пользуйтесь интернетом, работайте в нескольких приложениях, спасайте мир в игре со сложной 3D-графикой — картинка на дисплее всегда будет безупречной, а отклик устройства мгновенным.</p>
                 </div>
                 <div class="col-md-24">
-                    <div class="slide3-1 bg-cover"></div>
+                    <div class="slide3-1 bg-cover anim anim-scale-soft"></div>
                 </div>
             </div>
         </div>
@@ -93,7 +94,7 @@
                 </div>
             </div>
         </div>
-        <div class="slide4-1__wrapper">
+        <div class="slide4-1__wrapper anim anim-bt-soft" data-duration="xl">
             <div class="slide4-1 bg-cover"></div>
         </div>
     </section>
@@ -107,27 +108,27 @@
                     <div class="pt-l mb-xl inline">
                         <svg class="mlr-xs" each={ color in colors } no-reorder xmlns="http://www.w3.org/2000/svg" style="width:48px; height:48px" viewBox="-9 11 40 40" enable-background="new -9 11 40 40"><path class="fill-{ color }" d="M28.808 48.704c1.36-1.385 2.192-3.065 2.192-5.058 0-1.984-1.616-3.736-2.433-5.489-1.712-3.697-1.735-6.617-1.735-7.153 0-.535.008-3.433 1.735-7.153.817-1.753 2.433-3.505 2.433-5.49 0-1.992-.832-3.673-2.192-5.057l-.088-.087c-1.392-1.377-3.08-2.217-5.08-2.217-1.983 0-3.735 1.616-5.487 2.432-3.705 1.721-6.625 1.737-7.161 1.737-.536 0-3.448.008-7.144-1.737-1.752-.832-3.504-2.432-5.488-2.432-1.992 0-3.672.832-5.056 2.192l-.104.104c-1.368 1.385-2.2 3.073-2.2 5.065 0 1.984 1.616 3.736 2.432 5.489 1.729 3.721 1.736 6.625 1.736 7.153 0 .527-.024 3.441-1.736 7.153-.808 1.762-2.432 3.506-2.432 5.49 0 1.992.832 3.673 2.192 5.058l.087.088c1.385 1.368 3.073 2.208 5.073 2.208 1.984 0 3.784-1.521 5.488-2.433 3.704-1.712 6.632-1.736 7.151-1.736.521 0 3.417.016 7.152 1.736 1.705.912 3.504 2.433 5.49 2.433 1.991 0 3.672-.832 5.063-2.201l.112-.095z"></path></svg>
                         <script>
-                            this.colors = ['red', 'orange', 'green', 'emerald', 'blue', 'blueLight', 'violet', 'violetLight', 'blackLight', 'gray'];
+                            this.colors = ['red', 'orange', 'green', 'emerald', 'blue', 'blueLight', 'violet', 'violetLight', 'brown', 'pink'];
                         </script>
                     </div>
                     <p class="pb-l">В iOS вы найдёте множество приложений, которыми будете пользоваться каждый день — Фото, Карты, Сообщения, Здоровье и многие другие. Все они разработаны Apple с огромным вниманием к деталям. Например, теперь при отправке сообщения вы сможете выразить гораздо больше эмоций.</p>
                 </div>
             </div>
         </div>
-        <div class="slide5-1 bg-cover"></div>
+        <div class="slide5-1 bg-cover anim anim-scale-soft"></div>
     </section>
 
-    <section class="overview__section bg-snow pb-xl mb0 overflow-visible">
+    <section class="overview__section bg-snow pb-xl mb0">
         <div class="container pt-xl">
             <div class="row pt-l">
                 <div class="col-md-10 text-left zIndex-1">
                     <small class="mb-l">Доступная статистика</small>
                     <h1 class="mb-l pt-l">Отслеживате просмотры вашего резюме.</h1>
                     <p class="pb-l">Какой бы iPad Pro вы ни выбрали, для него есть клавиатура Smart Keyboard.2 Сочетание новых технологий и материалов позволило нам создать компактную и удивительно тонкую клавиатуру, которая также служит прочной и лёгкой обложкой. А благодаря интерфейсу Smart Connector вы забудете о проводах, разъёмах и необходимости создавать пару. Просто присоедините клавиатуру и начинайте работать.</p>
-                    <div class="chart__radial mt-m anim anim-scale" name="chartRadialEl"></div>
+                    <div class="chart__radial mt-m anim anim-scale-soft" name="chartRadialEl"></div>
                     <small class="pos-bl w100p" style="transform:translate3d(280px, 140px, 0); line-height:38px;">Какой бы iPad Pro вы ни выбрали, для него есть клавиатура Smart Keyboard. Какой бы iPad Pro вы ни выбрали, для него есть клавиатура Smart Keyboard.</small>
                 </div>
-                <div class="slide6__wrapper col-md-14">
+                <div class="slide6__wrapper col-md-14 anim anim-rl-soft" data-duration="xl">
                     <div class="slide6__container">
                         <div class="slide6-1 bg-cover"></div>
                         <div class="slide6-2 bg-cover"></div>
@@ -137,14 +138,14 @@
         </div>
     </section>
 
-    <section class="overview__section bg-snow pt-xl mb0 overflow-visible">
+    <section class="overview__section bg-snow pt-xl mb0">
         <div class="container pt-xl">
             <div class="row pt-l">
                 <div class="slide7__wrapper col-md-14">
                     <div class="slide7__container">
-                        <div class="slide7-1 bg-cover"></div>
-                        <div class="slide7-2 bg-cover"></div>
-                        <div class="slide7-3 bg-cover"></div>
+                        <div class="slide7-1 bg-cover anim anim-lr-soft" data-duration="xl"></div>
+                        <div class="slide7-2 bg-cover anim anim-lr-soft" data-duration="xl"></div>
+                        <div class="slide7-3 bg-cover anim anim-rl-soft" data-duration="xl"></div>
                     </div>
                 </div>
                 <div class="col-md-10 pl0 text-left zIndex-1">
@@ -160,7 +161,7 @@
         <div class="container pt-l">
             <div class="row pt-m">
                 <div class="col-md-16 zIndex-0" style="height:874px">
-                    <div class="slide8-1 bg-cover"></div>
+                    <div class="slide8-1 bg-cover anim anim-bt-soft"></div>
                 </div>
                 <div class="col-md-8 pl0 pt-xl text-left zIndex-1">
                     <small class="mb-l mt-l">работайте на планшете</small>
@@ -245,7 +246,7 @@
                         <p class="mb-m">Мало найти новую музыку. Главное, чтобы она вам понравилась. Каждую пятницу наши кураторы составляют плейлист из новых композиций — приятный сюрприз к выходным.</p>
                     </div>
                 </div>
-                <div class="slide9__wrapper col-md-12 anim anim-scale-soft">
+                <div class="slide9__wrapper col-md-12 anim anim-rl-soft" data-duration="xl">
                     <div class="slide9-1 bg-cover"></div>
                 </div>
             </div>
@@ -268,7 +269,7 @@
         </div>
     </section>
 
-    <section id="section" class="overview__section pt-m mb-l overflow-hidden">
+    <section class="overview__section pt-m mb-l">
         <div class="container pt-xxs">
             <div class="row pb-l">
                 <div class="col-md-10 pb-xl text-left zIndex-1">
@@ -278,35 +279,64 @@
                         <p>iCloud хранит ваш контент и предоставляет вам доступ к музыке, фотографиям, календарям, контактам и документам, независимо от того, каким устройством вы пользуетесь. С iCloud Drive вы можете безопасно хранить свои презентации, электронные таблицы, файлы PDF, изображения и любые другие документы в iCloud и открывать их со своего iPhone, iPad, iPod touch, Mac или PC.</p>
                     </div>
                 </div>
-                <div class="col-md-14">
+                <div class="col-md-14 anim anim-bt-soft">
                     <div class="slide10-1 bg-cover"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="overview__section pt-xl mb0">
+    <section class="overview__section pt-xl">
         <div class="container">
             <div class="row">
-                <div class="col-md-offset-4 col-md-16">
-                    <h1 class="mb-m pt-xs">Как начать.</h1>
-                    <p class="pb-xl mb-m pb-m">Вы можете выбрать ежемесячную подписку или оплатить один раз и навсегда.</p>
+                <div class="col-md-22 col-lg-17 centered">
+                    <small class="mb-l nowrap">демонстрация адаптивности</small>
+                    <h2 class="mb-l anim anim-lr-soft" data-delta="s">Хотите потрогать и протестировать премиальное резюме на разных платформах?</h2>
+                    <div class="row premium-devices-icons ptb-m">
+                        <div class="col-sm-8 anim anim-lr anim-delay-xs" data-delta="s">
+                            <icon-device-phones color="blue" size="xl"></icon-device-phones>
+                        </div>
+                        <div class="col-sm-8 anim anim-scale" data-delta="s">
+                            <icon-device-desktop color="green" size="xl"></icon-device-desktop>
+                        </div>
+                        <div class="col-sm-8 anim anim-bt anim-delay-s" data-delta="s">
+                            <icon-device-tablet color="blue" size="xl"></icon-device-tablet>
+                        </div>
+                    </div>
+                    <div class="anim anim-scale" data-delta="s">
+                        <a href="/premium/workflow" class="btn btn-success btn-upper btn-xl">Перейти на тест-драйв</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="pos-rel" style="height:555px">
+    </section>
+
+    <section class="overview__section mb0">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-4 col-md-16 anim anim-lr-soft" data-delta="s">
+                    <h1 class="mb-m pt-xs">Как начать.</h1>
+                    <p class="pb-xl mb-m pb-m">Вы можете выбрать ежемесячную подписку или оплатить на год с приличной скидкой.</p>
+                </div>
+            </div>
+        </div>
+        <div class="pos-rel nowrap" style="height:555px">
             <div class="pos-tl w50p h100p bg-blackLight">
-                <small class="pos-tr p-xl c-white">ежемесячно</small>
+                <small class="pos-tr p-xl c-white">попробовать на 1 месяц</small>
                 <div class="pos-centered">
-                    <div class="c-white fontWeight-8 mb-m" style="font-size:100px; line-height:100px; letter-spacing:-1.4px">169 ₽</div>
-                    <button class="btn btn-white-hover btn-upper btn-xl">попробовать</button>
+                    <div class="anim anim-scale-soft" data-delta="s">
+                        <div class="c-white fontWeight-8 mb-m" style="font-size:100px; line-height:100px; letter-spacing:-1.4px">369 ₽</div>
+                        <button class="btn btn-white-hover btn-upper btn-xl">попробовать</button>
+                    </div>
                 </div>
             </div>
             <div class="pos-tr w50p h100p bg-blue">
-                <small class="pos-tl p-xl c-white">единоразово</small>
+                <small class="pos-tl p-xl c-white">подписка на год</small>
                 <div class="pos-centered">
-                    <div class="c-white fontWeight-8 textShadow-light mb-m" style="font-size:100px; line-height:100px; letter-spacing:-1.4px">369 ₽</div>
-                    <button class="btn btn-white-hover btn-upper btn-xl">подключить</button>
+                    <div class="anim anim-scale-soft" data-delta="s">
+                        <div class="c-white fontWeight-8 textShadow-light mb-m" style="font-size:100px; line-height:100px; letter-spacing:-1.4px">1,769 ₽</div>
+                        <button class="btn btn-white-hover btn-upper btn-xl">подключить</button>
+                    </div>
                 </div>
             </div>
             <div class="pos-bl pos-centered-h pb-l">

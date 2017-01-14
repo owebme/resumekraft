@@ -91,9 +91,43 @@
         &__menu {
             @include ui-icon(more_v_white, 26px, 26px);
         }
-        &__feedback {
+        &__inbox {
+            @extend .pos-rel;
             @extend .mt60;
-            @include ui-icon(feedback_white, 32px, 32px);
+            @extend .opacity-100;
+
+            &:after {
+                @extend .content-empty;
+                @extend .display-block;
+                @extend .opacity-85;
+                @extend .transition-default;
+                @include ui-icon(feedback_white, 32px, 32px);
+            }
+            &__badge {
+                @extend .flex-centered;
+                @extend .pos-abs;
+                top:-2px;
+                right:-2px;
+                width:16px;
+                height:16px;
+                @extend .borderRadius-circle;
+                @extend .bg-pink;
+                @extend .c-white;
+                @extend .fontSize-14;
+                @extend .fontWeight-bold;
+                @extend .boxShadow-close;
+                @extend .scale-0;
+                @extend .zIndex-1;
+            }
+            &:hover:after,
+            &[data-active="true"]:after {
+                @extend .opacity-100;
+            }
+            &[data-active="true"] {
+                .resume__item__control__inbox__badge {
+                    @extend .scale-100;
+                }
+            }
         }
     }
     &__photo {

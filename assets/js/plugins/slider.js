@@ -52,15 +52,8 @@
             if (this.cnt == 1 && !this.scope.hasClass("largeSlides")){
                 this.scope.addClass("largeSlides")
             }
-            else {
-                if (this.slider.find(".slider__item").length < 4){
-                    this.nav.next.addClass('slider__nav--hidden');
-                }
-                else {
-                    this.nav.next.removeClass('slider__nav--hidden');
-                }
-            }
-            this.nav.prev.addClass('slider__nav--hidden');
+
+            this.navUpdate();
             this.firstSlide.addClass("current");
         },
 
@@ -102,9 +95,19 @@
 
             this.slider.find(".slider__item:first").addClass("current");
 
-            this.nav.prev.addClass('slider__nav--hidden');
+            this.navUpdate();
+        },
 
-            this.nav.next.removeClass('slider__nav--hidden');
+        navUpdate: function(){
+            var l = this.slider.find(".slider__item").length;
+
+            if (this.cnt > 1 && l < 4 || this.cnt == 1 && l == "1"){
+                this.nav.next.addClass('slider__nav--hidden');
+            }
+            else {
+                this.nav.next.removeClass('slider__nav--hidden');
+            }
+            this.nav.prev.addClass('slider__nav--hidden');
         },
 
     	nextSlides: function() {

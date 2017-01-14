@@ -1,14 +1,17 @@
 <resume-list class="resume__list">
 
-    <div onClick={ open.profile } class="main__button" data-icon="menu" data-color="white"></div>
+    <div onClick={ open.profile } onUpdate="none" class="main__button" data-icon="menu" data-color="white"></div>
 
     <div class="resume__list__title">Открыть меню</div>
 
     <div class="resume__list__buttons">
         <div class="btn-group">
-            <button onClick={ open.jqtest } class="btn btn-m btn-primary-hover">JQ-Тест</button>
-            <button class="btn btn-m btn-primary-hover">Обращения</button>
-            <button if={ $account.get("plan") != "premium" } onClick={ open.payment } class="btn btn-m btn-primary-hover">Перейти на PREMIUM</button>
+            <button onClick={ open.jqtest } onUpdate="none" class="btn btn-m btn-primary-hover">JQ-Тест</button>
+            <button onClick={ open.inbox } onUpdate="none" class="btn btn-m { get.newItems() > 0 ? 'btn-primary' : 'btn-primary-hover' }">
+                Обращения
+                <div class="btn-badge">{ get.newItems() }</div>
+            </button>
+            <button if={ $account.get("plan") != "premium" } onClick={ open.plan } onUpdate="none" class="btn btn-m btn-primary-hover">Перейти на PREMIUM</button>
             <button class="btn btn-m btn-primary">Баланс: 0,0 ₽</button>
             <a href="/logout" class="btn btn-m btn-primary-hover">
                 <svg class="btn-svg btn-svg-exit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26">
@@ -22,11 +25,11 @@
         <div class="slider__nav slider__nav__prev"></div>
         <div class="slider__nav slider__nav__next"></div>
         <div class="row slider__wrapper">
-            <div class="slider__item col-md-12 col-lg-8">
-                <resume-list-item></resume-list-item>
+            <div each={ item, i in _.sortByDate($store.data.get(), "update", "desc") } no-reorder class="slider__item col-md-12 col-lg-8">
+                <resume-list-item item={ item }></resume-list-item>
             </div>
             <div class="slider__item col-md-12 col-lg-8">
-                <resume-list-item-new onClick={ open.createResume }></resume-list-item-new>
+                <resume-list-item-new onClick={ open.createResume } onUpdate="none"></resume-list-item-new>
             </div>
             <div class="slider__item col-md-12 col-lg-8">
                 <resume-list-item-blank></resume-list-item-blank>
@@ -47,6 +50,14 @@
             $.slider.show();
         });
     });
+
+    $.get = {
+        newItems: function(){
+            return _.where(
+                $store.inbox.get(), { "new": true }
+            ).length;
+        }
+    };
 
     $.open = {
         stat: function(){
@@ -74,8 +85,12 @@
             });
         },
 
-        payment: function(){
-            $Sections.payment.section.show();
+        inbox: function(){
+            $Sections.inbox.show();
+        },
+
+        plan: function(){
+            $Sections.plan.show("premium");
         }
     };
 

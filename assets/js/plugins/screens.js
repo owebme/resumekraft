@@ -1,6 +1,7 @@
 (function(app, $, $dom, EV, _){
 
     app.define("plugins.screens");
+    app.define("plugins.marquee.effects");
 
     app.plugins.screens = function(scope, options){
         this.active = false;

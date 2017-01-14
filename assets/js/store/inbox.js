@@ -1,0 +1,1 @@
+$store.inbox = new Baobab([]);

@@ -1,20 +1,22 @@
 <resume-list-item class="resume__item">
 
-    <div class="resume__item__header" style="background-image:url('{ $store.resume.get('photo') }')">
+    <div class="resume__item__header" style="background-image:url('{ opts.item.photo }')">
         <div class="resume__item__control">
-            <div onClick={ onRemove } class="resume__item__control__btn resume__item__control__remove"></div>
-            <div onClick={ show.dropMenu } class="resume__item__control__btn resume__item__control__menu"></div>
-            <div onClick={ show.feddback } class="resume__item__control__btn resume__item__control__feedback"></div>
+            <div onClick={ onRemove } onUpdate="none" class="resume__item__control__btn resume__item__control__remove"></div>
+            <div onClick={ show.dropMenu } onUpdate="none" class="resume__item__control__btn resume__item__control__menu"></div>
+            <div onClick={ show.inbox } onUpdate="none" class="resume__item__control__btn resume__item__control__inbox" data-active={ true : get.newItems() > 0 }>
+                <div class="resume__item__control__inbox__badge">{ get.newItems() }</div>
+            </div>
         </div>
         <div class="row">
             <div class="col-xs-5 col-sm-6">
-                <div class="resume__item__photo" style="background-image:url('{ $store.resume.get('photo') }')"></div>
+                <div class="resume__item__photo" style="background-image:url('{ opts.item.photo }')"></div>
             </div>
             <div class="col-xs-19 col-sm-18">
-                <div class="resume__item__title">{ $store.resume.get('post') }</div>
-                <div class="resume__item__date">Обновлен: 28 сентября 2016</div>
+                <div class="resume__item__title">{ opts.item.post }</div>
+                <div class="resume__item__date">Обновлен: { moment(opts.item.update).format('D MMMM YYYY') }</div>
                 <div class="resume__item__salary">
-                    { _.numberFormat($store.resume.get('salary').amount, 0, ".", ".") } { $store.currency.getTitleById($store.resume.get('salary').currency) }
+                    { _.numberFormat(opts.item.salary.amount, 0, ".", ".") } { $store.currency.getTitleById(opts.item.salary.currency) }
                 </div>
             </div>
         </div>
@@ -22,7 +24,7 @@
     <div class="resume__item__stat">
         <div class="resume__item__stat__wrapper row">
             <div class="resume__item__stat__cell col-xs-15 col-sm-16">
-                <btn-stat onClick={ parent.open.stat }></btn-stat>
+                <btn-stat onClick={ parent.open.stat } onUpdate="none"></btn-stat>
                 <svg-stat></svg-stat>
             </div>
             <div class="resume__item__stat__cell bg-yellow c-blackLight col-xs-9 col-sm-8">
@@ -34,6 +36,17 @@
 <script>
 
     var $ = this;
+
+    $.get = {
+        newItems: function(){
+            return _.where(
+                $store.inbox.get(), {
+                    "resumeId": $.opts.item._id,
+                    "new": true
+                }
+            ).length;
+        }
+    };
 
     $.onRemove = function(){
         $Alert.show({
@@ -52,8 +65,12 @@
     $.show = {
         dropMenu: function(e){
             $DropMenu.show({
-                id: _.newId(),
+                id: opts.item._id,
                 elem: $$(e.currentTarget),
+                offset: {
+                    top: 12,
+                    left: -1
+                },
                 menu: [
                     {
                         title: "Редактировать",
@@ -81,6 +98,15 @@
                     }
                 ]
             });
+        },
+        inbox: function(){
+            var id = $store.inbox.select({
+                "resumeId": $.opts.item._id,
+                "new": true
+            })
+            .get("_id");
+
+            $Sections.inbox.show(id);
         }
     };
 

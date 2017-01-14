@@ -148,12 +148,12 @@
 		.iScrollVerticalScrollbar {
 			@extend .pos-tr;
 			@extend .h100p;
-			@extend .w4px;
+			width:4px;
 			transition:width .175s;
 			@extend .overflow-visible;
 
 			&:hover {
-				@extend .w10;
+				width:8px;
 			}
 		}
 		.iScrollIndicator {

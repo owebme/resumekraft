@@ -1,7 +1,7 @@
 <section-profile class="oScreen zIndex-2" data-open={ active } data-show="left">
 
     <div class="oScreen__buttons" data-pos="top-right">
-        <div onClick={ hide } class="button__close"></div>
+        <div onClick={ hide } onUpdate="none" class="button__close"></div>
     </div>
 
     <div class="oScreen__content bg-white">
@@ -93,7 +93,7 @@
     var $ = this,
     $scope = $$($.root);
 
-    $.active = true;
+    $.active = false;
 
     $.editable = {
         phone: false,
@@ -135,7 +135,7 @@
             $Sections.profile.data.show();
         },
         changePlan: function(){
-            $Sections.payment.section.show("premium");
+            $Sections.plan.show("premium");
         }
     };
 

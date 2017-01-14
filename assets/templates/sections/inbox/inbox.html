@@ -1,0 +1,133 @@
+<section-inbox class="oScreen { showAnim : active }" data-open={ active }>
+
+    <div class="anim anim-rl" data-duration="l" delay-show="m">
+        <div class="button__close" data-color="white"></div>
+    </div>
+
+    <div class="pos-centered">
+        <div class="container">
+            <div class="row">
+                <div name="wrapper" class="col-md-20 centered">
+                    <div class="inbox anim anim-bt-ease" duration-show="s" duration-hide="xs" delay-show="xs">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div name="list" class="inbox__list">
+                                    <div class="inbox__list__scroll">
+                                        <div onClick={ onSelect } each={ item, i in _.sortByDate($store.inbox.get(), "create", "desc") } no-reorder class="inbox__list__item" data-new={ item.new } data-active={ id == item._id }>
+                                            <div class="inbox__list__item__icon bg-{ item.color }">{ item.title.charAt(0) }</div>
+                                            <div class="inbox__list__item__container">
+                                                <div class="inbox__list__item__date">{ get.date(item.create) }</div>
+                                                <div class="inbox__list__item__title">{ item.title }</div>
+                                                <div class="inbox__list__item__text">{ item.text }</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-16">
+                                <div name="content" class="inbox__content">
+                                    <div class="inbox__content__scroll">
+                                        <div class="inbox__content__title">{ $store.inbox.get({'_id': id}).title }</div>
+                                        <div class="inbox__content__resume__title">{ $store.data.get({'_id': $store.inbox.get({'_id': id}).resumeId}).post }</div>
+                                        <div class="inbox__content__email">
+                                            <a target="_blank" class="inbox__content__email__link" href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to={ $store.inbox.get({'_id': id}).from }">{ $store.inbox.get({'_id': id}).from }</a>
+                                        </div>
+                                        <div class="inbox__content__text">{ $store.inbox.get({'_id': id}).text }</div>
+                                    </div>
+                                    <div class="inbox__content__date">{ moment($store.inbox.get({'_id': id}).create).format('D MMMM') } в { moment($store.inbox.get({'_id': id}).create).format('HH:mm') }</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+
+    var $ = this;
+
+    // $.active = true;
+
+    $.viewedList = [];
+
+    $.scroll = {
+        list: null,
+        content: null
+    };
+
+    $.on("mount", function(){
+        $afterlag.run(function(){
+            $.scroll.list = new app.plugins.scroll.content($.list);
+            $.scroll.list.init();
+            $.scroll.content = new app.plugins.scroll.content($.content);
+            $.scroll.content.init();
+            //$.show();
+        });
+    });
+
+    $.show = function(id){
+        if (id) $.id = id;
+        if (!$.id) $.id = _.sortByDate($store.inbox.get(), "create", "desc")[0]._id;
+
+        $.onViewed($.id);
+
+        $.update({
+            active: true
+        })
+        $.scroll.list.refresh();
+        $.scroll.content.refresh();
+    };
+
+    $.get = {
+        date: function(date){
+            var days = moment(date).diff(moment(), 'days');
+            if (days === 0) return moment(date).format('HH:mm');
+            else if (days === -1) return "вчера";
+            else {
+                return moment(date).format('D MMM');
+            }
+        }
+    };
+
+    $.onSelect = function(){
+        $.id = this.item._id;
+        $.onViewed($.id);
+    };
+
+    $.onViewed = function(id){
+        var item = $store.inbox.select({"_id": $.id});
+
+        if (item.get("new")){
+            item.select("new").set(false);
+            $.viewedList.push(id);
+        }
+    };
+
+    $.handleClickOutside = function(e){
+        if (!$.wrapper.contains(e.target)) $.hide();
+    };
+
+    $.hide = function(){
+        $.update({
+            active: false
+        })
+        if ($.viewedList.length){
+            $Sections.resume.list.update();
+        }
+    };
+
+    $.on("updated", function(){
+        if ($.active){
+            document.addEventListener('click', $.handleClickOutside);
+        }
+        else {
+            document.removeEventListener('click', $.handleClickOutside)
+        }
+    });
+
+</script>
+
+</section-inbox>

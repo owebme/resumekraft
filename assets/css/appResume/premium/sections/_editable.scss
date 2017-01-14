@@ -56,7 +56,7 @@
         @extend .willChange-transform;
         -webkit-overflow-scrolling:touch;
         transform-style:preserve-3d;
-        transition:transform .4s $cubic25b;
+        transition:transform .4s $cubic2501;
         @extend .zIndex-1;
     }
     &__wrapper {
@@ -68,7 +68,7 @@
         .d-no-mobile & {
             @extend .willChange-transform;
             transform:translate3d(0, -10vh, 0) perspective(500px) rotateX(30deg) scale3d(0.8, 0.8, 1);
-            transition:transform 0.25s $cubic25b;
+            transition:transform 0.25s $cubic2501;
 
             &[data-large="true"]{
                 transform:translate3d(0, 0, 0) scale3d(0.95, 0.95, 1);
@@ -375,7 +375,7 @@
         .d-no-mobile & {
             .section__editable__wrapper {
                 transform:translate3d(0, 0, 0) perspective(500px) rotateX(0deg) scale3d(1, 1, 1);
-                transition:transform 0.4s $cubic25b;
+                transition:transform 0.4s $cubic2501;
 
                 &[data-large="true"]{
                     transform:translate3d(0, 0, 0) perspective(1000px) rotateX(0deg) scale3d(1, 1, 1);

@@ -43,21 +43,21 @@
                                 <div class="plan__premium__item__image__wrapper col-md-12">
                                     <div class="pl-m pr-l">
                                         <div class="pos-rel">
-                                            <img class="tutorial-step1 plan__premium__item__image" src="/assets/images/slide4a.jpg" data-image="front">
-                                            <img class="plan__premium__item__image" src="/assets/images/slide1.jpg" data-image="back">
+                                            <img class="tutorial-step1 plan__premium__item__image" src="/assets/images/mac_large_2x.png" data-image="front">
+                                            <img class="plan__premium__item__image" src="/public/images/promo/premium/slide2_1.png" data-image="back">
                                         </div>
                                         <div class="plan__premium__item__button">
-                                            <button class="btn btn-xxl btn-default-hover-success mb-xl">Выбрать этот</button>
+                                            <button class="btn btn-xxl btn-default-hover-success mb-xl">Создать резюме</button>
                                             <div class="mb-m"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12 text-left c-blackLight whiteSpace-normal">
                                     <div class="pt-m pl-xs pr-m">
-                                        <div class="tutorial-step2 plan__premium__gallery" style="background-image:url(/assets/images/slide{ i + 1 }.jpg)">
+                                        <div class="tutorial-step2 plan__premium__gallery" style="background-image:url(/public/images/promo/premium/slide2_1.png)">
                                             <div class="plan__premium__gallery__pointer"></div>
                                         </div>
-                                        <h2 class="pt-xs c-blue fontSize-46 mb-l letterSpacing-xxxl text-uppercase">Р{ i + 1 }</h2>
+                                        <h2 class="fontWeight-8 pt-xs c-blue mb-l letterSpacing-xxxl text-uppercase">Premium</h2>
                                         <div class="fontSize-14 fontWeight-8 letterSpacing--s text-uppercase mb-m">яркие и стильные цвета</div>
                                         <div class="fontSize-0 pt-xxs mb-l">
                                             <div each={ item in $store.colors.get() } class="plan__premium__colors__item bg-{ item.title }"></div>
@@ -122,7 +122,7 @@
 
     $.items = {
         basic: _.range(1001, 1010),
-        premium: _.range(1, 5)
+        premium: ["1"]
     }
 
     $.plan = "basic";

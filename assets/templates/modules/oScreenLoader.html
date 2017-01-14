@@ -88,7 +88,9 @@
 
     $.onResourcesLoaded = function(){
         $.progress.resources = true;
-        $.animate = true;
+        if (app.device.isMobile){
+            $.animate = true;
+        }
         $.init();
     };
 
