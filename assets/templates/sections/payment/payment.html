@@ -13,17 +13,9 @@
                             <div class="col-md-10">
                                 <div class="payment__list">
                                     <div class="payment__list__title">Выберите способ оплаты</div>
-                                    <div onClick={ change.method } class="payment__list__item" data-active={ method == "bankcard" } data-item="bankcard">
-                                        <div class="payment__list__item__title">Банковcкой картой</div>
-                                        <div class="payment__list__item__text">Оплата всеми пластиковыми картами Visa и MasterCard.</div>
-                                    </div>
-                                    <div onClick={ change.method } class="payment__list__item" data-active={ method == "yamoney" } data-item="yamoney">
-                                        <div class="payment__list__item__title">Яндекс.Деньги</div>
-                                        <div class="payment__list__item__text">Оплатить электронными деньгами платежной системы яндекс денег.</div>
-                                    </div>
-                                    <div onClick={ change.method } class="payment__list__item" data-active={ method == "mobile" } data-item="mobile">
-                                        <div class="payment__list__item__title">Со счета мобильного</div>
-                                        <div class="payment__list__item__text">Оплатить со счета мобильного телефона сотовых операторов: Мегафон, МТС, Билайн, Tele2.</div>
+                                    <div onClick={ change.method } each={ item in $store.paymentMethod.get() } no-reorder class="payment__list__item" data-active={ parent.method == item.method }>
+                                        <div class="payment__list__item__title">{ item.title }</div>
+                                        <div class="payment__list__item__text">{ item.text }</div>
                                     </div>
                                 </div>
                             </div>
@@ -34,16 +26,30 @@
                                     </div>
                                     <div class="payment__icon" data-icon={ method }></div>
                                     <div class="payment__count">
-                                        <div class="payment__count__sale" data-balloon="Ваша экономия" data-balloon-pos="up" data-balloon-color="yellow" data-balloon="Ваша экономия" data-balloon-font="futuraBold">{ _.findWhere(items, {'period': period}).sale }</div>
-                                        { _.numberFormat(_.findWhere(items, {'period': period}).price, 0, ",", ",") } <span class="payment__count__rub">₽</span>
+                                        <div class="payment__count__sale" data-balloon="Ваша экономия" data-balloon-pos="up" data-balloon-color="yellow" data-balloon="Ваша экономия" data-balloon-font="futuraBold">{ $store.paymentPeriod.getSaleByPeriod(period) }</div>
+                                        { _.numberFormat($store.paymentPeriod.getPriceByPeriod(period), 0, ",", ",") } <span class="payment__count__rub">₽</span>
                                     </div>
                                     <div class="payment__period">
                                         <div class="payment__period__title">Выберите период оплаты</div>
                                         <div class="btn-group">
-                                            <div onClick={ change.period } each={ item in items } no-reorder class="btn btn-m btn-{ parent.period == item.period ? 'success' : 'white-hover' }">{ item.title }</div>
+                                            <div onClick={ change.period } each={ item in $store.paymentPeriod.get() } no-reorder class="btn btn-m btn-{ parent.period == item.period ? 'success' : 'white-hover' }">{ item.title }</div>
                                         </div>
                                     </div>
-                                    <a href="http://yandex.ru" onClick={ onPay } onUpdate="none" class="btn btn-xl2 btn-white-hover">Пополнить</a>
+                                    <form method="POST" action="https://money.yandex.ru/quickpay/confirm.xml">
+                                        <input type="hidden" name="receiver" value="{ app.config.payment.yamoney }">
+                                        <input type="hidden" name="formcomment" value="{ get.comment() }">
+                                        <input type="hidden" name="short-dest" value="{ get.comment() }">
+                                        <input type="hidden" name="label" value="{ $account.get('_id') }">
+                                        <input type="hidden" name="quickpay-form" value="shop">
+                                        <input type="hidden" name="targets" value="Пополнение баланса">
+                                        <input type="hidden" name="sum" value="{ $store.paymentPeriod.getPriceByPeriod(period) }" data-type="number">
+                                        <input type="hidden" name="need-fio" value="false">
+                                        <input type="hidden" name="need-email" value="false">
+                                        <input type="hidden" name="need-phone" value="false">
+                                        <input type="hidden" name="need-address" value="false">
+                                    	<input type="hidden" name="paymentType" value="{ $store.paymentMethod.getValueByMethod(method) }">
+                                        <button type="submit" href="http://yandex.ru" onClick={ success } onUpdate="none" class="btn btn-xl2 btn-white-hover">Пополнить</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -61,38 +67,6 @@
     $.method = "bankcard";
     $.period = "month1";
 
-    $.items = [
-        {
-            period: "month1",
-            title: "1 месяц",
-            price: "369"
-        },
-        {
-            period: "month3",
-            title: "3 месяца",
-            price: "869",
-            sale: "-20%"
-        },
-        {
-            period: "month6",
-            title: "6 месяцев",
-            price: "1369",
-            sale: "-40%"
-        },
-        {
-            period: "year1",
-            title: "на 1 год",
-            price: "1769",
-            sale: "-60%"
-        },
-        {
-            period: "year2",
-            title: "на 2 года",
-            price: "3569",
-            sale: "-60%"
-        }
-    ];
-
     $.show = function(period){
         if (period && period != $.period){
             $.period = period;
@@ -105,7 +79,7 @@
 
     $.change = {
         method: function(e){
-            $.method = e.currentTarget.getAttribute("data-item");
+            $.method = this.item.method;
             app.metrika.set("payment.method", $.method);
         },
         period: function(){
@@ -114,7 +88,13 @@
         }
     };
 
-    $.onPay = function(){
+    $.get = {
+        comment: function(){
+            return 'ResumeKraft: пополнение баланса ' + $store.paymentPeriod.getTitleByPeriod($.period);
+        }
+    };
+
+    $.success = function(){
         app.metrika.set("payment.success", true);
         return true;
     };

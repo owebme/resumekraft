@@ -14,4 +14,6 @@ module.exports = function(app){
         register: require('./auth/register')(app)
     }
 
+    app.controllers.payment = require('./payment')(app);
+
 }

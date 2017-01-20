@@ -1,42 +1,8 @@
-(function(app){
+(function(){
 
     app.define("plugins.tutorial.resumeList");
 
     app.plugins.tutorial.resumeList = [
-        function(){
-            return {
-                activeZone: true,
-                figure: "square",
-                target: ".resume__navbar .btn[data-item='payment']",
-                position: "left",
-                padding: 15,
-                title: "Ваш баланc на нуле",
-                text: "Перейти для пополнения баланса",
-                nav: {
-                    steps: false,
-                    buttons: {
-                        success: {
-                            title: 'Пополнить',
-                            size: 'l2',
-                            callback: function($control, $target){
-                                $control.hide();
-                                //$Sections.payment.show();
-                                $target.trigger("click");
-                            }
-                        },
-                        cancel: false
-                    }
-                },
-                actions: {
-                    click: {
-                        elem: "self",
-                        callback: function($control, $target){
-                            $control.hide();
-                        }
-                    }
-                }
-            }
-        },
         function(){
             return {
                 figure: "square",
@@ -175,4 +141,4 @@
         }
     ];
 
-})(app);
+})();

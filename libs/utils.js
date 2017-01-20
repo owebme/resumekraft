@@ -1,6 +1,8 @@
 var libs = process.cwd() + '/libs/';
 var config = require(libs + 'config');
 var crypto = require('crypto');
+var sha1Hex = require('sha1-hex');
+var md5 = require('md5');
 var iconv = require('iconv-lite');
 
 var utils = {
@@ -26,6 +28,14 @@ var utils = {
 		}
 	},
 
+	sha1Hex: function(value){
+		return sha1Hex(value);
+	},
+
+	md5: function(value){
+		return md5(value);
+	},
+
 	copyArray: function(data){
 		return JSON.parse(JSON.stringify(data));
 	},
@@ -33,7 +43,7 @@ var utils = {
 	newId: function(){
 		return String(Math.round(new Date().getTime() / 1000));
 	}
-	
+
 }
 
 module.exports = utils;

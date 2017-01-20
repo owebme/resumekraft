@@ -86,17 +86,6 @@
         }
     };
 
-    $.get = {
-        date: function(date){
-            var days = moment(date).diff(moment(), 'days');
-            if (days === 0) return moment(date).format('HH:mm');
-            else if (days === -1) return "вчера";
-            else {
-                return moment(date).format('D MMM');
-            }
-        }
-    };
-
     $.onViewed = function(id){
         var item = $store.inbox.select({"_id": $.id});
 

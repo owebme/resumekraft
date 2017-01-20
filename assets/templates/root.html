@@ -91,9 +91,6 @@
         $Alert = $root.tags["section-alert"];
         $DropMenu = $root.tags["ui-dropmenu"];
 
-        // $Tutorial.update({
-        //     animate: false
-        // });
         $afterlag.xs(function(){
             app.$dom.body.removeClass("appLoading");
             $root.trigger("ready");
@@ -105,9 +102,6 @@
     };
 
     this.on("before-mount", function(){
-
-        //$store.inbox.set([]);
-
         if (app.config.changeStyles){
             app.plugins.styles.init({
                 elem: "#styles",

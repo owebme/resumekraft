@@ -38,18 +38,9 @@
 			"valuta": ["AUD", "AZN", "GBP", "AMD", "BYR", "BGN", "DKK", "USD", "EUR", "KZT", "CAD", "CNY", "NOK", "TRY", "UAH", "CZK", "SEK", "CHF", "JPY"]
 		}
     },
-    "default": {
-        "api": {
-            "version" : "v1"
-        },
-        "user": {
-            "username": "admin",
-            "password": "1234"
-        },
-        "client": {
-            "name": "Android API v1",
-            "clientId": "android",
-            "clientSecret": "SomeRandomCharsAndNumbers"
+    "payment": {
+        "yamoney": {
+            "secret": "5Bwek7oTVMTq06nEMF6hEmF6"
         }
     }
 }

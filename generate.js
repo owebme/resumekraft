@@ -4,17 +4,17 @@ var utils = require(libs + 'utils');
 var validator = require('validator');
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
-var ACCOUNT_ID = ObjectId();
+var ACCOUNT_ID = ObjectId('58785acdfabeed550a9b8b65');
 var resume = require(libs + 'resume')(ACCOUNT_ID, validator.toDate("2017-01-12 13:21"), validator.toDate("2017-01-12 14:21"));
 
 MongoClient.connect(config.get('mongodb:uri'), function(err, db) {
 
-	// db.collection('accounts').drop();
-	// db.collection('accounts').insert(accounts);
+	db.collection('accounts').drop();
+	db.collection('accounts').insert(accounts);
 	// db.collection('resumes').drop();
 	// db.collection('resumes').insert([resume]);
-	db.collection('inbox').drop();
-	db.collection('inbox').insert(inbox);
+	// db.collection('inbox').drop();
+	// db.collection('inbox').insert(inbox);
 });
 
 var inbox = [
@@ -86,6 +86,9 @@ var accounts = [
             site: "http://web-projects.me",
             skype: "owebme"
         },
+		history: [],
+		payment: [],
+		metrika: [],
         login: "maxfull@mail.ru",
         password: utils.cryptoPass("123456"),
         create: validator.toDate("2017-01-12 11:21"),

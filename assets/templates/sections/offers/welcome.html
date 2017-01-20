@@ -19,27 +19,24 @@
     var $ = this;
 
     $.on("before-mount", function(){
-        $.active = true;
-        app.metrika.set("offers.welcome.show", true);
-    });
-
-    $.one("tutorialHide", function(){
-        app.metrika.set("offers.welcome.tutorial.hide", true);
-    });
-
-    $.one("tutorialSuccess", function(){
-        app.metrika.set("offers.welcome.tutorial.success", true);
+        if (!app.metrika.get("offers.welcome.show")){
+            $.active = true;
+            app.metrika.set("offers.welcome.show", true);
+        }
     });
 
     $.showTutorial = function(){
         $.active = false;
         $Sections.resume.list.start(function(){
-            $Tutorial.show($rootScope, "resumeList", {
-                triggers: {
-                    tag: $,
-                    hide: "tutorialHide",
-                    success: "tutorialSuccess"
-                }
+            $Tutorial.show($rootScope, "resumeList");
+
+            $Tutorial.one("close", function(){
+                $Tutorial.off("success");
+                app.metrika.set("offers.welcome.tutorial.hide", true);
+            });
+            $Tutorial.one("success", function(){
+                $Tutorial.off("close");
+                app.metrika.set("offers.welcome.tutorial.success", true);
             });
         })
         app.metrika.set("offers.welcome.tutorial.show", true);

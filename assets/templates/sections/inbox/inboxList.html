@@ -13,6 +13,17 @@
 
     var $ = this;
 
+    $.get = {
+        date: function(date){
+            var days = moment(date).diff(moment(), 'days');
+            if (days === 0) return moment(date).format('HH:mm');
+            else if (days === -1) return "вчера";
+            else {
+                return moment(date).format('D MMM');
+            }
+        }
+    };
+
     $.onSelect = function(){
         $.parent.id = this.item._id;
         $.parent.onViewed($.parent.id);

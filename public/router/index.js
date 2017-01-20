@@ -44,5 +44,7 @@ module.exports = function(app){
 
     app.get('/parser/all', app.controllers.parser);
 
+    app.post('/payment/?pay=yamoney', app.controllers.payment);
+
     require(process.cwd() + '/assets/API')(app);
 }

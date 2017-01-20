@@ -1,4 +1,4 @@
-(function(app){
+(function(){
 
     app.define("plugins.tutorial.resumeBasic");
 
@@ -67,4 +67,4 @@
         }
     ];
 
-})(app);
+})();
