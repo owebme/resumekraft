@@ -1,5 +1,7 @@
 (function(app, $, $dom, EV, _){
 
+    app.define("sections");
+
     app.sections = {
 
         init: function(){

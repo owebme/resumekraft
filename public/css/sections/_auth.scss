@@ -20,6 +20,9 @@
             width:575px;
             @extend .pb-m;
         }
+        .auth__header {
+            @extend .mb-xs;
+        }
     }
     &[data-form="remember"]{
         .auth__body {

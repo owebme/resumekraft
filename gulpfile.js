@@ -236,7 +236,6 @@ gulp.task('private.libs', function() {
 		'assets/js/libs/riot/riot-i18n.js',
 		'assets/js/libs/baobab.js',
 		'assets/js/libs/underscore-min.js',
-		'assets/js/libs/iscroll.js',
 		'assets/js/libs/rangeslider.js',
 		'assets/js/libs/jquery.cropit.js',
 		'assets/js/libs/moment.min.js',
@@ -444,7 +443,7 @@ gulp.task('watch', function() {
 	gulp.watch([
 		'assets/css/style.scss',
 		'assets/css/**/*.scss'
-	], {debounceDelay: 1000}, gulp.parallel('private.css', 'premium.css'));
+	], {debounceDelay: 1000}, gulp.parallel('private.css'));
 
 	gulp.watch([
 		'assets/css/**/templates/style.scss',
@@ -469,11 +468,16 @@ gulp.task('watchPublic', function() {
 		'assets/templates/**/*.tag'
 	]).on('change', _.debounce(reload, 3000));
 
+	browserSync.watch([
+		'public/js/*.js',
+		'public/js/**/*.js'
+	]).on('change', reload);
+
 	gulp.watch([
 		'assets/css/**/*.scss',
 		'public/css/style.scss',
 		'public/css/**/*.scss'
-	], gulp.parallel('public.css', 'public.mobile.css'));
+	], gulp.parallel('public.mobile.css'));
 });
 
 gulp.task('css.build', gulp.series('private.css', 'premium.css', 'public.css', gulp.parallel('private.css.largeScreen', 'private.css.smallScreen', 'premium.css.largeScreen', 'premium.css.smallScreen', 'templates.basic', 'templates.basic.view')));

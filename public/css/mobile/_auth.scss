@@ -1,0 +1,90 @@
+section-auth {
+    @include abs();
+    @include accelerate(true);
+    @extend .text-center;
+    @extend .pointerEvents-none;
+    @extend .visibility-hidden;
+    perspective:500px;
+    transition:visibility 0s 0.4s;
+
+    &[data-open="true"]{
+        @extend .pointerEvents-all;
+        @extend .visibility-visible;
+        @extend .transition-none;
+
+        .oScreen__buttons {
+            @extend .opacity-100;
+        }
+    }
+    &[data-focused="true"]{
+        .button__close,
+        .auth__social {
+            @extend .display-none;
+        }
+    }
+}
+.auth {
+    @include abs();
+    @include accelerate();
+    @extend .flex-column-centered;
+    @extend .p-m;
+    @extend .pointerEvents-none;
+    @extend .visibility-hidden;
+    background-color:rgba($white,0);
+    will-change:background-color;
+    transition:background-color 0.4s $cubic345, visibility 0s 0.4s;
+
+    &[data-active="true"]{
+        @extend .pointerEvents-all;
+        @extend .visibility-visible;
+        @extend .bg-white;
+        @extend .zIndex-1;
+        transition:background-color 0.4s $cubic345;
+    }
+    .button__close {
+        @extend .opacity-90;
+    }
+    &__logo {
+        @extend .display-block;
+        @extend .content-empty;
+        width:128px;
+        height:48px;
+        @extend .bg-cover;
+        @extend .logo;
+        @extend .m0-auto;
+    }
+    &__form {
+        @extend .w100p;
+    }
+    &__header {
+        @extend .display-none;
+        @extend .c-blue;
+        @extend .fontSize-16;
+        @extend .fontWeight-8;
+        letter-spacing:5.5px;
+        @extend .text-uppercase;
+        @extend .mt-l;
+    }
+    &__body {
+        @extend .ptb-l;
+    }
+    &__social {
+        @extend .flex-centered;
+
+        &__button {
+            @extend .flex-centered;
+            @extend .bg-grayDark;
+            @extend .w40;
+            @extend .h40;
+            @extend .willChange-transform;
+            @extend .borderRadius-circle;
+            @extend .mlr-xs;
+            @extend .pt-xxs;
+            @extend .btn-active;
+
+            .icon {
+                @extend .scale-85;
+            }
+        }
+    }
+}

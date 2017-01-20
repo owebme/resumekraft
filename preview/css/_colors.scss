@@ -8,11 +8,14 @@
     .fill-#{$title} {
         fill:$color;
     }
+    .borderColor-#{$title} {
+        border-color:$color;
+    }
     svg[fill-color="#{$title}"]{
         path, rect, polygon, circle {
             fill:$color;
         }
-    }    
+    }
 }
 body {
     @each $color in ($blue, $blueLight, $green, $emerald, $orange, $red, $violet, $violetLight, $brown, $pink){
@@ -52,4 +55,25 @@ body {
     &:active {
         transform:translate3d(0, 0, 0) scale(0.85);
     }
+}
+.bg-overlay {
+    background-color:rgba(40,47,51,.76);
+}
+.bg-radial-blue {
+    background:radial-gradient(rgba($blue,.0), $blue);
+}
+.bg-radial-black {
+    background:radial-gradient(rgba($black,.0), $black);
+}
+.bg-gradient-tb-white {
+	background:linear-gradient(to bottom, #fff, rgba(#fff,0));
+}
+.bg-gradient-bt-white {
+	background:linear-gradient(to top, #fff, rgba(#fff,0));
+}
+.bg-gradient-lr-white {
+	background:linear-gradient(to right, #fff, rgba(#fff,0));
+}
+.bg-gradient-rl-white {
+	background:linear-gradient(to left, #fff, rgba(#fff,0));
 }

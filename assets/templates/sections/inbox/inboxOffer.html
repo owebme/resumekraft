@@ -1,0 +1,67 @@
+<inbox-offer class="oScreen { showAnim : active } zIndex-5 anim-group1" data-color="darkLight" data-open="{ active }">
+
+    <div onClick={ hide } onUpdate="none" class="button__close opacity-50" data-color="white"></div>
+
+    <div class="pos-centered">
+        <div class="container pt-xl">
+            <div class="row mb-l">
+                <h1 class="c-white mb-xl anim anim-scale">{ $store.inbox.get().length ? 'Продолжить' : 'Хотите' } получать приглашения?</h1>
+                <div class="pt-xs anim anim-scale anim-delay-m">
+                    <button if={ !$store.inbox.get().length } onClick={ open.plan } onUpdate="none" class="btn btn-xxl btn-white-hover">Да, хочу</button>
+                    <button if={ $store.inbox.get().length } onClick={ open.payment } onUpdate="none" class="btn btn-xxl btn-white-hover-success">Перейти на Premium</button>
+                </div>
+            </div>
+            <div class="row pt-m mb-l">
+                <div class="col-md-12">
+                    <div class="plr-xl">
+                        <h3 class="c-yellow pl-xl anim anim-scale anim-delay-xs">Просматривать статистику посещений резюме и многое другое</h3>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="plr-xl">
+                        <h3 class="c-lime pr-xl anim anim-scale anim-delay-s">Получать входящие обращения от потенциальных работодателей</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="anim anim-scale anim-delay-l">
+                    <p class="c-white fontSize-20 opacity-60">Для получения обращений вам нужен <strong>Premium</strong> аккаунт</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    $.show = function(){
+        $afterlag.run(function(){
+            $.update({
+                active: true
+            })
+        });
+        app.metrika.set("inbox.show", true);
+    };
+
+    $.hide = function(){
+        $.parent.hide();
+        app.metrika.set("inbox.hide", true);
+    };
+
+    $.open = {
+        plan: function(){
+            $.hide();
+            $Sections.plan.show("premium");
+            app.metrika.set("inbox.success", true);
+        },
+        payment: function(){
+            $.hide();
+            $Sections.payment.show();
+        }
+    };
+
+</script>
+
+</inbox-offer>

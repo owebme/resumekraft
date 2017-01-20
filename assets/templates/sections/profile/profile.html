@@ -41,7 +41,7 @@
                                 <span class="link-underline link-default-hover-warning">Сменить пароль</span>
                             </div>
                             <div class="mt-xxs">
-                                <span class="link-underline link-default-hover-warning">Пополнить баланс</span>
+                                <span onClick={ open.payment } onUpdate="none" class="link-underline link-default-hover-warning">Пополнить баланс</span>
                             </div>
                             <div class="c-gray mt-s">Последний визит: сегодня в 3:17</div>
                         </div>
@@ -81,7 +81,7 @@
                             Ваш баланс
                         </div>
                         <div class="{ parseInt($account.get('balance')) < 100 ? 'c-blackLight' : 'c-green' } fontSize-34 fontWeight-8 mb-m">{ _.numberFormat($account.get('balance'), 1, ",", ",") } ₽</div>
-                        <button class="btn btn-balance btn-l btn-success">Пополнить</button>
+                        <button onClick={ open.payment } onUpdate="none" class="btn btn-balance btn-l btn-success">Пополнить</button>
                     </div>
                 </div>
             </div>
@@ -136,6 +136,9 @@
         },
         changePlan: function(){
             $Sections.plan.show("premium");
+        },
+        payment: function(){
+            $Sections.payment.show();
         }
     };
 

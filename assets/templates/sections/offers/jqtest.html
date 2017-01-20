@@ -1,6 +1,6 @@
-<offer-jqtest class="section section-hidden pos-bl w100p cursor-pointer zIndex-2 ptb-m overflow-hidden" data-pos="bottom" data-short={ !app.device.isPhone } data-slow={ app.device.isPhone } data-shadow="true" data-open={ active }>
+<offer-jqtest class="section section-hidden pos-bl w100p cursor-pointer zIndex-2 pt-xs pb-m overflow-hidden" data-pos="bottom" data-short={ !app.device.isPhone } data-slow={ app.device.isPhone } data-shadow="true" data-open={ active }>
 
-    <div onClick={ hide } onUpdate="none" class="button__close small" data-color="white"></div>
+    <div onClick={ close } onUpdate="none" class="button__close small" data-color="white"></div>
 
     <video if={ showVideo } class="{ app.device.isPhone ? 'pos-tl w300v' : 'pos-abs-full h-auto' }" autoplay loop muted>
         <source src="/assets/video/jqtest.mp4" type="video/mp4"/>
@@ -8,16 +8,22 @@
 
     <div class="pos-abs-full bg-overlay"></div>
 
-    <div class="pos-rel
+    <div class="pos-abs t-m l-30 fontSize-15 letterSpacing-xxxxl c-white opacity-70 text-uppercase">Бесплатно</div>
+
+    <div onClick={ open.jqtest } onUpdate="none" class="pos-rel
+    centered
+    col-lg-16
+    col-md-24
     c-white
     fontSize-34
     { lineHeight-xxxl : app.device.isPhone }
     fontWeight-bold
     text-center
-    p-l
+    cursor-pointer
+    ptb-l
     xs-pt-m
     xs-mt-xs">
-        Пройти новейший&nbsp; <span class="c-lime fontSize-38">JQ-тест<sup>2</sup></span> и узнать многое о своих возможностях
+        Пройти новейший&nbsp; <span class="c-lime fontSize-38">JQ-тест<sup>2</sup></span>, подробнее узнать о своих профессиональных качествах и получить рекомендации
     </div>
 
     <div class="pos-centered-h b-m">
@@ -45,7 +51,21 @@
             $.update({
                 active: true
             })
+            app.metrika.set("offers.jqtest.show", true);
         });
+    };
+
+    $.open = {
+        jqtest: function(){
+            $.hide();
+            $Sections.jqtest.section.show();
+            app.metrika.set("offers.jqtest.success", true);
+        }
+    };
+
+    $.close = function(){
+        $.hide();
+        app.metrika.set("offers.jqtest.hide", true);
     };
 
     $.hide = function(){

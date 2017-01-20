@@ -1,11 +1,11 @@
 .logotype {
     @extend .pos-abs;
     @extend .bg-cover;
-    background-image:url(/public/images/logotype_b.png);
+    @extend .logo;
     @extend .zIndex-5;
 
     &[data-color="white"]{
-        background-image:url(/public/images/logotype_w.png);
+        @extend .logo-white;
     }
 }
 @media screen and (max-height: 565px) {

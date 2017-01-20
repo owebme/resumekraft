@@ -1,0 +1,27 @@
+<section-inbox-list-blank if={ !parent.id } class="section">
+
+    <div each={ item, i in items } no-reorder class="inbox__list__item">
+        <div class="inbox__list__item__icon bg-{ parent.colors[i] }"></div>
+        <div class="inbox__list__item__container">
+            <div class="inbox__list__item__date">
+                <div class="w30 h15 bg-gray opacity-30 borderRadius-l"></div>
+            </div>
+            <div class="inbox__list__item__title">
+                <div class="w70p h20 bg-gray opacity-30 borderRadius-l mb-xs"></div>
+            </div>
+            <div class="inbox__list__item__text">
+                <div class="w70p h10 bg-gray opacity-30 borderRadius-l mb-xxs"></div>
+                <div class="w90p h10 bg-gray opacity-30 borderRadius-l mb-xxs"></div>
+                <div class="w80p h10 bg-gray opacity-30 borderRadius-l"></div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    this.items = _.range(1, 5);
+    this.colors = ['blue', 'pink', 'emerald', 'blueLight'];
+
+</script>
+
+</section-inbox-list-blank>

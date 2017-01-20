@@ -1,13 +1,13 @@
 <resume-stat-offer class="oScreen { showAnim : animate } zIndex-5" data-open="{ active }">
 
-    <div onClick={ hide } class="button__close" data-color="white"></div>
+    <div onClick={ hide } onUpdate="none" class="button__close" data-color="white"></div>
 
     <div class="pos-centered">
         <div class="container pt-xl">
             <div class="row mb-l">
                 <h1 class="c-white mb-xl anim anim-scale">Хотите просматривать статистику?</h1>
                 <div class="pt-xs anim anim-scale anim-delay-m">
-                    <button onClick={ open.payment } class="btn btn-xxl btn-white-hover">Да, хочу</button>
+                    <button onClick={ open.plan } onUpdate="none" class="btn btn-xxl btn-white-hover">Да, хочу</button>
                 </div>
             </div>
             <div class="row pt-m mb-l">
@@ -24,7 +24,7 @@
             </div>
             <div class="row">
                 <div class="anim anim-scale anim-delay-l">
-                    <p class="c-white fontSize-20 opacity-60">Для просмотра статистики вам нужен premium аккаунт</p>
+                    <p class="c-white fontSize-20 opacity-60">Для просмотра статистики вам нужен <strong>Premium</strong> аккаунт</p>
                 </div>
             </div>
         </div>
@@ -45,15 +45,19 @@
                 animate: true
             })
         });
+        app.metrika.set("stat.show", true);
     };
 
     $.hide = function(){
         $.parent.hide();
+        app.metrika.set("stat.hide", true);
     };
 
     $.open = {
-        payment: function(){
+        plan: function(){
+            $.hide();
             $Sections.plan.show("premium");
+            app.metrika.set("stat.success", true);
         }
     };
 

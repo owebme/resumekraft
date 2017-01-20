@@ -73,9 +73,7 @@
 
         // if (!app.device.isPhone){
         //     _.onEndTransition($.content, function(){
-        //         $Tutorial.show($$($.scope.root), "resumeBasic", {
-        //             animate: false
-        //         });
+        //         $Tutorial.show($$($.scope.root), "resumeBasic");
         //     });
         // }
     });
@@ -92,23 +90,26 @@
         },
         preview: function(){
             $.sections.preview.show();
+            app.metrika.set("resume.create.control.preview", true);
         },
         photoUpload: function(){
             $.sections.photo.show(function(image){
                 $resume.select("photo").set(image);
                 $.sections.preview.template.update();
             });
+            app.metrika.set("resume.create.control.photoUpload", true);
         },
         design: {
             basic: function(){
                 $Sections.resume.select.show("basic");
+                app.metrika.set("resume.create.control.design", true);
             },
             premium: function(){
                 $Sections.resume.select.show("premium");
             }
         },
         print: function(){
-
+            app.metrika.set("resume.create.control.print", true);
         },
         settings: function(){
             $.sections.settings.show();
@@ -148,6 +149,8 @@
                     oReq.send();
                 }
             });
+
+            app.metrika.set("resume.create.control.pdf", true);
         }
     };
 

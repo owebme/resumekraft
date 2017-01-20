@@ -15,8 +15,7 @@ var config          = require('./libs/config'),
     memoryStore     = session.MemoryStore,
     deflate         = require('permessage-deflate'),
     underscore      = require('underscore'),
-    MobileDetect    = require('mobile-detect');
-//var generate = require('./generate');
+    device          = require('express-device');
 
 var app = express();
 app.express = express;
@@ -52,6 +51,7 @@ app.use(favicon(path.join(__dirname, '/', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json({limit: '2mb'}));
 app.use(bodyParser.urlencoded({ limit: '2mb', extended: false }));
+app.use(device.capture());
 app.use(session({
     secret: config.get('session:secret'),
 	key: config.get('session:key'),
@@ -70,10 +70,13 @@ app.appClient = {
     isServer: true
 }
 app.use(function(req, res, next) {
-    app.device = new MobileDetect(req.headers['user-agent']);
+    app.device = {
+        type: req.device.type,
+        isMobile: req.device.type.match(/tablet|phone/) ? true : false
+    };
     app.appClient.device = app.device;
     app.appClient.user = req.session.user;
-    app.debug = req.query.debug ? req.query.debug : false;
+    app.device.type = req.query.debug ? req.query.debug : app.device.type;
     next();
 });
 

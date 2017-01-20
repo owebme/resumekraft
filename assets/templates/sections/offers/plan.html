@@ -66,6 +66,7 @@
             active: true
         })
         $.animate.show();
+        app.metrika.set("offers.plan.show", true);
     };
 
     $.open = {
@@ -73,9 +74,11 @@
             $.hide(function(){
                 $Sections.resume.select.show("basic");
             });
+            app.metrika.set("offers.plan.basic", true);
         },
         promoPremium: function(){
             $Sections.overview.premium.show();
+            app.metrika.set("offers.plan.premium", true);
         }
     };
 

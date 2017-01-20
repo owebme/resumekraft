@@ -1,6 +1,6 @@
-<home-functions class="screen home__functions rellax zIndex-1" data-rellax-speed="2">
+<home-functions class="screen home__functions zIndex-1">
 
-    <div class="screen__content container rellax" data-rellax-speed="1.4">
+    <div class="screen__content container">
         <div class="home__functions__items row">
             <div class="col-xs-12 col-sm-8 col-md-6 mb-xl xs-mb-l anim-group1 anim-showLeft">
                 <div class="overview__functions__item">
@@ -31,13 +31,13 @@
             <div class="col-xs-12 col-sm-8 col-md-6 mb-xl xs-mb-l anim-group1 anim-showRight anim-delay-s">
                 <div class="overview__functions__item">
                     <div class="overview__functions__item__icon">
-                        <icon-play size="xl" color="blue"></icon-play>
+                        <icon-diamond size="xl" color="blue"></icon-diamond>
                     </div>
                     <div class="overview__functions__item__title">
-                        Презентация
+                        Новый формат
                     </div>
                     <div class="overview__functions__item__text">
-                        Резюме в виде презентации на PREMIUM аккаунте
+                        Новый формат резюме в виде презентации на Premium аккаунте
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                         Статистика
                     </div>
                     <div class="overview__functions__item__text">
-                        Статистика по дням, посещения резюме
+                        Подробная статистика по дням, посещения вашего резюме
                     </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                         Стильный дизайн
                     </div>
                     <div class="overview__functions__item__text">
-                        Яркие и стильный дизайн на выбор, легко сменить и настроить
+                        Яркие и стильные цвета на выбор, легко сменить и настроить
                     </div>
                 </div>
             </div>

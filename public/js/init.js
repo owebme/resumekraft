@@ -5,5 +5,9 @@
     });
 
     app.sections.init();
+    app.metrika = new app.plugins.metrika({
+        key: "public",
+        data: app.metrics.public
+    });
 
 })();

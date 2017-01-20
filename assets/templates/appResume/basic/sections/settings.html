@@ -87,6 +87,7 @@
         $.update({
             active: true
         })
+        app.metrika.set("resume.create.settings.show", true);
     };
 
     $.open = {
@@ -124,6 +125,7 @@
                     }
                 }
             });
+            app.metrika.set("resume.create.settings." + i, true);
         }
         $.update();
     };
@@ -133,6 +135,7 @@
             $.config.set($.store);
             $.update();
         });
+        app.metrika.set("resume.create.settings.hide", true);
     };
 
     $.onSave = function(){

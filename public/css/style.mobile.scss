@@ -15,13 +15,14 @@
 @import '../../assets/css/ui/basic/textarea';
 @import '../../assets/css/ui/basic/select';
 @import '../../assets/css/ui/basic/checkbox';
+@import '../../assets/css/ui/basic/switcher';
 @import '../../assets/css/ui/basic/balloon';
 @import '../../assets/css/ui/basic/balloonError';
 @import '../../assets/css/ui/basic/loader';
 @import '../../assets/css/ui/basic/notify';
 @import '../../assets/css/ui/button';
-@import '../../assets/css/ui/basic/loader';
 @import '../../assets/css/ui/spinner';
+@import '../../assets/css/ui/logotype';
 @import '../../assets/css/states/fontSize';
 @import 'mobile/ui/menu';
 @import 'mobile/ui/logotype';
@@ -31,7 +32,7 @@
 @import 'mobile/main';
 
 // auth
-// @import 'mobile/auth';
+@import 'mobile/auth';
 
 // home
 @import 'mobile/home/home';

@@ -1,0 +1,57 @@
+<offer-welcome class="oScreen zIndex-3 { showAnim : active }" data-color="blue" data-open={ active }>
+
+    <div class="pos-centered">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-22 centered c-white anim anim-scale-ease" duration-show="none" duration-hide="s">
+                    <h1 class="mb-m">Мы приветствуем Вас и рады помочь</h1>
+                    <h3 class="fontWeight-normal mb-l">Предлагаем начать обзор функционала с главного экрана интерфейса</h3>
+                    <div class="opacity-70 fontSize-15 letterSpacing-5-5 text-uppercase mb-l">Это займет менее 1 минуты</div>
+                    <div onClick={ showTutorial } class="btn btn-xxl btn-white-hover mlr-xs">Начать</div>
+                    <div onClick={ hide } class="btn btn-xxl btn-white-hover mlr-xs">Потом</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.on("before-mount", function(){
+        $.active = true;
+        app.metrika.set("offers.welcome.show", true);
+    });
+
+    $.one("tutorialHide", function(){
+        app.metrika.set("offers.welcome.tutorial.hide", true);
+    });
+
+    $.one("tutorialSuccess", function(){
+        app.metrika.set("offers.welcome.tutorial.success", true);
+    });
+
+    $.showTutorial = function(){
+        $.active = false;
+        $Sections.resume.list.start(function(){
+            $Tutorial.show($rootScope, "resumeList", {
+                triggers: {
+                    tag: $,
+                    hide: "tutorialHide",
+                    success: "tutorialSuccess"
+                }
+            });
+        })
+        app.metrika.set("offers.welcome.tutorial.show", true);
+        app.metrika.set("offers.welcome.success", true);
+    };
+
+    $.hide = function(){
+        $.active = false;
+        $Sections.resume.list.start();
+        app.metrika.set("offers.welcome.hide", true);
+    };
+
+</script>
+
+</offer-welcome>

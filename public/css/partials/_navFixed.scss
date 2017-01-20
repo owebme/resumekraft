@@ -25,13 +25,16 @@ $navHeightSmall: 60px;
         transition:all 0.4s $cubic28;
     }
     &[data-fixed="true"]{
+        @include accelerate();
         @extend .pos-fixed;
         @extend .t0;
         @extend .l0;
         background-color:rgba(#fff,.97);
         height:$navHeightSmall;
         @extend .boxShadow-close;
+        @extend .willChange-transform;
         border-bottom-color:transparent;
+        transition:transform .5s;
         // box-shadow:0 0 12px rgba(28,28,28,.25);
         // box-shadow:5px 8.66px 30px 0 rgba(31,35,37,.078);
 
@@ -88,5 +91,8 @@ $navHeightSmall: 60px;
                 }
             }
         }
+    }
+    &[data-hidden="true"]{
+        transform:translate3d(0, -100%, 0);
     }
 }

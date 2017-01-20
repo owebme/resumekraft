@@ -10,7 +10,10 @@ app.fetch.API.getDataInit = function(){
             $store.data = new Baobab(res.data ? res.data : []);
             $store.inbox = new Baobab(res.inbox ? res.inbox : []);
 
-            console.dir(res);
+            app.metrika = new app.plugins.metrika({
+                key: "private",
+                data: app.metrics.private
+            });
 
             resolve(res);
         });

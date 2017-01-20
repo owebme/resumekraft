@@ -1,4 +1,8 @@
-<section-auth class="oScreen zIndex-100 pos-fixed" data-open={ active }>
+<section-auth class="{ app.device.isPhone ? 'section' : 'oScreen' } zIndex-100 pos-fixed" data-open="false">
+
+    <div if={ app.device.isPhone } class="oScreen__buttons" data-pos="top-right">
+        <div onClick={ close } class="button__close" data-color="gray"></div>
+    </div>
 
     <auth-signin></auth-signin>
 
@@ -14,22 +18,30 @@
 
     $.on("mount", function(){
         if (location.href.match(/\?signin/)){
-            setTimeout(function(){
+            $afterlag.run(function(){
                 $.open("signin");
-            }, 5);
+            });
         }
+        else if (location.href.match(/\?signup/)){
+            $afterlag.run(function(){
+                $.open("signup");
+            });
+        }
+        $.notify = app.tag("section-notify");
     });
 
-    $.open = function(section){
+    $.open = function(section, param){
         $.active = true;
+        $.root.setAttribute("data-open", true);
         var modal = $.tags["auth-" + section];
-        if (modal && modal.open) modal.open();
-        $.update();
+        if (modal && modal.open) modal.open(param);
     };
 
     $.close = function(){
-        $.active = false;
-        $.update();
+        $.root.setAttribute("data-open", false);
+        $.update({
+            active: false
+        });
     };
 
 </script>

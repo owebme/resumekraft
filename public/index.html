@@ -21,8 +21,8 @@
     {{ content | safe }}
 
     <section-auth></section-auth>
-    <section-loader></section-loader>
     <section-notify></section-notify>
+    <section-loader></section-loader>
 
     <!--/ VENDORS /-->
     <script src="/assets/js/libs/jquery.min.js"></script>
@@ -30,8 +30,10 @@
     <script src="/assets/js/libs/modernizr.custom.js"></script>
     <script src="/assets/js/libs/fastclick.min.js"></script>
     <script src="/assets/js/libs/riot/riot+compiler.js"></script>
+    <script src="/assets/js/libs/baobab.js"></script>
     <script src="/assets/js/libs/underscore-min.js"></script>
-    <script src="/assets/js/libs/iscroll.js"></script>
+    <script src="/assets/js/libs/store.min.js"></script>
+    <!-- <script src="/assets/js/libs/iscroll.js"></script> -->
     <script src="/assets/js/libs/TweenLite-1.19.0.min.js"></script>
     <script src="/assets/js/libs/afterlag-js/dist/afterlag.min.js"></script>
 
@@ -41,8 +43,8 @@
     <script src="/public/templates/commons/modules/auth/forms/signIn.tag" type="riot/tag"></script>
     <script src="/public/templates/commons/modules/auth/forms/signUp.tag" type="riot/tag"></script>
     <script src="/public/templates/commons/modules/auth/forms/remember.tag" type="riot/tag"></script>
-    <script src="/assets/templates/modules/loader.html" type="riot/tag"></script>
     <script src="/assets/templates/modules/notify.html" type="riot/tag"></script>
+    <script src="/assets/templates/modules/loader.html" type="riot/tag"></script>
     <script src="/public/templates/commons/icons/social/icon-fb.tag" type="riot/tag"></script>
     <script src="/public/templates/commons/icons/social/icon-vk.tag" type="riot/tag"></script>
     <script src="/public/templates/commons/icons/social/icon-tw.tag" type="riot/tag"></script>
@@ -57,17 +59,23 @@
     <script src="/assets/js/components/commons/utils.js"></script>
     <script src="/assets/js/components/commons/afterlag.js"></script>
     <script src="/assets/js/components/features/premium.js"></script>
-    <script src="/assets/js/plugins/marquee.js"></script>
-    <script src="/assets/js/plugins/screens.js"></script>
+    <script src="/assets/js/components/features/navbar.js"></script>
+
+    <script src="/public/js/commons/config.js"></script>
+    <script src="/public/js/commons/metrika.js"></script>
+    <script src="/public/js/commons/sections.js"></script>
+
+    <!-- <script src="/assets/js/plugins/marquee.js"></script>
+    <script src="/assets/js/plugins/screens.js"></script> -->
     <script src="/assets/js/plugins/chartRadial.js"></script>
     <script src="/assets/js/plugins/animate.js"></script>
     <script src="/assets/js/plugins/slider.js"></script>
+    <script src="/assets/js/plugins/metrika.js"></script>
     <script src="/assets/js/plugins/scroll/scroll.Progress.js"></script>
     <script src="/assets/js/plugins/scroll/scroll.Animate.js"></script>
     <script src="/assets/js/plugins/scroll/scroll.Parallax.js"></script>
-    <!-- <script src="/assets/js/libs/rellax/rellax.js"></script> -->
     <script src="/public/js/libs/skycons/skycons.js"></script>
-    <script src="/public/js/sections.js"></script>
+
     <script src="/public/js/nav.js"></script>
     <script src="/public/js/home.js"></script>
     <script src="/public/js/premium.js"></script>

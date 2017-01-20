@@ -45,12 +45,15 @@
     }
     &[data-static="true"] {
         .screen {
+            @extend .display-block;
             @extend .pos-rel;
             @extend .opacity-100;
+            @extend .minH-100v;
         }
     }
     &[data-fixed="true"] {
         .screen {
+            @extend .display-block;
             @extend .pos-rel;
             @extend .opacity-100;
             @extend .h100v;
@@ -58,7 +61,7 @@
         }
     }
     .screens__content {
-        margin:0 -7.5px;
+        @extend .backVisible-hidden;
         @extend .willChange-transform;
     }
     .screen__content {

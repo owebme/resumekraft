@@ -2,7 +2,7 @@ module.exports = function(app){
 
     app.get('/', function(req, res) {
         var output = app.riot.render(app.tags("home"), app.appClient);
-        res.render(app.device.mobile() || app.debug == "phone" ? 'index-mobile' : 'index', {content: output});
+        res.render(app.device.type == "phone" ? 'index-mobile' : 'index', {content: output});
     });
 
     app.post('/login', app.controllers.auth.login);
@@ -22,7 +22,7 @@ module.exports = function(app){
 
     app.get('/premium/', function(req, res) {
         var output = app.riot.render(app.tags("premium"), app.appClient);
-        res.render(app.device.mobile() || app.debug == "phone" ? 'index-mobile' : 'index', {content: output});
+        res.render(app.device.type == "phone" ? 'index-mobile' : 'index', {content: output});
     });
 
     app.get('/premium/workflow', function(req, res) {
@@ -35,7 +35,7 @@ module.exports = function(app){
 
     app.get('/jq-test/', function(req, res) {
         var output = app.riot.render(app.tags("jqtest"), app.appClient);
-        res.render(app.device.mobile() || app.debug == "phone" ? 'index-mobile' : 'index', {content: output});
+        res.render(app.device.type == "phone" ? 'index-mobile' : 'index', {content: output});
     });
 
     app.get('/blog/', app.controllers.blog.index);

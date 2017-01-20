@@ -57,11 +57,18 @@
             this.firstSlide.addClass("current");
         },
 
-        show: function(){
+        show: function(callback){
 
             if (this.active) return;
 
             this.scope.addClass("showSlides");
+
+            if (_.isFunction(callback)){
+                _.onEndTransition(this.firstSlide[0], function(){
+                    callback();
+                });
+            }
+
             this.active = true;
         },
 

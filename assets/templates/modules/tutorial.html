@@ -1,21 +1,20 @@
 <section-tutorial class="tutorial" data-open="{ active }" data-animate={ false : app.device.isMobile || animate === false } active-zone="{ step.activeZone }">
 
-    <div class="tutorial__shape" name="shape" style="{ step.style }"></div>
+    <div class="tutorial__shape" name="shape" style="{ step.style }" data-figure={ step.figure }></div>
 
     <div name="msgBox" class="tutorial__message__wrapper" style="{ message.style }">
         <div name="msgElem" class="tutorial__message" data-position="{ message.position }" data-active="false">
-            <p class="pos-tr p-m c-grayLight fontSize-m">Шаг { num } из { steps.get().length }</p>
+            <p class="pos-tr p-m c-grayLight fontSize-m { display-none : !nav.steps }">Шаг { num } из { steps.get().length }</p>
             <div class="tutorial__message__title">{ message.title }</div>
             <p class="tutorial__message__text">{ message.text }</p>
-            <div class="fontSize-0">
-                <button onClick={ nextStep } onUpdate="none" class="btn btn-m { endShow ? 'btn-success' : 'btn-default-hover-success' } mr-xs">
-                    <svg if={ endShow } class="btn-svg btn-svg-repeat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+            <div class="fontSize-0 { display-none : !nav.buttons.success && !nav.buttons.cancel }">
+                <button onClick={ nextStep } onUpdate="none" class="btn btn-{ nav.buttons.success.size ?  nav.buttons.success.size : 'm' } { nav.buttons.success.title ? 'btn-success' : (endShow ? 'btn-success' : 'btn-default-hover-success') } mr-xs">
+                    <svg if={ endShow && nav.buttons.success === true } class="btn-svg btn-svg-repeat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
                         <path class="fill-white" d="M 39.78125 5.96875 A 2.0002 2.0002 0 0 0 38 8 L 38 12.5625 C 34.722701 9.1373523 30.10346 7 25 7 C 15.082241 7 7 15.082241 7 25 A 2.0002 2.0002 0 1 0 11 25 C 11 17.243759 17.243759 11 25 11 C 28.816123 11 32.256876 12.535728 34.78125 15 L 31 15 A 2.0002 2.0002 0 1 0 31 19 L 40 19 L 42 19 L 42 17 L 42 8 A 2.0002 2.0002 0 0 0 39.96875 5.96875 A 2.0002 2.0002 0 0 0 39.78125 5.96875 z M 40.78125 22.96875 A 2.0002 2.0002 0 0 0 39 25 C 39 32.757363 32.756392 39 25 39 C 21.184399 39 17.742551 37.46305 15.21875 35 L 19 35 A 2.0002 2.0002 0 1 0 19 31 L 10 31 L 8 31 L 8 33 L 8 42 A 2.0002 2.0002 0 1 0 12 42 L 12 37.4375 C 15.276425 40.860887 19.895994 43 25 43 C 34.917608 43 43 34.918637 43 25 A 2.0002 2.0002 0 0 0 40.96875 22.96875 A 2.0002 2.0002 0 0 0 40.78125 22.96875 z"></path>
                     </svg>
-                    { endShow ? 'Повторить' : 'Далее' }
+                    { nav.buttons.success.title ? nav.buttons.success.title : (endShow ? 'Повторить' : 'Далее') }
                 </button>
-                <!-- <button onClick={ hide } class="btn btn-m btn-primary-hover">{ endShow ? 'Перейти к выбору' : 'Закрыть помощник' }</button> -->
-                <button onClick={ hide } class="btn btn-m btn-primary-hover">Закрыть помощник</button>
+                <button onClick={ hide } onUpdate="none" class="btn btn-m btn-primary-hover { display-none : nav.buttons.cancel === false }">{ endShow ? 'Перейти к интерфейсу' : 'Закрыть помощник' }</button>
             </div>
         </div>
     </div>
@@ -26,6 +25,7 @@
 
     $.active = false;
     $.ready = false;
+    $.animate = true;
     $.steps = new Baobab([]).root;
     $.borderColor = "#265cdc";
 
@@ -68,13 +68,19 @@
     $.reset = function(){
         $.start = false;
         $.scope = null;
-        $.animate = true;
         $.message = {
             active: false,
             style: "clear:both",
             position: null,
             title: null,
             text: null
+        };
+        $.nav = {
+            steps: true,
+            buttons: {
+                success: true,
+                cancel: true
+            }
         };
         $.cursor = null;
         $.target = null;
@@ -84,9 +90,23 @@
             style: "clear:both"
         };
         $.endShow = false;
+
+        if ($.actions.events){
+            _.each($.actions.events, function(item){
+                if (item.event && item.elem){
+                    item.elem.off(item.event);
+                }
+            });
+            $.actions.events = [];
+        }
+        else {
+            $.actions.events = [];
+        }
     };
 
     $.show = function(scope, tutorial, options){
+        if (app.device.isPhone) return;
+
         if (app.plugins.tutorial[tutorial]){
 
             $.start = true;
@@ -222,6 +242,8 @@
             style = "-webkit-transform: translateX(" + centerXMinusHalfSize + "px) translateY(" + centerYMinusHalfSize + "px) translateZ(0) scale(" + scaleFactor + "); transform: translateX(" + centerXMinusHalfSize + "px) translateY(" + centerYMinusHalfSize + "px) translateZ(0) scale(" + scaleFactor + "); width: " + arbitrarySize + "px; height: " + arbitrarySize + "px; box-shadow: inset 0 0 0 " + borderSize + "px " + $.borderColor + ", inset 0 0 " + shadowSize + "px rgba(0,0,0,0.4); border-radius: " + circleBorderRadius + "px";
         }
 
+        $.navigate.render();
+
         $.step.style = style;
         $.targetWidth = width;
         $.targetHeight = height;
@@ -256,6 +278,18 @@
                     iterations: force ? 0 : 5,
                 });
             }
+            else if (step.actions.click){
+                var $elem = step.actions.click.elem == "self" ? $target : $target.find(step.actions.click.elem);
+                if ($elem && _.isFunction(step.actions.click.callback)){
+                    $elem.one("click.tutorial", function(){
+                        step.actions.click.callback($, $target);
+                    });
+                    $.actions.events.push({
+                        event: "click.tutorial",
+                        elem: $elem
+                    });
+                }
+            }
         }
     };
 
@@ -268,14 +302,36 @@
                 }
             });
         },
+        render: function(){
+            $.nav = {
+                steps: true,
+                buttons: {
+                    success: true,
+                    cancel: true
+                }
+            };
+
+            if ($.step.nav){
+                if ($.step.nav.buttons === false){
+                    $.step.nav.buttons = {
+                        buttons: {
+                            success: false,
+                            cancel: false
+                        }
+                    }
+                }
+                $.nav = _.extend($.nav, $.step.nav);
+            }
+        },
         destroy: function(){
             app.$dom.document.off("keydown.tutorial");
         }
     };
 
     $.hide = function(){
-        $.active = false;
-
+        $.update({
+            active: false
+        })
         _.onEndTransition($.root, function(){
             $.reset();
             $.update();

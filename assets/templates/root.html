@@ -2,36 +2,41 @@
 
     <resume-list if={ !app.device.isPhone }></resume-list>
     <resume-list-mobile if={ app.device.isPhone }></resume-list-mobile>
-    <section-plan if={ !app.device.isPhone }></section-plan>
-    <section-plan-mobile if={ app.device.isPhone }></section-plan-mobile>
     <resume-edit></resume-edit>
     <resume-select></resume-select>
     <section-notify></section-notify>
     <section-alert></section-alert>
     <section-tutorial></section-tutorial>
+    <section-jqtest></section-jqtest>
+    <section-payment></section-payment>
+    <section-plan if={ !app.device.isPhone }></section-plan>
+    <section-plan-mobile if={ app.device.isPhone }></section-plan-mobile>
 
     <app-sections>
         <resume-stat></resume-stat>
         <section-menu></section-menu>
         <section-inbox></section-inbox>
 
-        <offer-plan></offer-plan>
-        <offer-votes></offer-votes>
-        <offer-jqtest></offer-jqtest>
-
-        <overview-premium></overview-premium>
-        <overview-jqtest></overview-jqtest>
-        <overview-functions></overview-functions>
-
         <section-profile></section-profile>
         <section-profile-data></section-profile-data>
         <photo-upload></photo-upload>
-        <section-jqtest></section-jqtest>
-
         <section-loader></section-loader>
 
         <ui-dropmenu></ui-dropmenu>
     </app-sections>
+
+    <app-offers>
+        <offer-welcome></offer-welcome>
+        <offer-plan></offer-plan>
+        <offer-votes></offer-votes>
+        <offer-jqtest></offer-jqtest>
+    </app-offers>
+
+    <app-overviews>
+        <overview-premium></overview-premium>
+        <overview-jqtest></overview-jqtest>
+        <overview-functions></overview-functions>
+    </app-overviews>
 
 <script>
 
@@ -42,18 +47,22 @@
 
     this.on("mount", function(){
 
+        $store.resume.set($store.data.get(0));
+
         $Sections = {
             profile: {
                 section: $root.tags["section-profile"],
                 data: $root.tags["section-profile-data"]
             },
             resume: {
+                navbar: $root.tags["resume-list"].tags["resume-navbar"],
                 list: app.device.isPhone ? $root.tags["resume-list-mobile"] : $root.tags["resume-list"],
                 edit: $root.tags["resume-edit"],
                 stat: $root.tags["resume-stat"],
                 select: $root.tags["resume-select"]
             },
             offers: {
+                welcome: $root.tags["offer-welcome"],
                 plan: $root.tags["offer-plan"],
                 jqtest: $root.tags["offer-jqtest"],
                 votes: $root.tags["offer-votes"]
@@ -71,6 +80,7 @@
             },
             plan: app.device.isPhone ? $root.tags["section-plan-mobile"] : $root.tags["section-plan"],
             inbox: $root.tags["section-inbox"],
+            payment: $root.tags["section-payment"],
             menu: $root.tags["section-menu"],
             photoUpload: $root.tags["photo-upload"]
         };
@@ -81,7 +91,13 @@
         $Alert = $root.tags["section-alert"];
         $DropMenu = $root.tags["ui-dropmenu"];
 
-        app.$dom.body.removeClass("appLoading");
+        // $Tutorial.update({
+        //     animate: false
+        // });
+        $afterlag.xs(function(){
+            app.$dom.body.removeClass("appLoading");
+            $root.trigger("ready");
+        });
     });
 
     this.focus = function(value){
@@ -89,6 +105,9 @@
     };
 
     this.on("before-mount", function(){
+
+        //$store.inbox.set([]);
+
         if (app.config.changeStyles){
             app.plugins.styles.init({
                 elem: "#styles",

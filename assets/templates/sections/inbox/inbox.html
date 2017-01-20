@@ -1,6 +1,6 @@
-<section-inbox class="oScreen { showAnim : active }" data-open={ active }>
+<section-inbox class="oScreen { showAnim-group1 : active }" data-open={ active }>
 
-    <div class="anim anim-rl" data-duration="l" delay-show="m">
+    <div class="anim-group1 anim-rl" data-duration="l" delay-show="m">
         <div class="button__close" data-color="white"></div>
     </div>
 
@@ -8,34 +8,18 @@
         <div class="container">
             <div class="row">
                 <div name="wrapper" class="col-md-20 centered">
-                    <div class="inbox anim anim-bt-ease" duration-show="s" duration-hide="xs" delay-show="xs">
+                    <div name="popup" class="inbox anim-group1 anim-bt-ease" duration-show="s" duration-hide="xs" delay-show="xs">
                         <div class="row">
                             <div class="col-md-8">
-                                <div name="list" class="inbox__list">
+                                <div name="listEl" class="inbox__list">
                                     <div class="inbox__list__scroll">
-                                        <div onClick={ onSelect } each={ item, i in _.sortByDate($store.inbox.get(), "create", "desc") } no-reorder class="inbox__list__item" data-new={ item.new } data-active={ id == item._id }>
-                                            <div class="inbox__list__item__icon bg-{ item.color }">{ item.title.charAt(0) }</div>
-                                            <div class="inbox__list__item__container">
-                                                <div class="inbox__list__item__date">{ get.date(item.create) }</div>
-                                                <div class="inbox__list__item__title">{ item.title }</div>
-                                                <div class="inbox__list__item__text">{ item.text }</div>
-                                            </div>
-                                        </div>
+                                        <section-inbox-list></section-inbox-list>
+                                        <section-inbox-list-blank></section-inbox-list-blank>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-16">
-                                <div name="content" class="inbox__content">
-                                    <div class="inbox__content__scroll">
-                                        <div class="inbox__content__title">{ $store.inbox.get({'_id': id}).title }</div>
-                                        <div class="inbox__content__resume__title">{ $store.data.get({'_id': $store.inbox.get({'_id': id}).resumeId}).post }</div>
-                                        <div class="inbox__content__email">
-                                            <a target="_blank" class="inbox__content__email__link" href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to={ $store.inbox.get({'_id': id}).from }">{ $store.inbox.get({'_id': id}).from }</a>
-                                        </div>
-                                        <div class="inbox__content__text">{ $store.inbox.get({'_id': id}).text }</div>
-                                    </div>
-                                    <div class="inbox__content__date">{ moment($store.inbox.get({'_id': id}).create).format('D MMMM') } в { moment($store.inbox.get({'_id': id}).create).format('HH:mm') }</div>
-                                </div>
+                                <section-inbox-content></section-inbox-content>
                             </div>
                         </div>
                     </div>
@@ -44,12 +28,11 @@
         </div>
     </div>
 
+    <inbox-offer></inbox-offer>
 
 <script>
 
     var $ = this;
-
-    // $.active = true;
 
     $.viewedList = [];
 
@@ -58,11 +41,17 @@
         content: null
     };
 
+    $.on("before-mount", function(){
+        $.list = $.tags["section-inbox-list"];
+        $.content = $.tags["section-inbox-content"];
+        $.offer = $.tags["inbox-offer"];
+    });
+
     $.on("mount", function(){
         $afterlag.run(function(){
-            $.scroll.list = new app.plugins.scroll.content($.list);
+            $.scroll.list = new app.plugins.scroll.content($.listEl);
             $.scroll.list.init();
-            $.scroll.content = new app.plugins.scroll.content($.content);
+            $.scroll.content = new app.plugins.scroll.content($.content.root);
             $.scroll.content.init();
             //$.show();
         });
@@ -70,15 +59,31 @@
 
     $.show = function(id){
         if (id) $.id = id;
-        if (!$.id) $.id = _.sortByDate($store.inbox.get(), "create", "desc")[0]._id;
+        if (!$.id){
+            var items = _.sortByDate($store.inbox.get(), "create", "desc");
+            if (items.length){
+                $.id = items[0]._id;
+            }
+        }
 
-        $.onViewed($.id);
+        if ($account.get('plan') == 'premium'){
+            $.onViewed($.id);
+        }
 
-        $.update({
-            active: true
-        })
+        if (!$store.inbox.get({'_id': $.id})){
+            $.id = null;
+        }
+
+        $.active = true;
+        $.update();
         $.scroll.list.refresh();
         $.scroll.content.refresh();
+
+        if ($account.get('plan') != 'premium'){
+            _.onEndTransition($.popup, function(){
+                $.offer.show();
+            });
+        }
     };
 
     $.get = {
@@ -90,11 +95,6 @@
                 return moment(date).format('D MMM');
             }
         }
-    };
-
-    $.onSelect = function(){
-        $.id = this.item._id;
-        $.onViewed($.id);
     };
 
     $.onViewed = function(id){
@@ -113,7 +113,8 @@
     $.hide = function(){
         $.update({
             active: false
-        })
+        });
+
         if ($.viewedList.length){
             $Sections.resume.list.update();
         }

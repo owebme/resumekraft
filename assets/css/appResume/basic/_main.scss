@@ -1,6 +1,9 @@
 html, body {
     @extend .overflow-hidden;
 }
+.screens__content {
+    transform-style:flat;
+}
 .resumeBasic {
     .title {
         @extend .pos-abs;
@@ -31,7 +34,7 @@ html, body {
     .content {
         width:780px;
         @extend .text-right;
-        padding:215px 0;
+        padding:215px 0 17.5vh;
 
         &[data-content="commons"]{
             .d-tablet.r-portrait & {
@@ -43,16 +46,17 @@ html, body {
         }
         &[data-content="education"],
         &[data-content="jobs"]{
-            padding:245px 7.5px 215px;
+            padding-top:245px;
+            padding-left:7.5px;
+            padding-right:7.5px;
 
             .d-tablet.r-portrait & {
                 width:620px;
-                padding:225px 0 145px;
+                padding-top:225px;
             }
             .d-phone & {
                 @extend .pt-l;
                 @extend .mt-s;
-                padding-bottom:105px;
             }
             .btn-l2 {
                 .d-phone & {
@@ -61,16 +65,19 @@ html, body {
                 }
             }
         }
+        &[data-content="settings"]{
+            @extend .p0;
+        }
         .d-tablet.r-landscape & {
             width:750px;
         }
         .d-tablet.r-portrait & {
             width:700px;
-            padding:195px 0 215px;
+            padding-top:195px;
         }
         .d-phone & {
             @extend .w100p;
-            padding:0 20px 105px;
+            padding:0 20px 100px;
         }
         h2, h3 {
             .d-phone & {
@@ -363,17 +370,13 @@ html, body {
                 @extend .b-l;
             }
             .d-phone & {
-                left:-200px;
-
-                &:after {
-                    @extend .opacity-50;
-                }
+                @extend .display-none;
             }
         }
     }
     .ui-scroll__bar,
     .ui-scroll__handle__inner {
-    	@extend .bg-blue;
+    	@extend .bg-green;
     }
     .ui-scroll:after {
         @extend .content-empty;

@@ -1,0 +1,174 @@
+.payment {
+    @extend .h80v;
+    @extend .c-white;
+    @extend .text-left;
+    @extend .userSelect-none;
+
+    &__list {
+        @include flex("column", "center", "flex-start");
+        @extend .w100p;
+        @extend .h80v;
+        @extend .trX--m;
+
+        &__title {
+            @extend .h2;
+            @extend .ml0;
+            @extend .mb30;
+        }
+        &__item {
+            @extend .pos-rel;
+            @extend .pt25;
+            @extend .pb25;
+            @extend .plr-l;
+            @extend .borderRadius-xl;
+            @extend .opacity-70;
+            @extend .cursor-pointer;
+            @extend .mb-m;
+            @extend .willChange-opacity;
+            transition:all 0.25s $cubic215;
+            box-shadow:inset 0 0 0 1px rgba($white,.5);
+
+            &:after {
+                @extend .content-empty;
+                @extend .pos-abs;
+                @extend .t50;
+                @extend .l100;
+                @extend .pointerEvents-none;
+                margin-top:-25px;
+                border-top-width:25px;
+                border-bottom-width:25px;
+                border-left-width:15px;
+                border-style:solid;
+                border-left-color:$white;
+                border-top-color:transparent;
+                border-bottom-color:transparent;
+                border-right:none;
+                @extend .opacity-0;
+                @extend .willChange-opacity;
+                transition:opacity 0.25s $cubic215;
+            }
+            &:hover {
+                @extend .opacity-100;
+                box-shadow:inset 0 0 0 1px rgba($white,.7);
+            }
+            &__title {
+                @extend .fontSize-24;
+                @extend .fontWeight-8;
+                @extend .pb-xxs;
+            }
+            &__text {
+                @extend .fontSize-18;
+                @extend .opacity-80;
+            }
+            &[data-active="true"]{
+                @extend .opacity-100;
+                @extend .c-black;
+                @extend .bg-white;
+                @extend .pointerEvents-none;
+                box-shadow:inset 0 0 0 1px $white;
+
+                .payment__list__item__title {
+                    @extend .c-blue;
+                }
+                &:after {
+                    @extend .opacity-100;
+                }
+            }
+        }
+    }
+    &__content {
+        @include flex("column", "center", "center");
+        @extend .w100p;
+        @extend .h80v;
+        @extend .text-center;
+        @extend .trX-l;
+    }
+    &__info {
+        @include flex("row", "flex-start", "flex-start");
+        @extend .pos-abs;
+        @extend .t-xs;
+        @extend .l--m;
+        @extend .text-left;
+
+        &:before {
+            @extend .content-empty;
+            @extend .display-block;
+            @include ui-icon("info_white", 24px, 24px);
+            @extend .mr-s;
+        }
+        &__text {
+            @extend .w60p;
+            @extend .c-snowDark;
+            @extend .lineHeight-m;
+        }
+        strong {
+            @extend .c-white;
+            @extend .bg-blue;
+            @extend .plr-xxs;
+            @extend .borderRadius-l;
+            @extend .h20;
+            @extend .fontSize-15;
+            @extend .fontWeight-bold;
+        }
+    }
+    &__icon {
+        @extend .pos-abs;
+        @extend .t0;
+        @extend .r--l;
+        @extend .mr-xxs;
+        @extend .flex-centered;
+        width:120px;
+        height:120px;
+
+        &:before {
+            @extend .content-empty;
+            @extend .display-block;
+        }
+        &[data-icon="bankcard"]:before {
+            @include ui-icon("bankcard_white", 94px, 94px);
+        }
+        &[data-icon="yamoney"]:before {
+            @include ui-icon("wallet_white", 110px, 110px);
+        }
+        &[data-icon="mobile"]:before {
+            @include ui-icon("device_phones_white", 60px, 74px);
+        }
+    }
+    &__count {
+        @extend .pos-rel;
+        margin:0 auto 25px;
+        @extend .fontSize-64;
+        @extend .fontWeight-8;
+        @extend .letterSpacing--xxl;
+
+        &__sale {
+            @extend .flex-centered;
+            @extend .pos-abs;
+            @extend .b100;
+            @extend .l100;
+            @extend .bg-red;
+            @extend .plr-xxs;
+            @extend .borderRadius-l;
+            @extend .h20;
+            @extend .fontSize-15;
+            @extend .fontWeight-bold;
+            @extend .letterSpacing-0;
+            @extend .cursor-default;
+
+            &:empty {
+                @extend .display-none;
+            }
+        }
+    }
+    &__period {
+        @extend .mb-l;
+
+        &__title {
+            @extend .opacity-80;
+            @extend .fontSize-13;
+            @extend .text-uppercase;
+            letter-spacing:5.5px;
+            @extend .mb25;
+        }
+    }
+}

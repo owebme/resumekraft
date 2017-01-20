@@ -1,14 +1,6 @@
-.resume__list {
-    @include abs();
-    @extend .display-block;
-    @extend .bg-snow;
-    @extend .overflow-hidden;
-    @extend .zIndex-1;
-
-    .d-no-mobile & {
-        padding-top:22.6vh;
-    }
-    &__buttons {
+.resume {
+    &__navbar {
+        @extend .display-block;
         @extend .pos-abs;
         @extend .t-m;
         @extend .r-35;
@@ -19,30 +11,41 @@
             }
         }
     }
-    .main__button {
-        @extend .l-30;
-    }
-    &__title {
-        @extend .pos-abs;
-        @extend .t-l;
-        @extend .l-xl;
-        @extend .trX-l;
-        @extend .c-blue;
-        @extend .fontSize-16;
-        @extend .fontWeight-8;
-        @extend .text-uppercase;
-    }
-    &__slider {
-        @extend .pos-rel;
-        @include accelerate(true);
-        transform-origin:50% 0;
-        @extend .willChange-transform;
-        width:1190px;
-        transition:transform 0.5s $cubic40 0.1s;
+    &__list {
+        @include abs();
+        @extend .display-block;
+        @extend .bg-snow;
+        @extend .overflow-hidden;
+        @extend .zIndex-1;
 
-        &[data-hidden="true"]{
-            transform:perspective(500px) scale(0.8);
-            transition:transform 0.6s $cubic645;
+        .d-no-mobile & {
+            padding-top:22.6vh;
+        }
+        .main__button {
+            @extend .l-30;
+        }
+        &__title {
+            @extend .pos-abs;
+            @extend .t-l;
+            @extend .l-xl;
+            @extend .trX-l;
+            @extend .c-blue;
+            @extend .fontSize-16;
+            @extend .fontWeight-8;
+            @extend .text-uppercase;
+        }
+        &__slider {
+            @extend .pos-rel;
+            @include accelerate(true);
+            transform-origin:50% 0;
+            @extend .willChange-transform;
+            width:1190px;
+            transition:transform 0.5s $cubic40 0.1s;
+
+            &[data-hidden="true"]{
+                transform:perspective(500px) scale(0.8);
+                transition:transform 0.6s $cubic645;
+            }
         }
     }
 }

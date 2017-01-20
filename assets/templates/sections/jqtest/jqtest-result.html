@@ -65,6 +65,7 @@
                     if (_.isFunction(callback)){
                         callback();
                     }
+                    $root.focus("jqtest-result");
                 }
             }
         );
@@ -76,6 +77,7 @@
         })
         _.onEndTransition($.scroll[0], function(){
             $.section.unmount(true);
+            $root.focus("all");
         });
     };
 

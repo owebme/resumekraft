@@ -10,6 +10,10 @@
     @extend .zIndex-1;
     transition:visibility 0s 0.4s;
 
+    .d-phone.d-no-ios &,
+    .d-no-safari & {
+        perspective:1000px;
+    }
     &[data-show="up"],
     &[data-show="down"],
     &[data-show="left"],
@@ -92,6 +96,13 @@
         &[data-open="true"]{
             &:before {
                 background:radial-gradient(rgba(64,64,75,.9), rgba(17,17,24,.9)) rgba(34,34,40,.52);
+            }
+        }
+    }
+    &[data-color="darkLight"]{
+        &[data-open="true"]{
+            &:before {
+                background:radial-gradient(rgba(40,47,51,.5), rgba(40,47,51,.76)) rgba(40,47,51,.42);
             }
         }
     }

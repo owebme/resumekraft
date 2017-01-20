@@ -1,0 +1,50 @@
+<resume-navbar class="resume__navbar">
+
+    <div class="btn-group">
+        <button onClick={ open.jqtest } onUpdate="none" data-item="jq-test" class="btn btn-m btn-primary-hover">JQ-Тест</button>
+        <button onClick={ open.inbox } onUpdate="none" data-item="inbox" class="btn btn-m { get.newItems() > 0 ? 'btn-primary' : 'btn-primary-hover' }">
+            Обращения
+            <div class="btn-badge">{ get.newItems() }</div>
+        </button>
+        <button if={ $account.get("plan") != "premium" } onClick={ open.plan } onUpdate="none" data-item="premium" class="btn btn-m btn-primary-hover">Перейти на PREMIUM</button>
+        <button onClick={ open.payment } data-item="payment" class="btn btn-m btn-primary">Баланс: { _.numberFormat($account.get('balance'), 1, ",", ",") } ₽</button>
+        <a href="/logout" data-item="logout" class="btn btn-m btn-primary-hover">
+            <svg class="btn-svg btn-svg-exit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26">
+                <path class="btn-svg-color" d="M 0.8125 0 A 1.0001 1.0001 0 0 0 0 1 L 0 25 A 1.0001 1.0001 0 0 0 1 26 L 16 26 A 1.0001 1.0001 0 0 0 17 25 L 17 20 L 15 20 L 15 24 L 2 24 L 2 2 L 15 2 L 15 6 L 17 6 L 17 1 A 1.0001 1.0001 0 0 0 16 0 L 1 0 A 1.0001 1.0001 0 0 0 0.90625 0 A 1.0001 1.0001 0 0 0 0.8125 0 z M 20.65625 8.0625 C 20.547875 8.057125 20.44275 8.072 20.34375 8.125 C 20.14575 8.231 20.03125 8.43125 20.03125 8.65625 L 20.03125 10.96875 C 20.03125 10.96875 9.7795 11.345 9.5625 11.5 C 9.2415 11.727 9.03125 12.386 9.03125 13 C 9.03125 13.616 9.2415 14.36575 9.5625 14.59375 C 9.7795 14.74875 20.03125 15.03125 20.03125 15.03125 L 20.03125 17.34375 C 20.03125 17.57075 20.14575 17.769 20.34375 17.875 C 20.54175 17.982 20.78175 17.96975 20.96875 17.84375 C 23.38875 16.20875 25.7275 13.483 25.8125 13.375 C 25.9005 13.265 25.96875 13.135 25.96875 13 C 25.96875 12.865 25.9005 12.737 25.8125 12.625 C 25.7275 12.516 23.38875 9.79125 20.96875 8.15625 C 20.87525 8.09275 20.764625 8.067875 20.65625 8.0625 z"></path>
+            </svg>Выйти
+        </a>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.get = {
+        newItems: function(){
+            return _.where(
+                $store.inbox.get(), { "new": true }
+            ).length;
+        }
+    };
+
+    $.open = {
+        jqtest: function(){
+            $.parent.hide();
+            $Sections.jqtest.section.show(function(){
+                $.parent.show();
+            });
+        },
+        inbox: function(){
+            $Sections.inbox.show();
+        },
+        plan: function(){
+            $Sections.plan.show("premium");
+        },
+        payment: function(){
+            $Sections.payment.show();
+        }
+    };
+
+</script>
+
+</resume-navbar>

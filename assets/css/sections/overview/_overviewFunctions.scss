@@ -12,16 +12,6 @@
             @extend .flex-centered;
             @extend .w100p;
             height:148px;
-
-            .d-phone & {
-                height:124px;
-                transform:scale(0.912);
-            }
-            path, rect, polygon {
-                .d-phone & {
-                    @extend .fill-lime;
-                }
-            }
         }
         &__title {
             @extend .pos-abs;
@@ -34,10 +24,8 @@
             transition:all 0.5s $cubic22 0.3s;
             transform:translate3d(0, 0, 0);
 
-            .d-phone & {
+            .oScreen[data-color="blue"] & {
                 @extend .c-white;
-                @extend .m0;
-                font-size:23.5px;
             }
         }
         &__text {

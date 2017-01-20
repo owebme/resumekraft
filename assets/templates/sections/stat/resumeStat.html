@@ -2,7 +2,7 @@
 
     <div class="resume__stat__wrapper" name="wrapper">
 
-        <div onClick={ hide } class="button__close"></div>
+        <div onClick={ close } onUpdate="none" class="button__close"></div>
 
         <div class="resume__stat__container container">
             <div class="row">
@@ -115,16 +115,12 @@
 
         _.onEndTransition($.wrapper, function(){
             $.init();
-            //$.offer.show();
+            if ($account.get('plan') != 'premium'){
+                $.offer.show();
+            }
         });
 
         $.callback = callback;
-
-        app.$dom.document.on("keydown.closeResumeStat", function(e){
-            if (e.which == KEY.ESC){
-                $.hide();
-            }
-        });
     };
 
     $.open = {
@@ -154,12 +150,15 @@
         }
     };
 
+    $.close = function(){
+        $.hide();
+    };
+
     $.hide = function(){
         $.update({
             active: false,
             animate: false
         });
-        app.$dom.document.off("keydown.closeResumeStat");
         if (_.isFunction($.callback)) $.callback();
     };
 

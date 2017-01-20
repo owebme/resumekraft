@@ -4,7 +4,6 @@
 @import '../../assets/css/base/main';
 @import '../../assets/css/base/keyframes';
 @import '../../assets/css/base/mixins';
-@import '../../assets/css/ui/basic/balloon';
 @import 'colors';
 @import 'fonts';
 @import 'main';
@@ -12,6 +11,18 @@
 @import 'loader';
 @import 'ui';
 @import 'help';
+// @import 'icons';
+// @import '../../assets/css/ui/button';
+// @import '../../assets/css/ui/spinner';
+// @import '../../assets/css/ui/basic/balloon';
+// @import '../../assets/css/ui/basic/loader';
+// @import '../../assets/css/ui/basic/notify';
+
+// // modules
+// @import '../../assets/css/modules/oScreen';
+//
+// // auth
+// @import '../../public/css/sections/auth';
 
 // states
 @import '../../assets/css/states/states';
@@ -31,6 +42,7 @@
 @import '../../assets/css/states/boxShadow';
 @import '../../assets/css/states/border';
 @import '../../assets/css/states/opacity';
+// @import '../../assets/css/states/animations';
 @import '../../assets/css/states/transition';
 @import '../../assets/css/states/transform';
 @import '../../assets/css/states/zIndex';

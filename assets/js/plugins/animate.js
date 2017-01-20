@@ -7,6 +7,8 @@
 
         this.groups = [];
 
+        this.active = false;
+
         this.options = options;
 
         this.scope = $(scope);
@@ -70,6 +72,8 @@
 
                     if (i == 0) _this.scope.addClass("showAnim-group" + group.num);
                 });
+
+                this.active = true;
             }
         },
 
@@ -96,6 +100,8 @@
                         callback();
                     });
                 }
+
+                this.active = false;
             }
         },
 

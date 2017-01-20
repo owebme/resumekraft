@@ -308,7 +308,7 @@ var utils = (function () {
 	return me;
 })();
 
-function IScroll (el, options) {
+function IScrollStatic (el, options) {
 	var iscroll = this;
 	this.wrapper = typeof el == 'string' ? document.querySelector(el) : el;
 
@@ -400,7 +400,7 @@ function IScroll (el, options) {
 
 }
 
-IScroll.prototype = {
+IScrollStatic.prototype = {
 	version: '5.1.1',
 
 	_init: function () {
@@ -2362,12 +2362,12 @@ Indicator.prototype = {
 	}
 };
 
-IScroll.utils = utils;
+IScrollStatic.utils = utils;
 
 if ( typeof module != 'undefined' && module.exports ) {
-	module.exports = IScroll;
+	module.exports = IScrollStatic;
 } else {
-	window.IScroll = IScroll;
+	window.IScrollStatic = IScrollStatic;
 }
 
 })(window, document, Math);

@@ -1,11 +1,7 @@
 @each $icon in (
-    loading, loading_white, close, close_white, close_strong, close_strong_white,
-    minus, minus_white, plus, plus_white, plus_thin, plus_thin_white, plus_thin_black,
-    pencil, pencil_white, menu, menu_white, menu2_white, menu_lime, remove_fill_white,
-    upload_white, video_white, images_white, link_white, more_h, more_v, more_v_white,
-    back, back_white, back_lime, help, close_fill, close_fill_gray, close_fill_white, arrow_curved_white,
-    info_white, check, check_black, check_white, check_gray, check_muted, check_circle_lime, edit,
-    edit_white, share, share_white, hand_cursor_white, repeat, resume_white, feedback_white, addUser, addUser_white, time_muted
+    loading, close_strong, minus, minus_white, plus_thin, plus_thin_white,
+    menu, menu_white, back, back_white, help, close_fill, close_fill_gray, close_fill_white,
+    info_white, check, check_black, check_white, check_gray, check_muted, check_circle_lime, hand_cursor_white, repeat
 ){
     .ui-icon-#{$icon} {
         background:url('/assets/images/ui/ui-#{$icon}.svg') no-repeat 0 0 / cover;

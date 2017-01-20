@@ -15,6 +15,7 @@
             $afterlag.run(function(){
 
                 app.features.premium.init();
+                app.features.navbar.init();
 
             });
         }

@@ -1,10 +1,14 @@
-<resume-screens class="screens screens-mobile screens-desktop text-left">
+<resume-screens class="screens screens-mobile screens-desktop text-left" data-static="true">
 
-    <resume-screen-commons title="Общие данные" step="1"></resume-screen-commons>
-    <resume-screen-education title="Образование" step="2"></resume-screen-education>
-    <resume-screen-langs title="Владение языками" step="3"></resume-screen-langs>
-    <resume-screen-jobs title="Работа в компаниях" step="4"></resume-screen-jobs>
-    <resume-screen-about title="Достижения, о себе" step="5"></resume-screen-about>
+    <div class="screens__content">
+
+        <resume-screen-commons title="Общие данные" step="1"></resume-screen-commons>
+        <resume-screen-education title="Образование" step="2"></resume-screen-education>
+        <resume-screen-langs title="Владение языками" step="3"></resume-screen-langs>
+        <resume-screen-jobs title="Работа в компаниях" step="4"></resume-screen-jobs>
+        <resume-screen-about title="Достижения, о себе" step="5"></resume-screen-about>
+
+    </div>
 
 <script>
 
@@ -13,7 +17,9 @@
 
     $.on("mount", function(){
         $afterlag.run(function(){
-            $.parent.screens = $.el = new app.plugins.screens($scope);
+            $.parent.screens = $.el = new app.plugins.screens($scope, {
+                static: true
+            });
             $.el.init();
 
             $.parent.sections.steps.init();

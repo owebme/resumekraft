@@ -1,4 +1,4 @@
-app.plugins.marquee = function($frame, options){
+app.plugins.marqueeStatic = function($frame, options){
 	var settings = {
 		index: 0,
 		vertical: true,
@@ -82,7 +82,7 @@ app.plugins.marquee = function($frame, options){
 	resize();
 
 	// scroll
-	var scroll = new IScroll($frame[0], {
+	var scroll = new IScrollStatic($frame[0], {
 		disableMouse: true,
 		mouseWheel: settings.mousewheel,
 		invertWheelDirection: true,
@@ -360,7 +360,11 @@ app.plugins.marquee = function($frame, options){
 		//app.$dom.root.addClass('root_resize');
 		resize();
 		if (marquee.enabled) screens[marquee.index].$block.triggerHandler('endShow');
+		var y = scroll.y;
 		scroll.refresh();
+		if (y !== scroll.y){
+			scroll.scrollBy(0, y - scroll.y, 0);
+		}
 		marquee.refresh();
 		marquee.updateState();
 		//app.$dom.root.removeClass('root_resize');
@@ -438,7 +442,7 @@ app.plugins.marquee = function($frame, options){
 	// {fn} scroll to
 	marquee.scrollTo = function(index, duration){
 		duration = duration===undefined ? settings.duration : duration;
-		scroll.goToPage(!settings.vertical ? index : 0, settings.vertical ? index : 0, duration, IScroll.utils.ease.cubicOut);
+		scroll.goToPage(!settings.vertical ? index : 0, settings.vertical ? index : 0, duration, IScrollStatic.utils.ease.cubicOut);
 		if (duration==0) marquee.refresh();
 	};
 
@@ -448,11 +452,11 @@ app.plugins.marquee = function($frame, options){
 		duration = duration===undefined ? settings.duration : duration;
 		var remaining = (-scroll.y - screens[marquee.index].offset);
 		if (settings.vertical && remaining) {
-			scroll.scrollBy(0, Math.min(remaining, marquee.size), duration, IScroll.utils.ease.cubicOut);
+			scroll.scrollBy(0, Math.min(remaining, marquee.size), duration, IScrollStatic.utils.ease.cubicOut);
 		} else if (settings.vertical && scroll.y<=-marquee.size) {
-			scroll.scrollBy(0, marquee.size, duration, IScroll.utils.ease.cubicOut);
+			scroll.scrollBy(0, marquee.size, duration, IScrollStatic.utils.ease.cubicOut);
 		} else if (marquee.index>0) {
-			scroll.prev(duration, IScroll.utils.ease.cubicOut);
+			scroll.prev(duration, IScrollStatic.utils.ease.cubicOut);
 		}
 	};
 
@@ -462,9 +466,9 @@ app.plugins.marquee = function($frame, options){
 		duration = duration===undefined ? settings.duration : duration;
 		var remaining = (screens[marquee.index].offset + screens[marquee.index].size) - (-scroll.y + marquee.size)
 		if (remaining>marquee.size*0.1 && settings.vertical) {
-			scroll.scrollBy(0, -Math.min(remaining, marquee.size), duration, IScroll.utils.ease.cubicOut);
+			scroll.scrollBy(0, -Math.min(remaining, marquee.size), duration, IScrollStatic.utils.ease.cubicOut);
 		} else if (marquee.index<screens.length-1) {
-			scroll.next(duration, IScroll.utils.ease.cubicOut);
+			scroll.next(duration, IScrollStatic.utils.ease.cubicOut);
 		}
 	};
 

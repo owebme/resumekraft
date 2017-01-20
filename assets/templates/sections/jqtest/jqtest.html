@@ -3,7 +3,7 @@
     <div name="content" class="oScreen__section__content overflow-hidden bg-white">
 
         <div class="oScreen__section__buttons zIndex-0" data-pos="top-right">
-            <div onClick={ hide } onUpdate="none" class="button__close" data-color="gray"></div>
+            <div onClick={ close } onUpdate="none" class="button__close" data-color="gray"></div>
         </div>
 
         <jqtest-enter></jqtest-enter>
@@ -48,6 +48,12 @@
         _.onEndTransition($.content, function(){
             $.sections.enter.show();
         });
+        app.metrika.set("jqtest.show", true);
+    };
+
+    $.close = function(){
+        $.hide();
+        app.metrika.set("jqtest.hide", true);
     };
 
     $.hide = function(){

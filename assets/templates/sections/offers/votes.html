@@ -1,6 +1,8 @@
 <offer-votes class="section section-hidden bg-blue c-white pos-bl w100p ptb-xs zIndex-2 overflow-hidden" data-pos="bottom" data-short={ !app.device.isPhone } data-slow={ app.device.isPhone } data-shadow="true" data-open={ active }>
 
-    <div onClick={ hide } onUpdate="none" class="button__close small" data-color="white"></div>
+    <div onClick={ close } onUpdate="none" class="button__close small" data-color="white"></div>
+
+    <div class="pos-abs t-m l-l fontSize-16 fontWeight-bold letterSpacing-5-5 c-white text-uppercase">Спасибо</div>
 
     <div class="pos-rel p-l xs-plr-s text-center { showAnim-group1: step[0], showAnim-group2: step[1], showAnim-group3: step[2], showAnim-group4: step[3], showAnim-group5: step[4] }">
         <div class="anim-group1 anim-bt">
@@ -32,7 +34,7 @@
         </div>
         <div class="pos-centered { visibility-hidden : !step[4] }">
             <div class="anim-group5 anim-scale">
-                <textarea class="textarea textarea-xl borderRadius-xl mb-m" style="min-height:150px;"></textarea>
+                <textarea class="textarea textarea-xl borderRadius-xl mb-m" style="min-height:150px;" placeholder="Ваш комментарий"></textarea>
                 <button onClick={ comments.send } onUpdate="none" class="btn btn-xl2 btn-strong btn-white-hover mlr-s">Отправить</button>
             </div>
         </div>
@@ -118,6 +120,8 @@
                     delay: 750,
                     timeout: 1000
                 });
+                app.metrika.set("offers.votes.score", $.raiting);
+                app.metrika.set("offers.votes.success", true);
             }
         });
     });
@@ -140,6 +144,11 @@
         $.update({
             active: true
         })
+        app.metrika.set("offers.votes.show", true);
+    };
+
+    $.close = function(){
+        app.metrika.set("offers.votes.hide", true);
     };
 
     $.hide = function(){

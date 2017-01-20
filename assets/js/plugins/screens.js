@@ -54,7 +54,7 @@
                 index--;
             });
 
-            this.marquee = app.plugins.marquee(this.scope, options);
+            this.marquee = options.static ? app.plugins.marqueeStatic(this.scope, options) : app.plugins.marquee(this.scope, options);
             this.marquee.enable();
 
             this.marquee.scroll.on('scrollEnd', function(){

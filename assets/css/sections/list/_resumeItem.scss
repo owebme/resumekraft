@@ -97,6 +97,7 @@
             @extend .opacity-100;
 
             &:after {
+                @include accelerate();
                 @extend .content-empty;
                 @extend .display-block;
                 @extend .opacity-85;
@@ -104,6 +105,7 @@
                 @include ui-icon(feedback_white, 32px, 32px);
             }
             &__badge {
+                @include accelerate();
                 @extend .flex-centered;
                 @extend .pos-abs;
                 top:-2px;

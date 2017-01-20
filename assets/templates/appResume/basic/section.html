@@ -57,16 +57,19 @@
                         content: $.content
                     })[0];
                 },
-                callback: function(){
+                mount: function(){
                     $.scroll[0].style.backgroundColor = '';
                     $root.focus("resume-edit");
                 }
             }
         );
+
+        app.metrika.set("resume.create.show", true);
     };
 
     $.close = function(){
         $.section.sections.finish.show();
+        app.metrika.set("resume.create.hide", true);
     };
 
     $.hide = function(){
@@ -75,7 +78,7 @@
         })
         _.onEndTransition($.scroll[0], function(){
             $.section.unmount(true);
-            $root.focus("resume-list");
+            $root.focus("all");
         });
     };
 

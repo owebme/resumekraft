@@ -74,11 +74,11 @@
         @extend .transition-default;
 
         &__cell {
+            @extend .flex-centered;
             height:102px;
         }
         &__cover {
             @include accelerate();
-            @extend .pos-centered;
             @extend .flex-centered;
             width:48px;
             height:48px;

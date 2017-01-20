@@ -46,17 +46,17 @@
         }
     }
     &:after {
-        content:"";
+        @extend .content-empty;
         @extend .display-block;
         @extend .pos-abs;
         @extend .borderRadius-m;
-        top:50%;
+        @extend .t50;
+        @extend .pointerEvents-none;
         border-style:solid;
         border-top-color:$blue;
         border-right-color:transparent;
         border-left-color:transparent;
         border-bottom:none;
-        pointer-events:none;
     }
     &-xl {
         select {

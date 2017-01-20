@@ -1,11 +1,11 @@
 <overview-premium class="oScreen zIndex-5 { showAnim-group1 : active }" data-open={ active } data-loader={ loading } data-show="down">
 
     <div class="oScreen__buttons" data-pos="top-right">
-        <div onClick={ hide } class="button__close" data-color="gray"></div>
+        <div onClick={ close } onUpdate="none" class="button__close" data-color="gray"></div>
     </div>
 
     <div class="pos-br pr-l pb-l anim-group1 anim-scale zIndex-2" delay-show="l" delay-hide="none">
-        <button onClick={ hide } class="btn btn-l btn-upper btn-default-hover-success">Подключить</button>
+        <button onClick={ open.plan } onUpdate="none" class="btn btn-l btn-upper btn-default-hover-success">Подключить</button>
     </div>
 
     <div class="oScreen__content bg-white" name="scroll">
@@ -60,6 +60,8 @@
                     $afterlag.run(function(){
                         app.features.premium.init($.scroll, $.content);
                     });
+
+                    $root.focus("overview");
                     // tag.scroll.scrollTop($$(tag.root).find("#section").offset().top);
                 },
                 beforeUnmount: function(tag){
@@ -68,14 +70,34 @@
                 }
             }
         );
+
+        app.metrika.set("overview.premium.show", true);
     };
 
-    $.hide = function(){
+    $.open = {
+        plan: function(){
+            $.hide(function(){
+                $Sections.plan.show("premium");
+            });
+            app.metrika.set("overview.premium.success", true);
+        }
+    };
+
+    $.close = function(){
+        app.metrika.set("overview.premium.hide", true);
+    };
+
+    $.hide = function(callback){
         $.update({
             active: false
         })
         _.onEndTransition($.scroll[0], function(){
             $.section.unmount(true);
+            $root.focus("all");
+
+            if (_.isFunction(callback)){
+                callback();
+            }
         });
     };
 

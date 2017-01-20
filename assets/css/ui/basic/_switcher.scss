@@ -88,4 +88,68 @@
             background:$green;
         }
     }
+    &-group {
+        @extend .display-inlineBlock;
+        @extend .fontSize-16;
+        @extend .userSelect-none;
+
+        &-container {
+            @extend .flex-centered;
+            @include accelerate();
+            @extend .pos-rel;
+            @extend .borderRadius-xxxxl;
+            @extend .text-uppercase;
+            @extend .letterSpacing-xxl;
+            height:44px;
+            @extend .plr-xxs;
+            margin-bottom:1px;
+            box-shadow:0 0 0 1px $grayLighten;
+        }
+        input:checked {
+            + label {
+                @extend .c-white;
+                @extend .fontWeight-bold;
+                @extend .cursor-default;
+            }
+        }
+        input:nth-of-type(1){
+            @extend .pos-tl;
+            @extend .w50p;
+            @extend .h100p;
+        }
+        input:nth-of-type(2){
+            @extend .pos-tr;
+            @extend .w50p;
+            @extend .h100p;
+
+            &:checked ~ {
+                .switcher-group-switch {
+                    transform:translate3d(98%, 0, 0) scale(1.08);
+                }
+            }
+        }
+        label {
+            @extend .pos-rel;
+            @extend .display-block;
+            @extend .plr-s;
+            @extend .w50p;
+            @extend .zIndex-1;
+            @extend .cursor-pointer;
+            will-change:color;
+            transition:color 0.2s ease 0.05s;
+        }
+        &-switch {
+            @include accelerate();
+            @extend .pos-tl;
+            @extend .w50p;
+            @extend .h100p;
+            @extend .borderRadius-xxxxl;
+            @extend .bg-blue;
+            @extend .willChange-transform;
+            @extend .pointerEvents-none;
+            @include boxShadow-3d($blue);
+            transform:translate3d(0, 0, 0) scale(1.08);
+            transition:transform 0.5s $bounceForce;
+        }
+    }
 }

@@ -7,7 +7,7 @@
     <div class="oScreen__jqtest__enter__phone__left">
         <div class="anim-group1 anim-fadeIn" data-duration="xs">
             <div class="overview__phone" data-color="white" data-align="left">
-                <div style="background-image:url('/public/images/promo/jqtest/slide2_1_screen.jpg')" class="overview__phone__screen bg-cover"></div>
+                <div style="background-image:url('/public/images/promo/jqtest/slide2_1_screen.png')" class="overview__phone__screen bg-cover"></div>
             </div>
         </div>
     </div>
@@ -61,6 +61,7 @@
         },
         test: function(){
             $.parent.sections.test.show();
+            app.metrika.set("jqtest.new", true);
         }
     };
 

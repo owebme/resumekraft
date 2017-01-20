@@ -1,6 +1,6 @@
 .tutorial {
     @include accelerate(true);
-    @include abs(fixed);
+    @include abs();
     @extend .display-block;
     @extend .opacity-0;
     @extend .overflow-hidden;
@@ -93,7 +93,11 @@
     &[data-animate="false"]{
         .tutorial {
             &__shape {
-                transition:transform .0s ease .3s, height .0s ease .3s, box-shadow .0s ease .3s, border-radius .0s ease .3s;
+                transition:transform 0s .3s, height 0s .3s, box-shadow 0s .3s, border-radius 0s .3s;
+
+                &[data-figure="circle"]{
+                    border-radius:50%;
+                }
             }
             &__message {
                 transition:opacity .2s ease;

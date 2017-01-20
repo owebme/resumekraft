@@ -5,7 +5,7 @@
     upload_white, video_white, images_white, link_white, more_h, more_v, more_v_white,
     back, back_white, back_lime, help, close_fill, close_fill_gray, close_fill_white, arrow_curved_white,
     info_white, check, check_black, check_white, check_gray, check_muted, check_circle_lime, edit,
-    edit_white, share, share_white, hand_cursor_white, repeat, resume_white, feedback_white, addUser, addUser_white, time_muted
+    edit_white, share, share_white, hand_cursor_white, repeat, resume_white, feedback_white, addUser, addUser_white, time_muted, bankcard_white, wallet_white, device_phones_white
 ){
     .ui-icon-#{$icon} {
         background:url('/assets/images/ui/ui-#{$icon}.svg') no-repeat 0 0 / cover;
@@ -131,6 +131,28 @@
             height:100px;
             margin-top:-10px;
             margin-bottom:-10px;
+        }
+    }
+    &-diamond {
+        &.icon-xs {
+            width:24px;
+            height:24px;
+        }
+        &.icon-s {
+            width:32px;
+            height:32px;
+        }
+        &.icon-m {
+            width:44px;
+            height:44px;
+        }
+        &.icon-l {
+            width:64px;
+            height:64px;
+        }
+        &.icon-xl {
+            width:88px;
+            height:88px;
         }
     }
     &-chart {

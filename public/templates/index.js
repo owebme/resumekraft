@@ -26,7 +26,7 @@ module.exports = function(app) {
     app._tags.jqtestEnter = require('../../assets/templates/sections/jqtest/jqtest-enter-content.tag');
 
     app.tags = function(name){
-        if (app.device.mobile() || app.debug == "phone") return app._tags.mobile[name];
+        if (app.device.type == "phone") return app._tags.mobile[name];
         else return app._tags.default[name];
     }
 };

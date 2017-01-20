@@ -4,10 +4,13 @@
 .nativeScroll {
 	-webkit-overflow-scrolling:touch;
 }
+.backVisible-hidden {
+	backface-visibility:hidden;
+}
 .accelerate {
     // transform-style:preserve-3d;
     transform-style:flat;
-    backface-visibility:hidden;
+    @extend .backVisible-hidden;
 }
 .content-empty {
 	content:"";
@@ -28,6 +31,12 @@
 }
 .userSelect-text {
     user-select:text;
+}
+.userDrag-none {
+	user-drag:none;
+}
+.userDrag-auto {
+	user-drag:auto;
 }
 .outline-none {
     outline:none;

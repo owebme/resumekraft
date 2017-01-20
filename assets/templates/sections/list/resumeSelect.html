@@ -71,10 +71,10 @@
                                             <div class="plan__premium__icon" data-icon="control" data-balloon="Легкая настройка, редактирование в несколько кликов" data-balloon-length="large" data-balloon-fontSize="large">
                                                 <icon-control></icon-control>
                                             </div>
-                                            <div class="plan__premium__icon" data-icon="play" data-balloon="Просто оживить резюме, анимация эллементов" data-balloon-length="large" data-balloon-fontSize="large">
+                                            <div class="plan__premium__icon" data-icon="play" data-balloon="Новый формат резюме в виде презентации" data-balloon-length="large" data-balloon-fontSize="large">
                                                 <icon-play></icon-play>
                                             </div>
-                                            <div class="plan__premium__icon" data-icon="chart" data-balloon="Статистика по дням, посещения резюме" data-balloon-length="large" data-balloon-fontSize="large">
+                                            <div class="plan__premium__icon" data-icon="chart" data-balloon="Подробная статистика по дням, посещения вашего резюме" data-balloon-length="large" data-balloon-fontSize="large">
                                                 <icon-chart></icon-chart>
                                             </div>
                                             <div class="plan__premium__icon" data-icon="devices" data-balloon="100% адаптация для всех мобильных и не мобильных устройств" data-balloon-length="large" data-balloon-fontSize="large">
@@ -138,6 +138,7 @@
         $.active = true;
         $.animate = true;
         $.select.plan[plan ? plan : $.plan]();
+        app.metrika.set("resume.select.show", true);
     };
 
     $.open = {
@@ -184,6 +185,8 @@
                     $.hide(function(){
                         $Sections.resume.edit.show();
                     });
+                    app.metrika.set("resume.select.template", this.i);
+                    app.metrika.set("resume.select.success", true);
                 }
             },
             premium: function(){
@@ -202,6 +205,7 @@
                 callback();
             });
         }
+        app.metrika.set("resume.select.hide", true);
     };
 
 </script>
