@@ -1,10 +1,10 @@
 <resume-screen-jobs class="screen" data-marquee={ opts.step }>
 
-    <div class="screen__content">
+    <div class="screen__content" data-empty={ true : !$resume.get("jobs") }>
 
         <div class="title">{ opts.title }</div>
 
-        <div class="container content" data-content="jobs">
+        <div class="container content" data-content="jobs" data-editing={ true : editing }>
             <div class="pos-rel pb-l mb-xs" each={ item, i in sort($resume.select("jobs", "items").get()) } no-reorder>
                 <div class="section__num">{ i + 1 }</div>
                 <div if={ editing == item._id } onClick={ close } class="section__btn__close"></div>
@@ -22,6 +22,13 @@
             </div>
         </div>
 
+        <div onClick={ build } class="section__create" data-icon="jobs">
+            <div class="section__create__button">
+                <div class="section__create__button__opener"></div>
+            </div>
+            <div class="section__create__title">Добавить место работы</div>
+        </div>
+
     </div>
 
 <script>
@@ -31,24 +38,21 @@
     $.editing = null;
 
     $.on("updated", function(){
-        $Sections.resume.edit.section.refresh();
+        if ($Sections.resume.edit.section && $Sections.resume.edit.ready){
+            $afterlag.run(function(){
+                $Sections.resume.edit.section.refresh();
+            });
+        }
     });
 
-    $.sort = function(items){
-        return _.sortBy(items, function(item){
-			return $.get.year(item);
-		}).reverse();
-    };
+    $.build = function(){
+        $resume.select("jobs").set({
+            title: null,
+            text: null,
+            items: []
+        });
 
-    $.get = {
-        year: function(item){
-            if (item.last){
-                return new Date().getFullYear();
-            }
-            else {
-                return item.to.year;
-            }
-        }
+        $.create();
     };
 
     $.create = function(){
@@ -74,6 +78,23 @@
         );
     };
 
+    $.sort = function(items){
+        return _.sortBy(items, function(item){
+			return $.get.year(item);
+		}).reverse();
+    };
+
+    $.get = {
+        year: function(item){
+            if (item.last){
+                return new Date().getFullYear();
+            }
+            else {
+                return item.to.year;
+            }
+        }
+    };
+
     $.edit = function(){
         if ($.editing){
             $Alert.show({
@@ -96,6 +117,7 @@
         else {
             $.editing = null;
             $.update();
+            $.parent.el.nav(3);
         }
     };
 
@@ -108,7 +130,11 @@
 
     $.remove = function(){
         $resume.select("jobs", "items", {_id: this.item._id}).unset();
+        if (!$resume.get("jobs", "items").length){
+            $resume.select("jobs").set(null);
+        }
         $.editing = null;
+        $.parent.el.nav(3);
     };
 
 </script>

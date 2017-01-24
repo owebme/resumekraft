@@ -1,0 +1,120 @@
+.resumeBasic {
+    .title {
+        @extend .pos-abs;
+        @extend .c-blue;
+        @extend .fontFamily-gotham;
+        font-size:42px;
+        line-height:44px;
+        margin-left:-2px;
+        @extend .fontWeight-bold;
+        @extend .letterSpacing--xl;
+        @extend .t-l;
+        @extend .l-xl;
+        @extend .pt-s;
+        @extend .pl-l;
+
+        .d-phone & {
+            @extend .pos-rel;
+            @extend .t0;
+            @extend .l0;
+            @extend .ptb-l;
+            @extend .pl-m;
+            @extend .pr-s;
+            font-size:38px;
+            line-height:38px;
+            margin-left:3px;
+        }
+    }
+    .content {
+        width:780px;
+        @extend .text-right;
+        padding:215px 0 18.5vh;
+
+        &[data-content="commons"]{
+            .d-no-mobile & {
+                padding-bottom:22.5vh;
+            }
+            .d-tablet.r-portrait & {
+                @extend .trX--m;
+            }
+            .d-phone & {
+                @extend .pt-xs;
+                @extend .pb100;
+            }
+        }
+        &[data-content="education"],
+        &[data-content="jobs"]{
+            padding-top:245px;
+            padding-left:7.5px;
+            padding-right:7.5px;
+
+            .d-tablet.r-portrait & {
+                width:620px;
+                padding-top:225px;
+            }
+            .d-phone & {
+                @extend .pt-l;
+                @extend .mt-s;
+            }
+            .btn-l2 {
+                height:53px;
+
+                .d-phone & {
+                    padding-top:2px;
+                    @extend .pl30;
+                    @extend .pr30;
+                }
+            }
+            .btn-primary {
+                box-shadow:0 0 0 1px $blue;
+            }
+        }
+        &[data-content="languages"],
+        &[data-content="about"]{
+            .d-phone & {
+                @extend .pb-l;
+            }
+        }
+        &[data-content="settings"]{
+            @extend .p0;
+        }
+        &[data-editing="true"]{
+            @extend .pb0;
+        }
+        .d-tablet.r-landscape & {
+            width:750px;
+        }
+        .d-tablet.r-portrait & {
+            width:700px;
+            padding-top:195px;
+        }
+        .d-phone & {
+            @extend .w100p;
+            padding:0 20px 70px;
+        }
+        h2, h3 {
+            .d-phone & {
+                @extend .ml0;
+            }
+        }
+    }
+    .row-hidden {
+        @extend .pos-rel;
+        @extend .opacity-50;
+
+        &:before {
+            @extend .content-empty;
+            @extend .display-block;
+            @extend .pos-tl;
+            @extend .w100p;
+            @extend .zIndex-10;
+            height:130%;
+        }
+    }
+    .dateToNow .fontSize-22 {
+        .d-tablet.r-portrait & {
+            @extend .fontSize-0;
+            @extend .pl-m;
+        }
+    }
+}

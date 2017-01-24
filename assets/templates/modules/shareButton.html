@@ -24,7 +24,7 @@
             url: 'http://resumekraft.ru',
             share: {
                 title: function(){
-                    return $resume.get('post');
+                    return $resume.get('post') ? $resume.get('post') : app.config.share.title;
                 }
             }
         })

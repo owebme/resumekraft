@@ -3,7 +3,7 @@
     @extend .display-block;
     @extend .pos-fixed;
     @extend .zIndex-10;
-    perspective:500px;
+    @extend .perspective-500;
 
     &[data-open="true"]{
         .info-opener {

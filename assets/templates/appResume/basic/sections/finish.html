@@ -60,7 +60,7 @@
             foregroundBorderWidth: app.device.isMobile ? 8 : 9,
             backgroundBorderWidth: app.device.isMobile ? 3.5 : 4,
             percentageTextSize: 28,
-            percent: $.parent.sections.percentage.p,
+            percent: $.parent.sections.percentage ? $.parent.sections.percentage.p : 100,
             backgroundColor: 'rgba(255,255,255,.15)',
             foregroundColor: '#fff',
             fontColor: '#fff'

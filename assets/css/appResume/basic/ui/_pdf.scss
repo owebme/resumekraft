@@ -1,0 +1,15 @@
+.screen-convert-pdf {
+    .circuful {
+        width:550px;
+        height:550px;
+
+        .d-tablet.r-landscape & {
+            width:480px;
+            height:480px;
+        }
+        .d-phone & {
+            width:480px;
+            height:480px;
+        }
+    }
+}

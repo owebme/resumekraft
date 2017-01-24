@@ -1,11 +1,11 @@
 <resume-screen-education class="screen" data-marquee={ opts.step }>
 
-    <div class="screen__content">
+    <div class="screen__content" data-empty={ true : !$resume.get("education") }>
 
         <div class="title">{ opts.title }</div>
 
-        <div class="container content" data-content="education">
-            <div class="pos-rel pb-l mb-xs" each={ item, i in _.sortArray($resume.select("education", "items").get(), "year", "desc") } no-reorder>
+        <div class="container content" data-content="education" data-editing={ true : editing }>
+            <div class="pos-rel pb-l mb-xs xs-pb-m xs-mb0" each={ item, i in _.sortArray($resume.select("education", "items").get(), "year", "desc") } no-reorder>
                 <div class="section__num">{ i + 1 }</div>
                 <div if={ editing == item._id } onClick={ close } class="section__btn__close"></div>
                 <div if={ editing != item._id } onClick={ edit } class="section__btn__edit"></div>
@@ -22,6 +22,13 @@
             </div>
         </div>
 
+        <div onClick={ build } class="section__create" data-icon="education">
+            <div class="section__create__button">
+                <div class="section__create__button__opener"></div>
+            </div>
+            <div class="section__create__title">Добавить своё образование</div>
+        </div>
+
     </div>
 
 <script>
@@ -31,8 +38,22 @@
     $.editing = null;
 
     $.on("updated", function(){
-        $Sections.resume.edit.section.refresh();
+        if ($Sections.resume.edit.section && $Sections.resume.edit.ready){
+            $afterlag.run(function(){
+                $Sections.resume.edit.section.refresh();
+            });
+        }
     });
+
+    $.build = function(){
+        $resume.select("education").set({
+            title: null,
+            text: null,
+            items: []
+        });
+
+        $.create();
+    };
 
     $.create = function(){
         $.editing = _.newId();
@@ -71,6 +92,7 @@
         else {
             $.editing = null;
             $.update();
+            $.parent.el.nav(1);
         }
     };
 
@@ -83,7 +105,11 @@
 
     $.remove = function(){
         $resume.select("education", "items", {_id: this.item._id}).unset();
+        if (!$resume.get("education", "items").length){
+            $resume.select("education").set(null);
+        }
         $.editing = null;
+        $.parent.el.nav(1);
     };
 
 </script>

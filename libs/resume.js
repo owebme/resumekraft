@@ -4,7 +4,7 @@ module.exports = function(ACCOUNT_ID, create, update){
             _id: "1243242424332",
             accountId: ACCOUNT_ID,
             public: true,
-            plan: "basic",
+            plan: "free",
             template: "1",
             lang: "ru",
             post: "Web-Designer, Art-director, Illustrator",

@@ -1,6 +1,6 @@
 <resume-stat-offer class="oScreen { showAnim : animate } zIndex-5" data-open="{ active }">
 
-    <div onClick={ hide } onUpdate="none" class="button__close" data-color="white"></div>
+    <div onClick={ close } onUpdate="none" class="button__close" data-color="white"></div>
 
     <div class="pos-centered">
         <div class="container pt-xl">
@@ -45,19 +45,23 @@
                 animate: true
             })
         });
-        app.metrika.set("stat.show", true);
+        app.metrika.set("offers.stat.show", true);
+    };
+
+    $.close = function(){
+        $.hide();
+        app.metrika.set("offers.stat.hide", true);
     };
 
     $.hide = function(){
         $.parent.hide();
-        app.metrika.set("stat.hide", true);
-    };
+    };    
 
     $.open = {
         plan: function(){
             $.hide();
             $Sections.plan.show("premium");
-            app.metrika.set("stat.success", true);
+            app.metrika.set("offers.stat.success", true);
         }
     };
 

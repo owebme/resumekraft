@@ -95,7 +95,9 @@
     };
 
     $.success = function(){
-        app.metrika.set("payment.success", true);
+        app.metrika.set("payment.success", true, {
+            force: true
+        });
         return true;
     };
 

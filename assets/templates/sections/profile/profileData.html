@@ -6,18 +6,13 @@
                 <div name="wrapper" class="col-md-15 centered">
                     <div onClick={ hide } onUpdate="none" class="button__close" data-color="gray"></div>
                     <div name="content" class="pos-rel maxH-95v overflow-hidden section-scroll bg-white borderRadius-xl zIndex-1">
-                        <div class="pt70 pb100 pl45 pr45 text-left fontSize-20 c-gray willChange-transform">
-                            <div if={ firstShow } class="row">
-                                <div class="col-xs-24">
-                                    <p class="c-blue mt--m mb-l plr-l text-center">Заполнение своего профиля. Вводите свои реальные данные, в дальнейшем ваше имя и фамилию изменить будет нельзя.</p>
-                                </div>
-                            </div>
+                        <div class="pt70 pb100 pl45 pr45 text-left fontSize-20 c-gray willChange-transform" style={ 'padding-top:130px' : !$account.get("name").length || !$account.get("surname").length }>
                             <div class="row mb-m">
                                 <div class="hidden-xs col-sm-8 pt-xs pr-m">
                                     <span class="title">Имя</span>
                                 </div>
                                 <div class="col-sm-16">
-                                    <ui-input placeholder="Имя" update="name" cursor={ data.select() } size="l" disabled={ !data.select("name").length }></ui-input>
+                                    <ui-input placeholder="Имя" update="name" cursor={ data.select() } size="l" disabled={ data.get("name").length }></ui-input>
                                 </div>
                             </div>
                             <div class="row mb-m">
@@ -25,7 +20,7 @@
                                     <span class="title">Фамилия</span>
                                 </div>
                                 <div class="col-sm-16">
-                                    <ui-input placeholder="Фамилия" update="surname" cursor={ data.select() } size="l" disabled={ !data.select("surname").length }></ui-input>
+                                    <ui-input placeholder="Фамилия" update="surname" cursor={ data.select() } size="l" disabled={ data.get("surname").length }></ui-input>
                                 </div>
                             </div>
                             <div class="row mb-s">
@@ -33,19 +28,19 @@
                                     <span class="title">Дата рождения</span>
                                 </div>
                                 <div class="col-xs-8 col-sm-4">
-                                    <ui-select update="day" cursor={ data.select('birthday') } items={ _.range(1, 32) } size="l" short></ui-select>
+                                    <ui-select update="day" commit={ commit.birthday } cursor={ data.select('birthday') } items={ _.range(1, 32) } size="l" short></ui-select>
                                 </div>
                                 <div class="col-xs-16 col-sm-6 xs-mb-m">
-                                    <ui-select update="month" cursor={ data.select('birthday') } items={ $store.month.getItems() } size="l" short></ui-select>
+                                    <ui-select update="month" commit={ commit.birthday } cursor={ data.select('birthday') } items={ $store.month.getItems() } size="l" short></ui-select>
                                 </div>
                                 <div class="col-xs-24 col-sm-6">
-                                    <ui-select update="year" cursor={ data.select('birthday') } items={ _.range(1940, new Date().getFullYear() + 1) } size="l" short></ui-select>
+                                    <ui-select update="year" commit={ commit.birthday } cursor={ data.select('birthday') } items={ _.range(1940, new Date().getFullYear() + 1) } size="l" short></ui-select>
                                 </div>
                             </div>
                             <div class="row mb-m">
                                 <div class="hidden-xs col-sm-8 pr-m"></div>
                                 <div class="col-xs-24 col-sm-16 text-left pt-s">
-                                    <ui-checkbox update="hidden" cursor={ data.select('birthday') } title="Показывать только возраст" size="xl" theme="blue"></ui-checkbox>
+                                    <ui-checkbox name="birthdayHidden" update="hidden" cursor={ data.select('birthday') } title="Показывать только возраст { data.get('birthday', 'hidden') ? '(' + get.age() + ')' : '' }" size="xl" theme="blue"></ui-checkbox>
                                 </div>
                             </div>
                             <div class="row mb-l pt-xxs">
@@ -77,6 +72,12 @@
                                     <ui-input update="city" cursor={ data.select('contacts') } size="l"></ui-input>
                                 </div>
                             </div>
+                            <div class="row mb-m pb-xs">
+                                <div class="hidden-xs col-sm-8 pr-m"></div>
+                                <div class="col-xs-24 col-sm-16 text-left pt-s">
+                                    <ui-checkbox update="relocate" cursor={ data.select('contacts') } title="Возможность перезда" size="xl" theme="blue"></ui-checkbox>
+                                </div>
+                            </div>
                             <div class="row mb-m">
                                 <div class="hidden-xs col-sm-8 pt-xs pr-m">
                                     <span class="visible-md visible-lg title">Мобильный телефон</span>
@@ -86,7 +87,7 @@
                                     <ui-input update="phone" cursor={ data.select('contacts') } mask="phone" size="l"></ui-input>
                                 </div>
                             </div>
-                            <div class="row mb-l">
+                            <div class="row mb-m">
                                 <div class="hidden-xs col-sm-8 pt-xs pr-m">
                                     <span class="title">Skype</span>
                                 </div>
@@ -94,8 +95,24 @@
                                     <ui-input update="skype" cursor={ data.select('contacts') } size="l"></ui-input>
                                 </div>
                             </div>
+                            <div class="row mb30 xs-pb-xxs">
+                                <div class="hidden-xs col-sm-8 pt-xs pr-m">
+                                    <span class="title">Главный вид связи</span>
+                                </div>
+                                <div class="col-xs-24 col-sm-16">
+                                    <ui-select update="primary" cursor={ data.select('contacts') } items={ $store.contactsPrimary.get() } size="l"></ui-select>
+                                </div>
+                            </div>
                         </div>
                         <div class="pos-tl bg-gradient-tb-white w100p h80"></div>
+                        <div if={ !data.get("name").length || !data.get("surname").length } class="pos-tl zIndex-2 w100p bg-gradient-tb-white" style="height:130px">
+                            <div class="pos-abs-full bg-gradient-tb-white">
+                                <div class="pos-abs-full bg-gradient-tb-white"></div>
+                            </div>
+                            <div class="col-xs-24">
+                                <p class="c-brown pt30 plr-xl text-center fontSize-20 fontWeight-bold">Вводите свои реальные данные, в дальнейшем ваше имя и фамилию изменить будет нельзя.</p>
+                            </div>
+                        </div>
                         <div class="bg-white pos-bl text-right w100p h90 pr45 pt-s zIndex-2 borderRadiusBottom-xl">
                             <button onClick={ onSave } onUpdate="none" class="btn btn-l2 btn-success">Сохранить</button>
                             <button onClick={ hide } onUpdate="none" class="btn btn-l2 btn-primary-hover ml-xs xs-plr-m">{ firstShow ? 'Заполнить позже' : 'Отменить' }</button>
@@ -123,16 +140,52 @@
 
     $.show = function(){
         $.data.set($account.deepClone());
-        $.firstShow = true;
+        //$.firstShow = true;
         $.update({
             active: true
         })
         $.scroll.refresh();
     };
 
+    $.commit = {
+        birthday: function(){
+            if ($.birthdayHidden._tag.value){
+                $.birthdayHidden._tag.update();
+            }
+        }
+    };
+
+    $.get = {
+        age: function(){
+            var lang = 'ru',
+                b = $.data.get('birthday'),
+                years = moment().diff(moment(b.year + "-" + b.month + "-" + b.day), 'years');
+
+            if (years == "1") years = years + (lang == "ru" ? " год" : " year");
+            else if (years > 1 && years < 5) years = years + (lang == "ru" ? " года" :  "year");
+            else years = years + (lang == "ru" ? " лет" : " year");
+
+            return years;
+        }
+    };
+
     $.onSave = function(){
+        $.data.select("name").set(
+            $account.get("name").length ? $account.get("name") : $.data.get("name")
+        );
+        $.data.select("surname").set(
+            $account.get("surname").length ? $account.get("surname") : $.data.get("surname")
+        );
+
         $account.set($.data.get());
+
         $.hide();
+
+        app.request(
+            "addDataProfile", _.pick($account.get(),
+                ['name', 'surname', 'gender', 'birthday', 'contacts']
+            )
+        );
     };
 
     $.hide = function(){

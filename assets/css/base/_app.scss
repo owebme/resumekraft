@@ -4,7 +4,7 @@
 	&[data-app="private"]{
 		@extend .bg-blackDark;
 		@extend .overflow-hidden;
-		perspective:500px;
+		@extend .perspective-500;
 	}
 	&[data-focus="resume-edit"],
 	&[data-focus="jqtest-result"]{

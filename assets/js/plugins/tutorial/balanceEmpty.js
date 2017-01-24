@@ -18,8 +18,8 @@
                         success: {
                             title: 'Пополнить',
                             size: 'l2',
-                            callback: function($control, $target){
-                                $control.hide();
+                            callback: function($tutorial, $target){
+                                $tutorial.hide();
                                 $Sections.payment.show();
                             }
                         },
@@ -29,8 +29,8 @@
                 actions: {
                     click: {
                         elem: "self",
-                        callback: function($control, $target){
-                            $control.hide();
+                        callback: function($tutorial, $target){
+                            $tutorial.hide();
                         }
                     }
                 }

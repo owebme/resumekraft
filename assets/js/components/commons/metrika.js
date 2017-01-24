@@ -4,7 +4,6 @@
 
     app.metrics.private = {
         ver: "1.0",
-        visits: 0,
         offers: {
             welcome: {
                 show: false,
@@ -16,9 +15,19 @@
                 },
                 success: false
             },
+            stat: {
+                show: false,
+                hide: false,
+                success: false
+            },
+            inbox: {
+                show: false,
+                hide: false,
+                success: false
+            },
             plan: {
                 show: false,
-                basic: false,
+                free: false,
                 premium: false
             },
             jqtest: {
@@ -51,19 +60,10 @@
             new: false,
             success: false
         },
-        stat: {
-            show: false,
-            hide: false,
-            success: false
-        },
-        inbox: {
-            show: false,
-            hide: false,
-            success: false
-        },
         resume: {
-            new: false,
+            buttonNew: false,
             select: {
+                default: "free",
                 show: false,
                 hide: false,
                 template: null,
@@ -85,6 +85,11 @@
                     logotype: false,
                     stat: false,
                     lang: false
+                },
+                tutorial: {
+                    show: false,
+                    hide: false,
+                    success: false
                 },
                 success: false
             }

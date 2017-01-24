@@ -377,6 +377,37 @@
 		return year+"-"+month+"-"+day+" "+hour+":"+minute+":"+seconds;
 	};
 
+	utils.supportClipboard = function(){
+		if (window.clipboardData && window.clipboardData.setData || document.queryCommandSupported && document.queryCommandSupported("copy")) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	};
+
+	utils.copyToClip = function(text){
+	    if (window.clipboardData && window.clipboardData.setData) {
+	        // IE specific code path to prevent textarea being shown while dialog is visible.
+	        return clipboardData.setData("Text", text);
+
+	    } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+	        var textarea = document.createElement("textarea");
+	        textarea.textContent = text;
+	        textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in MS Edge.
+	        document.body.appendChild(textarea);
+	        textarea.select();
+	        try {
+	            return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+	        } catch (ex) {
+	            console.warn("Copy to clipboard failed.", ex);
+	            return false;
+	        } finally {
+	            document.body.removeChild(textarea);
+	        }
+	    }
+	};
+
 	utils.bbUpdate = function(obj, callback){
 		obj.on("update", function(e){
 	        var prop = e.data && e.data.transaction && e.data.transaction.length && e.data.transaction[0].path ? e.data.transaction[0].path[0] : null,

@@ -1,0 +1,66 @@
+<popup-referer class="oScreen zIndex-2 { showAnim : active }" data-open={ active }>
+
+    <div class="pos-centered">
+        <div class="container anim anim-bt-ease" duration-show="s" duration-hide="xs" delay-show="xs">
+            <div class="row">
+                <div name="wrapper" class="col-sm-16 col-md-14 col-lg-12 centered">
+                    <div onClick={ hide } onUpdate="none" class="button__close small" data-color="white"></div>
+                    <div class="plr-xl pt50 pb50 bg-blue c-white borderRadius-xxl zIndex-1 boxShadow-25">
+                        <div class="fontSize-54 fontWeight-8 mb-s userSelect-none">369 ₽</div>
+                        <strong class="display-block fontSize-22 mb-s userSelect-none">За каждого друга, приведенного по ссылке:</strong>
+                        <div onClick={ copyToClip } onUpdate="none" class="pos-rel centered mt-m mb30 nowrap" data-balloon={ 'Нажмите, чтобы скопировать ссылку' : supportClip } data-balloon-pos="up">
+                            <span class="display-inlineBlock fontFamily-helvetica fontSize-18 link-underline link-white">{ link }</span>
+                        </div>
+                        <div class="fontSize-13 letterSpacing-5-5 text-uppercase mb-m">или поделитесь в соц. сетях</div>
+                        <share-button-inline title={ app.config.share.title } url={ link } bgColor="white" color="blue" size="s" margin="xs" tooltip="true"></share-button-inline>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.supportClip = _.supportClipboard();
+    $.link = 'http://resumekraft.ru/rf' + $account.get('_id');
+
+    $.show = function(){
+        $.update({
+            active: true
+        })
+    };
+
+    $.hide = function(){
+        $.update({
+            active: false
+        })
+    };
+
+    $.copyToClip = function(){
+        if ($.supportClip){
+            _.copyToClip($.link);
+            $Notify.show({
+                text: "Ссылка скопирована в буфер обмена, теперь вы можете поделиться ей с друзьями",
+                timeout: 3
+            })
+        }
+    };
+
+    $.handleClickOutside = function(e){
+        if (!$.wrapper.contains(e.target)) $.hide();
+    };
+
+    $.on("updated", function(){
+        if ($.active){
+            document.addEventListener('click', $.handleClickOutside);
+        }
+        else {
+            document.removeEventListener('click', $.handleClickOutside)
+        }
+    });
+
+</script>
+
+</popup-referer>

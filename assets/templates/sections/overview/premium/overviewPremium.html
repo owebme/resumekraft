@@ -61,6 +61,18 @@
                         app.features.premium.init($.scroll, $.content);
                     });
 
+                    $.buttons = {
+                        mouth: $$($.content).find(".successPlanMonth"),
+                        year: $$($.content).find(".successPlanYear")
+                    };
+
+                    $.buttons.mouth.one("click", function(e){
+                        $.open.plan(e, "month1");
+                    });
+                    $.buttons.year.one("click", function(e){
+                        $.open.plan(e, "year1");
+                    });
+
                     $root.focus("overview");
                     // tag.scroll.scrollTop($$(tag.root).find("#section").offset().top);
                 },
@@ -75,9 +87,9 @@
     };
 
     $.open = {
-        plan: function(){
+        plan: function(e, period){
             $.hide(function(){
-                $Sections.plan.show("premium");
+                $Sections.plan.show("premium", period);
             });
             app.metrika.set("overview.premium.success", true);
         }
@@ -99,6 +111,8 @@
                 callback();
             }
         });
+        $.buttons.mouth.off("click");
+        $.buttons.year.off("click");
     };
 
 </script>

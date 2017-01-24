@@ -1,13 +1,15 @@
 {
   "watch" : [
       "*.*",
-      "/public/*.html",
-      "/public/**/*.*",
+      "/public/controllers/**",
+      "/public/router/**",
+      "/public/templates/**",
       "/assets/templates/sections/overview/premium/overviewPremiumContent.tag",
       "/assets/templates/sections/overview/jqtest/overviewJqtestContent.tag",
       "/assets/templates/sections/jqtest/jqtest-enter-content.tag",
       "/assets/API/*.*",
-      "/assets/API/**/*.*"
+      "/assets/API/**/*.*",
+      "/views/*.*"
   ],
   "ignore": [
       "/assets/css/**",
@@ -17,8 +19,6 @@
       "/assets/styleguide/**",
       "/assets/templates/root.html",
       "/assets/templates/**/*.html",
-      "/assets/video/**",
-      "/public/js/*.js",
-      "/public/css/**"
+      "/assets/video/**"
   ]
 }

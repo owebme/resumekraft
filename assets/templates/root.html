@@ -11,6 +11,7 @@
     <section-payment></section-payment>
     <section-plan if={ !app.device.isPhone }></section-plan>
     <section-plan-mobile if={ app.device.isPhone }></section-plan-mobile>
+    <section-loader-ajax></section-loader-ajax>
 
     <app-sections>
         <resume-stat></resume-stat>
@@ -45,10 +46,33 @@
     $root = this;
     $rootScope = $$(this.root);
 
+    $store.inbox.set([]);
+    // $store.data.set([]);
+
+    this.on("before-mount", function(){
+        this.init();
+    });
+
     this.on("mount", function(){
+        if (!app.device.isMobile && !app.metrika.get("offers.welcome.show")){
+            $Sections.offers.welcome.show();
+        }
+        else {
+            $root.one("ready", function(){
+                $Sections.resume.list.start();
+            });
+        }
+        $afterlag.xs(function(){
+            app.$dom.body.removeClass("appLoading");
+            $root.trigger("ready");
+        });
+    });
 
-        $store.resume.set($store.data.get(0));
+    this.focus = function(value){
+        $rootScope.attr("data-focus", value);
+    };
 
+    this.init = function(){
         $Sections = {
             profile: {
                 section: $root.tags["section-profile"],
@@ -88,20 +112,10 @@
         $Tutorial = $root.tags["section-tutorial"];
         $Notify = $root.tags["section-notify"];
         $Loader = $root.tags["section-loader"];
+        $LoaderAjax = $root.tags["section-loader-ajax"];
         $Alert = $root.tags["section-alert"];
         $DropMenu = $root.tags["ui-dropmenu"];
 
-        $afterlag.xs(function(){
-            app.$dom.body.removeClass("appLoading");
-            $root.trigger("ready");
-        });
-    });
-
-    this.focus = function(value){
-        $rootScope.attr("data-focus", value);
-    };
-
-    this.on("before-mount", function(){
         if (app.config.changeStyles){
             app.plugins.styles.init({
                 elem: "#styles",
@@ -133,7 +147,7 @@
                 }
             });
         }
-    });
+    };
 
 </script>
 

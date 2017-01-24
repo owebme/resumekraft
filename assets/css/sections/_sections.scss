@@ -127,7 +127,7 @@
 	&[data-hidden="false"]{
 		.section__content {
 			@include accelerate(true);
-			perspective:500px;
+			@extend .perspective-500;
 	        @extend .willChange-tp;
 	        transform-origin:0% 50%;
 	        transition:transform 0.5s $cubic40, opacity 0.5s $cubic40;
@@ -136,7 +136,7 @@
 	&[data-hidden="true"]{
 		.section__content {
 			@include accelerate();
-			perspective:500px;
+			@extend .perspective-500;
 	        @extend .willChange-tp;
 	        transform-origin:0% 50%;
 			@extend .opacity-50;

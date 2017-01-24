@@ -3,7 +3,6 @@
     @extend .opacity-0;
     @extend .c-white;
     @extend .borderRadius-l;
-    @extend .fontFamily-helvetica;
     @extend .pointerEvents-none;
     @extend .zIndex-101;
     min-width:300px;
@@ -26,15 +25,15 @@
         line-height:26px;
     }
     &-m {
-        font-size:17.5px;
+        font-size:18.5px;
         line-height:24px;
     }
     &-s {
-        font-size:16px;
+        font-size:17px;
         line-height:21px;
     }
     &-xs {
-        font-size:15px;
+        font-size:16px;
         line-height:20px;
     }
     &-wrapper {

@@ -1,6 +1,6 @@
 <inbox-offer class="oScreen { showAnim : active } zIndex-5 anim-group1" data-color="darkLight" data-open="{ active }">
 
-    <div onClick={ hide } onUpdate="none" class="button__close opacity-50" data-color="white"></div>
+    <div onClick={ close } onUpdate="none" class="button__close opacity-50" data-color="white"></div>
 
     <div class="pos-centered">
         <div class="container pt-xl">
@@ -42,19 +42,23 @@
                 active: true
             })
         });
-        app.metrika.set("inbox.show", true);
+        app.metrika.set("offers.inbox.show", true);
+    };
+
+    $.close = function(){
+        $.hide();
+        app.metrika.set("offers.inbox.hide", true);
     };
 
     $.hide = function(){
         $.parent.hide();
-        app.metrika.set("inbox.hide", true);
     };
 
     $.open = {
         plan: function(){
             $.hide();
             $Sections.plan.show("premium");
-            app.metrika.set("inbox.success", true);
+            app.metrika.set("offers.inbox.success", true);
         },
         payment: function(){
             $.hide();

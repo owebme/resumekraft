@@ -1,0 +1,52 @@
+.resumeBasic {
+    .screen-finish {
+        .circuful {
+            width:500px;
+            height:500px;
+            margin-left:-380px;
+
+            .d-tablet.r-landscape & {
+                width:480px;
+                height:480px;
+                margin-left:-320px;
+            }
+            .d-tablet.r-portrait & {
+                margin-top:200px;
+                margin-left:-360px;
+            }
+            .d-phone & {
+                width:480px;
+                height:480px;
+                margin-left:-320px;
+                @extend .opacity-30;
+            }
+        }
+        &-icon {
+            @extend .pos-abs;
+            @extend .b0;
+            @extend .l-l;
+
+            &:after {
+                @extend .display-block;
+                @extend .content-empty;
+                @include ui-icon("resume_white", 300px, 300px);
+            }
+            .d-tablet & {
+                &:after {
+                    width:320px;
+                    height:320px;
+                }
+            }
+            .d-tablet.r-landscape & {
+                @extend .l--55;
+            }
+            .d-tablet.r-portrait & {
+                left:-120px;
+                @extend .b-l;
+            }
+            .d-phone & {
+                @extend .display-none;
+            }
+        }
+    }
+}

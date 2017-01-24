@@ -57,18 +57,18 @@ app.plugins.marqueeStatic = function($frame, options){
 	// {fn} resize fake
 	var resize = function(){
 		var offset = 0;
-		marquee.size = settings.vertical ? $frame.height() : app.sizes.width;
+		marquee.size = settings.vertical ? app.sizes.height : app.sizes.width;
 		$.each(screens, function(i, screen){
 			if (settings.vertical){
 				var $frame = screen.$block.find('.screen__content'),
 				    height = $frame.length ? Math.max(marquee.size, $frame.length ? $frame.outerHeight() : 0) : 0;
-				if (!screensFixed && height>marquee.size) {
+				if (!screensFixed && height > marquee.size) {
 					screen.$block.addClass('screen__long');
 					screen.size = height;
 					screen.$block.height(height);
 				} else {
-					screen.$block.removeClass('screen__long');
-					screen.size = marquee.size;
+					screen.$block.removeClass('screen__long').css("height", "");
+					screen.size = app.sizes.height;
 				}
 			} else {
 				screen.size = app.sizes.width;
@@ -434,7 +434,9 @@ app.plugins.marqueeStatic = function($frame, options){
 	});
 
 	// {event} window resize
-	app.$dom.window.on('resize', marquee.resize);
+	if (!app.device.isMobile){
+		app.$dom.window.on('resize', marquee.resize);
+	}
 
 	// set limits on first screen
 	marquee.setLimits(0);

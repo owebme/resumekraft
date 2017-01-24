@@ -1,0 +1,212 @@
+.resumeBasic {
+    .section__num {
+        @extend .pos-tl;
+        @extend .flex-centered;
+        @extend .w50;
+        @extend .h50;
+        @extend .borderRadius-circle;
+        @extend .borderWidth-1;
+        @extend .borderStyle-solid;
+        @extend .borderColor-blue;
+        @extend .c-blue;
+        @extend .fontSize-24;
+        @extend .fontWeight-8;
+        transform:translate3d(-70px, -55px, 0);
+
+        &:after {
+            @extend .content-empty;
+            @extend .pos-abs;
+            @extend .t50;
+            @extend .l100;
+            @extend .w100;
+            border-bottom:1px solid $blue;
+
+            .d-phone & {
+                @extend .display-none;
+            }
+        }
+        .d-tablet.r-portrait & {
+            transform:translate3d(-30px, -55px, 0);
+        }
+        .d-phone & {
+            transform:translate3d(0, -55px, 0);
+            padding-top:1px;
+        }
+    }
+    .content {
+        @extend .willChange-tp;
+
+        .m-no-touch & {
+            transition:transform 0.5s $cubic40, opacity 0.5s $cubic40;
+        }
+    }
+    .screen__content {
+        &[data-empty="true"]{
+            @extend .h100v;
+
+            .content {
+                @extend .opacity-0;
+                transform:translate3d(0, 2vh, 0) scale(0.85);
+                @extend .pointerEvents-none;
+
+                .m-no-touch & {
+                    transition:transform 0.3s $cubic40, opacity 0.3s $cubic40;
+                }
+            }
+            .section__create {
+                @extend .opacity-100;
+                @extend .visibility-visible;
+                @extend .pointerEvents-all;
+                transform:translate3d(-50%, -50%, 0) scale(1);
+
+                .m-no-touch & {
+                    transition:transform .4s $cubic28, opacity .4s $cubic28;
+                }
+            }
+        }
+    }
+    .section__create {
+        @include accelerate();
+        @include perspective();
+        @extend .pos-abs;
+        @extend .t50;
+        @extend .l50;
+        width:242px;
+        height:242px;
+        @extend .willChange-opacity;
+        @extend .opacity-0;
+        @extend .pointerEvents-none;
+        @extend .visibility-hidden;
+        transform:translate3d(-50%, -50%, 0) scale(0);
+
+        .d-phone & {
+            width:202px;
+            height:202px;
+        }
+        .m-no-touch & {
+            transition:transform .3s $bounceForce, opacity .3s $bounceForce, visibility 0s .3s;
+        }
+        &:after {
+            @extend .content-empty;
+            @extend .pos-centered-v;
+            @extend .l100;
+            @extend .ml-l;
+            @extend .bg-cover;
+
+            .d-phone & {
+                @extend .zIndex--1;
+            }
+        }
+        &[data-icon="education"]{
+            &:after {
+                width:192px;
+                height:192px;
+                background-image:url(/assets/images/resume/education.svg);
+
+                .d-phone & {
+                    @extend .l30;
+                }
+            }
+        }
+        &[data-icon="languages"]{
+            &:after {
+                width:164px;
+                height:164px;
+                background-image:url(/assets/images/resume/languages.svg);
+
+                .d-phone & {
+                    @extend .l40;
+                }
+            }
+        }
+        &[data-icon="jobs"]{
+            &:after {
+                width:192px;
+                height:192px;
+                background-image:url(/assets/images/resume/jobs.svg);
+
+                .d-phone & {
+                    @extend .l55;
+                }
+            }
+        }
+        &__title {
+            @extend .pos-abs;
+            @extend .t0;
+            @extend .r100;
+            @extend .mr-l;
+            @extend .c-blue;
+            @extend .fontSize-28;
+            width:240px;
+            @extend .text-right;
+
+            .d-phone & {
+                @extend .l0;
+                @extend .r-auto;
+                top:50vh;
+                @extend .mr0;
+                @extend .w100p;
+                @extend .text-center;
+            }
+        }
+        &__button {
+            @include abs();
+            @extend .cursor-pointer;
+
+            &:before {
+                @include abs();
+                @extend .content-empty;
+                @extend .borderRadius-circle;
+                @extend .bg-blue;
+                @include boxShadow-3d($blue);
+                @extend .willChange-transform;
+                transition:transform 0.4s $cubic40;
+            }
+            &:after {
+                @include abs();
+                @extend .content-empty;
+                @extend .bg-blueLight;
+                @extend .scale-0;
+                @extend .opacity-15;
+                @extend .borderRadius-circle;
+                @extend .zIndex-0;
+                @extend .willChange-transform;
+                transition:transform 0.4s $cubic40;
+            }
+            &__opener {
+                @extend .pos-centered;
+                @extend .flex-centered;
+                @extend .w70;
+                @extend .h70;
+                @extend .borderRadius-circle;
+                @extend .zIndex-1;
+                will-change:background-color;
+                transition:background-color 0.25s $cubic28;
+
+                &:after {
+                    @extend .content-empty;
+                    @extend .display-block;
+                    @include ui-icon(plus_thin_white, 48px, 48px);
+                    transition:transform 0.4s $cubic40;
+                }
+            }
+            .m-no-touch &:hover,
+            .m-touch & {
+                &:after {
+                    @extend .scale-100;
+                }
+                &:before {
+                    @extend .scale-85;
+                }
+                .section__create__button__opener {
+                    @extend .bg-white;
+
+                    &:after {
+                        @include ui-icon(plus_thin);
+                        transform:scale(0.8);
+                    }
+                }
+            }
+        }
+    }
+}

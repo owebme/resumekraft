@@ -2,6 +2,9 @@
 
     <form id="form" method="post" action="/login" class="auth__form anim-group1 anim-scale{ '-ease' : app.device.isPhone }" duration-show="m" duration-hide="{ app.device.isPhone ? 's' : 'm' }">
         <input type="hidden" name="logined" value="true">
+        <input type="hidden" name="country" value={ location.country }>
+        <input type="hidden" name="city" value={ location.city }>
+        <input type="hidden" name="region" value={ location.region }>
         <div if={ !app.device.isPhone } class="auth__close anim-group3 anim-lr anim-delay-xs anim-duration-m">
             <div onClick={ close } onUpdate="none" class="auth__close__button"></div>
         </div>

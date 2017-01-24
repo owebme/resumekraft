@@ -15,7 +15,7 @@ body {
 	}
 	.d-phone & {
 		&.d-no-ios {
-			perspective:500px;
+			@extend .perspective-500;
 		}
 		background-color:#171719;
 	}

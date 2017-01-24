@@ -49,7 +49,7 @@
 	updateSizes();
 })(app.sizes, app.$dom);
 
-(function(device, $dom){
+(function(device, $dom, _){
 
 	/* --- Mobile --- */
 	device.support = Modernizr;
@@ -91,6 +91,8 @@
 	$dom.window.on('resize.sizeCheck', sizeCheck);
 	sizeCheck();
 
+	device.ua = navigator.userAgent;
+
 	if (navigator.userAgent.match(/(iPhone)/i)) device.isPhone = true;
 
 	/* --- iOS --- */
@@ -122,6 +124,10 @@
 		device.verOS = expr && expr[1] ? expr[1] + (expr[2] ? "." + expr[2] : "") : false;
 	};
 
+	if (app.device.isMobile){
+		device.os = device.isAndroid ? 'android' : (device.isIOS ? 'ios' : 'unknown');
+	}
+
 	/* --- iPad (for fix wrong window height) --- */
 	if ($dom.html.hasClass('d-ipad d-ios7')) {
 		$dom.window.on('resize orientationchange focusout', function(){
@@ -134,6 +140,8 @@
 	device.isLinux = navigator.platform.indexOf("Linux") > -1;
 
 	$dom.html.addClass(device.isMac ? 'd-macOS' : 'd-no-macOS');
+
+	device.platform = device.isWin ? 'win' : (device.isMac ? 'mac' : (device.isLinux ? 'linux' : 'unknown'));
 
 	/* --- Safari --- */
 	device.isSafari = /constructor/i.test(window.HTMLElement);
@@ -164,4 +172,10 @@
 		}, false);
 	}
 
-})(app.device, app.$dom);
+	app.device.get = function(){
+		return _.extend(_.omit(app.device, ['get', 'support']), {
+			screen: app.sizes
+		});
+	}
+
+})(app.device, app.$dom, app.utils);

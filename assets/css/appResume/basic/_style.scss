@@ -5,7 +5,15 @@
 @import 'ui/textarea';
 @import 'ui/select';
 @import 'ui/checkbox';
+@import 'ui/percentage';
+@import 'ui/pdf';
+@import 'ui/buttons';
 
 // Resume control
 @import 'control/buttons';
 @import 'control/steps';
+
+// Resume sections
+@import 'sections/sections';
+@import 'sections/content';
+@import 'sections/finish';

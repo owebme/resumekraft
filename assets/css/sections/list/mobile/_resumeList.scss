@@ -19,7 +19,7 @@
         @extend .overflowY-auto;
         @extend .bg-white;
         @extend .willChange-transform;
-        perspective:500px;
+        @extend .perspective-500;
         transform-origin:0% 50%;
         transition:transform 0.5s $cubic40;
     }

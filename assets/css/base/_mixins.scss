@@ -44,6 +44,17 @@
         @extend .transform-default;
     }
 }
+@mixin perspective($value: false) {
+    .d-no-safari &,
+    .d-phone.d-no-ios & {
+        @if $value {
+            perspective:#{$value}px;
+        }
+        @else {
+            @extend .perspective-1000;
+        }
+    }
+}
 @mixin textEllipsis($width: false, $height: false, $column: false) {
     @extend .overflow-hidden;
     @extend .text-ellipsis;

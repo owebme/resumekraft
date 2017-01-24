@@ -63,6 +63,8 @@
 
             if (screen !== undefined) this.nav(screen, 0);
 
+            if (app.device.isMobile) this.embeds();
+
             this.active = true;
         },
 
@@ -95,10 +97,50 @@
             this.init(index);
         },
 
+        embeds: function(){
+            var _this = this,
+                state = null,
+                $focus = null;
+
+            $dom.window.on('resize.screens', function(){
+                _this.scope.scrollTop(0);
+
+                if (state == "focus" && $focus){
+                    setTimeout(function(){
+                        centered(app.sizes.height / 1.3, 0);
+                    }, 150);
+                }
+        	});
+            this.scope.on("focus blur", "input[type='text'], textarea", function(e){
+                if (e.type == "focusin" || e.type == "focus"){
+                    $focus = $(e.target);
+
+                    state = "focus";
+
+                    centered(app.sizes.height / 3.5, 200);
+                }
+                else {
+                    state = "blur";
+                }
+                _this.scope.scrollTop(0);
+            });
+
+            var centered = function(delta, duration){
+                var top = $focus.offset().top;
+                if (top < 0){
+                    _this.marquee.scroll.scrollBy(0, (-top + delta), duration, (_this.options.static ? IScrollStatic.utils.ease.cubicOut : IScroll.utils.ease.cubicOut));
+                }
+                else if (top > delta){
+                    _this.marquee.scroll.scrollBy(0, -(top - delta), duration, (_this.options.static ? IScrollStatic.utils.ease.cubicOut : IScroll.utils.ease.cubicOut));
+                }
+            };
+        },
+
         destroy: function(){
             this.scope.off();
             this.marquee.scroll.off();
             this.marquee.destroy();
+            $dom.window.off('resize.screens');
             this.active = false;
         }
     };

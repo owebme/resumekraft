@@ -21,16 +21,15 @@
 @import '../../assets/css/ui/basic/balloon';
 @import '../../assets/css/ui/basic/balloonError';
 @import '../../assets/css/ui/basic/loader';
+@import '../../assets/css/ui/basic/spinner';
 @import '../../assets/css/ui/basic/notify';
 @import '../../assets/css/ui/button';
 @import '../../assets/css/ui/typography';
 @import '../../assets/css/states/fontSize';
-@import '../../assets/css/ui/spinner';
 
 // partials
 @import 'partials/nav';
 @import 'partials/navFixed';
-@import 'partials/navPhone';
 
 // auth
 @import 'sections/auth';

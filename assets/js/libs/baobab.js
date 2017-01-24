@@ -2,7 +2,7 @@
  * Baobab
  *
  * Homepage: https://github.com/Yomguithereal/baobab
- * Version: 2.3.3
+ * Version: 2.4.0
  * Author: Yomguithereal (Guillaume Plique)
  * License: MIT
  */
@@ -1146,7 +1146,7 @@ Baobab.helpers = helpers;
 /**
  * Version
  */
-Baobab.VERSION = '2.3.2';
+Baobab.VERSION = '2.4.0';
 module.exports = exports['default'];
 
 },{"./cursor":3,"./helpers":4,"./monkey":5,"./type":6,"./update":7,"./watcher":8,"emmett":1}],3:[function(require,module,exports){
@@ -2036,6 +2036,8 @@ var _type2 = _interopRequireDefault(_type);
  */
 var noop = Function.prototype;
 
+var hasOwnProp = ({}).hasOwnProperty;
+
 /**
  * Function returning the index of the first element of a list matching the
  * given predicate.
@@ -2227,18 +2229,27 @@ function cloner(deep, item) {
   if (_type2['default'].object(item)) {
     var o = {};
 
-    var k = undefined;
+    var i = undefined,
+        l = undefined,
+        k = undefined;
 
     // NOTE: could be possible to erase computed properties through `null`.
-    for (k in item) {
+    var props = Object.getOwnPropertyNames(item);
+    for (i = 0, l = props.length; i < l; i++) {
+      k = props[i];
       if (_type2['default'].lazyGetter(item, k)) {
         Object.defineProperty(o, k, {
           get: Object.getOwnPropertyDescriptor(item, k).get,
           enumerable: true,
           configurable: true
         });
-      } else if (item.hasOwnProperty(k)) {
-        o[k] = deep ? cloner(true, item[k]) : item[k];
+      } else {
+        Object.defineProperty(o, k, {
+          value: deep ? cloner(true, item[k]) : item[k],
+          enumerable: Object.getOwnPropertyDescriptor(item, k).enumerable,
+          writable: true,
+          configurable: true
+        });
       }
     }
     return o;
@@ -2327,7 +2338,7 @@ function freezer(deep, o) {
 
       p = o[k];
 
-      if (!p || !o.hasOwnProperty(k) || typeof p !== 'object' || Object.isFrozen(p)) continue;
+      if (!p || !hasOwnProp.call(o, k) || typeof p !== 'object' || Object.isFrozen(p)) continue;
 
       freezer(true, p);
     }

@@ -42,19 +42,25 @@
                     if (value && value.length) p += 3;
                 }
                 else if (key == "education"){
-                    if (value.items.length > 3) p += 3;
-                    else p += value.items.length;
+                    if (value && value.items){
+                        if (value.items.length > 3) p += 3;
+                        else p += value.items.length;
+                    }
                     all += 3;
                 }
                 else if (key == "languages"){
-                    _.each(value.items, function(v, k){
-                        if (v.title != "native" && v.value > 1) p++;
-                    });
+                    if (value && value.items){
+                        _.each(value.items, function(v, k){
+                            if (v.title != "native" && v.value > 1) p++;
+                        });
+                    }
                     all += 3;
                 }
                 else if (key == "jobs"){
-                    if (value.items.length > 3) p += 3;
-                    else p += value.items.length;
+                    if (value && value.items){
+                        if (value.items.length > 3) p += 3;
+                        else p += value.items.length;
+                    }
                     all += 3;
                 }
                 else {
@@ -77,6 +83,10 @@
             p: result > 100 ? 100 : result
         });
     };
+
+    $.on("unmount", function(){
+        $resume.off("update");
+    });
 
 </script>
 

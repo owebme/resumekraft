@@ -132,12 +132,13 @@
         },
 
         embeds: function(){
-            var scroll = this.scroll;
+            var _this = this,
+                scroll = this.scroll;
 
             scroll.enable();
 
             $dom.window.on('resize.scrollable-content', function(){
-                if (app.device.isPhone) scroll.scrollTo(0,0);
+                if (app.device.isMobile) _this.scope.scrollTop(0);
         		scroll.refresh();
         	});
         },

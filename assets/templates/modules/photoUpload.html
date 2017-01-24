@@ -90,14 +90,20 @@
         $.config.minWidth = options.minWidth;
         $.config.maxHeight = options.maxHeight;
 
-        var cropit = $.imageEditor.data().cropit;
+        $.setInterval = setInterval(function(){
+            if ($.imageEditor && $.imageEditor.data){
+                clearInterval($.setInterval);
+                $.init.config($.imageEditor.data().cropit);
+            }
+        }, 300);
+    };
 
+    $.init.config = function(cropit){
         cropit.options.maxHeight = $.config.maxHeight;
         cropit.options.onSmallImage = function(size){
             alert('Загружаемое фото слишком маленькое, минимально допустимый размер по ширине ' + $.config.minWidth + 'px');
             $.upload.value = "";
         };
-
         cropit.previewSize = {
             "width": $.config.minWidth,
             "height": $.config.maxHeight

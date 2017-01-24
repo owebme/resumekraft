@@ -1,0 +1,12 @@
+html, body {
+    @extend .h100p;
+}
+body {
+    @extend .overflow-hidden;
+}
+.screens__content {
+    transform-style:flat;
+}
+.resume__preview {
+    min-height:200vh;
+}

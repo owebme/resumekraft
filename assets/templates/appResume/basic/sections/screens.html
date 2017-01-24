@@ -6,7 +6,7 @@
         <resume-screen-education title="Образование" step="2"></resume-screen-education>
         <resume-screen-langs title="Владение языками" step="3"></resume-screen-langs>
         <resume-screen-jobs title="Работа в компаниях" step="4"></resume-screen-jobs>
-        <resume-screen-about title="Достижения, о себе" step="5"></resume-screen-about>
+        <resume-screen-about title="О себе, ваши качества" step="5"></resume-screen-about>
 
     </div>
 
@@ -22,8 +22,10 @@
             });
             $.el.init();
 
-            $.parent.sections.steps.init();
-            $.parent.sections.buttons.init();
+            if (!app.device.isPhone){
+                $.parent.sections.steps.init();
+                $.parent.sections.buttons.init();
+            }
         });
     });
 

@@ -1,0 +1,36 @@
+.resumeBasic {
+    .percentage {
+        @extend .pos-abs;
+        @extend .b-l;
+        @extend .l-l;
+        @extend .ml-m;
+        @extend .zIndex-2;
+        @extend .h80v;
+
+        .d-tablet &,
+        .d-phone & {
+            @extend .display-none;
+        }
+        &__container {
+            @extend .pos-bl;
+            @extend .h100p;
+            @extend .willChange-transform;
+            transition:transform 0.4s $bounce;
+
+            &:before {
+                @extend .content-empty;
+                @extend .pos-tl;
+                @extend .h100p;
+                @extend .opacity-40;
+                border-left:2px dashed $gray;
+                transform:translate3d(-10px, 50px, 0);
+            }
+        }
+        &__score {
+            @extend .pos-tl;
+            @extend .fontSize-38;
+            @extend .fontWeight-8;
+            @extend .c-blue;
+        }
+    }
+}

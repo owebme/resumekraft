@@ -7,7 +7,7 @@
                 <span class="visible-sm visible-md c-gray fontSize-28">Компания</span>
             </div>
             <div class="col-xs-24 col-sm-16">
-                <ui-input update="company" cursor={ get.cursor() } size="xl"></ui-input>
+                <ui-input update="company" cursor={ get.cursor() } placeholder={ 'Название компании' : app.device.isPhone } size="xl"></ui-input>
             </div>
         </div>
         <div class="row mb-m">
@@ -15,7 +15,7 @@
                 <span class="c-gray fontSize-28">Регион</span>
             </div>
             <div class="col-xs-24 col-sm-16">
-                <ui-input update="city" cursor={ get.cursor() } size="xl"></ui-input>
+                <ui-input update="city" cursor={ get.cursor() } placeholder={ 'Регион' : app.device.isPhone } size="xl"></ui-input>
             </div>
         </div>
         <div class="row mb-m">
@@ -23,8 +23,7 @@
                 <span class="c-gray fontSize-28">Должность</span>
             </div>
             <div class="col-xs-24 col-sm-16">
-                <span class="input-title">Должность</span>
-                <ui-input update="post" cursor={ get.cursor() } size="xl"></ui-input>
+                <ui-input update="post" cursor={ get.cursor() } placeholder={ 'Должность' : app.device.isPhone } size="xl"></ui-input>
             </div>
         </div>
         <div class="row mb-m xs-mb-xxs">

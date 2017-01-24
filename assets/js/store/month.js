@@ -85,11 +85,11 @@ $store.month = _.extend(new Baobab([
     }
     ]),
     {
-        getItems: function(){
+        getItems: function(lang){
             return _.map($store.month.get(), function(item){
                 return {
                     _id: item._id,
-                    title: item.title[$store.resume.get("lang")]
+                    title: item.title[lang || "ru"]
                 }
             });
         },

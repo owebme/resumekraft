@@ -1,0 +1,144 @@
+.resumeBasic {
+    .section__btn__edit,
+    .section__btn__close {
+        @extend .pos-tr;
+        @extend .flex-centered;
+        @extend .w35;
+        @extend .h35;
+        @extend .borderRadius-circle;
+        @extend .borderWidth-1;
+        @extend .borderStyle-solid;
+        @extend .borderColor-blue;
+        @extend .cursor-pointer;
+        @extend .transition-default;
+        transform:translate3d(70px, -48px, 0);
+
+        &:before {
+            @extend .content-empty;
+            @extend .display-block;
+        }
+        &:after {
+            @extend .content-empty;
+            @extend .pos-abs;
+            @extend .t50;
+            @extend .r100;
+            @extend .w80;
+            border-bottom:1px solid $blue;
+
+            .d-phone & {
+                @extend .w50;
+                @extend .mr-xs;
+            }
+        }
+        .m-no-touch &:hover {
+            @extend .bg-blue;
+        }
+        .d-tablet.r-landscape & {
+            transform:translate3d(20px, -48px, 0);
+        }
+        .d-tablet.r-portrait & {
+            transform:translate3d(30px, -48px, 0);
+        }
+        .d-phone & {
+            transform:translate3d(0, -48px, 0);
+        }
+    }
+    .section__btn__edit {
+        &:before {
+            @include ui-icon(pencil, 18px, 18px);
+        }
+        .m-no-touch &:hover {
+            &:before {
+                @include ui-icon(pencil_white);
+            }
+        }
+    }
+    .section__btn__close {
+        &:before {
+            @include ui-icon(close_strong, 28px, 28px);
+        }
+        .m-no-touch &:hover {
+            &:before {
+                @include ui-icon(close_strong_white);
+            }
+        }
+    }
+    .section__btn__plus {
+        @include flex("row", "flex-end", "center");
+        @extend .float-right;
+        @extend .pos-rel;
+        @extend .c-blue;
+        @extend .fontSize-28;
+        @extend .cursor-pointer;
+
+        &__icon {
+            @extend .flex-centered;
+            @extend .w50;
+            @extend .h50;
+            @extend .borderRadius-circle;
+            @extend .borderWidth-1;
+            @extend .borderStyle-solid;
+            @extend .borderColor-blue;
+            @extend .mr-s;
+            @extend .transition-default;
+
+            &:before {
+                @extend .content-empty;
+                @extend .display-block;
+                @include ui-icon(plus_thin, 28px, 28px);
+            }
+        }
+        .m-no-touch &:hover {
+            .section__btn__plus__icon {
+                @extend .bg-blue;
+
+                &:before {
+                    @include ui-icon(plus_thin_white);
+                }
+            }
+        }
+        .d-phone & {
+            @include flex("row", "center", "center");
+            @extend .float-none;
+        }
+    }
+    .screen__button__finish {
+        @extend .pos-abs;
+        @extend .borderRadius-circle;
+        @extend .bg-blue;
+        @extend .cursor-pointer;
+        @extend .t100;
+        @extend .l50;
+        width:260px;
+        height:260px;
+        box-shadow:0 20px 25px rgba(31,35,37,.7);
+        transform:translate3d(-50%, -112px, 0);
+
+        &:after {
+            @include accelerate();
+            @extend .content-empty;
+            @include abs_50(48, 48);
+            @include ui-icon(plus_thin_white, 48px, 48px);
+            transform:translateY(5px);
+            transition:transform 0.4s $bounceSoft;
+        }
+        &__text {
+            @include accelerate();
+            @extend .pos-centered-h;
+            @extend .t15;
+            @extend .c-white;
+            @extend .fontSize-24;
+            line-height:28px;
+            @extend .text-center;
+            transition:transform 0.4s $bounceSoft;
+        }
+        &:hover {
+            &:after {
+                transform:translateY(-60px) rotate(45deg);
+            }
+            .screen__button__finish__text {
+                transform:translate3d(-50%, 70px, 0);
+            }
+        }
+    }
+}

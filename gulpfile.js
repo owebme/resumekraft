@@ -248,6 +248,8 @@ gulp.task('private.libs', function() {
 		'assets/js/libs/file-saver/FileSaver.min.js',
 		'assets/js/libs/afterlag-js/dist/afterlag.min.js',
 		'assets/js/libs/imagesloaded/imagesloaded.pkgd.min.js',
+		'assets/js/libs/mouseweel.js',
+		'assets/js/libs/store.min.js',
 		'assets/js/libs/url.min.js'])
 		.pipe(concat('libs.js'))
 		.pipe(uglify())
@@ -451,12 +453,6 @@ gulp.task('watch', function() {
 	], gulp.series('templates.basic', 'templates.basic.view'));
 
 	gulp.watch([
-		'assets/css/ui/_icons.scss',
-		'public/css/style.scss',
-		'public/css/**/*.scss'
-	], gulp.series('public.css'));
-
-	gulp.watch([
 		'preview/css/*.scss'
 	], gulp.series('preview.css'));
 });
@@ -477,7 +473,7 @@ gulp.task('watchPublic', function() {
 		'assets/css/**/*.scss',
 		'public/css/style.scss',
 		'public/css/**/*.scss'
-	], gulp.parallel('public.mobile.css'));
+	], gulp.series('public.css', 'public.mobile.css'));
 });
 
 gulp.task('css.build', gulp.series('private.css', 'premium.css', 'public.css', gulp.parallel('private.css.largeScreen', 'private.css.smallScreen', 'premium.css.largeScreen', 'premium.css.smallScreen', 'templates.basic', 'templates.basic.view')));

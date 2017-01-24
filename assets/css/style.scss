@@ -3,6 +3,7 @@
 @import 'base/reset';
 @import 'base/base';
 @import 'base/app';
+@import 'base/private';
 @import 'base/fonts';
 @import 'base/keyframes';
 @import 'base/mixins';
@@ -20,6 +21,8 @@
 @import 'ui/basic/balloon';
 @import 'ui/basic/balloonError';
 @import 'ui/basic/loader';
+@import 'ui/basic/loaderAjax';
+@import 'ui/basic/spinner';
 @import 'ui/basic/notify';
 @import 'ui/basic/arrowPointer';
 @import 'ui/basic/dropMenu';
@@ -29,8 +32,8 @@
 @import 'ui/typography';
 @import 'ui/rangeslider';
 @import 'ui/switcher';
-@import 'ui/spinner';
 @import 'ui/slider';
+@import 'ui/social';
 @import 'states/fontSize';
 
 // modules
@@ -41,6 +44,7 @@
 @import 'modules/screens';
 @import 'modules/tutorial';
 @import 'modules/shareButton';
+@import 'modules/shareButtonInline';
 @import 'modules/uploadPhoto';
 
 // Sections

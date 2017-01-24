@@ -12,5 +12,8 @@
                 @extend .h25;
             }
         }
+        .d-phone & {
+            @extend .ml-xxs;
+        }        
     }
 }

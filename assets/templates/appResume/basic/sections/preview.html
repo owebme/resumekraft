@@ -23,6 +23,14 @@
     });
 
     $.show = function(){
+        if (app.device.isPhone){
+            $LoaderAjax.show({
+                color: "white"
+            })
+            $.template.one("updated", function(){
+                $LoaderAjax.hide();
+            });
+        }
         $.template.update();
         $["scroll"].scrollTop = 0;
         $.root.setAttribute("data-open", true);

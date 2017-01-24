@@ -39,7 +39,7 @@ app.moment.locale('ru');
 
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
-app.set('views', __dirname + '/public');
+app.set('views', __dirname + (process.env.NODE_ENV == "production" ? "/views/production" : "/views"));
 swig.setDefaults({ cache: false });
 app.set('view cache', false);
 app.swig = swig;
@@ -71,12 +71,15 @@ app.appClient = {
 }
 app.use(function(req, res, next) {
     app.device = {
+        ua: req.headers['user-agent'],
         type: req.device.type,
         isMobile: req.device.type.match(/tablet|phone/) ? true : false
     };
     app.appClient.device = app.device;
     app.appClient.user = req.session.user;
+    app.accountId = req.session.user ? app.ObjectId(req.session.user.accountID) : app.ObjectId('588658bf07f3cad6d6f3aaa1');
     app.device.type = req.query.debug ? req.query.debug : app.device.type;
+    app.clientIP = app.utils.getClientAddress(req);
     next();
 });
 

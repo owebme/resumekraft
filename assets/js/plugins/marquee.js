@@ -398,7 +398,9 @@ app.plugins.marquee = function($frame, settings){
 		marquee.setLimits(index);
 	});
 	// {event} window resize
-	app.$dom.window.on('resize', marquee.resize);
+	if (!app.device.isMobile){
+		app.$dom.window.on('resize', marquee.resize);
+	}
 	// set limits on first screen
 	marquee.setLimits(0);
 	// {fn} scroll to

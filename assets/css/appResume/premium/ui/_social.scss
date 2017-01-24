@@ -1,55 +1,14 @@
 .social {
-	@extend .inline;
 	@extend .ml--xs;
 	@extend .mr--m;
 
 	&-s {
 		margin:0 -8px;
-
-		.social-btn {
-			width:46px;
-			height:46px;
-
-			&-fb {
-				width:58px;
-				height:58px;
-			}
-			&-vk {
-				width:60px;
-				height:60px;
-			}
-			&-in {
-				width:24px;
-				height:24px;
-			}
-			&-lk {
-				width:22px;
-				height:22px;
-			}
-		}
 	}
 	&-xs {
 		margin:0 -6px;
-
-		.social-btn {
-			width:36px;
-			height:36px;
-
-			svg {
-				transform:translate3d(-50%, -50%, 0) scale(0.84);
-			}
-		}
 	}
 	&-btn {
-		@extend .display-inlineBlock;
-		width:62px;
-		height:62px;
-		@extend .vAlign-top;
-		@extend .pos-rel;
-		@extend .bg-grayDark-transparent;
-		@extend .borderRadius-circle;
-		@extend .cursor-pointer;
-		@extend .transition-default;
 		margin:0 6px 10px;
 
 		.m-no-touch &:hover {
@@ -58,45 +17,6 @@
 			path {
 				fill:#fff !important;
 			}
-		}
-		&:active {
-			transform:translate3d(0, 1px, 0) scale(0.9);
-		}
-		svg {
-			@extend .display-block;
-			@extend .pos-centered;
-		}
-		&-fb {
-			width:62px;
-			height:62px;
-			transform:scale(1.05);
-		}
-		&-vk {
-			width:64px;
-			height:64px;
-			transform:translateY(-1px);
-		}
-		&-dk {
-			width:64px;
-			height:64px;
-			transform:translateY(-1px);
-		}
-		&-tw {
-			width:64px;
-			height:64px;
-		}
-		&-gl {
-			width:32px;
-			height:32px;
-			transform:translateX(1px);
-		}
-		&-in {
-			width:30px;
-			height:30px;
-		}
-		&-lk {
-			width:28px;
-			height:28px;
 		}
 	}
 }

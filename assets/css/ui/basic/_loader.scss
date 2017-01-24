@@ -9,19 +9,19 @@
     &-spinner {
         @include accelerate(true);
     	@include abs_50(80, 80);
-        will-change:transform;
+        @extend .willChange-transform;
     	clip:rect(0, 80px, 80px, 40px);
 
         &:after {
+            @include accelerate(true);
     		@extend .content-empty;
-    		@include accelerate(true);
             @extend .pos-abs;
             @extend .borderRadius-circle;
             @extend .w80;
             @extend .h80;
-    		box-shadow:inset #fff 0 0 0 2px;
-            will-change:transform;
+            @extend .willChange-transform;
     		clip:rect(0, 80px, 80px, 40px);
+            box-shadow:inset #fff 0 0 0 2px;
     	}
     }
     &[data-show="true"]{

@@ -15,3 +15,15 @@
 	<label><input type="radio" name="paymentType" value="MC">Со счета мобильного</label>
     <input type="submit" value="Перевести">
 </form>
+
+<script src="https://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+
+<script>
+
+if (window.ymaps){
+    ymaps.ready(function(){
+        console.dir(ymaps.geolocation);
+    });
+}
+
+</script>

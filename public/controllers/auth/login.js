@@ -4,6 +4,12 @@ module.exports = function(app) {
 
 		var login = req.body.login,
 			password = req.body.password,
+			location = {
+				country: req.body.country,
+				city: req.body.city,
+				region: req.body.region,
+				ip: app.clientIP
+			},
 			logined = req.body.logined;
 
 		if (!login || !password) return res.sendStatus(401);
@@ -29,6 +35,25 @@ module.exports = function(app) {
 							user.accountID = user._id;
 							req.session.user = user;
 							req.session.user.hash = app.utils.cryptoHash(user.login, user.password, user.accountID);
+
+							app.db.collection('accounts').update({
+				                "_id": app.ObjectId(user._id)
+				            },{
+								$set: {
+									"visite": app.moment().format()
+								},
+				                $inc: {
+				                    "visits": 1
+				                },
+								$push: {
+				                    "history.visits": {
+										device: app.device,
+										location: location,
+										date: app.moment().format()
+									}
+				                }
+				            });
+
 							res.redirect('/private/');
 						}
 						else {

@@ -1,9 +1,41 @@
-<resume-list-item-blank class="resume__item">
+<resume-list-item-blank class="resume__item" data-blank="true">
 
-    <div class="resume__item__header" style="background-image:url('{ $store.resume.get('photo') }')">
+    <div class="resume__item__header" style="background-image:url('{ item.photo }')">
+        <div class="resume__item__control">
+            <div class="resume__item__control__btn resume__item__control__remove"></div>
+            <div class="resume__item__control__btn resume__item__control__menu"></div>
+            <div class="resume__item__control__btn resume__item__control__inbox"></div>
+        </div>
+        <div class="row resume__item__header__text">
+            <div class="col-xs-5 col-sm-6">
+                <div class="resume__item__photo" style="background-image:url('{ item.photo }')"></div>
+            </div>
+            <div class="col-xs-19 col-sm-18">
+                <div class="resume__item__title">{ item.post }</div>
+                <div class="resume__item__date">Обновлен: { moment(item.update).format('D MMMM YYYY') }</div>
+                <div class="resume__item__salary">
+                    { _.numberFormat(item.salary.amount, 0, ".", ".") } { $store.currency.getTitleById(item.salary.currency) }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="resume__item__stat">
+        <div class="resume__item__stat__wrapper row">
+            <div class="resume__item__stat__cell col-xs-15 col-sm-16">
+                <btn-stat></btn-stat>
+                <svg-stat></svg-stat>
+            </div>
+            <div class="resume__item__stat__cell bg-yellow c-blackLight col-xs-9 col-sm-8 resume__item__stat__percentage">
+                98%
+            </div>
+        </div>
+    </div>
+
+    <div class="resume__item__header" style="background-image:url('{ item.photo }')" data-blank="true">
         <div class="resume__item__control">
             <span class="display-inlineBlock w25 h25 bg-white opacity-30 borderRadius-circle mb-m"></span>
-            <span class="display-inlineBlock w15 h25 bg-white opacity-30 borderRadius-l mb-m"></span>
+            <span class="display-inlineBlock w10 h25 bg-white opacity-30 borderRadius-l"></span>
+            <span class="display-inlineBlock w25 h25 bg-white opacity-30 borderRadius-l mt-xl"></span>
         </div>
         <div class="row">
             <div class="col-xs-5 col-sm-6">
@@ -23,7 +55,7 @@
             </div>
         </div>
     </div>
-    <div class="resume__item__stat">
+    <div class="resume__item__stat" data-blank="true">
         <div class="resume__item__stat__wrapper row">
             <div class="resume__item__stat__cell col-xs-15 col-sm-16">
                 <span class="display-inlineBlock w60p h40 bg-blueLight opacity-20 borderRadius-xxl"></span>
@@ -33,5 +65,44 @@
             </div>
         </div>
     </div>
+
+<script>
+
+    this.item = {
+        public: true,
+        plan: "free",
+        template: "1",
+        lang: "ru",
+        post: "Web-Designer, Art-director, Illustrator",
+        photo: "/preview/images/photo/photo_phone.jpg",
+        update: moment('2017-01-12 11:21:00'),
+        commons: {
+            name: "Виктория",
+            surname: "",
+            gender: "female",
+            birthday: {
+                day: "25",
+                month: "8",
+                year: "1986",
+                hidden: true
+            },
+            contacts: {
+                city: "Москва",
+                email: "owebme@gmail.com",
+                phone: "(926) 017-2086",
+                primary: "any",
+                relocate: true,
+                site: "http://web-projects.me",
+                skype: "owebme"
+            }
+        },
+        salary: {
+            amount: "125000",
+            currency: "1",
+            worktime: "1"
+        }
+    };
+
+</script>
 
 </resume-list-item-blank>

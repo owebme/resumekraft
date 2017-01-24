@@ -17,58 +17,11 @@ MongoClient.connect(config.get('mongodb:uri'), function(err, db) {
 	// db.collection('inbox').insert(inbox);
 });
 
-var inbox = [
-	{
-		_id: "343435345435",
-		accountId: ObjectId('58785acdfabeed550a9b8b65'),
-		resumeId: "1243242424332",
-		new: false,
-		title: "YouDo",
-		from: "info@webinspired.ru",
-		text: 'Мы ознакомились с резюме и ваша кандидатура нас очень заинтересовала.',
-		color: 'blueLight',
-		create: validator.toDate("2017-01-10 12:00")
-	},
-	{
-		_id: "2343242342111112",
-		accountId: ObjectId('58785acdfabeed550a9b8b65'),
-		resumeId: "1243242424332",
-		new: false,
-		title: "FTL-consulting",
-		from: "info@webinspired.ru",
-		text: 'Компания FTL-consulting ищет кандидата на вакансию "Разработчик Perl".',
-		color: 'emerald',
-		create: validator.toDate("2017-01-11 11:00")
-	},
-	{
-		_id: "234234234",
-		accountId: ObjectId('58785acdfabeed550a9b8b65'),
-		resumeId: "1243242424332",
-		new: true,
-		title: "С&L Consulting Co Ltd",
-		from: "info@webinspired.ru",
-		text: 'Компания С&L Consulting Co Ltd ищет кандидата на вакансию "Ведущий Frontend Разработчик".',
-		color: 'pink',
-		create: validator.toDate("2017-01-11 12:00")
-	},
-	{
-		_id: "111423423423",
-		accountId: ObjectId('58785acdfabeed550a9b8b65'),
-		resumeId: "1243242424332",
-		new: true,
-		title: "Independent developers LTD",
-		from: "info@webinspired.ru",
-		text: 'Здравствуйте, Александр!\n\nКомпания FTL-consulting ищет кандидата на вакансию "Разработчик Perl".\nВаше резюме показалось нам очень интересным.\nПодробное описание вакансии Вы можете найти на сайте https://hh.ru\nЗайдите под своим логином и паролем, и на странице "Отклики на вакансии" Вы найдете ссылку на описание вакансии.\nЕсли наше предложение Вам интересно, перезвоните, пожалуйста, в рабочее время по телефону +7 (495) 544-48-63 (Кобякова Мария).\n\nС уважением,\nКобякова Мария\nМосква, Мосфильмовская улица, 38А',
-		color: 'blue',
-		create: validator.toDate("2017-01-12 14:00")
-	}
-];
-
 var accounts = [
 	{
 		_id: ACCOUNT_ID,
 		plan: "free",
-        balance: "369",
+        balance: 0,
         photo: "/preview/images/photo/photo_phone.jpg",
         name: "Виктория",
         surname: "Юртаева",
@@ -80,19 +33,73 @@ var accounts = [
             hidden: true
         },
         contacts: {
-            city: "Москва",
-            email: "owebme@gmail.com",
-            phone: "(926) 017-2086",
-            site: "http://web-projects.me",
-            skype: "owebme"
+			city: "Москва",
+			email: "owebme@gmail.com",
+			phone: "(926) 017-2086",
+			primary: "any",
+			relocate: true,
+			site: "http://web-projects.me",
+			skype: "owebme"
         },
-		history: [],
+		history: {
+			events: [],
+			visits: []
+		},
 		payment: [],
 		metrika: [],
+		log: [],
+		visits: 0,
         login: "maxfull@mail.ru",
         password: utils.cryptoPass("123456"),
         create: validator.toDate("2017-01-12 11:21"),
 		update: validator.toDate("2017-01-12 12:21"),
         visite: validator.toDate("2017-01-12 12:21")
+	}
+];
+
+var inbox = [
+	{
+		_id: "343435345435",
+		accountId: ACCOUNT_ID,
+		resumeId: "1243242424332",
+		new: false,
+		title: "YouDo",
+		from: "info@webinspired.ru",
+		text: 'Мы ознакомились с резюме и ваша кандидатура нас очень заинтересовала.',
+		color: 'blueLight',
+		create: validator.toDate("2017-01-10 12:00")
+	},
+	{
+		_id: "2343242342111112",
+		accountId: ACCOUNT_ID,
+		resumeId: "1243242424332",
+		new: false,
+		title: "FTL-consulting",
+		from: "info@webinspired.ru",
+		text: 'Компания FTL-consulting ищет кандидата на вакансию "Разработчик Perl".',
+		color: 'emerald',
+		create: validator.toDate("2017-01-11 11:00")
+	},
+	{
+		_id: "234234234",
+		accountId: ACCOUNT_ID,
+		resumeId: "1243242424332",
+		new: true,
+		title: "С&L Consulting Co Ltd",
+		from: "info@webinspired.ru",
+		text: 'Компания С&L Consulting Co Ltd ищет кандидата на вакансию "Ведущий Frontend Разработчик".',
+		color: 'pink',
+		create: validator.toDate("2017-01-11 12:00")
+	},
+	{
+		_id: "111423423423",
+		accountId: ACCOUNT_ID,
+		resumeId: "1243242424332",
+		new: true,
+		title: "Independent developers LTD",
+		from: "info@webinspired.ru",
+		text: 'Здравствуйте, Александр!\n\nКомпания FTL-consulting ищет кандидата на вакансию "Разработчик Perl".\nВаше резюме показалось нам очень интересным.\nПодробное описание вакансии Вы можете найти на сайте https://hh.ru\nЗайдите под своим логином и паролем, и на странице "Отклики на вакансии" Вы найдете ссылку на описание вакансии.\nЕсли наше предложение Вам интересно, перезвоните, пожалуйста, в рабочее время по телефону +7 (495) 544-48-63 (Кобякова Мария).\n\nС уважением,\nКобякова Мария\nМосква, Мосфильмовская улица, 38А',
+		color: 'blue',
+		create: validator.toDate("2017-01-12 14:00")
 	}
 ];

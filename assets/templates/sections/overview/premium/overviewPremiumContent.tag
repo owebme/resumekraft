@@ -304,7 +304,7 @@
                         </div>
                     </div>
                     <div class="anim anim-scale" data-delta="s">
-                        <a href="/premium/workflow" class="btn btn-success btn-upper btn-xl">Перейти на тест-драйв</a>
+                        <a target="_blank" href="/premium/workflow" class="btn btn-success btn-upper btn-xl">Перейти на тест-драйв</a>
                     </div>
                 </div>
             </div>
@@ -326,7 +326,7 @@
                 <div class="pos-centered">
                     <div class="anim anim-scale-soft" data-delta="s">
                         <div class="c-white fontWeight-8 mb-m" style="font-size:100px; line-height:100px; letter-spacing:-1.4px">369 ₽</div>
-                        <button class="btn btn-white-hover btn-upper btn-xl">попробовать</button>
+                        <button class="btn btn-white-hover btn-upper btn-xl successPlanMonth">попробовать</button>
                     </div>
                 </div>
             </div>
@@ -335,7 +335,7 @@
                 <div class="pos-centered">
                     <div class="anim anim-scale-soft" data-delta="s">
                         <div class="c-white fontWeight-8 textShadow-light mb-m" style="font-size:100px; line-height:100px; letter-spacing:-1.4px">1,769 ₽</div>
-                        <button class="btn btn-white-hover btn-upper btn-xl">подключить</button>
+                        <button class="btn btn-white-hover btn-upper btn-xl successPlanYear">подключить</button>
                     </div>
                 </div>
             </div>

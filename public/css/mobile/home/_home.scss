@@ -364,7 +364,7 @@ section-home-mobile {
                     @extend .h100p;
                     width:58vw;
                     max-width:280px;
-                    perspective:500px;
+                    @extend .perspective-500;
                 }
             }
             .screen__image__item {

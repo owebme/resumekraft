@@ -1,33 +1,15 @@
-<resume-select class="oScreen { showAnim : animate } zIndex-2" data-open="{ active }" data-color="{ 'dark' : app.device.isPhone && plan == 'basic' }{ 'white' : plan == 'premium' }">
+<resume-select class="oScreen { showAnim : animate } zIndex-2" data-open="{ active }" data-color="{ 'dark' : app.device.isPhone && plan == 'free' }{ 'white' : plan == 'premium' }">
 
     <div class="anim anim-fadeIn zIndex-2" data-duration="xs">
-        <!-- <div if={ plan == 'premium' } onClick={ open.tutorial } class="button__help"></div> -->
         <div onClick={ hide } class="button__close { opacity-40 : app.device.isPhone }" data-color="{ white : plan != 'premium' }"></div>
     </div>
-
-    <!-- <div class="oScreen zIndex-5" data-open="false" data-color="dark">
-        <div class="pos-centered-h">
-            <div class="ui-icon-arrow_curved_white" style="width:100px; height:100px; margin:100px 0 0 380px; transform:scaleX(-1) scaleY(-1) rotate(20deg)"></div>
-        </div>
-        <div class="pos-centered">
-            <div class="container pt-xl">
-                <div class="row">
-                    <h1 class="c-white mb-l anim anim-scale">Вы выбрали обычный тариф</h1>
-                    <p class="c-white mb-l fontSize-24 opacity-60">посмотреть варианты резюме из premium тарифа можно сменив раздел</p>
-                    <div class="anim anim-scale anim-delay-m">
-                        <button class="btn btn-xxl btn-white-hover">Понятно</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
 
     <div class="pos-centered w100p zIndex-1">
 
         <div class="anim anim-scale pos-rel zIndex-1">
             <div class="plan__screens__select btn-group">
-                <button onClick={ select.plan.basic } class="btn btn-l { plan == 'basic' ? 'btn-primary' : 'btn-primary-hover' }">FREE</button>
-                <button onClick={ select.plan.premium } class="btn btn-l { plan == 'premium' ? 'btn-primary' : 'btn-white-hover' } text-uppercase">Premium</button>
+                <button onClick={ select.plan.free } onUpdate="none" class="btn btn-l { plan == 'free' ? 'btn-primary' : 'btn-primary-hover' }">FREE</button>
+                <button onClick={ select.plan.premium } onUpdate="none" class="btn btn-l { plan == 'premium' ? 'btn-primary' : 'btn-white-hover' } text-uppercase">Premium</button>
             </div>
         </div>
 
@@ -47,14 +29,14 @@
                                             <img class="plan__premium__item__image" src="/public/images/promo/premium/slide2_1.png" data-image="back">
                                         </div>
                                         <div class="plan__premium__item__button">
-                                            <button class="btn btn-xxl btn-default-hover-success mb-xl">Создать резюме</button>
+                                            <button onClick={ select.template.premium } onUpdate="none" class="btn btn-xxl btn-default-hover-success mb-xl">Создать резюме</button>
                                             <div class="mb-m"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12 text-left c-blackLight whiteSpace-normal">
                                     <div class="pt-m pl-xs pr-m">
-                                        <div class="tutorial-step2 plan__premium__gallery" style="background-image:url(/public/images/promo/premium/slide2_1.png)">
+                                        <div onClick={ open.overview } onUpdate="none" class="tutorial-step2 plan__premium__gallery" style="background-image:url(/public/images/promo/premium/slide2_1.png)">
                                             <div class="plan__premium__gallery__pointer"></div>
                                         </div>
                                         <h2 class="fontWeight-8 pt-xs c-blue mb-l letterSpacing-xxxl text-uppercase">Premium</h2>
@@ -80,7 +62,7 @@
                                             <div class="plan__premium__icon" data-icon="devices" data-balloon="100% адаптация для всех мобильных и не мобильных устройств" data-balloon-length="large" data-balloon-fontSize="large">
                                                 <icon-devices></icon-devices>
                                             </div>
-                                            <div onClick={ open.functions } class="pos-rel cursor-pointer display-inlineBlock vAlign-middle fontSize-16 fontWeight-8 letterSpacing--s text-uppercase c-blue" data-icon="devices" data-balloon="Нажмите, чтобы узнать еще о возможностях" data-balloon-length="large" data-balloon-fontSize="large">еще...</div>
+                                            <div onClick={ open.functions } onUpdate="none" class="pos-rel cursor-pointer display-inlineBlock vAlign-middle fontSize-16 fontWeight-8 letterSpacing--s text-uppercase c-blue" data-icon="devices" data-balloon="Нажмите, чтобы узнать еще о возможностях" data-balloon-length="large" data-balloon-fontSize="large">еще...</div>
                                         </div>
                                     </div>
                                 </div>
@@ -90,16 +72,16 @@
                 </div>
             </div>
 
-            <div class="plan__screen ptb-xl" data-active={ plan == 'basic' }>
-                <div class="{ app.device.isPhone ? 'rows largeSlides' : 'container' } slider" name="slider-basic">
+            <div class="plan__screen ptb-xl" data-active={ plan == 'free' }>
+                <div class="{ app.device.isPhone ? 'rows largeSlides' : 'container' } slider" name="slider-free">
                     <div class="slider__nav slider__nav__prev anim anim-fadeIn" data-duration="xs"></div>
                     <div class="slider__nav slider__nav__next anim anim-fadeIn" data-duration="xs"></div>
                     <div class="row slider__wrapper">
-                        <div each={ item, i in items.basic } class="slider__item col-md-12 col-lg-8">
+                        <div each={ item, i in items.free } class="slider__item col-md-12 col-lg-8">
                             <div class="plan__basic__item plr-l">
                                 <img class="plan__basic__item__image" src="http://resumekraft.ru/makets/images/{ item }.png">
                                 <div class="plan__basic__item__button">
-                                    <button onClick={ select.template.basic } class="btn btn-l btn-default-hover-success mb-xs">Выбрать этот</button>
+                                    <button onClick={ select.template.free } class="btn btn-l btn-default-hover-success mb-xs">Выбрать этот</button>
                                 </div>
                             </div>
                         </div>
@@ -121,15 +103,15 @@
     $.animate = false;
 
     $.items = {
-        basic: _.range(1001, 1010),
+        free: _.range(1001, 1010),
         premium: ["1"]
     }
 
-    $.plan = "basic";
+    $.plan = "free";
 
     $.on("mount", function(){
         $.slider = {
-            basic: new app.plugins.slider($["slider-basic"]),
+            free: new app.plugins.slider($["slider-free"]),
             premium: new app.plugins.slider($["slider-premium"])
         }
     });
@@ -149,19 +131,23 @@
         },
         functions: function(){
             $Sections.overview.functions.show();
+        },
+        overview: function(){
+            $Sections.overview.premium.show();
         }
     };
 
     $.select = {
         plan: {
-            basic: function(){
+            free: function(){
                 $.update({
-                    plan: "basic"
+                    plan: "free"
                 })
                 _.onEndTransition($.root, function(){
-                    $.slider.basic.show();
+                    $.slider.free.show();
                 });
                 $.slider.premium.hide();
+                app.metrika.set("resume.select.default", "free");
             },
             premium: function(){
                 $.update({
@@ -170,27 +156,30 @@
                 _.onEndTransition($.root, function(){
                     $.slider.premium.show();
                 });
-                $.slider.basic.hide();
+                $.slider.free.hide();
+                app.metrika.set("resume.select.default", "premium");
             }
         },
         template: {
-            basic: function(){
-                if (this.i !== undefined && $Sections.resume.edit.active){
-                    var num = this.i + 1;
+            free: function(){
+                var num = this.i !== undefined ? this.i + 1 : false;
+                if (num && $Sections.resume.edit.active){
                     $.hide(function(){
                         $Sections.resume.edit.section.sections.preview.change(num);
                     });
                 }
                 else {
                     $.hide(function(){
-                        $Sections.resume.edit.show();
+                        $Sections.resume.edit.show({
+                            template: num
+                        });
                     });
-                    app.metrika.set("resume.select.template", this.i);
+                    app.metrika.set("resume.select.template", num);
                     app.metrika.set("resume.select.success", true);
                 }
             },
             premium: function(){
-
+                $Sections.plan.show("premium");
             }
         }
     };
@@ -199,7 +188,7 @@
         $.active = false;
         $.animate = false;
         $.slider.premium.hide();
-        $.slider.basic.hide();
+        $.slider.free.hide();
         if (_.isFunction(callback)){
             _.onEndTransition($.root, function(){
                 callback();

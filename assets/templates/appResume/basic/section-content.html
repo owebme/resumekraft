@@ -2,15 +2,21 @@
 
     <resume-screens></resume-screens>
 
-    <resume-control-percentage></resume-control-percentage>
+    <resume-control-percentage if={ !app.device.isPhone }></resume-control-percentage>
 
-    <resume-control-step></resume-control-step>
+    <resume-control-step if={ !app.device.isPhone }></resume-control-step>
 
-    <resume-control-buttons></resume-control-buttons>
+    <resume-control-buttons if={ !app.device.isPhone }></resume-control-buttons>
+
+    <div if={ app.device.isPhone } class="section control__buttons">
+        <div onClick={ open.menu } onUpdate="none" class="control__buttons__item control__buttons__opener">
+            <div class="control__buttons__item__icon control__buttons__opener__icon"></div>
+        </div>
+    </div>
 
     <resume-control-menu></resume-control-menu>
 
-    <share-button pos="bottom-right"></share-button>
+    <share-button pos="bottom-right" if={ !app.device.isPhone }></share-button>
 
     <resume-preview></resume-preview>
 
@@ -47,6 +53,10 @@
             finish: $.tags["resume-edit-finish"],
             shareButton: $.tags["share-button"]
         };
+
+        $.sections.photo.init(
+            $resume.get("config", "photo")
+        );
     });
 
     $.on("mount", function(){
@@ -71,22 +81,41 @@
             }
         });
 
-        // if (!app.device.isPhone){
-        //     _.onEndTransition($.content, function(){
-        //         $Tutorial.show($$($.scope.root), "resumeBasic");
-        //     });
-        // }
+        if (!app.device.isPhone){
+            if (!app.metrika.get("resume.create.tutorial.show")){
+                _.onEndTransition($.content, function(){
+                    $Tutorial.show($$($.scope.root), "resumeFree", {
+                        animate: false
+                    });
+                    $Tutorial.one("close", function(){
+                        $Tutorial.off("success");
+                        app.metrika.set("resume.create.tutorial.hide", true);
+                    });
+                    $Tutorial.one("success", function(){
+                        $Tutorial.off("close");
+                        app.metrika.set("resume.create.tutorial.success", true);
+                    });
+                    app.metrika.set("resume.create.tutorial.show", true);
+                });
+            }
+        }
     });
 
     $.refresh = function(){
         if (!$.screens) return;
+
         $.screens.refresh();
-        $.sections.steps.refresh();
+
+        if ($.sections.steps){
+            $.sections.steps.refresh();
+        }
     };
 
     $.open = {
         menu: function(){
-            $.sections.menu.show();
+            if (app.device.isMobile){
+                $.sections.menu.show();
+            }
         },
         preview: function(){
             $.sections.preview.show();
@@ -94,14 +123,21 @@
         },
         photoUpload: function(){
             $.sections.photo.show(function(image){
-                $resume.select("photo").set(image);
-                $.sections.preview.template.update();
+                app.request("addUploadPhoto", {
+                    image: image
+                })
+                .then(function(data){
+                    if (data && data.image){
+                        $resume.select("photo").set(image);
+                        $.sections.preview.template.update();
+                    }
+                });
             });
             app.metrika.set("resume.create.control.photoUpload", true);
         },
         design: {
-            basic: function(){
-                $Sections.resume.select.show("basic");
+            free: function(){
+                $Sections.resume.select.show("free");
                 app.metrika.set("resume.create.control.design", true);
             },
             premium: function(){

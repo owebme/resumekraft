@@ -27,7 +27,23 @@
                 $.open("signup");
             });
         }
-        $.notify = app.tag("section-notify");
+        $afterlag.xs(function(){
+            $.notify = app.tag("section-notify");
+
+            if (window.ymaps){
+                ymaps.ready(function(){
+                    if (ymaps.geolocation && ymaps.geolocation.city){
+                        $.update({
+                            location: {
+                                country: ymaps.geolocation.country,
+                                city: ymaps.geolocation.city,
+                                region: ymaps.geolocation.region
+                            }
+                        })
+                    }
+                });
+            }
+        });
     });
 
     $.open = function(section, param){

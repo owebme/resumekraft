@@ -4,7 +4,9 @@
         @extend .display-block;
         @extend .overflowY-auto;
         @extend .section-hidden;
-        padding:100px 20px 70px;
+        @extend .pt100;
+        @extend .pb70;
+        @extend .plr-m;
 
         &[data-color="white"]{
             .section__menu__item {
@@ -18,14 +20,17 @@
             @extend .pl-m;
             @extend .ml-xxs;
             @extend .c-white;
-            @extend .fontSize-18;
+            @extend .fontSize-16;
             @extend .fontWeight-8;
             @extend .text-uppercase;
         }
         &__item {
             @extend .pos-rel;
             @include flex("row", "flex-start", "center");
-            padding:30px 10px 30px 70px;
+            @extend .pt30;
+            @extend .pb30;
+            @extend .pl70;
+            @extend .pr-xs;
             border-bottom:1px solid $grayLighten;
 
             &__icon {
@@ -36,13 +41,15 @@
             }
             &__title {
                 @extend .pl-m;
-                @extend .fontSize-28;
+                @extend .fontSize-26;
                 @extend .text-truncate;
-                max-width:100%;
-
-                .d-phone & {
-                    font-size:27.5px;
-                }
+                @extend .maxW-100p;
+            }
+            .icon {
+                @extend .scale-90;
+            }
+            .icon-camera {
+                transform:translateY(2px);
             }
         }
     }

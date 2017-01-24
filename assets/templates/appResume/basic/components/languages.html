@@ -1,6 +1,6 @@
 <resume-screen-langs class="screen" data-marquee={ opts.step }>
 
-    <div class="screen__content">
+    <div class="screen__content" data-empty={ true : !$resume.get("languages") }>
 
         <div class="title">{ opts.title }</div>
 
@@ -21,6 +21,53 @@
             </div>
         </div>
 
+        <div onClick={ build } class="section__create" data-icon="languages">
+            <div class="section__create__button">
+                <div class="section__create__button__opener"></div>
+            </div>
+            <div class="section__create__title">Добавить владение языками</div>
+        </div>
+
     </div>
+
+
+<script>
+
+    var $ = this;
+
+    $.on("updated", function(){
+        if ($Sections.resume.edit.section && $Sections.resume.edit.ready){
+            $afterlag.run(function(){
+                $Sections.resume.edit.section.refresh();
+            });
+        }
+    });
+
+    $.build = function(){
+        $resume.select("languages").set({
+            title: null,
+            text: null,
+            items: [
+                {
+                    title: "native",
+                    value: "4"
+                },
+                {
+                    title: "en",
+                    value: "1"
+                },
+                {
+                    title: "de",
+                    value: "1"
+                },
+                {
+                    title: "fr",
+                    value: "1"
+                }
+            ]
+        });
+    };
+
+</script>
 
 </resume-screen-langs>

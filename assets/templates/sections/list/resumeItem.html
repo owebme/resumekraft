@@ -4,8 +4,8 @@
         <div class="resume__item__control">
             <div onClick={ onRemove } onUpdate="none" class="resume__item__control__btn resume__item__control__remove"></div>
             <div onClick={ show.dropMenu } onUpdate="none" class="resume__item__control__btn resume__item__control__menu"></div>
-            <div onClick={ show.inbox } onUpdate="none" class="resume__item__control__btn resume__item__control__inbox" data-active={ true : get.newItems() > 0 }>
-                <div class="resume__item__control__inbox__badge">{ get.newItems() }</div>
+            <div onClick={ show.inbox } onUpdate="none" class="resume__item__control__btn resume__item__control__inbox" data-active={ true : get.newInbox() > 0 }>
+                <div class="resume__item__control__inbox__badge">{ get.newInbox() }</div>
             </div>
         </div>
         <div class="row resume__item__header__text">
@@ -38,7 +38,7 @@
     var $ = this;
 
     $.get = {
-        newItems: function(){
+        newInbox: function(){
             return _.where(
                 $store.inbox.get(), {
                     "resumeId": $.opts.item._id,
@@ -75,7 +75,9 @@
                     {
                         title: "Редактировать",
                         callback: function(){
-                            alert("Редактировать");
+                            $Sections.resume.edit.show({
+                                id: $.opts.item._id
+                            });
                         }
                     },
                     {
@@ -93,7 +95,7 @@
                     {
                         title: "Удалить",
                         callback: function(){
-                            alert("Редактировать");
+                            alert("Удалить");
                         }
                     }
                 ]

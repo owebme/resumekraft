@@ -25,20 +25,36 @@
 
     $.scroll = $$($["scroll"]);
 
+    $store.resume.init();
+
     $.on("before-mount", function(){
         $.loader = $.tags["oscreen-loader"];
     });
 
     // $.on("mount", function(){
     //     $afterlag.run(function(){
-    //         $.show();
+    //         $.show({
+    //             template: "1"
+    //         });
     //     });
     // });
 
-    $.show = function(){
+    $.show = function(options){
         if ($.loading || $.active) return;
 
-        $resume = $store.resume;
+        $store.resume.set(
+            options.id ? $store.data.get({ "_id": options.id }) : $store.resume.take.resumeNew({
+                ACCOUNT_ID: $account.get("_id"),
+                plan: "free",
+                template: options.template,
+                photo: $account.get("photo"),
+                name: $account.get("name"),
+                surname: $account.get("surname"),
+                gender: $account.get("gender"),
+                birthday: $account.get("birthday"),
+                contacts: $account.get("contacts")
+            })
+        );
 
         $i18n.lang($resume.get("lang"));
         moment.locale($resume.get("lang"));
@@ -60,9 +76,23 @@
                 mount: function(){
                     $.scroll[0].style.backgroundColor = '';
                     $root.focus("resume-edit");
+                    $.ready = true;
                 }
             }
         );
+
+        // $.update({
+        //     active: true
+        // });
+        // $.section = riot.mount($.content, "resume-edit-content", {
+        //     scope: $,
+        //     scroll: $.scroll,
+        //     content: $.content
+        // })[0];
+        // $.section.one("updated", function(){
+        //     $.ready = true;
+        // });
+        // $root.focus("resume-edit");
 
         app.metrika.set("resume.create.show", true);
     };
@@ -77,8 +107,10 @@
             active: false
         })
         _.onEndTransition($.scroll[0], function(){
+            moment.locale("ru");
             $.section.unmount(true);
             $root.focus("all");
+            $.ready = false;
         });
     };
 

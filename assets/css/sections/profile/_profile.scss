@@ -66,22 +66,22 @@
                 @extend .t50;
                 @extend .l0;
                 @extend .w100p;
-                @extend .mt35;
+                @extend .mt-l;
                 @extend .pl30;
                 @extend .pr30;
                 @extend .c-gray;
                 @extend .text-center;
                 @extend .text-uppercase;
-                font:bold 14px/22px "Gotham", Helvetica;
+                font:bold 13px/20px "Gotham", Helvetica;
             }
             &:before {
                 @extend .display-none;
             }
             &:after {
                 @extend .t50;
-                margin:-80px 0 0 -54px;
-                width:108px;
-                height:108px;
+                margin:-76px 0 0 -52px;
+                width:104px;
+                height:104px;
                 background-image:url(/assets/images/ui/ui-upload.svg);
                 @extend .opacity-85;
                 @extend .transition-none;

@@ -7,7 +7,7 @@
 
     .d-no-safari &,
     .d-no-ios & {
-        perspective:500px;
+        @extend .perspective-500;
     }
     &__icon {
         @include accelerate();

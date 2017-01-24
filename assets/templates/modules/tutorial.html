@@ -5,10 +5,10 @@
     <div name="msgBox" class="tutorial__message__wrapper" style="{ message.style }">
         <div name="msgElem" class="tutorial__message" data-position="{ message.position }" data-active="false">
             <p class="pos-tr p-m c-grayLight fontSize-m { display-none : !nav.steps }">Шаг { num } из { steps.get().length }</p>
-            <div class="tutorial__message__title">{ message.title }</div>
-            <p class="tutorial__message__text">{ message.text }</p>
-            <div class="fontSize-0 nowrap { display-none : !nav.buttons.success && !nav.buttons.cancel }">
-                <button onClick={ nextStep } onUpdate="none" class="btn btn-{ nav.buttons.success.size ?  nav.buttons.success.size : 'm' } { nav.buttons.success.title ? 'btn-success' : (endShow ? 'btn-success' : 'btn-default-hover-success') } mr-xs">
+            <div class="tutorial__message__title">{ message.title ? message.title : 'Lorem ipsum dolor sit amet' }</div>
+            <p class="tutorial__message__text">{ message.text ? message.text : 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' }</p>
+            <div class="fontSize-0 nowrap { display-none : !nav.buttons }">
+                <button onClick={ nextStep } onUpdate="none" class="btn btn-{ nav.buttons.success.size ?  nav.buttons.success.size : 'm' } { nav.buttons.success.title ? 'btn-success' : (endShow ? 'btn-success' : 'btn-default-hover-success') } { display-none : nav.buttons.success === false } mr-xs">
                     <svg if={ endShow && nav.buttons.success === true } class="btn-svg btn-svg-repeat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
                         <path class="fill-white" d="M 39.78125 5.96875 A 2.0002 2.0002 0 0 0 38 8 L 38 12.5625 C 34.722701 9.1373523 30.10346 7 25 7 C 15.082241 7 7 15.082241 7 25 A 2.0002 2.0002 0 1 0 11 25 C 11 17.243759 17.243759 11 25 11 C 28.816123 11 32.256876 12.535728 34.78125 15 L 31 15 A 2.0002 2.0002 0 1 0 31 19 L 40 19 L 42 19 L 42 17 L 42 8 A 2.0002 2.0002 0 0 0 39.96875 5.96875 A 2.0002 2.0002 0 0 0 39.78125 5.96875 z M 40.78125 22.96875 A 2.0002 2.0002 0 0 0 39 25 C 39 32.757363 32.756392 39 25 39 C 21.184399 39 17.742551 37.46305 15.21875 35 L 19 35 A 2.0002 2.0002 0 1 0 19 31 L 10 31 L 8 31 L 8 33 L 8 42 A 2.0002 2.0002 0 1 0 12 42 L 12 37.4375 C 15.276425 40.860887 19.895994 43 25 43 C 34.917608 43 43 34.918637 43 25 A 2.0002 2.0002 0 0 0 40.96875 22.96875 A 2.0002 2.0002 0 0 0 40.78125 22.96875 z"></path>
                     </svg>
@@ -41,7 +41,7 @@
 
             $.cordsMsg();
 
-            $.update();
+            if ($.step.target) $.update();
 
             $.msgElem.setAttribute("data-active", true);
 
@@ -60,8 +60,20 @@
             $.message.position = $.step.position;
             $.message.title = $.step.title;
             $.message.text = $.step.text;
-            $.update();
+            if ($.step.target) $.update();
         });
+    });
+
+    $.on("show", function(){
+        $.update({
+            active: true
+        })
+    });
+
+    $.on("hide", function(){
+        $.update({
+            active: false
+        })
     });
 
     $.reset = function(){
@@ -83,14 +95,17 @@
         };
         $.cursor = null;
         $.target = null;
+        $.beforeTarget = false;
         $.num = 0;
         $.step = {
             activeZone: false,
             style: "clear:both"
         };
+        $.arrow = null;
         $.endShow = false;
         $.options = {
-            animate: true
+            animate: true,
+            keyboard: true
         };
 
         if ($.actions.events){
@@ -127,10 +142,10 @@
             var reRender = _.debounce($.render, 100);
 
             app.$dom.window.on("resize.tutorial", function(){
-                reRender();
+                reRender(true);
             });
 
-            $.navigate.init();
+            if ($.options.keyboard) $.navigate.init();
         }
         else {
             console.log("Not found tutorial: " + tutorial);
@@ -154,6 +169,7 @@
 
     $.changeStep = function(arrow){
         $.ready = false;
+        $.arrow = arrow;
 
         if (!$.cursor) $.trigger("messageShow");
         else $.trigger("messageHide");
@@ -167,18 +183,21 @@
             $.cursor = $.steps.down();
         }
         else {
-            $.actions($.step, $.target, true);
+            if ($.step.actions && $.step.actions.toggle){
+                $.actions($.step, $.target, true);
+            }
             $.cursor = $.cursor[arrow]();
         }
 
         $.step = $.cursor.get().call();
         $.target = $.scope.find($.step.target);
 
-        if ($.start){
+        if ($.start || !$.start && !$.beforeTarget){
             $.message.position = $.step.position;
             $.message.title = $.step.title;
             $.message.text = $.step.text;
         }
+        $.beforeTarget = $.step.target;
 
         $.render();
 
@@ -194,7 +213,8 @@
                 $.endShow = false;
             }
 
-            $.update();
+            if ($.step.target && !$.step.nav) $.update();
+            else if (!$.start) $.ready = true;
 
             if ($.start || $.steps.get().length == $.num && arrow == "right") $.num = 1;
             else {
@@ -210,7 +230,9 @@
         });
     };
 
-    $.render = function(){
+    $.render = function(update){
+        if (!$.step.target) return;
+
         $.offset = $.target.offset();
 
         if ($.step.offset){
@@ -235,7 +257,6 @@
             borderSize = Math.ceil(5 / rectangleScaleFactor),
             shadowSize = 5 * borderSize,
             rectangleBorderRadius = 1e4 + 20 / rectangleScaleFactor,
-            circleBorderRadius = rectangleBorderRadius * 1.008,
             style = null;
 
         if ($.step.figure == "square"){
@@ -249,7 +270,7 @@
                 borderSize = Math.ceil(5 / scaleFactor),
                 shadowSize = 5 * borderSize;
 
-            style = "-webkit-transform: translateX(" + centerXMinusHalfSize + "px) translateY(" + centerYMinusHalfSize + "px) translateZ(0) scale(" + scaleFactor + "); transform: translateX(" + centerXMinusHalfSize + "px) translateY(" + centerYMinusHalfSize + "px) translateZ(0) scale(" + scaleFactor + "); width: " + arbitrarySize + "px; height: " + arbitrarySize + "px; box-shadow: inset 0 0 0 " + borderSize + "px " + $.borderColor + ", inset 0 0 " + shadowSize + "px rgba(0,0,0,0.4); border-radius: " + circleBorderRadius + "px";
+            style = "-webkit-transform: translateX(" + centerXMinusHalfSize + "px) translateY(" + centerYMinusHalfSize + "px) translateZ(0) scale(" + scaleFactor + "); transform: translateX(" + centerXMinusHalfSize + "px) translateY(" + centerYMinusHalfSize + "px) translateZ(0) scale(" + scaleFactor + "); width: " + arbitrarySize + "px; height: " + arbitrarySize + "px; box-shadow: inset 0 0 0 " + borderSize + "px " + $.borderColor + ", inset 0 0 " + shadowSize + "px rgba(0,0,0,0.4); border-radius: 50%";
         }
 
         $.navigate.render();
@@ -257,6 +278,10 @@
         $.step.style = style;
         $.targetWidth = width;
         $.targetHeight = height;
+
+        if (update === true){
+            $.update();
+        }
     };
 
     $.cordsMsg = function(){
@@ -282,13 +307,13 @@
         if (step.actions){
             if (step.actions.toggle){
                 $.afterlag(function(){
-                    step.actions.toggle($target);
+                    step.actions.toggle($target, force);
                 }, {
                     delay: force ? 0 : 650,
                     iterations: force ? 0 : 5,
                 });
             }
-            else if (step.actions.click){
+            if (step.actions.click){
                 var $elem = step.actions.click.elem == "self" ? $target : $target.find(step.actions.click.elem);
                 if ($elem && _.isFunction(step.actions.click.callback)){
                     $elem.one("click.tutorial", function(){
@@ -300,6 +325,9 @@
                     });
                 }
             }
+            if (step.actions.callback){
+                step.actions.callback($, $target, $.arrow);
+            }
         }
     };
 
@@ -309,6 +337,7 @@
                 if ($.ready){
                     if (e.which == KEY.RIGHT && !$.endShow) $.nextStep();
                     else if (e.which == KEY.LEFT) $.prevStep();
+                    else if (e.which == KEY.ESC) $.hide();
                 }
             });
         },
@@ -322,15 +351,13 @@
             };
 
             if ($.step.nav){
-                if ($.step.nav.buttons === false){
-                    $.step.nav.buttons = {
-                        buttons: {
-                            success: false,
-                            cancel: false
-                        }
-                    }
-                }
                 _.extend($.nav, $.step.nav);
+            }
+            else if ($.step.nav === false){
+                $.nav = {
+                    steps: false,
+                    buttons: false
+                };
             }
         },
         destroy: function(){
@@ -348,6 +375,7 @@
         _.onEndTransition($.root, function(){
             $.reset();
             $.update();
+            $.trigger("hideAfterAnimate");
         });
         $.afterlag(function(){
             $.actions($.step, $.target, true);

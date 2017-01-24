@@ -8,23 +8,18 @@
     @extend .borderRadius-xl;
     @include accelerate(true);
     @extend .whiteSpace-normal;
+    height:354px;
     box-shadow:5px 8.66px 30px 0 rgba(31,35,37,.078);
     will-change:box-shadow, transform;
     transition:box-shadow .4s, transform .4s;
 
-    .d-no-phone & {
-        height:354px;
-    }
-    .d-phone &:not(.resume__item--new) {
-        @extend .aspectRatio-100;
-    }
     .m-no-touch &:hover {
         // box-shadow:0 5px 40px rgba(0,0,0,.16);
         // box-shadow:0 20px 40px rgba(0,0,0,.16);
         box-shadow:0 20px 25px rgba(0,0,0,.15);
         @extend .trY--s;
     }
-    &--new {
+    &[data-new="true"]{
         @extend .flex-column-centered;
         @extend .c-blue;
         @extend .pb-xs;
@@ -41,8 +36,31 @@
             @extend .mb-xxs;
             @include ui-icon(plus, 48px, 48px);
         }
-        .d-phone & {
-            height:333px;
+    }
+    &__header,
+    &__stat {
+        @extend .willChange-opacity;
+        transition:opacity 0.8s $cubic60 0.65s;
+
+        &[data-blank="true"]{
+            @extend .opacity-0;
+            @extend .pointerEvents-none;
+        }
+    }
+    &[data-blank="true"]{
+        @extend .cursor-default;
+
+        .resume__item__header,
+        .resume__item__stat {
+            &:not([data-blank="true"]){
+                @extend .opacity-0;
+                @extend .pointerEvents-none;
+            }
+            &[data-blank="true"]{
+                @extend .opacity-100;
+                @extend .pointerEvents-all;
+                @extend .cursor-default;
+            }
         }
     }
     &__header {
@@ -61,11 +79,6 @@
             @extend .bg-blueLight;
             @extend .opacity-95;
             border-radius:10px 10px 0 0;
-        }
-        .d-phone & {
-            @extend .pt30;
-            @extend .pr35;
-            @extend .pl25;
         }
     }
     &__control {
@@ -137,11 +150,6 @@
         @extend .h60;
         @extend .bg-cover;
         @extend .borderRadius-circle;
-
-        .d-phone & {
-            width:44px;
-            height:44px;
-        }
     }
     &__title {
         @extend .fontSize-22;

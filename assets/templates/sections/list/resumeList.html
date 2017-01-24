@@ -9,9 +9,22 @@
     <div name="sliderEl" class="resume__list__slider container slider" data-hidden="{ hidden }">
         <div class="slider__nav slider__nav__prev"></div>
         <div class="slider__nav slider__nav__next"></div>
-        <div class="row slider__wrapper">
-            <div each={ item, i in _.sortByDate($store.data.get(), "update", "desc") } no-reorder class="slider__item col-md-12 col-lg-8">
-                <resume-list-item item={ item }></resume-list-item>
+        <div if={ $store.data.get().length } class="row slider__wrapper">
+            <virtual each={ item, i in _.sortByDate($store.data.get(), "update", "desc") } no-reorder>
+                <div class="slider__item col-md-12 col-lg-8">
+                    <resume-list-item item={ item }></resume-list-item>
+                </div>
+                <div if={ i == 0 } class="slider__item col-md-12 col-lg-8">
+                    <resume-list-item-new onClick={ open.createResume } onUpdate="none"></resume-list-item-new>
+                </div>
+            </virtual>
+            <div if={ $store.data.get().length < 2 } class="slider__item col-md-12 col-lg-8">
+                <resume-list-item-blank></resume-list-item-blank>
+            </div>
+        </div>
+        <div if={ !$store.data.get().length } class="row slider__wrapper">
+            <div class="slider__item col-md-12 col-lg-8">
+                <resume-list-item-blank></resume-list-item>
             </div>
             <div class="slider__item col-md-12 col-lg-8">
                 <resume-list-item-new onClick={ open.createResume } onUpdate="none"></resume-list-item-new>
@@ -31,34 +44,35 @@
 
     $.on("mount", function(){
         $.slider = new app.plugins.slider($.sliderEl);
-        if (app.metrika.get("offers.welcome.show")){
-            $root.one("ready", function(){
-                $.start();
-            });
-        }
     });
 
     $.start = function(callback){
         $afterlag.run(function(){
             $.slider.show(function(){
                 if (_.isFunction(callback)){
-                    $afterlag.s(function(){
-                        callback();
-                    });
+                    callback();
                 }
             });
         });
     };
 
     $.show = function(){
-        $.hidden = false;
-        $.update();
+        $.update({
+            hidden: false
+        })
     };
 
     $.open = {
         createResume: function(){
-            $Sections.offers.plan.show();
-            app.metrika.set("resume.new", true);
+            if (!app.metrika.get("offers.plan.show")){
+                $Sections.offers.plan.show();
+            }
+            else {
+                $Sections.resume.select.show(
+                    app.metrika.get("resume.select.default")
+                );
+            }
+            app.metrika.set("resume.buttonNew", true);
         },
         profile: function(){
             $.hide();
@@ -75,8 +89,9 @@
     };
 
     $.hide = function(){
-        $.hidden = true;
-        $.update();
+        $.update({
+            hidden: true
+        })
     };
 
 </script>

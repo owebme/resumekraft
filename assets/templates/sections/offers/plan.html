@@ -72,9 +72,9 @@
     $.open = {
         selectResume: function(){
             $.hide(function(){
-                $Sections.resume.select.show("basic");
+                $Sections.resume.select.show("free");
             });
-            app.metrika.set("offers.plan.basic", true);
+            app.metrika.set("offers.plan.free", true);
         },
         promoPremium: function(){
             $Sections.overview.premium.show();

@@ -5,5 +5,13 @@
     .textarea-larger {
         @extend .textarea-xl;
         min-height:320px;
+
+        .d-phone & {
+            min-height:280px;
+        }
+    }
+    textarea::placeholder {
+        @extend .c-gray;
+        @extend .lineHeight-l;
     }
 }

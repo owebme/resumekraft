@@ -3,6 +3,9 @@ $store.resume = _.extend(new Baobab({},
         autoCommit: true
     }),
     {
+        init: function(){
+            $resume = $store.resume;
+        },
         take: {
             birthday: {
                 date: function(){
@@ -112,6 +115,55 @@ $store.resume = _.extend(new Baobab({},
                     return $store.coverletter.getColorById($store.resume.get('coverletter', 'color'));
                 }
             },
+            resumeNew: function(options){
+                return {
+                        _id: _.newId(),
+                        accountId: options.ACCOUNT_ID,
+                        public: true,
+                        plan: options.plan,
+                        template: options.template ? options.template : "1",
+                        lang: "ru",
+                        post: null,
+                        photo: options.photo,
+                        create: moment().format(),
+                		update: moment().format(),
+                        commons: {
+                            name: options.name,
+                            surname: options.surname,
+                            gender: options.gender,
+                            birthday: options.birthday,
+                            contacts: options.contacts
+                        },
+                        salary: {
+                            amount: "50000",
+                            currency: "1",
+                            worktime: "1",
+                            graph: {
+                                active: false,
+                                items: null
+                            },
+                            active: true
+                        },
+                        about: null,
+                        social: null,
+                        education: null,
+                        languages: null,
+                        jobs: null,
+                        config: {
+                            color: "#0084ff",
+                            font: "futura",
+                            photo: {
+                                minWidth: 440,
+                                maxHeight: 620,
+                                noise: false
+                            },
+                            pdf: {
+                                logotype: options.plan == "free" ? true : false
+                            },
+                            stat: false
+                        }
+                    };
+            }
         },
         placeholder: {
             name: "Виктория Юртаева",

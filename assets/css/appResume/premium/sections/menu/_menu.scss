@@ -3,7 +3,7 @@
     @extend .zIndex-10;
 
     .d-no-mobile & {
-        perspective:500px;
+        @extend .perspective-500;
     }
     .d-no-phone & {
         @include accelerate(true);

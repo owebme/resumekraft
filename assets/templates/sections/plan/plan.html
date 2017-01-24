@@ -124,17 +124,17 @@
                             <div class="h1px bg-white opacity-50 mtb-m"></div>
                             <div onClick={ open.promoPremium } onUpdate="none" class="fontSize-18 cursor-pointer">Доступных функций: <strong>12 из 12</strong></div>
                             <div class="h1px bg-white opacity-50 mtb-m"></div>
-                            <div class="p-m borderRadius-xl borderWidth-1 borderColor-white borderStyle-solid mb-xs transition-xs { bg-white : varPay == '1' }">
-                                <ui-checkbox commit={ changePay } i="1" title="Ежемесячная оплата" group="2" color={ varPay == "1" ? 'blue' : 'white' } theme="blue" size="xl" value={ varPay == "1" }></ui-checkbox>
+                            <div class="p-m borderRadius-xl borderWidth-1 borderColor-white borderStyle-solid mb-xs transition-xs { bg-white : period == 'month1' }">
+                                <ui-checkbox commit={ changePay } i="month1" title="Ежемесячная оплата" group="2" color={ period == "month1" ? 'blue' : 'white' } theme="blue" size="xl" value={ period == "month1" }></ui-checkbox>
                             </div>
-                            <div class="p-m borderRadius-xl borderWidth-1 borderColor-white borderStyle-solid transition-xs { bg-white : varPay == '2' }">
-                                <ui-checkbox commit={ changePay } i="2" title="Оплатить на 1 год" group="2" color={ varPay == "2" ? 'blue' : 'white' } theme="blue" size="xl" value={ varPay == "2" }></ui-checkbox>
+                            <div class="p-m borderRadius-xl borderWidth-1 borderColor-white borderStyle-solid transition-xs { bg-white : period == 'year1' }">
+                                <ui-checkbox commit={ changePay } i="year1" title="Оплатить на 1 год" group="2" color={ period == "year1" ? 'blue' : 'white' } theme="blue" size="xl" value={ period == "year1" }></ui-checkbox>
                             </div>
                             <div class="h1px bg-white opacity-50 mtb-m"></div>
                             <div class="fontSize-22 pb-l nowrap">
                                 <span class="letterSpacing--s">К оплате:</span>
-                                <strong if={ varPay == '1' }>&nbsp;369 ₽</strong>
-                                <strong if={ varPay != '1' }>&nbsp;1,769 ₽ &nbsp;<span class="c-yellowLight text-strike" data-color="red">4,428 ₽</span></strong>
+                                <strong if={ period == 'month1' }>&nbsp;369 ₽</strong>
+                                <strong if={ period == 'year1' }>&nbsp;1,769 ₽ &nbsp;<span class="c-yellowLight text-strike" data-color="red">4,428 ₽</span></strong>
                             </div>
                             <button onClick={ open.payment } onUpdate="none" class="display-block btn c-blue btn-l2 btn-success btn-strong mlr-auto">Перейти к оплате</button>
                         </div>
@@ -155,7 +155,7 @@
     $.table = $$($.table);
     $.cursor = $$($["table-cursor"]);
     $.plan = $.hovered = "free";
-    $.varPay = "1";
+    $.period = "month1";
 
     var offset = {};
 
@@ -165,13 +165,16 @@
     //     }, 200);
     // });
 
-    $.show = function(plan){
+    $.show = function(plan, period){
         if ($.active) return;
 
         if (plan && plan != $.plan) {
             $.plan = plan;
             $.hovered = plan;
             if ($.ready) $.updateCursor(plan);
+        }
+        if (period) {
+            $.period = period;
         }
 
         $.update({
@@ -243,7 +246,7 @@
 
     $.changePay = function(value, i){
         $.update({
-            varPay: i
+            period: i
         });
     };
 
@@ -253,7 +256,7 @@
         },
         payment: function(){
             $.hide();
-            $Sections.payment.show($.varPay == "1" ? "month1" : "year1");
+            $Sections.payment.show($.period);
         }
     };
 

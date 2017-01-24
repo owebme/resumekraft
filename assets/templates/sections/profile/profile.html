@@ -26,7 +26,10 @@
                                     <div if={ $account.get('gender') == "male" } class="text-uppercase fontSize-20">муж.</div>
                                     <div if={ $account.get('gender') == "female" } class="text-uppercase fontSize-20">жен.</div>
                                     <div if={ $account.get('contacts', 'city') }>{ $account.get('contacts', 'city') }</div>
-                                    <span onClick={ open.personalData } onUpdate="none" class="display-inlineBlock link-underline link-default-hover-warning mt-xs">Изменить персональные данные</span>
+                                    <span onClick={ open.personalData } onUpdate="none" class="display-inlineBlock link-underline link-default-hover-warning mt-xs tutorial__changeData">Изменить персональные данные</span>
+                                    <div class="tutorial__reflink mt-xs fontSize-20 pr-l">
+                                        <strong>Получить <span class="c-orange">369 ₽</span> на счет&nbsp; &nbsp;<span onClick={ open.referer } onUpdate="none" class="display-inlineBlock link-underline link-default-hover-warning mt-xs">как подробнее</span></strong>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -36,6 +39,9 @@
                             <div class="fontSize-28 mb-s">Ваш тариф: <span class="c-blue fontWeight-bold text-capitalize">{ $account.get('plan') }</span></div>
                             <div if={ $account.get('plan') != "premium" }>
                                 <span onClick={ open.changePlan } onUpdate="none" class="link-underline link-default-hover-warning">Сменить тариф</span>
+                            </div>
+                            <div if={ $account.get('plan') == "premium" } class="c-gray mb-xs fontSize-18">
+                                Оплачен до: <span class="c-blue fontWeight-bold">28 ноября 2017</span>
                             </div>
                             <div class="mt-xxs">
                                 <span class="link-underline link-default-hover-warning">Сменить пароль</span>
@@ -57,7 +63,8 @@
                         </div>
                         <div class="{ display-none : editable.phone }">
                             <div class="c-gray fontSize-14 text-uppercase mb-xss">Основной:</div>
-                            <div class="fontSize-22 fontWeight-bold mb-m">{ $account.get('contacts', 'phone') }</div>
+                            <div if={ $account.get('contacts', 'phone') } class="fontSize-22 fontWeight-bold mb-m">{ $account.get('contacts', 'phone') }</div>
+                            <div if={ !$account.get('contacts', 'phone') } class="c-gray fontSize-24 mb-m">— &nbsp; — &nbsp; —</div>
                         </div>
                         <button onClick={ edit.phone } class="btn btn-edit btn-m btn-default-hover-warning">{ editable.phone ? 'Сохранить' : 'Изменить' }</button>
                     </div>
@@ -70,17 +77,18 @@
                         </div>
                         <div class="{ display-none : editable.email }">
                             <div class="c-gray fontSize-14 text-uppercase mb-xss">Основная:</div>
-                            <div class="mb-m">
+                            <div if={ $account.get('contacts', 'email') } class="mb-m">
                                 <span class="fontSize-22 link-underline link-default-hover-warning">{ $account.get('contacts', 'email') }</span>
                             </div>
+                            <div if={ !$account.get('contacts', 'email') } class="c-gray fontSize-24 mb-m">— &nbsp; — &nbsp; —</div>
                         </div>
                         <button onClick={ edit.email } class="btn btn-edit btn-m btn-default-hover-warning">{ editable.email ? 'Сохранить' : 'Изменить' }</button>
                     </div>
-                    <div class="col-md-8">
+                    <div class="tutorial__balance col-md-8">
                         <div class="title c-gray fontWeight-bold fontSize-28 mb30 opacity-80" data-icon="phone">
                             Ваш баланс
                         </div>
-                        <div class="{ parseInt($account.get('balance')) < 100 ? 'c-blackLight' : 'c-green' } fontSize-34 fontWeight-8 mb-m">{ _.numberFormat($account.get('balance'), 1, ",", ",") } ₽</div>
+                        <div class="{ parseInt($account.get('balance')) < 369 ? 'c-blue' : 'c-green' } fontSize-34 fontWeight-8 mb-m">{ _.numberFormat($account.get('balance'), 1, ",", ",") } ₽</div>
                         <button onClick={ open.payment } onUpdate="none" class="btn btn-balance btn-l btn-success">Пополнить</button>
                     </div>
                 </div>
@@ -88,12 +96,14 @@
         </div>
     </div>
 
+    <popup-referer></popup-referer>
+
 <script>
 
     var $ = this,
     $scope = $$($.root);
 
-    $.active = false;
+    $.active = true;
 
     $.editable = {
         phone: false,
@@ -102,17 +112,21 @@
 
     $.on("mount", function(){
         $scope.on('swipeleft', function(){
-            $.hide();
+            if (!$.popup.referer.active){
+                $.hide();
+            }
         });
         $account.on("write", function(){
             $.update();
         });
+        $.popup = {
+            referer: $.tags["popup-referer"]
+        }
     });
 
     $.show = function(callback){
-        $.update({
-            active: true
-        })
+        $.active = true;
+        $.update();
         $.callback = callback;
     };
 
@@ -141,7 +155,15 @@
     $.open = {
         photoUpload: function(){
             $Sections.photoUpload.show(function(image){
-                $account.select("photo").set(image);
+                app.request("addUploadPhoto", {
+                    profile: true,
+                    image: image
+                })
+                .then(function(data){
+                    if (data && data.image){
+                        $account.select("photo").set(image);
+                    }
+                });
             });
         },
         personalData: function(){
@@ -152,13 +174,15 @@
         },
         payment: function(){
             $Sections.payment.show();
+        },
+        referer: function(){
+            $.popup.referer.show();
         }
     };
 
     $.hide = function(){
-        $.update({
-            active: false
-        })
+        $.active = false;
+        $.update();
         if (_.isFunction($.callback)) $.callback();
     };
 

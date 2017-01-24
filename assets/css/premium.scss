@@ -20,6 +20,8 @@
 @import 'ui/basic/balloon';
 @import 'ui/basic/balloonError';
 @import 'ui/basic/loader';
+@import 'ui/basic/loaderAjax';
+@import 'ui/basic/spinner';
 @import 'ui/basic/notify';
 @import 'ui/basic/arrowPointer';
 @import 'ui/basic/dropMenu';
@@ -28,8 +30,8 @@
 @import 'ui/typography';
 @import 'ui/rangeslider';
 @import 'ui/switcher';
-@import 'ui/spinner';
 @import 'ui/slider';
+@import 'ui/social';
 
 // modules
 @import 'modules/alert';
@@ -48,12 +50,12 @@
 @import 'appResume/premium/ui/main';
 @import 'appResume/premium/ui/fontSize';
 @import 'appResume/premium/ui/editplace';
-@import 'appResume/premium/ui/social';
 @import 'appResume/premium/ui/button';
 @import 'appResume/premium/ui/input';
 @import 'appResume/premium/ui/textarea';
 @import 'appResume/premium/ui/select';
 @import 'appResume/premium/ui/tags';
+@import 'appResume/premium/ui/social';
 @import 'appResume/premium/ui/hobby';
 @import 'appResume/premium/ui/editing';
 @import 'appResume/premium/ui/noise';

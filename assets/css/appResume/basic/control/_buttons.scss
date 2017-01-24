@@ -17,16 +17,18 @@
             @extend .pr0;
             @extend .r0;
         }
-        &:before {
-            @extend .content-empty;
-            @extend .pos-tr;
-            @extend .h60;
-            @extend .w60;
-            @extend .zIndex--1;
-        }
+        // .d-mobile & {
+        //     &:before {
+        //         @extend .content-empty;
+        //         @extend .pos-tr;
+        //         @extend .h60;
+        //         @extend .w60;
+        //         @extend .zIndex--1;
+        //     }
+        // }
         &__item {
             @extend .pos-rel;
-            will-change:transform;
+            @extend .willChange-transform;
             transition:transform .7s $bounceSoft;
 
             &__icon {
@@ -99,7 +101,7 @@
         .d-phone & {
             width:120px;
             height:70px;
-            transition:width 0s 0.4s, height 0s 0.4s;
+            transition:width 0s .4s, height 0s .4s;
 
             .d-tablet & {
                 height:100px;
@@ -120,26 +122,39 @@
                 @extend .opacity-100;
                 @extend .transform-none;
             }
-            .m-no-touch &:hover {
-                width:560px;
-                height:120px;
-                transition:width 0s, height 0s;
+        }
+        .d-phone & {
+            @extend .w50;
+            @extend .h70;
+            @extend .overflow-hidden;
+        }
+        .m-no-touch &[data-hidden="true"]:hover {
+            width:560px;
+            height:120px;
+            transition:width 0s .2s, height 0s .2s;
 
-                .control__buttons__item__icon {
-                    @extend .bg-white;
+            .control__buttons__item__icon {
+                @extend .bg-white;
 
-                    &:hover {
-                        @extend .bg-blue;
+                &:hover {
+                    @extend .bg-blue;
+                }
+            }
+            .control__buttons__item:not(.control__buttons__opener){
+                @extend .opacity-100;
+                @extend .pointerEvents-all;
+                @extend .transform-none;
+                transition:transform .5s $bounceSoft .2s;
+            }
+            .control__buttons__opener {
+                @extend .opacity-0;
+                transform:scale(0);
+                transition:transform .5s $bounceSoft .2s, opacity 0s .2s;
+
+                &:hover {
+                    .control__buttons__opener__icon:after {
+                        @include ui-icon(more_h_white);
                     }
-                }
-                .control__buttons__item:not(.control__buttons__opener){
-                    @extend .opacity-100;
-                    @extend .pointerEvents-all;
-                    @extend .transform-none;
-                }
-                .control__buttons__opener {
-                    @extend .opacity-0;
-                    transform:scale(0);
                 }
             }
         }
