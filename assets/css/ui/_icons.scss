@@ -4,7 +4,7 @@
     upload_white, video_white, images_white, link_white, more_h, more_h_white, more_v, more_v_white,
     back, back_white, back_lime, help, close_fill, close_fill_gray, close_fill_white, arrow_curved_white,
     info_white, check, check_black, check_white, check_gray, check_muted, check_circle_lime, edit,
-    edit_white, share, share_white, hand_cursor_white, repeat, resume_white, feedback_white, addUser, addUser_white, time_muted, bankcard_white, wallet_white, device_phones_white
+    edit_white, share, share_white, hand_cursor_white, repeat, resume_white, feedback_white, addUser, addUser_white, time_muted, bankcard_white, wallet_white, device_phones_white, like_fill_white, crown, coderwall_fill_white
 ){
     .ui-icon-#{$icon} {
         background:url('/assets/images/ui/ui-#{$icon}.svg') no-repeat 0 0 / cover;
@@ -249,6 +249,10 @@
         &.icon-xl {
             width:80px;
             height:80px;
+        }
+        &.icon-xl2 {
+            width:96px;
+            height:96px;
         }
         &.icon-large {
             width:128px;

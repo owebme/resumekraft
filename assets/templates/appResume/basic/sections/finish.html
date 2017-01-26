@@ -7,7 +7,7 @@
                 <button onClick={ hide } class="btn btn-xxl btn-success mlr-s">Еще, нет</button>
             </div>
             <div class="display-inlineBlock anim anim-scale" delay-show="l" data-duration={ m : app.device.isPhone }>
-                <button onClick={ close } class="btn btn-xxl c-blue btn-white-hover mlr-s">Закончить</button>
+                <button onClick={ success } class="btn btn-xxl c-blue btn-white-hover mlr-s">Закончить</button>
             </div>
         </div>
     </div>
@@ -57,8 +57,8 @@
         $.circuful.empty().circliful({
             animation: 1,
             animationStep: 6,
-            foregroundBorderWidth: app.device.isMobile ? 8 : 9,
-            backgroundBorderWidth: app.device.isMobile ? 3.5 : 4,
+            foregroundBorderWidth: app.device.isMobile ? 9.5 : 9,
+            backgroundBorderWidth: app.device.isMobile ? 4 : 4,
             percentageTextSize: 28,
             percent: $.parent.sections.percentage ? $.parent.sections.percentage.p : 100,
             backgroundColor: 'rgba(255,255,255,.15)',
@@ -74,11 +74,24 @@
         })
     };
 
-    $.close = function(){
+    $.success = function(){
+        $resume.set(Store.get('resume'));
+        $resume.select("update").set(moment().format());
+        $store.data.select({"_id": $resume.get("_id")}).set($resume.get());
+
+        app.request("setResume", {
+            data: $resume.get()
+        }, {
+            loader: false
+        });
+
         $.hide();
+
         _.onEndTransition($.root, function(){
             $Sections.resume.edit.hide();
+            $Sections.resume.list.update();
         });
+
         app.metrika.set("resume.create.settings.success", true);
     };
 

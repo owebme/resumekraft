@@ -117,7 +117,6 @@ $store.resume = _.extend(new Baobab({},
             },
             resumeNew: function(options){
                 return {
-                        _id: _.newId(),
                         accountId: options.ACCOUNT_ID,
                         public: true,
                         plan: options.plan,
@@ -149,6 +148,7 @@ $store.resume = _.extend(new Baobab({},
                         education: null,
                         languages: null,
                         jobs: null,
+                        percent: 33,
                         config: {
                             color: "#0084ff",
                             font: "futura",

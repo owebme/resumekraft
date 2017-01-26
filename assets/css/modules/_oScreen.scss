@@ -116,36 +116,191 @@
         }
     }
 }
-.oScreen__loader {
-    @extend .opacity-0;
-    @extend .pos-tl;
-    @extend .w100p;
-    @extend .h20p;
-    @extend .visibility-hidden;
-    @extend .transition-default;
-    @extend .willChange-opacity;
-    @extend .zIndex-5;
-
+.oScreen {
     &__progress {
-        @extend .pos-tl;
-        @extend .h3px;
-        @extend .w100p;
-        @extend .bg-blue;
-        will-change:width;
-        transition:width 0.175s;
+        @extend .zIndex-10;
 
-        &[data-anim="true"]{
-            @extend .transition-none;
-            @include animation(oScreen__loader__progress__anim, linear, 3s);
+        &__circuful {
+            width:550px;
+            height:550px;
+
+            .d-tablet.r-landscape & {
+                width:480px;
+                height:480px;
+            }
+            .d-phone & {
+                width:480px;
+                height:480px;
+            }
         }
     }
-    &__spinner {
-        @extend .spinner;
-        @include abs_50(48, 48);
+    &__loader {
+        @extend .opacity-0;
+        @extend .pos-tl;
+        @extend .w100p;
+        @extend .h20p;
+        @extend .visibility-hidden;
+        @extend .transition-default;
+        @extend .willChange-opacity;
+        @extend .zIndex-5;
+
+        &__progress {
+            @extend .pos-tl;
+            @extend .h3px;
+            @extend .w100p;
+            @extend .bg-blue;
+            will-change:width;
+            transition:width 0.175s;
+
+            &[data-anim="true"]{
+                @extend .transition-none;
+                @include animation(oScreen__loader__progress__anim, linear, 3s);
+            }
+        }
+        &__spinner {
+            @extend .spinner;
+            @include abs_50(48, 48);
+        }
     }
-}
-.oScreen__section {
-    @extend .section;
+    &__pointer {
+        @include accelerate();
+        @include perspective();
+        @include abs();
+        @extend .display-block;
+        @extend .opacity-0;
+        @extend .overflow-hidden;
+        @extend .visibility-hidden;
+        @extend .pointerEvents-none;
+        @extend .zIndex-10;
+        @extend .willChange-tp;
+        transform:translate3d(0, 0, 0) scale(1.2);
+        transition:opacity 0.4s $cubic345, transform 0.4s $cubic345, visibility 0s 0.4s;
+
+        &[data-open="true"]{
+            @extend .opacity-100;
+            @extend .visibility-visible;
+            @extend .scale-100;
+            transition:opacity 0.4s $bounceSoft, transform 0.4s $bounceSoft, visibility 0s;
+
+            &:not([active-zone="true"]){
+                @extend .pointerEvents-all;
+            }
+        }
+        &[data-color="white"]{
+            .oScreen__pointer__shape {
+                border-color:rgba(#fcfcfc,.8);
+            }
+            .oScreen__pointer__message {
+                @extend .c-steel;
+            }
+        }
+        &[data-color="blue"],
+        &[data-color="gray"],
+        &[data-color="dark"]{
+            .oScreen__pointer__message {
+                @extend .c-white;
+            }
+        }
+        &[data-color="blue"]{
+            .oScreen__pointer__shape {
+                border-color:rgba($blue,.9);
+            }
+        }
+        &[data-color="gray"]{
+            .oScreen__pointer__shape {
+                border-color:rgba(40,47,51,.76);
+            }
+        }
+        &[data-color="dark"]{
+            .oScreen__pointer__shape {
+                border-color:rgba(34,34,40,.9);
+            }
+        }
+        &__shape {
+            @include accelerate();
+            @extend .pos-abs;
+            box-sizing:content-box;
+            border:10000px solid;
+            margin-left:-10000px;
+            margin-top:-10000px;
+            width:0;
+            height:0;
+        }
+        &__message {
+            @include accelerate(true);
+            @extend .pos-abs;
+            @extend .opacity-01;
+            @extend .pointerEvents-none;
+            @extend .willChange-tp;
+            transition:opacity .4s $cubic40, transform .4s $cubic40;
+
+            &__wrapper {
+                @include accelerate(true);
+                @extend .pos-abs;
+            }
+            &[data-active="true"]{
+                @extend .opacity-100;
+            }
+            &[data-position="right"]{
+                @extend .t-xs;
+                @extend .l0;
+                transform:translate3d(0px, -20px, 0);
+                @extend .text-left;
+
+                &[data-active="true"]{
+                    transform:translate3d(20px, -20px, 0);
+                }
+            }
+            &[data-position="left"]{
+                @extend .t-xs;
+                @extend .r0;
+                transform:translate3d(-40px, -20px, 0);
+                @extend .text-right;
+
+                &[data-active="true"]{
+                    transform:translate3d(-60px, -20px, 0);
+                }
+            }
+            &[data-position="up"]{
+                @extend .b0;
+                @extend .l0;
+                transform:translate3d(0, -30px, 0);
+                @extend .text-center;
+
+                &[data-active="true"]{
+                    transform:translate3d(0, -50px, 0);
+                }
+            }
+            &[data-position="down"]{
+                @extend .t0;
+                @extend .l0;
+                transform:translate3d(0px, -10px, 0);
+                @extend .text-center;
+
+                &[data-active="true"]{
+                    transform:translate3d(0, 10px, 0);
+                }
+            }
+            &[data-size="xl"]{
+                @extend .fontSize-34;
+            }
+            &[data-size="l"]{
+                @extend .fontSize-28;
+            }
+            &[data-size="m"]{
+                @extend .fontSize-24;
+            }
+            &[data-size="s"]{
+                @extend .fontSize-20;
+            }
+            &[data-size="xs"]{
+                @extend .fontSize-18;
+            }
+        }
+    }
+    &__section {
+        @extend .section;
+    }
 }
 @keyframes oScreen__loader__progress__anim {
     0% {

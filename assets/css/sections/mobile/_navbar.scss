@@ -1,0 +1,95 @@
+.navbar__mobile {
+    @extend .flex-centered;
+    @extend .pos-bl;
+    @extend .w100p;
+    height:54px;
+    @extend .bg-snowLight;
+    box-shadow:0 -1px 2px rgba(31,45,61,.2);
+    @extend .zIndex-1;
+
+    &__item {
+        @extend .flex-centered;
+        @extend .w50p;
+        @extend .h100p;
+        @extend .btn-active;
+
+        &__icon {
+            @extend .pos-rel;
+            width:34px;
+            height:34px;
+
+            &__badge {
+                @include accelerate();
+                @extend .flex-centered;
+                @extend .pos-abs;
+                top:-7px;
+                right:-6px;
+                width:21px;
+                height:21px;
+                @extend .borderRadius-circle;
+                @extend .bg-pink;
+                @extend .c-white;
+                @extend .fontSize-14;
+                @extend .fontWeight-8;
+                @extend .boxShadow-close;
+            }
+        }
+        svg {
+            @extend .display-block;
+            @extend .pos-centered;
+        }
+        path {
+            fill:lighten($grayLight,4.5%);
+        }
+        &[data-active="true"]{
+            path {
+                @extend .fill-blue;
+            }
+        }
+        &[data-item="feedback"]{
+            padding-bottom:2px;
+            @extend .pr-xs;
+
+            svg {
+                @extend .w40;
+                @extend .h40;
+            }
+            .navbar__mobile__item__icon__badge {
+                transform:translate3d(1px, 2px, 0);
+            }
+        }
+        &[data-item="likes"]{
+            padding-top:4px;
+            @extend .pl-xs;
+
+            svg {
+                width:34px;
+                height:34px;
+            }
+        }
+    }
+    &__create {
+        @include accelerate();
+        @extend .pos-centered-h;
+        @extend .t--m;
+        @extend .w60;
+        @extend .h60;
+        @extend .bg-blue;
+        @extend .borderRadius-circle;
+        box-shadow:0 12px 20px -10px rgba($blue,.28), 0 4px 20px 0px rgba(31,35,37,.12), 0 7px 8px -5px rgba($blue,.2);
+        // box-shadow:0 2px 10px 0 rgba(#000,.25);
+        @extend .transition-default;
+
+        &:after {
+            @extend .content-empty;
+            @include abs_50(32, 32);
+            @include ui-icon("plus_thin_white", 32px, 32px);
+        }
+        &:active {
+            transform:translate3d(-50%, 0, 0) scale(0.88);
+        }
+        &[data-anim="true"]:after {
+            @include animation(spinner, linear, .6s, false, infinite);
+        }
+    }
+}

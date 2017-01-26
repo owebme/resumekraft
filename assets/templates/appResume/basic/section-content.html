@@ -24,8 +24,6 @@
 
     <photo-upload></photo-upload>
 
-    <resume-convert-pdf></resume-convert-pdf>
-
     <resume-edit-finish></resume-edit-finish>
 
     <div if={ !app.device.isPhone } class="share__text">Поделиться своим резюме в социальных сетях</div>
@@ -49,7 +47,6 @@
             preview: $.tags["resume-preview"],
             settings: $.tags["resume-settings"],
             photo: $.tags["photo-upload"],
-            pdf: $.tags["resume-convert-pdf"],
             finish: $.tags["resume-edit-finish"],
             shareButton: $.tags["share-button"]
         };
@@ -99,6 +96,8 @@
                 });
             }
         }
+
+        $.autoSave();
     });
 
     $.refresh = function(){
@@ -109,6 +108,14 @@
         if ($.sections.steps){
             $.sections.steps.refresh();
         }
+    };
+
+    $.autoSave = function(){
+        $.autoSaveInterval = setInterval(function(){
+
+            Store.set("resume", $resume.get());
+
+        }, app.config.resume.free.autoSave.interval);
     };
 
     $.open = {
@@ -123,17 +130,19 @@
         },
         photoUpload: function(){
             $.sections.photo.show(function(image){
-                app.request("addUploadPhoto", {
+                app.request("setUploadPhoto", {
                     image: image
+                }, {
+                    loader: false
                 })
                 .then(function(data){
                     if (data && data.image){
-                        $resume.select("photo").set(image);
+                        $resume.select("photo").set(data.image);
                         $.sections.preview.template.update();
                     }
                 });
             });
-            app.metrika.set("resume.create.control.photoUpload", true);
+            app.metrika.set("resume.create.control.photo", true);
         },
         design: {
             free: function(){
@@ -155,31 +164,30 @@
     $.get = {
         pdf: function(){
 
-            $.sections.pdf.show();
+            $Sections.progress.show();
 
-            var photo = $resume.get("photo");
-
-            app.request('addResumeConvertPdf', {
+            app.request('addConvertPdf', {
                 id: $resume.get("_id"),
-                plan: $resume.get("plan"),
                 template: $resume.get("template"),
-                photo: photo.match(/^data:image\/jpeg;base64,/) ? photo : null,
+                stamp: $resume.get("config", "pdf", "logotype"),
                 content: $.sections.preview.get.content()
+            }, {
+                loader: false
             })
             .then(function(data){
                 if (data && data.pdf){
+
                     var oReq = new XMLHttpRequest();
                     oReq.open("GET", data.pdf, true);
                     oReq.responseType = "arraybuffer";
                     oReq.onload = function() {
-                        var response = this.response;
 
-                        $.sections.pdf.hide(function(){
-                            if (data.photo){
-                                $resume.select("photo").set(data.photo);
-                            }
+                        var response = this.response,
+                            post = $resume.get("post");
+
+                        $Sections.progress.hide(function(){
                             var file = new Blob([response], {type: "application/pdf"});
-                            saveAs(file, "example.pdf");
+                            saveAs(file, post ? post : "MyResume.pdf");
                         });
                     };
                     oReq.send();
@@ -193,6 +201,7 @@
     $.on("unmount", function(){
         $.screens.destroy();
         $store.resume.off("write");
+        clearInterval($.autoSaveInterval);
         $.shareButtonEl.off();
     });
 

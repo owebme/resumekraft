@@ -1,0 +1,127 @@
+<resume-sendmail class="oScreen zIndex-3 c-white { showAnim-group1 : active }" data-color="blue" data-open={ active }>
+
+    <div onClick={ hide } onUpdate="none" class="anim-group1 anim-rl" data-duration="l" delay-show="m">
+        <div class="button__close" data-color="white"></div>
+    </div>
+
+    <div class="pos-centered">
+        <div name="area" class="container anim-group1 anim-bt-ease" duration-show="m" duration-hide={ success ? 'l' : 'm' } delay-show="xs">
+            <div class="row">
+                <div name="wrapper" class="col-sm-14 col-md-12 col-lg-10 centered">
+                    <div name="icon" class="mb30 transition-l transition-fn-cubic345 { trY-xl : success }">
+                        <icon-feedback color="white" size="xl2"></icon-feedback>
+                    </div>
+                    <div class="anim anim-group2 anim-bt-ease { animated : !success }">
+                        <div class="mb-s fontSize-22">Укажите адрес получения резюме</div>
+                        <input onKeydown={ onEnter } onUpdate="none" name="input" class="pointer-for-input  input input-xl input-white input-rounded mb-m text-center" placeholder="Введите e-mail" autocomplete="off">
+                        <div class="row mb-l">
+                            <div class="col-xs-12">
+                                <ui-checkbox title="Ссылка на резюме" color="white" size="xl" value={ attach.link }></ui-checkbox>
+                            </div>
+                            <div class="col-xs-12">
+                                <ui-checkbox title="Прикрепить PDF" color="white" size="xl" value={ attach.pdf }></ui-checkbox>
+                            </div>
+                        </div>
+                        <div onClick={ onSuccess } onUpdate="none" class="btn btn-xxl btn-white-hover-success { btn-loading : loading }">Отправить</div>
+                    </div>
+                    <div class="anim anim-group2 anim-bt-ease fontSize-34 pointerEvents-none { animated : success }">
+                        <div class="trY--xl">Резюме отправлено</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    $.active = false;
+    $.attach = {
+        link: true,
+        pdf: false
+    };
+    $.input = $$($.input);
+
+    $.show = function(id){
+        $.update({
+            id: id,
+            active: true
+        })
+        _.onEndTransition($.area, function(){
+            $.input.focus();
+        });
+    };
+
+    $.onEnter = function(e){
+        if (e.which === KEY.ENTER){
+            $.onSuccess();
+        }
+        return true;
+    };
+
+    $.onSuccess = function(){
+        if (!$.id) return;
+
+        if (_.isEmail($.input.val())){
+            $.update({
+                loading: true
+            })
+            app.request('addResumeSendmail', {
+                id: $.id
+            })
+            .then(function(){
+                $.update({
+                    success: true,
+                    loading: false
+                })
+                _.onEndTransition($.icon, function(){
+                    $afterlag.xl(function(){
+                        $.hide();
+                    });
+                });
+            });
+        }
+        else {
+            $Pointer.show({
+                activeZone: true,
+                scope: $scope,
+                target: ".pointer-for-input",
+                position: "up",
+                color: "blue",
+                text: "Укажите корректный email для отправления",
+                padding: 18
+            })
+        }
+    };
+
+    $.hide = function(){
+        $.update({
+            active: false
+        })
+        if ($.success){
+            _.onEndTransition($.area, function(){
+                $.update({
+                    success: false
+                })
+            });
+        }
+    };
+
+    $.handleClickOutside = function(e){
+        if (!$.wrapper.contains(e.target)) $.hide();
+    };
+
+    $.on("updated", function(){
+        if ($.active){
+            document.addEventListener('click', $.handleClickOutside);
+        }
+        else {
+            document.removeEventListener('click', $.handleClickOutside)
+        }
+    });
+
+</script>
+
+</resume-sendmail>

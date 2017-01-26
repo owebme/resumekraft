@@ -4,30 +4,33 @@
     <resume-list-mobile if={ app.device.isPhone }></resume-list-mobile>
     <resume-edit></resume-edit>
     <resume-select></resume-select>
+    <resume-sendmail></resume-sendmail>
     <section-notify></section-notify>
     <section-alert></section-alert>
-    <section-tutorial></section-tutorial>
+    <section-pointer></section-pointer>
     <section-jqtest></section-jqtest>
-    <section-payment></section-payment>
+    <section-payment if={ !app.device.isPhone }></section-payment>
+    <section-tutorial if={ !app.device.isPhone }></section-tutorial>
     <section-plan if={ !app.device.isPhone }></section-plan>
     <section-plan-mobile if={ app.device.isPhone }></section-plan-mobile>
     <section-loader-ajax></section-loader-ajax>
+    <section-loader></section-loader>
+    <section-progress></section-progress>
 
     <app-sections>
         <resume-stat></resume-stat>
         <section-menu></section-menu>
         <section-inbox></section-inbox>
 
-        <section-profile></section-profile>
-        <section-profile-data></section-profile-data>
+        <section-profile if={ !app.device.isPhone }></section-profile>
+        <section-profile-data if={ !app.device.isPhone }></section-profile-data>
         <photo-upload></photo-upload>
-        <section-loader></section-loader>
 
         <ui-dropmenu></ui-dropmenu>
     </app-sections>
 
     <app-offers>
-        <offer-welcome></offer-welcome>
+        <offer-welcome if={ !app.device.isPhone }></offer-welcome>
         <offer-plan></offer-plan>
         <offer-votes></offer-votes>
         <offer-jqtest></offer-jqtest>
@@ -58,8 +61,15 @@
             $Sections.offers.welcome.show();
         }
         else {
+            $Sections.offers.welcome.unmount();
+            if ($account.get("plan") == "premium"){
+                $Sections.offers.plan.unmount();
+                $Sections.plan.unmount();
+            }
             $root.one("ready", function(){
-                $Sections.resume.list.start();
+                if ($Sections.resume.list.start){
+                    $Sections.resume.list.start();
+                }
             });
         }
         $afterlag.xs(function(){
@@ -83,7 +93,8 @@
                 list: app.device.isPhone ? $root.tags["resume-list-mobile"] : $root.tags["resume-list"],
                 edit: $root.tags["resume-edit"],
                 stat: $root.tags["resume-stat"],
-                select: $root.tags["resume-select"]
+                select: $root.tags["resume-select"],
+                sendmail: $root.tags["resume-sendmail"]
             },
             offers: {
                 welcome: $root.tags["offer-welcome"],
@@ -106,10 +117,12 @@
             inbox: $root.tags["section-inbox"],
             payment: $root.tags["section-payment"],
             menu: $root.tags["section-menu"],
-            photoUpload: $root.tags["photo-upload"]
+            photoUpload: $root.tags["photo-upload"],
+            progress: $root.tags["section-progress"]
         };
 
         $Tutorial = $root.tags["section-tutorial"];
+        $Pointer = $root.tags["section-pointer"];
         $Notify = $root.tags["section-notify"];
         $Loader = $root.tags["section-loader"];
         $LoaderAjax = $root.tags["section-loader-ajax"];

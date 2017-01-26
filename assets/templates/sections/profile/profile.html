@@ -103,7 +103,7 @@
     var $ = this,
     $scope = $$($.root);
 
-    $.active = true;
+    $.active = false;
 
     $.editable = {
         phone: false,
@@ -112,7 +112,7 @@
 
     $.on("mount", function(){
         $scope.on('swipeleft', function(){
-            if (!$.popup.referer.active){
+            if (!$.popup.referer.active && !_.some($.editable)){
                 $.hide();
             }
         });
@@ -146,16 +146,28 @@
     $.edit = {
         phone: function(){
             $.editable.phone = !$.editable.phone;
+
+            if (!$.editable.phone){
+                app.request("setDataProfile", {
+                    contacts: $account.get("contacts")
+                });
+            }
         },
         email: function(){
             $.editable.email = !$.editable.email;
+
+            if (!$.editable.email){
+                app.request("setDataProfile", {
+                    contacts: $account.get("contacts")
+                });
+            }
         }
     };
 
     $.open = {
         photoUpload: function(){
             $Sections.photoUpload.show(function(image){
-                app.request("addUploadPhoto", {
+                app.request("setUploadPhoto", {
                     profile: true,
                     image: image
                 })

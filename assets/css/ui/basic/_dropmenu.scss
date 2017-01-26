@@ -7,7 +7,7 @@
     @extend .pointerEvents-none;
     @extend .willChange-tp;
     transition:opacity 0.2s $cubic215, transform 0.25s $bounceForce, visibility 0s 0.25s;
-    transform:scale(0);
+    @extend .scale-0;
     @extend .zIndex-2;
 
     &__wrapper {
@@ -21,6 +21,12 @@
         background-clip:padding-box;
         min-width:160px;
 
+        .d-phone & {
+            @extend .bg-blue;
+            padding:6px 0 10px 0;
+            box-shadow:0 13px 35px -6px rgba(31,35,37,.5);
+            // border:1px solid rgba(31,35,37,.076);
+        }
         &:after {
             @extend .content-empty;
             @extend .display-inlineBlock;
@@ -31,6 +37,10 @@
             border-left:11px solid rgba(0, 0, 0, 0);
             border-right:11px solid rgba(0, 0, 0, 0);
             transform:translate3d(-50%, 0, 0);
+
+            .d-phone & {
+                border-bottom-color:$blue;
+            }
         }
     }
     &__item {
@@ -43,6 +53,11 @@
         @extend .cursor-pointer;
         padding:8px 38px 8px 20px;
 
+        .d-phone & {
+            @extend .c-white;
+            @extend .fontSize-18;
+            @extend .lineHeight-m;
+        }
         &:hover {
             @extend .c-white;
             @extend .bg-blue;
@@ -234,5 +249,9 @@
         @extend .pointerEvents-all;
         transition:opacity 0.2s $cubic215, transform 0.3s $bounceForce, visibility 0s;
         @extend .transform-none;
+
+        .d-phone & {
+            transition:opacity 0.2s $cubic215, transform 0.2s $cubic089, visibility 0s;
+        }
     }
 }

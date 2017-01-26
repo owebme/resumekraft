@@ -47,5 +47,43 @@
                 transition:transform 0.6s $cubic645;
             }
         }
+        &__shareButton {
+            @extend .flex-centered;
+            @extend .pos-abs;
+            @extend .b-l;
+            @extend .r-l;
+            @extend .cursor-pointer;
+
+            &:hover {
+                .resume__list__shareButton__text {
+                    @extend .c-blue;
+                    transform:translateY(-3px);
+
+                    &:before {
+                        transform:translate3d(3px, 1px, 0) scale3d(1.05, 1, 1);
+                    }
+                }
+            }
+            &__text {
+                @extend .pos-rel;
+                @extend .fontSize-18;
+                @extend .fontWeight-8;
+                @extend .text-uppercase;
+                @extend .c-steel;
+                @extend .pt-xxs;
+                transition:transform 0.35s $cubic215;
+
+                &:before {
+                    @extend .content-empty;
+                    @extend .pos-bl;
+                    @extend .w100p;
+                    height:9px;
+                    @extend .bg-smokeDark;
+                    transform:translate3d(0, -1px, 0) scale3d(1.05, 1, 1);
+                    transition:transform 0.35s $cubic215;
+                    @extend .zIndex--1;
+                }
+            }
+        }
     }
 }

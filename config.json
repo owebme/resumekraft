@@ -3,13 +3,6 @@
     "security": {
         "tokenLife" : 3600
     },
-    "path": {
-        "photo": "/public/files/photo/",
-        "pdf": "/public/files/pdf/",
-        "template": {
-            "basic": "/public/templates/resume/basic/index.html"
-        }
-    },
     "mysql": {
         "host"     : "localhost",
         "port"     : "8889",
@@ -34,6 +27,21 @@
             "path": "/",
             "httpOnly": true,
             "maxAge": null
+        }
+    },
+    "path": {
+        "photo": "/public/files/photo/",
+        "pdf": "/public/files/pdf/",
+        "template": {
+            "basic": "/public/templates/default/resume/basic/index.html"
+        }
+    },
+    "resume": {
+        "pdf": {
+            "base": "http://192.168.1.64:3000",
+            "width": "1218",
+            "height": "auto",
+            "timeout": 10000
         }
     },
     "parser": {

@@ -42,9 +42,9 @@
         @extend .borderRadius-m;
         @extend .c-grayDark;
         @extend .opacity-0;
+        @extend .willChange-opacity;
         @extend .pointerEvents-all;
         box-shadow:0 20px 25px rgba(31,35,37,.15);
-        will-change:opacity;
         transition:opacity .3s ease;
         width:440px;
 
@@ -53,23 +53,23 @@
             transition:opacity .5s ease 0.65s;
         }
         &[data-position="right"]{
-            top:0;
-            left:0;
+            @extend .t0;
+            @extend .l0;
             transform:translate3d(20px, -20px, 0);
         }
         &[data-position="left"]{
-            top:0;
-            right:0;
+            @extend .t0;
+            @extend .r0;
             transform:translate3d(-40px, -20px, 0);
         }
         &[data-position="up"]{
-            bottom:0;
-            left:0;
+            @extend .b0;
+            @extend .l0;
             transform:translate3d(20px, -30px, 0);
         }
         &[data-position="down"]{
-            top:0;
-            left:0;
+            @extend .t0;
+            @extend .l0;
             transform:translate3d(20px, 20px, 0);
         }
         &__wrapper {
@@ -96,7 +96,7 @@
                 transition:transform 0s .3s, height 0s .3s, box-shadow 0s .3s, border-radius 0s .3s;
 
                 &[data-figure="circle"]{
-                    border-radius:50%;
+                    @extend .borderRadius-circle;
                 }
             }
             &__message {

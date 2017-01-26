@@ -74,7 +74,7 @@
                 hide: false,
                 control: {
                     preview: false,
-                    photoUpload: false,
+                    photo: false,
                     design: false,
                     print: false,
                     pdf: false

@@ -45,11 +45,13 @@
 @import 'modules/tutorial';
 @import 'modules/shareButton';
 @import 'modules/shareButtonInline';
+@import 'modules/sharePanel';
 @import 'modules/uploadPhoto';
 
 // Sections
 @import 'sections/sections';
-@import 'sections/menu';
+@import 'sections/mobile/menu';
+@import 'sections/mobile/navbar';
 @import 'sections/profile/profile';
 
 // jqtest

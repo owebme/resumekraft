@@ -7,11 +7,16 @@
     @extend .cursor-default;
     @extend .overflow-hidden;
     @extend .text-left;
-    // @extend .pointerEvents-none;
     box-shadow:0 20px 25px rgba(31,35,37,.3);
 
     .d-phone & {
         margin-top:2.34vw;
         min-height:96.7vh;
+    }
+    &--shadow {
+        @extend .pos-centered;
+        @extend .opacity-0;
+        @extend .pointerEvents-none;
+        @extend .visibility-hidden;
     }
 }

@@ -1,4 +1,4 @@
-<resume-list class="resume__list">
+<resume-list class="resume__list section" data-overlay={ overlay }>
 
     <div onClick={ open.profile } onUpdate="none" class="main__button" data-icon="menu" data-color="white"></div>
 
@@ -35,15 +35,32 @@
         </div>
     </div>
 
+    <div onClick={ open.sharePanel } class="resume__list__shareButton">
+        <div class="resume__list__shareButton__text">Поделиться сервисом</div>
+    </div>
+
+    <share-panel title={ app.config.share.title } url={ link } color="white" size="m" tooltip="true"></share-panel>
+
+    <div onClick={ sharePanel.hide } class="section__overlay"></div>
+
 <script>
 
     var $ = this,
     $scope = $$($.root);
 
+    $.overlay = false;
     $.hidden = false;
+
+    $.on("before-mount", function(){
+        $.sharePanel = $.tags['share-panel'];
+    });
 
     $.on("mount", function(){
         $.slider = new app.plugins.slider($.sliderEl);
+    });
+
+    $.on("updated", function(){
+        if ($.ready) $.slider.render();
     });
 
     $.start = function(callback){
@@ -52,6 +69,7 @@
                 if (_.isFunction(callback)){
                     callback();
                 }
+                $.ready = true;
             });
         });
     };
@@ -85,6 +103,10 @@
             $Sections.resume.stat.show(function(){
                 $.show();
             });
+        },
+        sharePanel: function(){
+            $.overlay = true;
+            $.sharePanel.show();
         }
     };
 

@@ -182,7 +182,7 @@
         $.hide();
 
         app.request(
-            "addDataProfile", _.pick($account.get(),
+            "setDataProfile", _.pick($account.get(),
                 ['name', 'surname', 'gender', 'birthday', 'contacts']
             )
         );

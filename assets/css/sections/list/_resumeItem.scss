@@ -69,7 +69,7 @@
         @extend .bg-cover;
         @extend .c-white;
         @extend .p-l;
-        @extend .cursor-pointer;
+        @extend .overflow-hidden;
         height:calc(100% - 130px);
         border-radius:10px 10px 0 0;
 
@@ -80,6 +80,16 @@
             @extend .opacity-95;
             border-radius:10px 10px 0 0;
         }
+        @each $color in ($blue, $blueLight, $green, $emerald, $orange, $red, $violet, $violetLight, $brown, $pink){
+            &[data-color="#{$color}"]{
+                &:before {
+                    background-color:$color;
+                }
+            }
+        }
+        &__text {
+            @extend .cursor-pointer;
+        }
     }
     &__control {
         @extend .pos-abs;
@@ -87,6 +97,7 @@
         right:14px;
         @extend .w30;
         @include flex("column", "flex-start", "center");
+        @extend .zIndex-1;
 
         &__btn {
             @extend .mb-m;
@@ -142,6 +153,67 @@
                 .resume__item__control__inbox__badge {
                     @extend .scale-100;
                 }
+            }
+        }
+    }
+    &__label {
+        @include accelerate();
+        @extend .pos-tl;
+        @extend .zIndex-2;
+
+        &:before {
+            @extend .pos-tl;
+            @extend .content-empty;
+            border-bottom:60px solid transparent;
+            border-left:60px solid $blue;
+            border-right:60px solid transparent;
+        }
+        &:after {
+            @include accelerate();
+            content:"FREE";
+            @extend .display-block;
+            @extend .c-white;
+            @extend .fontSize-14;
+            @extend .fontWeight-bold;
+            transform:rotate(-45deg) translate3d(-3px, -2px, 0);
+            @extend .p-xs;
+        }
+    }
+    &__likes {
+        @extend .pos-bl;
+        @extend .m-s;
+        transform:translate3d(2px, -2px, 0);
+
+        &:after {
+            @include accelerate();
+            @extend .content-empty;
+            @extend .display-block;
+            @extend .opacity-70;
+            @include ui-icon(like_fill_white, 26px, 26px);
+        }
+        &__badge {
+            @include accelerate();
+            @extend .flex-centered;
+            @extend .pos-abs;
+            top:-7px;
+            right:-7px;
+            width:21px;
+            height:21px;
+            @extend .borderRadius-circle;
+            @extend .bg-pink;
+            @extend .c-white;
+            @extend .fontSize-14;
+            @extend .fontWeight-8;
+            @extend .boxShadow-close;
+            @extend .scale-0;
+            @extend .zIndex-1;
+        }
+        &[data-active="true"] {
+            &:after {
+                @extend .opacity-85;
+            }
+            .resume__item__likes__badge {
+                @extend .scale-100;
             }
         }
     }

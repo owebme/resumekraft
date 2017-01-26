@@ -7,7 +7,7 @@ app.fetch.API.getDataInit = function(){
         app.request('getDataInit').then(function(res){
 
             $account = new Baobab(res.account ? res.account : {});
-            $store.data = new Baobab(res.data ? res.data : []);
+            $store.data.set(res.data ? res.data : []);
             $store.inbox = new Baobab(res.inbox ? res.inbox : []);
 
             if (app.config.metrika && app.config.metrika.active){

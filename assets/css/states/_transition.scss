@@ -9,7 +9,7 @@
         transition-delay:$time;
     }
 }
-@each $title, $fn in (bounce: $bounce, cubic215: $cubic215, cubic645: $cubic645, cubic40: $cubic40, cubic32: $cubic32, cubic28: $cubic28, cubic25b: $cubic2501, cubic075: $cubic075){
+@each $title, $fn in (bounce: $bounce, cubic215: $cubic215, cubic645: $cubic645, cubic40: $cubic40, cubic32: $cubic32, cubic28: $cubic28, cubic25b: $cubic2501, cubic075: $cubic075, cubic345: $cubic345){
     .transition-fn-#{$title} {
         transition-timing-function:$fn;
     }

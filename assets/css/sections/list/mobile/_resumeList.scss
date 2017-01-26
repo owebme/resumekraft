@@ -1,27 +1,13 @@
 .resume__list-m {
-    @extend .display-block;
-    @extend .willChange-opacity;
-    transition:opacity 0.5s $cubic40;
-
-    &[data-hidden="true"] {
-        @extend .opacity-50;
-        transition:opacity 0.42s $cubic645;
-
-        .resume__list-m__wrapper {
-            transform:perspective(500px) scale(.96) translateX(4%) rotateY(4deg);
-            transition:transform 0.42s $cubic645;
-        }
-    }
-    &__wrapper {
-        @include abs();
-        @include accelerate(true);
-        @extend .overflowX-hidden;
-        @extend .overflowY-auto;
-        @extend .bg-white;
-        @extend .willChange-transform;
-        @extend .perspective-500;
-        transform-origin:0% 50%;
-        transition:transform 0.5s $cubic40;
+    &:after {
+        @extend .content-empty;
+        @extend .pos-abs;
+        @extend .t-xs;
+        @extend .r-xs;
+        @extend .bg-cover;
+        @extend .w25;
+        @extend .h25;
+        background-image:url(/assets/images/favicons/60.png);
     }
     &__menu {
         @extend .pos-tl;
@@ -41,16 +27,31 @@
             @extend .bg-white;
         }
         &:after {
-            @include accelerate(true);
+            @include accelerate();
             @extend .content-empty;
             @extend .pos-tl;
             @extend .mt-s;
-            @include ui-icon("more_v_white", 32px, 32px);
-            @extend .transform-default;
-            @extend .transition-default;
+            // @include ui-icon("more_v_white", 32px, 32px);
+            @include ui-icon("coderwall_fill_white", 32px, 32px);
+            transform:translate3d(10px, 0, 0) rotate(-90deg);
         }
-        &:active:after {
-            transform:translate3d(0, 0, 0) scale(0.8);
+    }
+    &__scroll {
+        @extend .pos-rel;
+        @extend .minH-100v;
+        @extend .pb70;
+        @extend .bg-white;
+        @extend .willChange-transform;
+
+        &:before {
+            @extend .content-empty;
+            @extend .pos-abs;
+            @extend .b--l;
+            @extend .l0;
+            @extend .w100p;
+            @extend .h40;
+            @extend .bg-white;
+            @extend .zIndex--1;
         }
     }
     &__title {
@@ -66,15 +67,15 @@
         @extend .mb-s;
     }
     &__item {
+        @extend .pos-rel;
+        @extend .display-block;
         height:102px;
-        @extend .borderBottomWidth-1;
-        @extend .borderStyle-solid;
-        @extend .borderColor-smoke;
+        border-bottom:1px solid $smoke;
         will-change:background-color;
         @extend .transition-default;
+        @extend .userSelect-none;
 
         &__cell {
-            @extend .flex-centered;
             height:102px;
         }
         &__cover {
@@ -89,13 +90,44 @@
             @extend .fontWeight-8;
             @extend .text-uppercase;
             padding:4px 0 0 1px;
-            @extend .transform-default;
             @extend .transition-default;
         }
         &__title {
             @extend .fontSize-20;
             @extend .lineHeight-m;
             @include textEllipsis(100%, 54px, 2);
+        }
+        &__label {
+            @include accelerate();
+            @extend .zIndex-2;
+
+            &[data-label="free"]{
+                @extend .pos-tl;
+
+                &:before {
+                    @extend .pos-tl;
+                    @extend .content-empty;
+                    border-bottom:40px solid transparent;
+                    border-left:40px solid $blue;
+                    border-right:40px solid transparent;
+                }
+                &:after {
+                    @include accelerate();
+                    content:"FREE";
+                    @extend .display-block;
+                    @extend .c-white;
+                    @extend .fontSize-12;
+                    @extend .fontWeight-bold;
+                    transform:rotate(-45deg) translate3d(-4px, -2px, 0);
+                    @extend .p-xxs;
+                }
+            }
+            &[data-label="premium"]{
+                @extend .pos-abs;
+                @extend .t-xs;
+                @extend .r-xs;
+                @include ui-icon("crown", 21px, 21px);
+            }
         }
         &__percent {
             @extend .bg-smoke;
@@ -105,18 +137,14 @@
             @extend .m0;
             will-change:background-color;
             @extend .transition-default;
-            @extend .borderBottomWidth-1;
-            @extend .borderStyle-solid;
-            @extend .borderColor-smokeDark;
         }
         &__menu {
-            @include accelerate(true);
+            @include accelerate();
             @include ui-icon("more_v", 30px, 30px);
-            @extend .transform-default;
             @extend .transition-default;
 
             &:active {
-                transform:translate3d(0, 0, 0) scale(0.8);
+                transform:translate3d(0, 0, 0) scale(1.1);
             }
         }
         $i: 0;
@@ -132,34 +160,23 @@
             background-color:rgba($blue,.1);
 
             .resume__list-m__item__cover {
-                transform:translate3d(-50%, -50%, 0) scale(1.1);
+                transform:scale(1.1);
             }
             .resume__list-m__item__percent {
                 background-color:rgba($blue,.1);
             }
         }
-    }
-    &__btn__create {
-        @include accelerate(true);
-        @extend .pos-abs;
-        @extend .r-s;
-        @extend .b-m;
-        @extend .mb-xs;
-        width:60px;
-        height:60px;
-        @extend .bg-blue;
-        @extend .borderRadius-circle;
-        box-shadow:0 2px 10px 0 rgba(#000,.25);
-        @extend .transform-default;
-        @extend .transition-default;
-
-        &:after {
-            @extend .content-empty;
-            @extend .pos-centered;
-            @include ui-icon("plus_thin_white", 32px, 32px);
-        }
-        &:active {
-            transform:translate3d(0, 2px, 0) scale(0.8);
+        &[data-blank="true"]{
+            .resume__list-m__item__cover {
+                @extend .p0;
+            }
+            .resume__list-m__item__menu {
+                @extend .bg-blue;
+                @extend .w10;
+                @extend .h30;
+                @extend .opacity-25;
+                @extend .borderRadius-l;
+            }
         }
     }
 }

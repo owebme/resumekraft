@@ -71,10 +71,10 @@
             }
         });
 
-        if (app.config && app.config.uploadPhoto){
+        if (app.config && app.config.profile && app.config.profile.photo){
             $.init({
-                minWidth: app.config.uploadPhoto.minWidth,
-                maxHeight: app.config.uploadPhoto.maxHeight
+                minWidth: app.config.profile.photo.minWidth,
+                maxHeight: app.config.profile.photo.maxHeight
             });
         }
 

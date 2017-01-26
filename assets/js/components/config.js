@@ -1,9 +1,11 @@
 app.config = {
     domain: null,
     api: '/private/api',
-    request: {
-        loader: true,
-        notify: true
+    request: function(){
+        return {
+            loader: true,
+            notify: true
+        }
     },
     logger: {
         method: "addLog",
@@ -26,9 +28,18 @@ app.config = {
     payment: {
         yamoney: '410012719414223'
     },
-    uploadPhoto: {
-        minWidth: 440,
-        maxHeight: 620
+    profile: {
+        photo: {
+            minWidth: 440,
+            maxHeight: 620
+        }
+    },
+    resume: {
+        free: {
+            autoSave: {
+                interval: 15
+            }
+        }
     },
     share: {
         title: 'Создать крутое резюме и получить престижную работу'

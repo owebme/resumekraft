@@ -1,21 +1,25 @@
 <resume-list-item class="resume__item">
 
-    <div class="resume__item__header" style="background-image:url('{ opts.item.photo }')">
+    <div class="resume__item__header" style="background-image:url('{ opts.item.photo }')" data-color={ opts.item.plan == "premium" ? opts.item.config.color : null }>
+        <div if={ opts.item.plan != "premium" } class="resume__item__label"></div>
         <div class="resume__item__control">
             <div onClick={ onRemove } onUpdate="none" class="resume__item__control__btn resume__item__control__remove"></div>
             <div onClick={ show.dropMenu } onUpdate="none" class="resume__item__control__btn resume__item__control__menu"></div>
-            <div onClick={ show.inbox } onUpdate="none" class="resume__item__control__btn resume__item__control__inbox" data-active={ true : get.newInbox() > 0 }>
+            <div if={ opts.item.plan == "premium" } onClick={ show.inbox } onUpdate="none" class="resume__item__control__btn resume__item__control__inbox" data-active={ true : get.newInbox() > 0 }>
                 <div class="resume__item__control__inbox__badge">{ get.newInbox() }</div>
             </div>
         </div>
-        <div class="row resume__item__header__text">
+        <div if={ opts.item.plan == "premium" } class="resume__item__likes">
+            <div class="resume__item__likes__badge">27</div>
+        </div>
+        <div onClick={ onEdit } onUpdate="none" class="row resume__item__header__text">
             <div class="col-xs-5 col-sm-6">
                 <div class="resume__item__photo" style="background-image:url('{ opts.item.photo }')"></div>
             </div>
             <div class="col-xs-19 col-sm-18">
-                <div class="resume__item__title">{ opts.item.post }</div>
+                <div class="resume__item__title">{ opts.item.post ? opts.item.post : 'Продолжить редактирование' }</div>
                 <div class="resume__item__date">Обновлен: { moment(opts.item.update).format('D MMMM YYYY') }</div>
-                <div class="resume__item__salary">
+                <div class="resume__item__salary { 'opacity-70 text-lineThrough' : !opts.item.salary.active }">
                     { _.numberFormat(opts.item.salary.amount, 0, ".", ".") } { $store.currency.getTitleById(opts.item.salary.currency) }
                 </div>
             </div>
@@ -28,7 +32,7 @@
                 <svg-stat></svg-stat>
             </div>
             <div class="resume__item__stat__cell bg-yellow c-blackLight col-xs-9 col-sm-8 resume__item__stat__percentage">
-                98%
+                { opts.item.percent }%
             </div>
         </div>
     </div>
@@ -48,15 +52,30 @@
         }
     };
 
+    $.onEdit = function(){
+        $Sections.resume.edit.show({
+            id: $.opts.item._id
+        });
+    };
+
     $.onRemove = function(){
         $Alert.show({
             title: "Удалить резюме?",
             subtitle: "Вы уверены?",
             success: {
                 callback: function(){
-                    // app.request('delDataListRemove', [id]);
-                    // $store.data.select({'_id': id}).unset();
-                    // $.refresh();
+                    var id = $.opts.item._id;
+                    app.request('delResume', {
+                        id: id
+                    })
+                    .then(function(){
+                        var size = $store.data.get().length;
+                        $store.data.select({'_id': id}).unset();
+                        $Sections.resume.list.update();
+                        if (size > 2){
+                            $Sections.resume.list.slider.prevSlides();
+                        }
+                    });
                 }
             }
         });
@@ -65,7 +84,7 @@
     $.show = {
         dropMenu: function(e){
             $DropMenu.show({
-                id: opts.item._id,
+                id: $.opts.item._id,
                 elem: $$(e.currentTarget),
                 offset: {
                     top: 12,
@@ -75,15 +94,83 @@
                     {
                         title: "Редактировать",
                         callback: function(){
-                            $Sections.resume.edit.show({
-                                id: $.opts.item._id
-                            });
+                            $.onEdit();
+                        }
+                    },
+                    {
+                        title: "Предпросмотр",
+                        callback: function(){
+                            $.onPreview();
+                        }
+                    },
+                    {
+                        title: "Отправить на почту",
+                        callback: function(){
+                            $Sections.resume.sendmail.show($.opts.item._id);
                         }
                     },
                     {
                         title: "Сохранить в PDF",
                         callback: function(){
-                            alert("Сохранить в PDF");
+                            $Sections.progress.show(function(){
+                                var post = $.opts.item.post,
+                                    num = $.opts.item.template,
+                                    $template = $$('<div class="resume__preview resume__preview--shadow">').appendTo(app.$dom.body);
+
+                                $resume.set($.opts.item);
+
+                                var template = riot.mount($template[0], "resume-basic-template" + num)[0];
+
+                                template.one("updated", function(){
+                                    app.request('addConvertPdf', {
+                                        id: $.opts.item._id,
+                                        template: $.opts.item.template,
+                                        stamp: $.opts.item.config.pdf.logotype,
+                                        content: $template.html()
+                                    }, {
+                                        loader: false
+                                    })
+                                    .then(function(data){
+                                        if (data && data.pdf){
+
+                                            template.unmount();
+
+                                            var oReq = new XMLHttpRequest();
+                                            oReq.open("GET", data.pdf, true);
+                                            oReq.responseType = "arraybuffer";
+                                            oReq.onload = function() {
+
+                                                var response = this.response;
+
+                                                $Sections.progress.hide(function(){
+                                                    var file = new Blob([response], {type: "application/pdf"});
+                                                    saveAs(file, post ? post : "MyResume.pdf");
+                                                });
+                                            };
+                                            oReq.send();
+                                        }
+                                    });
+                                });
+
+                                app.metrika.set("resume.create.control.pdf", true);
+                            });
+                        }
+                    },
+                    {
+                        title: "Создать копию",
+                        callback: function(){
+                            var resume = $store.data.select({"_id": $.opts.item._id}).deepClone();
+
+                            app.request("addResume", {
+                                data: resume
+                            })
+                            .then(function(data){
+                                if (data && data.id){
+                                    resume._id = data.id;
+                                    $store.data.push(resume);
+                                    $Sections.resume.list.update();
+                                }
+                            })
                         }
                     },
                     {
@@ -95,7 +182,7 @@
                     {
                         title: "Удалить",
                         callback: function(){
-                            alert("Удалить");
+                            $.onRemove();
                         }
                     }
                 ]

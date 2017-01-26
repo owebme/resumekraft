@@ -31,7 +31,7 @@
                         .replace(/^(get|set|add|del)/g, "")
                         .replace(/_/g, "/"),
                 type = null,
-                options = app.config.request;
+                options = app.config.request();
 
             if (opt) _.extend(options, opt);
 
@@ -133,20 +133,25 @@
         }
     };
 
+    var logger = function(msg, url, line){
+        app.request(app.config.logger.method, {
+            data: {
+                msg: msg,
+                line: line,
+                url: url
+            },
+            device: app.device.get(),
+            type: "error"
+        }, {
+            loader: false,
+            notify: false
+        });
+    },
+    sendReport = _.debounce(logger, 1000, true);
+
     window.onerror = function(msg, url, line) {
     	if (app && app.config && app.config.logger && app.config.logger.report){
-    		app.request(app.config.logger.method, {
-                data: {
-        			msg: msg,
-        			line: line,
-        			url: url
-                },
-                device: app.device.get(),
-    			type: "error"
-    		}, {
-                loader: false,
-                notify: false
-            });
+            sendReport(msg, url, line);
     	}
     };
 

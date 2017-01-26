@@ -16,6 +16,7 @@
 
     $.active = false;
 
+    $.item = null;
     $.items = [];
 
     $.rootScroll = null;
@@ -29,6 +30,7 @@
             }
             if ($.active) $.hide();
             if (params.id) $._id = params.id;
+            if (params.item) $.item = params.item;
             $.pos = params.pos ? params.pos : "center";
             $.items = params.menu;
             $.callback = params.callback;
@@ -76,16 +78,19 @@
         app.$dom.body.off("click.dropdown");
         $.active = false;
         if ($._id) $._id = null;
+        if ($.item) $.item = null;
         $.update();
     };
 
     $.onSelect = function(){
-        var id = this.item._id || this.item;
+        var id = this.item._id || $._id || this.item;
         $.value = id;
         if (this.item && _.isFunction(this.item.callback)) {
-            this.item.callback();
+            this.item.callback($.value, $.item);
         }
-        if ($.callback) $.callback(id || this.item);
+        if ($.callback){
+            $.callback($.value, $.item);
+        }
     };
 
 </script>

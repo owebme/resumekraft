@@ -42,8 +42,8 @@
     $.show = function(options){
         if ($.loading || $.active) return;
 
-        $store.resume.set(
-            options.id ? $store.data.get({ "_id": options.id }) : $store.resume.take.resumeNew({
+        $resume.set(
+            options.id ? $store.data.get({ "_id": options.id }) : $resume.take.resumeNew({
                 ACCOUNT_ID: $account.get("_id"),
                 plan: "free",
                 template: options.template,
@@ -55,6 +55,25 @@
                 contacts: $account.get("contacts")
             })
         );
+
+        if (!options.id){
+            app.request("addResume", {
+                data: $resume.get()
+            }, {
+                loader: false,
+                notify: false
+            })
+            .then(function(data){
+                if (data && data.id){
+                    $resume.select("_id").set(data.id);
+                    $store.data.push($resume.get());
+                    Store.set('resume', $resume.get());
+                }
+            })
+        }
+        else {
+            Store.set('resume', $resume.get());
+        }
 
         $i18n.lang($resume.get("lang"));
         moment.locale($resume.get("lang"));

@@ -1,0 +1,44 @@
+<resume-list-item-mobile class="row resume__list-m__item">
+
+    <div if={ opts.item.plan == "free" } class="resume__list-m__item__label" data-label="free"></div>
+    <div class="col-xs-5 flex-centered resume__list-m__item__cell">
+        <div class="resume__list-m__item__cover">{ get.coverPost(opts.item.post || 'R') }</div>
+    </div>
+    <div class="col-xs-12 flex-row-left-center resume__list-m__item__cell">
+        <div if={ opts.item.plan == "premium" } class="resume__list-m__item__label" data-label="premium"></div>
+        <div class="resume__list-m__item__title">{ opts.item.post ? opts.item.post : 'Продолжить редактирование' }</div>
+    </div>
+    <div class="col-xs-4 flex-centered resume__list-m__item__cell resume__list-m__item__percent">{ opts.item.percent }%</div>
+    <div onClick={ show.dropMenu } onUpdate="none" class="col-xs-3 flex-centered resume__list-m__item__cell">
+        <div class="resume__list-m__item__menu"></div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.onEdit = function(){
+        $Sections.resume.edit.show({
+            id: $.opts.item._id
+        });
+    };
+
+    $.show = {
+        dropMenu: function(e){
+            $DropMenu.show({
+                id: $.opts.item._id,
+                item: $.opts.item,
+                elem: $$(e.currentTarget),
+                pos: "left",
+                offset: {
+                    left: 10
+                },
+                menu: $store.data.dropMenu
+            });
+            //console.dir($store.data.dropMenu);
+        }
+    };
+
+</script>
+
+</resume-list-item-mobile>

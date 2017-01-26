@@ -1,8 +1,8 @@
-<resume-convert-pdf class="oScreen screen-convert-pdf zIndex-10 { showAnim : animate } { download : animate }" data-color="blue" data-open={ active }>
+<section-progress class="oScreen oScreen__progress { showAnim : animate }" data-color="blue" data-open={ active }>
 
     <div onClick={ hide } class="pos-centered">
         <div class="anim anim-scale" duration-show={ none : app.device.isPhone }>
-            <div name="circuful" class="circuful"></div>
+            <div name="circuful" class="oScreen__progress__circuful"></div>
         </div>
     </div>
 
@@ -14,11 +14,7 @@
     $.animate = false;
     $.circuful = $$($["circuful"]);
 
-    // $.on("mount", function(){
-    //     $.show();
-    // });
-
-    $.show = function(){
+    $.show = function(callback){
         $.update({
             active: true
         })
@@ -27,15 +23,19 @@
                 animate: true
             })
             $.chartRadial();
+
+            if (_.isFunction(callback)){
+                callback();
+            }
         });
     };
 
     $.chartRadial = function(){
-        $.circuful.circliful({
+        $.circuful.empty().circliful({
             animation: 1,
             animationStep: 2.25,
-            foregroundBorderWidth: app.device.isPhone ? 8 : 9.5,
-            backgroundBorderWidth: app.device.isPhone ? 3.5 : 5,
+            foregroundBorderWidth: app.device.isPhone ? 10.5 : 9.5,
+            backgroundBorderWidth: app.device.isPhone ? 5 : 5,
             percentageTextSize: 28,
             percent: 100,
             backgroundColor: 'rgba(255,255,255,.2)',
@@ -68,4 +68,4 @@
 
 </script>
 
-</resume-convert-pdf>
+</section-progress>
