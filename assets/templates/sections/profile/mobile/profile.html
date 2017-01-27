@@ -4,7 +4,7 @@
 
     <div class="screenMobile__navbar" data-gradient="black" data-color="white">
         <div onClick={ hide } onUpdate="none" class="screenMobile__nav__back"></div>
-        <div class="screenMobile__nav__title c-white fontSize-18 fontWeight-bold text-uppercase">Мой профиль</div>
+        <div class="screenMobile__nav__title">Мой профиль</div>
         <div onClick={ open.dropMenu } onUpdate="none" class="screenMobile__nav__options"></div>
     </div>
     <div name="content" class="section-scroll section__content">
@@ -23,7 +23,7 @@
                     <span if={ $account.get('contacts', 'city') }>{ $account.get('contacts', 'city') }</span>
                 </div>
                 <div class="flex-centered mb30">
-                    <div class="btn btn-l2 btn-primary-hover">
+                    <div onClick={ open.personalData } onUpdate="none" class="btn btn-l2 btn-primary-hover">
                         <svg class="btn-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path class="btn-svg-color" d="M 18 0 L 2.8125 15.1875 L 0 24 L 8.8125 21.1875 L 24 6 C 24 6 23.9 3.9 22 2 C 20.1 0.1 18 0 18 0 z M 3.90625 16.1875 C 3.90625 16.1875 5.1125 16.4875 6.3125 17.6875 C 7.6125 18.8875 7.8125 20 7.8125 20 L 7.84375 20.0625 L 4.28125 21.1875 L 2.78125 19.6875 L 3.90625 16.1875 z"></path>
                         </svg>
@@ -85,6 +85,10 @@
     var $ = this,
     $scope = $$($.root);
 
+    $.on("*", function(e){
+        console.dir(e);
+    });
+
     $.on("mount", function(){
         $.section = new app.plugins.sections($.root);
 
@@ -134,7 +138,7 @@
                     {
                         title: 'Изменить данные',
                         callback: function(){
-
+                            $.open.personalData();
                         }
                     },
                     {

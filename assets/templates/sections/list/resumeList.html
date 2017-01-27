@@ -60,7 +60,7 @@
     });
 
     $.on("updated", function(){
-        if ($.ready) $.slider.render();
+        if ($.ready && $.slider) $.slider.render();
     });
 
     $.start = function(callback){

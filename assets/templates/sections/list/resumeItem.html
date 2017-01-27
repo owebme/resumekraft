@@ -59,26 +59,7 @@
     };
 
     $.onRemove = function(){
-        $Alert.show({
-            title: "Удалить резюме?",
-            subtitle: "Вы уверены?",
-            success: {
-                callback: function(){
-                    var id = $.opts.item._id;
-                    app.request('delResume', {
-                        id: id
-                    })
-                    .then(function(){
-                        var size = $store.data.get().length;
-                        $store.data.select({'_id': id}).unset();
-                        $Sections.resume.list.update();
-                        if (size > 2){
-                            $Sections.resume.list.slider.prevSlides();
-                        }
-                    });
-                }
-            }
-        });
+        $store.data.onRemove($.opts.item._id);
     };
 
     $.show = {
@@ -90,102 +71,7 @@
                     top: 12,
                     left: -1
                 },
-                menu: [
-                    {
-                        title: "Редактировать",
-                        callback: function(){
-                            $.onEdit();
-                        }
-                    },
-                    {
-                        title: "Предпросмотр",
-                        callback: function(){
-                            $.onPreview();
-                        }
-                    },
-                    {
-                        title: "Отправить на почту",
-                        callback: function(){
-                            $Sections.resume.sendmail.show($.opts.item._id);
-                        }
-                    },
-                    {
-                        title: "Сохранить в PDF",
-                        callback: function(){
-                            $Sections.progress.show(function(){
-                                var post = $.opts.item.post,
-                                    num = $.opts.item.template,
-                                    $template = $$('<div class="resume__preview resume__preview--shadow">').appendTo(app.$dom.body);
-
-                                $resume.set($.opts.item);
-
-                                var template = riot.mount($template[0], "resume-basic-template" + num)[0];
-
-                                template.one("updated", function(){
-                                    app.request('addConvertPdf', {
-                                        id: $.opts.item._id,
-                                        template: $.opts.item.template,
-                                        stamp: $.opts.item.config.pdf.logotype,
-                                        content: $template.html()
-                                    }, {
-                                        loader: false
-                                    })
-                                    .then(function(data){
-                                        if (data && data.pdf){
-
-                                            template.unmount();
-
-                                            var oReq = new XMLHttpRequest();
-                                            oReq.open("GET", data.pdf, true);
-                                            oReq.responseType = "arraybuffer";
-                                            oReq.onload = function() {
-
-                                                var response = this.response;
-
-                                                $Sections.progress.hide(function(){
-                                                    var file = new Blob([response], {type: "application/pdf"});
-                                                    saveAs(file, post ? post : "MyResume.pdf");
-                                                });
-                                            };
-                                            oReq.send();
-                                        }
-                                    });
-                                });
-
-                                app.metrika.set("resume.create.control.pdf", true);
-                            });
-                        }
-                    },
-                    {
-                        title: "Создать копию",
-                        callback: function(){
-                            var resume = $store.data.select({"_id": $.opts.item._id}).deepClone();
-
-                            app.request("addResume", {
-                                data: resume
-                            })
-                            .then(function(data){
-                                if (data && data.id){
-                                    resume._id = data.id;
-                                    $store.data.push(resume);
-                                    $Sections.resume.list.update();
-                                }
-                            })
-                        }
-                    },
-                    {
-                        title: "Распечатать",
-                        callback: function(){
-                            alert("Распечатать");
-                        }
-                    },
-                    {
-                        title: "Удалить",
-                        callback: function(){
-                            $.onRemove();
-                        }
-                    }
-                ]
+                menu: $store.data.dropMenu
             });
         },
         inbox: function(){

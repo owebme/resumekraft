@@ -1,0 +1,102 @@
+<profile-data-content>
+
+    <div class="row mb-m">
+        <div class="hidden-xs col-sm-8 pt-xs pr-m">
+            <span class="title">Имя</span>
+        </div>
+        <div class="col-sm-16">
+            <ui-input placeholder="Имя" update="name" cursor={ parent.data.select() } size="l" disabled={ parent.data.get("name").length }></ui-input>
+        </div>
+    </div>
+    <div class="row mb-m">
+        <div class="hidden-xs col-sm-8 pt-xs pr-m">
+            <span class="title">Фамилия</span>
+        </div>
+        <div class="col-sm-16">
+            <ui-input placeholder="Фамилия" update="surname" cursor={ parent.data.select() } size="l" disabled={ parent.data.get("surname").length }></ui-input>
+        </div>
+    </div>
+    <div class="row mb-s">
+        <div class="col-xs-24 col-sm-8 pt-xs pr-m xs-pt0">
+            <span class="hidden-xs title">Дата рождения</span>
+            <span class="c-blue input-title">Дата рождения</span>
+        </div>
+        <div class="col-xs-8 col-sm-4">
+            <ui-select update="day" commit={ parent.commit.birthday } cursor={ parent.data.select('birthday') } items={ _.range(1, 32) } size="l" short></ui-select>
+        </div>
+        <div class="col-xs-16 col-sm-6 xs-mb-m">
+            <ui-select update="month" commit={ parent.commit.birthday } cursor={ parent.data.select('birthday') } items={ $store.month.getItems() } size="l" short></ui-select>
+        </div>
+        <div class="col-xs-24 col-sm-6">
+            <ui-select update="year" commit={ parent.commit.birthday } cursor={ parent.data.select('birthday') } items={ _.range(1940, new Date().getFullYear() + 1) } size="l" short></ui-select>
+        </div>
+    </div>
+    <div class="row mb-m">
+        <div class="hidden-xs col-sm-8 pr-m"></div>
+        <div class="col-xs-24 col-sm-16 text-left pt-s">
+            <ui-checkbox name="birthdayHidden" update="hidden" cursor={ parent.data.select('birthday') } title="Пок{ app.device.isPhone ? '-вать' : 'азывать' } только возраст { parent.data.get('birthday', 'hidden') ? '(' + $store.account.take.age(parent.data.get('birthday')) + ')' : '' }" size="xl" theme="blue"></ui-checkbox>
+        </div>
+    </div>
+    <div class="row mb-l pt-xxs">
+        <div class="hidden-xs col-sm-8 pt-s pr-m">
+            <span class="title">Ваш пол</span>
+        </div>
+        <div class="col-xs-12 col-sm-7 text-left pt-s">
+            <ui-checkbox update="gender" cursor={ parent.data.select() } group="gender" title="Мужской" size="xl" theme="blue" value="male"></ui-checkbox>
+        </div>
+        <div class="col-xs-12 col-sm-6 text-left pt-s">
+            <ui-checkbox update="gender" cursor={ parent.data.select() } group="gender" title="Женский" size="xl" theme="blue" value="female"></ui-checkbox>
+        </div>
+    </div>
+    <div class="row mb-m">
+        <div class="hidden-xs col-sm-8 pt-xs pr-m">
+            <span class="visible-md visible-lg title">Электронная почта</span>
+            <span class="visible-sm title">Эл. почта</span>
+        </div>
+        <div class="col-sm-16">
+            <ui-input placeholder="E-mail" update="email" cursor={ parent.data.select('contacts') } size="l"></ui-input>
+        </div>
+    </div>
+    <div class="row mb-xs">
+        <div class="hidden-xs col-sm-8 pt-xs pr-m">
+            <span class="visible-md visible-lg title">Город проживания</span>
+            <span class="visible-sm title">Город</span>
+        </div>
+        <div class="col-xs-24 col-sm-16">
+            <ui-input placeholder="Город" update="city" cursor={ parent.data.select('contacts') } size="l"></ui-input>
+        </div>
+    </div>
+    <div class="row mb-m pb-xs">
+        <div class="hidden-xs col-sm-8 pr-m"></div>
+        <div class="col-xs-24 col-sm-16 text-left pt-s">
+            <ui-checkbox update="relocate" cursor={ parent.data.select('contacts') } title="Возможность перезда" size="xl" theme="blue"></ui-checkbox>
+        </div>
+    </div>
+    <div class="row mb-m">
+        <div class="hidden-xs col-sm-8 pt-xs pr-m">
+            <span class="visible-md visible-lg title">Мобильный телефон</span>
+            <span class="visible-sm title">Телефон</span>
+        </div>
+        <div class="col-xs-24 col-sm-16">
+            <ui-input placeholder="Телефон" update="phone" cursor={ parent.data.select('contacts') } mask="phone" size="l"></ui-input>
+        </div>
+    </div>
+    <div class="row mb-m">
+        <div class="hidden-xs col-sm-8 pt-xs pr-m">
+            <span class="title">Skype</span>
+        </div>
+        <div class="col-xs-24 col-sm-16">
+            <ui-input placeholder="Skype" update="skype" cursor={ parent.data.select('contacts') } size="l"></ui-input>
+        </div>
+    </div>
+    <div class="row mb30 xs-pb-xxs">
+        <div class="col-xs-24 col-sm-8 pt-xs pr-m xs-pt0">
+            <span class="hidden-xs title">Главный вид связи</span>
+            <span class="c-blue input-title">Главный вид связи</span>
+        </div>
+        <div class="col-xs-24 col-sm-16">
+            <ui-select update="primary" cursor={ parent.data.select('contacts') } items={ $store.contactsPrimary.get() } size="l"></ui-select>
+        </div>
+    </div>
+
+</profile-data-content>

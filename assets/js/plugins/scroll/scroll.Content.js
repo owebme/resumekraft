@@ -39,7 +39,7 @@
         	this.scroll = new IScroll(this.scope[0], options);
 
             if (options.keyboard && !app.device.support.touch) this.keyboard();
-        	this.embeds();
+        	this.embeds(app.device.isMobile && options.autoScroll ? true : false);
 
             this.active = true;
         },
@@ -139,18 +139,53 @@
             });
         },
 
-        embeds: function(){
+        embeds: function(autoScroll){
             var _this = this,
                 scope = this.scope,
                 scroll = this.scroll,
-                isScrolled = false;
+                isScrolled = false,
+                state = null,
+                $focus = null;
 
             scroll.enable();
 
             $dom.window.on('resize.scrollable-content', function(){
                 if (app.device.isMobile) _this.scope.scrollTop(0);
-        		scroll.refresh();
+                if (autoScroll){
+                    if (state == "focus" && $focus){
+                        setTimeout(function(){
+                            centered(app.sizes.height / 1.3, 0);
+                        }, 150);
+                    }
+                }
+                scroll.refresh();
         	});
+
+            if (autoScroll){
+                this.scope.on("focus blur", "input[type='text'], textarea", function(e){
+                    if (e.type == "focusin" || e.type == "focus"){
+                        $focus = $(e.target);
+
+                        state = "focus";
+
+                        centered(app.sizes.height / 3.5, 200);
+                    }
+                    else {
+                        state = "blur";
+                    }
+                    _this.scope.scrollTop(0);
+                });
+            }
+
+            var centered = function(delta, duration){
+                var top = $focus.offset().top;
+                if (top < 0){
+                    scroll.scrollBy(0, (-top + delta), duration, IScroll.utils.ease.cubicOut);
+                }
+                else if (top > delta){
+                    scroll.scrollBy(0, -(top - delta), duration, IScroll.utils.ease.cubicOut);
+                }
+            };
 
             var start = function(){
         		if (!isScrolled) {
@@ -176,6 +211,7 @@
         },
 
         destroy: function(){
+            this.scope.off();
             this.scroll.destroy();
             $dom.window.off('resize.scrollable-content');
             this.active = false;

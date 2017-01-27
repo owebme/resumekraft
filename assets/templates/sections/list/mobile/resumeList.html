@@ -40,6 +40,12 @@
         });
     });
 
+    $.on("updated", function(){
+        if ($.ready && $Sections.resume.list.scroll){
+            $Sections.resume.list.scroll.refresh();
+        }
+    });
+
     $.get = {
         coverPost: function(item){
             return item[0];

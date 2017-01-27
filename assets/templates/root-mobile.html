@@ -1,16 +1,15 @@
-<root-main class="pos-abs-full" data-app="private">
+<root-main-mobile class="pos-abs-full" data-app="private">
 
-    <resume-list></resume-list>
+    <resume-list-mobile></resume-list-mobile>
     <resume-edit></resume-edit>
+    <resume-section></resume-section>
     <resume-select></resume-select>
     <resume-sendmail></resume-sendmail>
     <section-notify></section-notify>
     <section-alert></section-alert>
     <section-pointer></section-pointer>
     <section-jqtest></section-jqtest>
-    <section-payment></section-payment>
-    <section-tutorial></section-tutorial>
-    <section-plan></section-plan>
+    <section-plan-mobile></section-plan-mobile>
     <section-loader-ajax></section-loader-ajax>
     <section-loader></section-loader>
     <section-progress></section-progress>
@@ -20,15 +19,14 @@
         <section-menu></section-menu>
         <section-inbox></section-inbox>
 
-        <section-profile></section-profile>
-        <section-profile-data></section-profile-data>
+        <section-profile-mobile></section-profile-mobile>
+        <section-profile-data-mobile></section-profile-data-mobile>
         <photo-upload></photo-upload>
 
         <ui-dropmenu></ui-dropmenu>
     </app-sections>
 
     <app-offers>
-        <offer-welcome></offer-welcome>
         <offer-plan></offer-plan>
         <offer-votes></offer-votes>
         <offer-jqtest></offer-jqtest>
@@ -59,7 +57,7 @@
             $Sections.offers.welcome.show();
         }
         else {
-            $Sections.offers.welcome.unmount();
+            //$Sections.offers.welcome.unmount();
 
             if ($account.get("plan") == "premium"){
                 $Sections.offers.plan.unmount();
@@ -68,9 +66,7 @@
                 $Sections.plan.unmount();
             }
             $root.one("ready", function(){
-                if ($Sections.resume.list.start){
-                    $Sections.resume.list.start();
-                }
+                $Sections.resume.list.ready = true;
             });
         }
         $afterlag.xs(function(){
@@ -86,12 +82,11 @@
     this.init = function(){
         $Sections = {
             profile: {
-                section: $root.tags["section-profile"],
-                data: $root.tags["section-profile-data"]
+                section: $root.tags["section-profile-mobile"],
+                data: $root.tags["section-profile-data-mobile"]
             },
             resume: {
-                navbar: $root.tags["resume-list"].tags["resume-navbar"],
-                list: $root.tags["resume-list"],
+                list: $root.tags["resume-list-mobile"],
                 edit: $root.tags["resume-edit"],
                 stat: $root.tags["resume-stat"],
                 select: $root.tags["resume-select"],
@@ -115,7 +110,7 @@
                 test: $root.tags["section-jqtest"].tags["jqtest-content"],
                 result: $root.tags["section-jqtest"].tags["jqtest-result"]
             },
-            plan: $root.tags["section-plan"],
+            plan: $root.tags["section-plan-mobile"],
             inbox: $root.tags["section-inbox"],
             payment: $root.tags["section-payment"],
             menu: $root.tags["section-menu"],
@@ -123,47 +118,14 @@
             progress: $root.tags["section-progress"]
         };
 
-        $Tutorial = $root.tags["section-tutorial"];
         $Pointer = $root.tags["section-pointer"];
         $Notify = $root.tags["section-notify"];
         $Loader = $root.tags["section-loader"];
         $LoaderAjax = $root.tags["section-loader-ajax"];
         $Alert = $root.tags["section-alert"];
         $DropMenu = $root.tags["ui-dropmenu"];
-
-        if (app.config.changeStyles){
-            app.plugins.styles.init({
-                elem: "#styles",
-                default: "normal",
-                screens: [
-                    {
-                        title: "small",
-                        maxWidth: 360,
-                        path: "/assets/css/style.smallScreen.css"
-                    },
-                    {
-                        title: "normal",
-                        minWidth: 360,
-                        maxWidth: 1440,
-                        path: "/assets/css/style.css"
-                    },
-                    {
-                        title: "large",
-                        minWidth: 1440,
-                        path: "/assets/css/style.largeScreen.css"
-                    }
-                ],
-                callback: function(screen){
-                    if ($Sections && $Sections.resume && $Sections.resume.edit && $Sections.resume.edit.active){
-                        $afterlag.run(function(){
-                            $Sections.resume.edit.section.refresh();
-                        });
-                    }
-                }
-            });
-        }
     };
 
 </script>
 
-</root-main>
+</root-main-mobile>

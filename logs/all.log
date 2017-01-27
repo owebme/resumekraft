@@ -2018,3 +2018,60 @@
 {"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T17:45:42.273Z"}
 {"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T17:45:42.307Z"}
 {"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T17:45:42.322Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T18:42:57.768Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T18:42:57.784Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T18:42:57.799Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T18:53:31.232Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T18:53:31.247Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T18:53:31.256Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T19:51:28.697Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T19:51:28.714Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T19:51:28.723Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T19:51:42.916Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T19:51:42.932Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T19:51:42.942Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T19:54:01.607Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T19:54:01.623Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T19:54:01.635Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T20:12:05.008Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T20:12:05.027Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T20:12:05.040Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T22:43:14.143Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T22:43:14.174Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T22:43:14.195Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T22:43:23.607Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T22:43:23.624Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T22:43:23.638Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T22:48:14.111Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T22:48:14.129Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T22:48:14.139Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T22:49:29.169Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T22:49:29.188Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T22:49:29.210Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T22:49:36.665Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T22:49:36.686Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T22:49:36.698Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T22:50:03.283Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T22:50:03.315Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-01-27T22:50:03.332Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T22:52:53.485Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T22:52:53.507Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-01-27T22:52:53.517Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T22:53:28.951Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T22:53:29.000Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-01-27T22:53:29.030Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T22:54:55.600Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T22:54:55.624Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-01-27T22:54:55.635Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T22:57:09.988Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-01-27T22:57:10.045Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T22:57:10.057Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T23:01:02.237Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T23:01:02.260Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-01-27T23:01:02.272Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T23:02:55.520Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-01-27T23:02:55.559Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T23:02:55.569Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T23:05:13.240Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T23:05:13.295Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-01-27T23:05:13.336Z"}

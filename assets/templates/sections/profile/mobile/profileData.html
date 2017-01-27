@@ -1,0 +1,94 @@
+<section-profile-data-mobile class="oScreen section zIndex-2" data-inner="hidden" data-loading="false" data-show="down" data-open="false">
+
+    <div name="wrapper" class="oScreen__content overflow-hidden bg-white">
+
+        <div class="section__loading"></div>
+
+        <div class="screenMobile__navbar" data-gradient="white">
+            <div onClick={ hide } onUpdate="none" class="screenMobile__nav__close"></div>
+            <div class="screenMobile__nav__title">Данные профиля</div>
+            <div onClick={ open.dropMenu } onUpdate="none" class="screenMobile__nav__options"></div>
+        </div>
+        <div name="content" class="section-scroll section__content">
+            <div class="pt100 pb70 plr-m willChange-transform">
+                <profile-data-content class="display-block mb25"></profile-data-content>
+                <div class="flex-centered">
+                    <div onClick={ onSave } onUpdate="none" class="btn btn-xl2 btn-success">Сохранить</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.data = new Baobab($account.deepClone());
+
+    $.on("mount", function(){
+        $.section = new app.plugins.sections($.root, {
+            content: $.wrapper
+        });
+
+        $afterlag.run(function(){
+            $.scroll = new app.plugins.scroll.content($.content, {
+                autoScroll: true
+            });
+            $.scroll.init();
+        });
+    });
+
+    $.show = function(){
+        $.section.show({
+            scroll: $.scroll
+        })
+    };
+
+    $.commit = {
+        birthday: function(){
+            if ($.tags["profile-data-content"].birthdayHidden._tag.value){
+                $.tags["profile-data-content"].birthdayHidden._tag.update();
+            }
+        }
+    };
+
+    $.open = {
+        dropMenu: function(e){
+            $DropMenu.show({
+                elem: $$(e.currentTarget),
+                pos: "down-left",
+                offset: {
+                    left: 5
+                },
+                menu: [
+                    {
+                        title: 'Сохранить изменения',
+                        callback: function(){
+                            $.onSave();
+                        }
+                    },
+                    {
+                        title: 'Отменить и закрыть',
+                        callback: function(){
+                            $.hide();
+                        }
+                    }
+                ]
+            });
+        }
+    };
+
+    $.onSave = function(){
+        $account.saveData($.data, function(){
+            $.hide();
+        });
+    };
+
+    $.hide = function(){
+        $.section.hide();
+    };
+
+</script>
+
+</section-profile-data-mobile>

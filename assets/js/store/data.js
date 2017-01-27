@@ -1,6 +1,27 @@
 (function(){
     $store.data = _.extend(new Baobab([]),
         {
+            onRemove: function(id){
+                $Alert.show({
+                    title: "Удалить резюме?",
+                    subtitle: "Вы уверены?",
+                    success: {
+                        callback: function(){
+                            app.request('delResume', {
+                                id: id
+                            })
+                            .then(function(){
+                                $store.data.select({'_id': id}).unset();
+
+                                if (!app.device.isPhone && $Sections.resume.list.slider.index > 0){
+                                    $Sections.resume.list.slider.prevSlides();
+                                }
+                                $Sections.resume.list.update();
+                            });
+                        }
+                    }
+                });
+            },
             onEdit: function(id){
                 $Sections.resume.edit.show({
                     id: id
@@ -80,8 +101,8 @@
                 },
                 {
                     title: "Создать копию",
-                    callback: function(){
-                        var resume = $store.data.select({"_id": $.opts.item._id}).deepClone();
+                    callback: function(id){
+                        var resume = $store.data.select({"_id": id}).deepClone();
 
                         app.request("addResume", {
                             data: resume
@@ -104,8 +125,8 @@
                 },
                 {
                     title: "Удалить",
-                    callback: function(){
-                        $.onRemove();
+                    callback: function(id){
+                        $.onRemove(id);
                     }
                 }
             ]

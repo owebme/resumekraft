@@ -4,6 +4,7 @@
 
     app.plugins.slider = function(scope){
         this.active = false;
+        this.index = 0;
         this.scope = $(scope);
         this.slider = this.scope.find(".slider__wrapper");
         this.nav = {
@@ -140,6 +141,8 @@
     			_this.updateSlider('next', actual, following);
     		});
 
+            this.index = index;
+
     		//if( $('.no-csstransitions').length > 0 ) updateSlider('next', actual, following);
     	},
 
@@ -155,6 +158,8 @@
             _.onEndTransition(this.slider[0], function(){
     			_this.updateSlider('prev', actual);
     		});
+
+            this.index = index;
 
     		//if( $('.no-csstransitions').length > 0 ) updateSlider('prev', actual);
     	},

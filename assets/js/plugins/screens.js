@@ -110,7 +110,9 @@
                         centered(app.sizes.height / 1.3, 0);
                     }, 150);
                 }
+                _this.refresh();
         	});
+
             this.scope.on("focus blur", "input[type='text'], textarea", function(e){
                 if (e.type == "focusin" || e.type == "focus"){
                     $focus = $(e.target);

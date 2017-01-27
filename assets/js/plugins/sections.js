@@ -11,7 +11,8 @@
     app.plugins.sections.prototype = {
 
         show: function(options){
-            var _this = this;
+            var _this = this,
+                options = options || {};
 
             this.scope.setAttribute("data-open", true);
             this.scope.setAttribute("data-loading", true);
@@ -34,12 +35,13 @@
         },
 
         _afterShow: function(options){
-            var _this = this;
+            var _this = this,
+                options = options || {};
 
             this.scope.setAttribute("data-inner", "show");
 
             $afterlag.run(function(){
-                if (options && options.scroll){
+                if (options.scroll){
                     options.scroll.refresh();
                     options.scroll.scrollTop();
                 }
@@ -52,7 +54,8 @@
         },
 
         hide: function(options){
-            var _this = this;
+            var _this = this,
+                options = options || {};
 
             this.scope.setAttribute("data-open", false);
 

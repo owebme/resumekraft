@@ -74,8 +74,11 @@
         @extend .h60;
         @extend .plr-xs;
         @extend .zIndex-5;
+        @extend .c-blue;
 
         &[data-color="white"]{
+            @extend .c-white;
+
             .screenMobile__nav__back {
                 @include ui-icon("back_white");
             }
@@ -86,8 +89,27 @@
         &[data-gradient="black"]{
             background:linear-gradient(to bottom, rgba($blackLight,.7), rgba($blackLight,0));
         }
+        &[data-gradient="white"]{
+            background:linear-gradient(to bottom, $white, rgba($white,0));
+
+            &:before {
+                @extend .content-empty;
+                @include abs();
+                background:linear-gradient(to bottom, $white, rgba($white,0));
+                @extend .zIndex--1;
+            }
+        }
     }
     &__nav {
+        &__title {
+            @extend .fontSize-18;
+            @extend .fontWeight-bold;
+            @extend .text-uppercase;
+        }
+        &__close {
+            @include ui-icon("close_fill", 34px, 34px);
+            transform:translateX(4px);
+        }
         &__back {
             @include ui-icon("back_gray", 26px, 26px);
             transform:translateX(2px);
