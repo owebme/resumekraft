@@ -96,6 +96,7 @@
                     }
                 },
                 {
+                    hidden: app.device.isMobile,
                     title: "Распечатать",
                     callback: function(){
                         alert("Распечатать");

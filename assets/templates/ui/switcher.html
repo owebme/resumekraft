@@ -24,7 +24,7 @@
     });
 
     $.on("mount", function(){
-        $scope.on('swipeleft swiperight', function(e){
+        $scope.on('swipeLeft swipeRight', function(e){
             e.stopPropagation();
             $scope.trigger("click");
         });

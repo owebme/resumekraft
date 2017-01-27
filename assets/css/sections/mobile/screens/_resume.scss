@@ -1,0 +1,10 @@
+.screenMobile {
+    &__header {
+        &[data-header="resume"]{
+            &:before,
+            &:after {
+                @extend .bg-snow;
+            }
+        }
+    }
+}

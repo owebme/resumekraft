@@ -10,9 +10,9 @@
     border:3px dashed $white;
 
     .d-phone & {
-        left:50%;
+        @extend .l50;
+        @extend .border-none;
         transform:translateX(-50%);
-        border:none;
         width:440px;
         height:620px;
     }
@@ -48,7 +48,7 @@
             @extend .content-empty;
             @include abs();
             background:rgba($white,.2);
-            z-index:1;
+            @extend .zIndex-1;
 
             .d-phone & {
                 @extend .h100v;
@@ -59,13 +59,13 @@
         }
     }
     &--empty img {
-        display:none;
+        @extend .display-none;
     }
     &__input {
         @include abs();
         @extend .cursor-pointer;
         @extend .opacity-0;
-        z-index:1;
+        @extend .zIndex-1;
     }
     &__text {
         @extend .pos-centered;
@@ -77,7 +77,7 @@
 
         .d-phone & {
             top:50vh;
-            @extend .fontSize-34;
+            @extend .fontSize-32;
             transform:translate3d(-50%, -50vh);
         }
         &:before {
@@ -87,9 +87,9 @@
             margin:-2px auto 7px;
 
             .d-phone & {
-                width:128px;
-                height:128px;
-                margin:-30px auto 5px;
+                width:125px;
+                height:125px;
+                margin:-30px auto 8px;
             }
         }
         &__or {
@@ -161,7 +161,7 @@
             @extend .plr0;
             @extend .pb-m;
             @extend .text-center;
-            width:100vw;
+            @extend .w100v;
             background:linear-gradient(to top, #000, rgba(#000,0));
         }
     }

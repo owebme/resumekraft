@@ -6,7 +6,8 @@ app.fetch.API.getDataInit = function(){
     return new Promise(function(resolve, reject){
         app.request('getDataInit').then(function(res){
 
-            $account = new Baobab(res.account ? res.account : {});
+            $account = $store.account;
+            $store.account.set(res.account ? res.account : {});
             $store.data.set(res.data ? res.data : []);
             $store.inbox = new Baobab(res.inbox ? res.inbox : []);
 

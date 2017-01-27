@@ -240,8 +240,16 @@
             $.offset.left += $.step.offset.left ? $.step.offset.left : 0;
         }
         var _width = $.target.data("width") || $.step.width,
-            _height = $.target.data("height") || $.step.height,
-            _zoom = $.target.data("zoom") || $.step.zoom,
+            _height = $.target.data("height") || $.step.height;
+
+        if (_height){
+            $.offset.top -= (parseInt(_height) - $.target.outerHeight()) / 2;
+        }
+        if (_width){
+            $.offset.left -= (parseInt(_width) - $.target.outerWidth()) / 2;
+        }
+
+        var _zoom = $.target.data("zoom") || $.step.zoom,
             padding = $.target.data("padding") || $.step.padding,
             width = _width ? parseInt(_width) : (padding ? $.target.outerWidth() + parseInt(padding) * 2 : $.target.outerWidth()),
             height = _height ? parseInt(_height) : (padding ? $.target.outerHeight() + parseInt(padding) * 2 : $.target.outerHeight()),

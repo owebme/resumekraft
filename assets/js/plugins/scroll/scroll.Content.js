@@ -32,6 +32,10 @@
             }
             if (this.options) _.extend(options, this.options);
 
+            if (app.device.isPhone){
+                options.deceleration = 0.0006;
+            }
+
         	this.scroll = new IScroll(this.scope[0], options);
 
             if (options.keyboard && !app.device.support.touch) this.keyboard();
@@ -46,6 +50,10 @@
 
         hide: function(){
             this.scroll.disable();
+        },
+
+        scrollTop: function(){
+            this.scroll.scrollTo(0, 0);
         },
 
         refresh: function(){
@@ -133,7 +141,9 @@
 
         embeds: function(){
             var _this = this,
-                scroll = this.scroll;
+                scope = this.scope,
+                scroll = this.scroll,
+                isScrolled = false;
 
             scroll.enable();
 
@@ -141,6 +151,28 @@
                 if (app.device.isMobile) _this.scope.scrollTop(0);
         		scroll.refresh();
         	});
+
+            var start = function(){
+        		if (!isScrolled) {
+        			scope.addClass('i-scrolling');
+        			isScrolled = true;
+        		}
+        	};
+        	var end = function(){
+        		if (isScrolled) {
+        			scope.removeClass('i-scrolling');
+        			isScrolled = false;
+        		}
+        	};
+
+            if (app.device.isMobile){
+            	scroll.on('grab', function(){
+            		start();
+            	});
+            	scroll.on('scrollEnd', function(){
+            		end();
+            	});
+            }
         },
 
         destroy: function(){

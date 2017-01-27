@@ -25,14 +25,14 @@ $store.resume = _.extend(new Baobab({},
                 }
             },
             salary: {
-                amount: function(){
-                    return _.numberFormat($store.resume.get('salary', 'amount'), 0, ".", ".");
+                amount: function(salary){
+                    return _.numberFormat(salary || $store.resume.get('salary', 'amount'), 0, ".", ".");
                 },
-                currency: function(){
-                    return $store.currency.getTitleById($store.resume.get('salary', 'currency'));
+                currency: function(currency){
+                    return $store.currency.getTitleById(currency || $store.resume.get('salary', 'currency'));
                 },
-                worktime: function(){
-                    return $store.worktime.getTitleById($store.resume.get('salary', 'worktime'));
+                worktime: function(worktime, lang){
+                    return $store.worktime.getTitleById(worktime || $store.resume.get('salary', 'worktime'), lang);
                 }
             },
             education: {

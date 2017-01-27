@@ -28,13 +28,13 @@
         		_this.prevSlides();
         	});
 
-            this.slider.on('swipeleft', function(){
+            this.slider.on('swipeLeft', function(){
                 if (!_this.nav.next.hasClass('slider__nav--hidden')){
                     _this.nextSlides();
                 }
             });
 
-            this.slider.on('swiperight', function(){
+            this.slider.on('swipeRight', function(){
                 if (!_this.nav.prev.hasClass('slider__nav--hidden')){
                     _this.prevSlides();
                 }

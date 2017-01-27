@@ -3,7 +3,7 @@
 @import 'base/reset';
 @import 'base/base';
 @import 'base/app';
-@import 'base/private';
+@import 'private/main';
 @import 'base/fonts';
 @import 'base/keyframes';
 @import 'base/mixins';
@@ -50,6 +50,9 @@
 
 // Sections
 @import 'sections/sections';
+@import 'sections/mobile/screens/screens';
+@import 'sections/mobile/screens/resume';
+@import 'sections/mobile/screens/profile';
 @import 'sections/mobile/menu';
 @import 'sections/mobile/navbar';
 @import 'sections/profile/profile';
@@ -89,6 +92,7 @@
 @import 'sections/list/resumePreview';
 @import 'sections/list/resumeSelect';
 @import 'sections/list/mobile/resumeList';
+@import 'sections/list/mobile/resumeListItem';
 
 // Resume create basic
 @import 'appResume/basic/style';

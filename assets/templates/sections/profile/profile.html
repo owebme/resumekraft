@@ -1,20 +1,21 @@
-<section-profile class="oScreen zIndex-2" data-open={ active } data-show="left">
+<section-profile class="oScreen section zIndex-2" data-open="false" data-show="left" data-loading="false" data-inner="hidden">
 
     <div class="oScreen__buttons" data-pos="top-right">
         <div onClick={ hide } onUpdate="none" class="button__close"></div>
     </div>
 
-    <div class="oScreen__content bg-white">
-        <div class="profile">
+    <div name="content" class="oScreen__content bg-white">
+        <div class="section__loading"></div>
+        <div class="profile section__inner">
             <div class="container">
                 <div class="row profile__header">
                     <div class="col-md-16">
                         <div class="row">
                             <div class="col-md-10">
-                                <div onClick={ open.photoUpload } onUpdate="none" if={ $account.get('photo') } class="profile__photo">
+                                <div onClick={ open.changePhoto } onUpdate="none" if={ $account.get('photo') } class="profile__photo">
                                     <div class="profile__photo__image" style="background-image:url({ $account.get('photo') })"></div>
                                 </div>
-                                <div onClick={ open.photoUpload } onUpdate="none" if={ !$account.get('photo') } class="profile__photo" data-place="true">
+                                <div onClick={ open.changePhoto } onUpdate="none" if={ !$account.get('photo') } class="profile__photo" data-place="true">
                                     <span class="profile__photo__text">загрузить свою фотографию</span>
                                 </div>
                             </div>
@@ -49,7 +50,7 @@
                             <div class="mt-xxs">
                                 <span onClick={ open.payment } onUpdate="none" class="link-underline link-default-hover-warning">Пополнить баланс</span>
                             </div>
-                            <div class="c-gray mt-s">Последний визит: { get.lastVisit() }</div>
+                            <div class="c-gray mt-s">Последний визит: { $account.take.lastVisit() }</div>
                         </div>
                     </div>
                 </div>
@@ -111,7 +112,10 @@
     };
 
     $.on("mount", function(){
-        $scope.on('swipeleft', function(){
+        $.section = new app.plugins.sections($.root, {
+            content: $.content
+        });
+        $scope.on('swipeLeft', function(){
             if (!$.popup.referer.active && !_.some($.editable)){
                 $.hide();
             }
@@ -125,22 +129,12 @@
     });
 
     $.show = function(callback){
-        $.active = true;
-        $.update();
-        $.callback = callback;
-    };
-
-    $.get = {
-        lastVisit: function(){
-            var date = $account.get("visite"),
-                days = moment(date).diff(moment(), 'days');
-
-            if (days === 0) return "сегодня в " + moment(date).format('HH:mm');
-            else if (days === -1) return "вчера в " + moment(date).format('HH:mm');
-            else {
-                return moment(date).format('D MMMM') + " в " + moment(date).format('HH:mm');
+        $.section.show({
+            beforeShow: function(){
+                $.active = true;
+                $.callback = callback;
             }
-        }
+        })
     };
 
     $.edit = {
@@ -165,18 +159,8 @@
     };
 
     $.open = {
-        photoUpload: function(){
-            $Sections.photoUpload.show(function(image){
-                app.request("setUploadPhoto", {
-                    profile: true,
-                    image: image
-                })
-                .then(function(data){
-                    if (data && data.image){
-                        $account.select("photo").set(image);
-                    }
-                });
-            });
+        changePhoto: function(){
+            $account.changePhoto();
         },
         personalData: function(){
             $Sections.profile.data.show();
@@ -193,9 +177,12 @@
     };
 
     $.hide = function(){
-        $.active = false;
-        $.update();
-        if (_.isFunction($.callback)) $.callback();
+        $.section.hide({
+            beforeHide: function(){
+                $.active = false;
+                if (_.isFunction($.callback)) $.callback();
+            }
+        })
     };
 
 </script>

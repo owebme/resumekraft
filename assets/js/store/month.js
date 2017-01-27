@@ -93,8 +93,8 @@ $store.month = _.extend(new Baobab([
                 }
             });
         },
-        getTitleById: function(id){
-            return $store.month.get({"_id": id}, "title", $store.resume.get("lang"));
+        getTitleById: function(id, lang){
+            return $store.month.get({"_id": id}, "title", lang || $store.resume.get("lang"));
         }
     }
 );

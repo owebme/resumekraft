@@ -236,6 +236,8 @@ gulp.task('private.libs', function() {
 		'assets/js/libs/riot/riot-i18n.js',
 		'assets/js/libs/baobab.js',
 		'assets/js/libs/underscore-min.js',
+		'assets/js/libs/iscroll.js',
+		'assets/js/libs/iscroll.static.js',
 		'assets/js/libs/rangeslider.js',
 		'assets/js/libs/jquery.cropit.js',
 		'assets/js/libs/moment.min.js',

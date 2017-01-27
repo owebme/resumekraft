@@ -1876,3 +1876,145 @@
 {"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T12:17:15.614Z"}
 {"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T12:17:15.644Z"}
 {"level":"info","message":"Connected to MySQL!","timestamp":"2017-01-26T12:17:15.655Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T14:00:02.077Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T14:00:02.098Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T14:00:02.107Z"}
+{"level":"error","message":"Internal error(500): Failed to lookup view \"editing\" in views directory \"/Users/SONY/Work/resumekraft/views\"","timestamp":"2017-01-26T14:00:34.446Z"}
+{"level":"error","message":"Internal error(500): Failed to lookup view \"editing\" in views directory \"/Users/SONY/Work/resumekraft/views\"","timestamp":"2017-01-26T14:05:30.826Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T14:21:37.567Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T14:21:37.597Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T14:21:37.610Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-01-26T14:32:27.946Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T14:57:07.497Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T14:57:07.514Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T14:57:07.523Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T14:57:14.754Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T14:57:14.770Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T14:57:14.780Z"}
+{"level":"error","message":"Internal error(500): Failed to lookup view \"editing\" in views directory \"/Users/SONY/Work/resumekraft/views\"","timestamp":"2017-01-26T14:57:25.832Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T15:03:52.645Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T15:03:52.675Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T15:03:52.696Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T15:48:42.033Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T15:48:42.118Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T15:48:42.135Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T15:51:37.833Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T15:51:37.855Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T15:51:37.866Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T15:52:38.202Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T15:52:38.218Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T15:52:38.230Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T15:53:03.075Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T15:53:03.104Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T15:53:03.118Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T15:53:40.474Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T15:53:40.489Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T15:53:40.500Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T15:54:36.280Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T15:54:36.300Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T15:54:36.311Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T15:55:09.052Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T15:55:09.068Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T15:55:09.082Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T16:03:17.091Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T16:03:17.108Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T16:03:17.118Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T16:03:19.086Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T16:03:19.107Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T16:03:19.117Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T16:03:22.587Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T16:03:22.605Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T16:03:22.616Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T16:04:21.172Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T16:04:21.192Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T16:04:21.206Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T16:09:34.541Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T16:09:34.561Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T16:09:34.576Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T16:11:44.665Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T16:11:44.687Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T16:11:44.718Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T16:13:22.336Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T16:13:22.352Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T16:13:22.373Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T17:25:52.118Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T17:25:52.161Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T17:25:52.181Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T17:25:59.135Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T17:25:59.156Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T17:25:59.169Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T17:28:07.516Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T17:28:07.534Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T17:28:07.544Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T17:28:14.068Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T17:28:14.090Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T17:28:14.100Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T17:56:48.860Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T17:56:48.881Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T17:56:48.895Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T17:57:02.203Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T17:57:02.243Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T17:57:02.261Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T19:42:28.177Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T19:42:28.222Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T19:42:28.235Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T20:45:31.651Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T20:45:31.677Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T20:45:31.694Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T21:09:55.917Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T21:09:55.939Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T21:09:55.955Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T21:53:29.716Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T21:53:29.732Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T21:53:29.744Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-26T23:59:23.609Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-26T23:59:23.624Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-26T23:59:23.635Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T00:08:38.184Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T00:08:38.200Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T00:08:38.210Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T02:27:46.065Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T02:27:46.082Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T02:27:46.092Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T03:05:28.975Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T03:05:28.998Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T03:05:29.037Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T03:12:34.768Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T03:12:34.803Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T03:12:34.827Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T03:13:24.963Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T03:13:24.993Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T03:13:25.008Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T04:25:47.739Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T04:25:47.786Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T04:25:47.803Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T05:26:05.785Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T05:26:05.810Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T05:26:05.832Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T05:26:53.879Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T05:26:53.918Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T05:26:53.936Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T05:27:08.861Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T05:27:09.046Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T05:27:09.139Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T06:04:58.039Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T06:04:58.094Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T06:04:58.122Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T06:09:10.351Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T06:09:10.373Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T06:09:10.388Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T06:09:34.678Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T06:09:34.706Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T06:09:34.731Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T15:02:00.835Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T15:02:00.862Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T15:02:00.887Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T15:04:06.680Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T15:04:06.721Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T15:04:06.736Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T15:04:19.620Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T15:04:19.637Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T15:04:19.647Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-01-27T17:45:42.273Z"}
+{"level":"error","message":"Connection MySQL error: connect ECONNREFUSED 127.0.0.1:8889","timestamp":"2017-01-27T17:45:42.307Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-01-27T17:45:42.322Z"}

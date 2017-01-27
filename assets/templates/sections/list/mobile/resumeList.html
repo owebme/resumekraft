@@ -4,7 +4,7 @@
 
         <div class="resume__list-m__scroll">
 
-            <div onClick={ open.menu } class="resume__list-m__menu"></div>
+            <div onClick={ open.profile } onUpdate="none" class="resume__list-m__menu"></div>
 
             <div class="container borderBottomWidth-1 borderStyle-solid borderColor-smoke">
                 <div class="row">
@@ -15,37 +15,23 @@
                 </div>
             </div>
 
-            <div class="container">
-                <resume-list-item-mobile onClick={ open.createResume } onUpdate="none" each={ item, i in _.sortByDate($store.data.get(), "update", "desc") } item={ item }></resume-list-item-mobile>
-                <div if={ $store.data.get().length < 2 }>
-                    <resume-list-item-blank-mobile></resume-list-item-blank-mobile>
-                    <resume-list-item-blank-mobile></resume-list-item-blank-mobile>
-                    <resume-list-item-blank-mobile></resume-list-item-blank-mobile>
-                    <resume-list-item-blank-mobile if={ !$store.data.get().length }></resume-list-item-blank-mobile>
+            <div class="container resume__list-m__items">
+                <resume-item-mobile onUpdate="none" each={ item, i in _.sortByDate($store.data.get(), "update", "desc") } item={ item }></resume-item-mobile>
+                <div if={ $store.data.get().length < 4 }>
+                    <resume-item-blank-mobile each={ item, i in _.range(4 - $store.data.get().length) }></resume-item-blank-mobile>
                 </div>
             </div>
 
         </div>
-        <div class="navbar__mobile">
-            <div class="navbar__mobile__item" data-item="feedback">
-                <div class="navbar__mobile__item__icon">
-                    <svg viewBox="3 -3 24 24"><path d="M15 11.9c-.9 0-1.7-.2-2.3-.7l-5.7-4.4v8.1c0 .1 0 .3.1.4.1.1.2.2.3.2 2.5.4 5 .5 7.5.5s5-.2 7.5-.5c.1 0 .3-.1.4-.2.2-.1.2-.3.2-.4v-8.1l-5.7 4.4c-.6.5-1.4.7-2.3.7zm-1.3-2.3c.3.3.8.4 1.3.4s1-.1 1.3-.4l6.1-4.7c.3-.3.5-.6.6-1v-.8c0-.1 0-.3-.1-.4-.1-.1-.2-.2-.4-.2-2.5-.3-5-.5-7.5-.5s-5 .2-7.5.5c-.1 0-.2.1-.3.2-.2.1-.2.3-.2.4v.9c.1.3.3.6.6 1l6.1 4.6z"></path></svg>
-                    <!-- <div class="navbar__mobile__item__icon__badge">9</div> -->
-                </div>
-            </div>
-            <div class="navbar__mobile__item" data-item="likes">
-                <div class="navbar__mobile__item__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 18 20" version="1.1" x="0px" y="0px"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g><path d="M9,1.82234332 C8.019,0.70626703 6.516,0 4.95,0 C2.178,0 0,2.11008174 0,4.79564033 C0,8.09155313 3.06,10.7771117 7.695,14.8577657 L9,16 L10.305,14.8490463 C14.94,10.7771117 18,8.09155313 18,4.79564033 C18,2.11008174 15.822,0 13.05,0 C11.484,0 9.981,0.70626703 9,1.82234332 Z"/></g></g></svg>
-                    <!-- <div class="navbar__mobile__item__icon__badge">7</div> -->
-                </div>
-            </div>
-            <div onClick={ open.createResume } onUpdate="none" class="navbar__mobile__create"></div>
-        </div>
+
+        <navbar-mobile></navbar-mobile>
+
     </div>
 
 <script>
 
-    var $ = this;
+    var $ = this,
+    $scope = $$($.root);
 
     $.on("mount", function(){
         $afterlag.run(function(){
@@ -61,32 +47,17 @@
     }
 
     $.open = {
-        menu: function(){
-            $Sections.menu.show();
-        },
-        stat: function(){
-            $.hide();
-            $Sections.resume.stat.show(function(){
-                $.show();
-            });
-        },
-        createResume: function(){
-            //$Sections.resume.edit.show();
-        },
         profile: function(){
             $.hide();
             $Sections.profile.section.show(function(){
                 $.show();
             });
         },
-        jqtest: function(){
+        resume: function(){
             $.hide();
-            $Sections.jqtest.section.show(function(){
+            $Sections.resume.section.show(this.item, function(){
                 $.show();
             });
-        },
-        payment: function(){
-            $Sections.plan.show();
         }
     };
 

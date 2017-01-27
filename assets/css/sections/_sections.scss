@@ -19,6 +19,9 @@
             transition:opacity 0.3s $cubic28;
         }
     }
+	&[pointer-events="none"] * {
+		@extend .pointerEvents-none;
+	}
 	&-hidden {
 		@include accelerate();
 		@extend .display-block;
@@ -144,7 +147,59 @@
 			transition:transform 0.42s $cubic645, opacity 0.42s $cubic645;
 		}
 	}
+	&[data-loading="true"]{
+		.section__loading {
+			@extend .opacity-100;
+			@extend .pointerEvents-all;
+			@extend .visibility-visible;
+			@extend .transition-none;
+		}
+	}
+	&[data-loading="true"],
+	&[data-inner="show"]{
+		.section__loading {
+			&:after {
+				@include animation(spinner, linear, 1s, 0s, infinite);
+			}
+		}
+	}
+	&[data-inner="hidden"]{
+		.section__content,
+		.section__inner {
+			@extend .display-none;
+		}
+	}
+	&__loading {
+		@include accelerate();
+		@include abs();
+		@extend .bg-white;
+		@extend .opacity-0;
+		@extend .willChange-opacity;
+		@extend .pointerEvents-none;
+		@extend .visibility-hidden;
+		transition:opacity 0.175s ease-out, visibility 0s 0.2s;
+		@extend .zIndex-5;
+
+		&:after {
+			@extend .content-empty;
+			@include abs_50(58, 58);
+			@extend .willChange-transform;
+			@include ui-icon(loading, 58px, 58px);
+		}
+	}
 	&-scroll {
+		.d-mobile & {
+			.iScrollVerticalScrollbar {
+				@extend .willChange-opacity;
+				@extend .opacity-0;
+				transition:opacity .3s;
+			}
+			&.i-scrolling {
+				.iScrollVerticalScrollbar {
+					@extend .opacity-100;
+				}
+			}
+		}
 		.iScrollVerticalScrollbar {
 			@extend .pos-tr;
 			@extend .h100p;

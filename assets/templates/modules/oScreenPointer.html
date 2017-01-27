@@ -60,7 +60,7 @@
     });
 
     $.show = function(options){
-        if (app.device.isPhone && window.$Notify && options.text){
+        if (!options.phone && app.device.isPhone && window.$Notify && options.text){
             $Notify.show({
                 text: options.text
             })
@@ -82,13 +82,21 @@
             $.offset.left += $.state.offset.left ? $.state.offset.left : 0;
         }
         var _width = $.target.data("width") || $.state.width,
-            _height = $.target.data("height") || $.state.height,
-            _zoom = $.target.data("zoom") || $.state.zoom,
+            _height = $.target.data("height") || $.state.height;
+
+        if (_height){
+            $.offset.top -= (parseInt(_height) - $.target.outerHeight()) / 2;
+        }
+        if (_width){
+            $.offset.left -= (parseInt(_width) - $.target.outerWidth()) / 2;
+        }
+
+        var _zoom = $.target.data("zoom") || $.state.zoom,
             padding = $.target.data("padding") || $.state.padding,
             width = _width ? parseInt(_width) : (padding ? $.target.outerWidth() + parseInt(padding) * 2 : $.target.outerWidth()),
             height = _height ? parseInt(_height) : (padding ? $.target.outerHeight() + parseInt(padding) * 2 : $.target.outerHeight()),
             zoom = _zoom ? parseFloat(_zoom) : 1,
-            arbitrarySize = 300,
+            arbitrarySize = app.device.isPhone ? 200 : 300,
             halfSize = arbitrarySize / 2,
             centerX = (padding ? $.offset.left - parseInt(padding) : $.offset.left) + width / 2,
             centerY = (padding ? $.offset.top - parseInt(padding) : $.offset.top) + height / 2,
@@ -102,6 +110,7 @@
             style = null;
 
         if ($.state.figure == "square"){
+            if (app.device.isPhone) rectangleBorderRadius = rectangleBorderRadius / 1.05;
             centerYMinusHalfSize = centerY - rectangleHeight / 2;
             style = "-webkit-transform: translateX(" + centerXMinusHalfSize + "px) translateY(" + centerYMinusHalfSize + "px) translateZ(0) scale(" + rectangleScaleFactor + "); transform: translateX(" + centerXMinusHalfSize + "px) translateY(" + centerYMinusHalfSize + "px) translateZ(0) scale(" + rectangleScaleFactor + "); width: " + arbitrarySize + "px; height: " + rectangleHeight + "px; box-shadow: inset 0 0 0 " + borderSize + "px " + $.state.borderColor + ", inset 0 0 " + shadowSize + "px rgba(0,0,0,0.4); border-radius: " + rectangleBorderRadius + "px";
         }
@@ -136,21 +145,33 @@
         }
         if (offsetY < 40) offsetY = 40;
 
-        if ($.state.position == "right"){
-            $.state.message.style = "top:" + offsetY + "px; left:" + ($.offset.left + $.targetWidth) + "px";
-            var delta = app.sizes.width - ($.offset.left + $.targetWidth);
+        if (app.device.isPhone){
+            $.state.message.width = app.sizes.width - 40;
 
-            $.state.message.width = delta < $.state.message.width + 70 ? delta - 70 : $.state.message.width;
-        }
-        else if ($.state.position == "left" || $.state.position == "up"){
-            $.state.message.style = "top:" + offsetY + "px; left:" + $.offset.left + "px";
-
-            if ($.state.position == "left"){
-                $.state.message.width = $.offset.left < $.state.message.width + 105 ? $.offset.left - 105 : $.state.message.width;
+            if ($.state.position == "up"){
+                $.state.message.style = "top:" + (offsetY + 20) + "px; left:20px";
+            }
+            else if ($.state.position == "down"){
+                $.state.message.style = "top:" + ($.offset.top + 20 + $.targetHeight) + "px; left:20px";
             }
         }
-        else if ($.state.position == "down"){
-            $.state.message.style = "top:" + ($.offset.top + $.targetHeight) + "px; left:" + $.offset.left + "px";
+        else {
+            if ($.state.position == "right"){
+                $.state.message.style = "top:" + offsetY + "px; left:" + ($.offset.left + $.targetWidth) + "px";
+                var delta = app.sizes.width - ($.offset.left + $.targetWidth);
+
+                $.state.message.width = delta < $.state.message.width + 70 ? delta - 70 : $.state.message.width;
+            }
+            else if ($.state.position == "left" || $.state.position == "up"){
+                $.state.message.style = "top:" + offsetY + "px; left:" + $.offset.left + "px";
+
+                if ($.state.position == "left"){
+                    $.state.message.width = $.offset.left < $.state.message.width + 105 ? $.offset.left - 105 : $.state.message.width;
+                }
+            }
+            else if ($.state.position == "down"){
+                $.state.message.style = "top:" + ($.offset.top + $.targetHeight) + "px; left:" + $.offset.left + "px";
+            }
         }
     };
 

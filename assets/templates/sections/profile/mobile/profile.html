@@ -1,0 +1,180 @@
+<section-profile-mobile class="screenMobile section section-hidden zIndex-1" data-inner="hidden" data-loading="false" data-screen="cover" data-pos="right" data-open="false">
+
+    <div class="section__loading"></div>
+
+    <div class="screenMobile__navbar" data-gradient="black" data-color="white">
+        <div onClick={ hide } onUpdate="none" class="screenMobile__nav__back"></div>
+        <div class="screenMobile__nav__title c-white fontSize-18 fontWeight-bold text-uppercase">Мой профиль</div>
+        <div onClick={ open.dropMenu } onUpdate="none" class="screenMobile__nav__options"></div>
+    </div>
+    <div name="content" class="section-scroll section__content">
+        <div class="willChange-transform">
+            <div class="screenMobile__header" data-header="profile">
+                <div onClick={ open.changePhoto } onUpdate="none" class="screenMobile__header__photo" style="background-image:url({ $account.get('photo') })"></div>
+            </div>
+            <div class="screenMobile__content">
+                <div class="fontSize-28 plr-m text-center text-truncate mb-m">
+                    <span class="c-blue fontWeight-bold">{ $account.get('name') }</span>
+                    <span>{ $account.get('surname') }</span>
+                </div>
+                <div if={ $account.get('gender') || $account.get('contacts', 'city') } class="plr-m text-center text-truncate fontSize-20 mt--xs mb-s">
+                    <span if={ $account.get('gender') == "male" } class="text-uppercase fontSize-20">муж.</span>
+                    <span if={ $account.get('gender') == "female" } class="text-uppercase fontSize-20">жен.</span>
+                    <span if={ $account.get('contacts', 'city') }>{ $account.get('contacts', 'city') }</span>
+                </div>
+                <div class="flex-centered mb30">
+                    <div class="btn btn-l2 btn-primary-hover">
+                        <svg class="btn-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path class="btn-svg-color" d="M 18 0 L 2.8125 15.1875 L 0 24 L 8.8125 21.1875 L 24 6 C 24 6 23.9 3.9 22 2 C 20.1 0.1 18 0 18 0 z M 3.90625 16.1875 C 3.90625 16.1875 5.1125 16.4875 6.3125 17.6875 C 7.6125 18.8875 7.8125 20 7.8125 20 L 7.84375 20.0625 L 4.28125 21.1875 L 2.78125 19.6875 L 3.90625 16.1875 z"></path>
+                        </svg>
+                        Редактировать
+                    </div>
+                </div>
+                <div class="screenMobile__content__fit flex-centered h120 borderTopWidth-1 borderBottomWidth-1 borderStyle-solid borderColor-smokeDark">
+                    <div class="flex-column-centered w50p h100p borderRightWidth-1 borderStyle-solid borderColor-smokeDark">
+                        <span class="c-blue fontSize-28 fontWeight-8 text-uppercase">{ $account.get('plan') }</span>
+                        <div if={ $account.get('plan') != "premium" } class="c-gray">ваш тариф</div>
+                        <div if={ $account.get('plan') == "premium" } class="c-gray nowrap">
+                            оплачен до: <span class="c-blue fontWeight-bold">28-ноя-2017</span>
+                        </div>
+                    </div>
+                    <div class="flex-column-centered w50p h100p">
+                        <span class="c-blackLight fontSize-34 lineHeight-xl fontWeight-bold">{ $account.get('balance') } ₽</span>
+                        <div class="c-gray">баланс</div>
+                    </div>
+                </div>
+                <div class="flex-centered mt--m mb-l">
+                    <div class="btn btn-xl2 btn-success btn-shadow">Пополнить</div>
+                </div>
+                <div class="row text-center mb-l">
+                    <div class="col-xs-12">
+                        <div class="title">Телефон</div>
+                        <div if={ $account.get('contacts', 'phone') } class="fontSize-22 fontWeight-bold">
+                            { $account.get('contacts', 'phone') }
+                        </div>
+                        <div if={ !$account.get('contacts', 'phone') } class="c-gray fontSize-24">— &nbsp; — &nbsp; —</div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="title">Почта</div>
+                        <div if={ $account.get('contacts', 'email') } class="c-blue fontSize-22 text-truncate">
+                            { $account.get('contacts', 'email') }
+                        </div>
+                        <div if={ !$account.get('contacts', 'email') } class="c-gray fontSize-24">— &nbsp; — &nbsp; —</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <div class="title">Последний визит</div>
+                        <div class="text">{ $account.take.lastVisit() }</div>
+                    </div>
+                    <div class="col-xs-12 mt--xss pl-s">
+                        <div if={ $account.get('plan') != "premium" } class="mb-xss">
+                            <span onClick={ open.changePlan } onUpdate="none" class="link-underline link-default-hover-warning fontSize-22 nowrap">Сменить тариф</span>
+                        </div>
+                        <div>
+                            <span class="link-underline link-default-hover-warning fontSize-22 nowrap">Сменить пароль</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    $.on("mount", function(){
+        $.section = new app.plugins.sections($.root);
+
+        $afterlag.run(function(){
+            $.scroll = new app.plugins.scroll.content($.content);
+            $.scroll.init();
+        });
+        $scope.on('swipeRight', function(){
+            $.hide();
+        });
+        $account.on("write", function(){
+            $.update();
+        });
+        $.show();
+    });
+
+    $.show = function(callback){
+        $.section.show({
+            scroll: $.scroll,
+            beforeShow: function(){
+                $.callback = callback;
+            }
+        })
+    };
+
+    $.open = {
+        changePhoto: function(){
+            $account.changePhoto();
+        },
+        personalData: function(){
+            $Sections.profile.data.show();
+        },
+        changePlan: function(){
+            $Sections.plan.show("premium");
+        },
+        payment: function(){
+            $Sections.payment.show();
+        },
+        dropMenu: function(e){
+            $DropMenu.show({
+                elem: $$(e.currentTarget),
+                pos: "down-left",
+                offset: {
+                    left: 5
+                },
+                menu: [
+                    {
+                        title: 'Изменить данные',
+                        callback: function(){
+
+                        }
+                    },
+                    {
+                        title: $account.get('photo') ? 'Изменить фото' : 'Загрузить фото',
+                        callback: function(){
+                            $account.changePhoto();
+                        }
+                    },
+                    {
+                        title: 'Пароль аккаунта',
+                        callback: function(){
+
+                        }
+                    },
+                    {
+                        hidden: $account.get('plan') == 'premium' ? true : false,
+                        title: 'Сменить тариф',
+                        callback: function(){
+
+                        }
+                    },
+                    {
+                        title: 'Пополнить баланс',
+                        callback: function(){
+
+                        }
+                    }
+                ]
+            });
+        }
+    };
+
+    $.hide = function(){
+        $.section.hide({
+            beforeHide: function(){
+                if (_.isFunction($.callback)) $.callback();
+            }
+        })
+    };
+
+</script>
+
+</section-profile-mobile>

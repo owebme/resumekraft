@@ -37,6 +37,11 @@
 .boxShadow-3d-primary {
     box-shadow:0 12px 20px -10px rgba($blue,.28), 0 4px 20px 0px rgba(#000,.12), 0 7px 8px -5px rgba($blue,.2);
 }
+@each $title, $color in (blue: $blue, blueLight: $blueLight, brown: $brown, red: $red, pink: $pink, orange: $orange, violet: $violet, violetLight: $violetLight, green: $green, emerald: $emerald){
+    .boxShadow-3d-#{$title} {
+        box-shadow:0 12px 20px -10px rgba($color,.28), 0 4px 20px 0px rgba($color,.12), 0 7px 8px -5px rgba($color,.2);
+    }
+}
 .boxShadow-none {
     box-shadow:none;
 }

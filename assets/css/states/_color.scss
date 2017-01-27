@@ -71,6 +71,12 @@ $i:0;
         .btn-svg-color {
             fill:$white;
         }
+        &.btn-shadow {
+            box-shadow:0 12px 20px -10px rgba($color,.28), 0 4px 20px 0px rgba($color,.12), 0 7px 8px -5px rgba($color,.2);
+        }
+        &.btn-shadow-strong {
+            box-shadow:0 12px 30px -10px rgba($color,.48), 0 4px 30px 0px rgba(31,35,37,.2), 0 7px 16px -5px rgba($color,.3);
+        }
         &:hover {
             background-color:darken($color,9%);
         }

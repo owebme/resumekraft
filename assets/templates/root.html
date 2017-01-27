@@ -3,6 +3,7 @@
     <resume-list if={ !app.device.isPhone }></resume-list>
     <resume-list-mobile if={ app.device.isPhone }></resume-list-mobile>
     <resume-edit></resume-edit>
+    <resume-section item={ $store.data.get(0) }></resume-section>
     <resume-select></resume-select>
     <resume-sendmail></resume-sendmail>
     <section-notify></section-notify>
@@ -24,6 +25,7 @@
 
         <section-profile if={ !app.device.isPhone }></section-profile>
         <section-profile-data if={ !app.device.isPhone }></section-profile-data>
+        <section-profile-mobile if={ app.device.isPhone }></section-profile-mobile>
         <photo-upload></photo-upload>
 
         <ui-dropmenu></ui-dropmenu>
@@ -62,8 +64,11 @@
         }
         else {
             $Sections.offers.welcome.unmount();
+
             if ($account.get("plan") == "premium"){
                 $Sections.offers.plan.unmount();
+                $Sections.resume.stat.offer.unmount();
+                $Sections.resume.inbox.offer.unmount();
                 $Sections.plan.unmount();
             }
             $root.one("ready", function(){
@@ -85,7 +90,7 @@
     this.init = function(){
         $Sections = {
             profile: {
-                section: $root.tags["section-profile"],
+                section: app.device.isPhone ? $root.tags["section-profile-mobile"] : $root.tags["section-profile"],
                 data: $root.tags["section-profile-data"]
             },
             resume: {
@@ -94,6 +99,7 @@
                 edit: $root.tags["resume-edit"],
                 stat: $root.tags["resume-stat"],
                 select: $root.tags["resume-select"],
+                section: $root.tags["resume-section"],
                 sendmail: $root.tags["resume-sendmail"]
             },
             offers: {

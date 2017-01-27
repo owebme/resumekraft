@@ -65,17 +65,17 @@ $store.education = _.extend(new Baobab([
     }
     ]),
     {
-        getItems: function(){
+        getItems: function(lang){
             return _.map($store.education.get(), function(item){
                 return {
                     _id: item._id,
                     parent: item.parent,
-                    title: item.title[$store.resume.get("lang")]
+                    title: item.title[lang || $store.resume.get("lang")]
                 }
             });
         },
-        getTitleById: function(id){
-            return $store.education.get({"_id": id}, "title", $store.resume.get("lang"));
+        getTitleById: function(id, lang){
+            return $store.education.get({"_id": id}, "title", lang || $store.resume.get("lang"));
         }
     }
 );

@@ -1,29 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,300,500,700&subset=cyrillic-ext,latin');
-@import 'fonts/Avant/style';
-@import 'fonts/Gotham/style';
 @import 'fonts/Futura/style';
-@import 'fonts/Proxima/style';
-@import 'fonts/Myriad/style';
+@import 'fonts/Gotham/style';
 @import 'fonts/HelveticaNeue/style';
-@import 'fonts/Icons/hobby/style';
 
 .fontFamily-roboto {
     font-family:$roboto;
 }
-.fontFamily-gotham {
-    font-family:$gotham;
-}
-.fontFamily-proxima {
-    font-family:$proxima;
-}
-.fontFamily-myriad {
-    font-family:$myriad;
-}
-.fontFamily-avant {
-    font-family:$avant;
-}
 .fontFamily-futura {
     font-family:$futura;
+}
+.fontFamily-gotham {
+    font-family:$gotham;
 }
 .fontFamily-helvetica {
     font-family:$helvetica;

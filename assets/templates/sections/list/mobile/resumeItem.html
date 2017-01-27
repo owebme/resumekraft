@@ -1,10 +1,10 @@
-<resume-list-item-mobile class="row resume__list-m__item">
+<resume-item-mobile class="row resume__list-m__item">
 
     <div if={ opts.item.plan == "free" } class="resume__list-m__item__label" data-label="free"></div>
-    <div class="col-xs-5 flex-centered resume__list-m__item__cell">
-        <div class="resume__list-m__item__cover">{ get.coverPost(opts.item.post || 'R') }</div>
+    <div onClick={ open.resume } onUpdate="none" class="col-xs-5 flex-centered resume__list-m__item__cell">
+        <div class="resume__list-m__item__cover" data-color={ opts.item.plan == "premium" ? opts.item.config.color : null }>{ get.coverPost(opts.item.post || 'R') }</div>
     </div>
-    <div class="col-xs-12 flex-row-left-center resume__list-m__item__cell">
+    <div onClick={ open.resume } onUpdate="none" class="col-xs-12 flex-row-left-center resume__list-m__item__cell">
         <div if={ opts.item.plan == "premium" } class="resume__list-m__item__label" data-label="premium"></div>
         <div class="resume__list-m__item__title">{ opts.item.post ? opts.item.post : 'Продолжить редактирование' }</div>
     </div>
@@ -16,12 +16,6 @@
 <script>
 
     var $ = this;
-
-    $.onEdit = function(){
-        $Sections.resume.edit.show({
-            id: $.opts.item._id
-        });
-    };
 
     $.show = {
         dropMenu: function(e){
@@ -35,10 +29,9 @@
                 },
                 menu: $store.data.dropMenu
             });
-            //console.dir($store.data.dropMenu);
         }
     };
 
 </script>
 
-</resume-list-item-mobile>
+</resume-item-mobile>

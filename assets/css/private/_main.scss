@@ -1,0 +1,52 @@
+html, body {
+    @extend .h100p;
+}
+body {
+    @extend .overflow-hidden;
+}
+#app {
+	&[data-app="private"]{
+		@extend .bg-blackDark;
+		@extend .overflow-hidden;
+		@extend .perspective-500;
+	}
+	&[data-focus="resume-edit"],
+	&[data-focus="jqtest-result"]{
+		app-sections,
+		app-offers,
+		app-overviews {
+			@extend .display-none;
+		}
+	}
+	&[data-focus="resume-edit"]{
+		section-jqtest {
+			@extend .display-none;
+		}
+	}
+	&[data-focus="jqtest-result"]{
+		section-plan,
+		section-plan-mobile,
+		section-payment {
+			@extend .display-none;
+		}
+	}
+	&[data-focus="overview"]{
+		app-sections,
+		section-jqtest {
+			@extend .display-none;
+		}
+	}
+}
+.screens__content {
+    transform-style:flat;
+}
+.resume__preview {
+    min-height:200vh;
+}
+.d-phone {
+    #app {
+        .iScrollIndicator {
+            background-color:rgba($blueLight,.6);
+        }
+    }
+}

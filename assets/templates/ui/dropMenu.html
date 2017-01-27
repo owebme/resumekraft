@@ -2,7 +2,7 @@
 
     <div if={ items && items.length } class="dropmenu__wrapper">
         <virtual each={ item in items } no-reorder>
-            <div if={ item && !item.divider } onClick={ onSelect } class="dropmenu__item { selected : isSelect && _id !== 'undefined' && item._id == _id }">
+            <div if={ item && !item.divider && !item.hidden } onClick={ onSelect } class="dropmenu__item { selected : isSelect && _id !== 'undefined' && item._id == _id }">
                 { item.title ? item.title : item }
             </div>
             <div if={ item && item.divider } class="dropmenu__item divider"></div>

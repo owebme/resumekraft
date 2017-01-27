@@ -1,0 +1,10 @@
+.screenMobile {
+    &__header {
+        &[data-header="profile"]{
+            &:before,
+            &:after {
+                @extend .bg-blue;
+            }
+        }
+    }
+}

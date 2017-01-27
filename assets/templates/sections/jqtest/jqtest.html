@@ -1,4 +1,4 @@
-<section-jqtest class="oScreen__section zIndex-2" data-open={ active } data-show="down">
+<section-jqtest class="oScreen__section section zIndex-2" data-open={ active } data-show="down" data-loading="false" data-inner="hidden">
 
     <div name="content" class="oScreen__section__content overflow-hidden bg-white">
 
@@ -6,11 +6,17 @@
             <div onClick={ close } onUpdate="none" class="button__close" data-color="gray"></div>
         </div>
 
-        <jqtest-enter></jqtest-enter>
+        <div class="section__loading"></div>
 
-        <jqtest-content></jqtest-content>
+        <div class="section__inner">
 
-        <jqtest-result></jqtest-result>
+            <jqtest-enter></jqtest-enter>
+
+            <jqtest-content></jqtest-content>
+
+            <jqtest-result></jqtest-result>
+
+        </div>
 
     </div>
 
@@ -31,6 +37,9 @@
     });
 
     $.on("mount", function(){
+        $.section = new app.plugins.sections($.root, {
+            content: $.content
+        });
         $.el.on('swipeDown', function(){
             $.hide();
         });
@@ -41,13 +50,15 @@
     });
 
     $.show = function(callback){
-        $.active = true;
-        $.update();
-        $.callback = callback;
-
-        _.onEndTransition($.content, function(){
-            $.sections.enter.show();
-        });
+        $.section.show({
+            beforeShow: function(){
+                $.active = true;
+                $.callback = callback;
+            },
+            afterShow: function(){
+                $.sections.enter.show();
+            }
+        })
         app.metrika.set("jqtest.show", true);
     };
 
@@ -57,15 +68,16 @@
     };
 
     $.hide = function(){
-        $.active = false;
-        $.update();
-
-        $.trigger("hide");
-
-        if (_.isFunction($.callback)) $.callback();
-        _.onEndTransition($.content, function(){
-            $.trigger("hideAnimated");
-        });
+        $.section.hide({
+            beforeHide: function(){
+                $.active = false;
+                if (_.isFunction($.callback)) $.callback();
+                $.trigger("hide");
+            },
+            afterHide: function(){
+                $.trigger("hideAnimated");
+            }
+        })
     };
 
 </script>

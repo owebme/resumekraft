@@ -1,0 +1,130 @@
+<resume-section class="screenMobile section section-hidden zIndex-1" data-inner="hidden" data-loading="false" data-screen="cover" data-pos="right" data-open="false">
+
+    <div class="section__loading"></div>
+
+    <div class="screenMobile__navbar">
+        <div onClick={ hide } onUpdate="none" class="screenMobile__nav__back"></div>
+        <div class="screenMobile__nav__title c-blue fontSize-18 fontWeight-bold text-uppercase">{ item.plan }</div>
+        <div onClick={ open.dropMenu } onUpdate="none" class="screenMobile__nav__options"></div>
+    </div>
+    <div name="content" class="section-scroll section__content">
+        <div class="willChange-transform">
+            <div class="screenMobile__header" data-header="resume">
+                <div class="pos-abs t25 l15 c-grayDark fontSize-28 fontWeight-8">{ item.percent }%</div>
+                <div class="pos-abs t50 r10 text-center">
+                    <span class="c-blue fontSize-34 fontWeight-8">+18</span>
+                    <div class="fontSize-16 fontWeight-normal c-gray mt-xss">просмотры</div>
+                </div>
+                <div class="screenMobile__header__cover boxShadow-3d-blue bg-blue">{ get.coverPost(item.post || 'R') }<div class="screenMobile__header__cover__photo" style="background-image:url({ item.photo })"></div></div>
+            </div>
+            <div class="screenMobile__content">
+                <div class="fontSize-24 fontWeight-bold plr-m text-center text-truncate mb-m">{ item.post }</div>
+                <div class="flex-centered mb30">
+                    <div class="btn btn-l2 btn-primary-hover">
+                        <svg class="btn-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path class="btn-svg-color" d="M 18 0 L 2.8125 15.1875 L 0 24 L 8.8125 21.1875 L 24 6 C 24 6 23.9 3.9 22 2 C 20.1 0.1 18 0 18 0 z M 3.90625 16.1875 C 3.90625 16.1875 5.1125 16.4875 6.3125 17.6875 C 7.6125 18.8875 7.8125 20 7.8125 20 L 7.84375 20.0625 L 4.28125 21.1875 L 2.78125 19.6875 L 3.90625 16.1875 z"></path>
+                        </svg>
+                        Редактировать
+                    </div>
+                </div>
+                <div class="screenMobile__content__fit flex-centered h100 borderTopWidth-1 borderBottomWidth-1 borderStyle-solid borderColor-smokeDark mb30">
+                    <div class="navbar__mobile__item borderRightWidth-1 borderStyle-solid borderColor-smokeDark" data-item="feedback">
+                        <div class="navbar__mobile__item__icon">
+                            <svg viewBox="3 -3 24 24"><path d="M15 11.9c-.9 0-1.7-.2-2.3-.7l-5.7-4.4v8.1c0 .1 0 .3.1.4.1.1.2.2.3.2 2.5.4 5 .5 7.5.5s5-.2 7.5-.5c.1 0 .3-.1.4-.2.2-.1.2-.3.2-.4v-8.1l-5.7 4.4c-.6.5-1.4.7-2.3.7zm-1.3-2.3c.3.3.8.4 1.3.4s1-.1 1.3-.4l6.1-4.7c.3-.3.5-.6.6-1v-.8c0-.1 0-.3-.1-.4-.1-.1-.2-.2-.4-.2-2.5-.3-5-.5-7.5-.5s-5 .2-7.5.5c-.1 0-.2.1-.3.2-.2.1-.2.3-.2.4v.9c.1.3.3.6.6 1l6.1 4.6z"></path></svg>
+                            <!-- <div class="navbar__mobile__item__icon__badge">9</div> -->
+                        </div>
+                        <div class="navbar__mobile__item__title">Обращения</div>
+                    </div>
+                    <div class="navbar__mobile__item" data-item="likes">
+                        <div class="navbar__mobile__item__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 18 20" version="1.1" x="0px" y="0px"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g><path d="M9,1.82234332 C8.019,0.70626703 6.516,0 4.95,0 C2.178,0 0,2.11008174 0,4.79564033 C0,8.09155313 3.06,10.7771117 7.695,14.8577657 L9,16 L10.305,14.8490463 C14.94,10.7771117 18,8.09155313 18,4.79564033 C18,2.11008174 15.822,0 13.05,0 C11.484,0 9.981,0.70626703 9,1.82234332 Z"/></g></g></svg>
+                            <!-- <div class="navbar__mobile__item__icon__badge">7</div> -->
+                        </div>
+                        <div class="navbar__mobile__item__title">Лайки</div>
+                    </div>
+                </div>
+                <div class="title">О себе</div>
+                <div onClick={ open.about } class="text mb-l" data-truncate={ m : item.about.length } data-hidden={ state.aboutShort }>{ item.about ? item.about : 'Не заполнено' }</div>
+                <div class="row">
+                    <div class="col-xs-13">
+                        <div class="title">Зарплата</div>
+                        <div class="fontSize-30 fontWeight-8 letterSpacing-0 { item.salary.active ? 'c-blue' : 'text-lineThrough c-gray' }">{ $store.resume.take.salary.amount(item.salary.amount) } <span class="fontFamily-roboto fontSize-28">{ $store.resume.take.salary.currency(item.salary.currency) }</span></div>
+                    </div>
+                    <div class="col-xs-11">
+                        <div class="title">График работы</div>
+                        <div class="fontSize-24 lineHeight-xl fontWeight-8 nowrap">{ $store.resume.take.salary.worktime(item.salary.worktime, 'ru') }</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    $.item = null;
+
+    $.state = {
+        aboutShort: true
+    };
+
+    $.on("mount", function(){
+        $.section = new app.plugins.sections($.root);
+
+        $afterlag.run(function(){
+            $.scroll = new app.plugins.scroll.content($.content);
+            $.scroll.init();
+        });
+        $scope.on('swipeRight', function(){
+            $.hide();
+        });
+    });
+
+    $.show = function(item, callback){
+        $.section.show({
+            tag: $,
+            scroll: $.scroll,
+            update: {
+                item: item,
+                callback: callback
+            }
+        })
+    };
+
+    $.get = {
+        coverPost: function(item){
+            return item[0];
+        }
+    }
+
+    $.open = {
+        about: function(){
+            $.state.aboutShort = !$.state.aboutShort;
+        },
+        dropMenu: function(e){
+            $DropMenu.show({
+                id: $.item._id,
+                item: $.item,
+                elem: $$(e.currentTarget),
+                pos: "down-left",
+                offset: {
+                    left: 5
+                },
+                menu: $store.data.dropMenu
+            });
+        }
+    };
+
+    $.hide = function(){
+        $.section.hide({
+            beforeHide: function(){
+                if (_.isFunction($.callback)) $.callback();
+            }
+        })
+    };
+
+</script>
+
+</resume-section>
