@@ -1,214 +1,333 @@
-<section-plan-mobile class="oScreen zIndex-100" data-open={ active } data-show="down">
+<section-plan-mobile class="oScreen section zIndex-2" data-inner="hidden" data-loading="false" data-show="down" data-open="false">
 
-    <div class="oScreen__buttons" data-pos="top-right">
-        <div onClick={ hide } class="button__close"></div>
-    </div>
+    <div name="wrapper" class="oScreen__content overflow-hidden bg-white">
 
-    <div name="content" class="oScreen__content bg-white">
-        <div class="container pb-l">
-            <div class="row">
-                <div class="col-xs-24">
-                    <div class="c-blue fontSize-22 fontWeight-8 text-uppercase text-center ptb-m mtb-xs">Выбор тарифа</div>
-                </div>
-                <div class="col-xs-12">
-                    <div class="p-m borderRadius-xl borderWidth-1 borderStyle-solid mb-xs transition-xxs { plan == 'free' ? 'bg-blue borderColor-smoke' : 'borderColor-smokeDark' }">
-                        <ui-checkbox commit={ changePlan } i="free" title="FREE" group="1" color={ plan == "free" ? 'white' : 'blue' } theme="white" size="xl" value={ plan == "free" }></ui-checkbox>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <div class="p-m borderRadius-xl borderWidth-1 borderStyle-solid transition-xxs { plan == 'premium' ? 'bg-blue borderColor-smoke' : 'borderColor-smokeDark' }">
-                        <ui-checkbox commit={ changePlan } i="premium" title="Premium" group="1" color={ plan == "premium" ? 'white' : 'blue' } theme="white" size="xl" value={ plan == "premium" }></ui-checkbox>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-24 text-center pt-m pb-l">
-                    <div class="c-gray text-uppercase letterSpacing-xxxxl mb-s">{ plan == 'free' ? 'Ваш тариф' : 'Перейти на' }</div>
-                    <div class="c-blue fontSize-28 fontWeight-8 text-uppercase text-center">{ plan == 'free' ? 'FREE' : 'Premium' }</div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-24">
-                    <div class="plan__list">
-                        <div class="plan__list__item" data-plan="free" data-active={ plan == 'free' }>
-                            <div class="plan__list__item__wrapper">
-                                <div class="borderRadiusTop-xl bg-grayDark c-white fontSize-20 pt-s pb-s mb-xxs">Доступных функций: <strong>4 из 12</strong></div>
-                                <table name="table" class="table table-l">
-                                    <tbody class="table-body">
-                                        <tr class="table-row">
-                                            <td class="table-cell text-left">
-                                                <div class="pl-m">На 2-х языках</div>
-                                            </td>
-                                            <td class="table-cell text-center c-gray fontSize-18 fontWeight-8 text-uppercase">
-                                                нет
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <icon-globe size="s" color="gray"></icon-globe>
-                                            </td>
-                                        </tr>
-                                        <tr class="table-row">
-                                            <td class="table-cell text-left">
-                                                <div class="pl-m">Резюме-презентация</div>
-                                            </td>
-                                            <td class="table-cell text-center c-gray fontSize-18 fontWeight-8 text-uppercase">
-                                                нет
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <icon-glass size="s" color="gray"></icon-glass>
-                                            </td>
-                                        </tr>
-                                        <tr class="table-row">
-                                            <td class="table-cell text-left">
-                                                <div class="pl-m">Статистика</div>
-                                            </td>
-                                            <td class="table-cell text-center c-gray fontSize-18 fontWeight-8 text-uppercase">
-                                                нет
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <icon-chart size="s" color="gray"></icon-chart>
-                                            </td>
-                                        </tr>
-                                        <tr class="table-row">
-                                            <td class="table-cell text-left">
-                                                <div class="pl-m">Обратная связь</div>
-                                            </td>
-                                            <td class="table-cell text-center c-gray fontSize-18 fontWeight-8 text-uppercase">
-                                                нет
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <icon-feedback size="s" color="gray"></icon-feedback>
-                                            </td>
-                                        </tr>
-                                        <tr class="table-row">
-                                            <td class="table-cell text-left">
-                                                <div class="pl-m">Поддержка Mobile</div>
-                                            </td>
-                                            <td class="table-cell text-center c-gray fontSize-18 fontWeight-8 text-uppercase">
-                                                нет
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <icon-devices size="s" color="gray"></icon-devices>
-                                            </td>
-                                        </tr>
-                                        <tr class="table-row">
-                                            <td class="table-cell text-left">
-                                                <div class="pl-m">Сохранить в PDF</div>
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <div class="display-inlineBlock ui-icon-check w30 h30"></div>
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <icon-pdf size="s"></icon-pdf>
-                                            </td>
-                                        </tr>
-                                        <tr class="table-row">
-                                            <td class="table-cell text-left">
-                                                <div class="pl-m">Распечатать</div>
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <div class="display-inlineBlock ui-icon-check w30 h30"></div>
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <icon-print size="s"></icon-print>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+        <div class="section__loading"></div>
+
+        <div class="screenMobile__navbar" data-gradient="white">
+            <div onClick={ close } onUpdate="none" class="screenMobile__nav__close"></div>
+            <div class="screenMobile__nav__title fontSize-22">{ plan }</div>
+            <div onClick={ open.dropMenu } onUpdate="none" class="screenMobile__nav__options"></div>
+        </div>
+        <div name="content" class="section-scroll section__content">
+            <div class="pt100 plr-xss willChange-transform">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 pr0">
+                            <div class="p-m borderRadiusLeft-xl borderWidth-1 borderStyle-solid mb-xs transition-xxs { plan == 'free' ? 'bg-blue borderColor-blue' : 'borderColor-smokeDark' }">
+                                <ui-checkbox commit={ changePlan } i="free" title="FREE" group="1" color={ plan == "free" ? 'white' : 'blue' } theme="white" size="xl" value={ plan == "free" }></ui-checkbox>
                             </div>
                         </div>
-                        <div class="plan__list__item" data-plan="premium" data-active={ plan == 'premium' }>
-                            <div class="plan__list__item__wrapper">
-                                <div class="borderRadiusTop-xl bg-blue c-white fontSize-20 pt-s pb-s mb-xxs">Доступных функций: <strong>12 из 12</strong></div>
-                                <table name="table" class="table table-l">
-                                    <tbody class="table-body">
-                                        <tr class="table-row">
-                                            <td class="table-cell text-left">
-                                                <div class="pl-m">На 2-х языках</div>
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <div class="display-inlineBlock ui-icon-check w30 h30"></div>
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <icon-globe size="s" color="blue"></icon-globe>
-                                            </td>
-                                        </tr>
-                                        <tr class="table-row">
-                                            <td class="table-cell text-left">
-                                                <div class="pl-m">Резюме-презентация</div>
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <div class="display-inlineBlock ui-icon-check w30 h30"></div>
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <icon-glass size="s" color="blue"></icon-glass>
-                                            </td>
-                                        </tr>
-                                        <tr class="table-row">
-                                            <td class="table-cell text-left">
-                                                <div class="pl-m">Статистика</div>
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <div class="display-inlineBlock ui-icon-check w30 h30"></div>
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <icon-chart size="s" color="blue"></icon-chart>
-                                            </td>
-                                        </tr>
-                                        <tr class="table-row">
-                                            <td class="table-cell text-left">
-                                                <div class="pl-m">Обратная связь</div>
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <div class="display-inlineBlock ui-icon-check w30 h30"></div>
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <icon-feedback size="s" color="blue"></icon-feedback>
-                                            </td>
-                                        </tr>
-                                        <tr class="table-row">
-                                            <td class="table-cell text-left">
-                                                <div class="pl-m">Поддержка Mobile</div>
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <div class="display-inlineBlock ui-icon-check w30 h30"></div>
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <icon-devices size="s" color="blue"></icon-devices>
-                                            </td>
-                                        </tr>
-                                        <tr class="table-row">
-                                            <td class="table-cell text-left">
-                                                <div class="pl-m">Сохранить в PDF</div>
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <div class="display-inlineBlock ui-icon-check w30 h30"></div>
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <icon-pdf size="s"></icon-pdf>
-                                            </td>
-                                        </tr>
-                                        <tr class="table-row">
-                                            <td class="table-cell text-left">
-                                                <div class="pl-m">Распечатать</div>
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <div class="display-inlineBlock ui-icon-check w30 h30"></div>
-                                            </td>
-                                            <td class="table-cell text-center pt-xxs">
-                                                <icon-print size="s"></icon-print>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="c-blackLight fontSize-22 ptb-m">Итого к оплате: <strong>{ varPay == '1' ? '169' : '369' } ₽</strong></div>
-                                <div class="plan__list__item__footer">
-                                    <div style="max-width:270px;" class="mlr-auto p-m borderRadius-xl borderWidth-1 borderColor-white borderStyle-solid mb-xs transition-xxs { bg-white : varPay == '1' }">
-                                        <ui-checkbox commit={ changePay } i="1" title="Ежемесячная оплата" group="2" color={ varPay == "1" ? 'blue' : 'white' } theme="blue" size="xl" value={ varPay == "1" }></ui-checkbox>
+                        <div class="col-xs-12 pl0">
+                            <div class="p-m borderRadiusRight-xl borderWidth-1 borderStyle-solid transition-xxs { plan == 'premium' ? 'bg-blue borderColor-blue' : 'borderColor-smokeDark' }">
+                                <ui-checkbox commit={ changePlan } i="premium" title="Premium" group="1" color={ plan == "premium" ? 'white' : 'blue' } theme="white" size="xl" value={ plan == "premium" }></ui-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-24 text-center pt-m pb50">
+                            <div class="c-gray text-uppercase fontSize-14 letterSpacing-5-5 mb-s">{ plan == 'free' ? 'Ваш тариф' : 'Перейти на' }</div>
+                            <div class="c-blue fontSize-28 fontWeight-8 text-uppercase text-center">{ plan == 'free' ? 'FREE' : 'Premium' }</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-24">
+                            <div class="plan__list">
+                                <div class="plan__list__item mb70" data-plan="free" data-active={ plan == 'free' }>
+                                    <div class="plan__list__item__wrapper">
+                                        <div class="plan__list__item__header borderRadiusTop-xl bg-snowDark c-grayDark">Доступных функций: <strong>4 из 12</strong><!--Минимально базовый набор--></div>
+                                        <table name="table" class="table table-l">
+                                            <tbody class="table-body">
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">Новый формат резюме</div>
+                                                    </td>
+                                                    <td class="table-cell text-center c-gray fontSize-14 fontWeight-8 text-uppercase">
+                                                        нет
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-diamond size="s" color="gray"></icon-diamond>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">На 2-х языках</div>
+                                                    </td>
+                                                    <td class="table-cell text-center c-gray fontSize-14 fontWeight-8 text-uppercase">
+                                                        нет
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-globe size="s" color="gray"></icon-globe>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">Резюме-презентация</div>
+                                                    </td>
+                                                    <td class="table-cell text-center c-gray fontSize-14 fontWeight-8 text-uppercase">
+                                                        нет
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-glass size="s" color="gray"></icon-glass>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">Статистика</div>
+                                                    </td>
+                                                    <td class="table-cell text-center c-gray fontSize-14 fontWeight-8 text-uppercase">
+                                                        нет
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-chart size="s" color="gray"></icon-chart>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">Получение откликов</div>
+                                                    </td>
+                                                    <td class="table-cell text-center c-gray fontSize-14 fontWeight-8 text-uppercase">
+                                                        нет
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-feedback size="s" color="gray"></icon-feedback>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">Получение лайков</div>
+                                                    </td>
+                                                    <td class="table-cell text-center c-gray fontSize-14 fontWeight-8 text-uppercase">
+                                                        нет
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-like size="s" color="gray"></icon-like>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">Поддержка Mobile</div>
+                                                    </td>
+                                                    <td class="table-cell text-center c-gray fontSize-14 fontWeight-8 text-uppercase">
+                                                        нет
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-devices size="s" color="gray"></icon-devices>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">Помощь в написании</div>
+                                                    </td>
+                                                    <td class="table-cell text-center c-gray fontSize-14 fontWeight-8 text-uppercase">
+                                                        нет
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-help size="s" color="gray"></icon-help>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">Прямая ссылка</div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <div class="display-inlineBlock ui-icon-check"></div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-link size="s" color="blue"></icon-link>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">Легкая настройка</div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <div class="display-inlineBlock ui-icon-check"></div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-control size="s" color="blue"></icon-control>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">Сохранить в PDF</div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <div class="display-inlineBlock ui-icon-check"></div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-pdf size="s"></icon-pdf>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">Распечатать</div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <div class="display-inlineBlock ui-icon-check"></div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-print size="s"></icon-print>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                    <div style="max-width:270px;" class="mlr-auto mb-xxs p-m borderRadius-xl borderWidth-1 borderColor-white borderStyle-solid transition-xxs { bg-white : varPay == '2' }">
-                                        <ui-checkbox commit={ changePay } i="2" title="Оплатить один раз" group="2" color={ varPay == "2" ? 'blue' : 'white' } theme="blue" size="xl" value={ varPay == "2" }></ui-checkbox>
+                                </div>
+                                <div class="plan__list__item" data-plan="premium" data-active={ plan == 'premium' }>
+                                    <div class="plan__list__item__wrapper">
+                                        <div class="plan__list__item__header borderRadiusTop-xl bg-blue c-white">Доступных функций: <strong>12 из 12</strong><!--Новый формат резюме--></div>
+                                        <table name="table" class="table table-l">
+                                            <tbody class="table-body">
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">Новый формат резюме</div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <div class="display-inlineBlock ui-icon-check"></div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-diamond size="s" color="blue"></icon-diamond>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">На 2-х языках</div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <div class="display-inlineBlock ui-icon-check"></div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-globe size="s" color="blue"></icon-globe>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">Резюме-презентация</div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <div class="display-inlineBlock ui-icon-check"></div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-glass size="s" color="blue"></icon-glass>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">Статистика</div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <div class="display-inlineBlock ui-icon-check"></div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-chart size="s" color="blue"></icon-chart>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">Получение откликов</div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <div class="display-inlineBlock ui-icon-check"></div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-feedback size="s" color="blue"></icon-feedback>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">Получение лайков</div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <div class="display-inlineBlock ui-icon-check"></div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-like size="s" color="blue"></icon-like>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">Поддержка Mobile</div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <div class="display-inlineBlock ui-icon-check"></div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-devices size="s" color="blue"></icon-devices>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">Помощь в написании</div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <div class="display-inlineBlock ui-icon-check"></div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-help size="s" color="blue"></icon-help>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">Прямая ссылка</div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <div class="display-inlineBlock ui-icon-check"></div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-link size="s" color="blue"></icon-link>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">Легкая настройка</div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <div class="display-inlineBlock ui-icon-check"></div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-control size="s" color="blue"></icon-control>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">Сохранить в PDF</div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <div class="display-inlineBlock ui-icon-check"></div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-pdf size="s"></icon-pdf>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-row">
+                                                    <td class="table-cell text-left">
+                                                        <div class="pl-m">Распечатать</div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <div class="display-inlineBlock ui-icon-check"></div>
+                                                    </td>
+                                                    <td class="table-cell text-center pt-xxs">
+                                                        <icon-print size="s"></icon-print>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="fontSize-22 pt25 pb25 nowrap">
+                                            Итого к оплате:
+                                            <strong if={ period == 'month1' } class="c-blue">369 ₽</strong>
+                                            <strong if={ period == 'year1' } class="c-red">1,769 ₽ &nbsp;<span class="c-blackLight text-strike" data-color="red">4,428 ₽</span></strong>
+                                        </div>
+                                        <div class="plan__list__item__footer">
+                                            <div class="text-left mlr-auto pt25 pb25 pl-l borderRadius-xl borderWidth-1 borderColor-white borderStyle-solid mb-xs transition-xxs { bg-white : period == 'month1' }">
+                                                <ui-checkbox commit={ changePay } i="month1" title="Ежемесячная оплата" group="2" color={ period == "month1" ? 'blue' : 'white' } theme="blue" size="xl" value={ period == "month1" }></ui-checkbox>
+                                            </div>
+                                            <div class="text-left mlr-auto mb30 pt25 pb25 pl-l borderRadius-xl borderWidth-1 borderColor-white borderStyle-solid transition-xxs { bg-white : period == 'year1' }">
+                                                <ui-checkbox commit={ changePay } i="year1" title="Оплатить на 1 год" group="2" color={ period == "year1" ? 'blue' : 'white' } theme="blue" size="xl" value={ period == "year1" }></ui-checkbox>
+                                            </div>
+                                            <button class="btn btn-xl2 btn-success">Перейти к оплате</button>
+                                        </div>
                                     </div>
-                                    <button class="mt-m display-block btn btn-xl2 btn-success btn-strong mlr-auto">Перейти к оплате</button>
                                 </div>
                             </div>
                         </div>
@@ -224,35 +343,61 @@
 
     $.active = false;
     $.plan = "free";
-    $.varPay = "1";
+    $.period = "month1";
 
-    $.show = function(plan){
-        if (plan && plan != $.plan) {
-            _.onEndTransition($.content, function(){
-                $.update({
-                    plan: plan
-                })
-            });
-        }
-        $.update({
-            active: true
+    $.on("mount", function(){
+        $.section = new app.plugins.sections($.root, {
+            content: $.wrapper
+        });
+        $afterlag.run(function(){
+            $.scroll = new app.plugins.scroll.content($.content);
+            $.scroll.init();
+        });
+    });
+
+    $.show = function(plan, period){
+        $.section.show({
+            scroll: $.scroll,
+            afterShow: function(){
+                if (plan && plan != $.plan) {
+                    $afterlag.s(function(){
+                        if (period) $.period = period;
+                        $.changePlan(null, plan);
+                    });
+                }
+            }
         })
+        app.metrika.set("plan.show", true);
     };
 
     $.changePlan = function(value, i){
         $.update({
             plan: i
         })
+        $.scroll.refresh();
     };
 
     $.changePay = function(value, i){
         $.update({
-            varPay: i
+            period: i
         })
     };
 
+    $.open = {
+        payment: function(){
+            $.hide();
+            $Sections.payment.show($.period);
+            app.metrika.set("plan.success", true);
+        }
+    };
+
+    $.close = function(){
+        $.hide();
+        app.metrika.set("plan.hide", true);
+    };
+
     $.hide = function(){
-        $.active = false;
+        $.section.hide();
     };
 
 </script>

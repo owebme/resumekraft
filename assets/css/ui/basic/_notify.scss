@@ -44,8 +44,13 @@
         max-width:calc(100vw - 40px);
         transition:visibility 0s .4s;
 
+        .d-phone & {
+            max-width:calc(100vw - 30px);
+        }
         &[data-pos="top-center"]{
-            @extend .t-m;
+            @extend .t0;
+            @extend .mt-m;
+            @extend .xs-mt-s;
             @extend .l50;
             transform:translateX(-50%);
 
@@ -54,23 +59,33 @@
             }
         }
         &[data-pos="top-left"]{
-            @extend .t-m;
-            @extend .l-m;
+            @extend .t0;
+            @extend .l0;
+            @extend .mt-m;
+            @extend .ml-m;
+            @extend .xs-mt-s;
+            @extend .xs-ml-s;
 
             .notify {
                 transform:translate3d(0, -40px, 0);
             }
         }
         &[data-pos="top-right"]{
-            @extend .t-m;
-            @extend .r-m;
+            @extend .t0;
+            @extend .r0;
+            @extend .mt-m;
+            @extend .mr-m;
+            @extend .xs-mt-s;
+            @extend .xs-mr-s;
 
             .notify {
                 transform:translate3d(0, -40px, 0);
             }
         }
         &[data-pos="bottom-center"]{
-            @extend .b-m;
+            @extend .b0;
+            @extend .mb-m;
+            @extend .xs-mb-s;
             @extend .l50;
             transform:translateX(-50%);
 
@@ -79,16 +94,24 @@
             }
         }
         &[data-pos="bottom-left"]{
-            @extend .b-m;
-            @extend .l-m;
+            @extend .b0;
+            @extend .l0;
+            @extend .mb-m;
+            @extend .ml-m;
+            @extend .xs-mb-s;
+            @extend .xs-ml-s;
 
             .notify {
                 transform:translate3d(0, 40px, 0);
             }
         }
         &[data-pos="bottom-right"]{
-            @extend .b-m;
-            @extend .r-m;
+            @extend .b0;
+            @extend .r0;
+            @extend .mb-m;
+            @extend .mr-m;
+            @extend .xs-mb-s;
+            @extend .xs-mr-s;
 
             .notify {
                 transform:translate3d(0, 40px, 0);

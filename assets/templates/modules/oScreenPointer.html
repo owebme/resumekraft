@@ -62,6 +62,7 @@
     $.show = function(options){
         if (!options.phone && app.device.isPhone && window.$Notify && options.text){
             $Notify.show({
+                color: "danger",
                 text: options.text
             })
             return;

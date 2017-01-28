@@ -229,6 +229,12 @@
         margin:-7.5px 0 2px 1px;
     }
     &-white {
+        &::-webkit-input-placeholder {
+            color:rgba($white,.7);
+        }
+        &::-moz-input-placeholder {
+            color:rgba($white,.7);
+        }
         &.input {
             @extend .c-white;
             @extend .fontFamily-roboto;

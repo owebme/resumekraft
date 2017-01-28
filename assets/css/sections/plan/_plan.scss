@@ -1,13 +1,12 @@
 .plan__list {
     @extend .pos-rel;
-    height:827px;
 
     &__item {
         @include accelerate();
         @extend .pos-tl;
         @extend .w100p;
         @extend .borderRadius-xl;
-        @extend .h50v;
+        @extend .h25v;
         @extend .overflow-hidden;
         background-color:rgba($smoke,.3);
         border:1px solid $smokeDark;
@@ -19,8 +18,10 @@
             @extend .display-none;
         }
         &[data-active="true"]{
+            @extend .pos-rel;
             @extend .bg-white;
             @extend .h-auto;
+            @extend .overflow-visible;
             @extend .transform-default;
             @extend .zIndex-1;
             transition:transform 0.5s $cubic089, height 0s;
@@ -28,11 +29,28 @@
             .plan__list__item__wrapper {
                 @extend .display-block;
             }
+            &[data-plan="premium"]{
+                .plan__list__item__header {
+                    margin:-1px;
+                    width:calc(100% + 2px);
+                }
+            }
+        }
+        &__header {
+             @extend .fontSize-20;
+             padding:15px 0 17px;
         }
         &__footer {
             @extend .bg-blue;
-            padding:25px 20px 40px;
-            @extend .borderRadiusBottom-xl;
+            @extend .pt25;
+            @extend .plr-l;
+            @extend .pb-l;
+            margin:0 -18px -1px;
+            width:calc(100% + 36px);
         }
+    }
+    .ui-icon-check {
+        width:28px;
+        height:28px;
     }
 }

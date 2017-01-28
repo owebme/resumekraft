@@ -1,6 +1,6 @@
 <ui-input>
 
-    <input name="input" onInput={ onInput } onUpdate={ opts.onupdate ? opts.onupdate : "none" } class="input input-{ opts.size ? opts.size : 'm' } { opts.color } { opts.align ? 'text-' + opts.align : '' } { input-rounded : opts.rounded }" value={ value } placeholder={ opts.placeholder } disabled={ typeof opts.disabled !== 'undefined' } type="text">
+    <input name="input" onInput={ onInput } onUpdate={ opts.onupdate ? opts.onupdate : "none" } class="input input-{ opts.size ? opts.size : 'm' } { opts.color } { opts.align ? 'text-' + opts.align : '' } { input-rounded : opts.rounded }" value={ value } placeholder={ opts.placeholder } disabled={ typeof opts.disabled !== 'undefined' } type="text" autocomplete="off" spellcheck="false">
 
 <script>
 

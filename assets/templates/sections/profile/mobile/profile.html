@@ -85,10 +85,6 @@
     var $ = this,
     $scope = $$($.root);
 
-    $.on("*", function(e){
-        console.dir(e);
-    });
-
     $.on("mount", function(){
         $.section = new app.plugins.sections($.root);
 
@@ -102,7 +98,6 @@
         $account.on("write", function(){
             $.update();
         });
-        $.show();
     });
 
     $.show = function(callback){
@@ -157,7 +152,7 @@
                         hidden: $account.get('plan') == 'premium' ? true : false,
                         title: 'Сменить тариф',
                         callback: function(){
-
+                            $Sections.plan.show("premium");
                         }
                     },
                     {

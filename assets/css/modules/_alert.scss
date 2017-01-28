@@ -18,10 +18,6 @@
         background:rgba(darken($grayDark,15%),.7);
         @extend .willChange-opacity;
         transition:opacity 0.15s $cubic2501;
-
-        .d-phone & {
-            transition:opacity 0.08s;
-        }
     }
     &__wrapper {
         @extend .opacity-01;
@@ -32,8 +28,8 @@
         width:528px;
         height:295px;
         border-radius:12px;
-        background-color:#fcfcfc;
-        @extend .boxShadow-24;
+        @extend .bg-snowLight;
+        @extend .boxShadow-25;
         @extend .willChange-tp;
         transition:opacity 0.15s $cubic2501;
 
@@ -41,10 +37,9 @@
             @extend .w100p;
             max-width:448px;
             min-width:238px;
-            height:260px;
-            @extend .borderRadius-m;
-            transform:scale3d(0.95, 0.95, 1);
-            transition:opacity 0.08s, transform 0.08s;
+            height:220px;
+            @extend .fontFamily-helvetica;
+            @extend .borderRadius-xl;
         }
     }
     &__header {
@@ -60,8 +55,9 @@
         @extend .plr-l;
 
         .d-phone & {
-            transform:scale3d(0.95, 0.95, 1);
-            transition:opacity 0.08s, transform 0.08s;
+            @extend .fontSize-24;
+            @extend .fontWeight-normal;
+            @extend .letterSpacing-0;
         }
     }
     &__subtitle {
@@ -69,6 +65,11 @@
         @extend .fontSize-22;
         @extend .fontWeight-3;
         @extend .plr-l;
+
+        .d-phone & {
+            @extend .fontSize-20;
+            @extend .fontWeight-normal;
+        }
     }
     &__buttons {
         @include flex("row", "flex-start", "center");
@@ -76,7 +77,7 @@
         @extend .userSelect-none;
         @extend .overflow-hidden;
         height:26%;
-        border-top:1px solid $smoke;
+        border-top:1px solid darken($smoke,1.5%);
 
         .d-phone & {
             @extend .h30p;
@@ -92,11 +93,14 @@
         padding-bottom:3px;
         transition:all 0.12s $cubic645;
 
+        .d-phone & {
+            @extend .fontSize-20;
+        }
         .m-touch & {
             @extend .transition-none;
         }
         &:first-child {
-            border-right:1px solid $smoke;
+            border-right:1px solid darken($smoke,1.5%);
         }
         &:hover {
             @extend .bg-smoke;
@@ -116,14 +120,8 @@
         }
         .alert__wrapper {
             @extend .opacity-100;
-
-            .d-no-phone & {
-                animation:WD__alertAnim 0.93333s $cubic34 forwards;
-                transition:opacity 0s;
-            }
-            .d-phone & {
-                @extend .transform-none;
-            }
+            animation:WD__alertAnim 0.93333s $cubic34 forwards;
+            transition:opacity 0s;
         }
     }
 }

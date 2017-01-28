@@ -1,31 +1,31 @@
 <resume-sendmail class="oScreen zIndex-3 c-white { showAnim-group1 : active }" data-color="blue" data-open={ active }>
 
     <div onClick={ hide } onUpdate="none" class="anim-group1 anim-rl" data-duration="l" delay-show="m">
-        <div class="button__close" data-color="white"></div>
+        <div class="button__close opacity-70" data-color="white"></div>
     </div>
 
-    <div class="pos-centered">
+    <div class="pos-centered { w100p : app.device.isPhone }">
         <div name="area" class="container anim-group1 anim-bt-ease" duration-show="m" duration-hide={ success ? 'l' : 'm' } delay-show="xs">
             <div class="row">
-                <div name="wrapper" class="col-sm-14 col-md-12 col-lg-10 centered">
-                    <div name="icon" class="mb30 transition-l transition-fn-cubic345 { trY-xl : success }">
+                <div name="wrapper" class="col-xs-24 col-sm-14 col-md-12 col-lg-10 centered xs-pb-l">
+                    <div name="icon" class="mb30 xs-mb-m transition-l transition-fn-cubic345 { trY-xl : success }">
                         <icon-feedback color="white" size="xl2"></icon-feedback>
                     </div>
-                    <div class="anim anim-group2 anim-bt-ease { animated : !success }">
+                    <div class="anim anim-group2 anim-bt-ease { animated : !success } xs-plr-m">
                         <div class="mb-s fontSize-22">Укажите адрес получения резюме</div>
-                        <input onKeydown={ onEnter } onUpdate="none" name="input" class="pointer-for-input  input input-xl input-white input-rounded mb-m text-center" placeholder="Введите e-mail" autocomplete="off">
-                        <div class="row mb-l">
-                            <div class="col-xs-12">
+                        <input onKeydown={ onEnter } onUpdate="none" name="input" class="pointer-for-input input input-{ app.device.isPhone ? 'l' : 'xl' } input-white input-rounded mb-m text-center" placeholder="Введите e-mail" autocomplete="off">
+                        <div class="row mb-l text-left-xs xs-pl-l xs-mb-m xs-pb-xxs">
+                            <div class="col-xs-24 col-sm-12 xs-mb-s">
                                 <ui-checkbox title="Ссылка на резюме" color="white" size="xl" value={ attach.link }></ui-checkbox>
                             </div>
-                            <div class="col-xs-12">
+                            <div class="col-xs-24 col-sm-12">
                                 <ui-checkbox title="Прикрепить PDF" color="white" size="xl" value={ attach.pdf }></ui-checkbox>
                             </div>
                         </div>
-                        <div onClick={ onSuccess } onUpdate="none" class="btn btn-xxl btn-white-hover-success { btn-loading : loading }">Отправить</div>
+                        <div onClick={ onSuccess } onUpdate="none" class="btn btn-xxl btn-success { btn-loading : loading }">Отправить</div>
                     </div>
                     <div class="anim anim-group2 anim-bt-ease fontSize-34 pointerEvents-none { animated : success }">
-                        <div class="trY--xl">Резюме отправлено</div>
+                        <div class="trY--xl { mt--xl : app.device.isPhone }">Резюме отправлено</div>
                     </div>
                 </div>
             </div>
@@ -49,9 +49,11 @@
             id: id,
             active: true
         })
-        _.onEndTransition($.area, function(){
-            $.input.focus();
-        });
+        if (!app.device.isMobile){
+            _.onEndTransition($.area, function(){
+                $.input.focus();
+            });
+        }
     };
 
     $.onEnter = function(e){

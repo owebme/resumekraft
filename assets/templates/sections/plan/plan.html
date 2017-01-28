@@ -1,7 +1,7 @@
 <section-plan class="oScreen zIndex-3 { showAnim-group1 : active }" data-color="dark" data-open={ active }>
 
     <div class="anim-group1 anim-rl" data-duration="l" delay-show="m">
-        <div onClick={ hide } class="button__close opacity-50" data-color="white"></div>
+        <div onClick={ close } class="button__close opacity-50" data-color="white"></div>
     </div>
 
     <div name="popup" class="pos-centered" style="width:984px; height:636px">
@@ -36,7 +36,7 @@
                                     </tr>
                                     <tr class="table-row">
                                         <td class="table-cell">
-                                            <div class="pos-rel" data-balloon="Резюме-презентация с стильным и современным дизайном" data-balloon-length="large" data-balloon-fontSize="medium">Новый формат резюме</div>
+                                            <div class="pos-rel" data-balloon="Резюме-презентация с стильным и современным дизайном" data-balloon-length="large" data-balloon-fontSize="medium">Резюме-презентация</div>
                                         </td>
                                         <td class="table-cell text-center pt-xxs">
                                             <div class="display-inlineBlock w25 h1px bg-gray mb-xxs"></div>
@@ -113,7 +113,7 @@
                         <div class="anim-group2 anim-bt plr-xss" data-duration="m" delay-show="xs">
                             <div class="fontSize-28 m0">Тариф: <strong>Free</strong></div>
                             <div class="h1px bg-white opacity-50 mtb-m"></div>
-                            <div class="fontSize-20 pb-l">Доступных функций: <strong>4 из 12</strong></div>
+                            <div class="fontSize-20 pb-l">Минимально базовый набор</div>
                             <div class="h1px bg-white opacity-50 mtb-m"></div>
                             <div class="fontSize-22 pb-l">Ежемесячная оплата: <strong>0 ₽</strong></div>
                         </div>
@@ -122,7 +122,7 @@
                         <div class="anim-group3 anim-bt plr-xss" data-duration="m" delay-show="xs">
                             <div class="fontSize-24 m0">Тариф: <strong>Premium</strong></div>
                             <div class="h1px bg-white opacity-50 mtb-m"></div>
-                            <div onClick={ open.promoPremium } onUpdate="none" class="fontSize-18 cursor-pointer">Доступных функций: <strong>12 из 12</strong></div>
+                            <div onClick={ open.promoPremium } onUpdate="none" class="fontSize-20 cursor-pointer">Новый формат резюме</div>
                             <div class="h1px bg-white opacity-50 mtb-m"></div>
                             <div class="p-m borderRadius-xl borderWidth-1 borderColor-white borderStyle-solid mb-xs transition-xs { bg-white : period == 'month1' }">
                                 <ui-checkbox commit={ changePay } i="month1" title="Ежемесячная оплата" group="2" color={ period == "month1" ? 'blue' : 'white' } theme="blue" size="xl" value={ period == "month1" }></ui-checkbox>
@@ -188,6 +188,7 @@
                 $.init();
             });
         }
+        app.metrika.set("plan.show", true);
     };
 
     $.init = function(){
@@ -257,7 +258,13 @@
         payment: function(){
             $.hide();
             $Sections.payment.show($.period);
+            app.metrika.set("plan.success", true);
         }
+    };
+
+    $.close = function(){
+        $.hide();
+        app.metrika.set("plan.hide", true);
     };
 
     $.hide = function(){

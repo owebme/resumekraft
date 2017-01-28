@@ -106,8 +106,10 @@
         }
         input:checked ~ {
             .checkbox-control {
-                @extend .bg-white;
-                @extend .scale-100;
+                &:before {
+                    @extend .bg-white;
+                    @extend .scale-100;
+                }
             }
         }
     }
