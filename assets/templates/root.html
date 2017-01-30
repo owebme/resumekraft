@@ -17,7 +17,6 @@
 
     <app-sections>
         <resume-stat></resume-stat>
-        <section-menu></section-menu>
         <section-inbox></section-inbox>
 
         <section-profile></section-profile>
@@ -47,7 +46,7 @@
     $root = this;
     $rootScope = $$(this.root);
 
-    $store.inbox.set([]);
+    // $store.inbox.set([]);
     // $store.data.set([]);
 
     this.on("before-mount", function(){
@@ -64,7 +63,7 @@
             if ($account.get("plan") == "premium"){
                 $Sections.offers.plan.unmount();
                 $Sections.resume.stat.offer.unmount();
-                $Sections.resume.inbox.offer.unmount();
+                $Sections.inbox.section.offer.unmount();
                 $Sections.plan.unmount();
             }
             $root.one("ready", function(){
@@ -104,21 +103,22 @@
                 jqtest: $root.tags["offer-jqtest"],
                 votes: $root.tags["offer-votes"]
             },
-            overview: {
-                premium: $root.tags["overview-premium"],
-                jqtest: $root.tags["overview-jqtest"],
-                functions: $root.tags["overview-functions"]
-            },
-            jqtest: {
-                section: $root.tags["section-jqtest"],
-                list: $root.tags["section-jqtest"].tags["jqtest-list"],
-                test: $root.tags["section-jqtest"].tags["jqtest-content"],
-                result: $root.tags["section-jqtest"].tags["jqtest-result"]
-            },
+            // overview: {
+            //     premium: $root.tags["overview-premium"],
+            //     jqtest: $root.tags["overview-jqtest"],
+            //     functions: $root.tags["overview-functions"]
+            // },
+            // jqtest: {
+            //     section: $root.tags["section-jqtest"],
+            //     list: $root.tags["section-jqtest"].tags["jqtest-list"],
+            //     test: $root.tags["section-jqtest"].tags["jqtest-content"],
+            //     result: $root.tags["section-jqtest"].tags["jqtest-result"]
+            // },
             plan: $root.tags["section-plan"],
-            inbox: $root.tags["section-inbox"],
+            inbox: {
+                section: $root.tags["section-inbox"]
+            },
             payment: $root.tags["section-payment"],
-            menu: $root.tags["section-menu"],
             photoUpload: $root.tags["photo-upload"],
             progress: $root.tags["section-progress"]
         };

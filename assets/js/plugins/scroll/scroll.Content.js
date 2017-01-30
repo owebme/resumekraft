@@ -26,6 +26,8 @@
                 tap: false,
                 preventDefault: true,
                 eventPassthrough: 'horizontal',
+                forceBounds: true,
+    			boundDeceleration: 3.5,
                 scrollbars: 'custom',
                 interactiveScrollbars: !app.device.support.touch,
                 probeType: app.device.support.touch ? false : 3,
@@ -144,6 +146,7 @@
                 scope = this.scope,
                 scroll = this.scroll,
                 isScrolled = false,
+                grabTimer,
                 state = null,
                 $focus = null;
 
@@ -188,12 +191,14 @@
             };
 
             var start = function(){
+                clearTimeout(grabTimer);
         		if (!isScrolled) {
         			scope.addClass('i-scrolling');
         			isScrolled = true;
         		}
         	};
         	var end = function(){
+                clearTimeout(grabTimer);
         		if (isScrolled) {
         			scope.removeClass('i-scrolling');
         			isScrolled = false;
@@ -203,6 +208,9 @@
             if (app.device.isMobile){
             	scroll.on('grab', function(){
             		start();
+                    grabTimer = setTimeout(function(){
+            			end();
+            		}, 500);
             	});
             	scroll.on('scrollEnd', function(){
             		end();

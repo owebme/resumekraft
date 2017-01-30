@@ -35,6 +35,7 @@
             @extend .fontWeight-8;
             @extend .text-uppercase;
             padding:4px 0 0 1px;
+            @extend .willChange-transform;
             @extend .transition-default;
         }
         &__title {

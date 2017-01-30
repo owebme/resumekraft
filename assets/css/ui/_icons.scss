@@ -1,5 +1,5 @@
 @each $icon in (
-    loading, loading_white, loading_mini, loading_mini_white, close, close_white, close_strong, close_strong_white, minus, minus_white, plus, plus_white, plus_thin, plus_thin_white, plus_thin_black, pencil, pencil_white, menu, menu_white, menu2_white, menu_lime, remove_fill_white, upload_white, video_white, images_white, link_white, more_h, more_h_white, more_v, more_v_white, back, back_gray, back_white, back_lime, help, close_fill, close_fill_gray, close_fill_white, arrow_curved_white, info_white, check, check_black, check_white, check_gray, check_muted, check_circle_lime, edit, edit_white, share, share_white, hand_cursor_white, repeat, resume_white, feedback_white, addUser, addUser_white, time_muted, bankcard_white, wallet_white, device_phones_white, like_fill_white, crown, coderwall_fill_white
+    loading, loading_white, loading_mini, loading_mini_white, close, close_white, close_strong, close_strong_white, minus, minus_white, plus, plus_white, plus_thin, plus_thin_white, plus_thin_black, pencil, pencil_white, menu, menu_white, menu2_white, menu_lime, remove_fill_white, upload_white, video_white, images_white, link_white, more_h, more_h_white, more_v, more_v_white, back, back_gray, back_white, back_lime, help, close_fill, close_fill_gray, close_fill_white, arrow_curved_white, info_white, check, check_black, check_white, check_gray, check_muted, check_circle_lime, edit, edit_white, share, share_white, hand_cursor_white, repeat, resume_white, feedback_white, addUser, addUser_white, time_muted, bankcard, bankcard_white, wallet, wallet_white, device_phones, device_phones_white, like_fill_white, crown, coderwall_fill_white
 ){
     .ui-icon-#{$icon} {
         background:url('/assets/images/ui/ui-#{$icon}.svg') no-repeat 0 0 / cover;
@@ -682,61 +682,27 @@
             margin-bottom:-26px;
         }
     }
-    &-fb {
+    &-fb,
+    &-dk,
+    &-tw {
         &.icon-l {
-            width:80px;
-            height:80px;
+            width:40px;
+            height:40px;
         }
         &.icon-m {
-            width:70px;
-            height:70px;
+            width:30px;
+            height:30px;
         }
         &.icon-s {
-            width:58px;
-            height:58px;
+            width:24px;
+            height:24px;
         }
         &.icon-xs {
-            width:46px;
-            height:46px;
-        }
-    }
-    &-dk {
-        &.icon-l {
-            width:84px;
-            height:84px;
-        }
-        &.icon-m {
-            width:74px;
-            height:74px;
-        }
-        &.icon-s {
-            width:60px;
-            height:60px;
-        }
-        &.icon-xs {
-            width:48px;
-            height:48px;
+            width:20px;
+            height:20px;
         }
     }
     &-vk,
-    &-tw {
-        &.icon-l {
-            width:90px;
-            height:90px;
-        }
-        &.icon-m {
-            width:80px;
-            height:80px;
-        }
-        &.icon-s {
-            width:64px;
-            height:64px;
-        }
-        &.icon-xs {
-            width:52px;
-            height:52px;
-        }
-    }
     &-gl {
         &.icon-l {
             width:44px;

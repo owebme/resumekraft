@@ -26,6 +26,9 @@
             &:nth-of-type(4) {
                 transition:transform 0.48s 0.15s;
             }
+            .d-phone & {
+                transition:transform 0.5s;
+            }
         }
         .hideSlides:not(.largeSlides) & {
             animation:none;
@@ -38,7 +41,8 @@
             transition:opacity 0.6s $cubic345, transform 0.6s $cubic345;
 
             .d-phone & {
-                transition:opacity 0.4s $cubic345, transform 0.4s $cubic345;
+                @extend .animation-none;
+                transition:opacity 0.35s $cubic345, transform 0.35s $cubic345;
             }
         }
         .largeSlides.showSlides & {
@@ -107,36 +111,24 @@
 
         .largeSlides & {
             transition:transform 0.6s $cubic345;
+
+            .d-phone & {
+                transition:transform 0.42s $cubic345;
+            }
         }
         .largeSlides.hideSlides & {
             transition:transform 0s 0.3s;
         }
-        &.next {
-            div.current {
-                animation:cd-slide-1 0.5s;
-
-                + div {
-                    animation:cd-slide-2 0.5s;
-                }
-                + div + div {
-                    animation:cd-slide-3 0.5s;
-                }
-                + div + div + div + div {
-                    animation:cd-slide-4 0.5s;
-                }
-                + div + div + div + div + div {
-                    animation:cd-slide-5 0.5s;
-                }
-                + div + div + div + div + div ~ div {
-                    animation:cd-slide-6 0.5s;
-                }
+        .d-phone & {
+            div + .previous,
+            .current + div {
+                @extend .opacity-0;
+                @extend .scale-40;
             }
         }
-        &.prev {
-            .slider__item {
-                animation:cd-slide-7 0.5s;
-
-                &.previous {
+        .d-no-phone & {
+            &.next {
+                div.current {
                     animation:cd-slide-1 0.5s;
 
                     + div {
@@ -145,18 +137,43 @@
                     + div + div {
                         animation:cd-slide-3 0.5s;
                     }
-                }
-                &.current {
-                    animation:none;
-
-                    + div {
+                    + div + div + div + div {
                         animation:cd-slide-4 0.5s;
                     }
-                    + div + div {
+                    + div + div + div + div + div {
                         animation:cd-slide-5 0.5s;
                     }
-                    + div + div ~ div {
+                    + div + div + div + div + div ~ div {
+                        animation:cd-slide-6 0.5s;
+                    }
+                }
+            }
+            &.prev {
+                .slider__item {
+                    animation:cd-slide-7 0.5s;
+
+                    &.previous {
+                        animation:cd-slide-1 0.5s;
+
+                        + div {
+                            animation:cd-slide-2 0.5s;
+                        }
+                        + div + div {
+                            animation:cd-slide-3 0.5s;
+                        }
+                    }
+                    &.current {
                         animation:none;
+
+                        + div {
+                            animation:cd-slide-4 0.5s;
+                        }
+                        + div + div {
+                            animation:cd-slide-5 0.5s;
+                        }
+                        + div + div ~ div {
+                            animation:none;
+                        }
                     }
                 }
             }

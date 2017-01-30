@@ -1,0 +1,155 @@
+<resume-stat-mobile class="oScreen section zIndex-2" data-inner="hidden" data-loading="false" data-show="down" data-open="false">
+
+    <div name="wrapper" class="screenMobile oScreen__content">
+
+        <div class="section__loading"></div>
+
+        <div class="screenMobile__navbar" data-gradient="white">
+            <div onClick={ hide } onUpdate="none" class="screenMobile__nav__close"></div>
+            <div class="screenMobile__nav__title maxW-70p text-truncate">{ item.post ? item.post : 'Новое резюме' }</div>
+            <div onClick={ open.dropMenu } onUpdate="none" class="screenMobile__nav__options"></div>
+        </div>
+        <div name="content" class="section-scroll section__content">
+            <div class="screenMobile__content resume__stat-m">
+
+                <div name="graph" class="resume__stat-m__graph">
+                    <span></span>
+                </div>
+
+                <div onClick={ open.table } class="resume__stat-m__showTable">
+                    <div class="resume__stat-m__showTable__title">{ !state.showTable ? 'Показать таблицу просмотров' : 'Закрыть таблицу' }</div>
+                </div>
+                <div name="table" class="resume__stat-m__table" style="height:{ state.heightTable }px" data-show={ state.showTable }>
+                    <table name="tableEl" class="table table-s">
+                        <thead class="table-header">
+                            <th class="table-header-item w60p text-left c-blue pl-s">Дата посещения</th>
+                            <th class="table-header-item w40p c-blue">Просмотры</th>
+                        </thead>
+                        <tbody class="table-body fontFamily-helvetica">
+                            <tr each={ item in items } no-reorder class="table-row c-blackLight">
+                                <td class="table-cell">
+                                    28 января 2017
+                                </td>
+                                <td class="table-cell">
+                                    { item ? item : '&mdash;' }
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="chart__radial" name="chartRadialEl"></div>
+
+            </div>
+        </div>
+
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.item = {};
+    $.items = [];
+    $.table = $$($.table);
+    $.tableEl = $$($.tableEl);
+    $.graph = $$($.graph);
+
+    $.on("mount", function(){
+        $.section = new app.plugins.sections($.root, {
+            content: $.wrapper
+        });
+        $afterlag.run(function(){
+            $.scroll = new app.plugins.scroll.content($.content);
+            $.scroll.init();
+            $.chartRadial = new app.plugins.chartRadial($.chartRadialEl);
+            $.peity = $.graph.children().peity("bar", {
+                fill: function(_, i, all){
+                    var g = parseInt((i / all.length) * 255);
+                    return "rgb(255, " + g + ", 0)";
+                },
+                padding: 0.025
+            });
+        });
+    });
+
+    $.show = function(id, item){
+        $.item = item;
+        var data = _.shuffle(_.range(13));
+
+        $.section.show({
+            tag: $,
+            scroll: $.scroll,
+            update: {
+                items: data,
+                state: {
+                    showTable: false,
+                    heightTable: 0
+                }
+            },
+            afterShow: function(){
+                $.peity.text(data.join(",")).change();
+                $.chartRadial.render([
+                    {
+                        title: "настольные ПК",
+                        value: _.random(5, 87)
+                    },
+                    {
+                        title: "планшеты",
+                        value: _.random(5, 87)
+                    },
+                    {
+                        title: "телефоны",
+                        value: _.random(5, 87)
+                    }
+                ]);
+            }
+        })
+    };
+
+    $.chart = {
+        graph: function(){
+
+        }
+    };
+
+    $.open = {
+        table: function(){
+            if (!$.state.showTable){
+                $.state.heightTable = $.tableEl.height();
+            }
+            else {
+                $.state.heightTable = 0;
+            }
+            _.onEndTransition($.table[0], function(){
+                $.scroll.refresh();
+            });
+            $.state.showTable = !$.state.showTable;
+        },
+        dropMenu: function(e){
+            $DropMenu.show({
+                elem: $$(e.currentTarget),
+                pos: "down-left",
+                offset: {
+                    left: 5
+                },
+                menu: [
+                    {
+                        title: 'Данные в таблице',
+                        callback: function(){
+                            $.open.table();
+                            $.update();
+                        }
+                    }
+                ]
+            });
+        }
+    };
+
+    $.hide = function(){
+        $.section.hide();
+    };
+
+</script>
+
+</resume-stat-mobile>

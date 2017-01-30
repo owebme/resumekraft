@@ -3,13 +3,13 @@
       "*.*",
       "/public/controllers/**",
       "/public/router/**",
-      "/public/templates/**",
+      "/public/templates/**/*.tag",
+      "/public/templates/**/**/*.tag",
       "/assets/templates/sections/overview/premium/overviewPremiumContent.tag",
       "/assets/templates/sections/overview/jqtest/overviewJqtestContent.tag",
       "/assets/templates/sections/jqtest/jqtest-enter-content.tag",
       "/assets/API/*.*",
-      "/assets/API/**/*.*",
-      "/views/*.*"
+      "/assets/API/**/*.*"
   ],
   "ignore": [
       "/assets/css/**",
@@ -19,6 +19,7 @@
       "/assets/styleguide/**",
       "/assets/templates/root.html",
       "/assets/templates/**/*.html",
-      "/assets/video/**"
+      "/assets/video/**",
+      "/views/*.*"
   ]
 }

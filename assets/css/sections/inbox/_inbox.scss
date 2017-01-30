@@ -37,16 +37,30 @@
             @extend .pr-m;
             @extend .pb-m;
             @extend .pl-s;
+            @extend .xs-pt-xxs;
+            @extend .xs-pr-s;
+            @extend .text-left;
             @extend .cursor-pointer;
             @extend .transition-default;
             border-bottom:1px solid $smokeLight;
 
-            &:first-child {
+            .d-phone & {
+                padding-right:30px;
+                padding-left:6px;
+            }
+            .d-no-phone &:first-child {
                 height:135px;
                 @extend .pt30;
 
                 .inbox__list__item__date {
                     @extend .t-m;
+                }
+            }
+            &:active {
+                background-color:rgba($blue,.1);
+
+                .inbox__list__item__icon {
+                    transform:scale(1.1);
                 }
             }
             &__icon {
@@ -59,10 +73,21 @@
                 @extend .fontSize-22;
                 @extend .fontWeight-bold;
                 @extend .text-uppercase;
+                @extend .willChange-transform;
+                @extend .transition-default;
+
+                .d-phone & {
+                    width:48px;
+                    height:48px;
+                }
             }
             &__container {
                 width:calc(100% - 50px);
                 @extend .pl-s;
+
+                .d-phone & {
+                    width:calc(100% - 65px);
+                }
             }
             &__date {
                 @extend .pos-abs;
@@ -77,11 +102,22 @@
                 @extend .fontWeight-bold;
                 @extend .text-truncate;
                 @extend .pr-m;
+
+                .d-phone & {
+                    @extend .fontSize-20;
+                    padding-bottom:2px;
+                }
             }
             &__text {
                 @extend .fontSize-15;
                 @extend .lineHeight-s;
                 @include textEllipsis(100%, 70px, 3);
+
+                .d-phone & {
+                    line-height:22px;
+                    @extend .fontFamily-helvetica;
+                    @extend .c-gray;
+                }
             }
             &[data-new="true"]{
                 .inbox__list__item__icon:after {
@@ -93,65 +129,79 @@
                     height:8px;
                     @extend .bg-greenLight;
                     @extend .borderRadius-circle;
+
+                    .d-phone & {
+                        @extend .w10;
+                        @extend .h10;
+                    }
                 }
             }
-            &[data-active="true"]{
-                @extend .bg-snowDark;
+            .d-no-phone &[data-active="true"]{
+                background-color:rgba($blue,.07);
                 @extend .pointerEvents-none;
 
                 .inbox__list__item__title {
                     @extend .c-blue;
                 }
             }
-            &:hover {
-                @extend .bg-snowDark;
+            .m-no-touch &:hover {
+                background-color:rgba($blue,.07);
             }
         }
     }
     &__content {
-        @extend .pos-rel;
-        @extend .w100p;
-        @extend .h85v;
-        @extend .c-blackLight;
-        @extend .section-scroll;
-        @extend .overflow-hidden;
+        @extend .display-block;
 
-        &:before {
-            @extend .content-empty;
-            @extend .pos-tl;
+        .d-no-phone & {
+            @extend .pos-rel;
             @extend .w100p;
-            @extend .h70;
-            @extend .bg-gradient-tb-white;
-            @extend .zIndex-1;
-        }
-        &:after {
-            @extend .content-empty;
-            @extend .pos-bl;
-            @extend .w100p;
-            @extend .h80;
-            @extend .bg-gradient-bt-white;
+            @extend .h85v;
+            @extend .c-blackLight;
+            @extend .section-scroll;
+            @extend .overflow-hidden;
+
+            &:before {
+                @extend .content-empty;
+                @extend .pos-tl;
+                @extend .w100p;
+                @extend .h70;
+                @extend .bg-gradient-tb-white;
+                @extend .zIndex-1;
+            }
+            &:after {
+                @extend .content-empty;
+                @extend .pos-bl;
+                @extend .w100p;
+                @extend .h80;
+                @extend .bg-gradient-bt-white;
+            }
         }
         &__scroll {
-            @extend .willChange-transform;
-            @extend .pt70;
-            @extend .pl30;
-            @extend .pr-l;
-            @extend .pb70;
+            .d-no-phone & {
+                @extend .willChange-transform;
+                @extend .pt70;
+                @extend .pl30;
+                @extend .pr-l;
+                @extend .pb70;
+            }
         }
         &__date {
             @extend .flex-row-right-center;
-            @extend .pos-abs;
-            @extend .t-30;
-            @extend .r-l;
             @extend .c-gray;
             @extend .zIndex-1;
 
-            &:after {
-                @extend .content-empty;
-                @extend .display-block;
-                @extend .vAlign-middle;
-                @extend .ml-xss;
-                @include ui-icon("time_muted", 13px, 13px);
+            .d-no-phone & {
+                @extend .pos-abs;
+                @extend .t-30;
+                @extend .r-l;
+
+                &:after {
+                    @extend .content-empty;
+                    @extend .display-block;
+                    @extend .vAlign-middle;
+                    @extend .ml-xss;
+                    @include ui-icon("time_muted", 13px, 13px);
+                }
             }
         }
         &__title {
@@ -164,22 +214,32 @@
             @extend .fontSize-20;
             @extend .mb35;
         }
-        &__email {
+        &__from {
             @extend .c-gray;
             @extend .pb-xxs;
             @extend .mb-m;
             @extend .text-uppercase;
             border-bottom:1px solid $smokeDark;
 
-            &__link {
-                @extend .transition-default;
+            .d-phone & {
+                @include flex("row", "space-between", "flex-start");
+                @extend .nowrap;
+            }
+        }
+        &__email {
+            @extend .transition-default;
 
-                &:hover {
-                    @extend .c-blueLight;
-                }
+            &:hover {
+                @extend .c-blueLight;
+            }
+            .d-phone & {
+                @extend .c-blueLight;
+                @extend .text-truncate;
+                @extend .maxW-60p;
             }
         }
         &__text {
+            @extend .c-black;
             @extend .fontSize-16;
             @extend .lineHeight-m;
             @extend .fontFamily-helvetica;

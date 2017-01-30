@@ -13,22 +13,6 @@
             max-height:343px;
             @extend .overflow-hidden;
 
-            &:before {
-                @extend .content-empty;
-                @extend .pos-abs;
-                @extend .t0;
-                @extend .l50;
-                @extend .w150v;
-                @extend .h50p;
-                transform:translate3d(-50%, 0, 0) rotate(-22deg);
-            }
-            &:after {
-                @extend .content-empty;
-                @extend .pos-tl;
-                @extend .w100p;
-                @extend .h30p;
-                transform:translate3d(-50%, 0, 0) rotate(-22deg);
-            }
             &__cover {
                 @extend .flex-centered;
                 @extend .pos-centered;
@@ -79,6 +63,10 @@
         &[data-color="white"]{
             @extend .c-white;
 
+            .screenMobile__nav__close {
+                @extend .opacity-95;
+                @include ui-icon("close_fill_gray");
+            }
             .screenMobile__nav__back {
                 @include ui-icon("back_white");
             }
@@ -125,6 +113,7 @@
         padding-right:18px;
         @extend .pb70;
         @extend .c-blackLight;
+        @extend .willChange-transform;
 
         &__fit {
             margin-left:-18px;

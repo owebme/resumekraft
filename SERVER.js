@@ -17,6 +17,12 @@ var config          = require('./libs/config'),
     underscore      = require('underscore'),
     device          = require('express-device');
 
+// global.api = {};
+//
+// ['fs', 'os', 'util', 'http'].map(function(m) {
+//     api[m] = require(m);
+// });
+
 var app = express();
 app.express = express;
 app.config = config;

@@ -1,4 +1,4 @@
-<section-inbox-list-blank if={ !parent.id } class="section">
+<section-inbox-list-blank if={ !$store.inbox.get().length } class="section">
 
     <div each={ item, i in items } no-reorder class="inbox__list__item">
         <div class="inbox__list__item__icon bg-{ parent.colors[i] }"></div>

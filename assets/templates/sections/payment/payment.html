@@ -13,7 +13,7 @@
                             <div class="col-md-10">
                                 <div class="payment__list">
                                     <div class="payment__list__title">Выберите способ оплаты</div>
-                                    <div onClick={ change.method } each={ item in $store.paymentMethod.get() } no-reorder class="payment__list__item" data-active={ parent.method == item.method }>
+                                    <div onClick={ change.method } each={ item in _.sortArray($store.paymentMethod.get(), "pos") } no-reorder class="payment__list__item" data-active={ parent.method == item.method }>
                                         <div class="payment__list__item__title">{ item.title }</div>
                                         <div class="payment__list__item__text">{ item.text }</div>
                                     </div>
@@ -21,8 +21,9 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="payment__content">
-                                    <div if={ $account.get('plan') != 'premium' } class="payment__info">
-                                        <div class="payment__info__text">После пополнения баланса ваш аккаунт перейдет в статус <strong>PREMIUM</strong></div>
+                                    <div class="payment__info">
+                                        <div if={ $account.get('plan') != 'premium' }  class="payment__info__text">После пополнения баланса ваш аккаунт перейдет в статус <strong>PREMIUM</strong></div>
+                                        <div if={ $account.get('plan') == 'premium' }  class="payment__info__text nowrap">При оплате <strong>от 3 месяцев</strong> действуют СКИДКИ!</div>
                                     </div>
                                     <div class="payment__icon" data-icon={ method }></div>
                                     <div class="payment__count">

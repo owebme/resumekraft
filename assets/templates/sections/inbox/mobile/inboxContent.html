@@ -1,0 +1,77 @@
+<section-inbox-content-mobile class="screenMobile section section-hidden zIndex-2" data-inner="hidden" data-loading="false" data-pos="right" data-open="false">
+
+    <div class="section__loading"></div>
+
+    <div class="screenMobile__navbar" data-gradient="white">
+        <div onClick={ hide } onUpdate="none" class="screenMobile__nav__back"></div>
+        <div class="screenMobile__nav__title maxW-70p text-truncate c-grayDark">{ item.title }</div>
+        <div onClick={ open.dropMenu } onUpdate="none" class="screenMobile__nav__options"></div>
+    </div>
+    <div name="content" class="section-scroll section__content">
+        <div class="screenMobile__content pt-xl">
+            <section-inbox-content item={ item }></section-inbox-content>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    $.item = null;
+
+    $.on("mount", function(){
+        $.section = new app.plugins.sections($.root);
+
+        $afterlag.run(function(){
+            $.scroll = new app.plugins.scroll.content($.content);
+            $.scroll.init();
+        });
+        $scope.on('swipeRight', function(){
+            $.hide();
+        });
+    });
+
+    $.show = function(item, callback){
+        $.section.show({
+            tag: $,
+            scroll: $.scroll,
+            update: {
+                item: item,
+                callback: callback
+            }
+        })
+    };
+
+    $.open = {
+        dropMenu: function(e){
+            $DropMenu.show({
+                item: $.item,
+                elem: $$(e.currentTarget),
+                pos: "down-left",
+                offset: {
+                    left: 5
+                },
+                menu: [
+                    {
+                        title: 'Ответить в Gmail',
+                        callback: function(id, item){
+                            window.open('https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to=' + item.from, '_blank');
+                        }
+                    }
+                ]
+            });
+        }
+    };
+
+    $.hide = function(){
+        $.section.hide({
+            beforeHide: function(){
+                if (_.isFunction($.callback)) $.callback();
+            }
+        })
+    };
+
+</script>
+
+</section-inbox-content-mobile>

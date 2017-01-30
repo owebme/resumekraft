@@ -48,7 +48,7 @@
             this.firstSlide = this.slider.find(".slider__item:first");
             this.widthSlide = this.firstSlide.width();
             this.cnt = Math.floor((app.sizes.width < 1190 ? app.sizes.width : 1190) / this.widthSlide);
-            if (!this.cnt) this.cnt = 1;
+            if (!this.cnt || app.device.isPhone) this.cnt = 1;
 
             if (this.cnt == 1 && !this.scope.hasClass("largeSlides")){
                 this.scope.addClass("largeSlides")
@@ -137,9 +137,14 @@
     		if (this.cnt > 1) this.slider.addClass('next');
     		this.setTranslateValue(translate);
 
-            _.onEndTransition(this.slider[0], function(){
-    			_this.updateSlider('next', actual, following);
-    		});
+            if (app.device.isPhone){
+                _this.updateSlider('next', actual, following);
+            }
+            else {
+                _.onEndTransition(this.slider[0], function(){
+        			_this.updateSlider('next', actual, following);
+        		});
+            }
 
             this.index = index;
 
@@ -155,9 +160,14 @@
             if (this.cnt > 1) this.slider.addClass('prev');
     		this.setTranslateValue(translate);
 
-            _.onEndTransition(this.slider[0], function(){
-    			_this.updateSlider('prev', actual);
-    		});
+            if (app.device.isPhone){
+                _this.updateSlider('prev', actual);
+            }
+            else {
+                _.onEndTransition(this.slider[0], function(){
+        			_this.updateSlider('prev', actual);
+        		});
+            }
 
             this.index = index;
 

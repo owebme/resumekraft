@@ -53,20 +53,21 @@
 @import 'sections/mobile/screens/screens';
 @import 'sections/mobile/screens/resume';
 @import 'sections/mobile/screens/profile';
+@import 'sections/mobile/screens/payment';
 @import 'sections/mobile/menu';
 @import 'sections/mobile/navbar';
 @import 'sections/profile/profile';
 
 // jqtest
-@import 'sections/jqtest/jqtest';
-@import 'sections/jqtest/jqtestEnter';
-@import 'sections/jqtest/result/main';
-@import 'sections/jqtest/result/columns';
-@import 'sections/jqtest/result/skills';
-@import 'sections/jqtest/result/humps';
-@import 'sections/jqtest/result/graph';
-@import 'sections/jqtest/result/specialties';
-@import 'sections/jqtest/result/path';
+// @import 'sections/jqtest/jqtest';
+// @import 'sections/jqtest/jqtestEnter';
+// @import 'sections/jqtest/result/main';
+// @import 'sections/jqtest/result/columns';
+// @import 'sections/jqtest/result/skills';
+// @import 'sections/jqtest/result/humps';
+// @import 'sections/jqtest/result/graph';
+// @import 'sections/jqtest/result/specialties';
+// @import 'sections/jqtest/result/path';
 
 // plan
 @import 'sections/plan/plan';
@@ -78,12 +79,12 @@
 @import 'sections/payment/payment';
 
 // overview
-@import 'sections/overview/main';
-@import 'sections/overview/premium/header';
-@import 'sections/overview/premium/slides';
-@import 'sections/overview/premium/devices';
-@import 'sections/overview/jqtest/slides';
-@import 'sections/overview/overviewFunctions';
+// @import 'sections/overview/main';
+// @import 'sections/overview/premium/header';
+// @import 'sections/overview/premium/slides';
+// @import 'sections/overview/premium/devices';
+// @import 'sections/overview/jqtest/slides';
+// @import 'sections/overview/overviewFunctions';
 
 // Resume list
 @import 'sections/list/resumeList';
@@ -93,6 +94,7 @@
 @import 'sections/list/resumeSelect';
 @import 'sections/list/mobile/resumeList';
 @import 'sections/list/mobile/resumeListItem';
+@import 'sections/list/mobile/resumeStat';
 
 // Resume create basic
 @import 'appResume/basic/style';

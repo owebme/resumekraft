@@ -1,0 +1,70 @@
+.resume__stat-m {
+    @extend .pt100;
+
+    &__graph {
+        @extend .pos-rel;
+        margin:0 -1px;
+        width:calc(100% + 2px);
+        height:29vh;
+
+        .peity {
+            @include abs();
+            @extend .opacity-55;
+        }
+    }
+    &__showTable {
+        &__title {
+            @extend .pos-rel;
+            @extend .flex-centered;
+            @extend .h50;
+            @extend .w100p;
+            @extend .fontSize-20;
+            padding-bottom:2px;
+            border-bottom:1px solid darken($smokeLight,7%);
+
+            &:after {
+                @include accelerate();
+                @extend .content-empty;
+                @extend .pos-abs;
+                @extend .l50;
+                bottom:-16px;
+                border-bottom:16px solid darken($smokeLight,7%);
+                border-left:16px solid rgba(0, 0, 0, 0);
+                border-right:16px solid rgba(0, 0, 0, 0);
+                transform:translate3d(-50%, 0, 0) rotate(180deg);
+            }
+        }
+    }
+    &__table {
+        @extend .overflow-hidden;
+        @extend .h0;
+        will-change:height;
+        transition:height 0.4s $cubic60;
+
+        .table {
+            @extend .opacity-0;
+            @extend .willChange-opacity;
+            transition:opacity 0.35s $cubic215;
+        }
+        &[data-show="true"]{
+            .table {
+                @extend .opacity-100;
+                transition:opacity 0.35s $cubic215 0.2s;
+            }
+        }
+    }
+    .chart__radial {
+        @extend .mt-l;
+
+        &__graph {
+            @extend .opacity-95;
+        }
+        &__labels {
+            @extend .pt-xs;
+            @extend .pl25;
+        }
+        &__label {
+            @extend .mb-xs;
+        }
+    }
+}

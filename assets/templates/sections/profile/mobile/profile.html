@@ -32,10 +32,10 @@
                 </div>
                 <div class="screenMobile__content__fit flex-centered h120 borderTopWidth-1 borderBottomWidth-1 borderStyle-solid borderColor-smokeDark">
                     <div class="flex-column-centered w50p h100p borderRightWidth-1 borderStyle-solid borderColor-smokeDark">
-                        <span class="c-blue fontSize-28 fontWeight-8 text-uppercase">{ $account.get('plan') }</span>
+                        <span class="c-blue { $account.get('plan') == 'premium' ? 'fontSize-26 lineHeight-xl' : 'fontSize-28' } fontWeight-8 text-uppercase">{ $account.get('plan') }</span>
                         <div if={ $account.get('plan') != "premium" } class="c-gray">ваш тариф</div>
                         <div if={ $account.get('plan') == "premium" } class="c-gray nowrap">
-                            оплачен до: <span class="c-blue fontWeight-bold">28-ноя-2017</span>
+                            до: <span class="fontWeight-bold">28-ноя-2017</span>
                         </div>
                     </div>
                     <div class="flex-column-centered w50p h100p">
@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="flex-centered mt--m mb-l">
-                    <div class="btn btn-xl2 btn-success btn-shadow">Пополнить</div>
+                    <div onClick={ open.payment } onUpdate="none" class="btn btn-xl2 btn-success btn-shadow">Пополнить</div>
                 </div>
                 <div class="row text-center mb-l">
                     <div class="col-xs-12">
@@ -70,6 +70,9 @@
                     <div class="col-xs-12 mt--xss pl-s">
                         <div if={ $account.get('plan') != "premium" } class="mb-xss">
                             <span onClick={ open.changePlan } onUpdate="none" class="link-underline link-default-hover-warning fontSize-22 nowrap">Сменить тариф</span>
+                        </div>
+                        <div if={ $account.get('plan') == "premium" } class="mb-xss">
+                            <span onClick={ open.personalData } onUpdate="none" class="link-underline link-default-hover-warning fontSize-22 nowrap">Изменить данные</span>
                         </div>
                         <div>
                             <span class="link-underline link-default-hover-warning fontSize-22 nowrap">Сменить пароль</span>
@@ -158,7 +161,7 @@
                     {
                         title: 'Пополнить баланс',
                         callback: function(){
-
+                            $Sections.payment.show();
                         }
                     }
                 ]

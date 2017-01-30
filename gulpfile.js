@@ -258,6 +258,46 @@ gulp.task('private.libs', function() {
 		.pipe(gulp.dest('./assets/js'));
 });
 
+gulp.task('private.commons', function() {
+	return gulp.src(['assets/js/components/commons/app.js',
+	    'assets/js/components/commons/afterlag.js',
+	    'assets/js/components/commons/common.js',
+	    'assets/js/components/commons/utils.js',
+	    'assets/js/components/commons/request.js',
+	    'assets/js/components/commons/modules.js',
+	    'assets/js/components/commons/metrika.js',
+	    'assets/js/components/features/premium.js',
+	    'assets/js/components/config.js',
+	    'assets/js/components/fetch.js',
+	    'assets/js/components/i18n/i18n.js',
+	    'assets/js/components/i18n/resume/basic/template/ru.js'])
+		.pipe(concat('commons.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest('./assets/js'));
+});
+
+gulp.task('private.plugins', function() {
+	return gulp.src(['assets/js/plugins/chartRadial.js',
+	    'assets/js/plugins/animate.js',
+	    'assets/js/plugins/slider.js',
+	    'assets/js/plugins/styles.js',
+	    'assets/js/plugins/screens.js',
+	    'assets/js/plugins/marquee.static.js',
+	    'assets/js/plugins/marquee.effects.js',
+	    'assets/js/plugins/sections.js',
+	    'assets/js/plugins/share.js',
+	    'assets/js/plugins/metrika.js',
+	    'assets/js/plugins/scroll/scroll.Fix.js',
+	    'assets/js/plugins/scroll/scroll.Animate.js',
+	    'assets/js/plugins/scroll/scroll.Content.js',
+	    'assets/js/plugins/scroll/scroll.Parallax.js',
+	    'assets/js/plugins/tutorial/welcome.js',
+	    'assets/js/plugins/tutorial/resumeFree.js'])
+		.pipe(concat('plugins.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest('./assets/js'));
+});
+
 gulp.task('private.app', function() {
 	return gulp.src(['assets/js/components/commons/app.js',
 		'assets/js/components/commons/common.js',
@@ -302,6 +342,15 @@ gulp.task('private.templates', function() {
 		'assets/templates/root.html'])
 		.pipe(riot())
 		.pipe(concat('templates.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest('./assets/js'));
+});
+
+gulp.task('ui.templates', function() {
+	return gulp.src(['assets/templates/ui/*.html',
+		'assets/templates/ui/**/*.html'])
+		.pipe(riot())
+		.pipe(concat('templates.ui.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest('./assets/js'));
 });
@@ -441,7 +490,7 @@ gulp.task('watch', function() {
 		'assets/templates/*.html',
 		'assets/templates/**/*.html',
 		'assets/templates/**/*.tag',
-		'preview.html'
+		'views/*.html'
 	]).on('change', reload);
 
 	gulp.watch([
@@ -461,10 +510,16 @@ gulp.task('watch', function() {
 
 gulp.task('watchPublic', function() {
 	browserSync.watch([
-		'public/*.html',
+		'views/*.html',
 		'public/**/*.tag',
 		'assets/templates/**/*.tag'
-	]).on('change', _.debounce(reload, 3000));
+	]).on('change', reload);
+
+	// browserSync.watch([
+	// 	'views/*.html',
+	// 	'public/**/*.tag',
+	// 	'assets/templates/**/*.tag'
+	// ]).on('change', _.debounce(reload, 3000));
 
 	browserSync.watch([
 		'public/js/*.js',
@@ -480,7 +535,7 @@ gulp.task('watchPublic', function() {
 
 gulp.task('css.build', gulp.series('private.css', 'premium.css', 'public.css', gulp.parallel('private.css.largeScreen', 'private.css.smallScreen', 'premium.css.largeScreen', 'premium.css.smallScreen', 'templates.basic', 'templates.basic.view')));
 
-gulp.task('private.js.build', gulp.parallel('private.libs', 'private.app', 'private.templates'));
+gulp.task('private.js.build', gulp.parallel('private.libs', 'private.app', 'private.templates', 'ui.templates', 'private.commons', 'private.plugins'));
 gulp.task('premium.js.build', gulp.parallel('premium.app', 'premium.templates'));
 
 gulp.task('build', gulp.series(

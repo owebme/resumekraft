@@ -12,7 +12,7 @@
             <div class="screenMobile__header" data-header="resume">
                 <div class="pos-abs t25 l15 c-grayDark fontSize-28 fontWeight-8">{ item.percent }%</div>
                 <div class="pos-abs t50 r10 text-center">
-                    <span class="c-blue fontSize-34 fontWeight-8">+18</span>
+                    <span onClick={ open.stat } onUpdate="none" class="c-blue fontSize-34 fontWeight-8">+18</span>
                     <div class="fontSize-16 fontWeight-normal c-gray mt-xss">просмотры</div>
                 </div>
                 <div class="screenMobile__header__cover boxShadow-3d-blue bg-blue">{ get.coverPost(item.post || 'R') }<div class="screenMobile__header__cover__photo" style="background-image:url({ item.photo })"></div></div>
@@ -102,6 +102,9 @@
     $.open = {
         about: function(){
             $.state.aboutShort = !$.state.aboutShort;
+        },
+        stat: function(){
+            $store.data.onStat($.item._id, $.item);
         },
         dropMenu: function(e){
             $DropMenu.show({

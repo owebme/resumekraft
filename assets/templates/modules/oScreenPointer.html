@@ -3,7 +3,7 @@
     <div class="oScreen__pointer__shape" style="{ state.shape.style }" data-figure={ state.figure }></div>
 
     <div name="msgBox" class="oScreen__pointer__message__wrapper" style="{ state.message.style }">
-        <div class="oScreen__pointer__message" data-position="{ state.position }" data-size={ state.size } data-active={ state.message.active } style="width:{ state.message.width }px">{ state.text }</div>
+        <div class="oScreen__pointer__message fontWeight-{ state.fontWeight }" data-position="{ state.position }" data-size={ state.size } data-active={ state.message.active } style="width:{ state.message.width }px">{ state.text }</div>
     </div>
 
 <script>
@@ -31,6 +31,7 @@
             borderColor: "#265cdc",
             figure: "square",
             size: "m",
+            fontWeight: "normal",
             position: null,
             target: null,
             text: null,

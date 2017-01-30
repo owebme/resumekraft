@@ -766,7 +766,8 @@ IScroll.prototype = {
 /* REPLACE END: refresh */
 
 		this.hasHorizontalScroll	= this.options.scrollX && (this.options.forceBounds || this.maxScrollX < 0);
-		this.hasVerticalScroll		= this.options.scrollY && (this.options.forceBounds || this.maxScrollY < 0);
+		// this.hasVerticalScroll		= this.options.scrollY && (this.options.forceBounds || this.maxScrollY < 0);
+		this.hasVerticalScroll		= this.options.scrollY && this.maxScrollY < 0;
 
 		if ( !this.hasHorizontalScroll ) {
 			this.maxScrollX = 0;

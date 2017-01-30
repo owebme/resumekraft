@@ -14,6 +14,17 @@
             var _this = this,
                 options = options || {};
 
+            if (options.debug){
+                $(this.content).addClass("transition-none");
+                this.scope.setAttribute("data-inner", "show");
+                this.scope.setAttribute("data-open", true);
+                if (options.scroll){
+                    options.scroll.refresh();
+                    options.scroll.scrollTop();
+                }                
+                return;
+            }
+
             this.scope.setAttribute("data-open", true);
             this.scope.setAttribute("data-loading", true);
 

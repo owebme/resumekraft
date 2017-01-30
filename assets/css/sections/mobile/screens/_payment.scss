@@ -1,0 +1,184 @@
+.screenMobile {
+    &__header {
+        &[data-header="payment"]{
+            &:before {
+                @extend .bg-blue;
+                @extend .content-empty;
+                @extend .pos-centered-h;
+                @extend .t--l;
+                height:105%;
+                width:170vw;
+                @extend .borderRadius-circle;
+            }
+            .payment__count {
+                @extend .nowrap;
+
+                &__sale {
+                    @extend .bg-pink;
+                }
+            }
+            .payment__period__title {
+                @extend .pos-rel;
+                @extend .flex-centered;
+                @extend .fontSize-16;
+                @extend .letterSpacing-5-5;
+                @extend .m0;
+
+                &:after {
+                    @extend .content-empty;
+                    @extend .display-block;
+                    border-bottom:10px solid $white;
+                    border-left:10px solid rgba(0, 0, 0, 0);
+                    border-right:10px solid rgba(0, 0, 0, 0);
+                    transform:rotate(180deg);
+                    @extend .borderRadius-m;
+                    @extend .ml-xxs;
+                }
+                select {
+                    @include abs();
+                    @extend .opacity-0;
+                }
+            }
+        }
+    }
+    &__content {
+        &[data-content="payment"]{
+            @extend .pb-l;
+        }
+    }
+}
+.payment-m {
+    &__header {
+        @extend .zIndex-1;
+        @extend .pos-centered;
+        @extend .c-white;
+    }
+    &__arrows {
+        @include abs();
+    }
+    &__arrow__left,
+    &__arrow__right {
+        &:after {
+            @extend .content-empty;
+            @extend .display-block;
+            @extend .btn-active;
+            @extend .opacity-70;
+            @include ui-icon("back_white", 38px, 38px);
+        }
+        &:active:after {
+            @extend .opacity-100;
+        }
+    }
+    &__arrow__left {
+        @extend .pos-centered-v;
+        @extend .l-m;
+    }
+    &__arrow__right {
+        @extend .pos-abs;
+        @extend .t50;
+        @extend .r-m;
+        transform:translate3d(0, -50%, 0) scaleX(-1);
+    }
+    &__method {
+        @extend .pos-rel;
+        @extend .w100p;
+        @extend .h30v;
+        min-height:180px;
+
+        &__item {
+            @include accelerate();
+            @extend .pos-abs;
+            @extend .t50;
+            @extend .l50;
+            @extend .flex-column-centered;
+            @extend .w33p;
+            @extend .h200;
+            @extend .opacity-80;
+
+            &[data-active="true"]{
+                @extend .opacity-100;
+
+                .payment-m__method__item__title {
+                    @extend .opacity-100;
+                }
+            }
+            &:before {
+                @extend .content-empty;
+                @extend .display-block;
+            }
+            &:after {
+                @extend .content-empty;
+                @extend .pos-centered;
+                @extend .w80p;
+                @extend .h10;
+                @extend .borderRadius-xl;
+                @extend .bg-gray;
+                @extend .mt-l;
+                @extend .opacity-0;
+            }
+            &__title {
+                @extend .opacity-0;
+                @extend .fontSize-18;
+                @extend .lineHeight-s;
+                @extend .fontWeight-bold;
+            }
+            &[data-item="bankcard"]{
+                transform:translate3d(67%, -50%, 0) scale(0.7);
+
+                &:before {
+                    @include ui-icon("bankcard", 88px, 88px);
+                }
+                .payment-m__method__item__title {
+                    @extend .trY-xxs;
+                }
+            }
+            &[data-item="yamoney"]{
+                transform:translate3d(67%, -50%, 0) scale(0.7);
+
+                &:before {
+                    @include ui-icon("wallet", 120px, 120px);
+                    @extend .mt--25;
+                }
+            }
+            &[data-item="mobile"]{
+                transform:translate3d(-167%, -50%, 0) scale(0.7);
+
+                &:before {
+                    @include ui-icon("device_phones", 62px, 77px);
+                }
+                .payment-m__method__item__title {
+                    @extend .trY-s;
+                }
+            }
+            &[data-active="true"]{
+                transform:translate3d(-50%, -50%, 0) scale(1);
+            }
+            &[data-previous="true"]{
+                transform:translate3d(-167%, -50%, 0) scale(0.7);
+            }
+            &[data-next="true"]{
+                transform:translate3d(67%, -50%, 0) scale(0.7);
+            }
+            &:not([data-active="true"]){
+                &:after {
+                    @extend .opacity-70;
+                }
+            }
+        }
+        &__title {
+            @extend .pos-rel;
+            @extend .c-blue;
+            @extend .fontSize-16;
+            @extend .letterSpacing-5-5;
+            @extend .text-uppercase;
+            @extend .fontWeight-bold;
+            @extend .plr-m;
+            @extend .mt-s;
+
+            select {
+                @include abs();
+                @extend .opacity-0;
+            }
+        }
+    }
+}

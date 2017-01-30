@@ -1,0 +1,99 @@
+<section-inbox-mobile class="oScreen section zIndex-2" data-inner="hidden" data-loading="false" data-show="down" data-open="false">
+
+    <div name="wrapper" class="oScreen__content overflow-hidden bg-black">
+
+        <div class="section__loading"></div>
+
+        <div name="container" class="section__content bg-white">
+
+            <div class="screenMobile__navbar" data-gradient="white">
+                <div onClick={ hide } onUpdate="none" class="screenMobile__nav__close"></div>
+                <div class="screenMobile__nav__title maxW-70p text-truncate">Обращения</div>
+                <div onClick={ open.dropMenu } onUpdate="none" class="screenMobile__nav__options"></div>
+            </div>
+            <div name="content" class="section-scroll pos-abs-full">
+                <div class="willChange-transform pt65 pb-m">
+                    <section-inbox-list></section-inbox-list>
+                    <section-inbox-list-blank></section-inbox-list-blank>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.viewedList = [];
+
+    $.on("mount", function(){
+        $.section = new app.plugins.sections($.root, {
+            content: $.wrapper
+        });
+        $afterlag.run(function(){
+            $.scroll = new app.plugins.scroll.content($.content);
+            $.scroll.init();
+        });
+    });
+
+    $.show = function(id){
+        $.section.show({
+            scroll: $.scroll
+        })
+    };
+
+    $.onSelect = function(){
+        $.root.setAttribute("data-hidden", true);
+
+        $.id = this.item._id;
+        $store.inbox.onViewed($.viewedList, $.id);
+
+        $Sections.inbox.content.show(this.item, function(){
+            $.root.setAttribute("data-hidden", false);
+
+            _.onEndTransition($.container, function(){
+                $.update();
+            });
+        })
+    };
+
+    $.open = {
+        dropMenu: function(e){
+            $DropMenu.show({
+                id: "all",
+                elem: $$(e.currentTarget),
+                pos: "down-left",
+                offset: {
+                    left: 10
+                },
+                isSelect: true,
+                menu: [
+                    {
+                        _id: "all",
+                        title: "Все обращения"
+                    },
+                    {
+                        _id: "1",
+                        title: "Web-Designer, Art-director, Illustrator"
+                    },
+                    {
+                        _id: "2",
+                        title: "Менеджер по продажам"
+                    }
+                ],
+                callback: function(id){
+                    console.dir(id);
+                }
+            });
+        }
+    };
+
+    $.hide = function(){
+        $.section.hide();
+    };
+
+</script>
+
+</section-inbox-mobile>

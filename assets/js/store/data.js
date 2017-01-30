@@ -11,7 +11,7 @@
                                 id: id
                             })
                             .then(function(){
-                                $store.data.select({'_id': id}).unset();
+                                $.select({'_id': id}).unset();
 
                                 if (!app.device.isPhone && $Sections.resume.list.slider.index > 0){
                                     $Sections.resume.list.slider.prevSlides();
@@ -27,8 +27,8 @@
                     id: id
                 });
             },
-            onPreview: function(id){
-
+            onStat: function(id, item){
+                $Sections.resume.stat.show(id, item);
             },
             onSendMail: function(id){
                 $Sections.resume.sendmail.show(id);
@@ -41,9 +41,10 @@
                     }
                 },
                 {
-                    title: "Предпросмотр",
-                    callback: function(id){
-                        $.onPreview(id);
+                    hidden: !app.device.isPhone,
+                    title: "Статистика",
+                    callback: function(id, item){
+                        $.onStat(id, item);
                     }
                 },
                 {
@@ -60,7 +61,7 @@
                                 num = item.template,
                                 $template = $$('<div class="resume__preview resume__preview--shadow">').appendTo(app.$dom.body);
 
-                            $resume.set(item);
+                            $.set(item);
 
                             var template = riot.mount($template[0], "resume-basic-template" + num)[0];
 
@@ -102,7 +103,7 @@
                 {
                     title: "Создать копию",
                     callback: function(id){
-                        var resume = $store.data.select({"_id": id}).deepClone();
+                        var resume = $.select({"_id": id}).deepClone();
 
                         app.request("addResume", {
                             data: resume
@@ -110,7 +111,7 @@
                         .then(function(data){
                             if (data && data.id){
                                 resume._id = data.id;
-                                $store.data.push(resume);
+                                $.push(resume);
                                 $Sections.resume.list.update();
                             }
                         })

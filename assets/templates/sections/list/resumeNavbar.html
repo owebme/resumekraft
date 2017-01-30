@@ -6,6 +6,10 @@
             Обращения
             <div class="btn-badge">{ get.newItems() }</div>
         </button>
+        <button onClick={ open.likes } onUpdate="none" data-item="likes" class="btn btn-m btn-primary-hover">
+            Мои Like's
+            <!-- <div class="btn-badge">{ get.newItems() }</div> -->
+        </button>
         <button if={ $account.get("plan") != "premium" } onClick={ open.plan } onUpdate="none" data-item="premium" class="btn btn-m btn-primary-hover">Перейти на PREMIUM</button>
         <button onClick={ open.payment } data-item="payment" class="btn btn-m btn-primary">Баланс: { _.numberFormat($account.get('balance'), 1, ",", ",") } ₽</button>
         <a href="/logout" data-item="logout" class="btn btn-m btn-primary-hover">
@@ -35,7 +39,7 @@
             });
         },
         inbox: function(){
-            $Sections.inbox.show();
+            $Sections.inbox.section.show();
         },
         plan: function(){
             $Sections.plan.show("premium");

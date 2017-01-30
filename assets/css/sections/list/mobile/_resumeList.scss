@@ -54,6 +54,11 @@
             @extend .zIndex--1;
         }
     }
+    &__header {
+        @extend .pt-l;
+        @extend .pr-l;
+        @extend .pb-m;
+    }
     &__title {
         @extend .c-blue;
         @extend .fontSize-20;
@@ -65,5 +70,20 @@
         @extend .c-gray;
         font-size:16.5px;
         @extend .mb-s;
+    }
+}
+
+@media screen and (max-height: 568px) {
+    #app {
+        .resume__list-m {
+            &__header {
+                padding-top:25px;
+                padding-bottom:10px;
+            }
+            &__title {
+                font-size:18px;
+                margin-bottom:0px;
+            }
+        }
     }
 }

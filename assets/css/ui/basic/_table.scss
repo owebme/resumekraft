@@ -6,32 +6,35 @@
         border-bottom:solid $smokeLight;
 
         &-item {
+            @extend .plr-xs;
             @extend .text-center;
             @extend .vAlign-middle;
 
-            &:first-child {
-                @extend .pl0;
-                @extend .text-left;
-            }
             &[data-active="true"] {
                 border-bottom:solid $blue;
             }
         }
     }
     &-row {
-        &:hover {
+        .m-no-touch &:hover {
             .table-cell {
                 @extend .c-blue;
             }
         }
     }
     &-cell {
+        @extend .plr-xs;
         @extend .vAlign-middle;
         @extend .transition-default;
         border-bottom:1px solid $smokeLight;
-
-        &:first-child {
-            @extend .pl0;
+    }
+    &[first-cell="text-left"]{
+        .table-header-item,
+        .table-cell {
+            &:first-child {
+                @extend .pl0;
+                @extend .text-left;
+            }
         }
     }
     &-xl {
@@ -49,7 +52,6 @@
         }
         .table-cell {
             @extend .h70;
-            @extend .plr-xss;
             font-size:20px;
             line-height:24px;
         }
@@ -61,7 +63,6 @@
             &-item {
                 font-size:24px;
                 @extend .h60;
-                @extend .plr-xs;
 
                 &[data-active="true"] {
                     border-bottom-width:4px;
@@ -70,7 +71,6 @@
         }
         .table-cell {
             @extend .h60;
-            @extend .plr-xs;
             font-size:18px;
             line-height:22px;
         }
@@ -82,7 +82,6 @@
             &-item {
                 font-size:22px;
                 @extend .h50;
-                @extend .plr-xs;
 
                 &[data-active="true"] {
                     border-bottom-width:3px;
@@ -91,7 +90,25 @@
         }
         .table-cell {
             @extend .h50;
-            @extend .plr-xs;
+            font-size:16px;
+            line-height:20px;
+        }
+    }
+    &-s {
+        .table-header {
+            border-bottom-width:2px;
+
+            &-item {
+                font-size:18px;
+                @extend .h40;
+
+                &[data-active="true"] {
+                    border-bottom-width:2px;
+                }
+            }
+        }
+        .table-cell {
+            @extend .h45;
             font-size:16px;
             line-height:20px;
         }

@@ -1,0 +1,117 @@
+<section-payment-mobile class="oScreen section zIndex-2" data-inner="hidden" data-loading="false" data-show="down" data-open="false">
+
+    <div name="wrapper" class="screenMobile oScreen__content" data-screen="cover">
+
+        <div class="section__loading"></div>
+
+        <div class="screenMobile__navbar" data-gradient="black" data-color="white">
+            <div onClick={ hide } onUpdate="none" class="screenMobile__nav__close"></div>
+            <div class="screenMobile__nav__title">Пополнить баланс</div>
+            <div class="screenMobile__nav__options"></div>
+        </div>
+        <div name="content" class="section-scroll section__content">
+            <div class="willChange-transform">
+                <div class="screenMobile__header" data-header="payment">
+                    <div class="payment-m__arrows">
+                        <div onClick={ change.prevPeriod } class="payment-m__arrow__left"></div>
+                        <div onClick={ change.nextPeriod } class="payment-m__arrow__right"></div>
+                    </div>
+                    <div class="payment-m__header">
+                        <div class="payment__count">
+                            <div class="payment__count__sale">{ $store.paymentPeriod.getSaleByPeriod(period) }</div>
+                            { _.numberFormat($store.paymentPeriod.getPriceByPeriod(period), 0, ",", ",") } <span class="payment__count__rub">₽</span>
+                        </div>
+                        <div class="payment__period__title">
+                            <select onChange={ change.period }>
+                                <option each={ item in $store.paymentPeriod.get() } selected={ parent.period == item.period } value={ item.period }>{ item.title }</options>
+                            </select>
+                            { $store.paymentPeriod.getTitleByPeriod(period) }
+                        </div>
+                    </div>
+                </div>
+                <div class="screenMobile__content" data-content="payment">
+                    <div class="btn btn-xxl btn-success btn-shadow-strong">Пополнить</div>
+                    <div class="payment-m__method">
+                        <div onClick={ change.method } each={ item, i in $store.paymentMethod.get() } no-reorder class="payment-m__method__item" data-previous={ $store.paymentMethod.get( i + 1 ).method == parent.method } data-next={ $store.paymentMethod.get( i - 1 ).method == parent.method } data-item={ item.method } data-active={ parent.method == item.method }>
+                            <div class="payment-m__method__item__title">{ item.title }</div>
+                        </div>
+                    </div>
+                    <div class="payment-m__method__title">
+                        <select onChange={ change.method }>
+                            <option each={ item in $store.paymentMethod.get() } selected={ parent.method == item.method } value={ item.method }>{ item.title }</options>
+                        </select>
+                        Выберите способ оплаты
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.active = false;
+    $.method = "bankcard";
+    $.period = "month1";
+
+    $.on("mount", function(){
+        $.section = new app.plugins.sections($.root, {
+            content: $.wrapper
+        });
+        $afterlag.run(function(){
+            $.scroll = new app.plugins.scroll.content($.content);
+            $.scroll.init();
+        });
+        $.cursor = $store.paymentPeriod.select({"period": $.period});
+    });
+
+    $.show = function(method, period){
+        $.section.show({
+            scroll: $.scroll
+        })
+    };
+
+    $.change = {
+        method: function(e){
+            if (this.item && this.item.method){
+                $.method = this.item.method;
+            }
+            else {
+                $.method = e.currentTarget.value;
+            }
+            app.metrika.set("payment.method", $.method);
+        },
+        period: function(e){
+            if (this.item && this.item.period){
+                $.period = this.item.period;
+            }
+            else {
+                $.period = e.currentTarget.value;
+            }
+            app.metrika.set("payment.period", $.period);
+        },
+        prevPeriod: function(){
+            $.cursor = $.cursor.left();
+            if (!$.cursor) {
+                $.cursor = $store.paymentPeriod.root.down().rightmost();
+            }
+            $.period = $.cursor.get().period;
+        },
+        nextPeriod: function(){
+            $.cursor = $.cursor.right();
+            if (!$.cursor) {
+                $.cursor = $store.paymentPeriod.root.down().leftmost();
+            }
+            $.period = $.cursor.get().period;
+        }
+    };
+
+    $.hide = function(){
+        $.section.hide();
+    };
+
+</script>
+
+</section-payment-mobile>

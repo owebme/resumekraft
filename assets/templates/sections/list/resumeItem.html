@@ -66,6 +66,7 @@
         dropMenu: function(e){
             $DropMenu.show({
                 id: $.opts.item._id,
+                item: $.opts.item,
                 elem: $$(e.currentTarget),
                 offset: {
                     top: 12,
@@ -81,7 +82,7 @@
             })
             .get("_id");
 
-            $Sections.inbox.show(id);
+            $Sections.inbox.section.show(id);
         }
     };
 

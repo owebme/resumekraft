@@ -1,13 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,300,500,700&subset=cyrillic-ext,latin');
 @import 'fonts/Futura/style';
+@import 'fonts/Proxima/style';
 @import 'fonts/Gotham/style';
 @import 'fonts/HelveticaNeue/style';
 
 .fontFamily-roboto {
     font-family:$roboto;
 }
+.fontFamily-system {
+    font-family:$systemFont;
+}
 .fontFamily-futura {
     font-family:$futura;
+}
+.fontFamily-proxima {
+    font-family:$proxima;
 }
 .fontFamily-gotham {
     font-family:$gotham;

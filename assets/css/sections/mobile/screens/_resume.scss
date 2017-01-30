@@ -4,6 +4,21 @@
             &:before,
             &:after {
                 @extend .bg-snow;
+                @extend .content-empty;
+            }
+            &:before {
+                @extend .pos-abs;
+                @extend .t0;
+                @extend .l50;
+                @extend .w150v;
+                @extend .h50p;
+                transform:translate3d(-50%, 0, 0) rotate(-22deg);
+            }
+            &:after {
+                @extend .pos-tl;
+                @extend .w100p;
+                @extend .h30p;
+                transform:translate3d(-50%, 0, 0) rotate(-22deg);
             }
         }
     }

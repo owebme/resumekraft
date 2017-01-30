@@ -163,6 +163,14 @@
 			}
 		}
 	}
+	&[data-inner="show"]{
+		.section__loading {
+			&:after {
+				@extend .opacity-0;
+				transition:opacity 0.08s;
+			}
+		}
+	}
 	&[data-inner="hidden"]{
 		.section__content,
 		.section__inner {
@@ -183,7 +191,7 @@
 		&:after {
 			@extend .content-empty;
 			@include abs_50(58, 58);
-			@extend .willChange-transform;
+			@extend .willChange-tp;
 			@include ui-icon(loading, 58px, 58px);
 		}
 	}

@@ -21,13 +21,16 @@
             if (this.active) return;
 
             var options = {
+                animate: !app.device.isPhone,
+                lineWidth: app.device.isPhone ? 16.5 : 24,
                 colors: ['#0084ff', '#ff2d55', '#ffc43a'],
                 container: "chart__radial__graph",
                 graphItem: "chart__radial__graph",
                 labels: "chart__radial__labels",
                 labelItem: "chart__radial__label",
                 labelTitle: "chart__radial__label__title",
-                labelColor: "chart__radial__label__color"
+                labelColor: "chart__radial__label__color",
+                labelDash: app.device.isPhone ? '&nbsp; &ndash; &nbsp;' : '&nbsp; &mdash; &nbsp;'
             }
             if (this.options) _.extend(options, this.options);
 
@@ -43,7 +46,7 @@
             });
 
             this.$labels = $('<div class="' + options.labels + '">').appendTo(this.scope);
-            this.$labelItem = $('<div class="' + options.labelItem + '"><div class="' + options.labelColor + '"></div>&nbsp; &mdash; &nbsp;<span class="' + options.labelTitle + '"></span></div>');
+            this.$labelItem = $('<div class="' + options.labelItem + '"><div class="' + options.labelColor + '"></div>' + options.labelDash + '<span class="' + options.labelTitle + '"></span></div>');
 
             this.$labels.append(this.$labelItem, this.$labelItem.clone(), this.$labelItem.clone());
 
@@ -91,23 +94,23 @@
         		boxsize = box.offsetWidth,
 
         		options = _options || {},
-        		linewidth = options.linewidth || 24,
+        		lineWidth = this.options.lineWidth,
         		barcolor = options.color || '#fff',
-        		noanimation = options.noanimation || false,
+        		noanimation = !this.options.animate || false,
 
         		from = options.from || 0,
         		to = value,
         		now = {percent: from},
 
         		nowanimating = false,
-        		animateduration = 2,
+        		animateduration = this.options.animate ? 2 : 0,
         		animateoptions = {ease: 'easeInOutCubic', onUpdate: onupdate, onComplete: onend};
 
 
         	canvas.width = canvas.height = boxsize;
         	box.appendChild(canvas);
 
-        	context.lineWidth = linewidth;
+        	context.lineWidth = lineWidth;
         	context.lineCap = 'round';
         	context.strokeStyle = barcolor;
 
@@ -154,12 +157,12 @@
         		// bg
         		context.beginPath();
         		context.globalAlpha = 0.2;
-        		context.arc(boxhalfsize, boxhalfsize, boxhalfsize-linewidth/2, 0, 2*Math.PI);
+        		context.arc(boxhalfsize, boxhalfsize, boxhalfsize-lineWidth/2, 0, 2*Math.PI);
         		context.stroke();
 
         		// bar
         		context.beginPath();
-        		context.arc(boxhalfsize, boxhalfsize, boxhalfsize-linewidth/2, 0-Math.PI/2, (2*Math.PI)*percent/100-Math.PI/2);
+        		context.arc(boxhalfsize, boxhalfsize, boxhalfsize-lineWidth/2, 0-Math.PI/2, (2*Math.PI)*percent/100-Math.PI/2);
         		context.globalAlpha = 1;
         		context.stroke();
 

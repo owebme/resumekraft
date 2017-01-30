@@ -4,9 +4,9 @@
         <div onClick={ hide } class="button__close { opacity-40 : app.device.isPhone }" data-color="{ white : plan != 'premium' }"></div>
     </div>
 
-    <div class="pos-centered w100p zIndex-1">
+    <div class="pos-centered w100p xs-mt--xs zIndex-1">
 
-        <div class="anim anim-scale pos-rel zIndex-1">
+        <div class="anim anim-scale pos-rel xs-mb-xs zIndex-1">
             <div class="plan__screens__select btn-group">
                 <button onClick={ select.plan.free } onUpdate="none" class="btn btn-l { plan == 'free' ? 'btn-primary' : 'btn-primary-hover' }">FREE</button>
                 <button onClick={ select.plan.premium } onUpdate="none" class="btn btn-l { plan == 'premium' ? 'btn-primary' : 'btn-white-hover' } text-uppercase">Premium</button>
@@ -22,7 +22,7 @@
                     <div class="row slider__wrapper">
                         <div each={ item, i in items.premium } class="slider__item col-md-24" data-slide="{ i + 1 }">
                             <div class="row slider__item__inner">
-                                <div class="plan__premium__item__image__wrapper col-md-12">
+                                <div class="plan__premium__item__image__wrapper col-xs-24 col-md-12">
                                     <div class="pl-m pr-l">
                                         <div class="pos-rel">
                                             <img class="tutorial-step1 plan__premium__item__image" src="/assets/images/mac_large_2x.png" data-image="front">
@@ -34,7 +34,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12 text-left c-blackLight whiteSpace-normal">
+                                <div class="hidden-xs col-md-12 text-left c-blackLight whiteSpace-normal">
                                     <div class="pt-m pl-xs pr-m">
                                         <div onClick={ open.overview } onUpdate="none" class="tutorial-step2 plan__premium__gallery" style="background-image:url(/public/images/promo/premium/slide2_1.png)">
                                             <div class="plan__premium__gallery__pointer"></div>
@@ -110,10 +110,12 @@
     $.plan = "free";
 
     $.on("mount", function(){
-        $.slider = {
-            free: new app.plugins.slider($["slider-free"]),
-            premium: new app.plugins.slider($["slider-premium"])
-        }
+        $afterlag.run(function(){
+            $.slider = {
+                free: new app.plugins.slider($["slider-free"]),
+                premium: new app.plugins.slider($["slider-premium"])
+            }
+        });
     });
 
     $.show = function(plan){

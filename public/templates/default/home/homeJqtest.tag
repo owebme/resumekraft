@@ -9,7 +9,7 @@
                     <div class="home__jqtest__container">
                         <small class="c-white mb-l pb-m sm-pb-l">совершенно бесплатно</small>
                         <h1 class="c-white nowrap textShadow-light mb-m pb-xs">Пройти новейший <span class="c-lime">JQ<sup class="pl-xxs">2</sup></span> тест</h1>
-                        <p class="c-white mb-m sm-mb-l">Ответить себе на множество профессиональных вопросов.</p>
+                        <p class="c-white mb-m sm-mb-l">Получить ответы на профессиональные вопросы + рекомендации.</p>
                         <div class="inline">
                             <button class="btn btn-danger btn-upper btn-xl mlr-s">перейти к тесту</button>
                             <button class="btn btn-white-hover-success btn-upper btn-xl mlr-s">смотреть обзор</button>
