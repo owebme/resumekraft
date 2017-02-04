@@ -101,8 +101,9 @@
     };
 
     $.hide = function(){
-        $.active = false;
-        $.update();
+        $.update({
+            active: false
+        });
 
         if ($.viewedList.length){
             $Sections.resume.list.update();

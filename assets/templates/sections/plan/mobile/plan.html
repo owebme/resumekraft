@@ -117,7 +117,7 @@
                                                 </tr>
                                                 <tr class="table-row">
                                                     <td class="table-cell text-left">
-                                                        <div class="pl-xs">Помощь в написании</div>
+                                                        <div class="pl-xs">Рекомендации</div>
                                                     </td>
                                                     <td class="table-cell text-center c-gray fontSize-14 fontWeight-8 text-uppercase">
                                                         нет
@@ -258,7 +258,7 @@
                                                 </tr>
                                                 <tr class="table-row">
                                                     <td class="table-cell text-left">
-                                                        <div class="pl-xs">Помощь в написании</div>
+                                                        <div class="pl-xs">Рекомендации</div>
                                                     </td>
                                                     <td class="table-cell text-center pt-xxs">
                                                         <div class="display-inlineBlock ui-icon-check"></div>
@@ -316,7 +316,7 @@
                                         <div class="fontSize-22 pt25 pb25 nowrap">
                                             Итого к оплате:
                                             <strong if={ period == 'month1' } class="c-blue">369 ₽</strong>
-                                            <strong if={ period == 'year1' } class="c-red">1,769 ₽ &nbsp;<span class="c-blackLight text-strike" data-color="red">4,428 ₽</span></strong>
+                                            <strong if={ period == 'year1' } class="c-green">1,769 ₽ &nbsp;<span class="c-blackLight text-strike" data-color="red">4,428 ₽</span></strong>
                                         </div>
                                         <div class="plan__list__item__footer">
                                             <div class="text-left mlr-auto pt25 pb25 pl-l borderRadius-xl borderWidth-1 borderColor-white borderStyle-solid mb-xs transition-xxs { bg-white : period == 'month1' }">
@@ -325,7 +325,7 @@
                                             <div class="text-left mlr-auto mb30 pt25 pb25 pl-l borderRadius-xl borderWidth-1 borderColor-white borderStyle-solid transition-xxs { bg-white : period == 'year1' }">
                                                 <ui-checkbox commit={ changePay } i="year1" title="Оплатить на 1 год" group="2" color={ period == "year1" ? 'blue' : 'white' } theme="blue" size="xl" value={ period == "year1" }></ui-checkbox>
                                             </div>
-                                            <button class="btn btn-xl2 btn-success">Перейти к оплате</button>
+                                            <button onClick={ open.payment } onUpdate="none" class="btn btn-xl2 btn-success">Перейти к оплате</button>
                                         </div>
                                     </div>
                                 </div>

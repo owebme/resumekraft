@@ -12,7 +12,7 @@
         },
         $device = $("#device"),
         $container = $device.find(".frame-container"),
-        $frame = $('<iframe id="frame" src="/premium/editing?demo=true" frameborder="none"/>').prependTo($container),
+        $frame = $('<iframe id="frame" src="/premium/demo" frameborder="none"/>').prependTo($container),
         $loader = $device.find(".loader"),
         $loaderBg = $loader.find(".loader-bg"),
         $share = $(".button__like"),

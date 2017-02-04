@@ -17,6 +17,14 @@
 
             if (this.active || !this.scope.length) return;
 
+            this.scope.on('touchmove MSPointerMove', function(e){
+        		e.preventDefault();
+        	});
+
+            this.scope.on('dragstart selectstart', function() {
+                return false;
+            });
+
             var options = {
                 disableMouse: false,
                 mouseWheel: true,

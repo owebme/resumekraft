@@ -1,4 +1,4 @@
-module.exports = function(app) {
+module.exports = function() {
 
 	return function(req, res, next){
 
@@ -18,7 +18,7 @@ module.exports = function(app) {
                 datetime: $.datetime
             }
             app.db.collection('accounts').update({
-                "_id": app.ObjectId(id)
+                "_id": app.utils.ObjectId(id)
             },{
                 $inc: {
                     "balance": $.amount

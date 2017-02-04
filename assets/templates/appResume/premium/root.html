@@ -1,4 +1,4 @@
-<root-main class="appResume section" data-color="{ $State.get('color') }" data-font="{ $State.get('font') }" data-mode={ $State.get('mode')} data-app="premium">
+<root-main class="appResume section" data-color="{ $State.get('color') }" data-font="{ $State.get('font') }" data-mode="{ $State.get('mode') }" data-coverletter={ $State.get('mode') !== "editing" && $store.resume.select("sections").get({"name": "coverletter"}).active } data-app="premium">
 
     <section-nav if={ !app.device.isMobile }></section-nav>
 
@@ -31,9 +31,11 @@
 
     $$ = window.jQuery || window.Zepto;
 
-    $resume = $store.resume.get();
+    $resume = app.demo ? $store.resume.prepare.demo() : $store.resume.prepare.premium();
 
-    var mode = app.demo ? app.demo : "editing",
+    this.opts.editing = this.opts.editing == "true" ? "editing" : "view";
+
+    var mode = this.opts.editing,
         config = $store.resume.select("config").deepClone();
 
     config.mode = mode;
@@ -98,6 +100,9 @@
         }
         else if (mode == "menu"){
             $root.root.setAttribute("data-menu", value);
+        }
+        else if (mode == "coverletter"){
+            $root.root.setAttribute("data-coverletter", value);
         }
     });
 

@@ -1,0 +1,111 @@
+.resume__like__empty {
+    @extend .pos-centered;
+    @extend .flex-column-centered;
+    @extend .w100p;
+
+    &[data-animate="true"]{
+        &:before {
+            animation:pulse-heart 1s infinite;
+        }
+    }
+    &:before {
+        @extend .display-block;
+        @extend .content-empty;
+        width:144px;
+        height:157px;
+        @extend .bg-cover;
+        @extend .m0-auto;
+        background-image:url(/assets/images/like_bg.png);
+    }
+    &__text {
+        @extend .c-gray;
+        @extend .fontSize-24;
+        @extend .plr-l;
+        @extend .mt30;
+    }
+}
+.resume__like__status {
+    @include accelerate(true);
+    @extend .pos-bl;
+    @extend .w100p;
+    height:230px;
+    @extend .overflow-hidden;
+
+    &:before {
+        @extend .bg-blueLight;
+        @extend .opacity-30;
+        @extend .content-empty;
+        @extend .pos-centered-h;
+        @extend .b--l;
+        height:105%;
+        width:155vw;
+        @extend .borderRadius-circle;
+    }
+    &__icon {
+        @extend .pos-centered-h;
+        @extend .b--25;
+        @extend .w200;
+        @extend .h180;
+
+        &:before,
+        &:after {
+            @include accelerate();
+            @extend .pos-tl;
+            @extend .content-empty;
+            @extend .bg-white;
+            transform:rotate(-45deg) translate3d(0, 0, 0);
+            transform-origin:0 100%;
+            will-change:left, width, height, border-radius;
+        }
+        &:after {
+        	@extend .l0;
+        	transform:rotate(45deg) translate3d(0, 0, 0);
+        	transform-origin:100% 100%;
+        }
+        .oScreen[data-heart="true"] & {
+            &:before {
+                animation:left-ventricle .7s linear infinite;
+            }
+            &:after {
+                animation:right-ventricle .7s linear infinite;
+            }
+        }
+    }
+    &__count {
+        @extend .pos-centered;
+        @extend .c-pink;
+        font-size:52px;
+        @extend .fontWeight-8;
+        @extend .pb30;
+        @extend .pl-xxs;
+        @extend .zIndex-1;
+    }
+}
+
+@keyframes left-ventricle {
+    0%, 100% {
+        left:100px;
+        width:100px;
+        height:170px;
+        border-radius:50px 50px 0 0;
+    }
+    20%, 40% {
+        left:100px;
+        width:110px;
+        height:180px;
+        border-radius:70px 70px 0 0;
+    }
+}
+@keyframes right-ventricle {
+    0%, 100% {
+        width:100px;
+        height:170px;
+        border-radius:50px 50px 0 0;
+    }
+    20%, 40% {
+        left:-10px;
+        width:110px;
+        height:180px;
+        border-radius:70px 70px 0 0;
+    }
+}

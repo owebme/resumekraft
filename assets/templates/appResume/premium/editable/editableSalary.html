@@ -103,16 +103,7 @@
 
     $.init = function(data){
         if (!data.salary){
-            $.salary = {
-                amount: "50000",
-                currency: "1",
-                worktime: "1",
-                graph: {
-                    active: false,
-                    items: ["50000", "50000", "50000", "50000", "50000", "50000"]
-                },
-                active: false
-            }
+            $.salary = $store.resume.default.salary();
         }
         else {
             $.salary = data.salary;

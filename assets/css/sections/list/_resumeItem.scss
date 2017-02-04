@@ -227,6 +227,7 @@
         @extend .fontSize-22;
         @extend .fontWeight-bold;
         @extend .mb-xs;
+        @include textEllipsis(100%, 56px, 2);
     }
     &__date {
         @extend .fontSize-16;

@@ -1,4 +1,4 @@
-@each $title, $size, $height in (10, 10px, 14px), (12, 12px, 16px), (13, 13px, 15px), (14, 14px, 18px), (16, 16px, 22px), (18, 18px, 24px), (20, 20px, 28px), (22, 22px, 28px), (24, 24px, 32px), (28, 28px, 34px), (30, 30px, 36px), (32, 32px, 38px), (34, 34px, 38px), (38, 38px, 46px), (46, 46px, 46px), (64, 64px, 64px), (72, 72px, 86px){
+@each $title, $size, $height in (10, 10px, 14px), (12, 12px, 16px), (13, 13px, 15px), (14, 14px, 18px), (15, 15px, 20px), (16, 16px, 22px), (18, 18px, 24px), (20, 20px, 28px), (22, 22px, 28px), (24, 24px, 32px), (28, 28px, 34px), (30, 30px, 36px), (32, 32px, 38px), (34, 34px, 38px), (38, 38px, 46px), (46, 46px, 46px), (64, 64px, 64px), (72, 72px, 86px){
     .fontSize-#{$title} {
         font-size:$size;
         line-height:$height;

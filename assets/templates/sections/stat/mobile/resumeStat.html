@@ -41,6 +41,9 @@
                 <div class="chart__radial" name="chartRadialEl"></div>
 
             </div>
+
+            <resume-stat-offer></resume-stat-offer>
+
         </div>
 
     </div>
@@ -71,6 +74,7 @@
                 padding: 0.025
             });
         });
+        $.offer = $.tags["resume-stat-offer"];
     });
 
     $.show = function(id, item){
@@ -103,14 +107,11 @@
                         value: _.random(5, 87)
                     }
                 ]);
+                if ($account.get('plan') != 'premium'){
+                    $.offer.show();
+                }
             }
         })
-    };
-
-    $.chart = {
-        graph: function(){
-
-        }
     };
 
     $.open = {
@@ -146,8 +147,10 @@
         }
     };
 
-    $.hide = function(){
-        $.section.hide();
+    $.hide = function(callback){
+        $.section.hide({
+            afterHide: callback
+        })
     };
 
 </script>

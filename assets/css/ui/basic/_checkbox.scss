@@ -57,7 +57,7 @@
             @extend .willChange-transform;
             @extend .bg-smoke;
             @extend .scale-0;
-            transition:transform .5s $cubic089;
+            transition:transform .35s $cubic089, background-color 0s .35s;
         }
         &:after {
             @extend .content-empty;
@@ -79,6 +79,7 @@
             &:before {
                 @extend .bg-lime;
                 @extend .scale-100;
+                transition:transform .5s $cubic089;
             }
             &:after {
                 @extend .opacity-100;

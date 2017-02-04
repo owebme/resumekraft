@@ -1,4 +1,4 @@
-module.exports = function(app) {
+module.exports = function() {
 
 	return function(req, res, next){
 
@@ -37,7 +37,7 @@ module.exports = function(app) {
 							req.session.user.hash = app.utils.cryptoHash(user.login, user.password, user.accountID);
 
 							app.db.collection('accounts').update({
-				                "_id": app.ObjectId(user._id)
+				                "_id": app.utils.ObjectId(user._id)
 				            },{
 								$set: {
 									"visite": app.moment().format()

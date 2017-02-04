@@ -1,4 +1,4 @@
-module.exports = function(app, url){
+module.exports = function(url){
 
 	var route = app.express.Router();
 
@@ -8,7 +8,7 @@ module.exports = function(app, url){
         if (data.accountId) delete data.accountId;
 
 		app.db.collection('resumes').update({
-			"_id": app.ObjectId(id),
+			"_id": app.utils.ObjectId(id),
 			"accountId": app.accountId
 		},{
 			$set: data
@@ -44,7 +44,7 @@ module.exports = function(app, url){
 	route.delete('/', function(req, res) {
 		app.db.collection('resumes').remove(
         {
-            "_id": app.ObjectId(req.body.id),
+            "_id": app.utils.ObjectId(req.body.id),
 			"accountId": app.accountId
 		},
 		function(err, data){

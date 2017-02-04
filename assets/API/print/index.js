@@ -2,7 +2,7 @@ var fs = require('fs');
 var pdf = require('html-pdf');
 var FileSaver = require('file-saver');
 
-module.exports = function(app) {
+module.exports = function() {
 
 	return function(req, res, next){
 

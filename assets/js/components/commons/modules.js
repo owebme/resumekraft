@@ -57,10 +57,8 @@
 	/* --- Mobile --- */
 	device.isMobile = device.support.touch;
 
-	var params = window.Url && Url.parseQuery();
-
-	if (params && params.demo){
-		app.demo = params.demo;
+	if ($dom.root.attr("demo") == "true"){
+		app.demo = true;
 
 		if ($dom.window.width() < 1025){
 			device.isMobile = true;

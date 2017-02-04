@@ -4,6 +4,8 @@
     @extend .t-l;
     @extend .r-l;
     @extend .zIndex-5;
+    @extend .willChange-transform;
+    @extend .transition-default;
 
     .d-phone & {
         @extend .t-s;

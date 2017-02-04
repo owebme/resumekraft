@@ -25,7 +25,7 @@
 
     $.scroll = $$($["scroll"]);
 
-    $store.resume.init();
+    $resume = $store.resume;
 
     $.on("before-mount", function(){
         $.loader = $.tags["oscreen-loader"];
@@ -43,7 +43,7 @@
         if ($.loading || $.active) return;
 
         $resume.set(
-            options.id ? $store.data.get({ "_id": options.id }) : $resume.take.resumeNew({
+            options.id ? $store.data.get({ "_id": options.id }) : $resume.default.resume({
                 ACCOUNT_ID: $account.get("_id"),
                 plan: "free",
                 template: options.template,

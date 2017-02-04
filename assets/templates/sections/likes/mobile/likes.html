@@ -1,0 +1,118 @@
+<section-likes-mobile class="oScreen section zIndex-2" data-inner="hidden" data-loading="false" data-show="down" data-open="false" data-heart="false">
+
+    <div name="wrapper" class="screenMobile oScreen__content">
+
+        <div class="section__loading"></div>
+
+        <div class="screenMobile__navbar" data-gradient="white">
+            <div onClick={ close } onUpdate="none" class="screenMobile__nav__close"></div>
+            <div class="screenMobile__nav__title maxW-70p text-truncate">Все лайки</div>
+            <div onClick={ open.dropMenu } onUpdate="none" class="screenMobile__nav__options"></div>
+        </div>
+        <div name="content" class="section-scroll section__content">
+            <div class="willChange-transform pt65" style="padding-bottom:230px">
+                <section-likes-list></section-likes-list>
+            </div>
+        </div>
+
+        <div if={ _.isEmpty($store.likes.get()) && $account.get("plan") == "premium" } class="resume__like__empty">
+            <div class="resume__like__empty__text mb35">У вас нет новых лайков</div>
+        </div>
+
+        <div if={ !_.isEmpty($store.likes.get()) && $account.get("plan") == "premium" } class="resume__like__status">
+            <div class="resume__like__status__icon">
+                <div class="resume__like__status__count">{ $store.likes.get().length }</div>
+            </div>
+        </div>
+
+        <likes-offer></likes-offer>
+
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.on("mount", function(){
+        $.section = new app.plugins.sections($.root, {
+            content: $.wrapper
+        });
+        $afterlag.run(function(){
+            $.scroll = new app.plugins.scroll.content($.content);
+            $.scroll.init();
+        });
+        $.offer = $.tags["likes-offer"];
+    });
+
+    $.show = function(id){
+        $.section.show({
+            scroll: $.scroll,
+            afterShow: function(){
+                if ($account.get('plan') != 'premium'){
+                    $.offer.show();
+                }
+                else {
+                    $.root.setAttribute("data-heart", true);
+                }
+            }
+        })
+    };
+
+    $.open = {
+        plan: function(){
+            $.hide();
+            $Sections.plan.show("premium");
+            app.metrika.set("offers.inbox.success", true);
+        },
+        dropMenu: function(e){
+            $DropMenu.show({
+                id: "all",
+                elem: $$(e.currentTarget),
+                pos: "down-left",
+                offset: {
+                    left: 10
+                },
+                isSelect: true,
+                menu: [
+                    {
+                        _id: "all",
+                        title: "Все лайки"
+                    },
+                    {
+                        _id: "1",
+                        title: "Web-Designer, Art-director, Illustrator"
+                    },
+                    {
+                        _id: "2",
+                        title: "Менеджер по продажам"
+                    }
+                ],
+                callback: function(id){
+                    console.dir(id);
+                }
+            });
+        }
+    };
+
+    $.close = function(){
+        if ($.offer && $account.get('plan') != 'premium'){
+            $.offer.hide();
+            app.metrika.set("offers.likes.hide", true);
+        }
+        else {
+            $.hide();
+        }
+    };
+
+    $.hide = function(callback){
+        $.section.hide({
+            afterHide: function(){
+                $.root.setAttribute("data-heart", false);
+                if (_.isFunction(callback)) callback();
+            }
+        })
+    };
+
+</script>
+
+</section-likes-mobile>

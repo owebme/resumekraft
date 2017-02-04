@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-module.exports = function(app){
+module.exports = function(){
 
 	return function(req, res, next){
 

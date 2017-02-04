@@ -20,6 +20,8 @@
         <section-inbox-mobile></section-inbox-mobile>
         <section-inbox-content-mobile></section-inbox-content-mobile>
 
+        <section-likes-mobile></section-likes-mobile>
+
         <section-profile-mobile></section-profile-mobile>
         <section-profile-data-mobile></section-profile-data-mobile>
         <photo-upload></photo-upload>
@@ -46,8 +48,9 @@
     $root = this;
     $rootScope = $$(this.root);
 
-    // $store.inbox.set([]);
+    $store.inbox.set([]);
     // $store.data.set([]);
+    $store.likes.set([]);
 
     this.on("before-mount", function(){
         this.init();
@@ -112,6 +115,9 @@
             //     result: $root.tags["section-jqtest"].tags["jqtest-result"]
             // },
             plan: $root.tags["section-plan-mobile"],
+            likes: {
+                section: $root.tags["section-likes-mobile"]
+            },
             inbox: {
                 section: $root.tags["section-inbox-mobile"],
                 content: $root.tags["section-inbox-content-mobile"]

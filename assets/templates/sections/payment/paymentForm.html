@@ -1,0 +1,31 @@
+<section-payment-form class="display-block">
+
+    <form method="POST" action="https://money.yandex.ru/quickpay/confirm.xml">
+        <input type="hidden" name="receiver" value="{ app.config.payment.yamoney }">
+        <input type="hidden" name="formcomment" value="{ get.comment() }">
+        <input type="hidden" name="short-dest" value="{ get.comment() }">
+        <input type="hidden" name="label" value="{ opts.accountId }">
+        <input type="hidden" name="quickpay-form" value="shop">
+        <input type="hidden" name="targets" value="Пополнение баланса">
+        <input type="hidden" name="sum" value="{ $store.paymentPeriod.getPriceByPeriod(opts.period) }" data-type="number">
+        <input type="hidden" name="need-fio" value="false">
+        <input type="hidden" name="need-email" value="false">
+        <input type="hidden" name="need-phone" value="false">
+        <input type="hidden" name="need-address" value="false">
+        <input type="hidden" name="paymentType" value="{ $store.paymentMethod.getValueByMethod(opts.method) }">
+        <button type="submit" href="http://yandex.ru" onClick={ parent.success } onUpdate="none" class="{ opts.selector }">{ opts._title }</button>
+    </form>
+
+<script>
+
+    var $ = this;
+
+    $.get = {
+        comment: function(){
+            return 'ResumeKraft: пополнение баланса ' + $store.paymentPeriod.getTitleByPeriod($.opts.period);
+        }
+    };
+
+</script>
+
+</section-payment-form>

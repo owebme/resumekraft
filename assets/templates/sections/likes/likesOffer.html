@@ -1,0 +1,46 @@
+<likes-offer class="resume__like__empty { active ? 'display-block' : 'display-none' }" data-animate={ active }>
+
+    <div class="resume__like__empty__text">Для получения лайков на ваши резюме нужен <strong class="c-blue">Premium</strong> аккаунт</div>
+    <div onClick={ open.plan } onUpdate="none" class="btn btn-xxl btn-success btn-shadow mt25">Подключить</div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    $.on("mount", function(){
+        if (app.device.isMobile){
+            $scope.on("swipeDown", function(){
+                $.hide();
+            });
+        }
+    });
+
+    $.show = function(){
+        $afterlag.run(function(){
+            $.update({
+                active: true
+            })
+        });
+        app.metrika.set("offers.likes.show", true);
+    };
+
+    $.hide = function(){
+        $.parent.hide(function(){
+            $.update({
+                active: false
+            })
+        })
+    };
+
+    $.open = {
+        plan: function(){
+            $.hide();
+            $Sections.plan.show("premium");
+            app.metrika.set("offers.likes.success", true);
+        }
+    };
+
+</script>
+
+</likes-offer>

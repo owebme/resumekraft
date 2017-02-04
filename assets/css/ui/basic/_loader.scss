@@ -6,6 +6,11 @@
     @extend .zIndex-102;
     @extend .willChange-opacity;
 
+    @each $color in ($green, $emerald, $orange, $red, $violet, $violetLight, $brown, $pink){
+        &[data-color="#{$color}"]{
+            background-color:$color;
+        }
+    }
     &-spinner {
         @include accelerate(true);
     	@include abs_50(80, 80);

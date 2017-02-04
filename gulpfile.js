@@ -282,6 +282,8 @@ gulp.task('private.plugins', function() {
 	    'assets/js/plugins/slider.js',
 	    'assets/js/plugins/styles.js',
 	    'assets/js/plugins/screens.js',
+		'assets/js/plugins/eventsEmitter.js',
+		'assets/js/plugins/marquee.js',
 	    'assets/js/plugins/marquee.static.js',
 	    'assets/js/plugins/marquee.effects.js',
 	    'assets/js/plugins/sections.js',
@@ -289,6 +291,7 @@ gulp.task('private.plugins', function() {
 	    'assets/js/plugins/metrika.js',
 	    'assets/js/plugins/scroll/scroll.Fix.js',
 	    'assets/js/plugins/scroll/scroll.Animate.js',
+		'assets/js/plugins/scroll/scroll.Slider.js',
 	    'assets/js/plugins/scroll/scroll.Content.js',
 	    'assets/js/plugins/scroll/scroll.Parallax.js',
 	    'assets/js/plugins/tutorial/welcome.js',
@@ -405,6 +408,62 @@ gulp.task('premium.app', function() {
 		.pipe(gulp.dest('./assets/js/premium'));
 });
 
+gulp.task('premium.ui.templates', function() {
+	return gulp.src(['assets/templates/appResume/premium/ui/*.html',
+		'assets/templates/appResume/premium/ui/**/*.html',
+		'assets/templates/ui/slider.html',
+		'assets/templates/ui/switcher.html',
+		'assets/templates/ui/checkbox.html',
+		'assets/templates/ui/input.html',
+		'assets/templates/ui/textarea.html',
+		'assets/templates/ui/select.html',
+		'assets/templates/ui/checkbox.html',
+		'assets/templates/ui/icons/icon-city.html',
+		'assets/templates/ui/icons/icon-feedback.html',
+		'assets/templates/ui/icons/icon-phone.html',
+		'assets/templates/ui/icons/icon-email.html',
+		'assets/templates/ui/icons/icon-skype.html',
+		'assets/templates/ui/icons/icon-arrow.html',
+		'assets/templates/ui/icons/icon-bubble.html'])
+		.pipe(riot())
+		.pipe(concat('templates.ui.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest('./assets/js/premium'));
+});
+
+gulp.task('premium.control.templates', function() {
+	return gulp.src(['assets/templates/appResume/premium/control/*.html'])
+		.pipe(riot())
+		.pipe(concat('templates.control.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest('./assets/js/premium'));
+});
+
+gulp.task('premium.sections.templates', function() {
+	return gulp.src(['assets/templates/appResume/premium/sections/*.html',
+		'assets/templates/appResume/premium/sections/**/*.html'])
+		.pipe(riot())
+		.pipe(concat('templates.sections.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest('./assets/js/premium'));
+});
+
+gulp.task('premium.editable.templates', function() {
+	return gulp.src(['assets/templates/appResume/premium/editable/*.html'])
+		.pipe(riot())
+		.pipe(concat('templates.editable.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest('./assets/js/premium'));
+});
+
+gulp.task('premium.components.templates', function() {
+	return gulp.src(['assets/templates/appResume/premium/components/*.html'])
+		.pipe(riot())
+		.pipe(concat('templates.components.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest('./assets/js/premium'));
+});
+
 gulp.task('premium.templates', function() {
 	return gulp.src(['assets/templates/ui/*.html',
 		'assets/templates/ui/icons/*.html',
@@ -496,7 +555,7 @@ gulp.task('watch', function() {
 	gulp.watch([
 		'assets/css/style.scss',
 		'assets/css/**/*.scss'
-	], {debounceDelay: 1000}, gulp.parallel('private.css'));
+	], {debounceDelay: 1000}, gulp.parallel('premium.css'));
 
 	gulp.watch([
 		'assets/css/**/templates/style.scss',
@@ -536,7 +595,7 @@ gulp.task('watchPublic', function() {
 gulp.task('css.build', gulp.series('private.css', 'premium.css', 'public.css', gulp.parallel('private.css.largeScreen', 'private.css.smallScreen', 'premium.css.largeScreen', 'premium.css.smallScreen', 'templates.basic', 'templates.basic.view')));
 
 gulp.task('private.js.build', gulp.parallel('private.libs', 'private.app', 'private.templates', 'ui.templates', 'private.commons', 'private.plugins'));
-gulp.task('premium.js.build', gulp.parallel('premium.app', 'premium.templates'));
+gulp.task('premium.js.build', gulp.parallel('premium.app', 'premium.templates', 'premium.ui.templates', 'premium.editable.templates', 'premium.components.templates', 'premium.sections.templates', 'premium.control.templates'));
 
 gulp.task('build', gulp.series(
 	gulp.parallel(

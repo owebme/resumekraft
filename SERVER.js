@@ -23,7 +23,7 @@ var config          = require('./libs/config'),
 //     api[m] = require(m);
 // });
 
-var app = express();
+global.app = express();
 app.express = express;
 app.config = config;
 app.riot = riot;
@@ -37,7 +37,6 @@ app.db = require('./libs/db/mongoose')(log, config);
 app.mysql = require('./libs/db/mysql')(log, config);
 app.log = log;
 app.errHandler = require('./libs/errHandler');
-app.ObjectId = require('mongodb').ObjectID;
 app.utils = require('./libs/utils');
 underscore.extend(app.utils, underscore);
 app.moment = require('moment');
@@ -51,7 +50,7 @@ app.set('view cache', false);
 app.swig = swig;
 
 // require all the riot tags
-require('./public/templates')(app);
+require('./public/templates')();
 
 app.use(favicon(path.join(__dirname, '/', 'favicon.ico')));
 app.use(logger('dev'));
@@ -83,14 +82,17 @@ app.use(function(req, res, next) {
     };
     app.appClient.device = app.device;
     app.appClient.user = req.session.user;
-    app.accountId = req.session.user ? app.ObjectId(req.session.user.accountID) : app.ObjectId('588658bf07f3cad6d6f3aaa1');
+    app.account = {
+        plan: "premium"
+    }
+    app.accountId = req.session.user ? app.utils.ObjectId(req.session.user.accountID) : app.utils.ObjectId('588658bf07f3cad6d6f3aaa1');
     app.device.type = req.query.debug ? req.query.debug : app.device.type;
     app.clientIP = app.utils.getClientAddress(req);
     next();
 });
 
-require('./public/controllers')(app);
-require('./public/router')(app);
+require('./public/controllers')();
+require('./public/router')();
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

@@ -1,4 +1,4 @@
-module.exports = function(app) {
+module.exports = function() {
 
 	return function(req, res, next){
 
@@ -34,7 +34,7 @@ module.exports = function(app) {
 			                .toArray(function(err, data){
 			                    app.errHandler(res, err, data, callback);
 			                });
-	                    },
+	                    }
 	        		},
 	                function(err, results){
 						result.data = results.data;

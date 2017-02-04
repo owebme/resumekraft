@@ -1,7 +1,7 @@
 var fs = require('fs');
 var pdf = require('html-pdf');
 
-module.exports = function(app){
+module.exports = function(){
 
 	return function(req, res, next){
 

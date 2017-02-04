@@ -1,17 +1,19 @@
-<inbox-offer class="oScreen { showAnim : active } zIndex-5 anim-group1" data-color="darkLight" data-open="{ active }">
+<inbox-offer class="oScreen { showAnim : active } zIndex-5 { anim-group1 : !app.device.isPhone }" data-color="darkLight" data-open="{ active }">
 
     <div onClick={ close } onUpdate="none" class="button__close opacity-50" data-color="white"></div>
 
-    <div class="pos-centered">
-        <div class="container pt-xl">
-            <div class="row mb-l">
-                <h1 class="c-white mb-xl anim anim-scale">{ $store.inbox.get().length ? 'Продолжить' : 'Хотите' } получать приглашения?</h1>
-                <div class="pt-xs anim anim-scale anim-delay-m">
-                    <button if={ !$store.inbox.get().length } onClick={ open.plan } onUpdate="none" class="btn btn-xxl btn-white-hover">Да, хочу</button>
-                    <button if={ $store.inbox.get().length } onClick={ open.payment } onUpdate="none" class="btn btn-xxl btn-white-hover-success">Перейти на Premium</button>
+    <div class="pos-centered { w100p : app.device.isPhone }">
+        <div class="container pt-xl xs-pt0">
+            <div class="row mb-l xs-mb0">
+                <div class="col-xs-24 col-md-15 centered">
+                    <div class="{ app.device.isPhone ? 'fontSize-38 fontWeight-8' : 'h1' } c-white anim anim-scale mb-xl xs-mb-xs xs-plr-m">{ $store.inbox.get().length ? 'Продолжить' : 'Хотите' } получать отклики на ваши резюме?</div>
+                    <div class="pt-xs anim anim-scale anim-delay-{ app.device.isPhone ? 'xs' : 'm' }">
+                        <button if={ !$store.inbox.get().length } onClick={ open.plan } onUpdate="none" class="btn btn-xxl { app.device.isPhone ? 'btn-success btn-shadow-strong' : 'btn-white-hover' }">Да, хочу</button>
+                        <button if={ $store.inbox.get().length } onClick={ open.payment } onUpdate="none" class="btn btn-xxl { app.device.isPhone ? 'btn-success btn-shadow' : 'btn-success' }">Перейти на Premium</button>
+                    </div>
                 </div>
             </div>
-            <div class="row pt-m mb-l">
+            <div class="hidden-xs row pt-m mb-l">
                 <div class="col-md-12">
                     <div class="plr-xl">
                         <h3 class="c-yellow pl-xl anim anim-scale anim-delay-xs">Просматривать статистику посещений резюме и многое другое</h3>
@@ -23,11 +25,17 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="hidden-xs row">
                 <div class="anim anim-scale anim-delay-l">
-                    <p class="c-white fontSize-20 opacity-60">Для получения обращений вам нужен <strong>Premium</strong> аккаунт</p>
+                    <p class="c-white fontSize-20 opacity-60">Для получения откликов вам нужен <strong>Premium</strong> аккаунт</p>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="visible-xs w100p pos-centered-h b-m plr-m c-white fontSize-20 opacity-80">
+        <div class="anim anim-bt-ease anim-delay-m">
+            Для получения откликов вам нужен <strong class="c-lime text-uppercase">Premium</strong> аккаунт
         </div>
     </div>
 
@@ -35,6 +43,14 @@
 
     var $ = this,
     $scope = $$($.root);
+
+    $.on("mount", function(){
+        if (app.device.isMobile){
+            $scope.on("swipeDown", function(){
+                $.close();
+            });
+        }
+    });
 
     $.show = function(){
         $afterlag.run(function(){
@@ -51,7 +67,11 @@
     };
 
     $.hide = function(){
-        $.parent.hide();
+        $.parent.hide(function(){
+            $.update({
+                active: false
+            })
+        })
     };
 
     $.open = {

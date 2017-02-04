@@ -1,4 +1,4 @@
-<resume-template1 class="screens screens-phone container resume template1" data-coverletter={ $State.get('mode') !== "editing" && $store.resume.select("sections").get({"name": "coverletter"}).active }>
+<resume-template1 class="screens screens-phone container resume template1">
 
     <div if={ !app.device.isPhone } class="hidden-xs hidden-sm overlay col-sm-6"></div>
     <div if={ !app.device.isPhone } class="hidden-xs hidden-sm main-line col-sm-6"></div>
@@ -137,6 +137,12 @@
         </div>
     </section>
 
+    <section class="screen" data-section="likes" if={ app.device.isPhone && $State.get('mode') !== "editing" && $store.resume.get("config", "likes", "active") && !app.isLiked }>
+        <div class="screen__content">
+            <ux-likes></ux-likes>
+        </div>
+    </section>
+
 <script>
 
     var $ = this;
@@ -175,16 +181,15 @@
             _.each(this.tags, function(item) {
                 if (item.root && item.root.tagName && item.root.tagName.toLowerCase().match(/^ux-/)){
                     var name = item.root.tagName.toLowerCase().match(/^ux-(.+)/)[1];
-                    if (name != "name" && name != "text" && name != "contacts" && name != "feedback" && name != "contacts-content"){
+                    if (name != "name" && name != "text" && name != "contacts" && name != "feedback" && name != "contacts-content" && name != "likes"){
                         if (!$store.resume.get(name)) $$(item.root).remove();
                         else $$(item.root).children().unwrap();
                     }
                 }
             });
-            this.el.find(".screen").each(function(){
-                var $screen = $$(this);
-                if ($screen.find(".screen__content").html().length < 3){
-                    $screen.remove();
+            _.each($store.resume.get("sections"), function(item){
+                if (item.screen && item.name != "contacts" && item.name != "feedback" && item.name != "likes" && !$store.resume.get(item.name)){
+                    $Resume.el.find(".screen[data-section=" + item.name + "]").remove();
                 }
             });
         }
@@ -194,7 +199,7 @@
 
         if (app.device.isPhone){
             $afterlag.run(function(){
-                $.screens = new app.plugins.screens($.el, {
+                $.screens = new app.plugins.screens($Resume.el, {
                     dataAttr: "section"
                 });
                 $.screens.init();
@@ -207,6 +212,24 @@
                 })();
 
                 $root.trigger("ready");
+
+                if ($State.get('mode') !== "editing" && $store.resume.select("sections").get({"name": "coverletter"}).active){
+                    var show = true,
+                        screens = $Resume.el.find(".screen");
+
+                    screens.on('show', function(){
+                        var section = this.getAttribute("data-section");
+
+                        if (section == "coverletter" && !show){
+                            show = true;
+                            $root.trigger("mode", "coverletter", show);
+                        }
+                        else if (section != "coverletter" && show){
+                            show = false;
+                            $root.trigger("mode", "coverletter", show);
+                        }
+                    });
+                }
             });
         }
         else {
@@ -246,14 +269,14 @@
                         }
                     }
                     else {
-                        if (app.device.isPhone){
+                        if (app.device.isPhone && $Resume.screens){
                             $Resume.screens.refresh();
                         }
                     }
                     $Control.sections.refresh();
                 }
                 else {
-                    if (app.device.isPhone){
+                    if (app.device.isPhone && $Resume.screens){
                         $Resume.screens.refresh();
                     }
                 }
@@ -296,6 +319,7 @@
         $.screenColor = [];
 
         setTimeout(function(){
+            if (app.device.isPhone && !$Resume.screens) return;
             if (app.device.isPhone){
                 var screens = $Resume.screens.scope.data('marquee').screens;
             }

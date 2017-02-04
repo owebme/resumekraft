@@ -4,14 +4,14 @@
         height:498px;
 
         .d-phone & {
-            height:442px;
+            @extend .h100v;
         }
         &__select {
             @extend .mb-s;
 
             .d-phone & {
                 @extend .pos-centered-h;
-                margin-top:-15px;
+                @extend .mt35;
             }
         }
     }
@@ -21,14 +21,68 @@
         @extend .w100p;
         @extend .visibility-hidden;
 
+        .d-phone & {
+            @extend .h100v;
+        }
         &[data-active="true"]{
             @extend .visibility-visible;
-        }
-        .slider[name="slider-premium"]{
-            .slider__wrapper {
-                height:498px;
+
+            .plan__text__mobile {
+                @extend .opacity-100;
+                @extend .transform-default;
             }
         }
+        &[data-screen="free"]{
+            .d-phone & {
+                @include abs();
+            }
+        }
+        .slider[name="slider-free"]{
+            .d-phone & {
+                @extend .pos-centered-v;
+                @extend .w100p;
+                height:326px;
+                @extend .pt-m;
+            }
+        }
+        .slider[name="slider-premium"]{
+            .d-phone & {
+                @extend .pos-tl;
+                @extend .w100v;
+                @extend .h100v;
+                @extend .m0;
+                @extend .p0;
+            }
+            .slider__wrapper {
+                height:498px;
+
+                .d-phone & {
+                    @include abs();
+                }
+            }
+            .slider__item {
+                .d-phone & {
+                    @include abs();
+                }
+            }
+        }
+    }
+    &__text__mobile {
+        @extend .pos-abs;
+        @extend .b0;
+        @extend .l0;
+        @extend .w100p;
+        @extend .fontWeight-bold;
+        @extend .plr-l;
+        @extend .pb35;
+        @extend .whiteSpace-normal;
+        @extend .text-center;
+        @extend .zIndex-1;
+        @extend .opacity-0;
+        @extend .pointerEvents-none;
+        @extend .willChange-tp;
+        transform:translate3d(0, 20px, 0);
+        transition:opacity 0.5s $cubic345 0.45s, transform 0.5s $cubic345 0.45s;
     }
     &__basic {
         &__item {
@@ -59,9 +113,6 @@
 
                 .d-phone & {
                     transition:all 0.2s;
-                }
-                .btn {
-                    font-size:18.5px;
                 }
             }
             &:hover {
@@ -179,6 +230,18 @@
                     left:50%;
                     transform:translate3d(-50%, -20px, 0) scale(0.95);
                 }
+                &__mobile {
+                    @extend .pos-centered;
+                    @extend .w100p;
+                    height:58vh;
+                    @extend .mt-m;
+                    @extend .ml-xs;
+
+                    img {
+                        @extend .display-block;
+                        max-height:58vh;
+                    }
+                }
             }
             &__button {
                 @include accelerate();
@@ -189,9 +252,19 @@
                 @extend .opacity-0;
                 @extend .willChange-tp;
                 transform:translate3d(0, 80px, 0) scale(0.9);
-                transition:all 0.4s;
+                transition:opacity 0.4s, transform 0.4s;
 
                 .slider__item.current & {
+                    @extend .opacity-100;
+                    @extend .transform-default;
+                    transition:opacity 0.4s, transform 0.4s;
+                }
+                .d-phone & {
+                    @extend .pos-centered-v;
+                    @extend .b-auto;
+                    @extend .pb0;
+                    @extend .mt-s;
+                    @extend .ml-xss;
                     @extend .opacity-100;
                     @extend .transform-default;
                 }

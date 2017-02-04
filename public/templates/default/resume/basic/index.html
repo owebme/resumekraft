@@ -7,7 +7,7 @@
 * {margin:0; padding:0}
 body {
 	background:#fff;
-	min-height:{{ width * 1.285 }}px;
+	{% if width %}min-height:{{ width * 1.285 }}px;{% endif %}
 }
 .stamp {
 	display:block;

@@ -18,6 +18,8 @@
                 </div>
             </div>
 
+            <inbox-offer></inbox-offer>
+
         </div>
 
     </div>
@@ -36,11 +38,17 @@
             $.scroll = new app.plugins.scroll.content($.content);
             $.scroll.init();
         });
+        $.offer = $.tags["inbox-offer"];
     });
 
     $.show = function(id){
         $.section.show({
-            scroll: $.scroll
+            scroll: $.scroll,
+            afterShow: function(){
+                if ($account.get('plan') != 'premium'){
+                    $.offer.show();
+                }
+            }
         })
     };
 
@@ -90,8 +98,10 @@
         }
     };
 
-    $.hide = function(){
-        $.section.hide();
+    $.hide = function(callback){
+        $.section.hide({
+            afterHide: callback
+        })
     };
 
 </script>

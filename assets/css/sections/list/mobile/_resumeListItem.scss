@@ -84,6 +84,16 @@
             will-change:background-color;
             transition:background-color 0.08s;
         }
+        &__like {
+            @extend .flex-centered;
+            @extend .c-white;
+            @extend .fontWeight-8;
+            @extend .fontSize-22;
+            @extend .opacity-70;
+            @extend .pb-xs;
+            @extend .mt-xs;
+            @include ui-icon("like_fill_pink", 50px, 50px);
+        }
         &__menu {
             @include accelerate();
             @include ui-icon("more_v", 30px, 30px);

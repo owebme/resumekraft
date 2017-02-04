@@ -1,11 +1,11 @@
 <resume-sendmail class="oScreen zIndex-3 c-white { showAnim-group1 : active }" data-color="blue" data-open={ active }>
 
-    <div onClick={ hide } onUpdate="none" class="anim-group1 anim-rl" data-duration="l" delay-show="m">
-        <div class="button__close opacity-70" data-color="white"></div>
+    <div onClick={ hide } onUpdate="none" class="anim-group1 anim-rl" data-duration="{ app.device.isPhone ? 'm' : 'l' }" delay-show="m">
+        <div class="button__close opacity-80" data-color="white"></div>
     </div>
 
     <div class="pos-centered { w100p : app.device.isPhone }">
-        <div name="area" class="container anim-group1 anim-bt-ease" duration-show="m" duration-hide={ success ? 'l' : 'm' } delay-show="xs">
+        <div name="area" class="container anim-group1 anim-bt-ease" duration-show="{ app.device.isPhone ? 's' : 'm' }" duration-hide={ success ? 'l' : 'm' } delay-show="xs">
             <div class="row">
                 <div name="wrapper" class="col-xs-24 col-sm-14 col-md-12 col-lg-10 centered xs-pb-l">
                     <div name="icon" class="mb30 xs-mb-m transition-l transition-fn-cubic345 { trY-xl : success }">

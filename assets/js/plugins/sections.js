@@ -21,14 +21,14 @@
                 if (options.scroll){
                     options.scroll.refresh();
                     options.scroll.scrollTop();
-                }                
+                }
                 return;
             }
 
             this.scope.setAttribute("data-open", true);
             this.scope.setAttribute("data-loading", true);
 
-            if (options.beforeShow){
+            if (_.isFunction(options.beforeShow)){
                 options.beforeShow();
             }
             _.onEndTransition(this.content, function(){
@@ -58,7 +58,7 @@
                 }
                 _this.scope.setAttribute("data-loading", false);
 
-                if (options.afterShow){
+                if (_.isFunction(options.afterShow)){
                     options.afterShow();
                 }
             });
@@ -70,13 +70,13 @@
 
             this.scope.setAttribute("data-open", false);
 
-            if (options.beforeHide){
+            if (_.isFunction(options.beforeHide)){
                 options.beforeHide();
             }
             _.onEndTransition(this.content, function(){
                 _this.scope.setAttribute("data-inner", "hidden");
 
-                if (options.afterHide){
+                if (_.isFunction(options.afterHide)){
                     options.afterHide();
                 }
             });

@@ -27,6 +27,11 @@
         transition-timing-function:$cubic40;
         transition-duration:.4s;
     }
+    &-tb-ease {
+        transform:translate3d(0, -5vw, 0);
+        transition-timing-function:$cubic345;
+        transition-duration:.5s;
+    }
     &-bt-ease {
         transform:translate3d(0, 5vw, 0);
         transition-timing-function:$cubic345;

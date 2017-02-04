@@ -4,6 +4,8 @@ var crypto = require('crypto');
 var sha1Hex = require('sha1-hex');
 var md5 = require('md5');
 var iconv = require('iconv-lite');
+var ObjectId = require('mongodb').ObjectID;
+var isObjectId = require('mongodb-objectid-helper').isObjectId;
 
 var utils = {
 
@@ -42,6 +44,15 @@ var utils = {
 
 	newId: function(){
 		return String(Math.round(new Date().getTime() / 1000));
+	},
+
+	ObjectId: function(id){
+		return id ? ObjectId(id) : id;
+	},
+
+	isObjectId: function(id){
+		//return id ? /^[0-9a-fA-F]{24}$/.test(id) : id;
+		return id ? isObjectId(id) : id;
 	},
 
 	getClientAddress: function(req){

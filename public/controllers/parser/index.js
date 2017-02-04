@@ -3,7 +3,7 @@ var validator = require('validator');
 var fs = require('fs');
 var to_json = require('xmljson').to_json;
 
-module.exports = function(app){
+module.exports = function(){
 
     return function(req, res, next){
 

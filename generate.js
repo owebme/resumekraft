@@ -4,17 +4,20 @@ var utils = require(libs + 'utils');
 var validator = require('validator');
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
-var ACCOUNT_ID = ObjectId('58785acdfabeed550a9b8b65');
+var ACCOUNT_ID = ObjectId('588658bf07f3cad6d6f3aaa1');
 var resume = require(libs + 'resume')(ACCOUNT_ID, validator.toDate("2017-01-12 13:21"), validator.toDate("2017-01-12 14:21"));
 
 MongoClient.connect(config.get('mongodb:uri'), function(err, db) {
 
-	db.collection('accounts').drop();
-	db.collection('accounts').insert(accounts);
+	// db.collection('accounts').drop();
+	// db.collection('accounts').insert(accounts);
 	// db.collection('resumes').drop();
 	// db.collection('resumes').insert([resume]);
 	// db.collection('inbox').drop();
 	// db.collection('inbox').insert(inbox);
+
+	db.collection('likes').drop();
+	db.collection('likes').insert(likes);
 });
 
 var accounts = [
@@ -54,6 +57,33 @@ var accounts = [
         create: validator.toDate("2017-01-12 11:21"),
 		update: validator.toDate("2017-01-12 12:21"),
         visite: validator.toDate("2017-01-12 12:21")
+	}
+];
+
+var likes = [
+	{
+		_id: "343435325435",
+		accountId: ACCOUNT_ID,
+		resumeId: ObjectId("588becda9f1df3915186166b"),
+		ua: '',
+		ip: '',
+		create: validator.toDate("2017-01-09 12:00")
+	},
+	{
+		_id: "343435345435",
+		accountId: ACCOUNT_ID,
+		resumeId: ObjectId("588becda9f1df3915186566b"),
+		ua: '',
+		ip: '',
+		create: validator.toDate("2017-01-10 12:00")
+	},
+	{
+		_id: "2343242342111112",
+		accountId: ACCOUNT_ID,
+		resumeId: ObjectId("588becda9f1df3915186566b"),
+		ua: '',
+		ip: '',
+		create: validator.toDate("2017-01-11 11:00")
 	}
 ];
 

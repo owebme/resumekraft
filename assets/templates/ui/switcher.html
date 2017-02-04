@@ -62,6 +62,10 @@
         }, 5);
     };
 
+    $.on("unmount", function(){
+        $scope.off();
+    });
+
 </script>
 
 </ui-switcher>

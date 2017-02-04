@@ -13,7 +13,8 @@
     $.on("mount", function(){
         if (!app.device.isPhone){
             $afterlag.run(function(){
-                $.contactsOffset = $Resume.el.find(".screen[data-section='contacts']").offset().top;
+                var $item = $Resume.el.find(".screen[data-section='contacts']");
+                $.contactsOffset = $item ? $item.offset().top : null;
             });
         }
     });
@@ -23,6 +24,8 @@
             $Resume.screens.nav("feedback");
         }
         else {
+            if (!$.contactsOffset) return;
+
             var delta = Math.abs($.contactsOffset - app.$dom.document.scrollTop()),
             duration = delta / 5;
             duration = duration < 500 ? 500 : duration;

@@ -1,0 +1,27 @@
+<section-likes-list if={ !_.isEmpty($store.likes.get()) } class="section">
+
+    <div if={ $store.data.get({"_id": item[0].resumeId}) } each={ item, i in get.items() } no-reorder class="resume__list-m__item">
+        <div class="col-xs-5 flex-centered resume__list-m__item__cell">
+            <div class="resume__list-m__item__cover" data-color={ $store.data.get({"_id": item[0].resumeId}).config.color }>{ $store.data.get({"_id": item[0].resumeId}).post[0] }</div>
+        </div>
+        <div class="col-xs-12 flex-row-left-center resume__list-m__item__cell text-left">
+            <div class="resume__list-m__item__title">{ $store.data.get({"_id": item[0].resumeId}).post }</div>
+        </div>
+        <div class="col-xs-7 flex-centered resume__list-m__item__cell">
+            <div class="resume__list-m__item__like">{ item.length }</div>
+        </div>
+    </div>
+
+<script>
+
+    this.get = {
+        items: function(){
+            return _.toArray(_.groupBy($store.likes.get(), function(item){
+                return item.resumeId;
+            }))
+        }
+    }
+
+</script>
+
+</section-likes-list>

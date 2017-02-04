@@ -1,19 +1,21 @@
-module.exports = function(app){
+module.exports = function(){
 
     app.controllers = {};
 
+    app.controllers.resume = require('./resume');
+
     app.controllers.blog = {
-        index: require('./blog')(app),
-        content: require('./blog/content')(app)
+        index: require('./blog')(),
+        content: require('./blog/content')()
     }
 
-    app.controllers.parser = require('./parser')(app);
+    app.controllers.parser = require('./parser')();
 
     app.controllers.auth = {
-        login: require('./auth/login')(app),
-        register: require('./auth/register')(app)
+        login: require('./auth/login')(),
+        register: require('./auth/register')()
     }
 
-    app.controllers.payment = require('./payment')(app);
+    app.controllers.payment = require('./payment')();
 
 }

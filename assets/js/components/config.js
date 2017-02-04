@@ -11,10 +11,6 @@ app.config = {
         method: "addLog",
         report: true
     },
-    events: {
-        method: "addHistoryEvents",
-        report: true
-    },
     metrika: {
         active: true,
         report: {

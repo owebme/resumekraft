@@ -6,6 +6,11 @@
 	0%, 100% {transform:translate3d(0, 0, 0) scale3d(1.2, 1.2, 1)}
 	50% {transform:translate3d(0, 0, 0) scale3d(1, 1, 1)}
 }
+@keyframes pulse-heart {
+	10% {
+        transform: scale(1.1);
+    }
+}
 @keyframes pulse {
     0% {
         transform: rotate(0deg) translate3d(0, -3px, 0) skew(1deg);

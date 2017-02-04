@@ -3,8 +3,211 @@ $store.resume = _.extend(new Baobab({},
         autoCommit: true
     }),
     {
-        init: function(){
-            $resume = $store.resume;
+        prepare: {
+            demo: function(){
+                if ($store.demo) $store.resume.set($store.demo);
+                return $store.resume.get();
+            },
+            premium: function(){
+                $store.resume.set(_.deepExtend($store.resume.get(), {
+                    salary: $store.resume.default.salary(),
+                    tags: null,
+                    appeal: null,
+                    works: null,
+                    skills: null,
+                    education: null,
+                    courses: null,
+                    hobby: null,
+                    coverletter: {
+                        text: null,
+                        color: "1"
+                    },
+                    likes: null,
+                    sections: [
+                        {
+                            name: "salary",
+                            title: "Желаемая зарплата",
+                            short: "Зарплата",
+                            control: true,
+                            active: true
+                        },
+                        {
+                            name: "tags",
+                            title: "Ключевые навыки",
+                            short: "Навыки",
+                            control: true,
+                            active: true
+                        },
+                        {
+                            name: "appeal",
+                            title: "Заголовок-обращение",
+                            short: "Обращение",
+                            control: true,
+                            active: true
+                        },
+                        {
+                            name: "about",
+                            title: "О себе текст",
+                            short: "О себе",
+                            control: true,
+                            active: true
+                        },
+                        {
+                            name: "social",
+                            title: "Аккаунты в соц. сетях",
+                            short: "Соц. ссылки",
+                            control: true,
+                            active: true
+                        },
+                        {
+                            name: "works",
+                            title: "Мои проекты",
+                            short: "Проекты",
+                            screen: true,
+                            control: true,
+                            active: true
+                        },
+                        {
+                            name: "skills",
+                            title: "Основные компетенции",
+                            short: "Навыки",
+                            screen: true,
+                            control: true,
+                            active: true
+                        },
+                        {
+                            name: "education",
+                            title: "Образование",
+                            short: "Учеба",
+                            screen: true,
+                            control: true,
+                            active: true
+                        },
+                        {
+                            name: "courses",
+                            title: "Курсы",
+                            short: "Курсы",
+                            screen: true,
+                            control: true,
+                            active: true
+                        },
+                        {
+                            name: "languages",
+                            title: "Владение языками",
+                            short: "Языки",
+                            screen: true,
+                            control: true,
+                            active: true
+                        },
+                        {
+                            name: "jobs",
+                            title: "Работа в компаниях",
+                            short: "Карьера",
+                            screen: true,
+                            control: true,
+                            active: true
+                        },
+                        {
+                            name: "hobby",
+                            title: "Мои хобби",
+                            short: "Хобби",
+                            screen: true,
+                            control: true,
+                            active: true
+                        },
+                        {
+                            name: "contacts",
+                            title: "Контакты",
+                            short: "Контакты",
+                            screen: true,
+                            control: true,
+                            active: true
+                        },
+                        {
+                            name: "feedback",
+                            title: "Обратная связь",
+                            short: "Обратная связь",
+                            screen: true,
+                            control: true,
+                            active: true
+                        },
+                        {
+                            name: "coverletter",
+                            title: "Сопроводительное письмо",
+                            short: "Письмо",
+                            screen: true,
+                            control: false,
+                            active: false
+                        }
+                    ],
+                    config: {
+                        color: "#0084ff",
+                        font: "futura",
+                        photo: {
+                            minWidth: 440,
+                            maxHeight: 620,
+                            noise: false
+                        },
+                        likes: {
+                            active: true,
+                            count: true
+                        }
+                    }
+                }));
+
+                return $store.resume.get();
+            }
+        },
+        default: {
+            resume: function(params){
+                return {
+                    accountId: params.ACCOUNT_ID,
+                    public: true,
+                    plan: params.plan,
+                    template: params.template ? params.template : "1",
+                    lang: "ru",
+                    post: null,
+                    photo: params.photo,
+                    create: moment().format(),
+                    update: moment().format(),
+                    commons: {
+                        name: params.name,
+                        surname: params.surname,
+                        gender: params.gender,
+                        birthday: params.birthday,
+                        contacts: params.contacts
+                    },
+                    salary: $store.resume.default.salary(),
+                    about: null,
+                    social: null,
+                    education: null,
+                    languages: null,
+                    jobs: null,
+                    percent: 33,
+                    config: {
+                        photo: {
+                            minWidth: 440,
+                            maxHeight: 620
+                        },
+                        pdf: {
+                            logotype: params.plan == "free" ? true : false
+                        },
+                        stat: false
+                    }
+                }
+            },
+            salary: function(){
+                return {
+                    amount: "50000",
+                    currency: "1",
+                    worktime: "1",
+                    graph: {
+                        active: false,
+                        items: ["50000", "50000", "50000", "50000", "50000", "50000"]
+                    },
+                    active: true
+                }
+            }
         },
         take: {
             birthday: {
@@ -114,55 +317,6 @@ $store.resume = _.extend(new Baobab({},
                 color: function(){
                     return $store.coverletter.getColorById($store.resume.get('coverletter', 'color'));
                 }
-            },
-            resumeNew: function(options){
-                return {
-                        accountId: options.ACCOUNT_ID,
-                        public: true,
-                        plan: options.plan,
-                        template: options.template ? options.template : "1",
-                        lang: "ru",
-                        post: null,
-                        photo: options.photo,
-                        create: moment().format(),
-                		update: moment().format(),
-                        commons: {
-                            name: options.name,
-                            surname: options.surname,
-                            gender: options.gender,
-                            birthday: options.birthday,
-                            contacts: options.contacts
-                        },
-                        salary: {
-                            amount: "50000",
-                            currency: "1",
-                            worktime: "1",
-                            graph: {
-                                active: false,
-                                items: null
-                            },
-                            active: true
-                        },
-                        about: null,
-                        social: null,
-                        education: null,
-                        languages: null,
-                        jobs: null,
-                        percent: 33,
-                        config: {
-                            color: "#0084ff",
-                            font: "futura",
-                            photo: {
-                                minWidth: 440,
-                                maxHeight: 620,
-                                noise: false
-                            },
-                            pdf: {
-                                logotype: options.plan == "free" ? true : false
-                            },
-                            stat: false
-                        }
-                    };
             }
         },
         placeholder: {

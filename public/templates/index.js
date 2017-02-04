@@ -1,7 +1,7 @@
 var path = require('path'),
     glob = require('glob');
 
-module.exports = function(app) {
+module.exports = function() {
 
     glob(path.join(__dirname, '/commons/', '**', '*.tag'), function(err, tags) {
         tags.forEach(function(tag) {

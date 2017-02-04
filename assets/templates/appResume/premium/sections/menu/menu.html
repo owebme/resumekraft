@@ -8,13 +8,25 @@
 
 <script>
 
-    var $ = this;
+    var $ = this,
+    $scope = $$($.root);
 
     $.active = false;
 
     $.on("before-mount", function(){
         $.sections = $.tags['menu-sections'];
         $.items = app.device.isMobile ? null : $.tags['menu-items'];
+    });
+
+    $.on("mount", function(){
+        if (app.device.isPhone){
+            $scope.on('touchmove MSPointerMove', function(e){
+                e.preventDefault();
+            });
+            $scope.on('dragstart selectstart', function() {
+                return false;
+            });
+        }
     });
 
     $.show = function(section){

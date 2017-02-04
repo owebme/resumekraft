@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="screenMobile__content" data-content="payment">
-                    <div class="btn btn-xxl btn-success btn-shadow-strong">Пополнить</div>
+                    <section-payment-form selector="btn btn-xxl btn-success btn-shadow-strong" _title="Оплатить" accountId={ $account.get('_id') } method={ method } period={ period }></section-payment-form>
                     <div class="payment-m__method">
                         <div onClick={ change.method } each={ item, i in $store.paymentMethod.get() } no-reorder class="payment-m__method__item" data-previous={ $store.paymentMethod.get( i + 1 ).method == parent.method } data-next={ $store.paymentMethod.get( i - 1 ).method == parent.method } data-item={ item.method } data-active={ parent.method == item.method }>
                             <div class="payment-m__method__item__title">{ item.title }</div>
@@ -67,10 +67,22 @@
         $.cursor = $store.paymentPeriod.select({"period": $.period});
     });
 
-    $.show = function(method, period){
-        $.section.show({
-            scroll: $.scroll
-        })
+    $.show = function(period){
+        if (period){
+            $.section.show({
+                tag: $,
+                scroll: $.scroll,
+                update: {
+                    period: period
+                }
+            })
+        }
+        else {
+            $.section.show({
+                scroll: $.scroll
+            })
+        }
+        app.metrika.set("payment.show", true);
     };
 
     $.change = {
@@ -98,6 +110,7 @@
                 $.cursor = $store.paymentPeriod.root.down().rightmost();
             }
             $.period = $.cursor.get().period;
+            app.metrika.set("payment.period", $.period);
         },
         nextPeriod: function(){
             $.cursor = $.cursor.right();
@@ -105,11 +118,20 @@
                 $.cursor = $store.paymentPeriod.root.down().leftmost();
             }
             $.period = $.cursor.get().period;
+            app.metrika.set("payment.period", $.period);
         }
+    };
+
+    $.success = function(){
+        app.metrika.set("payment.success", true, {
+            force: true
+        });
+        return true;
     };
 
     $.hide = function(){
         $.section.hide();
+        app.metrika.set("payment.hide", true);
     };
 
 </script>

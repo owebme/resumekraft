@@ -42,7 +42,7 @@
 
             .d-phone & {
                 @extend .animation-none;
-                transition:opacity 0.35s $cubic345, transform 0.35s $cubic345;
+                transition:opacity 0.4s $cubic345, transform 0.4s $cubic345;
             }
         }
         .largeSlides.showSlides & {
@@ -122,7 +122,7 @@
         .d-phone & {
             div + .previous,
             .current + div {
-                @extend .opacity-0;
+                @extend .opacity-01;
                 @extend .scale-40;
             }
         }

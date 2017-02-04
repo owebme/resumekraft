@@ -227,7 +227,7 @@
                     width:167px;
                     height:167px;
                     @extend .trY-l;
-                    background-image:url(/assets/images/resume/works_white.svg);
+                    @extend .work-icon;
                 }
             }
             .job-items {
@@ -236,8 +236,11 @@
                     width:192px;
                     height:192px;
                     @extend .trY-m;
-                    background-image:url(/assets/images/resume/jobs_white.svg);
+                    @extend .job-icon;
                 }
+            }
+            &[data-section="commons"]{
+                min-height:1050px;
             }
             &[data-section="commons"],
             &[data-section="contacts"]{
@@ -358,6 +361,44 @@
             }
         }
     }
+    .job-empty,
+    .work-empty {
+        @extend .zIndex-1;
+    }
+    .work-empty:before {
+        @extend .content-empty;
+        @extend .pos-centered;
+        width:585px;
+        height:585px;
+        @extend .work-icon;
+        @extend .opacity-10;
+        @extend .mt--xxs;
+    }
+    .job-empty:before {
+        @extend .content-empty;
+        @extend .pos-centered;
+        width:585px;
+        height:585px;
+        @extend .job-icon;
+        @extend .opacity-10;
+        @extend .mt--xxs;
+        @extend .ml-m;
+    }
+    .work-empty-text,
+    .job-empty-text {
+        @extend .pos-centered;
+        @extend .mt60;
+        @extend .pt-xl;
+        @extend .w70p;
+        @extend .c-white;
+        font-size:20px;
+        @extend .lineHeight-xxl;
+        @extend .text-center;
+
+        .d-phone & {
+            @extend .display-none;
+        }
+    }
     .screen__inner {
         @extend .pl-l;
         @extend .pr-m;
@@ -475,6 +516,14 @@
         .screen__inner {
             @extend .plr0;
         }
+    }
+    .work-icon {
+        @extend .bg-cover;
+        background-image:url(/assets/images/resume/works_white.svg);
+    }
+    .job-icon {
+        @extend .bg-cover;
+        background-image:url(/assets/images/resume/jobs_white.svg);
     }
 }
 

@@ -1,24 +1,24 @@
-module.exports = function(app){
+module.exports = function(url){
 
 	// Initialize
-	app.get('/private/api/data/init', app.checkAuth(), require('./data/init')(app));
+	app.get(url + '/data/init', app.checkAuth(), require('./data/init')());
 
 	// Profile data
-	app.put('/private/api/data/profile', app.checkAuth(), require('./data/profile')(app));
+	app.put(url + '/data/profile', app.checkAuth(), require('./data/profile')());
 
 	// Upload photo profile & resume
-	app.put('/private/api/upload/photo', app.checkAuth(), require('./upload/photo')(app));
+	app.put(url + '/upload/photo', app.checkAuth(), require('./upload/photo')());
 
-	// Resume create
-	require('./resume')(app, '/private/api/resume');
+	// Resume private API
+	require('./resume')(url + '/resume');
 
 	// Convert PDF resume
-	app.post('/private/api/convert/pdf', app.checkAuth(), require('./upload/pdf')(app));
+	app.post(url + '/convert/pdf', app.checkAuth(), require('./upload/pdf')());
 
 	// Report metrika
-	app.post('/private/api/metrika', app.checkAuth(), require('./metrika')(app));
+	app.post(url + '/metrika', app.checkAuth(), require('./metrika')());
 
 	// Report log
-	app.post('/private/api/log', app.checkAuth(), require('./log')(app));
+	app.post(url + '/log', app.checkAuth(), require('./log')());
 
 }

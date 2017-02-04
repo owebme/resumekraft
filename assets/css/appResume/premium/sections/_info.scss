@@ -210,7 +210,7 @@
         @extend .t-xs;
         @extend .r-xs;
         @extend .btn-active;
-        @include ui-icon(close_fill_gray, 25px, 25px);
+        @include ui-icon(close_fill_gray, 28px, 28px);
 
         .d-phone & {
             @extend .display-none;

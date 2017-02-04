@@ -105,7 +105,7 @@
             $dom.window.on('resize.screens', function(){
                 _this.scope.scrollTop(0);
 
-                if (state == "focus" && $focus){
+                if (_this.options.static && state == "focus" && $focus){
                     setTimeout(function(){
                         centered(app.sizes.height / 1.3, 0);
                     }, 150);
@@ -113,19 +113,21 @@
                 _this.refresh();
         	});
 
-            this.scope.on("focus blur", "input[type='text'], textarea", function(e){
-                if (e.type == "focusin" || e.type == "focus"){
-                    $focus = $(e.target);
+            if (_this.options.static){
+                this.scope.on("focus blur", "input[type='text'], textarea", function(e){
+                    if (e.type == "focusin" || e.type == "focus"){
+                        $focus = $(e.target);
 
-                    state = "focus";
+                        state = "focus";
 
-                    centered(app.sizes.height / 3.5, 200);
-                }
-                else {
-                    state = "blur";
-                }
-                _this.scope.scrollTop(0);
-            });
+                        centered(app.sizes.height / 3.5, 200);
+                    }
+                    else {
+                        state = "blur";
+                    }
+                    _this.scope.scrollTop(0);
+                });
+            }
 
             var centered = function(delta, duration){
                 var top = $focus.offset().top;

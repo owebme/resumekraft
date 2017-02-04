@@ -20,7 +20,10 @@
     $scope = $$($.root);
 
     $.active = false;
-    $.max = _.max($resume.salary.graph.items);
+
+    $.on("before-mount", function(){
+        $.max = _.max($resume.salary.graph.items ? $resume.salary.graph.items : 50000);
+    });
 
     $.on("mount", function(){
         if (app.device.isMobile){
