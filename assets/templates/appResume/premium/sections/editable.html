@@ -41,7 +41,7 @@
             app.$dom.window.on("scroll", function(){
                 $.scrollPos = app.$dom.document.scrollTop();
             });
-        }      
+        }
     });
 
     $.on("editTarget", function(active){
@@ -282,7 +282,7 @@
         },
 
         onCancel: function(){
-            if (this["title_data"]) this["title_data"].value = this.store && this.store.title ? this.store.title : $store.resume.placeholder[$.component.name].title;
+            if (this["title_data"]) this["title_data"].value = this.store && this.store.title ? this.store.title : $store.resume.placeholder[$.component.name].title();
             if (this["text_data"]) this["text_data"].value = this.store && this.store.text ? this.store.text : '';
             $Editable.hide();
         },
@@ -293,7 +293,7 @@
             }
             if (this.callback) {
                 if (this.data && this.data.items){
-                    if (this.data.items.length && this.data.items[0].title){
+                    if (this.data.items.length && _.isObject(this.data.items[0])){
                         for (var i = 0; i < this.data.items.length; i++){
                             if (!_.clean(this.data.items[i].title) || this.data.items[i].title && this.data.items[i].value !== undefined && !_.clean(this.data.items[i].value)){
                                 this.data.items.splice(i, 1);

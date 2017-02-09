@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="home__testdrive__container col-md-22 col-lg-17 centered">
-                <h2>Хотите потрогать и протестировать премиальное резюме на разных платформах?</h2>
+                <h2>Хотите прикоснуться и протестировать премиальное резюме на разных платформах?</h2>
                 <div class="row premium-devices-icons">
                     <div class="col-sm-8 anim anim-lr anim-delay-xs" data-delta="s">
                         <icon-device-phones color="white" size="xl"></icon-device-phones>

@@ -11,8 +11,8 @@
                     <a href="/partnership/" class="nav__menu__item hidden-sm hidden-md" data-active="{ opts.section == 'partnership' }">Компаниям</a>
                     <a href="/premium/" class="nav__menu__item hidden-sm hidden-md" data-active="{ opts.section == 'premium' }">Premium</a>
                     <a href="/jq-test/" class="nav__menu__item hidden-sm hidden-md" data-active="{ opts.section == 'jq-test' }">JQ-тест 2.0</a>
+                    <a href="/vacancies/" class="nav__menu__item hidden-sm hidden-md" data-active="{ opts.section == 'vacancies' }">Вакансии</a>
                     <a href="/blog/" class="nav__menu__item" data-active="{ opts.section == 'blog' }">Блог</a>
-                    <a href="/resume-writing/" class="nav__menu__item" data-active="{ opts.section == 'resume-writing' }">Помощь</a>
                 </div>
             </div>
             <div class="nav__buttons nav__cell col-xs-16 col-sm-8 col-md-6 { opts.user ? 'col-lg-5' : 'col-lg-4' }">

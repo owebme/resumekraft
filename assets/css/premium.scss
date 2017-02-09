@@ -37,8 +37,9 @@
 @import 'modules/alert';
 @import 'modules/oScreen';
 @import 'modules/screens';
-// @import 'modules/tutorial';
+@import 'modules/tutorial';
 @import 'modules/uploadPhoto';
+@import 'modules/userPhoto';
 
 // Sections
 @import 'sections/sections';
@@ -59,12 +60,15 @@
 @import 'appResume/premium/ui/hobby';
 @import 'appResume/premium/ui/editing';
 @import 'appResume/premium/ui/noise';
+@import 'appResume/premium/ui/likes';
 @import 'appResume/premium/ui/help';
+@import 'appResume/premium/ui/percentage';
 
 // Resume control
 @import 'appResume/premium/control/fonts';
 @import 'appResume/premium/control/colors';
 @import 'appResume/premium/control/sections';
+@import 'appResume/premium/control/public';
 
 // Resume sections
 @import 'appResume/premium/sections/menu/menu';
@@ -75,6 +79,8 @@
 @import 'appResume/premium/sections/sendmail';
 @import 'appResume/premium/sections/salaryGraph';
 @import 'appResume/premium/sections/editable';
+@import 'appResume/commons/ui/buttonSave';
+@import 'appResume/commons/sections/finish';
 
 // Resume templates
 @import 'appResume/premium/templates/colors';

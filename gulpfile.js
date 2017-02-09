@@ -277,25 +277,8 @@ gulp.task('private.commons', function() {
 });
 
 gulp.task('private.plugins', function() {
-	return gulp.src(['assets/js/plugins/chartRadial.js',
-	    'assets/js/plugins/animate.js',
-	    'assets/js/plugins/slider.js',
-	    'assets/js/plugins/styles.js',
-	    'assets/js/plugins/screens.js',
-		'assets/js/plugins/eventsEmitter.js',
-		'assets/js/plugins/marquee.js',
-	    'assets/js/plugins/marquee.static.js',
-	    'assets/js/plugins/marquee.effects.js',
-	    'assets/js/plugins/sections.js',
-	    'assets/js/plugins/share.js',
-	    'assets/js/plugins/metrika.js',
-	    'assets/js/plugins/scroll/scroll.Fix.js',
-	    'assets/js/plugins/scroll/scroll.Animate.js',
-		'assets/js/plugins/scroll/scroll.Slider.js',
-	    'assets/js/plugins/scroll/scroll.Content.js',
-	    'assets/js/plugins/scroll/scroll.Parallax.js',
-	    'assets/js/plugins/tutorial/welcome.js',
-	    'assets/js/plugins/tutorial/resumeFree.js'])
+	return gulp.src(['assets/js/plugins/**/*.js',
+	    'assets/js/plugins/*.js'])
 		.pipe(concat('plugins.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest('./assets/js'));
@@ -310,24 +293,10 @@ gulp.task('private.app', function() {
 		'assets/js/components/commons/afterlag.js',
 		'assets/js/components/config.js',
 		'assets/js/components/fetch.js',
-		'assets/js/plugins/chartRadial.js',
-	    'assets/js/plugins/animate.js',
-	    'assets/js/plugins/slider.js',
-	    'assets/js/plugins/styles.js',
-	    'assets/js/plugins/marquee.js',
-	    'assets/js/plugins/screens.js',
-	    'assets/js/plugins/scroll/scroll.Fix.js',
-	    'assets/js/plugins/scroll/scroll.Progress.js',
-	    'assets/js/plugins/scroll/scroll.Animate.js',
-	    'assets/js/plugins/tutorial/selectResumePremium.js',
-		'assets/js/store/resume.js',
-		'assets/js/store/fonts.js',
-		'assets/js/store/colors.js',
-		'assets/js/store/salary.js',
-		'assets/js/store/education.js',
-		'assets/js/store/languages.js',
-		'assets/js/store/month.js',
-		'assets/js/store/hobby.js'])
+		'assets/js/components/tutorial/welcome.js',
+		'assets/js/components/tutorial/resume/free/interface.js',
+		'assets/js/store/*.js',
+		'assets/js/store/**/*.js'])
 		.pipe(concat('app.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest('./assets/js'));
@@ -368,41 +337,22 @@ gulp.task('private.app.build', function() {
 
 gulp.task('premium.app', function() {
 	return gulp.src(['assets/js/components/commons/app.js',
-		'assets/js/components/commons/common.js',
-		// 'assets/js/components/commons/request.js',
-		'assets/js/components/commons/modules.js',
-		'assets/js/components/commons/utils.js',
 		'assets/js/components/commons/afterlag.js',
-		'assets/js/components/help/resume/premium/photo.js',
-		'assets/js/components/help/resume/premium/post.js',
-		'assets/js/components/help/resume/premium/salary.js',
-		'assets/js/components/help/resume/premium/tags.js',
-		'assets/js/components/help/resume/premium/about.js',
-		'assets/js/components/help/resume/premium/social.js',
-		'assets/js/components/help/resume/premium/works.js',
-		'assets/js/components/help/resume/premium/skills.js',
-		'assets/js/components/help/resume/premium/education.js',
-		'assets/js/components/help/resume/premium/courses.js',
-		'assets/js/components/help/resume/premium/languages.js',
-		'assets/js/components/help/resume/premium/jobs.js',
-		'assets/js/components/config.js',
-		// 'assets/js/components/fetch.js',
+		'assets/js/components/commons/common.js',
+		'assets/js/components/commons/utils.js',
+		'assets/js/components/commons/request.js',
+		'assets/js/components/commons/modules.js',
+		'assets/js/components/help/resume/premium/*.js',
+		'assets/js/components/i18n/i18n.js',
 		'assets/js/plugins/eventsEmitter.js',
-	    'assets/js/plugins/marquee.js',
+		'assets/js/plugins/marquee.js',
+	    'assets/js/plugins/marquee.effects.js',
 	    'assets/js/plugins/screens.js',
 	    'assets/js/plugins/styles.js',
 	    'assets/js/plugins/scroll/scroll.Slider.js',
 	    'assets/js/plugins/scroll/scroll.Content.js',
-		'assets/js/store/resume.js',
-		'assets/js/store/fonts.js',
-		'assets/js/store/colors.js',
-		'assets/js/store/salary.js',
-		'assets/js/store/education.js',
-		'assets/js/store/languages.js',
-		'assets/js/store/month.js',
-		'assets/js/store/hobby.js',
-		'assets/js/store/coverletter.js',
-		'assets/js/store/contactsPrimary.js'])
+		'assets/js/store/*.js',
+		'assets/js/store/**/*.js'])
 		.pipe(concat('app.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest('./assets/js/premium'));
@@ -411,6 +361,7 @@ gulp.task('premium.app', function() {
 gulp.task('premium.ui.templates', function() {
 	return gulp.src(['assets/templates/appResume/premium/ui/*.html',
 		'assets/templates/appResume/premium/ui/**/*.html',
+		'assets/templates/appResume/commons/**/*.html',
 		'assets/templates/ui/slider.html',
 		'assets/templates/ui/switcher.html',
 		'assets/templates/ui/checkbox.html',
@@ -418,6 +369,7 @@ gulp.task('premium.ui.templates', function() {
 		'assets/templates/ui/textarea.html',
 		'assets/templates/ui/select.html',
 		'assets/templates/ui/checkbox.html',
+		'assets/templates/ui/icons/social/*.html',
 		'assets/templates/ui/icons/icon-city.html',
 		'assets/templates/ui/icons/icon-feedback.html',
 		'assets/templates/ui/icons/icon-phone.html',
@@ -477,8 +429,7 @@ gulp.task('premium.templates', function() {
 
 gulp.task('premium.app.build', function() {
 	return gulp.src(['assets/js/premium/templates.js',
-		'assets/js/premium/app.js',
-		'assets/js/init.js'])
+		'assets/js/premium/app.js'])
 		.pipe(concat('app.build.js'))
 		.pipe(gulp.dest('./assets/js/premium'));
 });
@@ -555,7 +506,7 @@ gulp.task('watch', function() {
 	gulp.watch([
 		'assets/css/style.scss',
 		'assets/css/**/*.scss'
-	], {debounceDelay: 1000}, gulp.parallel('premium.css'));
+	], {debounceDelay: 1000}, gulp.parallel('private.css'));
 
 	gulp.watch([
 		'assets/css/**/templates/style.scss',

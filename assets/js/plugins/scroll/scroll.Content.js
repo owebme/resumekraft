@@ -17,13 +17,13 @@
 
             if (this.active || !this.scope.length) return;
 
-            this.scope.on('touchmove MSPointerMove', function(e){
-        		e.preventDefault();
-        	});
-
-            this.scope.on('dragstart selectstart', function() {
-                return false;
-            });
+            // this.scope.on('touchmove MSPointerMove', function(e){
+        	// 	e.preventDefault();
+        	// });
+            //
+            // this.scope.on('dragstart selectstart', function() {
+            //     return false;
+            // });
 
             var options = {
                 disableMouse: false,
@@ -179,7 +179,7 @@
 
                         state = "focus";
 
-                        centered(app.sizes.height / 3.5, 200);
+                        centered(app.sizes.height / 2.5, 400);
                     }
                     else {
                         state = "blur";
@@ -190,7 +190,7 @@
 
             var centered = function(delta, duration){
                 var top = $focus.offset().top;
-                if (top < 0){
+                if (top < delta){
                     scroll.scrollBy(0, (-top + delta), duration, IScroll.utils.ease.cubicOut);
                 }
                 else if (top > delta){

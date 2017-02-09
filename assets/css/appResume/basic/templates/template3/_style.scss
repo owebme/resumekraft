@@ -55,12 +55,12 @@
     }
     .t-header-name.small {
         font:102px/110px 'PFSquareLight';
-        letter-spacing:-4.7px;
+        letter-spacing: -0.045em;
         text-transform:uppercase;
     }
     .t-header-name.big {
         font:110px/110px 'NeoSansProMedium';
-        letter-spacing:-8px;
+        letter-spacing: -0.072em;
         text-transform:uppercase;
     }
     #t-header-contacts {
@@ -86,7 +86,7 @@
     #t-container-post {
         color:#646464;
         font:44px/50px "NeoSansProMedium";
-        letter-spacing:-1.4px;
+        letter-spacing: -0.03em;
         padding-left:47%;
         padding-right:50px;
         margin-bottom:41px;
@@ -128,7 +128,7 @@
         left:0;
         color:#646464;
         font:24px/25px 'NeoSansProMedium';
-        letter-spacing:-0.2px;
+        letter-spacing: -0.007em;
         padding-left:40px;
         text-transform:uppercase;
     }
@@ -245,7 +245,7 @@
     }
     .t-container-desc-title {
         font:23px/29px 'NeoSansProRegular';
-        letter-spacing:-0.2px;
+        letter-spacing: -0.007em;
         margin-bottom:4px;
     }
     .t-container-desc-name {

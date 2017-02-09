@@ -50,7 +50,7 @@
 
     $store.inbox.set([]);
     // $store.data.set([]);
-    $store.likes.set([]);
+    // $store.likes.set([]);
 
     this.on("before-mount", function(){
         this.init();
@@ -91,7 +91,7 @@
             },
             resume: {
                 list: $root.tags["resume-list-mobile"],
-                // edit: $root.tags["resume-edit"],
+                edit: $root.tags["resume-edit"],
                 stat: $root.tags["resume-stat-mobile"],
                 select: $root.tags["resume-select"],
                 section: $root.tags["resume-section"],

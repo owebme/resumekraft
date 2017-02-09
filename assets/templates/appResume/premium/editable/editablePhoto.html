@@ -4,7 +4,7 @@
 
     <div class="title title-main" if={ uploaded && title }>{ title }</div>
 
-    <div class="row image-editor">
+    <div class="row image-editor { app.device.isPhone ? 'pos-abs-full m0 overflow-hidden' : null }" style={ app.device.isPhone ? 'height:' + app.sizes.height + "px" : null }>
         <div class="{ uploaded ? 'col-xs-24 col-sm-15 col-md-13 col-lg-12' : 'col-md-24 col-lg-20 pt-l xs-pt0 text-center' }">
             <div class="editable__photo cropit-preview { editable__photo--empty : !uploaded }">
                 <input name="upload" type="file" class="editable__photo__input cropit-image-input { display-none : uploaded }">
@@ -24,8 +24,8 @@
                     <input type="range" class="editable__photo__slider cropit-image-zoom-input">
                 </div>
                 <div class="nowrap-md">
-                    <button onClick={ onCancel } class="btn btn-l btn-upper sm-mb-m" type="button">Отменить</button>
-                    <button onClick={ onSave } class="btn btn-l btn-upper ml-xs sm-ml0 { btn-loading : saved }" type="button">Сохранить</button>
+                    <button onClick={ onCancel } onUpdate="none" class="btn btn-l btn-upper sm-mb-m" type="button">Отменить</button>
+                    <button onClick={ onSave } onUpdate="none" class="btn btn-l btn-upper ml-xs sm-ml0" type="button">Сохранить</button>
                 </div>
             </div>
         </div>
@@ -98,24 +98,29 @@
         $.hide();
     };
 
-    $.onSave = function(){
+    $.onSave = function(e){
         if ($.saved) return;
 
         $.saved = true;
 
-        var imageData = $.imageEditor.cropit(
-            'export',
-            $.config.export
-        );
+        var $btn = $$(e.currentTarget);
+
+        $btn.addClass("btn-loading");
 
         setTimeout(function(){
-            $.update({
-                saved: false
-            })
-            $.hide();
-        }, 300);
+            var imageData = $.imageEditor.cropit(
+                'export',
+                $.config.export
+            );
 
-        $.callback(imageData);
+            setTimeout(function(){
+                $.saved = false;
+                $btn.removeClass("btn-loading");
+                $.hide();
+            }, 300);
+
+            $.callback(imageData);
+        }, 5);
     };
 
     $.hide = function(){

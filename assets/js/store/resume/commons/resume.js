@@ -8,152 +8,153 @@ $store.resume = _.extend(new Baobab({},
                 if ($store.demo) $store.resume.set($store.demo);
                 return $store.resume.get();
             },
-            premium: function(){
-                $store.resume.set(_.deepExtend($store.resume.get(), {
-                    salary: $store.resume.default.salary(),
-                    tags: null,
-                    appeal: null,
-                    works: null,
-                    skills: null,
-                    education: null,
-                    courses: null,
-                    hobby: null,
-                    coverletter: {
-                        text: null,
-                        color: "1"
-                    },
-                    likes: null,
-                    sections: [
-                        {
-                            name: "salary",
-                            title: "Желаемая зарплата",
-                            short: "Зарплата",
-                            control: true,
-                            active: true
+            premium: function(mode){
+                if (mode == "editing"){
+                    $store.resume.set(_.deepExtend({
+                        tags: null,
+                        appeal: null,
+                        works: null,
+                        skills: null,
+                        education: null,
+                        courses: null,
+                        hobby: null,
+                        coverletter: {
+                            text: null,
+                            color: "1"
                         },
-                        {
-                            name: "tags",
-                            title: "Ключевые навыки",
-                            short: "Навыки",
-                            control: true,
-                            active: true
-                        },
-                        {
-                            name: "appeal",
-                            title: "Заголовок-обращение",
-                            short: "Обращение",
-                            control: true,
-                            active: true
-                        },
-                        {
-                            name: "about",
-                            title: "О себе текст",
-                            short: "О себе",
-                            control: true,
-                            active: true
-                        },
-                        {
-                            name: "social",
-                            title: "Аккаунты в соц. сетях",
-                            short: "Соц. ссылки",
-                            control: true,
-                            active: true
-                        },
-                        {
-                            name: "works",
-                            title: "Мои проекты",
-                            short: "Проекты",
-                            screen: true,
-                            control: true,
-                            active: true
-                        },
-                        {
-                            name: "skills",
-                            title: "Основные компетенции",
-                            short: "Навыки",
-                            screen: true,
-                            control: true,
-                            active: true
-                        },
-                        {
-                            name: "education",
-                            title: "Образование",
-                            short: "Учеба",
-                            screen: true,
-                            control: true,
-                            active: true
-                        },
-                        {
-                            name: "courses",
-                            title: "Курсы",
-                            short: "Курсы",
-                            screen: true,
-                            control: true,
-                            active: true
-                        },
-                        {
-                            name: "languages",
-                            title: "Владение языками",
-                            short: "Языки",
-                            screen: true,
-                            control: true,
-                            active: true
-                        },
-                        {
-                            name: "jobs",
-                            title: "Работа в компаниях",
-                            short: "Карьера",
-                            screen: true,
-                            control: true,
-                            active: true
-                        },
-                        {
-                            name: "hobby",
-                            title: "Мои хобби",
-                            short: "Хобби",
-                            screen: true,
-                            control: true,
-                            active: true
-                        },
-                        {
-                            name: "contacts",
-                            title: "Контакты",
-                            short: "Контакты",
-                            screen: true,
-                            control: true,
-                            active: true
-                        },
-                        {
-                            name: "feedback",
-                            title: "Обратная связь",
-                            short: "Обратная связь",
-                            screen: true,
-                            control: true,
-                            active: true
-                        },
-                        {
-                            name: "coverletter",
-                            title: "Сопроводительное письмо",
-                            short: "Письмо",
-                            screen: true,
-                            control: false,
-                            active: false
+                        likes: null,
+                        sections: [
+                            {
+                                name: "salary",
+                                title: "Желаемая зарплата",
+                                short: "Зарплата",
+                                control: true,
+                                active: true
+                            },
+                            {
+                                name: "tags",
+                                title: "Ключевые навыки",
+                                short: "Навыки",
+                                control: true,
+                                active: true
+                            },
+                            {
+                                name: "appeal",
+                                title: "Заголовок-обращение",
+                                short: "Обращение",
+                                control: true,
+                                active: true
+                            },
+                            {
+                                name: "about",
+                                title: "О себе текст",
+                                short: "О себе",
+                                control: true,
+                                active: true
+                            },
+                            {
+                                name: "social",
+                                title: "Аккаунты в соц. сетях",
+                                short: "Соц. ссылки",
+                                control: true,
+                                active: true
+                            },
+                            {
+                                name: "works",
+                                title: "Мои проекты",
+                                short: "Проекты",
+                                screen: true,
+                                control: true,
+                                active: true
+                            },
+                            {
+                                name: "skills",
+                                title: "Основные компетенции",
+                                short: "Навыки",
+                                screen: true,
+                                control: true,
+                                active: true
+                            },
+                            {
+                                name: "education",
+                                title: "Образование",
+                                short: "Учеба",
+                                screen: true,
+                                control: true,
+                                active: true
+                            },
+                            {
+                                name: "courses",
+                                title: "Курсы",
+                                short: "Курсы",
+                                screen: true,
+                                control: true,
+                                active: true
+                            },
+                            {
+                                name: "languages",
+                                title: "Владение языками",
+                                short: "Языки",
+                                screen: true,
+                                control: true,
+                                active: true
+                            },
+                            {
+                                name: "jobs",
+                                title: "Работа в компаниях",
+                                short: "Карьера",
+                                screen: true,
+                                control: true,
+                                active: true
+                            },
+                            {
+                                name: "hobby",
+                                title: "Мои хобби",
+                                short: "Хобби",
+                                screen: true,
+                                control: true,
+                                active: true
+                            },
+                            {
+                                name: "contacts",
+                                title: "Контакты",
+                                short: "Контакты",
+                                screen: true,
+                                control: true,
+                                active: true
+                            },
+                            {
+                                name: "feedback",
+                                title: "Обратная связь",
+                                short: "Обратная связь",
+                                screen: true,
+                                control: true,
+                                active: true
+                            },
+                            {
+                                name: "coverletter",
+                                title: "Сопроводительное письмо",
+                                short: "Письмо",
+                                screen: true,
+                                control: false,
+                                active: false
+                            }
+                        ],
+                        config: {
+                            color: "#0084ff",
+                            font: "futura",
+                            photo: {
+                                minWidth: 440,
+                                maxHeight: 620,
+                                noise: false
+                            },
+                            likes: {
+                                active: true,
+                                count: true
+                            }
                         }
-                    ],
-                    config: {
-                        color: "#0084ff",
-                        font: "futura",
-                        photo: {
-                            minWidth: 440,
-                            maxHeight: 620,
-                            noise: false
-                        },
-                        likes: {
-                            active: true,
-                            count: true
-                        }
-                    }
-                }));
+                    }, $store.resume.get()));
+                }
 
                 return $store.resume.get();
             }
@@ -177,13 +178,13 @@ $store.resume = _.extend(new Baobab({},
                         birthday: params.birthday,
                         contacts: params.contacts
                     },
-                    salary: $store.resume.default.salary(),
+                    salary: params.plan == "free" ? $store.resume.default.salary() : null,
                     about: null,
                     social: null,
                     education: null,
                     languages: null,
                     jobs: null,
-                    percent: 33,
+                    percent: 0,
                     config: {
                         photo: {
                             minWidth: 440,
@@ -212,13 +213,18 @@ $store.resume = _.extend(new Baobab({},
         take: {
             birthday: {
                 date: function(){
-                    var b = $store.resume.get('commons', 'birthday');
-                    return moment(b.year + "-" + b.month + "-" + b.day).format('D MMMM YYYY');
+                    var b = $store.resume.get('commons', 'birthday'),
+                        month = b.month < 10 ? "0" + b.month : b.month,
+                        day = b.day < 10 ? "0" + b.day : b.day;
+
+                    return moment(b.year + "-" + month + "-" + day).format('D MMMM YYYY');
                 },
                 age: function(){
                     var lang = $store.resume.get("lang"),
                         b = $store.resume.get('commons', 'birthday'),
-                        years = moment().diff(moment(b.year + "-" + b.month + "-" + b.day), 'years');
+                        month = b.month < 10 ? "0" + b.month : b.month,
+                        day = b.day < 10 ? "0" + b.day : b.day,
+                        years = moment().diff(moment(b.year + "-" + month + "-" + day), 'years');
 
                     if (years == "1") years = years + (lang == "ru" ? " год" : " year");
                     else if (years > 1 && years < 5) years = years + (lang == "ru" ? " года" :  "year");
@@ -320,7 +326,7 @@ $store.resume = _.extend(new Baobab({},
             }
         },
         placeholder: {
-            name: "Виктория Юртаева",
+            name: "Александр Иванов",
             post: "Web-Designer, Art-director, Illustrator",
             salary: {
                 amount: "125000",
@@ -333,14 +339,20 @@ $store.resume = _.extend(new Baobab({},
             appeal: "Award winning interdisciplinary Designer & Art director. Currently pursuing a perfect blend of style and function for a wide range of interactive product design.",
             about: "Your brand is how your customers see your business. It’s shaped by the way you represent yourself – professionally, socially and visually. It’s what makes you unique. It’s what makes you desirable. It’s shorthand for everything that brings your business together.",
             social: {
-                title: "Я в социальных медиа"
+                title: function(){
+                    return $i18n("resume.premium.template.I am in social media");
+                }
             },
             works: {
-                title: "Мои проекты",
+                title: function(){
+                    return $i18n("resume.premium.template.My projects");
+                },
                 text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. ullam et eros ornare, porttitor urna sed, auctor lacus. Morbi viverra lorem at neque tincidunt consequat. Aenean massa."
             },
             skills: {
-                title: "Основные компетенции",
+                title: function(){
+                    return $i18n("resume.premium.template.Main skills");
+                },
                 header: "We’re full service which means we’ve got you covered on design and content right through to digital.",
                 text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. ullam et eros ornare, porttitor urna sed, auctor lacus. Morbi viverra lorem at neque tincidunt consequat. Aenean massa.",
                 items: [
@@ -363,15 +375,21 @@ $store.resume = _.extend(new Baobab({},
                 ]
             },
             education: {
-                title: "Образование",
+                title: function(){
+                    return $i18n("resume.premium.template.Education");
+                },
                 text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. ullam et eros ornare, porttitor urna sed, auctor lacus. Morbi viverra lorem at neque tincidunt consequat. Aenean massa. Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. ullam et eros ornare, porttitor urna sed, auctor lacus. Morbi viverra lorem at neque tincidunt consequat. Aenean massa."
             },
             courses: {
-                title: "Курсы",
+                title: function(){
+                    return $i18n("resume.premium.template.Courses");
+                },
                 text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. ullam et eros ornare, porttitor urna sed, auctor lacus. Morbi viverra lorem at neque tincidunt consequat. Aenean massa. Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. ullam et eros ornare, porttitor urna sed, auctor lacus. Morbi viverra lorem at neque tincidunt consequat. Aenean massa."
             },
             languages: {
-                title: "Владение языками",
+                title: function(){
+                    return $i18n("resume.premium.template.Languages");
+                },
                 text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
                 items: [
                     {
@@ -396,11 +414,15 @@ $store.resume = _.extend(new Baobab({},
                 }
             },
             jobs: {
-                title: "Работа в компаниях",
+                title: function(){
+                    return $i18n("resume.premium.template.Experience");
+                },
                 text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. ullam et eros ornare, porttitor urna sed, auctor lacus. Morbi viverra lorem at neque tincidunt consequat. Aenean massa."
             },
             hobby: {
-                title: "Работа в компаниях",
+                title: function(){
+                    return $i18n("resume.premium.template.My hobby");
+                },
                 text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. ullam et eros ornare, porttitor urna sed, auctor lacus. Morbi viverra lorem at neque tincidunt consequat. Aenean massa."
             }
         }

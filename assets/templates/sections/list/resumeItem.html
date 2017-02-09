@@ -14,13 +14,16 @@
         </div>
         <div onClick={ onEdit } onUpdate="none" class="row resume__item__header__text">
             <div class="col-xs-5 col-sm-6">
-                <div class="resume__item__photo" style="background-image:url('{ opts.item.photo }')"></div>
+                <div class="resume__item__photo { opacity-60 : !opts.item.public }" style="background-image:url('{ opts.item.photo }')"></div>
             </div>
             <div class="col-xs-19 col-sm-18">
-                <div class="resume__item__title">{ opts.item.post ? opts.item.post : 'Продолжить редактирование' }</div>
-                <div class="resume__item__date">Обновлен: { moment(opts.item.update).format('D MMMM YYYY') }</div>
-                <div class="resume__item__salary { 'opacity-70 text-lineThrough' : !opts.item.salary.active }">
-                    { _.numberFormat(opts.item.salary.amount, 0, ".", ".") } { $store.currency.getTitleById(opts.item.salary.currency) }
+                <div if={ !opts.item.public } class="resume__item__noview">не опубликовано</div>
+                <div class="{ opacity-60 : !opts.item.public }">
+                    <div class="resume__item__title">{ opts.item.post ? opts.item.post : 'Продолжить редактирование' }</div>
+                    <div class="resume__item__date">Обновлен: { moment(opts.item.update).format('D MMMM YYYY') }</div>
+                    <div class="resume__item__salary { 'opacity-70 text-lineThrough' : !opts.item.salary.active || !$store.data.get({'_id': opts.item._id}, 'sections', {'name': 'salary'}).active }">
+                        { _.numberFormat(opts.item.salary.amount, 0, ".", ".") } { $store.currency.getTitleById(opts.item.salary.currency) }
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,9 +56,7 @@
     };
 
     $.onEdit = function(){
-        $Sections.resume.edit.show({
-            id: $.opts.item._id
-        });
+        $store.data.onEdit($.opts.item._id);
     };
 
     $.onRemove = function(){

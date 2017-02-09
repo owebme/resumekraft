@@ -1,6 +1,4 @@
-app.define("plugins.marquee.effects");
-
-app.plugins.marquee.effects = function(method){
+app.plugins.marqueeEffects = function(method){
 	var effects = {},
 		prefixed = app.prefixed;
 

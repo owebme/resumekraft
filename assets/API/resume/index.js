@@ -41,6 +41,39 @@ module.exports = function(url){
 		app.errHandler(res, false, "ok");
 	});
 
+	route.put('/photo', function(req, res, next) {
+		if (req.body && req.body.id && req.body.image){
+
+			var id = req.body.id,
+				base64Data = req.body.image.replace(/^data:image\/jpeg;base64,/,""),
+                pathImage = app.config.get('path:photo') + app.moment().format('x') + '.jpg';
+
+            app.utils.fs.writeFile(process.cwd() + pathImage, base64Data, 'base64', function(err){
+				if (!err){
+					app.db.collection('resumes').update({
+						"_id": app.utils.ObjectId(id),
+						"accountId": app.accountId
+					},{
+						$set: {
+							"photo": pathImage
+						}
+					});
+                    res.statusCode = 200;
+                    res.send({
+                        image: pathImage
+                    });
+                }
+                else {
+                    res.statusCode = 404;
+                    res.send(err);
+                }
+	        })
+		}
+		else {
+			next();
+		}
+	});
+
 	route.delete('/', function(req, res) {
 		app.db.collection('resumes').remove(
         {

@@ -22,7 +22,7 @@
     $.active = false;
 
     $.on("before-mount", function(){
-        $.max = _.max($resume.salary.graph.items ? $resume.salary.graph.items : 50000);
+        $.max = _.max($resume.salary && $resume.salary.graph && $resume.salary.graph.items ? $resume.salary.graph.items : 50000);
     });
 
     $.on("mount", function(){

@@ -21,6 +21,7 @@
     &__shape {
         @include accelerate();
         @extend .pos-abs;
+        @extend .bg-blue;
         box-sizing:content-box;
         border:10000px solid rgba(#fcfcfc,.8);
         margin-left:-10000px;

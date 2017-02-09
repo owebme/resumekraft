@@ -1,0 +1,132 @@
+<root-main-view class="appResume section" data-color="{ $State.get('color') }" data-font="{ $State.get('font') }" data-mode="{ $State.get('mode') }" data-coverletter={ $State.get('mode') !== "editing" && $store.resume.select("sections").get({"name": "coverletter"}).active } data-app="premium">
+
+    <section-nav if={ !app.device.isMobile }></section-nav>
+
+    <section-info></section-info>
+    <section-sendmail></section-sendmail>
+    <salary-graph-opener></salary-graph-opener>
+    <salary-graph></salary-graph>
+
+    <sections-control if={ $State.get('mode') === "editing" }>
+        <control-colors></control-colors>
+    </sections-control>
+
+    <resume-template1></resume-template1>
+
+    <div class="section__overlay zIndex-7"></div>
+
+<script>
+
+    $root = this;
+
+    $$ = window.jQuery || window.Zepto;
+
+    $resume = app.demo ? $store.resume.prepare.demo() : $store.resume.prepare.premium("view");
+
+    $i18n.lang($resume.lang);
+    moment.locale($resume.lang);
+
+    this.opts.editing = this.opts.editing == "true" ? "editing" : "view";
+
+    var mode = this.opts.editing,
+        config = $store.resume.select("config").deepClone();
+
+    config.mode = mode;
+    config.public = $store.resume.get("public");
+    config.lang = $store.resume.get("lang");
+
+    $State = new Baobab(config, { autoCommit: true });
+
+    this.on("before-mount", function(){
+
+        $Menu = $root.tags["section-menu"];
+        $Nav = $root.tags["section-nav"];
+        $Info = $root.tags["section-info"];
+        $Sendmail = $root.tags["section-sendmail"];
+
+        $Control = {
+            colors: $root.tags["control-colors"]
+        }
+        $Salary = {
+            opener: $root.tags["salary-graph-opener"],
+            graph: $root.tags["salary-graph"]
+        }
+
+        $Resume = $root.tags["resume-template1"];
+    });
+
+    this.one("ready", function(){
+        app.$dom.body.removeClass("appLoading")
+        .attr("id", "ready");
+
+        if (app.demo){
+            if (window.parent && window.parent){
+                window.parent.postMessage('ready', '*');
+            }
+            app.$dom.window.on("message", function(e){
+                var data = e.originalEvent.data;
+                if (data){
+                    if (data.color && $State.get('color') != data.color){
+                        $State.select('color').set(data.color);
+                    }
+                }
+            });
+            $store.resume.select('photo')
+            .set("/preview/images/photo/photo_" + app.device.is + ".jpg");
+            $Resume.sections.photo.update();
+        }
+        $root.ready = true;
+    });
+
+    this.on("mode", function(mode, value){
+        if (mode == "hidden"){
+            if (app.device.isPhone){
+                $Resume.root.setAttribute("data-hidden", value);
+            }
+            else {
+                $root.root.setAttribute("data-overlay", value);
+            }
+        }
+        else if (mode == "menu"){
+            $root.root.setAttribute("data-menu", value);
+        }
+        else if (mode == "coverletter"){
+            $root.root.setAttribute("data-coverletter", value);
+        }
+    });
+
+    if (app.config.changeStyles){
+        app.plugins.styles.init({
+            elem: "#styles",
+            default: "normal",
+            screens: [
+                {
+                    title: "small",
+                    maxWidth: 360,
+                    path: "/assets/css/premium.smallScreen.css?" + _.newId()
+                },
+                {
+                    title: "phone",
+                    minWidth: 360,
+                    maxWidth: 767,
+                    reload: true
+                },
+                {
+                    title: "normal",
+                    minWidth: 1025,
+                    maxWidth: 1400,
+                    path: "/assets/css/premium.css?" + _.newId(),
+                    reload: true
+                },
+                {
+                    title: "large",
+                    minWidth: 1400,
+                    path: "/assets/css/premium.largeScreen.css?" + _.newId()
+                }
+            ]
+        });
+    }
+
+</script>
+
+</root-main-view>

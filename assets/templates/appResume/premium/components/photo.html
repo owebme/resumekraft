@@ -22,8 +22,18 @@
             $Editable.show("photo", {
                 title: $.opts.title,
                 callback: function(image){
-                    $resume.photo = image;
-                    $.update();
+                    app.request("setResumePhoto", {
+                        id: $store.resume.get('_id'),
+                        image: image
+                    }, {
+                        loader: false
+                    })
+                    .then(function(data){
+                        if (data && data.image){
+                            $store.resume.select("photo").set(data.image);
+                            $.update();
+                        }
+                    });
                 }
             });
         }

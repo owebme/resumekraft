@@ -2,7 +2,7 @@ app.plugins.marquee = function($frame, settings){
 	var $screens = $frame.find(settings.screens),
 		$fake = $('<div class="'+settings.spaceClass+'" />').prependTo($frame),
 		screens = [],
-		effect = app.plugins.marquee.effects()[settings.effect],
+		effect = app.plugins.marqueeEffects()[settings.effect],
 		overlayed = false,
 		name = $frame.data('name');
 	// marquee

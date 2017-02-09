@@ -62,7 +62,9 @@
                         id: options.items[i][options.slideId],
                         title: options.items[i].title,
                         el: $item,
-                        scroll: new app.plugins.scroll.content($item)
+                        scroll: new app.plugins.scroll.content($item, {
+                            autoScroll: true
+                        })
                     });
                     _this.slides[i].scroll.init();
                 }
@@ -116,6 +118,7 @@
                     if (this.prevSlide){
                         _.onEndTransition(this.container[0], function(){
                             _this.prevSlide.el.css("display", "none");
+                            _this.refresh();
                         });
                     }
                 }

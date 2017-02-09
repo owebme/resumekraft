@@ -6,12 +6,21 @@
                 <span class="title black">Опубликовать резюме</span>
             </div>
             <div class="col-xs-7 col-sm-12">
-                <ui-switcher commit="true" update="public" cursor={ $State.select() }></ui-switcher>
+                <ui-switcher commit="true" update="public" cursor={ $store.resume.select() }></ui-switcher>
             </div>
         </div>
         <div class="row mb-l xs-mb-m xs-pb-s">
             <div class="col-xs-24">
-                <input class="input input-m { $State.get('public') ? 'c-primary' : 'c-gray opacity-50' }" value="http://resumekraft.ru/resume/4a170ef2fc400bd89c618b2de1e3674e18757d32">
+                <input class="input input-m { $store.resume.get('public') ? 'c-primary' : 'c-gray opacity-50' }" value="http://resumekraft.ru/resume/{ $store.resume.get('_id') }">
+            </div>
+        </div>
+        <div class="row mb-m">
+            <div class="hidden-xs col-sm-12 pt-xs pr-m">
+                <span class="title black">Язык резюме</span>
+            </div>
+            <div class="col-xs-24 col-sm-12 select-uppercase">
+                <span class="input-title">Язык резюме</span>
+                <ui-select update="lang" cursor={ $store.resume.select() } items={ $store.langs.get() } size="l"></ui-select>
             </div>
         </div>
         <div class="row mb-m">
@@ -38,6 +47,22 @@
             </div>
             <div class="col-xs-7 col-sm-12 pt-xs">
                 <ui-switcher commit={ autoCommit.feedback } value={ $store.resume.select("sections").get({"name": "feedback"}).active }></ui-switcher>
+            </div>
+        </div>
+        <div class="row h50 mb-m">
+            <div class="col-xs-17 col-sm-12 pt-xs pr-m">
+                <span class="title black">Получать лайки</span>
+            </div>
+            <div class="col-xs-7 col-sm-12 pt-xs">
+                <ui-switcher update="active" cursor={ $store.resume.select("config", "likes") }></ui-switcher>
+            </div>
+        </div>
+        <div class="row h50 mb-m">
+            <div class="col-xs-17 col-sm-12 pt-xs pr-m">
+                <span class="title black">Показывать кол-во лайков</span>
+            </div>
+            <div class="col-xs-7 col-sm-12 pt-xs">
+                <ui-switcher update="count" cursor={ $store.resume.select("config", "likes") }></ui-switcher>
             </div>
         </div>
         <div class="row h50">

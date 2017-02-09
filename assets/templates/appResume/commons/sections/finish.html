@@ -1,0 +1,168 @@
+<resume-edit-finish class="oScreen pos-fixed zIndex-10 { showAnim : animate }" data-color="white" data-open={ active }>
+
+    <div class="logo">
+        <div class="logo__icon anim anim-scale-zoom" delay-show="s" duration-show={ app.device.isPhone ? 'm' : 'l' } duration-hide="s"></div>
+    </div>
+
+    <div onClick={ success } class="circle1">
+        <div class="anim anim-scale-zoom" delay-show="xs" duration-show={ app.device.isPhone ? 'm' : 'l' } duration-hide="s">
+            <div class="circle circle-xl">Закончить редактирование?</div>
+        </div>
+    </div>
+
+    <div onClick={ hide } onUpdate="none" class="circle2">
+        <div class="anim anim-scale" delay-show="s" duration-show={ app.device.isPhone ? 'm' : 'l' } duration-hide="s">
+            <div class="circle circle-l">Еще нет, продолжить</div>
+        </div>
+    </div>
+
+    <div class="circle3" onClick={ preview } onUpdate="none">
+        <div class="anim anim-scale-zoom" delay-show="m" duration-show={ app.device.isPhone ? 'm' : 'l' } duration-hide="s">
+            <div class="circle circle-l">Предпросмотр резюме</div>
+        </div>
+    </div>
+
+    <div class="percentage__circuful">
+        <div class="anim anim-rl-soft" duration-show={ app.device.isPhone ? 'm' : 'l' } duration-hide="s">
+            <div name="circuful" class="circuful"></div>
+        </div>
+    </div>
+
+    <div class="share">
+        <div class="anim anim-bt-ease" delay-show="m" duration-show={ app.device.isPhone ? 'm' : 'l' } duration-hide="s">
+            <div class="share__title">Поделиться своим резюме</div>
+            <div class="share__items">
+                <div class="share__item" data-social="fb">
+                    <icon-fb color="blue"></icon-fb>
+                </div>
+                <div class="share__item" data-social="vk">
+                    <icon-vk color="blue"></icon-vk>
+                </div>
+                <div class="share__item" data-social="dk">
+                    <icon-dk color="orange"></icon-dk>
+                </div>
+                <div class="share__item" data-social="gl">
+                    <icon-gl color="red"></icon-gl>
+                </div>
+                <div class="share__item" data-social="tw">
+                    <icon-tw color="blueLight"></icon-tw>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text">
+        <div class="text__content anim anim-bt-ease" delay-show="xl">Ваше резюме уже сохранено.</div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.active = false;
+    $.animate = false;
+    $.circuful = $$($["circuful"]);
+
+    $.on("mount", function(){
+        $.share = new app.plugins.share($.root, {
+            buttons: ".share__item",
+            url: '/resume/' + $store.resume.get('_id'),
+            share: {
+                title: function(){
+                    return $store.resume.get('post') ? $store.resume.get('post') : app.config.share.title;
+                }
+            }
+        })
+    });
+
+    $.show = function(){
+        $.update({
+            active: true
+        })
+        $afterlag.run(function(){
+            $.update({
+                animate: true
+            })
+            if (!app.device.isPhone) $.chartRadial();
+        });
+    };
+
+    $.preview = function(){
+        if ($store.resume.get("plan") == "premium"){
+            window.open('/resume/' + $store.resume.get("_id"), "_blank");
+        }
+        else {
+            $.hide();
+            if ($.opts.preview){
+                $afterlag.run(function(){
+                    $.opts.preview.show();
+                })
+            }
+        }
+    };
+
+    $.chartRadial = function(){
+        $.circuful.empty().circliful({
+            animation: 1,
+            animationStep: 6,
+            foregroundBorderWidth: app.device.isMobile ? 9.5 : 12,
+            backgroundBorderWidth: app.device.isMobile ? 4 : 3,
+            percentageTextSize: 28,
+            percent: $.opts.percentage ? $.opts.percentage.p : 100,
+            backgroundColor: '#e9eef2',
+            foregroundColor: 'rgba(104,251,152,.7)',
+            fontColor: '#7f8c8d'
+        });
+    };
+
+    $.hide = function(){
+        $.update({
+            active: false,
+            animate: false
+        })
+    };
+
+    $.success = function(){
+        if ($store.resume.get("plan") == "premium"){
+            $Loader.show().then(function(){
+                $store.resume.select("update").set(moment().format());
+
+                app.request("setResume", {
+                    data: $store.resume.get()
+                }, {
+                    loader: false
+                })
+                .then(function(){
+                    Store.set('resume', null);
+                    location.replace('/private/');
+                },
+                function(){
+                    $Loader.hide();
+                });
+            });
+        }
+        else {
+            $resume.select("update").set(moment().format());
+            $store.data.select({"_id": $resume.get("_id")}).set($resume.get());
+
+            app.request("setResume", {
+                data: $resume.get()
+            }, {
+                loader: false
+            });
+
+            $.hide();
+
+            _.onEndTransition($.root, function(){
+                Store.set('resume', null);
+                $Sections.resume.edit.hide();
+                $Sections.resume.list.update();
+            });
+
+            app.metrika.set("resume.create.settings.success", true);
+        }
+    };
+
+</script>
+
+</resume-edit-finish>

@@ -23,9 +23,25 @@
                 });
             },
             onEdit: function(id){
-                $Sections.resume.edit.show({
-                    id: id
-                });
+                var item = $store.data.get({"_id": id});
+                if (item.plan == "premium"){
+                    if ($account.get("plan") != "premium"){
+                        $Sections.plan.show("premium");
+                    }
+                    else {
+                        $Loader.show({
+                            color: item.config.color
+                        })
+                        .then(function(){
+                            location.replace('/private/resume/' + id);
+                        });
+                    }
+                }
+                else {
+                    $Sections.resume.edit.show({
+                        id: id
+                    });
+                }
             },
             onStat: function(id, item){
                 $Sections.resume.stat.show(id, item);

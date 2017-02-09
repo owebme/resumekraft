@@ -13,7 +13,7 @@
     <section if={ app.device.isPhone } class="screen screen--first { 'screen--active' : !$store.resume.select('sections').get({'name': 'coverletter'}).active }" data-section="cover">
         <div class="screen__content">
             <ux-photo phone="true"></ux-photo>
-            <div class="screen__post">{ $resume.post }</div>
+            <div if={ $store.resume.get('post') } class="screen__post">{ $store.resume.get('post') }</div>
         </div>
     </section>
 
@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-xs-24 col-md-13 screen1-col-right">
 
-                    <ux-name classname="h1 name" title="Ваше имя и фамилия"></ux-name>
+                    <ux-name classname="h1 name" size="l" title="Ваше имя и фамилия"></ux-name>
 
                     <ux-text classname="h3 post" update="post" cursor={ $store.resume.select() } title="Должность" type="input"></ux-text>
 
@@ -37,7 +37,7 @@
 
                     <ux-text if={ $store.resume.select("sections").get({"name": "about"}).active } classname="p mb-l" center="true" update="about" cursor={ $store.resume.select() } activity="true" title={ $store.resume.select("sections").get({"name": "about"}).title } type="textarea"></ux-text>
 
-                    <ux-social if={ $store.resume.select("sections").get({"name": "social"}).active } classname="social" title={ $store.resume.select("sections").get({"name": "social"}).title }></ux-social>
+                    <ux-social if={ $store.resume.select("sections").get({"name": "social"}).active } classname="social" size="l" title={ $store.resume.select("sections").get({"name": "social"}).title }></ux-social>
                 </div>
             </div>
         </div>
@@ -178,17 +178,21 @@
 
     $.on("mount", function(){
         if ($State.get('mode') !== "editing"){
+
+            $.notTouch = ['name', 'text', 'contacts', 'feedback', 'contacts-content', 'likes'];
+
             _.each(this.tags, function(item) {
                 if (item.root && item.root.tagName && item.root.tagName.toLowerCase().match(/^ux-/)){
                     var name = item.root.tagName.toLowerCase().match(/^ux-(.+)/)[1];
-                    if (name != "name" && name != "text" && name != "contacts" && name != "feedback" && name != "contacts-content" && name != "likes"){
+                    if ($.notTouch.indexOf(name) === -1){
                         if (!$store.resume.get(name)) $$(item.root).remove();
                         else $$(item.root).children().unwrap();
                     }
                 }
             });
+
             _.each($store.resume.get("sections"), function(item){
-                if (item.screen && item.name != "contacts" && item.name != "feedback" && item.name != "likes" && !$store.resume.get(item.name)){
+                if (item.screen && $.notTouch.indexOf(item.name) === -1 && !$store.resume.get(item.name)){
                     $Resume.el.find(".screen[data-section=" + item.name + "]").remove();
                 }
             });
@@ -248,14 +252,39 @@
         });
 
         if ($State.get('mode') === "editing"){
+            var langSections = ['social', 'works', 'skills', 'education', 'courses', 'languages', 'jobs', 'hobby'],
+                skipProps = ['percent', 'config', 'update'];
+
             _.bbUpdate($store.resume, function(prop, value, e){
-                if (prop == "sections" && $Resume.screenItems){
+                if (!$root.ready || skipProps.indexOf(prop) !== -1) return;
+
+                if (prop == "public"){
+                    $Control.public.update();
+                    return;
+                }
+                else if (prop == "lang"){
+                    $i18n.lang($store.resume.get("lang"));
+                    moment.locale($store.resume.get("lang"));
+                    _.each($store.resume.placeholder, function(item, name){
+                        if (langSections.indexOf(name) !== -1 && $store.resume.get(name, "title")){
+                            $store.resume.select(name, "title").set(item.title());
+                        }
+                    });
+                    $Resume.update();
+                    if (app.device.isPhone && $Resume.screens){
+                        $afterlag.run(function(){
+                            $Resume.screens.refresh();
+                        });
+                    }
+                }
+                else if (prop == "sections" && $Resume.screenItems){
                     var find = false;
 
                     _.each(e.data.currentData.sections, function(item){
+                        if (!item.screen || item.name == "coverletter" || !app.device.isPhone && item.name == "feedback") return;
                         var section = _.findWhere($Resume.screenItems, {"section": item.name});
                         if (!section) section = { active: false };
-                        if (item.screen && item.active !== section.active){
+                        if (item.active !== section.active){
                             find = true;
                         }
                     });
@@ -270,37 +299,48 @@
                     }
                     else {
                         if (app.device.isPhone && $Resume.screens){
-                            $Resume.screens.refresh();
+                            $afterlag.run(function(){
+                                $Resume.screens.refresh();
+                            });
                         }
                     }
                     $Control.sections.refresh();
                 }
                 else {
                     if (app.device.isPhone && $Resume.screens){
-                        $Resume.screens.refresh();
+                        $afterlag.run(function(){
+                            $Resume.screens.refresh();
+                        });
                     }
                 }
                 $Resume.render();
             });
 
             _.bbUpdate($State, function(prop, value, e){
+                if (!$root.ready) return;
+
                 if (prop == "color"){
                     $Control.colors.update();
                     $root.root.setAttribute("data-color", value);
                     $Resume.sections.salary.graph.refresh();
+                    $store.resume.select("config", "color").set(value);
                 }
                 else if (prop == "font"){
                     $Control.fonts.update();
                     $root.root.setAttribute("data-font", value);
+                    $store.resume.select("config", "font").set(value);
                     $Resume.render();
                 }
                 else if (prop == "photo"){
                     $Resume.sections.photo.update();
+                    $store.resume.select("config", "photo", "noise").set(value);
                 }
             });
         }
         else if (app.demo){
             _.bbUpdate($State, function(prop, value, e){
+                if (!$root.ready) return;
+
                 if (prop == "color"){
                     $Control.colors.update();
                     $root.root.setAttribute("data-color", value);
@@ -351,7 +391,7 @@
                     var name = $store.resume.select("sections").get({"name": section});
                     if (name && name.short) title = name.short;
                 }
-                var item = _.findWhere($resume.sections, {"name": section});
+                var item = _.findWhere($store.resume.get('sections'), {"name": section});
                 items.push({
                     title: title,
                     section: section,

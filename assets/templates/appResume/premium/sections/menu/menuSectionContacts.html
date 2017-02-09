@@ -1,6 +1,16 @@
 <menu-section-contacts class="section__slider__item">
 
     <div class="rows section__slider__item__content">
+        <div if={ app.device.isPhone } class="row mt--m mb30">
+            <div class="col-md-24 flex-centered">
+                <div onClick={ open.changePhoto } onUpdate="none" if={ $store.resume.get('photo') } class="user__photo">
+                    <div class="user__photo__image" style="background-image:url({ $store.resume.get('photo') })"></div>
+                </div>
+                <div onClick={ open.changePhoto } onUpdate="none" if={ !$store.resume.get('photo') } class="user__photo" data-place="true">
+                    <span class="user__photo__text">загрузить свою фотографию</span>
+                </div>
+            </div>
+        </div>
         <div class="row mb-m">
             <div class="hidden-xs col-sm-8 pt-xs pr-m">
                 <span class="title">Имя</span>
@@ -25,7 +35,7 @@
                 <ui-select update="day" cursor={ data.select('birthday') } items={ _.range(1, 32) } size="l" short></ui-select>
             </div>
             <div class="col-xs-16 col-sm-6 xs-mb-m">
-                <ui-select update="month" cursor={ data.select('birthday') } items={ $store.month.get() } size="l" short></ui-select>
+                <ui-select update="month" cursor={ data.select('birthday') } items={ $store.month.getItems($store.resume.get("lang")) } size="l" short></ui-select>
             </div>
             <div class="col-xs-24 col-sm-6">
                 <ui-select update="year" cursor={ data.select('birthday') } items={ _.range(1940, new Date().getFullYear() + 1) } size="l" short></ui-select>
@@ -100,7 +110,7 @@
         <div class="row">
             <div class="col-xs-24 { app.device.isPhone ? 'flex-centered' : 'text-right' }">
                 <button onClick={ onCancel } onUpdate="none" class="btn btn-{ app.device.isPhone ? 'l2 h55' : 'xl' } cancel mr-xs xs-plr-m">Отменить</button>
-                <button onClick={ onSave } onUpdate="none" class="btn btn-{ app.device.isPhone ? 'l2 h55' : 'xl' } success">Сохранить</button>
+                <button name="btnSave" onClick={ onSave } onUpdate="none" class="btn btn-{ app.device.isPhone ? 'l2 h55' : 'xl' } success">Сохранить</button>
             </div>
         </div>
     </div>
@@ -108,13 +118,47 @@
 <script>
 
     var $ = this;
+    $.btnSave = $$($.btnSave);
 
     $.data = new Baobab($store.resume.select('commons').deepClone());
 
+    $.open = {
+        changePhoto: function(){
+            $Editable.show("photo", {
+                title: 'Ваша фотография',
+                callback: function(image){
+                    app.request("setResumePhoto", {
+                        id: $store.resume.get('_id'),
+                        image: image
+                    }, {
+                        loader: false
+                    })
+                    .then(function(data){
+                        if (data && data.image){
+                            $store.resume.select("photo").set(data.image);
+                            $.update();
+                            $Resume.sections.photo.update();
+                        }
+                    });
+                }
+            });
+        }
+    };
+
     $.onSave = function(){
-        $store.resume.select("commons").set($.data.get());
-        $Resume.update();
-        $Menu.hide();
+        $.btnSave.addClass("btn-loading");
+        setTimeout(function(){
+            $store.resume.select("commons").set($.data.get());
+            $Resume.update();
+            $Resume.one("updated", function(){
+                $afterlag.run(function(){
+                    $.btnSave.removeClass("btn-loading");
+                    $Menu.hide();
+                }, {
+                    iterations: 2
+                });
+            });
+        }, 5);
     };
 
     $.onCancel = function(){

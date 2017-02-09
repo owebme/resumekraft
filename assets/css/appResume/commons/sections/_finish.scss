@@ -1,0 +1,206 @@
+resume-edit-finish {
+    .logo {
+        @extend .pos-centered-h;
+        @extend .t-l;
+
+        &__icon {
+            @extend .bg-cover;
+            width:128px;
+            height:48px;
+            background-image:url(/public/images/logotype_b.png);
+
+            .d-phone & {
+                width:112px;
+                height:42px;
+            }
+        }
+        .d-phone & {
+            @extend .t-25;
+        }
+    }
+    .percentage__circuful {
+        @extend .pos-br;
+        @extend .pointerEvents-none;
+        @extend .hidden-xs;
+    }
+    .circuful {
+        width:420px;
+        height:420px;
+    }
+    .circle {
+        @include accelerate();
+        @extend .flex-centered;
+        @extend .fontFamily-helvetica;
+        @extend .borderRadius-circle;
+        @extend .btn-active;
+        @extend .userSelect-none;
+        @extend .plr-m;
+
+        &:before {
+            @include abs();
+            @extend .content-empty;
+            @extend .borderRadius-circle;
+            @extend .willChange-transform;
+            @extend .zIndex--1;
+            transition:transform 0.8s $cubic075;
+        }
+        &-l {
+            width:196px;
+            height:196px;
+            font-size:18px;
+            @extend .lineHeight-m;
+        }
+        &-xl {
+            width:240px;
+            height:240px;
+            font-size:20px;
+            @extend .lineHeight-l;
+        }
+    }
+    .circle1 {
+        @extend .pos-centered;
+
+        .d-phone & {
+            @extend .mt30;
+        }
+        .circle {
+            &:before {
+                background-color:rgba($blueLight,.2);
+            }
+            .m-no-touch &:hover:before {
+                @extend .scale-110;
+            }
+        }
+    }
+    .circle2 {
+        @extend .pos-abs;
+        @extend .t10;
+        @extend .r15;
+
+        .d-phone & {
+            top:12%;
+            @extend .r0;
+        }
+        .circle {
+            &:before {
+                background-color:rgba($greenLight,.2);
+            }
+            .m-no-touch &:hover:before {
+                @extend .scale-115;
+            }
+        }
+    }
+    .circle3 {
+        @extend .pos-abs;
+        @extend .t15;
+        @extend .l15;
+
+        .d-phone & {
+            top:17%;
+            @extend .l0;
+            @extend .zIndex-1;
+        }
+        .circle {
+            &:before {
+                background-color:rgba($orange,.2);
+            }
+            .m-no-touch &:hover:before {
+                @extend .scale-115;
+            }
+        }
+    }
+    .share {
+        @extend .pos-abs;
+        @extend .b-l;
+        @extend .l-l;
+
+        .d-phone & {
+            @extend .pos-centered-h;
+            @extend .b-30;
+        }
+        &__title {
+            @extend .c-blackLight;
+            font-size:13px;
+            @extend .text-uppercase;
+            @extend .text-left;
+            @extend .mb-s;
+            @extend .xs-mb-m;
+            @extend .pl-s;
+            @extend .xs-pl0;
+            @extend .text-center-xs;
+
+            .d-phone & {
+                @extend .letterSpacing-xxl;
+            }
+        }
+        &__items {
+            @extend .flex-row-left-center;
+        }
+        &__item {
+            @include accelerate(true);
+            @extend .flex-centered;
+            @extend .w60;
+            @extend .h35;
+            @extend .cursor-pointer;
+            @extend .willChange-transform;
+            transition:transform .5s $cubic075;
+
+            &:hover {
+                transform:translate3d(0, 0, 0) scale(1.25);
+            }
+            &:active {
+                transform:translate3d(0, 1px, 0) scale(0.9);
+            }
+            @for $i from 1 through 5 {
+                &:nth-child(#{$i}) .icon {
+                    transition-delay:0s;
+                }
+            }
+        }
+        .icon {
+            @extend .willChange-transform;
+            @extend .scale-0;
+            transition:transform .6s $bounceForce;
+        }
+    }
+    .text {
+        @extend .pos-centered-h;
+        @extend .t90;
+        @extend .nowrap;
+        @extend .visible-lg;
+
+        &__content {
+            font-size:16px;
+            @extend .c-blackLight;
+            @extend .text-uppercase;
+            @extend .letterSpacing-xl;
+        }
+    }
+    &.showAnim .share__item {
+        @for $i from 1 through 5 {
+            &:nth-child(#{$i}) .icon {
+                transition-delay:#{0.65 + ($i / 7.5)}s;
+            }
+        }
+        .icon {
+            @extend .scale-100;
+        }
+    }
+}
+
+@media screen and (max-height: 565px) {
+    #app {
+        resume-edit-finish {
+            .logo {
+                top:20px;
+            }
+            .share {
+                bottom:20px;
+
+                &__title {
+                    margin-bottom:15px;
+                }
+            }
+        }
+    }
+}

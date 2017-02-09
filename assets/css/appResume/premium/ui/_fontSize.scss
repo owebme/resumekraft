@@ -1,4 +1,4 @@
-@each $title, $size, $height in (10, 10px, 14px), (12, 12px, 16px), (13, 13px, 15px), (14, 14px, 18px), (15, 15px, 20px), (16, 16px, 22px), (18, 18px, 24px), (20, 20px, 28px), (22, 22px, 28px), (24, 24px, 32px), (28, 28px, 34px), (30, 30px, 36px), (32, 32px, 38px), (34, 34px, 38px), (38, 38px, 46px), (46, 46px, 46px), (64, 64px, 64px), (72, 72px, 86px){
+@each $title, $size, $height in (10, 10px, 14px), (12, 12px, 16px), (13, 13px, 15px), (14, 14px, 18px), (15, 15px, 20px), (16, 16px, 22px), (18, 18px, 24px), (20, 20px, 28px), (22, 22px, 28px), (24, 24px, 32px), (26, 26px, 32px), (28, 28px, 34px), (30, 30px, 36px), (32, 32px, 38px), (34, 34px, 38px), (38, 38px, 46px), (46, 46px, 46px), (64, 64px, 64px), (72, 72px, 86px){
     .fontSize-#{$title} {
         font-size:$size;
         line-height:$height;
@@ -15,7 +15,7 @@
             margin-left:-2px;
             letter-spacing:-1.4px;
         }
-        @if $title == 32 or $title == 30 or $title == 28 or $title == 24 {
+        @if $title == 32 or $title == 30 or $title == 28 or $title == 26 or $title == 24 {
             margin-left:-1px;
             letter-spacing:-1px;
         }
@@ -60,6 +60,9 @@
     .fontSize-30 {
         font-size:28px;
     }
+    .fontSize-26 {
+        font-size:24px;
+    }
     .fontSize-24 {
         font-size:22px;
     }
@@ -95,6 +98,10 @@
     }
     .fontSize-30 {
         font-size:27.5px;
+    }
+    .fontSize-26 {
+        letter-spacing:-1.4px;
+        font-size:24px;
     }
     .fontSize-24 {
         letter-spacing:-1.4px;

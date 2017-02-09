@@ -12,11 +12,11 @@
                     <div class="col-md-16">
                         <div class="row">
                             <div class="col-md-10">
-                                <div onClick={ open.changePhoto } onUpdate="none" if={ $account.get('photo') } class="profile__photo">
-                                    <div class="profile__photo__image" style="background-image:url({ $account.get('photo') })"></div>
+                                <div onClick={ open.changePhoto } onUpdate="none" if={ $account.get('photo') } class="user__photo">
+                                    <div class="user__photo__image" style="background-image:url({ $account.get('photo') })"></div>
                                 </div>
-                                <div onClick={ open.changePhoto } onUpdate="none" if={ !$account.get('photo') } class="profile__photo" data-place="true">
-                                    <span class="profile__photo__text">загрузить свою фотографию</span>
+                                <div onClick={ open.changePhoto } onUpdate="none" if={ !$account.get('photo') } class="user__photo" data-place="true">
+                                    <span class="user__photo__text">загрузить свою фотографию</span>
                                 </div>
                             </div>
                             <div class="col-md-14">

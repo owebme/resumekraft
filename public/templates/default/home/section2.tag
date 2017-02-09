@@ -15,7 +15,7 @@
             <div class="pt-m plr-xxs">
                 <small class="home__section2__header c-white mb-l nowrap">Premium аккаунт</small>
                 <h1 class="c-white mb-l nowrap" style="font-size:100px; line-height:100px; letter-spacing:-2px">369 ₽</h1>
-                <p class="c-white fontSize-xl lineHeight-xl pb-l">A decade ago, we founded Melinda with the goal of creating meaningful digital experiences that connect with people.</p>
+                <p class="c-white fontSize-xl lineHeight-xl pb-l">Очевидно для продвинутых соискателей, ярко выделит вас и поможет быстрей найти работу. На выбор подписки: ежемесячная или на год.</p>
                 <button class="btn btn-l2 btn-upper c-blue btn-default-hover-success">Выбрать Premium</button>
             </div>
         </div>
@@ -23,7 +23,7 @@
             <div class="pt-m plr-xs">
                 <small class="home__section2__header c-white mb-l nowrap">Free аккаунт</small>
                 <h1 class="c-white mb-l nowrap" style="font-size:100px; line-height:100px; letter-spacing:-1.4px">0 ₽</h1>
-                <p class="c-white fontSize-xl lineHeight-xl pb-l">A decade ago, we founded Melinda with the goal of creating meaningful digital experiences that connect with people.</p>
+                <p class="c-white fontSize-xl lineHeight-xl pb-l">Бесплатный аккаунт с 9-ю отличными шаблонами для ваших резюме, возможность распечатать и сохранить в PDF.</p>
                 <button class="btn btn-l2 btn-upper c-blue btn-white-hover-success">Выбрать простой</button>
             </div>
         </div>

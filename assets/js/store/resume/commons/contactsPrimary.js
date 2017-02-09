@@ -18,7 +18,7 @@ $store.contactsPrimary = _.extend(new Baobab([
     ]),
     {
         getTitleById: function(id){
-            return _.findWhere($store.contactsPrimary.get(), {"id": id}).title;
+            return _.findWhere($store.contactsPrimary.get(), {"_id": id}).title;
         }
     }
 );

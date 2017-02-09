@@ -38,7 +38,7 @@
         $.update({
             active: data.active,
             title: data.title,
-            items: _.copyArray(data.tags),
+            items: data.tags ? _.copyArray(data.tags) : [],
             _tags: data.tags,
             callback: data.callback ? data.callback : null
         });

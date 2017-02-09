@@ -45,13 +45,13 @@
   display: inline-block;
   color: #919190;
   font: 114px/117px 'SegoeL';
-  letter-spacing: -10.3px;
+  letter-spacing: -0.09em;
   text-transform: uppercase;
 }
 #t4 .t-header-name.bold {
   color: #1F8CEB;
   font: 117px/117px 'HypatiaRegular';
-  letter-spacing: -10.6px;
+  letter-spacing: -0.09em;
   text-transform: uppercase;
 }
 #t4 #t-header-surname {
@@ -69,7 +69,7 @@
   padding-right: 11px;
   padding-left: 21px;
   font-size: 23px;
-  letter-spacing: -0.25px;
+  letter-spacing: -0.01em;
 }
 #t4 .t-header-string-element:first-child {
   padding-left: 0px;
@@ -113,7 +113,7 @@
 #t4 #t-header-post {
   color: #1F8CEB;
   font: 42px/44px 'HypatiaRegular';
-  letter-spacing: -2.15px;
+  letter-spacing: -0.05em;
   text-align: right;
   text-transform: uppercase;
   padding-left: 20%;
@@ -155,7 +155,7 @@
   left: 0;
   color: #1F8CEB;
   font: 24px/24px 'HypatiaSemibold';
-  letter-spacing: -0.5px;
+  letter-spacing: -0.025em;
   width: 190px;
   text-align: left;
   text-transform: uppercase;
@@ -169,13 +169,13 @@
 #t4 .t-container-title,
 #t4 .t-container-desc-title span {
   font: 24px/24px 'HypatiaRegular';
-  letter-spacing: -0.5px;
+  letter-spacing: -0.025em;
   margin-bottom: 6px;
 }
 #t4 .t-container-title span {
   color: #1F8CEB;
   font: 25px/24px 'HypatiaSemibold';
-  letter-spacing: -1.2px;
+  letter-spacing: -0.04em;
 }
 #t4 .t-container-desc-text {
   font-size: 21px;
@@ -261,7 +261,7 @@
 #t4 .t-container-length {
   color:#1F8CEB;
   font: 22px/25px 'HypatiaRegular';
-  letter-spacing: -0.5px;
+  letter-spacing: -0.025em;
   white-space: nowrap;
 }
 #t4 .t-container-about {

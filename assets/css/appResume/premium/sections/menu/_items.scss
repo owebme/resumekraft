@@ -68,20 +68,13 @@
                 height:124px;
                 @extend .mt45;
 
-                &[data-icon="pdf"] {
-                    width:118px;
-                    height:118px;
-                    @extend .mt40;
+                &[data-icon="coverletter"] {
+                    @extend .mt35;
                 }
-                &[data-icon="close"] {
-                    @extend .w85;
-                    @extend .h85;
+                &[data-icon="preview"] {
+                    width:132px;
+                    height:132px;
                     @extend .mt40;
-                }
-                &[data-icon="user"] {
-                    width:102px;
-                    height:102px;
-                    @extend .mt50;
                 }
             }
             path, rect, polygon, circle {

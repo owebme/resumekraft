@@ -280,10 +280,10 @@ $i:0;
     background-color:rgba(40,47,51,.76);
 }
 .bg-radial-blue {
-    background:radial-gradient(rgba($blue,.0), $blue);
+    background:radial-gradient(rgba($blue,0), $blue);
 }
 .bg-radial-black {
-    background:radial-gradient(rgba($black,.0), $black);
+    background:radial-gradient(rgba($black,0), $black);
 }
 .bg-gradient-tb-white {
 	background:linear-gradient(to bottom, #fff, rgba(#fff,0));

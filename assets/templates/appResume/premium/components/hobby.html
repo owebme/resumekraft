@@ -1,6 +1,6 @@
 <ux-hobby class="component">
 
-    <h3 class="title">{ $resume.hobby && $resume.hobby.title ? $resume.hobby.title : opts.title }</h3>
+    <h3 class="title">{ $resume.hobby && $resume.hobby.title ? $resume.hobby.title : $store.resume.placeholder.hobby.title() }</h3>
 
     <btn-editable if={ $State.get('mode') === "editing" } data={ $resume.hobby }></btn-editable>
 

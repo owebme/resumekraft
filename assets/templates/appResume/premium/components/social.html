@@ -4,9 +4,10 @@
 
     <div onClick={ openEditable } onUpdate="none" class="{ blur : !$resume.social }">
         <div class="pos-rel editing editing-text editing-social-items">
-            <p class="c-black text-uppercase f-primary fontWeight-bold mb-m">{ $resume.social && $resume.social.title ? $resume.social.title : $store.resume.placeholder.social.title }</p>
+            <p class="c-black text-uppercase f-primary fontWeight-bold mb-m">{ $resume.social && $resume.social.title ? $resume.social.title : $store.resume.placeholder.social.title() }</p>
             <ux-social-items classname={ opts.classname }></ui-social-items>
         </div>
+        <ux-social-items-blank classname={ opts.classname }></ui-social-items-blank>
     </div>
 
 <script>

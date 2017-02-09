@@ -16,7 +16,7 @@
 
     <resume-control-menu></resume-control-menu>
 
-    <share-button pos="bottom-right" if={ !app.device.isPhone }></share-button>
+    <resume-button-save section={ sections.finish }></resume-button-save>
 
     <resume-preview></resume-preview>
 
@@ -24,7 +24,7 @@
 
     <photo-upload></photo-upload>
 
-    <resume-edit-finish></resume-edit-finish>
+    <resume-edit-finish percentage={ sections.percentage } preview={ sections.preview }></resume-edit-finish>
 
     <div if={ !app.device.isPhone } class="share__text">Поделиться своим резюме в социальных сетях</div>
 
@@ -32,24 +32,24 @@
 
     var $ = this;
 
+    $.sections = {
+        screens: $.tags["resume-screens"],
+        menu: $.tags["resume-control-menu"],
+        steps: $.tags["resume-control-step"],
+        buttons: $.tags["resume-control-buttons"],
+        percentage: $.tags["resume-control-percentage"],
+        preview: $.tags["resume-preview"],
+        settings: $.tags["resume-settings"],
+        photo: $.tags["photo-upload"],
+        finish: $.tags["resume-edit-finish"],
+        shareButton: $.tags["share-button"]
+    };
+
     $.on("before-mount", function(){
 
         $.scope = $.opts.scope;
         $.scroll = $.opts.scroll;
         $.content = $.opts.content;
-
-        $.sections = {
-            screens: $.tags["resume-screens"],
-            menu: $.tags["resume-control-menu"],
-            steps: $.tags["resume-control-step"],
-            buttons: $.tags["resume-control-buttons"],
-            percentage: $.tags["resume-control-percentage"],
-            preview: $.tags["resume-preview"],
-            settings: $.tags["resume-settings"],
-            photo: $.tags["photo-upload"],
-            finish: $.tags["resume-edit-finish"],
-            shareButton: $.tags["share-button"]
-        };
 
         $.sections.photo.init(
             $resume.get("config", "photo")
@@ -57,17 +57,6 @@
     });
 
     $.on("mount", function(){
-
-        $.shareButtonEl = $$($.sections.shareButton.root);
-
-        $.shareButtonEl.on("mouseenter mouseleave", function(e){
-            if (e.type === "mouseenter"){
-                $.scope.root.setAttribute("data-overlay", "true");
-            }
-            else {
-                $.scope.root.setAttribute("data-overlay", "false");
-            }
-        });
 
         $store.resume.on("write", function(e){
             var prop = e.data.path[0];
@@ -113,9 +102,10 @@
     $.autoSave = function(){
         $.autoSaveInterval = setInterval(function(){
 
+            $resume.select("update").set(moment().format());
             Store.set("resume", $resume.get());
 
-        }, app.config.resume.free.autoSave.interval);
+        }, app.config.resume.free.autoSave.interval * 1000);
     };
 
     $.open = {
@@ -202,7 +192,6 @@
         $.screens.destroy();
         $store.resume.off("write");
         clearInterval($.autoSaveInterval);
-        $.shareButtonEl.off();
     });
 
 </script>

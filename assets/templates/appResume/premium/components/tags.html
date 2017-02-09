@@ -18,7 +18,7 @@
                 tags: $resume.tags,
                 callback: function(active, tags){
                     $store.resume.select('sections', {'name': 'tags'}).set('active', active);
-                    $resume.tags = tags ? tags : null;
+                    $resume.tags = !_.isEmpty(tags) ? tags : null;
                     $.update({
                         editable: false
                     });

@@ -8,10 +8,10 @@
 
         <div class="pos-rel mb-m">
             <span class="input-title">заголовок</span>
-            <input onInput={ $Editable.component.autoCommit } class="input input-xl" data-name="title" name="title_data" type="text" autocomplete="off" value={ data && data.title ? data.title : $store.resume.placeholder.social.title }>
+            <input onInput={ $Editable.component.autoCommit } class="input input-xl" data-name="title" name="title_data" type="text" autocomplete="off" value={ data && data.title ? data.title : $store.resume.placeholder.social.title() }>
         </div>
-        <div class="row mb-m">
-            <div class="col-xs-12">
+        <div class="row mb-m xs-mb0">
+            <div class="col-xs-24 col-sm-12 xs-mb-m">
                 <div class="input-group input-group-icon">
                     <input onInput={ autoCommitValue } data-title="fb" class="input input-l" type="text" placeholder="{ 'Ссылка на профиль' : !app.device.isPhone } Facebook" autocomplete="off" value={ data &&  _.findWhere(data.items, {"title": "fb"}).value }>
                     <div class="input-icon">
@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12">
+            <div class="col-xs-24 col-sm-12 xs-mb-m">
                 <div class="input-group input-group-icon">
                     <input onInput={ autoCommitValue } data-title="vk" class="input input-l" type="text" placeholder="{ 'Ссылка на профиль' : !app.device.isPhone } ВКонтакте" autocomplete="off" value={ data && _.findWhere(data.items, {"title": "vk"}).value }>
                     <div class="input-icon">
@@ -28,8 +28,8 @@
                 </div>
             </div>
         </div>
-        <div class="row mb-m">
-            <div class="col-xs-12">
+        <div class="row mb-m xs-mb0">
+            <div class="col-xs-24 col-sm-12 xs-mb-m">
                 <div class="input-group input-group-icon">
                     <input onInput={ autoCommitValue } data-title="dk" class="input input-l" type="text" placeholder="{ 'Ссылка на профиль' : !app.device.isPhone } Одноклассники" autocomplete="off" value={ data && _.findWhere(data.items, {"title": "dk"}).value }>
                     <div class="input-icon">
@@ -37,7 +37,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12">
+            <div class="col-xs-24 col-sm-12 xs-mb-m">
                 <div class="input-group input-group-icon">
                     <input onInput={ autoCommitValue } data-title="tw" class="input input-l" type="text" placeholder="{ 'Ссылка на профиль' : !app.device.isPhone } Twitter" autocomplete="off" value={ data && _.findWhere(data.items, {"title": "tw"}).value }>
                     <div class="input-icon">
@@ -46,8 +46,8 @@
                 </div>
             </div>
         </div>
-        <div class="row mb-m">
-            <div class="col-xs-12">
+        <div class="row mb-m xs-mb0">
+            <div class="col-xs-24 col-sm-12 xs-mb-m">
                 <div class="input-group input-group-icon">
                     <input onInput={ autoCommitValue } data-title="gl" class="input input-l" type="text" placeholder="{ 'Ссылка на профиль' : !app.device.isPhone } Google+" autocomplete="off" value={ data && _.findWhere(data.items, {"title": "gl"}).value }>
                     <div class="input-icon">
@@ -57,7 +57,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12">
+            <div class="col-xs-24 col-sm-12 xs-mb-m">
                 <div class="input-group input-group-icon">
                     <input onInput={ autoCommitValue } data-title="in" class="input input-l" type="text" placeholder="{ 'Ссылка на профиль' : !app.device.isPhone } Instagram" autocomplete="off" value={ data && _.findWhere(data.items, {"title": "in"}).value }>
                     <div class="input-icon">
@@ -69,7 +69,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-24 col-sm-12 xs-mb-m">
                 <div class="input-group input-group-icon">
                     <input onInput={ autoCommitValue } data-title="lk" class="input input-l" type="text" placeholder="{ 'Ссылка на профиль' : !app.device.isPhone } Linkedin" autocomplete="off" value={ data && _.findWhere(data.items, {"title": "lk"}).value }>
                     <div class="input-icon">

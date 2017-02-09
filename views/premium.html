@@ -49,8 +49,11 @@
     <script src="/assets/js/premium/templates.editable.js"></script>
     <script src="/assets/js/premium/templates.components.js"></script>
     <script src="/assets/templates/appResume/premium/templates/template1.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/commons/ui/buttonSave.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/commons/sections/finish.html" type="riot/tag"></script>
 
     <!--/ Modules /-->
+    <script src="/assets/templates/modules/loader.html" type="riot/tag"></script>
     <script src="/assets/templates/modules/notify.html" type="riot/tag"></script>
     <script src="/assets/templates/modules/tutorial.html" type="riot/tag"></script>
 
@@ -63,7 +66,8 @@
     <script src="/assets/js/components/commons/modules.js"></script>
     <script src="/assets/js/premium/config.js"></script>
     <script src="/assets/js/components/i18n/i18n.js"></script>
-    <!-- <script src="/assets/js/components/i18n/resume/basic/template/ru.js"></script> -->
+    <script src="/assets/js/components/i18n/resume/premium/template/ru.js"></script>
+    <script src="/assets/js/components/tutorial/resume/premium/main.js"></script>
     <!-- <script src="/assets/js/components/help/resume/premium/photo.js"></script>
     <script src="/assets/js/components/help/resume/premium/post.js"></script>
     <script src="/assets/js/components/help/resume/premium/salary.js"></script>
@@ -79,18 +83,22 @@
     <script src="/assets/js/plugins.js"></script>
 
     <script src="/assets/js/store/account.js"></script>
-    <script src="/assets/js/store/resume.js"></script>
-    <script src="/assets/js/store/resume.demo.js"></script>
-    <script src="/assets/js/store/fonts.js"></script>
-    <script src="/assets/js/store/colors.js"></script>
-    <script src="/assets/js/store/salary.js"></script>
-    <script src="/assets/js/store/education.js"></script>
-    <script src="/assets/js/store/languages.js"></script>
+    <script src="/assets/js/store/data.js"></script>
+    <script src="/assets/js/store/inbox.js"></script>
     <script src="/assets/js/store/month.js"></script>
-    <script src="/assets/js/store/hobby.js"></script>
-    <script src="/assets/js/store/coverletter.js"></script>
-    <script src="/assets/js/store/contactsPrimary.js"></script>
-    <script src="/assets/js/premium/init.js"></script>
+    <script src="/assets/js/store/paymentMethod.js"></script>
+    <script src="/assets/js/store/paymentPeriod.js"></script>
+    <script src="/assets/js/store/resume/commons/langs.js"></script>
+    <script src="/assets/js/store/resume/commons/contactsPrimary.js"></script>
+    <script src="/assets/js/store/resume/commons/education.js"></script>
+    <script src="/assets/js/store/resume/commons/languages.js"></script>
+    <script src="/assets/js/store/resume/commons/resume.js"></script>
+    <script src="/assets/js/store/resume/commons/salary.js"></script>
+    <script src="/assets/js/store/resume/premium/colors.js"></script>
+    <script src="/assets/js/store/resume/premium/coverletter.js"></script>
+    <script src="/assets/js/store/resume/premium/fonts.js"></script>
+    <script src="/assets/js/store/resume/premium/hobby.js"></script>
+    <script src="/assets/js/store/resume/premium/resume.demo.js"></script>
 
     <!-- <script src="/assets/js/libs.js"></script>
     <script src="/assets/js/premium/app.build.js"></script> -->
@@ -102,6 +110,8 @@
             app.json.resume = {{ resume | safe }};
         </script>
     {% endif %}
+
+    <script src="/assets/js/premium/init.js"></script>
 
 </body>
 </html>

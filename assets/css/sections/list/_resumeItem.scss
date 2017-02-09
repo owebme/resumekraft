@@ -97,7 +97,7 @@
         right:14px;
         @extend .w30;
         @include flex("column", "flex-start", "center");
-        @extend .zIndex-1;
+        @extend .zIndex-2;
 
         &__btn {
             @extend .mb-m;
@@ -182,6 +182,7 @@
     &__likes {
         @extend .pos-bl;
         @extend .m-s;
+        @extend .zIndex-2;
         transform:translate3d(2px, -2px, 0);
 
         &:after {
@@ -222,6 +223,13 @@
         @extend .h60;
         @extend .bg-cover;
         @extend .borderRadius-circle;
+    }
+    &__noview {
+        @extend .fontSize-16;
+        @extend .fontWeight-bold;
+        @extend .c-yellowLight;
+        @extend .mt--m;
+        margin-bottom:3px;
     }
     &__title {
         @extend .fontSize-22;

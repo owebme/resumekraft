@@ -1,4 +1,4 @@
-<section-loader class="loader" data-show="{ active }">
+<section-loader class="loader" data-show="{ active }" data-color="{ color }">
 
     <div class="loader-spinner"></div>
 
@@ -6,12 +6,15 @@
 
     var $ = this;
 
-    $.active = false;
-
-    $.show = function(){
-        $.update({
+    $.default = function(){
+        return {
+            color: null,
             active: true
-        });
+        }
+    };
+
+    $.show = function(options){
+        $.update(_.extend($.default(), options));
 
         return new Promise(function(resolve, reject){
             _.onEndTransition($.root, function(){

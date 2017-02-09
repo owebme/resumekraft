@@ -1,6 +1,6 @@
 <ux-languages class="component">
 
-    <h3 class="title">{ $resume.languages && $resume.languages.title ? $resume.languages.title : opts.title }</h3>
+    <h3 class="title">{ $resume.languages && $resume.languages.title ? $resume.languages.title : $store.resume.placeholder.languages.title() }</h3>
 
     <btn-editable if={ $State.get('mode') === "editing" } data={ $resume.languages }></btn-editable>
 

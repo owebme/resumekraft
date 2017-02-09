@@ -79,6 +79,10 @@
 		will-change:transform, filter, opacity;
 		filter:blur(15px);
 		transition:all 0.4s $cubic215;
+
+		&.h1.name {
+			@extend .c-grayLight;
+		}
 	}
 	.editable-container {
 		&:hover {

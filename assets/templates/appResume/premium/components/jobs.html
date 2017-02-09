@@ -6,7 +6,7 @@
 
                 <btn-editable if={ $State.get('mode') === "editing" } data={ $resume.jobs }></btn-editable>
 
-                <h3 class="title">{ $resume.jobs && $resume.jobs.title ? $resume.jobs.title : opts.title }</h3>
+                <h3 class="title">{ $resume.jobs && $resume.jobs.title ? $resume.jobs.title : $store.resume.placeholder.jobs.title() }</h3>
 
                 <div if={ !$resume.jobs || $resume.jobs && $resume.jobs.text } onClick={ openEditable } onUpdate="none" class="{ blur : !$resume.jobs }">
                     <div class="row mb-l">
@@ -29,14 +29,14 @@
                     </div>
                     <div class="job-empty-text">Подробнее расскажите о своем профессиональном опыте. Для потенциального работодателя важен результат вашей работы, постарайтесь ярче, желательно в цифрах, описать его.</div>
                 </div>
-                <div each={ item in sort($resume.jobs.items) } class="jobs-item editing editing-jobs-item" data-id={ item._id }>
+                <div each={ item in $store.resume.take.jobs.items() } class="jobs-item editing editing-jobs-item" data-id={ item._id }>
                     <div class="row pl-m pt-xxs sm-pl0">
                         <div class="col-md-14">
                             <h3 class="job-title">{ item.post }</h3>
-                            <h4 class="job-subtitle">{ get.period(item) }</h4>
+                            <h4 class="job-subtitle">{ $store.resume.take.jobs.period(item) }</h4>
                         </div>
                         <div class="col-md-10">
-                            <div class="job-year">{ get.year(item) }</div>
+                            <div class="job-year">{ $store.resume.take.jobs.year(item) }</div>
                             <h3 class="job-title text-right">{ item.company } &ndash; { item.city }</h3>
                         </div>
                     </div>
@@ -55,61 +55,6 @@
 <script>
 
     var $ = this;
-
-    $.get = {
-        period: function(item){
-            var day = new Date().getDate(),
-                months = 0,
-                years = 0,
-                f = $store.month.getTitleById(item.from.month) + " " + item.from.year;
-
-            if (item.last){
-                var t = 'по настоящее время';
-                months = moment().diff(item.from.year + '-' + (item.from.month < 10 ? '0' + item.from.month : item.from.month) + '-' + (day < 10 ? '0' + day : day), 'month');
-            }
-            else {
-                var t = $store.month.getTitleById(item.to.month) + " " + item.to.year;
-                months = moment(item.to.year + '-' + (item.to.month < 10 ? '0' + item.to.month : item.to.month) + '-' + (day < 10 ? '0' + day : day)).diff(item.from.year + '-' + (item.from.month < 10 ? '0' + item.from.month : item.from.month) + '-' + (day < 10 ? '0' + day : day), 'month');
-            }
-
-            if (months > 0){
-                years = Math.floor(months / 12);
-                if (years == "1") years = years + " год";
-                else if (years > 1 && years < 5) years = years + " года";
-                else years = years + " лет";
-            }
-            if (months){
-                months = months - Math.floor(months / 12) * 12;
-                if (months == "1") months = months + " месяц";
-                else if (months > 1 && months < 5) months = months + " месяца";
-                else months = months + " месяцев";
-            }
-            if (years){
-                return f + " — " + t + " (" + years + (parseInt(months) > 0 ? ", " + months : "") + ")";
-            }
-            else if (months){
-                return f + " — " + t + " (" + months + ")";
-            }
-            else {
-                return f + " — " + t;
-            }
-        },
-
-        year: function(item){
-            if (item.last){
-                return new Date().getFullYear();
-            }
-            else {
-                return item.to.year;
-            }
-        }
-    };
-
-    $.sort = function(items){
-        return _.sortBy(items, function(item){
-			return $.get.year(item);
-		}).reverse();
-    };
 
     $.openEditable = function(e){
         if ($State.get('mode') === "editing"){

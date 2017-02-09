@@ -1,0 +1,37 @@
+.percentage {
+    @extend .pos-fixed;
+    @extend .b-60;
+    @extend .l-m;
+    @extend .ml-m;
+    @extend .zIndex-6;
+    @extend .h80v;
+
+    .d-tablet &,
+    .d-phone & {
+        @extend .display-none;
+    }
+    &__container {
+        @extend .pos-bl;
+        @extend .h100p;
+        @extend .willChange-transform;
+        transition:transform 0.4s $bounce;
+
+        &:before {
+            @extend .content-empty;
+            @extend .pos-tl;
+            @extend .h100p;
+            @extend .opacity-40;
+            border-left:2px dashed $white;
+            transform:translate3d(-10px, 50px, 0);
+        }
+    }
+    &__score {
+        @extend .pos-tl;
+        font-size:38px;
+        @extend .fontWeight-8;
+        @extend .c-white;
+        @extend .bg-primary;
+        @extend .pr-xs;
+        @extend .borderRadius-xxxl;
+    }
+}

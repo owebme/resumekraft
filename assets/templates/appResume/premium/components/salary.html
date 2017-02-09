@@ -24,8 +24,8 @@
     var $ = this,
     $scope = $$($.root);
 
-    $.on("mount", function(){
-        if (!_.isEmpty($resume.salary.graph)){
+    $.graph = {
+        init: function(){
             var $graph = $Resume.el.find(".screen[data-section='commons']").find(".salary-graph-mini"),
                 width = app.device.isPhone ? (app.sizes.width - 157.5) + "px" : "220px";
 
@@ -35,20 +35,20 @@
                 width: width,
                 height: "40px"
             });
-        }
-    });
-
-    $.graph = {
+        },
         open: function(){
             if ($State.get('mode') !== "editing"){
                 $Salary.graph.show();
             }
         },
         refresh: function(){
-            $.chart.text($resume.salary.graph.items.join(","));
-            $.chart.peity("bar", {
-                fill: [$State.get('color')]
-            });
+            if ($resume.salary && $resume.salary.graph && $resume.salary.graph.active){
+                if (!$.chart) $.graph.init();
+                $.chart.text($resume.salary.graph.items.join(","));
+                $.chart.peity("bar", {
+                    fill: [$State.get('color')]
+                });
+            }
         }
     };
 
@@ -66,12 +66,9 @@
                 callback: function(active, salary){
                     $store.resume.select('sections', {'name': 'salary'}).set('active', active);
                     $resume.salary = salary ? salary : null;
-                    $.update({
-                        editable: false
-                    });
+                    $.update();
                 }
             });
-            $.editable = true;
         }
         else {
             return true;

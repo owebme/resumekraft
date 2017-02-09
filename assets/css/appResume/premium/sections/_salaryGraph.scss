@@ -91,7 +91,7 @@
             @extend .pos-rel;
             @extend .flex-centered;
             @extend .c-gray;
-            font-size:21px;
+            font-size:20px;
             @extend .fontWeight-bold;
             @extend .pl-l;
             @extend .h100p;
@@ -104,8 +104,10 @@
             }
             &-ruble {
                 @extend .display-block;
-                width:23px;
-                height:23px;
+                @extend .fontFamily-roboto;
+                width:22px;
+                height:22px;
+                transform:translateY(1px);
 
                 &-color {
                     @extend .fill-gray;
@@ -113,7 +115,6 @@
                 .d-tablet.r-portrait & {
                     width:27px;
                     height:27px;
-                    transform:translateY(1px);
                 }
             }
             &:after {

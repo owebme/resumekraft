@@ -1,6 +1,6 @@
 <ux-education class="component">
 
-    <h3 class="title">{ $resume.education && $resume.education.title ? $resume.education.title : opts.title }</h3>
+    <h3 class="title">{ $resume.education && $resume.education.title ? $resume.education.title : $store.resume.placeholder.education.title() }</h3>
 
     <btn-editable if={ $State.get('mode') === "editing" } data={ $resume.education }></btn-editable>
 

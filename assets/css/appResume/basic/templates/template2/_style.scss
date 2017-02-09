@@ -90,20 +90,20 @@
     #t-header-phone {
         font-size:24px;
         font-family:'PFSquareMedium';
-        letter-spacing:-0.1px;
+        letter-spacing: -0.02em;
         margin-bottom:2px;
     }
     #t-header-skype {
         font-size:24px;
         font-family:'PFSquareRegular';
-        letter-spacing:-0.2px;
+        letter-spacing: -0.01em;
     }
     #t-header-string {
         font-size:26px;
         line-height:34px;
         font-family:'HelveticaNeue';
         margin:0 20px 25px 190px;
-        letter-spacing:-0.1px;
+        letter-spacing: -0.007em;
     }
     .t-header-string-element {
         display:inline-block;
@@ -141,7 +141,7 @@
     #t-container-post {
         color:#646464;
         font:42px/46px 'PFSquareMedium';
-        letter-spacing:-1px;
+        letter-spacing: -0.025em;
         text-transform:uppercase;
         text-align:right;
         padding:0 60px 0 300px;
@@ -177,7 +177,7 @@
         font:bold 41px/40px 'Proxima';
         text-transform:uppercase;
         margin-bottom:25px;
-        letter-spacing:-0.4px;
+        letter-spacing: -0.01em;
     }
     .t-container-dates {
         display:table-cell;
@@ -187,7 +187,7 @@
     }
     .t-container-dates-year {
         font:36px 'PFDin';
-        letter-spacing:-2px;
+        letter-spacing: -0.046em;
     }
     .t-container-dates-title {
         font-size:20px;
@@ -226,7 +226,7 @@
     .t-container-lang .t-container-dates-title {
         padding-top:1px;
         font:26px/30px 'PFDin';
-        letter-spacing:-0.8px;
+        letter-spacing: -0.03em;
         text-transform:uppercase;
         border-color:#d9d9d9;
     }

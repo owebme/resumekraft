@@ -119,10 +119,7 @@
             margin-bottom:4.3vh;
 
             .d-phone & {
-                @extend .pos-tl;
-                @extend .overflow-hidden;
-                @extend .w100v;
-                @extend .h100v;
+                @include abs();
                 @extend .m0;
                 @extend .p0;
             }
@@ -458,7 +455,7 @@
 		box-shadow:0 0 0 2px rgba($white,.5);
 		background-color:transparent;
 
-		&:hover {
+		.m-no-touch &:hover {
             @extend .bg-white;
 			box-shadow:0 0 0 2px $white;
 		}

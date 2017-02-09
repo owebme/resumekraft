@@ -12,7 +12,7 @@ app.plugins.marqueeStatic = function($frame, options){
 
 	var $screens = $frame.find(settings.screens),
 		screens = [],
-		effect = app.plugins.marquee.effects("static"),
+		effect = app.plugins.marqueeEffects("static"),
 		screensFixed = $frame.data('fixed'),
 		overlayed = false,
 		name = $frame.data('name');

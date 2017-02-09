@@ -7,8 +7,6 @@
     <salary-graph-opener if={ $State.get('mode') !== "editing" && $resume.salary.graph.active }></salary-graph-opener>
     <salary-graph></salary-graph>
 
-    <section-notify if={ $State.get('mode') === "editing" }></section-notify>
-
     <sections-control if={ $State.get('mode') === "editing" }>
 
         <section-menu></section-menu>
@@ -17,7 +15,10 @@
         <control-fonts></control-fonts>
         <control-colors></control-colors>
         <control-sections></control-sections>
+        <control-public></control-public>
         <section-editable></section-editable>
+        <section-percentage if={ !app.device.isMobile }></section-percentage>
+        <resume-button-save section={ $Sections.finish }></resume-button-save>
 
     </sections-control>
 
@@ -25,13 +26,28 @@
 
     <div class="section__overlay zIndex-7"></div>
 
+    <resume-edit-finish percentage={ $Sections.percentage }></resume-edit-finish>
+
+    <section-loader></section-loader>
+    <section-notify if={ $State.get('mode') === "editing" }></section-notify>
+    <section-tutorial if={ $State.get('mode') === "editing" }></section-tutorial>
+
 <script>
 
     $root = this;
 
     $$ = window.jQuery || window.Zepto;
 
-    $resume = app.demo ? $store.resume.prepare.demo() : $store.resume.prepare.premium();
+    var store = Store.get("resume");
+
+    if (!app.demo && store && store._id == $store.resume.get("_id") && store.plan == $store.resume.get("plan") && moment(store.update).diff(moment($store.resume.get("update"))) > 0){
+        $store.resume.set(store);
+    }
+
+    $resume = app.demo ? $store.resume.prepare.demo() : $store.resume.prepare.premium("editing");
+
+    $i18n.lang($resume.lang);
+    moment.locale($resume.lang);
 
     this.opts.editing = this.opts.editing == "true" ? "editing" : "view";
 
@@ -39,10 +55,13 @@
         config = $store.resume.select("config").deepClone();
 
     config.mode = mode;
-    config.public = $store.resume.get("public");
-    config.lang = $store.resume.get("lang");
 
     $State = new Baobab(config, { autoCommit: true });
+
+    $Sections = {
+        percentage: $root.tags["section-percentage"],
+        finish: $root.tags["resume-edit-finish"]
+    }
 
     this.on("before-mount", function(){
 
@@ -52,18 +71,20 @@
         $Sendmail = $root.tags["section-sendmail"];
         $Editable = $root.tags["section-editable"];
         $Helper = $Editable.tags["ui-help"];
+        $Loader = $root.tags["section-loader"];
         $Notify = $root.tags["section-notify"];
+        $Tutorial = $root.tags["section-tutorial"];
 
         $Control = {
             fonts: $root.tags["control-fonts"],
             colors: $root.tags["control-colors"],
-            sections: $root.tags["control-sections"]
+            sections: $root.tags["control-sections"],
+            public: $root.tags["control-public"]
         }
         $Salary = {
             opener: $root.tags["salary-graph-opener"],
             graph: $root.tags["salary-graph"]
         }
-
         $Resume = $root.tags["resume-template1"];
     });
 
@@ -87,6 +108,21 @@
             .set("/preview/images/photo/photo_" + app.device.is + ".jpg");
             $Resume.sections.photo.update();
         }
+        else {
+            // app.$dom.body.scrollTop(0);
+            // app.$dom.body.addClass("overflow-hidden");
+            //
+            // $Tutorial.show(app.$dom.body, "resumePremiumMain");
+            //
+            // $Tutorial.one("hide", function(){
+            //     app.$dom.body.removeClass("overflow-hidden");
+            // });
+            $root.autoSave();
+        }
+        if (app.device.isPhone){
+            new app.plugins.scroll.refreshFix($root.root);
+        }
+        $root.ready = true;
     });
 
     this.on("mode", function(mode, value){
@@ -105,6 +141,15 @@
             $root.root.setAttribute("data-coverletter", value);
         }
     });
+
+    this.autoSave = function(){
+        $root.autoSaveInterval = setInterval(function(){
+
+            $store.resume.select("update").set(moment().format());
+            Store.set("resume", $store.resume.get());
+
+        }, app.config.resume.premium.autoSave.interval * 1000);
+    };
 
     if (app.config.changeStyles){
         app.plugins.styles.init({

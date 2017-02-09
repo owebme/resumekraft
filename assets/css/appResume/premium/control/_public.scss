@@ -1,0 +1,32 @@
+.control__public {
+    @include accelerate();
+    @extend .pos-fixed;
+    @extend .flex-centered;
+    top:46px;
+    left:120px;
+    @extend .w48;
+    @extend .h48;
+    @extend .bg-blackLight;
+    @extend .borderRadius-circle;
+    @extend .boxShadow-15;
+    @extend .userSelect-none;
+    @extend .zIndex-6;
+    @extend .scale-0;
+    @extend .btn-active;
+    @extend .pointerEvents-none;
+
+    &[data-active="true"]{
+        @extend .scale-100;
+        @extend .pointerEvents-all;
+    }
+    .d-phone & {
+        top:21px;
+        @extend .l-90;
+    }
+    &:after {
+        @extend .content-empty;
+        @extend .display-block;
+        transform:scaleX(-1);
+        @include ui-icon(unvisible_white, 26px, 26px);
+    }
+}

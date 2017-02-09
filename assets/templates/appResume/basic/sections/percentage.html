@@ -16,7 +16,7 @@
     $.on("mount", function(){
         var recalc = _.debounce($.calc, 100);
 
-        $resume.on("update", function(e){
+        $store.resume.on("update", function(e){
             recalc();
         });
     });
@@ -25,7 +25,7 @@
         var p = 0,
             all = 0;
 
-        _.each($resume.get(), function(value, key){
+        _.each($store.resume.get(), function(value, key){
             if (_.indexOf(array, key)){
                 if (key == "commons"){
                     _.each(value, function(v, k){
@@ -70,10 +70,10 @@
             }
         });
 
-        if ($resume.get('photo')){
+        if ($store.resume.get('photo')){
             p++;
         }
-        if ($resume.get('salary', 'active')){
+        if ($store.resume.get('salary', 'active')){
             p++;
         }
 
@@ -82,10 +82,11 @@
         $.update({
             p: result > 100 ? 100 : result
         });
+        $store.resume.select("percent").set($.p);
     };
 
     $.on("unmount", function(){
-        $resume.off("update");
+        $store.resume.off("update");
     });
 
 </script>

@@ -1,0 +1,12 @@
+<control-public class="control__public" onClick={ switch } data-active={ !$store.resume.get("public") }>
+
+<script>
+
+    this.switch = function(){
+        $store.resume.select("public").set(!$store.resume.get("public"));
+        $Menu.sections.settings.update();
+    }
+
+</script>
+
+</control-public>

@@ -18,17 +18,6 @@
         $.items = app.device.isMobile ? null : $.tags['menu-items'];
     });
 
-    $.on("mount", function(){
-        if (app.device.isPhone){
-            $scope.on('touchmove MSPointerMove', function(e){
-                e.preventDefault();
-            });
-            $scope.on('dragstart selectstart', function() {
-                return false;
-            });
-        }
-    });
-
     $.show = function(section){
         if (!$.active){
             $.active = true;

@@ -38,6 +38,7 @@ app.mysql = require('./libs/db/mysql')(log, config);
 app.log = log;
 app.errHandler = require('./libs/errHandler');
 app.utils = require('./libs/utils');
+app.utils.fs = fs;
 underscore.extend(app.utils, underscore);
 app.moment = require('moment');
 app.moment.locale('ru');
@@ -82,10 +83,17 @@ app.use(function(req, res, next) {
     };
     app.appClient.device = app.device;
     app.appClient.user = req.session.user;
-    app.account = {
-        plan: "premium"
+
+    if (process.env.NODE_ENV == "production"){
+        app.account = req.session.user;
+        app.accountId = req.session.user ? app.utils.ObjectId(req.session.user.accountID) : null;
     }
-    app.accountId = req.session.user ? app.utils.ObjectId(req.session.user.accountID) : app.utils.ObjectId('588658bf07f3cad6d6f3aaa1');
+    else {
+        app.account = {
+            plan: "premium"
+        }
+        app.accountId = app.utils.ObjectId('588658bf07f3cad6d6f3aaa1');
+    }
     app.device.type = req.query.debug ? req.query.debug : app.device.type;
     app.clientIP = app.utils.getClientAddress(req);
     next();

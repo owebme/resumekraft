@@ -3,14 +3,14 @@ module.exports = function(mode){
     return function(req, res, next){
 
         if (mode == "demo" || mode == "demo-editing"){
-            res.render('premium', {
+            res.render(mode == "demo-editing" ? 'premium' : 'premiumView', {
                 editing: mode == "demo-editing" ? true : false,
                 demo: true
             });
         }
         else {
             if (!app.utils.isObjectId(req.params.alias)){
-                handlerResult(res, null, mode);
+                handlerResult(res, null);
                 return;
             }
             var params = {};
@@ -20,32 +20,49 @@ module.exports = function(mode){
 
             app.db.collection('resumes').find(params)
             .toArray(function(err, data){
-                if (!err && app.account.plan == "premium" && !app.utils.isEmpty(data)){
-                    // var output = app.swig.renderFile(process.cwd() + app.config.get('path:template:basic'), {
-                    //     num: req.body.template,
-        			// 	stamp: req.body.stamp,
-        			// 	width: options.width,
-                    //     content: req.body.content
-                    // });
-                    // res.render('premium'
-                    res.render('premium', {
-                        color: data[0].config.color,
-                        ip: app.clientIP,
-                        resume: JSON.stringify(data[0]),
-                        editing: mode == "editing" ? true : false
-                    });
+                if (!err && !app.utils.isEmpty(data)){
+                    var resume = data[0];
                 }
-                else if (err){
+                if (err){
                     next();
                 }
+                else if (app.utils.isEmpty(data)){
+                    handlerResult(res, data);
+                }
+                else if (mode == "editing" && app.account && app.account.plan == "premium"){
+                    res.render('premium', {
+                        color: resume.config.color,
+                        resume: JSON.stringify(resume),
+                        editing: true
+                    });
+                }
+                else if (mode == "view" && resume.plan == "free" && resume.public){
+                    res.render('resumeView', {
+                        post: resume.post,
+                        resume: JSON.stringify(resume),
+                        num: resume.template,
+                        isMobile: app.device.isMobile,
+                        stamp: true,
+                        editing: false
+                    });
+                }
+                else if (mode == "view" && resume.plan == "premium" && resume.public){
+                    res.render('premiumView', {
+                        color: resume.config.color,
+                        ip: app.clientIP,
+                        post: resume.post,
+                        resume: JSON.stringify(resume),
+                        editing: false
+                    });
+                }
                 else {
-                    handlerResult(res, data, mode);
+                    handlerResult(res, data);
                 }
             });
         }
     }
 
-    function handlerResult(res, data, mode){
+    function handlerResult(res, data){
         var result = {
             message: ":(",
             error: {
@@ -55,9 +72,9 @@ module.exports = function(mode){
                 }
             }
         }
-        if (mode == "editing" && app.account.plan != "premium"){
+        if (mode == "editing" && app.account && app.account.plan != "premium"){
             result.error = {
-                status: "Ваш статус не имеет статус Premium",
+                status: "Для редактирования резюме требуется <span class='blue'>Premium</span> аккаунт",
                 text: "Возможно действие тарифного плана истекло.",
                 back: {
                     url: "/private?changePlan=premium",

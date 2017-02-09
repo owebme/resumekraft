@@ -1,4 +1,9 @@
 .resumeBasic {
+    .oScreen__section__buttons {
+        .d-phone & {
+            @extend .display-none;
+        }
+    }
     .control__buttons {
         @include accelerate(true);
         @include flex("row", "flex-end", "flex-start");
@@ -16,6 +21,10 @@
         .d-phone & {
             @extend .pr0;
             @extend .r0;
+        }
+        .d-phone & {
+            @extend .t--xxs;
+            @extend .mr--xxs;
         }
         // .d-mobile & {
         //     &:before {

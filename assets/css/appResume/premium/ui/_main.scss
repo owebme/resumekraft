@@ -4,11 +4,11 @@
         @extend .whiteSpace-preLine;
 
         .d-no-phone & {
-            @extend .fontSize-18;
+            font-size:18px;
             @extend .lineHeight-l;
         }
         .d-phone & {
-            @extend .fontSize-20;
+            font-size:20px;
             @extend .lineHeight-xl;
         }
         .d-tablet.r-landscape & {
@@ -56,7 +56,7 @@
     .larger {
         @extend .c-primary;
         @extend .fontWeight-normal;
-        @extend .fontSize-24;
+        font-size:24px;
         @extend .lineHeight-xxl;
         letter-spacing:0 !important;
 
@@ -177,6 +177,9 @@
         .d-tablet.r-portrait & {
             width:120vw;
             left:-20vw;
+        }
+        .d-phone & {
+            height:105%;
         }
     }
     .work-items,
@@ -487,6 +490,23 @@
             }
         }
     }
+    ux-contacts {
+        .likes {
+            @include abs();
+            @extend .bg-blackLight;
+
+            &__text {
+                font-size:19.5px;
+                @extend .plr-l;
+                @extend .mb-m;
+
+                &--show {
+                    @extend .pl60;
+                    @extend .pr60;
+                }
+            }
+        }
+    }
     #app {
         &[data-coverletter="true"]{
             section[data-section="coverletter"] {
@@ -506,6 +526,7 @@
             }
             .screen__content {
                 @extend .h100v;
+                @extend .maxH-100p;
                 @extend .pt-l;
                 @extend .pb-xl;
                 @extend .flex-centered;
@@ -516,81 +537,13 @@
 
             .screen__content {
                 @extend .h100v;
+                @extend .maxH-100p;
                 @extend .flex-centered;
                 @extend .text-center;
             }
-            .likes {
-                @extend .flex-column-centered;
-
-                &__cover {
-                    @extend .pos-rel;
-                    @extend .w130;
-                    @extend .h130;
-                    @extend .mb-s;
-
-                    &:before {
-                        @extend .content-empty;
-                        @extend .display-block;
-                        @extend .opacity-30;
-                        @include ui-icon("like_fill_white", 130px, 130px);
-                        animation:pulse-heart 1s infinite;
-                    }
-                    &__photo {
-                        @extend .pos-centered;
-                        width:62px;
-                        height:62px;
-                        @extend .bg-cover;
-                        @extend .borderRadius-circle;
-                        @extend .mt--s;
-                    }
-                    &__badge {
-                        @extend .pos-abs;
-                        bottom:65%;
-                        right:60%;
-                        width:29px;
-                        height:29px;
-                        @extend .fontFamily-futura;
-                        @extend .flex-centered;
-                        @extend .c-white;
-                        font-size:18px;
-                        @extend .fontWeight-8;
-                        @extend .borderRadius-circle;
-                        padding-top:1px;
-                    }
-                }
-                &__text {
-                    @extend .c-white;
-                    font-size:22px;
-                    @extend .lineHeight-xxl;
-                    @extend .text-center;
-                }
-                &[data-gender="male"]{
-                    .likes__cover__badge {
-                        @extend .bg-blueLight;
-                    }
-                    .btn:before {
-                        @include ui-icon("like_fill_blue", 24px, 24px);
-                    }
-                }
-                &[data-gender="female"]{
-                    .likes__cover__badge {
-                        @extend .bg-pink;
-                    }
-                    .btn:before {
-                        @include ui-icon("like_fill_pink", 24px, 24px);
-                    }
-                }
-            }
-            .btn {
-                @extend .bg-white;
-                @extend .c-black;
-
-                &:before {
-                    @extend .content-empty;
-                    @extend .display-inlineBlock;
-                    @extend .vAlign-middle;
-                    margin:0 12px 0 -10px;
-                }
+            .likes__text {
+                font-size:22px;
+                @extend .lineHeight-xxl;
             }
         }
     }

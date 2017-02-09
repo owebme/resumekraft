@@ -36,6 +36,14 @@
         height:#{$i}px;
     }
 }
+@each $size in (16, 24, 32, 44, 48, 62, 64, 96){
+    .w#{$size} {
+        width:#{$size}px;
+    }
+    .h#{$size} {
+        height:#{$size}px;
+    }
+}
 .w16p {
     width:16.33%;
 }

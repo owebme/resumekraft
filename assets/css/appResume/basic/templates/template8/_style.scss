@@ -46,13 +46,23 @@
   color: #d3c0de;
 }
 #t8 #t-header-post {
+  position:relative;
   color: #9480b8;
   font: 36px/40px "Proxima Nova";
   letter-spacing: -0.025em;
   text-transform: uppercase;
   padding-bottom: 30px;
-  background: url(/assets/css/appResume/basic/templates/template8/img/points-h.png) bottom left repeat-x;
   margin-bottom: 5px;
+
+  &:after {
+      content:"";
+      position:absolute;
+      bottom:0;
+      left:0;
+      width:120%;
+      height:6px;
+      background: url(/assets/css/appResume/basic/templates/template8/img/points-h.png) bottom left repeat-x;
+  }
 }
 #t8 #t-header-salary {
   position: absolute;

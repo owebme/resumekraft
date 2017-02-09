@@ -1,9 +1,9 @@
 .resumeBasic {
     .ui-scroll__handle__inner {
-        background-color:rgba($green,.7);
+        background-color:rgba($blueLight,.6);
     }
     .ui-scroll__bar {
-    	@extend .bg-green;
+    	@extend .bg-blueLight;
     }
     .ui-scroll:after {
         @extend .content-empty;

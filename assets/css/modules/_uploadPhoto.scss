@@ -23,18 +23,19 @@
         @extend .pos-centered;
 
         .d-phone & {
-            @extend .pos-tl;
-            @extend .w100v;
-            @extend .h100v;
+            @include abs();
             @extend .transform-none;
+        }
+        .container {
+            .d-phone & {
+                @include abs();
+            }
         }
     }
     &__container {
         .d-phone & {
-            @extend .pos-tl;
+            @include abs();
             @extend .overflow-hidden;
-            @extend .w100v;
-            @extend .h100v;
             @extend .m0;
             @extend .p0;
 

@@ -1,0 +1,85 @@
+.user__photo {
+    @extend .pos-rel;
+    width:242px;
+    height:242px;
+    @extend .borderRadius-circle;
+    @extend .cursor-pointer;
+    @extend .overflow-hidden;
+
+    &:before {
+        @include abs();
+        @extend .content-empty;
+        @extend .borderRadius-circle;
+        box-shadow: 0 0 21px rgba(31,35,37,.2) inset;
+        @extend .zIndex-1;
+    }
+    &__image {
+        @include abs();
+        @extend .borderRadius-circle;
+        @extend .bg-cover;
+        transition:opacity 0.1s ease;
+    }
+    .m-no-touch &:hover {
+        .user__photo__image {
+            @extend .opacity-85;
+        }
+        &:after {
+            @extend .t50;
+            @extend .opacity-85;
+        }
+    }
+    .m-touch &:not([data-place="true"]) {
+        &:before {
+            background:radial-gradient($blackLight, rgba($blackLight,0));
+            @extend .opacity-40;
+        }
+        &:after {
+            @extend .t50;
+            @extend .opacity-70;
+        }
+    }
+    &:after,
+    &__text {
+        @extend .display-none;
+    }
+    &:after {
+        @extend .content-empty;
+        @extend .display-block;
+        @extend .pos-abs;
+        top:65%;
+        left:50%;
+        margin:-64px 0 0 -66px;
+        @include ui-icon("upload_white", 128px, 128px);
+        transition:all 0.25s ease;
+        @extend .opacity-0;
+        @extend .zIndex-2;
+    }
+    &[data-place="true"] {
+        border:3px dashed rgba(#265cdc,.8);
+
+        .user__photo__text {
+            @extend .display-block;
+            @extend .pos-abs;
+            @extend .t50;
+            @extend .l0;
+            @extend .w100p;
+            @extend .mt-l;
+            @extend .pl30;
+            @extend .pr30;
+            @extend .c-gray;
+            @extend .text-center;
+            @extend .text-uppercase;
+            font:bold 13px/20px "Gotham", Helvetica;
+        }
+        &:before {
+            @extend .display-none;
+        }
+        &:after {
+            @extend .t50;
+            margin:-76px 0 0 -52px;
+            @include ui-icon("upload", 104px, 104px);
+            @extend .opacity-85;
+            @extend .transition-none;
+        }
+    }
+}

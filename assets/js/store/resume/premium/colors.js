@@ -36,7 +36,7 @@ $store.colors = _.extend(new Baobab([
         title: "violetLight"
     },
     {
-        _id: "#5c0bb7",
+        _id: "#5856d6",
         title: "violet"
     }
     ]),

@@ -8,7 +8,7 @@
 
         <div class="pos-rel mb-l">
             <span class="input-title">название секции</span>
-            <input onInput={ $Editable.component.autoCommit } class="input input-xl" data-name="title" name="title_data" type="text" placeholder="Название секции" autocomplete="off" value={ data && data.title ? data.title : $store.resume.placeholder.skills.title }>
+            <input onInput={ $Editable.component.autoCommit } class="input input-xl" data-name="title" name="title_data" type="text" placeholder="Название секции" autocomplete="off" value={ data && data.title ? data.title : $store.resume.placeholder.skills.title() }>
         </div>
         <div class="pos-rel mb-l">
             <span class="input-title">жирный заголовок</span>
@@ -29,7 +29,7 @@
                                 <div onClick={ removeSkill } class="input-group-addon">
                                     <input-addon-remove></input-addon-remove>
                                 </div>
-                                <input onInput={ autoCommitTitle } class="input input-l" type="text" placeholder="Введите название навыка" autocomplete="off" value={ item.title }>
+                                <input onInput={ autoCommitTitle } class="input input-l" type="text" placeholder="Название навыка" autocomplete="off" value={ item.title }>
                             </div>
                         </div>
                         <div class="col-xs-6">

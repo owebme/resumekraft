@@ -24,6 +24,10 @@ body {
 	.d-no-phone & {
 		@extend .overflowX-hidden;
 	}
+	.d-phone & {
+		@include abs();
+		@extend .overflow-hidden;
+	}
 }
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, strong {
     @extend .f-primary;
@@ -31,4 +35,13 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, strong {
 .ui-scroll__bar,
 .ui-scroll__handle__inner {
 	@extend .bg-primary;
+}
+#app {
+	.tutorial__message {
+		border-radius:18px;
+	}
+	.tutorial__shape {
+		@extend .bg-white;
+		border-color:rgba($steel,.8);
+	}
 }

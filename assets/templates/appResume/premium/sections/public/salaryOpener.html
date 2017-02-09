@@ -1,4 +1,4 @@
-<salary-graph-opener onClick={ openGraph } onUpdate="none" class="salary-graph-opener">
+<salary-graph-opener if={ $resume.salary && $resume.salary.graph.active } onClick={ openGraph } onUpdate="none" class="salary-graph-opener">
 
     <div if={ $resume.salary.currency != "1" } class="salary-graph-opener-valuta">{ $store.currency.getTitleById($resume.salary.currency) }</div>
     <svg if={ $resume.salary.currency == "1" } class="salary-graph-opener-ruble" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">

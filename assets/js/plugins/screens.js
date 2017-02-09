@@ -110,7 +110,7 @@
                         centered(app.sizes.height / 1.3, 0);
                     }, 150);
                 }
-                _this.refresh();
+                if (_this.options.static) _this.refresh();
         	});
 
             if (_this.options.static){
@@ -120,7 +120,7 @@
 
                         state = "focus";
 
-                        centered(app.sizes.height / 3.5, 200);
+                        centered(app.sizes.height / 2.5, 400);
                     }
                     else {
                         state = "blur";

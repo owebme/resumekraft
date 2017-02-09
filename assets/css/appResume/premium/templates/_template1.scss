@@ -8,7 +8,7 @@
         @extend .zIndex-1;
 
         .d-tablet.r-landscape & {
-            @extend .ml--25;
+            @extend .ml--s;
         }
     }
     .main-line {
@@ -29,7 +29,7 @@
             @extend .opacity-40;
 
             .d-tablet.r-landscape & {
-                right:140px;
+                right:135px;
             }
         }
         .d-tablet.r-portrait &,
@@ -134,6 +134,8 @@
                 @include accelerate();
                 @extend .pos-centered;
                 @extend .cursor-pointer;
+                @extend .mt--30;
+                @extend .xs-mt-s;
                 width:132px;
                 height:132px;
 
@@ -157,14 +159,16 @@
                 }
             }
             &-title {
-                @extend .pos-abs;
+                @extend .pos-centered-h;
                 @extend .t100;
+                @extend .w200;
                 @extend .l0;
-                @extend .fontSize-20;
+                font-size:20px;
                 @extend .fontWeight-bold;
                 @extend .letterSpacing--s;
-                @extend .pt-xs;
+                @extend .pt-s;
                 @extend .c-primary;
+                @extend .text-center;
             }
             &:hover {
                 .photo-placeholder-icon:before {
@@ -194,7 +198,7 @@
         .work-items:before,
         .job-items:before {
             @extend .bg-primary;
-            @extend .md-ml--m;
+            @extend .md-ml--s;
 
             .d-tablet.r-portrait &,
             .d-phone & {
@@ -237,6 +241,7 @@
                     height:192px;
                     @extend .trY-m;
                     @extend .job-icon;
+                    @extend .md-ml--xs;
                 }
             }
             &[data-section="commons"]{
@@ -292,11 +297,13 @@
             }
             &[data-section="education"]{
                 margin-bottom:170px;
+                min-height:640px;
 
                 &:before {
                     width:192px;
                     height:192px;
                     transform:translateY(70px);
+                    @extend .md-ml--xs;
                     background-image:url(/assets/images/resume/education_white.svg);
                 }
             }
@@ -310,7 +317,7 @@
                     width:148px;
                     height:202px;
                     @extend .trY-xs;
-                    @extend .md-ml0;
+                    @extend .md-ml-s;
                     background-image:url(/assets/images/resume/courses_white.svg);
                 }
             }
@@ -323,7 +330,7 @@
                     width:164px;
                     height:164px;
                     transform:translateY(70px);
-                    @extend .md-ml--xxs;
+                    @extend .md-ml-xs;
                     background-image:url(/assets/images/resume/languages_white.svg);
                 }
             }
@@ -332,7 +339,7 @@
                     width:164px;
                     height:164px;
                     @extend .trY-l;
-                    @extend .md-ml-xxs;
+                    @extend .md-ml-xs;
                     background-image:url(/assets/images/resume/hobby_white.svg);
                 }
             }
@@ -395,6 +402,10 @@
         @extend .lineHeight-xxl;
         @extend .text-center;
 
+        .d-tablet.r-portrait & {
+            @extend .w100p;
+            @extend .pt-l;
+        }
         .d-phone & {
             @extend .display-none;
         }
@@ -448,6 +459,7 @@
         .screen--first {
             @extend .bg-black;
             @extend .h100v;
+            @extend .maxH-100p;
 
             .screen__content {
                 @include abs();
@@ -469,7 +481,7 @@
             @extend .fontWeight-5;
             @extend .letterSpacing--m;
             text-shadow:0 2px 5px rgba($blackDark,.5);
-            min-height:200px;
+            min-height:180px;
             font-size:38px;
             line-height:44px;
             background:linear-gradient(to top, $steelDark, rgba($steelDark,0));

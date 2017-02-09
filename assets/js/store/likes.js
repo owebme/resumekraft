@@ -1,1 +1,0 @@
-$store.likes = new Baobab([]);

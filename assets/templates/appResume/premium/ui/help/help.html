@@ -29,7 +29,7 @@
 
         $Editable.on("editable", function(ev, editable, update){
             if (editable == "text") editable = update;
-            if (ev == "showAnimated" && editable && app.help[editable]){
+            if (ev == "showAnimated" && editable && app.help && app.help[editable]){
                 var text = app.help[editable].text ? app.help[editable].text : "",
                     screen = app.help[editable].screen ? app.help[editable].screen : "";
 

@@ -6,7 +6,7 @@
 
                 <btn-editable if={ $State.get('mode') === "editing" } data={ $resume.works }></btn-editable>
 
-                <h3 class="title">{ $resume.works && $resume.works.title ? $resume.works.title : $store.resume.placeholder.works.title }</h3>
+                <h3 class="title">{ $resume.works && $resume.works.title ? $resume.works.title : $store.resume.placeholder.works.title() }</h3>
 
                 <div if={ !$resume.works || $resume.works && $resume.works.text } onClick={ openEditable } onUpdate="none" class="{ blur : !$resume.works }">
                     <div class="row mb-l">

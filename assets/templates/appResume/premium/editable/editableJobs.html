@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <div if={ !$Editable.component.editing } class="pos-rel">
                     <span class="input-title">название секции</span>
-                    <input onInput={ $Editable.component.autoCommit } class="input { app.device.isPhone ? 'input-l' : 'input-xl' }" data-name="title" name="title_data" type="text" placeholder="Название секции" autocomplete="off" value={ data && data.title ? data.title : $store.resume.placeholder.jobs.title }>
+                    <input onInput={ $Editable.component.autoCommit } class="input { app.device.isPhone ? 'input-l' : 'input-xl' }" data-name="title" name="title_data" type="text" placeholder="Название секции" autocomplete="off" value={ data && data.title ? data.title : $store.resume.placeholder.jobs.title() }>
                 </div>
                 <div if={ $Editable.component.editing }>
                     <div class="title title-xl">Редактирование</div>

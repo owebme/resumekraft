@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>ResumeKraft - редактирование премиального резюме</title>
+    <title>{% if post %}{{ post }} // ResumeKraft{% else %}Создать премиальное резюме{% endif %}</title>
     <meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <meta property="og:image" content="/assets/images/favicons/120.png" />
@@ -31,78 +31,25 @@
 </head>
 <body class="appLoading">
 
-    <root-main id="app" editing="{{ editing }}" demo="{{ demo }}"></root-main>
+    <root-main-view id="app" demo="{{ demo }}"></root-main-view>
 
     <div id="loader" data-color="{{ color }}">
         <div class="loader-spinner"></div>
     </div>
 
-    <!--/ VENDORS /-->
     <script src="/assets/js/libs.js"></script>
-
-    <!--/ templates /-->
-    <script src="/assets/templates/appResume/premium/root.html" type="riot/tag"></script>
-
-    <script src="/assets/js/premium/templates.ui.js"></script>
-    <script src="/assets/js/premium/templates.control.js"></script>
-    <script src="/assets/js/premium/templates.sections.js"></script>
-    <script src="/assets/js/premium/templates.editable.js"></script>
-    <script src="/assets/js/premium/templates.components.js"></script>
-    <script src="/assets/templates/appResume/premium/templates/template1.html" type="riot/tag"></script>
-
-    <!--/ Modules /-->
-    <script src="/assets/templates/modules/notify.html" type="riot/tag"></script>
-    <script src="/assets/templates/modules/tutorial.html" type="riot/tag"></script>
-
-    <!--/ JS components /-->
-    <script src="/assets/js/components/commons/app.js"></script>
-    <script src="/assets/js/components/commons/afterlag.js"></script>
-    <script src="/assets/js/components/commons/common.js"></script>
-    <script src="/assets/js/components/commons/utils.js"></script>
-    <script src="/assets/js/components/commons/request.js"></script>
-    <script src="/assets/js/components/commons/modules.js"></script>
+    <script src="/assets/js/premium/app.build.js"></script>
     <script src="/public/js/resume/config.js"></script>
-    <script src="/assets/js/components/i18n/i18n.js"></script>
-    <!-- <script src="/assets/js/components/i18n/resume/basic/template/ru.js"></script> -->
-    <!-- <script src="/assets/js/components/help/resume/premium/photo.js"></script>
-    <script src="/assets/js/components/help/resume/premium/post.js"></script>
-    <script src="/assets/js/components/help/resume/premium/salary.js"></script>
-    <script src="/assets/js/components/help/resume/premium/tags.js"></script>
-    <script src="/assets/js/components/help/resume/premium/about.js"></script>
-    <script src="/assets/js/components/help/resume/premium/social.js"></script>
-    <script src="/assets/js/components/help/resume/premium/works.js"></script>
-    <script src="/assets/js/components/help/resume/premium/skills.js"></script>
-    <script src="/assets/js/components/help/resume/premium/education.js"></script>
-    <script src="/assets/js/components/help/resume/premium/courses.js"></script>
-    <script src="/assets/js/components/help/resume/premium/languages.js"></script>
-    <script src="/assets/js/components/help/resume/premium/jobs.js"></script> -->
-    <script src="/assets/js/plugins.js"></script>
 
-    <script src="/assets/js/store/account.js"></script>
-    <script src="/assets/js/store/resume.js"></script>
-    <script src="/assets/js/store/resume.demo.js"></script>
-    <script src="/assets/js/store/fonts.js"></script>
-    <script src="/assets/js/store/colors.js"></script>
-    <script src="/assets/js/store/salary.js"></script>
-    <script src="/assets/js/store/education.js"></script>
-    <script src="/assets/js/store/languages.js"></script>
-    <script src="/assets/js/store/month.js"></script>
-    <script src="/assets/js/store/hobby.js"></script>
-    <script src="/assets/js/store/coverletter.js"></script>
-    <script src="/assets/js/store/contactsPrimary.js"></script>
-    <script src="/public/js/resume/init.js"></script>
+{% if resume %}
+    <script>
+        app.json = {};
+        app.json.ip = "{{ ip }}";
+        app.json.resume = {{ resume | safe }};
+    </script>
+{% endif %}
 
-    <!-- <script src="/assets/js/libs.js"></script>
-    <script src="/assets/js/premium/app.build.js"></script> -->
-
-    {% if data %}
-        <script>
-            app.json = {};
-            app.json.ip = {{ ip }}
-            app.json.account = {{ account | safe }}
-            app.json.resume = {{ resume | safe }}
-        </script>
-    {% endif %}
+    <script src="/assets/js/premium/init.js"></script>
 
 </body>
 </html>

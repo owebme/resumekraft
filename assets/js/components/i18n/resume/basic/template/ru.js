@@ -8,10 +8,10 @@ i18n.dictionary({
                     "Phone": "Телефон",
                     "Education": "Образование",
                     "Specialty": "Специальность",
-                    "Languages": "Владение языками",
+                    "Languages": "Языки",
                     "Experience": "Место работы",
                     "Until Now": "по настоящее время",
-                    "About me": "Достижения, о себе"
+                    "About me": "О себе, мои качества"
                 }
             }
         }

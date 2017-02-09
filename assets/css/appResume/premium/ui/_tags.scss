@@ -53,7 +53,7 @@
         @extend .lineHeight-1;
         @extend .border-none;
         font-family:$roboto !important;
-        width:180px;
+        @extend .w200;
         @extend .pr-l;
 
         &::-webkit-input-placeholder {

@@ -9,5 +9,11 @@
                 padding-bottom:10px;
             }
         }
+        &::-webkit-input-placeholder {
+            color:rgba($steel,.8);
+        }
+        &::-moz-input-placeholder {
+            color:rgba($steel,.8);
+        }
     }
 }
