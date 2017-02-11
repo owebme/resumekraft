@@ -1,8 +1,8 @@
 (function(){
 
-    app.define("plugins.tutorial.balanceEmpty");
+    app.define("tutorial.balanceEmpty");
 
-    app.plugins.tutorial.balanceEmpty = [
+    app.tutorial.balanceEmpty = [
         function(){
             return {
                 activeZone: true,

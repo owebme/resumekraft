@@ -1,8 +1,8 @@
 (function($){
 
-    app.define("plugins.tutorial.welcome");
+    app.define("tutorial.welcome");
 
-    app.plugins.tutorial.welcome = [
+    app.tutorial.welcome = [
         function(){
             return {
                 figure: "square",
@@ -19,7 +19,7 @@
         function(){
             return {
                 figure: "circle",
-                target: ".profile .profile__photo__image",
+                target: ".profile .user__photo__image",
                 position: "right",
                 zoom: 0.8,
                 title: "Фотография",
@@ -200,7 +200,7 @@
                 text: "Чем выше процент тем более привлекательно ваше резюме для работодателя.",
                 actions: {
                     toggle: function($target, hide){
-                        if (hide){
+                        if (hide && !$store.data.get().length){
                             $(".slider__wrapper .slider__item:first .resume__item")
                             .attr("data-blank", true);
                         }

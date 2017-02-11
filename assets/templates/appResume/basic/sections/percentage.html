@@ -1,13 +1,27 @@
 <resume-control-percentage class="section percentage">
 
-    <div class="percentage__container" style="transform:translateY({ 100 - p }%)">
+    <div class="percentage__container" style="transform:translateY({ tY }%)">
         <div class="percentage__score">{ p }%</div>
     </div>
 
 <script>
 
     var $ = this,
-    array = ["name", "surname", "post", "aboutText", "contacts"];
+    keys = [
+        { name: "commons.name", points: 3 },
+        { name: "commons.surname", points: 3 },
+        { name: "post", points: 3 },
+        { name: "photo", points: 5 },
+        { name: "commons.contacts.city", points: 3 },
+        { name: "commons.contacts.email", points: 3 },
+        { name: "commons.contacts.phone", points: 3 },
+        { name: "commons.contacts.skype", points: 3 },
+        { name: "salary.active", points: 5 },
+        { name: "about", points: 10 },
+        { name: "jobs", items: 5, points: 15 },
+        { name: "education", items: 5, points: 10 },
+        { name: "languages", points: 10 }
+    ];
 
     $.on("before-mount", function(){
         $.calc();
@@ -23,66 +37,36 @@
 
     $.calc = function(){
         var p = 0,
-            all = 0;
+            all = _.reduce(_.pluck(keys, 'points'), function(memo, num){ return memo + num; }, 0);
 
-        _.each($store.resume.get(), function(value, key){
-            if (_.indexOf(array, key)){
-                if (key == "commons"){
-                    _.each(value, function(v, k){
-                        if (k == "contacts"){
-                            _.each(v, function(val){
-                                if (val && val.length) p++;
-                            });
+        _.each(keys, function(item){
+            if ($store.resume.get(item.name.split("."))){
+                if (item.items){
+                    var items = $store.resume.get(item.name, "items");
+                    if (items && items.length){
+                        if (item.items + 1 > items.length){
+                            p += items.length * item.points;
                         }
-                        else if (v && v.length) p++;
-                        all++;
-                    });
-                }
-                else if (key == "about"){
-                    if (value && value.length) p += 3;
-                }
-                else if (key == "education"){
-                    if (value && value.items){
-                        if (value.items.length > 3) p += 3;
-                        else p += value.items.length;
+                        else {
+                            p += item.items * item.points;
+                        }
                     }
-                    all += 3;
-                }
-                else if (key == "languages"){
-                    if (value && value.items){
-                        _.each(value.items, function(v, k){
-                            if (v.title != "native" && v.value > 1) p++;
-                        });
-                    }
-                    all += 3;
-                }
-                else if (key == "jobs"){
-                    if (value && value.items){
-                        if (value.items.length > 3) p += 3;
-                        else p += value.items.length;
-                    }
-                    all += 3;
                 }
                 else {
-                    if (value && value.length) p++;
-                    all++;
+                    p += item.points;
                 }
             }
         });
 
-        if ($store.resume.get('photo')){
-            p++;
-        }
-        if ($store.resume.get('salary', 'active')){
-            p++;
-        }
-
         var result = Math.floor((p / all) * 100);
 
+        result = result > 100 ? 100 : result
+
         $.update({
-            p: result > 100 ? 100 : result
+            p: result,
+            tY: result > 90 ? 10 : 100 - p
         });
-        $store.resume.select("percent").set($.p);
+        $store.resume.select("percent").set(result);
     };
 
     $.on("unmount", function(){

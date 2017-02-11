@@ -1,8 +1,8 @@
 (function(){
 
-    app.define("plugins.tutorial.resumeFree");
+    app.define("tutorial.resumeFree");
 
-    app.plugins.tutorial.resumeFree = [
+    app.tutorial.resumeFree = [
         function(){
             return {
                 figure: "square",

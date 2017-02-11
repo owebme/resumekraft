@@ -1,8 +1,8 @@
 (function(app){
 
-    app.define("plugins.tutorial.selectResumePremium");
+    app.define("tutorial.selectResumePremium");
 
-    app.plugins.tutorial.selectResumePremium = [
+    app.tutorial.selectResumePremium = [
         function(){
             return {
                 figure: "square",

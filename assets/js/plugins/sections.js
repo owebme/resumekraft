@@ -14,14 +14,21 @@
             var _this = this,
                 options = options || {};
 
-            if (options.debug){
-                $(this.content).addClass("transition-none");
+            if (options.forceShow){
+                var $content = $(this.content);
+                $content.addClass("transition-none");
                 this.scope.setAttribute("data-inner", "show");
                 this.scope.setAttribute("data-open", true);
                 if (options.scroll){
                     options.scroll.refresh();
                     options.scroll.scrollTop();
                 }
+                if (_.isFunction(options.beforeShow)){
+                    options.beforeShow();
+                }
+                $afterlag.run(function(){
+                    $content.removeClass("transition-none");
+                });
                 return;
             }
 

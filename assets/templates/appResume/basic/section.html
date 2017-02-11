@@ -42,10 +42,12 @@
     $.show = function(options){
         if ($.loading || $.active) return;
 
-        var store = Store.get("resume");
+        var store = Store.get("resume"),
+            recovery = false;
 
         if (options.id && store && $store.data.get({ "_id": options.id }) && store._id == options.id && store.plan == "free" && moment(store.update).diff(moment($store.data.get({ "_id": options.id }).update)) > 0){
             $store.resume.set(store);
+            recovery = true;
         }
         else {
             $resume.set(
@@ -103,6 +105,12 @@
                     $.scroll[0].style.backgroundColor = '';
                     $root.focus("resume-edit");
                     $.ready = true;
+                    if (recovery){
+                        $Notify.show({
+                            color: "primary",
+                            text: "Резюме восстановлено из резервной копии"
+                        })
+                    }
                 }
             }
         );

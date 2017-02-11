@@ -19,10 +19,16 @@
     var $ = this;
 
     $.show = function(){
-        $Sections.profile.section.active = true;
-        $Sections.profile.section.update();
-        $Sections.resume.list.update({
-            hidden: true
+        $afterlag.run(function(){
+            $Sections.profile.section.section.show({
+                forceShow: true,
+                beforeShow: function(){
+                    $.active = true;
+                    $Sections.resume.list.update({
+                        hidden: true
+                    });
+                }
+            })
         });
 
         $.update({

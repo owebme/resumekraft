@@ -38,10 +38,12 @@
 
     $$ = window.jQuery || window.Zepto;
 
-    var store = Store.get("resume");
+    var store = Store.get("resume"),
+        recovery = false;
 
     if (!app.demo && store && store._id == $store.resume.get("_id") && store.plan == $store.resume.get("plan") && moment(store.update).diff(moment($store.resume.get("update"))) > 0){
         $store.resume.set(store);
+        recovery = true;
     }
 
     $resume = app.demo ? $store.resume.prepare.demo() : $store.resume.prepare.premium("editing");
@@ -117,6 +119,12 @@
             // $Tutorial.one("hide", function(){
             //     app.$dom.body.removeClass("overflow-hidden");
             // });
+            if (recovery){
+                $Notify.show({
+                    color: "dark",
+                    text: "Резюме восстановлено из резервной копии"
+                })
+            }
             $root.autoSave();
         }
         if (app.device.isPhone){

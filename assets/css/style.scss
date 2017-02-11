@@ -60,15 +60,15 @@
 @import 'sections/profile/profile';
 
 // jqtest
-// @import 'sections/jqtest/jqtest';
-// @import 'sections/jqtest/jqtestEnter';
-// @import 'sections/jqtest/result/main';
-// @import 'sections/jqtest/result/columns';
-// @import 'sections/jqtest/result/skills';
-// @import 'sections/jqtest/result/humps';
-// @import 'sections/jqtest/result/graph';
-// @import 'sections/jqtest/result/specialties';
-// @import 'sections/jqtest/result/path';
+@import 'sections/jqtest/jqtest';
+@import 'sections/jqtest/jqtestEnter';
+@import 'sections/jqtest/result/main';
+@import 'sections/jqtest/result/columns';
+@import 'sections/jqtest/result/skills';
+@import 'sections/jqtest/result/humps';
+@import 'sections/jqtest/result/graph';
+@import 'sections/jqtest/result/specialties';
+@import 'sections/jqtest/result/path';
 
 // plan
 @import 'sections/plan/plan';
@@ -80,12 +80,12 @@
 @import 'sections/payment/payment';
 
 // overview
-// @import 'sections/overview/main';
-// @import 'sections/overview/premium/header';
-// @import 'sections/overview/premium/slides';
-// @import 'sections/overview/premium/devices';
-// @import 'sections/overview/jqtest/slides';
-// @import 'sections/overview/overviewFunctions';
+@import 'sections/overview/main';
+@import 'sections/overview/premium/header';
+@import 'sections/overview/premium/slides';
+@import 'sections/overview/premium/devices';
+@import 'sections/overview/jqtest/slides';
+@import 'sections/overview/overviewFunctions';
 
 // Resume list
 @import 'sections/list/resumeList';
