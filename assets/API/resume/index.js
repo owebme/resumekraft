@@ -22,8 +22,15 @@ module.exports = function(url){
 		handlerUpdate(req, res, req.body.data._id, req.body.data);
 	});
 
+	route.put('/public', function(req, res) {
+		handlerUpdate(req, res, req.body._id, {
+			public: req.body.public
+		});
+	});
+
     route.post('/', function(req, res) {
 		if (req.body.data._id) delete req.body.data._id;
+		if (req.body.data.likes) req.body.data.likes = null;
         req.body.data.accountId = app.accountId;
 
         app.db.collection('resumes').insert(req.body.data,

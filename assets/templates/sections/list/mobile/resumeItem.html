@@ -1,11 +1,13 @@
-<resume-item-mobile class="row resume__list-m__item">
+<resume-item-mobile class="row resume__list-m__item" data-public="{ opts.item.public ? 'true' : 'false' }">
 
     <div if={ opts.item.plan == "free" } class="resume__list-m__item__label" data-label="free"></div>
     <div onClick={ open.resume } onUpdate="none" class="col-xs-5 flex-centered resume__list-m__item__cell">
         <div class="resume__list-m__item__cover" data-color={ opts.item.plan == "premium" ? opts.item.config.color : null }>{ get.coverPost(opts.item.post || 'R') }</div>
+        <div if={ opts.item.plan == "premium" } class="resume__list-m__item__label" data-label="premium"></div>
     </div>
     <div onClick={ open.resume } onUpdate="none" class="col-xs-12 flex-row-left-center resume__list-m__item__cell">
-        <div if={ opts.item.plan == "premium" } class="resume__list-m__item__label" data-label="premium"></div>
+        <div class="resume__list-m__item__noview" data-active={ opts.item.public }></div>
+        <div class="resume__list-m__item__lang">{ opts.item.lang }</div>
         <div class="resume__list-m__item__title">{ opts.item.post ? opts.item.post : 'Продолжить редактирование' }</div>
     </div>
     <div class="col-xs-4 flex-centered resume__list-m__item__cell resume__list-m__item__percent">{ opts.item.percent }%</div>

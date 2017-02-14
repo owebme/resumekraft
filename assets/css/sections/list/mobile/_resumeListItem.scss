@@ -37,6 +37,12 @@
             padding:4px 0 0 1px;
             @extend .willChange-transform;
             @extend .transition-default;
+
+            @each $color in ($blue, $blueLight, $green, $emerald, $orange, $red, $violet, $violetLight, $brown, $pink){
+                &[data-color="#{$color}"]{
+                    background-color:$color;
+                }
+            }
         }
         &__title {
             @extend .fontSize-20;
@@ -69,11 +75,39 @@
                 }
             }
             &[data-label="premium"]{
-                @extend .pos-abs;
-                @extend .t-xs;
-                @extend .r-xs;
-                @include ui-icon("crown", 21px, 21px);
+                @extend .pos-centered-h;
+                top:17px;
+                margin-left:-17px;
+                @extend .bg-red;
+                @extend .w24;
+                @extend .h24;
+                @extend .borderRadius-circle;
+
+                &:after {
+                    @extend .content-empty;
+                    @extend .pos-centered;
+                    @include ui-icon("crown_white", 16px, 16px);
+                }
             }
+        }
+        &__noview {
+            @extend .pos-abs;
+            @extend .t-xs;
+            @extend .r-xs;
+            @include ui-icon("unvisible_gray", 18px, 18px);
+
+            &[data-active="true"]{
+                @include ui-icon("visible", 20px, 20px);
+            }
+        }
+        &__lang {
+            @extend .pos-abs;
+            @extend .b-xs;
+            @extend .r-xs;
+            @extend .c-gray;
+            @extend .fontSize-15;
+            @extend .fontWeight-bold;
+            @extend .text-uppercase;
         }
         &__percent {
             @extend .bg-smoke;
@@ -124,6 +158,17 @@
                 @extend .h30;
                 @extend .opacity-25;
                 @extend .borderRadius-l;
+            }
+        }
+        &[data-public="false"]{
+            .resume__list-m__item__label:before {
+                border-left-color:$silver;
+            }
+            .resume__list-m__item__cover {
+                @extend .bg-silver;
+            }
+            .resume__list-m__item__title {
+                @extend .c-gray;
             }
         }
     }

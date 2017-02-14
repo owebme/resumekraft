@@ -1,4 +1,4 @@
-<resume-list-mobile class="resume__list-m section" data-hidden="false">
+<resume-list-mobile class="resume__list-m section" data-tutorial="false" data-hidden="false">
 
     <div name="content" class="section-scroll section__content">
 
@@ -22,6 +22,8 @@
                 </div>
             </div>
 
+            <offer-welcome-mobile></offer-welcome-mobile>
+
         </div>
 
         <navbar-mobile></navbar-mobile>
@@ -33,10 +35,19 @@
     var $ = this,
     $scope = $$($.root);
 
+    $.offers = $.tags["offer-welcome-mobile"];
+
     $.on("mount", function(){
         $afterlag.run(function(){
             $.scroll = new app.plugins.scroll.content($.content);
             $.scroll.init();
+
+            if (!app.metrika.get("offers.welcome.mobile.show")){
+                $.offers.show();
+            }
+            else {
+                $.offers.unmount();
+            }
         });
     });
 

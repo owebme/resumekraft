@@ -1,0 +1,107 @@
+.resume__list-m {
+    &[data-tutorial="true"]{
+        .resume__list-m__menu {
+            @extend .pointerEvents-none;
+
+            &:after {
+                @extend .zIndex-5;
+            }
+        }
+        .navbar__mobile {
+            @extend .bg-none;
+            @extend .pointerEvents-none;
+        }
+        .tutorial__welcome__mobile {
+            @extend .opacity-100;
+            @extend .visibility-visible;
+            @extend .pointerEvents-all;
+            transition:opacity 0.4s $cubic40;
+        }
+    }
+}
+.tutorial__welcome__mobile {
+    @extend .display-block;
+    @extend .pos-tl;
+    @extend .w100v;
+    @extend .h100v;
+    @extend .c-white;
+    @extend .opacity-0;
+    @extend .visibility-hidden;
+    @extend .pointerEvents-none;
+    @extend .zIndex-2;
+    transition:opacity 0.4s $cubic40, visibility 0s 0.4s;
+
+    &:before {
+        @extend .content-empty;
+        @include abs();
+        @extend .bg-overlay-dark;
+        @extend .opacity-90;
+    }
+    .help {
+        @extend .pos-abs;
+        @extend .fontSize-18;
+        @extend .zIndex-1;
+
+        .icon {
+            @extend .pos-abs;
+            @extend .b100;
+        }
+    }
+    .help1 {
+        @extend .t-xs;
+        @extend .l-s;
+        @extend .w120;
+        @extend .mt85;
+        @extend .ml50;
+
+        .icon {
+            @extend .r20;
+            transform:scaleX(-1) scaleY(-1) rotate(80deg);
+        }
+    }
+    .help2 {
+        @extend .b-90;
+        @extend .l-45;
+        @extend .w120;
+
+        .icon {
+            @extend .t100;
+            @extend .l--55;
+            @extend .mt30;
+            transform:rotate(120deg);
+        }
+    }
+    .help3 {
+        @extend .b-90;
+        @extend .r-45;
+        @extend .w120;
+        @extend .text-right;
+
+        .icon {
+            @extend .t100;
+            @extend .r--55;
+            @extend .mt30;
+            transform:scaleX(-1) scaleY(1) rotate(120deg);
+        }
+    }
+    .help4 {
+        @extend .pos-centered-h;
+        bottom:155px;
+        @extend .text-center;
+        @extend .nowrap;
+
+        &:after {
+            @extend .content-empty;
+            @extend .pos-centered-h;
+            @extend .t100;
+            @extend .w1px;
+            @extend .h55;
+            @extend .bg-white;
+            @extend .opacity-70;
+            @extend .mt-s;
+        }
+    }
+    .help__text {
+        @extend .mt--xs;
+    }
+}

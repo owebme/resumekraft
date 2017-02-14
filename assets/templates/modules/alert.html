@@ -37,9 +37,7 @@
             $.data.success.callback();
         }
         $.data.button = "success";
-        $.update({
-            active: false
-        })
+        $.hide();
     };
 
     $.onCancel = function(){
@@ -47,13 +45,17 @@
             $.data.cancel.callback();
         }
         $.data.button = "cancel";
+        $.hide();
+    };
+
+    $.hide = function(){
         $.update({
             active: false
         })
     };
 
     $.handleClickOutside = function(e){
-        if (!$.wrapper.contains(e.target)) $.onCancel();
+        if (!$.wrapper.contains(e.target)) $.hide();
     };
 
     $.on("updated", function(){

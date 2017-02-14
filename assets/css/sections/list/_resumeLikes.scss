@@ -3,6 +3,9 @@
     @extend .flex-column-centered;
     @extend .w100p;
 
+    &.display-none {
+        @extend .display-none;
+    }
     &[data-animate="true"]{
         &:before {
             animation:pulse-heart 1s infinite;

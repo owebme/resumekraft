@@ -4,6 +4,7 @@
 
     app.plugins.sections = function(scope, options){
         this.scope = scope;
+        this.active = false;
         this.options = options || {};
         this.content = this.options.content || this.scope;
     };
@@ -11,10 +12,13 @@
     app.plugins.sections.prototype = {
 
         show: function(options){
+            if (this.active) return;
+
             var _this = this,
                 options = options || {};
 
             if (options.forceShow){
+                this.active = true;
                 var $content = $(this.content);
                 $content.addClass("transition-none");
                 this.scope.setAttribute("data-inner", "show");
@@ -49,6 +53,7 @@
                 else {
                     _this._afterShow(options);
                 }
+                _this.active = true;
             });
         },
 
@@ -72,6 +77,8 @@
         },
 
         hide: function(options){
+            if (!this.active) return;
+
             var _this = this,
                 options = options || {};
 
@@ -86,6 +93,7 @@
                 if (_.isFunction(options.afterHide)){
                     options.afterHide();
                 }
+                _this.active = false;
             });
         }
     };

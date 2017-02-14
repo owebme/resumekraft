@@ -11,6 +11,21 @@ app.fetch.API.getDataInit = function(){
             $store.data.set(res.data ? res.data : []);
             $store.inbox.set(res.inbox ? res.inbox : []);
 
+            var likes = [];
+            _.each(res.data, function(item){
+                if (item.likes){
+                    likes.push({
+                        _id: item.id,
+                        plan: item.plan,
+                        post: item.post,
+                        color: item.config.color,
+                        likes: item.likes
+                    })
+                }
+            });
+
+            $store.likes.set(likes ? likes : []);
+
             if (app.config.metrika && app.config.metrika.active){
                 var report = false;
 

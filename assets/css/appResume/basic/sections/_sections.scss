@@ -43,7 +43,10 @@
     .screen__content {
         &[data-empty="true"]{
             @extend .h100v;
-
+            
+            .d-phone.d-android & {
+                height:calc(100vh - 22px);
+            }
             .content {
                 @extend .opacity-0;
                 transform:translate3d(0, 2vh, 0) scale(0.85);

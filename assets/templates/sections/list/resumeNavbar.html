@@ -2,9 +2,9 @@
 
     <div class="btn-group">
         <button onClick={ open.jqtest } onUpdate="none" data-item="jq-test" class="btn btn-m btn-primary-hover">JQ-Тест</button>
-        <button onClick={ open.inbox } onUpdate="none" data-item="inbox" class="btn btn-m { get.newItems() > 0 ? 'btn-primary' : 'btn-primary-hover' }">
+        <button onClick={ open.inbox } onUpdate="none" data-item="inbox" class="btn btn-m { $store.inbox.counterAll() > 0 ? 'btn-primary' : 'btn-primary-hover' }">
             Обращения
-            <div class="btn-badge btn-badge-danger">{ get.newItems() }</div>
+            <div class="btn-badge btn-badge-danger">{ $store.inbox.counterAll() }</div>
         </button>
         <button if={ $account.get("plan") != "premium" } onClick={ open.plan } onUpdate="none" data-item="premium" class="btn btn-m btn-primary-hover">Перейти на PREMIUM</button>
         <button onClick={ open.payment } data-item="payment" class="btn btn-m btn-primary">Баланс: { _.numberFormat($account.get('balance'), 1, ",", ",") } ₽</button>
@@ -18,14 +18,6 @@
 <script>
 
     var $ = this;
-
-    $.get = {
-        newItems: function(){
-            return _.where(
-                $store.inbox.get(), { "new": true }
-            ).length;
-        }
-    };
 
     $.open = {
         jqtest: function(){

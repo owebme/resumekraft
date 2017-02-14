@@ -13,8 +13,8 @@
                             <div class="col-md-8">
                                 <div name="listEl" class="inbox__list">
                                     <div class="inbox__list__scroll">
-                                        <section-inbox-list></section-inbox-list>
-                                        <section-inbox-list-blank></section-inbox-list-blank>
+                                        <section-inbox-list items={ $store.inbox.get() }></section-inbox-list>
+                                        <section-inbox-list-blank items={ $store.inbox.get() }></section-inbox-list-blank>
                                     </div>
                                 </div>
                             </div>

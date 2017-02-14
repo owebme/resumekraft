@@ -30,7 +30,7 @@
     </app-sections>
 
     <app-offers>
-        <!-- <offer-plan></offer-plan> -->
+        <offer-plan></offer-plan>
         <offer-votes></offer-votes>
         <offer-jqtest></offer-jqtest>
     </app-offers>
@@ -48,7 +48,7 @@
     $root = this;
     $rootScope = $$(this.root);
 
-    $store.inbox.set([]);
+    // $store.inbox.set([]);
     // $store.data.set([]);
     // $store.likes.set([]);
 
@@ -57,22 +57,6 @@
     });
 
     this.on("mount", function(){
-        if (!app.device.isMobile && !app.metrika.get("offers.welcome.show")){
-            $Sections.offers.welcome.show();
-        }
-        else {
-            //$Sections.offers.welcome.unmount();
-
-            if ($account.get("plan") == "premium"){
-                // $Sections.offers.plan.unmount();
-                // $Sections.resume.stat.offer.unmount();
-                // $Sections.resume.inbox.offer.unmount();
-                // $Sections.plan.unmount();
-            }
-            $root.one("ready", function(){
-                $Sections.resume.list.ready = true;
-            });
-        }
         $afterlag.xs(function(){
             app.$dom.body.removeClass("appLoading");
             $root.trigger("ready");
@@ -98,22 +82,21 @@
                 sendmail: $root.tags["resume-sendmail"]
             },
             offers: {
-                welcome: $root.tags["offer-welcome"],
-                // plan: $root.tags["offer-plan"],
+                plan: $root.tags["offer-plan"],
                 jqtest: $root.tags["offer-jqtest"],
                 votes: $root.tags["offer-votes"]
             },
-            // overview: {
-            //     premium: $root.tags["overview-premium"],
-            //     jqtest: $root.tags["overview-jqtest"],
-            //     functions: $root.tags["overview-functions"]
-            // },
-            // jqtest: {
-            //     section: $root.tags["section-jqtest"],
-            //     list: $root.tags["section-jqtest"].tags["jqtest-list"],
-            //     test: $root.tags["section-jqtest"].tags["jqtest-content"],
-            //     result: $root.tags["section-jqtest"].tags["jqtest-result"]
-            // },
+            overview: {
+                premium: $root.tags["overview-premium"],
+                jqtest: $root.tags["overview-jqtest"],
+                functions: $root.tags["overview-functions"]
+            },
+            jqtest: {
+                section: $root.tags["section-jqtest"],
+                list: $root.tags["section-jqtest"].tags["jqtest-list"],
+                test: $root.tags["section-jqtest"].tags["jqtest-content"],
+                result: $root.tags["section-jqtest"].tags["jqtest-result"]
+            },
             plan: $root.tags["section-plan-mobile"],
             likes: {
                 section: $root.tags["section-likes-mobile"]
@@ -122,6 +105,7 @@
                 section: $root.tags["section-inbox-mobile"],
                 content: $root.tags["section-inbox-content-mobile"]
             },
+            navbar: $root.tags["resume-list-mobile"].tags["navbar-mobile"],
             payment: $root.tags["section-payment-mobile"],
             photoUpload: $root.tags["photo-upload"],
             progress: $root.tags["section-progress"]

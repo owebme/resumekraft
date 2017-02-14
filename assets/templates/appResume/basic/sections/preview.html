@@ -24,9 +24,7 @@
 
     $.show = function(){
         if (app.device.isPhone){
-            $LoaderAjax.show({
-                color: "white"
-            })
+            $LoaderAjax.show();
             $.template.one("updated", function(){
                 $LoaderAjax.hide();
             });

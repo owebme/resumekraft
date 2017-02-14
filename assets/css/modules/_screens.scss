@@ -48,7 +48,7 @@
             @extend .display-block;
             @extend .pos-rel;
             @extend .opacity-100;
-            @extend .minH-100v;
+            // @extend .minH-100v;
         }
     }
     &[data-fixed="true"] {

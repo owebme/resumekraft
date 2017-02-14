@@ -1,6 +1,6 @@
-<section-inbox-list-blank if={ !$store.inbox.get().length } class="section">
+<section-inbox-list-blank if={ !opts.items.length } class="section">
 
-    <virtual each={ item, i in items } no-reorder>
+    <virtual each={ item, i in _items } no-reorder>
         <div class="inbox__list__item">
             <div class="inbox__list__item__icon bg-{ parent.colors[i] }"></div>
             <div class="inbox__list__item__container">
@@ -24,7 +24,7 @@
 
 <script>
 
-    this.items = _.range(1, 5);
+    this._items = _.range(1, 5);
     this.colors = ['blue', 'pink', 'emerald', 'blueLight'];
 
 </script>

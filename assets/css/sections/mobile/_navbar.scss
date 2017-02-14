@@ -45,7 +45,7 @@
         }
         &[data-active="true"]{
             path {
-                @extend .fill-blue;
+                @extend .fill-gray;
             }
         }
         &[data-item="feedback"]{

@@ -6,6 +6,10 @@
         ver: "1.0",
         offers: {
             welcome: {
+                mobile: {
+                    show: false,
+                    success: false
+                },
                 show: false,
                 hide: false,
                 tutorial: {

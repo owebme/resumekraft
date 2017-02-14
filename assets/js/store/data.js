@@ -77,7 +77,8 @@
                                 num = item.template,
                                 $template = $$('<div class="resume__preview resume__preview--shadow">').appendTo(app.$dom.body);
 
-                            $.set(item);
+                            window.$resume = window.$resume || $store.resume;
+                            $store.resume.set(item);
 
                             var template = riot.mount($template[0], "resume-basic-template" + num)[0];
 
@@ -121,16 +122,41 @@
                     callback: function(id){
                         var resume = $.select({"_id": id}).deepClone();
 
-                        app.request("addResume", {
-                            data: resume
-                        })
-                        .then(function(data){
-                            if (data && data.id){
-                                resume._id = data.id;
-                                $.push(resume);
-                                $Sections.resume.list.update();
-                            }
-                        })
+                        if ($account.get("plan") == "premium"){
+                            $Alert.show({
+                                title: "В каком формате создать копию?",
+                                subtitle: "Выберите формат резюме",
+                                success: {
+                                    title: "Premium",
+                                    callback: function(){
+                                        copyResume(resume, "premium");
+                                    }
+                                },
+                                cancel: {
+                                    title: "Free",
+                                    callback: function(){
+                                        copyResume(resume, "free");
+                                    }
+                                }
+                            })
+                        }
+                        else {
+                            copyResume(resume, resume.plan);
+                        }
+                        function copyResume(resume, plan){
+                            resume.plan = plan;
+
+                            app.request("addResume", {
+                                data: resume
+                            })
+                            .then(function(data){
+                                if (data && data.id){
+                                    resume._id = data.id;
+                                    $.push(resume);
+                                    $Sections.resume.list.update();
+                                }
+                            })
+                        }
                     }
                 },
                 {

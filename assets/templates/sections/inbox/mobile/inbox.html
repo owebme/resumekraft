@@ -8,13 +8,13 @@
 
             <div class="screenMobile__navbar" data-gradient="white">
                 <div onClick={ hide } onUpdate="none" class="screenMobile__nav__close"></div>
-                <div class="screenMobile__nav__title maxW-70p text-truncate">Обращения</div>
+                <div class="screenMobile__nav__title maxW-70p text-truncate">Все входящие</div>
                 <div onClick={ open.dropMenu } onUpdate="none" class="screenMobile__nav__options"></div>
             </div>
             <div name="content" class="section-scroll pos-abs-full">
                 <div class="willChange-transform pt65 pb-m">
-                    <section-inbox-list></section-inbox-list>
-                    <section-inbox-list-blank></section-inbox-list-blank>
+                    <section-inbox-list items={ items }></section-inbox-list>
+                    <section-inbox-list-blank items={ items }></section-inbox-list-blank>
                 </div>
             </div>
 
@@ -29,6 +29,8 @@
     var $ = this;
 
     $.viewedList = [];
+    $.filterId = "all";
+    $.items = null;
 
     $.on("mount", function(){
         $.section = new app.plugins.sections($.root, {
@@ -41,9 +43,14 @@
         $.offer = $.tags["inbox-offer"];
     });
 
-    $.show = function(id){
+    $.show = function(id, items){
         $.section.show({
+            tag: $,
             scroll: $.scroll,
+            update: {
+                filterId: id ? id : "all",
+                items: items ? items : $store.inbox.get()
+            },
             afterShow: function(){
                 if ($account.get('plan') != 'premium'){
                     $.offer.show();
@@ -69,30 +76,31 @@
 
     $.open = {
         dropMenu: function(e){
+            var items = [];
+            _.each($store.data.get(), function(item){
+                items.push({
+                    _id: item._id,
+                    title: item.post
+                })
+            });
+            items.unshift({
+                _id: "all",
+                title: "Все входящие"
+            });
             $DropMenu.show({
-                id: "all",
+                id: $.filterId,
                 elem: $$(e.currentTarget),
                 pos: "down-left",
                 offset: {
                     left: 10
                 },
                 isSelect: true,
-                menu: [
-                    {
-                        _id: "all",
-                        title: "Все обращения"
-                    },
-                    {
-                        _id: "1",
-                        title: "Web-Designer, Art-director, Illustrator"
-                    },
-                    {
-                        _id: "2",
-                        title: "Менеджер по продажам"
-                    }
-                ],
+                menu: items,
                 callback: function(id){
-                    console.dir(id);
+                    $.update({
+                        filterId: id,
+                        items: id == "all" ? $store.inbox.get() : $store.inbox.getItemsByResumeId(id)
+                    })
                 }
             });
         }
@@ -100,7 +108,12 @@
 
     $.hide = function(callback){
         $.section.hide({
-            afterHide: callback
+            afterHide: function(){
+                if ($.viewedList.length){
+                    $Sections.navbar.update();
+                }
+                if (_.isFunction(callback)) callback();
+            }
         })
     };
 

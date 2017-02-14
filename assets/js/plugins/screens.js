@@ -110,7 +110,7 @@
                         centered(app.sizes.height / 1.3, 0);
                     }, 150);
                 }
-                if (_this.options.static) _this.refresh();
+                //if (_this.options.static) _this.refresh();
         	});
 
             if (_this.options.static){

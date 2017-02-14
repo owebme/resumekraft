@@ -60,6 +60,7 @@ app.plugins.marqueeStatic = function($frame, options){
 		marquee.size = settings.vertical ? app.sizes.height : app.sizes.width;
 		$.each(screens, function(i, screen){
 			if (settings.vertical){
+				screen.$block.removeClass('screen__long').height(marquee.size);
 				var $frame = screen.$block.find('.screen__content'),
 				    height = $frame.length ? Math.max(marquee.size, $frame.length ? $frame.outerHeight() : 0) : 0;
 				if (!screensFixed && height > marquee.size) {
@@ -67,8 +68,7 @@ app.plugins.marqueeStatic = function($frame, options){
 					screen.size = height;
 					screen.$block.height(height);
 				} else {
-					screen.$block.removeClass('screen__long').css("height", "");
-					screen.size = app.sizes.height;
+					screen.size = marquee.size;
 				}
 			} else {
 				screen.size = app.sizes.width;

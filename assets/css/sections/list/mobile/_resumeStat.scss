@@ -1,6 +1,15 @@
 .resume__stat-m {
     @extend .pt100;
 
+    &__photo {
+        @extend .pos-abs;
+        @extend .t-45;
+        @extend .r-m;
+        @extend .w44;
+        @extend .h44;
+        @extend .bg-cover;
+        @extend .borderRadius-circle;
+    }
     &__graph {
         @extend .pos-rel;
         margin:0 -1px;

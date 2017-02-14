@@ -106,6 +106,7 @@ module.exports = function() {
 				visits: 1,
 		        login: options.login,
 		        password: app.utils.cryptoPass(options.password),
+				paid: null,
 				create: app.moment().format(),
 				update: app.moment().format(),
 				visite: app.moment().format()

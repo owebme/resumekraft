@@ -1,6 +1,6 @@
 <section-inbox-list if={ $store.inbox.get().length } class="section">
 
-    <div onClick={ parent.parent.onSelect } onUpdate="{ app.device.isPhone ? 'none' : 'parent' }" each={ item, i in _.sortByDate($store.inbox.get(), "create", "desc") } no-reorder class="inbox__list__item" data-new={ item.new } data-active={ parent.parent.id == item._id }>
+    <div onClick={ parent.parent.onSelect } onUpdate="{ app.device.isPhone ? 'none' : 'parent' }" each={ item, i in _.sortByDate(opts.items, "create", "desc") } no-reorder class="inbox__list__item" data-new={ item.new } data-active={ parent.parent.id == item._id }>
         <div class="inbox__list__item__icon bg-{ item.color }">{ item.title.charAt(0) }</div>
         <div class="inbox__list__item__container">
             <div class="inbox__list__item__date">{ get.date(item.create) }</div>

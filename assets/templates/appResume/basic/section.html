@@ -31,14 +31,6 @@
         $.loader = $.tags["oscreen-loader"];
     });
 
-    // $.on("mount", function(){
-    //     $afterlag.run(function(){
-    //         $.show({
-    //             template: "1"
-    //         });
-    //     });
-    // });
-
     $.show = function(options){
         if ($.loading || $.active) return;
 
@@ -114,19 +106,6 @@
                 }
             }
         );
-
-        // $.update({
-        //     active: true
-        // });
-        // $.section = riot.mount($.content, "resume-edit-content", {
-        //     scope: $,
-        //     scroll: $.scroll,
-        //     content: $.content
-        // })[0];
-        // $.section.one("updated", function(){
-        //     $.ready = true;
-        // });
-        // $root.focus("resume-edit");
 
         app.metrika.set("resume.create.show", true);
     };

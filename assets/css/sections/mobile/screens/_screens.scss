@@ -22,8 +22,19 @@
                 @extend .fontSize-46;
                 @extend .fontWeight-8;
                 @extend .borderRadius-circle;
+                @extend .text-uppercase;
                 @extend .zIndex-1;
 
+                @each $title, $color in (blue: $blue, blueLight: $blueLight, brown: $brown, red: $red, pink: $pink, orange: $orange, violet: $violet, violetLight: $violetLight, green: $green, emerald: $emerald){
+                    &[data-color="#{$color}"]{
+                        @extend .bg-#{$title};
+                        @extend .boxShadow-3d-#{$title};
+                    }
+                }
+                &[data-color="blue"]{
+                    @extend .bg-blue;
+                    @extend .boxShadow-3d-blue;
+                }
                 &__photo {
                     @include accelerate();
                     @extend .pos-tr;
@@ -138,6 +149,37 @@
                     @include textEllipsis(100%, 112px, 4);
                 }
             }
+        }
+    }
+    .switcher {
+        box-shadow:0 0 0 1px $grayLighten;
+
+        &[active="true"]{
+            box-shadow:0 0 0 1px rgba($blue,.6);
+
+            .switch {
+                &-label {
+                    @extend .bg-blue;
+                    @extend .boxShadow-3d-blue;
+                }
+                &-left,
+                &-right {
+                    @extend .c-blue;
+                }
+            }
+        }
+        .d-phone & {
+            transform:translateY(-4px);
+        }
+    }
+    .switch {
+        &-label {
+            background:$grayLighten;
+            @extend .boxShadow-none;
+        }
+        &-left,
+        &-right {
+            @extend .c-grayLight;
         }
     }
 }

@@ -35,7 +35,7 @@
                         <span class="c-blue { $account.get('plan') == 'premium' ? 'fontSize-26 lineHeight-xl' : 'fontSize-28' } fontWeight-8 text-uppercase">{ $account.get('plan') }</span>
                         <div if={ $account.get('plan') != "premium" } class="c-gray">ваш тариф</div>
                         <div if={ $account.get('plan') == "premium" } class="c-gray nowrap">
-                            до: <span class="fontWeight-bold">28-ноя-2017</span>
+                            до: <span class="fontWeight-bold">{ moment($account.get('paid')).format('D-MM-YYYY') }</span>
                         </div>
                     </div>
                     <div class="flex-column-centered w50p h100p">

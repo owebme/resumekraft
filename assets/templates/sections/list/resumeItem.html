@@ -1,29 +1,33 @@
 <resume-list-item class="resume__item">
 
-    <div class="resume__item__header" style="background-image:url('{ opts.item.photo }')" data-color={ opts.item.plan == "premium" ? opts.item.config.color : null }>
-        <div if={ opts.item.plan != "premium" } class="resume__item__label"></div>
+    <div class="resume__item__header" style="background-image:url('{ opts.item.photo }')" data-color={ opts.item.plan == "premium" && opts.item.public ? opts.item.config.color : (!opts.item.public ? 'gray' : null) }>
+        <div if={ opts.item.plan == "free" } class="resume__item__label" data-label="free"></div>
+        <div if={ opts.item.plan == "premium" } class="resume__item__label" data-label="premium"></div>
         <div class="resume__item__control">
             <div onClick={ onRemove } onUpdate="none" class="resume__item__control__btn resume__item__control__remove"></div>
             <div onClick={ show.dropMenu } onUpdate="none" class="resume__item__control__btn resume__item__control__menu"></div>
-            <div if={ opts.item.plan == "premium" } onClick={ show.inbox } onUpdate="none" class="resume__item__control__btn resume__item__control__inbox" data-active={ true : get.newInbox() > 0 }>
-                <div class="resume__item__control__inbox__badge">{ get.newInbox() }</div>
+        </div>
+        <div class="resume__item__control__right">
+            <div class="resume__item__noview" data-active={ opts.item.public }></div>
+            <div if={ opts.item.plan == "premium" } onClick={ show.inbox } onUpdate="none" class="resume__item__inbox" data-active={ true : $store.inbox.getCounterByResumeId(item._id) }>
+                <div class="resume__item__inbox__badge">{ $store.inbox.getCounterByResumeId(item._id) }</div>
             </div>
         </div>
-        <div if={ opts.item.plan == "premium" } class="resume__item__likes">
-            <div class="resume__item__likes__badge">27</div>
+        <div class="resume__item__control__left">
+            <div if={ opts.item.plan == "premium" } class="resume__item__likes">
+                <div if={ opts.item.likes.length } class="resume__item__likes__badge">{ opts.item.likes.length }</div>
+            </div>
+            <div class="resume__item__lang">{ opts.item.lang }</div>
         </div>
         <div onClick={ onEdit } onUpdate="none" class="row resume__item__header__text">
             <div class="col-xs-5 col-sm-6">
                 <div class="resume__item__photo { opacity-60 : !opts.item.public }" style="background-image:url('{ opts.item.photo }')"></div>
             </div>
             <div class="col-xs-19 col-sm-18">
-                <div if={ !opts.item.public } class="resume__item__noview">не опубликовано</div>
-                <div class="{ opacity-60 : !opts.item.public }">
-                    <div class="resume__item__title">{ opts.item.post ? opts.item.post : 'Продолжить редактирование' }</div>
-                    <div class="resume__item__date">Обновлен: { moment(opts.item.update).format('D MMMM YYYY') }</div>
-                    <div class="resume__item__salary { 'opacity-70 text-lineThrough' : !opts.item.salary.active || !$store.data.get({'_id': opts.item._id}, 'sections', {'name': 'salary'}).active }">
-                        { _.numberFormat(opts.item.salary.amount, 0, ".", ".") } { $store.currency.getTitleById(opts.item.salary.currency) }
-                    </div>
+                <div class="resume__item__title">{ opts.item.post ? opts.item.post : 'Продолжить редактирование' }</div>
+                <div class="resume__item__date">Обновлен: { moment(opts.item.update).format('D MMMM YYYY') }</div>
+                <div class="resume__item__salary { 'opacity-70 text-lineThrough' : !opts.item.salary.active || !$store.data.get({'_id': opts.item._id}, 'sections', {'name': 'salary'}).active }">
+                    { _.numberFormat(opts.item.salary.amount, 0, ".", ".") } { $store.currency.getTitleById(opts.item.salary.currency) }
                 </div>
             </div>
         </div>
@@ -43,17 +47,6 @@
 <script>
 
     var $ = this;
-
-    $.get = {
-        newInbox: function(){
-            return _.where(
-                $store.inbox.get(), {
-                    "resumeId": $.opts.item._id,
-                    "new": true
-                }
-            ).length;
-        }
-    };
 
     $.onEdit = function(){
         $store.data.onEdit($.opts.item._id);
@@ -77,13 +70,9 @@
             });
         },
         inbox: function(){
-            var id = $store.inbox.select({
-                "resumeId": $.opts.item._id,
-                "new": true
-            })
-            .get("_id");
-
-            $Sections.inbox.section.show(id);
+            $Sections.inbox.section.show(
+                $store.inbox.getItemByResumeId($.opts.item._id)
+            );
         }
     };
 

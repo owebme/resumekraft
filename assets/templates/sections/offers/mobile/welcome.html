@@ -1,0 +1,41 @@
+<offer-welcome-mobile class="tutorial__welcome__mobile">
+
+    <div class="help help1">
+        <icon-arrow color="white" size="xl"></icon-arrow>
+        <div class="help__text">Открыть свой профиль</div>
+    </div>
+    <div class="help help2">
+        <icon-arrow color="white" size="xl"></icon-arrow>
+        <div class="help__text">Отклики на резюме</div>
+    </div>
+    <div class="help help3">
+        <icon-arrow color="white" size="xl"></icon-arrow>
+        <div class="help__text">Лайки на резюме</div>
+    </div>
+    <div class="help help4">
+        <div class="help__text">Создать резюме</div>
+    </div>
+    <div class="pos-centered w70p text-center pb-l">
+        <div class="fontSize-26 fontWeight-7 mb-s">Добро пожаловать в интерфейс</div>
+        <button onClick={ hide } onUpdate="none" class="btn btn-xxl btn-success">Перейти</button>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.show = function(){
+        app.metrika.set("offers.welcome.mobile.show", true);
+        $.parent.root.setAttribute("data-tutorial", true);
+        $.parent.scroll.hide();
+    };
+
+    $.hide = function(){
+        app.metrika.set("offers.welcome.mobile.success", true);
+        $.parent.root.setAttribute("data-tutorial", false);
+        $.parent.scroll.show();
+    };
+
+</script>
+
+</offer-welcome-mobile>
