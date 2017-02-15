@@ -1,0 +1,238 @@
+.resume__section {
+    &__bg {
+        @extend .pos-tl;
+        @extend .w50p;
+        @extend .h100v;
+
+        @each $color in ($blue, $blueLight, $green, $emerald, $orange, $red, $violet, $violetLight, $brown, $pink){
+            &[data-color="#{$color}"]{
+                background-color:$color;
+            }
+        }
+    }
+    &__percent {
+        @extend .pos-tl;
+        height:18px;
+        @extend .bg-lime;
+        @extend .trX--xl;
+        @extend .borderRadius-xxxxl;
+        @extend .minW-20p;
+        box-shadow:0 12px 20px -10px rgba($lime,.28), 0 4px 20px 0px rgba($lime,.12), 0 7px 8px -5px rgba($lime,.2);
+
+        &__title {
+            @extend .pos-abs;
+            @extend .t100;
+            @extend .l100;
+            @extend .c-white;
+            @extend .fontSize-34;
+            @extend .fontWeight-bold;
+            @extend .trY-m;
+            @extend .ml--m;
+        }
+    }
+    &__cover {
+        @extend .flex-column-centered;
+        @extend .h75v;
+        @extend .c-white;
+
+        .btn {
+            @extend .c-steel;
+            box-shadow:0 12px 20px -10px rgba($white,.28), 0 4px 20px 0px rgba(#000,.12), 0 7px 8px -5px rgba($white,.2) !important;
+
+            &:hover {
+                @extend .c-white;
+                box-shadow:0 12px 20px -10px rgba($green,.28), 0 4px 20px 0px rgba(#000,.12), 0 7px 8px -5px rgba($green,.2) !important;
+
+                .btn-svg-color {
+                    @extend .fill-white;
+                }
+            }
+        }
+        .btn-svg-color {
+            @extend .fill-blue;
+            @extend .transition-default;
+        }
+        &:before {
+            @extend .content-empty;
+            @extend .pos-abs;
+            top:-52%;
+            @extend .l50;
+            @extend .w150v;
+            @extend .h100p;
+            @extend .bg-white;
+            @extend .opacity-10;
+            transform:translate3d(-50%, 0, 0) rotate(-22deg);
+        }
+    }
+    &__date {
+        @extend .mtb-m;
+        @extend .c-white;
+        @extend .fontSize-18;
+    }
+    &__content {
+        @extend .h75v;
+        @extend .text-center;
+        @extend .pt-l;
+    }
+    &__item {
+        @extend .mb-l;
+
+        &__title {
+            @extend .c-gray;
+            @extend .fontSize-13;
+            @extend .text-uppercase;
+            @extend .fontWeight-bold;
+        }
+        &__text {
+            @extend .fontSize-20;
+        }
+        &[data-active="true"]{
+            .resume__section__item__title {
+                @extend .c-blue;
+            }
+            &[data-item="salary"]{
+                .resume__section__item__text {
+                    @extend .fontWeight-8;
+                    @extend .fontSize-24;
+                    @extend .letterSpacing-0;
+                    @extend .pt-xxs;
+                }
+            }
+        }
+    }
+    &__control__buttons {
+        @extend .pos-centered-h;
+        @extend .t-l;
+        @include flex("row", "flex-end", "flex-start");
+        @extend .zIndex-1;
+
+        .control__buttons__item {
+            @extend .pos-rel;
+            @extend .willChange-transform;
+            transition:transform .7s $bounceSoft;
+
+            &__icon {
+                @include accelerate(true);
+                @extend .flex-centered;
+                @extend .w50;
+                @extend .h50;
+                @extend .borderRadius-circle;
+                @extend .mlr-xs;
+                @extend .btn-active;
+                @extend .bg-white;
+                padding-top:4px;
+                box-shadow:0 12px 20px -10px rgba($grayDark,.28), 0 4px 20px 0px rgba($grayDark,.12), 0 7px 8px -5px rgba($grayDark,.2);
+
+                .m-no-touch &:hover {
+                    @extend .bg-blackLight;
+
+                    path, rect, polygon, circle {
+                        @extend .fill-white;
+                    }
+                    line {
+                        stroke:$white;
+                    }
+                }
+            }
+        }
+        .icon-colors-petal1 {
+            @extend .fill-emerald;
+        }
+        .icon-colors-petal2 {
+            @extend .fill-pink;
+        }
+        .icon-colors-petal3 {
+            @extend .fill-green;
+        }
+        .icon-colors-petal4 {
+            @extend .fill-violet;
+        }
+        .icon-colors-petal5 {
+            @extend .fill-yellow;
+        }
+    }
+    &__circle__button {
+        @extend .pos-abs;
+        @extend .borderRadius-circle;
+        @extend .bg-white;
+        @extend .cursor-pointer;
+        @extend .t100;
+        @extend .l50;
+        width:260px;
+        height:260px;
+        @extend .userSelect-none;
+        @extend .boxShadow-30;
+        will-change:transform, background-color;
+        transform:translate3d(-50%, -112px, 0);
+        transition:background-color 0.4s $cubic345, transform .2s;
+
+        &:after {
+            @extend .content-empty;
+            @extend .willChange-transform;
+            transform:translateY(-64px) scale(1.25);
+            transition:transform 0.4s $bounce;
+        }
+        &[data-icon="crown"]:after {
+            @include abs_50(48, 48);
+            @include ui-icon(crown, 48px, 48px);
+        }
+        &[data-icon="stat"] {
+            &:after {
+                @include abs_50(62, 62);
+                @include ui-icon(chart, 62px, 62px);
+            }
+            .resume__section__circle__button__title {
+                @extend .w100p;
+                @extend .fontSize-20;
+                margin-top:8px;
+            }
+        }
+        &__text {
+            @extend .pos-abs;
+            @extend .t50;
+            @extend .l50;
+            @extend .willChange-transform;
+            transform:translate3d(-50%, 0, 0);
+            transition:transform 0.4s $cubic345;
+        }
+        &__subtitle {
+            @extend .fontSize-12;
+            @extend .fontWeight-8;
+            @extend .letterSpacing-5-5;
+            @extend .text-uppercase;
+            @extend .mb-xxs;
+            @extend .c-yellowLight;
+        }
+        &__title {
+            @extend .fontSize-18;
+            @extend .lineHeight-m;
+            @extend .letterSpacing-s;
+        }
+        &:hover {
+            @extend .bg-blackLight;
+
+            &:after {
+                transform:translateY(0) scale(0.7);
+            }
+            .resume__section__circle__button__text {
+                @extend .c-white;
+                transform:translate3d(-50%, -97px, 0);
+            }
+        }
+        &:active {
+            transform:translate3d(-50%, -112px, 0) scale(0.85);
+        }
+    }
+    &__template {
+        @extend .pos-abs;
+        @extend .t100;
+        @extend .r-50;
+
+        &__image {
+            width:254px;
+            @extend .borderRadius-l;
+            @extend .boxShadow-25;
+            transform:translateY(-140px) rotate(22deg);
+        }
+    }
+}

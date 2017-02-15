@@ -4,6 +4,7 @@
     height:242px;
     @extend .borderRadius-circle;
     @extend .cursor-pointer;
+    @extend .userSelect-none;
     @extend .overflow-hidden;
 
     &:before {
@@ -55,7 +56,7 @@
         @extend .zIndex-2;
     }
     &[data-place="true"] {
-        border:3px dashed rgba(#265cdc,.8);
+        border:3px dashed rgba($blue,.8);
 
         .user__photo__text {
             @extend .display-block;
@@ -80,6 +81,20 @@
             @include ui-icon("upload", 104px, 104px);
             @extend .opacity-85;
             @extend .transition-none;
+        }
+        &[data-color="white"]{
+            @extend .transition-default;
+            border-color:rgba($white,.8);
+
+            .user__photo__text {
+                @extend .c-white;
+            }
+            &:after {
+                @include ui-icon("upload_white");
+            }
+            &:hover {
+                @extend .bg-white-transparent;
+            }
         }
     }
 }

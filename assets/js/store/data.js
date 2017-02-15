@@ -49,6 +49,18 @@
             onSendMail: function(id){
                 $Sections.resume.sendmail.show(id);
             },
+            onPublic: function(id, value, callback){
+                app.request("setResumePublic", {
+                    _id: id,
+                    public: value
+                })
+                .then(function(){
+                    $.select({"_id": id}, "public").set(value);
+                    if (_.isFunction(callback)){
+                        callback();
+                    }
+                });
+            },
             dropMenu: [
                 {
                     title: "Редактировать",

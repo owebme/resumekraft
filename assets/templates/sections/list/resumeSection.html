@@ -1,0 +1,211 @@
+<resume-section class="oScreen section zIndex-2" data-open="false" data-show="down" data-loading="false" data-inner="hidden">
+
+    <div class="oScreen__buttons" data-pos="top-right">
+        <div onClick={ hide } onUpdate="none" class="button__close"></div>
+    </div>
+
+    <div name="content" class="oScreen__content overflow-hidden bg-white">
+
+        <div class="section__loading"></div>
+
+        <div class="section__inner">
+
+            <div class="resume__section__bg" data-color={ item.get('config', 'color') }>
+                <div class="resume__section__percent" style="width:{ item.get('percent') > 80 ? 80 : item.get('percent') }%">
+                    <div class="resume__section__percent__title">{ item.get('percent') }%</div>
+                </div>
+            </div>
+
+            <div class="resume__section__control__buttons">
+                <div onClick={ open.preview } onUpdate="none" class="control__buttons__item" data-balloon="Предпросмотр" data-balloon-pos="down">
+                    <div class="control__buttons__item__icon">
+                        <icon-eye size="s" color="blue"></icon-eye>
+                    </div>
+                </div>
+                <div if={ item && item.get('plan') == "premium" } onClick={ open.changeColor } onUpdate="none" class="control__buttons__item" data-balloon="Изменить цвет" data-balloon-pos="down">
+                    <div class="control__buttons__item__icon">
+                        <icon-colors size="xs" color="blue"></icon-colors>
+                    </div>
+                </div>
+                <div onClick={ open.photoUpload } onUpdate="none" class="control__buttons__item" data-balloon="Загрузить фото" data-balloon-pos="down">
+                    <div class="control__buttons__item__icon">
+                        <icon-camera size="xs" color="blue"></icon-camera>
+                    </div>
+                </div>
+                <div if={ item && item.get('plan') == "free" } onClick={ open.design.free } onUpdate="none" class="control__buttons__item" data-balloon="Поменять дизайн" data-balloon-pos="down">
+                    <div class="control__buttons__item__icon">
+                        <icon-design size="xs" color="blue"></icon-design>
+                    </div>
+                </div>
+                <div onClick={ open.print } onUpdate="none" class="control__buttons__item" data-balloon="Распечатать" data-balloon-pos="down">
+                    <div class="control__buttons__item__icon">
+                        <icon-print size="xs" color="blue"></icon-print>
+                    </div>
+                </div>
+                <div if={ item && item.get('plan') == "free" } onClick={ open.getPdf } onUpdate="none" class="control__buttons__item" data-balloon="Сохранить в PDF" data-balloon-pos="down">
+                    <div class="control__buttons__item__icon">
+                        <icon-pdf size="xs" color="blue"></icon-pdf>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container pos-centered">
+                <div class="row">
+                    <div class="resume__section__cover col-md-12">
+                        <div class="pos-abs t15 l5">
+                            <div class="fontSize-28 fontWeight-8 text-capitalize">{ item.get('plan') }</div>
+                            <div class="fontSize-16 fontWeight-normal mt-xss">тарифный план</div>
+                        </div>
+                        <div onClick={ open.stat } onUpdate="none" class="pos-abs t10 r10 text-center cursor-pointer">
+                            <span class="fontSize-34 fontWeight-8">+18</span>
+                            <div class="fontSize-16 fontWeight-normal mt-xss">просмотры</div>
+                        </div>
+                        <div class="pos-abs t50 r10 text-center">
+                            <span class="fontSize-28 fontWeight-8 text-uppercase">{ item.get('lang') }</span>
+                            <div class="fontSize-16 fontWeight-normal mt-xss">язык резюме</div>
+                        </div>
+                        <div onClick={ open.photoUpload } onUpdate="none" if={ item.get('photo') } class="user__photo">
+                            <div class="user__photo__image" style="background-image:url({ item.get('photo') })"></div>
+                        </div>
+                        <div onClick={ open.photoUpload } onUpdate="none" if={ !item.get('photo') } class="user__photo" data-place="true" data-color="white">
+                            <span class="user__photo__text">загрузить свою фотографию</span>
+                        </div>
+                        <div class="resume__section__date">Обновлено: <span class="fontWeight-bold">{ moment(item.get('update')).format('D MMMM в HH:mm') }</span></div>
+                        <div onClick={ open.edit } onUpdate="none" class="btn btn-xl btn-white-hover-success">
+                            <svg class="btn-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path class="btn-svg-color" d="M 18 0 L 2.8125 15.1875 L 0 24 L 8.8125 21.1875 L 24 6 C 24 6 23.9 3.9 22 2 C 20.1 0.1 18 0 18 0 z M 3.90625 16.1875 C 3.90625 16.1875 5.1125 16.4875 6.3125 17.6875 C 7.6125 18.8875 7.8125 20 7.8125 20 L 7.84375 20.0625 L 4.28125 21.1875 L 2.78125 19.6875 L 3.90625 16.1875 z"></path>
+                            </svg>
+                            Редактировать
+                        </div>
+                    </div>
+                    <div class="resume__section__content col-md-12">
+                        <div class="resume__section__item" data-active={ item.get("plan") == "free" && item.get("salary", "active") || item.get("plan") == "premium" &&  item.get('sections', {'name': 'salary'}).active } data-item="salary">
+                            <div class="resume__section__item__title">Зарплата</div>
+                            <div class="resume__section__item__text">{ item.get("plan") == "free" && item.get("salary", "active") || item.get("plan") == "premium" &&  item.get('sections', {'name': 'salary'}).active ? _.numberFormat(item.get('salary', 'amount'), 0, ".", ".") + ' ' + $store.currency.getTitleById(item.get('salary', 'currency')) + ' / ' + $store.resume.take.salary.worktime(item.get("salary", "worktime"), 'ru') : 'не указана' }</div>
+                        </div>
+                        <div class="resume__section__item" data-active={ item.get("education") }>
+                            <div class="resume__section__item__title">Образование</div>
+                            <div class="resume__section__item__text">{ item.get("education") ? item.get("education", "items").length + ' места обучения' : 'не заполнено' }</div>
+                        </div>
+                        <div class="resume__section__item" data-active={ item.get("languages") }>
+                            <div class="resume__section__item__title">Владение языками</div>
+                            <div class="resume__section__item__text">{ item.get("education") ? 'Заполнено' : 'не заполнено' }</div>
+                        </div>
+                        <div class="resume__section__item" data-active={ item.get("jobs") }>
+                            <div class="resume__section__item__title">Место работы</div>
+                            <div class="resume__section__item__text">{ item.get("jobs") ? item.get("jobs", "items").length + ' места работы' : 'не заполнено' }</div>
+                        </div>
+                        <div class="resume__section__item" data-active={ item.get("about") }>
+                            <div class="resume__section__item__title">О себе</div>
+                            <div class="resume__section__item__text">{ item.get("about") ? 'Заполнено' : 'не заполнено' }</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div if={ item && item.get('plan') == "free" } class="resume__section__circle__button" data-icon="crown">
+                <div class="resume__section__circle__button__text">
+                    <div class="resume__section__circle__button__subtitle">premium</div>
+                    <div class="resume__section__circle__button__title">Сделать резюме привлекательней</div>
+                </div>
+            </div>
+
+            <div if={ item && item.get('plan') == "premium" } class="resume__section__circle__button" data-icon="stat">
+                <div class="resume__section__circle__button__text">
+                    <div class="resume__section__circle__button__title">
+                        <span class="nowrap">Смотреть статистику</span> просмотров
+                    </div>
+                </div>
+            </div>
+
+            <div if={ item && item.get('plan') == "free" } class="resume__section__template">
+                <img src="/assets/images/makets/{ item ? 1000 + item.get('template') : '1001' }.png" class="resume__section__template__image">
+            </div>
+
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.el = $$($.root);
+
+    $.item = null;
+
+    $.on("mount", function(){
+        $.section = new app.plugins.sections($.root, {
+            content: $.content
+        });
+        $.el.on('swipeDown', function(){
+            $.hide();
+        });
+        $afterlag.run(function(){
+            $.show("58a23360b6489dcd76c463f3");
+        });
+    });
+
+    $.show = function(id, callback){
+        $.section.show({
+            tag: $,
+            update: {
+                item: $store.data.select({"_id": id})
+            },
+            beforeShow: function(){
+                $.callback = callback;
+            },
+            afterShow: function(){
+
+            }
+        })
+    };
+
+    $.open = {
+        photoUpload: function(){
+            $Sections.photoUpload.show(function(image){
+                app.request("setResumePhoto", {
+                    id: $.item.get('_id'),
+                    image: image
+                }, {
+                    loader: false
+                })
+                .then(function(data){
+                    if (data && data.image){
+                        $.item.select("photo").set(data.image);
+                        $.update();
+                        $Sections.resume.list.update();
+                    }
+                });
+            });
+            app.metrika.set("resume.create.control.photo", true);
+        },
+        stat: function(){
+            $Sections.resume.stat.show();
+        },
+        design: {
+            free: function(){
+                $Sections.resume.select.show("free");
+            },
+            premium: function(){
+                $Sections.resume.select.show("premium");
+            }
+        },
+        getPdf: function(){
+
+        }
+    };
+
+    $.hide = function(){
+        $.section.hide({
+            beforeHide: function(){
+                if (_.isFunction($.callback)) $.callback();
+            },
+            afterHide: function(){
+
+            }
+        })
+    };
+
+</script>
+
+</resume-section>

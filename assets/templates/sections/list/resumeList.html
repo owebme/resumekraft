@@ -81,6 +81,13 @@
     };
 
     $.open = {
+        resume: function(){
+            if (!this.item) return;
+            $.hide();
+            $Sections.resume.section.show(this.item._id, function(){
+                $.show();
+            });
+        },
         createResume: function(){
             if (!app.metrika.get("offers.plan.show")){
                 $Sections.offers.plan.show();
