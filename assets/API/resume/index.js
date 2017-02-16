@@ -23,8 +23,20 @@ module.exports = function(url){
 	});
 
 	route.put('/public', function(req, res) {
-		handlerUpdate(req, res, req.body._id, {
+		handlerUpdate(req, res, req.body.id, {
 			public: req.body.public
+		});
+	});
+
+	route.put('/color', function(req, res) {
+		handlerUpdate(req, res, req.body.id, {
+			"config.color": req.body.color
+		});
+	});
+
+	route.put('/template', function(req, res) {
+		handlerUpdate(req, res, req.body.id, {
+			template: req.body.template
 		});
 	});
 

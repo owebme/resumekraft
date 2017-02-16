@@ -18,8 +18,6 @@
 
     <resume-button-save section={ sections.finish }></resume-button-save>
 
-    <resume-preview></resume-preview>
-
     <resume-settings></resume-settings>
 
     <photo-upload></photo-upload>
@@ -38,7 +36,6 @@
         steps: $.tags["resume-control-step"],
         buttons: $.tags["resume-control-buttons"],
         percentage: $.tags["resume-control-percentage"],
-        preview: $.tags["resume-preview"],
         settings: $.tags["resume-settings"],
         photo: $.tags["photo-upload"],
         finish: $.tags["resume-edit-finish"],
@@ -86,6 +83,8 @@
             }
         }
 
+        $Sections.resume.preview.change($resume.get('template'));
+
         $.autoSave();
     });
 
@@ -115,7 +114,7 @@
             }
         },
         preview: function(){
-            $.sections.preview.show();
+            $store.data.onPreview($resume.get());
             app.metrika.set("resume.create.control.preview", true);
         },
         photoUpload: function(){
@@ -128,7 +127,7 @@
                 .then(function(data){
                     if (data && data.image){
                         $resume.select("photo").set(data.image);
-                        $.sections.preview.template.update();
+                        $Sections.resume.preview.template.update();
                     }
                 });
             });
@@ -136,11 +135,21 @@
         },
         design: {
             free: function(){
-                $Sections.resume.select.show("free");
+                $Sections.resume.select.show({
+                    plan: app.metrika.get("resume.select.default"),
+                    control: false,
+                    template: $resume.get("template")
+                })
+                .then(function(data){
+                    $resume.select("template").set(data.template);
+                    $Sections.resume.preview.change(data.template);
+                })
                 app.metrika.set("resume.create.control.design", true);
             },
             premium: function(){
-                $Sections.resume.select.show("premium");
+                $Sections.resume.select.show({
+                    plan: "premium"
+                });
             }
         },
         print: function(){
@@ -153,38 +162,7 @@
 
     $.get = {
         pdf: function(){
-
-            $Sections.progress.show();
-
-            app.request('addConvertPdf', {
-                id: $resume.get("_id"),
-                template: $resume.get("template"),
-                stamp: $resume.get("config", "pdf", "logotype"),
-                content: $.sections.preview.get.content()
-            }, {
-                loader: false
-            })
-            .then(function(data){
-                if (data && data.pdf){
-
-                    var oReq = new XMLHttpRequest();
-                    oReq.open("GET", data.pdf, true);
-                    oReq.responseType = "arraybuffer";
-                    oReq.onload = function() {
-
-                        var response = this.response,
-                            post = $resume.get("post");
-
-                        $Sections.progress.hide(function(){
-                            var file = new Blob([response], {type: "application/pdf"});
-                            saveAs(file, post ? post : "MyResume.pdf");
-                        });
-                    };
-                    oReq.send();
-                }
-            });
-
-            app.metrika.set("resume.create.control.pdf", true);
+            $store.data.onGetPdf($resume.get());
         }
     };
 

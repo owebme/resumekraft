@@ -93,9 +93,19 @@
                 $Sections.offers.plan.show();
             }
             else {
-                $Sections.resume.select.show(
-                    app.metrika.get("resume.select.default")
-                );
+                $Sections.resume.select.show({
+                    plan: app.metrika.get("resume.select.default")
+                })
+                .then(function(data){
+                    if (data.plan == "free"){
+                        $Sections.resume.edit.show({
+                            template: data.template
+                        });
+                    }
+                    else if (data.plan == "premium"){
+                        $Sections.plan.show("premium");
+                    }
+                })
             }
             app.metrika.set("resume.buttonNew", true);
         },

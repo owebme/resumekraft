@@ -25,7 +25,9 @@
             $.chartRadial();
 
             if (_.isFunction(callback)){
-                callback();
+                $afterlag.run(function(){
+                    callback();
+                });
             }
         });
     };

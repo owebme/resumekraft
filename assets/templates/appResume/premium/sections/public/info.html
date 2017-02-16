@@ -33,19 +33,6 @@
         }
     });
 
-    $.get = {
-        relocate: function(){
-            if ($resume.commons.contacts.relocate){
-                if ($resume.commons.gender == "male"){
-                    return '\nготов к переезду,';
-                }
-                else if ($resume.commons.gender == "female"){
-                    return '\nготова к переезду,';
-                }
-            }
-        }
-    };
-
     $.show = function(){
         $.update({
             active: app.device.isPhone ? !$.active : true

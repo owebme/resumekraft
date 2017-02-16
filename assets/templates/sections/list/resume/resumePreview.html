@@ -1,0 +1,66 @@
+<resume-preview class="oScreen zIndex-10" data-color="blue" data-open="false" data-show="down">
+
+    <div name="wrapper" class="oScreen__content">
+        <resume-basic-template name="content" class="resume__preview"></resume-basic-template>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.num = null;
+
+    $.on("mount", function(){
+        $$($["wrapper"]).on("click", function(e){
+            $.hide();
+        });
+        $.clear();
+    });
+
+    $.show = function(options){
+        if (options.template && options.template != $.num) $.change(options.template);
+        if (app.device.isPhone){
+            $LoaderAjax.show();
+            $.template.one("updated", function(){
+                $LoaderAjax.hide();
+            });
+        }
+        if (options.data){
+            $store.resume.set(options.data);
+            $i18n.lang($store.resume.get('lang'));
+            moment.locale($store.resume.get('lang'));
+        }
+        $.template.update();
+        $["wrapper"].scrollTop = 0;
+        $["content"].style.display = "block";
+        $afterlag.run(function(){
+            $.root.setAttribute("data-open", true);
+        });
+    };
+
+    $.change = function(num){
+        if (num && num == $.num) return;
+        $.template = riot.mount("resume-basic-template", "resume-basic-template" + num)[0];
+    };
+
+    $.clear = function(){
+        $["content"].style.display = "none";
+    };
+
+    $.hide = function(){
+        $.root.setAttribute("data-open", false);
+        _.onEndTransition($.wrapper, function(){
+            $.clear();
+        });
+    };
+
+    $.get = {
+        content: function(){
+            $.template.update();
+            return $["content"].innerHTML;
+        }
+    };
+
+</script>
+
+</resume-preview>

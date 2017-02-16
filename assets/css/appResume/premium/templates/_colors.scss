@@ -149,11 +149,6 @@
                 .checkbox-control:before {
                     background-color:$color;
                 }
-                .switcher {
-                    &[active="true"]{
-                        box-shadow:0 0 0 1px rgba($color,.6);
-                    }
-                }
                 &__opener {
                     .m-no-touch &:hover {
                         background-color:$white;

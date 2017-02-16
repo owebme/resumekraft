@@ -82,7 +82,6 @@ module.exports = function(){
     		'assets/templates/sections/**/*.tag',
     		'assets/templates/ui/*.html',
     		'assets/templates/ui/**/*.html',
-    		'public/templates/icons/social/*.tag',
     		'assets/templates/appResume/basic/*.html',
     		'assets/templates/appResume/basic/**/*.html',
     		'assets/templates/root.html'])

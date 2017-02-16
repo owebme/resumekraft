@@ -5,7 +5,7 @@
     </div>
 
     <div if={ app.device.isPhone } class="anim anim-tb-ease pos-rel zIndex-2" delay-show="s" duration-hide="s">
-        <div class="plan__screens__select btn-group">
+        <div class="plan__screens__select btn-group { 'display-none' : !control }">
             <button onClick={ select.plan.free } onUpdate="none" class="btn btn-l { plan == 'free' ? 'btn-primary' : 'btn-primary-hover' }">FREE</button>
             <button onClick={ select.plan.premium } onUpdate="none" class="btn btn-l { plan == 'premium' ? 'btn-primary' : 'btn-white-hover' } text-uppercase">Premium</button>
         </div>
@@ -14,7 +14,7 @@
     <div class="pos-centered w100p zIndex-1">
 
         <div if={ !app.device.isPhone } class="anim anim-scale pos-rel zIndex-1">
-            <div class="plan__screens__select btn-group">
+            <div class="plan__screens__select btn-group { 'display-none' : !control }">
                 <button onClick={ select.plan.free } onUpdate="none" class="btn btn-l { plan == 'free' ? 'btn-primary' : 'btn-primary-hover' }">FREE</button>
                 <button onClick={ select.plan.premium } onUpdate="none" class="btn btn-l { plan == 'premium' ? 'btn-primary' : 'btn-white-hover' } text-uppercase">Premium</button>
             </div>
@@ -36,7 +36,7 @@
                                     <img src="/public/images/mobile/home/screen2a.png">
                                 </div>
                                 <div class="plan__premium__item__button">
-                                    <button onClick={ select.template.premium } onUpdate="none" class="btn btn-xxl btn-success btn-shadow-strong mb-xl">Создать резюме</button>
+                                    <button onClick={ select.template.premium } class="btn btn-xxl btn-success btn-shadow-strong mb-xl">Создать резюме</button>
                                 </div>
                             </div>
                             <!-- // Mobile screen -->
@@ -49,7 +49,7 @@
                                             <img class="plan__premium__item__image" src="/public/images/promo/premium/slide2_1.png" data-image="back">
                                         </div>
                                         <div class="plan__premium__item__button">
-                                            <button onClick={ select.template.premium } onUpdate="none" class="btn btn-xxl { app.device.isPhone ? 'btn-success btn-shadow-strong' : 'btn-default-hover-success' } mb-xl">Создать резюме</button>
+                                            <button onClick={ select.template.premium } class="btn btn-xxl { app.device.isPhone ? 'btn-success btn-shadow-strong' : 'btn-default-hover-success' } mb-xl">Создать резюме</button>
                                         </div>
                                     </div>
                                 </div>
@@ -98,7 +98,7 @@
                     <div class="slider__nav slider__nav__next anim anim-fadeIn" data-duration="xs"></div>
                     <div class="row slider__wrapper">
                         <div each={ item, i in items.free } no-reorder class="slider__item col-md-12 col-lg-8">
-                            <div class="plan__basic__item plr-l">
+                            <div class="plan__basic__item plr-l" data-active={ parent.template == i + 1 }>
                                 <img class="plan__basic__item__image" src="/assets/images/makets/{ item }.png">
                                 <div class="plan__basic__item__button">
                                     <button onClick={ select.template.free } class="btn { app.device.isPhone ? 'btn-xl2 btn-primary btn-shadow' : 'btn-l2 btn-default-hover-success' } mb-xs">Выбрать этот</button>
@@ -130,6 +130,14 @@
         premium: ["1"]
     }
 
+    $.default = function(){
+        return {
+            plan: "free",
+            control: true,
+            template: null
+        }
+    };
+
     $.plan = "free";
 
     $.on("mount", function(){
@@ -141,11 +149,22 @@
         });
     });
 
-    $.show = function(plan){
+    $.show = function(options){
+        $.options = $.default();
+        if (options){
+            _.extend($.options, options);
+            $.plan = $.options.plan;
+            $.control = $.options.control;
+            $.template = $.options.template;
+        }
         $.active = true;
         $.animate = true;
-        $.select.plan[plan ? plan : $.plan]();
+        $.select.plan[$.plan]();
         app.metrika.set("resume.select.show", true);
+
+        return new Promise(function(resolve, reject){
+            $.resolve = resolve;
+        });
     };
 
     $.open = {
@@ -168,9 +187,16 @@
                 $.update({
                     plan: "free"
                 })
-                _.onEndTransition($.root, function(){
-                    $.slider.free.show();
-                });
+                if ($.control){
+                    _.onEndTransition($.root, function(){
+                        $.slider.free.show();
+                    });
+                }
+                else {
+                    $afterlag.s(function(){
+                        $.slider.free.show();
+                    });
+                }
                 $.slider.premium.hide();
                 app.metrika.set("resume.select.default", "free");
             },
@@ -188,23 +214,23 @@
         template: {
             free: function(){
                 var num = this.i !== undefined ? this.i + 1 : false;
-                if (num && $Sections.resume.edit.active){
-                    $.hide(function(){
-                        $Sections.resume.edit.section.sections.preview.change(num);
-                    });
-                }
-                else {
-                    $.hide(function(){
-                        $Sections.resume.edit.show({
-                            template: num
-                        });
-                    });
+                $.hide(function(){
+                    $.resolve({
+                        plan: "free",
+                        template: num
+                    })
+                })
+                if (!app.metrika.get("resume.select.success")){
                     app.metrika.set("resume.select.template", num);
                     app.metrika.set("resume.select.success", true);
                 }
             },
             premium: function(){
-                $Sections.plan.show("premium");
+                $.hide(function(){
+                    $.resolve({
+                        plan: "premium"
+                    })
+                })
             }
         }
     };

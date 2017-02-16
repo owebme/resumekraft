@@ -22,7 +22,7 @@ $store.resume = _.extend(new Baobab({},
                             text: null,
                             color: "1"
                         },
-                        likes: null,
+                        likes: [],
                         sections: [
                             {
                                 name: "salary",
@@ -211,6 +211,17 @@ $store.resume = _.extend(new Baobab({},
             }
         },
         take: {
+            relocate: function(){
+                if ($store.resume.get('commons', 'contacts', 'relocate')){
+                    var gender = $store.resume.get('commons', 'gender');
+                    if (gender == "male"){
+                        return '\nготов к переезду,';
+                    }
+                    else if (gender == "female"){
+                        return '\nготова к переезду,';
+                    }
+                }
+            },
             birthday: {
                 date: function(){
                     var b = $store.resume.get('commons', 'birthday'),

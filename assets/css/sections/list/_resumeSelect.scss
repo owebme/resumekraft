@@ -86,6 +86,35 @@
     }
     &__basic {
         &__item {
+            &[data-active="true"]{
+                @include accelerate();
+                @extend .pointerEvents-none;
+
+                &:before {
+                    @include accelerate();
+                    @extend .content-empty;
+                    @extend .pos-abs;
+                    @extend .t-70;
+                    @extend .l-25;
+                    @extend .w62;
+                    @extend .h62;
+                    @extend .bg-blue;
+                    @extend .borderRadius-circle;
+                    @extend .boxShadow-3d-blue-strong;
+                    @extend .zIndex-1;
+                }
+                &:after {
+                    @include accelerate();
+                    @extend .content-empty;
+                    @extend .pos-abs;
+                    @extend .t-70;
+                    @extend .l-25;
+                    @include ui-icon("check_white", 40px, 40px);
+                    @extend .mt-xs;
+                    @extend .ml-xs;
+                    @extend .zIndex-2;
+                }
+            }
             &__image {
                 @include accelerate(true);
                 @extend .borderRadius-l;

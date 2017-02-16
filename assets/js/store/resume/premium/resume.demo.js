@@ -30,6 +30,7 @@ $store.demo = {
         lang: "ru",
         post: "Web-Designer, Art-director, Illustrator",
         photo: "/preview/images/photo/photo_phone.jpg",
+        percent: "97",
         commons: {
             name: "Виктория",
             surname: "",

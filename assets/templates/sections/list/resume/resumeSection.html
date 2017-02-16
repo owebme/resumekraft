@@ -1,17 +1,23 @@
-<resume-section class="oScreen section zIndex-2" data-open="false" data-show="down" data-loading="false" data-inner="hidden">
+<resume-section class="oScreen section zIndex-1" data-open="false" data-show="down" data-loading="false" data-inner="hidden">
 
     <div class="oScreen__buttons" data-pos="top-right">
-        <div onClick={ hide } onUpdate="none" class="button__close"></div>
+        <div onClick={ hide } onUpdate="none" class="button__close" data-color="gray"></div>
     </div>
 
     <div name="content" class="oScreen__content overflow-hidden bg-white">
 
         <div class="section__loading"></div>
 
-        <div class="section__inner">
+        <div class="section__inner resume__section" data-active={ item.get('public') }>
+
+            <div class="flex-centered pos-abs t-m r-xl zIndex-2">
+                <div if={ item.get("public") } class="c-blue fontSize-14 text-uppercase mr-s">Опубликовано</div>
+                <div if={ !item.get("public") } class="c-gray fontSize-14 text-uppercase mr-s">Снято с публикации</div>
+                <ui-switcher update="public" commit={ commit.public } cursor={ item }></ui-switcher>
+            </div>
 
             <div class="resume__section__bg" data-color={ item.get('config', 'color') }>
-                <div class="resume__section__percent" style="width:{ item.get('percent') > 80 ? 80 : item.get('percent') }%">
+                <div class="resume__section__percent" style="width:{ item.get('percent') }%">
                     <div class="resume__section__percent__title">{ item.get('percent') }%</div>
                 </div>
             </div>
@@ -22,11 +28,7 @@
                         <icon-eye size="s" color="blue"></icon-eye>
                     </div>
                 </div>
-                <div if={ item && item.get('plan') == "premium" } onClick={ open.changeColor } onUpdate="none" class="control__buttons__item" data-balloon="Изменить цвет" data-balloon-pos="down">
-                    <div class="control__buttons__item__icon">
-                        <icon-colors size="xs" color="blue"></icon-colors>
-                    </div>
-                </div>
+                <resume-section-colors item={ item }></resume-section-colors>
                 <div onClick={ open.photoUpload } onUpdate="none" class="control__buttons__item" data-balloon="Загрузить фото" data-balloon-pos="down">
                     <div class="control__buttons__item__icon">
                         <icon-camera size="xs" color="blue"></icon-camera>
@@ -56,13 +58,13 @@
                             <div class="fontSize-28 fontWeight-8 text-capitalize">{ item.get('plan') }</div>
                             <div class="fontSize-16 fontWeight-normal mt-xss">тарифный план</div>
                         </div>
-                        <div onClick={ open.stat } onUpdate="none" class="pos-abs t10 r10 text-center cursor-pointer">
+                        <div onClick={ open.stat } onUpdate="none" class="pos-abs t10 r10 text-center w70 cursor-pointer">
                             <span class="fontSize-34 fontWeight-8">+18</span>
                             <div class="fontSize-16 fontWeight-normal mt-xss">просмотры</div>
                         </div>
-                        <div class="pos-abs t50 r10 text-center">
+                        <div class="pos-abs t50 r10 text-center w70">
                             <span class="fontSize-28 fontWeight-8 text-uppercase">{ item.get('lang') }</span>
-                            <div class="fontSize-16 fontWeight-normal mt-xss">язык резюме</div>
+                            <div class="fontSize-16 fontWeight-normal mt-xss">язык</div>
                         </div>
                         <div onClick={ open.photoUpload } onUpdate="none" if={ item.get('photo') } class="user__photo">
                             <div class="user__photo__image" style="background-image:url({ item.get('photo') })"></div>
@@ -78,7 +80,7 @@
                             Редактировать
                         </div>
                     </div>
-                    <div class="resume__section__content col-md-12">
+                    <div class="resume__section__content col-md-12 { item.get('plan') }">
                         <div class="resume__section__item" data-active={ item.get("plan") == "free" && item.get("salary", "active") || item.get("plan") == "premium" &&  item.get('sections', {'name': 'salary'}).active } data-item="salary">
                             <div class="resume__section__item__title">Зарплата</div>
                             <div class="resume__section__item__text">{ item.get("plan") == "free" && item.get("salary", "active") || item.get("plan") == "premium" &&  item.get('sections', {'name': 'salary'}).active ? _.numberFormat(item.get('salary', 'amount'), 0, ".", ".") + ' ' + $store.currency.getTitleById(item.get('salary', 'currency')) + ' / ' + $store.resume.take.salary.worktime(item.get("salary", "worktime"), 'ru') : 'не указана' }</div>
@@ -110,7 +112,7 @@
                 </div>
             </div>
 
-            <div if={ item && item.get('plan') == "premium" } class="resume__section__circle__button" data-icon="stat">
+            <div if={ item && item.get('plan') == "premium" } onClick={ open.stat } onUpdate="none" class="resume__section__circle__button" data-icon="stat">
                 <div class="resume__section__circle__button__text">
                     <div class="resume__section__circle__button__title">
                         <span class="nowrap">Смотреть статистику</span> просмотров
@@ -119,7 +121,7 @@
             </div>
 
             <div if={ item && item.get('plan') == "free" } class="resume__section__template">
-                <img src="/assets/images/makets/{ item ? 1000 + item.get('template') : '1001' }.png" class="resume__section__template__image">
+                <img onClick={ open.design.free } onUpdate="none" src="/assets/images/makets/{ item ? 1000 + item.get('template') : '1001' }.png" class="resume__section__template__image">
             </div>
 
         </div>
@@ -140,9 +142,9 @@
         $.el.on('swipeDown', function(){
             $.hide();
         });
-        $afterlag.run(function(){
-            $.show("58a23360b6489dcd76c463f3");
-        });
+        // $afterlag.run(function(){
+        //     $.show("58a2297fb6489dcd76c463f2");
+        // });
     });
 
     $.show = function(id, callback){
@@ -155,12 +157,19 @@
                 $.callback = callback;
             },
             afterShow: function(){
-
+                $Sections.resume.preview.change($.item.get('template'));
             }
         })
     };
 
     $.open = {
+        preview: function(){
+            $store.data.onPreview($.item.get());
+        },
+        edit: function(){
+            if ($.item.get('plan') == "free" ) $.hide();
+            $store.data.onEdit($.item.get('_id'));
+        },
         photoUpload: function(){
             $Sections.photoUpload.show(function(image){
                 app.request("setResumePhoto", {
@@ -184,14 +193,35 @@
         },
         design: {
             free: function(){
-                $Sections.resume.select.show("free");
-            },
-            premium: function(){
-                $Sections.resume.select.show("premium");
+                $Sections.resume.select.show({
+                    plan: "free",
+                    control: false,
+                    template: $.item.get("template")
+                })
+                .then(function(data){
+                    app.request("setResumeTemplate", {
+                        id: $.item.get('_id'),
+                        template: data.template
+                    })
+                    .then(function(){
+                        $.item.select("template").set(data.template);
+                        $.update();
+                        $Sections.resume.preview.change(data.template);
+                    });
+                });
             }
         },
         getPdf: function(){
+            $store.data.onGetPdf($.item.get());
+        }
+    };
 
+    $.commit = {
+        public: function(value){
+            $store.data.onPublic($.item.get("_id"), value, function(){
+                $.update();
+                $Sections.resume.list.update();
+            })
         }
     };
 

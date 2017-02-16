@@ -476,6 +476,7 @@
             @extend .pos-bl;
             @extend .w100p;
             @extend .p-l;
+            // @extend .pb100;
             @extend .c-white;
             @extend .fontFamily-helvetica;
             @extend .fontWeight-5;
@@ -486,6 +487,40 @@
             line-height:44px;
             background:linear-gradient(to top, $steelDark, rgba($steelDark,0));
             @extend .zIndex-1;
+        }
+        .screen__location {
+            // @extend .flex-row-left-center;
+            @extend .display-none;
+            @extend .pos-bl;
+            @extend .w100p;
+            height:72px;
+            @extend .c-blackLight;
+            @extend .fontFamily-helvetica;
+            font-size:19px;
+            @extend .bg-white;
+            @extend .zIndex-2;
+            @extend .pl25;
+            @extend .letterSpacing--xs;
+            padding-bottom:4px;
+
+            &:before {
+                @extend .content-empty;
+                @extend .display-block;
+                @extend .mr-s;
+                @extend .opacity-40;
+                @include ui-icon("location_gray", 28px, 28px);
+            }
+        }
+        .screen__progress {
+            @extend .pos-bl;
+            @extend .h4px;
+            @extend .overflow-hidden;
+
+            &__line {
+                @include abs();
+                @extend .w100v;
+                background:linear-gradient(to right, $red, $pink, $orange, $yellow, $yellowLight, $green, $greenLight, $emerald);
+            }
         }
         .photo {
             @include abs();

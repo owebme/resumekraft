@@ -4,6 +4,7 @@
     <resume-edit></resume-edit>
     <resume-section-mobile></resume-section-mobile>
     <resume-select></resume-select>
+    <resume-preview></resume-preview>
     <resume-sendmail></resume-sendmail>
     <section-notify></section-notify>
     <section-alert></section-alert>
@@ -48,6 +49,8 @@
     $root = this;
     $rootScope = $$(this.root);
 
+    $resume = $store.resume;
+
     // $store.inbox.set([]);
     // $store.data.set([]);
     // $store.likes.set([]);
@@ -78,6 +81,7 @@
                 edit: $root.tags["resume-edit"],
                 stat: $root.tags["resume-stat-mobile"],
                 select: $root.tags["resume-select"],
+                preview: $root.tags["resume-preview"],
                 section: $root.tags["resume-section-mobile"],
                 sendmail: $root.tags["resume-sendmail"]
             },

@@ -9,22 +9,22 @@
                     <div class="pos-rel aspectRatio-169 mtb-s mlr-m">
                         <div class="pos-abs-full borderRadius-xl borderWidth-1 borderStyle-solid borderColor-white opacity-50"></div>
                         <div class="pos-centered mt--l">
-                            <ui-switcher update="public" commit={ true } cursor={ config.select() }></ui-switcher>
+                            <ui-switcher color="white" update="public" commit={ true } cursor={ config.select() }></ui-switcher>
                         </div>
                         <div class="pos-centered-h b-30 w100p">
                             <div class="fontSize-28 mb-xs">Опубликовать резюме</div>
                             <div class="fontSize-20 plr-m { display-none : showLink }">Получить <span onClick={ open.link } class="link-underline link-lime">прямую ссылку</span> на резюме</div>
                             <div class="plr-m mb--xs { display-none : !showLink }">
-                                <input class="input input-m input-white { opacity-50 : !$resume.get('public') }" value="http://resumekraft.ru/resume/4a170ef2fc400bd89c618b2de1e3674e18757d32">
+                                <input class="input input-m input-white { opacity-50 : !$resume.get('public') }" value="http://resumekraft.ru/resume/{ $store.resume.get('_id') }">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-24 col-sm-12 transition-s { opacity-50 : !config.get('logotype') }">
+                <div if={ $account.get("plan") == "free" } class="col-xs-24 col-sm-12 transition-s { opacity-50 : !config.get('logotype') }">
                     <div class="pos-rel aspectRatio-169 mtb-s mlr-m">
                         <div class="pos-abs-full borderRadius-xl borderWidth-1 borderStyle-solid borderColor-white opacity-50"></div>
                         <div class="pos-centered mt--l">
-                            <ui-switcher update="logotype" i="logotype" commit={ change } cursor={ config.select() }></ui-switcher>
+                            <ui-switcher color="white" update="logotype" i="logotype" commit={ change } cursor={ config.select() }></ui-switcher>
                         </div>
                         <div class="pos-centered-h b-30 w100p">
                             <div class="fontSize-28 mb-xs">Оставлять логотип</div>
@@ -32,11 +32,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-24 col-sm-12 transition-s { opacity-50 : !config.get('stat') }">
+                <div if={ $account.get("plan") == "free" } class="col-xs-24 col-sm-12 transition-s { opacity-50 : !config.get('stat') }">
                     <div class="pos-rel aspectRatio-169 mtb-s mlr-m">
                         <div class="pos-abs-full borderRadius-xl borderWidth-1 borderStyle-solid borderColor-white opacity-50"></div>
                         <div class="pos-centered mt--l">
-                            <ui-switcher update="stat" i="stat" commit={ change } cursor={ config.select() }></ui-switcher>
+                            <ui-switcher color="white" update="stat" i="stat" commit={ change } cursor={ config.select() }></ui-switcher>
                         </div>
                         <div class="pos-centered-h b-30 w100p">
                             <div class="fontSize-28 mb-xs">Собирать статистику</div>
@@ -48,7 +48,7 @@
                     <div class="pos-rel aspectRatio-169 mtb-s mlr-m">
                         <div class="pos-abs-full borderRadius-xl borderWidth-1 borderStyle-solid borderColor-white opacity-50"></div>
                         <div class="pos-centered mt--l">
-                            <ui-switcher update="lang" i="lang" commit={ change } cursor={ config.select() }></ui-switcher>
+                            <ui-switcher color="white" update="lang" i="lang" commit={ change } cursor={ config.select() }></ui-switcher>
                         </div>
                         <div class="pos-centered-h b-30 w100p">
                             <div class="fontSize-28 mb-xs">Резюме на англ. языке</div>

@@ -14,15 +14,15 @@
             </div>
         </div>
         <div class="resume__item__control__left">
-            <div if={ opts.item.plan == "premium" } class="resume__item__likes">
-                <div if={ opts.item.likes.length } class="resume__item__likes__badge">{ opts.item.likes.length }</div>
+            <div if={ opts.item.plan == "premium" } class="resume__item__likes" data-active={ opts.item.likes.length ? true : null }>
+                <div class="resume__item__likes__badge">{ opts.item.likes.length }</div>
             </div>
             <div class="resume__item__lang">{ opts.item.lang }</div>
         </div>
         <div onClick={ parent.open.resume } onUpdate="none" class="row resume__item__header__text">
             <div class="col-xs-5 col-sm-6">
-                <div if={ opts.item.photo } class="resume__item__photo { opacity-60 : !opts.item.public }" style="background-image:url('{ opts.item.photo }')"></div>
-                <div if={ !opts.item.photo } class="resume__item__photo__blank { opacity-60 : !opts.item.public }"></div>
+                <div if={ opts.item.photo } class="resume__item__photo { opacity-65 : !opts.item.public }" style="background-image:url('{ opts.item.photo }')"></div>
+                <div if={ !opts.item.photo } class="resume__item__photo__blank { opacity-65 : !opts.item.public }"></div>
             </div>
             <div class="col-xs-19 col-sm-18">
                 <div class="resume__item__title">{ opts.item.post ? opts.item.post : 'Продолжить редактирование' }</div>

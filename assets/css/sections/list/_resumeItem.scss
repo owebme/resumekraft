@@ -199,6 +199,7 @@
         transform:translate3d(2px, -2px, 0);
     }
     &__likes {
+        @extend .pos-rel;
         @extend .mlr-xss;
 
         &:after {

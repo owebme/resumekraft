@@ -89,31 +89,16 @@
             }
         }
         .switcher {
-            box-shadow:0 0 0 1px $grayLighten;
-
             &[active="true"]{
                 .switch {
-                    &-label {
-                        @extend .bg-primary;
-                    }
                     &-left,
                     &-right {
-                        @extend .c-primary;
+                        @extend .bg-primary;
                     }
                 }
             }
             .d-phone & {
                 transform:translateY(-4px);
-            }
-        }
-        .switch {
-            &-label {
-                background:$grayLighten;
-                @extend .boxShadow-none;
-            }
-            &-left,
-            &-right {
-                @extend .c-grayLight;
             }
         }
     }

@@ -30,9 +30,9 @@
                 $Sections.offers.plan.show();
             }
             else {
-                $Sections.resume.select.show(
-                    app.metrika.get("resume.select.default")
-                );
+                $Sections.resume.select.show({
+                    plan: app.metrika.get("resume.select.default")
+                });
             }
             app.metrika.set("resume.buttonNew", true);
         }

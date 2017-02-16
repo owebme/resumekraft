@@ -1,4 +1,12 @@
 .resume__section {
+    &:not([data-active="true"]){
+        .resume__section__bg {
+            background-color:$silver;
+        }
+        .user__photo__image {
+            @extend .opacity-65;
+        }
+    }
     &__bg {
         @extend .pos-tl;
         @extend .w50p;
@@ -17,6 +25,7 @@
         @extend .trX--xl;
         @extend .borderRadius-xxxxl;
         @extend .minW-20p;
+        @extend .maxW-80p;
         box-shadow:0 12px 20px -10px rgba($lime,.28), 0 4px 20px 0px rgba($lime,.12), 0 7px 8px -5px rgba($lime,.2);
 
         &__title {
@@ -135,20 +144,64 @@
                 }
             }
         }
-        .icon-colors-petal1 {
-            @extend .fill-emerald;
+    }
+    &__control__colors {
+        @extend .pos-centered-h;
+        @extend .t100;
+        width:200px;
+        @extend .mt-m;
+
+        &__items {
+            @extend .scale-0;
+            @extend .willChange-transform;
+            transform-origin:50% 0%;
+            transition:transform 0.35s $bounceForce;
+
+            .control__buttons__item[data-active="true"] & {
+                @extend .scale-100;
+            }
         }
-        .icon-colors-petal2 {
-            @extend .fill-pink;
-        }
-        .icon-colors-petal3 {
-            @extend .fill-green;
-        }
-        .icon-colors-petal4 {
-            @extend .fill-violet;
-        }
-        .icon-colors-petal5 {
-            @extend .fill-yellow;
+        &__item {
+            @extend .pos-rel;
+            @extend .display-inlineBlock;
+            @extend .w40;
+            @extend .h40;
+            @extend .borderRadius-circle;
+            @extend .mlr-xxs;
+            @extend .mb-xs;
+            @extend .willChange-transform;
+            transition:transform 0.35s $cubic075;
+            box-shadow:0 12px 20px -10px rgba($blackLight,.28), 0 4px 20px 0px rgba($blackLight,.12), 0 7px 8px -5px rgba($blackLight,.2);
+
+            &:before {
+                @extend .content-empty;
+                @include abs_50(10, 10);
+                @extend .w10;
+                @extend .h10;
+                @extend .bg-white;
+                @extend .borderRadius-circle;
+                @extend .willChange-transform;
+                transition:transform 0.35s $cubic075;
+                @extend .scale-0;
+            }
+            &[data-active="true"]{
+                @extend .bg-blackLight;
+                @extend .pointerEvents-none;
+
+                &:after {
+                    @extend .content-empty;
+                    @extend .pos-centered;
+                    @include ui-icon("check_white", 24px, 24px);
+                }
+            }
+            &:not([data-active="true"]):hover {
+                @extend .cursor-pointer;
+                @extend .scale-115;
+
+                &:before {
+                    @extend .scale-100;
+                }
+            }
         }
     }
     &__circle__button {
@@ -232,6 +285,7 @@
             width:254px;
             @extend .borderRadius-l;
             @extend .boxShadow-25;
+            @extend .cursor-pointer;
             transform:translateY(-140px) rotate(22deg);
         }
     }

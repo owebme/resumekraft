@@ -8,22 +8,31 @@
     @extend .overflow-hidden;
     @extend .cursor-pointer;
     border-radius:30px;
-    line-height:1.72222;
-    // -webkit-mask:url("/assets/images/mask.png") 0 0 no-repeat;
-    // -webkit-mask-size:60px 28px;
-    // mask:url("/assets/images/mask.png") 0 0 no-repeat;
-    box-shadow:0 0 0 2px rgba($white,.5);
+    -webkit-mask:url("/assets/images/mask.png") 0 0 no-repeat;
+    -webkit-mask-size:60px 28px;
+    mask:url("/assets/images/mask.png") 0 0 no-repeat;
+    box-shadow:0 0 0 2px $smoke;
 
     &.disabled {
-        @extend .opacity-50;
         @extend .cursor-default;
+        @extend .pointerEvents-none;
 
         .switch-label {
-            @extend .cursor-default;
+            background:$white;
+            @extend .opacity-60;
+            @extend .boxShadow-none;
+        }
+    }
+    &.disabled,
+    &:not([active="true"]){
+        .switch-left,
+        .switch-right {
+            @extend .bg-smoke;
+            @extend .c-blackLight;
         }
     }
     &[active="true"] > .switch {
-        transform:translate3d(0, 0, 0);
+        @extend .transform-default;
     }
     .m-no-touch &[active="true"]:hover .switch-label {
         margin:3px -19px;
@@ -32,6 +41,80 @@
     .m-no-touch &:hover .switch-label {
         margin:3px -15px;
         width:26px;
+    }
+    &.green {
+        .switch-left,
+        .switch-right {
+            @extend .bg-green;
+        }
+    }
+    &:not(.white) {
+        .switch-left,
+        .switch-right {
+            padding-top:1px;
+        }
+    }
+    &.white {
+        -webkit-mask:none;
+        box-shadow:0 0 0 2px rgba($white,.5);
+
+        .switch-left,
+        .switch-right {
+            @extend .bg-none;
+        }
+        &:not([active="true"]){
+            .switch-left,
+            .switch-right {
+                @extend .bg-none;
+                @extend .c-white;
+            }
+        }
+        &.disabled {
+            .switch-label {
+                @extend .opacity-50;
+            }
+            .switch-left,
+            .switch-right {
+                @extend .opacity-70;
+            }
+        }
+    }
+    &.small {
+        width:48px;
+
+        &[active="true"] > .switch {
+            @extend .transform-default;
+        }
+        .switch {
+            transform:translate3d(-26px, 0, 0);
+
+            &-label {
+                width:16px;
+                height:16px;
+                margin:3px -21px;
+            }
+            &-left,
+            &-right {
+                font-size:10px;
+                height:22px;
+                text-indent:-17px;
+
+                .d-no-macOS & {
+                    padding-top:3px;
+                }
+            }
+            &-right {
+                text-indent:-33px;
+            }
+        }
+        .m-no-touch &[active="true"]:hover .switch-label {
+            margin:3px -24px;
+            width:19px;
+        }
+        .m-no-touch &:hover .switch-label {
+            margin:3px -21px;
+            width:19px;
+        }
     }
 }
 .switch {
@@ -43,10 +126,12 @@
     transition:transform 0.25s ease-out;
     transform:translate3d(-32px, 0, 0);
 
-    // &-left,
-    // &-right {
-    //     background-color:#ddd;
-    // }
+    &-left,
+    &-right {
+        will-change:color, background-color;
+        background-color:$blue;
+        transition:color .08s, background-color .08s;
+    }
     &-label {
         @include accelerate();
         @extend .pos-rel;
@@ -64,35 +149,31 @@
         border-radius:12px;
         will-change:margin, width;
         transition:margin 0.25s ease-out, width 0.25s ease-out;
-        z-index:1;
+        @extend .zIndex-2;
     }
     &-input {
         @extend .display-none;
     }
     &-left,
     &-right {
+        @extend .flex-centered;
         @extend .pos-rel;
         @extend .float-left;
         @extend .m0;
         @extend .w50p;
         @extend .text-center;
         @extend .fontWeight-normal;
-        color:$white;
         font-size:11px;
         height:28px;
-        line-height:15px;
-        padding-bottom:6px;
-        padding-top:7px;
         text-indent:-10px;
         z-index:1;
     }
     &-left {
-        // background-color:#23CCEF;
+        @extend .c-white;
         border-left:1px solid transparent;
         border-radius:30px 0 0 30px;
     }
     &-right {
-        // background-color:#23CCEF;
         border-radius:0 30px 30px 0;
         text-indent:-3px;
     }

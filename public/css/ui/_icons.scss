@@ -1,0 +1,30 @@
+.icon {
+    &-fb {
+        &.icon-m {
+            width:70px;
+            height:70px;
+            margin:-9px -10px -10px;
+        }
+    }
+    &-dk {
+        &.icon-m {
+            width:74px;
+            height:74px;
+            margin:-13px -12px -11px;
+        }
+    }
+    &-vk,
+    &-tw {
+        &.icon-m {
+            width:80px;
+            height:80px;
+            margin:-15px;
+        }
+    }
+    &-gl {
+        &.icon-m {
+            width:34px;
+            height:34px;
+        }
+    }
+}

@@ -1,0 +1,56 @@
+<resume-section-colors if={ opts.item && opts.item.get('plan') == "premium" } class="display-block control__buttons__item" data-active={ active }>
+
+    <div onClick={ open } class="pos-rel" data-balloon="Изменить цвет" data-balloon-pos="down">
+        <div class="control__buttons__item__icon">
+            <icon-colors size="xs" color="blue"></icon-colors>
+        </div>
+    </div>
+    <div class="resume__section__control__colors">
+        <div class="resume__section__control__colors__items">
+            <div onClick={ select } onUpdate="none" each={ item in $store.colors.get() } no-reorder class="resume__section__control__colors__item bg-{ item.title }" data-active={ parent.opts.item.get("config", "color") == item._id }></div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.active = false;
+
+    $.open = function(){
+        $.active = !$.active;
+    };
+
+    $.select = function(){
+        $.active = false;
+        var data = {
+            id: $.opts.item.get('_id'),
+            color: this.item._id
+        };
+        app.request('setResumeColor', data).then(function(){
+            $store.data.select({"_id": data.id}, "config", "color").set(data.color);
+            $.parent.update();
+            $Sections.resume.list.update();
+        })
+    };
+
+    $.handleClickOutside = function(e){
+        if (!$.root.contains(e.target)){
+            $.update({
+                active: false
+            })
+        }
+    };
+
+    $.on("updated", function(){
+        if ($.active){
+            document.addEventListener('click', $.handleClickOutside);
+        }
+        else {
+            document.removeEventListener('click', $.handleClickOutside)
+        }
+    });
+
+</script>
+
+</resume-section-colors>
