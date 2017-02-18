@@ -134,6 +134,10 @@
 	        @extend .willChange-tp;
 	        transform-origin:0% 50%;
 	        transition:transform 0.5s $cubic40, opacity 0.5s $cubic40;
+
+			.d-no-phone & {
+				transition:transform 0.5s $cubic645, opacity 0.5s $cubic645;
+			}
 		}
 	}
 	&[data-hidden="true"]{
@@ -145,6 +149,12 @@
 			@extend .opacity-50;
 			transform:perspective(500px) scale(.96) translateX(4%) rotateY(4deg);
 			transition:transform 0.42s $cubic645, opacity 0.42s $cubic645;
+
+			.d-no-phone & {
+				@extend .opacity-40;
+				transform:perspective(500px) scale(.95) translateX(3%) rotateY(1deg);
+				transition:transform 0.6s $cubic60, opacity 0.6s $cubic60;
+			}
 		}
 	}
 	&[data-loading="true"]{

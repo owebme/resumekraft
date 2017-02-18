@@ -1,0 +1,232 @@
+.offer__premium__slider {
+    &__logotype {
+        @extend .pos-abs;
+        @extend .t-30;
+        @extend .l-45;
+        @extend .md-ml--xxs;
+        width:51px;
+        height:51px;
+        @extend .pointerEvents-none;
+        @extend .opacity-0;
+        @extend .scale-0;
+        @extend .willChange-tp;
+        transition:transform 0.5s $cubic32, opacity 0.5s $cubic32;
+        @extend .bg-cover;
+        background-image:url(/assets/images/favicons/120.png);
+    }
+    &__text {
+        &__title {
+            @extend .pos-centered-v;
+            @extend .l-90;
+            @extend .c-blackLight;
+            @extend .fontFamily-helvetica;
+            @extend .fontSize-34;
+            @extend .lineHeight-48;
+            @extend .fontWeight-3;
+            @extend .letterSpacing-0;
+
+            .d-tablet & {
+                @extend .l-60;
+                @extend .fontSize-28;
+                @extend .lineHeight-44;
+                @extend .letterSpacing-0;
+            }
+            .d-tablet.r-portrait & {
+                top:150px;
+                @extend .transform-default;
+            }
+        }
+        &__subtitle {
+            @extend .c-blackLight;
+            @extend .fontFamily-helvetica;
+            font-size:17px;
+            @extend .lineHeight-24;
+            @extend .fontWeight-3;
+            @extend .letterSpacing-0;
+            @extend .pt-xxs;
+            @extend .pb-xss;
+        }
+        .larger {
+            font-size:44px;
+            @extend .c-brown;
+
+            .d-tablet & {
+                font-size:34px;
+            }
+        }
+        &[data-finish="true"]{
+            .offer__premium__slider__text__title {
+                .d-tablet & {
+                    font-size:34px;
+                }
+            }
+            .larger {
+                .d-tablet & {
+                    font-size:38px;
+                }
+            }
+        }
+    }
+    &__repeat {
+        @extend .flex-centered;
+        @extend .w100;
+        @extend .m0-auto;
+        font-size:15px;
+        @extend .pt-xs;
+        @extend .btn-active;
+        @extend .userSelect-none;
+
+        svg {
+            @extend .w20;
+            @extend .h20;
+            @extend .mr-xss;
+            margin-top:-2px;
+            @extend .willChange-transform;
+
+            .offer__premium__slider__item[data-active="true"] & {
+                animation:spinner linear 1s infinite;
+            }
+        }
+        .m-no-touch &:hover {
+            color:darken($brown,15%);
+        }
+    }
+    .premium-devices-icons {
+        @extend .pos-centered-v;
+        @extend .l-xl;
+        @extend .w40v;
+        @extend .pointerEvents-none;
+        margin-top:220px;
+
+        .d-tablet & {
+            @extend .l0;
+            @extend .w50v;
+            @extend .pl30;
+            @extend .pr30;
+        }
+        .d-tablet.r-portrait & {
+            @extend .w100v;
+            @extend .m0;
+            @extend .transform-default;
+            @extend .t-auto;
+            @extend .b-60;
+        }
+        icon-device-desktop {
+            @extend .trY-xxs;
+        }
+    }
+    &__likes__cover {
+        @extend .pos-centered;
+        background-color:#111112;
+        margin:-52px 0 0 138px;
+
+        &:before {
+            @extend .content-empty;
+            @extend .display-block;
+            @extend .opacity-30;
+            @extend .willChange-transform;
+            @include ui-icon("like_fill_white", 130px, 130px);
+
+            .offer__premium__slider__item[data-active="true"] & {
+                animation:pulse-heart 1s infinite;
+            }
+        }
+        &__photo {
+            @extend .pos-centered;
+            width:62px;
+            height:62px;
+            @extend .bg-cover;
+            @extend .borderRadius-circle;
+            @extend .mt--s;
+        }
+        &__badge {
+            @extend .pos-abs;
+            bottom:65%;
+            right:60%;
+            width:29px;
+            height:29px;
+            @extend .fontFamily-futura;
+            @extend .flex-centered;
+            @extend .c-white;
+            font-size:18px;
+            @extend .fontWeight-8;
+            @extend .bg-pink;
+            @extend .borderRadius-circle;
+            padding-top:1px;
+        }
+    }
+    &__pigination {
+        @extend .pos-abs;
+        @extend .b-95;
+        @extend .l-85;
+        @extend .fontSize-0;
+        @extend .zIndex-2;
+
+        .d-tablet & {
+            @extend .l-55;
+        }
+        .d-tablet.r-portrait & {
+            @extend .b-75;
+        }
+        &__item {
+            @extend .pos-rel;
+            @extend .display-inlineBlock;
+            @extend .w24;
+            @extend .h24;
+            @extend .opacity-20;
+            @extend .cursor-pointer;
+            margin:0 2.5px;
+            transition:opacity .3s ease;
+
+            &:after {
+                @extend .content-empty;
+                @extend .pos-centered;
+                @extend .w10;
+                @extend .h10;
+                @extend .bg-gray;
+                @extend .borderRadius-circle;
+            }
+            .m-no-touch &:hover,
+            &--active {
+                @extend .opacity-100;
+            }
+            &--active {
+                @extend .pointerEvents-none;
+
+                circle {
+                    @extend .opacity-50;
+                    stroke:$gray;
+                    stroke-width:2px;
+                }
+            }
+        }
+    }
+    &__progress {
+        @extend .pos-abs;
+        @extend .b-60;
+        @extend .l-xl;
+        @extend .w25v;
+        @extend .h3px;
+        @extend .overflow-hidden;
+
+        .d-tablet & {
+            @extend .l-50;
+        }
+        .d-tablet.r-portrait & {
+            @extend .b-l;
+        }
+        &__line {
+            @include abs();
+            @extend .w25v;
+            transform:scaleX(-1);
+            background:linear-gradient(to right, $red, $pink, $orange, $yellow, $yellowLight, $green, $greenLight, $emerald);
+        }
+        &__white {
+            @include accelerate();
+            @include abs();
+            @extend .bg-white;
+            @extend .willChange-transform;
+            transition:transform 0.1s;
+        }
+    }
+}

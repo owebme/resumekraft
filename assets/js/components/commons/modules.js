@@ -142,8 +142,12 @@
 	device.platform = device.isWin ? 'win' : (device.isMac ? 'mac' : (device.isLinux ? 'linux' : 'unknown'));
 
 	/* --- Safari --- */
-	device.isSafari = /constructor/i.test(window.HTMLElement);
+	device.isSafari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
 	$dom.html.addClass(device.isSafari ? 'd-safari' : 'd-no-safari');
+
+	/* --- Chrome --- */
+	device.isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+	$dom.html.addClass(device.isChrome ? 'd-chrome' : 'd-no-chrome');
 
 	/* --- Firefox --- */
 	device.isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;

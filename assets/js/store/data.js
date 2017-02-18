@@ -1,6 +1,23 @@
 (function(){
     $store.data = _.extend(new Baobab([]),
         {
+            onPhotoUpload: function(id, callback){
+                $Sections.photoUpload.show(function(image){
+                    app.request("setResumePhoto", {
+                        id: id,
+                        image: image
+                    }, {
+                        loader: false
+                    })
+                    .then(function(data){
+                        if (data && data.image){
+                            if (_.isFunction(callback)){
+                                callback(data.image);
+                            }
+                        }
+                    });
+                });
+            },
             onRemove: function(id){
                 $Alert.show({
                     title: "Удалить резюме?",
@@ -44,11 +61,18 @@
                 }
             },
             onPreview: function(item){
+                var callback = null;
                 $Sections.resume.preview.show({
                     plan: item.plan,
                     data: item,
                     template: item.template
                 })
+                .then(function(){
+                    callback();
+                });
+                return new Promise(function(resolve, reject){
+                    callback = resolve;
+                });
             },
             onStat: function(id, item){
                 $Sections.resume.stat.show(id, item);

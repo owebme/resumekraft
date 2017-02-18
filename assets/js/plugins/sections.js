@@ -30,6 +30,20 @@
                 if (_.isFunction(options.beforeShow)){
                     options.beforeShow();
                 }
+                if (options.update && options.tag){
+                    options.tag.update(options.update);
+
+                    options.tag.one("updated", function(){
+                        if (_.isFunction(options.afterShow)){
+                            options.afterShow();
+                        }
+                    });
+                }
+                else {
+                    if (_.isFunction(options.afterShow)){
+                        options.afterShow();
+                    }
+                }
                 $afterlag.run(function(){
                     $content.removeClass("transition-none");
                 });

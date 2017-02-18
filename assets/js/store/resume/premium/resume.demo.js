@@ -21,6 +21,7 @@
 // http://lionesseflatiron.org/wp-content/uploads/2015/08/Lionesse-Things-to-Know-Before-Going-Bronde.jpg
 // https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/0b6c6030715153.562fb7e328626.jpg
 // https://mir-s3-cdn-cf.behance.net/project_modules/disp/23386321049159.562fabde4b72c.jpg
+// https://drscdn.500px.org/photo/195237645/q%3D80_m%3D2000/3c1363e2c3cf86aeac84187d2703da1b
 
 $store.demo = {
         _id: "588becda9f1df3915186566b",
@@ -43,12 +44,12 @@ $store.demo = {
             },
             contacts: {
                 city: "Москва",
-                email: "owebme@gmail.com",
-                phone: "(926) 017-2086",
+                email: "mymail@gmail.com",
+                phone: "(XXX) 500-5550",
                 primary: "any",
                 relocate: true,
                 site: "http://web-projects.me",
-                skype: "owebme"
+                skype: "myskype"
             }
         },
         salary: {

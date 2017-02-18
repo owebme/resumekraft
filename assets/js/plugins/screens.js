@@ -100,7 +100,8 @@
         embeds: function(){
             var _this = this,
                 state = null,
-                $focus = null;
+                $focus = null,
+                resize = _.debounce(this.refresh, 300);
 
             $dom.window.on('resize.screens', function(){
                 _this.scope.scrollTop(0);
@@ -110,7 +111,7 @@
                         centered(app.sizes.height / 1.3, 0);
                     }, 150);
                 }
-                //if (_this.options.static) _this.refresh();
+                if (_this.options.resizeRefresh) resize.call(_this);
         	});
 
             if (_this.options.static){

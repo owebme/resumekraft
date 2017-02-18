@@ -114,7 +114,7 @@
 
     $.open = {
         changePhoto: function(){
-            $account.changePhoto();
+            $account.onPhotoUpload();
         },
         personalData: function(){
             $Sections.profile.data.show();
@@ -142,7 +142,7 @@
                     {
                         title: $account.get('photo') ? 'Изменить фото' : 'Загрузить фото',
                         callback: function(){
-                            $account.changePhoto();
+                            $account.onPhotoUpload();
                         }
                     },
                     {

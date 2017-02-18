@@ -1,0 +1,424 @@
+.offer__premium__slider__item {
+    &[data-slide="start"]{
+        .offer__premium__slider__images__item {
+            &[data-image="notebook-mac"]{
+                @extend .pos-centered;
+
+                .d-tablet & {
+                    @extend .mt--60;
+                }
+            }
+            &[data-image="macbook"]{
+                @extend .pos-centered;
+                margin-top:255px;
+
+                .d-tablet & {
+                    margin-top:155px;
+                }
+                .d-tablet.r-portrait & {
+                    margin-top:215px;
+                }
+            }
+        }
+        .offer__premium__slider__images__notebook__mac {
+            width:936px;
+            height:568px;
+            @extend .bg-cover;
+            transform:translate3d(60px, 0, 0);
+            background-image:url(/assets/images/promo/premium/start_macbook_imac.png);
+
+            .d-tablet & {
+                width:796px;
+                height:483px;
+            }
+        }
+        .offer__premium__slider__images__macbook {
+            width:650px;
+            height:388px;
+            @extend .bg-cover;
+            transform:translate3d(-60px, 0, 0);
+            background-image:url(/assets/images/promo/premium/start_macbook.png);
+
+            .d-tablet & {
+                width:553px;
+                height:330px;
+            }
+        }
+    }
+    &[data-slide="mobile"]{
+        .offer__premium__slider__images__item {
+            &[data-image="iphones"]{
+                @extend .pos-centered-v;
+                @extend .l--100;
+
+                .d-tablet & {
+                    left:-130px
+                }
+                .d-tablet.r-portrait & {
+                    left:-320px;
+                    bottom:145px;
+                    @extend .t-auto;
+                    @extend .transform-default;
+                }
+            }
+            &[data-image="phone-samsung"]{
+                @extend .pos-abs;
+                bottom:-140px;
+                @extend .r--xl;
+
+                .d-tablet & {
+                    @extend .b--70;
+                    @extend .r--60;
+                }
+                .d-tablet.r-portrait & {
+                    @extend .b--xl;
+                    @extend .r--50;
+                }
+            }
+        }
+        .offer__premium__slider__images__iphones {
+            width:447px;
+            height:546px;
+            @extend .bg-cover;
+            transform:translate3d(-60px, 0, 0);
+            background-image:url(/assets/images/promo/premium/mobile_iphones.png);
+
+            .d-tablet & {
+                width:425px;
+                height:519px;
+            }
+        }
+        .offer__premium__slider__images__phone__samsung {
+            width:556px;
+            height:659px;
+            @extend .bg-cover;
+            transform:translate3d(0, 80px, 0) scale(1.15);
+            background-image:url(/assets/images/promo/premium/mobile_phone_samsung.png);
+
+            .d-tablet & {
+                width:489px;
+                height:580px;
+            }
+        }
+    }
+    &[data-slide="skills"]{
+        .offer__premium__slider__images__item {
+            &[data-image="ipad"]{
+                @extend .pos-centered-v;
+                right:-185px;
+                @extend .mt35;
+
+                .d-tablet & {
+                    right:-260px;
+                    @extend .mt50;
+                }
+                .d-tablet.r-portrait & {
+                    right:-265px;
+                    @extend .mt-xl;
+                }
+            }
+            &[data-image="iphone"]{
+                @extend .pos-abs;
+                @extend .b--45;
+                @extend .l--xl;
+
+                .d-tablet & {
+                    @extend .b0;
+                    @extend .l--100;
+                }
+                .d-tablet.r-portrait & {
+                    bottom:-105px;
+                    @extend .l--30;
+                }
+            }
+        }
+        .offer__premium__slider__images__ipad {
+            width:825px;
+            height:614px;
+            @extend .bg-cover;
+            transform:translate3d(80px, 0, 0);
+            background-image:url(/assets/images/promo/premium/skills_ipad.png);
+        }
+        .offer__premium__slider__images__iphone {
+            width:314px;
+            height:567px;
+            @extend .bg-cover;
+            transform:translate3d(0, 0, 0) scale(1.1);
+            background-image:url(/assets/images/promo/premium/skills_iphone.png);
+
+            .d-tablet.r-landscape & {
+                width:283px;
+                height:510px;
+            }
+        }
+    }
+    &[data-slide="projects"]{
+        .offer__premium__slider__images__item {
+            &[data-image="macbook"]{
+                @extend .pos-centered;
+
+                .d-tablet & {
+                    @extend .ml--45;
+                }
+                .d-tablet.r-portrait & {
+                    margin-left:-130px;
+                    @extend .mt100;
+                }
+            }
+            &[data-image="iphone"]{
+                @extend .pos-centered;
+                margin:100px 0 0 185px;
+
+                .d-tablet & {
+                    margin-left:115px;
+                }
+                .d-tablet.r-portrait & {
+                    @extend .ml-l;
+                    margin-top:215px;
+                }
+            }
+        }
+        .offer__premium__slider__images__macbook {
+            width:726px;
+            height:423px;
+            @extend .bg-cover;
+            transform:translate3d(-60px, 0, 0);
+            background-image:url(/assets/images/promo/premium/projects_macbook.png);
+        }
+        .offer__premium__slider__images__iphone {
+            width:202px;
+            height:355px;
+            @extend .bg-cover;
+            transform:translate3d(40px, 0, 0);
+            background-image:url(/assets/images/promo/premium/projects_iphone.png);
+        }
+    }
+    &[data-slide="inbox"]{
+        .offer__premium__slider__images__item {
+            &[data-image="devices"]{
+                @extend .pos-centered;
+
+                .d-tablet.r-portrait & {
+                    @extend .ml--l;
+                    @extend .mt50;
+                }
+            }
+            &[data-image="iphone"]{
+                @extend .pos-centered;
+                margin:205px 0 0 -215px;
+
+                .d-tablet.r-portrait & {
+                    margin:255px 0 0 -255px;
+                }
+            }
+        }
+        .offer__premium__slider__images__devices {
+            width:992px;
+            height:584px;
+            @extend .bg-cover;
+            transform:translate3d(80px, 0, 0);
+            background-image:url(/assets/images/promo/premium/inbox_devices.png);
+
+            .d-tablet & {
+                width:893px;
+                height:526px;
+            }
+        }
+        .offer__premium__slider__images__iphone {
+            width:254px;
+            height:150px;
+            @extend .bg-cover;
+            transform:translate3d(-30px, 40px, 0) scale(1.1);
+            background-image:url(/assets/images/promo/premium/inbox_iphone.png);
+
+            .d-tablet & {
+                width:229px;
+                height:135px;
+            }
+        }
+    }
+    &[data-slide="salary"]{
+        .offer__premium__slider__images__item {
+            &[data-image="ipad"]{
+                @extend .pos-centered-v;
+                @extend .r--65;
+
+                .d-tablet & {
+                    right:-120px;
+                    @extend .mt--m;
+                }
+                .d-tablet.r-portrait & {
+                    right:-220px;
+                }
+            }
+            &[data-image="phone-samsung"]{
+                @extend .pos-abs;
+                bottom:-240px;
+                left:-160px;
+
+                .d-tablet & {
+                    bottom:-232px;
+                }
+                .d-tablet.r-portrait & {
+                    bottom:-200px;
+                    @extend .l--70;
+                }
+            }
+        }
+        .offer__premium__slider__images__ipad {
+            width:711px;
+            height:503px;
+            @extend .bg-cover;
+            transform:translate3d(-60px, 0, 0);
+            background-image:url(/assets/images/promo/premium/salary_ipad.png);
+
+            .d-tablet & {
+                width:640px;
+                height:453px;
+            }
+        }
+        .offer__premium__slider__images__phone__samsung {
+            width:542px;
+            height:730px;
+            @extend .bg-cover;
+            transform:translate3d(40px, 80px, 0) scale(1.15);
+            background-image:url(/assets/images/promo/premium/salary_phone_samsung.png);
+        }
+    }
+    &[data-slide="likes-hobby"]{
+        .offer__premium__slider__images__item {
+            &[data-image="iphones"]{
+                @extend .pos-abs;
+                @extend .l--xl;
+                bottom:-135px;
+
+                .d-tablet & {
+                    left:-110px;
+                    bottom:-120px;
+                }
+                .d-tablet.r-portrait & {
+                    left:-138px;
+                    @extend .b--90;
+                }
+            }
+        }
+        .offer__premium__slider__images__iphones {
+            width:602px;
+            height:670px;
+            @extend .bg-cover;
+            transform:translate3d(0, 40px, 0) scale(1.1);
+            background-image:url(/assets/images/promo/premium/likes_hobby_iphones.png);
+        }
+    }
+    &[data-slide="control"]{
+        .offer__premium__slider__images__item {
+            &[data-image="imac"]{
+                @extend .pos-centered-v;
+                @extend .r0;
+            }
+            &[data-image="macbook"]{
+                @extend .pos-abs;
+                @extend .b-60;
+                right:74px;
+                @extend .zIndex-1;
+
+                .d-tablet & {
+                    right:66px;
+                }
+                .d-tablet.r-portrait & {
+                    bottom:150px;
+                }
+            }
+            &[data-image="iphone"]{
+                @extend .pos-abs;
+                @extend .b-50;
+                right:581px;
+                @extend .zIndex-2;
+
+                .d-tablet & {
+                    right:522px;
+                }
+                .d-tablet.r-portrait & {
+                    bottom:140px;
+                }
+            }
+        }
+        .offer__premium__slider__images__imac {
+            width:422px;
+            height:559px;
+            @extend .bg-cover;
+            transform:translate3d(60px, 0, 0) scale(0.95);
+            background-image:url(/assets/images/promo/premium/control_imac.png);
+
+            .d-tablet & {
+                width:380px;
+                height:503px;
+            }
+        }
+        .offer__premium__slider__images__macbook {
+            width:604px;
+            height:345px;
+            @extend .bg-cover;
+            transform:translate3d(-60px, 0, 0);
+            background-image:url(/assets/images/promo/premium/control_macbook.png);
+
+            .d-tablet & {
+                width:544px;
+                height:311px;
+            }
+        }
+        .offer__premium__slider__images__iphone {
+            width:113px;
+            height:232px;
+            @extend .bg-cover;
+            transform:translate3d(-20px, 0, 0) scale(1.1);
+            background-image:url(/assets/images/promo/premium/control_iphone.png);
+
+            .d-tablet & {
+                width:102px;
+                height:209px;
+            }
+        }
+    }
+    &[data-slide="finish"]{
+        .offer__premium__slider__images {
+            transform:translateX(320px);
+        }
+        .offer__premium__slider__images__item {
+            &[data-image="macbook-left"]{
+                @extend .pos-centered;
+                margin-left:-250px;
+
+                .d-tablet & {
+                    margin-left:-220px;
+                }
+                .d-tablet.r-portrait & {
+                    margin-left:-180px;
+                }
+            }
+            &[data-image="macbook-right"]{
+                @extend .pos-centered;
+                @extend .mt30;
+                margin-left:240px;
+
+                .d-tablet.r-landscape & {
+                    margin-left:270px;
+                }
+            }
+        }
+        .offer__premium__slider__images__macbook__left {
+            width:699px;
+            height:499px;
+            @extend .bg-cover;
+            transform:translate3d(-40px, 0, 0);
+            background-image:url(/assets/images/promo/premium/finish_macbook_left.png);
+        }
+        .offer__premium__slider__images__macbook__right {
+            width:840px;
+            height:499px;
+            @extend .bg-cover;
+            transform:translate3d(60px, 0, 0);
+            background-image:url(/assets/images/promo/premium/finish_macbook_right.png);
+        }
+    }
+}

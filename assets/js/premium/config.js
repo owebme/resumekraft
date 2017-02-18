@@ -27,5 +27,5 @@ app.config = {
     share: {
         title: 'Создать крутое резюме и получить престижную работу'
     },
-    changeStyles: true
+    changeStyles: false
 };

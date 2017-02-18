@@ -8,7 +8,7 @@ body {
 	&[data-app="private"]{
 		@extend .bg-blackDark;
 		@extend .overflow-hidden;
-		@extend .perspective-500;
+		@include perspective(500);
 	}
 	&[data-focus="resume-edit"],
 	&[data-focus="jqtest-result"]{

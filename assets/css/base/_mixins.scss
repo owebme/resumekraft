@@ -48,7 +48,15 @@
     .d-no-safari &,
     .d-phone.d-no-ios & {
         @if $value {
-            perspective:#{$value}px;
+            @if $value == 500 {
+                @extend .perspective-500;
+            }
+            @else if $value == 1000 {
+                @extend .perspective-1000;
+            }
+            @else {
+                perspective:#{$value}px;
+            }
         }
         @else {
             @extend .perspective-1000;

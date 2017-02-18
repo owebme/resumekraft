@@ -156,7 +156,8 @@
                 isScrolled = false,
                 grabTimer,
                 state = null,
-                $focus = null;
+                $focus = null,
+                resize = _.debounce(this.refresh, 300);
 
             scroll.enable();
 
@@ -169,7 +170,7 @@
                         }, 150);
                     }
                 }
-                scroll.refresh();
+                resize.call(_this);
         	});
 
             if (autoScroll){

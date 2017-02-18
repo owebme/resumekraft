@@ -476,7 +476,6 @@
             @extend .pos-bl;
             @extend .w100p;
             @extend .p-l;
-            // @extend .pb100;
             @extend .c-white;
             @extend .fontFamily-helvetica;
             @extend .fontWeight-5;
@@ -489,14 +488,14 @@
             @extend .zIndex-1;
         }
         .screen__location {
-            // @extend .flex-row-left-center;
-            @extend .display-none;
+            @extend .flex-row-left-center;
             @extend .pos-bl;
             @extend .w100p;
             height:72px;
             @extend .c-blackLight;
             @extend .fontFamily-helvetica;
             font-size:19px;
+            line-height:70px;
             @extend .bg-white;
             @extend .zIndex-2;
             @extend .pl25;
@@ -509,6 +508,7 @@
                 @extend .mr-s;
                 @extend .opacity-40;
                 @include ui-icon("location_gray", 28px, 28px);
+                transform:translateY(-2px);
             }
         }
         .screen__progress {
@@ -574,10 +574,37 @@
     }
 }
 
+@media screen and (min-width: 1281px) {
+    .template1 .main-line:before {
+        right:auto;
+        left:14vw;
+    }
+}
 @media screen and (min-width: 1400px) {
     .screens {
         margin-left:-236px;
         padding-left:25%;
         width:calc(1200px + 25%);
+    }
+    .template1 .main-line:before {
+        right:auto;
+        left:calc(20vw - 50px);
+    }
+    .screen[data-section="courses"]:before {
+        margin-left:20px;
+    }
+}
+@media screen and (max-height: 639px) {
+    .d-phone .template1 {
+        .screen__location {
+            display:none !important;
+        }
+    }
+}
+@media screen and (min-height: 640px) {
+    .d-phone #app[data-mode="view"] {
+         .screen__post {
+            padding-bottom:100px;
+        }
     }
 }

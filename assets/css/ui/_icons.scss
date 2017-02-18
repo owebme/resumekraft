@@ -1,5 +1,5 @@
 @each $icon in (
-    loading, loading_white, loading_mini, loading_mini_white, close, close_white, close_strong, close_strong_white, minus, minus_white, plus, plus_white, plus_thin, plus_thin_white, plus_thin_black, pencil, pencil_white, menu, menu_white, menu2_white, menu_lime, remove_fill_white, upload, upload_white, video_white, images_white, link_white, more_h, more_h_white, more_v, more_v_white, back, back_gray, back_white, back_lime, help, close_fill, close_fill_gray, close_fill_white, arrow_curved_white, info_white, check, check_black, check_white, check_gray, check_muted, check_circle_lime, edit, edit_white, share, share_white, hand_cursor_white, repeat, resume_white, feedback_white, addUser, addUser_white, time_muted, bankcard, bankcard_white, wallet, wallet_white, device_phones, device_phones_white, like_fill_white, like_fill_pink, crown, crown_white, coderwall_fill_white, visible, unvisible_gray, visible_white, unvisible_white, user_white, chart
+    loading, loading_white, loading_mini, loading_mini_white, close, close_white, close_strong, close_strong_white, minus, minus_white, plus, plus_white, plus_thin, plus_thin_white, plus_thin_black, pencil, pencil_white, menu, menu_white, menu2_white, menu_lime, remove_fill_white, upload, upload_white, video_white, images_white, link_white, more_h, more_h_white, more_v, more_v_white, back, back_gray, back_white, back_lime, help, close_fill, close_fill_gray, close_fill_white, arrow_curved_white, info_white, check, check_black, check_white, check_gray, check_muted, check_circle_lime, edit, edit_white, share, share_white, hand_cursor_white, repeat, resume_white, feedback_white, addUser, addUser_white, time_muted, bankcard, bankcard_white, wallet, wallet_white, device_phones, device_phones_white, like_fill_white, like_fill_pink, crown, crown_white, coderwall_fill_white, visible, unvisible_gray, visible_white, unvisible_white, user_white, chart, like_fill_white
 ){
     .ui-icon-#{$icon} {
         background:url('/assets/images/ui/ui-#{$icon}.svg') no-repeat 0 0 / cover;
@@ -213,18 +213,30 @@
         }
     }
     &-device-desktop {
+        &.icon-l {
+            width:108px;
+            height:57px;
+        }
         &.icon-xl {
             width:136px;
             height:72px;
         }
     }
     &-device-tablet {
+        &.icon-l {
+            width:50px;
+            height:71px;
+        }
         &.icon-xl {
             width:65px;
             height:94px;
         }
     }
     &-device-phones {
+        &.icon-l {
+            width:57px;
+            height:70px;
+        }
         &.icon-xl {
             width:72px;
             height:88px;

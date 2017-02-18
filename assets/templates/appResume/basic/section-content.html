@@ -20,8 +20,6 @@
 
     <resume-settings></resume-settings>
 
-    <photo-upload></photo-upload>
-
     <resume-edit-finish percentage={ sections.percentage } preview={ sections.preview }></resume-edit-finish>
 
     <div if={ !app.device.isPhone } class="share__text">Поделиться своим резюме в социальных сетях</div>
@@ -37,7 +35,6 @@
         buttons: $.tags["resume-control-buttons"],
         percentage: $.tags["resume-control-percentage"],
         settings: $.tags["resume-settings"],
-        photo: $.tags["photo-upload"],
         finish: $.tags["resume-edit-finish"],
         shareButton: $.tags["share-button"]
     };
@@ -48,9 +45,9 @@
         $.scroll = $.opts.scroll;
         $.content = $.opts.content;
 
-        $.sections.photo.init(
-            $resume.get("config", "photo")
-        );
+        // $.sections.photo.init(
+        //     $resume.get("config", "photo")
+        // );
     });
 
     $.on("mount", function(){
@@ -114,22 +111,14 @@
             }
         },
         preview: function(){
+            console.log("preview");
             $store.data.onPreview($resume.get());
             app.metrika.set("resume.create.control.preview", true);
         },
         photoUpload: function(){
-            $.sections.photo.show(function(image){
-                app.request("setUploadPhoto", {
-                    image: image
-                }, {
-                    loader: false
-                })
-                .then(function(data){
-                    if (data && data.image){
-                        $resume.select("photo").set(data.image);
-                        $Sections.resume.preview.template.update();
-                    }
-                });
+            console.log("photoUpload", $resume.get("_id"));
+            $store.data.onPhotoUpload($resume.get("_id"), function(image){
+                $resume.select("photo").set(image);
             });
             app.metrika.set("resume.create.control.photo", true);
         },

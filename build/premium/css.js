@@ -26,7 +26,7 @@ module.exports = function(){
     	return combiner(
     		gulp.src('assets/css/premium.css'),
     		px2vw({
-    			width: 1400,
+    			width: 1680,
     			minPx: 2,
     			maxPx: 10000,
     			replace: true
@@ -54,5 +54,5 @@ module.exports = function(){
     	).on('error', notify.onError({
     		"sound": false,
     	}));
-    });    
+    });
 }

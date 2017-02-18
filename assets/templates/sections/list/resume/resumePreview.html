@@ -11,9 +11,20 @@
     $.num = null;
 
     $.on("mount", function(){
-        $$($["wrapper"]).on("click", function(e){
-            $.hide();
+        $$($["wrapper"]).on("click", "#upload-photo", function(e){
+            $store.data.onPhotoUpload($store.resume.get("_id"), function(image){
+                $store.resume.select("photo").set(image);
+                $.template.update();
+                $.resolve();
+            });
         });
+
+        $$($["wrapper"]).on("click", function(e){
+            if (!$Sections.photoUpload.active){
+                $.hide();
+            }
+        });
+
         $.clear();
     });
 
@@ -36,6 +47,9 @@
         $afterlag.run(function(){
             $.root.setAttribute("data-open", true);
         });
+        return new Promise(function(resolve, reject){
+            $.resolve = resolve;
+        });        
     };
 
     $.change = function(num){

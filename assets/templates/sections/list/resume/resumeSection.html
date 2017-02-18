@@ -4,11 +4,11 @@
         <div onClick={ hide } onUpdate="none" class="button__close" data-color="gray"></div>
     </div>
 
-    <div name="content" class="oScreen__content overflow-hidden bg-white">
+    <div name="content" class="oScreen__content overflow-hidden bg-black">
 
         <div class="section__loading"></div>
 
-        <div class="section__inner resume__section" data-active={ item.get('public') }>
+        <div class="section__content resume__section bg-white overflow-hidden" data-active={ item.get('public') }>
 
             <div class="flex-centered pos-abs t-m r-xl zIndex-2">
                 <div if={ item.get("public") } class="c-blue fontSize-14 text-uppercase mr-s">Опубликовано</div>
@@ -105,7 +105,7 @@
                 </div>
             </div>
 
-            <div if={ item && item.get('plan') == "free" } class="resume__section__circle__button" data-icon="crown">
+            <div if={ item && item.get('plan') == "free" } onClick={ open.offer } onUpdate="none" class="resume__section__circle__button" data-icon="crown">
                 <div class="resume__section__circle__button__text">
                     <div class="resume__section__circle__button__subtitle">premium</div>
                     <div class="resume__section__circle__button__title">Сделать резюме привлекательней</div>
@@ -164,29 +164,26 @@
 
     $.open = {
         preview: function(){
-            $store.data.onPreview($.item.get());
+            $store.data.onPreview($.item.get()).then(function(){
+                $.update();
+            });
         },
         edit: function(){
             if ($.item.get('plan') == "free" ) $.hide();
             $store.data.onEdit($.item.get('_id'));
         },
         photoUpload: function(){
-            $Sections.photoUpload.show(function(image){
-                app.request("setResumePhoto", {
-                    id: $.item.get('_id'),
-                    image: image
-                }, {
-                    loader: false
-                })
-                .then(function(data){
-                    if (data && data.image){
-                        $.item.select("photo").set(data.image);
-                        $.update();
-                        $Sections.resume.list.update();
-                    }
-                });
+            $store.data.onPhotoUpload($store.resume.get("_id"), function(image){
+                $store.resume.select("photo").set(image);
+                $.update();
             });
             app.metrika.set("resume.create.control.photo", true);
+        },
+        offer: function(){
+            $.root.setAttribute("data-hidden", true);
+            $Sections.offers.premium.show(function(){
+                $.root.setAttribute("data-hidden", false);
+            })
         },
         stat: function(){
             $Sections.resume.stat.show();
@@ -229,9 +226,6 @@
         $.section.hide({
             beforeHide: function(){
                 if (_.isFunction($.callback)) $.callback();
-            },
-            afterHide: function(){
-
             }
         })
     };

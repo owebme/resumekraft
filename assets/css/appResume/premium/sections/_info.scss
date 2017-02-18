@@ -52,6 +52,7 @@
             @extend .transition-default;
 
             .info-opener-close {
+                @extend .display-block;
                 @include abs_50(40, 40);
                 margin-top:-16px;
                 @extend .scale-0;
@@ -79,6 +80,9 @@
                 height:28px;
                 transition:transform .3s $cubic345;
             }
+        }
+        &-close {
+            @extend .display-none;
         }
     }
     &-wrapper {

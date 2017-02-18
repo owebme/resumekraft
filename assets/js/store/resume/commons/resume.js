@@ -212,13 +212,33 @@ $store.resume = _.extend(new Baobab({},
         },
         take: {
             relocate: function(){
+                var lang = $store.resume.get("lang"),
+                    gender = $store.resume.get('commons', 'gender');
+
                 if ($store.resume.get('commons', 'contacts', 'relocate')){
-                    var gender = $store.resume.get('commons', 'gender');
-                    if (gender == "male"){
-                        return '\nготов к переезду,';
+                    if (lang == "ru"){
+                        if (gender == "male"){
+                            return 'готов к переезду';
+                        }
+                        else if (gender == "female"){
+                            return 'готова к переезду';
+                        }
                     }
-                    else if (gender == "female"){
-                        return '\nготова к переезду,';
+                    else {
+                        return 'willing to relocate';
+                    }
+                }
+                else {
+                    if (lang == "ru"){
+                        if (gender == "male"){
+                            return 'не готов к переезду';
+                        }
+                        else if (gender == "female"){
+                            return 'не готова к переезду';
+                        }
+                    }
+                    else {
+                        return 'not willing to relocate';
                     }
                 }
             },

@@ -3,12 +3,12 @@
 @import 'base/reset';
 @import 'base/base';
 @import 'base/app';
-@import 'private/main';
 @import 'base/fonts';
 @import 'base/keyframes';
 @import 'base/mixins';
 @import 'base/responsive';
 @import 'base/main';
+@import 'private/main';
 
 // UI elements
 @import 'ui/icons';
@@ -51,25 +51,25 @@
 
 // Sections
 @import 'sections/sections';
-@import 'sections/mobile/screens/screens';
-@import 'sections/mobile/screens/resume';
-@import 'sections/mobile/screens/profile';
-@import 'sections/mobile/screens/payment';
-@import 'sections/mobile/menu';
-@import 'sections/mobile/navbar';
-@import 'sections/mobile/tutorial/welcome';
+// @import 'sections/mobile/screens/screens';
+// @import 'sections/mobile/screens/resume';
+// @import 'sections/mobile/screens/profile';
+// @import 'sections/mobile/screens/payment';
+// @import 'sections/mobile/menu';
+// @import 'sections/mobile/navbar';
+// @import 'sections/mobile/tutorial/welcome';
 @import 'sections/profile/profile';
 
 // jqtest
-@import 'sections/jqtest/jqtest';
-@import 'sections/jqtest/jqtestEnter';
-@import 'sections/jqtest/result/main';
-@import 'sections/jqtest/result/columns';
-@import 'sections/jqtest/result/skills';
-@import 'sections/jqtest/result/humps';
-@import 'sections/jqtest/result/graph';
-@import 'sections/jqtest/result/specialties';
-@import 'sections/jqtest/result/path';
+// @import 'sections/jqtest/jqtest';
+// @import 'sections/jqtest/jqtestEnter';
+// @import 'sections/jqtest/result/main';
+// @import 'sections/jqtest/result/columns';
+// @import 'sections/jqtest/result/skills';
+// @import 'sections/jqtest/result/humps';
+// @import 'sections/jqtest/result/graph';
+// @import 'sections/jqtest/result/specialties';
+// @import 'sections/jqtest/result/path';
 
 // plan
 @import 'sections/plan/plan';
@@ -80,13 +80,18 @@
 // payment
 @import 'sections/payment/payment';
 
+// offers
+@import 'sections/offers/premium/premium';
+@import 'sections/offers/premium/slides';
+@import 'sections/offers/premium/ui';
+
 // overview
-@import 'sections/overview/main';
-@import 'sections/overview/premium/header';
-@import 'sections/overview/premium/slides';
+// @import 'sections/overview/main';
+// @import 'sections/overview/premium/header';
+// @import 'sections/overview/premium/slides';
 @import 'sections/overview/premium/devices';
-@import 'sections/overview/jqtest/slides';
-@import 'sections/overview/overviewFunctions';
+// @import 'sections/overview/jqtest/slides';
+// @import 'sections/overview/overviewFunctions';
 
 // Resume list
 @import 'sections/list/resumeList';
@@ -96,9 +101,9 @@
 @import 'sections/list/resumeSelect';
 @import 'sections/list/resumeLikes';
 @import 'sections/list/resumeSection';
-@import 'sections/list/mobile/resumeList';
-@import 'sections/list/mobile/resumeListItem';
-@import 'sections/list/mobile/resumeStat';
+// @import 'sections/list/mobile/resumeList';
+// @import 'sections/list/mobile/resumeListItem';
+// @import 'sections/list/mobile/resumeStat';
 
 // Resume create basic
 @import 'appResume/basic/style';

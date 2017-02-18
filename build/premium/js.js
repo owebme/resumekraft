@@ -16,6 +16,7 @@ module.exports = function(){
     	    'assets/js/plugins/styles.js',
     	    'assets/js/plugins/scroll/scroll.Slider.js',
     	    'assets/js/plugins/scroll/scroll.Content.js',
+            'assets/js/components/i18n/resume/premium/template/ru.js',
     		'assets/js/store/*.js',
     		'assets/js/store/**/*.js'])
     		.pipe(concat('app.js'))

@@ -1,6 +1,6 @@
 $store.account = _.extend(new Baobab([]),
     {
-        changePhoto: function(){
+        onPhotoUpload: function(){
             $Sections.photoUpload.show(function(image){
                 app.request("setUploadPhoto", {
                     profile: true,
@@ -13,7 +13,7 @@ $store.account = _.extend(new Baobab([]),
                 });
             });
         },
-        saveData: function(data, callback){
+        onSaveData: function(data, callback){
             data.select("name").set(
                 $store.account.get("name").length ? $store.account.get("name") : data.get("name")
             );
