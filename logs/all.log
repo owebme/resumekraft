@@ -5181,3 +5181,48 @@
 {"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-18T14:50:37.838Z"}
 {"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-18T14:50:37.887Z"}
 {"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-18T14:50:37.931Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-18T18:30:42.779Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-18T18:30:42.804Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-18T18:30:42.820Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:34:54.589Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:34:54.593Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:34:57.245Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:35:36.306Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:35:56.046Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:35:56.060Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:35:59.326Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:36:05.631Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:36:59.720Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:37:04.231Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:37:14.937Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:38:33.902Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:38:33.910Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:38:41.959Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:38:55.160Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:39:44.676Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:39:51.806Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:40:08.097Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-18T20:43:09.339Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-18T20:43:09.373Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-18T20:43:09.388Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-18T20:43:32.519Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-18T20:43:32.544Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-18T20:43:32.555Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:44:01.600Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:44:01.605Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:44:03.715Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:44:18.961Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T20:44:21.160Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-18T20:50:22.540Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-18T20:50:22.588Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-18T20:50:22.613Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-18T21:45:29.170Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-18T21:45:29.192Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-18T21:45:29.202Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T22:14:12.689Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T22:20:08.460Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T22:20:13.861Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T22:20:17.790Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T22:20:21.096Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T22:20:53.632Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T22:20:57.448Z"}

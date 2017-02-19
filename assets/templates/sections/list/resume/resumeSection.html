@@ -1,7 +1,7 @@
 <resume-section class="oScreen section zIndex-1" data-open="false" data-show="down" data-loading="false" data-inner="hidden">
 
     <div class="oScreen__buttons" data-pos="top-right">
-        <div onClick={ hide } onUpdate="none" class="button__close" data-color="gray"></div>
+        <div onClick={ hide } onUpdate="none" class="button__close"></div>
     </div>
 
     <div name="content" class="oScreen__content overflow-hidden bg-black">
@@ -157,7 +157,21 @@
                 $.callback = callback;
             },
             afterShow: function(){
+                $.active = true;
                 $Sections.resume.preview.change($.item.get('template'));
+
+                if ($.item.get('plan') == "free" && !app.metrika.get("offers.popup.premium.show")){
+                    $afterlag.xl(function(){
+                        $Sections.popup.premium.show().then(function(){
+                            if ($.active){
+                                $.open.offer();
+                            }
+                        })
+                        $.one("hide", function(){
+                            $Sections.popup.premium.hide();
+                        });
+                    })
+                }
             }
         })
     };
@@ -173,8 +187,8 @@
             $store.data.onEdit($.item.get('_id'));
         },
         photoUpload: function(){
-            $store.data.onPhotoUpload($store.resume.get("_id"), function(image){
-                $store.resume.select("photo").set(image);
+            $store.data.onPhotoUpload($.item.get('_id'), function(image){
+                $.item.select("photo").set(image + "?" + _.newId());
                 $.update();
             });
             app.metrika.set("resume.create.control.photo", true);
@@ -225,7 +239,11 @@
     $.hide = function(){
         $.section.hide({
             beforeHide: function(){
+                $.trigger("hide");
                 if (_.isFunction($.callback)) $.callback();
+            },
+            afterHide: function(){
+                $.active = false;
             }
         })
     };

@@ -44,6 +44,18 @@
                 hide: false,
                 score: null,
                 success: false
+            },
+            popup: {
+                premium: {
+                    show: false,
+                    hide: false,
+                    success: false
+                },
+                jqtest: {
+                    show: false,
+                    hide: false,
+                    success: false
+                }
             }
         },
         overview: {

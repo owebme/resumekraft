@@ -45,7 +45,7 @@
         transition:visibility 0s .4s;
 
         .d-phone & {
-            max-width:calc(100vw - 30px);
+            width:calc(100vw - 30px);
         }
         &[data-pos="top-center"]{
             @extend .t0;

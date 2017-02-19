@@ -65,7 +65,7 @@ module.exports = function(url){
 
 			var id = req.body.id,
 				base64Data = req.body.image.replace(/^data:image\/jpeg;base64,/,""),
-                pathImage = app.config.get('path:photo') + app.moment().format('x') + '.jpg';
+                pathImage = app.config.get('path:photo') + id + '.jpg';
 
             app.utils.fs.writeFile(process.cwd() + pathImage, base64Data, 'base64', function(err){
 				if (!err){

@@ -28,6 +28,10 @@
         <ui-dropmenu></ui-dropmenu>
     </app-sections>
 
+    <app-popups>
+        <popup-premium></popup-premium>
+    </app-popups>
+
     <app-offers>
         <offer-welcome></offer-welcome>
         <offer-plan></offer-plan>
@@ -102,6 +106,9 @@
                 preview: $root.tags["resume-preview"],
                 section: $root.tags["resume-section"],
                 sendmail: $root.tags["resume-sendmail"]
+            },
+            popup: {
+                premium: $root.tags["popup-premium"]
             },
             offers: {
                 welcome: $root.tags["offer-welcome"],

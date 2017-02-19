@@ -2,13 +2,13 @@
 
     <div onClick={ close } onUpdate="none" class="button__close small" data-color="white"></div>
 
-    <div class="pos-abs t-m l-l fontSize-16 fontWeight-bold letterSpacing-5-5 c-white text-uppercase">Спасибо</div>
+    <div class="hidden-xs pos-abs t-m l-l fontSize-16 fontWeight-bold letterSpacing-5-5 c-white text-uppercase">Спасибо</div>
 
-    <div class="pos-rel p-l xs-plr-s text-center { showAnim-group1: step[0], showAnim-group2: step[1], showAnim-group3: step[2], showAnim-group4: step[3], showAnim-group5: step[4] }">
+    <div class="pos-rel p-l xs-plr-m text-center { showAnim-group1: step[0], showAnim-group2: step[1], showAnim-group3: step[2], showAnim-group4: step[3], showAnim-group5: step[4] }">
         <div class="anim-group1 anim-bt">
-            <div class="fontSize-38 mb-m">Пожалуйста, оцените наш сервис</div>
+            <div class="fontSize-38 mb-m xs-plr-xxs">Пожалуйста, оцените наш сервис</div>
             <div class="fontSize-34 mb-l">&star; <span class="fontSize-46 plr-xss">&#9733;</span> &star;</div>
-            <p class="opacity-75 fontSize-16 lineHeght-m text-uppercase letterSpacing-xxxl">Ваш голос нам поможет сделать его еще лучше.</p>
+            <p class="opacity-85 fontSize-15 lineHeight-l text-uppercase letterSpacing-xxxl">Ваш голос нам поможет сделать его еще лучше.</p>
         </div>
         <div class="pos-centered maxW-100v { visibility-hidden : !step[1] }">
             <div class="anim-group2 anim-tb">
@@ -16,13 +16,13 @@
                 <div name="votes" class="cursor-pointer fontSize-34 mb-l mlr-auto pb-xxs">
                     <span each={ item in stars } class="plr-xss xs-plr0 { opacity-50 : !item }">&star;</span>
                 </div>
-                <p class="opacity-75 fontSize-16 lineHeght-m text-uppercase letterSpacing-xxxl">Вы оцениваете качество и удобство сервиса</p>
+                <p class="opacity-85 fontSize-15 lineHeight-l text-uppercase letterSpacing-xxxl">Вы оцениваете качество и удобство сервиса</p>
             </div>
         </div>
         <div class="pos-centered { visibility-hidden : !step[2] }">
             <div class="anim-group3 anim-scale">
                 <div class="fontWeight-8 mb-l" style="font-size:110px; line-height:110px; letter-spacing:-1.4px">{ raiting }.0</div>
-                <p class="opacity-75 fontSize-16 text-uppercase letterSpacing-xxxl">Спасибо за вашу оценку!</p>
+                <p class="fontSize-18 text-uppercase letterSpacing-xxxl">Спасибо за вашу оценку!</p>
             </div>
         </div>
         <div class="pos-centered { visibility-hidden : !step[3] }">
@@ -149,6 +149,7 @@
 
     $.close = function(){
         app.metrika.set("offers.votes.hide", true);
+        $.hide();
     };
 
     $.hide = function(){

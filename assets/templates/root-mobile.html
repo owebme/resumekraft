@@ -30,10 +30,14 @@
         <ui-dropmenu></ui-dropmenu>
     </app-sections>
 
+    <app-popups>
+        <popup-premium></popup-premium>
+        <popup-jqtest></popup-jqtest>
+    </app-popups>
+
     <app-offers>
         <offer-plan></offer-plan>
         <offer-votes></offer-votes>
-        <offer-jqtest></offer-jqtest>
     </app-offers>
 
     <app-overviews>
@@ -63,6 +67,9 @@
         $afterlag.xs(function(){
             app.$dom.body.removeClass("appLoading");
             $root.trigger("ready");
+            $afterlag.xl(function(){
+                $Sections.offers.votes.show();
+            })            
         });
     });
 
@@ -85,9 +92,12 @@
                 section: $root.tags["resume-section-mobile"],
                 sendmail: $root.tags["resume-sendmail"]
             },
+            popup: {
+                premium: $root.tags["popup-premium"],
+                jqtest: $root.tags["popup-jqtest"]
+            },
             offers: {
                 plan: $root.tags["offer-plan"],
-                jqtest: $root.tags["offer-jqtest"],
                 votes: $root.tags["offer-votes"]
             },
             overview: {

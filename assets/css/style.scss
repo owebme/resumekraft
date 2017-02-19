@@ -26,6 +26,7 @@
 @import 'ui/basic/notify';
 @import 'ui/basic/arrowPointer';
 @import 'ui/basic/dropMenu';
+@import 'ui/basic/popup';
 @import 'ui/basic/table';
 @import 'ui/basic/caret';
 @import 'ui/button';
@@ -51,13 +52,13 @@
 
 // Sections
 @import 'sections/sections';
-// @import 'sections/mobile/screens/screens';
-// @import 'sections/mobile/screens/resume';
-// @import 'sections/mobile/screens/profile';
-// @import 'sections/mobile/screens/payment';
-// @import 'sections/mobile/menu';
-// @import 'sections/mobile/navbar';
-// @import 'sections/mobile/tutorial/welcome';
+@import 'sections/mobile/screens/screens';
+@import 'sections/mobile/screens/resume';
+@import 'sections/mobile/screens/profile';
+@import 'sections/mobile/screens/payment';
+@import 'sections/mobile/menu';
+@import 'sections/mobile/navbar';
+@import 'sections/mobile/tutorial/welcome';
 @import 'sections/profile/profile';
 
 // jqtest
@@ -101,9 +102,9 @@
 @import 'sections/list/resumeSelect';
 @import 'sections/list/resumeLikes';
 @import 'sections/list/resumeSection';
-// @import 'sections/list/mobile/resumeList';
-// @import 'sections/list/mobile/resumeListItem';
-// @import 'sections/list/mobile/resumeStat';
+@import 'sections/list/mobile/resumeList';
+@import 'sections/list/mobile/resumeListItem';
+@import 'sections/list/mobile/resumeStat';
 
 // Resume create basic
 @import 'appResume/basic/style';
@@ -134,6 +135,7 @@
 
 // states responsive
 @import 'states/responsive/border';
+@import 'states/responsive/position';
 @import 'states/responsive/margin';
 @import 'states/responsive/padding';
 @import 'states/responsive/text';

@@ -141,8 +141,6 @@ $store.resume = _.extend(new Baobab({},
                             }
                         ],
                         config: {
-                            color: "#0084ff",
-                            font: "futura",
                             photo: {
                                 minWidth: 440,
                                 maxHeight: 620,
@@ -186,6 +184,8 @@ $store.resume = _.extend(new Baobab({},
                     jobs: null,
                     percent: 0,
                     config: {
+                        color: "#0084ff",
+                        font: "futura",
                         photo: {
                             minWidth: 440,
                             maxHeight: 620
