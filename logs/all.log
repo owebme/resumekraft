@@ -5226,3 +5226,6 @@
 {"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T22:20:21.096Z"}
 {"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T22:20:53.632Z"}
 {"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-18T22:20:57.448Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-19T01:32:44.318Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-19T01:32:44.342Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-19T01:32:44.353Z"}

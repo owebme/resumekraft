@@ -4,24 +4,27 @@
 
         <div onClick={ close } onUpdate="none" class="button__close"></div>
 
-        <div class="resume__stat__container container">
+        <div class="resume__stat__header container">
             <div class="row">
-                <div class="col-md-18">
+                <div class="col-md-18 col-lg-19">
                     <div onClick={ open.changeResume } onUpdate="none" class="resume__stat__title">
                         <div class="resume__stat__title__value">{ $store.data.get(0).post }</div>
                     </div>
                 </div>
-                <div class="col-md-6 text-left pt-xs">
+                <div class="col-md-6 col-lg-5 text-left pt-xs pl-l md-pl-m">
                     <div class="btn-group">
-                        <button class="btn btn-s btn-upper btn-primary">неделя</button>
-                        <button class="btn btn-s btn-upper btn-primary-hover">2 недели</button>
+                        <button class="btn btn-s btn-upper btn-primary">2 недели</button>
                         <button class="btn btn-s btn-upper btn-primary-hover">месяц</button>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="resume__stat__content container">
             <div class="row">
                 <div class="col-md-6 text-center">
-                    <div class="chart__radial mt-l" name="chartRadialEl"></div>
+                    <div class="resume__stat__photo" style="background-image:url({ item.get('photo') })"></div>
+                    <div class="chart__radial trY-l" name="chartRadialEl"></div>
                 </div>
                 <div class="col-md-18">
                     <div class="resume__stat__chart" name="chart"></div>
@@ -48,20 +51,26 @@
         });
         $.chartRadial = new app.plugins.chartRadial($.chartRadialEl, {
             container: "chart__radial__graph mb-m",
-            labels: "chart__radial__labels pl-m",
+            labels: "chart__radial__labels pl-m md-pl0",
             labelItem: "chart__radial__label mb-xxs"
         });
         $.chartRadial.render([
             {
-                title: "настольные ПК"
+                title: "настольные ПК",
+                value: _.random(5, 87)
             },
             {
-                title: "планшеты"
+                title: "планшеты",
+                value: _.random(5, 87)
             },
             {
-                title: "мобильные телефоны"
+                title: "мобильные телефоны",
+                value: _.random(5, 87)
             }
         ]);
+        // $afterlag.m(function(){
+        //     $.show("58a2297fb6489dcd76c463f2");
+        // })
     });
 
     $.init = function(){
@@ -107,11 +116,14 @@
         $.chartRadial.render([_.random(5, 87), _.random(5, 87), _.random(5, 87)]);
     };
 
-    $.show = function(callback){
+    $.show = function(id, callback){
+        if (!id || $.active) return;
 
         $.active = true;
 
-        $.update();
+        $.update({
+            item: $store.data.select({"_id": id})
+        })
 
         _.onEndTransition($.wrapper, function(){
             $.init();

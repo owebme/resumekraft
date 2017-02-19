@@ -117,7 +117,7 @@
         },
         stat: function(){
             $.hide();
-            $Sections.resume.stat.show(function(){
+            $Sections.resume.stat.show(this.item._id, function(){
                 $.show();
             });
         },

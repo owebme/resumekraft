@@ -194,28 +194,28 @@
         $.el.on('swipeRight', function(){
             $.hide();
         });
-        // $afterlag.run(function(){
-        //     $.show();
-        // });
+        $afterlag.run(function(){
+            $.show();
+        });
         $.progress = $.el.find(".offer__premium__slider__progress__white");
         $.pigination = $.el.find(".offer__premium__slider__pigination");
     });
 
     $.show = function(callback){
         $.section.show({
-            // forceShow: true,
+            forceShow: true,
             beforeShow: function(){
                 $.callback = callback;
             },
             afterShow: function(){
                 $.update({
-                    slide: 1
+                    slide: 5
                 })
-                $afterlag.run(function(){
-                    $.onSlide();
-                }, {
-                    iterations: 3
-                })
+                // $afterlag.run(function(){
+                //     $.onSlide();
+                // }, {
+                //     iterations: 3
+                // })
             }
         });
     };
