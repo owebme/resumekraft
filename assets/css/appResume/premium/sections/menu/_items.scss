@@ -76,6 +76,10 @@
                     height:132px;
                     @extend .mt40;
                 }
+                &[data-icon="addUser"] {
+                    width:132px;
+                    height:132px;
+                }
             }
             path, rect, polygon, circle {
                 @extend .fill-white;

@@ -10,6 +10,18 @@
         },
         tooltips: {
             regSocial: false
+        },
+        offers: {
+            popup: {
+                blog: {
+                    subscribe: {
+                        show: false,
+                        hide: false,
+                        success: false,
+                        email: false
+                    }
+                }
+            }
         }
     };
 

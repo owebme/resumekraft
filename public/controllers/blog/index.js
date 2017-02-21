@@ -1,14 +1,36 @@
 module.exports = function(){
 
     return function(req, res, next){
-        var page = req.params.page;
+        var page = req.params.page,
+            perPage = app.config.get('blog:perPage');
 
         if (!page) page = 1;
+
+        // app.mysql.query("ALTER TABLE `blog` ADD COLUMN `color` int(11) NULL AFTER `image`");
+
+        // app.mysql.query("SELECT id FROM blog", function(err, data){
+        //     app.utils.each(data, function(item){
+        //         var color = app.utils.random(1, 16);
+        //         app.mysql.query("UPDATE blog SET `color` = " + color + " WHERE id = '" + item.id + "'");
+        //     });
+        // });
+
+        // if (app.device.type == "phone" && app.cache.blog){
+        //     app.appClient.data = app.cache.blog;
+        //     result(res, app.appClient);
+        //     return;
+        // }
 
         app.async.parallel([
 
             function(callback){
-                app.mysql.query("SELECT name, keywords, image, text_sm, date_update AS date, alias FROM blog ORDER BY date_create DESC LIMIT " + ((page - 1) * 7) + ",7", function(err, data){
+                if (app.device.type == "phone"){
+                    var query = "name, keywords, image, color, date_update AS date, alias";
+                }
+                else {
+                    var query = "name, keywords, image, text_sm, date_update AS date, alias";
+                }
+                app.mysql.query("SELECT " + query + " FROM blog ORDER BY date_create DESC" + (app.device.type != "phone" ? " LIMIT " + ((page - 1) * perPage) + ", " + perPage : ""), function(err, data){
                      app.errHandler(res, err, data, callback);
                 });
             },
@@ -30,11 +52,11 @@ module.exports = function(){
             if (data && data.length){
 
                 var pages = 1, count = data[1].length;
-                if (count) pages = parseInt(Math.floor(count / 7));
+                if (count) pages = parseInt(Math.floor(count / perPage));
 
                 var currency = app.utils.findWhere(data[2], {'_id': 'currency'}).items;
 
-                app.appClient.data = {
+                var data = {
                     headers: app.utils.copyArray(data[0]).slice(0, 4),
                     items: data[0],
                     pages: pages,
@@ -47,21 +69,35 @@ module.exports = function(){
                         date: app.utils.findWhere(currency, {'code': 'USD'}).date
                     }
                 };
-                app.appClient.data.headers = app.utils.map(app.appClient.data.headers, function(item, i){
+                data.headers = app.utils.map(data.headers, function(item, i){
                     var date = item.date;
                     if (i == 0) item.date = app.appClient.moment(date).format("MMMM D, YYYY");
                     else item.date = app.appClient.moment(date).format("D/MM, YYYY");
                     item.time = app.appClient.moment(date).format("HH:MM");
                     return item;
                 });
-                app.appClient.data.items = app.utils.map(app.appClient.data.items, function(item){
+                data.items = app.utils.map(data.items, function(item){
+                    item.dateShort = app.appClient.moment(item.date).format("D/MM");
                     item.date = app.appClient.moment(item.date).format("MMMM D, YYYY, HH:MM");
                     return item;
                 });
 
-                var output = app.riot.render(app.tags("blog"), app.appClient);
-                res.render('index', {content: output});
+                app.appClient.data = data;
+
+                // if (app.device.type == "phone"){
+                //     app.cache.blog = data;
+                // }
+
+                result(res, app.appClient);
             }
         });
+
+        function result(res, data){
+            var output = app.riot.render(app.tags("blog"), data);
+            res.render(app.device.type == "phone" ? 'index-mobile' : 'index', {
+                title: app.config.get('title:blog'),
+                content: output
+            });
+        }
     }
 }

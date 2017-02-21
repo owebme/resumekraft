@@ -88,6 +88,10 @@
     };
 
     $.preview = function(){
+        if (app.demo){
+            $.hide();
+            return;
+        }
         if ($store.resume.get("plan") == "premium"){
             window.open('/resume/' + $store.resume.get("_id"), "_blank");
         }
@@ -123,6 +127,10 @@
     };
 
     $.success = function(){
+        if (app.demo){
+            $.hide();
+            return;
+        }
         if ($store.resume.get("plan") == "premium"){
             $Loader.show().then(function(){
                 $store.resume.select("update").set(moment().format());

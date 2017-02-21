@@ -16,6 +16,7 @@ global.reload = browserSync.reload;
 global._ = require('underscore');
 
 require('./build/public/css')();
+require('./build/public/js.mobile')();
 require('./build/preview/css')();
 require('./build/private/css')();
 require('./build/private/js')();
@@ -51,7 +52,7 @@ gulp.task('watch', function() {
 	gulp.watch([
 		'assets/css/style.scss',
 		'assets/css/**/*.scss'
-	], {debounceDelay: 1000}, gulp.parallel('private.css'));
+	], {debounceDelay: 1000}, gulp.parallel('premium.css'));
 
 	gulp.watch([
 		'assets/css/**/templates/style.scss',
@@ -85,17 +86,21 @@ gulp.task('watchPublic', function() {
 		'assets/css/**/*.scss',
 		'public/css/style.scss',
 		'public/css/**/*.scss'
-	], gulp.series('public.css', 'public.mobile.css'));
+	], gulp.series('public.css'));
 });
 
 gulp.task('css.build', gulp.series('private.css', 'premium.css', 'public.css', gulp.parallel('private.css.largeScreen', 'private.css.smallScreen', 'premium.css.largeScreen', 'premium.css.smallScreen', 'templates.basic', 'templates.basic.view')));
 
+gulp.task('public.js.mobile', gulp.parallel('public.libs.mobile', 'public.app.mobile', 'public.templates.mobile'));
+
 gulp.task('private.js.build', gulp.parallel('private.libs', 'private.app', 'private.templates', 'private.sections.templates', 'private.modules.templates', 'private.resume.templates', 'private.ui.templates', 'private.commons', 'private.plugins'));
+
 gulp.task('premium.js.build', gulp.parallel('premium.app', 'premium.templates', 'premium.ui.templates', 'premium.editable.templates', 'premium.components.templates', 'premium.sections.templates', 'premium.control.templates'));
 
 gulp.task('build', gulp.series(
 	gulp.parallel(
 		'css.build',
+		gulp.series('public.js.mobile', 'public.app.build.mobile'),
 		gulp.series('private.js.build', 'private.app.build'),
 		gulp.series('premium.js.build', 'premium.app.build')
 	)

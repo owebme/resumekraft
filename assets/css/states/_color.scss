@@ -1,12 +1,12 @@
 $i:0;
-@each $color in (#9471DB, #FFB84D, #B871B8, #71B84D, #FFDB71, #4DB8B8, #4DB8DB, #DB94DB, #FFACC5, #FF944D, #B8DB4D, #FF7194, #6AD19F){
+@each $color in (rgb(248, 167, 36), rgb(2, 154, 228), rgb(0, 171, 192), rgb(65, 65, 65), rgb(229, 57, 53), rgb(119, 143, 155), rgb(125, 86, 193), rgb(91, 106, 191), rgb(103, 158, 55), rgb(55, 141, 59), rgb(235, 63, 121), rgb(140, 109, 98), rgb(255, 111, 66), rgb(29, 135, 228), rgb(0, 136, 122), rgb(169, 0, 255)){
     $i: $i + 1;
     .cover__bg#{$i} {
-        background-color:saturate($color,5%);
+        background-color:$color;
     }
     svg[fill-color="fill#{$i}"]{
         path, rect, polygon, circle {
-            fill:saturate(complement($color),5%);
+            fill:$color;
         }
     }
 }

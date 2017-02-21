@@ -1,0 +1,78 @@
+.blog__grid {
+    @extend .fontSize-0;
+    @extend .c-blackLight;
+    @extend .bg-smoke;
+
+    &__item {
+        @extend .display-inlineBlock;
+        @extend .pos-rel;
+        margin-top:4px;
+        margin-bottom:4px;
+        margin-left:4px;
+        width:150px;
+        width:calc(50% - 2px);
+
+        &:after {
+            @extend .content-empty;
+            @extend .display-block;
+            padding-top:202px;
+            padding-top:calc(56.25% + 118px);
+        }
+        &:nth-child(2n+1) {
+            @extend .ml0;
+        }
+        &__inner {
+            @include abs();
+            @extend .c-white;
+        }
+        &__image {
+            @extend .pos-tl;
+            @extend .w100p;
+            height:56.25%;
+            @extend .bg-cover;
+        }
+        &__content {
+            @extend .pos-abs;
+            bottom:16px;
+            left:16px;
+            right:16px;
+            height:102px;
+        }
+        &__avatar {
+            @extend .w24;
+            @extend .h24;
+            @extend .borderRadius-circle;
+            border:1px solid $white;
+            @extend .mt-xs;
+        }
+        &__date {
+            @extend .pos-abs;
+            @extend .t-xs;
+            @extend .r--xss;
+            @extend .c-white;
+            @extend .fontSize-12;
+            @extend .fontWeight-8;
+            padding:3px 5px;
+            @extend .letterSpacing--s;
+            @extend .borderRadius-xxxxl;
+            @extend .bg-blue;
+        }
+        &__title {
+            @extend .c-white;
+            @extend .fontFamily-gotham;
+            @extend .fontSize-18;
+            @extend .lineHeight-20;
+            @extend .letterSpacing--s;
+            @include textEllipsis(100%, 40px, 2);
+            @extend .mt-xxs;
+            text-shadow:0 1px 1px rgba($black,.4);
+        }
+        &__tag {
+            color:rgba($white,.7);
+            @extend .fontSize-14;
+            @extend .w100p;
+            @extend .text-truncate;
+            @extend .mt-xs;
+        }
+    }
+}

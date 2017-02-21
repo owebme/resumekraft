@@ -3,7 +3,7 @@
       "/assets/API/**",
       "/public/API/**",
       "/public/controllers/**",
-      "/public/router/**",
+      "/public/router/*.*",
       "/public/templates/*.*",
       "/public/templates/**/*.*",
       "/views/**",

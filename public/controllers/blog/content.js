@@ -48,7 +48,10 @@ module.exports = function(){
                 data.item.date = app.appClient.moment(data.item.date_update).format("D/MM, YYYY в HH:MM");
                 app.appClient.data = data;
                 var output = app.riot.render(app.tags("blogContent"), app.appClient);
-                res.render('index', {content: output});
+                res.render(app.device.type == "phone" ? 'index-mobile' : 'index', {
+                    title: data.item.name,
+                    content: output
+                });
             }
         });
     }

@@ -95,6 +95,10 @@
 
             items: [
                 {
+                    title: "xxs",
+                    value: 1.25
+                },
+                {
                     title: "xs",
                     value: 1
                 },

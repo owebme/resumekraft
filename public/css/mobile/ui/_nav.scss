@@ -1,0 +1,94 @@
+.nav {
+    @extend .display-block;
+    @extend .pos-tl-fixed;
+    @extend .w100p;
+    @extend .h60;
+    // box-shadow:0 1px 8px rgba(0,0,0,.3);
+    background:linear-gradient(to bottom, rgba($blackLight,.65) 15%, rgba($blackLight,0));
+    @extend .c-white;
+    @extend .zIndex-2;
+
+    &__logotype {
+        @extend .pos-abs;
+        top:17px;
+        left:17px;
+        @extend .bg-cover;
+        @extend .logo-white;
+        width:86px;
+        height:32px;
+    }
+    &__back {
+        @include ui-icon("back_white", 26px, 26px);
+    }
+    &__content {
+        @include abs();
+        @extend .flex-row-left-center;
+        @extend .plr-s;
+    }
+    &__image {
+        @extend .w32;
+        @extend .h32;
+        @extend .bg-cover;
+        @extend .borderRadius-circle;
+        @extend .overflow-hidden;
+        @extend .mr-xs;
+        transform:translateY(-1px);
+    }
+    &__title {
+        @extend .fontFamily-helvetica;
+        @extend .fontSize-18;
+        @extend .text-truncate;
+        @extend .maxW-70p;
+    }
+    &__front,
+    &__side {
+        @include accelerate();
+        @extend .willChange-tp;
+        transition:transform 0.25s ease, opacity 0.25s ease;
+    }
+    &__side {
+        @extend .opacity-0;
+        transform:translate3d(0, -100%, 0);
+        @extend .pointerEvents-none;
+    }
+    &[data-turn="true"]{
+        .nav {
+            &__front {
+                @extend .opacity-0;
+                transform:translate3d(0, -100%, 0);
+                @extend .pointerEvents-none;
+            }
+            &__side {
+                @extend .opacity-100;
+                @extend .transform-default;
+                @extend .pointerEvents-all;
+            }
+        }
+    }
+    .blog__social__panel {
+        @extend .flex-row-left-center;
+        transform:translate3d(3px, -1px, 0);
+
+        &__item {
+            width:14vw;
+            @extend .flex-centered;
+
+            .icon {
+                &-fb,
+                &-dk {
+                    width:62px;
+                    height:62px;
+                }
+                &-vk,
+                &-tw {
+                    width:70px;
+                    height:70px;
+                }
+                &-gl {
+                    width:29px;
+                    height:29px;
+                }
+            }
+        }
+    }
+}

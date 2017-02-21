@@ -89,25 +89,30 @@
         @extend .w30;
         @extend .h30;
         @extend .borderRadius-circle;
-        background-color:lighten($steel,10%);
+        background-color:lighten($silver,32%);
         @extend .transition-default;
         @extend .btn-active;
 
         .d-phone & {
             top:-8px;
             right:-8px;
+            background-color:lighten($steel,10%);
         }
         &:before,
         &:after {
             @extend .content-empty;
             @extend .borderRadius-xs;
-            @extend .bg-white;
+            @extend .bg-steel;
             @extend .pos-abs;
             @extend .t50;
             @extend .l50;
             width:12px;
             height:2px;
             margin:-1px 0 0 -6px;
+
+            .d-phone & {
+                @extend .bg-white;
+            }
         }
         &:before {
             transform:rotate(45deg);
@@ -115,8 +120,13 @@
         &:after {
             transform:rotate(-45deg);
         }
-        &:hover {
+        .m-no-touch &:hover {
             @extend .bg-blue;
+
+            &:before,
+            &:after {
+                @extend .bg-white;
+            }
         }
     }
     &[data-pos="centered"]{

@@ -204,6 +204,6 @@
 
     <a href="/" class="logotype"></a>
 
-    <section-menu-mobile></section-menu-mobile>
+    <section-menu-mobile section="home"></section-menu-mobile>
 
 </section-home-mobile>

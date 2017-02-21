@@ -2,9 +2,15 @@
 
     <div class="container">
         <div class="row">
+            <div class="col-md-6 h130">
+                <div class="blog__subscribe pos-centered w100p text-left pr-l">
+                    <h4 class="c-blackLight mb-xxs">Подписаться на наш блог</h4>
+                    <div class="blog__subscribe__form"></div>
+                </div>
+            </div>
             <virtual each={ item, i in get.pages() }>
-                <a if={ item != get.current() } href="/blog/page_{ item }" class="{ col-md-offset-6 : i == 0 } col-md-3 blog__pagination__item">{ item }</a>
-                <span if={ item == get.current() } class="{ col-md-offset-6 : i == 0 } col-md-3 blog__pagination__item" data-active="true">{ item }</span>
+                <a if={ item != get.current() } href="/blog/page_{ item }" class="col-md-3 blog__pagination__item">{ item }</a>
+                <span if={ item == get.current() } class="col-md-3 blog__pagination__item" data-active="true">{ item }</span>
             </virtual>
         </div>
     </div>

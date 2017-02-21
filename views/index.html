@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title>Cервис создания резюме, помощь в составлении резюме, рекомендации профессионалов, примеры, образцы резюме. ResumeKraft</title>
+    <title>{% if title %}{{ title }}{% else %}Cервис создания резюме, помощь в составлении резюме, рекомендации профессионалов, примеры, образцы резюме. ResumeKraft{% endif %}</title>
     <meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <meta property="og:image" content="/assets/images/favicons/120.png" />
-	<meta property="og:title" content="Получить классное резюме!" />
-	<meta property="og:description" content="ResumeKraft - сервис создания уникальных резюме с классным дизайном." />
+    <meta property="og:title" content="Создать крутое резюме самому!" />
+	<meta property="og:description" content="ResumeKraft - сервис создания премиальных резюме с продающим дизайном." />
     <link rel="icon" type="image/png" href="/assets/images/favicons/32.png">
     <link rel="apple-touch-icon" href="/assets/images/favicons/60.png">
     <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicons/76.png">
@@ -41,7 +41,6 @@
     <script src="/assets/js/libs/baobab.js"></script>
     <script src="/assets/js/libs/underscore-min.js"></script>
     <script src="/assets/js/libs/store.min.js"></script>
-    <!-- <script src="/assets/js/libs/iscroll.js"></script> -->
     <script src="/assets/js/libs/TweenLite-1.19.0.min.js"></script>
     <script src="/assets/js/libs/afterlag-js/dist/afterlag.min.js"></script>
 
@@ -53,6 +52,8 @@
     <script src="/public/templates/commons/modules/auth/forms/remember.tag" type="riot/tag"></script>
     <script src="/assets/templates/modules/notify.html" type="riot/tag"></script>
     <script src="/assets/templates/modules/loader.html" type="riot/tag"></script>
+    <script src="/public/templates/commons/popup/blogSubscribe.tag" type="riot/tag"></script>
+    <script src="/public/templates/commons/popup/blogSubscribeForm.tag" type="riot/tag"></script>
     <script src="/public/templates/commons/icons/social/icon-fb.tag" type="riot/tag"></script>
     <script src="/public/templates/commons/icons/social/icon-vk.tag" type="riot/tag"></script>
     <script src="/public/templates/commons/icons/social/icon-tw.tag" type="riot/tag"></script>
@@ -61,6 +62,7 @@
 
     <!--/ JS components /-->
     <script src="/assets/js/components/commons/app.js"></script>
+    <script src="/assets/js/components/commons/request.js"></script>
     <script src="/assets/js/components/commons/afterlag.js"></script>
     <script src="/assets/js/components/commons/common.js"></script>
     <script src="/assets/js/components/commons/utils.js"></script>
@@ -72,22 +74,21 @@
     <script src="/public/js/commons/metrika.js"></script>
     <script src="/public/js/commons/sections.js"></script>
 
-    <!-- <script src="/assets/js/plugins/marquee.js"></script>
-    <script src="/assets/js/plugins/screens.js"></script> -->
     <script src="/assets/js/plugins/chartRadial.js"></script>
     <script src="/assets/js/plugins/animate.js"></script>
     <script src="/assets/js/plugins/slider.js"></script>
     <script src="/assets/js/plugins/metrika.js"></script>
+    <script src="/assets/js/plugins/share.js"></script>
     <script src="/assets/js/plugins/scroll/scroll.Animate.js"></script>
     <script src="/assets/js/plugins/scroll/scroll.Parallax.js"></script>
-    <script src="/public/js/libs/skycons/skycons.js"></script>
+    <script src="/assets/js/libs/skycons/skycons.js"></script>
 
-    <script src="/public/js/nav.js"></script>
-    <script src="/public/js/home.js"></script>
-    <script src="/public/js/premium.js"></script>
-    <script src="/public/js/jqtest.js"></script>
-    <script src="/public/js/blog.js"></script>
-    <script src="/public/js/blogContent.js"></script>
+    <script src="/public/js/sections/nav.js"></script>
+    <script src="/public/js/sections/home.js"></script>
+    <script src="/public/js/sections/premium.js"></script>
+    <script src="/public/js/sections/jqtest.js"></script>
+    <script src="/public/js/sections/blog.js"></script>
+    <script src="/public/js/sections/blogContent.js"></script>
     <script src="/public/js/init.js"></script>
     <script src="https://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU"></script>
 

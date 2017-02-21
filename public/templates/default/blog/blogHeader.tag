@@ -1,4 +1,4 @@
-<blog-header class="section blog__header">
+<blog-header class="section blog__header" data-cover={ parent.opts.utils.random(1, 15) }>
 
     <div class="container">
         <div class="blog__header__container row">

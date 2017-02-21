@@ -1,8 +1,18 @@
 app.config = {
-    api: '/private/api',
+    domain: null,
+    api: '/public/api',
+    request: function(){
+        return {
+            loader: false,
+            notify: true
+        }
+    },
     logger: {
         method: "addLog",
         report: false
     },
-    changeStyles: true
+    share: {
+        title: 'Создать крутое резюме и получить престижную работу'
+    },
+    changeStyles: false
 };

@@ -9,11 +9,8 @@
                 if (item.init) item.init();
             });
             if (app.device.isPhone){
-                $afterlag.run(function(){
-                    $dom.body.removeClass("appLoading");
-                }, {
-                    timeout: 5000
-                });
+                $dom.body.removeClass("appLoading");
+                app.features.links.init();
             }
         }
     };

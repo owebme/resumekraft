@@ -29,12 +29,18 @@
             "maxAge": null
         }
     },
+    "blog": {
+        "perPage": "7"
+    },
     "path": {
         "photo": "/public/files/photo/",
         "pdf": "/public/files/pdf/",
         "template": {
             "basic": "/public/templates/default/resume/basic/index.html"
         }
+    },
+    "title": {
+        "blog": "Блог о работе и карьере, правильное советы при выборе работы, лучшие карьерные советы на ResumeKraft"
     },
     "resume": {
         "pdf": {

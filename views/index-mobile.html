@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title>Cервис создания резюме, помощь в составлении резюме, рекомендации профессионалов, примеры, образцы резюме. ResumeKraft</title>
+    <title>{% if title %}{{ title }}{% else %}Cервис создания резюме, помощь в составлении резюме, рекомендации профессионалов, примеры, образцы резюме. ResumeKraft{% endif %}</title>
     <meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <meta property="og:image" content="/assets/images/favicons/120.png" />
-	<meta property="og:title" content="Получить классное резюме!" />
-	<meta property="og:description" content="ResumeKraft - сервис создания уникальных резюме с классным дизайном." />
+    <meta property="og:title" content="Создать крутое резюме самому!" />
+	<meta property="og:description" content="ResumeKraft - сервис создания премиальных резюме с продающим дизайном." />
     <link rel="icon" type="image/png" href="/assets/images/favicons/32.png">
     <link rel="apple-touch-icon" href="/assets/images/favicons/60.png">
     <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicons/76.png">
@@ -40,20 +40,20 @@
     <section-loader></section-loader>
 
     <!--/ VENDORS /-->
-    <script src="/assets/js/libs/jquery.min.js"></script>
+    <!-- <script src="/assets/js/libs/jquery.min.js"></script>
     <script src="/assets/js/libs/jquery.mobile.custom.min.js"></script>
     <script src="/assets/js/libs/modernizr.custom.js"></script>
-    <script src="/assets/js/libs/fastclick.min.js"></script>
+    <script src="/assets/js/libs/fastclick.js"></script>
     <script src="/assets/js/libs/riot/riot+compiler.js"></script>
     <script src="/assets/js/libs/baobab.js"></script>
     <script src="/assets/js/libs/underscore-min.js"></script>
     <script src="/assets/js/libs/store.min.js"></script>
     <script src="/assets/js/libs/iscroll.static.js"></script>
-    <script src="/assets/js/libs/TweenLite-1.19.0.min.js"></script>
-    <script src="/assets/js/libs/afterlag-js/dist/afterlag.min.js"></script>
+    <script src="/assets/js/libs/afterlag-js/dist/afterlag.min.js"></script> -->
+    <script src="/public/js/app.libs.mobile.js"></script>
 
     <!--/ templates /-->
-    <script src="/public/templates/commons/modules/auth/auth.tag" type="riot/tag"></script>
+    <!-- <script src="/public/templates/commons/modules/auth/auth.tag" type="riot/tag"></script>
     <script src="/public/templates/commons/modules/auth/authSocial.tag" type="riot/tag"></script>
     <script src="/public/templates/commons/modules/auth/forms/signIn.tag" type="riot/tag"></script>
     <script src="/public/templates/commons/modules/auth/forms/signUp.tag" type="riot/tag"></script>
@@ -64,14 +64,17 @@
     <script src="/public/templates/commons/icons/social/icon-vk.tag" type="riot/tag"></script>
     <script src="/public/templates/commons/icons/social/icon-tw.tag" type="riot/tag"></script>
     <script src="/public/templates/commons/icons/social/icon-dk.tag" type="riot/tag"></script>
-    <script src="/public/templates/commons/icons/social/icon-gl.tag" type="riot/tag"></script>
+    <script src="/public/templates/commons/icons/social/icon-gl.tag" type="riot/tag"></script> -->
+    <script src="/public/js/templates.mobile.js"></script>
 
     <!--/ JS components /-->
     <script src="/assets/js/components/commons/app.js"></script>
+    <script src="/assets/js/components/commons/request.js"></script>
     <script src="/assets/js/components/commons/afterlag.js"></script>
     <script src="/assets/js/components/commons/common.js"></script>
     <script src="/assets/js/components/commons/utils.js"></script>
     <script src="/assets/js/components/commons/modules.js"></script>
+    <script src="/assets/js/components/features/links.js"></script>
     <script src="/assets/js/plugins/marquee.static.js"></script>
     <script src="/assets/js/plugins/marquee.effects.js"></script>
     <script src="/assets/js/plugins/screens.js"></script>
@@ -79,16 +82,24 @@
     <script src="/assets/js/plugins/chartRadial.js"></script>
     <script src="/assets/js/plugins/sliderElastic.js"></script>
     <script src="/assets/js/plugins/metrika.js"></script>
-    <script src="/public/js/libs/skycons/skycons.js"></script>
+    <script src="/assets/js/plugins/share.js"></script>
+    <script src="/assets/js/plugins/scroll/scroll.Animate.js"></script>
+    <script src="/assets/js/plugins/scroll/scroll.RefreshFix.js"></script>
+    <script src="/assets/js/libs/photoswipe/dist/photoswipe.js"></script>
+    <script src="/assets/js/libs/photoswipe/dist/photoswipe-ui-default.min.js"></script>
 
     <script src="/public/js/commons/config.js"></script>
     <script src="/public/js/commons/metrika.js"></script>
     <script src="/public/js/commons/sections.js"></script>
 
-    <script src="/public/js/mobile/home.js"></script>
-    <script src="/public/js/mobile/menu.js"></script>
+    <script src="/public/js/sections/mobile/home.js"></script>
+    <script src="/public/js/sections/mobile/blog.js"></script>
+    <script src="/public/js/sections/mobile/blogContent.js"></script>
+    <script src="/public/js/sections/mobile/menu.js"></script>
 
     <script src="/public/js/init.js"></script>
+
+    <!-- <script src="/public/js/app.build.mobile.js"></script> -->
 
 </body>
 </html>

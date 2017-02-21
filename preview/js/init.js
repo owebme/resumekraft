@@ -168,7 +168,7 @@
     new app.plugins.share($share, {
         buttons: '.button__like__item',
         share: {
-            title: "Премиальное резюме на ResumeKraft.ru"
+            title: "Премиальное резюме нового формата на ResumeKraft.ru"
         }
     });
 

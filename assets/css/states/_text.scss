@@ -84,6 +84,12 @@
 .textAnliased-auto {
     -webkit-font-smoothing:auto;
 }
+.fontStyle-normal {
+    font-style:normal;
+}
+.fontStyle-italic {
+    font-style:italic;
+}
 .inline {
     font-size:0;
     @extend .clear;

@@ -1,103 +1,133 @@
-.blog__social {
-    &__panel {
-        @extend .display-block;
-        @extend .inline;
-        @extend .zIndex-1;
+.blog__social__panel {
+    @extend .display-block;
+    @extend .inline;
+    @extend .zIndex-1;
 
-        &__item {
-            @extend .pos-rel;
-            @extend .w60;
-            @extend .text-center;
+    &__item {
+        @extend .pos-rel;
+        @extend .w60;
+        @extend .text-center;
+
+        .icon {
+            @extend .cursor-pointer;
+            transition:transform 0.2s $cubic28;
+        }
+        svg path {
+            @extend .fill-gray;
+        }
+        &:hover {
+            .icon {
+                transform:translateY(-5px);
+            }
+            path {
+                @extend .fill-blue;
+            }
+        }
+        &:active {
+            .icon {
+                transform:translateY(-3px) scale(.8);
+            }
+        }
+    }
+    &[data-pos="right"]{
+        @extend .pos-tr;
+        @extend .pb-s;
+        border-bottom:1px solid rgba($gray,.25);
+    }
+    &[data-pos="left"]{
+        @extend .pos-tl-fixed;
+        @extend .pointerEvents-none;
+        @extend .visibility-hidden;
+        transition:transform .5s $cubic075, visibility .5s 0s;
+        transform:translate3d(-50px, 80px, 0);
+
+        .blog__social__panel__item {
+            @extend .flex-centered;
+            @extend .w70;
+            height:74px;
 
             .icon {
-                @extend .cursor-pointer;
-                transition:transform 0.2s $cubic28;
-            }
-            svg path {
-                @extend .fill-gray;
+                @extend .m0;
+                transition:transform .3s $cubic075;
+
+                &-fb {
+                    width:80px;
+                    height:80px;
+
+                    path {
+                        fill:#3b5999;
+                    }
+                }
+                &-dk {
+                    width:80px;
+                    height:80px;
+
+                    path {
+                        fill:#EE8208;
+                    }
+                }
+                &-vk {
+                    width:86px;
+                    height:86px;
+
+                    path {
+                        fill:#507299;
+                    }
+                }
+                &-tw {
+                    width:86px;
+                    height:86px;
+
+                    path {
+                        fill:#55acee;
+                    }
+                }
             }
             &:hover {
                 .icon {
-                    transform:translateY(-5px);
-                }
-                path {
-                    @extend .fill-blue;
+                    transform:scale(1.25);
                 }
             }
             &:active {
                 .icon {
-                    transform:translateY(-3px) scale(.8);
+                    transform:translateY(2px) scale(1);
                 }
             }
         }
-        &[data-pos="right"]{
-            @extend .pos-tr;
-            @extend .pb-s;
-            border-bottom:1px solid rgba($gray,.25);
+        &[data-active="true"]{
+            @extend .pointerEvents-all;
+            @extend .visibility-visible;
+            transition:transform .5s $cubic075, visibility 0s;
+            transform:translate3d(33px, 80px, 0);
         }
-        &[data-pos="left"]{
-            @extend .pos-tl-fixed;
-            @extend .pointerEvents-none;
-            @extend .visibility-hidden;
-            @extend .w50;
-            transition:transform .5s $cubic075, visibility .5s 0s;
-            transform:translate3d(-50px, 80px, 0);
+    }
+    &[data-pos="center"]{
+        @extend .display-inlineBlock;
+        @extend .pos-rel;
+        @extend .m0-auto;
 
-            .blog__social__panel__item {
-                @extend .display-block;
-                @extend .mb-m;
-                @extend .w45;
-
-                .icon {
-                    transition:transform .3s $cubic075;
-                    transform:translateY(0px) scale(1.17);
-                }
-                &:hover {
-                    .icon {
-                        transform:scale(1.4);
-                    }
-                }
-                &:active {
-                    .icon {
-                        transform:translateY(2px) scale(1);
-                    }
-                }
-            }
-            &[data-active="true"]{
-                @extend .pointerEvents-all;
-                @extend .visibility-visible;
-                transition:transform .5s $cubic075, visibility 0s;
-                transform:translate3d(40px, 80px, 0);
-            }
+        .blog__social__panel__item {
+            @extend .w70;
         }
-        &[data-pos="center"]{
-            @extend .display-inlineBlock;
-            @extend .pos-rel;
-            @extend .m0-auto;
-
-            .blog__social__panel__item {
-                @extend .w70;
-            }
-            &:before {
-                @extend .content-empty;
-                @extend .pos-abs;
-                @extend .t50;
-                @extend .r100;
-                @extend .h1px;
-                @extend .bg-grayLighten;
-                width:230px;
-                transform:translate3d(-20px, -10px, 0);
-            }
-            &:after {
-                @extend .content-empty;
-                @extend .pos-abs;
-                @extend .t50;
-                @extend .l100;
-                @extend .h1px;
-                @extend .bg-grayLighten;
-                width:230px;
-                transform:translate3d(20px, -10px, 0);
-            }
+        &:before {
+            @extend .content-empty;
+            @extend .pos-abs;
+            @extend .t50;
+            @extend .r100;
+            @extend .h1px;
+            @extend .bg-grayLighten;
+            width:230px;
+            transform:translate3d(-20px, -10px, 0);
+        }
+        &:after {
+            @extend .content-empty;
+            @extend .pos-abs;
+            @extend .t50;
+            @extend .l100;
+            @extend .h1px;
+            @extend .bg-grayLighten;
+            width:230px;
+            transform:translate3d(20px, -10px, 0);
         }
     }
 }

@@ -24,7 +24,7 @@
         }
         else if (location.href.match(/\?signup/)){
             $afterlag.run(function(){
-                $.open("signup");
+                $.open("signup", location.href.match(/\&plan=premium/) ? "premium" : false);
             });
         }
         $afterlag.xs(function(){

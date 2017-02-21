@@ -1,4 +1,6 @@
 .offer__premium {
+    @extend .display-block;
+    
     &__slider {
         &[data-show="true"]{
             .offer__premium__slider__item:first-child {

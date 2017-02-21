@@ -13,17 +13,15 @@ blog-content {
     }
     .blog__header {
         &:before {
-            top:auto;
-            @extend .pos-bl;
-            @extend .bg-white;
-            height:15vh;
-            background-image:none;
-            mask:url(https://blog.marvelapp.com/wp-content/themes/marvel/assets/images/mask-bottom.svg) center bottom;
-            mask-size:cover;
-            mask-repeat:repeat-x;
-            @extend .zIndex-1;
             @extend .animation-none;
-            transform:scaleY(-1) scaleX(-1) rotate(2deg) translate3d(-0.5vh, -1.2vh, 0);
+        }
+        &__corner {
+            @extend .pos-br;
+            @extend .h15v;
+            @extend .w70v;
+            @extend .zIndex-1;
+            @extend .bg-white;
+            transform:rotate(-5deg) translate3d(2vw, 10.5vh, 0);
         }
         &__image {
             @include abs();
@@ -105,9 +103,9 @@ blog-content {
         &__title {
             @extend .display-inlineBlock;
             @extend .c-gray;
-            @extend .fontSize-18;
+            font-size:17px;
             @extend .pl-s;
-            transform:translateY(10px);
+            @extend .trY-s;
         }
     }
     &__nearby {
@@ -124,6 +122,9 @@ blog-content {
             box-shadow:0 20px 25px rgba(31,35,37,.15);
             transform:translateY(-15px);
         }
+        &__title {
+            @include textEllipsis(100%, 140px, 4);
+        }
     }
 }
 .blog__content {
@@ -131,19 +132,13 @@ blog-content {
         @extend .c-blackLight;
         @extend .pt-xl;
         @extend .mt-m;
-        @extend .pr-l;
+        @extend .pl-m;
+        @extend .pr-xl;
         @extend .fontFamily-helvetica;
         @extend .fontSize-18;
         @extend .lineHeight-xxl;
     }
-    h1 {
-        @extend .c-blue;
-        @extend .fontWeight-8;
-        @extend .mb-l;
-        @extend .fontFamily-futura;
-        margin-left:-15px;
-    }
-    h2, h3, h4 {
+    h1, h2, h3, h4 {
         @extend .pos-rel;
         font-size:38px;
         line-height:42px;
@@ -151,22 +146,49 @@ blog-content {
         @extend .fontFamily-futura;
         @extend .fontWeight-8;
         @extend .letterSpacing--xl;
+        @extend .pt-s;
         @extend .mb-l;
-        max-width:80%;
-        margin-left:-15px;
+        @extend .maxW-80p;
+        @extend .ml--s;
 
         &:before {
             @extend .content-empty;
             @extend .display-inlineBlock;
             @extend .vAlign-middle;
         }
+        strong {
+            @extend .c-blue;
+            font-size:38px;
+            line-height:42px;
+            @extend .fontWeight-8;
+            @extend .letterSpacing--xl;
+        }
+    }
+    h5, h6 {
+        @extend .fontFamily-futura;
+        @extend .fontWeight-8;
+        @extend .c-blue;
+        @extend .fontSize-28;
+        @extend .mb-s;
+
+        strong {
+            @extend .c-blue;
+            @extend .fontSize-28;
+            @extend .fontWeight-8;
+        }
+    }
+    strong {
+        @extend .fontFamily-futura;
+        @extend .fontWeight-8;
+        @extend .c-blackLight;
+        @extend .fontSize-22;
     }
     p {
-        @extend .mb-l;
-        @extend .pb-xs;
+        @extend .mb-m;
+        @extend .pb-m;
     }
     img {
-        margin:20px auto;
+        margin:20px 0 15px -15px;
         @extend .borderRadius-xl;
         will-change:transform, box-shadow;
         transition:transform .3s $cubic28, box-shadow .3s $cubic28;
@@ -177,13 +199,24 @@ blog-content {
         }
     }
     blockquote {
-        @extend .p-m;
+        @extend .pt25;
+        @extend .pb-m;
         @extend .pl-l;
+        @extend .pr-m;
         @extend .mb-l;
-        @extend .c-blue;
+        @extend .c-blackLight;
         @extend .fontFamily-futura;
         @extend .fontSize-22;
-        @extend .fontWeight-normal;
+        @extend .lineHeight-34;
+        @extend .fontStyle-normal;
+        @extend .fontWeight-bold;
         border-left:5px solid $blue;
+
+        strong, em, i {
+            @extend .fontStyle-normal;
+            @extend .fontWeight-bold;
+            @extend .fontSize-22;
+            @extend .lineHeight-34;
+        }
     }
 }

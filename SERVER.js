@@ -23,25 +23,28 @@ var config          = require('./libs/config'),
 //     api[m] = require(m);
 // });
 
-global.app = express();
-app.express = express;
-app.config = config;
-app.riot = riot;
-app._tags = {
-    commons: {},
-    default: {},
-    mobile: {}
-};
-app.async = require('async');
-app.db = require('./libs/db/mongoose')(log, config);
-app.mysql = require('./libs/db/mysql')(log, config);
-app.log = log;
-app.errHandler = require('./libs/errHandler');
-app.utils = require('./libs/utils');
-app.utils.fs = fs;
-underscore.extend(app.utils, underscore);
-app.moment = require('moment');
-app.moment.locale('ru');
+if (!global.app){
+    global.app = express();
+    app.express = express;
+    app.config = config;
+    app.riot = riot;
+    app.cache = {};
+    app._tags = {
+        commons: {},
+        default: {},
+        mobile: {}
+    };
+    app.async = require('async');
+    app.db = require('./libs/db/mongoose')(log, config);
+    app.mysql = require('./libs/db/mysql')(log, config);
+    app.log = log;
+    app.errHandler = require('./libs/errHandler');
+    app.utils = require('./libs/utils');
+    app.utils.fs = fs;
+    underscore.extend(app.utils, underscore);
+    app.moment = require('moment');
+    app.moment.locale('ru');
+}
 
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');

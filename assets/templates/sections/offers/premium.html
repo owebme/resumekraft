@@ -8,175 +8,8 @@
 
         <div class="section__loading"></div>
 
-        <div class="section__inner offer__premium__slider" data-show={ true : slide }>
+        <offer-premium-content></offer-premium-content>
 
-            <div class="offer__premium__slider__item" data-active={ slide == "1" } data-slide="start">
-                <div class="offer__premium__slider__text">
-                    <div class="offer__premium__slider__text__title">Ваше резюме <span class="larger">еще заметней</span> и привлекательней, поможет продвинуть вас</div>
-                </div>
-                <div class="offer__premium__slider__images">
-                    <div class="offer__premium__slider__images__item" data-image="notebook-mac">
-                        <div class="offer__premium__slider__image offer__premium__slider__images__notebook__mac"></div>
-                    </div>
-                    <div class="offer__premium__slider__images__item" data-image="macbook">
-                        <div class="offer__premium__slider__image offer__premium__slider__images__macbook"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="offer__premium__slider__item" data-active={ slide == "2" } data-slide="mobile">
-                <div class="offer__premium__slider__text">
-                    <div class="offer__premium__slider__text__title"><span class="larger">100%</span> мобильность, ваши работодатели будут приятно удивлены</div>
-                </div>
-                <div class="offer__premium__slider__images">
-                    <div class="offer__premium__slider__images__item" data-image="iphones">
-                        <div class="offer__premium__slider__image offer__premium__slider__images__iphones"></div>
-                    </div>
-                    <div class="offer__premium__slider__images__item" data-image="phone-samsung">
-                        <div class="offer__premium__slider__image offer__premium__slider__images__phone__samsung"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="offer__premium__slider__item" data-active={ slide == "3" } data-slide="skills">
-                <div class="offer__premium__slider__text">
-                    <div class="offer__premium__slider__text__title"><span class="larger">Расскажите о</span> своих навыках, наглядно показав свои компетенции</div>
-                </div>
-                <div class="offer__premium__slider__images">
-                    <div class="offer__premium__slider__images__item" data-image="ipad">
-                        <div class="offer__premium__slider__image offer__premium__slider__images__ipad"></div>
-                    </div>
-                    <div class="offer__premium__slider__images__item" data-image="iphone">
-                        <div class="offer__premium__slider__image offer__premium__slider__images__iphone"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="offer__premium__slider__item" data-active={ slide == "4" } data-slide="projects">
-                <div class="offer__premium__slider__text">
-                    <div class="offer__premium__slider__text__title">Есть собственные <span class="larger">проекты?</span> Расскажите о них, прикрепив фото и видео материалы</div>
-                </div>
-                <div class="offer__premium__slider__images">
-                    <div class="offer__premium__slider__images__item" data-image="macbook">
-                        <div class="offer__premium__slider__image offer__premium__slider__images__macbook"></div>
-                    </div>
-                    <div class="offer__premium__slider__images__item" data-image="iphone">
-                        <div class="offer__premium__slider__image offer__premium__slider__images__iphone"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="offer__premium__slider__item" data-active={ slide == "5" } data-slide="inbox">
-                <div class="offer__premium__slider__text">
-                    <div class="offer__premium__slider__text__title"><span class="larger">Получайте</span> приглашения и отклики от ваших работодателей</div>
-                </div>
-                <div class="offer__premium__slider__images">
-                    <div class="offer__premium__slider__images__item" data-image="devices">
-                        <div class="offer__premium__slider__image offer__premium__slider__images__devices"></div>
-                    </div>
-                    <div class="offer__premium__slider__images__item" data-image="iphone">
-                        <div class="offer__premium__slider__image offer__premium__slider__images__iphone"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="offer__premium__slider__item" data-active={ slide == "6" } data-slide="salary">
-                <div class="offer__premium__slider__text">
-                    <div class="offer__premium__slider__text__title"><span class="larger">Выстраивайте</span> желаемый график заработной платы на ближайшие 2 года</div>
-                </div>
-                <div class="offer__premium__slider__images">
-                    <div class="offer__premium__slider__images__item" data-image="ipad">
-                        <div class="offer__premium__slider__image offer__premium__slider__images__ipad"></div>
-                    </div>
-                    <div class="offer__premium__slider__images__item" data-image="phone-samsung">
-                        <div class="offer__premium__slider__image offer__premium__slider__images__phone__samsung"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="offer__premium__slider__item" data-active={ slide == "7" } data-slide="likes-hobby">
-                <div class="offer__premium__slider__text">
-                    <div class="offer__premium__slider__text__title"><span class="larger">Собирайте</span> лайки на ваши резюме и делитесь своими <span class="larger">хобби</span></div>
-                </div>
-                <div class="offer__premium__slider__images">
-                    <div class="offer__premium__slider__images__item" data-image="iphones">
-                        <div class="offer__premium__slider__image offer__premium__slider__images__iphones">
-                            <div class="offer__premium__slider__likes__cover">
-                                <div class="offer__premium__slider__likes__cover__photo" style="background-image:url('/preview/images/photo/photo_phone.jpg')"></div>
-                                <div class="offer__premium__slider__likes__cover__badge">21</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="offer__premium__slider__item" data-active={ slide == "8" } data-slide="control">
-                <div class="offer__premium__slider__text">
-                    <div class="offer__premium__slider__text__title"><span class="larger">Создавайте</span> и управляйте своими резюме с любых доступных устройств</div>
-                </div>
-                <div class="offer__premium__slider__images">
-                    <div class="offer__premium__slider__images__item" data-image="imac">
-                        <div class="offer__premium__slider__image offer__premium__slider__images__imac"></div>
-                    </div>
-                    <div class="offer__premium__slider__images__item" data-image="macbook">
-                        <div class="offer__premium__slider__image offer__premium__slider__images__macbook"></div>
-                    </div>
-                    <div class="offer__premium__slider__images__item" data-image="iphone">
-                        <div class="offer__premium__slider__image offer__premium__slider__images__iphone"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="offer__premium__slider__item { showAnim : finish }" data-active={ finish } data-slide="finish">
-                <div name="finishSlideAnim" class="offer__premium__slider__text" data-finish="true">
-                    <div class="offer__premium__slider__text__title">
-                        <div><span class="larger">Спасибо,</span> за ваше внимание</div>
-                        <div class="offer__premium__slider__text__subtitle">Попробовать премиальное резюме на разных платформах?</div>
-                        <div class="btn btn-xl mt-m">Перейти на тест-драйв</div>
-                        <div onClick={ onRepeat } class="offer__premium__slider__repeat">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-                                <path class="fill-brown" d="M 39.78125 5.96875 A 2.0002 2.0002 0 0 0 38 8 L 38 12.5625 C 34.722701 9.1373523 30.10346 7 25 7 C 15.082241 7 7 15.082241 7 25 A 2.0002 2.0002 0 1 0 11 25 C 11 17.243759 17.243759 11 25 11 C 28.816123 11 32.256876 12.535728 34.78125 15 L 31 15 A 2.0002 2.0002 0 1 0 31 19 L 40 19 L 42 19 L 42 17 L 42 8 A 2.0002 2.0002 0 0 0 39.96875 5.96875 A 2.0002 2.0002 0 0 0 39.78125 5.96875 z M 40.78125 22.96875 A 2.0002 2.0002 0 0 0 39 25 C 39 32.757363 32.756392 39 25 39 C 21.184399 39 17.742551 37.46305 15.21875 35 L 19 35 A 2.0002 2.0002 0 1 0 19 31 L 10 31 L 8 31 L 8 33 L 8 42 A 2.0002 2.0002 0 1 0 12 42 L 12 37.4375 C 15.276425 40.860887 19.895994 43 25 43 C 34.917608 43 43 34.918637 43 25 A 2.0002 2.0002 0 0 0 40.96875 22.96875 A 2.0002 2.0002 0 0 0 40.78125 22.96875 z"></path>
-                            </svg>Повторить
-                        </div>
-                    </div>
-                </div>
-                <div class="offer__premium__slider__images">
-                    <div class="offer__premium__slider__images__item" data-image="macbook-left">
-                        <div class="offer__premium__slider__image offer__premium__slider__images__macbook__left"></div>
-                    </div>
-                    <div class="offer__premium__slider__images__item" data-image="macbook-right">
-                        <div class="offer__premium__slider__image offer__premium__slider__images__macbook__right"></div>
-                    </div>
-                </div>
-                <div class="row premium-devices-icons">
-                    <div class="col-sm-8 anim anim-lr" data-delta="s" delay-show="l">
-                        <icon-device-phones color="brown" size="l"></icon-device-phones>
-                    </div>
-                    <div class="col-sm-8 anim anim-scale" data-delta="s" delay-show="m" delay-hide="s">
-                        <icon-device-desktop color="brown" size="l"></icon-device-desktop>
-                    </div>
-                    <div class="col-sm-8 anim anim-bt" data-delta="s" delay-show="xl" delay-hide="xs">
-                        <icon-device-tablet color="brown" size="l"></icon-device-tablet>
-                    </div>
-                </div>
-            </div>
-
-            <div class="offer__premium__slider__progress" data-active={ slide && slide < slides.length + 1 }>
-                <div class="offer__premium__slider__progress__line"></div>
-                <div class="offer__premium__slider__progress__white"></div>
-            </div>
-
-            <div class="offer__premium__slider__pigination" data-active={ slide && slide < slides.length + 1 }>
-                <div onClick={ change } each={ item, i in slides } class="offer__premium__slider__pigination__item { 'offer__premium__slider__pigination__item--active' : slide == i + 1 }">
-					<svg width="24" height="24" viewPort="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg">
-						<circle r="10.75" cx="12" cy="12" fill="transparent" stroke-dasharray="67.54424205218055" stroke-dashoffset="67.54424205218055"></circle>
-					</svg>
-				</div>
-            </div>
-
-            <div class="offer__premium__slider__logotype"></div>
-
-        </div>
     </div>
 
 <script>
@@ -185,7 +18,9 @@
 
     $.el = $$($.root);
 
-    $.slides = _.range(8);
+    $.on("before-mount", function(){
+        $.slider = $.tags["offer-premium-content"];
+    });
 
     $.on("mount", function(){
         $.section = new app.plugins.sections($.root, {
@@ -194,110 +29,42 @@
         $.el.on('swipeRight', function(){
             $.hide();
         });
-        $afterlag.run(function(){
-            $.show();
-        });
-        $.progress = $.el.find(".offer__premium__slider__progress__white");
-        $.pigination = $.el.find(".offer__premium__slider__pigination");
+        // $afterlag.run(function(){
+        //     $.show();
+        // });
     });
 
     $.show = function(callback){
         $.section.show({
-            forceShow: true,
+            // forceShow: true,
             beforeShow: function(){
                 $.callback = callback;
             },
             afterShow: function(){
-                $.update({
-                    slide: 5
+                $.slider.update({
+                    slide: 1
                 })
-                // $afterlag.run(function(){
-                //     $.onSlide();
-                // }, {
-                //     iterations: 3
-                // })
+                $afterlag.run(function(){
+                    $.slider.onSlide();
+                }, {
+                    iterations: 3
+                })
+                $.slider.one("success", function(){
+                    $.hide();
+                });
             }
         });
-    };
-
-    $.change = function(){
-        $.slide = this.i + 1;
-        setTimeout(function(){
-            $.onSlide();
-        }, 5);
-    };
-
-    $.onRepeat = function(){
-        $.finish = false;
-        $.slide = null;
-        _.onEndTransition($.finishSlideAnim, function(){
-            $.update({
-                slide: 1
-            })
-            setTimeout(function(){
-                $.onSlide();
-            }, 5);
-        });
-    };
-
-    $.onSlide = function(){
-        if ($.circle) {
-            _.caf($.raf);
-            $.counter(0);
-            clearInterval($.counterTimer);
-        }
-        var callback = function(){
-            $.slide++;
-            if ($.slides.length < $.slide){
-                $.finish = true;
-            }
-            $.update();
-            if (!$.finish) $.onSlide();
-	    };
-
-        $.circle = $.pigination.find(".offer__premium__slider__pigination__item--active").find("circle");
-
-        var timer = 0;
-
-        $.counterTimer = setInterval(function(){
-            (function _counter(){
-                $.raf = _.raf(_counter);
-            })();
-            $.counter(timer, callback);
-            timer++;
-        }, 75);
-    };
-
-    $.counter = function(value, callback){
-        var r = $.circle.attr('r');
-        var c = Math.PI * (r * 2);
-
-        if (value < 0) {value = 0;}
-        if (value > 100) {value = 100;}
-
-        var pct = ((100 - value) / 100) * c;
-
-        $.circle.css({strokeDashoffset: pct});
-        $.progress.css({"transform": "translate3d(" + value + "%, 0, 0)"});
-
-        if (value === 100){
-            _.caf($.raf);
-            clearInterval($.counterTimer);
-            $.circle.css({strokeDashoffset: $.circle.attr("stroke-dasharray")});
-            if (callback && typeof callback === "function") callback();
-        }
     };
 
     $.hide = function(){
         $.section.hide({
             beforeHide: function(){
-                _.caf($.raf);
-                $.counter(0);
-                clearInterval($.counterTimer);
+                $.slider.onReset();
+                $.slider.off("success");
                 if (_.isFunction($.callback)) $.callback();
             },
             afterHide: function(){
-                $.update({
+                $.slider.update({
                     slide: null,
                     finish: false
                 })

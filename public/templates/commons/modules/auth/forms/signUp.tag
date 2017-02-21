@@ -74,11 +74,6 @@
         }
     }
 
-    $.on("before-mount", function(){
-        var plan = app.metrika.get("plan.name");
-        if (plan) $.plan = plan;
-    });
-
     $.on("mount", function(){
         $.animate = new app.plugins.animate($.root);
     });
@@ -98,12 +93,13 @@
 
     $.open = function(plan){
         $.active = true;
-        if (plan){
-            $.update({
-                plan: plan
-            })
-        }
+
+        $.update({
+            plan: plan ? plan : app.metrika.get("plan.name")
+        })
+
         $.root.setAttribute("data-active", true);
+
         $.animate.show(function(){
             if (!app.device.isPhone && !app.metrika.get("tooltips.regSocial")){
                 app.tag("section-notify").show({

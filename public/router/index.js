@@ -26,6 +26,14 @@ module.exports = function(){
     app.get('/premium/workflow', function(req, res) {
         res.render('workflow');
     });
+    app.get('/premium/promo', function(req, res) {
+        if (app.device.type == "phone"){
+            res.redirect('/');
+        }
+        else {
+            res.render('premiumSlider');
+        }
+    });
     app.get('/premium/demo', app.controllers.resume("demo"));
     app.get('/premium/editing', app.controllers.resume("demo-editing"));
 
