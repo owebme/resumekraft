@@ -58,7 +58,7 @@
 
     </div>
 
-    <div class="section__editable__footer text-center">
+    <div if={ !$Editable.component.editing }  class="section__editable__footer text-center">
         <button onClick={ $Editable.component.onCancel } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper" type="button">Отменить</button>
         <button onClick={ $Editable.component.onSave } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper ml-xs" type="button">Сохранить</button>
     </div>

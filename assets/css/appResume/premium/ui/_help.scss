@@ -75,7 +75,7 @@
 
         &__content {
             @include accelerate();
-            @extend .pt55;
+            @extend .pt50;
             @extend .plr-l;
             @extend .pb60;
 
@@ -85,7 +85,7 @@
                 @extend .mb-s;
             }
             p {
-                @extend .mb25;
+                @extend .mb-m;
             }
             a {
                 @extend .c-primary;

@@ -346,7 +346,7 @@
 	};
 
 	utils.clean = function(field, def) {
-		field = _.escape(utils.trim(field));
+		field = utils.trim(field);
 		return field ? field : (def !== undefined ? def : null);
 	};
 

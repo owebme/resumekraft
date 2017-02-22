@@ -1,12 +1,12 @@
 <editable-salary class="col-sm-offset-4 col-sm-18 col-md-offset-5 col-md-14 col-lg-offset-7 col-lg-12 section__editable__container">
 
-    <div onClick={ show.salary } class="hidden-sm section__editable__arrow" data-pos="left" data-active={ screen == "graph" } data-closer={ app.device.isMobile }>{ 'Желаемая' : !app.device.isPhone } зарплата</div>
-    <div onClick={ show.graph } class="hidden-sm section__editable__arrow" data-pos="right" data-active={ screen == "salary" } data-closer={ app.device.isMobile }>График роста { 'оплаты труда' : !app.device.isPhone }</div>
+    <div onClick={ show.salary } onUpdate="none" class="hidden-sm section__editable__arrow" data-pos="left" data-active={ screen == "graph" } data-closer={ app.device.isMobile }>{ 'Желаемая' : !app.device.isPhone } зарплата</div>
+    <div onClick={ show.graph } onUpdate="none" class="hidden-sm section__editable__arrow" data-pos="right" data-active={ screen == "salary" } data-closer={ app.device.isMobile }>График роста { 'оплаты труда' : !app.device.isPhone }</div>
 
     <div name="screenSalary" class="section__editable__content__screen" data-pos="left" data-active={ screen == "salary" }>
 
         <div id="activity">
-            <ui-switcher name="switcherSalary" value={ active } commit="true"></ui-switcher>
+            <ui-switcher name="switcherSalary" color="white" value={ active } commit="true"></ui-switcher>
         </div>
 
         <div class="section__editable__content { hide : !switcherSalary.value }">
@@ -43,7 +43,7 @@
     <div name="screenGraph" class="section__editable__content__screen" data-pos="right" data-active={ screen == "graph" }>
 
         <div id="activity">
-            <ui-switcher name="switcherGraph" value={ data.graph.active } commit="true"></ui-switcher>
+            <ui-switcher name="switcherGraph" color="white" value={ data.graph.active } commit="true"></ui-switcher>
         </div>
 
         <div class="section__editable__content { hide : !switcherGraph.value }">
@@ -89,25 +89,55 @@
     });
 
     $.show = {
-        salary: function(){
-            if (!app.device.isPhone){
+        salary: function(param){
+            if (!app.device.isPhone && param != "open"){
                 $.screens.graph.css("width", $.screens.graph.width());
-                _.onEndTransition($.screens.graph[0], function(){
-                    $.screens.graph.css("width", "");
+                $afterlag.run(function(){
+                    $.update({
+                        screen: "salary"
+                    })
+                    $.root.setAttribute("data-editing", false);
+                    _.onEndTransition($.screens.graph[0], function(){
+                        $.screens.graph.css("width", "");
+                    });
                 });
             }
-            $.screen = "salary";
-            $.root.setAttribute("data-editing", false);
+            else {
+                if (param == "open"){
+                    $.screen = "salary";
+                }
+                else {
+                    $.update({
+                        screen: "salary"
+                    })
+                }
+                $.root.setAttribute("data-editing", false);
+            }
         },
-        graph: function(){
-            if (!app.device.isPhone){
+        graph: function(param){
+            if (!app.device.isPhone && param != "open"){
                 $.screens.salary.css("width", $.screens.salary.width());
-                _.onEndTransition($.screens.salary[0], function(){
-                    $.screens.salary.css("width", "");
+                $afterlag.run(function(){
+                    $.update({
+                        screen: "graph"
+                    })
+                    $.root.setAttribute("data-editing", "salaryGraph");
+                    _.onEndTransition($.screens.salary[0], function(){
+                        $.screens.salary.css("width", "");
+                    });
                 });
             }
-            $.screen = "graph";
-            $.root.setAttribute("data-editing", "salaryGraph");
+            else {
+                if (param == "open"){
+                    $.screen = "graph";
+                }
+                else {
+                    $.update({
+                        screen: "graph"
+                    })
+                }
+                $.root.setAttribute("data-editing", "salaryGraph");
+            }
         }
     };
 
@@ -134,7 +164,7 @@
             $.refreshCurrency($.salary.currency);
         }
         if (data.screen && $.screen != data.screen && $.show[data.screen]){
-            $.show[data.screen].call();
+            $.show[data.screen].call(this, "open");
         }
 
         $.update({

@@ -1,8 +1,8 @@
-<editable-courses class="col-sm-24 col-md-21 col-lg-17 centered section__editable__container" data-editing="courses">
+<editable-courses class="col-sm-24 col-md-22 col-lg-18 centered section__editable__container" data-editing="courses">
 
     <ui-switcher id="activity" color="white" value={ active } commit="true"></ui-switcher>
 
-    <div class="section__editable__content col-md-offset-1 col-lg-offset-2 { hide : !switcher.value }">
+    <div class="section__editable__content col-lg-offset-1 { hide : !switcher.value }">
 
         <div class="title title-main">{ title }</div>
 
@@ -41,8 +41,8 @@
         <div if={ !$Editable.component.editing } class="row mb-m mt-l">
             <div class="col-xs-24">
                 <div class="pos-rel">
-                    <span class="input-title">вступительный текст</span>
-                    <textarea onInput={ $Editable.component.autoCommit } class="textarea textarea-xl" data-name="text" name="text_data" autocomplete="off">{ data.text }</textarea>
+                    <span class="input-title">дополняющий текст</span>
+                    <textarea onInput={ $Editable.component.autoCommit } class="textarea textarea-xl" data-name="text" name="text_data" autocomplete="off" placeholder="Дополняющий текст о законченных курсах">{ data.text }</textarea>
                 </div>
             </div>
         </div>
@@ -61,7 +61,7 @@
 
     </div>
 
-    <div class="section__editable__footer text-center col-md-offset-1 col-lg-offset-2">
+    <div if={ !$Editable.component.editing } class="section__editable__footer text-center col-md-offset-1 col-lg-offset-2">
         <button onClick={ $Editable.component.onCancel } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper" type="button">Отменить</button>
         <button onClick={ $Editable.component.onSave } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper ml-xs" type="button">Сохранить</button>
     </div>
