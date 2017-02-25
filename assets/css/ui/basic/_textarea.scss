@@ -19,14 +19,18 @@
             @extend .fill-blue;
         }
     }
+    &::placeholder {
+        color:rgba($steel,.8);
+        @extend .lineHeight-l;
+    }
     &::-webkit-input-placeholder {
         line-height:normal;
-        color:$grayLight;
+        color:rgba($steel,.8);
         padding-top:2px;
     }
     &::-moz-input-placeholder {
         line-height:normal;
-        color:$grayLight;
+        color:rgba($steel,.8);
         padding-top:2px;
     }
     &-disabled,

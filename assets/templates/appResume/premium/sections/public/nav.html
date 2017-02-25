@@ -21,7 +21,7 @@
         var onScroll = _.debounce($.onScroll, 50);
 
         app.$dom.window.on("scroll", function(){
-            onScroll();
+            _.raf(onScroll);
         });
 
         $.on("updated", function(){

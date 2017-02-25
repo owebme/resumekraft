@@ -1,0 +1,143 @@
+.jobs__list {
+    .d-phone & {
+        margin:0 -7.5px;
+    }
+    &__item {
+        @extend .pos-rel;
+        @extend .plr-m;
+        @extend .pt-m;
+        @extend .pb30;
+        @extend .xs-plr0;
+        border-bottom:1px solid $smokeLight;
+
+        &:before {
+            @extend .content-empty;
+            @include abs();
+            @extend .opacity-0;
+            @extend .scale-80;
+            @extend .pointerEvents-none;
+            @extend .willChange-tp;
+            @extend .bg-snowSilver;
+            @extend .boxShadow-raise;
+            transition:transform 0.3s $cubic68, opacity 0.3s $cubic68;
+        }
+        .m-no-touch &:hover {
+            &:before {
+                @extend .opacity-100;
+                @extend .scale-100;
+            }
+            .jobs__list__item__response {
+                @extend .opacity-100;
+                @extend .pointerEvents-all;
+            }
+        }
+        &__content {
+            @extend .pos-rel;
+
+            .d-phone & {
+                @extend .w90v;
+                @extend .m0-auto;
+            }
+        }
+        &__title {
+            @extend .display-inlineBlock;
+            @extend .c-blueBright;
+            @extend .fontFamily-graphik;
+            @extend .fontWeight-bold;
+            @extend .fontSize-18;
+            @extend .btn-active;
+            margin-bottom:1px;
+
+            .d-phone & {
+                @extend .fontSize-22;
+                line-height:26px;
+                margin-bottom:2px;
+            }
+            &:visited {
+                @extend .c-violet;
+            }
+            .m-no-touch &:hover,
+            .m-no-touch &:visited:hover {
+                @extend .c-green;
+            }
+        }
+        &__salary {
+            @extend .c-grayDarken;
+            margin-bottom:1px;
+
+            .d-phone & {
+                @extend .fontWeight-bold;
+                @extend .fontFamily-proxima;
+                @extend .fontSize-20;
+                @extend .letterSpacing-0;
+                @extend .m0;
+            }
+            &__rub {
+                font-family:$systemFont;
+                @extend .fontWeight-normal;
+
+                .d-phone & {
+                    font-size:92%;
+                }
+            }
+        }
+        &__text {
+            @extend .c-gray;
+            @extend .fontSize-14;
+            line-height:19px;
+
+            .d-phone & {
+                @extend .fontSize-16;
+                line-height:24px;
+            }
+            strong {
+                @extend .c-blackLight;
+                @extend .fontFamily-graphik;
+                @extend .fontWeight-bold;
+                @extend .fontSize-16;
+            }
+        }
+        &__company,
+        &__city {
+            @extend .fontSize-15;
+        }
+        &__company {
+            margin-top:9px;
+            padding-top:9px;
+            margin-left:-6px;
+            padding-left:6px;
+            border-top:1px solid rgba($silver,.3);
+        }
+        &__city {
+            @extend .c-gray;
+            margin-top:1px;
+
+            span {
+                @extend .c-redBright;
+            }
+        }
+        &__response {
+            @extend .pos-abs;
+            @extend .r0;
+            @extend .b--xxs;
+            @extend .h32;
+            @extend .plr-xs;
+            @extend .c-blackLight;
+            @extend .flex-centered;
+            @extend .fontSize-14;
+            @extend .opacity-0;
+            @extend .pointerEvents-none;
+            @extend .transition-default;
+            box-shadow:inset 0 0 0 1px rgba($silver,.3);
+
+            &:hover {
+                @extend .c-black;
+                box-shadow:inset 0 0 0 1px rgba($silver,.56);
+            }
+            &:active {
+                @extend .scale-90;
+            }
+        }
+    }
+
+}

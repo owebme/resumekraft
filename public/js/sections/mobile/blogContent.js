@@ -88,18 +88,20 @@
                 $button = $el.find(".blog__subscribe__button");
 
             if (!app.metrika.get("offers.popup.blog.subscribe.success")){
-                $afterlag.run(function(){
-                    var $form = $("<blog-subscribe-form style='display:none'>").appendTo($el.find(".blog__subscribe__form")),
-                        tag = riot.mount($form)[0];
+                var $form = $("<blog-subscribe-form style='display:none'>").appendTo($el.find(".blog__subscribe__form"));
 
-                    tag.one("success fail", function(){
-                        $el.remove();
-                    })
-                    $button.on("click", function(){
-                        $button.remove();
-                        $form.css("display", "block");
-                    })
+                app.sections.on("afterMounted", function(){
+                    app.tag("blog-subscribe-form", function(tag){
+                        tag.one("success fail", function(){
+                            $el.remove();
+                        })
+                    });
                 });
+
+                $button.on("click", function(){
+                    $button.remove();
+                    $form.css("display", "block");
+                })
             }
             else {
                 $el.remove();

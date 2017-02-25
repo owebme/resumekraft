@@ -7,13 +7,13 @@ module.exports = function(){
         if (req.body && req.body.image){
 
 			var base64Data = req.body.image.replace(/^data:image\/jpeg;base64,/,""),
-                pathImage = app.config.get('path:photo') + (req.body.profile ? app.accountId : app.moment().format('x')) + '.jpg';
+                pathImage = app.config.get('path:photo') + (req.body.profile ? req.accountId : app.moment().format('x')) + '.jpg';
 
             fs.writeFile(process.cwd() + pathImage, base64Data, 'base64', function(err){
 				if (!err){
                     if (req.body.profile){
                         app.db.collection('accounts').update({
-            				"_id": app.accountId
+            				"_id": req.accountId
             			},{
             				$set: {
                                 "photo": pathImage
@@ -21,7 +21,7 @@ module.exports = function(){
                             $push: {
                                 "history.events": {
                                     name: "profileUploadPhoto",
-                                    device: app.device,
+                                    device: req.device,
                                     date: app.moment().format()
                                 }
                             }

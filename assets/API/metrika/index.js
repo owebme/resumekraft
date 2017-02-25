@@ -5,7 +5,7 @@ module.exports = function() {
 			req.body.date = app.moment().format();
 
 			app.db.collection('accounts').update({
-				"_id": app.accountId
+				"_id": req.accountId
 			},{
 				$pull: {
 					"metrika": {
@@ -15,7 +15,7 @@ module.exports = function() {
 			});
 
 			app.db.collection('accounts').update({
-				"_id": app.accountId
+				"_id": req.accountId
 			},{
 				$push: {
 					"metrika": req.body

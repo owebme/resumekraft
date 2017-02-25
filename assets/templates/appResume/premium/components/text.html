@@ -26,6 +26,7 @@
                 type: $.opts.type,
                 update: $.opts.update,
                 editing: $.opts.cursor.get($.opts.update),
+                autosuggest: $.opts.autosuggest,
                 callback: function(active, data){
                     if (active !== null){
                         $store.resume.select('sections', {'name': $.opts.update}).set('active', active);

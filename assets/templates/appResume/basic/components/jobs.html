@@ -61,7 +61,7 @@
         $resume.select("jobs", "items").push(
             {
                 _id: $.editing,
-                company: null,
+                title: null,
                 city: null,
                 post: null,
                 from: {
@@ -108,7 +108,7 @@
     };
 
     $.saved = function(){
-        if (!_.clean(this.item.post) || !_.clean(this.item.company)){
+        if (!_.clean(this.item.post) || !_.clean(this.item.title)){
             $Alert.show({
                 title: "Вы не заполнили поля",
                 subtitle: "Заполните пожалуйста"
@@ -122,7 +122,7 @@
     };
 
     $.close = function(){
-        if (!_.clean(this.item.post) && !_.clean(this.item.company)){
+        if (!_.clean(this.item.post) && !_.clean(this.item.title)){
             $.remove.call(this);
         }
         $.editing = null;

@@ -6,19 +6,19 @@
 
     <div onClick={ success } class="circle1">
         <div class="anim anim-scale-zoom" delay-show="xs" duration-show={ app.device.isPhone ? 'm' : 'l' } duration-hide="s">
-            <div class="circle circle-xl">Закончить редактирование?</div>
+            <div class="circle circle-xl">{ app.demo ? 'Создать свой аккаунт' : 'Закончить редактирование?' }</div>
         </div>
     </div>
 
     <div onClick={ hide } onUpdate="none" class="circle2">
         <div class="anim anim-scale" delay-show="s" duration-show={ app.device.isPhone ? 'm' : 'l' } duration-hide="s">
-            <div class="circle circle-l">Еще нет, продолжить</div>
+            <div class="circle circle-l">{ app.demo ? 'Продолжить редактирование' : 'Еще нет, продолжить' }</div>
         </div>
     </div>
 
     <div class="circle3" onClick={ preview } onUpdate="none">
         <div class="anim anim-scale-zoom" delay-show="m" duration-show={ app.device.isPhone ? 'm' : 'l' } duration-hide="s">
-            <div class="circle circle-l">Предпросмотр резюме</div>
+            <div class="circle circle-l">{ app.demo ? 'Перейти к мобильной версии' : 'Предпросмотр резюме' }</div>
         </div>
     </div>
 
@@ -30,7 +30,7 @@
 
     <div class="share">
         <div class="anim anim-bt-ease" delay-show="m" duration-show={ app.device.isPhone ? 'm' : 'l' } duration-hide="s">
-            <div class="share__title">Поделиться своим резюме</div>
+            <div class="share__title">{ app.demo ? 'Поделитесь со своими друзъями' : 'Поделиться своим резюме' }</div>
             <div class="share__items">
                 <div class="share__item" data-social="fb">
                     <icon-fb color="blue"></icon-fb>
@@ -52,7 +52,7 @@
     </div>
 
     <div class="text">
-        <div class="text__content anim anim-bt-ease" delay-show="xl">Ваше резюме уже сохранено.</div>
+        <div class="text__content anim anim-bt-ease" delay-show="xl">{ app.demo ? 'Создайте своё премиальное резюме' : 'Ваше резюме уже сохранено.' }</div>
     </div>
 
 <script>
@@ -66,30 +66,40 @@
     $.on("mount", function(){
         $.share = new app.plugins.share($.root, {
             buttons: ".share__item",
-            url: '/resume/' + $store.resume.get('_id'),
+            url: app.demo ? 'http://resumekraft/premium/' : 'http://resumekraft/resume/' + $store.resume.get('_id'),
             share: {
                 title: function(){
-                    return $store.resume.get('post') ? $store.resume.get('post') : app.config.share.title;
+                    if (app.demo){
+                        return 'Создать премиальное резюме нового формата';
+                    }
+                    else {
+                        return $store.resume.get('post') ? $store.resume.get('post') : app.config.share.title;
+                    }
                 }
             }
         })
     });
 
     $.show = function(){
+        if ($.active) return;
+
         $.update({
             active: true
         })
+
         $afterlag.run(function(){
             $.update({
                 animate: true
             })
             if (!app.device.isPhone) $.chartRadial();
         });
+
+        $.trigger("show");
     };
 
     $.preview = function(){
         if (app.demo){
-            $.hide();
+            location.replace('/premium/workflow');
             return;
         }
         if ($store.resume.get("plan") == "premium"){
@@ -120,6 +130,8 @@
     };
 
     $.hide = function(){
+        if (!$.active) return;
+
         $.update({
             active: false,
             animate: false
@@ -128,7 +140,7 @@
 
     $.success = function(){
         if (app.demo){
-            $.hide();
+            location.replace('/?signup&plan=premium');
             return;
         }
         if ($store.resume.get("plan") == "premium"){

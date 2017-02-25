@@ -1,46 +1,94 @@
 $store.colors = _.extend(new Baobab([
     {
         _id: "#0084ff",
-        title: "blueLight"
+        title: "blueLight",
+        titles: {
+            en: "Modern",
+            ru: "Модный"
+        }
     },
     {
         _id: "#265cdc",
-        title: "blue"
+        title: "blue",
+        titles: {
+            en: "Blue",
+            ru: "Cиний"
+        }
     },
     {
         _id: "#74b027",
-        title: "green"
+        title: "green",
+        titles: {
+            en: "Green",
+            ru: "Зеленый"
+        }
     },
     {
         _id: "#0bb5b7",
-        title: "emerald"
+        title: "emerald",
+        titles: {
+            en: "Emerald",
+            ru: "Изумрудный"
+        }
     },
     {
         _id: "#ff7272",
-        title: "pink"
+        title: "pink",
+        titles: {
+            en: "Pink",
+            ru: "Гламурный"
+        }
     },
     {
         _id: "#d93663",
-        title: "red"
+        title: "red",
+        titles: {
+            en: "Crimson",
+            ru: "Малиновый"
+        }
     },
     {
         _id: "#c1a16b",
-        title: "brown"
+        title: "brown",
+        titles: {
+            en: "Business",
+            ru: "Деловой"
+        }
     },
     {
         _id: "#ea7f07",
-        title: "orange"
+        title: "orange",
+        titles: {
+            en: "Orange",
+            ru: "Оранжевый"
+        }
     },
     {
         _id: "#ab81cd",
-        title: "violetLight"
+        title: "violetLight",
+        titles: {
+            en: "Violet light",
+            ru: "Лиловый"
+        }
     },
     {
         _id: "#5856d6",
-        title: "violet"
+        title: "violet",
+        titles: {
+            en: "Violet",
+            ru: "Фиолетовый"
+        }
     }
     ]),
     {
+        getItems: function(lang){
+            return _.map($store.colors.get(), function(item){
+                return {
+                    _id: item._id,
+                    title: item.titles[lang]
+                }
+            });
+        },
         getTitleById: function(id){
             return _.findWhere($store.colors.get(), {"_id": id}).title;
         }

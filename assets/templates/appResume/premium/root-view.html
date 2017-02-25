@@ -26,9 +26,7 @@
     $i18n.lang($resume.lang);
     moment.locale($resume.lang);
 
-    this.opts.editing = this.opts.editing == "true" ? "editing" : "view";
-
-    var mode = this.opts.editing,
+    var mode = this.opts.editing == "true" ? "editing" : "view",
         config = $store.resume.select("config").deepClone();
 
     config.mode = mode;

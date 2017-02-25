@@ -18,6 +18,10 @@
     }
     .d-phone &[data-uploaded="true"]{
         @extend .bg-black;
+
+        .image-editor {
+            @extend .bg-black;
+        }        
     }
     &__wrapper {
         @extend .pos-centered;

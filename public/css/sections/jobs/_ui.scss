@@ -1,0 +1,39 @@
+.jobs {
+    .btn {
+        @extend .text-uppercase;
+
+        &-xl {
+            font-size:17px;
+        }
+        &-l {
+            font-size:16px;
+        }
+        &-m {
+            font-size:15px;
+        }
+    }
+    .btn-default {
+        @extend .c-white;
+        @extend .bg-blueBright;
+
+        &:hover {
+            @extend .bg-blue;
+        }
+    }
+    .btn-default-hover-success {
+        @extend .c-white;
+        @extend .bg-blueBright;
+
+        &:hover {
+            @extend .bg-green;
+        }
+    }
+    .btn-danger-hover-success {
+        @extend .c-white;
+        @extend .bg-redBright;
+
+        &:hover {
+            @extend .bg-green;
+        }
+    }
+}

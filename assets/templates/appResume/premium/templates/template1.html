@@ -33,7 +33,7 @@
 
                     <ux-name classname="h1 name" size="l" title="Ваше имя и фамилия"></ux-name>
 
-                    <ux-text classname="h3 post" update="post" cursor={ $store.resume.select() } title="Должность" type="input"></ux-text>
+                    <ux-text autosuggest="getSuggestPositions" classname="h3 post" update="post" cursor={ $store.resume.select() } title="Должность" type="input"></ux-text>
 
                     <ux-salary if={ $store.resume.select("sections").get({"name": "salary"}).active } classname="salary" title={ $store.resume.select("sections").get({"name": "salary"}).title }></ux-salary>
 
@@ -247,7 +247,7 @@
             $.render();
 
             app.$dom.window.on("scroll", function(){
-                onScroll();
+                _.raf(onScroll);
             });
             $afterlag.run(function(){
                 $root.trigger("ready");
@@ -343,6 +343,12 @@
                     $store.resume.select("config", "photo", "noise").set(value);
                 }
             });
+
+            if (app.demo){
+                $Sections.finish.one("show", function(){
+                    showOffer = true;
+                })
+            }
         }
         else if (app.demo){
             _.bbUpdate($State, function(prop, value, e){
@@ -415,6 +421,9 @@
         }, 5);
     };
 
+    var previousTop = 0,
+        showOffer = false;
+
     $.onScroll = function(scroll){
         var scroll = scroll && scroll.y || app.$dom.document.scrollTop(),
             find = false;
@@ -432,6 +441,13 @@
 
         if (!find && $.color != "primary"){
             $root.root.setAttribute("data-control-color", "primary");
+        }
+        if (app.demo && !showOffer && $root.opts.editing == "true"){
+            var scrollHeight = $Resume.el && $Resume.el[0] && $Resume.el[0].scrollHeight;
+            if (scrollHeight && scrollHeight > 0 && scroll + app.sizes.height + 20 > scrollHeight && previousTop < scroll){
+                $Sections.finish.show();
+            }
+            previousTop = scroll;
         }
     };
 

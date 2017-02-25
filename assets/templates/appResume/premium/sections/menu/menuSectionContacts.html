@@ -127,19 +127,26 @@
             $Editable.show("photo", {
                 title: 'Ваша фотография',
                 callback: function(image){
-                    app.request("setResumePhoto", {
-                        id: $store.resume.get('_id'),
-                        image: image
-                    }, {
-                        loader: false
-                    })
-                    .then(function(data){
-                        if (data && data.image){
-                            $store.resume.select("photo").set(data.image);
-                            $.update();
-                            $Resume.sections.photo.update();
-                        }
-                    });
+                    if (app.demo){
+                        $store.resume.select("photo").set(image);
+                        $.update();
+                        $Resume.sections.photo.update();
+                    }
+                    else {
+                        app.request("setResumePhoto", {
+                            id: $store.resume.get('_id'),
+                            image: image
+                        }, {
+                            loader: false
+                        })
+                        .then(function(data){
+                            if (data && data.image){
+                                $store.resume.select("photo").set(data.image);
+                                $.update();
+                                $Resume.sections.photo.update();
+                            }
+                        });
+                    }
                 }
             });
         }

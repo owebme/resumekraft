@@ -1,0 +1,8 @@
+<editable-education-item-speciality class="display-block input-autosuggest input-autosuggest-m">
+
+    <input onInput={ $Editable.component.autoCommitItems } autosuggest="getSuggestSpeciality" class="input input-l" type="text" placeholder="Специальность" data-name="speciality" autocomplete="off" value={ opts.item.speciality }>
+    <div class="input-autosuggest-items"><div onClick={ $Editable.autosuggest.select } each={ item in $Editable.autosuggest.items } no-reorder class="input-autosuggest-item">
+        <div class="input-autosuggest-item-title">{ item.text }</div>
+    </div></div>
+
+</editable-education-item-speciality>

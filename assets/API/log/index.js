@@ -5,7 +5,7 @@ module.exports = function() {
 			req.body.date = app.moment().format();
 
 			app.db.collection('accounts').update({
-				"_id": app.accountId
+				"_id": req.accountId
 			},{
 				$push: {
 					"log": req.body

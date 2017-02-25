@@ -1,6 +1,10 @@
-<ui-input>
+<ui-input class={ opts.autosuggestsize ? 'display-block input-autosuggest input-autosuggest-' + opts.autosuggestsize : 'display-block input-autosuggest input-autosuggest-m' }>
 
     <input name="input" onInput={ onInput } onUpdate={ opts.onupdate ? opts.onupdate : "none" } class="input input-{ opts.size ? opts.size : 'm' } { opts.color } { opts.align ? 'text-' + opts.align : '' } { input-rounded : opts.rounded }" value={ value } placeholder={ opts.placeholder } disabled={ typeof opts.disabled !== 'undefined' } type="text" autocomplete="off" spellcheck="false">
+
+    <div if={ opts.autosuggest } class="input-autosuggest-items"><div onClick={ autosuggest.select } each={ item in autosuggest.items } no-reorder class="input-autosuggest-item">
+        <div class="input-autosuggest-item-title">{ item.text }</div>
+    </div></div>
 
 <script>
 
@@ -12,6 +16,9 @@
         }
         else {
             $.value = $.opts.value;
+        }
+        if ($.opts.autosuggest){
+            $.suggest = _.debounce($.autosuggest.request, app.device.isMobile ? 300 : 150);
         }
     });
 
@@ -44,15 +51,80 @@
     $.onInput = function(e){
         var value = e.target.value;
 
+        $.onUpdate(this, value);
+
+        if ($.opts.autosuggest && value){
+            $.autosuggest.el = e.target;
+            $.suggest($.opts.autosuggest, value);
+            document.removeEventListener('click', $.autosuggest.handleClickOutside);
+            document.addEventListener('click', $.autosuggest.handleClickOutside);
+        }
+    };
+
+    $.onUpdate = function(_this, value){
         if ($.opts.update && $.opts.cursor){
             $.opts.cursor.set($.opts.update, value);
         }
         if ($.opts.commit === true || $.opts.commit == "true") $.parent.update();
         else if (_.isFunction($.opts.commit)) {
-            $.opts.commit.call(this, value, $.opts.i);
+            $.opts.commit.call(_this, value, $.opts.i);
         }
         else if ($.opts.commit && $.parent[$.opts.commit]){
             $.parent[$.opts.commit](value, $.opts.i);
+        }
+    };
+
+    $.autosuggest = {
+
+        el: null,
+
+        value: "",
+
+        items: [],
+
+        select: function(){
+            $.autosuggest.update([], this.item.text);
+        },
+
+        request: function(method, value){
+            if (value.length > 1){
+                app.request(method, value).then(function(data){
+                    if (data.items){
+                        if (data.items.length == "1" && value == data.items[0].text){
+                            $.autosuggest.items = [];
+                            return;
+                        }
+                        else {
+                            $.autosuggest.update(data.items);
+                        }
+                    }
+                })
+            }
+            else {
+                $.autosuggest.update([]);
+            }
+        },
+
+        update: function(items, value){
+            $.autosuggest.items = items;
+            if (value){
+                $.update({
+                    value: value
+                })
+                $.onUpdate(this, value);
+            }
+            else {
+                $.update();
+            }
+        },
+
+        handleClickOutside: function(e){
+            if ($.autosuggest.el && !$.autosuggest.el.contains(e.target)){
+                setTimeout(function(){
+                    $.autosuggest.update([]);
+                }, 20);
+            }
+            document.removeEventListener('click', $.autosuggest.handleClickOutside);
         }
     };
 

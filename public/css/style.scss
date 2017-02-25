@@ -25,6 +25,7 @@
 @import '../../assets/css/ui/basic/spinner';
 @import '../../assets/css/ui/basic/notify';
 @import '../../assets/css/ui/basic/popup';
+@import '../../assets/css/ui/basic/range';
 @import '../../assets/css/ui/button';
 @import '../../assets/css/ui/typography';
 @import '../../assets/css/states/fontSize';
@@ -37,33 +38,44 @@
 @import 'sections/auth';
 
 // home
-@import 'sections/home/home';
-@import 'sections/home/header';
-@import 'sections/home/functions';
-@import 'sections/home/jqtest';
-@import 'sections/home/sections';
-@import 'sections/home/testdrive';
-@import 'sections/home/footer';
+// @import 'sections/home/home';
+// @import 'sections/home/header';
+// @import 'sections/home/functions';
+// @import 'sections/home/jqtest';
+// @import 'sections/home/sections';
+// @import 'sections/home/testdrive';
+// @import 'sections/home/footer';
 
 // jqtest
-@import '../../assets/css/sections/jqtest/jqtest';
-@import '../../assets/css/sections/jqtest/jqtestEnter';
-@import '../../assets/css/sections/jqtest/result/main';
-@import '../../assets/css/sections/jqtest/result/columns';
-@import '../../assets/css/sections/jqtest/result/skills';
-@import '../../assets/css/sections/jqtest/result/humps';
-@import '../../assets/css/sections/jqtest/result/graph';
-@import '../../assets/css/sections/jqtest/result/specialties';
-@import '../../assets/css/sections/jqtest/result/path';
+// @import '../../assets/css/sections/jqtest/jqtest';
+// @import '../../assets/css/sections/jqtest/jqtestEnter';
+// @import '../../assets/css/sections/jqtest/result/main';
+// @import '../../assets/css/sections/jqtest/result/columns';
+// @import '../../assets/css/sections/jqtest/result/skills';
+// @import '../../assets/css/sections/jqtest/result/humps';
+// @import '../../assets/css/sections/jqtest/result/graph';
+// @import '../../assets/css/sections/jqtest/result/specialties';
+// @import '../../assets/css/sections/jqtest/result/path';
 
 // blog
-@import 'sections/blog/blog';
-@import 'sections/blog/header';
-@import 'sections/blog/grid';
-@import 'sections/blog/shareButton';
-@import 'sections/blog/pagination';
-@import 'sections/blog/content';
-@import 'sections/blog/social';
+// @import 'sections/blog/blog';
+// @import 'sections/blog/header';
+// @import 'sections/blog/grid';
+// @import 'sections/blog/shareButton';
+// @import 'sections/blog/pagination';
+// @import 'sections/blog/content';
+// @import 'sections/blog/social';
+
+// jobs
+@import 'sections/jobs/jobs';
+@import 'sections/jobs/header';
+@import 'sections/jobs/ui';
+@import 'sections/jobs/search/search';
+@import 'sections/jobs/search/nav';
+@import 'sections/jobs/search/list';
+@import 'sections/jobs/search/filter';
+@import 'sections/jobs/search/aside';
+@import 'sections/jobs/search/ui';
 
 // modules
 @import '../../assets/css/modules/chart/chartRadial';
@@ -73,16 +85,16 @@
 @import '../../assets/css/sections/sections';
 
 // overview
-@import '../../assets/css/sections/overview/main';
-@import '../../assets/css/sections/overview/premium/header';
-@import '../../assets/css/sections/overview/premium/slides';
-@import '../../assets/css/sections/overview/premium/devices';
-@import '../../assets/css/sections/overview/jqtest/slides';
-@import '../../assets/css/sections/overview/overviewFunctions';
-
-@import '../../assets/css/sections/offers/premium/premium';
-@import '../../assets/css/sections/offers/premium/slides';
-@import '../../assets/css/sections/offers/premium/ui';
+// @import '../../assets/css/sections/overview/main';
+// @import '../../assets/css/sections/overview/premium/header';
+// @import '../../assets/css/sections/overview/premium/slides';
+// @import '../../assets/css/sections/overview/premium/devices';
+// @import '../../assets/css/sections/overview/jqtest/slides';
+// @import '../../assets/css/sections/overview/overviewFunctions';
+//
+// @import '../../assets/css/sections/offers/premium/premium';
+// @import '../../assets/css/sections/offers/premium/slides';
+// @import '../../assets/css/sections/offers/premium/ui';
 
 // states
 @import '../../assets/css/states/states';

@@ -5,7 +5,7 @@ module.exports = function(){
     		'assets/js/libs/jquery.mobile.custom.min.js',
     		'assets/js/libs/jquery.swipeUpDown.js',
     		'assets/js/libs/modernizr.custom.js',
-    		'assets/js/libs/fastclick.min.js',
+    		'assets/js/libs/fastclick.js',
     		'assets/js/libs/riot/riot+compiler.update.js',
     		'assets/js/libs/riot/riot-i18n.js',
     		'assets/js/libs/baobab.js',

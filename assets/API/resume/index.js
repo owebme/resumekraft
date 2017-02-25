@@ -9,7 +9,7 @@ module.exports = function(url){
 
 		app.db.collection('resumes').update({
 			"_id": app.utils.ObjectId(id),
-			"accountId": app.accountId
+			"accountId": req.accountId
 		},{
 			$set: data
 		},
@@ -43,7 +43,7 @@ module.exports = function(url){
     route.post('/', function(req, res) {
 		if (req.body.data._id) delete req.body.data._id;
 		if (req.body.data.likes) req.body.data.likes = null;
-        req.body.data.accountId = app.accountId;
+        req.body.data.accountId = req.accountId;
 
         app.db.collection('resumes').insert(req.body.data,
         function(err, data){
@@ -71,7 +71,7 @@ module.exports = function(url){
 				if (!err){
 					app.db.collection('resumes').update({
 						"_id": app.utils.ObjectId(id),
-						"accountId": app.accountId
+						"accountId": req.accountId
 					},{
 						$set: {
 							"photo": pathImage
@@ -97,7 +97,7 @@ module.exports = function(url){
 		app.db.collection('resumes').remove(
         {
             "_id": app.utils.ObjectId(req.body.id),
-			"accountId": app.accountId
+			"accountId": req.accountId
 		},
 		function(err, data){
 			app.errHandler(res, err, data);

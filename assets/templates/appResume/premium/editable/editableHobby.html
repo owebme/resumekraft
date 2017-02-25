@@ -39,8 +39,8 @@
                 <input onInput={ $Editable.component.autoCommit } class="input input-xl" data-name="title" name="title_data" type="text" placeholder="Название секции" autocomplete="off" value={ data && data.title ? data.title : $store.resume.placeholder.hobby.title() }>
             </div>
             <div class="pos-rel">
-                <span class="input-title">описание хобби</span>
-                <textarea onInput={ $Editable.component.autoCommit } class="textarea textarea-xl" data-name="text" name="text_data" autocomplete="off">{ data.text }</textarea>
+                <span class="input-title">дополняющий текст</span>
+                <textarea onInput={ $Editable.component.autoCommit } class="textarea textarea-xl" data-name="text" name="text_data" autocomplete="off" placeholder="Дополняющий текст о ваших хоббии">{ data.text }</textarea>
             </div>
         </div>
         <div class="section__editable__footer text-center col-md-offset-2 col-lg-offset-3">

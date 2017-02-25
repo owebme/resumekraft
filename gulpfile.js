@@ -67,19 +67,14 @@ gulp.task('watch', function() {
 gulp.task('watchPublic', function() {
 	browserSync.watch([
 		'views/*.html',
-		'public/**/*.tag',
+		'public/templates/**/*.tag',
 		'assets/templates/**/*.tag'
-	]).on('change', reload);
-
-	// browserSync.watch([
-	// 	'views/*.html',
-	// 	'public/**/*.tag',
-	// 	'assets/templates/**/*.tag'
-	// ]).on('change', _.debounce(reload, 3000));
+	]).on('change', _.debounce(reload, 3000));
 
 	browserSync.watch([
 		'public/js/*.js',
-		'public/js/**/*.js'
+		'public/js/**/*.js',
+		'public/templates/**/*.html',
 	]).on('change', reload);
 
 	gulp.watch([

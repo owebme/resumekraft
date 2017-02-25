@@ -12,9 +12,6 @@ $navHeight: 94px;
     border-bottom:1px solid rgba(189,189,189,.2);
 
     &[data-color="blueLight"] {
-        .nav__langs__item[data-active="true"]{
-            @extend .c-blackLight;
-        }
         &:before {
             @extend .content-empty;
             @include abs();
@@ -101,29 +98,4 @@ $navHeight: 94px;
             }
         }
     }
-    // &__langs {
-    //     @extend .pos-abs;
-    //     @extend .t0;
-    //     @extend .l100;
-    //     @extend .pl-xxs;
-    //     @extend .flex-centered;
-    //     padding-top:2px;
-    //
-    //     &__item {
-    //         @extend .flex-centered;
-    //         @extend .ml-s;
-    //         @extend .borderRadius-circle;
-    //         @extend .fontWeight-bold;
-    //         @extend .cursor-pointer;
-    //         font-size:15px;
-    //         width:32px;
-    //         height:32px;
-    //
-    //         &[data-active="true"]{
-    //             @extend .bg-white;
-    //             @extend .c-blue;
-    //             @extend .cursor-default;
-    //         }
-    //     }
-    // }
 }

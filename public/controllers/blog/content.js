@@ -45,10 +45,10 @@ module.exports = function(){
                 next();
             }
             else {
-                data.item.date = app.appClient.moment(data.item.date_update).format("D/MM, YYYY в HH:MM");
-                app.appClient.data = data;
-                var output = app.riot.render(app.tags("blogContent"), app.appClient);
-                res.render(app.device.type == "phone" ? 'index-mobile' : 'index', {
+                data.item.date = req.appClient.moment(data.item.date_update).format("D/MM, YYYY в HH:MM");
+                req.appClient.data = data;
+                var output = app.riot.render(app.tags("blogContent", req.device), req.appClient);
+                res.render(req.device.type == "phone" ? 'index-mobile' : 'index', {
                     title: data.item.name,
                     content: output
                 });

@@ -25,8 +25,8 @@ module.exports = function() {
     app._tags.premiumContent = require('../../assets/templates/sections/overview/premium/overviewPremiumContent.tag');
     app._tags.jqtestEnter = require('../../assets/templates/sections/jqtest/jqtest-enter-content.tag');
 
-    app.tags = function(name){
-        if (app.device.type == "phone") return app._tags.mobile[name];
+    app.tags = function(name, device){
+        if (device && device.type == "phone") return app._tags.mobile[name];
         else return app._tags.default[name];
     }
 };

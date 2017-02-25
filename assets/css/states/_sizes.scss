@@ -36,7 +36,7 @@
         height:#{$i}px;
     }
 }
-@each $size in (16, 24, 32, 44, 48, 62, 64, 96){
+@each $size in (16, 22, 24, 28, 32, 44, 48, 62, 64, 96){
     .w#{$size} {
         width:#{$size}px;
     }

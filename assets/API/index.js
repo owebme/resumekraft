@@ -1,5 +1,8 @@
 module.exports = function(url){
 
+	// Global API
+	require('./controllers')(url);
+
 	// Initialize
 	app.get(url + '/data/init', app.checkAuth(), require('./data/init')());
 
@@ -11,6 +14,9 @@ module.exports = function(url){
 
 	// Resume private API
 	require('./resume')(url + '/resume');
+
+	// Autosuggest
+	require('./suggest')(url + '/suggest');
 
 	// Convert PDF resume
 	app.post(url + '/convert/pdf', app.checkAuth(), require('./upload/pdf')());

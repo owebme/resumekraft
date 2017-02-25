@@ -8,7 +8,7 @@ module.exports = function() {
 				country: req.body.country,
 				city: req.body.city,
 				region: req.body.region,
-				ip: app.clientIP
+				ip: req.clientIP
 			},
 			logined = req.body.logined;
 
@@ -47,7 +47,7 @@ module.exports = function() {
 				                },
 								$push: {
 				                    "history.visits": {
-										device: app.device,
+										device: req.device,
 										location: location,
 										date: app.moment().format()
 									}

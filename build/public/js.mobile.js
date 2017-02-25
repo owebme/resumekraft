@@ -32,6 +32,7 @@ module.exports = function(){
             'assets/js/plugins/sliderElastic.js',
             'assets/js/plugins/metrika.js',
             'assets/js/plugins/share.js',
+            'assets/js/plugins/eventsEmitter.js',
             'assets/js/plugins/scroll/scroll.Animate.js',
             'assets/js/plugins/scroll/scroll.RefreshFix.js',
             'assets/js/libs/photoswipe/dist/photoswipe.js',

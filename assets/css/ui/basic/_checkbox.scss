@@ -101,6 +101,19 @@
             }
         }
     }
+    &[data-color="blueBright"] {
+        .checkbox-control:after {
+            @include ui-icon(check_white);
+        }
+        input:checked ~ {
+            .checkbox-control {
+                &:before {
+                    @extend .bg-blueBright;
+                    @extend .scale-100;
+                }
+            }
+        }
+    }
     &[data-color="white"] {
         .checkbox-control:after {
             @include ui-icon(check);

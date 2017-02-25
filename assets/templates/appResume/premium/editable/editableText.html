@@ -2,12 +2,15 @@
 
     <ui-switcher if={ active !== null } id="activity" color="white" value={ active } commit="true"></ui-switcher>
 
-    <div class="section__editable__content { hide : active !== null && !switcher.value }">
+    <div class="section__editable__content { hide : active !== null && !switcher.value } zIndex-2">
 
         <div class="title title-main">{ title }</div>
 
-        <div if={ type === "input" }>
-            <input class="input input-xl" name="input_data" type="text" autocomplete="off" value={ editing }>
+        <div if={ type === "input" } class="input-autosuggest input-autosuggest-xl">
+            <input onInput={ $Editable.autosuggest.onInput } autosuggest={ autosuggest } class="input input-xl" name="input_data" type="text" autocomplete="off" value={ editing }>
+            <div class="input-autosuggest-items"><div onClick={ $Editable.autosuggest.select } each={ item in $Editable.autosuggest.items } no-reorder class="input-autosuggest-item">
+                <div class="input-autosuggest-item-title">{ item.text }</div>
+            </div></div>
         </div>
         <div if={ type === "textarea" }>
             <textarea class="textarea textarea-xl" name="textarea_data" autocomplete="off">{ editing }</textarea>
@@ -32,6 +35,7 @@
             title: data.title,
             type: data.type,
             editing: data.editing,
+            autosuggest: data.autosuggest,
             callback: data.callback ? data.callback : null
         });
     };

@@ -72,6 +72,11 @@
         }
     }
     &-like {
+        &.icon-xs {
+            width:28px;
+            height:28px;
+            transform:translateY(4px);
+        }
         &.icon-s {
             width:35px;
             height:35px;

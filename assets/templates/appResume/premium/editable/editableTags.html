@@ -7,13 +7,16 @@
         <div class="title title-main">{ title }</div>
 
         <div class="tag-list">
-            <div class="tag-list-add">
-                <input onKeydown={ onKeydown } name="input" class="tag-input" type="text" placeholder="Название навыка" autocomplete="off">
+            <div class="tag-list-add input-autosuggest input-autosuggest-m">
+                <input onInput={ $Editable.autosuggest.onInput } onKeydown={ onKeydown } autosuggest="getSuggestSkills" name="input" class="tag-input" type="text" placeholder="Название навыка" autocomplete="off">
                 <div onClick={ addTag } class="tag-list-addButton">
                     <svg class="tag-list-addButton-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
                         <path class="tag-list-addButton-svg-color" d="M 23 9 L 23 23 L 9 23 L 9 27 L 23 27 L 23 41 L 27 41 L 27 27 L 41 27 L 41 23 L 27 23 L 27 9 L 23 9 z"></path>
                     </svg>
                 </div>
+                <div class="input-autosuggest-items borderRadius-xl" style="min-width:280px; top:46px; left:-10px"><div onClick={ $Editable.autosuggest.select } each={ item in $Editable.autosuggest.items } no-reorder class="input-autosuggest-item">
+                    <div class="input-autosuggest-item-title">{ item.text }</div>
+                </div></div>
             </div>
             <div each={ item, i in items } no-reorder class="tag tag-white">
                 { item }<span onClick={ removeTag } class="tag-remove"></span>

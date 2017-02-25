@@ -20,13 +20,36 @@ app.define = function (namespace) {
     return parent;
 }
 
-app.tag = function(name){
+app.tag = function(name, callback){
     if (window.riot){
-        return _.filter(riot.vdom, function(tag){
-            if (tag.root.nodeName.toLowerCase() == name){
-                return tag;
+        if (callback && window.$afterlag){
+            var tag = app.tag(name);
+            if (tag && tag.isMounted){
+                callback(tag);
             }
-        })[0];
+            else {
+                $afterlag.run(function(){
+                    var tag = app.tag(name);
+                    if (tag){
+                        if (tag.isMounted){
+                            callback(tag);
+                        }
+                        else {
+                            app.tag(name).one("updated", function(){
+                                callback(tag);
+                            })
+                        }
+                    }
+                })
+            }
+        }
+        else {
+            return _.filter(riot.vdom, function(tag){
+                if (tag.root.nodeName.toLowerCase() == name){
+                    return tag;
+                }
+            })[0];
+        }
     }
 }
 

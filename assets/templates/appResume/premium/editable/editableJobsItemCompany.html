@@ -1,0 +1,11 @@
+<editable-jobs-item-company class="display-block input-autosuggest input-autosuggest-l">
+
+    <input onInput={ $Editable.component.autoCommitItems } autosuggest="getSuggestCompanies" class="input input-l" type="text" placeholder="Название компании" data-name="title" autocomplete="off" value={ opts.item.title }>
+    <div class="input-autosuggest-items" data-image="true"><div onClick={ $Editable.autosuggest.select }  each={ item in $Editable.autosuggest.items } no-reorder class="input-autosuggest-item">
+        <div class="input-autosuggest-item-title">{ item.text }</div>
+        <div if={ item.logo_urls && item.logo_urls['90'] } class="input-autosuggest-item-image">
+            <img class="input-autosuggest-item-logo" src="{ item.logo_urls['90'] }">
+        </div>
+    </div></div>
+
+</editable-jobs-item-company>

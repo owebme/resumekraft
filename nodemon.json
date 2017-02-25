@@ -4,9 +4,11 @@
       "/public/API/**",
       "/public/controllers/**",
       "/public/router/*.*",
-      "/public/templates/*.*",
       "/public/templates/**/*.*",
       "/views/**",
       "/SERVER.js"
+  ],
+  "ignore" : [
+      "/public/templates/**/*.html"
   ]
 }

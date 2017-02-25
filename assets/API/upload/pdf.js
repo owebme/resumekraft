@@ -20,12 +20,12 @@ module.exports = function(){
         pdf.create(output, options).toFile(process.cwd() + pathPdf, function(err, data) {
             if (!err) {
                 app.db.collection('accounts').update({
-                    "_id": app.accountId
+                    "_id": req.accountId
                 },{
                     $push: {
                         "history.events": {
                             name: "resumeConvertPdf",
-                            device: app.device,
+                            device: req.device,
                             date: app.moment().format()
                         }
                     }

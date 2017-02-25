@@ -1,0 +1,8 @@
+<editable-jobs-item-city class="display-block input-autosuggest input-autosuggest-l">
+
+    <input onInput={ $Editable.component.autoCommitItems } autosuggest="getSuggestCity" class="input input-l" type="text" placeholder="Город" data-name="city" autocomplete="off" value={ opts.item.city }>
+    <div class="input-autosuggest-items"><div onClick={ $Editable.autosuggest.select } each={ item in $Editable.autosuggest.items } no-reorder class="input-autosuggest-item">
+        <div class="input-autosuggest-item-title">{ item.text }</div>
+    </div></div>
+
+</editable-jobs-item-city>

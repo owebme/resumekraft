@@ -1,7 +1,7 @@
 <jqtest-enter-content>
 
-    <div onClick={ parent.open.overview } onUpdate="none" class="anim-group3 anim-tb-soft oScreen__jqtest__enter__angle__link anim-delay-xs" data-duration="m">
-        Смотреть обзор
+    <div class="anim-group3 anim-tb-soft oScreen__jqtest__enter__angle__link anim-delay-xs" data-duration="m">
+        Для соискателей
     </div>
     <div class="anim-group3 anim-scale-zoom oScreen__jqtest__enter__faces" data-duration="l"></div>
     <div class="oScreen__jqtest__enter__phone__left">

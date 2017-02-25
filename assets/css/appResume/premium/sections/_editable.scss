@@ -132,7 +132,9 @@
             @extend .mtb0;
         }
         .d-phone &[data-uploaded="true"]{
-            @extend .bg-black;
+            .image-editor {
+                @extend .bg-black;
+            }
         }
     }
     &__content {
@@ -157,7 +159,7 @@
             @extend .opacity-0;
             @extend .visibility-hidden;
             @extend .willChange-tp;
-            transition:transform 0.6s $cubic345, opacity 0.3s $cubic345, visibility 0s 0.6s;
+            transition:transform 0.6s $cubic345 0.01s, opacity 0.3s $cubic345 0.01s, visibility 0s 0.61s;
 
             &[data-pos="left"]{
                 transform:translate3d(-100%, 0, 0) scale3d(0.7, 0.4, 1);
@@ -170,7 +172,7 @@
                 @extend .opacity-100;
                 @extend .visibility-visible;
                 transform:translate3d(0, 0, 0) scale3d(1, 1, 1);
-                transition:transform 0.6s $cubic345, opacity 0.3s $cubic345, visibility 0s;
+                transition:transform 0.6s $cubic345 0.01s, opacity 0.3s $cubic345 0.05s, visibility  0.01s;
             }
             .d-phone & {
                 @extend .pt-xs;
@@ -190,10 +192,6 @@
                     @extend .pointerEvents-all;
                 }
             }
-        }
-        textarea::placeholder {
-            @extend .c-gray;
-            @extend .lineHeight-l;
         }
     }
     &__arrow {
@@ -490,6 +488,14 @@
             transform:translateY(1px);
         }
 	}
+    .input-autosuggest-items {
+        width:calc(100% + 4px);
+        transform:translate3d(-2px, 0, 0);
+
+        .d-phone & {
+            transform:translate3d(-2px, -1px, 0);
+        }
+    }
 }
 
 .d-phone {

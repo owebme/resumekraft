@@ -1,0 +1,30 @@
+<jobs-search-filter-salary class="jobs__search__filter__block">
+
+    <div class="jobs__search__filter__block__content">
+        <div class="jobs__search__filter__title">{ opts.name }</div>
+        <div class="jobs__search__filter__salary">
+            от { salary } <span class="jobs__search__filter__salary__rub">₽</span>
+        </div>
+        <div class="jobs__search__filter__range">
+            <input onInput={ onRange } type="range" min="10000" max="250000" step="5000" class="range range-s range-blueBright">
+        </div>
+        <div class="jobs__search__filter__checkbox">
+            <ui-checkbox value="false" title="только с указанием" theme="blueBright" size="s" small></ui-checkbox>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.salary = "75,000";
+
+    $.onRange = function(e){
+        $.update({
+            salary: _.numberFormat(e.target.value, 0, ",", ".")
+        })
+    };
+
+</script>
+
+</jobs-search-filter-salary>

@@ -287,6 +287,101 @@
     &-rounded {
         @extend .borderRadius-xxxxxl;
     }
+    &-autosuggest {
+        @extend .pos-rel;
+
+        &-items {
+            @extend .pos-abs;
+            @extend .t100;
+            @extend .l0;
+            @extend .w100p;
+            @extend .bg-white;
+            @extend .ptb-xxs;
+            @extend .boxShadow-25;
+            @extend .borderRadiusBottom-l;
+
+            &:empty {
+                @extend .display-none;
+            }
+            &:not(:empty) {
+                @extend .zIndex-101;
+            }
+            &[data-image="true"]{
+                .input-autosuggest-item-title {
+                    @extend .maxW-85p;
+                }
+            }
+        }
+        &-item {
+            @extend .pos-rel;
+            @extend .c-blackLight;
+            @extend .fontFamily-helvetica;
+            @extend .cursor-pointer;
+            @extend .plr-m;
+            @extend .ptb-xss;
+            border-bottom:1px solid $smokeLight;
+
+            .m-no-touch &:hover {
+                @extend .c-black;
+                @extend .bg-smokeLight;
+            }
+            &-title {
+                @extend .text-truncate;
+                @extend .maxW-95p;
+            }
+            &-image {
+                @extend .flex-centered;
+                @extend .pos-tr;
+                @extend .w15p;
+                @extend .h100p;
+                @extend .plr-s;
+                @extend .bg-white;
+            }
+            &-logo {
+                @extend .display-block;
+                @extend .maxW-100p;
+                @extend .maxH-45p;
+            }
+        }
+        &-xl {
+            .input-autosuggest-item {
+                font-size:17px;
+            }
+        }
+        &-l {
+            .input-autosuggest-item {
+                font-size:16px;
+            }
+        }
+        &-m {
+            .input-autosuggest-item {
+                font-size:15px;
+                @extend .plr-s;
+                @extend .ptb-xxs;
+            }
+        }
+        &-s {
+            .input-autosuggest-item {
+                font-size:14px;
+                @extend .plr-s;
+                @extend .ptb-xxs;
+            }
+        }
+        .d-phone & {
+            .input-autosuggest-item {
+                font-size:18px;
+                @extend .plr-m;
+                @extend .ptb-xss;
+
+                &-image {
+                    @extend .w20p;
+                }
+                &-logo {
+                    @extend .maxH-60p;
+                }
+            }
+        }
+    }
 }
 div.input {
     &-xl {

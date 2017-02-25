@@ -9,7 +9,7 @@ module.exports = function(url){
                 "_id": app.utils.ObjectId(req.body.id)
             },{
                 $addToSet: {
-                    likes: app.clientIP
+                    likes: req.clientIP
                 }
             },
             function(err, data){

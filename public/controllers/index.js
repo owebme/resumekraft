@@ -4,6 +4,11 @@ module.exports = function(){
 
     app.controllers.resume = require('./resume');
 
+    app.controllers.jobs = {
+        index: require('./jobs')(),
+        search: require('./jobs/search')()
+    }
+
     app.controllers.blog = {
         index: require('./blog')(),
         content: require('./blog/content')()

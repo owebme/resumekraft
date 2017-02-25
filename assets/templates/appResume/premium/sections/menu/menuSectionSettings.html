@@ -11,7 +11,7 @@
         </div>
         <div class="row mb-l xs-mb-m xs-pb-s">
             <div class="col-xs-24">
-                <input class="input input-m { $store.resume.get('public') ? 'c-primary' : 'c-gray opacity-50' }" value="http://resumekraft.ru/resume/{ $store.resume.get('_id') }">
+                <input class="input input-m { $store.resume.get('public') ? 'c-primary' : 'c-gray opacity-50' }" value="{ app.demo ? 'http://resumekraft.ru/premium/demo' : ' http://resumekraft.ru/resume/' + $store.resume.get('_id') }">
             </div>
         </div>
         <div class="row mb-m">
@@ -38,7 +38,7 @@
             </div>
             <div class="col-xs-24 col-sm-12 select-uppercase">
                 <span class="input-title">Цветовая схема</span>
-                <ui-select update="color" cursor={ $State.select() } items={ $store.colors.get() } size="l"></ui-select>
+                <ui-select update="color" cursor={ $State.select() } items={ $store.colors.getItems("ru") } size="l"></ui-select>
             </div>
         </div>
         <div class="row h50 mb-m">

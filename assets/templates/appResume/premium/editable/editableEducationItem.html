@@ -29,7 +29,7 @@
     </div>
     <div class="row mb-m">
         <div class="col-md-24">
-            <input onInput={ $Editable.component.autoCommitItems } class="input input-l" type="text" placeholder="Учебное заведение" data-name="title" autocomplete="off" value={ opts.item.title }>
+            <editable-education-item-name item={ opts.item }></editable-education-item-name>
         </div>
     </div>
     <div if={ opts.item.level != "8" } class="row mb-m">
@@ -37,7 +37,7 @@
             <input onInput={ $Editable.component.autoCommitItems } class="input input-l" type="text" placeholder="Факультет" data-name="faculty" autocomplete="off" value={ opts.item.faculty }>
         </div>
         <div class="col-md-12 xsm-mt-m">
-            <input onInput={ $Editable.component.autoCommitItems } class="input input-l" type="text" placeholder="Специальность" data-name="speciality" autocomplete="off" value={ opts.item.speciality }>
+            <editable-education-item-speciality item={ opts.item }></editable-education-item-speciality>
         </div>
     </div>
 

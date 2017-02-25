@@ -10,7 +10,7 @@ $i:0;
         }
     }
 }
-@each $title, $color in (white: $white, blue: $blue, blueLight: $blueLight, blueDark: $blueDark, brown: $brown, red: $red, redDark: $redDark, pink: $pink, orange: $orange, orangeDark: $orangeDark, yellow: $yellow, yellowLight: $yellowLight, violet: $violet, violetLight: $violetLight, green: $green, greenLight: $greenLight, greenDark: $greenDark, lime: $lime, breeze: $breeze, emerald: $emerald, black: $black, blackDark: $blackDark, blackLight: $blackLight, steel: $steel, steelDark: $steelDark, silver: $silver, gray: $gray, grayDark: $grayDark, grayLight: $grayLight, grayLighten: $grayLighten, smoke: $smoke, smokeLight: $smokeLight, smokeDark: $smokeDark, snow: $snow, snowLight: $snowLight, snowDark: $snowDark){
+@each $title, $color in (white: $white, blue: $blue, blueLight: $blueLight, blueBright: $blueBright, blueDark: $blueDark, brown: $brown, brownDark: $brownDark, red: $red, redBright: $redBright, redDark: $redDark, pink: $pink, orange: $orange, orangeDark: $orangeDark, yellow: $yellow, yellowLight: $yellowLight, violet: $violet, violetLight: $violetLight, green: $green, greenLight: $greenLight, greenDark: $greenDark, lime: $lime, breeze: $breeze, emerald: $emerald, black: $black, blackDark: $blackDark, blackLight: $blackLight, steel: $steel, steelDark: $steelDark, silver: $silver, gray: $gray, grayDark: $grayDark, grayDarken: $grayDarken, grayLight: $grayLight, grayLighten: $grayLighten, grayLightenSilver: $grayLightenSilver, smoke: $smoke, smokeLight: $smokeLight, smokeDark: $smokeDark, snow: $snow, snowLight: $snowLight, snowSilver: $snowSilver, snowDark: $snowDark){
     .bg-#{$title},
     .text-strike[data-color=#{$title}]:after {
         background-color:$color;
@@ -170,6 +170,17 @@ $i:0;
 }
 @each $title, $color in (primary: $blue, info: $blueLight, success: $green, danger: $pink){
     .btn-badge-#{$title} {
+        background-color:$color;
+    }
+}
+@each $title, $color in (primary: $blue, blueBright: $blueBright){
+    input.range-#{$title}[type=range]::-webkit-slider-thumb {
+        background-color:$color;
+    }
+    input.range-#{$title}[type=range]::-moz-range-thumb {
+        background-color:$color;
+    }
+    input.range-#{$title}[type=range]::-ms-thumb {
         background-color:$color;
     }
 }

@@ -70,6 +70,9 @@
 
     $.show = function(editable, data, component){
         if ($State.get('mode') !== "editing") return;
+
+        $Editable.autosuggest.items = [];
+
         if (component){
             $.component.init($.tags["editable-" + editable], data);
         }
@@ -120,6 +123,9 @@
                 $.trigger("editTarget", false);
                 $.component.editing = null;
             }
+
+            $Editable.autosuggest.items = [];
+
             if (callback) callback();
         });
     };
@@ -210,6 +216,7 @@
 
         editItem: function(){
             $.trigger("editTarget", true);
+            $Editable.autosuggest.items = [];
             $.component.editing = _.copyArray(this.data.items[this.i]);
             $.scrollTo("content");
         },
@@ -244,6 +251,10 @@
                 else {
                     item = item[parts[i]];
                 }
+            }
+
+            if (e.target.getAttribute("autosuggest")){
+                $Editable.autosuggest.onInput.call(this, e, $.component.autoCommitItems);
             }
         },
 
@@ -305,12 +316,83 @@
                 }
                 this.callback(this.switcher.value, this.data);
             }
+
             $Editable.hide();
+
             if ($Resume.tags["ux-" + $.component.name]){
                 $Resume.tags["ux-" + $.component.name].update();
             }
         }
     };
+
+    $.autosuggest = {
+
+        el: null,
+
+        tag: null,
+
+        commit: null,
+
+        items: [],
+
+        onInput: function(e, commit){
+            if (e.target && e.target.value && e.target.getAttribute("autosuggest")){
+                $.autosuggest.el = e.target;
+                $.autosuggest.tag = this;
+                $.autosuggest.commit = commit;
+                $.suggest(e.target.getAttribute("autosuggest"), e.target.value);
+                document.removeEventListener('click', $.autosuggest.handleClickOutside);
+                document.addEventListener('click', $.autosuggest.handleClickOutside);
+            }
+            return;
+        },
+
+        select: function(){
+            $.autosuggest.update([]);
+            $.autosuggest.el.value = this.item.text;
+            if (_.isFunction($.autosuggest.commit)){
+                $.autosuggest.commit.call(this, {
+                    target: $.autosuggest.el
+                })
+                $.autosuggest.items = [];
+            }
+        },
+
+        request: function(method, value){
+            if (value.length > 1){
+                app.request(method, value).then(function(data){
+                    if (data.items){
+                        if (data.items.length == "1" && value == data.items[0].text){
+                            $.autosuggest.items = [];
+                            return;
+                        }
+                        else {
+                            $.autosuggest.update(data.items);
+                        }
+                    }
+                })
+            }
+            else {
+                $.autosuggest.update([]);
+            }
+        },
+
+        update: function(items){
+            $.autosuggest.items = items;
+            $.autosuggest.tag.update();
+        },
+
+        handleClickOutside: function(e){
+            if ($.autosuggest.el && !$.autosuggest.el.contains(e.target)){
+                setTimeout(function(){
+                    $.autosuggest.update([]);
+                }, 20);
+            }
+            document.removeEventListener('click', $.autosuggest.handleClickOutside);
+        }
+    };
+
+    $.suggest = _.debounce($.autosuggest.request, app.device.isMobile ? 300 : 150);
 
     $.scrollTo = function(scroll){
         var top = app.device.isPhone ? 80 : 100,

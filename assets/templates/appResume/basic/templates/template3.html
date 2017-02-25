@@ -75,7 +75,7 @@
 				<div class="t-container-dates">
 					<div class="t-container-dates-year">{ $store.month.getTitleById(job.from.month) } { job.from.year } &mdash;</div><br>
 					<div if={ job.last } class="t-container-dates-year">{ $i18n("resume.basic.template.Until Now") }</div><div if={ !job.last } class="t-container-dates-year">{ $store.month.getTitleById(job.to.month) } { job.to.year }</div><br>
-					<div class="t-container-dates-title">{ job.company }</div><br>
+					<div class="t-container-dates-title">{ job.title }</div><br>
 					<div class="t-container-dates-name">{ job.city }</div>
 				</div>
 				<div class="t-container-desc">

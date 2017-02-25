@@ -63,13 +63,14 @@
             var $el = WD.el.find(".blog__subscribe");
 
             if (!app.metrika.get("offers.popup.blog.subscribe.success")){
-                $afterlag.run(function(){
-                    var $form = $("<blog-subscribe-form>").appendTo($el.find(".blog__subscribe__form")),
-                        tag = riot.mount($form)[0];
+                $("<blog-subscribe-form>").appendTo($el.find(".blog__subscribe__form"));
 
-                    tag.one("success fail", function(){
-                        $el.remove();
-                    })
+                app.sections.on("afterMounted", function(){
+                    app.tag("blog-subscribe-form", function(tag){
+                        tag.one("success fail", function(){
+                            $el.remove();
+                        })
+                    });
                 });
             }
             else {

@@ -49,19 +49,18 @@
             active: false,
 
             mount: function(){
-                $afterlag.run(function(){
-                    if (!app.metrika.get("offers.popup.blog.subscribe.show")){
-                        var $popup = $("<popup-blog-subscribe style='display:none'>").appendTo(app.$dom.body),
-                            tag = riot.mount($popup)[0];
+                if (!app.metrika.get("offers.popup.blog.subscribe.show")){
+                    $("<popup-blog-subscribe style='display:none'>").prependTo(app.$dom.body);
 
-                        tag.one("updated", function(){
+                    app.sections.on("afterMounted", function(){
+                        app.tag("popup-blog-subscribe", function(tag){
                             WD.popup.tag = tag;
                         });
-                    }
-                    else {
-                        WD.popup.active = true;
-                    }
-                });
+                    });
+                }
+                else {
+                    WD.popup.active = true;
+                }
             }
         }
     };

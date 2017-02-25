@@ -3,6 +3,7 @@ var config          = require('./libs/config'),
     express         = require('express'),
     http            = require('http'),
     request         = require('request'),
+    queryString     = require('query-string'),
     glob            = require('glob'),
     path            = require('path'),
     fs              = require('fs'),
@@ -23,28 +24,28 @@ var config          = require('./libs/config'),
 //     api[m] = require(m);
 // });
 
-if (!global.app){
-    global.app = express();
-    app.express = express;
-    app.config = config;
-    app.riot = riot;
-    app.cache = {};
-    app._tags = {
-        commons: {},
-        default: {},
-        mobile: {}
-    };
-    app.async = require('async');
-    app.db = require('./libs/db/mongoose')(log, config);
-    app.mysql = require('./libs/db/mysql')(log, config);
-    app.log = log;
-    app.errHandler = require('./libs/errHandler');
-    app.utils = require('./libs/utils');
-    app.utils.fs = fs;
-    underscore.extend(app.utils, underscore);
-    app.moment = require('moment');
-    app.moment.locale('ru');
-}
+global.app = express();
+app.express = express;
+app.req = request;
+app.queryString = queryString;
+app.config = config;
+app.riot = riot;
+app.store = {};
+app._tags = {
+    commons: {},
+    default: {},
+    mobile: {}
+};
+app.async = require('async');
+app.db = require('./libs/db/mongoose')(log, config);
+app.mysql = require('./libs/db/mysql')(log, config);
+app.log = log;
+app.errHandler = require('./libs/errHandler');
+app.utils = require('./libs/utils');
+app.utils.fs = fs;
+underscore.extend(app.utils, underscore);
+app.moment = require('moment');
+app.moment.locale('ru');
 
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
@@ -55,6 +56,9 @@ app.swig = swig;
 
 // require all the riot tags
 require('./public/templates')();
+
+// require all store
+// require('./public/store')();
 
 app.use(favicon(path.join(__dirname, '/', 'favicon.ico')));
 app.use(logger('dev'));
@@ -73,32 +77,32 @@ app.use(express.static(path.join(__dirname, '/')));
 
 app.checkAuth = require('./public/router/checkAuth');
 
-app.appClient = {
-    utils: app.utils,
-    moment: app.moment,
-    isServer: true
-}
 app.use(function(req, res, next) {
-    app.device = {
+    var device = {
         ua: req.headers['user-agent'],
         type: req.device.type,
         isMobile: req.device.type.match(/tablet|phone/) ? true : false
     };
-    app.appClient.device = app.device;
-    app.appClient.user = req.session.user;
+    req.appClient = {
+        utils: app.utils,
+        moment: app.moment,
+        device: device,
+        user: req.session.user,
+        isServer: true
+    };
 
     if (process.env.NODE_ENV == "production"){
-        app.account = req.session.user;
-        app.accountId = req.session.user ? app.utils.ObjectId(req.session.user.accountID) : null;
+        req.account = req.session.user;
+        req.accountId = req.session.user ? app.utils.ObjectId(req.session.user.accountID) : null;
     }
     else {
-        app.account = {
+        req.account = {
             plan: "premium"
         }
-        app.accountId = app.utils.ObjectId('588658bf07f3cad6d6f3aaa1');
+        req.accountId = app.utils.ObjectId('588658bf07f3cad6d6f3aaa1');
     }
-    app.device.type = req.query.debug ? req.query.debug : app.device.type;
-    app.clientIP = app.utils.getClientAddress(req);
+    req.device.type = req.query.debug ? req.query.debug : req.device.type;
+    req.clientIP = app.utils.getClientAddress(req);
     next();
 });
 

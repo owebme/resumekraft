@@ -9,7 +9,7 @@ module.exports = function() {
 				country: req.body.country,
 				city: req.body.city,
 				region: req.body.region,
-				ip: app.clientIP
+				ip: req.clientIP
 			},
 			referer = req.body.referer,
 			logined = req.body.logined;
@@ -31,12 +31,12 @@ module.exports = function() {
 				if (!user){
 					if (logined){
 						app.db.collection('accounts').insertOne(getAccount({
-							_id: app.accountId,
+							_id: req.accountId,
 							login: login,
 							password: password,
 							init: {
 								plan: plan,
-								device: app.device,
+								device: req.device,
 								location: location,
 							}
 						}), function(err, data){
@@ -95,7 +95,7 @@ module.exports = function() {
 				history: {
 					events: [],
 					visits: [{
-						device: app.device,
+						device: req.device,
 						location: options.init.location,
 						date: app.moment().format()
 					}]

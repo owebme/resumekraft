@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>{% if title %}{{ title }}{% else %}Cервис создания резюме, помощь в составлении резюме, рекомендации профессионалов, примеры, образцы резюме. ResumeKraft{% endif %}</title>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta property="og:image" content="/assets/images/favicons/120.png" />
+    <meta property="og:title" content="Создать крутое резюме самому!" />
+	<meta property="og:description" content="ResumeKraft - сервис создания премиальных резюме с продающим дизайном." />
+    <link rel="icon" type="image/png" href="/assets/images/favicons/32.png">
+    <link rel="apple-touch-icon" href="/assets/images/favicons/60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicons/76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicons/120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicons/152.png">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="width" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+	<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="format-detection" content="telephone=no" />
+	<meta name="google" content="notranslate" />
+    <link rel="manifest" href="/manifest.json">
+    <link id="styles" rel="stylesheet" href="/public/css/style.css">
+</head>
+<body id="renderServer">
+
+    {{ content | safe }}
+
+    <section-auth></section-auth>
+    <section-notify></section-notify>
+    <section-loader></section-loader>
+
+    <!--/ VENDORS /-->
+    <script src="/assets/js/libs/jquery.min.js"></script>
+    <script src="/assets/js/libs/jquery.mobile.custom.min.js"></script>
+    <script src="/assets/js/libs/modernizr.custom.js"></script>
+    <script src="/assets/js/libs/fastclick.min.js"></script>
+    <script src="/assets/js/libs/riot/riot+compiler.js"></script>
+    <script src="/assets/js/libs/baobab.js"></script>
+    <script src="/assets/js/libs/underscore-min.js"></script>
+    <script src="/assets/js/libs/store.min.js"></script>
+    <script src="/assets/js/libs/TweenLite-1.19.0.min.js"></script>
+    <script src="/assets/js/libs/afterlag-js/dist/afterlag.min.js"></script>
+
+    <!--/ templates /-->
+    <script src="/public/templates/commons/modules/auth/auth.tag" type="riot/tag"></script>
+    <script src="/public/templates/commons/modules/auth/authSocial.tag" type="riot/tag"></script>
+    <script src="/public/templates/commons/modules/auth/forms/signIn.tag" type="riot/tag"></script>
+    <script src="/public/templates/commons/modules/auth/forms/signUp.tag" type="riot/tag"></script>
+    <script src="/public/templates/commons/modules/auth/forms/remember.tag" type="riot/tag"></script>
+    <script src="/assets/templates/modules/notify.html" type="riot/tag"></script>
+    <script src="/assets/templates/modules/loader.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/input.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/textarea.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/checkbox.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-like.html" type="riot/tag"></script>
+    <script src="/public/templates/client/jobs/favorites.html" type="riot/tag"></script>
+    <script src="/public/templates/client/jobs/search/searchVacancyForm.html" type="riot/tag"></script>
+    <script src="/public/templates/client/jobs/search/panel/searchPanel.html" type="riot/tag"></script>
+    <script src="/public/templates/client/jobs/search/filter/searchFilter.html" type="riot/tag"></script>
+    <script src="/public/templates/client/jobs/search/filter/searchFilterRegion.html" type="riot/tag"></script>
+    <script src="/public/templates/client/jobs/search/filter/searchFilterMetro.html" type="riot/tag"></script>
+    <script src="/public/templates/client/jobs/search/filter/searchFilterSalary.html" type="riot/tag"></script>
+    <script src="/public/templates/client/jobs/search/filter/searchFilterExperience.html" type="riot/tag"></script>
+    <script src="/public/templates/client/jobs/search/filter/searchFilterEmployment.html" type="riot/tag"></script>
+    <script src="/public/templates/client/jobs/search/filter/searchFilterSchedule.html" type="riot/tag"></script>
+    <script src="/public/templates/client/jobs/search/filter/searchFilterExceptions.html" type="riot/tag"></script>
+    <script src="/public/templates/commons/popup/blogSubscribe.tag" type="riot/tag"></script>
+    <script src="/public/templates/commons/popup/blogSubscribeForm.tag" type="riot/tag"></script>
+    <script src="/public/templates/commons/icons/social/icon-fb.tag" type="riot/tag"></script>
+    <script src="/public/templates/commons/icons/social/icon-vk.tag" type="riot/tag"></script>
+    <script src="/public/templates/commons/icons/social/icon-tw.tag" type="riot/tag"></script>
+    <script src="/public/templates/commons/icons/social/icon-dk.tag" type="riot/tag"></script>
+    <script src="/public/templates/commons/icons/social/icon-gl.tag" type="riot/tag"></script>
+
+    <!--/ JS components /-->
+    <script src="/assets/js/components/commons/app.js"></script>
+    <script src="/assets/js/components/commons/request.js"></script>
+    <script src="/assets/js/components/commons/afterlag.js"></script>
+    <script src="/assets/js/components/commons/common.js"></script>
+    <script src="/assets/js/components/commons/utils.js"></script>
+    <script src="/assets/js/components/commons/modules.js"></script>
+    <script src="/assets/js/components/features/premium.js"></script>
+    <script src="/assets/js/components/features/navbar.js"></script>
+
+    <script src="/public/js/commons/config.js"></script>
+    <script src="/public/js/commons/metrika.js"></script>
+    <script src="/public/js/commons/sections.js"></script>
+
+    <script src="/assets/js/plugins/chartRadial.js"></script>
+    <script src="/assets/js/plugins/animate.js"></script>
+    <script src="/assets/js/plugins/slider.js"></script>
+    <script src="/assets/js/plugins/metrika.js"></script>
+    <script src="/assets/js/plugins/share.js"></script>
+    <script src="/assets/js/plugins/eventsEmitter.js"></script>
+    <script src="/assets/js/plugins/scroll/scroll.Animate.js"></script>
+    <script src="/assets/js/plugins/scroll/scroll.Parallax.js"></script>
+    <script src="/assets/js/store/hh/dictionary.js"></script>
+    <script src="/assets/js/libs/skycons/skycons.js"></script>
+
+    <script src="/public/js/sections/nav.js"></script>
+    <script src="/public/js/sections/home.js"></script>
+    <script src="/public/js/sections/premium.js"></script>
+    <script src="/public/js/sections/jqtest.js"></script>
+    <script src="/public/js/sections/blog.js"></script>
+    <script src="/public/js/sections/blogContent.js"></script>
+    <script src="/public/js/sections/jobs/jobsHome.js"></script>
+    <script src="/public/js/sections/jobs/jobsSearch.js"></script>
+    <script src="/public/js/init.js"></script>
+
+    <script>
+        window.$clusters = {{ clusters | safe }};
+    </script>
+
+</body>
+</html>

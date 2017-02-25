@@ -6,7 +6,7 @@ module.exports = function() {
 
 			function(callback){
                 app.db.collection('accounts').findOne({
-                    "_id": app.accountId
+                    "_id": req.accountId
                 },
                 function(err, account){
                     callback(null, account);

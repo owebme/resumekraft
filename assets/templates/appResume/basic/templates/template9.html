@@ -60,7 +60,7 @@
 				<virtual each={ job, i in $resume.take.jobs.items() }>
 					<div class="t-container-item { i % 2 ? '' : 'right' }">
 						<div class="t-container-dates">
-							<div class="t-container-dates-year">{ job.company }</div>
+							<div class="t-container-dates-year">{ job.title }</div>
 							<div class="t-container-dates-title">{ job.city }</div>
 							<div class="t-container-dates-length">
 								{ $store.month.getTitleById(job.from.month) } { job.from.year } &mdash;

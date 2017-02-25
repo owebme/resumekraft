@@ -1,0 +1,142 @@
+.jobs__header {
+    @extend .pos-rel;
+    @extend .c-white;
+    @extend .overflow-hidden;
+    @extend .minH-100v;
+    height:650px;
+
+    &:before {
+        @extend .content-empty;
+        @include abs();
+        @include animation(bg-zoomer, linear, 40s, 0s, infinite);
+        @extend .bg-cover-center;
+        background-image:url(/public/images/jobs/header.jpg);
+    }
+    &:after {
+        @extend .content-empty;
+        @include abs();
+        background-color:rgba(42,49,57,.5);
+    }
+    &__container {
+        @extend .pos-centered;
+        @extend .pb-xxs;
+        @extend .zIndex-2;
+
+        &:before {
+            @extend .content-empty;
+            @extend .pos-centered-h;
+            @extend .t100;
+            @extend .mt100;
+            @extend .w50;
+            @extend .h50;
+            @extend .bg-cover;
+            @extend .opacity-55;
+            background-image:url(/public/images/jobs/hh/min-hh-white.png);
+        }
+    }
+    &__title {
+        @extend .fontFamily-futura;
+        @extend .fontWeight-8;
+        @extend .fontSize-64;
+        @extend .text-center;
+        @extend .letterSpacing--xxl;
+        @extend .ml0;
+        @extend .mb-s;
+    }
+    &__subtitle {
+        @extend .fontFamily-futura;
+        @extend .fontSize-28;
+        @extend .text-center;
+        @extend .ml0;
+        @extend .mb25;
+    }
+    &__search {
+        &__tabs,
+        &__title {
+            @extend .flex-row-left-center;
+            @extend .h30;
+            @extend .fontSize-13;
+            @extend .pb-xs;
+            @extend .text-uppercase;
+        }
+        &__tabs {
+            &__item {
+                @extend .pos-rel;
+                @extend .mlr-xss;
+                @extend .opacity-70;
+                @extend .btn-active;
+                padding:1px 5px;
+                @extend .borderRadius-l;
+
+                &[data-active="true"] {
+                    @extend .bg-redBright;
+                    @extend .c-white;
+                    @extend .opacity-100;
+                    @extend .pointerEvents-none;
+                }
+                .m-no-touch &:hover {
+                    @extend .opacity-100;
+                }
+            }
+        }
+        div[class^="col-"]{
+            @include flex("column", "flex-end", "flex-start");
+            @extend .h90;
+        }
+    }
+    .input-group {
+        @extend .display-none;
+
+        &[data-active="true"] {
+            @extend .display-block;
+        }
+    }
+    .input-group-icon {
+        .input-icon {
+            width:58px;
+            @extend .opacity-65;
+            @extend .transition-default;
+
+            .input-svg-search {
+                @extend .w30;
+                @extend .h30;
+            }
+            .input-svg-location {
+                width:28px;
+                height:28px;
+            }
+            path {
+                @extend .fill-white;
+            }
+        }
+    }
+    ui-input.focused + .input-icon {
+        @extend .opacity-100;
+    }
+    input[type="text"] {
+        @extend .pl55;
+        @extend .pr-m;
+        font-size:22px;
+        @extend .fontFamily-graphik;
+        @extend .fontWeight-normal;
+        @extend .letterSpacing--xs;
+
+        &::-webkit-input-placeholder {
+            opacity:1;
+            color:$white;
+        }
+        &::-moz-input-placeholder {
+            opacity:1;
+            color:$white;
+        }
+        &:focus + .input-icon {
+            @extend .opacity-100;
+        }
+    }
+    .input-autosuggest-items {
+        .input-autosuggest-item:hover {
+            @extend .c-white;
+            @extend .bg-redBright;
+        }
+    }
+}

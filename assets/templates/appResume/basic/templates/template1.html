@@ -67,7 +67,7 @@
 			<div class="t-container-name">{ $i18n("resume.basic.template.Experience") }</div>
 			<div each={ job, i in $resume.take.jobs.items() } class="t-container-item">
 				<div class="t-container-dates">
-					<div class="t-container-dates-company"><span>{ job.company }</span></div>
+					<div class="t-container-dates-company"><span>{ job.title }</span></div>
 					<div class="t-container-dates-city">{ job.city }</div>
 					<div class="t-container-dates-period">
 						<div>{ $store.month.getTitleById(job.from.month) } { job.from.year } &mdash;</div>

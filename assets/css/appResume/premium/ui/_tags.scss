@@ -13,6 +13,9 @@
     max-width:200px;
     margin:5px 6px 5px 0;
 
+    .section__editable__content & {
+        @extend .pr35;
+    }
     &:not(.tag-input){
         @extend .cursor-default;
         @extend .fontWeight-bold;
@@ -35,13 +38,12 @@
         }
     }
     &-remove {
-        @extend .display-inlineBlock;
-        @extend .vAlign-textBottom;
+        @extend .pos-centered-v;
+        @extend .r-xs;
         @extend .opacity-90;
-        @extend .btn-active;
+        @extend .cursor-pointer;
+        @extend .transition-default;
         @include ui-icon(remove_fill_white, 21px, 21px);
-        margin-left:6px;
-        margin-right:-2px;
 
         &:hover {
             @extend .opacity-100;

@@ -4,7 +4,7 @@
     @extend .overflow-hidden;
     height:600px;
 
-    @for $i from 1 through 15 {
+    @for $i from 1 through 18 {
         &[data-cover="#{$i}"]:before {
             background-image:url(/public/images/blog/slide#{$i}.jpg);
         }

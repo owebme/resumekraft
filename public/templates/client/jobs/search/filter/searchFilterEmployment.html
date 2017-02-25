@@ -1,0 +1,35 @@
+<jobs-search-filter-employment class="jobs__search__filter__block">
+
+    <div class="jobs__search__filter__block__content" data-active={ active ? "true" : "false" }>
+        <div onClick={ opener } class="jobs__search__filter__title">{ opts.name }</div>
+        <div class="jobs__search__filter__block__opener"></div>
+        <div name="list" class="jobs__search__filter__items">
+            <div name="container" class="jobs__search__filter__items__list">
+                <div each={ item in $store.dictionary.get('employment') } class="jobs__search__filter__item">{ item.name }</div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.active = false;
+
+    $.list = $$($.list);
+    $.container = $$($.container);
+
+    $.opener = function(){
+        $.active = !$.active;
+
+        if ($.active){
+            $.list.css("height", $.container.height() + "px");
+        }
+        else {
+            $.list.css("height", "0px");
+        }
+    }
+
+</script>
+
+</jobs-search-filter-employment>

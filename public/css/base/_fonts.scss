@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,300,500,700&subset=cyrillic-ext,latin');
 @import '../../assets/css/fonts/Futura/style';
 @import '../../assets/css/fonts/Gotham/style';
+@import '../../assets/css/fonts/Proxima/style';
 @import '../../assets/css/fonts/Graphik/style';
 @import '../../assets/css/fonts/HelveticaNeue/style';
 
@@ -12,6 +13,9 @@
 }
 .fontFamily-gotham {
     font-family:$gotham;
+}
+.fontFamily-proxima {
+    font-family:$proxima;
 }
 .fontFamily-graphik {
     font-family:$graphik;

@@ -1,8 +1,8 @@
 module.exports = function(){
 
     app.get('/', function(req, res) {
-        var output = app.riot.render(app.tags("home"), app.appClient);
-        res.render(app.device.type == "phone" ? 'index-mobile' : 'index', {content: output});
+        var output = app.riot.render(app.tags("home", req.device), req.appClient);
+        res.render(req.device.type == "phone" ? 'index-mobile' : 'index', {content: output});
     });
 
     app.post('/login', app.controllers.auth.login);
@@ -20,14 +20,17 @@ module.exports = function(){
     app.get('/resume/:alias', app.controllers.resume("view"));
 
     app.get('/premium/', function(req, res) {
-        var output = app.riot.render(app.tags("premium"), app.appClient);
-        res.render(app.device.type == "phone" ? 'index-mobile' : 'index', {content: output});
+        var output = app.riot.render(app.tags("premium", req.device), req.appClient);
+        res.render(req.device.type == "phone" ? 'index-mobile' : 'index', {
+            title: app.config.get('title:premium'),
+            content: output
+        });
     });
     app.get('/premium/workflow', function(req, res) {
         res.render('workflow');
     });
     app.get('/premium/promo', function(req, res) {
-        if (app.device.type == "phone"){
+        if (req.device.type == "phone"){
             res.redirect('/');
         }
         else {
@@ -38,9 +41,15 @@ module.exports = function(){
     app.get('/premium/editing', app.controllers.resume("demo-editing"));
 
     app.get('/jq-test/', function(req, res) {
-        var output = app.riot.render(app.tags("jqtest"), app.appClient);
-        res.render(app.device.type == "phone" ? 'index-mobile' : 'index', {content: output});
+        var output = app.riot.render(app.tags("jqtest", req.device), req.appClient);
+        res.render(req.device.type == "phone" ? 'index-mobile' : 'index', {
+            title: app.config.get('title:jq-test'),
+            content: output
+        });
     });
+
+    app.get('/jobs/', app.controllers.jobs.index);
+    app.get('/jobs/search', app.controllers.jobs.search);
 
     app.get('/blog/', app.controllers.blog.index);
     app.get('/blog/page_:page', app.controllers.blog.index);
@@ -50,6 +59,6 @@ module.exports = function(){
 
     app.post('/payment/?pay=yamoney', app.controllers.payment);
 
-    require(process.cwd() + '/public/API')('/public/api');
     require(process.cwd() + '/assets/API')('/private/api');
+    require(process.cwd() + '/public/API')('/public/api');
 }

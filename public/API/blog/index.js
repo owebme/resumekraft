@@ -9,7 +9,7 @@ module.exports = function(url){
                 "email": req.body.email
             },{
                 "email": req.body.email,
-				"device": app.device.type
+				"device": req.device.type
             },{
                 upsert: true
             },

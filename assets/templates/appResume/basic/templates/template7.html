@@ -91,7 +91,7 @@
 			<div each={ job, i in $resume.take.jobs.items() } class="t-container-string-element { 'mt-10' : i != 1 }">
 				<span class="cell cell-name">{ i == 0 ? $i18n("resume.basic.template.Experience") : ''  }</span>
 				<span class="cell cell-text">
-					<div><strong>{ job.company }</strong></div>
+					<div><strong>{ job.title }</strong></div>
 					<div>{ job.city }</div>
 					<div><strong>{ job.post }</strong></div>
 					<div>{ $resume.take.jobs.period(job) }</div>

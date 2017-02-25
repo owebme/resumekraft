@@ -7,7 +7,7 @@
                 <span class="visible-sm visible-md c-gray fontSize-28">Компания</span>
             </div>
             <div class="col-xs-24 col-sm-16">
-                <ui-input update="company" cursor={ get.cursor() } placeholder={ 'Название компании' : app.device.isPhone } size="xl"></ui-input>
+                <ui-input update="title" cursor={ get.cursor() } placeholder={ 'Название компании' : app.device.isPhone } size="xl"></ui-input>
             </div>
         </div>
         <div class="row mb-m">
@@ -78,7 +78,7 @@
                 <h3 class="c-blue">{ item.post }</h3>
             </div>
             <div class="col-xs-24 col-sm-14 text-right">
-                <h3 class="c-blue">{ opts.item.company } &ndash; { opts.item.city }</h3>
+                <h3 class="c-blue">{ opts.item.title } &ndash; { opts.item.city }</h3>
             </div>
         </div>
         <div class="row">

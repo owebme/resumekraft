@@ -5,13 +5,13 @@ module.exports = function() {
 			if (req.body._id) delete req.body._id;
 
 			app.db.collection('accounts').update({
-				"_id": app.accountId
+				"_id": req.accountId
 			},{
 				$set: req.body,
 				$push: {
 					"history.events": {
 	                    name: "profileUpdate",
-	                    device: app.device,
+	                    device: req.device,
 	                    date: app.moment().format()
 	            	}
 				}

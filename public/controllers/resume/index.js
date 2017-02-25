@@ -10,13 +10,13 @@ module.exports = function(mode){
         }
         else {
             if (!app.utils.isObjectId(req.params.alias)){
-                handlerResult(res, null);
+                handlerResult(req, res, null);
                 return;
             }
             var params = {};
             params._id = app.utils.ObjectId(req.params.alias);
 
-            if (mode == "editing") params.accountId = app.accountId;
+            if (mode == "editing") params.accountId = req.accountId;
 
             app.db.collection('resumes').find(params)
             .toArray(function(err, data){
@@ -27,9 +27,9 @@ module.exports = function(mode){
                     next();
                 }
                 else if (app.utils.isEmpty(data)){
-                    handlerResult(res, data);
+                    handlerResult(req, res, data);
                 }
-                else if (mode == "editing" && app.account && app.account.plan == "premium"){
+                else if (mode == "editing" && req.account && req.account.plan == "premium"){
                     res.render('premium', {
                         color: resume.config.color,
                         resume: JSON.stringify(resume),
@@ -41,7 +41,7 @@ module.exports = function(mode){
                         post: resume.post,
                         resume: JSON.stringify(resume),
                         num: resume.template,
-                        isMobile: app.device.isMobile,
+                        isMobile: req.device.isMobile,
                         stamp: true,
                         editing: false
                     });
@@ -49,20 +49,20 @@ module.exports = function(mode){
                 else if (mode == "view" && resume.plan == "premium" && resume.public){
                     res.render('premiumView', {
                         color: resume.config.color,
-                        ip: app.clientIP,
+                        ip: req.clientIP,
                         post: resume.post,
                         resume: JSON.stringify(resume),
                         editing: false
                     });
                 }
                 else {
-                    handlerResult(res, data);
+                    handlerResult(req, res, data);
                 }
             });
         }
     }
 
-    function handlerResult(res, data){
+    function handlerResult(req, res, data){
         var result = {
             message: ":(",
             error: {
@@ -72,7 +72,7 @@ module.exports = function(mode){
                 }
             }
         }
-        if (mode == "editing" && app.account && app.account.plan != "premium"){
+        if (mode == "editing" && req.account && req.account.plan != "premium"){
             result.error = {
                 status: "Для редактирования резюме требуется <span class='blue'>Premium</span> аккаунт",
                 text: "Возможно действие тарифного плана истекло.",

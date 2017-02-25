@@ -37,7 +37,7 @@
                         </div>
                         <div class="col-md-10">
                             <div class="job-year">{ $store.resume.take.jobs.year(item) }</div>
-                            <h3 class="job-title text-right">{ item.company } &ndash; { item.city }</h3>
+                            <h3 class="job-title text-right">{ item.title } &ndash; { item.city }</h3>
                         </div>
                     </div>
                     <div class="row pl-m pt-xxs pb-xl sm-pl0">
@@ -70,7 +70,7 @@
                     item: function(){
                         return  {
                             _id: _.newId(),
-                            company: null,
+                            title: null,
                             city: null,
                             post: null,
                             from: {
@@ -92,7 +92,7 @@
                         alert: "Введите должность"
                     },
                     {
-                        field: "company",
+                        field: "title",
                         alert: "Введите название компании"
                     },
                     {

@@ -1,0 +1,37 @@
+<jobs-search-panel class="jobs__search__nav__subpanel section container">
+
+    <div class="row">
+        <div class="col-md-offset-6 col-md-9">
+            <div class="jobs__search__nav__form">
+                <div class="input-group input-group-icon input-group-m">
+                    <ui-input placeholder="Я ищу..." autosuggest="getSuggestVacancy" autosuggestSize="s"></ui-input>
+                    <div class="input-icon">
+                        <svg class="input-svg input-svg-search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                            <path d="M 21 3 C 11.623004 3 4 10.623004 4 20 C 4 29.376996 11.623004 37 21 37 C 24.709505 37 28.140329 35.803849 30.9375 33.78125 L 44.09375 46.90625 L 46.90625 44.09375 L 33.90625 31.0625 C 36.460556 28.087561 38 24.221313 38 20 C 38 10.623004 30.376996 3 21 3 z M 21 5 C 29.296116 5 36 11.703884 36 20 C 36 28.296116 29.296116 35 21 35 C 12.703884 35 6 28.296116 6 20 C 6 11.703884 12.703884 5 21 5 z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="input-group input-group-icon input-group-m">
+                    <ui-input placeholder="Где?" autosuggest="getSuggestCity" autosuggestSize="s"></ui-input>
+                    <div class="input-icon">
+                        <svg class="input-svg input-svg-location" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" style="enable-background:new 0 0 100 100;" xml:space="preserve"><path d="M50,5C31.3,5,16,19.6,16,37.6l0,0.1c0.4,12.1,6,25.1,16.8,38.9c7.9,10.1,15.6,16.7,16,17l1.3,1.1l1.3-1.1  c0.3-0.3,8-6.8,16-17C78,62.8,83.6,49.8,84,37.6C84,19.6,68.7,5,50,5z M64.1,74C58.3,81.5,52.5,87,50,89.3  C47.5,87,41.7,81.5,35.9,74c-7-8.9-15.4-22.5-15.9-36.4C20,21.8,33.5,9,50,9c16.5,0,30,12.8,30,28.6C79.6,51.5,71.1,65.1,64.1,74z   M50,24c-8.3,0-15,6.7-15,15s6.7,15,15,15c8.3,0,15-6.7,15-15S58.3,24,50,24z M50,50c-6.1,0-11-4.9-11-11s4.9-11,11-11s11,4.9,11,11  S56.1,50,50,50z"/></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="jobs__search__nav__options">
+                <div class="jobs__search__nav__options__item" data-item="settings">
+                    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M0 3h9v2H0V3zm0 4h6v2H0V7zm0 4h8v2H0v-2zm13-8v6l1.5-1.5L16 9l-4 4-4-4 1.5-1.5L11 9V3h2z"/></svg>
+                </div>
+                <div class="jobs__search__nav__options__item" data-item="list-less" data-balloon="С описанием" data-active="true">
+                    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2 3h12v4H2V3zm0 6h12v4H2V9z"/></svg>
+                </div>
+                <div class="jobs__search__nav__options__item" data-item="list-more" data-balloon="Без описания">
+                    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2 3h12v2H2V3zm0 4h12v2H2V7zm0 4h12v2H2v-2z"/></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</jobs-search-panel>

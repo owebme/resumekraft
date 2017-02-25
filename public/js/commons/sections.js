@@ -5,13 +5,15 @@
     app.sections = {
 
         init: function(){
-            _.each(app.sections, function(item){
-                if (item.init) item.init();
-            });
+            if (app.plugins.eventsEmitter) app.plugins.eventsEmitter.init(this);
+
             if (app.device.isPhone){
                 $dom.body.removeClass("appLoading");
                 app.features.links.init();
             }
+            _.each(app.sections, function(item){
+                if (item.init) item.init();
+            });
         }
     };
 

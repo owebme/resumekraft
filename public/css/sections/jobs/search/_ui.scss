@@ -1,0 +1,46 @@
+.jobs__search {
+    @extend .fontFamily-helvetica;
+
+    .input[type="text"]{
+        &:focus {
+            box-shadow:inset 0 0 0 1px $blueBright;
+        }
+        &.input {
+            @extend .fontFamily-graphik;
+
+            &-m {
+                font-size:16px;
+            }
+            &-s {
+                font-size:15px;
+            }
+        }
+    }
+    .input-svg path {
+        @extend .fill-grayLight;
+    }
+    .input-group-m .input-icon {
+        .input-svg-search {
+            @extend .w22;
+            @extend .h22;
+        }
+        .input-svg-location {
+            @extend .w32;
+            @extend .h32;
+            transform:translateY(3px);
+        }
+    }
+    ui-input {
+        &.focused + {
+            .input-icon path {
+                @extend .fill-blueBright;
+            }
+        }
+    }
+    .input-autosuggest-items {
+        .input-autosuggest-item:hover {
+            @extend .c-white;
+            @extend .bg-green;
+        }
+    }
+}

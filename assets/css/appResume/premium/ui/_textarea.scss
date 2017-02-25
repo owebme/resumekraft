@@ -9,6 +9,10 @@
                 padding-bottom:10px;
             }
         }
+        &::placeholder {
+            color:rgba($steel,.8);
+            @extend .lineHeight-l;
+        }
         &::-webkit-input-placeholder {
             color:rgba($steel,.8);
         }

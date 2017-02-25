@@ -38,14 +38,14 @@ $store.demo = {
             gender: "female",
             birthday: {
                 day: "25",
-                month: "8",
+                month: "7",
                 year: "1986",
                 hidden: true
             },
             contacts: {
                 city: "Москва",
-                email: "mymail@gmail.com",
-                phone: "(XXX) 500-5550",
+                email: "victory@gmail.com",
+                phone: "(900) 500-5550",
                 primary: "any",
                 relocate: true,
                 site: "http://web-projects.me",
@@ -312,7 +312,7 @@ $store.demo = {
             items: [
                 {
                     _id: "1",
-                    company: "Технопарк Сколково, ООО",
+                    title: "Технопарк Сколково, ООО",
                     city: "Москва",
                     post: "Специалист по коммуникациям",
                     from: {
@@ -328,7 +328,7 @@ $store.demo = {
                 },
                 {
                     _id: "2",
-                    company: "ООО НПП «Тензосенсор»",
+                    title: "ООО НПП «Тензосенсор»",
                     city: "Москва",
                     post: "Финансовый директор",
                     from: {
@@ -344,7 +344,7 @@ $store.demo = {
                 },
                 {
                     _id: "3",
-                    company: "ООО НТЦ «Интрофизика»",
+                    title: "ООО НТЦ «Интрофизика»",
                     city: "Москва",
                     post: "Заместитель директора по маркетингу",
                     from: {

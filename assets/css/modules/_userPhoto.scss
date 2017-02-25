@@ -31,8 +31,8 @@
     }
     .m-touch &:not([data-place="true"]) {
         &:before {
-            background:radial-gradient($blackLight, rgba($blackLight,0));
-            @extend .opacity-40;
+            @extend .bg-steel;
+            @extend .opacity-30;
         }
         &:after {
             @extend .t50;
