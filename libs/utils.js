@@ -57,6 +57,40 @@ var utils = {
 
 	getClientAddress: function(req){
 		return (req.headers['x-forwarded-for'] || '').split(',')[0] || req.connection.remoteAddress;
+	},
+
+	numberFormat: function(number, dec, dsep, tsep) {
+		if (isNaN(number) || number == null) return '';
+
+		number = parseInt(number).toFixed(~~dec);
+		tsep = typeof tsep == 'string' ? tsep : ',';
+
+		var parts = number.split('.'),
+			fnums = parts[0],
+			decimals = parts[1] ? (dsep || '.') + parts[1] : '';
+
+		return fnums.replace(/(\d)(?=(?:\d{3})+$)/g, '$1' + tsep) + decimals;
+	},
+
+	deepFindWhere: function(obj, p, v, result){
+	    if (obj instanceof Array) {
+	        for (var i = 0; i < obj.length; i++) {
+	            result = utils.deepFindWhere(obj[i], p, v, result);
+	        }
+	    }
+	    else {
+	        for (var prop in obj) {
+	            if (prop == p) {
+	                if (obj[prop] == v) {
+	                    result = obj;
+	                }
+	            }
+	            if (obj[prop] instanceof Object || obj[prop] instanceof Array){
+	                result = utils.deepFindWhere(obj[prop], p, v, result);
+				}
+	        }
+	    }
+	    return result;
 	}
 
 }

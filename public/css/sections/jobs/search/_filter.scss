@@ -4,8 +4,16 @@
     @extend .pl-m;
     @extend .mb-s;
 }
+.jobs__search__sidebar {
+    @include accelerate();
+    @extend .pos-abs;
+    width:274px;
+
+    &[data-fixed="true"]{
+        @extend .pos-fixed;
+    }
+}
 .jobs__search__filter {
-    @extend .h100v;
     @extend .userSelect-none;
 
     &__block {
@@ -15,6 +23,9 @@
         padding-bottom:8px;
         @extend .pt-s;
 
+        &[data-hidden="true"]{
+            @extend .display-none;
+        }
         &:before {
             @extend .content-empty;
             @include abs();
@@ -103,11 +114,16 @@
         @extend .overflow-hidden;
         margin-left:-4px;
         will-change:height;
-        transition:height 0.4s $cubic345;
 
         &__list {
             @extend .willChange-opacity;
-            transition:opacity 0.4s $cubic345;
+        }
+        &[data-animate="true"]{
+            transition:height 0.4s $cubic345;
+
+            .jobs__search__filter__items__list {
+                transition:opacity 0.4s $cubic345;
+            }
         }
     }
     &__title {
@@ -127,21 +143,36 @@
         }
     }
     &__item {
+        @extend .w100p;
+        @extend .display-table;
         @extend .c-blackLight;
-        @extend .fontFamily-graphik;
-        @extend .fontSize-14;
+        @extend .fontSize-13;
         @extend .cursor-pointer;
         padding:2px 10px;
 
+        &[data-hidden="true"]{
+            @extend .display-none;
+        }
         &:hover {
             @extend .bg-smokeLight;
             color:#000;
+        }
+        &__title {
+            @extend .pr-xs;
+            @extend .display-tableCell;
+        }
+        &__count {
+            @extend .c-grayDarken;
+            @extend .fontSize-12;
+            @extend .display-tableCell;
+            @extend .text-right;
         }
         &[data-select="true"]{
             @extend .pos-rel;
             @extend .bg-smokeLight;
             @extend .transition-default;
-            margin-left:-4px;
+            margin:0 -4px;
+            width:calc(100% + 4px);
 
             &:before,
             &:after {
@@ -171,9 +202,21 @@
             }
         }
     }
+    &__more {
+        @extend .display-inlineBlock;
+        @extend .c-gray;
+        @extend .fontSize-13;
+        @extend .btn-active;
+        padding-top:2px;
+        @extend .pl-xs;
+
+        &:hover {
+            @extend .c-blueBright;
+        }
+    }
     &__salary {
         @extend .text-right;
-        @extend .pr-l;
+        @extend .pr30;
         @extend .nowrap;
         @extend .fontWeight-bold;
         @extend .fontFamily-proxima;
@@ -192,10 +235,6 @@
     &__checkbox {
         @extend .text-right;
         @extend .mt-s;
-        @extend .pr-s;
-
-        .checkbox-text {
-            @extend .fontFamily-graphik;
-        }
+        @extend .pr-xs;
     }
 }

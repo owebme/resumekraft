@@ -1,0 +1,80 @@
+<jobs-search-filter-block class="jobs__search__filter__block" data-hidden={ _.isEmpty($store.jobs[opts.item]) && !$State.get(opts.item) }>
+
+    <div class="jobs__search__filter__block__content" data-active={ active ? "true" : "false" }>
+        <div onClick={ onOpener } class="jobs__search__filter__title">{ opts.name }</div>
+        <div class="jobs__search__filter__block__opener"></div>
+        <div onClick={ parent.onRemove } onUpdate="none" if={ $store.jobs.state && $State.get(opts.item) } class="jobs__search__filter__item" data-select="true">{ $State.get(opts.item).name }</div>
+        <div name="list" class="jobs__search__filter__items" data-animate={ isAnimate }>
+            <div name="container" class="jobs__search__filter__items__list">
+                <div onClick={ parent.parent.onSelect } onUpdate="none" each={ item, i in _.sortArray($store.jobs[opts.item], "count", "desc") } no-reorder class="jobs__search__filter__item" data-hidden={ shortList && shortItems.indexOf(parent.opts.item) !== -1 && i > 2 }>
+                    <div class="jobs__search__filter__item__title">{ item.name }</div>
+                    <div class="jobs__search__filter__item__count">{ item.count }</div>
+                </div>
+                <div onClick={ onMore } if={ shortList && shortItems.indexOf(opts.item) !== -1 && $store.jobs[opts.item].length > 3 } class="jobs__search__filter__more">Еще { $store.jobs[opts.item].length - 3 }</div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.shortItems = ['area', 'metro', 'specialization', 'industry'];
+
+    $.list = $$($.list);
+    $.container = $$($.container);
+    $.shortList = true;
+
+    $.on("before-mount", function(){
+        $.active = $.opts.active;
+    });
+
+    $.on("mount", function(){
+        if ($.active){
+            $.list.css("height", $.container.height() + "px");
+        }
+    });
+
+    $.on("update", function(){
+        if ($store.jobs.clusters){
+            var data = _.findWhere($store.jobs.clusters, {"id": ($.opts.item == "specialization" ? "professional_area" : $.opts.item)});
+            $store.jobs[$.opts.item] = data ? data.items : null;
+
+            if ($.active && $.isMounted && !$.isAnimate){
+                $.shortList = true;
+                $.one("updated", function(){
+                    $.list.css("height", $.container.height() + "px");
+                })
+            }
+        }
+    });
+
+    $.onOpener = function(){
+        $.isAnimate = true;
+        $.active = !$.active;
+
+        if ($.active){
+            $.list.css("height", $.container.height() + "px");
+        }
+        else {
+            $.list.css("height", "0px");
+        }
+        setTimeout(function(){
+            $.isAnimate = false;
+        }, 5);
+    };
+
+    $.onMore = function(){
+        $.isAnimate = true;
+        $.shortList = false;
+        $.one("updated", function(){
+            $.list.css("height", $.container.height() + "px");
+        })
+        setTimeout(function(){
+            $.isAnimate = false;
+        }, 5);
+    };
+
+</script>
+
+</jobs-search-filter-block>

@@ -17,15 +17,44 @@
 
             this.$nav = this.el.find("jobs-search-nav");
 
-            this.$sidebar = this.el.find("jobs-search-filter");
+            WD.scroll();
 
             WD.nav();
+
+            app.sections.on("afterMounted", function(){
+                WD.$sidebar = WD.el.find("jobs-search-filter");
+                WD.$panel = WD.$nav.find(".jobs__search__nav__panel");
+            });
         },
 
         nav: function(){
+
+            this.$nav.find(".jobs__search__nav__panel").on("click", ".input-group", function(e){
+                WD.$nav.attr("data-show", true);
+                WD.navShow = true;
+
+                _.onEndTransition(WD.$panel[0], function(){
+                    WD.$nav.find("jobs-search-vacancy-form")
+                    .find(".input-group[data-item='" + $(e.target).attr("data-item") + "']")
+                    .find("input")
+                    .focus();
+                });
+            });
+        },
+
+        scroll: function(){
             var scrolling = false,
-                turnPanel = false,
-                scrollOffset = 40;
+                fixedPanel = false,
+                scrollOffset = 94;
+
+            WD.sticky = {
+                a: null,
+                b: null,
+                K: null,
+                Z: 0,
+                P: 66,
+                N: 30
+            }
 
             $dom.window.on('scroll', function(){
                 if (!scrolling){
@@ -36,16 +65,83 @@
 
             function autoHidePanel(){
                 var scrollTop = $dom.window.scrollTop();
-                if (scrollTop > scrollOffset && !turnPanel){
-                    WD.$nav.attr('data-turn', true);
-                    turnPanel = true;
+                if (scrollTop > scrollOffset && !fixedPanel){
+                    WD.el.attr('data-fixed', true);
+                    fixedPanel = true;
                 }
-                else if (scrollTop < scrollOffset && turnPanel) {
-                    WD.$nav.removeAttr('data-turn');
-                    turnPanel = false;
+                else if (scrollTop < scrollOffset && fixedPanel) {
+                    WD.el.removeAttr('data-fixed');
+                    fixedPanel = false;
+                }
+                if (WD.navShow){
+                    WD.$nav.removeAttr('data-show');
+                    WD.navShow = false;
+                }
+                if (WD.$sidebar){
+                    if (!WD.sticky.a){
+                        WD.sticky.a = WD.$sidebar.parent()[0];
+                        WD.sticky.b = WD.$sidebar[0];
+                    }
+                    var Ra = WD.sticky.a.getBoundingClientRect(),
+                        R1bottom = document.documentElement.clientHeight;
+                    if (Ra.bottom < R1bottom) {
+                      var Rb = WD.sticky.b.getBoundingClientRect(),
+                          Rh = Ra.top + Rb.height,
+                          W = document.documentElement.clientHeight,
+                          R1 = Math.round(Rh - R1bottom),
+                          R2 = Math.round(Rh - W);
+                      if (Rb.height + WD.sticky.P - 1 > W) {
+                        if (Ra.top < WD.sticky.K) {  // скролл вниз
+                          if (R2 + WD.sticky.N > R1) {  // не дойти до низа
+                            if (Rb.bottom - W + WD.sticky.N - 1 <= 0) {  // подцепиться
+                              WD.$sidebar.attr('data-fixed', true);
+                              WD.sticky.b.style.top = W - Rb.height - WD.sticky.N + 'px';
+                              WD.sticky.Z = WD.sticky.N + Ra.top + Rb.height - W;
+                            } else {
+                              WD.$sidebar.removeAttr('data-fixed');
+                              WD.sticky.b.style.top = - WD.sticky.Z + 'px';
+                            }
+                          } else {
+                            WD.$sidebar.removeAttr('data-fixed');
+                            WD.sticky.b.style.top = - R1 +'px';
+                            WD.sticky.Z = R1;
+                          }
+                        } else {  // скролл вверх
+                          if (Ra.top - WD.sticky.P < 0) {  // не дойти до верха
+                            if (Rb.top - WD.sticky.P + 1 >= 0) {  // подцепиться
+                              WD.$sidebar.attr('data-fixed', true);
+                              WD.sticky.b.style.top = WD.sticky.P + 'px';
+                              WD.sticky.Z = Ra.top - WD.sticky.P;
+                            } else {
+                              WD.$sidebar.removeAttr('data-fixed');
+                              WD.sticky.b.style.top = - WD.sticky.Z + 'px';
+                            }
+                          } else {
+                            WD.$sidebar.removeAttr('data-fixed');
+                            WD.sticky.b.style.top = '';
+                            WD.sticky.Z = 0;
+                          }
+                        }
+                        WD.sticky.K = Ra.top;
+                      } else {
+                        if ((Ra.top - WD.sticky.P) <= 0) {
+                          if ((Ra.top - WD.sticky.P) <= R1) {
+                            WD.$sidebar.removeAttr('data-fixed');
+                            WD.sticky.b.style.top = - R1 +'px';
+                          } else {
+                            WD.$sidebar.attr('data-fixed', true);
+                            WD.sticky.b.style.top = WD.sticky.P + 'px';
+                          }
+                        } else {
+                          WD.$sidebar.removeAttr('data-fixed');
+                          WD.sticky.b.style.top = '';
+                        }
+                      }
+                    }
                 }
                 scrolling = false;
             }
+
         }
     };
 

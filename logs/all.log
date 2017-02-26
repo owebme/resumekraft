@@ -8792,3 +8792,1148 @@
 {"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T02:54:26.717Z"}
 {"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T02:54:26.749Z"}
 {"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T02:54:26.760Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T02:56:52.896Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T02:56:52.924Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T02:56:52.930Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T03:04:54.637Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T03:04:54.682Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T03:04:54.697Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T03:17:05.062Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T03:17:05.424Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T03:51:41.904Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T03:51:41.930Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T03:51:41.936Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T03:56:34.626Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T03:56:34.656Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T03:56:34.662Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T03:56:50.231Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T03:56:50.265Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T03:56:50.271Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T04:31:48.371Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T04:31:48.396Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T04:31:48.403Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T04:32:27.243Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T04:32:27.268Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T04:32:27.273Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T04:35:25.922Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T04:35:25.948Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T04:35:25.954Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T04:35:34.150Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T04:35:34.173Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T04:35:34.178Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T04:37:01.457Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T04:37:01.484Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T04:37:01.489Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T04:38:08.292Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T04:38:08.321Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T04:38:08.327Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T04:41:05.911Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T04:41:05.940Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T04:41:05.946Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T04:47:23.337Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T04:47:23.361Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T04:47:23.366Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T04:51:41.786Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T04:51:41.827Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T04:51:41.837Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T04:57:35.366Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T04:57:35.415Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T04:57:35.428Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T04:58:12.267Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T04:58:12.300Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T04:58:12.306Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T04:58:42.563Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T04:58:42.650Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T04:58:42.666Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T05:01:23.845Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T05:01:23.872Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T05:01:23.879Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T05:03:22.853Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T05:03:22.908Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T05:03:22.918Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:07:35.322Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:07:35.323Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:07:35.327Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:07:35.363Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:07:35.364Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:07:35.365Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:07:35.381Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:07:35.527Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:07:35.567Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:07:35.593Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:07:35.647Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:07:35.691Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:07:35.715Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:07:35.725Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:10:41.208Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:10:41.275Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:10:41.275Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:10:41.299Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:10:41.300Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:10:41.330Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:10:41.331Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:10:41.467Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:10:41.506Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:10:41.559Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:10:41.584Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:10:41.610Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:10:41.622Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:10:41.631Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:11:00.376Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:11:00.386Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:11:00.387Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:11:00.388Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:11:00.389Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:11:00.392Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:11:00.407Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:11:00.568Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:11:00.656Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:11:00.681Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:15:48.035Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:15:48.039Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:15:48.169Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:15:48.192Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:15:48.204Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:15:48.244Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:15:48.354Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:15:48.452Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:15:48.638Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:15:48.752Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:15:48.796Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:15:48.857Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:15:48.875Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:07.598Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:07.696Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:07.701Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:07.701Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:07.715Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:07.730Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:07.748Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:07.823Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:07.871Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:07.891Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:07.906Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:07.913Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:07.928Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:07.938Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:19.079Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:19.080Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:19.081Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:19.081Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:19.082Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:19.096Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:19.107Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:19.375Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:19.388Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:19.423Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:19.447Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:19.462Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:19.470Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:19.477Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:56.576Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:56.614Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:56.616Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:56.618Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:56.620Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:56.621Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:56.621Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:56.947Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:57.051Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:57.111Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:59.528Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:59.557Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:59.558Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:59.559Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:59.560Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:59.588Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:59.592Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:59.770Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:59.852Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:59.872Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:59.922Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:59.945Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:59.971Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:16:59.984Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:34:14.692Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T05:44:42.391Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T06:07:53.174Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T06:07:53.422Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T06:36:37.058Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T06:36:37.084Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T06:36:37.090Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T06:36:47.677Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T06:36:47.707Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T06:36:47.712Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T06:46:29.040Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T06:46:29.090Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T06:46:29.102Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T07:22:18.537Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T07:22:18.563Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T07:22:18.568Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T10:57:40.696Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T10:57:40.721Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T10:57:40.727Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T10:58:09.735Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T10:58:09.835Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T10:58:09.860Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T11:01:38.299Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T11:01:38.367Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T11:01:38.386Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:10:09.786Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:10:14.547Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:10:16.960Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:11:31.870Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:11:43.074Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:12:10.737Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:14:27.502Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:15:16.365Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:15:18.812Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T11:15:43.341Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T11:15:43.405Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T11:15:43.424Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:16:18.788Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:16:25.972Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:16:31.837Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:16:41.345Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:16:47.212Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:16:59.226Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:17:14.736Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:18:03.261Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:18:11.814Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:18:41.596Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:18:51.219Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:19:14.971Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:19:40.833Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:19:48.411Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:21:00.687Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:22:01.872Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:25:33.991Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:25:47.710Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:25:52.799Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:26:16.772Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:26:34.154Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:26:43.306Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T11:26:50.660Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T20:33:35.954Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T20:33:37.871Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T20:33:59.896Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T20:36:04.845Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T21:25:27.354Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T21:25:27.380Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T21:25:27.387Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T21:25:52.284Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T21:25:52.314Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T21:25:52.319Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T21:25:59.111Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T21:25:59.144Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T21:25:59.150Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T21:36:54.181Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T21:36:54.205Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T21:36:54.211Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T21:36:59.024Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T21:36:59.048Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T21:36:59.053Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T21:42:26.944Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T21:42:26.968Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T21:42:26.974Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T21:42:30.085Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T21:42:30.111Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T21:42:30.118Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T21:42:54.606Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T21:42:54.631Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T21:42:54.636Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T21:43:44.767Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T21:43:44.796Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T21:43:44.802Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T21:46:46.954Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T21:46:46.979Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T21:46:46.985Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T21:46:54.197Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T21:46:54.234Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T21:46:54.241Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T21:47:06.162Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T21:47:06.206Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T21:47:06.215Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T21:52:44.774Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T21:52:44.800Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T21:52:44.806Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:00:22.993Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:00:23.017Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:00:23.025Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:03:09.177Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:03:09.226Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:03:09.238Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:06:59.814Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:06:59.842Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:06:59.847Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:07:48.437Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:07:48.461Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:07:48.470Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:09:44.872Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:09:44.899Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:09:44.905Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:09:57.899Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:09:57.940Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:09:57.949Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:10:29.316Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:10:29.361Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:10:29.375Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:16:02.440Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:16:02.468Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:16:02.474Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:16:47.131Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:16:47.208Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:16:47.224Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:20:40.642Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:20:40.671Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:20:40.677Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:21:12.053Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:21:12.133Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:21:12.147Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:23:00.700Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:23:00.725Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:23:00.734Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:23:35.614Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:23:35.642Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:23:35.648Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:29:09.157Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:29:09.184Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:29:09.194Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:29:15.291Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:29:15.323Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:29:15.330Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:29:23.200Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:29:23.229Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:29:23.235Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:31:59.791Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:31:59.821Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:31:59.827Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:32:04.104Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:32:04.142Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:32:04.148Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:32:15.784Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:32:15.812Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:32:15.818Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:32:48.526Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:32:48.557Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:32:48.564Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:33:18.987Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:33:19.086Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:33:19.098Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:33:35.597Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:33:35.625Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:33:35.631Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:33:41.881Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:33:41.914Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:33:41.921Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:44:43.808Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:44:43.838Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:44:43.845Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:45:30.558Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:45:30.590Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:45:30.598Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T22:55:35.076Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T22:55:35.107Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T22:55:35.115Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T23:01:45.639Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T23:01:45.669Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T23:01:45.679Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T23:02:05.202Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T23:02:20.593Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T23:02:31.378Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T23:02:31.413Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T23:02:31.420Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T23:02:41.639Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T23:02:41.668Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T23:02:41.674Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T23:02:44.494Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T23:02:44.532Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T23:02:44.544Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T23:03:01.539Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T23:03:01.568Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T23:03:01.574Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T23:03:14.517Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T23:03:35.440Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T23:03:35.515Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T23:03:35.529Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T23:03:50.706Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T23:03:50.732Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T23:03:50.738Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T23:03:53.330Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T23:04:40.093Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T23:04:40.124Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T23:04:40.137Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T23:04:52.629Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T23:04:52.656Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T23:04:52.662Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T23:04:54.989Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T23:05:01.894Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T23:05:01.925Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T23:05:01.938Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T23:05:09.145Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T23:05:37.156Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T23:05:37.226Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T23:05:37.232Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T23:05:42.587Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T23:05:42.615Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T23:05:42.624Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T23:05:52.966Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T23:08:16.346Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T23:08:16.381Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T23:08:16.389Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T23:10:02.379Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T23:11:41.219Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T23:14:04.291Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T23:14:10.575Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T23:15:59.620Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-25T23:18:40.183Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T23:25:13.398Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T23:25:13.425Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T23:25:13.434Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T23:27:56.097Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T23:27:56.126Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T23:27:56.133Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-25T23:31:56.024Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-25T23:31:56.052Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-25T23:31:56.058Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:04:58.195Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:05:10.766Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:06:14.479Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:06:41.428Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:07:02.215Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:07:41.479Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:07:45.452Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:11:26.733Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:12:09.144Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:12:20.357Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:12:26.025Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:12:30.648Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:13:23.925Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:15:02.812Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:15:31.932Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:15:42.791Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:18:29.280Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:19:01.554Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:19:23.491Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:19:33.203Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:20:27.577Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:21:18.663Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:21:23.026Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:21:33.990Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:22:03.031Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:24:25.146Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:24:27.236Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:24:29.877Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:24:37.460Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:24:39.785Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:24:55.476Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:24:58.902Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:25:55.569Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:26:10.463Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:26:43.070Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T00:27:05.274Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:32:15.902Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:32:15.983Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:32:15.989Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:35:33.086Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:35:33.111Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:35:33.117Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:43:15.058Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:43:15.101Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:43:15.108Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:44:04.623Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:44:04.648Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:44:04.654Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:45:01.775Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:45:01.799Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:45:01.806Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:46:15.284Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:46:15.356Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:46:15.373Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:46:18.186Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:46:18.215Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:46:18.220Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:46:32.634Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:46:32.661Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:46:32.667Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:46:53.555Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:46:53.589Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:46:53.603Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:47:23.020Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:47:23.116Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:47:23.135Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:47:29.117Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:47:29.149Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:47:29.164Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:47:33.812Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:47:33.836Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:47:33.841Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:48:00.708Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:48:00.737Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:48:00.744Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:48:43.913Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:48:43.944Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:48:43.949Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:50:20.806Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:50:20.842Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:50:20.857Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:50:33.302Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:50:33.328Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:50:33.335Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:50:43.411Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:50:43.438Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:50:43.447Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:50:46.547Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:50:46.597Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:50:46.613Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:52:22.398Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:52:22.426Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:52:22.433Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:52:25.274Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:52:25.304Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:52:25.310Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:52:30.640Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:52:30.695Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:52:30.707Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:52:41.443Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:52:41.471Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:52:41.476Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:52:43.309Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:52:43.339Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:52:43.345Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:53:31.769Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:53:31.797Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:53:31.803Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:54:20.322Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:54:20.351Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:54:20.356Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:55:12.317Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:55:12.371Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:55:12.382Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:55:13.982Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:55:14.093Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:55:14.118Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:55:16.506Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:55:16.539Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:55:16.551Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:58:06.437Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:58:06.463Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:58:06.469Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T02:58:24.321Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T02:58:24.365Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T02:58:24.374Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:01:44.044Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:01:44.072Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:01:44.078Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:02:34.227Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:02:34.256Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:02:34.262Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:02:38.199Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:02:38.236Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:02:38.279Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:02:42.518Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:02:42.601Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:02:42.643Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:05:09.388Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:05:09.423Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:05:09.447Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:05:16.116Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:05:16.140Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:05:16.158Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:05:29.241Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:05:29.270Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:05:29.290Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:05:48.908Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:05:48.940Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:05:48.961Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:08:10.458Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:08:10.494Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:08:10.519Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:09:30.982Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:09:31.009Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:09:31.031Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:10:03.627Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:10:03.654Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:10:03.674Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:10:15.987Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:10:16.018Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:10:16.048Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:11:58.003Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:11:58.033Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:11:58.051Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:14:02.960Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:14:03.038Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:14:03.056Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:14:06.885Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:14:06.914Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:14:06.946Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:14:14.641Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:14:14.667Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:14:14.683Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:14:56.537Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:14:56.571Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:14:56.598Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:15:53.686Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:15:53.714Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:15:53.735Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:18:19.932Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:18:19.961Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:18:19.978Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:19:29.067Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:19:29.097Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:19:29.118Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:19:41.791Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:19:41.821Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:19:41.841Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:20:09.521Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:20:09.552Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:20:09.576Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:21:29.243Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:21:29.273Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:21:29.299Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:24:24.048Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:24:24.076Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:24:24.099Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:31:06.590Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:31:06.624Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:31:06.648Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:32:16.865Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:32:16.894Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:32:16.916Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:36:29.733Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:36:29.758Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:36:29.775Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:37:03.184Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:37:03.209Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:37:03.227Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:37:35.019Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:37:35.047Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:37:35.070Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:38:43.627Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:38:43.656Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:38:43.684Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:38:49.401Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:38:49.437Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:38:49.465Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:39:09.055Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:39:09.102Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:39:09.133Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:39:30.470Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:39:30.498Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:39:30.531Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:39:34.656Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:39:34.683Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:39:34.703Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:40:13.195Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:40:13.245Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:40:13.270Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:40:16.180Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:40:16.211Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:40:16.236Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:40:17.606Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:40:17.636Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:40:17.656Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:40:26.625Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:40:26.651Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:40:26.670Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:40:49.245Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:40:49.276Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:40:49.306Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:41:28.079Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:41:28.108Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:41:28.145Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:41:55.007Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:41:55.036Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:41:55.057Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:41:57.202Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:41:57.240Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:41:57.265Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:42:10.593Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:42:10.618Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:42:10.640Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:43:24.497Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:43:24.523Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:43:24.544Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:43:26.566Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:43:26.601Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:43:26.623Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:43:28.706Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:43:28.734Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:43:28.761Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:43:31.609Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:43:31.634Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:43:31.652Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:43:50.267Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:43:50.292Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:43:50.313Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:44:37.016Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:44:37.044Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:44:37.066Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:45:37.041Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:45:37.065Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:45:37.087Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:45:54.146Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:45:54.176Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:45:54.201Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:45:56.499Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:45:56.525Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:45:56.547Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:46:38.932Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:46:38.962Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:46:38.991Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:48:23.491Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:48:23.516Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:48:23.534Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:49:27.534Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:49:27.568Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:49:27.599Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:49:56.298Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:49:56.327Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:49:56.352Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:50:17.061Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:50:17.088Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:50:17.118Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:50:35.963Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:50:35.990Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:50:36.016Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:51:39.748Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:51:39.783Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:51:39.813Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:52:06.972Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:52:07.028Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:52:07.049Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:52:40.687Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:52:40.716Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:52:40.741Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:52:52.899Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:52:52.958Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:52:52.984Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:52:58.713Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:52:58.739Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:52:58.759Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:53:26.357Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:53:26.393Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:53:26.413Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:53:42.559Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:53:42.587Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:53:42.605Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:53:47.031Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:53:47.068Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:53:47.094Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:53:58.387Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:53:58.421Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:53:58.440Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:54:24.119Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:54:24.159Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:54:24.181Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:54:44.199Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:54:44.229Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:54:44.258Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:54:46.228Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:54:46.258Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:54:46.281Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:54:56.030Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:54:56.056Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:54:56.076Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:55:51.460Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:55:51.494Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:55:51.513Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T03:59:07.737Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T03:59:07.765Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T03:59:07.784Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:00:54.253Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:00:54.280Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:00:54.297Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:01:04.406Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:01:04.435Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:01:04.452Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:02:02.097Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:02:02.122Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:02:02.142Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:03:11.356Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:03:11.412Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:03:11.452Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:03:17.928Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:03:17.958Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:03:17.981Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:03:58.269Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:03:58.300Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:03:58.329Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:04:58.753Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:04:58.779Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:04:58.801Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:07:39.486Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:07:39.520Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:07:39.545Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:08:20.452Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:08:20.482Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:08:20.500Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:08:39.280Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:08:39.310Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:08:39.327Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:09:57.686Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:09:57.721Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:09:57.745Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:10:06.866Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:10:06.894Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:10:06.923Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:11:10.446Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:11:10.471Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:11:10.487Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:11:18.344Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:11:18.371Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:11:18.391Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:11:26.672Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:11:26.697Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:11:26.715Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:11:36.565Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:11:36.591Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:11:36.611Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:12:36.110Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:12:36.137Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:12:36.154Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:16:10.833Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:16:10.867Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:16:10.894Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:33:19.852Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:33:19.903Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:33:19.927Z"}
+{"level":"error","message":"Internal error(500): app.utils.url.query is not a function","timestamp":"2017-02-26T04:33:26.665Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:33:36.983Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:33:37.011Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:33:37.032Z"}
+{"level":"error","message":"Internal error(500): Parameter \"url\" must be a string, not object","timestamp":"2017-02-26T04:33:38.447Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:33:52.036Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:33:52.066Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:33:52.094Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T04:33:53.625Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:34:45.695Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:34:45.726Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:34:45.755Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T04:34:46.018Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:36:26.660Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:36:26.690Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:36:26.710Z"}
+{"level":"error","message":"Internal error(500): API.jobs.search is not a function","timestamp":"2017-02-26T04:36:39.165Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:36:51.148Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:36:51.179Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:36:51.212Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:36:54.309Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:36:54.336Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:36:54.364Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:37:02.463Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:37:02.497Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:37:02.522Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:38:30.539Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:38:30.568Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:38:30.585Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:38:54.965Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:38:54.992Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:38:55.011Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:39:06.384Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:39:06.413Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:39:06.435Z"}
+{"level":"error","message":"Internal error(500): API.jobs.search is not a function","timestamp":"2017-02-26T04:39:08.152Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:39:22.507Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:39:22.536Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:39:22.574Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:39:27.181Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:39:27.216Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:39:27.242Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:39:49.809Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:39:49.839Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:39:49.863Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:40:12.938Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:40:12.969Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:40:12.999Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T04:40:14.795Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:40:41.239Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:40:41.267Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:40:41.297Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:41:08.601Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:41:08.635Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:41:08.669Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:41:56.284Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:41:56.353Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:41:56.380Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:42:29.739Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:42:29.829Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:42:29.870Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:42:57.197Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:42:57.269Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:42:57.289Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:43:08.475Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:43:08.499Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:43:08.519Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:46:48.394Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:46:48.433Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:46:48.477Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:46:57.008Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:46:57.043Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:46:57.062Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:48:00.354Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:48:00.383Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:48:00.420Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:48:26.389Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:48:26.420Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:48:26.438Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:48:39.529Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:48:39.556Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:48:39.582Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:49:13.699Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:49:13.742Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:49:13.767Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:49:16.318Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:49:16.350Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:49:16.375Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:49:41.870Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:49:41.899Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:49:41.926Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:49:49.502Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:49:49.527Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:49:49.544Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:50:41.647Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:50:41.674Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:50:41.693Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:50:53.964Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:50:53.993Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:50:54.016Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:50:59.740Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:50:59.776Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:50:59.800Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:51:12.103Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:51:12.127Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:51:12.146Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:51:39.590Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:51:39.631Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:51:39.660Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:51:42.971Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:51:42.999Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:51:43.022Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:52:08.601Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:52:08.658Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:52:08.707Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:52:14.372Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:52:14.400Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:52:14.434Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:52:20.198Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:52:20.224Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:52:20.246Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:52:43.553Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:52:43.580Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:52:43.600Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:52:58.153Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:52:58.180Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:52:58.202Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:53:10.105Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:53:10.134Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:53:10.163Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:53:47.987Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:53:48.012Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:53:48.041Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:54:12.228Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:54:12.258Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:54:12.277Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:54:34.229Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:54:34.376Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:54:34.412Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:55:52.805Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:55:52.838Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:55:52.867Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:55:54.820Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:55:54.852Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:55:54.874Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:55:59.559Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:55:59.589Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:55:59.611Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:56:01.317Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:56:01.396Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:56:01.417Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:56:15.559Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:56:15.589Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:56:15.607Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:56:17.002Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:56:17.029Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:56:17.053Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:56:23.795Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:56:23.822Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:56:23.839Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:56:32.279Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:56:32.306Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:56:32.327Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:56:43.803Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:56:43.832Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:56:43.855Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:56:50.858Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:56:50.987Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:56:51.025Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:57:03.255Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:57:03.282Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:57:03.305Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:57:15.422Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:57:15.450Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:57:15.476Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:57:27.326Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:57:27.375Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:57:27.405Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:58:15.801Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:58:15.836Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:58:15.857Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:58:20.032Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:58:20.056Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:58:20.072Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:58:32.209Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:58:32.235Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:58:32.256Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:58:40.383Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:58:40.408Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:58:40.424Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:58:47.460Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:58:47.490Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:58:47.518Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:58:55.634Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:58:55.677Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:58:55.704Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:58:58.656Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:58:58.706Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:58:58.712Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T04:59:00.010Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T04:59:00.048Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T04:59:00.071Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T05:20:09.278Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T05:20:09.308Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T05:20:09.334Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T05:20:51.472Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T05:20:51.510Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T05:20:51.540Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T05:21:17.459Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T05:21:17.490Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T05:21:17.529Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T05:21:29.969Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T05:21:29.999Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T05:21:30.033Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T05:21:35.871Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T05:21:35.903Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T05:21:35.938Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T05:21:50.852Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T05:21:50.880Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T05:21:50.902Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T05:22:33.642Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T05:22:33.666Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T05:22:33.683Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T05:23:29.457Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T05:24:46.295Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T05:24:46.334Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T05:24:46.361Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T05:25:09.884Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T05:25:09.911Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T05:25:09.932Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T05:26:45.131Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T05:26:45.167Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T05:26:45.213Z"}
+{"level":"error","message":"Internal error(500): Unexpected token u in JSON at position 0","timestamp":"2017-02-26T05:26:48.837Z"}
+{"level":"error","message":"Internal error(500): Unexpected token u in JSON at position 0","timestamp":"2017-02-26T05:26:49.235Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T05:27:16.420Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T05:27:16.449Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T05:27:16.472Z"}
+{"level":"error","message":"Internal error(500): Unexpected token u in JSON at position 0","timestamp":"2017-02-26T05:27:31.531Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T05:27:48.100Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T05:27:48.126Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T05:27:48.145Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T05:28:49.289Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T05:28:49.318Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T05:28:49.339Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T05:28:50.493Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T05:28:50.557Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T05:28:50.605Z"}
+{"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-02-26T05:29:16.475Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T05:30:51.693Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T05:30:51.719Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T05:30:51.748Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T05:36:36.413Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T05:36:36.444Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T05:36:36.462Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T05:36:40.449Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T05:36:40.477Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T05:36:40.496Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T05:49:49.496Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T05:49:49.528Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T05:49:49.549Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T05:49:57.047Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T05:49:57.079Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T05:49:57.108Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T07:17:52.153Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T07:17:52.191Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T07:17:52.208Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T07:20:44.153Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T07:20:44.181Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T07:20:44.202Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T07:53:45.022Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T07:53:45.055Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T07:53:45.084Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T07:53:55.504Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T07:53:55.532Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T07:53:55.562Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T08:01:37.074Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T08:01:37.099Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T08:01:37.117Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T08:05:58.952Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T08:05:58.982Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T08:05:59.001Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T08:06:30.655Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T08:06:30.685Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T08:06:30.703Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T08:07:02.556Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T08:07:02.598Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T08:07:02.622Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T08:07:27.613Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T08:07:27.647Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T08:07:27.667Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T08:07:46.481Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T08:07:46.516Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T08:07:46.535Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T08:08:05.423Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T08:08:05.450Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T08:08:05.472Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T08:08:25.060Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T08:08:25.093Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T08:08:25.118Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T08:16:53.106Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T08:16:53.137Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T08:16:53.153Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T08:16:54.476Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T08:16:54.505Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T08:16:54.525Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T08:21:01.975Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T08:21:02.007Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T08:21:02.028Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T08:21:05.514Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T08:21:05.542Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T08:21:05.559Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T08:22:29.039Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T08:22:29.067Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T08:22:29.086Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T08:24:12.166Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T08:24:12.197Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T08:24:12.218Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T08:26:44.448Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T08:26:44.478Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T08:26:44.503Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T08:27:35.638Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T08:27:35.672Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T08:27:35.691Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T08:27:37.663Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T08:27:37.688Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T08:27:37.704Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T08:28:55.658Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T08:28:55.689Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T08:28:55.713Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T08:28:58.211Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T08:28:58.239Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T08:28:58.255Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T08:31:48.560Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T08:31:48.596Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T08:31:48.617Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-02-26T08:31:52.689Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-02-26T08:31:52.722Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-02-26T08:31:52.742Z"}

@@ -6,8 +6,8 @@ module.exports = function(url){
 	// Autosuggest
 	require(process.cwd() + '/assets/API/suggest')(url + '/suggest');
 
-	// Jobs public API
-	// require('./jobs')(url + '/jobs');
+	// Jobs search public API
+	require('./jobs/search')(url + '/jobs/search');
 
 	// Blog public API
 	require('./blog')(url + '/blog');

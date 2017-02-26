@@ -3,7 +3,7 @@ var config          = require('./libs/config'),
     express         = require('express'),
     http            = require('http'),
     request         = require('request'),
-    queryString     = require('query-string'),
+    url             = require('url'),
     glob            = require('glob'),
     path            = require('path'),
     fs              = require('fs'),
@@ -16,7 +16,8 @@ var config          = require('./libs/config'),
     memoryStore     = session.MemoryStore,
     deflate         = require('permessage-deflate'),
     underscore      = require('underscore'),
-    device          = require('express-device');
+    device          = require('express-device'),
+    redis           = require('redis');
 
 // global.api = {};
 //
@@ -27,7 +28,6 @@ var config          = require('./libs/config'),
 global.app = express();
 app.express = express;
 app.req = request;
-app.queryString = queryString;
 app.config = config;
 app.riot = riot;
 app.store = {};
@@ -39,10 +39,12 @@ app._tags = {
 app.async = require('async');
 app.db = require('./libs/db/mongoose')(log, config);
 app.mysql = require('./libs/db/mysql')(log, config);
+app.redis = redis.createClient();
 app.log = log;
 app.errHandler = require('./libs/errHandler');
 app.utils = require('./libs/utils');
 app.utils.fs = fs;
+app.utils.url = url;
 underscore.extend(app.utils, underscore);
 app.moment = require('moment');
 app.moment.locale('ru');
@@ -58,7 +60,7 @@ app.swig = swig;
 require('./public/templates')();
 
 // require all store
-// require('./public/store')();
+require('./public/store')();
 
 app.use(favicon(path.join(__dirname, '/', 'favicon.ico')));
 app.use(logger('dev'));

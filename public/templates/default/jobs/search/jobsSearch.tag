@@ -1,4 +1,4 @@
-<section-jobs-search class="section jobs jobs__search">
+<section-jobs-search class="section jobs jobs__search" font-soft="false">
 
     <jobs-search-nav></jobs-search-nav>
 

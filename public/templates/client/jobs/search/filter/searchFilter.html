@@ -1,28 +1,88 @@
 <jobs-search-filter class="section jobs__search__sidebar">
 
-    <div class="jobs__search__result">Найдено 769 вакансий</div>
+    <div class="jobs__search__result">Найдено { $store.jobs.found } вакансий</div>
 
     <div class="jobs__search__filter">
 
-        <!-- <jobs-search-filter-region name="Регион"></jobs-search-filter-region> -->
+        <jobs-search-filter-block item="area" name="Регион" active={ true }></jobs-search-filter-block>
 
-        <jobs-search-filter-metro name="Метро"></jobs-search-filter-metro>
+        <jobs-search-filter-block item="metro" name="Метро" active={ true }></jobs-search-filter-block>
 
-        <jobs-search-filter-salary name="Зарплата"></jobs-search-filter-salary>
+        <jobs-search-filter-salary item="salary" name="Зарплата" active={ true }></jobs-search-filter-salary>
 
-        <jobs-search-filter-experience name="Опыт работы"></jobs-search-filter-experience>
+        <jobs-search-filter-block item="specialization" name="Профобласть" active={ false }></jobs-search-filter-block>
 
-        <jobs-search-filter-employment name="Тип занятости"></jobs-search-filter-employment>
+        <jobs-search-filter-block item="industry" name="Отрасль компании" active={ false }></jobs-search-filter-block>
 
-        <jobs-search-filter-schedule name="График работы"></jobs-search-filter-schedule>
+        <jobs-search-filter-block item="experience" name="Опыт работы" active={ false }></jobs-search-filter-block>
 
-        <jobs-search-filter-exceptions name="Исключения"></jobs-search-filter-exceptions>
+        <jobs-search-filter-block item="employment" name="Тип занятости" active={ false }></jobs-search-filter-block>
+
+        <jobs-search-filter-block item="schedule" name="График работы" active={ false }></jobs-search-filter-block>
+
+        <jobs-search-filter-block item="label" name="Исключения" active={ false }></jobs-search-filter-block>
 
     </div>
 
 <script>
 
     var $ = this;
+
+    $.on("mount", function(){
+        History.Adapter.bind(window, 'statechange', function(){
+
+        });
+    });
+
+    $.onSearch = function(url){
+        if (!url) return;
+
+        app.request("getJobsSearch", encodeURIComponent(url)).then(function(data){
+            $store.jobs.clusters = data.clusters;
+            $store.jobs.items = data.items;
+            $store.jobs.found = data.found;
+
+            var params = Url.parseQuery(url.replace($store.jobs.apiUrl, "").replace(/^&/, ""));
+
+            if (params.clusters) delete params.clusters;
+
+            History.pushState(null, null, !_.isEmpty(params) ? "?" + Url.stringify(params) : "/jobs/search");
+
+            $.update();
+
+            if (!$Sections.content){
+                $Sections.content = riot.mount("jobs-search-content", "jobs-search-content-client")[0];
+            }
+            else {
+                $Sections.content.update();
+            }            
+        })
+    };
+
+    $.onSelect = function(){
+        var url = this.item.url,
+            params = Url.parseQuery(url.replace($store.jobs.apiUrl, ""));
+
+        $State.select(this.parent.opts.item).set({
+            id: params[this.parent.opts.item],
+            name: this.item.name
+        });
+
+        $.onSearch(this.item.url);
+    };
+
+    $.onRemove = function(){
+        $State.select(this.opts.item).set(null);
+
+        var params = Url.parseQuery();
+
+        delete params[this.opts.item];
+        params.clusters = "true";
+
+        var url = $store.jobs.apiUrl + Url.stringify(params);
+
+        $.onSearch(url);
+    };
 
 </script>
 

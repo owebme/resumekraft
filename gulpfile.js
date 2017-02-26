@@ -72,6 +72,8 @@ gulp.task('watchPublic', function() {
 	]).on('change', _.debounce(reload, 3000));
 
 	browserSync.watch([
+		'assets/js/store/*.js',
+		'assets/js/store/**/*.js',
 		'public/js/*.js',
 		'public/js/**/*.js',
 		'public/templates/**/*.html',

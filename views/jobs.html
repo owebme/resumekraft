@@ -40,8 +40,11 @@
     <script src="/assets/js/libs/riot/riot+compiler.js"></script>
     <script src="/assets/js/libs/baobab.js"></script>
     <script src="/assets/js/libs/underscore-min.js"></script>
+    <script src="/assets/js/libs/moment.min.js"></script>
+    <script src="/assets/js/libs/moment.ru.js"></script>
     <script src="/assets/js/libs/store.min.js"></script>
-    <script src="/assets/js/libs/TweenLite-1.19.0.min.js"></script>
+    <script src="/assets/js/libs/url.min.js"></script>
+    <script src="/assets/js/libs/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
     <script src="/assets/js/libs/afterlag-js/dist/afterlag.min.js"></script>
 
     <!--/ templates /-->
@@ -60,13 +63,9 @@
     <script src="/public/templates/client/jobs/search/searchVacancyForm.html" type="riot/tag"></script>
     <script src="/public/templates/client/jobs/search/panel/searchPanel.html" type="riot/tag"></script>
     <script src="/public/templates/client/jobs/search/filter/searchFilter.html" type="riot/tag"></script>
-    <script src="/public/templates/client/jobs/search/filter/searchFilterRegion.html" type="riot/tag"></script>
-    <script src="/public/templates/client/jobs/search/filter/searchFilterMetro.html" type="riot/tag"></script>
+    <script src="/public/templates/client/jobs/search/filter/searchFilterBlock.html" type="riot/tag"></script>
     <script src="/public/templates/client/jobs/search/filter/searchFilterSalary.html" type="riot/tag"></script>
-    <script src="/public/templates/client/jobs/search/filter/searchFilterExperience.html" type="riot/tag"></script>
-    <script src="/public/templates/client/jobs/search/filter/searchFilterEmployment.html" type="riot/tag"></script>
-    <script src="/public/templates/client/jobs/search/filter/searchFilterSchedule.html" type="riot/tag"></script>
-    <script src="/public/templates/client/jobs/search/filter/searchFilterExceptions.html" type="riot/tag"></script>
+    <script src="/public/templates/client/jobs/search/searchContent.html" type="riot/tag"></script>
     <script src="/public/templates/commons/popup/blogSubscribe.tag" type="riot/tag"></script>
     <script src="/public/templates/commons/popup/blogSubscribeForm.tag" type="riot/tag"></script>
     <script src="/public/templates/commons/icons/social/icon-fb.tag" type="riot/tag"></script>
@@ -85,7 +84,7 @@
     <script src="/assets/js/components/features/premium.js"></script>
     <script src="/assets/js/components/features/navbar.js"></script>
 
-    <script src="/public/js/commons/config.js"></script>
+    <script src="/public/js/jobs/config.js"></script>
     <script src="/public/js/commons/metrika.js"></script>
     <script src="/public/js/commons/sections.js"></script>
 
@@ -97,7 +96,6 @@
     <script src="/assets/js/plugins/eventsEmitter.js"></script>
     <script src="/assets/js/plugins/scroll/scroll.Animate.js"></script>
     <script src="/assets/js/plugins/scroll/scroll.Parallax.js"></script>
-    <script src="/assets/js/store/hh/dictionary.js"></script>
     <script src="/assets/js/libs/skycons/skycons.js"></script>
 
     <script src="/public/js/sections/nav.js"></script>
@@ -108,11 +106,16 @@
     <script src="/public/js/sections/blogContent.js"></script>
     <script src="/public/js/sections/jobs/jobsHome.js"></script>
     <script src="/public/js/sections/jobs/jobsSearch.js"></script>
-    <script src="/public/js/init.js"></script>
 
     <script>
-        window.$clusters = {{ clusters | safe }};
+        {% if state %}
+            $store.jobs.state = {{ state | safe }}
+        {% endif %};
+        $store.jobs.clusters = {{ clusters | safe }};
+        $store.jobs.found = {{ found }};
     </script>
+
+    <script src="/public/js/jobs/init.js"></script>
 
 </body>
 </html>

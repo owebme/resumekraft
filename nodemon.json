@@ -1,6 +1,7 @@
 {
   "watch" : [
       "/assets/API/**",
+      "/libs/*.*",
       "/public/API/**",
       "/public/controllers/**",
       "/public/router/*.*",

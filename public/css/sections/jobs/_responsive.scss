@@ -1,0 +1,9 @@
+@media screen and (min-width: 1400px){
+    .container {
+        width:83.34%;
+        max-width:1400px;
+    }
+    .jobs__search__sidebar {
+        transform:translate3d(calc(10.5vw - 50%), 0, 0);
+    }
+}

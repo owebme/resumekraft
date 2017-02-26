@@ -1,29 +1,36 @@
 .jobs__search__nav {
-    @include accelerate(true);
-    @extend .pos-tl-fixed;
-    @extend .w100p;
     @extend .bg-white;
-    @extend .boxShadow-close;
     @extend .hidden-xs;
     @extend .zIndex-2;
-    @extend .willChange-transform;
-    transition:transform 0.35s;
 
-    &[data-turn="true"]{
-        transform:translate3d(0, -94px, 0);
-
-        .jobs__search__nav__menu {
-            @extend .opacity-0;
-            @extend .pointerEvents-none;
-        }
-        .jobs__search__nav__form {
-            @extend .opacity-100;
-            @extend .pointerEvents-all;
+    &[data-show="true"]{
+        .jobs__search__nav {
+            &__header,
+            &__panel {
+                transform:translate3d(0, 94px, 0);
+            }
+            &__form {
+                @extend .opacity-0;
+                @extend .pointerEvents-none;
+            }
+            &__menu {
+                .jobs__search[data-fixed="true"] & {
+                    @extend .opacity-100;
+                    @extend .pointerEvents-all;
+                }
+            }
+            &__subpanel__logo {
+                @extend .opacity-0;
+                @extend .pointerEvents-none;
+            }
         }
     }
     &__header {
+        @extend .pos-rel;
         height:94px;
+        @extend .bg-white;
         border-bottom:1px solid $smokeLight;
+        @extend .zIndex-1;
 
         .logotype {
             @extend .display-block;
@@ -33,6 +40,56 @@
             @extend .mt25;
             @extend .ml-l;
             background-image:url(/public/images/logotype_br.png);
+        }
+        &__vacancy__count {
+            @extend .pos-abs;
+            top:48px;
+            left:182px;
+            @extend .fontSize-13;
+            @extend .c-gray;
+            @extend .opacity-80;
+        }
+        &__buttons {
+            height:94px;
+            @extend .userSelect-none;
+            @extend .flex-centered;
+            padding-bottom:4px;
+        }
+        &__button {
+            @extend .flex-column-centered;
+            @extend .btn-active;
+            @extend .ml30;
+            @extend .mr-xs;
+            @extend .c-grayDarken;
+
+            &__icon {
+                @extend .flex-centered;
+                height:42px;
+            }
+            svg {
+                &[data-icon="account"]{
+                    width:38px;
+                    height:38px;
+                }
+                &[data-icon="addUser"]{
+                    @extend .w48;
+                    @extend .h48;
+                }
+            }
+            path {
+                @extend .fill-blueBright;
+            }
+            &__title {
+                @extend .fontFamily-graphik;
+                @extend .fontSize-12;
+                @extend .text-uppercase;
+                @extend .transition-default;
+            }
+            &:hover {
+                .jobs__search__nav__header__button__title {
+                    @extend .c-blueBright;
+                }
+            }
         }
     }
     &__panel,
@@ -44,16 +101,29 @@
     &__options__item {
         height:46px;
     }
+    &__header,
     &__panel {
+        @include accelerate(true);
+        @extend .willChange-transform;
+        transition:transform 0.3s;
+    }
+    &__panel {
+        @extend .pos-rel;
         @extend .flex-row-between-center;
+        @extend .w100p;
         @extend .plr-l;
+        @extend .bg-white;
+        @extend .boxShadow-close;
+    }
+    &__menu,
+    &__form {
+        @extend .willChange-opacity;
+        transition:opacity 0.1s $cubic215;
     }
     &__menu {
         @extend .pos-rel;
         @extend .flex-row-left-center;
         @extend .userSelect-none;
-        @extend .willChange-opacity;
-        transition:opacity 0.35s $cubic32;
         @extend .zIndex-1;
 
         &__item {
@@ -130,24 +200,40 @@
     &__subpanel {
         @extend .pos-centered-h;
         @extend .b0;
+
+        &__logo {
+            @extend .opacity-0;
+            @extend .display-block;
+            width:77px;
+            height:29px;
+            @extend .bg-cover;
+            @extend .pointerEvents-none;
+            background-image:url(/public/images/logotype_br.png);
+            transform:translate3d(13px, 11px, 0);
+        }
     }
     &__form {
         @extend .opacity-0;
         @extend .w100p;
         @extend .flex-row-left-center;
-        @extend .willChange-opacity;
         @extend .pointerEvents-none;
-        transition:opacity 0.35s $cubic32;
 
+        input {
+            @extend .pointerEvents-none;
+        }
         input,
         input:focus {
             box-shadow:none !important;
         }
-        .input-group:first-child {
-            @extend .w60p;
-        }
-        .input-group:last-child {
-            @extend .w40p;
+        .input-group {
+            @extend .cursor-text;
+
+            &:first-child {
+                @extend .w60p;
+            }
+            &:last-child {
+                @extend .w40p;
+            }
         }
     }
     &__options {

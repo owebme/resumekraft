@@ -1,7 +1,8 @@
 module.exports = function(){
 
     global.API = {
-        suggest: require('./suggest')()
+        suggest: require('./suggest')(),
+        jobs: require('./jobs')()
     }
 
 }

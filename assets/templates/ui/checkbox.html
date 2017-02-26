@@ -32,9 +32,9 @@
             if (!$.opts.group && !_.isBoolean($.opts.value) && $.opts.update && $.opts.cursor){
                 $.value = $.opts.cursor.get($.opts.update);
             }
-            else if (_.isBoolean($.opts.value) && $.opts.value !== $.value){
-                $.value = $.opts.value;
-            }
+            // else if (_.isBoolean($.opts.value) && $.opts.value !== $.value){
+            //     $.value = $.opts.value;
+            // }
         }
     });
 
@@ -62,7 +62,7 @@
         if ($.opts.update && $.opts.cursor){
             if ($.opts.group) $.opts.cursor.set($.opts.update, $.opts.value);
             else $.opts.cursor.set($.opts.update, $.value);
-        }        
+        }
         if ($.opts.commit === true || $.opts.commit == "true") $.parent.update();
         else if (_.isFunction($.opts.commit)) {
             $.opts.commit.call(this, $.value, $.opts.i);

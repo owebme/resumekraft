@@ -1,15 +1,25 @@
-<jobs-search-filter-salary class="jobs__search__filter__block">
+<jobs-search-filter-salary class="jobs__search__filter__block" data-hidden={ _.isEmpty($store.jobs[opts.item]) }>
 
-    <div class="jobs__search__filter__block__content">
-        <div class="jobs__search__filter__title">{ opts.name }</div>
+    <div class="jobs__search__filter__block__content" data-active={ active ? "true" : "false" }>
+        <div onClick={ opener } class="jobs__search__filter__title">{ opts.name }</div>
+        <div class="jobs__search__filter__block__opener"></div>
         <div class="jobs__search__filter__salary">
-            от { salary } <span class="jobs__search__filter__salary__rub">₽</span>
+            от { onFormat(salary) } <span class="jobs__search__filter__salary__rub">₽</span>
         </div>
-        <div class="jobs__search__filter__range">
-            <input onInput={ onRange } type="range" min="10000" max="250000" step="5000" class="range range-s range-blueBright">
+        <div class="jobs__search__filter__range mb-xs">
+            <input name="slider" onChange={ onChange } onInput={ onRange } onUpdate="none" type="range" min="10000" max="250000" step="5000" class="range range-s range-blueBright">
         </div>
-        <div class="jobs__search__filter__checkbox">
-            <ui-checkbox value="false" title="только с указанием" theme="blueBright" size="s" small></ui-checkbox>
+        <!-- <div class="jobs__search__filter__checkbox mb-xs">
+            <ui-checkbox value={ onlyWithSalary } title="только с указанием" theme="blueBright" size="s" small></ui-checkbox>
+        </div> -->
+        <div onClick={ parent.onRemove } onUpdate="none" if={ Url.parseQuery().salary } class="jobs__search__filter__item" data-select="true">от { Url.parseQuery().salary } руб.</div>
+        <div name="list" class="jobs__search__filter__items" data-animate={ isAnimate }>
+            <div name="container" class="jobs__search__filter__items__list">
+                <div onClick={ onSelect } onUpdate="none" each={ item in _.sortArray($store.jobs[opts.item], "count", "desc") } no-reorder class="jobs__search__filter__item">
+                    <div class="jobs__search__filter__item__title">{ item.name }</div>
+                    <div class="jobs__search__filter__item__count">{ item.count }</div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -17,12 +27,87 @@
 
     var $ = this;
 
-    $.salary = "75,000";
+    $.salary = Url.parseQuery().salary ? Url.parseQuery().salary : "25000";
+
+    // $.onlyWithSalary = Url.parseQuery().only_with_salary ? true : false;
+
+    $.list = $$($.list);
+    $.container = $$($.container);
+
+    $.on("before-mount", function(){
+        $.active = $.opts.active;
+        $.slider.value = $.salary;
+    });
+
+    $.on("mount", function(){
+        if ($.active){
+            $.list.css("height", $.container.height() + "px");
+        }
+    });
+
+    $.on("update", function(){
+        if ($store.jobs.clusters && !$.isRange){
+            var data = _.findWhere($store.jobs.clusters, {"id": $.opts.item});
+            $store.jobs[$.opts.item] = data ? data.items : null;
+
+            if ($.active && $.isMounted && !$.isAnimate){
+                $.one("updated", function(){
+                    $.list.css("height", $.container.height() + "px");
+                })
+            }
+        }
+    });
+
+    $.onSelect = function(){
+        var salary = this.item.name.match(/\d+/);
+        if (salary && salary[0]){
+            $.slider.value = salary[0];
+            $.salary = salary[0];
+            $.update();
+        }
+        $.parent.onSelect.call(this);
+    };
+
+    $.opener = function(){
+        $.isAnimate = true;
+        $.active = !$.active;
+
+        if ($.active){
+            $.list.css("height", $.container.height() + "px");
+        }
+        else {
+            $.list.css("height", "0px");
+        }
+        setTimeout(function(){
+            $.isAnimate = false;
+        }, 5);
+    };
 
     $.onRange = function(e){
+        $.isRange = true;
         $.update({
-            salary: _.numberFormat(e.target.value, 0, ",", ".")
+            salary: e.target.value
         })
+        setTimeout(function(){
+            $.isRange = false;
+        }, 5);
+    };
+
+    $.onChange = function(e){
+        var salary = e.target.value,
+            params = Url.parseQuery();
+
+        params.salary = salary;
+        params.only_with_salary = "true";
+        params.clusters = "true";
+
+        var url = $store.jobs.apiUrl + Url.stringify(params);
+
+        $.parent.onSearch(url);
+    };
+
+    $.onFormat = function(value){
+        return _.numberFormat(value, 0, ".", ",");
     };
 
 </script>
