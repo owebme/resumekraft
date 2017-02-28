@@ -321,7 +321,8 @@
             @extend .ptb-xss;
             border-bottom:1px solid $smokeLight;
 
-            .m-no-touch &:hover {
+            .m-no-touch &:hover,
+            &[data-active="true"] {
                 @extend .c-black;
                 @extend .bg-smokeLight;
             }

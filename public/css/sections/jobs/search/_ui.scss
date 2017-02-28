@@ -38,7 +38,8 @@
         }
     }
     .input-autosuggest-items {
-        .input-autosuggest-item:hover {
+        .input-autosuggest-item:hover,
+        .input-autosuggest-item[data-active="true"] {
             @extend .c-white;
             @extend .bg-green;
         }

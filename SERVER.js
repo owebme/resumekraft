@@ -12,6 +12,7 @@ var config          = require('./libs/config'),
     favicon         = require('serve-favicon'),
     logger          = require('morgan'),
     bodyParser      = require('body-parser'),
+    cookieParser    = require('cookie-parser'),
     session         = require('express-session'),
     memoryStore     = session.MemoryStore,
     deflate         = require('permessage-deflate'),
@@ -64,6 +65,7 @@ require('./public/store')();
 
 app.use(favicon(path.join(__dirname, '/', 'favicon.ico')));
 app.use(logger('dev'));
+app.use(cookieParser());
 app.use(bodyParser.json({limit: '2mb'}));
 app.use(bodyParser.urlencoded({ limit: '2mb', extended: false }));
 app.use(device.capture());

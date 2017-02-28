@@ -35,7 +35,7 @@
 @import 'partials/navFixed';
 
 // auth
-@import 'sections/auth';
+// @import 'sections/auth';
 
 // home
 // @import 'sections/home/home';
@@ -70,16 +70,24 @@
 @import 'sections/jobs/jobs';
 @import 'sections/jobs/header';
 @import 'sections/jobs/ui';
+@import 'sections/jobs/search/nav/nav';
+@import 'sections/jobs/search/nav/header';
+@import 'sections/jobs/search/nav/menu';
+@import 'sections/jobs/search/nav/options';
 @import 'sections/jobs/search/search';
-@import 'sections/jobs/search/nav';
 @import 'sections/jobs/search/list';
 @import 'sections/jobs/search/filter';
 @import 'sections/jobs/search/aside';
+@import 'sections/jobs/search/pages';
+@import 'sections/jobs/search/progress';
 @import 'sections/jobs/search/ui';
+
+// vacancy
+@import 'sections/jobs/vacancy/vacancy';
 @import 'sections/jobs/responsive';
 
 // modules
-@import '../../assets/css/modules/chart/chartRadial';
+// @import '../../assets/css/modules/chart/chartRadial';
 @import '../../assets/css/modules/oScreen';
 
 // Sections

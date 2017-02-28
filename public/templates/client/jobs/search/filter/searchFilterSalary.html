@@ -1,4 +1,4 @@
-<jobs-search-filter-salary class="jobs__search__filter__block" data-hidden={ _.isEmpty($store.jobs[opts.item]) }>
+<jobs-search-filter-salary class="jobs__search__filter__block" data-hidden={ _.isEmpty($store.jobs[opts.item]) && $store.jobs.found }>
 
     <div class="jobs__search__filter__block__content" data-active={ active ? "true" : "false" }>
         <div onClick={ opener } class="jobs__search__filter__title">{ opts.name }</div>
@@ -12,7 +12,7 @@
         <!-- <div class="jobs__search__filter__checkbox mb-xs">
             <ui-checkbox value={ onlyWithSalary } title="только с указанием" theme="blueBright" size="s" small></ui-checkbox>
         </div> -->
-        <div onClick={ parent.onRemove } onUpdate="none" if={ Url.parseQuery().salary } class="jobs__search__filter__item" data-select="true">от { Url.parseQuery().salary } руб.</div>
+        <div onClick={ onRemove } onUpdate="none" if={ Url.parseQuery().salary } class="jobs__search__filter__item" data-select="true">от { Url.parseQuery().salary } руб.</div>
         <div name="list" class="jobs__search__filter__items" data-animate={ isAnimate }>
             <div name="container" class="jobs__search__filter__items__list">
                 <div onClick={ onSelect } onUpdate="none" each={ item in _.sortArray($store.jobs[opts.item], "count", "desc") } no-reorder class="jobs__search__filter__item">
@@ -27,7 +27,9 @@
 
     var $ = this;
 
-    $.salary = Url.parseQuery().salary ? Url.parseQuery().salary : "25000";
+    $.default = "25000";
+
+    $.salary = Url.parseQuery().salary ? Url.parseQuery().salary : $.default;
 
     // $.onlyWithSalary = Url.parseQuery().only_with_salary ? true : false;
 
@@ -68,6 +70,12 @@
         $.parent.onSelect.call(this);
     };
 
+    $.onRemove = function(){
+        $.slider.value = $.default;
+        $.salary = $.default;
+        $.parent.onRemove.call(this);
+    };
+
     $.opener = function(){
         $.isAnimate = true;
         $.active = !$.active;
@@ -99,11 +107,8 @@
 
         params.salary = salary;
         params.only_with_salary = "true";
-        params.clusters = "true";
 
-        var url = $store.jobs.apiUrl + Url.stringify(params);
-
-        $.parent.onSearch(url);
+        $Sections.filter.onSearch($Sections.filter.getUrl(params));
     };
 
     $.onFormat = function(value){

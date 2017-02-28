@@ -1,4 +1,8 @@
 .jobs__list {
+    &__empty {
+        @include flex("column", "center", "center");
+        height:calc(100vh - 224px);
+    }
     .d-phone & {
         margin:0 -7.5px;
     }
@@ -26,7 +30,7 @@
                 @extend .opacity-100;
                 @extend .scale-100;
             }
-            .jobs__list__item__response {
+            .jobs__list__item__buttons {
                 @extend .opacity-100;
                 @extend .pointerEvents-all;
             }
@@ -45,7 +49,7 @@
             @extend .fontFamily-graphik;
             @extend .fontWeight-bold;
             @extend .fontSize-18;
-            @extend .btn-active;
+            @extend .transition-default;
             margin-bottom:1px;
 
             .d-phone & {
@@ -63,22 +67,18 @@
         }
         &__salary {
             @extend .c-grayDarken;
-            margin-bottom:1px;
+            margin:1px 0 2px;
 
             .d-phone & {
-                @extend .fontWeight-bold;
-                @extend .fontFamily-proxima;
+                @extend .fontFamily-roboto;
+                @extend .fontWeight-5;
                 @extend .fontSize-20;
-                @extend .letterSpacing-0;
-                @extend .m0;
+                @extend .letterSpacing--xs;
+                margin:1px 0 3px;
             }
             &__rub {
                 font-family:$systemFont;
                 @extend .fontWeight-normal;
-
-                .d-phone & {
-                    font-size:92%;
-                }
             }
         }
         &__text {
@@ -98,7 +98,7 @@
             }
         }
         &__company,
-        &__city {
+        &__address {
             @extend .fontSize-15;
         }
         &__company {
@@ -107,37 +107,40 @@
             margin-left:-6px;
             padding-left:6px;
             border-top:1px solid rgba($silver,.3);
+
+            &__text {
+                @extend .text-truncate;
+                @extend .maxW-75p;
+            }
         }
-        &__city {
+        &__address {
             @extend .c-gray;
             margin-top:1px;
 
-            span {
+            &__city {
                 @extend .c-redBright;
             }
+            &__metro {
+                @extend .c-grayDarken;
+            }
         }
-        &__response {
+        &__buttons {
+            @extend .flex-row-right-center;
             @extend .pos-abs;
             @extend .r0;
             @extend .b--xxs;
-            @extend .h32;
-            @extend .plr-xs;
-            @extend .c-blackLight;
-            @extend .flex-centered;
-            @extend .fontSize-14;
             @extend .opacity-0;
             @extend .pointerEvents-none;
             @extend .transition-default;
-            box-shadow:inset 0 0 0 1px rgba($silver,.3);
 
-            &:hover {
-                @extend .c-black;
-                box-shadow:inset 0 0 0 1px rgba($silver,.56);
-            }
-            &:active {
-                @extend .scale-90;
+            .icon-like {
+                @extend .pos-rel;
+                @extend .display-block;
+                @extend .cursor-pointer;
+                @extend .btn-active;
+                transform-origin:50% 100%;
+                margin-right:7px;
             }
         }
     }
-
 }

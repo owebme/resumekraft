@@ -29,13 +29,24 @@
     var $ = this;
 
     $.on("mount", function(){
-        History.Adapter.bind(window, 'statechange', function(){
-
-        });
+        $Sections.filter = $;
+        window.addEventListener('popstate', function(e){
+            location.reload();
+        }, false);
     });
 
-    $.onSearch = function(url){
+    $.onSearch = function(url, changePage){
         if (!url) return;
+
+        if (app.$dom.body.scrollTop() > 94){
+            app.$dom.body.scrollTop(94);
+        }
+        if (!changePage && $State.get("page") > 0){
+            $State.select("page").set(0);
+            var params = Url.parseQuery(url.replace($store.jobs.apiUrl, ""));
+            delete params.page;
+            url = $.getUrl(params);
+        }
 
         app.request("getJobsSearch", encodeURIComponent(url)).then(function(data){
             $store.jobs.clusters = data.clusters;
@@ -46,6 +57,10 @@
 
             if (params.clusters) delete params.clusters;
 
+            if (params.text){
+                params.text = params.text.replace(/\+/g, " ");
+            }
+
             History.pushState(null, null, !_.isEmpty(params) ? "?" + Url.stringify(params) : "/jobs/search");
 
             $.update();
@@ -55,8 +70,19 @@
             }
             else {
                 $Sections.content.update();
-            }            
+            }
+            if (!changePage){
+                $State.select("pages").set(data.pages ? parseInt(data.pages) : 0);
+                $Sections.pages.update();
+            }
         })
+    };
+
+    $.getUrl = function(params){
+        if (params && _.isObject(params)){
+            params.clusters = "true";
+            return $store.jobs.apiUrl + Url.stringify(params);
+        }
     };
 
     $.onSelect = function(){
@@ -68,6 +94,13 @@
             name: this.item.name
         });
 
+        if (this.parent.opts.item == "area"){
+            $Sections.form.area._tag.update({
+                id: params[this.parent.opts.item],
+                value: this.item.name
+            })
+        }
+
         $.onSearch(this.item.url);
     };
 
@@ -77,11 +110,15 @@
         var params = Url.parseQuery();
 
         delete params[this.opts.item];
-        params.clusters = "true";
 
-        var url = $store.jobs.apiUrl + Url.stringify(params);
+        if (this.opts.item == "area"){
+            $Sections.form.area._tag.update({
+                id: null,
+                value: ""
+            })
+        }
 
-        $.onSearch(url);
+        $.onSearch($Sections.filter.getUrl(params));
     };
 
 </script>

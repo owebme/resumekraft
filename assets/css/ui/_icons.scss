@@ -82,6 +82,23 @@
             height:35px;
             transform:translateY(4px);
         }
+        &.icon-m {
+            width:42px;
+            height:42px;
+            transform:translateY(5px);
+        }
+        &.icon-l {
+            width:58px;
+            height:58px;
+            transform:translateY(6px);
+        }
+    }
+    &-location {
+        &.icon-m {
+            width:45px;
+            height:45px;
+            transform:translateY(6px);
+        }
     }
     &-user {
         &.icon-s {

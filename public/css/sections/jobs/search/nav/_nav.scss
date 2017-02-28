@@ -1,0 +1,134 @@
+.jobs__search__nav {
+    @extend .bg-white;
+    @extend .hidden-xs;
+    @extend .zIndex-2;
+
+    &[data-show="true"]{
+        .jobs__search__nav {
+            &__header,
+            &__panel {
+                transform:translate3d(0, 94px, 0);
+            }
+            &__form {
+                @extend .opacity-0;
+                @extend .pointerEvents-none;
+            }
+            &__menu {
+                .jobs__search[data-fixed="true"] & {
+                    @extend .opacity-100;
+                    @extend .pointerEvents-all;
+                }
+            }
+            &__subpanel__logo {
+                @extend .opacity-0;
+                @extend .pointerEvents-none;
+            }
+        }
+    }
+    &__panel,
+    &__form,
+    &__menu,
+    &__menu__item,
+    &__subpanel,
+    &__options,
+    &__options__item {
+        height:46px;
+    }
+    &__header,
+    &__panel {
+        @include accelerate(true);
+        @extend .willChange-transform;
+        transition:transform 0.3s;
+    }
+    &__panel {
+        @extend .pos-rel;
+        @extend .flex-row-between-center;
+        @extend .w100p;
+        @extend .plr-l;
+        @extend .bg-white;
+        @extend .boxShadow-close;
+    }
+    &__menu,
+    &__form {
+        @extend .willChange-opacity;
+        transition:opacity 0.1s $cubic215;
+    }
+    &__buttons {
+        @extend .pos-rel;
+        @extend .flex-row-right-center;
+        @extend .userSelect-none;
+        @extend .zIndex-1;
+
+        &__item {
+            @extend .display-block;
+            @extend .btn-active;
+            @extend .ml-m;
+
+            &:hover {
+                @extend .c-blueBright;
+
+                .icon {
+                    animation:pulse-heart .6s infinite;
+                }
+            }
+            &[data-active="true"]{
+                @extend .pos-rel;
+                @extend .c-blueBright;
+                @extend .pointerEvents-none;
+
+                &:before {
+                    @extend .content-empty;
+                    @extend .pos-abs;
+                    @extend .b0;
+                    @extend .l--xxs;
+                    width:calc(100% + 10px);
+                    @extend .h2px;
+                    @extend .bg-blueBright;
+                }
+            }
+        }
+        .icon {
+            @extend .mr-xxs;
+            @extend .willChange-transform;
+        }
+    }
+    &__subpanel {
+        @extend .pos-centered-h;
+        @extend .b0;
+
+        &__logo {
+            @extend .opacity-0;
+            @extend .display-block;
+            width:77px;
+            height:29px;
+            @extend .bg-cover;
+            @extend .pointerEvents-none;
+            background-image:url(/public/images/logotype_br.png);
+            transform:translate3d(13px, 11px, 0);
+        }
+    }
+    &__form {
+        @extend .opacity-0;
+        @extend .w100p;
+        @extend .flex-row-left-center;
+        @extend .pointerEvents-none;
+
+        input {
+            @extend .pointerEvents-none;
+        }
+        input,
+        input:focus {
+            box-shadow:none !important;
+        }
+        .input-group {
+            @extend .cursor-text;
+
+            &:first-child {
+                @extend .w60p;
+            }
+            &:last-child {
+                @extend .w40p;
+            }
+        }
+    }
+}

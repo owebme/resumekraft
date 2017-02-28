@@ -13,9 +13,45 @@
 
         render: function(){
 
+            $Sections = window.$Sections || {};
+
+            app.$dom.root = this.el;
+
+            $store.jobs.apiUrl = "https://api.hh.ru/vacancies?";
+
+            var params = Url.parseQuery();
+
+            var state = {
+                area: null,
+                metro: null,
+                salary: null,
+                specialization: null,
+                industry: null,
+                experience: null,
+                employment: null,
+                schedule: null,
+                label: null,
+                order_by: params.order_by ? params.order_by : "relevance",
+                period: params.period ? params.period : "30",
+                page: params.page ? parseInt(params.page) : 0,
+                pages: $store.jobs.pages ? parseInt($store.jobs.pages) : 0,
+                per_page: 20
+            };
+
+            if ($store.jobs.state){
+                _.extend(state, $store.jobs.state);
+            }
+
+            $State = new Baobab(state);
+
+            app.sections.on("afterMounted", function(){
+                $Sections.pages = riot.mount("jobs-search-pages", "jobs-search-pages-client")[0];
+            });
+
             //new app.plugins.scroll.refreshFix(this.el);
 
             this.$nav = this.el.find("jobs-search-nav");
+            this.$progress = this.el.find(".jobs__search__progress__line")[0];
 
             WD.scroll();
 
@@ -45,7 +81,8 @@
         scroll: function(){
             var scrolling = false,
                 fixedPanel = false,
-                scrollOffset = 94;
+                scrollOffset = 94,
+                progress = 0;
 
             WD.sticky = {
                 a: null,
@@ -139,9 +176,12 @@
                       }
                     }
                 }
+                var scrollHeight = document.documentElement.scrollHeight;
+                progress = 1 - (scrollHeight - scrollTop) / scrollHeight;
+                progress = (progress * (1.01 + (app.sizes.height / scrollHeight))) * 100;
+                WD.$progress.style[app.prefixed.transform] = "translate3d(" + progress + "%, 0, 0)";
                 scrolling = false;
             }
-
         }
     };
 

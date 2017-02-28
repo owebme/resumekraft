@@ -1,0 +1,76 @@
+.jobs__search__pages {
+    @extend .pos-centered-h;
+    @extend .pos-fixed;
+    @extend .b0;
+    @extend .userSelect-none;
+    @extend .pointerEvents-none;
+
+    &__items {
+        @extend .pos-rel;
+        width:120%;
+        @extend .ml-s;
+        @extend .pointerEvents-all;
+    }
+    &__arrows {
+        @include flex("row", "space-between", "flex-start");
+        @extend .pos-abs;
+        @extend .b-50;
+        @extend .l0;
+        width:84%;
+    }
+    &__arrow {
+        @extend .c-silver;
+        @extend .fontSize-13;
+        @extend .w50p;
+        @extend .opacity-75;
+        @extend .btn-active;
+        @extend .pointerEvents-none;
+        @extend .letterSpacing-s;
+
+        &[data-arrow="prev"]{
+            @extend .text-left;
+            transform-origin:25% 50%;
+
+            &[data-active="true"]{
+                @extend .c-blackLight;
+
+                &:hover {
+                    @extend .c-blueBright;
+                }
+            }
+        }
+        &[data-arrow="next"]{
+            @extend .text-right;
+            transform-origin:75% 50%;
+
+            &[data-active="true"]{
+                @extend .c-blueBright;
+            }
+        }
+        &[data-active="true"]{
+            @extend .pointerEvents-all;
+        }
+    }
+    &__item {
+        @extend .flex-centered;
+        @extend .h40;
+        @extend .bg-snowSilver;
+        @extend .btn-active;
+
+        &:nth-of-type(1) {
+            border-radius:4px 0 0 0;
+        }
+        &:last-child {
+            border-radius:0 4px 0 0;
+        }
+        &[data-active="true"]{
+            @extend .c-white;
+            @extend .bg-silver;
+            @extend .pointerEvents-none;
+        }
+        &:hover {
+            @extend .c-white;
+            @extend .bg-blueBright;
+        }
+    }
+}

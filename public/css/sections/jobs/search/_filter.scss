@@ -7,6 +7,7 @@
 .jobs__search__sidebar {
     @include accelerate();
     @extend .pos-abs;
+    @extend .userSelect-none;
     width:274px;
 
     &[data-fixed="true"]{
@@ -219,18 +220,14 @@
         @extend .pr30;
         @extend .nowrap;
         @extend .fontWeight-bold;
-        @extend .fontFamily-proxima;
         @extend .fontSize-18;
         @extend .letterSpacing-0;
 
         &__rub {
+            @extend .c-grayDark;
             font-family:$systemFont;
-            font-size:92%;
-            @extend .fontWeight-normal;
+            @extend .fontWeight-bold;
         }
-    }
-    &__range {
-        @extend .pt-xxs;
     }
     &__checkbox {
         @extend .text-right;

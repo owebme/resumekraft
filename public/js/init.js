@@ -9,8 +9,14 @@
 
     riot.compile(function(e){
         app.sections.trigger("beforeMounted");
+
         riot.mount("*", {app: true});
+
         app.sections.trigger("afterMounted");
+
+        app.tag("section-notify", function(tag){
+            $Notify = tag;
+        });
     });
 
 })();

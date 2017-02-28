@@ -28,6 +28,15 @@
             }
         }
     }
+    &[data-list="more"]{
+        .jobs__list__item {
+            @extend .pt-s;
+            padding-bottom:21px;
+        }
+        .jobs__list__item__text {
+            @extend .display-none;
+        }
+    }
     &[font-soft="true"]{
         .jobs__list__item {
             &__title {

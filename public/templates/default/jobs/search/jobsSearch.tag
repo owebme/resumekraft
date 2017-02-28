@@ -1,4 +1,4 @@
-<section-jobs-search class="section jobs jobs__search" font-soft="false">
+<section-jobs-search class="section jobs jobs__search" data-list={ opts.modeView } font-soft="false">
 
     <jobs-search-nav></jobs-search-nav>
 
@@ -15,5 +15,13 @@
             </div>
         </div>
     </div>
+
+    <div class="section__overlay"></div>
+
+    <div class="jobs__search__progress">
+        <div class="jobs__search__progress__line"></div>
+    </div>
+
+    <jobs-search-pages page={ opts.page } pages={ opts.pages }></jobs-search-pages>
 
 </section-jobs-search>

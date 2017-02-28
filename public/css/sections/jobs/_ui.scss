@@ -13,19 +13,42 @@
         }
     }
     .btn-default {
-        @extend .c-white;
-        @extend .bg-blueBright;
+        @extend .flex-centered;
+        @extend .c-blackLight;
+        @extend .fontFamily-helvetica;
+        @extend .border-none;
+        @extend .transition-default;
+        @extend .userSelect-none;
+        @extend .cursor-pointer;
+        box-shadow:inset 0 0 0 1px rgba($silver,.3);
 
         &:hover {
-            @extend .bg-blue;
+            @extend .c-black;
+            @extend .bg-none;
+            box-shadow:inset 0 0 0 1px rgba($silver,.5), inset 0 1px 1px 0 rgba(31,45,61,.05);
+        }
+        &:active {
+            @extend .scale-90;
+        }
+        &.btn-m {
+            @extend .fontSize-14;
+            @extend .h32;
+            @extend .plr-xs;
         }
     }
-    .btn-default-hover-success {
+    .btn-primary-hover-success {
         @extend .c-white;
         @extend .bg-blueBright;
 
         &:hover {
             @extend .bg-green;
+        }
+        &.btn-shadow {
+            @include boxShadow-3d($blueBright);
+
+            &:hover {
+                @include boxShadow-3d($green);
+            }
         }
     }
     .btn-danger-hover-success {

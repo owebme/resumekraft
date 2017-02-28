@@ -1,0 +1,40 @@
+.jobs__search__nav {
+    &__menu {
+        @extend .pos-rel;
+        @extend .flex-row-left-center;
+        @extend .userSelect-none;
+        @extend .zIndex-1;
+
+        &__item {
+            @extend .flex-centered;
+            @extend .mr-l;
+
+            &__link {
+                @extend .fontFamily-graphik;
+                @extend .fontSize-15;
+                @extend .btn-active;
+
+                &:hover {
+                    @extend .c-blueBright;
+                }
+            }
+            &[data-active="true"]{
+                @extend .pos-rel;
+                @extend .pointerEvents-none;
+
+                .jobs__search__nav__menu__item__link {
+                    @extend .c-blueBright;
+                }
+                &:before {
+                    @extend .content-empty;
+                    @extend .pos-abs;
+                    @extend .b0;
+                    @extend .l--xxs;
+                    width:calc(100% + 10px);
+                    @extend .h2px;
+                    @extend .bg-blueBright;
+                }
+            }
+        }
+    }
+}

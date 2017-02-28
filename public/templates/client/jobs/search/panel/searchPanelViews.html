@@ -1,0 +1,37 @@
+<jobs-search-panel-views class="flex-centered">
+
+    <div onClick={ onList.less } class="jobs__search__nav__options__item" data-item="list-less" data-balloon="С описанием" data-balloon-pos="down" data-active={ list == "less" }>
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2 3h12v4H2V3zm0 6h12v4H2V9z"/></svg>
+    </div>
+    <div onClick={ onList.more } class="jobs__search__nav__options__item" data-item="list-more" data-balloon="Без описания" data-balloon-pos="down" data-active={ list == "more" }>
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2 3h12v2H2V3zm0 4h12v2H2V7zm0 4h12v2H2v-2z"/></svg>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    var cookie = _.getCookie("jobsSearchList");
+
+    $.list = cookie ? cookie : "less";
+
+    $.onList = {
+        less: function(){
+            $.list = "less";
+            app.$dom.root.attr("data-list", $.list);
+            _.setCookie("jobsSearchList", $.list, {
+                path: "/"
+            });
+        },
+        more: function(){
+            $.list = "more";
+            app.$dom.root.attr("data-list", $.list);
+            _.setCookie("jobsSearchList", $.list, {
+                path: "/"
+            });
+        }
+    }
+
+</script>
+
+</jobs-search-panel-views>

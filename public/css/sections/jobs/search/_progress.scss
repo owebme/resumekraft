@@ -1,0 +1,14 @@
+.jobs__search__progress {
+    @extend .pos-bl-fixed;
+    @extend .h3px;
+    width:calc(100vw - ((100vw - 755px) / 2));
+    @extend .bg-blueBright;
+    @extend .overflow-hidden;
+
+    &__line {
+        @include accelerate();
+        @include abs();
+        @extend .bg-white;
+        @extend .willChange-transform;
+    }
+}

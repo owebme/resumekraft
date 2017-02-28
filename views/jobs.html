@@ -28,16 +28,14 @@
 
     {{ content | safe }}
 
-    <section-auth></section-auth>
     <section-notify></section-notify>
-    <section-loader></section-loader>
 
     <!--/ VENDORS /-->
     <script src="/assets/js/libs/jquery.min.js"></script>
     <script src="/assets/js/libs/jquery.mobile.custom.min.js"></script>
     <script src="/assets/js/libs/modernizr.custom.js"></script>
     <script src="/assets/js/libs/fastclick.min.js"></script>
-    <script src="/assets/js/libs/riot/riot+compiler.js"></script>
+    <script src="/assets/js/libs/riot/riot+compiler.update.js"></script>
     <script src="/assets/js/libs/baobab.js"></script>
     <script src="/assets/js/libs/underscore-min.js"></script>
     <script src="/assets/js/libs/moment.min.js"></script>
@@ -59,13 +57,17 @@
     <script src="/assets/templates/ui/textarea.html" type="riot/tag"></script>
     <script src="/assets/templates/ui/checkbox.html" type="riot/tag"></script>
     <script src="/assets/templates/ui/icons/icon-like.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-location.html" type="riot/tag"></script>
     <script src="/public/templates/client/jobs/favorites.html" type="riot/tag"></script>
     <script src="/public/templates/client/jobs/search/searchVacancyForm.html" type="riot/tag"></script>
     <script src="/public/templates/client/jobs/search/panel/searchPanel.html" type="riot/tag"></script>
+    <script src="/public/templates/client/jobs/search/panel/searchPanelSettings.html" type="riot/tag"></script>
+    <script src="/public/templates/client/jobs/search/panel/searchPanelViews.html" type="riot/tag"></script>
     <script src="/public/templates/client/jobs/search/filter/searchFilter.html" type="riot/tag"></script>
     <script src="/public/templates/client/jobs/search/filter/searchFilterBlock.html" type="riot/tag"></script>
     <script src="/public/templates/client/jobs/search/filter/searchFilterSalary.html" type="riot/tag"></script>
     <script src="/public/templates/client/jobs/search/searchContent.html" type="riot/tag"></script>
+    <script src="/public/templates/client/jobs/search/searchPages.html" type="riot/tag"></script>
     <script src="/public/templates/commons/popup/blogSubscribe.tag" type="riot/tag"></script>
     <script src="/public/templates/commons/popup/blogSubscribeForm.tag" type="riot/tag"></script>
     <script src="/public/templates/commons/icons/social/icon-fb.tag" type="riot/tag"></script>
@@ -84,9 +86,10 @@
     <script src="/assets/js/components/features/premium.js"></script>
     <script src="/assets/js/components/features/navbar.js"></script>
 
-    <script src="/public/js/jobs/config.js"></script>
+    <script src="/public/js/commons/config.js"></script>
     <script src="/public/js/commons/metrika.js"></script>
     <script src="/public/js/commons/sections.js"></script>
+    <script src="/assets/js/store/jobs/dictionary.js"></script>
 
     <script src="/assets/js/plugins/chartRadial.js"></script>
     <script src="/assets/js/plugins/animate.js"></script>
@@ -107,15 +110,18 @@
     <script src="/public/js/sections/jobs/jobsHome.js"></script>
     <script src="/public/js/sections/jobs/jobsSearch.js"></script>
 
+    {% if clusters %}
     <script>
         {% if state %}
-            $store.jobs.state = {{ state | safe }}
-        {% endif %};
+            $store.jobs.state = {{ state | safe }};
+        {% endif %}
         $store.jobs.clusters = {{ clusters | safe }};
+        $store.jobs.pages = {{ pages }};
         $store.jobs.found = {{ found }};
     </script>
+    {% endif %}
 
-    <script src="/public/js/jobs/init.js"></script>
+    <script src="/public/js/init.js"></script>
 
 </body>
 </html>

@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-7">
                     <a href="/" class="logotype"></a>
-                    <div class="jobs__search__nav__header__vacancy__count">
+                    <div if={ parent.opts.countsAll } class="jobs__search__nav__header__vacancy__count">
                         { parent.opts.utils.numberFormat(parent.opts.countsAll, 0, ".", ",") } вакансий
                     </div>
                 </div>
@@ -16,7 +16,7 @@
                     <div class="jobs__search__nav__header__buttons">
                         <a href="#" class="jobs__search__nav__header__button">
                             <div class="jobs__search__nav__header__button__icon">
-                                <svg data-icon="account" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><path d="M65.498,63.023c3.289-4.9,5.002-11.303,5.002-17.521c0-12.748-8.41-22-20-22s-20,9.252-20,22  c0,6.219,1.713,12.621,5.002,17.521C25.133,66.43,16.5,72.955,16.5,80.5c0,0.506,0.191,0.994,0.537,1.365  C25.842,91.303,37.727,96.5,50.5,96.5s24.658-5.197,33.463-14.635c0.346-0.371,0.537-0.859,0.537-1.365  C84.5,72.955,75.867,66.43,65.498,63.023z M34.5,45.502c0-8.945,5.496-18,16-18s16,9.055,16,18c0,9.135-4.965,22-16,22  S34.5,54.637,34.5,45.502z M50.5,92.5c-11.375,0-21.979-4.521-29.957-12.752c0.658-5.643,8.605-10.77,17.688-13.398  c3.17,3.158,7.273,5.152,12.27,5.152s9.1-1.994,12.27-5.152c9.082,2.629,17.029,7.756,17.688,13.398  C72.479,87.979,61.875,92.5,50.5,92.5z M50.5,4.5c-25.363,0-46,20.635-46,46c0,6.557,1.35,12.889,4.014,18.822  c0.332,0.742,1.061,1.182,1.826,1.182c0.273,0,0.551-0.057,0.816-0.176c1.008-0.451,1.459-1.635,1.006-2.643  C9.733,62.27,8.5,56.488,8.5,50.5c0-23.158,18.842-42,42-42s42,18.842,42,42c0,5.986-1.232,11.768-3.664,17.184  c-0.451,1.008-0.002,2.191,1.006,2.643c1.008,0.453,2.191,0.004,2.645-1.006C95.149,63.387,96.5,57.055,96.5,50.5  C96.5,25.135,75.864,4.5,50.5,4.5z"/></svg>
+                                <svg data-icon="account"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><ellipse cx="50" cy="43.583" rx="18" ry="18.357"/><path d="M50,5C25.147,5,5,25.147,5,50c0,24.853,20.147,45,45,45c24.853,0,45-20.147,45-45C95,25.147,74.853,5,50,5z   M77.619,77.507C71.725,71.782,61.558,68,50,68c-11.558,0-21.725,3.782-27.619,9.507C15.352,70.449,11,60.724,11,50  c0-21.505,17.495-39,39-39c21.505,0,39,17.495,39,39C89,60.724,84.648,70.449,77.619,77.507z"/></svg>
                             </div>
                             <div class="jobs__search__nav__header__button__title">Аккаунт</div>
                         </a>
@@ -34,28 +34,28 @@
     <div class="jobs__search__nav__panel">
         <div class="jobs__search__nav__menu">
             <div class="jobs__search__nav__menu__item">
-                <a class="jobs__search__nav__menu__item__link" href="#">Главная</a>
+                <a class="jobs__search__nav__menu__item__link" href="/parthership/">Рекламодателям</a>
             </div>
             <div class="jobs__search__nav__menu__item">
-                <a class="jobs__search__nav__menu__item__link" href="#">Для компаний</a>
+                <a class="jobs__search__nav__menu__item__link" href="/premium/">Premium акканут</a>
             </div>
             <div class="jobs__search__nav__menu__item">
-                <a class="jobs__search__nav__menu__item__link" href="#">Premium</a>
+                <a class="jobs__search__nav__menu__item__link" href="/?signUp=true">Создать резюме</a>
+            </div>
+            <div class="jobs__search__nav__menu__item" data-active={ parent.opts.section == "search" }>
+                <a class="jobs__search__nav__menu__item__link" href="/jobs/search">Вакансии</a>
             </div>
             <div class="jobs__search__nav__menu__item">
-                <a class="jobs__search__nav__menu__item__link" href="#">Создать резюме</a>
-            </div>
-            <div class="jobs__search__nav__menu__item" data-active="true">
-                <a class="jobs__search__nav__menu__item__link" href="#">Вакансии</a>
+                <a class="jobs__search__nav__menu__item__link" href="/jobs/companies">Компании</a>
             </div>
             <div class="jobs__search__nav__menu__item">
-                <a class="jobs__search__nav__menu__item__link" href="#">Компании</a>
+                <a class="jobs__search__nav__menu__item__link" href="/blog/">Блог</a>
             </div>
         </div>
         <div class="jobs__search__nav__buttons">
             <jobs-favorites></jobs-favorites>
         </div>
-        <jobs-search-panel></jobs-search-panel>
+        <jobs-search-panel if={ parent.opts.section == "search" }></jobs-search-panel>
     </div>
 
 </jobs-search-nav>

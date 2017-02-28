@@ -1,0 +1,105 @@
+.jobs__search__nav {
+    &__options {
+        @extend .flex-row-right-center;
+
+        &__item {
+            @extend .pos-rel;
+            width:43px;
+            @extend .flex-centered;
+            @extend .cursor-pointer;
+            @extend .transition-default;
+
+            svg {
+                @extend .display-block;
+                @extend .w22;
+                @extend .h22;
+                @extend .btn-active;
+            }
+            path {
+                @extend .fill-grayLightenSilver;
+            }
+            &[data-active="true"]{
+                @extend .pointerEvents-none;
+
+                path {
+                    @extend .fill-blueBright;
+                }
+            }
+            &[data-item="settings"]{
+                path {
+                    @extend .fill-blackLight;
+                }
+                &[data-active="true"]{
+                    @extend .pointerEvents-all;
+                    @extend .bg-smokeLight;
+                }
+            }
+            .m-no-touch &:hover {
+                @extend .bg-smokeLight;
+            }
+        }
+        &__list {
+            @extend .display-tableCell;
+            @extend .w40p;
+
+            &:first-child {
+                @extend .w60p;
+            }
+            &__items {
+                @extend .display-table;
+                @extend .w100p;
+                @extend .mb-xs;
+            }
+            &__item {
+                @extend .display-block;
+                @extend .fontSize-14;
+                @extend .c-blackLight;
+                margin-bottom:4px;
+            }
+        }
+    }
+    &__popup {
+        @include accelerate();
+        @extend .pos-abs;
+        @extend .l50;
+        @extend .t100;
+        @extend .bg-white;
+        @extend .visibility-hidden;
+        @extend .pointerEvents-none;
+        @extend .opacity-0;
+        @extend .willChange-tp;
+        @extend .cursor-default;
+        width:385px;
+        @extend .p-m;
+        @extend .borderRadiusBottom-l;
+        transform:translate3d(-50%, 0, 0) scale3d(0.8, 0.8, 1);
+        box-shadow:0 16px 62px -10px rgba(31,35,37,.4), 1px 0 0 0 rgba(31,45,61,.08), 0 1px 0 0 rgba(31,45,61,.08), -1px 0 0 0 rgba(31,45,61,.08), 0 -1px 0 0 rgba(31,45,61,.08);
+        transition:transform 0.3s $cubic68, opacity 0.3s $cubic68, visibility 0s 0.3s;
+
+        &:after {
+            @include accelerate();
+            @extend .content-empty;
+            @extend .pos-centered-h;
+            top:-11px;
+            border-bottom:11px solid $white;
+            border-left:11px solid rgba(0, 0, 0, 0);
+            border-right:11px solid rgba(0, 0, 0, 0);
+        }
+        &:before {
+            @include accelerate();
+            @extend .content-empty;
+            @extend .pos-centered-h;
+            top:-13px;
+            border-bottom:13px solid rgba(31,45,61,.08);
+            border-left:13px solid rgba(0, 0, 0, 0);
+            border-right:13px solid rgba(0, 0, 0, 0);
+        }
+        &[data-active="true"]{
+            @extend .opacity-100;
+            @extend .pointerEvents-all;
+            @extend .visibility-visible;
+            transform:translate3d(-50%, 0, 0) scale3d(1, 1, 1);
+            transition:transform 0.3s $bounceForce, opacity 0.3s $bounceForce;
+        }
+    }
+}

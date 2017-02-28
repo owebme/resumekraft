@@ -55,7 +55,10 @@
         }
     },
     "hh": {
-        "api": "https://api.hh.ru"
+        "api": "https://api.hh.ru",
+        "vacancy": {
+            "counter": "331187"
+        }
     },
     "parser": {
         "weather": {

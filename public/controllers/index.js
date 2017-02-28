@@ -6,7 +6,8 @@ module.exports = function(){
 
     app.controllers.jobs = {
         index: require('./jobs')(),
-        search: require('./jobs/search')()
+        search: require('./jobs/search')(),
+        vacancy: require('./jobs/vacancy')()
     }
 
     app.controllers.blog = {
