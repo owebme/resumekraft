@@ -1,0 +1,20 @@
+.jobs__home {
+    @extend .pos-rel;
+    @extend .bg-black;
+
+    .btn-danger-hover-success {
+        @extend .c-white;
+        @extend .bg-redBright;
+
+        &:hover {
+            @extend .bg-green;
+        }
+    }
+    .input-autosuggest-items {
+        .input-autosuggest-item:hover,
+        .input-autosuggest-item[data-active="true"] {
+            @extend .c-white;
+            @extend .bg-redBright;
+        }
+    }
+}

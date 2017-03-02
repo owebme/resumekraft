@@ -1,21 +1,10 @@
-<vacancy-content-raw>
- var content = opts.content;
- content = content.replace(/<[^\/]>[\s|\r|\n]{0,}<\/.+?>/gi, "");
- content = content.replace(/<\/strong>:/gi, ":</strong>");
- content = content.replace(/<\/strong><br \/>/gi, "</strong>");
- content = content.replace(/<li><strong>(.+?)<\/strong><\/li>/gi, "<li class='strong'><strong>$1</strong></li>");
- var urlRegex =/\b((ht|f)tp(s)?:\/\/[\w]+[^ \,\"\n\r\t<]*)\b/gi;
- content = content.replace(urlRegex, function(url) {
-     return '<a href="' + url + '" target="_blank">' + url + '</a>';
- });
- this.root.innerHTML = content;
-</vacancy-content-raw>
-
 <vacancy-content class="section col-md-19">
 
-    <div class="vacancy__container">
-        <h1 class="vacancy__title">{ opts.item.name }</h1>
-        <a href="/jobs/employer/{ opts.item.employer.id }/{ link(opts.item.employer.name) }" class="vacancy__employer__title">{ opts.item.employer.name }</a>
+    <div class="section__container">
+        <h1 class="title">{ opts.item.name }</h1>
+        <div class="flex-row-left-center">
+            <a href="/jobs/employer/{ opts.item.employer.id }/{ link(opts.item.employer.name) }" class="link link-l">{ opts.item.employer.name }</a><div if={ opts.item.employer.trusted } class="pos-rel ml-xs mt-xxs" data-balloon="Компания прошла идентификацию"><svg width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path class="fill-green" d="M9.392 9.827L3.148 3.584l-2.54 1.04c-.21.116-.422 0-.53-.23-.104-.232-.104-.464 0-.58L2.832.234C2.937.113 3.044 0 3.15 0c.106 0 .212.115.318.232l6.455 8.9a.8.8 0 0 1 0 .695.286.286 0 0 1-.264.173.292.292 0 0 1-.265-.173" transform="matrix(1 0 0 -1 3 13)"/></svg></div>
+        </div>
         <div class="vacancy__header">
             <div class="vacancy__header__item">
                 <div class="vacancy__header__item__title">Уровень зарплаты</div>
@@ -34,7 +23,7 @@
         </div>
         <div class="row vacancy__content">
             <div class="col-md-16 vacancy__description">
-                <vacancy-content-raw content="{ opts.item.description }">{ opts.item.description }</vacancy-content-raw>
+                <raw-content content="{ opts.item.description }">{ opts.item.description }</raw-content>
             </div>
             <div class="col-md-8">
                 <div class="vacancy__sidebar">

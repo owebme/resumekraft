@@ -8,6 +8,7 @@ module.exports = function() {
             app.store.jobs.currency = data.currency;
             app.store.jobs.experience = data.experience;
             app.store.jobs.employment = data.employment;
+            app.store.jobs.employerType = data.employer_type;
             app.store.jobs.schedule = data.schedule;
             app.store.jobs.label = data.vacancy_label;
         }

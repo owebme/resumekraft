@@ -48,6 +48,8 @@
             url = $.getUrl(params);
         }
 
+        app.$dom.root.attr("data-loading", true);
+
         app.request("getJobsSearch", encodeURIComponent(url)).then(function(data){
             $store.jobs.clusters = data.clusters;
             $store.jobs.items = data.items;
@@ -75,6 +77,8 @@
                 $State.select("pages").set(data.pages ? parseInt(data.pages) : 0);
                 $Sections.pages.update();
             }
+
+            app.$dom.root.removeAttr("data-loading");
         })
     };
 

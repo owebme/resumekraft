@@ -1,0 +1,50 @@
+.jobs__footer {
+    @extend .pt50;
+    @extend .pb-l;
+    @extend .bg-snowSilver;
+
+    &__menu {
+        @extend .flex;
+        @extend .w100p;
+        flex-wrap:wrap;
+        align-content:space-between;
+
+        &__item {
+            @extend .display-block;
+            @extend .w33p;
+            @extend .mb30;
+            @extend .plr-xs;
+
+            a {
+                @extend .c-grayDarken;
+                font-size:12.5px;
+                @extend .text-uppercase;
+                @extend .transition-default;
+
+                &:hover {
+                    @extend .c-blueBright;
+                }
+            }
+        }
+    }
+    &__hh {
+        @extend .flex-row-right-center;
+        @extend .mb30;
+
+        &__text {
+            @extend .fontSize-12;
+            @extend .c-gray;
+        }
+        &__logotype {
+            width:53px;
+            @extend .h30;
+            @extend .ml-s;
+            @extend .bg-cover;
+            background-image:url(/public/images/jobs/hh/hh-black.png);
+        }
+    }
+    &__copyright {
+        @extend .c-blackLight;
+        @extend .text-right;
+    }
+}

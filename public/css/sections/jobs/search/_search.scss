@@ -1,13 +1,40 @@
-.jobs__search {
-    @extend .pb-xl;
-    @extend .xs-pb-l;
-    padding-top:160px;
+.jobs {
+    &__search {
+        @extend .pb-xl;
+        @extend .xs-pb-l;
 
-    &__nav {
-        @include accelerate(true);
-        @extend .pos-tl;
-        @extend .w100p;
-        margin-bottom:24px;
+        &__nav {
+            @include accelerate(true);
+            @extend .pos-tl;
+            @extend .w100p;
+            margin-bottom:24px;
+
+            &[data-show="true"]{
+                .jobs__search__nav {
+                    &__header,
+                    &__panel {
+                        transform:translate3d(0, 94px, 0);
+                    }
+                    &__panel {
+                        @extend .boxShadow-close;
+                    }
+                    &__form {
+                        @extend .opacity-0;
+                        @extend .pointerEvents-none;
+                    }
+                    &__menu {
+                        .jobs[data-fixed="true"] & {
+                            @extend .opacity-100;
+                            @extend .pointerEvents-all;
+                        }
+                    }
+                    &__subpanel__logo {
+                        @extend .opacity-0;
+                        @extend .pointerEvents-none;
+                    }
+                }
+            }
+        }
     }
     &[data-fixed="true"]{
         .jobs__search__nav {
@@ -54,6 +81,54 @@
         .jobs__search__filter {
             &__title {
                 @extend .fontFamily-helvetica;
+            }
+        }
+    }
+    .jobs__list__item__title,
+    .jobs__list__item__salary,
+    .jobs__list__item__text,
+    .jobs__list__item__address,
+    .jobs__list__item__company__text {
+        @extend .pos-rel;
+        will-change:color;
+        transition:none;
+
+        &:before {
+            @extend .opacity-0;
+            @extend .content-empty;
+            @extend .pos-tl;
+            @extend .h90p;
+            @extend .bg-smokeLight;
+            @extend .pointerEvents-none;
+            @extend .willChange-opacity;
+            transition:none;
+            @extend .zIndex-1;
+        }
+    }
+    .jobs__list__item__title:before,
+    .jobs__list__item__text:before,
+    .jobs__list__item__address:before,
+    .jobs__list__item__company__text:before {
+        @extend .w100p;
+    }
+    .jobs__list__item__salary:before {
+        @extend .w35p;
+    }
+    &[data-loading="true"]{
+        .jobs__list__item {
+            @extend .pointerEvents-none;
+        }
+        .jobs__list__item__title,
+        .jobs__list__item__salary,
+        .jobs__list__item__text,
+        .jobs__list__item__address,
+        .jobs__list__item__company__text {
+            @extend .c-white;
+            transition:color 0.1s 0.35s;
+
+            &:before {
+                @extend .opacity-100;
+                transition:opacity 0.1s 0.35s;
             }
         }
     }

@@ -1,0 +1,87 @@
+.vacancy {
+    &__panel {
+        @extend .pos-centered-h;
+        @extend .b0;
+        @extend .pos-fixed;
+        @extend .pointerEvents-none;
+
+        &__block {
+            @extend .flex-row-left-center;
+            width:calc(100% + 40px);
+            @extend .pt-s;
+            @extend .pl-m;
+            @extend .pb25;
+            @extend .bg-white;
+            @extend .borderRadiusTop-xxxxl;
+            transform:translateX(15px);
+            @extend .pointerEvents-all;
+        }
+        &__button {
+            margin-right:12px;
+        }
+        &__salary {
+            @extend .pos-rel;
+            margin-left:17px;
+            @extend .pl25;
+
+            &:before {
+                @extend .content-empty;
+                @extend .pos-tl;
+                @extend .w1px;
+                @extend .h100p;
+                @extend .bg-smokeDark;
+            }
+            &__title {
+                @extend .c-gray;
+                font-size:11px;
+                margin-bottom:2px;
+                @extend .text-uppercase;
+            }
+            &__text {
+                @extend .c-blackLight;
+                @extend .fontFamily-roboto;
+                @extend .fontSize-18;
+                @extend .fontWeight-bold;
+                @extend .letterSpacing--xs;
+            }
+        }
+        .btn {
+            padding-left:31px;
+            padding-right:31px;
+        }
+        .btn-svg {
+            @extend .w24;
+            @extend .h24;
+            @extend .ml--xxs;
+            margin-right:2px;
+            transform:translateY(-2px);
+        }
+        .btn-icon {
+            @extend .display-block;
+            @extend .pos-rel;
+            margin-left:3px;
+
+            &:after {
+                @extend .borderRadius-xl;
+                @extend .plr-s;
+            }
+            .icon {
+                @extend .btn-active;
+            }
+        }
+        .icon {
+            &-like {
+                &.icon-s {
+                    width:40px;
+                    height:40px;
+                }
+            }
+            &-location {
+                &.icon-s {
+                    width:43px;
+                    height:43px;
+                }
+            }
+        }
+    }
+}

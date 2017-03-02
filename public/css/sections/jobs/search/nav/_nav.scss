@@ -1,30 +1,9 @@
 .jobs__search__nav {
     @extend .bg-white;
+    @extend .boxShadow-close;
     @extend .hidden-xs;
     @extend .zIndex-2;
 
-    &[data-show="true"]{
-        .jobs__search__nav {
-            &__header,
-            &__panel {
-                transform:translate3d(0, 94px, 0);
-            }
-            &__form {
-                @extend .opacity-0;
-                @extend .pointerEvents-none;
-            }
-            &__menu {
-                .jobs__search[data-fixed="true"] & {
-                    @extend .opacity-100;
-                    @extend .pointerEvents-all;
-                }
-            }
-            &__subpanel__logo {
-                @extend .opacity-0;
-                @extend .pointerEvents-none;
-            }
-        }
-    }
     &__panel,
     &__form,
     &__menu,
@@ -46,7 +25,6 @@
         @extend .w100p;
         @extend .plr-l;
         @extend .bg-white;
-        @extend .boxShadow-close;
     }
     &__menu,
     &__form {
@@ -97,6 +75,7 @@
         @extend .b0;
 
         &__logo {
+            @extend .pos-rel;
             @extend .opacity-0;
             @extend .display-block;
             width:77px;
@@ -105,6 +84,20 @@
             @extend .pointerEvents-none;
             background-image:url(/public/images/logotype_br.png);
             transform:translate3d(13px, 11px, 0);
+
+            &:after {
+                @extend .content-empty;
+                @extend .pos-abs;
+                @extend .t0;
+                @extend .r0;
+                @extend .w16;
+                @extend .h16;
+                @extend .bg-cover;
+                @extend .borderRadius-circle;
+                box-shadow:0 0 0 4px $white;
+                transform:translate3d(-4px, -4px, 0);
+                background-image:url(/public/images/jobs/hh/min-hh-red.png);
+            }
         }
     }
     &__form {

@@ -1,0 +1,43 @@
+.vacancy {
+    &__sidebar {
+        padding-top:37px;
+        @extend .pl35;
+        @extend .mr--25;
+
+        h3 {
+            @extend .c-blueBright;
+            @extend .mb-s;
+        }
+        .hr {
+            @extend .mt-s;
+            @extend .ml--xxs;
+            @extend .pt-s;
+            @extend .borderStyle-solid;
+            @extend .borderTopWidth-1;
+            @extend .borderColor-smokeDark;
+        }
+    }
+    &__logotype {
+        @extend .display-block;
+        width:190px;
+        @extend .borderRadius-l;
+        margin-top:3px;
+        @extend .mb-l;
+    }
+    &__skills {
+        &__item {
+            @extend .pos-rel;
+            @extend .ml-xss;
+            @extend .mb-s;
+
+            &:before {
+                @extend .content-empty;
+                @extend .pos-abs;
+                @extend .t0;
+                @extend .r100;
+                @extend .mr-xs;
+                @include ui-icon("check", 20px, 20px);
+            }
+        }
+    }
+}

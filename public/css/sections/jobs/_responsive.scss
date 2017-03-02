@@ -1,12 +1,28 @@
 @media screen and (min-width: 1400px){
     .container {
-        width:83.34%;
+        width:83.34vw;
+        max-width:1400px;
+    }
+    .jobs__search__nav__header .rows,
+    .jobs__search__nav__panel {
+        margin:0 auto;
         max-width:1400px;
     }
     .jobs__search__sidebar {
         transform:translate3d(calc(10.5vw - 50%), 0, 0);
     }
-    .vacancy__container {
-        max-width:910px;
+    .section__container {
+        min-width:850px;
+    }
+    .vacancy__description {
+        padding-right:27.5px;
+    }
+}
+@media screen and (min-width: 1600px){
+    .section__container {
+        min-width:940px;
+    }
+    .jobs__search__sidebar {
+        transform:translate3d(60px, 0, 0);
     }
 }

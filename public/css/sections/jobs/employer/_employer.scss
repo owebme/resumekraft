@@ -1,0 +1,69 @@
+.employer {
+    @extend .pb70;
+
+    .title {
+        @extend .mt-m;
+        @extend .mb30;
+    }
+    &__type {
+        @extend .pos-abs;
+        @extend .t-xs;
+        @extend .r--m;
+        @extend .trX-l;
+
+        &__item {
+            @extend .pos-rel;
+            @extend .flex-row-right-center;
+            font-size:11px;
+            @extend .text-uppercase;
+            @extend .w100;
+
+            &__icon {
+                @extend .pos-centered-v;
+                @extend .r100;
+                @extend .mr-xss;
+
+                &[data-icon="company"]{
+                    @extend .w40;
+                    @extend .h40;
+                    margin-top:2px;
+                }
+                &[data-icon="agency"]{
+                    width:46px;
+                    height:46px;
+                    margin-top:3px;
+                }
+                &[data-icon="recruiter"]{
+                    @extend .w30;
+                    @extend .h30;
+                    margin-top:2px;
+                }
+                &__color {
+                    @extend .fill-blueBright;
+                }
+            }
+        }
+    }
+    &__content {
+        @extend .pl-l;
+    }
+    &__description {
+        @extend .vacancy__description;
+        @extend .p0;
+        @extend .lineHeight-24;
+    }
+    &__sidebar {
+        @extend .bg-snowSilver;
+        @extend .p-m;
+        @extend .ml--35;
+
+        img {
+            @extend .borderRadius-m;
+        }
+        .link {
+            @extend .display-inlineBlock;
+            @extend .text-truncate;
+            @extend .maxW-100p;
+        }
+    }
+}

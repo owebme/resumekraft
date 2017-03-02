@@ -16,7 +16,7 @@
                     <strong>Требования:</strong> { highlight(item.snippet.requirement) }
                 </div>
                 <div class="jobs__list__item__company">
-                    <div class="jobs__list__item__company__text">{ item.employer.name }</div>
+                    <div class="jobs__list__item__company__text" data-trusted={ item.employer.trusted }>{ item.employer.name }</div>
                 </div>
                 <div class="jobs__list__item__address">
                     <span class="jobs__list__item__address__city">{ item.area.name }</span><span if={ item.address && item.address.metro } class="jobs__list__item__address__metro"><span class="c-gray">&nbsp;&nbsp;•&nbsp;&nbsp;</span>{ item.address.metro.station_name }</span>&nbsp;&nbsp;•&nbsp;&nbsp;{ parent.parent.opts.moment(item.published_at).format("D MMMM") }

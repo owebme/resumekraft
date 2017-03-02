@@ -51,6 +51,7 @@ module.exports = function(){
     app.get('/jobs/', app.controllers.jobs.index);
     app.get('/jobs/search', app.controllers.jobs.search);
     app.get('/jobs/vacancy/:alias/:name', app.controllers.jobs.vacancy);
+    app.get('/jobs/employer/:alias/:name', app.controllers.jobs.employer);
 
     app.get('/blog/', app.controllers.blog.index);
     app.get('/blog/page_:page', app.controllers.blog.index);

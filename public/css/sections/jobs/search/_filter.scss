@@ -216,7 +216,7 @@
         }
     }
     &__salary {
-        @extend .text-right;
+        @extend .flex-row-right-center;
         @extend .pr30;
         @extend .nowrap;
         @extend .fontWeight-bold;
@@ -224,9 +224,17 @@
         @extend .letterSpacing-0;
 
         &__rub {
-            @extend .c-grayDark;
-            font-family:$systemFont;
-            @extend .fontWeight-bold;
+            // @extend .c-grayDark;
+            // font-family:$systemFont;
+            // @extend .fontWeight-bold;
+            @extend .display-block;
+            width:21px;
+            height:21px;
+            transform:scale3d(1.1, 1, 1);
+
+            &__color {
+                @extend .fill-grayDark;
+            }
         }
     }
     &__checkbox {

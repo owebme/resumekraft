@@ -4,7 +4,7 @@
         <div onClick={ opener } class="jobs__search__filter__title">{ opts.name }</div>
         <div class="jobs__search__filter__block__opener"></div>
         <div class="jobs__search__filter__salary">
-            от { onFormat(salary) } <span class="jobs__search__filter__salary__rub">₽</span>
+            от { onFormat(salary) }<svg class="jobs__search__filter__salary__rub" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" style="enable-background:new 0 0 100 100;" xml:space="preserve"><g><path class="jobs__search__filter__salary__rub__color" d="M58.4,56.2c13.3,0,24.1-10.8,24.1-24.1S71.7,8,58.4,8H33.9v5.6V18v28.2h-9v10h9v8.3h-9v10h9v12.4h10V74.5h22.7v-10H43.9   v-8.3H58.4z M43.9,18h9.7c12.6,0,18.9,6.3,18.9,14.1s-6.3,14.1-14.1,14.1H43.9V18z"/></g></svg>
         </div>
         <div class="jobs__search__filter__range mb-xs">
             <input name="slider" onChange={ onChange } onInput={ onRange } onUpdate="none" type="range" min="10000" max="250000" step="5000" class="range range-s range-blueBright">

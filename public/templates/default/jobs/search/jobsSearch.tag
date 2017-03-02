@@ -1,8 +1,8 @@
-<section-jobs-search class="section jobs jobs__search" data-list={ opts.modeView } font-soft="false">
+<section-jobs-search class="section jobs" data-list={ opts.modeView } font-soft="false">
 
     <jobs-search-nav></jobs-search-nav>
 
-    <div class="container">
+    <div class="container jobs__search">
         <div class='row'>
             <div class="col-md-6">
                 <jobs-search-filter></jobs-search-filter>

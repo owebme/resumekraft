@@ -57,32 +57,46 @@
                 $$(e.target).parent().removeClass("focused");
             }
         });
+        $scope.find("input[type='text']").on("keydown.success", function(e){
+            if (e.keyCode == KEY.ENTER){
+                if (!$scope.find(".input-autosuggest-item").length){
+                    $.onSuccess();
+                }
+            }
+        });
     });
 
     $.onSuccess = function(){
         var text = _.clean($.vacancy._tag.value),
-            area = $.area._tag.id,
-            params = Url.parseQuery();
+            area = $.area._tag.id;
 
-        if (text) params.text = text;
-        else if (params.text) delete params.text;
-        if (area && _.clean($.area._tag.value)){
-            params.area = area;
-            $State.select("area").set({
-                id: area,
-                name: $.area._tag.value
-            });
+        if (window.$State && $Sections && $Sections.filter){
+            var params = Url.parseQuery();
+
+            if (text) params.text = text;
+            else if (params.text) delete params.text;
+            if (area && _.clean($.area._tag.value)){
+                params.area = area;
+                $State.select("area").set({
+                    id: area,
+                    name: $.area._tag.value
+                });
+            }
+            else if (params.area){
+                delete params.area;
+                $State.select("area").set(null);
+            }
+
+            $Sections.filter.onSearch($Sections.filter.getUrl(params));
         }
-        else if (params.area){
-            delete params.area;
-            $State.select("area").set(null);
+        else {
+            var params = {};
+            if (text) params.text = text;
+            if (area) params.area = area;
+            if (!_.isEmpty(params)){
+                location.replace("/jobs/search/?" + Url.stringify(params));
+            }
         }
-
-        params.clusters = "true";
-
-        var url = $store.jobs.apiUrl + Url.stringify(params);
-
-        $Sections.filter.onSearch(url);
     };
 
 </script>

@@ -1,8 +1,8 @@
-<section-vacancy class="section jobs jobs__search vacancy">
+<section-vacancy class="section jobs">
 
     <jobs-search-nav></jobs-search-nav>
 
-    <div class="container">
+    <div class="vacancy container">
         <div class='row'>
             <vacancy-content item={ opts.item }></vacancy-content>
             <div class="col-md-5">
@@ -11,7 +11,11 @@
         </div>
     </div>
 
-    <vacancy-response item={ opts.item }></vacancy-response>
+    <vacancy-similary items={ opts.items } currency={ opts.currency } utils={ opts.utils } moment={ opts.moment }></vacancy-similary>
+
+    <jobs-footer></jobs-footer>
+
+    <vacancy-panel item={ opts.item }></vacancy-panel>
 
     <div class="section__overlay"></div>
 

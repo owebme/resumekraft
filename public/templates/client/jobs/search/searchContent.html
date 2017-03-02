@@ -13,10 +13,11 @@
                     { 'от' : item.salary.from } { _.numberFormat(item.salary.from, 0, ".", " ") } <span if={ item.salary.to }>до { _.numberFormat(item.salary.to, 0, ".", " ") }</span> { currency(item.salary.currency) }
                 </div>
                 <div class="jobs__list__item__text">
-                    <strong>Требования:</strong> { highlight(item.snippet.requirement) }
+                    <strong>Требования:</strong>
+                    <jobs-search-content-raw content={ item.snippet.requirement }></jobs-search-content-raw>
                 </div>
                 <div class="jobs__list__item__company">
-                    <div class="jobs__list__item__company__text">{ item.employer.name }</div>
+                    <div class="jobs__list__item__company__text" data-trusted={ item.employer.trusted }>{ item.employer.name }</div>
                 </div>
                 <div class="jobs__list__item__address">
                     <span class="jobs__list__item__address__city">{ item.area.name }</span><span if={ item.address && item.address.metro } class="jobs__list__item__address__metro"><span class="c-gray">&nbsp;&nbsp;•&nbsp;&nbsp;</span>{ item.address.metro.station_name }</span>&nbsp;&nbsp;•&nbsp;&nbsp;{ moment(item.published_at).format("D MMMM") }
@@ -41,10 +42,6 @@
         return link.replace(/\s+/gi, "-");
     }
 
-    $.highlight = function(text){
-        return text.replace(/<highlighttext>/, '').replace(/<\/highlighttext>/, '');
-    }
-
     $.currency = function(code){
         if (code){
             return _.findWhere($store.jobs.dictionary.get("currency"), {"code": code}).abbr;
@@ -54,3 +51,7 @@
 </script>
 
 </jobs-search-content-client>
+
+<jobs-search-content-raw>
+    this.root.innerHTML = opts.content
+</jobs-search-content-raw>

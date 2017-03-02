@@ -1,0 +1,64 @@
+.employer {
+    &__vacancies {
+        @extend .plr-m;
+        @extend .mb100;
+
+        h3 {
+            @extend .fontSize-26;
+            letter-spacing:-0.025em;
+            @extend .c-grayDarken;
+            @extend .mb-s;
+        }
+        &__item {
+            @extend .display-table;
+            @extend .w100p;
+            padding-top:26px;
+            padding-bottom:34px;
+            @extend .c-blackLight;
+            @extend .transition-default;
+            @extend .borderColor-smoke;
+            border-bottom:1px solid;
+
+            &:hover {
+                @extend .bg-snowSilver;
+            }
+            &__name,
+            &__salary,
+            &__city {
+                @extend .display-tableCell;
+            }
+            &__name {
+                @extend .w60p;
+                @extend .pl-m;
+                @extend .pr30;
+            }
+            &__date {
+                @extend .mt-xxs;
+                @extend .fontSize-14;
+            }
+            &__salary {
+                @extend .w20p;
+                @extend .pl-m;
+                @extend .c-black;
+            }
+            &__city {
+                @extend .c-gray;
+                @extend .w20p;
+                @extend .pr-m;
+                @extend .fontSize-15;
+            }
+            &__title {
+                @extend .c-blueBright;
+                @extend .fontSize-15;
+                @extend .fontWeight-bold;
+                @extend .fontFamily-graphik;
+                @extend .text-uppercase;
+                @extend .transition-default;
+
+                &:hover {
+                    @extend .c-green;
+                }
+            }
+        }
+    }
+}
