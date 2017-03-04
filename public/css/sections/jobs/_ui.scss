@@ -1,14 +1,9 @@
 .jobs {
-    padding-top:160px;
-    @extend .fontFamily-helvetica;
-
-    .section__container {
-        @extend .pos-rel;
-        @extend .w90p;
-        @extend .centered;
-        max-width:770px;
-        @extend .pt-s;
-        @extend .pb-l;
+    .btn-active {
+        .d-phone & {
+            @extend .transition-none;
+            @extend .transform-none;
+        }
     }
     h1.title {
         @extend .c-grayDarken;
@@ -24,7 +19,12 @@
         @extend .transition-default;
         border-bottom:1px solid rgba($blueLight,.3);
 
-        &:hover {
+        &:visited {
+            @extend .c-violet;
+            border-color:rgba($violet,.3);
+        }
+        &:hover,
+        &:visited:hover {
             @extend .c-green;
             border-color:rgba($green,.3);
         }
@@ -42,6 +42,16 @@
     .borderColor-smokeDarken {
         border-color:#C0CCDA;
     }
+    .c-blackLight {
+        .d-phone & {
+            color:$steelDark;
+        }
+    }
+    .c-gray {
+        .d-phone & {
+            color:$silver;
+        }
+    }
     .btn {
         @extend .text-uppercase;
 
@@ -51,6 +61,11 @@
         &-l,
         &-m {
             font-size:16px;
+        }
+        &-l {
+            .d-phone & {
+                font-size:17.5px;
+            }
         }
     }
     .btn-default {
@@ -81,6 +96,15 @@
                 box-shadow:inset 0 0 0 1px rgba($white,.5);
             }
         }
+        &.btn-primary {
+            @extend .bg-blueBright;
+            @extend .c-white;
+            box-shadow:none;
+
+            &:hover {
+                @extend .bg-blue;
+            }
+        }
         &.btn-m {
             @extend .fontSize-14;
             @extend .h32;
@@ -90,6 +114,10 @@
             @extend .fontSize-15;
             @extend .h44;
             @extend .plr-m;
+
+            .d-phone & {
+                height:42px;
+            }
         }
     }
     .btn-primary-hover-success {
@@ -121,9 +149,21 @@
                 font-size:15px;
             }
         }
+        .d-phone & {
+            &::-webkit-input-placeholder {
+                color:$silver;
+            }
+            &::-moz-input-placeholder {
+                color:$silver;
+            }
+        }
     }
     .input-svg path {
         @extend .fill-grayLight;
+
+        .d-phone & {
+            @extend .fill-silver;
+        }
     }
     .input-group-m .input-icon {
         .input-svg-search {
@@ -133,6 +173,19 @@
         .input-svg-location {
             @extend .w32;
             @extend .h32;
+            transform:translateY(3px);
+        }
+    }
+    .input-group-l .input-icon {
+        @extend .w50;
+
+        .input-svg-search {
+            width:26px;
+            height:26px;
+        }
+        .input-svg-location {
+            width:38px;
+            height:38px;
             transform:translateY(3px);
         }
     }
@@ -148,6 +201,19 @@
         .input-autosuggest-item[data-active="true"] {
             @extend .c-white;
             @extend .bg-green;
+        }
+        .d-phone & {
+            @extend .borderRadius-none;
+        }
+    }
+    .input-autosuggest-item {
+        .d-phone & {
+            @extend .ptb-xs;
+
+            &:last-child {
+                padding-bottom:12px;
+                @extend .border-none;
+            }
         }
     }
     [data-balloon]:after {

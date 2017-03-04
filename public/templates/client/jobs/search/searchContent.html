@@ -1,4 +1,8 @@
-<jobs-search-content-client class="section jobs__search__content">
+<jobs-search-content-client class="section jobs__search__content" data-inner="hidden" data-loading="false">
+
+    <div class="section__loading visible-xs">
+        <div class="section__loading__text">Поиск вакансий...</div>
+    </div>
 
     <div class="jobs__list">
         <div if={ !$store.jobs.items.length } class="jobs__list__empty text-center">
@@ -12,18 +16,18 @@
                 <div if={ item.salary } class="jobs__list__item__salary">
                     { 'от' : item.salary.from } { _.numberFormat(item.salary.from, 0, ".", " ") } <span if={ item.salary.to }>до { _.numberFormat(item.salary.to, 0, ".", " ") }</span> { currency(item.salary.currency) }
                 </div>
-                <div class="jobs__list__item__text">
+                <div name="text" class="jobs__list__item__text">
                     <strong>Требования:</strong>
-                    <jobs-search-content-raw content={ item.snippet.requirement }></jobs-search-content-raw>
+                    { item.snippet.requirement }
                 </div>
                 <div class="jobs__list__item__company">
                     <div class="jobs__list__item__company__text" data-trusted={ item.employer.trusted }>{ item.employer.name }</div>
                 </div>
                 <div class="jobs__list__item__address">
-                    <span class="jobs__list__item__address__city">{ item.area.name }</span><span if={ item.address && item.address.metro } class="jobs__list__item__address__metro"><span class="c-gray">&nbsp;&nbsp;•&nbsp;&nbsp;</span>{ item.address.metro.station_name }</span>&nbsp;&nbsp;•&nbsp;&nbsp;{ moment(item.published_at).format("D MMMM") }
+                    <span class="jobs__list__item__address__city">{ item.area.name }</span><span if={ item.address && item.address.metro } class="jobs__list__item__address__metro"><span class="c-gray">&nbsp;&nbsp;•&nbsp;&nbsp;</span>{ item.address.metro.station_name }</span>&nbsp;&nbsp;•&nbsp;&nbsp;{ date(item.published_at) }
                 </div>
                 <div class="jobs__list__item__buttons">
-                    <icon-like color="blueBright" size="xs"></icon-like>
+                    <icon-like color={ app.device.isPhone ? "silver" : "blueBright" } size={ app.device.isPhone ? "s" : "xs" }></icon-like>
                     <div class="btn-default btn-m">Откликнуться</div>
                 </div>
             </div>
@@ -36,10 +40,20 @@
 
     $.onBack = function(){
         History.back();
-    };
+    }
 
     $.link = function(link){
         return link.replace(/\s+/gi, "-");
+    }
+
+    $.date = function(date){
+        var days = moment(date).diff(moment(), 'days');
+
+        if (days === 0) return "Сегодня";
+        else if (days === -1) return "Вчера";
+        else {
+            return moment(date).format("D MMMM");
+        }
     }
 
     $.currency = function(code){
@@ -51,7 +65,3 @@
 </script>
 
 </jobs-search-content-client>
-
-<jobs-search-content-raw>
-    this.root.innerHTML = opts.content
-</jobs-search-content-raw>

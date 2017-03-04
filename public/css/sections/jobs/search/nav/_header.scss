@@ -1,8 +1,8 @@
 .jobs__search__nav {
     &__header {
         @extend .pos-rel;
-        height:94px;
         @extend .bg-white;
+        height:94px;
         border-bottom:1px solid $smokeLight;
         @extend .zIndex-1;
 
@@ -36,6 +36,7 @@
             left:182px;
             @extend .fontSize-13;
             @extend .c-gray;
+            @extend .hidden-xs;
             @extend .opacity-80;
         }
         &__buttons {

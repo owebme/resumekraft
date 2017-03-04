@@ -9,11 +9,18 @@
             @extend .cursor-pointer;
             @extend .transition-default;
 
-            svg {
-                @extend .display-block;
-                @extend .w22;
-                @extend .h22;
-                @extend .btn-active;
+            &:not([data-item="favorite"]){
+                svg {
+                    @extend .display-block;
+                    @extend .w22;
+                    @extend .h22;
+                    @extend .btn-active;
+
+                    .d-phone & {
+                        @extend .w24;
+                        @extend .h24;
+                    }
+                }
             }
             path {
                 @extend .fill-grayLightenSilver;
@@ -29,13 +36,37 @@
                 path {
                     @extend .fill-blackLight;
                 }
-                &[data-active="true"]{
-                    @extend .pointerEvents-all;
-                    @extend .bg-smokeLight;
+            }
+            &[data-item="favorite"]{
+                .icon {
+                    margin-top:3px;
                 }
             }
             .m-no-touch &:hover {
                 @extend .bg-smokeLight;
+            }
+            &__counter {
+                @extend .flex-centered;
+                @extend .pos-centered;
+                width:18px;
+                height:18px;
+                @extend .borderRadius-circle;
+                @extend .bg-pink;
+                @extend .c-white;
+                font-size:12px;
+                @extend .fontWeight-bold;
+                @extend .zIndex-1;
+                margin:-10px 0 0 -12px;
+            }
+        }
+        jobs-search-panel-settings {
+            &[data-active="true"]{
+                .jobs__search__nav__options__item {
+                    @extend .bg-smokeLight;
+                }
+                .jobs__search__nav__popup {
+                    @extend .jobs__search__nav__popup[data-active="true"];
+                }
             }
         }
         &__list {
@@ -49,12 +80,35 @@
                 @extend .display-table;
                 @extend .w100p;
                 @extend .mb-xs;
+
+                .d-phone & {
+                    @extend .pt-xxs;
+                    @extend .mb-s;
+                }
             }
             &__item {
                 @extend .display-block;
                 @extend .fontSize-14;
                 @extend .c-blackLight;
                 margin-bottom:4px;
+
+                .d-phone & {
+                    @extend .fontSize-15;
+                    @extend .flex-row-left-center;
+                    margin-bottom:8px;
+                }
+                span {
+                    .d-phone & {
+                        @extend .display-block;
+                        @extend .maxW-80p;
+                        @extend .text-truncate;
+                    }
+                }
+                input {
+                    .d-phone & {
+                        @extend .mr-xxs;
+                    }
+                }
             }
         }
     }
@@ -76,6 +130,18 @@
         box-shadow:0 16px 62px -10px rgba(31,35,37,.4), 1px 0 0 0 rgba(31,45,61,.08), 0 1px 0 0 rgba(31,45,61,.08), -1px 0 0 0 rgba(31,45,61,.08), 0 -1px 0 0 rgba(31,45,61,.08);
         transition:transform 0.3s $cubic68, opacity 0.3s $cubic68, visibility 0s 0.3s;
 
+        .d-phone & {
+            @extend .pos-fixed;
+            @extend .w100v;
+            @extend .borderRadius-none;
+            transform:translate3d(-50%, 0, 0) scale(1);
+            transition:opacity 0.2s, visibility 0s 0.2s;
+
+            &:after,
+            &:before {
+                @extend .display-none;
+            }
+        }
         &:after {
             @include accelerate();
             @extend .content-empty;
@@ -100,6 +166,10 @@
             @extend .visibility-visible;
             transform:translate3d(-50%, 0, 0) scale3d(1, 1, 1);
             transition:transform 0.3s $bounceForce, opacity 0.3s $bounceForce;
+
+            .d-phone & {
+                transition:opacity 0.2s;
+            }
         }
     }
 }

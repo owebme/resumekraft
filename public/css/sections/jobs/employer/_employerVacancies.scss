@@ -55,7 +55,11 @@
                 @extend .text-uppercase;
                 @extend .transition-default;
 
-                &:hover {
+                &:visited {
+                    @extend .c-violet;
+                }
+                &:hover,
+                &:visited:hover {
                     @extend .c-green;
                 }
             }

@@ -27,6 +27,7 @@ module.exports = function(){
 				console.log("API REQUEST: " + url);
 				handlerRequest(url, function(err, data){
 					if (!err && data){
+						if (prop == "items") data.items = clearSnippet(data.items);
 						if (prop == "items" && !app.utils.isEmpty(data.items) || prop != "items" && data[prop]){
 							saveRedis(hash, data);
 						}
@@ -40,6 +41,15 @@ module.exports = function(){
 	var saveRedis = function(hash, data){
 		app.redis.set(hash, JSON.stringify(data));
 		app.redis.expireat(hash, parseInt((+new Date)/1000) + 60 * 60 * 24);
+	};
+
+	var clearSnippet = function(items){
+		return app.utils.filter(items, function(item){
+			if (item.snippet && item.snippet.requirement){
+				item.snippet.requirement = item.snippet.requirement.replace(/<highlighttext>(.+?)<\/highlighttext>/gi, '«$1»');
+			}
+			return item;
+		})
 	};
 
 	API.search = function(url, callback){

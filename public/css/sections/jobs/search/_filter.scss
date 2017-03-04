@@ -2,11 +2,26 @@
     @extend .c-gray;
     @extend .fontSize-15;
     @extend .pl-m;
+    @extend .xs-pl0;
     @extend .mb-s;
+
+    &__panel {
+        @extend .flex-centered;
+        @extend .pos-bl-fixed;
+        @extend .w100p;
+        @extend .h44;
+        @extend .c-white;
+        @extend .bg-green;
+
+        &:empty {
+            @extend .display-none;
+        }
+    }
 }
 .jobs__search__sidebar {
     @include accelerate();
     @extend .pos-abs;
+    @extend .hidden-xs;
     @extend .userSelect-none;
     width:274px;
 
@@ -21,6 +36,7 @@
         @extend .display-block;
         @extend .pos-rel;
         @extend .plr-s;
+        @extend .xs-plr0;
         padding-bottom:8px;
         @extend .pt-s;
 
@@ -66,6 +82,11 @@
                         @extend .opacity-100;
                     }
                 }
+                .jobs__search__filter__items {
+                    .d-phone & {
+                        @extend .display-block;
+                    }
+                }
             }
             &[data-active="false"]{
                 .jobs__search__filter__block__opener {
@@ -80,6 +101,10 @@
                 }
                 .jobs__search__filter__items {
                     @extend .h0;
+
+                    .d-phone & {
+                        @extend .display-none;
+                    }
                 }
                 .jobs__search__filter__items__list {
                     @extend .opacity-0;
@@ -108,23 +133,43 @@
                 @extend .borderRadius-m;
                 @extend .opacity-0;
                 transition:transform 0.3s $cubic345, opacity 0.3s $cubic345;
+
+                .d-phone & {
+                    top:16px;
+                    @extend .r0;
+                    @extend .transition-none;
+                }
             }
         }
     }
     &__items {
+        @include accelerate(true);
         @extend .overflow-hidden;
         margin-left:-4px;
+        @extend .xs-ml0;
+        @extend .xs-mt-xxs;
         will-change:height;
 
         &__list {
+            @include accelerate(true);
             @extend .willChange-opacity;
         }
         &[data-animate="true"]{
             transition:height 0.4s $cubic345;
 
+            .d-phone & {
+                @extend .transition-none;
+            }
             .jobs__search__filter__items__list {
                 transition:opacity 0.4s $cubic345;
+
+                .d-phone & {
+                    @extend .transition-none;
+                }
             }
+        }
+        .d-phone & {
+            height:auto !important;
         }
     }
     &__title {
@@ -135,12 +180,25 @@
         @extend .transition-default;
         @extend .text-uppercase;
         @extend .pl-xxs;
+        @extend .xs-pl0;
+        @extend .xs-pt-xs;
+        @extend .xs-pb-xss;
         margin-bottom:-1px;
         @extend .cursor-pointer;
 
-        &:hover + .jobs__search__filter__block__opener {
+        .m-no-touch &:hover + .jobs__search__filter__block__opener,
+        .d-phone & + .jobs__search__filter__block__opener {
             @extend .opacity-100;
             @extend .scale-100;
+        }
+        .d-phone & {
+            @extend .c-blackLight;
+            @extend .fontSize-14;
+            margin:0 -5vw;
+            padding-left:5vw;
+            padding-right:5vw;
+            @extend .w100v;
+            background-color:rgba($silver,.13);
         }
     }
     &__item {
@@ -150,11 +208,18 @@
         @extend .fontSize-13;
         @extend .cursor-pointer;
         padding:2px 10px;
+        @extend .xs-plr0;
+        @extend .xs-ptb-xss;
 
+        .d-phone & {
+            @extend .c-black;
+            @extend .fontSize-16;
+            border-bottom:1px solid rgba($silver,.3);
+        }
         &[data-hidden="true"]{
             @extend .display-none;
         }
-        &:hover {
+        .m-no-touch &:hover {
             @extend .bg-smokeLight;
             color:#000;
         }
@@ -167,33 +232,58 @@
             @extend .fontSize-12;
             @extend .display-tableCell;
             @extend .text-right;
+
+            .d-phone & {
+                @extend .fontSize-14;
+            }
         }
         &[data-select="true"]{
             @extend .pos-rel;
             @extend .bg-smokeLight;
             @extend .transition-default;
             margin:0 -4px;
+            @extend .xs-ptb-xs;
             width:calc(100% + 4px);
 
-            &:before,
-            &:after {
-                @extend .content-empty;
-                @extend .pos-abs;
-                top:10px;
-                right:6px;
-                @extend .bg-gray;
-                width:9px;
-                @extend .h2px;
-                @extend .opacity-65;
-                @extend .transition-default;
+            .d-no-phone & {
+                &:before,
+                &:after {
+                    @extend .content-empty;
+                    @extend .pos-abs;
+                    top:10px;
+                    right:6px;
+                    @extend .bg-gray;
+                    width:9px;
+                    @extend .h2px;
+                    @extend .opacity-65;
+                    @extend .transition-default;
+                }
+                &:before {
+                    transform:rotate(45deg);
+                }
+                &:after {
+                    transform:rotate(-45deg);
+                }
             }
-            &:before {
-                transform:rotate(45deg);
+            .d-phone & {
+                @extend .c-white;
+                @extend .bg-blueBright;
+                @extend .w100v;
+                margin:0 -5vw;
+                padding-left:5vw;
+                padding-right:10vw;
+                @extend .border-none;
+
+                &:after {
+                    @extend .content-empty;
+                    @extend .pos-centered-v;
+                    right:5vw;
+                    margin-right:-7px;
+                    @extend .opacity-85;
+                    @include ui-icon("close_strong_white", 28px, 28px);
+                }
             }
-            &:after {
-                transform:rotate(-45deg);
-            }
-            &:hover {
+            .m-no-touch &:hover {
                 background-color:darken($smokeLight,3%);
 
                 &:before,
@@ -210,10 +300,19 @@
         @extend .btn-active;
         padding-top:2px;
         @extend .pl-xs;
+        @extend .xs-pl0;
+        @extend .xs-mt-xss;
 
-        &:hover {
+        .d-phone & {
+            @extend .fontSize-15;
+        }
+        .m-no-touch &:hover {
             @extend .c-blueBright;
         }
+    }
+    &__range {
+        @extend .mb-xs;
+        @extend .xs-mb-s;
     }
     &__salary {
         @extend .flex-row-right-center;
@@ -223,6 +322,11 @@
         @extend .fontSize-18;
         @extend .letterSpacing-0;
 
+        .d-phone & {
+            font-size:21px;
+            @extend .pt-m;
+            padding-bottom:2px;
+        }
         &__rub {
             // @extend .c-grayDark;
             // font-family:$systemFont;
@@ -232,6 +336,11 @@
             height:21px;
             transform:scale3d(1.1, 1, 1);
 
+            .d-phone & {
+                @extend .w24;
+                @extend .h24;
+                @extend .transform-default;
+            }
             &__color {
                 @extend .fill-grayDark;
             }

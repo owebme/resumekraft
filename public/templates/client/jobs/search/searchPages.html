@@ -21,6 +21,8 @@
         $.perPage = 5;
 
         $.on("mount", function(){
+            $Sections.module("search.pages", $);
+
             app.$dom.document.on("keydown", function(e){
                 if (e.altKey){
                     if (e.keyCode == 37){
@@ -59,7 +61,7 @@
             if (page > 0) params.page = page;
             else if (params.page) delete params.page;
 
-            $Sections.filter.onSearch($Sections.filter.getUrl(params), true);
+            $Sections.search.filter.onSearch($Sections.search.filter.getUrl(params), true);
         };
 
         $.get = {

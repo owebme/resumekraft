@@ -1,0 +1,71 @@
+<jobs-search-filter-screen class="screenMobile section section-hidden zIndex-5" data-inner="hidden" data-loading="false" data-pos="right" data-open="false">
+
+    <div class="section__loading">
+        <div class="section__loading__text">Поиск вакансий...</div>
+    </div>
+
+    <div class="screenMobile__navbar" data-gradient="white">
+        <div onClick={ hide } onUpdate="none" class="screenMobile__nav__back"></div>
+        <div class="screenMobile__nav__title">Параметры поиска</div>
+        <div class="screenMobile__nav__options"></div>
+    </div>
+    <div name="content" class="section__content">
+        <jobs-search-filter></jobs-search-filter>
+    </div>
+
+    <div onClick={ hide } onUpdate="none" name="result" class="jobs__search__result__panel"></div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    $.on("mount", function(){
+        $Screens.module("search.filter", $);
+
+        $.section = new app.plugins.sections($.root);
+
+        $scope.find(".jobs__search__filter__range").on('swipeLeft swipeRight', function(e){
+            e.stopPropagation();
+        });
+
+        $scope.on('swipeRight', function(){
+            $.hide();
+        });
+    });
+
+    $.show = function(callback){
+        $.active = true;
+        $.section.show();
+        $.callback = callback;
+    };
+
+    $.open = {
+        dropMenu: function(e){
+            $DropMenu.show({
+                id: $.item._id,
+                item: $.item,
+                elem: $$(e.currentTarget),
+                pos: "down-left",
+                offset: {
+                    left: 5
+                },
+                menu: $store.data.dropMenu
+            });
+        }
+    };
+
+    $.hide = function(){
+        $.section.hide({
+            beforeHide: function(){
+                if (_.isFunction($.callback)) $.callback();
+            },
+            afterHide: function(){
+                $.active = false;
+            }
+        })
+    };
+
+</script>
+
+</jobs-search-filter-screen>

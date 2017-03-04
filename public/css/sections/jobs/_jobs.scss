@@ -1,0 +1,70 @@
+.jobs {
+    padding-top:160px;
+    @extend .fontFamily-helvetica;
+
+    .d-phone & {
+        padding-top:54px;
+
+        &:after {
+            @include abs();
+            @extend .pos-fixed;
+            @extend .content-empty;
+            @extend .bg-overlay;
+            @extend .opacity-0;
+            @extend .visibility-hidden;
+            @extend .pointerEvents-none;
+            @extend .willChange-opacity;
+            transition:opacity 0.5s $cubic40, visibility 0s 0.5s;
+            @extend .zIndex-3;
+        }
+        &[data-overlay-full="true"]:after {
+            @extend .opacity-100;
+            @extend .pointerEvents-all;
+            @extend .visibility-visible;
+            transition:opacity 0.42s $cubic645;
+        }
+    }
+    .screenMobile {
+        @include perspective(500);
+        @extend .pos-fixed;
+
+        &__nav {
+            &__title {
+                @extend .c-blueBright;
+            }
+        }
+    }
+    .section__content {
+        @include accelerate(true);
+
+        .d-phone & {
+            @extend .pt70;
+            @extend .pb70;
+            padding-left:5vw;
+            padding-right:5vw;
+            @extend .overflowX-hidden;
+            @extend .overflowY-scroll;
+        }
+    }
+    .section__loading {
+        &:after {
+            @extend .w64;
+            @extend .w64;
+            @include abs_50(64, 64);
+        }
+    }
+    .section__container {
+        .d-no-phone & {
+            @extend .pos-rel;
+            @extend .w90p;
+            @extend .centered;
+            max-width:770px;
+            @extend .pt-s;
+            @extend .pb-l;
+        }
+    }
+    .section__overlay {
+        @extend .pos-fixed;
+        @extend .zIndex-1;
+    }
+}

@@ -158,6 +158,8 @@
 		}
 	}
 	&[data-loading="true"]{
+		@extend .pointerEvents-none;
+
 		.section__loading {
 			@extend .opacity-100;
 			@extend .pointerEvents-all;

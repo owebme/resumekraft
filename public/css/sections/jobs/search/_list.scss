@@ -3,9 +3,6 @@
         @include flex("column", "center", "center");
         height:calc(100vh - 224px);
     }
-    .d-phone & {
-        margin:0 -7.5px;
-    }
     &__item {
         @extend .pos-rel;
         @extend .plr-m;
@@ -14,6 +11,10 @@
         @extend .xs-plr0;
         border-bottom:1px solid $smokeLight;
 
+        .d-phone & {
+            @extend .borderColor-smokeDarken;
+            @extend .borderStyle-dashed;
+        }
         &:before {
             @extend .content-empty;
             @include abs();
@@ -30,6 +31,12 @@
                 @extend .opacity-100;
                 @extend .scale-100;
             }
+            .jobs__list__item__buttons {
+                @extend .opacity-100;
+                @extend .pointerEvents-all;
+            }
+        }
+        .d-phone & {
             .jobs__list__item__buttons {
                 @extend .opacity-100;
                 @extend .pointerEvents-all;
@@ -56,6 +63,7 @@
                 @extend .fontSize-22;
                 line-height:26px;
                 margin-bottom:2px;
+                @extend .pr30;
             }
             &:visited {
                 @extend .c-violet;
@@ -121,6 +129,9 @@
                 @extend .maxW-75p;
                 padding-right:19px;
 
+                .d-phone & {
+                    @extend .maxW-100p;
+                }
                 &[data-trusted="true"]{
                     &:after {
                         @extend .content-empty;
@@ -139,6 +150,9 @@
             @extend .c-gray;
             margin-top:1px;
 
+            .d-phone & {
+                @extend .maxW-100p;
+            }
             &__city {
                 @extend .c-redBright;
             }
@@ -155,6 +169,11 @@
             @extend .pointerEvents-none;
             @extend .transition-default;
 
+            .d-phone & {
+                top:-9px;
+                right:-9px;
+                @extend .b-auto;
+            }
             .icon-like {
                 @extend .pos-rel;
                 @extend .display-block;
@@ -162,6 +181,16 @@
                 @extend .btn-active;
                 transform-origin:50% 100%;
                 margin-right:7px;
+
+                .d-phone & {
+                    @extend .opacity-85;
+                    @extend .mr0;
+                }
+            }
+            .btn-default {
+                .d-phone & {
+                    @extend .display-none;
+                }
             }
         }
     }

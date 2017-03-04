@@ -5,17 +5,32 @@
     @extend .userSelect-none;
     @extend .pointerEvents-none;
 
+    .d-phone & {
+        @extend .pos-static;
+        @extend .ml--xss;
+        @extend .mt--1;
+        border-top:1px solid;
+        @extend .borderColor-smoke;
+        @extend .transform-default;
+    }
     &__items {
         @extend .pos-rel;
         width:120%;
         @extend .ml-s;
         @extend .pointerEvents-all;
+
+        .d-phone & {
+            @extend .w100v;
+            @extend .ml0;
+            @extend .flex-row-left-center;
+        }
     }
     &__arrows {
         @include flex("row", "space-between", "flex-start");
         @extend .pos-abs;
         @extend .b-50;
         @extend .l0;
+        @extend .hidden-xs;
         width:84%;
     }
     &__arrow {
@@ -57,6 +72,17 @@
         @extend .bg-snowSilver;
         @extend .btn-active;
 
+        .d-phone & {
+            @extend .w16p;
+            height:54px;
+            @extend .fontSize-18;
+            @extend .borderRadius-none;
+
+            &:not(:nth-of-type(1)){
+                @extend .borderColor-smoke;
+                border-left:1px solid;
+            }
+        }
         &:nth-of-type(1) {
             border-radius:4px 0 0 0;
         }
@@ -67,8 +93,12 @@
             @extend .c-white;
             @extend .bg-silver;
             @extend .pointerEvents-none;
+
+            .d-phone & {
+                @extend .bg-blueBright;
+            }
         }
-        &:hover {
+        .m-no-touch &:hover {
             @extend .c-white;
             @extend .bg-blueBright;
         }

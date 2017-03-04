@@ -10,7 +10,6 @@
 @import 'base/main';
 
 // UI elements
-@import '../../assets/css/ui/icons';
 @import 'ui/icons';
 @import '../../assets/css/ui/basic/button';
 @import '../../assets/css/ui/basic/input';
@@ -67,7 +66,7 @@
 @import 'sections/blog/social';
 
 // jobs
-@import 'sections/jobs/home';
+@import 'sections/jobs/home/home';
 
 // modules
 @import '../../assets/css/modules/chart/chartRadial';
@@ -117,3 +116,4 @@
 @import '../../assets/css/states/responsive/margin';
 @import '../../assets/css/states/responsive/padding';
 @import '../../assets/css/states/responsive/position';
+@import '../../assets/css/states/responsive/text';

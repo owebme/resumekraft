@@ -1,8 +1,13 @@
 .jobs {
     &__search {
         @extend .pb-xl;
-        @extend .xs-pb-l;
+        @extend .xs-pb0;
 
+        &.section__content {
+            .d-phone & {
+                padding-top:54px;
+            }
+        }
         &__nav {
             @include accelerate(true);
             @extend .pos-tl;
@@ -14,6 +19,10 @@
                     &__header,
                     &__panel {
                         transform:translate3d(0, 94px, 0);
+
+                        .d-phone & {
+                            transform:translate3d(0, 296px, 0);
+                        }
                     }
                     &__panel {
                         @extend .boxShadow-close;
@@ -34,6 +43,45 @@
                     }
                 }
             }
+            &__panel {
+                &[data-turn="true"]{
+                    .jobs__search__nav__opener__mobile {
+                        @extend .opacity-100;
+                        @extend .pointerEvents-all;
+                    }
+                }
+                &[data-show="true"]{
+                    .d-phone & {
+                        box-shadow:0 20px 62px rgba($black,.3);
+                    }
+                    .jobs__search__nav__form__wrapper {
+                        @extend .col-xs-24;
+
+                        input {
+                            padding-right:105px;
+                        }
+                    }
+                    .jobs__search__nav__form__button {
+                        @extend .flex-centered;
+                    }
+                    .jobs__search__nav__form__settings {
+                        @extend .opacity-100;
+                        @extend .pointerEvents-all;
+                    }
+                    .jobs__search__nav__options__wrapper {
+                        @extend .hidden-xs;
+                    }
+                    .jobs__search__nav__opener__mobile {
+                        @extend .display-none;
+                    }
+                }
+                .input-autosuggest-items {
+                    .d-phone & {
+                        @extend .w100v;
+                        @extend .ml--xss;
+                    }
+                }
+            }
         }
     }
     &[data-fixed="true"]{
@@ -41,6 +89,9 @@
             @extend .pos-fixed;
             transform:translate3d(0, -94px, 0);
 
+            .d-phone & {
+                transform:translate3d(0, -296px, 0);
+            }
             &__menu {
                 @extend .opacity-0;
                 @extend .pointerEvents-none;
@@ -84,52 +135,90 @@
             }
         }
     }
-    .jobs__list__item__title,
-    .jobs__list__item__salary,
-    .jobs__list__item__text,
-    .jobs__list__item__address,
-    .jobs__list__item__company__text {
-        @extend .pos-rel;
-        will-change:color;
-        transition:none;
-
-        &:before {
-            @extend .opacity-0;
-            @extend .content-empty;
-            @extend .pos-tl;
-            @extend .h90p;
-            @extend .bg-smokeLight;
-            @extend .pointerEvents-none;
-            @extend .willChange-opacity;
-            transition:none;
-            @extend .zIndex-1;
-        }
-    }
-    .jobs__list__item__title:before,
-    .jobs__list__item__text:before,
-    .jobs__list__item__address:before,
-    .jobs__list__item__company__text:before {
-        @extend .w100p;
-    }
-    .jobs__list__item__salary:before {
-        @extend .w35p;
-    }
-    &[data-loading="true"]{
-        .jobs__list__item {
-            @extend .pointerEvents-none;
-        }
+    .d-no-phone & {
         .jobs__list__item__title,
         .jobs__list__item__salary,
         .jobs__list__item__text,
         .jobs__list__item__address,
         .jobs__list__item__company__text {
-            @extend .c-white;
-            transition:color 0.1s 0.35s;
+            @extend .pos-rel;
+            will-change:color;
+            transition:none;
 
             &:before {
-                @extend .opacity-100;
-                transition:opacity 0.1s 0.35s;
+                @extend .opacity-0;
+                @extend .content-empty;
+                @extend .pos-tl;
+                @extend .h90p;
+                @extend .bg-smokeLight;
+                @extend .pointerEvents-none;
+                @extend .willChange-opacity;
+                transition:none;
+                @extend .zIndex-1;
+            }
+        }
+        .jobs__list__item__title:before,
+        .jobs__list__item__text:before,
+        .jobs__list__item__address:before,
+        .jobs__list__item__company__text:before {
+            @extend .w100p;
+        }
+        .jobs__list__item__salary:before {
+            @extend .w35p;
+        }
+        &[data-search="true"]{
+            .jobs__list__item {
+                @extend .pointerEvents-none;
+            }
+            .jobs__list__item__title,
+            .jobs__list__item__salary,
+            .jobs__list__item__text,
+            .jobs__list__item__address,
+            .jobs__list__item__company__text {
+                @extend .c-white;
+                transition:color 0.1s 0.35s;
+
+                &:before {
+                    @extend .opacity-100;
+                    transition:opacity 0.1s 0.35s;
+                }
             }
         }
     }
+    .d-phone & {
+        .section {
+            &[data-search="true"]{
+                @extend [data-loading="true"];
+
+                .section__loading {
+                    &__text,
+        			&:before {
+        				@extend .opacity-100;
+        			    @extend .transition-none;
+        			}
+        		}
+            }
+            &__loading {
+                &:before {
+                    @extend .content-empty;
+                    @extend .pos-centered;
+                    @extend .w46;
+                    @extend .h46;
+                    @extend .willChange-opacity;
+                    @extend .bg-cover;
+                    @extend .opacity-0;
+                    transition:opacity 0.08s;
+                    background-image:url(/public/images/jobs/hh/min-hh-red.png);
+                }
+                &__text {
+                    @extend .pos-centered;
+                    padding-top:110px;
+                    @extend .c-grayDarken;
+                    @extend .willChange-opacity;
+                    @extend .opacity-0;
+                    transition:opacity 0.08s;
+                }
+            }
+        }
+    }    
 }

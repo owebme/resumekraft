@@ -47,7 +47,8 @@ module.exports = function(){
                     found: data && data.found,
                     pages: data && data.pages,
                     state: state ? JSON.stringify(state) : null,
-                    content: app.riot.render(app.tags("jobsSearch"), req.appClient)
+                    device: req.device.type,
+                    content: app.riot.render(app.tags("jobsSearch", req.device), req.appClient)
                 });
             }
         });

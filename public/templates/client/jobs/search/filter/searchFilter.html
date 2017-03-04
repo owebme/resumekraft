@@ -1,6 +1,6 @@
-<jobs-search-filter class="section jobs__search__sidebar">
+<jobs-search-filter class="section { jobs__search__sidebar : !app.device.isPhone }">
 
-    <div class="jobs__search__result">Найдено { $store.jobs.found } вакансий</div>
+    <div class="jobs__search__result hidden-xs">Найдено { $store.jobs.found } вакансий</div>
 
     <div class="jobs__search__filter">
 
@@ -29,7 +29,8 @@
     var $ = this;
 
     $.on("mount", function(){
-        $Sections.filter = $;
+        $Sections.module("search.filter", $);
+
         window.addEventListener('popstate', function(e){
             location.reload();
         }, false);
@@ -38,9 +39,13 @@
     $.onSearch = function(url, changePage){
         if (!url) return;
 
-        if (app.$dom.body.scrollTop() > 94){
-            app.$dom.body.scrollTop(94);
+        if (app.device.isPhone){
+            app.$dom.window.scrollTop(0);
         }
+        else if (!app.device.isPhone && app.$dom.window.scrollTop() > 94){
+            app.$dom.window.scrollTop(94);
+        }
+
         if (!changePage && $State.get("page") > 0){
             $State.select("page").set(0);
             var params = Url.parseQuery(url.replace($store.jobs.apiUrl, ""));
@@ -48,7 +53,18 @@
             url = $.getUrl(params);
         }
 
-        app.$dom.root.attr("data-loading", true);
+        if (app.device.isPhone){
+            if ($Screens.search.filter.active){
+                $Screens.search.filter.root.setAttribute("data-search", true);
+                $Screens.search.filter.section.loading(true);
+            }
+            else {
+                $Sections.search.$content.attr("data-search", true);
+            }
+        }
+        else {
+            app.$dom.root.attr("data-search", true);
+        }
 
         app.request("getJobsSearch", encodeURIComponent(url)).then(function(data){
             $store.jobs.clusters = data.clusters;
@@ -65,20 +81,37 @@
 
             History.pushState(null, null, !_.isEmpty(params) ? "?" + Url.stringify(params) : "/jobs/search");
 
-            $.update();
+            if (!changePage) $.update();
 
-            if (!$Sections.content){
-                $Sections.content = riot.mount("jobs-search-content", "jobs-search-content-client")[0];
+            if (!$Sections.search.content){
+                $Sections.search.content = riot.mount("jobs-search-content", "jobs-search-content-client")[0];
             }
             else {
-                $Sections.content.update();
+                $Sections.search.content.update();
             }
             if (!changePage){
                 $State.select("pages").set(data.pages ? parseInt(data.pages) : 0);
-                $Sections.pages.update();
+                $Sections.search.pages.update();
             }
 
-            app.$dom.root.removeAttr("data-loading");
+            if (app.device.isPhone){
+                if ($Screens.search.filter.active){
+                    $Screens.search.filter.root.setAttribute("data-search", false);
+                    $Screens.search.filter.section.loading(false);
+                }
+                else {
+                    $Sections.search.$content.removeAttr("data-search");
+                }
+                if ($store.jobs.found && $store.jobs.found > 0){
+                    $Screens.search.filter.result.innerHTML = 'Показать ' + _.numberFormat($store.jobs.found, 0, ".", " ") + ' вакансий';
+                }
+                else {
+                    $Screens.search.filter.result.innerHTML = '';
+                }
+            }
+            else {
+                app.$dom.root.removeAttr("data-search");
+            }
         })
     };
 
@@ -98,8 +131,8 @@
             name: this.item.name
         });
 
-        if (this.parent.opts.item == "area"){
-            $Sections.form.area._tag.update({
+        if (this.parent.opts.item == "area" && $Sections.search.form && $Sections.search.form.area){
+            $Sections.search.form.area._tag.update({
                 id: params[this.parent.opts.item],
                 value: this.item.name
             })
@@ -115,14 +148,14 @@
 
         delete params[this.opts.item];
 
-        if (this.opts.item == "area"){
-            $Sections.form.area._tag.update({
+        if (this.opts.item == "area" && $Sections.search.form && $Sections.search.form.area){
+            $Sections.search.form.area._tag.update({
                 id: null,
                 value: ""
             })
         }
 
-        $.onSearch($Sections.filter.getUrl(params));
+        $.onSearch($Sections.search.filter.getUrl(params));
     };
 
 </script>

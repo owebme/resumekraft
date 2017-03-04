@@ -113,6 +113,7 @@
                     id: item.id,
                     value: item.text
                 })
+                $.trigger("autocomplete.select", item);
                 $.onUpdate(this, item.text);
             }
             else {

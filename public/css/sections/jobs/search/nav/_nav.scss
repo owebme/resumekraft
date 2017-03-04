@@ -1,17 +1,20 @@
 .jobs__search__nav {
     @extend .bg-white;
     @extend .boxShadow-close;
-    @extend .hidden-xs;
     @extend .zIndex-2;
 
     &__panel,
+    &__subpanel,
     &__form,
     &__menu,
     &__menu__item,
-    &__subpanel,
     &__options,
     &__options__item {
         height:46px;
+
+        .d-phone & {
+            height:54px;
+        }
     }
     &__header,
     &__panel {
@@ -25,6 +28,47 @@
         @extend .w100p;
         @extend .plr-l;
         @extend .bg-white;
+
+        .row {
+            .d-phone & {
+                @extend .pos-rel;
+                @extend .bg-white;
+                @extend .zIndex-1;
+            }
+        }
+        .d-phone & {
+            @extend .display-block;
+            @extend .pos-tl-fixed;
+            @extend .plr-xss;
+            @extend .boxShadow-close;
+            @extend .zIndex-3;
+        }
+    }
+    &__opener__mobile {
+        @extend .flex-centered;
+        @extend .pos-abs;
+        @extend .t100;
+        @extend .l0;
+        @extend .w100p;
+        @extend .h42;
+        @extend .c-white;
+        @extend .bg-blueBright;
+        @extend .opacity-0;
+        @extend .pointerEvents-none;
+        @extend .willChange-opacity;
+        transition:opacity 0.2s;
+
+        &__close {
+            @extend .pos-tr;
+            @extend .w40;
+            @extend .h100p;
+
+            &:after {
+                @extend .pos-centered;
+                @extend .content-empty;
+                @include ui-icon("close_strong_white", 28px, 28px);
+            }
+        }
     }
     &__menu,
     &__form {
@@ -106,8 +150,21 @@
         @extend .flex-row-left-center;
         @extend .pointerEvents-none;
 
+        .d-phone & {
+            @extend .pos-rel;
+            @extend .opacity-100;
+            @extend .pointerEvents-all;
+        }
+        &__wrapper {
+            @extend .pr0;
+        }
         input {
-            @extend .pointerEvents-none;
+            .d-no-phone & {
+                @extend .pointerEvents-none;
+            }
+            .d-phone &:not(:focus) {
+                @extend .text-truncate;
+            }
         }
         input,
         input:focus {
@@ -118,9 +175,46 @@
 
             &:first-child {
                 @extend .w60p;
+
+                .d-phone & {
+                    @extend .w100p;
+                }
             }
             &:last-child {
                 @extend .w40p;
+            }
+        }
+        &__settings {
+            @extend .flex-centered;
+            @extend .opacity-0;
+            @extend .pointerEvents-none;
+            @extend .pos-abs;
+            @extend .t0;
+            right:47px;
+            @extend .w60;
+            @extend .h100p;
+            @extend .zIndex-1;
+
+            .icon {
+                transform:translateY(3px);
+            }
+            .icon-s {
+                @extend .w48;
+                @extend .h48;
+            }
+        }
+        &__button {
+            @extend .display-none;
+            @extend .pos-tr;
+            width:54px;
+            @extend .h100p;
+            @extend .bg-redBright;
+
+            &:after {
+                @extend .content-empty;
+                @extend .display-block;
+                @include ui-icon("back_white", 28px, 28px);
+                transform:scaleX(-1) translateX(-2px);
             }
         }
     }

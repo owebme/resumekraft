@@ -1,0 +1,57 @@
+@each $icon in (
+    loading, close_fill, back_gray, more_v
+){
+    .ui-icon-#{$icon} {
+        background:url('/public/images/jobs/icons/ui-#{$icon}.svg') no-repeat 0 0 / cover;
+    }
+}
+@each $icon in (
+    loading_mini, loading_mini_white, close_strong, close_strong_white, minus, minus_white, menu, menu_white, more_v_white, back_white, help, close_fill_gray, info_white, check, check_black, check_white, check_gray, mark_gray, swipeLeft_white
+){
+    .ui-icon-#{$icon} {
+        background:url('/assets/images/ui/ui-#{$icon}.svg') no-repeat 0 0 / cover;
+    }
+}
+@mixin ui-icon($icon, $width: false, $height: false) {
+    @if $width {
+        width:#{$width};
+    }
+    @if $height {
+        height:#{$height};
+    }
+    @extend .ui-icon-#{$icon};
+}
+.icon {
+    @extend .display-inlineBlock;
+    @extend .vAlign-middle;
+
+    path {
+        transition:fill 0.2s $cubic215;
+    }
+    &-control {
+        &.icon-s {
+            width:50px;
+            height:50px;
+            transform:translateY(4px);
+        }
+    }
+    &-like {
+        &.icon-xs {
+            width:28px;
+            height:28px;
+            transform:translateY(4px);
+        }
+        &.icon-s {
+            width:35px;
+            height:35px;
+            transform:translateY(4px);
+        }
+    }
+    &-location {
+        &.icon-s {
+            width:38px;
+            height:38px;
+            transform:translateY(4px);
+        }
+    }    
+}

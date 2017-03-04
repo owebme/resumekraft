@@ -1,4 +1,8 @@
-<jobs-search-content class="section jobs__search__content">
+<jobs-search-content class="section jobs__search__content" data-inner="hidden" data-loading="false">
+
+    <div class="section__loading visible-xs">
+        <div class="section__loading__text">Поиск вакансий...</div>
+    </div>
 
     <div class="jobs__list">
         <div if={ !opts.items.length } class="jobs__list__empty text-center">
@@ -13,16 +17,17 @@
                     { 'от' : item.salary.from } { parent.parent.opts.utils.numberFormat(item.salary.from, 0, ".", " ") } <span if={ item.salary.to }>до { parent.parent.opts.utils.numberFormat(item.salary.to, 0, ".", " ") }</span> { currency(item.salary.currency) }
                 </div>
                 <div class="jobs__list__item__text">
-                    <strong>Требования:</strong> { highlight(item.snippet.requirement) }
+                    <strong>Требования:</strong>
+                    { item.snippet.requirement }
                 </div>
                 <div class="jobs__list__item__company">
                     <div class="jobs__list__item__company__text" data-trusted={ item.employer.trusted }>{ item.employer.name }</div>
                 </div>
                 <div class="jobs__list__item__address">
-                    <span class="jobs__list__item__address__city">{ item.area.name }</span><span if={ item.address && item.address.metro } class="jobs__list__item__address__metro"><span class="c-gray">&nbsp;&nbsp;•&nbsp;&nbsp;</span>{ item.address.metro.station_name }</span>&nbsp;&nbsp;•&nbsp;&nbsp;{ parent.parent.opts.moment(item.published_at).format("D MMMM") }
+                    <span class="jobs__list__item__address__city">{ item.area.name }</span><span if={ item.address && item.address.metro } class="jobs__list__item__address__metro"><span class="c-gray">&nbsp;&nbsp;•&nbsp;&nbsp;</span>{ item.address.metro.station_name }</span>&nbsp;&nbsp;•&nbsp;&nbsp;{ date(item.published_at) }
                 </div>
                 <div class="jobs__list__item__buttons">
-                    <icon-like color="blueBright" size="xs"></icon-like>
+                    <icon-like color={ parent.parent.opts.device.type == "phone" ? "silver" : "blueBright" } size={ parent.parent.opts.device.type == "phone" ? "s" : "xs" }></icon-like>
                     <div class="btn-default btn-m">Откликнуться</div>
                 </div>
             </div>
@@ -37,8 +42,14 @@
         return link.replace(/\s+/gi, "-");
     }
 
-    $.highlight = function(text){
-        return text.replace(/<highlighttext>/, '').replace(/<\/highlighttext>/, '');
+    $.date = function(date){
+        var days = $.parent.opts.moment(date).diff($.parent.opts.moment(), 'days');
+
+        if (days === 0) return "Сегодня";
+        else if (days === -1) return "Вчера";
+        else {
+            return $.parent.opts.moment(date).format("D MMMM");
+        }
     }
 
     $.currency = function(code){

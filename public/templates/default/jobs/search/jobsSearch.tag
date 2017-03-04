@@ -4,7 +4,7 @@
 
     <div class="container jobs__search">
         <div class='row'>
-            <div class="col-md-6">
+            <div class="col-md-6 jobs__search__filter__screen">
                 <jobs-search-filter></jobs-search-filter>
             </div>
             <div class="col-md-13">

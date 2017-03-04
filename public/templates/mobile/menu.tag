@@ -22,7 +22,7 @@
                 <a class="menu__item__link" href="/jq-test/" data-active="{ opts.section == 'jq-test' }">JQ-тест 2.0</a>
             </div>
             <div class="menu__item">
-                <a class="menu__item__link" href="/partnership/" data-active="{ opts.section == 'partnership' }">Компаниям</a>
+                <a class="menu__item__link" href="/jobs/search" data-active="{ opts.section == 'jobs' }">Найти работу</a>
             </div>
             <div class="menu__item">
                 <a class="menu__item__link" href="/blog/" data-active="{ opts.section == 'blog' }">Блог</a>

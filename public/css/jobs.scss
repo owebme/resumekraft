@@ -10,15 +10,13 @@
 @import 'base/main';
 
 // UI elements
-@import '../../assets/css/ui/icons';
-@import 'ui/icons';
+@import 'sections/jobs/icons';
 @import '../../assets/css/ui/basic/button';
 @import '../../assets/css/ui/basic/input';
 @import '../../assets/css/ui/basic/textarea';
 @import '../../assets/css/ui/basic/select';
 @import '../../assets/css/ui/basic/checkbox';
 @import '../../assets/css/ui/basic/switcher';
-@import '../../assets/css/ui/basic/progress';
 @import '../../assets/css/ui/basic/balloon';
 @import '../../assets/css/ui/basic/balloonError';
 @import '../../assets/css/ui/basic/loader';
@@ -30,11 +28,17 @@
 @import '../../assets/css/ui/typography';
 @import '../../assets/css/states/fontSize';
 
-// auth
-// @import 'sections/auth';
+// modules
+@import '../../assets/css/modules/oScreen';
+
+// Sections
+@import '../../assets/css/sections/sections';
+@import '../../assets/css/sections/mobile/screens/screens';
 
 // jobs
+@import 'sections/jobs/jobs';
 @import 'sections/jobs/ui';
+@import 'sections/jobs/icons';
 @import 'sections/jobs/footer';
 @import 'sections/jobs/search/nav/nav';
 @import 'sections/jobs/search/nav/header';
@@ -58,12 +62,6 @@
 @import 'sections/jobs/employer/employer';
 @import 'sections/jobs/employer/employerVacancies';
 @import 'sections/jobs/responsive';
-
-// modules
-@import '../../assets/css/modules/oScreen';
-
-// Sections
-@import '../../assets/css/sections/sections';
 
 // states
 @import '../../assets/css/states/states';
@@ -94,3 +92,4 @@
 @import '../../assets/css/states/responsive/margin';
 @import '../../assets/css/states/responsive/padding';
 @import '../../assets/css/states/responsive/position';
+@import '../../assets/css/states/responsive/text';

@@ -1,0 +1,7 @@
+.jobs {
+    &__help {
+        @include abs();
+        @extend .bg-overlay;
+        @extend .zIndex-10;
+    }
+}

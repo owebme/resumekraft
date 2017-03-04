@@ -47,10 +47,6 @@
 
         &[data-navbar="true"]{
             @extend .pt-m;
-
-            .menu__opener__line {
-                @extend .bg-breeze;
-            }
         }
         &[data-animate="true"]{
             .menu__opener__line {
@@ -73,6 +69,12 @@
             margin-bottom:4px;
             @extend .willChange-transform;
 
+            .blog & {
+                @extend .bg-breeze;
+            }
+            .jobs & {
+                @extend .bg-blueBright;
+            }
             &:nth-child(2){
                 width:26px;
             }

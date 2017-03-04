@@ -90,6 +90,22 @@
             });
         },
 
+        loading: function(show){
+            var _this = this;
+
+            if (show){
+                this.scope.setAttribute("data-inner", "hidden");
+                this.scope.setAttribute("data-loading", true);
+            }
+            else {
+                this.scope.setAttribute("data-inner", "show");
+
+                $afterlag.run(function(){
+                    _this.scope.setAttribute("data-loading", false);
+                });
+            }
+        },
+
         hide: function(options){
             if (!this.active) return;
 

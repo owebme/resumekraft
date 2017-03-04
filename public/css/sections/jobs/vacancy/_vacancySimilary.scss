@@ -21,13 +21,20 @@
             @extend .mr--xs;
         }
         &__item {
+            @extend .pos-rel;
             @extend .display-block;
             @extend .w33p;
             @extend .mt-xs;
             @extend .mb30;
             @extend .plr-xs;
 
-            &:hover {
+            &:visited {
+                .vacancy__similary__item__title {
+                    color:lighten($silver,3%);
+                }
+            }
+            &:hover,
+            &:visited:hover {
                 .vacancy__similary__item__title {
                     @extend .c-yellowBright;
                 }

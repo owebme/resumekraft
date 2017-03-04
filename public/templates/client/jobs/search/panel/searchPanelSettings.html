@@ -1,25 +1,25 @@
 <jobs-search-panel-settings class="display-block">
 
-    <div class="jobs__search__nav__options__item" data-item="settings" data-active={ active }>
+    <div class="jobs__search__nav__options__item" data-item="settings">
         <div onClick={ show } class="jobs__search__nav__options__item__button">
             <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M0 3h9v2H0V3zm0 4h6v2H0V7zm0 4h8v2H0v-2zm13-8v6l1.5-1.5L16 9l-4 4-4-4 1.5-1.5L11 9V3h2z"/></svg>
         </div>
-        <div class="jobs__search__nav__popup" data-active={ active }>
+        <div class="jobs__search__nav__popup">
             <div class="jobs__search__nav__options__list__items">
                 <div class="jobs__search__nav__options__list">
                     <label each={ item in $store.jobs.dictionary.get("vacancy_search_order") } no-reorder class="jobs__search__nav__options__list__item">
                         <input onClick={ onCheck.order } onUpdate="none" type="radio" name="order_by" value="{ item.id }" checked={ $State.get("order_by") == item.id }>
-                        { item.name }
+                        <span>{ item.name }</span>
                     </label>
                 </div>
                 <div class="jobs__search__nav__options__list">
                     <label each={ item in $store.jobs.dictionary.get("vacancy_search_period") } no-reorder class="jobs__search__nav__options__list__item">
                         <input onClick={ onCheck.period } onUpdate="none" type="radio" name="period" value="{ item.id }" checked={ $State.get("period") == item.id }>
-                        { item.name }
+                        <span>{ item.name }</span>
                     </label>
                 </div>
             </div>
-            <div onClick={ success } class="btn-default btn-m">Применить</div>
+            <div onClick={ success } class="btn-default { app.device.isPhone ? 'btn-primary btn-l' : 'btn-m' }">Применить</div>
         </div>
     </div>
 
@@ -36,6 +36,7 @@
 
     $.show = function(){
         $.active = !$.active;
+        $.root.setAttribute("data-active", $.active);
     }
 
     $.onCheck = {
@@ -48,7 +49,7 @@
     }
 
     $.success = function(){
-        $.active = false;
+        $.hide();
 
         $State.set(_.extend(
             $State.get(), $.state
@@ -59,20 +60,17 @@
         params.order_by = $.state.order_by;
         params.period = $.state.period;
 
-        $Sections.filter.onSearch($Sections.filter.getUrl(params));
+        $Sections.search.filter.onSearch($Sections.search.filter.getUrl(params));
     }
 
     $.hide = function(){
-        $.update({
-            active: false
-        })
+        $.root.setAttribute("data-active", false);
+        $.active = false;
     }
 
     $.handleClickOutside = function(e){
         if (!$.root.contains(e.target)){
-            $.update({
-                active: false
-            })
+            $.hide();
         }
     };
 
