@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-20 centered">
-                <employer-vacancies items={ opts.items } currency={ opts.currency } utils={ opts.utils } moment={ opts.moment }></employer-vacancies>
+                <employer-vacancies items={ opts.items } currency={ opts.currency } utils={ opts.utils }></employer-vacancies>
             </div>
         </div>
     </div>

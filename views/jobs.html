@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="{% if device == 'phone' %}d-phone{% else %}d-no-phone{% endif %}">
 <head>
     <title>{% if title %}{{ title }}{% else %}Cервис создания резюме, помощь в составлении резюме, рекомендации профессионалов, примеры, образцы резюме. ResumeKraft{% endif %}</title>
     <meta charset="utf-8" />
@@ -77,11 +77,6 @@
     <script src="/public/templates/commons/icons/social/icon-dk.tag" type="riot/tag"></script>
     <script src="/public/templates/commons/icons/social/icon-gl.tag" type="riot/tag"></script> -->
     <script src="/public/js/templates.jobs.js"></script>
-    <script src="/assets/templates/ui/icons/icon-control.html" type="riot/tag"></script>
-    <script src="/public/templates/client/jobs/search/searchContent.html" type="riot/tag"></script>
-    <script src="/public/templates/client/jobs/search/filter/searchFilter.html" type="riot/tag"></script>
-    <script src="/public/templates/client/jobs/search/panel/mobile/searchPanel.html" type="riot/tag"></script>
-    <script src="/public/templates/client/jobs/search/filter/mobile/searchFilterScreen.html" type="riot/tag"></script>
 
     <!--/ JS components /-->
     <!-- <script src="/assets/js/components/commons/app.js"></script>
@@ -111,9 +106,6 @@
     <script src="/public/js/sections/jobs/jobsHome.js"></script>
     <script src="/public/js/sections/jobs/jobsSearch.js"></script> -->
     <script src="/public/js/app.jobs.js"></script>
-    <script src="/assets/js/components/features/jobsSearch.js"></script>
-    <script src="/public/js/sections/jobs/jobsSearch.js"></script>
-    <script src="/public/js/sections/jobs/mobile/jobsSearch.js"></script>
 
     {% if clusters %}
     <script>

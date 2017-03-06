@@ -26,6 +26,7 @@ module.exports = function(){
             'assets/js/components/commons/utils.js',
             'assets/js/components/commons/modules.js',
             'assets/js/components/features/links.js',
+            'assets/js/components/features/jobsSearch.js',
             'public/js/commons/config.js',
             'public/js/commons/metrika.js',
             'public/js/commons/sections.js',
@@ -36,8 +37,11 @@ module.exports = function(){
             'assets/js/plugins/share.js',
             'assets/js/plugins/eventsEmitter.js',
             'assets/js/plugins/scroll/scroll.RefreshFix.js',
-            'public/js/sections/jobs/jobsHome.js',
-            'public/js/sections/jobs/jobsSearch.js'])
+            'public/js/sections/jobs/jobs.js',
+            'public/js/sections/jobs/jobsSearch.js',
+            'public/js/sections/jobs/mobile/jobs.js',
+            'public/js/sections/jobs/mobile/jobsSearch.js',
+            'public/js/sections/jobs/mobile/metrika.js'])
     		.pipe(concat('app.jobs.js'))
     		.pipe(uglify())
     		.pipe(gulp.dest('./public/js'));
@@ -55,7 +59,14 @@ module.exports = function(){
             'assets/templates/ui/textarea.html',
             'assets/templates/ui/checkbox.html',
             'public/templates/client/**/*.html',
+            'public/templates/default/jobs/search/jobsSearchPages.tag',
+            'public/templates/default/jobs/vacancy/vacancyContent.tag',
+            'public/templates/default/jobs/vacancy/vacancySimilary.tag',
+            'public/templates/mobile/jobs/employer/employerVacancies.tag',
+            'public/templates/default/jobs/employer/employerContent.tag',
+            'public/templates/default/jobs/raw.tag',
             'assets/templates/ui/icons/icon-like.html',
+            'assets/templates/ui/icons/icon-replyMail.html',
             'assets/templates/ui/icons/icon-location.html',
             'assets/templates/ui/icons/icon-control.html',
             'public/templates/commons/icons/social/icon-fb.tag',

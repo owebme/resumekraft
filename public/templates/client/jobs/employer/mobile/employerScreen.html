@@ -1,0 +1,92 @@
+<employer-screen class="oScreen section zIndex-6" data-inner="hidden" data-loading="false" data-show="down" data-open="false">
+
+    <div name="wrapper" class="screenMobile oScreen__content">
+
+        <div class="section__loading"></div>
+
+        <div class="screenMobile__navbar" data-gradient="white">
+            <div onClick={ hide } onUpdate="none" class="screenMobile__nav__close"></div>
+            <div class="screenMobile__nav__title c-steel fontFamily-roboto fontWeight-normal maxW-80p" data-align="left">{ item.name }</div>
+        </div>
+        <div name="content" class="section__content">
+            <employer-content classname="employer" isPhone={ app.device.isPhone } item={ item } items={ items }></employer-content>
+            <employer-vacancies-mobile items={ items } utils={ window._ } currency={ $store.jobs.dictionary.get("currency") }></employer-vacancies-mobile>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.on("mount", function(){
+        $Screens.module("employer", $);
+
+        $.section = new app.plugins.sections($.root, {
+            content: $.wrapper
+        });
+
+        $.scroll = $$($.content);
+
+        $$($.tags["employer-vacancies-mobile"].root).on("click", ".employer__vacancies__item__title", function(e){
+            e.preventDefault();
+            e.stopPropagation();
+
+            var $el = $$(this);
+
+            if ($Screens.vacancy && $Screens.vacancy.section){
+                if ($Screens.vacancy.section.active){
+                    $.hide(function(){
+                        $Screens.vacancy.changeVacancy($el.attr("data-id"), $el.attr("href"));
+                    });
+                }
+                else {
+                    $.hide(function(){
+                        $Screens.vacancy.show($el.attr("data-id"), $el.attr("href"));
+                    });
+                }
+            }
+        });
+    });
+
+    $.show = function(id, url, callback){
+        $.section.show({
+            callback: function(next, back){
+                $.request(id, url, next, back);
+            }
+        });
+        $.backUrl = location.href;
+        $.callback = callback;
+    };
+
+    $.request = function(id, url, next, back){
+        app.requestList("getJobsEmployer, getJobsEmployerVacancies", [id, id]).then(function(data){
+            $.one("updated", function(){
+                History.pushState(null, null, url);
+                if (next) next();
+                $.scroll.scrollTop(0);
+            })
+            $.update({
+                item: data[0],
+                items: data[1] && !_.isEmpty(data[1].items) ? data[1].items : null
+            })
+        }, function(){
+            if (back) back();
+            if (_.isFunction($.callback)) $.callback();
+        });
+    };
+
+    $.hide = function(callback){
+        $.section.hide({
+            beforeHide: function(){
+                if ($.backUrl) History.pushState(null, null, $.backUrl);
+                if (_.isFunction($.callback)) $.callback();
+            },
+            afterHide: function(){
+                if (_.isFunction(callback)) callback();
+            }
+        })
+    };
+
+</script>
+
+</employer-screen>

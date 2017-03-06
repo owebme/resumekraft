@@ -6,14 +6,16 @@
 
     <div class="screenMobile__navbar" data-gradient="white">
         <div onClick={ hide } onUpdate="none" class="screenMobile__nav__back"></div>
-        <div class="screenMobile__nav__title">Параметры поиска</div>
+        <div class="screenMobile__nav__title text-uppercase c-blueBright" data-align="center">Параметры поиска</div>
         <div class="screenMobile__nav__options"></div>
     </div>
-    <div name="content" class="section__content">
+    <div name="content" class="section__content pb70">
         <jobs-search-filter></jobs-search-filter>
     </div>
 
     <div onClick={ hide } onUpdate="none" name="result" class="jobs__search__result__panel"></div>
+
+    <jobs-search-help-swipeRight></jobs-search-help-swipeRight>
 
 <script>
 
@@ -35,8 +37,13 @@
     });
 
     $.show = function(callback){
-        $.active = true;
-        $.section.show();
+        $.section.show({
+            afterShow: function(){
+                if ($.tags["jobs-search-help-swiperight"]){
+                    $.tags["jobs-search-help-swiperight"].show();
+                }
+            }
+        });
         $.callback = callback;
     };
 
@@ -59,9 +66,6 @@
         $.section.hide({
             beforeHide: function(){
                 if (_.isFunction($.callback)) $.callback();
-            },
-            afterHide: function(){
-                $.active = false;
             }
         })
     };

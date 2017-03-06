@@ -69,6 +69,9 @@
                 @include ui-icon("close_strong_white", 28px, 28px);
             }
         }
+        &.display-none {
+            @extend .display-none;
+        }
     }
     &__menu,
     &__form {

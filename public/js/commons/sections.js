@@ -7,7 +7,7 @@
         init: function(){
             if (app.plugins.eventsEmitter) app.plugins.eventsEmitter.init(this);
 
-            if (app.device.isPhone){
+            if (app.device.isPhone && !location.href.match(/\/jobs\//)){
                 $dom.body.removeClass("appLoading");
                 app.features.links.init();
             }

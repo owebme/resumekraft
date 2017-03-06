@@ -1,9 +1,13 @@
 .vacancy {
     padding-bottom:42px;
 
+    .d-phone & {
+        @extend .pb70;
+    }
     .title {
         @extend .mb-m;
         @extend .pr-l;
+        @extend .xs-pr-xs;
     }
     &__header {
         width:calc(100% + 80px);
@@ -17,30 +21,86 @@
         @extend .borderRadius-l;
         @include boxShadow-3d($blueBright);
 
-        &__fixed {
-            @extend .pos-tl-fixed;
-            @extend .w100p;
-            @extend .bg-blueBright;
-            @extend .zIndex-2;
-
-            .vacancy {
-                &__container {
-                    @extend .ptb0;
-                }
-                &__header {
-                    @extend .mt0;
-                    @extend .bg-none;
-                    @extend .borderRadius-none;
-                    @extend .boxShadow-none;
-                }
-            }
+        .d-phone & {
+            width:calc(100vw + 22px);
+            @extend .pt-xxs;
+            @extend .pb-s;
+            @extend .flex-column-centered;
+            background:linear-gradient(225deg, lighten(#3e4757,17%) 0%, lighten(#1f242c,14%) 100%);
+            @extend .boxShadow-none;
+            @extend .borderRadius-none;
         }
         &__item {
             @extend .display-tableCell;
             @extend .w33p;
             @extend .p30;
+            @extend .xs-ptb-m;
             @extend .vAlign-top;
 
+            .d-phone & {
+                @extend .pos-rel;
+                @extend .display-block;
+                @extend .w100p;
+                padding-left:34px;
+
+                &:not(:last-child):before {
+                    @extend .content-empty;
+                    @extend .pos-bl;
+                    @extend .w100p;
+                    @extend .h1px;
+                    background:linear-gradient(to right, rgba($white,.3), rgba($white,0));
+                }
+            }
+            &__progress {
+                @extend .visible-xs;
+                @extend .pos-bl;
+                @extend .h3px;
+                @extend .overflow-hidden;
+                @extend .borderRadius-xl;
+                @extend .willChange-transform;
+                transform:translateY(1px);
+
+                .screenMobile[data-loading="true"] & {
+                    transform:translate3d(-100%, 1px, 0);
+                }
+                .screenMobile[data-loading="false"] & {
+                    transform:translate3d(0, 1px, 0);
+                    transition:transform 1s $cubic215;
+                }
+                &:after {
+                    @extend .content-empty;
+                    @extend .pos-bl;
+                    @extend .w100v;
+                    @extend .h100p;
+                }
+            }
+            &[data-item="salary"] {
+                .vacancy__header__item__progress:after {
+                    background:linear-gradient(to right, $breeze, $lime);
+                }
+            }
+            &[data-item="experience"] {
+                .vacancy__header__item__progress {
+                    margin-bottom:-7px;
+                    transition-delay:0.2s;
+
+                    &:after {
+                        background:linear-gradient(to right, $pink, $pink, $yellow, $yellowLight, $green, $greenLight, $greenLight, $emerald);
+                    }
+                    &[data-level="noExperience"]{
+                        @extend .w25p;
+                    }
+                    &[data-level="between1And3"]{
+                        @extend .w40p;
+                    }
+                    &[data-level="between3And6"]{
+                        @extend .w70p;
+                    }
+                    &[data-level="moreThan6"]{
+                        @extend .w100p;
+                    }
+                }
+            }
             &__title {
                 @extend .fontSize-12;
                 @extend .mb-xss;
@@ -52,6 +112,11 @@
                 @extend .fontFamily-roboto;
                 @extend .fontSize-18;
                 @extend .fontWeight-bold;
+
+                .d-phone & {
+                    font-size:22px;
+                    @extend .letterSpacing-0;
+                }
             }
         }
     }

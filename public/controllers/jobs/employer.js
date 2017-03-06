@@ -28,13 +28,16 @@ module.exports = function(){
                 req.appClient.countsAll = countsAll;
                 req.appClient.currency = app.store.jobs.currency;
 
-                var output = app.riot.render(app.tags("employer"), req.appClient);
-
-                output = output.replace(/<raw-content content=".+?">/, "").replace(/<\/raw-content>/, "");
-
                 res.render('jobs', {
                     title: "Вакансии компании «" + employer.name + "», работа в компании в " + employer.area.name,
-                    content: output
+                    device: req.device.type,
+                    content: app.riot.render(app.tags("employer", req.device), req.appClient)
+                    .replace(/<raw-content content=".+?">/, "")
+                    .replace(/<\/raw-content>/, "")
+                    .replace(/<employer-content/, "<employer-content-side")
+                    .replace(/<\/employer-content>/, "</employer-content-side>")
+                    .replace(/<employer-vacancies-mobile/, "<employer-vacancies-mobile-side")
+                    .replace(/<\/employer-vacancies-mobile>/, "</employer-vacancies-mobile-side>")
                 });
             }
             else {

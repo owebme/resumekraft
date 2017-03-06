@@ -1,11 +1,15 @@
 .jobs__footer {
     @extend .pt50;
+    @extend .xs-pt-l;
     @extend .pb-l;
+    @extend .xs-ml--s;
+    @extend .xs-mr--s;
     @extend .bg-snowSilver;
 
     &__menu {
         @extend .flex;
         @extend .w100p;
+        @extend .plr-mobile;
         flex-wrap:wrap;
         align-content:space-between;
 
@@ -14,29 +18,40 @@
             @extend .w33p;
             @extend .mb30;
             @extend .plr-xs;
+            @extend .xs-pl-xs;
 
+            .d-phone & {
+                @extend .w50p;
+            }
             a {
                 @extend .c-grayDarken;
                 font-size:12.5px;
                 @extend .text-uppercase;
                 @extend .transition-default;
 
-                &:hover {
+                .m-no-touch &:hover {
                     @extend .c-blueBright;
+                }
+                .d-phone & {
+                    @extend .c-steel;
                 }
             }
         }
     }
     &__hh {
         @extend .flex-row-right-center;
+        @extend .xs-mlr-xss;
+        @extend .xs-pt-s;
+        @extend .plr-mobile;
         @extend .mb30;
 
         &__text {
             @extend .fontSize-12;
             @extend .c-gray;
+            @extend .text-right;
         }
         &__logotype {
-            width:53px;
+            width:56px;
             @extend .h30;
             @extend .ml-s;
             @extend .bg-cover;
@@ -44,7 +59,9 @@
         }
     }
     &__copyright {
-        @extend .c-blackLight;
+        @extend .c-gray;
         @extend .text-right;
+        @extend .xs-mlr-xss;
+        @extend .plr-mobile;
     }
 }

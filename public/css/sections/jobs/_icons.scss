@@ -1,12 +1,12 @@
 @each $icon in (
-    loading, close_fill, back_gray, more_v
+    loading, close_fill, back_gray, close_fill_gray, more_v
 ){
     .ui-icon-#{$icon} {
         background:url('/public/images/jobs/icons/ui-#{$icon}.svg') no-repeat 0 0 / cover;
     }
 }
 @each $icon in (
-    loading_mini, loading_mini_white, close_strong, close_strong_white, minus, minus_white, menu, menu_white, more_v_white, back_white, help, close_fill_gray, info_white, check, check_black, check_white, check_gray, mark_gray, swipeLeft_white
+    loading_mini, loading_mini_white, close_strong, close_strong_white, minus, minus_white, menu, menu_white, more_v_white, back_white, help, info_white, check, check_black, check_white, check_gray, mark_gray, swipeLeft_white, swipeRight_white
 ){
     .ui-icon-#{$icon} {
         background:url('/assets/images/ui/ui-#{$icon}.svg') no-repeat 0 0 / cover;
@@ -46,6 +46,16 @@
             height:35px;
             transform:translateY(4px);
         }
+        &.icon-l {
+            width:68px;
+            height:68px;
+            transform:translateY(4px);
+        }
+        &.icon-xl {
+            width:84px;
+            height:84px;
+            transform:translateY(4px);
+        }
     }
     &-location {
         &.icon-s {
@@ -53,5 +63,27 @@
             height:38px;
             transform:translateY(4px);
         }
-    }    
+    }
+    &-replyMail {
+        &.icon-s {
+            width:30px;
+            height:30px;
+            transform:translateY(4px);
+        }
+        &.icon-l {
+            width:62px;
+            height:62px;
+            transform:translateY(4px);
+        }
+        &.icon-xl {
+            width:76px;
+            height:76px;
+        }
+    }
+    &-feedback {
+        &.icon-s {
+            width:30px;
+            height:30px;
+        }
+    }
 }

@@ -22,6 +22,6 @@
         <div class="jobs__search__progress__line"></div>
     </div>
 
-    <jobs-search-pages page={ opts.page } pages={ opts.pages }></jobs-search-pages>
+    <jobs-search-pages page={ opts.page } pages={ opts.pages } utils={ opts.utils }></jobs-search-pages>
 
 </section-jobs-search>

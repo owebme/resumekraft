@@ -4,14 +4,14 @@
 
     <div class="vacancy container">
         <div class='row'>
-            <vacancy-content item={ opts.item }></vacancy-content>
+            <vacancy-content item={ opts.item } utils={ opts.utils } currency={ opts.currency }></vacancy-content>
             <div class="col-md-5">
                 <jobs-search-aside></jobs-search-aside>
             </div>
         </div>
     </div>
 
-    <vacancy-similary items={ opts.items } currency={ opts.currency } utils={ opts.utils } moment={ opts.moment }></vacancy-similary>
+    <vacancy-similary items={ opts.items } utils={ opts.utils } currency={ opts.currency }></vacancy-similary>
 
     <jobs-footer></jobs-footer>
 

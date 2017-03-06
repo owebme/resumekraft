@@ -3,6 +3,8 @@
     app.define("plugins.metrika");
 
     app.plugins.metrika = function(options){
+        if (!options) return;
+
         this.state = options.data;
         this.previousState = options.previousData;
         this.visits = options.visits;

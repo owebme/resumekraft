@@ -9,7 +9,12 @@
             @extend .cursor-pointer;
             @extend .transition-default;
 
-            &:not([data-item="favorite"]){
+            jobs-panel-mobile & {
+                width:46px;
+            }
+            &[data-item="settings"],
+            &[data-item="list-less"],
+            &[data-item="list-more"]{
                 svg {
                     @extend .display-block;
                     @extend .w22;

@@ -10,7 +10,7 @@
                     </div>
                 </div>
                 <div class="col-md-12 flex-centered h90 ml--25">
-                    <jobs-search-vacancy-form></jobs-search-vacancy-form>
+                    <jobs-search-form></jobs-search-form>
                 </div>
                 <div class="col-md-5">
                     <div class="jobs__search__nav__header__buttons">

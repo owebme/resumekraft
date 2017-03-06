@@ -194,9 +194,8 @@
         .d-phone & {
             @extend .c-blackLight;
             @extend .fontSize-14;
-            margin:0 -5vw;
-            padding-left:5vw;
-            padding-right:5vw;
+            @extend .mlr--mobile;
+            @extend .plr-mobile;
             @extend .w100v;
             background-color:rgba($silver,.13);
         }
@@ -214,7 +213,8 @@
         .d-phone & {
             @extend .c-black;
             @extend .fontSize-16;
-            border-bottom:1px solid rgba($silver,.3);
+            border-bottom:1px solid;
+            @extend .borderColor-smokeDark;
         }
         &[data-hidden="true"]{
             @extend .display-none;

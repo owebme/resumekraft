@@ -12,7 +12,7 @@
         </div>
         <div each={ item, i in opts.items } no-reorder class="jobs__list__item">
             <div class="jobs__list__item__content">
-                <a target="_blank" href="/jobs/vacancy/{ item.id }/{ link(item.employer.name) }" class="jobs__list__item__title">{ item.name }</a>
+                <a target="_blank" href="/jobs/vacancy/{ item.id }/{ link(item.employer.name) }" class="jobs__list__item__title" data-id={ item.id }>{ item.name }</a>
                 <div if={ item.salary } class="jobs__list__item__salary">
                     { 'от' : item.salary.from } { parent.parent.opts.utils.numberFormat(item.salary.from, 0, ".", " ") } <span if={ item.salary.to }>до { parent.parent.opts.utils.numberFormat(item.salary.to, 0, ".", " ") }</span> { currency(item.salary.currency) }
                 </div>
@@ -28,7 +28,7 @@
                 </div>
                 <div class="jobs__list__item__buttons">
                     <icon-like color={ parent.parent.opts.device.type == "phone" ? "silver" : "blueBright" } size={ parent.parent.opts.device.type == "phone" ? "s" : "xs" }></icon-like>
-                    <div class="btn-default btn-m">Откликнуться</div>
+                    <a target="_blank" href="https://hh.ru/applicant/vacancy_response?vacancyId={ item.id }" class="btn-default btn-m">Откликнуться</a>
                 </div>
             </div>
         </div>

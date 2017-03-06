@@ -9,6 +9,12 @@ module.exports = function(url){
 	// Jobs search public API
 	require('./jobs/search')(url + '/jobs/search');
 
+	// Jobs vacancy public API
+	require('./jobs/vacancy')(url + '/jobs/vacancy');
+
+	// Jobs employer public API
+	require('./jobs/employer')(url + '/jobs/employer');
+
 	// Blog public API
 	require('./blog')(url + '/blog');
 

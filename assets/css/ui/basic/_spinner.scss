@@ -13,6 +13,11 @@
             @extend .willChange-transform;
             @include animation(spinner, linear, 1s, 0s, infinite);
         }
+        &-off {
+            &:after {
+                @extend .animation-none;
+            }
+        }
     }
 }
 .spinner-mini {

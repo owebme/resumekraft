@@ -15,12 +15,13 @@
 
         render: function(){
 
-            $dom.root = this.el;
-
             app.features.jobsSearch.init();
 
             app.sections.on("afterMounted", function(){
-                riot.mount("jobs-search-pages", "jobs-search-pages-client");
+                riot.mount("jobs-search-pages-side", "jobs-search-pages", {
+                    renderClient: true,
+                    utils: window._
+                });
             });
 
             this.$nav = this.el.find("jobs-search-nav");
@@ -34,6 +35,10 @@
                 WD.$sidebar = WD.el.find("jobs-search-filter");
                 WD.$panel = WD.$nav.find(".jobs__search__nav__panel");
             });
+
+            window.addEventListener('popstate', function(e){
+                location.reload();
+            }, false);
         },
 
         nav: function(){
@@ -43,7 +48,7 @@
                 WD.navShow = true;
 
                 _.onEndTransition(WD.$panel[0], function(){
-                    WD.$nav.find("jobs-search-vacancy-form")
+                    WD.$nav.find("jobs-search-form")
                     .find(".input-group[data-item='" + $(e.target).attr("data-item") + "']")
                     .find("input")
                     .focus();

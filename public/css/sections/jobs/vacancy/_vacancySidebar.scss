@@ -3,10 +3,18 @@
         padding-top:37px;
         @extend .pl35;
         @extend .mr--25;
+        @extend .xs-pt-l;
+        @extend .xs-pl0;
+        @extend .xs-mr0;
 
         h3 {
             @extend .c-blueBright;
             @extend .mb-s;
+
+            .d-phone & {
+                font-size:25px;
+                @extend .fontFamily-graphik;
+            }
         }
         .hr {
             @extend .mt-s;
@@ -22,21 +30,45 @@
         width:190px;
         @extend .borderRadius-l;
         margin-top:3px;
+        @extend .xs-mt0;
         @extend .mb-l;
+
+        .d-phone & {
+            @extend .w-auto;
+            @extend .maxW-50v;
+            @extend .maxH-30v;
+            margin-left:auto;
+            margin-right:auto;
+        }
     }
     &__skills {
         &__item {
-            @extend .pos-rel;
-            @extend .ml-xss;
-            @extend .mb-s;
+            .d-no-phone & {
+                @extend .pos-rel;
+                @extend .ml-xss;
+                @extend .mb-s;
 
-            &:before {
-                @extend .content-empty;
-                @extend .pos-abs;
-                @extend .t0;
-                @extend .r100;
-                @extend .mr-xs;
-                @include ui-icon("check", 20px, 20px);
+                &:before {
+                    @extend .content-empty;
+                    @extend .pos-abs;
+                    @extend .t0;
+                    @extend .r100;
+                    @extend .mr-xs;
+                    @include ui-icon("check", 20px, 20px);
+                }
+            }
+            .d-phone & {
+                @extend .display-inlineFlex;
+                @extend .h32;
+                font-size:16px;
+                line-height:28px;
+                padding:2px 11px;
+                margin:0 5px 7px 0;
+                @extend .c-blackLight;
+                background-color:rgba($blueBright,.1);
+                @extend .text-truncate;
+                @extend .maxW-100p;
+                @extend .borderRadius-xl;
             }
         }
     }

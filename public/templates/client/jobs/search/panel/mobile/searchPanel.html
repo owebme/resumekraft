@@ -26,18 +26,29 @@
         </div>
     </div>
 
-    <div onClick={ open.filter } onUpdate="none" class="jobs__search__nav__opener__mobile">
+    <div onClick={ open.filter } onUpdate="none" class="jobs__search__nav__opener__mobile { display-none : app.metrika.get('search.refinePanel') }">
         Уточнить поиск
-        <div class="jobs__search__nav__opener__mobile__close"></div>
+        <div onClick={ close.refinePanel } class="jobs__search__nav__opener__mobile__close"></div>
     </div>
 
 <script>
 
     var $ = this;
 
+    $.on("before-mount", function(){
+        if (!window.$State) return;
+
+        var text = Url.parseQuery().text;
+
+        if (text){
+            $.vacancy._tag.update({
+                value: text
+            })
+        }
+    });
+
     $.on("mount", function(){
         $Sections.module("search.panel", $);
-
         $.vacancy._tag.on("autocomplete.select", function(){
             $.search();
         });
@@ -45,13 +56,18 @@
 
     $.open = {
         filter: function(){
-            app.$dom.body.addClass("no-scroll");
-            app.$dom.root.attr("data-overlay-full", true);
-
+            app.sections.jobsMobile.mainScreen.hide();
             $Screens.search.filter.show(function(){
-                app.$dom.body.removeClass("no-scroll");
-                app.$dom.root.attr("data-overlay-full", false);
+                app.sections.jobsMobile.mainScreen.show();
             })
+        }
+    }
+
+    $.close = {
+        refinePanel: function(e){
+            e.stopPropagation();
+            $$(e.target).parent().addClass("display-none");
+            app.metrika.set('search.refinePanel', true);
         }
     }
 

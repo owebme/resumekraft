@@ -1,0 +1,37 @@
+.vacancy {
+    &__panel__mobile {
+        @extend .flex-centered;
+        @extend .w100v;
+        @extend .pt-m;
+        @extend .pb50;
+
+        .screenMobile & {
+            @extend .mlr--mobile;
+        }
+        &__item {
+            @extend .pos-rel;
+            @extend .flex-column-centered;
+            @extend .w50p;
+            @extend .h100p;
+            @extend .pb-m;
+            @extend .fontSize-18;
+
+            &:before {
+                @extend .pos-centered-h;
+                @extend .t0;
+                @extend .content-empty;
+                @extend .borderColor-smokeDark;
+                border-top:1px solid;
+                @extend .w85p;
+                @extend .mt--l;
+            }
+            &__icon {
+                @extend .h80;
+            }
+            &:first-child {
+                @extend .borderColor-smokeDark;
+                border-right:1px solid;
+            }
+        }
+    }
+}

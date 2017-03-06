@@ -1,4 +1,8 @@
 .jobs {
+    $smoke: #E0E6ED;
+    $smokeDark: rgba($silver,.3);
+    $smokeDarken: #C0CCDA;
+
     .btn-active {
         .d-phone & {
             @extend .transition-none;
@@ -7,12 +11,24 @@
     }
     h1.title {
         @extend .c-grayDarken;
-        @extend .fontFamily-roboto;
+        @extend .fontFamily-gotham;
         @extend .fontWeight-bold;
-        font-size:31.5px;
+        @extend .maxW-100p;
+        @extend .overflow-hidden;
+        font-size:29px;
         line-height:33px;
-        letter-spacing:-0.025em;
+        letter-spacing:-0.04em;
         margin-left:-2px;
+        // @extend .fontFamily-roboto;
+        // font-size:31.5px;
+        // line-height:33px;
+        // letter-spacing:-0.025em;
+
+        .d-phone & {
+            font-size:27px;
+            line-height:32px;
+            letter-spacing:-0.037em;
+        }
     }
     a.link {
         @extend .c-blueLight;
@@ -34,13 +50,13 @@
         }
     }
     .borderColor-smoke {
-        border-color:#E0E6ED;
+        border-color:$smoke
     }
     .borderColor-smokeDark {
-        border-color:rgba($silver,.3);
+        border-color:$smokeDark;
     }
     .borderColor-smokeDarken {
-        border-color:#C0CCDA;
+        border-color:$smokeDarken;
     }
     .c-blackLight {
         .d-phone & {

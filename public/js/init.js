@@ -1,9 +1,17 @@
 (function(){
 
-    app.metrika = new app.plugins.metrika({
-        key: "public",
-        data: app.metrics.public
-    });
+    if (location.href.match(/\/jobs\//)){
+        app.metrika = new app.plugins.metrika({
+            key: "jobs",
+            data: app.metrics.jobs
+        });
+    }
+    else {
+        app.metrika = new app.plugins.metrika({
+            key: "public",
+            data: app.metrics.public
+        });
+    }
 
     app.sections.init();
 

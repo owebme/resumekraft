@@ -30,14 +30,12 @@
 
     $.on("mount", function(){
         $Sections.module("search.filter", $);
-
-        window.addEventListener('popstate', function(e){
-            location.reload();
-        }, false);
     });
 
-    $.onSearch = function(url, changePage){
+    $.onSearch = function(url, options){
         if (!url) return;
+
+        var options = options || {};
 
         if (app.device.isPhone){
             app.$dom.window.scrollTop(0);
@@ -46,7 +44,7 @@
             app.$dom.window.scrollTop(94);
         }
 
-        if (!changePage && $State.get("page") > 0){
+        if (!options.changePage && $State.get("page") > 0){
             $State.select("page").set(0);
             var params = Url.parseQuery(url.replace($store.jobs.apiUrl, ""));
             delete params.page;
@@ -54,7 +52,7 @@
         }
 
         if (app.device.isPhone){
-            if ($Screens.search.filter.active){
+            if ($Screens.search.filter.section.active){
                 $Screens.search.filter.root.setAttribute("data-search", true);
                 $Screens.search.filter.section.loading(true);
             }
@@ -81,7 +79,7 @@
 
             History.pushState(null, null, !_.isEmpty(params) ? "?" + Url.stringify(params) : "/jobs/search");
 
-            if (!changePage) $.update();
+            if (!options.changePage) $.update();
 
             if (!$Sections.search.content){
                 $Sections.search.content = riot.mount("jobs-search-content", "jobs-search-content-client")[0];
@@ -89,30 +87,37 @@
             else {
                 $Sections.search.content.update();
             }
-            if (!changePage){
+            if (!options.changePage){
                 $State.select("pages").set(data.pages ? parseInt(data.pages) : 0);
                 $Sections.search.pages.update();
             }
 
-            if (app.device.isPhone){
-                if ($Screens.search.filter.active){
-                    $Screens.search.filter.root.setAttribute("data-search", false);
-                    $Screens.search.filter.section.loading(false);
-                }
-                else {
-                    $Sections.search.$content.removeAttr("data-search");
-                }
-                if ($store.jobs.found && $store.jobs.found > 0){
-                    $Screens.search.filter.result.innerHTML = 'Показать ' + _.numberFormat($store.jobs.found, 0, ".", " ") + ' вакансий';
-                }
-                else {
-                    $Screens.search.filter.result.innerHTML = '';
-                }
+            $.endSearch();
+
+        }, function(){
+            $.endSearch();
+        })
+    };
+
+    $.endSearch = function(){
+        if (app.device.isPhone){
+            if ($Screens.search.filter.section.active){
+                $Screens.search.filter.root.setAttribute("data-search", false);
+                $Screens.search.filter.section.loading(false);
             }
             else {
-                app.$dom.root.removeAttr("data-search");
+                $Sections.search.$content.removeAttr("data-search");
             }
-        })
+            if ($store.jobs.found && $store.jobs.found > 0){
+                $Screens.search.filter.result.innerHTML = 'Показать ' + _.numberFormat($store.jobs.found, 0, ".", " ") + ' вакансий';
+            }
+            else {
+                $Screens.search.filter.result.innerHTML = '';
+            }
+        }
+        else {
+            app.$dom.root.removeAttr("data-search");
+        }
     };
 
     $.getUrl = function(params){

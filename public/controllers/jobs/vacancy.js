@@ -44,7 +44,14 @@ module.exports = function(){
 
             res.render('jobs', {
                 title: "Вакансия на должность «" + results.vacancy.name + "» в " + results.vacancy.area.name + ", работа в компании " + results.vacancy.employer.name,
-                content: app.riot.render(app.tags("vacancy"), req.appClient).replace(/<raw-content content=".+?">/, "").replace(/<\/raw-content>/, "")
+                device: req.device.type,
+                content: app.riot.render(app.tags("vacancy", req.device), req.appClient)
+                .replace(/<raw-content content=".+?">/, "")
+                .replace(/<\/raw-content>/, "")
+                .replace(/<vacancy-content/, "<vacancy-content-side")
+                .replace(/<\/vacancy-content>/, "</vacancy-content-side>")
+                .replace(/<vacancy-similary/, "<vacancy-similary-side")
+                .replace(/<\/vacancy-similary>/, "</vacancy-similary-side>")
             });
 		});
     }

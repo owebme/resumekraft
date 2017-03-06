@@ -6,12 +6,6 @@
 
         init: function(){
 
-            $Sections = new app.plugins.define("$Sections");
-
-            if (app.device.isPhone){
-                $Screens = new app.plugins.define("$Screens");
-            }
-
             $store.jobs.apiUrl = "https://api.hh.ru/vacancies?";
 
             var params = Url.parseQuery();

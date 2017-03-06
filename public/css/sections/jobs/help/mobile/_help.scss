@@ -1,7 +1,40 @@
 .jobs {
     &__help {
-        @include abs();
-        @extend .bg-overlay;
+        @extend .display-block;
+        @include abs("fixed");
+        background-color:rgba($steel,.95);
+        @extend .c-white;
+        @extend .opacity-0;
+        @extend .pointerEvents-none;
+        @extend .visibility-hidden;
+        @extend .willChange-opacity;
+        transition:opacity 0.2s, visibility 0s 0.2s;
         @extend .zIndex-10;
+
+        &[data-active="true"]{
+            @extend .opacity-100;
+            @extend .pointerEvents-all;
+            @extend .visibility-visible;
+            transition:opacity 0.2s;
+        }
+        &__content {
+            @extend .flex-column-centered;
+            @extend .pos-centered;
+            @extend .text-center;
+            @extend .w90v;
+        }
+        &__image {
+            &[data-image="swipeLeft"]{
+                @include ui-icon("swipeLeft_white", 102px, 102px);
+                @extend .mb-m;
+            }
+            &[data-image="swipeRight"]{
+                @include ui-icon("swipeRight_white", 102px, 102px);
+                @extend .mb-m;
+            }
+        }
+        &__text {
+            @extend .mb-s;
+        }
     }
 }

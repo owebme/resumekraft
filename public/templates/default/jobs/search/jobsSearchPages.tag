@@ -3,52 +3,104 @@
     <div class="row">
         <div class="col-md-offset-19 col-md-5">
             <div class="row jobs__search__pages__items">
-                <div if={ get.pages() } class="jobs__search__pages__arrows">
-                    <a href="#" class="jobs__search__pages__arrow" data-arrow="prev" data-active={ opts.page > 0 }>Alt + ←</a>
-                    <a href="#" class="jobs__search__pages__arrow" data-arrow="next" data-active={ opts.page + 1 < opts.pages }>Alt + →</a>
+                <div if={ $State.get("pages") > 1 } class="jobs__search__pages__arrows">
+                    <div onClick={ onPrev } onUpdate="none" class="jobs__search__pages__arrow" data-arrow="prev" data-active={ $State.get("page") > 0 }>Alt + ←</div>
+                    <div onClick={ onNext } onUpdate="none" class="jobs__search__pages__arrow" data-arrow="next" data-active={ $State.get("page") + 1 < $State.get("pages") }>Alt + →</div>
                 </div>
-                <virtual each={ item, i in get.pages() } no-reorder>
-                    <a if={ item != get.current() } href="/jobs/search/?page={ item }" class="col-md-4 jobs__search__pages__item">{ item + 1 }</a>
-                    <span if={ item == get.current() } class="col-md-4 jobs__search__pages__item" data-active="true">{ item + 1 }</span>
-                </virtual>
+                <a href="/jobs/search{ item > 0 ? '/?page=' + item : '' }" each={ item, i in get.pages() } no-reorder onClick={ onSelect } class="col-md-4 jobs__search__pages__item" data-active={ item == $State.get("page") }>{ item + 1 }</a>
+                <span onClick={ onNext } onUpdate="none" class="jobs__search__pages__item jobs__search__pages__item__arrow" data-active={ $State.get("page") + 1 < $State.get("pages") }></span>
             </div>
         </div>
     </div>
 
-    <script>
+<script>
 
-        var $ = this;
+    var $ = this;
 
-        $.perPage = 5;
+    $.perPage = 5;
 
-        $.get = {
-            current: function(){
-                return $.opts.page;
-            },
-            url: function(){
+    $.on("mount", function(){
+        try {
+            $Sections.module("search.pages", $);
 
-            },
-            pages: function(){
-                if ($.opts.pages < 2) return;
-                if ($.opts.page + $.perPage <= $.opts.pages){
-                    if ($.opts.page > 0){
-                        return $.parent.opts.utils.range($.opts.page - 1, $.opts.page + ($.perPage - 1));
+            app.$dom.document.on("keydown", function(e){
+                if (e.altKey){
+                    if (e.keyCode == 37){
+                        $.onPrev();
                     }
-                    else {
-                        return $.parent.opts.utils.range($.opts.page, $.opts.page + $.perPage);
+                    else if (e.keyCode == 39){
+                        $.onNext();
                     }
+                }
+            });
+        } catch(e){}
+    });
+
+    $.onSelect = function(){
+        $.changePage(parseInt(this.item));
+    };
+
+    $.onNext = function(){
+        if ($State.get("page") + 1 < $State.get("pages")){
+            $.changePage($State.get("page") + 1);
+            $.update();
+        }
+    };
+
+    $.onPrev = function(){
+        if ($State.get("page") > 0){
+            $.changePage($State.get("page") - 1);
+            $.update();
+        }
+    };
+
+    $.changePage = function(page){
+        $State.select("page").set(page);
+
+        var params = Url.parseQuery();
+
+        if (page > 0) params.page = page;
+        else if (params.page) delete params.page;
+
+        $Sections.search.filter.onSearch($Sections.search.filter.getUrl(params), {
+            changePage: true
+        });
+    };
+
+    $.get = {
+        pages: function(){
+            if (!$.opts.renderClient){
+                var page = $.opts.page * 1,
+                    pages = $.opts.pages * 1;
+            }
+            else {
+                try {
+                    var page = $State.get("page"),
+                        pages = $State.get("pages");
+                } catch(e){}
+            }
+
+            if (pages < 2) return;
+
+            if (page + $.perPage <= pages){
+                if (page > 0){
+                    return $.opts.utils.range(page - 1, page + ($.perPage - 1));
                 }
                 else {
-                    var delta = $.opts.pages - $.opts.page;
-                    if (delta < 2) delta = 2;
-                    else delta = 2;
-                    if ($.opts.page - delta < 0) delta = $.opts.page;
-                    if (($.opts.pages - ($.opts.page - delta)) > $.perPage) $.opts.pages = $.opts.pages - 1;
-                    return $.parent.opts.utils.range($.opts.page - delta, $.opts.pages);
+                    return $.opts.utils.range(page, page + $.perPage);
                 }
             }
-        };
+            else {
+                var delta = pages - page;
+                if (delta < 2) delta = 2;
+                else delta = 2;
+                if (page - delta < 0) delta = page;
+                if ((pages - (page - delta)) > $.perPage) pages = pages - 1;
+                return $.opts.utils.range(page - delta, pages);
+            }
+        }
+    };
 
-    </script>
+</script>
 
 </jobs-search-pages>

@@ -6,7 +6,7 @@
         <div class="employer__vacancies__item__name">
             <a href="/jobs/vacancy/{ item.id }/{ link(item.employer.name) }" class="employer__vacancies__item__title">{ item.name }</a>
             <div class="employer__vacancies__item__date">
-                <span class="c-gray">{ item.employer.name }</span>, { parent.opts.moment(item.published_at).format("D MMMM") }
+                <span class="c-gray">{ item.employer.name }</span>, { parent.opts.utils.moment(item.published_at).format("D MMMM") }
             </div>
         </div>
         <div class="employer__vacancies__item__salary">

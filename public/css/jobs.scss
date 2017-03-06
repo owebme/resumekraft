@@ -37,8 +37,6 @@
 
 // jobs
 @import 'sections/jobs/jobs';
-@import 'sections/jobs/ui';
-@import 'sections/jobs/icons';
 @import 'sections/jobs/footer';
 @import 'sections/jobs/search/nav/nav';
 @import 'sections/jobs/search/nav/header';
@@ -51,17 +49,22 @@
 @import 'sections/jobs/search/pages';
 @import 'sections/jobs/search/progress';
 
+// help
+@import 'sections/jobs/help/mobile/help';
+
 // vacancy
 @import 'sections/jobs/vacancy/vacancy';
 @import 'sections/jobs/vacancy/vacancyContent';
 @import 'sections/jobs/vacancy/vacancySidebar';
 @import 'sections/jobs/vacancy/vacancyPanel';
 @import 'sections/jobs/vacancy/vacancySimilary';
+@import 'sections/jobs/vacancy/mobile/vacancyPanel';
 
 // employer
 @import 'sections/jobs/employer/employer';
 @import 'sections/jobs/employer/employerVacancies';
 @import 'sections/jobs/responsive';
+@import 'sections/jobs/ui';
 
 // states
 @import '../../assets/css/states/states';

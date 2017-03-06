@@ -57,15 +57,20 @@
                 options.beforeShow();
             }
             _.onEndTransition(this.content, function(){
-                if (options.update && options.tag){
-                    options.tag.update(options.update);
-
-                    options.tag.one("updated", function(){
-                        _this._afterShow(options);
-                    });
+                if (_.isFunction(options.callback)){
+                    options.callback(_this._afterShow.bind(_this), _this.hide.bind(_this));
                 }
                 else {
-                    _this._afterShow(options);
+                    if (options.update && options.tag){
+                        options.tag.update(options.update);
+
+                        options.tag.one("updated", function(){
+                            _this._afterShow(options);
+                        });
+                    }
+                    else {
+                        _this._afterShow(options);
+                    }
                 }
                 _this.active = true;
             });

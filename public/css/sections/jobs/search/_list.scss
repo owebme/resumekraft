@@ -46,7 +46,7 @@
             @extend .pos-rel;
 
             .d-phone & {
-                @extend .w90v;
+                @extend .w-mobile;
                 @extend .m0-auto;
             }
         }
@@ -56,9 +56,11 @@
             @extend .fontFamily-graphik;
             @extend .fontWeight-bold;
             @extend .fontSize-18;
-            @extend .transition-default;
             margin-bottom:1px;
 
+            .d-no-phone &:hover {
+                @extend .transition-default;
+            }
             .d-phone & {
                 @extend .fontSize-22;
                 line-height:26px;

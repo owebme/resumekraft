@@ -474,6 +474,8 @@
 	  document.cookie = updatedCookie;
     };
 
+	if (window.moment) utils.moment = window.moment;
+
 	if (window._) _.extend(_, utils);
 	else window._ = utils;
 

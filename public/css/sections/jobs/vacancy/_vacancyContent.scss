@@ -1,18 +1,30 @@
 .vacancy {
     &__content {
         @extend .fontSize-15;
+
+        .d-phone & {
+            @extend .fontSize-16;
+        }
     }
     &__description {
         @extend .c-blackLight;
         @extend .pl-xs;
         @extend .pt-m;
+        @extend .xs-pt-xs;
 
         p {
             margin-top:23px;
+
+            .d-phone & {
+                @extend .mt25;
+            }
         }
         p.h {
             margin-bottom:14px;
 
+            .d-phone & {
+                @extend .mb-s;
+            }
             strong {
                 @extend .c-blueBright;
                 @extend .fontFamily-graphik;
@@ -20,13 +32,22 @@
                 line-height:24px;
                 @extend .text-uppercase;
                 @extend .letterSpacing--xs;
+
+                .d-phone & {
+                    font-size:18px;
+                }
             }
             &:first-child {
                 @extend .mt-s;
+
+                .d-phone & {
+                    margin-top:23px;
+                }
             }
         }
         ul, ol {
             @extend .pl-xs;
+            @extend .xs-pl-xxs;
             @extend .pb-xxs;
 
             > li {
@@ -50,6 +71,10 @@
         li strong,
         p:not(.h) strong {
             font-size:15.5px;
+
+            .d-phone & {
+                font-size:16.5px;
+            }
         }
         li.s {
             strong {
@@ -65,7 +90,10 @@
             @extend .display-none;
         }
         a {
+            @extend .display-inlineBlock;
             @extend .c-blueBright;
+            @extend .text-truncate;
+            @extend .maxW-100p;
             @extend .transition-default;
             border-bottom:1px solid rgba($blueLight,.3);
 
@@ -76,6 +104,16 @@
         }
         iframe {
             @extend .mtb-xss;
+
+            .d-no-phone & {
+                @extend .w100p;
+                height:335px;
+            }
+            .d-phone & {
+                @extend .w100v;
+                @extend .h40v;
+                @extend .mlr--mobile;
+            }
         }
     }
 }

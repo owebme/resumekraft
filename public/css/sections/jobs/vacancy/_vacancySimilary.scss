@@ -2,16 +2,66 @@
     &__similary {
         @extend .pl-xxs;
         @extend .c-white;
+        @extend .plr-mobile;
+        @extend .mlr--xss;
 
         .title {
             @extend .opacity-65;
             @extend .ml--xs;
             @extend .mb-m;
+            @extend .xs-ml0;
         }
         &__wrapper {
             background:linear-gradient(225deg, lighten(#3e4757,14%) 0%, lighten(#1f242c,14%) 100%);
-            min-height:434px;
             @extend .ptb-l;
+
+            .d-no-phone & {
+                min-height:434px;
+            }
+            .d-phone & {
+                @extend .pb60;
+            }
+            .screenMobile & {
+                @extend .mlr--mobile;
+            }
+        }
+        &__preloader {
+            @include accelerate();
+            @extend .display-none;
+            @extend .pos-rel;
+            @extend .trY-xl;
+            @extend .willChange-transform;
+
+            &__spinner {
+                @extend .pos-centered;
+                @extend .pointerEvents-none;
+                @extend .spinner;
+                @extend .willChange-opacity;
+            }
+            .vacancy__similary__wrapper {
+                @extend .display-none;
+            }
+            &[data-active="true"]{
+                @extend .display-block;
+                @extend .h0;
+
+                .vacancy__similary__preloader__spinner {
+                    @extend .spinner-anim;
+                    @extend .mt--60;
+                }
+            }
+            &[data-open="true"]{
+                @extend .transform-default;
+                transition:transform 0.5s $cubic32;
+
+                .vacancy__similary__preloader__spinner {
+                    @extend .opacity-0;
+                    @extend .spinner-anim-off;
+                }
+                .vacancy__similary__wrapper {
+                    @extend .display-block;
+                }
+            }
         }
         &__items {
             @extend .flex;
@@ -27,14 +77,18 @@
             @extend .mt-xs;
             @extend .mb30;
             @extend .plr-xs;
+            @extend .xs-plr0;
 
+            .d-phone & {
+                @extend .w100p;
+            }
             &:visited {
                 .vacancy__similary__item__title {
                     color:lighten($silver,3%);
                 }
             }
-            &:hover,
-            &:visited:hover {
+            .m-no-touch &:hover,
+            .m-no-touch &:visited:hover {
                 .vacancy__similary__item__title {
                     @extend .c-yellowBright;
                 }
@@ -59,6 +113,11 @@
                 @extend .text-uppercase;
                 @extend .transition-default;
                 @extend .mb-xxs;
+
+                .d-phone & {
+                    @extend .fontSize-16;
+                    @extend .lineHeight-24;
+                }
             }
             &__salary {
                 @extend .mb-xxs;
@@ -73,9 +132,15 @@
             }
         }
         &__resumeOffer {
+            .d-phone & {
+                @extend .mt-m;
+                @extend .pt30;
+                border-top:1px dashed rgba($white,.4);
+            }
             .resumeOffer {
                 @extend .pt-xxs;
                 @extend .pl-m;
+                @extend .plr-mobile;
                 @extend .c-white;
 
                 &__title {

@@ -25,6 +25,25 @@
         });
     };
 
+    app.requestList = function(methods, params, options){
+        var list = [],
+            params = params || [],
+            options = options || [],
+            parts = methods.split(", ");
+
+        return new Promise(function(resolve, reject){
+            for (i = 0; i < parts.length; i++) {
+                list.push(parts[i]);
+            }
+            Promise.all(list.map(function(m, i){
+                return app.request(m, params[i], options[i]);
+            }))
+            .then(function(results) {
+                resolve(results);
+            })
+        });
+    };
+
     app.request = function(method, params, opt){
         return new Promise(function(resolve, reject){
             var url = _.underscored(method)

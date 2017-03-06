@@ -117,6 +117,18 @@
             @include ui-icon("more_v", 28px, 28px);
             transform:translateX(2px);
         }
+        &__buttons {
+            @extend .pos-tr;
+            @extend .flex-row-right-center;
+            @extend .plr-xss;
+            @extend .h100p;
+
+            &__item {
+                @extend .flex-centered;
+                width:46px;
+                @extend .h100p;
+            }
+        }
     }
     &__content {
         @include accelerate(true);

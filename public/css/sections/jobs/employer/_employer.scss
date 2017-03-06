@@ -1,47 +1,37 @@
 .employer {
     @extend .pb70;
+    @extend .xs-pb-l;
 
     .title {
         @extend .mt-m;
         @extend .mb30;
+        @extend .xs-mtb0;
+        @extend .xs-pb-m;
+        @extend .text-right-xs;
     }
     &__type {
-        @extend .pos-abs;
-        @extend .t-xs;
-        @extend .r--m;
-        @extend .trX-l;
+        .d-no-phone & {
+            @extend .fontSize-14;
+        }
+        .d-phone & {
+            @extend .c-blueBright;
+            @extend .fontSize-20;
+            @extend .fontWeight-bold;
+            @extend .fontFamily-graphik;
+        }
+    }
+    &__logotype {
+        @extend .display-block;
+        @extend .centered;
 
-        &__item {
-            @extend .pos-rel;
-            @extend .flex-row-right-center;
-            font-size:11px;
-            @extend .text-uppercase;
-            @extend .w100;
-
-            &__icon {
-                @extend .pos-centered-v;
-                @extend .r100;
-                @extend .mr-xss;
-
-                &[data-icon="company"]{
-                    @extend .w40;
-                    @extend .h40;
-                    margin-top:2px;
-                }
-                &[data-icon="agency"]{
-                    width:46px;
-                    height:46px;
-                    margin-top:3px;
-                }
-                &[data-icon="recruiter"]{
-                    @extend .w30;
-                    @extend .h30;
-                    margin-top:2px;
-                }
-                &__color {
-                    @extend .fill-blueBright;
-                }
-            }
+        .d-no-phone & {
+            @extend .w90p;
+        }
+        .d-phone & {
+            @extend .maxW-65v;
+            @extend .maxH-35v;
+            @extend .mt-m;
+            @extend .mb50;
         }
     }
     &__content {
@@ -50,13 +40,20 @@
     &__description {
         @extend .vacancy__description;
         @extend .p0;
+        @extend .xs-pt0;
         @extend .lineHeight-24;
     }
     &__sidebar {
         @extend .bg-snowSilver;
         @extend .p-m;
         @extend .ml--35;
+        @extend .xs-pt0;
+        @extend .mlr--mobile;
+        @extend .plr-mobile;
 
+        .d-phone & {
+            @extend .bg-none;
+        }
         img {
             @extend .borderRadius-m;
         }

@@ -23,25 +23,24 @@
     $.show = function(opts){
         clearTimeout($.interval);
 
+        if ($.active) $.autoHide(opts);
+
+        $.active = true;
+
         if (typeof opts.timeout === "undefined"){
             if (!opts.color) opts.timeout = 1;
         }
-        if ($.active) $.autoHide(opts);
-
-        if (opts.pos != $.opts.pos){
+        if (opts && opts.pos != $.opts.pos){
             $.update({
                 opts: opts
             });
             setTimeout(function(){
-                $.update({
-                    active: true
-                });
+                $.update();
             }, 200);
         }
         else {
             $.update({
-                opts: opts,
-                active: true
+                opts: opts
             });
         }
 

@@ -49,6 +49,8 @@ module.exports = function(){
                     state: state ? JSON.stringify(state) : null,
                     device: req.device.type,
                     content: app.riot.render(app.tags("jobsSearch", req.device), req.appClient)
+                    .replace(/<jobs-search-pages/, "<jobs-search-pages-side")
+                    .replace(/<\/jobs-search-pages>/, "</jobs-search-pages-side>")
                 });
             }
         });

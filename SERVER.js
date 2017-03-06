@@ -49,6 +49,7 @@ app.utils.url = url;
 underscore.extend(app.utils, underscore);
 app.moment = require('moment');
 app.moment.locale('ru');
+app.utils.moment = app.moment;
 
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');

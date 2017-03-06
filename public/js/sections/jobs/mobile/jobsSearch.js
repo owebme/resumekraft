@@ -15,53 +15,37 @@
 
         render: function(){
 
-            $dom.root = this.el;
-
             app.features.jobsSearch.init();
-
-            new app.plugins.scroll.refreshFix(this.el);
-
-            app.sections.on("afterMounted", function(){
-                riot.mount("jobs-search-pages", "jobs-search-pages-client");
-
-                WD.$nav.find(".input-group input").on("blur", function(){
-                    setTimeout(function(){
-                        WD.$nav.attr("data-show", false);
-                        app.$dom.root.attr("data-overlay", false);
-                    }, 20);
-                });
-
-                WD.$overlay.on("click", function(){
-                    WD.$nav.attr("data-show", false);
-                    app.$dom.root.attr("data-overlay", false);
-                });
-            });
 
             $Sections.module("search.$content", app.$dom.root.find(".jobs__search__content"));
 
             this.$nav = this.el.find("jobs-search-panel-mobile");
-            this.$content = this.el.find(".jobs__search");
-            this.$overlay = this.el.find(".section__overlay");
-
-            WD.scroll();
-
-            WD.nav();
 
             app.sections.on("afterMounted", function(){
-                WD.$filter = WD.el.find("jobs-search-filter");
+                riot.mount("jobs-search-pages-side", "jobs-search-pages", {
+                    renderClient: true,
+                    utils: window._
+                });
 
                 $Sections.search.$content.on('swipeLeft', function(){
                     $Sections.search.panel.open.filter();
                 });
-            });
-        },
 
-        nav: function(){
+                $Sections.search.$content.on('click', ".jobs__list__item__title", function(e){
+                    e.preventDefault();
+                    e.stopPropagation();
 
-            WD.$nav.on("click", ".input-group", function(e){
-                WD.$nav.attr("data-show", true);
-                app.$dom.root.attr("data-overlay", true);
+                    var $el = $(this);
+
+                    app.sections.jobsMobile.mainScreen.hide();
+
+                    $Screens.vacancy.show($el.attr("data-id"), $el.attr("href"), function(){
+                        app.sections.jobsMobile.mainScreen.show();
+                    })
+                });
             });
+
+            WD.scroll();
         },
 
         scroll: function(){
