@@ -1,0 +1,313 @@
+$i:0;
+@each $color in (rgb(248, 167, 36), rgb(2, 154, 228), rgb(0, 171, 192), rgb(65, 65, 65), rgb(229, 57, 53), rgb(119, 143, 155), rgb(125, 86, 193), rgb(91, 106, 191), rgb(103, 158, 55), rgb(55, 141, 59), rgb(235, 63, 121), rgb(140, 109, 98), rgb(255, 111, 66), rgb(29, 135, 228), rgb(0, 136, 122), rgb(169, 0, 255)){
+    $i: $i + 1;
+    .cover__bg#{$i} {
+        background-color:$color;
+    }
+    svg[fill-color="fill#{$i}"]{
+        path, rect, polygon, circle {
+            fill:$color;
+        }
+    }
+}
+@each $title, $color in (white: $white, blue: $blue, blueLight: $blueLight, blueBright: $blueBright, blueDark: $blueDark, brown: $brown, brownDark: $brownDark, red: $red, redBright: $redBright, redDark: $redDark, pink: $pink, orange: $orange, orangeDark: $orangeDark, yellow: $yellow, yellowLight: $yellowLight, yellowBright: $yellowBright, violet: $violet, violetLight: $violetLight, green: $green, greenLight: $greenLight, greenDark: $greenDark, lime: $lime, breeze: $breeze, emerald: $emerald, black: $black, blackDark: $blackDark, blackLight: $blackLight, steel: $steel, steelDark: $steelDark, silver: $silver, gray: $gray, grayDark: $grayDark, grayDarken: $grayDarken, grayLight: $grayLight, grayLighten: $grayLighten, grayLightenSilver: $grayLightenSilver, smoke: $smoke, smokeLight: $smokeLight, smokeDark: $smokeDark, snow: $snow, snowLight: $snowLight, snowSilver: $snowSilver, snowDark: $snowDark){
+    .bg-#{$title},
+    .text-strike[data-color=#{$title}]:after {
+        background-color:$color;
+    }
+    .bg-#{$title}-transparent {
+        background-color:rgba($color,.1);
+    }
+    .c-#{$title} {
+        color:$color;
+    }
+    .fill-#{$title} {
+        fill:$color;
+    }
+    .borderColor-#{$title} {
+        border-color:$color;
+    }
+    .borderColor-#{$title}-transparent {
+        border-color:rgba($color,.1);
+    }
+    svg[fill-color="#{$title}"]{
+        path, rect, polygon, circle {
+            fill:$color;
+        }
+    }
+}
+@each $title, $color, $hover in (dark, $blackLight, $blackDark), (light, $gray, $blackLight), (white, rgba($white,.7), $white){
+    .link-#{$title} {
+        color:$color;
+        @extend .link;
+
+        &:hover {
+            color:$hover;
+        }
+        &.link-underline {
+            @extend .pos-rel;
+
+            &:after {
+                @extend .content-empty;
+                @extend .pos-bl;
+                @extend .h1px;
+                @extend .opacity-60;
+                @extend .w100p;
+                transform:translateY(4px);
+                background-color:rgba($color,.4);
+                transition:opacity .2s, background-color .08s;
+            }
+            &:hover:after {
+                @extend .opacity-100;
+            }
+        }
+    }
+}
+@each $title, $color in (primary: $blue, info: $blueLight, success: $green, danger: $red, warning: $orange, dark: $black){
+    .btn-#{$title} {
+        color:$white;
+        background-color:$color;
+
+        .btn-svg-color {
+            fill:$white;
+        }
+        &.btn-shadow {
+            box-shadow:0 12px 20px -10px rgba($color,.28), 0 4px 20px 0px rgba($color,.12), 0 7px 8px -5px rgba($color,.2);
+        }
+        &.btn-shadow-strong {
+            box-shadow:0 12px 30px -10px rgba($color,.48), 0 4px 30px 0px rgba(31,35,37,.2), 0 7px 16px -5px rgba($color,.3);
+        }
+        .m-no-touch &:hover {
+            background-color:darken($color,9%);
+        }
+    }
+    .btn-#{$title}-hover {
+        color:$color;
+        background-color:transparent;
+        box-shadow:inset 0 0 0 1px $color;
+
+        .btn-svg-color {
+            fill:$color;
+        }
+        &:hover {
+            color:#fff;
+            background-color:$color;
+            box-shadow:none;
+
+            .btn-svg-color {
+                fill:#fff;
+            }
+        }
+    }
+    .btn-default-hover-#{$title} {
+        color:$white;
+        box-shadow:inset 0 0 0 1px $blue;
+        background-color:$blue;
+
+        &:hover {
+            background-color:$color;
+            box-shadow:none;
+        }
+    }
+    .link-#{$title},
+    .link-default-hover-#{$title} {
+		color:$color;
+	    opacity:0.85;
+	    @extend .link;
+
+	    &:hover {
+	        opacity:1;
+            color:darken($color,3%);
+	    }
+        &.link-underline {
+            @extend .pos-rel;
+            @extend .opacity-100;
+
+            &:after {
+                @extend .content-empty;
+                @extend .pos-bl;
+                @extend .h1px;
+                @extend .opacity-60;
+                @extend .w100p;
+                transform:translateY(4px);
+                background-color:rgba($color,.4);
+                transition:opacity .2s, background-color .08s;
+            }
+            &:hover:after {
+                @extend .opacity-100;
+            }
+        }
+    }
+    .link-gray-hover-#{$title} {
+        color:$gray;
+
+        &:hover {
+            color:$color;
+        }
+    }
+    .link-default-hover-#{$title} {
+        color:$blue;
+
+        &:hover {
+            color:$color;
+        }
+        &.link-underline {
+            &:after {
+                background-color:rgba($blue,.4);
+            }
+            &:hover:after {
+                background-color:rgba($color,.4);
+            }
+        }
+    }
+    .notify[data-color=#{$title}] {
+        background-color:$color;
+        box-shadow:0 12px 20px -10px rgba($color,.28), 0 4px 20px 0px rgba($color,.12), 0 7px 8px -5px rgba($color,.2);
+    }
+    .arrow-pointer[data-color=#{$title}]:before {
+        border-color:$color;
+    }
+}
+@each $title, $color in (primary: $blue, info: $blueLight, success: $green, danger: $pink){
+    .btn-badge-#{$title} {
+        background-color:$color;
+    }
+}
+@each $title, $color in (primary: $blue, blueBright: $blueBright){
+    input.range-#{$title}[type=range]::-webkit-slider-thumb {
+        background-color:$color;
+    }
+    input.range-#{$title}[type=range]::-moz-range-thumb {
+        background-color:$color;
+    }
+    input.range-#{$title}[type=range]::-ms-thumb {
+        background-color:$color;
+    }
+}
+.link-lime.link-underline {
+    @extend .pos-rel;
+    @extend .c-lime;
+    @extend .opacity-100;
+    @extend .cursor-pointer;
+
+    &:after {
+        @extend .content-empty;
+        @extend .pos-bl;
+        @extend .h1px;
+        @extend .opacity-60;
+        @extend .w100p;
+        transform:translateY(4px);
+        background-color:rgba($lime,.5);
+        transition:opacity .2s, background-color .08s;
+    }
+    &:hover:after {
+        @extend .opacity-100;
+    }
+}
+.btn-default {
+    @extend .btn-primary-hover;
+
+    &-hover-white {
+        @extend .btn-primary;
+
+        &:hover {
+            color:$blue;
+            background-color:$white;
+            box-shadow:none;
+        }
+    }
+}
+.btn-white {
+    color:$blackLight;
+    box-shadow:none;
+    background-color:$white;
+
+    .btn-svg-color {
+        fill:$blackLight;
+    }
+    &:hover {
+        color:$blue;
+        background-color:$snow;
+    }
+    &.c-blue {
+        color:$blue;
+    }
+}
+.btn-white-hover,
+.btn-white-hover-primary {
+    color:$white;
+    box-shadow:inset 0 0 0 1px rgba($white,.3);
+    background-color:transparent;
+
+    .btn-svg-color {
+        fill:$white;
+    }
+    &:hover {
+        color:$blackLight;
+        box-shadow:none;
+        background-color:$white;
+
+        .btn-svg-color {
+            fill:$blue;
+        }
+        &.c-blue {
+            color:$blue;
+        }
+    }
+    &.btn-larger,
+    &.btn-xxl,
+    &.btn-xl.btn-upper,
+    &.btn-strong {
+        box-shadow:inset 0 0 0 2px rgba($white,.3);
+    }
+}
+.btn-white-hover-primary,
+.btn-white-hover-success,
+.btn-white-hover-black {
+    color:$blackLight;
+    box-shadow:none !important;
+    background-color:$white;
+
+    &.c-blue {
+        color:$blue;
+    }
+    &:hover {
+        color:$white;
+    }
+}
+.btn-white-hover-primary:hover {
+    background-color:$blue;
+}
+.btn-white-hover-success:hover {
+    background-color:$green;
+}
+.btn-white-hover-black:hover {
+    background-color:$blackLight;
+}
+.arrow-pointer[data-color="white"]:before {
+    border-color:$white;
+}
+.bg-overlay {
+    background-color:rgba(40,47,51,.76);
+}
+.bg-overlay-dark {
+    background:radial-gradient(rgba(64,64,75,.9), rgba(17,17,24,.9)) rgba(34,34,40,.52);
+}
+.bg-radial-blue {
+    background:radial-gradient(rgba($blue,0), $blue);
+}
+.bg-radial-black {
+    background:radial-gradient(rgba($black,0), $black);
+}
+.bg-gradient-tb-white {
+	background:linear-gradient(to bottom, #fff, rgba(#fff,0));
+}
+.bg-gradient-bt-white {
+	background:linear-gradient(to top, #fff, rgba(#fff,0));
+}
+.bg-gradient-lr-white {
+	background:linear-gradient(to right, #fff, rgba(#fff,0));
+}
+.bg-gradient-rl-white {
+	background:linear-gradient(to left, #fff, rgba(#fff,0));
+}

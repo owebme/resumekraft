@@ -1,0 +1,93 @@
+.jobs {
+    screen-favorites {
+        .section__content {
+            .d-phone & {
+                padding-top:54px;
+            }
+        }
+        &[data-open="true"][data-loading="false"]{
+            .favorites__list__empty {
+                &:before {
+                    animation:pulse-heart 1s infinite;
+                }
+            }
+        }
+    }
+    sidebar-favorites {
+        &[data-open="true"]{
+            .favorites__list__empty {
+                &:before {
+                    animation:pulse-heart 1s infinite;
+                }
+            }
+        }
+        .jobs__list__item__title {
+            @extend .pr-m;
+        }
+        .jobs__list__item__buttons {
+            top:-9px;
+            right:-9px;
+            @extend .b-auto;
+
+            .icon-like {
+                @extend .opacity-85;
+                @extend .mr0;
+            }
+            .icon-like-fill {
+                @extend .pos-rel;
+                @extend .display-block;
+                @extend .cursor-pointer;
+                @extend .btn-active;
+                margin:2px 2px 0 0;
+                transform-origin:50% 100%;
+            }
+            .btn-default {
+                @extend .display-none;
+            }
+        }
+        .jobs__list__item:before {
+            @extend .transform-none;
+        }
+    }
+    screen-favorites,
+    sidebar-favorites {
+        .jobs__list__item__address,
+        .jobs__list__item__company__text {
+            @extend .maxW-95p;
+        }
+    }
+}
+.favorites__list__empty {
+    @extend .pos-centered;
+    @extend .flex-column-centered;
+    @extend .text-center;
+    @extend .w100p;
+
+    &:before {
+        @extend .display-block;
+        @extend .content-empty;
+        width:128px;
+        height:140px;
+        @extend .bg-cover;
+        @extend .m0-auto;
+        background-image:url(/assets/images/like_bg.png);
+
+        .d-no-phone & {
+            width:112px;
+            height:122px;
+        }
+    }
+    &__text {
+        @extend .c-gray;
+        @extend .fontSize-20;
+        @extend .plr-l;
+        @extend .mt30;
+        @extend .mb30;
+        @extend .letterSpacing--xs;
+
+        .d-no-phone & {
+            @extend .fontSize-18;
+            @extend .mb55;
+        }
+    }
+}

@@ -40,6 +40,8 @@
             }))
             .then(function(results) {
                 resolve(results);
+            }, function(err){
+                reject(err);
             })
         });
     };

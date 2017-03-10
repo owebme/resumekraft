@@ -24,7 +24,7 @@ module.exports = function(){
                 var employer = results.employer;
                 req.appClient.section = "employer";
                 req.appClient.item = employer;
-                req.appClient.items = results.vacancies.items;
+                req.appClient.items = results.vacancies && results.vacancies.items;
                 req.appClient.countsAll = countsAll;
                 req.appClient.currency = app.store.jobs.currency;
 
@@ -41,7 +41,22 @@ module.exports = function(){
                 });
             }
             else {
-                next();
+                errHandler(res);
+            }
+        });
+    }
+
+    function errHandler(res){
+        res.status(404);
+        res.render('error', {
+            message: "оЙ",
+            error: {
+                status: "Компания не найдена",
+                text: "Она была удалена или её не было совсем",
+                back: {
+                    url: "/jobs/search",
+                    title: "Перейти в раздел вакансий"
+                }
             }
         });
     }

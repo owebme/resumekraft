@@ -1,0 +1,38 @@
+<jobs-search-help-swipeOpenFilters class="jobs__help" data-active={ active }>
+
+    <div class="jobs__help__content">
+        <div class="jobs__help__image" data-image="swipeLeft"></div>
+        <div class="jobs__help__text fontSize-20 lineHeight-32">Для быстрого доступа к параметрам поиска используйте свайп экрана влево и вправо.</div>
+        <div onClick={ hide } class="btn btn-xl btn-strong btn-white-hover">Понятно</div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.on("mount", function(){
+        if (!app.metrika.get("search.help.swipeOpenFilters")){
+            $.show();
+            app.metrika.set("search.help.swipeOpenFilters", true);
+        }
+        else {
+            $.unmount();
+        }
+    })
+
+    $.show = function(){
+        $.update({
+            active: true
+        })
+    }
+
+    $.hide = function(){
+        $.active = false;
+        _.onEndTransition($.root, function(){
+            $.unmount();
+        });
+    }
+
+</script>
+
+</jobs-search-help-swipeOpenFilters>

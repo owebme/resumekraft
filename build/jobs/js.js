@@ -31,17 +31,17 @@ module.exports = function(){
             'public/js/commons/metrika.js',
             'public/js/commons/sections.js',
             'public/js/store/jobs/dictionary.js',
+            'public/js/store/jobs/favorites.js',
             'assets/js/plugins/define.js',
             'assets/js/plugins/sections.js',
             'assets/js/plugins/metrika.js',
             'assets/js/plugins/share.js',
             'assets/js/plugins/eventsEmitter.js',
             'assets/js/plugins/scroll/scroll.RefreshFix.js',
-            'public/js/sections/jobs/jobs.js',
-            'public/js/sections/jobs/jobsSearch.js',
-            'public/js/sections/jobs/mobile/jobs.js',
-            'public/js/sections/jobs/mobile/jobsSearch.js',
-            'public/js/sections/jobs/mobile/metrika.js'])
+            'public/js/sections/jobs/*.js',
+            'public/js/sections/jobs/**/*.js',
+            'public/js/jobs/metrika.js',
+            'assets/js/libs/history.js/scripts/bundled/html4+html5/jquery.history.js'])
     		.pipe(concat('app.jobs.js'))
     		.pipe(uglify())
     		.pipe(gulp.dest('./public/js'));
@@ -58,7 +58,10 @@ module.exports = function(){
             'assets/templates/ui/input.html',
             'assets/templates/ui/textarea.html',
             'assets/templates/ui/checkbox.html',
+            'assets/templates/ui/dropMenu.html',
             'public/templates/client/**/*.html',
+            'public/templates/default/jobs/search/jobsSearchContent.tag',
+            'public/templates/default/jobs/search/jobsSearchListitem.tag',
             'public/templates/default/jobs/search/jobsSearchPages.tag',
             'public/templates/default/jobs/vacancy/vacancyContent.tag',
             'public/templates/default/jobs/vacancy/vacancySimilary.tag',
@@ -69,11 +72,11 @@ module.exports = function(){
             'assets/templates/ui/icons/icon-replyMail.html',
             'assets/templates/ui/icons/icon-location.html',
             'assets/templates/ui/icons/icon-control.html',
-            'public/templates/commons/icons/social/icon-fb.tag',
-            'public/templates/commons/icons/social/icon-vk.tag',
-            'public/templates/commons/icons/social/icon-tw.tag',
-            'public/templates/commons/icons/social/icon-dk.tag',
-            'public/templates/commons/icons/social/icon-gl.tag'])
+            'assets/templates/ui/icons/social/icon-fb.html',
+            'assets/templates/ui/icons/social/icon-vk.html',
+            'assets/templates/ui/icons/social/icon-tw.html',
+            'assets/templates/ui/icons/social/icon-dk.html',
+            'assets/templates/ui/icons/social/icon-gl.html'])
     		.pipe(riot())
     		.pipe(concat('templates.jobs.js'))
     		.pipe(uglify())

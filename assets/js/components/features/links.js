@@ -13,7 +13,8 @@
             $dom.body.on("click", "a", function(e){
                 var link = this.getAttribute("href");
                 if (link && link != "#" && !link.match(/http:/)){
-                    app.tag("section-loader").show();
+                    // app.tag("section-loader").show();
+                    $dom.body.addClass("appLoading");
                 }
             });
 

@@ -1,0 +1,97 @@
+.d-no-phone {
+    .share {
+        @extend .display-block;
+
+        &:hover {
+            .share__opener {
+                @extend .opacity-0;
+                @extend .scale-0;
+                @extend .pointerEvents-none;
+                transition:transform 0.25s $cubic68, opacity 0.25s $cubic68;
+            }
+            .share__items {
+                @extend .pointerEvents-all;
+            }
+            .share__item {
+                @extend .opacity-100;
+                @extend .scale-100;
+                transition:transform 0.35s $cubic68, opacity 0.35s $cubic68;
+
+                @for $i from 2 through 4 {
+                    &:nth-child(#{$i}) {
+                        transition-delay:#{($i / 50)}s;
+                    }
+                }
+            }
+        }
+        &__opener {
+            @extend .pos-tr;
+            transition:transform 0.35s $bounceForce, opacity 0.35s $bounceForce;
+
+            &__button {
+                @extend .bg-snowDark;
+
+                &__icon {
+                    width:27px;
+                    height:27px;
+                    margin:2px 0 0 -2px;
+                }
+            }
+            &__title {
+                @extend .mr-xs;
+                @extend .c-blackLight;
+            }
+        }
+        &__close {
+            @extend .display-none;
+        }
+        &__items {
+            @extend .pos-tr;
+
+            &__container {
+                @extend .flex-row-left-center;
+            }
+            &[data-size="s"]{
+                .share__item {
+                    width:46px;
+                    height:46px;
+                }
+            }
+        }
+        &__item {
+            @extend .cursor-pointer;
+            @extend .bg-white;
+            @extend .mlr-xxs;
+            @extend .bg-snowDark;
+            transition:transform 0.3s $cubic68, opacity 0.3s $cubic68, background-color 0.08s;
+
+            &:first-child {
+                @extend .ml0;
+            }
+            &:last-child {
+                @extend .mr0;
+            }
+            path {
+                @extend .fill-blueBright;
+                transition:fill 0.08s;
+            }
+            &:hover {
+                &[data-social="fb"]{
+                    background-color:#3b5999;
+                }
+                &[data-social="vk"]{
+                    background-color:#507299;
+                }
+                &[data-social="dk"]{
+                    background-color:#EE8208;
+                }
+                &[data-social="gl"]{
+                    background-color:#EA4335;
+                }
+                path {
+                    @extend .fill-white;
+                }
+            }
+        }
+    }
+}

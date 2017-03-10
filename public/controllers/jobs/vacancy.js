@@ -30,7 +30,7 @@ module.exports = function(){
 	                });
                 }
                 else {
-                    next();
+                    errHandler(res);
                 }
             }
 		],
@@ -38,21 +38,41 @@ module.exports = function(){
 		function(err, results){
             req.appClient.section = "vacancy";
             req.appClient.item = results.vacancy;
-            req.appClient.items = results.vacancies.items;
+            req.appClient.items = results.vacancies && results.vacancies.items;
             req.appClient.countsAll = countsAll;
             req.appClient.currency = app.store.jobs.currency;
 
             res.render('jobs', {
                 title: "Вакансия на должность «" + results.vacancy.name + "» в " + results.vacancy.area.name + ", работа в компании " + results.vacancy.employer.name,
+                item: results.vacancy ? JSON.stringify(results.vacancy) : null,
                 device: req.device.type,
                 content: app.riot.render(app.tags("vacancy", req.device), req.appClient)
                 .replace(/<raw-content content=".+?">/, "")
                 .replace(/<\/raw-content>/, "")
                 .replace(/<vacancy-content/, "<vacancy-content-side")
                 .replace(/<\/vacancy-content>/, "</vacancy-content-side>")
+                .replace(/<vacancy-panel-mobile/, "<vacancy-panel-mobile-side")
+                .replace(/<\/vacancy-panel-mobile>/, "</vacancy-panel-mobile-side>")
+                .replace(/<vacancy-panel-btn-favorite/, "<vacancy-panel-btn-favorite-side")
+                .replace(/<\/vacancy-panel-btn-favorite>/, "</vacancy-panel-btn-favorite-side>")
                 .replace(/<vacancy-similary/, "<vacancy-similary-side")
                 .replace(/<\/vacancy-similary>/, "</vacancy-similary-side>")
             });
 		});
+    }
+
+    function errHandler(res){
+        res.status(404);
+        res.render('error', {
+            message: "оЙ",
+            error: {
+                status: "Вакансия не найдена",
+                text: "Она была удалена или её не было совсем",
+                back: {
+                    url: "/jobs/search",
+                    title: "Перейти в раздел вакансий"
+                }
+            }
+        });
     }
 }

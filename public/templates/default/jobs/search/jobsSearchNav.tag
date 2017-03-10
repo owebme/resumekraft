@@ -3,16 +3,16 @@
     <div class="jobs__search__nav__header">
         <div class="rows">
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-6 col-lg-7">
                     <a href="/" class="logotype"></a>
-                    <div if={ parent.opts.countsAll } class="jobs__search__nav__header__vacancy__count">
+                    <div if={ parent.opts.countsAll } class="jobs__search__nav__header__vacancy__count visible-lg">
                         { parent.opts.utils.numberFormat(parent.opts.countsAll, 0, ".", ",") } вакансий
                     </div>
                 </div>
-                <div class="col-md-12 flex-centered h90 ml--25">
+                <div class="col-md-14 col-lg-12 flex-centered h90 ml--25">
                     <jobs-search-form></jobs-search-form>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-4 col-lg-5">
                     <div class="jobs__search__nav__header__buttons">
                         <a href="#" class="jobs__search__nav__header__button">
                             <div class="jobs__search__nav__header__button__icon">
@@ -39,21 +39,21 @@
             <div class="jobs__search__nav__menu__item">
                 <a class="jobs__search__nav__menu__item__link" href="/premium/">Премиум резюме</a>
             </div>
-            <div class="jobs__search__nav__menu__item">
+            <div class="jobs__search__nav__menu__item hidden-sm hidden-md">
                 <a class="jobs__search__nav__menu__item__link" href="/?signUp=true">Создать резюме</a>
             </div>
             <div class="jobs__search__nav__menu__item" data-active={ parent.opts.section == "search" }>
                 <a class="jobs__search__nav__menu__item__link" href="/jobs/search">Вакансии</a>
             </div>
             <div class="jobs__search__nav__menu__item">
-                <a class="jobs__search__nav__menu__item__link" href="/jobs/companies">Компании</a>
+                <a class="jobs__search__nav__menu__item__link" href="/jq-test/">JQ-тест 2.0</a>
             </div>
             <div class="jobs__search__nav__menu__item">
                 <a class="jobs__search__nav__menu__item__link" href="/blog/">Блог</a>
             </div>
         </div>
         <div class="jobs__search__nav__buttons">
-            <jobs-favorites></jobs-favorites>
+            <jobs-panel-favorite></jobs-panel-favorite>
         </div>
         <jobs-search-panel if={ parent.opts.section == "search" }></jobs-search-panel>
     </div>

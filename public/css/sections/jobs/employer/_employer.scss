@@ -1,7 +1,9 @@
 .employer {
     @extend .pb70;
-    @extend .xs-pb-l;
 
+    .d-phone & {
+        @extend .pb60;
+    }
     .title {
         @extend .mt-m;
         @extend .mb30;
@@ -42,6 +44,10 @@
         @extend .p0;
         @extend .xs-pt0;
         @extend .lineHeight-24;
+
+        .d-tablet & {
+            @extend .pr-m;
+        }
     }
     &__sidebar {
         @extend .bg-snowSilver;

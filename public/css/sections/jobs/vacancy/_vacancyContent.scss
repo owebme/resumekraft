@@ -6,16 +6,45 @@
             @extend .fontSize-16;
         }
     }
+    .share {
+        .d-no-phone & {
+            @extend .pos-abs;
+            @extend .t--xxs;
+            @extend .r--m;
+        }
+        &__opener {
+            .d-phone & {
+                @extend .pos-abs;
+                bottom:13px;
+                right:12px;
+            }
+        }
+    }
+    .employer__link {
+        .d-no-phone & {
+            max-width:calc(100% - 165px);
+        }
+        .d-phone & {
+            max-width:calc(100% - 65px);
+        }
+    }
     &__description {
         @extend .c-blackLight;
         @extend .pl-xs;
-        @extend .pt-m;
-        @extend .xs-pt-xs;
+        @extend .pt-l;
+        @extend .md-pr-l;
+        @extend .breakWord;
 
+        .d-phone & {
+            @extend .pt30;
+        }
         p {
             margin-top:23px;
 
-            .d-phone & {
+            &:first-child {
+                @extend .mt0;
+            }
+            .d-phone &:not(:first-child) {
                 @extend .mt25;
             }
         }
@@ -35,13 +64,6 @@
 
                 .d-phone & {
                     font-size:18px;
-                }
-            }
-            &:first-child {
-                @extend .mt-s;
-
-                .d-phone & {
-                    margin-top:23px;
                 }
             }
         }
@@ -91,6 +113,7 @@
         }
         a {
             @extend .display-inlineBlock;
+            @extend .vAlign-middle;
             @extend .c-blueBright;
             @extend .text-truncate;
             @extend .maxW-100p;

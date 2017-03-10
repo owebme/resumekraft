@@ -1,0 +1,58 @@
+<ui-share-items class="share__items" data-size={ app.device.isPhone ? "l" : "s" }>
+
+    <div onClick={ hide } onUpdate="none" class="share__close"></div>
+
+    <div class="share__items__container">
+        <div class="share__item" data-social="fb" data-balloon={ 'Поделиться в Facebook' : opts.tooltip } data-balloon-pos="up">
+            <icon-fb size={ size }></icon-fb>
+        </div>
+        <div class="share__item" data-social="vk" data-balloon={ 'Поделиться в ВКонтакте' : opts.tooltip } data-balloon-pos="up">
+            <icon-vk size={ size }></icon-vk>
+        </div>
+        <div class="share__item" data-social="dk" data-balloon={ 'Поделиться в Одноклассниках' : opts.tooltip } data-balloon-pos="up">
+            <icon-dk size={ size }></icon-dk>
+        </div>
+        <div class="share__item" data-social="gl" data-balloon={ 'Поделиться в Google+' : opts.tooltip } data-balloon-pos="up">
+            <icon-gl size={ size }></icon-gl>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.size = app.device.isPhone ? "m" : "s";
+
+    $.on("mount", function(){
+        $Sections.module("share.items", $);
+
+        $.share = new app.plugins.share($.root, {
+            buttons: ".share__item",
+            url: $.opts.url,
+            share: {
+                title: $.opts.title
+            }
+        })
+    });
+
+    $.show = function(options){
+        var options = options || {};
+        $.root.setAttribute("data-open", true);
+        if (options.title) $.share.options.share.title = options.title;
+        if (options.url) $.share.options.url = options.url;
+    };
+
+    $.hide = function(){
+        $.root.setAttribute("data-open", false);
+        _.onEndTransition($.root, function(){
+            $.root.style.display = "none";
+        })
+    };
+
+    $.on("unmount", function(){
+        $.share.destroy();
+    });
+
+</script>
+
+</ui-share-items>

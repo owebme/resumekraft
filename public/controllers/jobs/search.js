@@ -44,13 +44,12 @@ module.exports = function(){
                 res.render('jobs', {
                     title: app.config.get('title:jobsSearch'),
                     clusters: data ? JSON.stringify(data.clusters) : null,
+                    items: data ? JSON.stringify(data.items) : null,
                     found: data && data.found,
                     pages: data && data.pages,
                     state: state ? JSON.stringify(state) : null,
                     device: req.device.type,
                     content: app.riot.render(app.tags("jobsSearch", req.device), req.appClient)
-                    .replace(/<jobs-search-pages/, "<jobs-search-pages-side")
-                    .replace(/<\/jobs-search-pages>/, "</jobs-search-pages-side>")
                 });
             }
         });

@@ -1,0 +1,82 @@
+<sidebar-favorites class="sidebar" data-pos="right" data-open="false">
+
+    <div name="wrapper" class="sidebar__wrapper">
+        <div class="sidebar__container">
+            <div class="sidebar__navbar">
+                <div class="sidebar__nav__title">
+                    <icon-like size="xs" color="blueBright"></icon-like>
+                    <div class="sidebar__nav__title__text">Мои избранные</div>
+                </div>
+                <div class="sidebar__nav__buttons">
+                    <div onClick={ open.dropMenu } onUpdate="none" class="sidebar__nav__buttons__item" data-item="options"></div>
+                    <div onClick={ hide } onUpdate="none" class="sidebar__nav__buttons__item" data-item="close"></div>
+                </div>
+            </div>
+            <div class="sidebar__content">
+                <div if={ !$store.jobs.favorites.get.items().length } class="favorites__list__empty">
+                    <div class="favorites__list__empty__text">Добавляйте понравившиеся вакансии в избранное</div>
+                </div>
+                <div class="jobs__list">
+                    <jobs-search-list-item each={ item, i in $store.jobs.favorites.get.items(sortBy) } no-reorder item={ item } utils={ window._ } currency={ $store.jobs.dictionary.get("currency") } isPhone={ app.device.isPhone }></jobs-search-list-item>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    var sort = app.metrika.get("search.favorites.sort");
+
+    $.sortBy = sort ? sort : "dateDesc";
+
+    $.on("mount", function(){
+        $Sections.module("favorites", $);
+    });
+
+    $.show = function(callback){
+        $.one("updated", function(){
+            $.root.setAttribute("data-open", true);
+            document.addEventListener('click', $.handleClickOutside);
+        });
+        $.update();
+        $.callback = callback;
+    };
+
+    $.open = {
+        dropMenu: function(e){
+            $dropMenu.show({
+                id: $.sortBy,
+                elem: $$(e.currentTarget),
+                pos: "down-left",
+                offset: {
+                    top: 10,
+                    left: 20
+                },
+                isSelect: true,
+                menu: $store.jobs.favorites.dropMenu,
+                callback: function(id){
+                    $.update({
+                        sortBy: id
+                    })
+                    app.metrika.set("search.favorites.sort", id);
+                }
+            });
+        }
+    };
+
+    $.hide = function(){
+        $.root.setAttribute("data-open", false);
+        if (_.isFunction($.callback)) $.callback();
+
+        document.removeEventListener('click', $.handleClickOutside)
+    };
+
+    $.handleClickOutside = function(e){
+        if (!$.wrapper.contains(e.target) && !$dropMenu.root.contains(e.target) && e.target.nodeName != "svg" && e.target.nodeName != "path") $.hide();
+    };
+
+</script>
+
+</sidebar-favorites>

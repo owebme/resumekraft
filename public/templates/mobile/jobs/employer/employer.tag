@@ -8,6 +8,8 @@
 
     <jobs-footer></jobs-footer>
 
+    <screen-favorites></screen-favorites>
+
     <div class="section__overlay"></div>
 
 </section-employer-mobile>

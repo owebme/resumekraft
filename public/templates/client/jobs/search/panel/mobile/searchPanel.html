@@ -21,7 +21,7 @@
             <div class="jobs__search__nav__options">
                 <jobs-search-panel-settings></jobs-search-panel-settings>
                 <jobs-search-panel-views></jobs-search-panel-views>
-                <jobs-search-panel-favorite-mobile></jobs-search-panel-favorite-mobile>
+                <jobs-panel-favorite-mobile class="jobs__search__nav__options__item" size="xs"></jobs-panel-favorite-mobile>
             </div>
         </div>
     </div>
@@ -56,9 +56,9 @@
 
     $.open = {
         filter: function(){
-            app.sections.jobsMobile.mainScreen.hide();
+            app.$dom.body.addClass("no-scroll");
             $Screens.search.filter.show(function(){
-                app.sections.jobsMobile.mainScreen.show();
+                app.$dom.body.removeClass("no-scroll");
             })
         }
     }

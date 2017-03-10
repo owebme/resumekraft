@@ -17,19 +17,13 @@
 
             app.features.jobsSearch.init();
 
-            app.sections.on("afterMounted", function(){
-                riot.mount("jobs-search-pages-side", "jobs-search-pages", {
-                    renderClient: true,
-                    utils: window._
-                });
-            });
-
             this.$nav = this.el.find("jobs-search-nav");
             this.$progress = this.el.find(".jobs__search__progress__line")[0];
 
-            WD.scroll();
-
-            WD.nav();
+            if (!app.device.isMobile){
+                WD.scroll();
+                WD.nav();
+            }
 
             app.sections.on("afterMounted", function(){
                 WD.$sidebar = WD.el.find("jobs-search-filter");

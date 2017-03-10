@@ -19,6 +19,7 @@
 @import '../../assets/css/ui/basic/switcher';
 @import '../../assets/css/ui/basic/balloon';
 @import '../../assets/css/ui/basic/balloonError';
+@import '../../assets/css/ui/basic/dropmenu';
 @import '../../assets/css/ui/basic/loader';
 @import '../../assets/css/ui/basic/spinner';
 @import '../../assets/css/ui/basic/notify';
@@ -29,6 +30,9 @@
 @import '../../assets/css/states/fontSize';
 
 // modules
+@import 'ui/share/share';
+@import 'ui/share/shareDesktop';
+@import 'ui/share/shareMobile';
 @import '../../assets/css/modules/oScreen';
 
 // Sections
@@ -38,6 +42,7 @@
 // jobs
 @import 'sections/jobs/jobs';
 @import 'sections/jobs/footer';
+@import 'sections/jobs/sidebar';
 @import 'sections/jobs/search/nav/nav';
 @import 'sections/jobs/search/nav/header';
 @import 'sections/jobs/search/nav/menu';
@@ -51,6 +56,9 @@
 
 // help
 @import 'sections/jobs/help/mobile/help';
+
+// favorites
+@import 'sections/jobs/favorites';
 
 // vacancy
 @import 'sections/jobs/vacancy/vacancy';

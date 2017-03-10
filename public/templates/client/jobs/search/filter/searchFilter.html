@@ -81,12 +81,8 @@
 
             if (!options.changePage) $.update();
 
-            if (!$Sections.search.content){
-                $Sections.search.content = riot.mount("jobs-search-content", "jobs-search-content-client")[0];
-            }
-            else {
-                $Sections.search.content.update();
-            }
+            $Sections.search.content.update();
+
             if (!options.changePage){
                 $State.select("pages").set(data.pages ? parseInt(data.pages) : 0);
                 $Sections.search.pages.update();

@@ -1,13 +1,15 @@
+jobs-search-content {
+    .jobs__list {
+        .d-phone & {
+            @extend .w100v;
+            @extend .overflow-hidden;
+        }
+    }
+}
 .jobs {
     &__search {
         @extend .pb-xl;
-        @extend .xs-pb0;
 
-        &.section__content {
-            .d-phone & {
-                padding-top:54px;
-            }
-        }
         &__nav {
             @include accelerate(true);
             @extend .pos-tl;
@@ -81,6 +83,11 @@
                         @extend .ml--xss;
                     }
                 }
+            }
+        }
+        &__content {
+            .d-tablet.r-landscape & {
+                @extend .trX-s;
             }
         }
     }
@@ -176,12 +183,33 @@
             .jobs__list__item__address,
             .jobs__list__item__company__text {
                 @extend .c-white;
-                transition:color 0.1s 0.35s;
 
                 &:before {
                     @extend .opacity-100;
+                }
+            }
+        }
+    }
+    .d-no-mobile & {
+        &[data-search="true"]{
+            .jobs__list__item__title,
+            .jobs__list__item__salary,
+            .jobs__list__item__text,
+            .jobs__list__item__address,
+            .jobs__list__item__company__text {
+                transition:color 0.1s 0.35s;
+
+                &:before {
                     transition:opacity 0.1s 0.35s;
                 }
+            }
+        }
+    }
+    .d-tablet & {
+        &[data-search="true"]{
+            .jobs__list__item__buttons {
+                @extend .opacity-0;
+                @extend .pointerEvents-none;
             }
         }
     }

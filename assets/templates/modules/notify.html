@@ -1,69 +1,77 @@
-<section-notify class="notify-wrapper" data-active={ active } data-pos={ opts.pos ? opts.pos : "top-left" }>
+<section-notify class="notify-wrapper" data-active={ active } data-pos={ pos }>
 
-    <div onClick={ hide } name="notify" class="notify { opts.size ? 'notify-' + opts.size : 'notify-m' }" data-color={ opts.color ? opts.color : "primary" } style="{ opts.width ? 'width:' + opts.width : null }">{ opts.text }</div>
+    <div onClick={ hide } onUpdate="none" name="notify" class="notify { 'notify-' + size }" data-color={ color } style="{ width ? 'width:' + width : null }">{ text }</div>
 
 <script>
 
     var $ = this;
 
     $.active = false;
-    $.timeout = 2;
     $.interval = null;
 
-    $.opts = {
-        pos: "top-left"
+    $.default = function(){
+        return {
+            active: true,
+            timeout: 1.5,
+            pos: "top-left",
+            size: "m",
+            color: "primary"
+        }
     };
 
     $.on("mount", function(){
-        setTimeout(function(){
-            $.root.style.display = "block";
-        }, 20);
+        if (!app.device.isPhone){
+            setTimeout(function(){
+                $.root.style.display = "block";
+            }, 20);
+        }
     });
 
-    $.show = function(opts){
-        clearTimeout($.interval);
-
-        if ($.active) $.autoHide(opts);
+    $.show = function(options){
+        if ($.active) return;
 
         $.active = true;
 
-        if (typeof opts.timeout === "undefined"){
-            if (!opts.color) opts.timeout = 1;
-        }
-        if (opts && opts.pos != $.opts.pos){
-            $.update({
-                opts: opts
-            });
-            setTimeout(function(){
-                $.update();
-            }, 200);
+        clearTimeout($.interval);
+
+        if (app.device.isPhone){
+            $.root.style.display = "block";
+            $afterlag.run(function(){
+                $.update(_.extend($.default(), options));
+            })
         }
         else {
-            $.update({
-                opts: opts
-            });
+            $.update(_.extend($.default(), options));
         }
 
         return new Promise(function(resolve, reject){
             _.onEndTransition($.notify, function(){
-                $.autoHide(opts);
+                $.autoHide();
                 return resolve();
             });
         });
     };
 
-    $.autoHide = function(opts){
-        if (opts.timeout !== false){
+    $.autoHide = function(){
+        if ($.timeout !== false){
             $.interval = setTimeout(function(){
                 $.hide();
-            }, opts.timeout ? opts.timeout * 1000 : $.timeout * 1000)
+            }, $.timeout * 1000);
         }
     };
 
     $.hide = function(){
+        clearTimeout($.interval);
+
         $.update({
             active: false
         });
+
+        if (app.device.isPhone){
+            _.onEndTransition($.notify, function(){
+                $.root.style.display = "none";
+            });
+        }
     };
 
 </script>

@@ -1,0 +1,29 @@
+<jobs-panel-favorite onClick={ open.favorites } onUpdate="none" class="jobs__search__nav__buttons__item" data-item="favorites">
+
+    <div>
+        <div if={ $store.jobs.favorites.get.items().length } class="jobs__search__nav__buttons__item__counter">{ $store.jobs.favorites.get.items().length }</div>
+        <icon-like color="blueBright" size="xs"></icon-like>Мои избранные
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.on("mount", function(){
+        $store.jobs.favorites.on("update", function(){
+            $.update();
+        })
+    })
+
+    $.open = {
+        favorites: function(){
+            app.$dom.body.addClass("no-scroll");
+            $Sections.favorites.show(function(){
+                app.$dom.body.removeClass("no-scroll");
+            });
+        }
+    }
+
+</script>
+
+</jobs-panel-favorite>

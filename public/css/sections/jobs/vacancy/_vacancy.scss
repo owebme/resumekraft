@@ -22,7 +22,9 @@
         @include boxShadow-3d($blueBright);
 
         .d-phone & {
-            width:calc(100vw + 22px);
+            @extend .w100v;
+            @extend .mlr--mobile;
+            @extend .plr0;
             @extend .pt-xxs;
             @extend .pb-s;
             @extend .flex-column-centered;
@@ -41,7 +43,7 @@
                 @extend .pos-rel;
                 @extend .display-block;
                 @extend .w100p;
-                padding-left:34px;
+                @extend .plr-mobile;
 
                 &:not(:last-child):before {
                     @extend .content-empty;
@@ -58,13 +60,13 @@
                 @extend .overflow-hidden;
                 @extend .borderRadius-xl;
                 @extend .willChange-transform;
-                transform:translateY(1px);
+                transform:translate3d(-3%, 1px, 0);
 
-                .screenMobile[data-loading="true"] & {
+                .oScreen[data-loading="true"] & {
                     transform:translate3d(-100%, 1px, 0);
                 }
-                .screenMobile[data-loading="false"] & {
-                    transform:translate3d(0, 1px, 0);
+                .oScreen[data-loading="false"] & {
+                    transform:translate3d(-3%, 1px, 0);
                     transition:transform 1s $cubic215;
                 }
                 &:after {

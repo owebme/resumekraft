@@ -6,33 +6,53 @@
         @extend .zIndex-1;
 
         &__item {
+            @extend .pos-rel;
             @extend .flex-centered;
             @extend .mr-l;
 
+            .m-no-touch &:hover {
+                @extend .c-blueBright;
+
+                &:before {
+                    @extend .scale-100;
+                    transition:transform 0.3s $bounceForce;
+                }
+            }
+            &:before {
+                @include accelerate();
+                @extend .content-empty;
+                @extend .pos-abs;
+                @extend .b0;
+                @extend .l--xxs;
+                width:calc(100% + 10px);
+                @extend .h2px;
+                @extend .bg-blueBright;
+                @extend .willChange-transform;
+                transition:transform 0.2s $cubic345;
+                transform:translate3d(0, 0, 0) scale3d(0, 0.4, 1);
+            }
             &__link {
                 @extend .fontFamily-graphik;
                 @extend .fontSize-15;
                 @extend .btn-active;
-
-                &:hover {
-                    @extend .c-blueBright;
-                }
             }
             &[data-active="true"]{
-                @extend .pos-rel;
                 @extend .pointerEvents-none;
 
+                &:before {
+                    @extend .scale-100;
+                }
                 .jobs__search__nav__menu__item__link {
                     @extend .c-blueBright;
                 }
-                &:before {
-                    @extend .content-empty;
-                    @extend .pos-abs;
-                    @extend .b0;
-                    @extend .l--xxs;
-                    width:calc(100% + 10px);
-                    @extend .h2px;
-                    @extend .bg-blueBright;
+            }
+        }
+        .m-no-touch &:hover {
+            .jobs__search__nav__menu__item {
+                &[data-active="true"]{
+                    &:before {
+                        transform:translate3d(0, 0, 0) scale3d(0, 0.4, 1);
+                    }
                 }
             }
         }

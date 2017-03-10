@@ -1,12 +1,12 @@
 @each $icon in (
-    loading, close_fill, back_gray, close_fill_gray, more_v
+    loading, back_gray, close_gray, close_strong_gray, check, more_v, more_v_gray
 ){
     .ui-icon-#{$icon} {
         background:url('/public/images/jobs/icons/ui-#{$icon}.svg') no-repeat 0 0 / cover;
     }
 }
 @each $icon in (
-    loading_mini, loading_mini_white, close_strong, close_strong_white, minus, minus_white, menu, menu_white, more_v_white, back_white, help, info_white, check, check_black, check_white, check_gray, mark_gray, swipeLeft_white, swipeRight_white
+    loading_mini, loading_mini_white, close_fill, close_fill_gray, close_strong, close_strong_white, minus, minus_white, menu, menu_white, more_v_white, back_white, help, info_white, check_black, check_white, check_gray, check_muted, edit, mark_gray, swipeLeft_white, swipeRight_white
 ){
     .ui-icon-#{$icon} {
         background:url('/assets/images/ui/ui-#{$icon}.svg') no-repeat 0 0 / cover;
@@ -57,6 +57,28 @@
             transform:translateY(4px);
         }
     }
+    &-like-fill {
+        &.icon-xs {
+            width:24px;
+            height:24px;
+            transform:translateY(4px);
+        }
+        &.icon-s {
+            width:30px;
+            height:30px;
+            transform:translateY(4px);
+        }
+        &.icon-l {
+            width:60px;
+            height:60px;
+            transform:translateY(8px);
+        }
+        &.icon-xl {
+            width:80px;
+            height:80px;
+            transform:translateY(8px);
+        }
+    }
     &-location {
         &.icon-s {
             width:38px;
@@ -84,6 +106,46 @@
         &.icon-s {
             width:30px;
             height:30px;
+        }
+    }
+    &-fb,
+    &-dk,
+    &-tw {
+        &.icon-l {
+            width:36px;
+            height:36px;
+        }
+        &.icon-m {
+            width:28px;
+            height:28px;
+        }
+        &.icon-s {
+            width:20px;
+            height:20px;
+        }
+        &.icon-xs {
+            width:16px;
+            height:16px;
+        }
+    }
+    &-vk,
+    &-gl {
+        &.icon-l {
+            width:42px;
+            height:42px;
+        }
+        &.icon-m {
+            width:34px;
+            height:34px;
+            transform:translateY(1px);
+        }
+        &.icon-s {
+            width:26px;
+            height:26px;
+        }
+        &.icon-xs {
+            width:20px;
+            height:20px;
         }
     }
 }

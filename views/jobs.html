@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru" class="{% if device == 'phone' %}d-phone{% else %}d-no-phone{% endif %}">
 <head>
-    <title>{% if title %}{{ title }}{% else %}Cервис создания резюме, помощь в составлении резюме, рекомендации профессионалов, примеры, образцы резюме. ResumeKraft{% endif %}</title>
+    <title>{% if title %}{{ title | safe }}{% else %}Cервис создания резюме, помощь в составлении резюме, рекомендации профессионалов, примеры, образцы резюме. ResumeKraft{% endif %}</title>
     <meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="viewport" content="width={% if device == 'tablet' %}1000{% else %}device-width{% endif %}, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <meta property="og:image" content="/assets/images/favicons/120.png" />
     <meta property="og:title" content="Создать крутое резюме самому!" />
 	<meta property="og:description" content="ResumeKraft - сервис создания премиальных резюме с продающим дизайном." />
@@ -24,88 +24,33 @@
     <link rel="manifest" href="/manifest.json">
     <link id="styles" rel="stylesheet" href="/public/css/jobs.css">
 </head>
-<body id="renderServer">
+<body id="renderServer"{% if device == "phone" %} class="appLoading"{% endif %}>
 
     {{ content | safe }}
 
+    {% if device == "phone" %}
+        <div id="loader">
+            <div class="loader-spinner"></div>
+        </div>
+    {% endif %}
+
     <section-notify></section-notify>
+    <ui-dropmenu></ui-dropmenu>
 
     <!--/ VENDORS /-->
-    <!-- <script src="/assets/js/libs/jquery.min.js"></script>
-    <script src="/assets/js/libs/jquery.mobile.custom.min.js"></script>
-    <script src="/assets/js/libs/modernizr.custom.js"></script>
-    <script src="/assets/js/libs/fastclick.js"></script>
-    <script src="/assets/js/libs/riot/riot+compiler.update.js"></script>
-    <script src="/assets/js/libs/baobab.js"></script>
-    <script src="/assets/js/libs/underscore-min.js"></script>
-    <script src="/assets/js/libs/moment.min.js"></script>
-    <script src="/assets/js/libs/moment.ru.js"></script>
-    <script src="/assets/js/libs/store.min.js"></script>
-    <script src="/assets/js/libs/url.min.js"></script>
-    <script src="/assets/js/libs/afterlag-js/dist/afterlag.min.js"></script> -->
     <script src="/public/js/app.jobs.libs.js"></script>
-    <script src="/assets/js/libs/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
 
     <!--/ templates /-->
-    <!-- <script src="/public/templates/commons/modules/auth/auth.tag" type="riot/tag"></script>
-    <script src="/public/templates/commons/modules/auth/authSocial.tag" type="riot/tag"></script>
-    <script src="/public/templates/commons/modules/auth/forms/signIn.tag" type="riot/tag"></script>
-    <script src="/public/templates/commons/modules/auth/forms/signUp.tag" type="riot/tag"></script>
-    <script src="/public/templates/commons/modules/auth/forms/remember.tag" type="riot/tag"></script>
-    <script src="/assets/templates/modules/notify.html" type="riot/tag"></script>
-    <script src="/assets/templates/modules/loader.html" type="riot/tag"></script>
-    <script src="/assets/templates/ui/input.html" type="riot/tag"></script>
-    <script src="/assets/templates/ui/textarea.html" type="riot/tag"></script>
-    <script src="/assets/templates/ui/checkbox.html" type="riot/tag"></script>
-    <script src="/assets/templates/ui/icons/icon-like.html" type="riot/tag"></script>
-    <script src="/assets/templates/ui/icons/icon-location.html" type="riot/tag"></script>
-    <script src="/public/templates/client/jobs/favorites.html" type="riot/tag"></script>
-    <script src="/public/templates/client/jobs/search/searchVacancyForm.html" type="riot/tag"></script>
-    <script src="/public/templates/client/jobs/search/panel/searchPanel.html" type="riot/tag"></script>
-    <script src="/public/templates/client/jobs/search/panel/searchPanelSettings.html" type="riot/tag"></script>
-    <script src="/public/templates/client/jobs/search/panel/searchPanelViews.html" type="riot/tag"></script>
-    <script src="/public/templates/client/jobs/search/filter/searchFilter.html" type="riot/tag"></script>
-    <script src="/public/templates/client/jobs/search/filter/searchFilterBlock.html" type="riot/tag"></script>
-    <script src="/public/templates/client/jobs/search/filter/searchFilterSalary.html" type="riot/tag"></script>
-    <script src="/public/templates/client/jobs/search/searchContent.html" type="riot/tag"></script>
-    <script src="/public/templates/client/jobs/search/searchPages.html" type="riot/tag"></script>
-    <script src="/public/templates/commons/popup/blogSubscribe.tag" type="riot/tag"></script>
-    <script src="/public/templates/commons/popup/blogSubscribeForm.tag" type="riot/tag"></script>
-    <script src="/public/templates/commons/icons/social/icon-fb.tag" type="riot/tag"></script>
-    <script src="/public/templates/commons/icons/social/icon-vk.tag" type="riot/tag"></script>
-    <script src="/public/templates/commons/icons/social/icon-tw.tag" type="riot/tag"></script>
-    <script src="/public/templates/commons/icons/social/icon-dk.tag" type="riot/tag"></script>
-    <script src="/public/templates/commons/icons/social/icon-gl.tag" type="riot/tag"></script> -->
+    <!-- <script src="/*" type="riot/tag"></script> -->
     <script src="/public/js/templates.jobs.js"></script>
+    <script src="/public/templates/default/jobs/search/jobsSearchPages.tag" type="riot/tag"></script>
+    <script src="/assets/templates/ui/input.html" type="riot/tag"></script>
 
     <!--/ JS components /-->
-    <!-- <script src="/assets/js/components/commons/app.js"></script>
-    <script src="/assets/js/components/commons/request.js"></script>
-    <script src="/assets/js/components/commons/afterlag.js"></script>
-    <script src="/assets/js/components/commons/common.js"></script>
-    <script src="/assets/js/components/commons/utils.js"></script>
-    <script src="/assets/js/components/commons/modules.js"></script>
-    <script src="/assets/js/components/features/links.js"></script>
-
-    <script src="/public/js/commons/config.js"></script>
-    <script src="/public/js/commons/metrika.js"></script>
-    <script src="/public/js/commons/sections.js"></script>
-    <script src="/public/js/store/jobs/dictionary.js"></script>
-
-    <script src="/assets/js/plugins/metrika.js"></script>
-    <script src="/assets/js/plugins/share.js"></script>
-    <script src="/assets/js/plugins/eventsEmitter.js"></script>
-    <script src="/assets/js/plugins/scroll/scroll.RefreshFix.js"></script>
-
-    <script src="/public/js/sections/nav.js"></script>
-    <script src="/public/js/sections/home.js"></script>
-    <script src="/public/js/sections/premium.js"></script>
-    <script src="/public/js/sections/jqtest.js"></script>
-    <script src="/public/js/sections/blog.js"></script>
-    <script src="/public/js/sections/blogContent.js"></script>
-    <script src="/public/js/sections/jobs/jobsHome.js"></script>
-    <script src="/public/js/sections/jobs/jobsSearch.js"></script> -->
     <script src="/public/js/app.jobs.js"></script>
+    <script src="/public/js/sections/jobs/jobs.js"></script>
+    <script src="/public/js/sections/jobs/jobsSearch.js"></script>
+    <script src="/public/js/sections/jobs/mobile/jobs.js"></script>
 
     {% if clusters %}
     <script>
@@ -113,12 +58,19 @@
             $store.jobs.state = {{ state | safe }};
         {% endif %}
         $store.jobs.clusters = {{ clusters | safe }};
+        $store.jobs.items = {{ items | safe }};
         $store.jobs.pages = {{ pages }};
         $store.jobs.found = {{ found }};
     </script>
     {% endif %}
 
-    <script src="/public/js/init.js"></script>
+    {% if item %}
+    <script>
+        $store.jobs.item = {{ item | safe }};
+    </script>
+    {% endif %}
+
+    <script src="/public/js/jobs/init.js"></script>
 
 </body>
 </html>

@@ -19,9 +19,21 @@
 
         &:before {
             transition:opacity 0.5s $cubic645, background-color 0.5s $cubic645;
-
+        }
+    }
+    &[data-show="up"],
+    &[data-show="down"]{
+        &:before {
             .d-phone & {
                 transition:opacity 0.5s $cubic645, background-color 0.5s $cubic645;
+            }
+        }
+    }
+    &[data-show="left"],
+    &[data-show="right"]{
+        &:before {
+            .d-phone & {
+                transition:opacity 0.5s $cubic40, background-color 0.5s $cubic40;
             }
         }
     }
@@ -86,6 +98,14 @@
 
                 .d-mobile & {
                     transition:opacity 0.55s $cubic60, background-color 0.55s $cubic60;
+                }
+            }
+        }
+        &[data-show="left"],
+        &[data-show="right"]{
+            &:before {
+                .d-phone & {
+                    transition:opacity 0.42s $cubic645, background-color 0.42s $cubic645;
                 }
             }
         }
@@ -358,6 +378,10 @@
                 @extend .willChange-transform;
                 transition:transform 0.5s $cubic645;
             }
+            .d-phone .#{$title}[data-show="left"] &,
+            .d-phone .#{$title}[data-show="right"] & {
+                transition:transform 0.5s $cubic40;
+            }
             .#{$title}[data-show="up"] & {
                 transform:translate3d(0, -101%, 0);
             }
@@ -393,6 +417,14 @@
                 .#{$title}__buttons {
                     @extend .opacity-100;
                     transition:opacity .4s $cubic40 .2s;
+                }
+            }
+            &[data-show="left"],
+            &[data-show="right"]{
+                .#{$title}__content {
+                    .d-phone & {
+                        transition:transform 0.42s $cubic645;
+                    }
                 }
             }
             .#{$title}__content {

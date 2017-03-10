@@ -4,7 +4,7 @@
 
     <div each={ item in opts.items } no-reorder class="employer__vacancies__item">
         <div class="employer__vacancies__item__name">
-            <a href="/jobs/vacancy/{ item.id }/{ link(item.employer.name) }" class="employer__vacancies__item__title">{ item.name }</a>
+            <a href="/jobs/vacancy/{ item.id }/{ link(item.name) }" class="employer__vacancies__item__title">{ item.name }</a>
             <div class="employer__vacancies__item__date">
                 <span class="c-gray">{ item.employer.name }</span>, { parent.opts.utils.moment(item.published_at).format("D MMMM") }
             </div>
@@ -24,7 +24,7 @@
     var $ = this;
 
     $.link = function(link){
-        return link.replace(/\s+/gi, "-");
+        return link.replace(/[.|,|:|;|(|)"|']/gi, "").replace(/\s+/gi, "-").replace(/\//gi, "-").replace(/(-)+/gi, "-");
     }
 
     $.currency = function(code){

@@ -2,17 +2,21 @@
 
     <jobs-search-panel-mobile></jobs-search-panel-mobile>
 
-    <jobs-search-content items={ opts.items }></jobs-search-content>
+    <jobs-search-content items={ opts.items } utils={ opts.utils } currency={ opts.currency }></jobs-search-content>
 
     <jobs-search-pages page={ opts.page } pages={ opts.pages } utils={ opts.utils }></jobs-search-pages>
 
-    <jobs-search-filter-screen></jobs-search-filter-screen>
+    <screen-search-filter></screen-search-filter>
 
-    <vacancy-screen></vacancy-screen>
+    <screen-vacancy></screen-vacancy>
 
-    <employer-screen></employer-screen>
+    <screen-employer></screen-employer>
 
-    <jobs-search-help-swipeLeft></jobs-search-help-swipeLeft>
+    <screen-favorites></screen-favorites>
+
+    <ui-share-items if={ opts.device.type == "phone" }></ui-share-items>
+
+    <jobs-search-help-swipeOpenFilters></jobs-search-help-swipeOpenFilters>
 
     <div class="section__overlay"></div>
 

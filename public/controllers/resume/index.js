@@ -81,10 +81,12 @@ module.exports = function(mode){
                     title: "Сменить тариф на Premium"
                 }
             }
+            res.status(403);
         }
         else if (mode != "editing" || !data || app.utils.isEmpty(data)){
             result.error.status = "Резюме не найдено";
             result.error.text = "Проверьте адрес в адресной строке браузера.";
+            res.status(404);
         }
         res.render('error', result);
     }

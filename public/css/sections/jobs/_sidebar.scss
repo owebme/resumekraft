@@ -1,0 +1,136 @@
+$sidebarNavbarHeight: 54px;
+
+.sidebar {
+    @include abs("fixed");
+    @extend .pointerEvents-none;
+    @extend .visibility-hidden;
+    transition:visibility 0s .3s;
+    @extend .zIndex-5;
+
+    &[data-open="true"]{
+        @extend .pointerEvents-all;
+        @extend .visibility-visible;
+        @extend .transition-none;
+
+        &:before {
+            @extend .opacity-100;
+        }
+        .sidebar__wrapper {
+            @extend .opacity-100;
+            @extend .transform-default;
+            transition:transform 0.37s $bounceForce, opacity 0.37s $bounceForce;
+        }
+    }
+    &[data-pos="left"]{
+        .sidebar__wrapper {
+            @extend .t-30;
+            @extend .l-m;
+            @extend .b-l;
+            transform-origin:0% 25%;
+        }
+    }
+    &[data-pos="right"]{
+        .sidebar__wrapper {
+            @extend .t-30;
+            @extend .r-m;
+            @extend .b-l;
+            transform-origin:100% 25%;
+        }
+    }
+    &:before {
+        @extend .content-empty;
+        @include abs();
+        @extend .bg-overlay;
+        @extend .opacity-0;
+        @extend .willChange-opacity;
+        transition:opacity 0.3s $cubic40;
+    }
+    &__wrapper {
+        @include accelerate();
+        @extend .pos-abs;
+        @extend .scale-80;
+        @extend .opacity-0;
+        @extend .willChange-tp;
+        transition:transform 0.3s $cubic68, opacity 0.3s $cubic68;
+    }
+    &__container {
+        @extend .pos-rel;
+        width:390px;
+        @extend .h100p;
+        @extend .bg-white;
+        @extend .borderRadius-l;
+        @extend .overflow-hidden;
+        @extend .transform-default;
+        box-shadow:0 2px 3px 1px rgba(#000,.2);
+
+        .d-macOS &,
+        .m-touch & {
+            width:370px;
+        }
+    }
+    &__navbar {
+        @extend .pos-tl;
+        @extend .w100p;
+        height:$sidebarNavbarHeight;
+        @extend .borderRadiusTop-l;
+        @extend .boxShadow-close;
+        background-color:#FAFBFC;
+        @extend .zIndex-2;
+    }
+    &__nav {
+        &__title {
+            @extend .flex-row-left-center;
+            @extend .pos-tl;
+            @extend .pl-m;
+            width:calc(100% - 100px);
+            @extend .h100p;
+            @extend .c-grayDarken;
+            @extend .fontWeight-bold;
+            @extend .text-uppercase;
+            padding-top:2px;
+
+            .icon {
+                @extend .mr-xs;
+            }
+            &__text {
+                @extend .text-truncate;
+                @extend .maxW-100p;
+            }
+        }
+        &__buttons {
+            @extend .flex-row-right-center;
+            @extend .pos-tr;
+            @extend .h100p;
+            @extend .pr-s;
+
+            &__item {
+                @extend .pos-rel;
+                @extend .flex-centered;
+                @extend .w28;
+                @extend .h100p;
+                @extend .btn-active;
+                transform-origin:50% 40%;
+
+                &[data-item="options"]:after {
+                    @extend .content-empty;
+                    @extend .display-block;
+                    @include ui-icon("more_v_gray", 22px, 22px);
+                }
+                &[data-item="close"]:after {
+                    @extend .content-empty;
+                    @extend .display-block;
+                    @include ui-icon("close_strong_gray", 26px, 26px);
+                }
+            }
+        }
+    }
+    &__content {
+        @extend .pos-abs;
+        top:$sidebarNavbarHeight;
+        @extend .l0;
+        @extend .w100p;
+        height:calc(100% - #{$sidebarNavbarHeight});
+        @extend .overflowX-hidden;
+        @extend .overflowY-auto;
+    }
+}

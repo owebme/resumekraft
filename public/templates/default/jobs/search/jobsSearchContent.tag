@@ -5,56 +5,90 @@
     </div>
 
     <div class="jobs__list">
-        <div if={ !opts.items.length } class="jobs__list__empty text-center">
+        <div if={ !get.items().length } class="jobs__list__empty text-center">
             <h3 class="c-silver mb-s">Нет подходящих результатов</h3>
             <p class="mb25">попробуйте смягчить условия поиска</p>
-            <a href="/jobs/search/" class="btn btn-l btn-primary-hover-success">Сбросить фильтры</a>
+            <a onClick={ onBack } onUpdate="none" href="/jobs/search/" class="btn btn-l btn-primary-hover-success">{ opts.renderClient ? 'Сбросить фильтры' : 'Вернуться на шаг назад' }</a>
         </div>
-        <div each={ item, i in opts.items } no-reorder class="jobs__list__item">
-            <div class="jobs__list__item__content">
-                <a target="_blank" href="/jobs/vacancy/{ item.id }/{ link(item.employer.name) }" class="jobs__list__item__title" data-id={ item.id }>{ item.name }</a>
-                <div if={ item.salary } class="jobs__list__item__salary">
-                    { 'от' : item.salary.from } { parent.parent.opts.utils.numberFormat(item.salary.from, 0, ".", " ") } <span if={ item.salary.to }>до { parent.parent.opts.utils.numberFormat(item.salary.to, 0, ".", " ") }</span> { currency(item.salary.currency) }
-                </div>
-                <div class="jobs__list__item__text">
-                    <strong>Требования:</strong>
-                    { item.snippet.requirement }
-                </div>
-                <div class="jobs__list__item__company">
-                    <div class="jobs__list__item__company__text" data-trusted={ item.employer.trusted }>{ item.employer.name }</div>
-                </div>
-                <div class="jobs__list__item__address">
-                    <span class="jobs__list__item__address__city">{ item.area.name }</span><span if={ item.address && item.address.metro } class="jobs__list__item__address__metro"><span class="c-gray">&nbsp;&nbsp;•&nbsp;&nbsp;</span>{ item.address.metro.station_name }</span>&nbsp;&nbsp;•&nbsp;&nbsp;{ date(item.published_at) }
-                </div>
-                <div class="jobs__list__item__buttons">
-                    <icon-like color={ parent.parent.opts.device.type == "phone" ? "silver" : "blueBright" } size={ parent.parent.opts.device.type == "phone" ? "s" : "xs" }></icon-like>
-                    <a target="_blank" href="https://hh.ru/applicant/vacancy_response?vacancyId={ item.id }" class="btn-default btn-m">Откликнуться</a>
-                </div>
-            </div>
-        </div>
+        <jobs-search-list-item each={ item, i in get.items() } no-reorder item={ item } utils={ get.utils() } currency={ get.currency() } isPhone={ isPhone() } _blank="true"></jobs-search-list-item>
     </div>
 
 <script>
 
     var $ = this;
 
-    $.link = function(link){
-        return link.replace(/\s+/gi, "-");
+    $.on("mount", function(){
+        if ($.opts.renderClient){
+            try {
+                $Sections.module("search.content", $);
+                $Sections.module("search.$content", $$($.root));
+
+                if (app.device.isPhone){
+                    $Sections.search.$content.on('swipeLeft', function(){
+                        $Sections.search.panel.open.filter();
+                    });
+                    $Sections.search.$content.on('click', ".jobs__list__item__title", function(e){
+                        e.preventDefault();
+
+                        var $el = $$(this);
+
+                        if ($Screens.vacancy){
+                            app.$dom.body.addClass("no-scroll");
+                            $Screens.vacancy.show($el.attr("data-id"), $el.attr("href"), function(){
+                                app.$dom.body.removeClass("no-scroll");
+                            });
+                        }
+                    });
+                }
+            } catch(e){}
+        }
+    });
+
+    $.onBack = function(){
+        History.back();
     }
 
-    $.date = function(date){
-        var days = $.parent.opts.moment(date).diff($.parent.opts.moment(), 'days');
-
-        if (days === 0) return "Сегодня";
-        else if (days === -1) return "Вчера";
+    $.isPhone = function(){
+        if ($.opts.renderClient){
+            try {
+                return app.device.isPhone;
+            } catch(e){}
+        }
         else {
-            return $.parent.opts.moment(date).format("D MMMM");
+            return $.parent.opts.device.type == "phone";
         }
     }
 
-    $.currency = function(code){
-        if (code){
-            return $.parent.opts.utils.findWhere($.parent.opts.currency, {"code": code}).abbr;
+    $.get = {
+        items: function(){
+            if ($.opts.renderClient){
+                try {
+                    return $store.jobs.items;
+                } catch(e){}
+            }
+            else {
+                return $.opts.items;
+            }
+        },
+        utils: function(){
+            if ($.opts.renderClient){
+                try {
+                    return window._;
+                } catch(e){}
+            }
+            else {
+                return $.opts.utils;
+            }
+        },
+        currency: function(){
+            if ($.opts.renderClient){
+                try {
+                    return $store.jobs.dictionary.get("currency");
+                } catch(e){}
+            }
+            else {
+                return $.opts.currency;
+            }
         }
     }
 

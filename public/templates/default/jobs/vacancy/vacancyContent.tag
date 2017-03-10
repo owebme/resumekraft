@@ -1,9 +1,15 @@
-<vacancy-content class="section col-md-19 xs-plr0 xs-mlr0 { opts.classname }">
+<vacancy-content class="section col-md-24 col-lg-19 xs-plr0 xs-mlr0 { opts.classname }">
 
     <div class="section__container">
         <h1 class="title">{ opts.item.name }</h1>
-        <div class="flex-row-left-center">
+        <div class="pos-rel flex-row-left-center">
             <a href="/jobs/employer/{ opts.item.employer.id }/{ link(opts.item.employer.name) }" class="employer__link link link-l text-truncate" data-id={ opts.item.employer.id }>{ opts.item.employer.name }</a><div if={ opts.item.employer.trusted } class="pos-rel ml-xs mt-xxs" data-balloon="Компания прошла идентификацию"><svg width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path class="fill-green" d="M9.392 9.827L3.148 3.584l-2.54 1.04c-.21.116-.422 0-.53-.23-.104-.232-.104-.464 0-.58L2.832.234C2.937.113 3.044 0 3.15 0c.106 0 .212.115.318.232l6.455 8.9a.8.8 0 0 1 0 .695.286.286 0 0 1-.264.173.292.292 0 0 1-.265-.173" transform="matrix(1 0 0 -1 3 13)"/></svg></div>
+            <span if={ !opts.isphone }>
+                <ui-share></ui-share>
+            </span>
+            <span if={ opts.isphone }>
+                <ui-share-opener></ui-share-opener>
+            </span>
         </div>
         <div class="vacancy__header">
             <div class="vacancy__header__item" data-item="salary">
@@ -76,23 +82,24 @@
     var $ = this;
 
     $.link = function(link){
-        return link.replace(/\s+/gi, "-");
+        return link.replace(/[.|,|:|;|(|)"|']/gi, "").replace(/\s+/gi, "-").replace(/\//gi, "-").replace(/(-)+/gi, "-");
     }
 
     $.progress = {
         salary: function(from, to, code){
-            var salary = 120 * $.opts.utils.findWhere($.opts.currency, {"code": code}).rate;
+            var salary = 120,
+                rate = 1 / $.opts.utils.findWhere($.opts.currency, {"code": code}).rate;
 
             if (from && to){
-                var progress = parseInt(((((from + to) / 2) / 1000) / salary) * 100);
+                var progress = parseInt(((((from + to) / 2) * rate / 1000) / salary) * 100);
                 return progress < 100 ? progress : 100;
             }
             else if (to){
-                var progress = parseInt(((to / 1000) / salary) * 100);
+                var progress = parseInt(((to * rate / 1000) / salary) * 100);
                 return progress < 100 ? progress : 100;
             }
             else if (from){
-                var progress = parseInt(((from / 1000) / salary) * 100);
+                var progress = parseInt(((from * rate / 1000) / salary) * 100);
                 return progress < 100 ? progress : 100;
             }
         }

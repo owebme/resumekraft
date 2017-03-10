@@ -3,7 +3,6 @@
     @extend .opacity-0;
     @extend .c-white;
     @extend .borderRadius-l;
-    @extend .pointerEvents-none;
     @extend .zIndex-101;
     min-width:300px;
     max-width:380px;
@@ -40,6 +39,7 @@
         @extend .display-none;
         @extend .pos-fixed;
         @extend .visibility-hidden;
+        @extend .pointerEvents-none;
         @extend .zIndex-101;
         max-width:calc(100vw - 40px);
         transition:visibility 0s .4s;

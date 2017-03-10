@@ -6,7 +6,7 @@
                 <div class="vacancy__similary">
                     <h3 class="title">Похожие вакансии</h3>
                     <div class="vacancy__similary__items">
-                        <a if={ i < 6 } each={ item, i in opts.items } no-reorder href="/jobs/vacancy/{ item.id }/{ link(item.employer.name) }" data-id={ item.id } class="vacancy__similary__item">
+                        <a if={ i < 6 } each={ item, i in opts.items } no-reorder href="/jobs/vacancy/{ item.id }/{ link(item.name) }" data-id={ item.id } class="vacancy__similary__item">
                             <div class="vacancy__similary__item__title">{ item.name }</div>
                             <div class="vacancy__similary__item__salary">
                                 <span if={ item.salary }>{ 'от' : item.salary.from } { parent.opts.utils.numberFormat(item.salary.from, 0, ".", " ") } <span if={ item.salary.to }>до { parent.opts.utils.numberFormat(item.salary.to, 0, ".", " ") }</span> { currency(item.salary.currency) }</span>
@@ -34,7 +34,7 @@
     var $ = this;
 
     $.link = function(link){
-        return link.replace(/\s+/gi, "-");
+        return link.replace(/[.|,|:|;|(|)"|']/gi, "").replace(/\s+/gi, "-").replace(/\//gi, "-").replace(/(-)+/gi, "-");
     }
 
     $.currency = function(code){

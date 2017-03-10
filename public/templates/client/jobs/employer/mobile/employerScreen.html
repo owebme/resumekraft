@@ -1,17 +1,15 @@
-<employer-screen class="oScreen section zIndex-6" data-inner="hidden" data-loading="false" data-show="down" data-open="false">
+<screen-employer class="oScreen section zIndex-6" data-inner="hidden" data-loading="false" data-show="down" data-open="false">
 
     <div name="wrapper" class="screenMobile oScreen__content">
-
-        <div class="section__loading"></div>
-
         <div class="screenMobile__navbar" data-gradient="white">
             <div onClick={ hide } onUpdate="none" class="screenMobile__nav__close"></div>
-            <div class="screenMobile__nav__title c-steel fontFamily-roboto fontWeight-normal maxW-80p" data-align="left">{ item.name }</div>
+            <div class="screenMobile__nav__title maxW-80p" data-align="left">{ item.name }</div>
         </div>
         <div name="content" class="section__content">
             <employer-content classname="employer" isPhone={ app.device.isPhone } item={ item } items={ items }></employer-content>
             <employer-vacancies-mobile items={ items } utils={ window._ } currency={ $store.jobs.dictionary.get("currency") }></employer-vacancies-mobile>
         </div>
+        <div class="section__loading"></div>
     </div>
 
 <script>
@@ -29,21 +27,13 @@
 
         $$($.tags["employer-vacancies-mobile"].root).on("click", ".employer__vacancies__item__title", function(e){
             e.preventDefault();
-            e.stopPropagation();
 
             var $el = $$(this);
 
-            if ($Screens.vacancy && $Screens.vacancy.section){
-                if ($Screens.vacancy.section.active){
-                    $.hide(function(){
-                        $Screens.vacancy.changeVacancy($el.attr("data-id"), $el.attr("href"));
-                    });
-                }
-                else {
-                    $.hide(function(){
-                        $Screens.vacancy.show($el.attr("data-id"), $el.attr("href"));
-                    });
-                }
+            if ($Screens.vacancy){
+                $.hide(function(){
+                    $Screens.vacancy.show($el.attr("data-id"), $el.attr("href"));
+                });
             }
         });
     });
@@ -67,7 +57,7 @@
             })
             $.update({
                 item: data[0],
-                items: data[1] && !_.isEmpty(data[1].items) ? data[1].items : null
+                items: data[1] && data[1].items ? data[1].items : []
             })
         }, function(){
             if (back) back();
@@ -89,4 +79,4 @@
 
 </script>
 
-</employer-screen>
+</screen-employer>

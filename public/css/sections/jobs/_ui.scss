@@ -3,17 +3,12 @@
     $smokeDark: rgba($silver,.3);
     $smokeDarken: #C0CCDA;
 
-    .btn-active {
-        .d-phone & {
-            @extend .transition-none;
-            @extend .transform-none;
-        }
-    }
     h1.title {
         @extend .c-grayDarken;
         @extend .fontFamily-gotham;
         @extend .fontWeight-bold;
         @extend .maxW-100p;
+        @extend .breakWord;
         @extend .overflow-hidden;
         font-size:29px;
         line-height:33px;
@@ -235,5 +230,21 @@
     [data-balloon]:after {
         @extend .fontFamily-helvetica;
         @extend .letterSpacing-0;
+    }
+}
+.d-no-phone {
+    .dropmenu {
+        &__item {
+            &:hover {
+                @extend .bg-blueBright;
+            }
+            &.selected {
+                @extend .c-blueBright;
+
+                &:hover {
+                    @extend .c-white;
+                }
+            }
+        }
     }
 }

@@ -4,8 +4,8 @@
 
     <div class="vacancy container">
         <div class='row'>
-            <vacancy-content item={ opts.item } utils={ opts.utils } currency={ opts.currency }></vacancy-content>
-            <div class="col-md-5">
+            <vacancy-content item={ opts.item } utils={ opts.utils } currency={ opts.currency } isPhone={ opts.device.type == "phone" }></vacancy-content>
+            <div class="col-md-5 visible-lg">
                 <jobs-search-aside></jobs-search-aside>
             </div>
         </div>
@@ -17,6 +17,6 @@
 
     <vacancy-panel item={ opts.item }></vacancy-panel>
 
-    <div class="section__overlay"></div>
+    <sidebar-favorites></sidebar-favorites>
 
 </section-vacancy>

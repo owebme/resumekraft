@@ -43,6 +43,8 @@
                 }
             }
             &[data-item="favorite"]{
+                @extend .pointerEvents-all;
+
                 .icon {
                     margin-top:3px;
                 }

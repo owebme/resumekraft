@@ -1,0 +1,26 @@
+<ui-share-opener onClick={ show } onUpdate="none" class="share__opener" data-size={ app.device.isPhone ? "m" : "s" }>
+
+    <div class="share__opener__title">Поделиться</div>
+    <div class="share__opener__button">
+        <svg class="share__opener__button__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84.6 112.86250000000001" x="0px" y="0px"><path class="share__opener__button__icon__color" d="M67.89,56.86a16.72,16.72,0,0,0-15.05,9.5L33.34,46.86a16.68,16.68,0,0,0,0-3.44L52.83,23.93a16.68,16.68,0,1,0-1.66-7.22,17,17,0,0,0,.09,1.72L31.77,37.93a16.71,16.71,0,1,0,0,14.43L51.26,71.85a16.71,16.71,0,1,0,16.63-15ZM67.89,5A11.71,11.71,0,1,1,56.17,16.71,11.73,11.73,0,0,1,67.89,5ZM16.71,56.86A11.71,11.71,0,1,1,28.43,45.14,11.73,11.73,0,0,1,16.71,56.86ZM67.89,85.29A11.71,11.71,0,1,1,79.6,73.57,11.73,11.73,0,0,1,67.89,85.29Z"/></svg>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.show = function(){
+        if ($Sections.share && $Sections.share.items){
+            $Sections.share.items.root.style.display = "block";
+            $afterlag.run(function(){
+                $Sections.share.items.show({
+                    title: $.opts.title,
+                    url: $.opts.url,
+                });
+            })
+        }
+    };
+
+</script>
+
+</ui-share-opener>

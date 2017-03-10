@@ -297,13 +297,14 @@
             @extend .w100p;
             @extend .bg-white;
             @extend .ptb-xxs;
-            @extend .boxShadow-25;
             @extend .borderRadiusBottom-l;
 
             &:empty {
-                @extend .display-none;
+                @extend .opacity-0;
+                @extend .pointerEvents-none;
             }
             &:not(:empty) {
+                @extend .boxShadow-25;
                 @extend .zIndex-101;
             }
             &[data-image="true"]{

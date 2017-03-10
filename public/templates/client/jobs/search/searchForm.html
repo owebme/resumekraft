@@ -1,6 +1,6 @@
 <jobs-search-form class="section row xs-plr-xss">
 
-    <div class="col-md-10 xs-mb-xss">
+    <div class="col-md-11 col-lg-10 xs-mb-xss">
         <div class="input-group input-group-icon input-group-{ app.device.isPhone ? 'l' : 'm' }" data-item="vacancy">
             <ui-input name="vacancy" placeholder="Я ищу..." autosuggest="getSuggestVacancy" autosuggestSize="l" size={ l : app.device.isPhone }></ui-input>
             <div class="input-icon">
@@ -10,7 +10,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-11 col-lg-10">
         <div class="input-group input-group-icon input-group-{ app.device.isPhone ? 'l' : 'm' }" data-item="city">
             <ui-input name="area" placeholder="Где?" autosuggest="getSuggestCity" autosuggestSize="l" size={ l : app.device.isPhone }></ui-input>
             <div class="input-icon">
@@ -18,8 +18,8 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4 xs-pt-m text-center-xs">
-        <button onClick={ onSuccess } onUpdate="none" class="btn btn-{ app.device.isPhone ? 'l' : 'm' } btn-primary-hover-success xs-plr-l">Найти</button>
+    <div class="col-md-3 col-lg-4 xs-pt-m text-center-xs">
+        <button onClick={ onSuccess } onUpdate="none" class="btn btn-{ app.device.isPhone ? 'l' : 'm' } btn-primary-hover-success btn-search xs-plr-l">Найти</button>
     </div>
 
 <script>

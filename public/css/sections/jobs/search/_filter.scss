@@ -21,12 +21,15 @@
 .jobs__search__sidebar {
     @include accelerate();
     @extend .pos-abs;
-    @extend .hidden-xs;
     @extend .userSelect-none;
     width:274px;
 
     &[data-fixed="true"]{
         @extend .pos-fixed;
+    }
+    .d-tablet.r-landscape & {
+        @extend .trX--m;
+        margin-left:-2px;
     }
 }
 .jobs__search__filter {
@@ -83,7 +86,7 @@
                     }
                 }
                 .jobs__search__filter__items {
-                    .d-phone & {
+                    .d-mobile & {
                         @extend .display-block;
                     }
                 }
@@ -102,7 +105,7 @@
                 .jobs__search__filter__items {
                     @extend .h0;
 
-                    .d-phone & {
+                    .d-mobile & {
                         @extend .display-none;
                     }
                 }
@@ -157,18 +160,18 @@
         &[data-animate="true"]{
             transition:height 0.4s $cubic345;
 
-            .d-phone & {
+            .d-mobile & {
                 @extend .transition-none;
             }
             .jobs__search__filter__items__list {
                 transition:opacity 0.4s $cubic345;
 
-                .d-phone & {
+                .d-mobile & {
                     @extend .transition-none;
                 }
             }
         }
-        .d-phone & {
+        .d-mobile & {
             height:auto !important;
         }
     }
@@ -191,6 +194,16 @@
             @extend .opacity-100;
             @extend .scale-100;
         }
+        .d-tablet & {
+            @extend .pos-rel;
+            margin-bottom:-2px;
+
+            &:after {
+                @extend .content-empty;
+                @include abs();
+                transform:translate3d(0, -5px, 0) scale3d(1, 1.2, 1);
+            }
+        }
         .d-phone & {
             @extend .c-blackLight;
             @extend .fontSize-14;
@@ -210,6 +223,9 @@
         @extend .xs-plr0;
         @extend .xs-ptb-xss;
 
+        .d-tablet & {
+            padding:4px 10px 3px;
+        }
         .d-phone & {
             @extend .c-black;
             @extend .fontSize-16;
@@ -250,7 +266,7 @@
                 &:after {
                     @extend .content-empty;
                     @extend .pos-abs;
-                    top:10px;
+                    @extend .t50;
                     right:6px;
                     @extend .bg-gray;
                     width:9px;
@@ -259,10 +275,10 @@
                     @extend .transition-default;
                 }
                 &:before {
-                    transform:rotate(45deg);
+                    transform:translate3d(0, -50%, 0) rotate(45deg);
                 }
                 &:after {
-                    transform:rotate(-45deg);
+                    transform:translate3d(0, -50%, 0) rotate(-45deg);
                 }
             }
             .d-phone & {
@@ -303,6 +319,9 @@
         @extend .xs-pl0;
         @extend .xs-mt-xss;
 
+        .d-tablet & {
+            padding-top:4px;
+        }
         .d-phone & {
             @extend .fontSize-15;
         }

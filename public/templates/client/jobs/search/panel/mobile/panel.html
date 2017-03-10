@@ -16,10 +16,8 @@
         </div>
         <div class="jobs__search__nav__options__wrapper col-xs-12">
             <div class="jobs__search__nav__options">
-                <div class="jobs__search__nav__options__item" data-item="reply">
-                    <icon-replyMail color="blueBright" size="s"></icon-replyMail>
-                </div>
-                <jobs-search-panel-favorite-mobile size="s"></jobs-search-panel-favorite-mobile>
+                <jobs-panel-response-mobile class="jobs__search__nav__options__item" size="s" item={ $store.jobs.item }></jobs-panel-response-mobile>
+                <jobs-panel-favorite-mobile class="jobs__search__nav__options__item" size="s"></jobs-panel-favorite-mobile>
             </div>
         </div>
     </div>

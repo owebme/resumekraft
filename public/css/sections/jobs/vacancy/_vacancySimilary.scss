@@ -154,6 +154,9 @@
                     @extend .fontWeight-3;
                     margin-bottom:24px;
 
+                    .d-tablet & {
+                        @extend .w100p;
+                    }
                     &:before {
                         @extend .content-empty;
                         @extend .pos-tl;

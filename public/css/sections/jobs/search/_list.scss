@@ -36,7 +36,7 @@
                 @extend .pointerEvents-all;
             }
         }
-        .d-phone & {
+        .d-mobile & {
             .jobs__list__item__buttons {
                 @extend .opacity-100;
                 @extend .pointerEvents-all;
@@ -56,10 +56,14 @@
             @extend .fontFamily-graphik;
             @extend .fontWeight-bold;
             @extend .fontSize-18;
+            @extend .breakWord;
             margin-bottom:1px;
 
-            .d-no-phone &:hover {
+            .d-no-touch &:hover {
                 @extend .transition-default;
+            }
+            .d-tablet & {
+                @extend .mb0;
             }
             .d-phone & {
                 @extend .fontSize-22;
@@ -96,6 +100,9 @@
             @extend .fontSize-14;
             line-height:19px;
 
+            .d-tablet & {
+                line-height:21px;
+            }
             .d-phone & {
                 @extend .fontSize-16;
                 line-height:24px;
@@ -168,6 +175,7 @@
             @extend .r0;
             @extend .b--xxs;
             @extend .opacity-0;
+            @extend .userSelect-none;
             @extend .pointerEvents-none;
             @extend .transition-default;
 
@@ -176,17 +184,36 @@
                 right:-9px;
                 @extend .b-auto;
             }
-            .icon-like {
+            .icon-like,
+            .icon-like-fill {
                 @extend .pos-rel;
                 @extend .display-block;
                 @extend .cursor-pointer;
                 @extend .btn-active;
-                transform-origin:50% 100%;
+                transform-origin:50% 200%;
                 margin-right:7px;
 
+                .d-tablet & {
+                    margin-bottom:1px;
+                }
+            }
+            .icon-like-fill {
+                margin-right:9px;
+            }
+            .icon-like {
                 .d-phone & {
                     @extend .opacity-85;
                     @extend .mr0;
+                }
+            }
+            .icon-like-fill {
+                .d-phone & {
+                    @extend .pos-rel;
+                    @extend .display-block;
+                    @extend .cursor-pointer;
+                    @extend .btn-active;
+                    margin:2px 2px 0 0;
+                    transform-origin:50% 100%;
                 }
             }
             .btn-default {

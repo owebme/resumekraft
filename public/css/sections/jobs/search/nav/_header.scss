@@ -50,6 +50,9 @@
             @extend .btn-active;
             @extend .ml30;
             @extend .mr-xs;
+            @extend .md-ml-m;
+            @extend .md-mr0;
+            @extend .md-pt-xxs;
             @extend .c-grayDarken;
 
             &__icon {
@@ -64,6 +67,7 @@
                 &[data-icon="addUser"]{
                     @extend .w48;
                     @extend .h48;
+                    transform:translateY(1px);
                 }
             }
             path,
@@ -77,6 +81,7 @@
                 @extend .fontSize-12;
                 @extend .text-uppercase;
                 @extend .transition-default;
+                @extend .visible-lg;
             }
             &:hover {
                 .jobs__search__nav__header__button__title {

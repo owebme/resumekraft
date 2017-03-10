@@ -1,8 +1,8 @@
 <jobs-search-pages class="section container jobs__search__pages">
 
-    <div class="row">
-        <div class="col-md-offset-19 col-md-5">
-            <div class="row jobs__search__pages__items">
+    <div class="row xs-plr0 xs-mlr0">
+        <div class="col-md-offset-18 col-md-6 col-lg-offset-19 col-lg-5 xs-plr0 xs-mlr0">
+            <div class="row jobs__search__pages__items xs-plr0 xs-mlr0">
                 <div if={ $State.get("pages") > 1 } class="jobs__search__pages__arrows">
                     <div onClick={ onPrev } onUpdate="none" class="jobs__search__pages__arrow" data-arrow="prev" data-active={ $State.get("page") > 0 }>Alt + ←</div>
                     <div onClick={ onNext } onUpdate="none" class="jobs__search__pages__arrow" data-arrow="next" data-active={ $State.get("page") + 1 < $State.get("pages") }>Alt + →</div>
@@ -69,25 +69,27 @@
 
     $.get = {
         pages: function(){
-            if (!$.opts.renderClient){
-                var page = $.opts.page * 1,
-                    pages = $.opts.pages * 1;
-            }
-            else {
+            if ($.opts.renderClient){
                 try {
                     var page = $State.get("page"),
-                        pages = $State.get("pages");
+                        pages = $State.get("pages"),
+                        utils = window._;
                 } catch(e){}
+            }
+            else {
+                var page = $.opts.page * 1,
+                    pages = $.opts.pages * 1,
+                    utils = $.opts.utils;
             }
 
             if (pages < 2) return;
 
             if (page + $.perPage <= pages){
                 if (page > 0){
-                    return $.opts.utils.range(page - 1, page + ($.perPage - 1));
+                    return utils.range(page - 1, page + ($.perPage - 1));
                 }
                 else {
-                    return $.opts.utils.range(page, page + $.perPage);
+                    return utils.range(page, page + $.perPage);
                 }
             }
             else {
@@ -96,7 +98,7 @@
                 else delta = 2;
                 if (page - delta < 0) delta = page;
                 if ((pages - (page - delta)) > $.perPage) pages = pages - 1;
-                return $.opts.utils.range(page - delta, pages);
+                return utils.range(page - delta, pages);
             }
         }
     };

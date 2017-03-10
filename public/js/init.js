@@ -1,16 +1,16 @@
-(function(){
+(function(app, $, $dom, _){
 
-    if (location.href.match(/\/jobs\//)){
-        app.metrika = new app.plugins.metrika({
-            key: "jobs",
-            data: app.metrics.jobs
-        });
-    }
-    else {
-        app.metrika = new app.plugins.metrika({
-            key: "public",
-            data: app.metrics.public
-        });
+    var start = new Date().getTime();
+    console.time("process");
+
+    app.metrika = new app.plugins.metrika({
+        key: "public",
+        data: app.metrics.public
+    });
+
+    if (app.device.isPhone){
+        $dom.body.removeClass("appLoading");
+        app.features.links.init();
     }
 
     app.sections.init();
@@ -18,13 +18,17 @@
     riot.compile(function(e){
         app.sections.trigger("beforeMounted");
 
-        riot.mount("*", {app: true});
+        riot.mount("*", {renderClient: true});
 
         app.sections.trigger("afterMounted");
 
         app.tag("section-notify", function(tag){
             $Notify = tag;
         });
+
+        console.timeEnd("process");
+        var elapsed = new Date().getTime() - start;
+        //alert(elapsed + "ms");
     });
 
-})();
+})(app, $, app.$dom, app.utils);

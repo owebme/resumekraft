@@ -1,0 +1,97 @@
+<screen-favorites class="oScreen section zIndex-7" data-inner="hidden" data-loading="false" data-show="down" data-open="false">
+
+    <div name="wrapper" class="screenMobile oScreen__content">
+        <div class="screenMobile__navbar" data-gradient="white">
+            <div onClick={ hide } onUpdate="none" class="screenMobile__nav__close"></div>
+            <div class="screenMobile__nav__title" data-align="center">Мои избранные</div>
+            <div onClick={ open.dropMenu } onUpdate="none" class="screenMobile__nav__options"></div>
+        </div>
+        <div name="content" class="section__content">
+            <div if={ !$store.jobs.favorites.get.items().length } class="favorites__list__empty">
+                <div class="favorites__list__empty__text">Добавляйте понравившиеся вакансии в избранное</div>
+            </div>
+            <div class="jobs__list">
+                <jobs-search-list-item each={ item, i in $store.jobs.favorites.get.items(sortBy) } no-reorder item={ item } utils={ window._ } currency={ $store.jobs.dictionary.get("currency") } isPhone={ app.device.isPhone }></jobs-search-list-item>
+            </div>
+        </div>
+        <div class="section__loading"></div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    var sort = app.metrika.get("search.favorites.sort");
+
+    $.sortBy = sort ? sort : "dateDesc";
+
+    $.on("mount", function(){
+        $Screens.module("favorites", $);
+
+        $.section = new app.plugins.sections($.root, {
+            content: $.wrapper
+        });
+
+        $.scroll = $$($.content);
+
+        if ($Screens.vacancy){
+            $$($.root).on("click", ".jobs__list__item__title", function(e){
+                e.preventDefault();
+
+                var $el = $$(this);
+
+                if ($Screens.vacancy){
+                    $.hide(function(){
+                        $Screens.vacancy.show($el.attr("data-id"), $el.attr("href"));
+                    });
+                }
+            });
+        }
+    });
+
+    $.show = function(callback){
+        $.section.show({
+            tag: $,
+            update: true,
+            afterShow: function(){
+                $.scroll.scrollTop(0);
+            }
+        });
+        $.callback = callback;
+    };
+
+    $.open = {
+        dropMenu: function(e){
+            $dropMenu.show({
+                id: $.sortBy,
+                elem: $$(e.currentTarget),
+                pos: "down-left",
+                offset: {
+                    left: 10
+                },
+                isSelect: true,
+                menu: $store.jobs.favorites.dropMenu,
+                callback: function(id){
+                    $.update({
+                        sortBy: id
+                    })
+                    app.metrika.set("search.favorites.sort", id);
+                }
+            });
+        }
+    };
+
+    $.hide = function(callback){
+        $.section.hide({
+            beforeHide: function(){
+                if (_.isFunction($.callback)) $.callback();
+            },
+            afterHide: function(){
+                if (_.isFunction(callback)) callback();
+            }
+        })
+    };
+
+</script>
+
+</screen-favorites>

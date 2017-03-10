@@ -5,7 +5,7 @@
     <div class="employer container">
         <div class='row'>
             <employer-content item={ opts.item } items={ opts.items }></employer-content>
-            <div class="col-md-5">
+            <div class="col-md-5 visible-lg">
                 <jobs-search-aside></jobs-search-aside>
             </div>
         </div>
@@ -13,7 +13,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-20 centered">
+            <div class="col-md-22 col-lg-20 centered">
                 <employer-vacancies items={ opts.items } currency={ opts.currency } utils={ opts.utils }></employer-vacancies>
             </div>
         </div>
@@ -21,6 +21,6 @@
 
     <jobs-footer></jobs-footer>
 
-    <div class="section__overlay"></div>
+    <sidebar-favorites></sidebar-favorites>
 
 </section-employer>

@@ -21,7 +21,7 @@
     var $ = this;
 
     $.link = function(link){
-        return link.replace(/\s+/gi, "-");
+        return link.replace(/[.|,|:|;|(|)"|']/gi, "").replace(/\s+/gi, "-").replace(/\//gi, "-").replace(/(-)+/gi, "-");
     }
 
     $.currency = function(code){

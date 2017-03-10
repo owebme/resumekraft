@@ -1,21 +1,21 @@
-<jobs-search-filter-screen class="screenMobile section section-hidden zIndex-5" data-inner="hidden" data-loading="false" data-pos="right" data-open="false">
+<screen-search-filter class="oScreen section zIndex-5" data-inner="hidden" data-loading="false" data-show="right" data-open="false">
 
-    <div class="section__loading">
-        <div class="section__loading__text">Поиск вакансий...</div>
+    <div name="wrapper" class="screenMobile oScreen__content">
+        <div class="screenMobile__navbar" data-gradient="white">
+            <div onClick={ hide } onUpdate="none" class="screenMobile__nav__back"></div>
+            <div class="screenMobile__nav__title" data-align="center">Параметры поиска</div>
+            <div class="screenMobile__nav__options"></div>
+        </div>
+        <div name="content" class="section__content pb70">
+            <jobs-search-filter></jobs-search-filter>
+        </div>
+
+        <div onClick={ hide } onUpdate="none" name="result" class="jobs__search__result__panel"></div>
+
+        <div class="section__loading">
+            <div class="section__loading__text">Поиск вакансий...</div>
+        </div>
     </div>
-
-    <div class="screenMobile__navbar" data-gradient="white">
-        <div onClick={ hide } onUpdate="none" class="screenMobile__nav__back"></div>
-        <div class="screenMobile__nav__title text-uppercase c-blueBright" data-align="center">Параметры поиска</div>
-        <div class="screenMobile__nav__options"></div>
-    </div>
-    <div name="content" class="section__content pb70">
-        <jobs-search-filter></jobs-search-filter>
-    </div>
-
-    <div onClick={ hide } onUpdate="none" name="result" class="jobs__search__result__panel"></div>
-
-    <jobs-search-help-swipeRight></jobs-search-help-swipeRight>
 
 <script>
 
@@ -25,7 +25,9 @@
     $.on("mount", function(){
         $Screens.module("search.filter", $);
 
-        $.section = new app.plugins.sections($.root);
+        $.section = new app.plugins.sections($.root, {
+            content: $.wrapper
+        });
 
         $scope.find(".jobs__search__filter__range").on('swipeLeft swipeRight', function(e){
             e.stopPropagation();
@@ -37,28 +39,22 @@
     });
 
     $.show = function(callback){
-        $.section.show({
-            afterShow: function(){
-                if ($.tags["jobs-search-help-swiperight"]){
-                    $.tags["jobs-search-help-swiperight"].show();
-                }
-            }
-        });
+        $.section.show();
         $.callback = callback;
     };
 
     $.open = {
         dropMenu: function(e){
-            $DropMenu.show({
-                id: $.item._id,
-                item: $.item,
-                elem: $$(e.currentTarget),
-                pos: "down-left",
-                offset: {
-                    left: 5
-                },
-                menu: $store.data.dropMenu
-            });
+            // $DropMenu.show({
+            //     id: $.item._id,
+            //     item: $.item,
+            //     elem: $$(e.currentTarget),
+            //     pos: "down-left",
+            //     offset: {
+            //         left: 5
+            //     },
+            //     menu: $store.data.dropMenu
+            // });
         }
     };
 
@@ -72,4 +68,4 @@
 
 </script>
 
-</jobs-search-filter-screen>
+</screen-search-filter>

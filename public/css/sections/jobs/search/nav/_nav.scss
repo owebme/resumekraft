@@ -79,12 +79,14 @@
         transition:opacity 0.1s $cubic215;
     }
     &__buttons {
+        @extend .nowrap;
         @extend .pos-rel;
         @extend .flex-row-right-center;
         @extend .userSelect-none;
         @extend .zIndex-1;
 
         &__item {
+            @extend .pos-rel;
             @extend .display-block;
             @extend .btn-active;
             @extend .ml-m;
@@ -110,6 +112,20 @@
                     @extend .h2px;
                     @extend .bg-blueBright;
                 }
+            }
+            &__counter {
+                @extend .pos-tl;
+                width:18px;
+                height:18px;
+                @extend .borderRadius-circle;
+                @extend .bg-pink;
+                @extend .c-white;
+                font-size:12px;
+                line-height:20px;
+                @extend .text-center;
+                @extend .fontWeight-bold;
+                @extend .zIndex-1;
+                transform:translate3d(-4px, 0, 0);
             }
         }
         .icon {

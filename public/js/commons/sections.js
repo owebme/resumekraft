@@ -4,16 +4,18 @@
 
     app.sections = {
 
-        init: function(){
+        init: function(options){
+            var options = options || {};
+
             if (app.plugins.eventsEmitter) app.plugins.eventsEmitter.init(this);
 
-            if (app.device.isPhone && !location.href.match(/\/jobs\//)){
-                $dom.body.removeClass("appLoading");
-                app.features.links.init();
-            }
+            if (_.isFunction(options.beforeInit)) options.beforeInit();
+
             _.each(app.sections, function(item){
                 if (item.init) item.init();
             });
+
+            if (_.isFunction(options.afterInit)) options.afterInit();
         }
     };
 

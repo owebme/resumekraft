@@ -1,0 +1,29 @@
+<jobs-panel-favorite-mobile onClick={ open.favorites } onUpdate="none" data-item="favorite" data-active="{ $store.jobs.favorites.get.items().length > 0 ? true : false }">
+
+    <div if={ $store.jobs.favorites.get.items().length } class="jobs__search__nav__options__item__counter">{ $store.jobs.favorites.get.items().length }</div>
+    <icon-like color="blackLight" size={ opts.size ? opts.size : 'xs' }></icon-like>
+
+<script>
+
+    var $ = this;
+
+    $.on("mount", function(){
+        $store.jobs.favorites.on("update", function(){
+            $.update();
+        })
+    })
+
+    $.open = {
+        favorites: function(){
+            app.$dom.body.addClass("no-scroll");
+            $Screens.favorites.show(function(){
+                if (!$Screens.vacancy || $Screens.vacancy && !$Screens.vacancy.section.active){
+                    app.$dom.body.removeClass("no-scroll");
+                }
+            });
+        }
+    }
+
+</script>
+
+</jobs-panel-favorite-mobile>
