@@ -1,6 +1,6 @@
 <sidebar-favorites class="sidebar" data-pos="right" data-open="false">
 
-    <div name="wrapper" class="sidebar__wrapper">
+    <div ref="wrapper" class="sidebar__wrapper">
         <div class="sidebar__container">
             <div class="sidebar__navbar">
                 <div class="sidebar__nav__title">
@@ -33,12 +33,15 @@
 
     $.on("mount", function(){
         $Sections.module("favorites", $);
+        $.wrapper = $.refs.wrapper;
     });
 
     $.show = function(callback){
         $.one("updated", function(){
             $.root.setAttribute("data-open", true);
-            document.addEventListener('click', $.handleClickOutside);
+            setTimeout(function(){
+                document.addEventListener('click', $.handleClickOutside);
+            }, 20);
         });
         $.update();
         $.callback = callback;

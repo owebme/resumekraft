@@ -40,7 +40,7 @@
                 <a class="jobs__search__nav__menu__item__link" href="/premium/">Премиум резюме</a>
             </div>
             <div class="jobs__search__nav__menu__item hidden-sm hidden-md">
-                <a class="jobs__search__nav__menu__item__link" href="/?signUp=true">Создать резюме</a>
+                <a class="jobs__search__nav__menu__item__link" href="/?signup=true">Создать резюме</a>
             </div>
             <div class="jobs__search__nav__menu__item" data-active={ parent.opts.section == "search" }>
                 <a class="jobs__search__nav__menu__item__link" href="/jobs/search">Вакансии</a>

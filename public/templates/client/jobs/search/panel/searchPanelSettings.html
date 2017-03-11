@@ -8,13 +8,13 @@
             <div class="jobs__search__nav__options__list__items">
                 <div class="jobs__search__nav__options__list">
                     <label each={ item in $store.jobs.dictionary.get("vacancy_search_order") } no-reorder class="jobs__search__nav__options__list__item">
-                        <input onClick={ onCheck.order } onUpdate="none" type="radio" name="order_by" value="{ item.id }" checked={ $State.get("order_by") == item.id }>
+                        <input onClick={ onCheck.order } onUpdate="none" type="radio" name="order_by" riot-value="{ item.id }" checked={ $State.get("order_by") == item.id }>
                         <span>{ item.name }</span>
                     </label>
                 </div>
                 <div class="jobs__search__nav__options__list">
                     <label each={ item in $store.jobs.dictionary.get("vacancy_search_period") } no-reorder class="jobs__search__nav__options__list__item">
-                        <input onClick={ onCheck.period } onUpdate="none" type="radio" name="period" value="{ item.id }" checked={ $State.get("period") == item.id }>
+                        <input onClick={ onCheck.period } onUpdate="none" type="radio" name="period" riot-value="{ item.id }" checked={ $State.get("period") == item.id }>
                         <span>{ item.name }</span>
                     </label>
                 </div>

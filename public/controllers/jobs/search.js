@@ -50,6 +50,11 @@ module.exports = function(){
                     state: state ? JSON.stringify(state) : null,
                     device: req.device.type,
                     content: app.riot.render(app.tags("jobsSearch", req.device), req.appClient)
+                    .replace(/<jobs-search-list-item/gi, "<jobs-search-list-item-side")
+                    .replace(/<\/jobs-search-list-item>/gi, "</jobs-search-list-item-side>")
+                    .replace(/<jobs-search-list-favorite/gi, "<jobs-search-list-favorite-side")
+                    .replace(/<\/jobs-search-list-favorite>/gi, "</jobs-search-list-favorite-side>")
+
                 });
             }
         });

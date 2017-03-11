@@ -1,12 +1,12 @@
 <screen-favorites class="oScreen section zIndex-7" data-inner="hidden" data-loading="false" data-show="down" data-open="false">
 
-    <div name="wrapper" class="screenMobile oScreen__content">
+    <div ref="wrapper" class="screenMobile oScreen__content">
         <div class="screenMobile__navbar" data-gradient="white">
             <div onClick={ hide } onUpdate="none" class="screenMobile__nav__close"></div>
             <div class="screenMobile__nav__title" data-align="center">Мои избранные</div>
             <div onClick={ open.dropMenu } onUpdate="none" class="screenMobile__nav__options"></div>
         </div>
-        <div name="content" class="section__content">
+        <div ref="content" class="section__content">
             <div if={ !$store.jobs.favorites.get.items().length } class="favorites__list__empty">
                 <div class="favorites__list__empty__text">Добавляйте понравившиеся вакансии в избранное</div>
             </div>
@@ -29,10 +29,10 @@
         $Screens.module("favorites", $);
 
         $.section = new app.plugins.sections($.root, {
-            content: $.wrapper
+            content: $.refs.wrapper
         });
 
-        $.scroll = $$($.content);
+        $.scroll = $$($.refs.content);
 
         if ($Screens.vacancy){
             $$($.root).on("click", ".jobs__list__item__title", function(e){

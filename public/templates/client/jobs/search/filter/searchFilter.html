@@ -132,8 +132,8 @@
             name: this.item.name
         });
 
-        if (this.parent.opts.item == "area" && $Sections.search.form && $Sections.search.form.area){
-            $Sections.search.form.area._tag.update({
+        if (this.parent.opts.item == "area" && $Sections.search.form && $Sections.search.form.refs.area){
+            $Sections.search.form.refs.area.update({
                 id: params[this.parent.opts.item],
                 value: this.item.name
             })
@@ -149,8 +149,8 @@
 
         delete params[this.opts.item];
 
-        if (this.opts.item == "area" && $Sections.search.form && $Sections.search.form.area){
-            $Sections.search.form.area._tag.update({
+        if (this.opts.item == "area" && $Sections.search.form && $Sections.search.form.refs.area){
+            $Sections.search.form.refs.area.update({
                 id: null,
                 value: ""
             })

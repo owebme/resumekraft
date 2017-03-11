@@ -44,7 +44,7 @@ app.tag = function(name, callback){
             }
         }
         else {
-            return _.filter(riot.vdom, function(tag){
+            return _.filter(riot.vdom ? riot.vdom : riot.util.vdom, function(tag){
                 if (tag.root.nodeName.toLowerCase() == name){
                     return tag;
                 }

@@ -69,4 +69,7 @@
             @extend .maxW-100p;
         }
     }
+    .sidebar__share {
+        @extend .ml--25;
+    }
 }

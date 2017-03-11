@@ -10,7 +10,7 @@
             <p class="mb25">попробуйте смягчить условия поиска</p>
             <a onClick={ onBack } onUpdate="none" href="/jobs/search/" class="btn btn-l btn-primary-hover-success">{ opts.renderClient ? 'Сбросить фильтры' : 'Вернуться на шаг назад' }</a>
         </div>
-        <jobs-search-list-item each={ item, i in get.items() } no-reorder item={ item } utils={ get.utils() } currency={ get.currency() } isPhone={ isPhone() } _blank="true"></jobs-search-list-item>
+        <jobs-search-list-item each={ item, i in get.items() } no-reorder item={ item } utils={ parent.get.utils() } currency={ parent.get.currency() } isPhone={ parent.isPhone() } _blank="true"></jobs-search-list-item>
     </div>
 
 <script>

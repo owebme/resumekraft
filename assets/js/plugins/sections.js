@@ -62,11 +62,10 @@
                 }
                 else {
                     if (options.update && options.tag){
-                        options.tag.update(options.update);
-
                         options.tag.one("updated", function(){
                             _this._afterShow(options);
                         });
+                        options.tag.update(options.update);
                     }
                     else {
                         _this._afterShow(options);

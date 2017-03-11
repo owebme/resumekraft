@@ -5,22 +5,22 @@
             <div class="col-md-14">
                 <div class="jobs__footer__menu">
                     <div class="jobs__footer__menu__item">
-                        <a href="#">Главная</a>
+                        <a href="/">Главная</a>
                     </div>
                     <div class="jobs__footer__menu__item">
-                        <a href="#">Рекламодателям</a>
+                        <a href="/parthership/">Рекламодателям</a>
                     </div>
                     <div class="jobs__footer__menu__item">
-                        <a href="#">Премиум резюме</a>
+                        <a href="/premium/">Премиум резюме</a>
                     </div>
                     <div class="jobs__footer__menu__item">
-                        <a href="#">Создать резюме</a>
+                        <a href="/?signup=true">Создать резюме</a>
                     </div>
                     <div class="jobs__footer__menu__item">
-                        <a href="#">Вакансии</a>
+                        <a href="/jobs/search">Вакансии</a>
                     </div>
                     <div class="jobs__footer__menu__item">
-                        <a href="#">Блог</a>
+                        <a href="/blog/">Блог</a>
                     </div>
                 </div>
             </div>

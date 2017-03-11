@@ -1,0 +1,22 @@
+.sidebar__share {
+    @extend .pt-m;
+    @extend .hidden-xs;
+
+    &[data-align="left"]{
+        @include flex("column", "flex-start", "flex-start");
+    }
+    &[data-align="right"]{
+        @include flex("column", "flex-start", "flex-end");
+    }
+    &[data-align="center"]{
+        @include flex("column", "flex-start", "center");
+    }
+    &__button {
+        @extend .display-inlineFlex;
+        padding:7px;
+        @extend .mt-xs;
+        @extend .borderRadius-l;
+        border:1px solid;
+        @extend .borderColor-smokeDark;
+    }
+}

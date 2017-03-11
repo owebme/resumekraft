@@ -1,16 +1,16 @@
 <screen-search-filter class="oScreen section zIndex-5" data-inner="hidden" data-loading="false" data-show="right" data-open="false">
 
-    <div name="wrapper" class="screenMobile oScreen__content">
+    <div ref="wrapper" class="screenMobile oScreen__content">
         <div class="screenMobile__navbar" data-gradient="white">
             <div onClick={ hide } onUpdate="none" class="screenMobile__nav__back"></div>
             <div class="screenMobile__nav__title" data-align="center">Параметры поиска</div>
             <div class="screenMobile__nav__options"></div>
         </div>
-        <div name="content" class="section__content pb70">
+        <div ref="content" class="section__content pb70">
             <jobs-search-filter></jobs-search-filter>
         </div>
 
-        <div onClick={ hide } onUpdate="none" name="result" class="jobs__search__result__panel"></div>
+        <div onClick={ hide } onUpdate="none" ref="result" class="jobs__search__result__panel"></div>
 
         <div class="section__loading">
             <div class="section__loading__text">Поиск вакансий...</div>
@@ -24,9 +24,10 @@
 
     $.on("mount", function(){
         $Screens.module("search.filter", $);
+        $Screens.search.filter.result = $.refs.result;
 
         $.section = new app.plugins.sections($.root, {
-            content: $.wrapper
+            content: $.refs.wrapper
         });
 
         $scope.find(".jobs__search__filter__range").on('swipeLeft swipeRight', function(e){

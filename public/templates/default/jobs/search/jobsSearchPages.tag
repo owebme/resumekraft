@@ -36,7 +36,8 @@
         } catch(e){}
     });
 
-    $.onSelect = function(){
+    $.onSelect = function(e){
+        e.preventDefault();
         $.changePage(parseInt(this.item));
     };
 

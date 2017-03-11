@@ -4,13 +4,13 @@
         <div onClick={ onOpener } class="jobs__search__filter__title">{ opts.name }</div>
         <div class="jobs__search__filter__block__opener"></div>
         <div onClick={ parent.onRemove } onUpdate="none" if={ $store.jobs.state && $State.get(opts.item) } class="jobs__search__filter__item" data-select="true">{ $State.get(opts.item).name }</div>
-        <div name="list" class="jobs__search__filter__items" data-animate={ isAnimate }>
-            <div name="container" class="jobs__search__filter__items__list">
+        <div ref="list" class="jobs__search__filter__items" data-animate={ isAnimate }>
+            <div ref="container" class="jobs__search__filter__items__list">
                 <div onClick={ parent.parent.onSelect } onUpdate="none" each={ item, i in _.sortArray($store.jobs[opts.item], "count", "desc") } no-reorder class="jobs__search__filter__item" data-hidden={ shortList && shortItems.indexOf(parent.opts.item) !== -1 && i > 2 }>
                     <div class="jobs__search__filter__item__title">{ item.name }</div>
                     <div class="jobs__search__filter__item__count">{ item.count }</div>
                 </div>
-                <div onClick={ onMore } if={ shortList && shortItems.indexOf(opts.item) !== -1 && $store.jobs[opts.item].length > 3 } class="jobs__search__filter__more">Еще { $store.jobs[opts.item].length - 3 }</div>
+                <div onClick={ onMore } if={ shortList && shortItems.indexOf(opts.item) !== -1 && $store.jobs[opts.item] && $store.jobs[opts.item].length > 3 } class="jobs__search__filter__more">Еще { $store.jobs[opts.item] && $store.jobs[opts.item].length - 3 }</div>
             </div>
         </div>
     </div>
@@ -21,8 +21,6 @@
 
     $.shortItems = ['area', 'metro', 'specialization', 'industry'];
 
-    $.list = $$($.list);
-    $.container = $$($.container);
     $.shortList = true;
 
     $.on("before-mount", function(){
@@ -30,9 +28,13 @@
     });
 
     $.on("mount", function(){
+        $.list = $$($.refs.list);
+        $.container = $$($.refs.container);
+
         if ($.active){
             $.list.css("height", $.container.height() + "px");
         }
+        $.update();
     });
 
     $.on("update", function(){

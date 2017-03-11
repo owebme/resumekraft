@@ -43,8 +43,7 @@
     <!--/ templates /-->
     <!-- <script src="/*" type="riot/tag"></script> -->
     <script src="/public/js/templates.jobs.js"></script>
-    <script src="/public/templates/default/jobs/search/jobsSearchPages.tag" type="riot/tag"></script>
-    <script src="/assets/templates/ui/input.html" type="riot/tag"></script>
+
 
     <!--/ JS components /-->
     <script src="/public/js/app.jobs.js"></script>
@@ -71,6 +70,18 @@
     {% endif %}
 
     <script src="/public/js/jobs/init.js"></script>
+
+    {% if device != 'phone' %}
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.8&appId=1807891412771161";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    {% endif %}
 
 </body>
 </html>
