@@ -19,6 +19,12 @@
         }
     };
 
+    $.on("before-mount", function(){
+        var options = $.default();
+        options.active = false;
+        _.extend($, options);
+    });
+
     $.on("mount", function(){
         if (!app.device.isPhone){
             setTimeout(function(){

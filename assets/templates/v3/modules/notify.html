@@ -24,6 +24,11 @@
 
         if (!app.device.isPhone){
             setTimeout(function(){
+                $.update(
+                    _.extend($.default(), {
+                        active: false
+                    })
+                );
                 $.root.style.display = "block";
             }, 20);
         }

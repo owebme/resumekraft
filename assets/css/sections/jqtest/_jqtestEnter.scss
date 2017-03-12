@@ -4,7 +4,7 @@
     @include abs();
     @extend .overflow-hidden;
 
-    #renderServer & {
+    #renderSide & {
         jqtest-enter-content {
             @extend .display-block;
             @extend .pos-abs;

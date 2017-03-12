@@ -1,8 +1,9 @@
 <resume-navbar class="resume__navbar">
 
     <div class="btn-group">
-        <button onClick={ open.jqtest } onUpdate="none" data-item="jq-test" class="btn btn-m btn-primary-hover">JQ-Тест</button>
-        <button onClick={ open.inbox } onUpdate="none" data-item="inbox" class="btn btn-m { $store.inbox.counterAll() > 0 ? 'btn-primary' : 'btn-primary-hover' }">
+        <button onClick={ open.jqtest } onUpdate="none" data-item="jq-test" class="btn btn-m btn-primary-hover">JQ-Тест 2.0</button>
+        <a href="/jobs/search" target="_blank" class="btn btn-m btn-primary-hover">Найти работу</a>
+        <button if={ $account.get("plan") == "premium" } onClick={ open.inbox } onUpdate="none" data-item="inbox" class="btn btn-m { $store.inbox.counterAll() > 0 ? 'btn-primary' : 'btn-primary-hover' }">
             Обращения
             <div class="btn-badge btn-badge-danger">{ $store.inbox.counterAll() }</div>
         </button>

@@ -27,8 +27,8 @@
                 $.open("signup", location.href.match(/\&plan=premium/) ? "premium" : false);
             });
         }
-        $afterlag.xs(function(){
-            $.notify = app.tag("section-notify");
+        app.tag("section-notify", function(tag){
+            $.notify = tag;
 
             if (window.ymaps){
                 ymaps.ready(function(){

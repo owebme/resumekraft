@@ -1,0 +1,362 @@
+.messenger__launcher {
+    @extend .pos-abs;
+    @extend .b-30;
+    @extend .r-30;
+    perspective:800px;
+    @extend .zIndex-1;
+
+    &__opener {
+        @extend .pos-rel;
+        @extend .w62;
+        @extend .h62;
+        @extend .borderRadius-circle;
+        @extend .cursor-pointer;
+        @extend .userSelect-none;
+        animation:messenger__launcher__opener .25s ease;
+        box-shadow:0 1px 6px rgba(0,0,0,.06), 0 2px 32px rgba(0,0,0,.16);
+        transition:box-shadow 80ms ease-in-out;
+
+        &:before {
+            @include accelerate();
+            @include abs();
+            @extend .content-empty;
+            @extend .display-block;
+            @extend .borderRadius-circle;
+            @extend .pointerEvents-none;
+            background:#158ffe; //#7B4CFF
+            transform:translate3d(0, 0, 0) rotate(0deg);
+            @extend .zIndex-0;
+        }
+        &:hover {
+            box-shadow:0 2px 8px rgba(0,0,0,.09), 0 4px 40px rgba(0,0,0,.24);
+        }
+        &__button {
+            @include abs();
+            @extend .pointerEvents-none;
+            transform:translate3d(0, 0, 0) rotate(-22deg) scale(1);
+            @extend .zIndex-1;
+        }
+    }
+    &__copyright {
+        @extend .pos-abs;
+        @extend .b0;
+        left:-308px;
+        font-size:16px;
+        @extend .c-white;
+        @extend .fontFamily-futura;
+        @extend .visibility-hidden;
+        @extend .pointerEvents-none;
+        @extend .opacity-0;
+        transform:translate3d(0, 10px, 0) scale3d(0, 0.3, 1);
+
+        &:before {
+            @extend .content-empty;
+            @extend .pos-bl;
+            @extend .w100p;
+            @extend .h1px;
+            @extend .bg-white;
+            @extend .opacity-20;
+        }
+        &__text {
+            @extend .opacity-65;
+        }
+        &__name {
+            @extend .fontWeight-8;
+            @extend .letterSpacing--xs;
+        }
+    }
+    &__icons {
+        @include abs();
+        -webkit-backface-visibility:hidden;
+        transform-style:preserve-3d;
+        animation:messenger__launcher__icons 18s infinite;
+        @extend .willChange-transform;
+    }
+    &__icon {
+        @extend .pos-abs;
+        @extend .t50;
+        @extend .l50;
+        -webkit-backface-visibility:hidden;
+
+        &[data-icon="yuap"]{
+            width:245px * 0.12;
+            height:287px * 0.12;
+            transform:translate3d(-50%, -50%, 0) rotateY(0deg);
+        }
+        &[data-icon="chat"]{
+            @extend .w32;
+            @extend .h32;
+            transform:translate3d(-50%, -50%, 0) rotateY(180deg) rotate(6deg);
+        }
+        path {
+            @extend .fill-white;
+        }
+    }
+    &__close {
+        @extend .opacity-0;
+        @include abs_50(30, 30);
+        @include ui-icon(close_strong_white);
+        @extend .cursor-pointer;
+        transform:translate3d(0, 0, 0) scale(0);
+    }
+    &:hover {
+        .messenger__launcher__opener__button {
+            transform:translate3d(0, 0, 0) rotate(3deg) scale(1.1);
+        }
+    }
+    &:active {
+        .messenger__launcher__opener__button {
+            transform:translate3d(0, 1px, 0) rotate(3deg) scale(0.85);
+        }
+    }
+    &__badge {
+        @extend .pos-tr;
+        @extend .w22;
+        @extend .h22;
+        @extend .borderRadius-circle;
+        @extend .c-white;
+        @extend .fontFamily-roboto;
+        @extend .fontWeight-bold;
+        @extend .text-center;
+        font-size:13px;
+        line-height:22px;
+        background:#fc576b;
+        @extend .zIndex-1;
+    }
+    &__buttons {
+        @extend .flex-row-right-center;
+        @extend .opacity-0;
+        @extend .pos-abs;
+        @extend .b90;
+        @extend .r-10;
+        width:370px;
+        height:57px;
+        @extend .visibility-hidden;
+        @extend .pointerEvents-none;
+        transform:translate3d(0, -20px, 0) scale3d(0, 0.3, 1);
+
+        &__item {
+            @extend .pos-rel;
+            @extend .flex-centered;
+            width:57px;
+            height:57px;
+            @extend .bg-white;
+            @extend .ml-xs;
+            padding-bottom:2px;
+            box-shadow:0 5px 40px rgba(#000,.16);
+            @extend .borderRadius-circle;
+            @extend .btn-active;
+
+            &__icon {
+                @extend .w48;
+                @extend .h48;
+
+                path {
+                    @extend .fill-blueLight;
+                    @extend .transition-default;
+                }
+            }
+            &[data-item="fb"]{
+                .messenger__launcher__buttons__item__icon {
+                    @extend .w26;
+                    @extend .h26;
+                }
+            }
+            // &[data-item="vb"]{
+            //     @extend .display-none;
+            // }
+            &[data-item="email"]{
+                .messenger__launcher__buttons__item__icon {
+                    @extend .w30;
+                    @extend .h30;
+                }
+            }
+            &:hover {
+                &[data-item="fb"]{
+                    $btn_fb_color: saturate(#23599B,10%);
+                    background-color:$btn_fb_color;
+                    box-shadow:0 5px 40px rgba(#000,.16), 0 12px 20px -10px rgba($btn_fb_color,.28), 0 4px 20px 0px rgba(31,35,37,.12), 0 7px 8px -5px rgba($btn_fb_color,.2);
+                }
+                &[data-item="tg"]{
+                    $btn_tg_color: saturate(#07ACEB,10%);
+                    background-color:$btn_tg_color;
+                    box-shadow:0 5px 40px rgba(#000,.16), 0 12px 20px -10px rgba($btn_tg_color,.28), 0 4px 20px 0px rgba(31,35,37,.12), 0 7px 8px -5px rgba($btn_tg_color,.2);
+                }
+                &[data-item="vb"]{
+                    $btn_vb_color: saturate(#8B50A4,10%);
+                    background-color:$btn_vb_color;
+                    box-shadow:0 5px 40px rgba(#000,.16), 0 12px 20px -10px rgba($btn_vb_color,.28), 0 4px 20px 0px rgba(31,35,37,.12), 0 7px 8px -5px rgba($btn_vb_color,.2);
+                }
+                &[data-item="vk"]{
+                    $btn_vk_color: saturate(#3C75A5,10%);
+                    background-color:$btn_vk_color;
+                    box-shadow:0 5px 40px rgba(#000,.16), 0 12px 20px -10px rgba($btn_vk_color,.28), 0 4px 20px 0px rgba(31,35,37,.12), 0 7px 8px -5px rgba($btn_vk_color,.2);
+                }
+                &[data-item="email"]{
+                    $btn_el_color: saturate($orange,5%);
+                    background-color:$btn_el_color;
+                    box-shadow:0 5px 40px rgba(#000,.16), 0 12px 20px -10px rgba($btn_el_color,.28), 0 4px 20px 0px rgba(31,35,37,.12), 0 7px 8px -5px rgba($btn_el_color,.2);
+                }
+                path {
+                    @extend .fill-white;
+                }
+            }
+        }
+    }
+    .messenger__launcher__buttons,
+    .WD__messenger__item,
+    .messenger__launcher__opener__button,
+    .messenger__launcher__close,
+    .messenger__launcher__copyright {
+        @include accelerate();
+        @extend .willChange-tp;
+    }
+    .messenger__launcher__buttons {
+        transition:transform 0.32s $bounceSoft, opacity 0.25s $cubic2501, visibility 0s 0.32s;
+    }
+    .messenger__launcher__copyright {
+        transition:transform 0.32s $cubic68, opacity 0.25s $cubic40, visibility 0s 0.32s;
+    }
+    .WD__messenger__items {
+        transition:visibility 0s 0.45s;
+    }
+    .WD__messenger__item {
+        transition:transform 0.45s $bounceSoft 0.18s, opacity 0.35s $cubic2501 0.18s;
+    }
+    .messenger__launcher__opener__button,
+    .messenger__launcher__close {
+        transition:transform 0.35s $bounce, opacity 0.25s $cubic2501;
+    }
+    .messenger__launcher__opener:before {
+        will-change:transform, border-radius;
+        transition:transform 0.25s $cubic25, border-radius 0.25s $cubic2501;
+    }
+    &[data-active="true"] {
+        .messenger__launcher__buttons {
+            @extend .opacity-100;
+            transform:translate3d(0, -30px, 0) scale3d(1, 1, 1);
+            transition:transform 0.32s $bounceSoft, opacity 0.25s $cubic2501, visibility 0s;
+        }
+        .messenger__launcher__copyright {
+            @extend .opacity-100;
+            transform:translate3d(0, 0, 0) scale3d(1, 1, 1);
+            transition:transform 0.32s $cubic68 0.4s, opacity 0.25s $cubic40 0.4s, visibility 0s;
+        }
+        .messenger__launcher__buttons,
+        .messenger__launcher__copyright,
+        .WD__messenger__items {
+            @extend .visibility-visible;
+            @extend .pointerEvents-all;
+        }
+        .WD__messenger__items {
+            @extend .transition-none;
+        }
+        .WD__messenger__item {
+            @extend .opacity-100;
+            transform:rotate3d(1, 0, 0, 0deg) translate3d(0, 0, 0) scale3d(1, 1, 1);
+        }
+        .messenger__launcher__opener {
+            &:before {
+                border-radius:0 100% 100%;
+                transform:translate3d(0, 0, 0) rotate(45deg);
+            }
+        }
+        .messenger__launcher__opener__button {
+            @extend .opacity-0;
+            transform:translate3d(0, 0, 0) rotate(0deg) scale(0);
+        }
+        .messenger__launcher__close {
+            @extend .opacity-100;
+            transform:translate3d(0, 0, 0) scale(1);
+        }
+    }
+}
+.WD__messenger__items {
+    @extend .pos-abs;
+    bottom:158px;
+    right:50px;
+    width:320px;
+    @extend .visibility-hidden;
+    @extend .pointerEvents-none;
+}
+.WD__messenger__item {
+    @include accelerate();
+    @extend .opacity-0;
+    @extend .pos-rel;
+    @extend .fontFamily-helvetica;
+    @extend .bg-white;
+    border-radius:8px;
+    padding-bottom:12px;
+    @extend .willChange-tp;
+    box-shadow:0 1px 6px rgba(#000,.06), 0 2px 32px rgba(#000,.16);
+    transform:rotate3d(1, 0, 0, 90deg) translate3d(0, -10px, 0) scale3d(0, 0.3, 1);
+
+    &:after {
+        @extend .content-empty;
+        @extend .pos-abs;
+        @extend .r100;
+        bottom:15px;
+        width:9px;
+        height:21px;
+        background-image:url(/assets/images/messenger-client/caret.png);
+        background-size:9px 21px;
+        background-repeat:no-repeat;
+    }
+    &__avatar {
+        @extend .pos-abs;
+        bottom:21px;
+        left:-65px;
+        width:53px;
+        height:53px;
+        @extend .bg-cover;
+        @extend .borderRadius-circle;
+        box-shadow:0 1px 6px rgba(#000,0.06), 0 2px 32px rgba(#000,0.16);
+    }
+    &__title {
+        @extend .c-blueLight;
+        @extend .fontWeight-bold;
+        @extend .text-truncate;
+        @extend .maxW-100p;
+        font-size:15.5px;
+        line-height:1.2;
+        @extend .pt-s;
+        @extend .plr-m;
+        padding-bottom:8px;
+
+        &__post {
+            color:#8f919d;
+            font-size:15px;
+            @extend .pl-xxs;
+            @extend .fontWeight-normal;
+        }
+    }
+    &__body {
+        color:#6e7a89;
+        font-size:15px;
+        line-height:1.33;
+        @extend .mb-xs;
+        @extend .plr-m;
+    }
+}
+
+@keyframes messenger__launcher__opener {
+    0% {
+        opacity:0;
+        transform:scale(.5);
+    }
+    100% {
+        opacity:1;
+        transform:scale(1);
+    }
+}
+@keyframes messenger__launcher__icons {
+    0%, 83.3% {
+        transform:translate3d(0, 0, 0) rotateY(0deg);
+    }
+    86%, 98.1% {
+        transform:translate3d(0, 0, 0) rotateY(180deg);
+    }
+    100% {
+        transform:translate3d(0, 0, 0) rotateY(0deg);
+    }
+}
