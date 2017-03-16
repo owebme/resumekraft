@@ -7,7 +7,7 @@ app.fetch.API.getDataInit = function(){
         app.request('getDataInit').then(function(res){
 
             $account = $store.account;
-            $store.account.set(res.account ? res.account : {});
+            $store.account.set(res.account);
             $store.data.set(res.data ? res.data : []);
             $store.inbox.set(res.inbox ? res.inbox : []);
 
@@ -36,7 +36,7 @@ app.fetch.API.getDataInit = function(){
                     }
                 }
                 app.metrika = new app.plugins.metrika({
-                    key: "private",
+                    key: $account.get("_id"),
                     data: app.metrics.private,
                     previousData: res.metrika,
                     visits: $account.get("visits"),

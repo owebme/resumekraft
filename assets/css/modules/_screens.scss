@@ -71,7 +71,7 @@
     .vertical__space,
     .horizontal__space {
         @extend .pos-tl;
-        @extend .w100p;
+        width:100%;
     }
     .horizontal__space {
         top:-200%;

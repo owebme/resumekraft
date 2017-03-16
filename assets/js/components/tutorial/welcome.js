@@ -19,7 +19,7 @@
         function(){
             return {
                 figure: "circle",
-                target: ".profile .user__photo__image",
+                target: ".profile .user__photo",
                 position: "right",
                 zoom: 0.8,
                 title: "Фотография",
@@ -93,7 +93,7 @@
                     top: -18
                 },
                 title: "Карточка резюме",
-                text: "Демонстрационная карточка резюме. Перейдем к обзору его элементов, нажмите «Далее».",
+                text: "Демонстрационная карточка резюме. Перейдем к обзору ее элементов, нажмите «Далее».",
                 actions: {
                     callback: function($tutorial, $target){
                         $target.find(".resume__item").attr("data-blank", false);
@@ -160,7 +160,7 @@
         function(){
             return {
                 figure: "circle",
-                target: ".slider__wrapper .slider__item:first .resume__item__control__inbox",
+                target: ".slider__wrapper .slider__item:first .resume__item__inbox",
                 position: "right",
                 width:80,
                 height:80,
@@ -175,16 +175,46 @@
         function(){
             return {
                 figure: "circle",
+                target: ".slider__wrapper .slider__item:first .resume__item__noview",
+                position: "right",
+                width:80,
+                height:80,
+                offset: {
+                    top: -18,
+                    left: -25
+                },
+                title: "Изменить активность",
+                text: "Опубликовать/снять с публикации резюме."
+            }
+        },
+        function(){
+            return {
+                figure: "circle",
                 target: ".slider__wrapper .slider__item:first .resume__item__likes",
                 position: "right",
                 width:80,
                 height:80,
                 offset: {
                     top: -20,
-                    left: -20
+                    left: -28
                 },
                 title: "Лайки",
                 text: "Собирайте лайки ваших резюме. Всякий кто просмотрит ваше резюме может поставить свой лайк - это могут быть, как работодатели так и коллеги. Доступно на «Premium» аккаунте."
+            }
+        },
+        function(){
+            return {
+                figure: "circle",
+                target: ".slider__wrapper .slider__item:first .resume__item__lang",
+                position: "right",
+                width:80,
+                height:80,
+                offset: {
+                    top: -20,
+                    left: -15
+                },
+                title: "Язык резюме",
+                text: "Резюме на двух языках, на русском или английском языке."
             }
         },
         function(){
@@ -196,7 +226,7 @@
                 offset: {
                     left: -5
                 },
-                title: "Процент привлекательности",
+                title: "Процент заполнения",
                 text: "Чем выше процент тем более привлекательно ваше резюме для работодателя.",
                 actions: {
                     toggle: function($target, hide){
@@ -220,12 +250,42 @@
         },
         function(){
             return {
+                figure: "square",
+                target: ".resume__navbar .btn-jobs",
+                position: "down",
+                padding: 10,
+                title: "Найти работу",
+                text: "Более 330,000 вакансий по России и странам СНГ. Возможность найти лучшую работу для вас. Также доступно для мобильных устройств."
+            }
+        },
+        function(){
+            return {
+                figure: "square",
+                target: ".resume__navbar .btn-jqtest",
+                position: "down",
+                padding: 10,
+                title: "JQ-тест 2.0",
+                text: "Новый тест на профориентацию, поможет ответить на профессиональные вопросы + получить рекомендации. Прохождение теста абсолютно бесплатно."
+            }
+        },
+        function(){
+            return {
                 figure: "circle",
                 target: ".main__button",
                 position: "right",
-                padding: 10,
-                title: "Открыть меню",
-                text: "Изменить свой профиль по умолчанию, регистрационные данные, сменить пароль входа, загрузить свою фотографию и т.д."
+                padding: 2,
+                title: "Открыть профиль",
+                text: "Изменить свой профиль, регистрационные данные, сменить пароль входа, загрузить свою фотографию и т.д."
+            }
+        },
+        function(){
+            return {
+                figure: "circle",
+                target: ".messenger__launcher__opener",
+                position: "left",
+                padding: 5,
+                title: "Консультант",
+                text: "Наши консультанты рады вам помочь и проконсультировать по интересующим вопросам."
             }
         },
         function(){

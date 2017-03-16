@@ -1,0 +1,239 @@
+@import 'fonts/Icons/hobby/style';
+
+.ovpremium {
+    &__colors {
+        @extend .flex-centered;
+
+        &__item {
+            @extend .pos-rel;
+            @extend .w50;
+            @extend .h50;
+            @extend .ml35;
+            @extend .mr35;
+
+            svg {
+                @extend .pos-abs;
+                @extend .t50;
+                @extend .l50;
+                width:76px;
+                height:76px;
+                @extend .willChange-transform;
+                transform:translate3d(-50%, -50%, 0) scale3d(-1, 1, 1);
+                transition:transform 0.5s $cubic075;
+
+                &:hover {
+                    transform:translate3d(-50%, -50%, 0) scale3d(-1.2, 1.2, 1);
+                }
+            }
+        }
+    }
+    &__inbox {
+        &__items {
+            @extend .pos-abs;
+            @extend .t100;
+            @extend .l0;
+            @extend .mt-xl;
+            @extend .flex-row-left-center;
+        }
+        &__item {
+            @extend .cursor-default;
+            @extend .mr-l;
+
+            &__circle {
+                @extend .flex-centered;
+                @extend .w60;
+                @extend .h60;
+                @extend .c-white;
+                font-size:30px;
+                @extend .fontWeight-bold;
+                @extend .borderRadius-circle;
+                will-change:transform, box-shadow;
+                transition:transform 0.35s $cubic40, box-shadow 0.35s $cubic40;
+            }
+            &:hover {
+                .ovpremium__inbox__item__circle {
+                    transform:translate3d(0, -10px, 0);
+
+                    @each $title, $color in (blue: $blue, blueLight: $blueLight, brown: $brown, red: $red, pink: $pink, orange: $orange, violet: $violet, violetLight: $violetLight, green: $green, emerald: $emerald){
+                        &[data-color="#{$title}"] {
+                            box-shadow:0 22px 40px -10px rgba($color,.48), 0 14px 30px 0px rgba($color,.2), 0 14px 20px -5px rgba($color,.3);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__hobby {
+        &__items {
+            @extend .mt--s;
+            @extend .ml--30;
+            width:120%;
+        }
+        &__item {
+            @extend .pos-rel;
+            @extend .display-inlineFlex;
+            @extend .w100;
+            @extend .h100;
+            @extend .mlr-m;
+            @extend .mb-l;
+
+            &__icon {
+                @extend .c-white;
+                @extend .flex-centered;
+                @extend .pos-centered;
+                @extend .w80;
+                @extend .h80;
+                font-size:46px;
+                @extend .bg-blueBright;
+                border-radius:22px;
+                @extend .boxShadow-3d-blue;
+                will-change:transform, box-shadow, background-color;
+                transition:all 0.35s $cubic40;
+
+                &:hover {
+                    transform:translate3d(-50%, calc(-50% - 10px), 0);
+                }
+            }
+            $i:0;
+            @each $color in (rgb(248, 167, 36), $emerald, rgb(229, 57, 53), $violetLight, rgb(125, 86, 193), rgb(103, 158, 55), rgb(235, 63, 121), rgb(140, 109, 98), rgb(255, 111, 66), $brown, rgb(169, 0, 255), $pink){
+                $i: $i + 1;
+                &:nth-child(#{$i}):hover {
+                    .ovpremium__hobby__item__icon {
+                        background-color:$color;
+                        box-shadow:0 22px 40px -10px rgba($color,.48), 0 14px 30px 0px rgba($color,.2), 0 7px 20px -5px rgba($color,.3);
+                    }
+                }
+            }
+        }
+    }
+    &__tags {
+        &__items {
+            margin-top:-13px;
+            @extend .ml--xxs;
+        }
+        &__item {
+            @extend .cursor-default;
+            @extend .display-inlineFlex;
+            @extend .plr-s;
+            @extend .h40;
+            @extend .borderRadius-xxl;
+            line-height:40px;
+            max-width:200px;
+            margin:15px 8px 0 0;
+            @extend .c-white;
+            @extend .text-truncate;
+            @extend .fontSize-16;
+            @extend .fontWeight-bold;
+            @extend .bg-blackLight;
+            @extend .boxShadow-3d-steel;
+            will-change:transform, box-shadow, background-color;
+            transition:all 0.35s $cubic40;
+
+            &:hover {
+                transform:translate3d(0, -8px, 0);
+                background-color:$blueBright;
+                box-shadow:0 22px 35px -10px rgba($blueBright,.48), 0 14px 25px 0px rgba($blueBright,.2), 0 7px 20px -5px rgba($blueBright,.3);
+            }
+        }
+    }
+    &__progress {
+        &__items {
+            @extend .nowrap;
+            @extend .pr25;
+            padding-left:2px;
+        }
+        &__item {
+            @extend .pos-rel;
+            @include flex("row", "flex-start", "center");
+            @extend .ptb-xs;
+            @extend .w100p;
+            @extend .mb25;
+
+            &:first-child {
+                @extend .pt0;
+            }
+            &:before {
+                @extend .content-empty;
+                @extend .pos-bl;
+                @extend .w100p;
+                @extend .bg-smoke;
+                @extend .h3px;
+            }
+        }
+        &__title {
+            @extend .fontWeight-bold;
+            @extend .fontSize-20;
+            @extend .text-left;
+            @extend .w90p;
+        }
+        &__score {
+            @extend .c-gray;
+            @extend .fontWeight-normal;
+            @extend .text-right;
+            @extend .w10p;
+            @extend .fontSize-18;
+        }
+        &__line {
+            @extend .pos-bl;
+            @extend .w100p;
+            @extend .bg-blueBright;
+            @extend .h3px;
+
+            &__peg {
+                @extend .pos-tr;
+                @extend .w100;
+                @extend .h10;
+                @extend .overflow-hidden;
+
+                &:after {
+                    @extend .content-empty;
+                    @extend .pos-tr;
+                    @extend .w100;
+                    @extend .h3px;
+                    box-shadow:0 0 15px $blueBright, 0 0 6px $blueBright;
+                    transform:rotate(3deg) translate(0px, -4px);
+                }
+            }
+        }
+    }
+    &__inbox__pointer {
+        @extend .pos-abs;
+        top:154px;
+        left:0;
+        @extend .w100p;
+        height:107px;
+        @extend .borderRadius-xs;
+        box-shadow:inset 0 0 0 2px #007ec1, 0 2px 4px 0 rgba(#000,.1);
+        background-color:rgba(154,220,255,.6);
+        animation:ovpremium-pointer-pulse 1.5s infinite ease-in-out;
+    }
+    &__salary__pointer {
+        @extend .pos-abs;
+        top:70px;
+        right:11px;
+        @extend .w54;
+        @extend .h54;
+        @extend .borderRadius-circle;
+        box-shadow:inset 0 0 0 2px #007ec1, 0 2px 4px 0 rgba(#000,.1), 0 12px 30px -10px rgba(154,220,255,.48), 0 4px 30px 0px rgba(154,220,255,.2), 0 7px 16px -5px rgba(154,220,255,.3);
+        background-color:rgba(154,220,255,.6);
+        animation:ovpremium-pointer-pulse 1.5s infinite ease-in-out;
+    }
+    &__sale {
+        @extend .pos-tr;
+        transform:translate3d(20px, -40px, 0);
+
+        &__badge {
+            @extend .flex-centered;
+            @extend .plr-xs;
+            @extend .h24;
+            @extend .bg-pink;
+            @extend .c-white;
+            @extend .fontWeight-bold;
+            @extend .borderRadius-xxxxl;
+        }
+    }
+}
+@keyframes ovpremium-pointer-pulse {
+    0%, 100% {opacity:1;}
+    25%, 75% {opacity:0;}
+}

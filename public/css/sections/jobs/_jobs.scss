@@ -127,7 +127,8 @@ html, body {
             @extend .pt-s;
             @extend .pb-l;
         }
-        .d-no-mobile & {
+        .d-no-tablet &,
+        .d-no-phone & {
             @extend .w90p;
             max-width:770px;
         }

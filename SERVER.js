@@ -131,7 +131,34 @@ app.use(function(err, req, res, next) {
   });
 });
 
-var server = http.createServer(app);
+var server = http.createServer(app),
+    ipTables = {};
+
+// server.on('connection', function(socket){
+//     var ip = socket.address().address;
+//     var time = Date.now();
+//     if (ip in ipTables) {
+//         if (time - ipTables[ip].time > 3000) {
+//             ipTables[ip] = {
+//                 count: 1,
+//                 time: time
+//             };
+//             return;
+//         }
+//         ipTables[ip].count++;
+//         ipTables[ip].time = time;
+//         if (ipTables[ip].count > 100) { // более 100 запросов подряд
+//             socket.end('HTTP/1.1 429 Too Many Requests\n\n');
+//             socket.destroy(); // Обрываем соеденение
+//         }
+//         return;
+//     }
+//     ipTables[ip] = {
+//         count: 1,
+//         time: time
+//     };
+// });
+
 server.listen(config.get('port'), function(){
 	app.log.info('Express server listening on port ' + config.get('port'));
 });

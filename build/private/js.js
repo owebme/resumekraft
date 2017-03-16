@@ -58,42 +58,19 @@ module.exports = function(){
     		.pipe(gulp.dest('./assets/js'));
     });
 
-    gulp.task('private.app', function() {
-    	return gulp.src(['assets/js/components/commons/app.js',
-    		'assets/js/components/commons/common.js',
-    		'assets/js/components/commons/request.js',
-    		'assets/js/components/commons/modules.js',
-    		'assets/js/components/commons/utils.js',
-    		'assets/js/components/commons/afterlag.js',
-    		'assets/js/components/config.js',
-    		'assets/js/components/fetch.js',
-    		'assets/js/components/tutorial/welcome.js',
-    		'assets/js/components/tutorial/resume/free/interface.js',
-    		'assets/js/store/*.js',
-    		'assets/js/store/**/*.js'])
-    		.pipe(concat('app.js'))
-    		.pipe(uglify())
-    		.pipe(gulp.dest('./assets/js'));
-    });
-
-    gulp.task('private.templates', function() {
-    	return gulp.src(['assets/templates/modules/*.html',
-    	    'assets/templates/sections/**/*.html',
-    		'assets/templates/sections/**/*.tag',
-    		'assets/templates/ui/*.html',
-    		'assets/templates/ui/**/*.html',
-    		'assets/templates/appResume/basic/*.html',
-    		'assets/templates/appResume/basic/**/*.html',
-    		'assets/templates/root.html'])
+    gulp.task('private.root.templates', function() {
+    	return gulp.src(['assets/templates/root.html',
+            'assets/templates/root-mobile.html'])
     		.pipe(riot())
-    		.pipe(concat('templates.js'))
+    		.pipe(concat('templates.root.js'))
     		.pipe(uglify())
     		.pipe(gulp.dest('./assets/js'));
     });
 
     gulp.task('private.sections.templates', function() {
     	return gulp.src(['assets/templates/sections/*.html',
-    		'assets/templates/sections/**/*.html'])
+    		'assets/templates/sections/**/*.html',
+            'assets/templates/sections/overview/premium/overviewPremiumContent.tag'])
     		.pipe(riot())
     		.pipe(concat('templates.sections.js'))
     		.pipe(uglify())
@@ -128,10 +105,33 @@ module.exports = function(){
     		.pipe(gulp.dest('./assets/js'));
     });
 
+    gulp.task('private.templates', function() {
+    	return gulp.src(['assets/js/templates.root.js',
+            'assets/js/templates.ui.js',
+            'assets/js/templates.modules.js',
+            'assets/js/templates.sections.js',
+            'assets/js/templates.resume.js'])
+    		.pipe(riot())
+    		.pipe(concat('templates.js'))
+    		.pipe(uglify())
+    		.pipe(gulp.dest('./assets/js'));
+    });
+
+    gulp.task('private.app', function() {
+    	return gulp.src(['assets/js/commons.js',
+                'assets/js/plugins.js',
+                'assets/js/store/*.js',
+                'assets/js/store/**/*.js'
+            ])
+    		.pipe(concat('app.js'))
+            .pipe(uglify())
+    		.pipe(gulp.dest('./assets/js'));
+    });
+
     gulp.task('private.app.build', function() {
-    	return gulp.src(['assets/js/templates.js',
-    		'assets/js/app.js',
-    		'assets/js/init.js'])
+    	return gulp.src(['assets/js/libs.js',
+            'assets/js/app.js',
+            'assets/js/templates.js'])
     		.pipe(concat('app.build.js'))
     		.pipe(gulp.dest('./assets/js'));
     });

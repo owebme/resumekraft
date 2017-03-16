@@ -104,5 +104,76 @@ module.exports = function(url){
 		});
 	});
 
+	route.get('/visits/:id', function(req, res, next) {
+		app.async.parallel({
+			visits: function(callback){
+
+				// var date = new Date();
+				// date.setDate(date.getDate() - 14);
+
+				app.db.collection('resumesVisits').aggregate([
+				{
+					$unwind: "$visits"
+				},
+				{
+					$match: { _id: app.utils.ObjectId(req.params.id) }
+				},
+				{
+					$project: { "visits.ua": 1, "visits.ip": 1, day: {$dateToString: { format: "%Y-%m-%d", date: "$visits.date" }}}
+				},
+				{
+					$group: { _id: {day: "$day", ip: "$visits.ip", ua: "$visits.ua"}, hits: {$sum: 1}}
+				},
+				{
+					$group: { _id: "$_id.day", hits: {$max: "$hits"}, counts: {$sum: 1}}
+				},
+				{
+					$sort: { _id: 1 }
+				}
+				]).toArray(function(err, data){
+					app.errHandler(res, err, data, callback);
+				});
+			},
+			devices: function(callback){
+
+				app.db.collection('resumesVisits').findOne({
+					_id: app.utils.ObjectId(req.params.id)
+				},
+				function(err, data){
+					if (data){
+
+						var total = data.visits.length;
+
+						app.db.collection('resumesVisits').aggregate([
+							{
+								$unwind: "$visits"
+							},
+							{
+								$match: { _id: app.utils.ObjectId(req.params.id) }
+							},
+						    {
+						        $group: { _id: "$visits.device", count: {$sum: 1} }
+						    },
+						    {
+						        $project: { percentage: {$multiply: ["$count", 100 / total]} }
+						    },
+						    {
+						        $sort: { percentage: -1 }
+						    }
+						]).toArray(function(err, data){
+							app.errHandler(res, err, data, callback);
+						});
+					}
+					else {
+						app.errHandler(res, err, data, callback);
+					}
+				});
+			}
+		},
+		function(err, results){
+			app.errHandler(res, err, results);
+		});
+	});
+
 	app.use(url, app.checkAuth(), route);
 };

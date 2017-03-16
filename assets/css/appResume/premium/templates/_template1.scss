@@ -471,6 +471,16 @@
             .screen__content {
                 padding:120px 12.5px 95px 12.5px;
             }
+            // .col-xs-24:first-child {
+            //     @extend .plr0;
+            // }
+            // .col-xs-24 .col-xs-24:first-child {
+            //     @extend .plr-xs;
+            // }
+            // .title {
+            //     @extend .ml0;
+            //     padding-left:2px;
+            // }
         }
         .screen__post {
             @extend .pos-bl;

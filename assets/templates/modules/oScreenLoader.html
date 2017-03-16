@@ -17,6 +17,20 @@
     $.show = function(options){
         if (!options) return;
 
+        if (options.forceShow){
+            $.html = options.tag();
+            if (options.mount){
+                $.html.one("updated", function(){
+                    options.mount($.html);
+                });
+            }
+            $$($.parent.scroll).css("transition", "none");
+            $.parent.update({
+                active: true
+            })
+            return;
+        }
+
         $.start = options.start || $$.noop;
         $.end = options.end || $$.noop;
         $.callMount = options.mount || $$.noop;
@@ -53,11 +67,20 @@
             $afterlag.run(function(){
                 if (_.isFunction(options.tag)){
                     $.html = options.tag();
-                    $.html.one("updated", function(){
-                        $afterlag.run(function(){
-                            $.onHtmlLoaded(options.content);
+                    if ($.html){
+                        $.html.one("updated", function(){
+                            $afterlag.run(function(){
+                                $.onHtmlLoaded(options.content);
+                            });
                         });
-                    });
+                    }
+                    else {
+                        $.parent.update({
+                            loading: false,
+                            animate: false,
+                            active: false
+                        })
+                    }
                 }
                 else {
                     $.onHtmlLoaded(options.content);

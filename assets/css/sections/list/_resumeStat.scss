@@ -22,22 +22,20 @@
         @extend .bg-smoke;
         @extend .pt-m;
         @extend .overflow-hidden;
-        height:87vh;
-        max-height:620px;
+        height:89.5vh;
+        max-height:720px;
         @extend .willChange-transform;
         transform-origin:50% 0;
         transform:translate3d(0, -100%, 0);
         transition:transform 0.5s $cubic40;
     }
     &__content {
-        @extend .pos-centered-h;
-        bottom:60px;
+        @extend .pos-centered;
+        margin-top:34px;
     }
     &__title {
-        @extend .float-left;
+        @extend .flex-row-left-center;
         @extend .pos-rel;
-        @extend .mb-s;
-        @extend .pb25;
         @extend .userSelect-none;
         @extend .caret;
         @extend .caret-l;
@@ -47,10 +45,16 @@
             transform:translateY(3px);
         }
         &__value {
-            @extend .display-inlineBlock;
+            @extend .display-block;
             @extend .vAlign-middle;
             @extend .c-gray;
             @extend .fontSize-34;
+            @extend .text-truncate;
+            @extend .maxW-100p;
+
+            .d-tablet & {
+                @extend .fontSize-28;
+            }
         }
     }
     &__photo {
@@ -71,10 +75,115 @@
         @extend .t100;
         @extend .r0;
     }
+    &__tab {
+        @extend .pos-rel;
+        @extend .cursor-default;
+        @include flex("column", "flex-start", "center");
+        @extend .h100p;
+
+        &[data-tab="hits"]{
+            svg {
+                @extend .w50;
+                @extend .h50;
+            }
+            .resume__stat__tab__count {
+                @extend .c-blueLight;
+            }
+            .resume__stat__tab__line {
+                @extend .pos-tr;
+                @extend .w1px;
+                @extend .h100p;
+                @extend .bg-grayLighten;
+            }
+        }
+        &[data-tab="visits"]{
+            svg {
+                @extend .w46;
+                @extend .h46;
+            }
+            .resume__stat__tab__count {
+                color:#f05b4f;
+            }
+        }
+        &__counts {
+            @extend .flex-centered;
+            @extend .w100;
+        }
+        &__icon {
+            @extend .pos-rel;
+            @extend .w50p;
+            @extend .h45;
+
+            svg {
+                @extend .pos-centered;
+                margin-top:4px;
+            }
+            path {
+                @extend .fill-gray;
+            }
+        }
+        &__count {
+            @extend .flex-centered;
+            @extend .fontSize-28;
+            @extend .fontWeight-8;
+            @extend .w50p;
+        }
+        &__title {
+            @extend .c-gray;
+            @extend .flex-centered;
+        }
+        .chart__radial__labels {
+            @extend .text-right;
+        }
+        .chart__radial__label__title {
+            @extend .fontSize-18;
+        }
+    }
+    &[data-empty="true"]{
+        .resume__stat__chart {
+            &:after,
+            &__empty {
+                @extend .pointerEvents-all;
+                @extend .visibility-visible;
+                transition:opacity 0.3s $cubic215;
+            }
+            &:after {
+                @extend .opacity-65;
+            }
+            &__empty {
+                @extend .opacity-100;
+            }
+        }
+    }
     &__chart {
+        @extend .pos-rel;
         @extend .w100p;
         @extend .mt-m;
         height:400px;
+
+        &:after,
+        &__empty {
+            @extend .opacity-0;
+            @extend .pointerEvents-none;
+            @extend .visibility-hidden;
+        }
+        &:after {
+            @extend .content-empty;
+            @include abs();
+            @extend .bg-smoke;
+        }
+        &__empty {
+            @extend .w60p;
+            @extend .pos-centered;
+            @extend .c-blackLight;
+            @extend .fontSize-24;
+            @extend .ml0;
+            @extend .pb-l;
+            @extend .text-center;
+            @extend .zIndex-1;
+            @extend .pointerEvents-none;
+            @extend .visibility-hidden;
+        }
     }
     &[data-open="true"]{
         @extend .visibility-visible;
@@ -94,9 +203,6 @@
     .resume__stat {
         &__wrapper {
             height:92vh;
-        }
-        &__content {
-            bottom:56px;
         }
         &__chart {
             height:350px;

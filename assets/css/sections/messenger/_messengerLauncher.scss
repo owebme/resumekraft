@@ -67,7 +67,7 @@
     }
     &__icons {
         @include abs();
-        -webkit-backface-visibility:hidden;
+        @extend .backVisible-hidden;
         transform-style:preserve-3d;
         animation:messenger__launcher__icons 18s infinite;
         @extend .willChange-transform;
@@ -76,7 +76,7 @@
         @extend .pos-abs;
         @extend .t50;
         @extend .l50;
-        -webkit-backface-visibility:hidden;
+        @extend .backVisible-hidden;
 
         &[data-icon="yuap"]{
             width:245px * 0.12;
@@ -288,6 +288,7 @@
     border-radius:8px;
     padding-bottom:12px;
     @extend .willChange-tp;
+    // box-shadow:0 2px 8px 0 rgba(35,47,53,.09);
     box-shadow:0 1px 6px rgba(#000,.06), 0 2px 32px rgba(#000,.16);
     transform:rotate3d(1, 0, 0, 90deg) translate3d(0, -10px, 0) scale3d(0, 0.3, 1);
 

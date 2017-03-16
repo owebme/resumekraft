@@ -20,6 +20,14 @@
             @include abs();
             @extend .opacity-55;
         }
+        &__empty {
+            @include abs();
+            @extend .flex-centered;
+            @extend .plr-l;
+            @extend .c-steelDark;
+            @extend .fontSize-22;
+            background-color:rgba($white,.80);
+        }
     }
     &__showTable {
         &__title {

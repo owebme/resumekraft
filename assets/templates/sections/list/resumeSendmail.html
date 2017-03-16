@@ -1,4 +1,4 @@
-<resume-sendmail class="oScreen zIndex-3 c-white { showAnim-group1 : active }" data-color="blue" data-open={ active }>
+<resume-sendmail class="oScreen zIndex-3 c-white { showAnim-group1 : active }" data-color="blue" data-open={ active } style="display:none">
 
     <div onClick={ hide } onUpdate="none" class="anim-group1 anim-rl" data-duration="{ app.device.isPhone ? 'm' : 'l' }" delay-show="m">
         <div class="button__close opacity-80" data-color="white"></div>
@@ -22,7 +22,7 @@
                                 <ui-checkbox title="Прикрепить PDF" color="white" size="xl" value={ attach.pdf }></ui-checkbox>
                             </div>
                         </div>
-                        <div onClick={ onSuccess } onUpdate="none" class="btn btn-xxl btn-success { btn-loading : loading }">Отправить</div>
+                        <div onClick={ onSuccess } onUpdate="none" class="btn btn-xl2 c-blue btn-white-hover-success { btn-loading : loading }">Отправить</div>
                     </div>
                     <div class="anim anim-group2 anim-bt-ease fontSize-34 pointerEvents-none { animated : success }">
                         <div class="trY--xl { mt--xl : app.device.isPhone }">Резюме отправлено</div>
@@ -45,15 +45,18 @@
     $.input = $$($.input);
 
     $.show = function(id){
-        $.update({
-            id: id,
-            active: true
-        })
-        if (!app.device.isMobile){
-            _.onEndTransition($.area, function(){
-                $.input.focus();
-            });
-        }
+        $.root.style.display = "block";
+        $afterlag.run(function(){
+            $.update({
+                id: id,
+                active: true
+            })
+            if (!app.device.isMobile){
+                _.onEndTransition($.area, function(){
+                    $.input.focus();
+                });
+            }
+        });
     };
 
     $.onEnter = function(e){
@@ -102,13 +105,16 @@
         $.update({
             active: false
         })
-        if ($.success){
+        $afterlag.run(function(){
             _.onEndTransition($.area, function(){
-                $.update({
-                    success: false
-                })
+                if ($.success){
+                    $.update({
+                        success: false
+                    })
+                }
+                $.root.style.display = "none";
             });
-        }
+        });
     };
 
     $.handleClickOutside = function(e){

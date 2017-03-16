@@ -4,12 +4,30 @@
         @extend .pos-abs;
         @extend .t-m;
         @extend .r-35;
+        @extend .md-mt-xs;
+        // @extend .borderRadius-xxxxl;
+        // @extend .boxShadow-close;
 
         .btn-primary-hover {
             .btn-badge {
                 @extend .scale-0;
             }
         }
+        // .btn {
+        //     @extend .bg-white;
+        //     box-shadow:1px 0 0 0 rgba(31,45,61,.08), 0 1px 0 0 rgba(31,45,61,.08), -1px 0 0 0 rgba(31,45,61,.08), 0 -1px 0 0 rgba(31,45,61,.08);
+        //
+        //     &:not(.btn-primary, :hover){
+        //         @extend .c-steel;
+        //     }
+        //     &:hover {
+        //         @extend .bg-blueBright;
+        //     }
+        //     &-primary {
+        //         @extend .c-white;
+        //         @extend .bg-blue;
+        //     }
+        // }
     }
     &__list {
         @include abs();
@@ -23,6 +41,7 @@
         }
         .main__button {
             @extend .l-30;
+            @extend .md-mt-xxs;
         }
         &__title {
             @extend .pos-abs;
@@ -33,18 +52,35 @@
             @extend .fontSize-16;
             @extend .fontWeight-8;
             @extend .text-uppercase;
+            @extend .visible-lg;
         }
         &__slider {
             @extend .pos-rel;
             @include accelerate(true);
             transform-origin:50% 0;
             @extend .willChange-transform;
-            width:1190px;
             transition:transform 0.5s $cubic40 0.1s;
 
+            .d-no-mobile & {
+                width:1190px;
+            }
+            .d-tablet & {
+                @extend .pos-centered;
+            }
+            .slider__item {
+                &:first-child {
+                    .d-tablet & {
+                        @extend .ml-xxs;
+                    }
+                }
+            }
             &[data-hidden="true"]{
                 transform:perspective(500px) scale(0.8);
                 transition:transform 0.6s $cubic645;
+
+                .d-tablet & {
+                    transform:perspective(500px) translate3d(-50%, -50%, 0) scale(0.8);
+                }
             }
         }
         &__shareButton {

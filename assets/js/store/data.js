@@ -140,6 +140,14 @@
                     }
                 });
             },
+            getItemsMenu: function(){
+                return _.map($.get(), function(item){
+                    return {
+                        _id: item._id,
+                        title: item.post
+                    }
+                });
+            },
             dropMenu: [
                 {
                     title: "Редактировать",

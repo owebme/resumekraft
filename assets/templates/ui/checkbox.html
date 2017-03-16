@@ -32,9 +32,9 @@
             if (!$.opts.group && !_.isBoolean($.opts.value) && $.opts.update && $.opts.cursor){
                 $.value = $.opts.cursor.get($.opts.update);
             }
-            // else if (_.isBoolean($.opts.value) && $.opts.value !== $.value){
-            //     $.value = $.opts.value;
-            // }
+            else if (_.isBoolean($.opts.value) && $.opts.value !== $.value){
+                $.value = $.opts.value;
+            }
         }
     });
 

@@ -120,13 +120,14 @@
     <div class="offer__premium__slider__item { showAnim : finish }" data-active={ finish } data-slide="finish">
         <div name="finishSlideAnim" class="offer__premium__slider__text" data-finish="true">
             <div class="offer__premium__slider__text__title">
-                <div><span class="larger">Спасибо,</span> за ваше внимание</div>
 
+                <div if={ opts.site }>Мне <span class="larger">не нужна</span> презентация</div>
                 <div if={ opts.site }>
-                    <div class="offer__premium__slider__text__subtitle">Попробовать премиальное резюме на разных платформах?</div>
-                    <a href="/premium/workflow/" class="btn btn-xl mt-m">Перейти на тест-драйв</a>
+                    <div class="offer__premium__slider__text__subtitle">Хочу пощупать продукт</div>
+                    <a href="/premium/workflow/" class="btn btn-xl mt-m text-uppercase">Перейти на тест-драйв</a>
                 </div>
 
+                <div if={ !opts.site }>Получите <span class="larger">престижную</span> работу</div>
                 <div if={ !opts.site } onClick={ onSuccess } onUpdate="none" class="btn btn-xl mt-m">Перейти на Premium</div>
 
                 <div onClick={ onRepeat } class="offer__premium__slider__repeat">

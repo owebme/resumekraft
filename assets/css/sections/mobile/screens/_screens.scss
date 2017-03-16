@@ -132,16 +132,16 @@
     }
     &__content {
         @include accelerate(true);
-        padding-left:18px;
-        padding-right:18px;
+        padding-left:5vw;
+        padding-right:5vw;
         @extend .pb70;
         @extend .c-blackLight;
         @extend .willChange-transform;
 
         &__fit {
-            margin-left:-18px;
-            margin-right:-18px;
-            width:calc(100% + 36px);
+            margin-left:-5vw;
+            margin-right:-5vw;
+            @extend .w100v;
         }
         .title {
             @extend .c-gray;

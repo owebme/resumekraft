@@ -1,14 +1,21 @@
 .inbox {
     @extend .bg-white;
-    @extend .h85v;
     @extend .text-left;
     @extend .borderRadius-xl;
     @extend .overflow-hidden;
 
+    &,
+    &__list,
+    &__content {
+        @extend .h85v;
+
+        .d-tablet & {
+            @extend .h80v;
+        }
+    }
     &__list {
         @extend .pos-rel;
         @extend .w100p;
-        @extend .h85v;
         @extend .c-steel;
         @extend .userSelect-none;
         border-right:1px solid $smokeLight;
@@ -155,7 +162,6 @@
         .d-no-phone & {
             @extend .pos-rel;
             @extend .w100p;
-            @extend .h85v;
             @extend .c-blackLight;
             @extend .section-scroll;
             @extend .overflow-hidden;

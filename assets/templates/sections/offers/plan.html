@@ -1,4 +1,4 @@
-<offer-plan class="oScreen" data-open="{ active }">
+<offer-plan class="oScreen" data-open="{ active }" style="display:none">
 
     <div class="bg-blue c-white pt-xl anim-group1 { app.device.isPhone ? 'pos-bl h50p w100p anim-bt-full' : 'pos-tl h100p w50p anim-lr-full' }">
 
@@ -59,14 +59,21 @@
 
     $.on("mount", function(){
         $.animate = new app.plugins.animate($.root);
+        if (app.metrika.get("offers.plan.show")){
+            $.unmount();
+        }
     });
 
     $.show = function(){
-        $.update({
-            active: true
-        })
-        $.animate.show();
-        app.metrika.set("offers.plan.show", true);
+        $.root.style.display = "block";
+
+        $afterlag.run(function(){
+            $.update({
+                active: true
+            })
+            $.animate.show();
+            app.metrika.set("offers.plan.show", true);
+        });
     };
 
     $.open = {
@@ -86,7 +93,10 @@
 
     $.hide = function(callback){
         $.active = false;
-        $.animate.hide(callback);
+        $.animate.hide(function(){
+            $.unmount();
+            if (_.isFunction(callback)) callback();
+        });
     };
 
 </script>

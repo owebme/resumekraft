@@ -85,11 +85,18 @@
   @if ($ct-line-dasharray) {
     stroke-dasharray: $ct-line-dasharray;
   }
+  .ct-series-b & {
+      stroke-dasharray: 8px;
+  }
 }
 
 @mixin ct-chart-area($ct-area-opacity: $ct-area-opacity) {
   stroke: none;
   fill-opacity: $ct-area-opacity;
+
+  .ct-series-b & {
+      fill-opacity: $ct-area-opacity * 1.5;
+  }
 }
 
 @mixin ct-chart-bar($ct-bar-width: $ct-bar-width) {
@@ -105,8 +112,13 @@
 @mixin ct-chart-series-color($color) {
   .#{$ct-class-point}, .#{$ct-class-line}, .#{$ct-class-bar}, .#{$ct-class-slice-donut} {
     stroke: $color;
+    opacity: $ct-line-opacity;
   }
-
+  &.ct-series-b {
+      .#{$ct-class-point}, .#{$ct-class-line}, .#{$ct-class-bar}, .#{$ct-class-slice-donut} {
+          opacity: $ct-line-opacity * 2.6;
+      }
+  }
   .#{$ct-class-slice-pie}, .#{$ct-class-area} {
     fill: $color;
   }
@@ -133,6 +145,7 @@
     @include ct-align-justify(flex-start, flex-start);
     // Fallback for browsers that don't support foreignObjects
     text-anchor: start;
+    white-space:nowrap;
   }
 
   .#{$ct-class-label}.#{$ct-class-vertical}.#{$ct-class-start} {

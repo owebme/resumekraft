@@ -7,6 +7,7 @@ global.notify = require('gulp-notify');
 global.riot = require('gulp-riot');
 global.rename = require('gulp-rename');
 global.uglify = require('gulp-uglify');
+global.order = require('gulp-order');
 global.concat = require('gulp-concat');
 global.px2vw = require('gulp-px2vw');
 global.px2rem = require('gulp-px2rem');
@@ -94,7 +95,7 @@ gulp.task('jobs.js.build', gulp.parallel('jobs.libs', 'jobs.app', 'jobs.template
 
 gulp.task('public.js.mobile', gulp.parallel('public.libs.mobile', 'public.app.mobile', 'public.templates.mobile'));
 
-gulp.task('private.js.build', gulp.parallel('private.libs', 'private.app', 'private.templates', 'private.sections.templates', 'private.modules.templates', 'private.resume.templates', 'private.ui.templates', 'private.commons', 'private.plugins'));
+gulp.task('private.js.build', gulp.parallel('private.libs', 'private.root.templates', 'private.sections.templates', 'private.modules.templates', 'private.resume.templates', 'private.ui.templates', 'private.commons', 'private.plugins'));
 
 gulp.task('premium.js.build', gulp.parallel('premium.app', 'premium.templates', 'premium.ui.templates', 'premium.editable.templates', 'premium.components.templates', 'premium.sections.templates', 'premium.control.templates'));
 
@@ -102,11 +103,13 @@ gulp.task('build', gulp.series(
 	gulp.parallel(
 		'css.build',
 		gulp.series('public.js.mobile', 'public.app.build.mobile'),
-		gulp.series('private.js.build', 'private.app.build'),
+		gulp.series('private.js.build', 'private.templates', 'private.app', 'private.app.build'),
 		gulp.series('premium.js.build', 'premium.app.build'),
 		gulp.series('jobs.js.build', 'jobs.app.build')
 	)
 ));
+
+// gulp.task('build', gulp.series('private.app.build'));
 
 gulp.task('preview', gulp.series(
 	'preview.css',
@@ -119,6 +122,6 @@ gulp.task('public', gulp.series(
 ));
 
 gulp.task('dev', gulp.series(
-	gulp.parallel('private.css', 'private.app', 'premium.css'),
+	gulp.parallel('private.css', 'premium.css'),
 	gulp.parallel('serve', 'watch')
 ));

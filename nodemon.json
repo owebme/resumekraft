@@ -10,6 +10,10 @@
       "/SERVER.js"
   ],
   "ignore" : [
+      "/assets/js/*.*",
+      "/assets/js/**/*.*",
+      "/assets/templates/*.html",
+      "/assets/templates/**/*.html",
       "/public/templates/**/*.html"
   ]
 }

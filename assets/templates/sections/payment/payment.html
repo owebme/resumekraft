@@ -1,4 +1,4 @@
-<section-payment class="oScreen zIndex-3 { showAnim : active }" data-color="dark" data-open={ active }>
+<section-payment class="oScreen zIndex-3 { showAnim : active }" data-color="dark" data-open={ active } style="display:none">
 
     <div onClick={ hide } onUpdate="none" class="anim anim-rl" data-duration="l" delay-show="m">
         <div class="button__close opacity-50" data-color="white"></div>
@@ -58,10 +58,14 @@
         if (period && period != $.period){
             $.period = period;
         }
-        $.update({
-            active: true
-        })
-        app.metrika.set("payment.show", true);
+        $.root.style.display = "block";
+
+        $afterlag.run(function(){
+            $.update({
+                active: true
+            })
+            app.metrika.set("payment.show", true);
+        });
     };
 
     $.change = {
@@ -87,6 +91,10 @@
             active: false
         })
         app.metrika.set("payment.hide", true);
+
+        _.onEndTransition($.root, function(){
+            $.root.style.display = "none";
+        });
     };
 
 </script>

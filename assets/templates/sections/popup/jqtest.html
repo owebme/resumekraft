@@ -17,6 +17,12 @@
 
     var $ = this;
 
+    $.on("mount", function(){
+        if (app.metrika.get("offers.popup.jqtest.show")){
+            $.unmount();
+        }
+    });
+
     $.show = function(){
         if ($.active) return;
 

@@ -1,4 +1,4 @@
-<resume-stat class="resume__stat" data-open="{ active }">
+<resume-stat class="resume__stat" data-open="{ active }" data-empty="{ isEmpty }">
 
     <div class="resume__stat__wrapper" name="wrapper">
 
@@ -6,15 +6,42 @@
 
         <div class="resume__stat__header container">
             <div class="row">
-                <div class="col-md-18 col-lg-19">
+                <div class="col-md-8">
                     <div onClick={ open.changeResume } onUpdate="none" class="resume__stat__title">
-                        <div class="resume__stat__title__value">{ $store.data.get(0).post }</div>
+                        <div class="resume__stat__title__value">{ item.get('post') }</div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-5 text-left pt-xs pl-l md-pl-m">
-                    <div class="btn-group">
-                        <button class="btn btn-s btn-upper btn-primary">2 недели</button>
-                        <button class="btn btn-s btn-upper btn-primary-hover">месяц</button>
+                <div class="col-md-16">
+                    <div class="resume__stat__tabs row">
+                        <div class="resume__stat__tab col-md-8" data-tab="hits" data-balloon="Просмотры за все время" data-balloon-pos="down">
+                            <div class="resume__stat__tab__counts">
+                                <div class="resume__stat__tab__icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><path d="M91.842,48.836C83.613,33.192,67.581,23.474,50,23.474S16.387,33.192,8.158,48.836c-0.383,0.729-0.383,1.599,0,2.328  C16.386,66.808,32.419,76.525,50,76.525s33.614-9.718,41.842-25.361C92.225,50.435,92.225,49.565,91.842,48.836z M50,71.525  c-15.278,0-29.251-8.214-36.781-21.525C20.749,36.688,34.722,28.474,50,28.474S79.251,36.688,86.781,50  C79.251,63.312,65.278,71.525,50,71.525z M52.015,35.132c-1.866-0.244-3.675-0.143-5.375,0.246c-0.536,0.123-0.826,0.69-0.594,1.188  c0.615,1.323,0.87,2.845,0.625,4.449c-0.49,3.209-3.035,5.842-6.229,6.418c-1.471,0.265-2.881,0.11-4.138-0.36  c-0.503-0.188-1.044,0.138-1.127,0.669c-0.328,2.1-0.234,4.338,0.544,6.683c1.989,5.997,7.449,10.355,13.765,10.566  c9.263,0.309,16.724-7.782,15.35-17.241C63.886,41.21,58.569,35.989,52.015,35.132z"/></svg>
+                                </div>
+                                <div class="resume__stat__tab__count">{ all && all.hits ? all.hits : 0 }</div>
+                            </div>
+                            <div class="resume__stat__tab__title">все просмотры</div>
+                            <div class="resume__stat__tab__line"></div>
+                        </div>
+                        <div class="resume__stat__tab col-md-8" data-tab="visits" data-balloon="Посетители за все время" data-balloon-pos="down">
+                            <div class="resume__stat__tab__counts">
+                                <div class="resume__stat__tab__icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125" x="0px" y="0px"><path d="M51.07,54.12s5.64-.09,5.29-15,6.51-17.35,9.07-18.32C72.89,18,76.63,22.5,76.63,22.5c8.64-.8,11,8.64,10,19.38S91.43,54.3,91.43,54.3c-4.05,4.14-12.6,3.88-12.6,3.88v1h0V62a2.19,2.19,0,0,0,1,1.84l.26.16c3,1.57,9.16,3.2,9.28,3.26a32.57,32.57,0,0,1,5.85,2.21,7,7,0,0,1,4,5.66V83.9H71.27V74.62a11.11,11.11,0,0,0-4-8.62c-1.23-1-2.47-2-3.7-2.88A2.19,2.19,0,0,0,63.85,62V58.27C54,58.35,51.07,54.12,51.07,54.12Zm15.57,20.5a6.53,6.53,0,0,0-2.36-5A106.53,106.53,0,0,0,46.55,58L41.8,83.9H66.65ZM21,45.34a14.94,14.94,0,0,0,1.81,5v4.47L32.66,62,29,66.71l2.49,4L29.51,83.9h8.42L36,70.72l2.49-4L34.77,62l9.88-7.18V50.34a14.94,14.94,0,0,0,1.81-5c.71-.06,1.65-1.06,2.66-4.63,1.33-4.72,0-5.55-1.2-5.5,3-13.83-4.75-13.87-4.75-13.87-.65-2.89-4.77-5.91-8.6-5.11s-11.75-.11-11.75-.11A3.73,3.73,0,0,0,24.14,19c-6.95,4.24-5.35,13.57-4.73,16.25-1.18,0-2.41.91-1.11,5.5C19.32,44.28,20.26,45.28,21,45.34ZM20.89,58A106.54,106.54,0,0,0,3.15,69.57a6.53,6.53,0,0,0-2.36,5V83.9H25.64Z"/></svg>
+                                </div>
+                                <div class="resume__stat__tab__count">{ all && all.visits ? all.visits : 0 }</div>
+                            </div>
+                            <div class="resume__stat__tab__title">все посетители</div>
+                        </div>
+                        <div class="resume__stat__tab col-md-8">
+                            <div class="chart__radial__labels">
+                                <div class="chart__radial__label">
+                                    <div class="chart__radial__label__color" style="background-color:#0084ff"></div>&nbsp; — &nbsp;<span class="chart__radial__label__title">просмотры</span>
+                                </div>
+                                <div class="chart__radial__label">
+                                    <div class="chart__radial__label__color" style="background-color:#f05b4f"></div>&nbsp; — &nbsp;<span class="chart__radial__label__title">посетители</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -27,7 +54,8 @@
                     <div class="chart__radial trY-l" name="chartRadialEl"></div>
                 </div>
                 <div class="col-md-18">
-                    <div class="resume__stat__chart" name="chart"></div>
+                    <div class="resume__stat__chart__empty">Резюме ещё не просматривали, когда начнуться просмотры, здесь появится статистика</div>
+                    <div class="resume__stat__chart" name="chartEl"></div>
                 </div>
             </div>
         </div>
@@ -45,6 +73,29 @@
 
     $.offer = $.tags["resume-stat-offer"];
 
+    var counts = [5, 9, 7, 8, 5, 3, 5, 4, 5, 9, 7, 8, 5, 3, 5, 4, 5, 9, 7, 8, 5, 3, 5, 4];
+
+    $.default = function(){
+        return {
+            all: {
+                visits: _.random(50, 150),
+                hits: _.random(200, 400)
+            },
+            visits: {
+                labels: ["26 сен", "27 сен", "28 сен", "29 сен", "30 сен", "1 окт", "2 окт", "26 сен", "27 сен", "28 сен", "29 сен", "30 сен", "1 окт", "2 окт"],
+                counts: counts,
+                hits: _.map(counts, function(num){
+                    return num * _.random(2, 7);
+                })
+            },
+            devices: {
+                desktop: _.random(5, 87),
+                tablet: _.random(5, 87),
+                phone: _.random(5, 87)
+            }
+        }
+    };
+
     $.on("mount", function(){
         $scope.on('swipeUp', function(){
             $.hide();
@@ -57,36 +108,102 @@
         $.chartRadial.render([
             {
                 title: "настольные ПК",
-                value: _.random(5, 87)
-            },
-            {
-                title: "планшеты",
-                value: _.random(5, 87)
+                value: 0
             },
             {
                 title: "мобильные телефоны",
-                value: _.random(5, 87)
+                value: 0
+            },
+            {
+                title: "планшеты",
+                value: 0
             }
         ]);
-        // $afterlag.m(function(){
-        //     $.show("58a2297fb6489dcd76c463f2");
-        // })
     });
 
-    $.init = function(){
+    $.show = function(id, callback){
+        if (!id || $.active) return;
 
-        var chart = new Chartist.Line($.chart,
+        $.active = true;
+
+        $.update({
+            isEmpty: false,
+            item: $store.data.select({"_id": id})
+        })
+
+        _.onEndTransition($.wrapper, function(){
+            if ($account.get('plan') == 'premium'){
+                $store.visits.request(id).then(function(data){
+                    $.render(data);
+                },
+                function(){
+                    $.hide();
+                });
+            }
+            else {
+                $.render($.default());
+                $.offer.show();
+            }
+        });
+
+        $.callback = callback;
+    };
+
+    $.open = {
+        changeResume: function(e){
+            $DropMenu.show({
+                id: $.item.get("_id"),
+                elem: $$(e.currentTarget),
+                pos: "down-right",
+                offset: {
+                    left: -20
+                },
+                isSelect: true,
+                menu: $store.data.getItemsMenu(),
+                callback: function(id){
+                    $.update({
+                        item: $store.data.select({"_id": id})
+                    })
+                    $store.visits.request(id).then(function(data){
+                        $.render(data);
+                    });
+                }
+            });
+        }
+    };
+
+    $.render = function(data){
+        if (!data){
+            data = $.default();
+            $.update({
+                all: null,
+                isEmpty: true
+            })
+        }
+        else {
+            $.update({
+                all: data.all,
+                isEmpty: false
+            })
+        }
+
+        if (data.visits.counts.length == 1){
+            data.visits.labels.unshift("");
+            data.visits.counts.unshift(0);
+            data.visits.hits.unshift(0);
+        }
+
+        $.chart = new Chartist.Line($.chartEl,
             {
-                labels: ["26 сен", "27 сен", "28 сен", "29 сен", "30 сен", "1 окт", "2 окт", "26 сен", "27 сен", "28 сен", "29 сен", "30 сен", "1 окт", "2 окт"],
-                series: [
-                    [5, 9, 7, 8, 5, 3, 5, 4, 5, 9, 7, 8, 5, 3, 5, 4, 5, 9, 7, 8, 5, 3, 5, 4]
-                ]
+                labels: data.visits.labels,
+                series: [data.visits.hits, data.visits.counts]
             },
             {
                 showArea: true,
                 showLine: true,
-                showPoint: true,
+                showPoint: false,
                 fullWidth: true,
+                low: 0,
                 axisY: {
                     showLabel: true,
                     showGrid: true,
@@ -99,11 +216,11 @@
             }
         );
 
-        chart.on('draw', function(data){
+        $.chart.on('draw', function(data){
             if (data.type === 'line' || data.type === 'area'){
                 data.element.animate({
                     d: {
-                        begin: 2000 * data.index,
+                        begin: data.index == 0 ? 500 : 750 * data.index,
                         dur: 2000,
                         from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
                         to: data.path.clone().stringify(),
@@ -113,53 +230,7 @@
             }
         });
 
-        $.chartRadial.render([_.random(5, 87), _.random(5, 87), _.random(5, 87)]);
-    };
-
-    $.show = function(id, callback){
-        if (!id || $.active) return;
-
-        $.active = true;
-
-        $.update({
-            item: $store.data.select({"_id": id})
-        })
-
-        _.onEndTransition($.wrapper, function(){
-            $.init();
-            if ($account.get('plan') != 'premium'){
-                $.offer.show();
-            }
-        });
-
-        $.callback = callback;
-    };
-
-    $.open = {
-        changeResume: function(e){
-            $DropMenu.show({
-                id: "1",
-                elem: $$(e.currentTarget),
-                pos: "down-right",
-                offset: {
-                    left: -20
-                },
-                isSelect: true,
-                menu: [
-                    {
-                        _id: "1",
-                        title: "Web-Designer, Art-director, Illustrator"
-                    },
-                    {
-                        _id: "2",
-                        title: "Менеджер по продажам"
-                    }
-                ],
-                callback: function(id){
-                    console.dir(id);
-                }
-            });
-        }
+        $.chartRadial.render([data.devices.desktop, data.devices.phone, data.devices.tablet]);
     };
 
     $.close = function(){
@@ -168,10 +239,13 @@
 
     $.hide = function(){
         $.update({
-            active: false,
-            animate: false
+            active: false
         });
         if (_.isFunction($.callback)) $.callback();
+
+        _.onEndTransition($.wrapper, function(){
+            $.chart.svg._node.parentNode.removeChild($.chart.svg._node);
+        });
     };
 
 </script>

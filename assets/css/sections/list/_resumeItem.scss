@@ -3,7 +3,6 @@
     @extend .pos-rel;
     @extend .bg-white;
     @extend .mlr-xss;
-    @extend .md-mlr-xs;
     @extend .mb-l;
     @extend .borderRadius-xl;
     @include accelerate(true);
@@ -13,6 +12,11 @@
     will-change:box-shadow, transform;
     transition:box-shadow .4s, transform .4s;
 
+    .d-tablet & {
+        @extend .ml30;
+        @extend .mr30;
+        @extend .mb0;
+    }
     .m-no-touch &:hover {
         // box-shadow:0 5px 40px rgba(0,0,0,.16);
         // box-shadow:0 20px 40px rgba(0,0,0,.16);
@@ -185,7 +189,7 @@
             @extend .opacity-100;
         }
         &[data-active="true"] {
-            .resume__item__control__inbox__badge {
+            .resume__item__inbox__badge {
                 @extend .scale-100;
             }
         }
@@ -306,6 +310,7 @@
     }
     &__title {
         @extend .fontSize-22;
+        @extend .pr-xs;
         @extend .fontWeight-bold;
         @extend .mb-xs;
         @include textEllipsis(100%, 56px, 2);

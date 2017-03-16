@@ -1,4 +1,4 @@
-<photo-upload class="oScreen zIndex-10" data-color="blue" data-open="{ active }">
+<photo-upload class="oScreen zIndex-10" data-color="blue" data-open="{ active }" style="display:none">
 
     <div if={ !uploaded } class="pos-rel visible-sm visible-xs anim anim-fadeIn zIndex-1 { animated : active }" data-duration="s" delay-show="xs">
         <div onClick={ hide } onUpdate="none" class="button__close" data-color="white"></div>
@@ -115,10 +115,14 @@
 
         if (options) $.init(options, true);
 
-        $.update({
-            active: true,
-            uploaded: false,
-            callback: callback ? callback : null
+        $.root.style.display = "block";
+
+        $afterlag.run(function(){
+            $.update({
+                active: true,
+                uploaded: false,
+                callback: callback ? callback : null
+            });
         });
 
         if (!app.device.isPhone){
@@ -163,6 +167,9 @@
         $.update({
             active: false
         })
+        _.onEndTransition($.root, function(){
+            $.root.style.display = "none";
+        });
     };
 
 </script>

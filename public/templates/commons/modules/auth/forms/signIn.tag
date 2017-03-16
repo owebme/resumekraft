@@ -173,6 +173,9 @@
     };
 
     $.close = function(){
+        $.animate.hide(function(){
+            $.root.setAttribute("data-active", false);
+        });
         $.parent.close();
     };
 

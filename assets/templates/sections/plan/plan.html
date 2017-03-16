@@ -1,10 +1,10 @@
-<section-plan class="oScreen zIndex-3 { showAnim-group1 : active }" data-color="dark" data-open={ active }>
+<section-plan class="oScreen zIndex-3 { showAnim-group1 : active }" data-color="dark" data-open={ active } style="display:none">
 
     <div class="anim-group1 anim-rl" data-duration="l" delay-show="m">
         <div onClick={ close } class="button__close opacity-50" data-color="white"></div>
     </div>
 
-    <div name="popup" class="pos-centered" style="width:984px; height:636px">
+    <div name="popup" class="pos-centered perspective-1000" style="width:984px; height:636px">
         <div class="rows h100p bg-white borderRadius-xl text-left anim-group1 anim-bt-soft" duration-show="s" duration-hide="xs" delay-show="xs">
             <div class="row flex-row-center-stretch h100p">
                 <div class="col-md-16">
@@ -177,18 +177,22 @@
             $.period = period;
         }
 
-        $.update({
-            active: true
-        })
-        if (!$.ready){
-            _.onEndTransition($.root, function(){
-                $.update({
-                    animate: true
-                })
-                $.init();
-            });
-        }
-        app.metrika.set("plan.show", true);
+        $.root.style.display = "block";
+
+        $afterlag.run(function(){
+            $.update({
+                active: true
+            })
+            if (!$.ready){
+                _.onEndTransition($.root, function(){
+                    $.update({
+                        animate: true
+                    })
+                    $.init();
+                });
+            }
+            app.metrika.set("plan.show", true);
+        });
     };
 
     $.init = function(){
@@ -271,6 +275,9 @@
         $.update({
             active: false
         })
+        _.onEndTransition($.root, function(){
+            $.root.style.display = "none";
+        });
     };
 
 </script>

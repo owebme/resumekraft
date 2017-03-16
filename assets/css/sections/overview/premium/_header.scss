@@ -1,4 +1,4 @@
-.premium__header {
+.ovpremium__header {
     @extend .pos-rel;
     @extend .w100p;
     @extend .h100v;
@@ -8,13 +8,13 @@
     @extend .transform-default;
     @extend .zIndex-1;
 }
-.premium__header__overlay {
+.ovpremium__header__overlay {
     @include abs();
     @extend .opacity-0;
     @extend .willChange-opacity;
     background-color:rgba(#000,.18);
 }
-.premium__header__layers {
+.ovpremium__header__layers {
     @include abs();
     @extend .overflow-hidden;
 
@@ -24,7 +24,7 @@
         height:842px;
     }
 }
-.premium__header__layer {
+.ovpremium__header__layer {
     @include accelerate();
     @extend .pos-abs;
     @extend .t0;
@@ -43,70 +43,70 @@
     &1 {
         transform:translate3d(-645px, -70px, 0px);
 
-        .premium__header__layer__iphone__screen {
+        .ovpremium__header__layer__iphone__screen {
             background-image:url("/public/images/promo/premium/header/screen1_large_2x.png");
         }
     }
     &2 {
         transform:translate3d(-323px, -245px, 0px);
 
-        .premium__header__layer__iphone__screen {
+        .ovpremium__header__layer__iphone__screen {
             background-image:url("/public/images/promo/premium/header/screen2_large_2x.png");
         }
     }
     &3 {
         transform:translate3d(0px, -110px, 0px);
 
-        .premium__header__layer__iphone__screen {
+        .ovpremium__header__layer__iphone__screen {
             background-image:url("/public/images/promo/premium/header/screen3_large_2x.png");
         }
     }
     &4 {
         transform:translate3d(582px, 466px, 0px);
 
-        .premium__header__layer__ipad__screen {
+        .ovpremium__header__layer__ipad__screen {
             background-image:url("/public/images/promo/premium/header/screen4_large_2x.png");
         }
     }
     &5 {
         transform:translate3d(-645px, 567px, 0px);
 
-        .premium__header__layer__iphone__screen {
+        .ovpremium__header__layer__iphone__screen {
             background-image:url("/public/images/promo/premium/header/screen5_large_2x.png");
         }
     }
     &6 {
         transform:translate3d(-323px, 392px, 0px);
 
-        .premium__header__layer__iphone__screen {
+        .ovpremium__header__layer__iphone__screen {
             background-image:url("/public/images/promo/premium/header/screen6_large_2x.png");
         }
     }
     &7 {
         transform:translate3d(0px, 527px, 0px);
 
-        .premium__header__layer__iphone__screen {
+        .ovpremium__header__layer__iphone__screen {
             background-image:url("/public/images/promo/premium/header/screen7_large_2x.png");
         }
     }
     &8 {
         transform:translate3d(323px, -175px, 0px);
 
-        .premium__header__layer__iphone__screen {
+        .ovpremium__header__layer__iphone__screen {
             background-image:url("/public/images/promo/premium/header/screen8_large_2x.png");
         }
     }
     &9 {
         transform:translate3d(645px, -268px, 0px);
 
-        .premium__header__layer__iphone__screen {
+        .ovpremium__header__layer__iphone__screen {
             background-image:url("/public/images/promo/premium/header/screen9_large_2x.png");
         }
     }
     &10 {
         transform:translate3d(-323px, 1126px, 0px);
 
-        .premium__header__layer__iphone__screen {
+        .ovpremium__header__layer__iphone__screen {
             background-image:url("/public/images/promo/premium/header/screen10_large_2x.png");
         }
     }
@@ -147,15 +147,15 @@
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx), (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi){
-    .premium__header__layer__iphone {
+    .ovpremium__header__layer__iphone {
         background-image:url("/public/images/promo/premium/hardware/hardware_full_silver_large_2x.png");
     }
-    .premium__header__layer__ipad {
+    .ovpremium__header__layer__ipad {
         background-image:url("/public/images/promo/premium/hardware/hero_hardware_ipad_large_2x.png");
     }
 }
 @media only screen and (max-width: $w1024){
-    .premium__header__layer {
+    .ovpremium__header__layer {
         &1 {transform:translate3d(-500px, 50px, 0px);}
         &2 {transform:translate3d(-252px, -95px, 0px);}
         &3 {transform:translate3d(0px, -187px, 0px);}
@@ -167,7 +167,7 @@
         &9 {transform:translate3d(500px, -126px, 0px);}
         &10 {transform:translate3d(-252px, 974px, 0px);}
     }
-    .premium__header__layer__iphone {
+    .ovpremium__header__layer__iphone {
         width:282px;
         height:522px;
         background-size:282px 522px;
@@ -181,7 +181,7 @@
             transform:translate(40px, 75px);
         }
     }
-    .premium__header__layer__ipad {
+    .ovpremium__header__layer__ipad {
         width:668px;
         height:925px;
         background-size:668px 925px;
@@ -197,7 +197,7 @@
     }
 }
 @media only screen and (max-width: $w767){
-    .premium__header__layer {
+    .ovpremium__header__layer {
         &1 {transform:translate3d(-173px, -18px, 0px);}
         &2 {transform:translate3d(-173px, 276px, 0px);}
         &3 {transform:translate3d(0px, 28px, 0px);}
@@ -209,7 +209,7 @@
         &9 {transform:translate3d(-173px, 896px, 0px);}
         &10 {transform:translate3d(173px, 520px, 0px);}
     }
-    .premium__header__layer__iphone {
+    .ovpremium__header__layer__iphone {
         width:193px;
         height:340px;
         background-size:193px 340px;
@@ -223,7 +223,7 @@
             transform:translate(37px, 64px);
         }
     }
-    .premium__header__layer__ipad {
+    .ovpremium__header__layer__ipad {
         width:415px;
         height:571px;
         background-size:415px 571px;

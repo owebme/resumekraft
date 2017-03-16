@@ -1,4 +1,4 @@
-<section-tutorial class="tutorial" data-open="{ active }" data-animate={ false : app.device.isMobile || options.animate === false } active-zone="{ step.activeZone }">
+<section-tutorial class="tutorial" data-open="{ active }" data-animate={ false : app.device.isMobile || options.animate === false } active-zone="{ step.activeZone }" style="display:none">
 
     <div class="tutorial__shape" name="shape" style="{ step.style }" data-figure={ step.figure }></div>
 
@@ -140,15 +140,20 @@
 
             $.trigger("messageHide");
 
-            $.nextStep();
+            $.root.style.display = "block";
 
-            var reRender = _.debounce($.render, 100);
+            $.afterlag(function(){
 
-            app.$dom.window.on("resize.tutorial", function(){
-                reRender(true);
+                $.nextStep();
+
+                var reRender = _.debounce($.render, 100);
+
+                app.$dom.window.on("resize.tutorial", function(){
+                    reRender(true);
+                });
+
+                if ($.options.keyboard) $.navigate.init();
             });
-
-            if ($.options.keyboard) $.navigate.init();
         }
         else {
             console.log("Not found tutorial: " + tutorial);
@@ -195,6 +200,10 @@
         $.step = $.cursor.get().call();
         $.target = $.scope.find($.step.target);
 
+        if ($.step.target && !$.target.length){
+            $.changeStep("right");
+            return;
+        }
         if ($.start || !$.start && !$.beforeTarget){
             $.message.position = $.step.position;
             $.message.title = $.step.title;
@@ -409,6 +418,7 @@
             $.reset();
             $.update();
             $.trigger("hideAfterAnimate");
+            $.root.style.display = "none";
         });
         $.afterlag(function(){
             $.actions($.step, $.target, true);

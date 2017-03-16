@@ -27,7 +27,6 @@
             @extend .c-blue;
             @extend .lineHeight-xxxxl;
             @extend .letterSpacing--xl;
-            // @extend .fontWeight-8;
             font-size:45px;
 
             &.large {
@@ -36,8 +35,6 @@
             }
             &.main {
                 font-size:48px;
-                // letter-spacing:-2.5px;
-                // @extend .fontWeight-8;
             }
         }
         h2 {
@@ -160,7 +157,8 @@
                 top:157px;
                 left:169px;
                 width:318px;
-                height:565px;
+                height:566px;
+                @extend .overflow-hidden;
             }
         }
         &[data-color="black"]{
@@ -171,8 +169,33 @@
                 top:158px;
                 left:172px;
                 width:316px;
-                height:561px;
+                height:562px;
+                @extend .overflow-hidden;
             }
+        }
+    }
+    &__swipe__hand {
+        @extend .flex-centered;
+        @extend .w100p;
+
+        &__icon,
+        &__text {
+            @extend .w50p;
+        }
+        &__icon {
+            @extend .flex-centered;
+            @extend .h100;
+
+            &[data-arrow="right"]{
+                &:after {
+                    @extend .content-empty;
+                    @extend .display-block;
+                    @include ui-icon("swipeRight", 104px, 104px);
+                }
+            }
+        }
+        &__text {
+            @extend .flex-row-left-center;
         }
     }
 }

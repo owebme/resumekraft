@@ -275,6 +275,16 @@ $i:0;
         color:$white;
     }
 }
+.btn-brown-hover-success {
+    @extend .c-white;
+    @extend .bg-brown;
+    box-shadow:0 0 0 1px $brown;
+
+    &:hover {
+        @extend .bg-green;
+        box-shadow:0 0 0 1px $green;
+    }
+}
 .btn-white-hover-primary:hover {
     background-color:$blue;
 }

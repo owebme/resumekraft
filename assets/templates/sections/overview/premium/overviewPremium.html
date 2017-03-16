@@ -31,9 +31,9 @@
         $.loader = $.tags["oscreen-loader"];
     });
 
-    // $.on("mount", function(){
-    //     $.show();
-    // });
+    $.on("mount", function(){
+        if (!app.device.isSafari) $.show();
+    });
 
     $.show = function(){
         if ($.loading || $.active) return;
@@ -41,6 +41,7 @@
         $.loader.show(
             {
                 scope: $.scroll,
+                forceShow: true,
                 content: $.content,
                 tag: function(){
                     return $.section = riot.mount($.content, "overview-premium-content", {
@@ -55,15 +56,34 @@
                         container: $.content
                     });
 
+                    var $scope = $$($.content);
+
                     tag.scrollFix.init();
 
                     $afterlag.run(function(){
                         app.features.premium.init($.scroll, $.content);
                     });
 
+                    tag.screens = [];
+
+                    $scope.find(".screens").each(function(i){
+                        var screen = new app.plugins.screens(this, {
+                            vertical: this.getAttribute("data-vertical") == "true" ? true : false,
+                            mousewheel: false,
+                            phoneEmulate: true,
+                            play: {
+                                run: i * 1,
+                                round: this.getAttribute("data-round") == "true" ? true : false
+                            }
+                        });
+                        screen.init();
+                        screen.marquee.disableKeyboard();
+                        tag.screens.push(screen);
+                    });
+
                     $.buttons = {
-                        mouth: $$($.content).find(".successPlanMonth"),
-                        year: $$($.content).find(".successPlanYear")
+                        mouth: $scope.find(".successPlanMonth"),
+                        year: $scope.find(".successPlanYear")
                     };
 
                     $.buttons.mouth.one("click", function(e){
@@ -74,11 +94,15 @@
                     });
 
                     $root.focus("overview");
-                    // tag.scroll.scrollTop($$(tag.root).find("#section").offset().top);
+
+                    $$($.scroll).scrollTop($scope.find("#section").offset().top);
                 },
                 beforeUnmount: function(tag){
                     app.features.premium.destroy();
                     tag.scrollFix.destroy();
+                    _.each(tag.screens, function(screen){
+                        screen.destroy();
+                    });
                 }
             }
         );
@@ -97,6 +121,7 @@
 
     $.close = function(){
         app.metrika.set("overview.premium.hide", true);
+        $.hide();
     };
 
     $.hide = function(callback){

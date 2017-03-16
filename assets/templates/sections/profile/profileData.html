@@ -1,9 +1,9 @@
-<section-profile-data class="oScreen zIndex-100 { showAnim : active }" data-open={ active }>
+<section-profile-data class="oScreen zIndex-100 { showAnim : active }" data-open={ active } style="display:none">
 
     <div class="pos-centered">
         <div class="container anim anim-bt-ease" duration-show="s" duration-hide="xs" delay-show="xs">
             <div class="row">
-                <div name="wrapper" class="col-md-15 centered">
+                <div name="wrapper" class="col-md-18 col-lg-15 centered">
                     <div onClick={ hide } onUpdate="none" class="button__close" data-color="gray"></div>
                     <div name="content" class="pos-rel maxH-95v overflow-hidden section-scroll bg-white borderRadius-xl zIndex-1">
                         <profile-data-content class="display-block pt70 pb100 pl45 pr45 text-left fontSize-20 c-gray willChange-transform" style={ 'padding-top:130px' : !$account.get("name").length || !$account.get("surname").length }></profile-data-content>
@@ -44,10 +44,15 @@
     $.show = function(){
         $.data.set($account.deepClone());
         //$.firstShow = true;
-        $.update({
-            active: true
-        })
-        $.scroll.refresh();
+
+        $.root.style.display = "block";
+
+        $afterlag.run(function(){
+            $.update({
+                active: true
+            })
+            $.scroll.refresh();
+        });
     };
 
     $.commit = {
@@ -69,6 +74,10 @@
             active: false
         })
         $.firstShow = false;
+
+        _.onEndTransition($.root, function(){
+            $.root.style.display = "none";
+        });
     };
 
     $.handleClickOutside = function(e){

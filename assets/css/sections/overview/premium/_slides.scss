@@ -66,7 +66,7 @@
             left:210px;
             width:854px;
             height:739px;
-            background-image:url('/public/images/promo/premium/slide6_1.jpg');
+            background-image:url('/public/images/promo/premium/slide6_1.png');
             -webkit-mask-size:854px 739px;
             -webkit-mask-image:url('/public/images/promo/premium/slide6_1_mask.svg');
         }
@@ -81,7 +81,7 @@
     }
     .slide7 {
         &__wrapper {
-            height:1433px;
+            height:1493px;
             @extend .zIndex-0;
         }
         &__container {
@@ -130,6 +130,21 @@
         width:729px;
         height:874px;
         background-image:url('/public/images/promo/premium/slide8_1.jpg');
+
+        &__viewport {
+            @extend .pos-centered-h;
+            top:94px;
+            @extend .bg-white;
+            width:635px;
+            @extend .h90p;
+            @extend .overflow-hidden;
+        }
+        &__screen {
+            @include accelerate(true);
+            @extend .pos-tl;
+            @extend .w100p;
+            @extend .willChange-transform;
+        }
     }
     .slide9 {
         &__wrapper {
@@ -141,15 +156,50 @@
             width:1380px;
             height:1140px;
             transform:translateX(-110px);
-            background-image:url('/public/images/promo/premium/slide9_1.jpg');
+            background-image:url('/public/images/promo/premium/slide9_1.png');
+        }
+        &__viewport {
+            @extend .pos-abs;
+            top:165px;
+            left:219px;
+            width:980px;
+            height:736px;
+            @extend .overflow-hidden;
+
+            &__screen {
+                @extend .pos-tl;
+                @extend .w100p;
+            }
         }
     }
     .slide10-1 {
-        @extend .pos-tr;
+        @extend .pos-tl;
+        width:1969px;
+        height:1060px;
         @extend .bg-cover;
-        width:804px;
-        height:944px;
         background-image:url('/public/images/promo/premium/slide10_1.jpg');
-        transform:translate3d(143px, 80px, 0);
+        transform:translate3d(-590px, 0, 0);
+
+        &__wrapper {
+            @extend .pos-rel;
+            @extend .w100p;
+            height:1060px;
+            @extend .mt--xl;
+        }
+    }
+    .slide11-1 {
+        @extend .pos-centered;
+        width: 1144px;
+        height: 973px;
+        @extend .bg-cover;
+        background-image:url('/public/images/promo/premium/slide_finish.jpg');
+
+        &__wrapper {
+            @extend .pos-rel;
+            @extend .w100p;
+            height: 973px;
+            margin-bottom:-340px;
+            margin-top:90px;
+        }
     }
 }

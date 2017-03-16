@@ -101,6 +101,7 @@
                         filterId: id,
                         items: id == "all" ? $store.inbox.get() : $store.inbox.getItemsByResumeId(id)
                     })
+                    $.scroll.refresh();
                 }
             });
         }
@@ -111,6 +112,15 @@
             afterHide: function(){
                 if ($.viewedList.length){
                     $Sections.navbar.update();
+                    app.request("setInboxViewed", {
+                        ids: $.viewedList
+                    }, {
+                        notify: false,
+                        loader: false
+                    })
+                    .then(function(){
+                        $.viewedList = [];
+                    });
                 }
                 if (_.isFunction(callback)) callback();
             }

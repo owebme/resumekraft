@@ -36,7 +36,7 @@ module.exports = function() {
 							password: password,
 							init: {
 								plan: plan,
-								device: req.device,
+								device: req.device && req.device.type,
 								location: location,
 							}
 						}), function(err, data){

@@ -29,13 +29,14 @@
                 vertical: true,
                 screens: '.screen',
                 effect: this.options.vertical === false ? 'space' : 'light',
-                mousewheel: this.options.vertical === false ? false : true,
+                mousewheel: this.options.vertical === false ? false : this.options.mousewheel !== undefined ? this.options.mousewheel : true,
                 spaceClass: this.options.vertical === false ? 'horizontal__space' : 'vertical__space',
                 longClass: this.options.vertical === false ? false : 'screen--long',
                 contentClass: this.options.vertical === false ? false : 'screen__content',
                 hideSections: true,
                 navPrev: this.options.navPrev,
         		navNext: this.options.navNext,
+                phoneEmulate: this.options.phoneEmulate,
                 duration: this.options.vertical === false ? (app.device.isPhone ? 375 : 450) : 500,
             }
 
@@ -55,6 +56,7 @@
             });
 
             this.marquee = options.static ? app.plugins.marqueeStatic(this.scope, options) : app.plugins.marquee(this.scope, options);
+
             this.marquee.enable();
 
             this.marquee.scroll.on('scrollEnd', function(){
@@ -64,6 +66,11 @@
             if (screen !== undefined) this.nav(screen, 0);
 
             if (app.device.isMobile) this.embeds();
+
+            if (this.options.play){
+                this.play = new app.plugins.marquee.playScreens(this, this.options.play);
+                this.play.init();
+            }
 
             this.active = true;
         },
@@ -145,6 +152,9 @@
             this.scope.off();
             this.marquee.scroll.off();
             this.marquee.destroy();
+            if (this.playScreens){
+                this.playScreens.destroy();
+            }
             $dom.window.off('resize.screens');
             this.active = false;
         }

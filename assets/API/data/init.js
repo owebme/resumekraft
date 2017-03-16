@@ -47,7 +47,7 @@ module.exports = function() {
 						delete result.account.metrika;
 						delete result.account.log;
 
-	                    app.errHandler(res, err, result, callback);
+	                   	app.errHandler(res, err, result, callback);
 	                });
 				}
 				else {

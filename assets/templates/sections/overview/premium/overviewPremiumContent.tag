@@ -1,41 +1,41 @@
 <overview-premium-content class="overview-premium">
 
-    <section class="premium__header">
-        <div class="premium__header__layers">
-            <div class="premium__header__layers__wrapper">
-                <div class="premium__header__layer premium__header__layer__iphone premium__header__layer1">
-                    <div class="premium__header__layer__iphone__screen"></div>
+    <section class="ovpremium__header">
+        <div class="ovpremium__header__layers">
+            <div class="ovpremium__header__layers__wrapper">
+                <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer1">
+                    <div class="ovpremium__header__layer__iphone__screen"></div>
                 </div>
-                <div class="premium__header__layer premium__header__layer__iphone premium__header__layer2">
-                    <div class="premium__header__layer__iphone__screen"></div>
+                <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer2">
+                    <div class="ovpremium__header__layer__iphone__screen"></div>
                 </div>
-                <div class="premium__header__layer premium__header__layer__iphone premium__header__layer3">
-                    <div class="premium__header__layer__iphone__screen"></div>
+                <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer3">
+                    <div class="ovpremium__header__layer__iphone__screen"></div>
                 </div>
-                <div class="premium__header__layer premium__header__layer__ipad premium__header__layer4">
-                    <div class="premium__header__layer__ipad__screen"></div>
+                <div class="ovpremium__header__layer ovpremium__header__layer__ipad ovpremium__header__layer4">
+                    <div class="ovpremium__header__layer__ipad__screen"></div>
                 </div>
-                <div class="premium__header__layer premium__header__layer__iphone premium__header__layer5">
-                    <div class="premium__header__layer__iphone__screen"></div>
+                <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer5">
+                    <div class="ovpremium__header__layer__iphone__screen"></div>
                 </div>
-                <div class="premium__header__layer premium__header__layer__iphone premium__header__layer6">
-                    <div class="premium__header__layer__iphone__screen"></div>
+                <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer6">
+                    <div class="ovpremium__header__layer__iphone__screen"></div>
                 </div>
-                <div class="premium__header__layer premium__header__layer__iphone premium__header__layer7">
-                    <div class="premium__header__layer__iphone__screen"></div>
+                <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer7">
+                    <div class="ovpremium__header__layer__iphone__screen"></div>
                 </div>
-                <div class="premium__header__layer premium__header__layer__iphone premium__header__layer8">
-                    <div class="premium__header__layer__iphone__screen"></div>
+                <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer8">
+                    <div class="ovpremium__header__layer__iphone__screen"></div>
                 </div>
-                <div class="premium__header__layer premium__header__layer__iphone premium__header__layer9">
-                    <div class="premium__header__layer__iphone__screen"></div>
+                <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer9">
+                    <div class="ovpremium__header__layer__iphone__screen"></div>
                 </div>
-                <div class="premium__header__layer premium__header__layer__iphone premium__header__layer10">
-                    <div class="premium__header__layer__iphone__screen"></div>
+                <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer10">
+                    <div class="ovpremium__header__layer__iphone__screen"></div>
                 </div>
             </div>
         </div>
-        <div class="premium__header__overlay"></div>
+        <div class="ovpremium__header__overlay"></div>
     </section>
 
     <section class="overview__section">
@@ -106,7 +106,9 @@
                     <small class="mb-l">Привлекательные цвета</small>
                     <h1 class="mb-l pt-m">Стильные и яркие цвета на выбор, легко сменить и настроить.</h1>
                     <div class="pt-l mb-xl inline">
-                        <svg class="mlr-xs" each={ color in colors } no-reorder xmlns="http://www.w3.org/2000/svg" style="width:48px; height:48px" viewBox="-9 11 40 40" enable-background="new -9 11 40 40"><path class="fill-{ color }" d="M28.808 48.704c1.36-1.385 2.192-3.065 2.192-5.058 0-1.984-1.616-3.736-2.433-5.489-1.712-3.697-1.735-6.617-1.735-7.153 0-.535.008-3.433 1.735-7.153.817-1.753 2.433-3.505 2.433-5.49 0-1.992-.832-3.673-2.192-5.057l-.088-.087c-1.392-1.377-3.08-2.217-5.08-2.217-1.983 0-3.735 1.616-5.487 2.432-3.705 1.721-6.625 1.737-7.161 1.737-.536 0-3.448.008-7.144-1.737-1.752-.832-3.504-2.432-5.488-2.432-1.992 0-3.672.832-5.056 2.192l-.104.104c-1.368 1.385-2.2 3.073-2.2 5.065 0 1.984 1.616 3.736 2.432 5.489 1.729 3.721 1.736 6.625 1.736 7.153 0 .527-.024 3.441-1.736 7.153-.808 1.762-2.432 3.506-2.432 5.49 0 1.992.832 3.673 2.192 5.058l.087.088c1.385 1.368 3.073 2.208 5.073 2.208 1.984 0 3.784-1.521 5.488-2.433 3.704-1.712 6.632-1.736 7.151-1.736.521 0 3.417.016 7.152 1.736 1.705.912 3.504 2.433 5.49 2.433 1.991 0 3.672-.832 5.063-2.201l.112-.095z"></path></svg>
+                        <div class="ovpremium__colors">
+                            <overview-premium-color each={ color in colors } no-reorder color={ color }></overview-premium-color>
+                        </div>
                         <script>
                             this.colors = ['red', 'orange', 'green', 'emerald', 'blue', 'blueLight', 'violet', 'violetLight', 'brown', 'pink'];
                         </script>
@@ -118,17 +120,17 @@
         <div class="slide5-1 bg-cover anim anim-scale-soft"></div>
     </section>
 
-    <section class="overview__section bg-snow pb-xl mb0">
+    <section class="overview__section bg-snow pb-xl mb0 overflow-visible">
         <div class="container pt-xl">
             <div class="row pt-l">
                 <div class="col-md-10 text-left zIndex-1">
                     <small class="mb-l">Доступная статистика</small>
                     <h1 class="mb-l pt-l">Отслеживате просмотры вашего резюме.</h1>
                     <p class="pb-l">Какой бы iPad Pro вы ни выбрали, для него есть клавиатура Smart Keyboard.2 Сочетание новых технологий и материалов позволило нам создать компактную и удивительно тонкую клавиатуру, которая также служит прочной и лёгкой обложкой. А благодаря интерфейсу Smart Connector вы забудете о проводах, разъёмах и необходимости создавать пару. Просто присоедините клавиатуру и начинайте работать.</p>
-                    <div class="chart__radial mt-m anim anim-scale-soft" name="chartRadialEl"></div>
+                    <div class="chart__radial mt-m anim anim-scale-soft" name="chartRadialEl"  data-delta="s"></div>
                     <small class="pos-bl w100p" style="transform:translate3d(280px, 140px, 0); line-height:38px;">Какой бы iPad Pro вы ни выбрали, для него есть клавиатура Smart Keyboard. Какой бы iPad Pro вы ни выбрали, для него есть клавиатура Smart Keyboard.</small>
                 </div>
-                <div class="slide6__wrapper col-md-14 anim anim-rl-soft" data-duration="xl">
+                <div class="slide6__wrapper col-md-14 anim anim-rl-soft" data-duration="xl"  data-delta="l">
                     <div class="slide6__container">
                         <div class="slide6-1 bg-cover"></div>
                         <div class="slide6-2 bg-cover"></div>
@@ -157,11 +159,15 @@
         </div>
     </section>
 
-    <section class="overview__section bg-snow pt-xl">
+    <section class="overview__section bg-snow pt-xl" id="section">
         <div class="container pt-l">
             <div class="row pt-m">
                 <div class="col-md-16 zIndex-0" style="height:874px">
-                    <div class="slide8-1 bg-cover anim anim-bt-soft"></div>
+                    <div class="slide8-1 bg-cover anim anim-bt-soft" data-delta="s">
+                        <div class="slide8-1__viewport">
+                            <img class="slide8-1__screen" src="/public/images/promo/premium/tablet_screen_big_blue.png">
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-8 pl0 pt-xl text-left zIndex-1">
                     <small class="mb-l mt-l">работайте на планшете</small>
@@ -172,7 +178,7 @@
         </div>
     </section>
 
-    <section class="overview__section text-left mb-xl">
+    <section class="overview__section text-left mb0">
         <div class="container">
             <div class="row mb-l">
                 <div class="col-md-12">
@@ -183,29 +189,52 @@
                 </div>
                 <div class="col-md-12">
                     <div class="w80 h2px bg-blue mt-xxs mb-l"></div>
-                    <p class="pt-m">Этому вопросу мы уделил особое внимание, чтобы просмотр и редактирование ваших резюме, с использованием мобильных устройств, были максимально удобным и комфортны.</p>
+                    <p class="pt-m">Этому моменту мы уделили особое внимание, чтобы просмотр и редактирование ваших резюме, с использованием мобильных устройств, были максимально удобными и комфортными.</p>
                 </div>
             </div>
             <div class="row pt-m">
                 <div class="col-md-12 anim anim-scale-soft">
                     <div class="overview__phone" data-align="left" data-color="white">
-                        <img src="/assets/images/promo/phone_screen1.png" class="overview__phone__screen">
+                        <div class="overview__phone__screen">
+                            <div class="screens screens-desktop" data-vertical="false" data-round="true">
+                                <div class="screen screen--active">
+                                    <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/mobile_office_screen1.png)"></div>
+                                </div>
+                                <div class="screen">
+                                    <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/mobile_office_screen2.png)"></div>
+                                </div>
+                                <div class="screen">
+                                    <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/mobile_office_screen3.png)"></div>
+                                </div>
+                                <div class="screen">
+                                    <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/mobile_inbox_screen.png)"></div>
+                                </div>
+                                <div class="screen">
+                                    <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/mobile_likes_screen.png)"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-12 pt-xl pr-xl">
-                    <h1 class="mt-xl">Web-приложение которое не нужно скачивать.</h1>
-                    <p class="pt-m">Просто заходите на сайт сервиса с любого доступного устройства и пользуйтесь им. Одинаково удобно и просмотр и редактирование.</p>
+                    <h1 class="mt-xl">Мобильный офис.</h1>
+                    <p class="pt-m">Просто заходите на наш сервис с любого доступного устройства и пользуйтесь им. Одинаково комфортно и просмотр и редактирование. Создавайте и управляйте своими резюме с любых доступных устройств.</p>
 
                     <div class="w80 h2px bg-blue mtb-xl"></div>
 
-                    <h3 class="mb-xs">Совместимость</h3>
-                    <p>Для продукции Apple отличная совместимость начиная с версии iOS 7 и девайсов от iPhone 3S до iPhone 7 и 7 Plus. Для девайсов под ОС Android отличная совместимость с версии Android 4.3.</p>
+                    <div class="overview__swipe__hand">
+                        <div class="overview__swipe__hand__icon" data-arrow="right"></div>
+                        <p class="overview__swipe__hand__text">Используйте свайп вправо для просмотра слайдов</p>
+                    </div>
+
+                    <!-- <h3 class="mb-xs">Совместимость</h3>
+                    <p>Для продукции Apple отличная совместимость начиная с версии iOS 7 и девайсов от iPhone 3S до iPhone 7 и 7 Plus. Для девайсов под ОС Android отличная совместимость с версии Android 4.3.</p> -->
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12 pt-xl pl-xl pr-l">
-                    <h1 class="mt-xl">Загрузить свое фото также легко.</h1>
-                    <p class="pt-m">Ваши музыкальные предпочтения постоянно меняются, и алгоритмы Apple Music это учитывают. Каждую неделю мы создаём плейлисты из песен, похожих на те, что вы слушаете.</p>
+                    <h1 class="mt-xl">Резюме на ладони.</h1>
+                    <p class="pt-m">100% мобильность, ваши работодатели будут приятно удивлены. Адаптация под большие и малые экраны смартфонов.</p>
 
                     <div class="w80 h2px bg-blue mtb-xl"></div>
 
@@ -214,31 +243,63 @@
                 </div>
                 <div class="col-md-12 anim anim-scale-soft">
                     <div class="overview__phone" data-align="right" data-color="white">
-                        <img src="/assets/images/promo/phone_screen2.png" class="overview__phone__screen">
+                        <div class="overview__phone__screen">
+                            <div class="pos-tl w100p pointerEvents-none zIndex-2 bg-cover" style="height:136px; background-image:url(/public/images/promo/premium/mobile_resume_nav.png)"></div>
+                            <div class="screens screens-desktop" data-vertical="true" data-round="true">
+                                <div each={ item, i in _.range(12) } no-reorder class="screen { screen--active : i == 0 }">
+                                    <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/mobile_resume_screen{ item + 1 }.png)"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12 anim anim-scale-soft">
                     <div class="overview__phone" data-align="left" data-color="white">
-                        <img src="/assets/images/promo/phone_screen3.png" class="overview__phone__screen">
+                        <div class="overview__phone__screen">
+                            <img src="/public/images/promo/premium/mobile_inbox_screen.png" class="w100p">
+                            <div class="ovpremium__inbox__pointer"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-12 pt-xl pr-xl">
-                    <h1 class="mt-xl pt-m">Ключевые навыки.</h1>
-                    <p class="pt-m">Найдите идеальный плейлист для любого занятия и настроения. Все миксы тщательно сведены — каждый трек плавно переходит в следующий.</p>
+                    <h1 class="mt-xl pt-m">Получайте приглашения.</h1>
+                    <p class="pt-m">Получайте приглашения и отклики, оценивайте эффективность своих резюме. Детальная статистика по дням</p>
 
                     <div class="w80 h2px bg-blue mtb-xl"></div>
 
                     <h3 class="mb-xs">Занятия</h3>
                     <p>Каждое занятие заслуживает своего саундтрека. Готовьте ужин, бегайте, танцуйте, занимайтесь спортом или отдыхайте под музыку, подобранную специально для этого.</p>
+
+                    <div class="ovpremium__inbox__items">
+                        <div class="ovpremium__inbox__item">
+                            <div class="ovpremium__inbox__item__circle boxShadow-3d-blue-strong bg-blue" data-color="blue">I</div>
+                        </div>
+                        <div class="ovpremium__inbox__item">
+                            <div class="ovpremium__inbox__item__circle boxShadow-3d-pink-strong bg-pink" data-color="pink">C</div>
+                        </div>
+                        <div class="ovpremium__inbox__item">
+                            <div class="ovpremium__inbox__item__circle boxShadow-3d-emerald-strong bg-emerald" data-color="emerald">F</div>
+                        </div>
+                        <div class="ovpremium__inbox__item">
+                            <div class="ovpremium__inbox__item__circle boxShadow-3d-blueLight-strong bg-blueLight" data-color="blueLight">Y</div>
+                        </div>
+                        <div class="ovpremium__inbox__item">
+                            <div class="ovpremium__inbox__item__circle boxShadow-3d-orange-strong bg-orange" data-color="orange">M</div>
+                        </div>
+                        <div class="ovpremium__inbox__item">
+                            <div class="ovpremium__inbox__item__circle boxShadow-3d-violetLight-strong bg-violetLight" data-color="violetLight">G</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row pb-xl">
+            <div class="row pt-l pb-xl">
                 <div class="col-md-12 pt-xl pl-xl pr-l">
                     <div class="pos-rel pt-m zIndex-1">
-                        <h1 class="mt-xl">Укажите силу ваших компетенций.</h1>
-                        <p class="pt-m">Ваши музыкальные предпочтения постоянно меняются, и алгоритмы Apple Music это учитывают. Каждую неделю мы создаём плейлисты из песен, похожих на те, что вы слушаете.</p>
+                        <small class="mt-xl mb-l nowrap">Расскажите о своих проектах</small>
+                        <h1 class="pt-l">Мое портфолио.</h1>
+                        <p class="pt-m">Есть собственные проекты? Расскажите о них, прикрепив фото и видео материалы</p>
 
                         <div class="w80 h2px bg-blue mtb-xl"></div>
 
@@ -247,18 +308,157 @@
                     </div>
                 </div>
                 <div class="slide9__wrapper col-md-12 anim anim-rl-soft" data-duration="xl">
-                    <div class="slide9-1 bg-cover"></div>
+                    <div class="slide9-1 bg-cover">
+                        <div class="slide9__viewport">
+                            <div class="screens screens-desktop" data-vertical="true" data-round="true">
+                                <div each={ item, i in _.range(8) } no-reorder class="screen { screen--active : i == 0 }">
+                                    <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/tablet_resume_screen{ item + 1 }.{ i == 0 ? 'jpg' : 'png' })"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12 anim anim-scale-soft">
                     <div class="overview__phone" data-align="left" data-color="white">
-                        <img src="/assets/images/promo/phone_screen3.png" class="overview__phone__screen">
+                        <div class="overview__phone__screen">
+                            <div class="screens screens-desktop" data-vertical="false">
+                                <div class="screen screen--active">
+                                    <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/mobile_hobby_screen1.png)"></div>
+                                </div>
+                                <div class="screen">
+                                    <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/mobile_hobby_screen2.png)"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-12 pt-xl pr-xl">
-                    <h1 class="mt-xl pt-m">Добавьте свои проекты.</h1>
-                    <p class="pt-m">Найдите идеальный плейлист для любого занятия и настроения. Все миксы тщательно сведены — каждый трек плавно переходит в следующий.</p>
+                    <h1 class="mt-xl pt-m">Поделитесь своими увлечениями.</h1>
+                    <p class="pt-m">Большинству работодателей интересно знать о ваших увлечениях и видеть список ваших хобби в резюме.</p>
+
+                    <div class="w80 h2px bg-blue mtb-xl"></div>
+
+                    <div class="ovpremium__hobby__items">
+                        <div class="ovpremium__hobby__item">
+                            <div class="ovpremium__hobby__item__icon icon-hobby icon-hobby-airplane"></div>
+                        </div>
+                        <div class="ovpremium__hobby__item">
+                            <div class="ovpremium__hobby__item__icon icon-hobby icon-hobby-comedy"></div>
+                        </div>
+                        <div class="ovpremium__hobby__item">
+                            <div class="ovpremium__hobby__item__icon icon-hobby icon-hobby-swimmer"></div>
+                        </div>
+                        <div class="ovpremium__hobby__item">
+                            <div class="ovpremium__hobby__item__icon icon-hobby icon-hobby-musical"></div>
+                        </div>
+                        <div class="ovpremium__hobby__item">
+                            <div class="ovpremium__hobby__item__icon icon-hobby icon-hobby-icehockey"></div>
+                        </div>
+                        <div class="ovpremium__hobby__item">
+                            <div class="ovpremium__hobby__item__icon icon-hobby icon-hobby-yoga"></div>
+                        </div>
+                        <div class="ovpremium__hobby__item">
+                            <div class="ovpremium__hobby__item__icon icon-hobby icon-hobby-decoration"></div>
+                        </div>
+                        <div class="ovpremium__hobby__item">
+                            <div class="ovpremium__hobby__item__icon icon-hobby icon-hobby-skateboarding"></div>
+                        </div>
+                        <div class="ovpremium__hobby__item">
+                            <div class="ovpremium__hobby__item__icon icon-hobby icon-hobby-mindgames"></div>
+                        </div>
+                        <div class="ovpremium__hobby__item">
+                            <div class="ovpremium__hobby__item__icon icon-hobby icon-hobby-cyclist"></div>
+                        </div>
+                        <div class="ovpremium__hobby__item">
+                            <div class="ovpremium__hobby__item__icon icon-hobby icon-hobby-boxing"></div>
+                        </div>
+                        <div class="ovpremium__hobby__item">
+                            <div class="ovpremium__hobby__item__icon icon-hobby icon-hobby-rockclimbing"></div>
+                        </div>
+                    </div>
+                    <!-- <h3 class="mb-xs">Занятия</h3>
+                    <p>Каждое занятие заслуживает своего саундтрека. Готовьте ужин, бегайте, танцуйте, занимайтесь спортом или отдыхайте под музыку, подобранную специально для этого.</p> -->
+                </div>
+            </div>
+            <div class="row mt-l pt-xl pl-xl pb-xl">
+                <div class="col-md-12 pt-m pb35 pr-l">
+                    <div class="pos-rel zIndex-1">
+                        <h1>Укажите силу ваших компетенций.</h1>
+                        <p class="pt-m">Расскажите о своих навыках, наглядно показав свои компетенции.</p>
+
+                        <div class="w80 h2px bg-blue mtb-xl"></div>
+
+                        <h3 class="mb-xs">Микс из новой музыки</h3>
+                        <p class="mb-m">Мало найти новую музыку. Главное, чтобы она вам понравилась. Каждую пятницу наши кураторы составляют плейлист из новых композиций — приятный сюрприз к выходным.</p>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="w80 h2px bg-blue mtb-xl"></div>
+                    <div class="ovpremium__tags__items pb-m">
+                        <div class="ovpremium__tags__item">Adobe Photoshop</div>
+                        <div class="ovpremium__tags__item">InDesign</div>
+                        <div class="ovpremium__tags__item">Illustrator</div>
+                        <div class="ovpremium__tags__item">Sketch App</div>
+                        <div class="ovpremium__tags__item">MS PowerPoint</div>
+                        <div class="ovpremium__tags__item">HTML5</div>
+                        <div class="ovpremium__tags__item">JavaScript</div>
+                        <div class="ovpremium__tags__item">jQuery</div>
+                        <div class="ovpremium__tags__item">UI/UX</div>
+                    </div>
+                    <div class="ovpremium__progress__items mt-l">
+                        <div class="ovpremium__progress__item">
+                            <div class="ovpremium__progress__title">Креативность</div>
+                            <div class="ovpremium__progress__score">90%</div>
+                            <div class="ovpremium__progress__line" style="width:90%">
+                                <div class="ovpremium__progress__line__peg"></div>
+                            </div>
+                        </div>
+                        <div class="ovpremium__progress__item">
+                            <div class="ovpremium__progress__title">Управление проектами</div>
+                            <div class="ovpremium__progress__score">95%</div>
+                            <div class="ovpremium__progress__line" style="width:95%">
+                                <div class="ovpremium__progress__line__peg"></div>
+                            </div>
+                        </div>
+                        <div class="ovpremium__progress__item">
+                            <div class="ovpremium__progress__title">Графический дизайн</div>
+                            <div class="ovpremium__progress__score">79%</div>
+                            <div class="ovpremium__progress__line" style="width:79%">
+                                <div class="ovpremium__progress__line__peg"></div>
+                            </div>
+                        </div>
+                        <div class="ovpremium__progress__item">
+                            <div class="ovpremium__progress__title">Векторная графика</div>
+                            <div class="ovpremium__progress__score">86%</div>
+                            <div class="ovpremium__progress__line" style="width:86%">
+                                <div class="ovpremium__progress__line__peg"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-m">
+                <div class="col-md-12 anim anim-scale-soft">
+                    <div class="overview__phone" data-align="left" data-color="white">
+                        <div class="overview__phone__screen">
+                            <div class="screens screens-desktop" data-vertical="false">
+                                <div class="screen screen--active">
+                                    <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/mobile_salary_screen1.png)"></div>
+                                </div>
+                                <div class="screen">
+                                    <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/mobile_salary_screen2.png)">
+                                        <div class="ovpremium__salary__pointer"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 pt-xl pr-xl">
+                    <h1 class="mt-xl pt-m">Покажите желаемый график заработной платы.</h1>
+                    <p class="pt-m">Выстраивайте желаемый график заработной платы на ближайшие 2 года. Любому работодателю будут интересны ваши абции по данному вопросу.</p>
 
                     <div class="w80 h2px bg-blue mtb-xl"></div>
 
@@ -269,18 +469,18 @@
         </div>
     </section>
 
-    <section class="overview__section pt-m mb-l">
-        <div class="container pt-xxs">
-            <div class="row pb-l">
-                <div class="col-md-10 pb-xl text-left zIndex-1">
-                    <div class="pb-xl pr-l">
-                        <small class="mb-l nowrap">адаптация под ноутбуки и лаптопы</small>
-                        <h1 class="mb-l pt-l">Одинаково удобно на любом экране.</h1>
-                        <p>iCloud хранит ваш контент и предоставляет вам доступ к музыке, фотографиям, календарям, контактам и документам, независимо от того, каким устройством вы пользуетесь. С iCloud Drive вы можете безопасно хранить свои презентации, электронные таблицы, файлы PDF, изображения и любые другие документы в iCloud и открывать их со своего iPhone, iPad, iPod touch, Mac или PC.</p>
-                    </div>
+    <section class="overview__section mb50 pt-xl text-left">
+        <div class="container">
+            <div class="row pl-xl">
+                <div class="col-md-12 pt55 pr-m zIndex-1">
+                    <small class="mb-l nowrap">Найдите работу своей мечты</small>
+                    <h1 class="mb-l pt-l">Создайте лучшее резюме.</h1>
+                    <p>Премиальное резюме позволит найти работу вашей мечты. Совершенно по-новому позволит обратить внимание на вашу кандидатуру. Яркое резюме поможет быстрее найти работу вашей мечты.</p>
                 </div>
-                <div class="col-md-14 anim anim-bt-soft">
-                    <div class="slide10-1 bg-cover"></div>
+                <div class="col-md-12 anim anim-rl-soft" data-duration="xl">
+                    <div class="slide10-1__wrapper">
+                        <div class="slide10-1 bg-cover"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -290,21 +490,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-22 col-lg-17 centered">
-                    <small class="mb-l nowrap">демонстрация адаптивности</small>
-                    <h2 class="mb-l anim anim-lr-soft" data-delta="s">Хотите потрогать и протестировать премиальное резюме на разных платформах?</h2>
+                    <small class="mb-l nowrap">демонстрация резюме</small>
+                    <h2 class="mb-l plr-l anim anim-scale-soft" data-delta="s">Хотите перейти на тест-драйв премиального резюме на разных платформах?</h2>
                     <div class="row premium-devices-icons ptb-m">
                         <div class="col-sm-8 anim anim-lr anim-delay-xs" data-delta="s">
-                            <icon-device-phones color="blue" size="xl"></icon-device-phones>
+                            <icon-device-phones color="gray" size="xl"></icon-device-phones>
                         </div>
                         <div class="col-sm-8 anim anim-scale" data-delta="s">
-                            <icon-device-desktop color="green" size="xl"></icon-device-desktop>
+                            <icon-device-desktop color="blue" size="xl"></icon-device-desktop>
                         </div>
                         <div class="col-sm-8 anim anim-bt anim-delay-s" data-delta="s">
-                            <icon-device-tablet color="blue" size="xl"></icon-device-tablet>
+                            <icon-device-tablet color="gray" size="xl"></icon-device-tablet>
                         </div>
                     </div>
                     <div class="anim anim-scale" data-delta="s">
-                        <a target="_blank" href="/premium/workflow" class="btn btn-success btn-upper btn-xl">Перейти на тест-драйв</a>
+                        <a target="_blank" href="/premium/workflow" class="btn btn-default-hover-success btn-upper btn-xl">Перейти на тест-драйв</a>
                     </div>
                 </div>
             </div>
@@ -314,10 +514,13 @@
     <section class="overview__section mb0">
         <div class="container">
             <div class="row">
-                <div class="col-md-offset-4 col-md-16 anim anim-lr-soft" data-delta="s">
-                    <h1 class="mb-m pt-xs">Как начать.</h1>
-                    <p class="pb-xl mb-m pb-m">Вы можете выбрать ежемесячную подписку или оплатить на год с приличной скидкой.</p>
+                <div class="col-md-offset-4 col-md-16 anim anim-scale-soft" data-delta="s">
+                    <h1 class="mb-m pt-xs">Начать легко и доступно.</h1>
+                    <p>Вы можете выбрать ежемесячную подписку или на год с приличной скидкой.</p>
                 </div>
+            </div>
+            <div class="slide11-1__wrapper anim anim-bt-soft" data-duration="xl">>
+                <div class="slide11-1 bg-cover"></div>
             </div>
         </div>
         <div class="pos-rel nowrap" style="height:555px">
@@ -336,6 +539,9 @@
                     <div class="anim anim-scale-soft" data-delta="s">
                         <div class="c-white fontWeight-8 textShadow-light mb-m" style="font-size:100px; line-height:100px; letter-spacing:-1.4px">1,769 ₽</div>
                         <button class="btn btn-white-hover btn-upper btn-xl successPlanYear">подключить</button>
+                    </div>
+                    <div class="ovpremium__sale">
+                        <div class="ovpremium__sale__badge anim anim-scale-soft" data-delta="s" data-delay="s">-60%</div>
                     </div>
                 </div>
             </div>

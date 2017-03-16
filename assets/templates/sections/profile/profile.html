@@ -11,7 +11,7 @@
                 <div class="row profile__header">
                     <div class="col-md-16">
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-10 flex-centered">
                                 <div onClick={ open.changePhoto } onUpdate="none" if={ $account.get('photo') } class="user__photo">
                                     <div class="user__photo__image" style="background-image:url({ $account.get('photo') })"></div>
                                 </div>
@@ -89,7 +89,7 @@
                         <div class="title c-gray fontWeight-bold fontSize-28 mb30 opacity-80" data-icon="phone">
                             Ваш баланс
                         </div>
-                        <div class="{ parseInt($account.get('balance')) < 369 ? 'c-blue' : 'c-green' } fontSize-34 fontWeight-8 mb-m">{ _.numberFormat($account.get('balance'), 1, ",", ",") } ₽</div>
+                        <div class="{ parseInt($account.get('balance')) < 369 ? 'c-grayDarken' : 'c-green' } fontSize-34 fontWeight-8 mb-m">{ _.numberFormat($account.get('balance'), 1, ",", ",") } ₽</div>
                         <button onClick={ open.payment } onUpdate="none" class="btn btn-balance btn-l btn-success">Пополнить</button>
                     </div>
                 </div>

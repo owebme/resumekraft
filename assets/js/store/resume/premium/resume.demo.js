@@ -156,7 +156,7 @@ $store.demo = {
                 {
                     _id: "4",
                     year: "2013",
-                    title: "SalesHR",
+                    title: "SalesVR",
                     text: "ModPerl, catching on server side, JS (jQuery), bootstrap, fontawesome.",
                     links: {
                         url: {
@@ -176,7 +176,7 @@ $store.demo = {
                 {
                     _id: "5",
                     year: "2012",
-                    title: "UpleSEO",
+                    title: "UpleCEO",
                     text: "Perl, JS (jQuery), bootstrap, fontawesome, connection APIs: YandexMetrica, YandexWebmaster, Sape, eTXT.",
                     links: {
                         url: {
@@ -196,7 +196,7 @@ $store.demo = {
                 {
                     _id: "6",
                     year: "2010",
-                    title: "UpleCMS",
+                    title: "UpleCRM",
                     text: "Idea, design UI/UX, Perl, JS (jQuery), connection API YandexDirect. 18 modules.",
                     links: {
                         url: {

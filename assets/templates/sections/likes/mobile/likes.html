@@ -7,7 +7,7 @@
         <div class="screenMobile__navbar" data-gradient="white">
             <div onClick={ close } onUpdate="none" class="screenMobile__nav__close"></div>
             <div class="screenMobile__nav__title maxW-70p text-truncate">Все лайки</div>
-            <div onClick={ open.dropMenu } onUpdate="none" class="screenMobile__nav__options"></div>
+            <div class="screenMobile__nav__options"></div>
         </div>
         <div name="content" class="section-scroll section__content">
             <div class="willChange-transform pt65" style="padding-bottom:230px">
@@ -64,34 +64,24 @@
             $Sections.plan.show("premium");
             app.metrika.set("offers.inbox.success", true);
         },
-        dropMenu: function(e){
-            $DropMenu.show({
-                id: "all",
-                elem: $$(e.currentTarget),
-                pos: "down-left",
-                offset: {
-                    left: 10
-                },
-                isSelect: true,
-                menu: [
-                    {
-                        _id: "all",
-                        title: "Все лайки"
-                    },
-                    {
-                        _id: "1",
-                        title: "Web-Designer, Art-director, Illustrator"
-                    },
-                    {
-                        _id: "2",
-                        title: "Менеджер по продажам"
-                    }
-                ],
-                callback: function(id){
-                    console.dir(id);
-                }
-            });
-        }
+        // dropMenu: function(e){
+        //     $DropMenu.show({
+        //         id: "all",
+        //         elem: $$(e.currentTarget),
+        //         pos: "down-left",
+        //         offset: {
+        //             left: 10
+        //         },
+        //         isSelect: true,
+        //         menu: _.getItemsMenu().unshift({
+        //             _id: "all",
+        //             title: "Все лайки"
+        //         }),
+        //         callback: function(id){
+        //             console.dir(id);
+        //         }
+        //     });
+        // }
     };
 
     $.close = function(){

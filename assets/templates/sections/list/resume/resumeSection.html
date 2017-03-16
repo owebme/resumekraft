@@ -105,14 +105,14 @@
                 </div>
             </div>
 
-            <div if={ item && item.get('plan') == "free" } onClick={ open.offer } onUpdate="none" class="resume__section__circle__button" data-icon="crown">
+            <div if={ item && item.get('plan') == "free" && $account.get("plan") != "premium" } onClick={ open.offer } onUpdate="none" class="resume__section__circle__button" data-icon="crown">
                 <div class="resume__section__circle__button__text">
                     <div class="resume__section__circle__button__subtitle">premium</div>
                     <div class="resume__section__circle__button__title">Сделать резюме привлекательней</div>
                 </div>
             </div>
 
-            <div if={ item && item.get('plan') == "premium" } onClick={ open.stat } onUpdate="none" class="resume__section__circle__button" data-icon="stat">
+            <div if={ (item && item.get('plan') == "premium") || $account.get("plan") == "premium" } onClick={ open.stat } onUpdate="none" class="resume__section__circle__button" data-icon="stat">
                 <div class="resume__section__circle__button__text">
                     <div class="resume__section__circle__button__title">
                         <span class="nowrap">Смотреть статистику</span> просмотров
@@ -142,9 +142,6 @@
         $.el.on('swipeDown', function(){
             $.hide();
         });
-        // $afterlag.run(function(){
-        //     $.show("58a2297fb6489dcd76c463f2");
-        // });
     });
 
     $.show = function(id, callback){
@@ -160,7 +157,7 @@
                 $.active = true;
                 $Sections.resume.preview.change($.item.get('template'));
 
-                if ($.item.get('plan') == "free" && !app.metrika.get("offers.popup.premium.show")){
+                if ($.item.get('plan') == "free" && !app.metrika.get("offers.popup.premium.show") && $Sections.popup && $Sections.popup.premium){
                     $afterlag.xl(function(){
                         $Sections.popup.premium.show().then(function(){
                             if ($.active){
@@ -194,10 +191,12 @@
             app.metrika.set("resume.create.control.photo", true);
         },
         offer: function(){
-            $.root.setAttribute("data-hidden", true);
-            $Sections.offers.premium.show(function(){
-                $.root.setAttribute("data-hidden", false);
-            })
+            if ($Sections.offers && $Sections.offers.premium){
+                $.root.setAttribute("data-hidden", true);
+                $Sections.offers.premium.show(function(){
+                    $.root.setAttribute("data-hidden", false);
+                })
+            }
         },
         stat: function(){
             $Sections.resume.stat.show($.item.get('_id'));

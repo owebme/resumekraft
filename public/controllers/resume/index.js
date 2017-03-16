@@ -37,6 +37,7 @@ module.exports = function(mode){
                     });
                 }
                 else if (mode == "view" && resume.plan == "free" && resume.public){
+                    addHits(resume._id, req);
                     res.render('resumeView', {
                         post: resume.post,
                         resume: JSON.stringify(resume),
@@ -47,6 +48,7 @@ module.exports = function(mode){
                     });
                 }
                 else if (mode == "view" && resume.plan == "premium" && resume.public){
+                    addHits(resume._id, req);
                     res.render('premiumView', {
                         color: resume.config.color,
                         ip: req.clientIP,
@@ -60,6 +62,23 @@ module.exports = function(mode){
                 }
             });
         }
+    }
+
+    function addHits(id, req){
+        app.db.collection('resumesVisits').update({
+            "_id": app.utils.ObjectId(id)
+        },{
+            $push: {
+                visits: {
+                    ua: req.headers['user-agent'],
+                    ip: req.clientIP,
+                    device: req.device.type,
+                    date: new Date()
+                }
+            }
+        }, {
+            upsert: true
+        });
     }
 
     function handlerResult(req, res, data){

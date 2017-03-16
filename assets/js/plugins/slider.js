@@ -45,9 +45,10 @@
         render: function(){
             var _this = this;
 
+            this.sizeSlider = this.slider.width();
             this.firstSlide = this.slider.find(".slider__item:first");
             this.widthSlide = this.firstSlide.width();
-            this.cnt = Math.floor((app.sizes.width < 1190 ? app.sizes.width : 1190) / this.widthSlide);
+            this.cnt = Math.floor((app.sizes.width < this.sizeSlider ? app.sizes.width : this.sizeSlider) / this.widthSlide);
             if (!this.cnt || app.device.isPhone) this.cnt = 1;
 
             if (this.cnt == 1 && !this.scope.hasClass("largeSlides")){
@@ -107,9 +108,10 @@
         },
 
         navUpdate: function(){
-            var l = this.slider.find(".slider__item").length;
+            var l = this.slider.find(".slider__item").length,
+                max = parseInt(Math.floor(this.sizeSlider / this.slider.find(".slider__item").width()));
 
-            if (this.cnt > 1 && l < 4 || this.cnt == 1 && l == "1"){
+            if (this.cnt > 1 && l < max + 1 || this.cnt == 1 && l == "1"){
                 this.nav.next.addClass('slider__nav--hidden');
             }
             else {

@@ -1,4 +1,4 @@
-<section-inbox class="oScreen { showAnim-group1 : active }" data-open={ active }>
+<section-inbox class="oScreen { showAnim-group1 : active }" data-open={ active } style="display:none">
 
     <div class="anim-group1 anim-rl" data-duration="l" delay-show="m">
         <div class="button__close" data-color="white"></div>
@@ -7,7 +7,7 @@
     <div class="pos-centered">
         <div class="container">
             <div class="row">
-                <div name="wrapper" class="col-md-20 centered">
+                <div name="wrapper" class="col-md-24 col-lg-20 centered">
                     <div name="popup" class="inbox anim-group1 anim-bt-ease" duration-show="s" duration-hide="xs" delay-show="xs">
                         <div class="row">
                             <div class="col-md-8">
@@ -75,18 +75,21 @@
 
         if (!$.item) $.id = null;
 
-        $.active = true;
+        $.root.style.display = "block";
 
-        $.update();
+        $afterlag.run(function(){
+            $.active = true;
+            $.update();
 
-        $.scroll.list.refresh();
-        $.scroll.content.refresh();
+            $.scroll.list.refresh();
+            $.scroll.content.refresh();
 
-        if ($account.get('plan') != 'premium'){
-            _.onEndTransition($.popup, function(){
-                $.offer.show();
-            });
-        }
+            if ($account.get('plan') != 'premium'){
+                _.onEndTransition($.popup, function(){
+                    $.offer.show();
+                });
+            }
+        });
     };
 
     $.onSelect = function(){
@@ -107,7 +110,19 @@
 
         if ($.viewedList.length){
             $Sections.resume.list.update();
+            app.request("setInboxViewed", {
+                ids: $.viewedList
+            }, {
+                notify: false,
+                loader: false
+            })
+            .then(function(){
+                $.viewedList = [];
+            });
         }
+        _.onEndTransition($.root, function(){
+            $.root.style.display = "none";
+        });
     };
 
     $.on("updated", function(){

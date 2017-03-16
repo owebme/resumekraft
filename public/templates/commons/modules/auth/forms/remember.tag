@@ -1,6 +1,6 @@
-<auth-remember class="section auth { showAnim : animate }" data-active={ active } data-form="remember">
+<auth-remember class="section auth" data-active="false" data-form="remember">
 
-    <form method="post" action="/auth" class="auth__form anim anim-scale{ '-zoom' : app.device.isPhone }" duration-show="m" duration-hide="{ app.device.isPhone ? 's' : 'm' }">
+    <form ref="form" method="post" action="/auth" class="auth__form anim-group1 anim-scale{ '-zoom' : app.device.isPhone }" duration-show="m" duration-hide="{ app.device.isPhone ? 's' : 'm' }">
         <input type="hidden" name="logined" value="true">
         <div if={ !app.device.isPhone } class="auth__close">
             <div onClick={ close } onUpdate="none" class="auth__close__button"></div>
@@ -27,19 +27,22 @@
 
     $.active = false;
 
+    $.on("mount", function(){
+        $.form = $$($.refs.form);
+        $.animate = new app.plugins.animate($.root);
+    });
+
     $.on("updated", function(){
-        if (!$.active && $.animate){
-            $.update({
-                animate: false
-            })
+        if (!$.active && $.animate.active){
+            $.root.setAttribute("data-active", false);
+            $.animate.hide();
         }
     });
 
     $.open = function(){
-        $.update({
-            active: true,
-            animate: true
-        })
+        $.active = true;
+        $.root.setAttribute("data-active", true);
+        $.animate.show();
     };
 
     $.onKeydown = function(e){
@@ -48,11 +51,13 @@
     };
 
     $.openAuth = function(){
-        $.animate = false;
         $.parent.tags["auth-form"].open();
     };
 
     $.close = function(){
+        $.animate.hide(function(){
+            $.root.setAttribute("data-active", false);
+        });
         $.parent.close();
     };
 

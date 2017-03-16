@@ -2,7 +2,9 @@ app.plugins.marquee = function($frame, settings){
 	var $screens = $frame.find(settings.screens),
 		$fake = $('<div class="'+settings.spaceClass+'" />').prependTo($frame),
 		screens = [],
-		effect = app.plugins.marqueeEffects()[settings.effect],
+		effect = app.plugins.marqueeEffects({
+			isPhone: settings.phoneEmulate
+		})[settings.effect],
 		overlayed = false,
 		name = $frame.data('name');
 	// marquee
@@ -84,7 +86,7 @@ app.plugins.marquee = function($frame, settings){
 	// {fn} resize fake
 	var resize = function(){
 		var offset = 0;
-		marquee.size = settings.vertical ? app.sizes.height : app.sizes.width;
+		marquee.size = settings.vertical ? $frame.height() : app.sizes.width;
 		$.each(screens, function(i, screen){
 			if (settings.vertical){
 				var height = Math.max(screen.block.outerHeight(), screen.block.find(settings.contentClass ? '.' + settings.contentClass : '.screen__frame').outerHeight());
@@ -93,7 +95,7 @@ app.plugins.marquee = function($frame, settings){
 					screen.size = height;
 				} else {
 					screen.block.removeClass(settings.longClass ? settings.longClass : 'screen__long');
-					screen.size = app.sizes.height;
+					screen.size = $frame.height();
 				}
 				screen.fake.width(app.sizes.width);
 				screen.fake.height(screen.size);
@@ -407,10 +409,10 @@ app.plugins.marquee = function($frame, settings){
 	marquee.scrollTo = function(index, duration){
 		duration = duration === undefined && duration !== 0 ? 550 : duration;
 		if (settings.hideSections) screens[index].block[0].style.display = 'block';
-		setTimeout(function(){
-			scroll.goToPage(!settings.vertical ? index : 0, settings.vertical ? index : 0, duration, IScroll.utils.ease.cubicOut);
-			if (duration==0) marquee.refresh();
-		}, 5);
+		//setTimeout(function(){
+			scroll.goToPage(!settings.vertical ? index : 0, settings.vertical ? index : 0, duration, duration == 0 ? false : IScroll.utils.ease.cubicOut);
+			//if (duration==0) marquee.refresh();
+		//}, 5);
 	};
 	// {fn} prev
 	marquee.prev = function(duration){

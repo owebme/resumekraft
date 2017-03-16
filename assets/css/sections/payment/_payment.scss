@@ -10,6 +10,9 @@
         @extend .h80v;
         @extend .trX--m;
 
+        .d-tablet & {
+            @extend .trX--l;
+        }
         &__title {
             @extend .h2;
             @extend .ml0;
@@ -82,6 +85,7 @@
         @extend .h80v;
         @extend .text-center;
         @extend .trX-l;
+        @extend .md-ml-xss;
     }
     &__info {
         @include flex("row", "flex-start", "flex-start");
@@ -90,6 +94,11 @@
         @extend .l--m;
         @extend .text-left;
 
+        .d-tablet & {
+            @extend .t--m;
+            @extend .l--l;
+            @extend .ml--m;
+        }
         &:before {
             @extend .content-empty;
             @extend .display-block;
@@ -120,6 +129,9 @@
         width:120px;
         height:120px;
 
+        .d-tablet & {
+            @extend .r--xl;
+        }
         &:before {
             @extend .content-empty;
             @extend .display-block;

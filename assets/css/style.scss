@@ -17,7 +17,6 @@
 @import 'ui/basic/textarea';
 @import 'ui/basic/select';
 @import 'ui/basic/checkbox';
-@import 'ui/basic/progress';
 @import 'ui/basic/balloon';
 @import 'ui/basic/balloonError';
 @import 'ui/basic/loader';
@@ -59,7 +58,7 @@
 @import 'sections/mobile/menu';
 @import 'sections/mobile/navbar';
 @import 'sections/mobile/tutorial/welcome';
-@import 'sections/profile/profile';
+// @import 'sections/profile/profile';
 
 // messenger
 @import 'sections/messenger/messengerLauncher';
@@ -76,13 +75,13 @@
 // @import 'sections/jqtest/result/path';
 
 // plan
-@import 'sections/plan/plan';
+// @import 'sections/plan/plan';
 
 // inbox
-@import 'sections/inbox/inbox';
+// @import 'sections/inbox/inbox';
 
 // payment
-@import 'sections/payment/payment';
+// @import 'sections/payment/payment';
 
 // offers
 // @import 'sections/offers/premium/premium';
@@ -90,21 +89,22 @@
 // @import 'sections/offers/premium/ui';
 
 // overview
-// @import 'sections/overview/main';
-// @import 'sections/overview/premium/header';
-// @import 'sections/overview/premium/slides';
+@import 'sections/overview/main';
+@import 'sections/overview/premium/header';
+@import 'sections/overview/premium/slides';
 @import 'sections/overview/premium/devices';
+@import 'sections/overview/premium/ui';
 // @import 'sections/overview/jqtest/slides';
 // @import 'sections/overview/overviewFunctions';
 
 // Resume list
-@import 'sections/list/resumeList';
-@import 'sections/list/resumeItem';
-@import 'sections/list/resumeStat';
-@import 'sections/list/resumePreview';
-@import 'sections/list/resumeSelect';
-@import 'sections/list/resumeLikes';
-@import 'sections/list/resumeSection';
+// @import 'sections/list/resumeList';
+// @import 'sections/list/resumeItem';
+// @import 'sections/list/resumeStat';
+// @import 'sections/list/resumePreview';
+// @import 'sections/list/resumeSelect';
+// @import 'sections/list/resumeLikes';
+// @import 'sections/list/resumeSection';
 @import 'sections/list/mobile/resumeList';
 @import 'sections/list/mobile/resumeListItem';
 @import 'sections/list/mobile/resumeStat';

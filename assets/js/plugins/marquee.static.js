@@ -12,7 +12,10 @@ app.plugins.marqueeStatic = function($frame, options){
 
 	var $screens = $frame.find(settings.screens),
 		screens = [],
-		effect = app.plugins.marqueeEffects("static"),
+		effect = app.plugins.marqueeEffects({
+			method: "static",
+			isPhone: options.phoneEmulate
+		}),
 		screensFixed = $frame.data('fixed'),
 		overlayed = false,
 		name = $frame.data('name');
@@ -57,7 +60,7 @@ app.plugins.marqueeStatic = function($frame, options){
 	// {fn} resize fake
 	var resize = function(){
 		var offset = 0;
-		marquee.size = settings.vertical ? app.sizes.height : app.sizes.width;
+		marquee.size = settings.vertical ? $frame.height() : app.sizes.width;
 		$.each(screens, function(i, screen){
 			if (settings.vertical){
 				screen.$block.removeClass('screen__long').height(marquee.size);

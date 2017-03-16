@@ -14,9 +14,9 @@
             this.scroll = scroll ? $(scroll) : app.$dom.window;
 
             var _this = this,
-                $header = this.scope.find(".premium__header"),
-                $headerOverlay = $header.find(".premium__header__overlay"),
-                $layers = $header.find(".premium__header__layer"),
+                $header = this.scope.find(".ovpremium__header"),
+                $headerOverlay = $header.find(".ovpremium__header__overlay"),
+                $layers = $header.find(".ovpremium__header__layer"),
                 layers = [];
 
             $layers.each(function(){
@@ -36,6 +36,27 @@
                 });
             });
 
+            this.ipadParallax = new app.plugins.scroll.parallax({
+                scroll: this.scroll,
+                scenario: [
+                {
+                    container: ".slide8-1__viewport",
+                    selector: ".slide8-1__screen",
+                    viewports: {
+                        large: {
+                            fromTime: 0.07720144752714113,
+                            toTime: 2.2,
+                            fromX: 0,
+                            toX: 0,
+                            fromY: 0,
+                            toY: -1500
+                        }
+                    }
+                }]
+            });
+
+            this.ipadParallax.start();
+
             this.headerParallax = new app.plugins.scroll.parallax({
                 scroll: this.scroll,
                 container: $header,
@@ -51,14 +72,14 @@
 
             $.each(layers, function(){
                 var $elem = this.elem;
-                $elem.addClass("premium__header__layer--animate")
+                $elem.addClass("ovpremium__header__layer--animate")
                 .css({
                     "transform": this.transform,
                     "transition-delay": (_.random(0, 15) / 100) + "s"
                 });
                 _.onEndTransition($elem[0], function(){
-                    $elem.addClass("premium__header__layer--animated")
-                    .removeClass("premium__header__layer--animate")
+                    $elem.addClass("ovpremium__header__layer--animated")
+                    .removeClass("ovpremium__header__layer--animate")
                     .css("transition-delay", "0s");
                     anim++;
                     if (anim == layers.length){
@@ -75,6 +96,7 @@
             this.contentAnimate.start();
 
             this.chartRadial = new app.plugins.chartRadial(this.scope.find(".chart__radial"), {
+                animate: false,
                 container: "chart__radial__graph mb-m",
                 labels: "chart__radial__labels c-blackLight",
                 labelItem: "chart__radial__label mb-xxs"
@@ -105,7 +127,7 @@
         },
         items: [
         {
-            selector: ".premium__header__layer1",
+            selector: ".ovpremium__header__layer1",
             viewports: {
                 large: {
                     fromTime: .07720144752714113,
@@ -129,7 +151,7 @@
                 }
             }
         }, {
-            selector: ".premium__header__layer2",
+            selector: ".ovpremium__header__layer2",
             viewports: {
                 large: {
                     fromTime: 0,
@@ -153,7 +175,7 @@
                 }
             }
         }, {
-            selector: ".premium__header__layer3",
+            selector: ".ovpremium__header__layer3",
             viewports: {
                 large: {
                     fromTime: .033,
@@ -175,7 +197,7 @@
                 }
             }
         }, {
-            selector: ".premium__header__layer4",
+            selector: ".ovpremium__header__layer4",
             viewports: {
                 large: {
                     fromTime: 0,
@@ -202,7 +224,7 @@
                 }
             }
         }, {
-            selector: ".premium__header__layer5",
+            selector: ".ovpremium__header__layer5",
             viewports: {
                 large: {
                     fromTime: .077,
@@ -226,7 +248,7 @@
                 }
             }
         }, {
-            selector: ".premium__header__layer6",
+            selector: ".ovpremium__header__layer6",
             viewports: {
                 large: {
                     fromTime: 0,
@@ -250,7 +272,7 @@
                 }
             }
         }, {
-            selector: ".premium__header__layer7",
+            selector: ".ovpremium__header__layer7",
             viewports: {
                 large: {
                     fromTime: .033,
@@ -270,7 +292,7 @@
                 }
             }
         }, {
-            selector: ".premium__header__layer8",
+            selector: ".ovpremium__header__layer8",
             viewports: {
                 large: {
                     fromTime: 0,
@@ -296,7 +318,7 @@
                 }
             }
         }, {
-            selector: ".premium__header__layer9",
+            selector: ".ovpremium__header__layer9",
             viewports: {
                 large: {
                     fromTime: 0,
@@ -323,7 +345,7 @@
                 }
             }
         }, {
-            selector: ".premium__header__layer10",
+            selector: ".ovpremium__header__layer10",
             viewports: {
                 large: {
                     fromTime: 0,

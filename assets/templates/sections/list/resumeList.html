@@ -91,7 +91,7 @@
             });
         },
         createResume: function(){
-            if (!app.metrika.get("offers.plan.show")){
+            if (!app.metrika.get("offers.plan.show") && $Sections.offers && $Sections.offers.plan){
                 $Sections.offers.plan.show();
             }
             else {

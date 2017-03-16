@@ -15,6 +15,9 @@ module.exports = function(url){
 	// Resume private API
 	require('./resume')(url + '/resume');
 
+	// Inbox private API
+	require('./inbox')(url + '/inbox');
+
 	// Autosuggest
 	require('./suggest')(url + '/suggest');
 

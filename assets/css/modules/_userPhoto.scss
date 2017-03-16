@@ -1,12 +1,16 @@
 .user__photo {
     @extend .pos-rel;
-    width:242px;
-    height:242px;
+    width:234px;
+    height:234px;
     @extend .borderRadius-circle;
     @extend .cursor-pointer;
     @extend .userSelect-none;
     @extend .overflow-hidden;
 
+    .d-tablet & {
+        width:200px;
+        height:200px;
+    }
     &:before {
         @include abs();
         @extend .content-empty;
@@ -50,7 +54,7 @@
         top:65%;
         left:50%;
         margin:-64px 0 0 -66px;
-        @include ui-icon("upload_white", 128px, 128px);
+        @include ui-icon("upload_white", 120px, 120px);
         transition:all 0.25s ease;
         @extend .opacity-0;
         @extend .zIndex-2;

@@ -1,8 +1,10 @@
-app.plugins.marqueeEffects = function(method){
+app.plugins.marqueeEffects = function(options){
 	var effects = {},
-		prefixed = app.prefixed;
+		options = options || {},
+		prefixed = app.prefixed,
+		isPhone = options.isPhone === true || app.device.isPhone;
 
-	if (method == "static"){
+	if (options.method == "static"){
 		effects.show = function($block, position, size, ratio, offset){
 			$block[0].style[prefixed.transform] = 'translateY(' + Math.round( (offset || 0) + size-position*size) + 'px) translateZ(0)';
 		};
@@ -38,7 +40,7 @@ app.plugins.marqueeEffects = function(method){
 			var transform = '';
 			if (position==0) {
 				transform = 'translate3d(110%, 0, 0)';
-			} else if (app.device.isPhone) {
+			} else if (isPhone) {
 				transform = 'perspective(500px) translate3d(' + (-8+8*position) + '%, 0, 0) rotateY(' + (-6+position*6) + 'deg) scale(' + (0.8+position*0.2) + ')';
 			} else {
 				transform = 'perspective(500px) translate3d(' + (-4+4*position) + '%, 0, 0) scale(' + (0.9+position*0.1) + ')';
