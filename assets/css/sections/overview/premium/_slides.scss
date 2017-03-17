@@ -195,6 +195,7 @@
         height: 973px;
         @extend .bg-cover;
         @extend .willChange-transform;
+        transition:transform .1s;
         background-image:url('/public/images/promo/premium/slide_finish.jpg');
 
         &__wrapper {
@@ -202,7 +203,7 @@
             @extend .w100p;
             height: 973px;
             margin-bottom:-340px;
-            margin-top:90px;
+            margin-top:80px;
         }
     }
 }

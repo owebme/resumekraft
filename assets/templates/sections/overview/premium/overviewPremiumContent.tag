@@ -1,37 +1,42 @@
 <overview-premium-content class="overview-premium">
 
+    <div class="overview__loader">
+        <div class="overview__loader__progress"></div>
+        <div class="overview__loader__percent">0<span>%</span></div>
+    </div>
+
     <section class="ovpremium__header">
         <div class="ovpremium__header__layers">
             <div class="ovpremium__header__layers__wrapper">
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer1">
-                    <div class="ovpremium__header__layer__iphone__screen"></div>
+                    <div class="ovpremium__header__layer__iphone__screen bg-cover"></div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer2">
-                    <div class="ovpremium__header__layer__iphone__screen"></div>
+                    <div class="ovpremium__header__layer__iphone__screen bg-cover"></div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer3">
-                    <div class="ovpremium__header__layer__iphone__screen"></div>
+                    <div class="ovpremium__header__layer__iphone__screen bg-cover"></div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__ipad ovpremium__header__layer4">
-                    <div class="ovpremium__header__layer__ipad__screen"></div>
+                    <div class="ovpremium__header__layer__ipad__screen bg-cover"></div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer5">
-                    <div class="ovpremium__header__layer__iphone__screen"></div>
+                    <div class="ovpremium__header__layer__iphone__screen bg-cover"></div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer6">
-                    <div class="ovpremium__header__layer__iphone__screen"></div>
+                    <div class="ovpremium__header__layer__iphone__screen bg-cover"></div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer7">
-                    <div class="ovpremium__header__layer__iphone__screen"></div>
+                    <div class="ovpremium__header__layer__iphone__screen bg-cover"></div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer8">
-                    <div class="ovpremium__header__layer__iphone__screen"></div>
+                    <div class="ovpremium__header__layer__iphone__screen bg-cover"></div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer9">
-                    <div class="ovpremium__header__layer__iphone__screen"></div>
+                    <div class="ovpremium__header__layer__iphone__screen bg-cover"></div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer10">
-                    <div class="ovpremium__header__layer__iphone__screen"></div>
+                    <div class="ovpremium__header__layer__iphone__screen bg-cover"></div>
                 </div>
             </div>
         </div>
@@ -120,7 +125,7 @@
         <div class="slide5-1 bg-cover anim anim-scale-soft"></div>
     </section>
 
-    <section class="overview__section bg-snow pb-xl mb0 overflow-visible" data-section="stat" data-delta="xl">
+    <section class="overview__section bg-snow pb-xl mb0" data-section="stat" data-delta="xl">
         <div class="container pt-xl">
             <div class="row pt-l">
                 <div class="col-md-10 text-left zIndex-1">
@@ -247,7 +252,7 @@
                         <div class="overview__phone__screen">
                             <div class="pos-tl w100p pointerEvents-none zIndex-2 bg-cover" style="height:136px; background-image:url(/public/images/promo/premium/mobile_resume_nav.png)"></div>
                             <div class="screens screens-desktop" data-vertical="true" data-round="true">
-                                <div each={ item, i in _.range(12) } no-reorder class="screen { screen--active : i == 0 }">
+                                <div each={ item, i in opts.utils.range(12) } no-reorder class="screen { screen--active : i == 0 }">
                                     <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/mobile_resume_screen{ item + 1 }.png)"></div>
                                 </div>
                             </div>
@@ -312,7 +317,7 @@
                     <div class="slide9-1 bg-cover">
                         <div class="slide9__viewport">
                             <div class="screens screens-desktop" data-vertical="true" data-round="true">
-                                <div each={ item, i in _.range(8) } no-reorder class="screen { screen--active : i == 0 }">
+                                <div each={ item, i in opts.utils.range(8) } no-reorder class="screen { screen--active : i == 0 }">
                                     <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/tablet_resume_screen{ item + 1 }.{ i == 0 ? 'jpg' : 'png' })"></div>
                                 </div>
                             </div>

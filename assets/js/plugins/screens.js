@@ -26,7 +26,7 @@
             });
 
             var options = {
-                vertical: true,
+                vertical: this.options.vertical === false ? false : true,
                 screens: '.screen',
                 effect: this.options.vertical === false ? 'space' : 'light',
                 mousewheel: this.options.vertical === false ? false : this.options.mousewheel !== undefined ? this.options.mousewheel : true,

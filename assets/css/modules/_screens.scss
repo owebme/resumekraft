@@ -4,6 +4,9 @@
     .d-safari & {
         perspective:none !important;
     }
+    .horizontal__space ~ .screen {
+        transform-origin:100% 50%;
+    }    
 }
 .d-mobile .screens-mobile,
 .d-phone .screens-phone,

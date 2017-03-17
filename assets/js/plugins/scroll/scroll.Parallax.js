@@ -62,6 +62,9 @@
                         }
                     }
                     _this.items[i].$elem = _this.items[i].scope.find(item.selector);
+                    if (_this.items[i].$elem.css("transform") == "none"){
+                        _this.items[i].$elem.css("transform", "translateZ(0)");
+                    }
                 });
             }
 
@@ -105,9 +108,11 @@
                     //console.log(item.cHeight, item.progress, item.t, item.it);
 
                     var transform = item.$elem.css("transform").match(/matrix\(\d+, ?\d+, ?\d+, ?\d+, ?(\-?\d+), ?(\-?\d+)/);
-                    item.x = transform[1];
 
-                    _this.update(item.$elem, item.x, item.y);
+                    if (transform && transform[1]){
+                        item.x = transform[1];
+                        _this.update(item.$elem, item.x, item.y);
+                    }
                 }
             });
         },

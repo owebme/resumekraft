@@ -10,6 +10,8 @@
 
             if (this.active) return;
 
+            var options = options || {};
+
             this.scope = options.scope ? $(options.scope) : $dom.body;
             this.scroll = options.scroll ? $(options.scroll) : app.$dom.window;
 
@@ -27,6 +29,8 @@
                     $headerOverlay = $header.find(".ovpremium__header__overlay"),
                     $layers = $header.find(".ovpremium__header__layer"),
                     layers = [];
+
+                if (!$header.length) return;
 
                 $layers.each(function(){
                     var $elem = $(this),

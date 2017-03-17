@@ -174,6 +174,91 @@
             }
         }
     }
+    &__loader {
+        @extend .display-none;
+        @include abs(fixed);
+        @extend .overflow-hidden;
+        @extend .zIndex-2;
+
+        &[data-complete="true"]{
+            @extend .pointerEvents-none;
+            @extend .visibility-hidden;
+            transition:visibility 0s 0.8s;
+
+            &:before {
+                transform:translate3d(-100%, 0, 0);
+            }
+            &:after {
+                transform:translate3d(100%, 0, 0);
+            }
+            .overview__loader__progress {
+                @extend .opacity-0;
+            }
+            .overview__loader__percent {
+                @extend .opacity-0;
+                transform:translate3d(-50%, -50%, 0) scale(0.6);
+            }
+        }
+        &:before,
+        &:after {
+            @include accelerate(true);
+            @extend .content-empty;
+            @extend .pos-abs;
+            @extend .t0;
+            @extend .w50p;
+            @extend .h100p;
+            @extend .bg-white;
+            @extend .willChange-transform;
+            transition:transform .8s $cubic60;
+        }
+        &:before {
+            @extend .l0;
+        }
+        &:after {
+            @extend .r0;
+        }
+        body#renderSide & {
+            @extend .display-block;
+        }
+        &__percent {
+            @include accelerate();
+            @extend .pos-abs;
+            @extend .t50;
+            @extend .l50;
+            @extend .c-silver;
+            @extend .fontFamily-helvetica;
+            font-size:82px;
+            padding-left:50%;
+            letter-spacing:0.062em;
+            @extend .willChange-tp;
+            transform-origin:100% 50%;
+            transform:translate3d(-50%, -50%, 0) scale(1);
+            transition:transform 0.35s $cubic60, opacity 0.35s $cubic60;
+            @extend .fontWeight-bold;
+            @extend .zIndex-1;
+
+            span {
+                font-size:38px;
+                @extend .pl-xxs;
+                @extend .fontWeight-3;
+            }
+        }
+        &__progress {
+            @include accelerate();
+            @extend .pos-abs;
+            @extend .t0;
+            @extend .l50;
+            @extend .w1px;
+            @extend .h100p;
+            background-color:rgba($silver,.3);
+            @extend .willChange-transform;
+            transition:transform 0.3s;
+            transform:translate3d(-50%, 100%, 0);
+            @extend .willChange-opacity;
+            transition:opacity 0.3s $cubic68;
+            @extend .zIndex-1;
+        }
+    }
     &__swipe__hand {
         @extend .flex-centered;
         @extend .w100p;

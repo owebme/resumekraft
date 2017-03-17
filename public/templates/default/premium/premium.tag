@@ -6,6 +6,6 @@
         <button onClick={ hide } class="btn btn-l btn-upper btn-default-hover-success">Хочу Premium</button>
     </div>
 
-    <overview-premium-content></overview-premium-content>
+    <overview-premium-content utils={ opts.utils }></overview-premium-content>
 
 </overview-premium>

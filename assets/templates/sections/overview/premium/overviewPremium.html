@@ -47,7 +47,8 @@
                     return $.section = riot.mount($.content, "overview-premium-content", {
                         scope: $scope,
                         scroll: $.scroll,
-                        content: $.content
+                        content: $.content,
+                        utils: app.utils
                     })[0];
                 },
                 mount: function(tag){
