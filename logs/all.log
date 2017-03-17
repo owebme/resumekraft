@@ -21193,3 +21193,9 @@
 {"level":"info","message":"Connected to MongoDB!","timestamp":"2017-03-16T10:30:06.800Z"}
 {"level":"info","message":"Connected to MySQL!","timestamp":"2017-03-16T10:30:06.809Z"}
 {"level":"error","message":"Internal error(404): Not Found","timestamp":"2017-03-16T10:30:26.584Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-03-16T12:05:04.978Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-03-16T12:05:05.006Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-03-16T12:05:05.040Z"}
+{"level":"info","message":"Express server listening on port 8080","timestamp":"2017-03-16T13:47:13.127Z"}
+{"level":"info","message":"Connected to MongoDB!","timestamp":"2017-03-16T13:47:13.209Z"}
+{"level":"info","message":"Connected to MySQL!","timestamp":"2017-03-16T13:47:13.269Z"}

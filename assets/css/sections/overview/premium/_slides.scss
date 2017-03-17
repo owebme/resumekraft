@@ -143,6 +143,7 @@
             @include accelerate(true);
             @extend .pos-tl;
             @extend .w100p;
+            @extend .mt--l;
             @extend .willChange-transform;
         }
     }
@@ -188,10 +189,12 @@
         }
     }
     .slide11-1 {
-        @extend .pos-centered;
+        @include accelerate(true);
+        @extend .centered;
         width: 1144px;
         height: 973px;
         @extend .bg-cover;
+        @extend .willChange-transform;
         background-image:url('/public/images/promo/premium/slide_finish.jpg');
 
         &__wrapper {

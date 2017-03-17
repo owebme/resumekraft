@@ -41,7 +41,7 @@
     <section class="overview__section">
         <div class="container pt-xl pb-xl">
             <div class="row">
-                <div class="col-md-offset-4 col-md-16">
+                <div class="col-md-16 centered">
                     <small class="mb-xl">premium аккаунт</small>
                     <h1 class="mb-l mlr-m plr-l pt-m">Совершенно новый формат резюме для продвинутых соискателей.</h1>
                     <p class="fontSize-24 lineHeight-xxxl c-gray">Хорошее резюме интересно читать, хочется дочитать до конца. Каждая фраза в резюме усиливает желание его купить. В нём очень простая и понятная навигация (разделы). Кроме того, резюме должно соответствовать общепринятым нормам. Поэтому, если ты не дизайнер и не представитель креативной профессии, никаких фоновых рисунков в резюме.</p>
@@ -55,7 +55,7 @@
     <section class="overview__section">
         <div class="container">
             <div class="row">
-                <div class="col-md-offset-4 col-md-16">
+                <div class="col-md-16 centered">
                     <small class="mb-l">Легко пользоваться</small>
                     <div class="ptb-l">
                         <icon-control size="xl"></icon-control>
@@ -71,7 +71,7 @@
     <section class="overview__section mb0" data-bg="gradient-tb">
         <div class="container">
             <div class="row">
-                <div class="col-md-offset-4 col-md-16">
+                <div class="col-md-16 centered">
                     <small class="mb-l">стильный и запоминающийся дизайн</small>
                     <div class="ptb-l">
                         <icon-glass size="xl"></icon-glass>
@@ -89,7 +89,7 @@
     <section class="overview__section" data-bg="gradient-tb">
         <div class="container pt-xl">
             <div class="row pt-l">
-                <div class="col-md-offset-4 col-md-16">
+                <div class="col-md-16 centered">
                     <p>На iPad Air 2 установлены мощные приложения для ежедневных задач: просмотра веб-﻿страниц, работы с электронной почтой, редактирования фотографий и фильмов, написания отчётов и чтения книг. А в магазине App Store вы найдёте сотни тысяч приложений, созданных для большого дисплея Retina.</p>
                 </div>
             </div>
@@ -102,11 +102,11 @@
     <section class="overview__section">
         <div class="container">
             <div class="row">
-                <div class="col-md-offset-4 col-md-16">
+                <div class="col-md-16 centered">
                     <small class="mb-l">Привлекательные цвета</small>
                     <h1 class="mb-l pt-m">Стильные и яркие цвета на выбор, легко сменить и настроить.</h1>
-                    <div class="pt-l mb-xl inline">
-                        <div class="ovpremium__colors">
+                    <div class="pt-l mb-xl">
+                        <div class="ovpremium__colors anim" data-delta="xs">
                             <overview-premium-color each={ color in colors } no-reorder color={ color }></overview-premium-color>
                         </div>
                         <script>
@@ -120,14 +120,14 @@
         <div class="slide5-1 bg-cover anim anim-scale-soft"></div>
     </section>
 
-    <section class="overview__section bg-snow pb-xl mb0 overflow-visible">
+    <section class="overview__section bg-snow pb-xl mb0 overflow-visible" data-section="stat" data-delta="xl">
         <div class="container pt-xl">
             <div class="row pt-l">
                 <div class="col-md-10 text-left zIndex-1">
                     <small class="mb-l">Доступная статистика</small>
                     <h1 class="mb-l pt-l">Отслеживате просмотры вашего резюме.</h1>
                     <p class="pb-l">Какой бы iPad Pro вы ни выбрали, для него есть клавиатура Smart Keyboard.2 Сочетание новых технологий и материалов позволило нам создать компактную и удивительно тонкую клавиатуру, которая также служит прочной и лёгкой обложкой. А благодаря интерфейсу Smart Connector вы забудете о проводах, разъёмах и необходимости создавать пару. Просто присоедините клавиатуру и начинайте работать.</p>
-                    <div class="chart__radial mt-m anim anim-scale-soft" name="chartRadialEl"  data-delta="s"></div>
+                    <div class="chart__radial mt-m anim anim-scale-soft" name="chartRadialEl"  data-delta="xs"></div>
                     <small class="pos-bl w100p" style="transform:translate3d(280px, 140px, 0); line-height:38px;">Какой бы iPad Pro вы ни выбрали, для него есть клавиатура Smart Keyboard. Какой бы iPad Pro вы ни выбрали, для него есть клавиатура Smart Keyboard.</small>
                 </div>
                 <div class="slide6__wrapper col-md-14 anim anim-rl-soft" data-duration="xl"  data-delta="l">
@@ -165,6 +165,7 @@
                 <div class="col-md-16 zIndex-0" style="height:874px">
                     <div class="slide8-1 bg-cover anim anim-bt-soft" data-delta="s">
                         <div class="slide8-1__viewport">
+                            <div class="pos-tl w100p pointerEvents-none zIndex-2 bg-cover" style="height:190px; background-image:url(/public/images/promo/premium/tablet_resume_nav.png)"></div>
                             <img class="slide8-1__screen" src="/public/images/promo/premium/tablet_screen_big_blue.png">
                         </div>
                     </div>
@@ -272,7 +273,7 @@
                     <h3 class="mb-xs">Занятия</h3>
                     <p>Каждое занятие заслуживает своего саундтрека. Готовьте ужин, бегайте, танцуйте, занимайтесь спортом или отдыхайте под музыку, подобранную специально для этого.</p>
 
-                    <div class="ovpremium__inbox__items">
+                    <div class="ovpremium__inbox__items anim" data-delta="xs">
                         <div class="ovpremium__inbox__item">
                             <div class="ovpremium__inbox__item__circle boxShadow-3d-blue-strong bg-blue" data-color="blue">I</div>
                         </div>
@@ -340,7 +341,7 @@
 
                     <div class="w80 h2px bg-blue mtb-xl"></div>
 
-                    <div class="ovpremium__hobby__items">
+                    <div class="ovpremium__hobby__items anim" data-delta="xs">
                         <div class="ovpremium__hobby__item">
                             <div class="ovpremium__hobby__item__icon icon-hobby icon-hobby-airplane"></div>
                         </div>
@@ -407,7 +408,7 @@
                         <div class="ovpremium__tags__item">jQuery</div>
                         <div class="ovpremium__tags__item">UI/UX</div>
                     </div>
-                    <div class="ovpremium__progress__items mt-l">
+                    <div class="ovpremium__progress__items mt-l anim" data-delta="xs">
                         <div class="ovpremium__progress__item">
                             <div class="ovpremium__progress__title">Креативность</div>
                             <div class="ovpremium__progress__score">90%</div>
@@ -511,15 +512,15 @@
         </div>
     </section>
 
-    <section class="overview__section mb0">
+    <section class="overview__section mb0" data-section="finish">
         <div class="container">
             <div class="row">
-                <div class="col-md-offset-4 col-md-16 anim anim-scale-soft" data-delta="s">
+                <div class="col-md-16 centered anim anim-scale-soft" data-delta="s">
                     <h1 class="mb-m pt-xs">Начать легко и доступно.</h1>
                     <p>Вы можете выбрать ежемесячную подписку или на год с приличной скидкой.</p>
                 </div>
             </div>
-            <div class="slide11-1__wrapper anim anim-bt-soft" data-duration="xl">>
+            <div class="slide11-1__wrapper anim anim-bt-soft" data-delta="s" data-duration="xl">
                 <div class="slide11-1 bg-cover"></div>
             </div>
         </div>

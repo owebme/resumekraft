@@ -2,15 +2,36 @@
 
 .ovpremium {
     &__colors {
-        @extend .flex-centered;
+        @include flex("row", "space-between", "center");
+        @extend .w90p;
+        @extend .centered;
 
+        &.anim {
+            @extend .opacity-100;
+        }
+        &.animated {
+            .ovpremium__colors__item {
+                @extend .opacity-100;
+                @extend .scale-100;
+            }
+        }
         &__item {
+            @extend .display-block;
             @extend .pos-rel;
             @extend .w50;
             @extend .h50;
-            @extend .ml35;
-            @extend .mr35;
+            @extend .scale-0;
+            @extend .opacity-0;
+            @extend .willChange-tp;
+            transition:transform 0.7s $cubic68, opacity 0.7s $cubic68;
 
+            $n:-1;
+            @for $i from 1 through 10 {
+                $n: $n + 1;
+                &:nth-child(#{$i}) {
+                    transition-delay:0.15s * $n;
+                }
+            }
             svg {
                 @extend .pos-abs;
                 @extend .t50;
@@ -32,13 +53,35 @@
             @extend .pos-abs;
             @extend .t100;
             @extend .l0;
-            @extend .mt-xl;
+            @extend .pt-xl;
             @extend .flex-row-left-center;
+
+            &.anim {
+                @extend .opacity-100;
+            }
+            &.animated {
+                .ovpremium__inbox__item {
+                    @extend .opacity-100;
+                    @extend .scale-100;
+                }
+            }
         }
         &__item {
+            @include accelerate();
             @extend .cursor-default;
             @extend .mr-l;
+            @extend .scale-0;
+            @extend .opacity-0;
+            @extend .willChange-tp;
+            transition:transform 0.7s $cubic68, opacity 0.7s $cubic68;
 
+            $n:-1;
+            @for $i from 1 through 6 {
+                $n: $n + 1;
+                &:nth-child(#{$i}) {
+                    transition-delay:0.15s * $n;
+                }
+            }
             &__circle {
                 @extend .flex-centered;
                 @extend .w60;
@@ -68,14 +111,29 @@
             @extend .mt--s;
             @extend .ml--30;
             width:120%;
+
+            &.anim {
+                @extend .opacity-100;
+            }
+            &.animated {
+                .ovpremium__hobby__item {
+                    @extend .opacity-100;
+                    @extend .scale-100;
+                }
+            }
         }
         &__item {
+            @include accelerate();
             @extend .pos-rel;
             @extend .display-inlineFlex;
             @extend .w100;
             @extend .h100;
             @extend .mlr-m;
             @extend .mb-l;
+            @extend .scale-0;
+            @extend .opacity-0;
+            @extend .willChange-tp;
+            transition:transform 0.7s $cubic68, opacity 0.7s $cubic68;
 
             &__icon {
                 @extend .c-white;
@@ -94,13 +152,18 @@
                     transform:translate3d(-50%, calc(-50% - 10px), 0);
                 }
             }
-            $i:0;
+            $i:0; $n:-1;
             @each $color in (rgb(248, 167, 36), $emerald, rgb(229, 57, 53), $violetLight, rgb(125, 86, 193), rgb(103, 158, 55), rgb(235, 63, 121), rgb(140, 109, 98), rgb(255, 111, 66), $brown, rgb(169, 0, 255), $pink){
                 $i: $i + 1;
-                &:nth-child(#{$i}):hover {
-                    .ovpremium__hobby__item__icon {
-                        background-color:$color;
-                        box-shadow:0 22px 40px -10px rgba($color,.48), 0 14px 30px 0px rgba($color,.2), 0 7px 20px -5px rgba($color,.3);
+                $n: $n + 1;
+                &:nth-child(#{$i}) {
+                    transition-delay:0.15s * $n;
+
+                    &:hover {
+                        .ovpremium__hobby__item__icon {
+                            background-color:$color;
+                            box-shadow:0 22px 40px -10px rgba($color,.48), 0 14px 30px 0px rgba($color,.2), 0 7px 20px -5px rgba($color,.3);
+                        }
                     }
                 }
             }
@@ -141,23 +204,45 @@
             @extend .nowrap;
             @extend .pr25;
             padding-left:2px;
+
+            &.anim {
+                @extend .opacity-100;
+            }
+            &.animated {
+                .ovpremium__progress__line {
+                    @extend .transform-default;
+                }
+            }
         }
         &__item {
             @extend .pos-rel;
             @include flex("row", "flex-start", "center");
-            @extend .ptb-xs;
+            @extend .pt-xs;
+            @extend .pb-s;
             @extend .w100p;
-            @extend .mb25;
+            @extend .mb-s;
+            @extend .overflow-hidden;
 
             &:first-child {
                 @extend .pt0;
             }
             &:before {
                 @extend .content-empty;
-                @extend .pos-bl;
+                @extend .pos-abs;
+                @extend .l0;
+                @extend .b-xs;
                 @extend .w100p;
                 @extend .bg-smoke;
                 @extend .h3px;
+            }
+            $n:-1;
+            @for $i from 1 through 6 {
+                $n: $n + 1;
+                &:nth-child(#{$i}) {
+                    .ovpremium__progress__line {
+                        transition-delay:0.2s * $n;
+                    }
+                }
             }
         }
         &__title {
@@ -174,10 +259,16 @@
             @extend .fontSize-18;
         }
         &__line {
-            @extend .pos-bl;
+            @include accelerate();
+            @extend .pos-abs;
+            @extend .l0;
+            @extend .b-xs;
             @extend .w100p;
             @extend .bg-blueBright;
             @extend .h3px;
+            @extend .willChange-transform;
+            transform:translate3d(-100%, 0, 0);
+            transition:transform 1.4s $cubic215;
 
             &__peg {
                 @extend .pos-tr;
@@ -198,6 +289,7 @@
     }
     &__inbox__pointer {
         @extend .pos-abs;
+        @extend .pointerEvents-none;
         top:154px;
         left:0;
         @extend .w100p;
@@ -209,6 +301,7 @@
     }
     &__salary__pointer {
         @extend .pos-abs;
+        @extend .pointerEvents-none;
         top:70px;
         right:11px;
         @extend .w54;

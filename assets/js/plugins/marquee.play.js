@@ -9,6 +9,7 @@
         this.options.interval = this.options.interval || 3.33;
         this.options.pause = this.options.pause || 5;
         this.options.round = this.options.round || false;
+        this.options.ease = IScroll.utils.ease.cubicOut;
         this.interval = null;
         this.timeout = null;
     };
@@ -19,21 +20,23 @@
 
             if (this.options.run !== undefined){
                 if (this.options.run === true){
-                    this.start();
+                    this.run();
                 }
                 else if (_.isNumber(this.options.run)) {
                     setTimeout(function(){
-                        _this.start();
+                        _this.run();
                     }, this.options.run * 1000);
                 }
             }
 
             this.parent.scope.on("click.play", function(){
-                _this.end();
+                _this.pause();
             });
         },
-        start: function(){
+        run: function(force){
             var _this = this;
+
+            if (force) _this.rotate();
 
             this.interval = setInterval(function(){
                 _this.rotate();
@@ -44,6 +47,8 @@
                 counts = this.parent.items.length,
                 newIndex = index + 2 > counts ? 0 : index + 1;
 
+            if (counts < 2) return;
+
             if (newIndex == 0 && this.options.round){
                 var $firstElem = this.parent.scope.find(this.parent.options.screens + ":first").children(),
                     firstImage = $firstElem.css("backgroundImage"),
@@ -53,19 +58,19 @@
                 $firstElem.css("backgroundImage", lastImage);
                 $lastElem.css("backgroundImage", firstImage);
                 this.parent.marquee.scrollTo(0, 0);
-                this.parent.marquee.scrollTo(1, this.options.duration);
+                this.parent.marquee.scrollTo(1, this.options.duration, this.options.ease);
             }
             else {
-                this.parent.marquee.scrollTo(newIndex, this.options.duration);
+                this.parent.marquee.scrollTo(newIndex, this.options.duration, this.options.ease);
             }
         },
-        end: function(){
+        pause: function(){
             var _this = this;
 
             this.clear();
             this.timeout = setTimeout(function(){
                 _this.rotate();
-                _this.start();
+                _this.run();
             }, this.options.pause * 1000);
         },
         clear: function(){

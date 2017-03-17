@@ -6,123 +6,202 @@
 
         active: false,
 
-        init: function(scroll, scope){
+        init: function(options){
 
             if (this.active) return;
 
-            this.scope = scope ? $(scope) : $dom.body;
-            this.scroll = scroll ? $(scroll) : app.$dom.window;
+            this.scope = options.scope ? $(options.scope) : $dom.body;
+            this.scroll = options.scroll ? $(options.scroll) : app.$dom.window;
 
-            var _this = this,
-                $header = this.scope.find(".ovpremium__header"),
-                $headerOverlay = $header.find(".ovpremium__header__overlay"),
-                $layers = $header.find(".ovpremium__header__layer"),
-                layers = [];
-
-            $layers.each(function(){
-                var $elem = $(this),
-                    transform = $elem.css("transform").match(/matrix\(\d+, ?\d+, ?\d+, ?\d+, ?(\-?\d+), ?(\-?\d+)/),
-                    x = transform[1],
-                    y = parseInt(transform[2]) + _.random(12, 24),
-                    scale = _.random(90, 105) / 100;
-
-                layers.push({
-                    elem: $elem,
-                    transform: "translate3d(" + x + "px, " + transform[2] + "px, 0px) scale3d(1, 1, 1)"
-                });
-
-                $elem.css({
-                    "transform": "translate3d(" + x + "px, " + y + "px, 0px) scale3d(" + scale + ", " + scale + ", 1)"
-                });
+            _.each(this.render, function(fn){
+                if (_.isFunction(fn)) fn();
             });
-
-            this.ipadParallax = new app.plugins.scroll.parallax({
-                scroll: this.scroll,
-                scenario: [
-                {
-                    container: ".slide8-1__viewport",
-                    selector: ".slide8-1__screen",
-                    viewports: {
-                        large: {
-                            fromTime: 0.07720144752714113,
-                            toTime: 2.2,
-                            fromX: 0,
-                            toX: 0,
-                            fromY: 0,
-                            toY: -1500
-                        }
-                    }
-                }]
-            });
-
-            this.ipadParallax.start();
-
-            this.headerParallax = new app.plugins.scroll.parallax({
-                scroll: this.scroll,
-                container: $header,
-                scenario: this.items,
-                fade: {
-                    in: {
-                        elem: $headerOverlay
-                    }
-                }
-            });
-
-            var anim = 0;
-
-            $.each(layers, function(){
-                var $elem = this.elem;
-                $elem.addClass("ovpremium__header__layer--animate")
-                .css({
-                    "transform": this.transform,
-                    "transition-delay": (_.random(0, 15) / 100) + "s"
-                });
-                _.onEndTransition($elem[0], function(){
-                    $elem.addClass("ovpremium__header__layer--animated")
-                    .removeClass("ovpremium__header__layer--animate")
-                    .css("transition-delay", "0s");
-                    anim++;
-                    if (anim == layers.length){
-                        _this.headerParallax.start();
-                    }
-                });
-            });
-
-            this.contentAnimate = new app.plugins.scroll.animate({
-                scroll: this.scroll,
-                container: this.scope
-            });
-
-            this.contentAnimate.start();
-
-            this.chartRadial = new app.plugins.chartRadial(this.scope.find(".chart__radial"), {
-                animate: false,
-                container: "chart__radial__graph mb-m",
-                labels: "chart__radial__labels c-blackLight",
-                labelItem: "chart__radial__label mb-xxs"
-            });
-
-            this.chartRadial.render([
-                {
-                    title: "настольные ПК",
-                    value: _.random(5, 87)
-                },
-                {
-                    title: "планшеты",
-                    value: _.random(5, 87)
-                },
-                {
-                    title: "мобильные телефоны",
-                    value: _.random(5, 87)
-                }
-            ]);
 
             this.active = true;
         },
+
+        render: {
+
+            header: function(){
+                var $header = WD.scope.find(".ovpremium__header"),
+                    $headerOverlay = $header.find(".ovpremium__header__overlay"),
+                    $layers = $header.find(".ovpremium__header__layer"),
+                    layers = [];
+
+                $layers.each(function(){
+                    var $elem = $(this),
+                        transform = $elem.css("transform").match(/matrix\(\d+, ?\d+, ?\d+, ?\d+, ?(\-?\d+), ?(\-?\d+)/),
+                        x = transform[1],
+                        y = parseInt(transform[2]) + _.random(12, 24),
+                        scale = _.random(90, 105) / 100;
+
+                    layers.push({
+                        elem: $elem,
+                        transform: "translate3d(" + x + "px, " + transform[2] + "px, 0px) scale3d(1, 1, 1)"
+                    });
+
+                    $elem.css({
+                        "transform": "translate3d(" + x + "px, " + y + "px, 0px) scale3d(" + scale + ", " + scale + ", 1)"
+                    });
+                });
+
+                WD.headerParallax = new app.plugins.scroll.parallax({
+                    scroll: WD.scroll,
+                    container: $header,
+                    scenario: WD.items,
+                    fade: {
+                        in: {
+                            elem: $headerOverlay
+                        }
+                    }
+                });
+
+                var anim = 0;
+
+                $.each(layers, function(){
+                    var $elem = this.elem;
+                    $elem.addClass("ovpremium__header__layer--animate")
+                    .css({
+                        "transform": this.transform,
+                        "transition-delay": (_.random(0, 15) / 100) + "s"
+                    });
+                    _.onEndTransition($elem[0], function(){
+                        $elem.addClass("ovpremium__header__layer--animated")
+                        .removeClass("ovpremium__header__layer--animate")
+                        .css("transition-delay", "0s");
+                        anim++;
+                        if (anim == layers.length){
+                            WD.headerParallax.start();
+                        }
+                    });
+                });
+            },
+
+            content: function(){
+                WD.contentAnimate = new app.plugins.scroll.animate({
+                    scroll: WD.scroll,
+                    container: WD.scope,
+                    scenario: [
+                        {
+                            elem: ".screens",
+                            callback: function($elem, i){
+                                if ($elem[0].play){
+                                    setTimeout(function(){
+                                        $elem[0].play.run(true);
+                                    }, 1500);
+                                }
+                            }
+                        },
+                        {
+                            elem: ".overview__section[data-section='stat']",
+                            callback: function($elem, i){
+                                WD.chartRadial.render([_.random(5, 87), _.random(5, 87), _.random(5, 87)]);
+                            }
+                        }
+                    ]
+                });
+
+                WD.contentAnimate.start();
+            },
+
+            chart: function(){
+                WD.chartRadial = new app.plugins.chartRadial(WD.scope.find(".chart__radial"), {
+                    container: "chart__radial__graph mb-m",
+                    labels: "chart__radial__labels c-blackLight",
+                    labelItem: "chart__radial__label mb-xxs"
+                });
+
+                WD.chartRadial.render([
+                    {
+                        title: "настольные ПК",
+                        value: _.random(5, 87)
+                    },
+                    {
+                        title: "планшеты",
+                        value: _.random(5, 87)
+                    },
+                    {
+                        title: "мобильные телефоны",
+                        value: _.random(5, 87)
+                    }
+                ]);
+            },
+
+            ipad: function(){
+                WD.ipadParallax = new app.plugins.scroll.parallax({
+                    scroll: WD.scroll,
+                    scenario: [
+                    {
+                        container: ".slide8-1__viewport",
+                        selector: ".slide8-1__screen",
+                        viewports: {
+                            large: {
+                                fromTime: 0.07720144752714113,
+                                toTime: 2.2,
+                                fromX: 0,
+                                toX: 0,
+                                fromY: 0,
+                                toY: -1500
+                            }
+                        }
+                    }]
+                });
+
+                WD.ipadParallax.start();
+            },
+
+            screens: function(){
+                WD.screens = [];
+
+                WD.scope.find(".screens").each(function(i){
+                    var screen = new app.plugins.screens(this, {
+                        vertical: this.getAttribute("data-vertical") == "true" ? true : false,
+                        mousewheel: false,
+                        phoneEmulate: true,
+                        play: {
+                            round: this.getAttribute("data-round") == "true" ? true : false
+                        }
+                    });
+                    screen.init();
+                    screen.marquee.disableKeyboard();
+                    this.play = screen.play;
+                    WD.screens.push(screen);
+                });
+            },
+
+            notebooks: function(){
+                WD.notebooksParallax = new app.plugins.scroll.parallax({
+                    scroll: WD.scroll,
+                    scenario: [
+                    {
+                        container: ".overview__section[data-section='finish']",
+                        selector: ".slide11-1",
+                        viewports: {
+                            large: {
+                                fromTime: 0,
+                                toTime: 1,
+                                fromX: 0,
+                                toX: 0,
+                                fromY: 100,
+                                toY: -150
+                            }
+                        }
+                    }]
+                });
+
+                WD.notebooksParallax.start();
+            }
+        },
+
         destroy: function(){
             this.headerParallax.destroy();
             this.contentAnimate.destroy();
             this.chartRadial.destroy();
+            if (this.screens){
+                _.each(this.screens, function(screen){
+                    screen.destroy();
+                });
+            }
             this.active = false;
         },
         items: [

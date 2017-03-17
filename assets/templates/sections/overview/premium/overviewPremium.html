@@ -61,24 +61,10 @@
                     tag.scrollFix.init();
 
                     $afterlag.run(function(){
-                        app.features.premium.init($.scroll, $.content);
-                    });
-
-                    tag.screens = [];
-
-                    $scope.find(".screens").each(function(i){
-                        var screen = new app.plugins.screens(this, {
-                            vertical: this.getAttribute("data-vertical") == "true" ? true : false,
-                            mousewheel: false,
-                            phoneEmulate: true,
-                            play: {
-                                run: i * 1,
-                                round: this.getAttribute("data-round") == "true" ? true : false
-                            }
+                        app.features.premium.init({
+                            scope: $.content,
+                            scroll: $.scroll
                         });
-                        screen.init();
-                        screen.marquee.disableKeyboard();
-                        tag.screens.push(screen);
                     });
 
                     $.buttons = {
@@ -95,14 +81,11 @@
 
                     $root.focus("overview");
 
-                    $$($.scroll).scrollTop($scope.find("#section").offset().top);
+                    //$$($.scroll).scrollTop($scope.find("#section").offset().top);
                 },
                 beforeUnmount: function(tag){
                     app.features.premium.destroy();
                     tag.scrollFix.destroy();
-                    _.each(tag.screens, function(screen){
-                        screen.destroy();
-                    });
                 }
             }
         );

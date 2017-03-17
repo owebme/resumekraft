@@ -23,11 +23,14 @@
 
             if (!this.ready || render) this.render();
 
-            var _onScroll = _.throttle(this.onScroll, 100);
-
             if (this.items.length){
                 this.scroll.on("scroll.animate", function(){
-                    _onScroll(_this);
+                    if (!_this.scrolling){
+                        _this.scrolling = true;
+                        _.raf(function(){
+                            _this.onScroll(_this);
+                        });
+                    }
                 });
             }
         },
@@ -37,10 +40,6 @@
 
             this.items = [];
 
-            this.scope.find(this.elems).each(function(){
-                _this.each(this);
-            });
-
             if (this.scenario){
                 _.each(this.scenario, function(item){
                     _this.scope.find(item.elem).each(function(){
@@ -48,6 +47,10 @@
                     });
                 });
             }
+
+            this.scope.find(this.elems).each(function(){
+                _this.each(this);
+            });
 
             this.ready = true;
         },
@@ -58,7 +61,7 @@
                 delta = elem.getAttribute("data-delta");
 
             if (delta) delta = _this.deltaValues.getValueByTitle(delta);
-            else delta = _this.delta ? _this.delta : 0.55;
+            else delta = _this.delta ? _this.delta : _this.deltaValues.getValueByTitle("m");
 
             _this.items.push({
                 elem: $elem,
@@ -71,13 +74,15 @@
 
         onScroll: function(_this){
             var scroll = _this.scroll[0].scrollTop || _this.scroll[0].scrollY;
+
             _this.items.forEach(function(item, i){
                 if (!item.anim && (scroll + app.sizes.height * item.delta) > item.offset.top){
                     item.anim = true;
-                    if (item.callback) item.callback(item.elem);
+                    if (item.callback) item.callback(item.elem, i);
                     else item.elem.addClass("animated");
                 }
             });
+            _this.scrolling = false;
         },
 
         destroy: function(){
@@ -104,7 +109,7 @@
                 },
                 {
                     title: "s",
-                    value: 0.7
+                    value: 0.733
                 },
                 {
                     title: "m",
