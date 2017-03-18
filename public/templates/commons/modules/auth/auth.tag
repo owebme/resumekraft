@@ -55,9 +55,8 @@
 
     $.close = function(){
         $.root.setAttribute("data-open", false);
-        $.update({
-            active: false
-        });
+        var modal = $.tags["auth-" + $.section];
+        if (modal && modal.active) modal.close();
     };
 
 </script>

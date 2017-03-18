@@ -39,6 +39,20 @@
             WD.share();
 
             WD.subscribe();
+
+            WD.imagesLoader();
+
+            app.metrika.set("views.blog", 1, {
+                action: "inc"
+            })
+        },
+
+        imagesLoader: function(){
+            var imagesLoaded = new app.plugins.imagesLoaded();
+
+            imagesLoaded.load({
+                timeout: 2000
+            });
         },
 
         share: function(){

@@ -26,6 +26,24 @@
             });
 
             scrollAnimate.start();
+
+            WD.imagesLoader();
+
+            app.metrika.set("views.blog", 1, {
+                action: "inc"
+            })
+        },
+
+        imagesLoader: function(){
+            var imagesLoaded = new app.plugins.imagesLoaded();
+
+            imagesLoaded.on("complete", function(){
+                app.sections.trigger("ready");
+            });
+
+            imagesLoaded.load({
+                timeout: 2000
+            });
         },
 
         nav: function(){

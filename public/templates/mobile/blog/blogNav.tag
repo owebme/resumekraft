@@ -8,7 +8,7 @@
     </a>
 
     <div if={ opts.section == 'content' } class="nav__content nav__side">
-        <a href="/blog/" class="nav__back"></a>
+        <a href="/blog/" class="nav__grid"></a>
         <blog-social-buttons color="white"></blog-social-buttons>
     </div>
 

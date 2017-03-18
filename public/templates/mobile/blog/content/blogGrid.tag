@@ -2,7 +2,7 @@
 
     <div each={ item, i in parent.opts.utils.rest(opts.params.data.items) } class="blog__grid__item { 'anim anim-bt-soft' : i > 1 } cover__bg{ item.color }" data-delay="{ i % 2 != 0 ? 's' : 'xs' }" data-duration="m">
         <a href="/blog/{ item.alias }" class="blog__grid__item__inner">
-            <div class="blog__grid__item__image" style="background-image:url({ get.image( item.image) })"></div>
+            <div class="blog__grid__item__image progressive-image" style="background-image:url({ get.image( item.image) })"></div>
             <div class="blog__grid__item__content">
                 <div class="blog__grid__item__date">{ item.dateShort }</div>
                 <img class="blog__grid__item__avatar" src="http://resumekraft.ru/assets/img/testimonials/testimonial9.jpg">

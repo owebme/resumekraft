@@ -69,6 +69,7 @@
 
     $.open = function(){
         $.active = true;
+        $.parent.section = "signin";
         $.root.setAttribute("data-active", true);
         $.animate.show();
     };
@@ -173,9 +174,16 @@
     };
 
     $.close = function(){
-        $.animate.hide(function(){
+        $.active = false;
+        if (app.device.isPhone){
             $.root.setAttribute("data-active", false);
-        });
+        }
+        else {
+            $.animate.hide(function(){
+                $.root.setAttribute("data-active", false);
+            });
+        }
+        $.parent.section = null;
         $.parent.close();
     };
 

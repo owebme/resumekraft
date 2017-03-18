@@ -13,7 +13,7 @@
     &__items {
         @extend .pos-centered;
         @extend .w100p;
-        @extend .mt-m;
+        @extend .mt-s;
     }
     &__item {
         @include accelerate();
@@ -25,28 +25,28 @@
         transition:transform 0.3s $cubic345, opacity 0.3s $cubic345;
 
         &__link {
-            @extend .c-blue;
-            @extend .fontFamily-graphik;
-            font-size:18px;
-            @extend .fontWeight-bold;
-            @extend .letterSpacing-xl;
+            @extend .c-blackLight;
+            @extend .fontFamily-roboto;
+            font-size:17px;
+            @extend .fontWeight-5;
+            letter-spacing:0.18em;
             @extend .text-uppercase;
             @extend .textDecoration-none;
 
             &[data-active="true"]{
-                @extend .c-pink;
+                @extend .c-blueBright;
             }
         }
     }
     &__opener {
         @extend .pos-tr-fixed;
-        @extend .pb30;
-        @extend .pl25;
-        @extend .pr25;
+        @extend .p25;
         @extend .zIndex-3;
 
         &[data-navbar="true"]{
-            @extend .pt-m;
+            @extend .pl30;
+            @extend .pr20;
+            padding-top:18px;
         }
         &[data-animate="true"]{
             .menu__opener__line {
@@ -88,9 +88,10 @@
     &__close {
         @extend .pos-centered-h;
         top:5vh;
-        width:32px;
-        height:32px;
+        width:28px;
+        height:28px;
         @extend .cursor-pointer;
+        @extend .zIndex-1;
 
         &:before,
         &:after {
@@ -147,18 +148,10 @@
     }
 }
 @media screen and (max-height: 565px) {
-    .menu {
-        &__opener {
-            padding-top:25px;
-        }
-    }
+
 }
 @media screen and (min-height: 565px) {
-    .menu {
-        &__opener {
-            padding-top:30px;
-        }
-    }
+
 }
 
 @keyframes animMenuLine {

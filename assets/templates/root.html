@@ -1,6 +1,6 @@
 <root-main class="pos-abs-full" data-app="private">
 
-    <!-- <resume-list></resume-list>
+    <resume-list></resume-list>
     <resume-edit></resume-edit>
     <resume-section></resume-section>
     <resume-preview></resume-preview>
@@ -15,9 +15,9 @@
     <section-plan></section-plan>
     <section-loader></section-loader>
     <section-progress></section-progress>
-    <photo-upload></photo-upload> -->
+    <photo-upload></photo-upload>
 
-    <!-- <app-sections>
+    <app-sections>
         <resume-stat></resume-stat>
         <section-inbox></section-inbox>
 
@@ -29,12 +29,12 @@
 
     <app-popups>
         <popup-premium></popup-premium>
-    </app-popups> -->
+    </app-popups>
 
     <app-offers>
-        <!-- <offer-welcome></offer-welcome>
+        <offer-welcome></offer-welcome>
         <offer-plan></offer-plan>
-        <offer-premium></offer-premium> -->
+        <offer-premium></offer-premium>
         <!-- <offer-votes></offer-votes>
         <offer-jqtest></offer-jqtest> -->
     </app-offers>
@@ -57,10 +57,10 @@
     this.on("before-mount", function(){
         this.init();
         if ($account.get("plan") == "premium"){
-            // $Sections.offers.premium.unmount();
-            // $Sections.resume.stat.offer.unmount();
-            // $Sections.inbox.section.offer.unmount();
-            // $Sections.plan.unmount();
+            $Sections.offers.premium.unmount();
+            $Sections.resume.stat.offer.unmount();
+            $Sections.inbox.section.offer.unmount();
+            $Sections.plan.unmount();
         }
     });
 
@@ -90,48 +90,48 @@
 
     this.init = function(){
         $Sections = {
-            // profile: {
-            //     section: $root.tags["section-profile"],
-            //     data: $root.tags["section-profile-data"]
-            // },
-            // resume: {
-            //     navbar: $root.tags["resume-list"].tags["resume-navbar"],
-            //     list: $root.tags["resume-list"],
-            //     edit: $root.tags["resume-edit"],
-            //     stat: $root.tags["resume-stat"],
-            //     select: $root.tags["resume-select"],
-            //     preview: $root.tags["resume-preview"],
-            //     section: $root.tags["resume-section"],
-            //     sendmail: $root.tags["resume-sendmail"]
-            // },
-            // popup: {
-            //     premium: $root.tags["popup-premium"]
-            // },
-            // offers: {
-            //     welcome: $root.tags["offer-welcome"],
-            //     plan: $root.tags["offer-plan"],
-            //     premium: $root.tags["offer-premium"],
-            //     jqtest: $root.tags["offer-jqtest"],
-            //     votes: $root.tags["offer-votes"]
-            // },
+            profile: {
+                section: $root.tags["section-profile"],
+                data: $root.tags["section-profile-data"]
+            },
+            resume: {
+                navbar: $root.tags["resume-list"].tags["resume-navbar"],
+                list: $root.tags["resume-list"],
+                edit: $root.tags["resume-edit"],
+                stat: $root.tags["resume-stat"],
+                select: $root.tags["resume-select"],
+                preview: $root.tags["resume-preview"],
+                section: $root.tags["resume-section"],
+                sendmail: $root.tags["resume-sendmail"]
+            },
+            popup: {
+                premium: $root.tags["popup-premium"]
+            },
+            offers: {
+                welcome: $root.tags["offer-welcome"],
+                plan: $root.tags["offer-plan"],
+                premium: $root.tags["offer-premium"],
+                jqtest: $root.tags["offer-jqtest"],
+                votes: $root.tags["offer-votes"]
+            },
             overview: {
                 premium: $root.tags["overview-premium"],
                 jqtest: $root.tags["overview-jqtest"],
                 functions: $root.tags["overview-functions"]
             },
-            // jqtest: {
-            //     section: $root.tags["section-jqtest"],
-            //     list: $root.tags["section-jqtest"].tags["jqtest-list"],
-            //     test: $root.tags["section-jqtest"].tags["jqtest-content"],
-            //     result: $root.tags["section-jqtest"].tags["jqtest-result"]
-            // },
-            // plan: $root.tags["section-plan"],
-            // inbox: {
-            //     section: $root.tags["section-inbox"]
-            // },
-            // payment: $root.tags["section-payment"],
-            // photoUpload: $root.tags["photo-upload"],
-            // progress: $root.tags["section-progress"]
+            jqtest: {
+                section: $root.tags["section-jqtest"],
+                list: $root.tags["section-jqtest"].tags["jqtest-list"],
+                test: $root.tags["section-jqtest"].tags["jqtest-content"],
+                result: $root.tags["section-jqtest"].tags["jqtest-result"]
+            },
+            plan: $root.tags["section-plan"],
+            inbox: {
+                section: $root.tags["section-inbox"]
+            },
+            payment: $root.tags["section-payment"],
+            photoUpload: $root.tags["photo-upload"],
+            progress: $root.tags["section-progress"]
         };
 
         $Tutorial = $root.tags["section-tutorial"];

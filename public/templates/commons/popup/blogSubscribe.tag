@@ -18,7 +18,6 @@
     var $ = this;
 
     $.on("mount", function(){
-
         setTimeout(function(){
             $.root.style.display = "block";
         }, 20);
@@ -26,7 +25,10 @@
         $.form = $.tags["blog-subscribe-form"];
 
         if ($.form){
-            $.form.one("success fail", function(){
+            $.form.one("success", function(){
+                $.hide();
+            })
+            $.form.one("fail", function(){
                 $.hide();
             })
         }
@@ -41,7 +43,7 @@
 
         if (!app.device.isMobile && $.form){
             $afterlag.xl(function(){
-                $.form.input.focus();
+                $.form.refs.input.focus();
             })
         }
 

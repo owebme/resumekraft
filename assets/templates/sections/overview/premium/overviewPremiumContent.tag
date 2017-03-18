@@ -1,42 +1,42 @@
 <overview-premium-content class="overview-premium">
 
-    <div class="overview__loader">
+    <!-- <div class="overview__loader">
         <div class="overview__loader__progress"></div>
         <div class="overview__loader__percent">0<span>%</span></div>
-    </div>
+    </div> -->
 
     <section class="ovpremium__header">
         <div class="ovpremium__header__layers">
             <div class="ovpremium__header__layers__wrapper">
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer1">
-                    <div class="ovpremium__header__layer__iphone__screen bg-cover"></div>
+                    <div class="ovpremium__header__layer__iphone__screen bg-cover progressive-image"></div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer2">
-                    <div class="ovpremium__header__layer__iphone__screen bg-cover"></div>
+                    <div class="ovpremium__header__layer__iphone__screen bg-cover progressive-image"></div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer3">
-                    <div class="ovpremium__header__layer__iphone__screen bg-cover"></div>
+                    <div class="ovpremium__header__layer__iphone__screen bg-cover progressive-image"></div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__ipad ovpremium__header__layer4">
-                    <div class="ovpremium__header__layer__ipad__screen bg-cover"></div>
+                    <div class="ovpremium__header__layer__ipad__screen bg-cover progressive-image"></div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer5">
-                    <div class="ovpremium__header__layer__iphone__screen bg-cover"></div>
+                    <div class="ovpremium__header__layer__iphone__screen bg-cover progressive-image"></div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer6">
-                    <div class="ovpremium__header__layer__iphone__screen bg-cover"></div>
+                    <div class="ovpremium__header__layer__iphone__screen bg-cover progressive-image"></div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer7">
-                    <div class="ovpremium__header__layer__iphone__screen bg-cover"></div>
+                    <div class="ovpremium__header__layer__iphone__screen bg-cover progressive-image"></div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer8">
-                    <div class="ovpremium__header__layer__iphone__screen bg-cover"></div>
+                    <div class="ovpremium__header__layer__iphone__screen bg-cover progressive-image"></div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer9">
-                    <div class="ovpremium__header__layer__iphone__screen bg-cover"></div>
+                    <div class="ovpremium__header__layer__iphone__screen bg-cover progressive-image"></div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer10">
-                    <div class="ovpremium__header__layer__iphone__screen bg-cover"></div>
+                    <div class="ovpremium__header__layer__iphone__screen bg-cover progressive-image"></div>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
             </div>
         </div>
         <div class="clear"></div>
-        <div class="slide1-1 bg-cover anim anim-scale-soft"></div>
+        <div class="slide1-1 bg-cover progressive-image anim anim-scale-soft"></div>
     </section>
 
     <section class="overview__section">
@@ -67,7 +67,7 @@
                     </div>
                     <h1 class="mb-l pt-m">Не нужно объяснять.</h1>
                     <p class="pb-l">Зачем что-то объяснять когда все работает интуитивно понятно для вас. Вы легко освоитесь в нем со своим устройством iOS, как только возьмёте его в руки. Включите камеру, смахнув от правого края экрана блокировки. Или пролистайте весь ваш фотоальбом за считаные секунды. В iOS всё великолепно смотрится и работает выше всяких похвал.</p>
-                    <div class="slide2-1 bg-cover anim anim-rl-soft" data-duration="xl"></div>
+                    <div class="slide2-1 bg-cover progressive-image anim anim-rl-soft" data-duration="xl"></div>
                 </div>
             </div>
         </div>
@@ -85,7 +85,7 @@
                     <p class="pb-l">iOS создана специально для iPhone и iPad, именно поэтому они работают так быстро и плавно. Чтобы получить максимум графической производительности, мы применили технологию Metal. Пользуйтесь интернетом, работайте в нескольких приложениях, спасайте мир в игре со сложной 3D-графикой — картинка на дисплее всегда будет безупречной, а отклик устройства мгновенным.</p>
                 </div>
                 <div class="col-md-24">
-                    <div class="slide3-1 bg-cover anim anim-scale-soft"></div>
+                    <div class="slide3-1 bg-cover progressive-image anim anim-scale-soft"></div>
                 </div>
             </div>
         </div>
@@ -100,7 +100,7 @@
             </div>
         </div>
         <div class="slide4-1__wrapper anim anim-bt-soft" data-duration="xl">
-            <div class="slide4-1 bg-cover"></div>
+            <div class="slide4-1 bg-cover progressive-image"></div>
         </div>
     </section>
 
@@ -111,7 +111,7 @@
                     <small class="mb-l">Привлекательные цвета</small>
                     <h1 class="mb-l pt-m">Стильные и яркие цвета на выбор, легко сменить и настроить.</h1>
                     <div class="pt-l mb-xl">
-                        <div class="ovpremium__colors anim" data-delta="xs">
+                        <div class="ovpremium__colors anim" data-delta="xxs">
                             <overview-premium-color each={ color in colors } no-reorder color={ color }></overview-premium-color>
                         </div>
                         <script>
@@ -122,7 +122,7 @@
                 </div>
             </div>
         </div>
-        <div class="slide5-1 bg-cover anim anim-scale-soft"></div>
+        <div class="slide5-1 bg-cover progressive-image anim anim-scale-soft"></div>
     </section>
 
     <section class="overview__section bg-snow pb-xl mb0" data-section="stat" data-delta="xl">
@@ -137,8 +137,8 @@
                 </div>
                 <div class="slide6__wrapper col-md-14 anim anim-rl-soft" data-duration="xl"  data-delta="l">
                     <div class="slide6__container">
-                        <div class="slide6-1 bg-cover"></div>
-                        <div class="slide6-2 bg-cover"></div>
+                        <div class="slide6-1 bg-cover progressive-image"></div>
+                        <div class="slide6-2 bg-cover progressive-image"></div>
                     </div>
                 </div>
             </div>
@@ -150,9 +150,9 @@
             <div class="row pt-l">
                 <div class="slide7__wrapper col-md-14">
                     <div class="slide7__container">
-                        <div class="slide7-1 bg-cover anim anim-lr-soft" data-duration="xl"></div>
-                        <div class="slide7-2 bg-cover anim anim-lr-soft" data-duration="xl"></div>
-                        <div class="slide7-3 bg-cover anim anim-rl-soft" data-duration="xl"></div>
+                        <div class="slide7-1 bg-cover progressive-image anim anim-lr-soft" data-duration="xl"></div>
+                        <div class="slide7-2 bg-cover progressive-image anim anim-lr-soft" data-duration="xl"></div>
+                        <div class="slide7-3 bg-cover progressive-image anim anim-rl-soft" data-duration="xl"></div>
                     </div>
                 </div>
                 <div class="col-md-10 pl0 text-left zIndex-1">
@@ -168,10 +168,10 @@
         <div class="container pt-l">
             <div class="row pt-m">
                 <div class="col-md-16 zIndex-0" style="height:874px">
-                    <div class="slide8-1 bg-cover anim anim-bt-soft" data-delta="s">
+                    <div class="slide8-1 bg-cover progressive-image anim anim-bt-soft" data-delta="s">
                         <div class="slide8-1__viewport">
-                            <div class="pos-tl w100p pointerEvents-none zIndex-2 bg-cover" style="height:190px; background-image:url(/public/images/promo/premium/tablet_resume_nav.png)"></div>
-                            <img class="slide8-1__screen" src="/public/images/promo/premium/tablet_screen_big_blue.png">
+                            <div class="pos-tl w100p pointerEvents-none zIndex-2 bg-cover progressive-image" style="height:190px; background-image:url(/public/images/promo/premium/tablet_resume_nav.png)"></div>
+                            <div class="slide8-1__screen" style="background-image:url(/public/images/promo/premium/tablet_screen_big_blue.png)"></div>
                         </div>
                     </div>
                 </div>
@@ -202,21 +202,21 @@
                 <div class="col-md-12 anim anim-scale-soft">
                     <div class="overview__phone" data-align="left" data-color="white">
                         <div class="overview__phone__screen">
-                            <div class="screens screens-desktop" data-vertical="false" data-round="true">
+                            <div class="screens screens-desktop" data-vertical="false" data-round="true" data-autorun="true">
                                 <div class="screen screen--active">
-                                    <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/mobile_office_screen1.png)"></div>
+                                    <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/promo/premium/mobile_office_screen1.png)"></div>
                                 </div>
                                 <div class="screen">
-                                    <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/mobile_office_screen2.png)"></div>
+                                    <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/promo/premium/mobile_office_screen2.png)"></div>
                                 </div>
                                 <div class="screen">
-                                    <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/mobile_office_screen3.png)"></div>
+                                    <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/promo/premium/mobile_office_screen3.png)"></div>
                                 </div>
                                 <div class="screen">
-                                    <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/mobile_inbox_screen.png)"></div>
+                                    <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/promo/premium/mobile_inbox_screen.png)"></div>
                                 </div>
                                 <div class="screen">
-                                    <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/mobile_likes_screen.png)"></div>
+                                    <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/promo/premium/mobile_likes_screen.png)"></div>
                                 </div>
                             </div>
                         </div>
@@ -250,10 +250,10 @@
                 <div class="col-md-12 anim anim-scale-soft">
                     <div class="overview__phone" data-align="right" data-color="white">
                         <div class="overview__phone__screen">
-                            <div class="pos-tl w100p pointerEvents-none zIndex-2 bg-cover" style="height:136px; background-image:url(/public/images/promo/premium/mobile_resume_nav.png)"></div>
-                            <div class="screens screens-desktop" data-vertical="true" data-round="true">
+                            <div class="pos-tl w100p pointerEvents-none zIndex-2 bg-cover progressive-image" style="height:136px; background-image:url(/public/images/promo/premium/mobile_resume_nav.png)"></div>
+                            <div class="screens screens-desktop" data-vertical="true" data-round="true" data-autorun="true">
                                 <div each={ item, i in opts.utils.range(12) } no-reorder class="screen { screen--active : i == 0 }">
-                                    <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/mobile_resume_screen{ item + 1 }.png)"></div>
+                                    <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/promo/premium/mobile_resume_screen{ item + 1 }.png)"></div>
                                 </div>
                             </div>
                         </div>
@@ -264,7 +264,7 @@
                 <div class="col-md-12 anim anim-scale-soft">
                     <div class="overview__phone" data-align="left" data-color="white">
                         <div class="overview__phone__screen">
-                            <img src="/public/images/promo/premium/mobile_inbox_screen.png" class="w100p">
+                            <div style="background-image:url(/public/images/promo/premium/mobile_inbox_screen.png)" class="pos-abs-full bg-cover progressive-image"></div>
                             <div class="ovpremium__inbox__pointer"></div>
                         </div>
                     </div>
@@ -314,11 +314,11 @@
                     </div>
                 </div>
                 <div class="slide9__wrapper col-md-12 anim anim-rl-soft" data-duration="xl">
-                    <div class="slide9-1 bg-cover">
+                    <div class="slide9-1 bg-cover progressive-image">
                         <div class="slide9__viewport">
-                            <div class="screens screens-desktop" data-vertical="true" data-round="true">
-                                <div each={ item, i in opts.utils.range(8) } no-reorder class="screen { screen--active : i == 0 }">
-                                    <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/tablet_resume_screen{ item + 1 }.{ i == 0 ? 'jpg' : 'png' })"></div>
+                            <div class="screens screens-desktop" data-vertical="true" data-round="true" data-autorun="false">
+                                <div each={ item, i in opts.utils.range(8) } no-reorder class="screen { screen--active : i == 2 }">
+                                    <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/promo/premium/tablet_resume_screen{ item + 1 }.{ i == 0 ? 'jpg' : 'png' })"></div>
                                 </div>
                             </div>
                         </div>
@@ -329,12 +329,12 @@
                 <div class="col-md-12 anim anim-scale-soft">
                     <div class="overview__phone" data-align="left" data-color="white">
                         <div class="overview__phone__screen">
-                            <div class="screens screens-desktop" data-vertical="false">
+                            <div class="screens screens-desktop" data-vertical="false" data-autorun="true">
                                 <div class="screen screen--active">
-                                    <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/mobile_hobby_screen1.png)"></div>
+                                    <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/promo/premium/mobile_hobby_screen1.png)"></div>
                                 </div>
                                 <div class="screen">
-                                    <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/mobile_hobby_screen2.png)"></div>
+                                    <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/promo/premium/mobile_hobby_screen2.png)"></div>
                                 </div>
                             </div>
                         </div>
@@ -449,12 +449,12 @@
                 <div class="col-md-12 anim anim-scale-soft">
                     <div class="overview__phone" data-align="left" data-color="white">
                         <div class="overview__phone__screen">
-                            <div class="screens screens-desktop" data-vertical="false">
+                            <div class="screens screens-desktop" data-vertical="false" data-autorun="true">
                                 <div class="screen screen--active">
-                                    <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/mobile_salary_screen1.png)"></div>
+                                    <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/promo/premium/mobile_salary_screen1.png)"></div>
                                 </div>
                                 <div class="screen">
-                                    <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/promo/premium/mobile_salary_screen2.png)">
+                                    <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/promo/premium/mobile_salary_screen2.png)">
                                         <div class="ovpremium__salary__pointer"></div>
                                     </div>
                                 </div>
@@ -485,7 +485,7 @@
                 </div>
                 <div class="col-md-12 anim anim-rl-soft" data-duration="xl">
                     <div class="slide10-1__wrapper">
-                        <div class="slide10-1 bg-cover"></div>
+                        <div class="slide10-1 bg-cover progressive-image"></div>
                     </div>
                 </div>
             </div>
@@ -496,8 +496,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-22 col-lg-17 centered">
-                    <small class="mb-l nowrap">демонстрация резюме</small>
-                    <h2 class="mb-l plr-l anim anim-scale-soft" data-delta="s">Хотите перейти на тест-драйв премиального резюме на разных платформах?</h2>
+                    <small class="mb-l nowrap">тест-драйв резюме</small>
+                    <h2 class="mb-l plr-xl anim anim-scale-soft" data-delta="s">Хотите потрогать премиальное резюме на разных платформах?</h2>
                     <div class="row premium-devices-icons ptb-m">
                         <div class="col-sm-8 anim anim-lr anim-delay-xs" data-delta="s">
                             <icon-device-phones color="gray" size="xl"></icon-device-phones>
@@ -526,7 +526,7 @@
                 </div>
             </div>
             <div class="slide11-1__wrapper anim anim-bt-soft" data-delta="s" data-duration="xl">
-                <div class="slide11-1 bg-cover"></div>
+                <div class="slide11-1 bg-cover progressive-image"></div>
             </div>
         </div>
         <div class="pos-rel nowrap" style="height:555px">

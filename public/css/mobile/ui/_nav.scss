@@ -20,6 +20,10 @@
     &__back {
         @include ui-icon("back_white", 26px, 26px);
     }
+    &__grid {
+        @include ui-icon("grid_white", 24px, 24px);
+        transform:translate3d(5px, -2px, 0);
+    }
     &__content {
         @include abs();
         @extend .flex-row-left-center;
@@ -67,26 +71,32 @@
     }
     .blog__social__panel {
         @extend .flex-row-left-center;
-        transform:translate3d(3px, -1px, 0);
+        transform:translate3d(12px, -2px, 0);
 
         &__item {
             width:14vw;
             @extend .flex-centered;
 
+            &[data-share="vk"]{
+                margin:0 -3px 0 -5px;
+            }
             .icon {
-                &-fb,
+                &-fb {
+                    width:58px;
+                    height:58px;
+                }
                 &-dk {
                     width:62px;
                     height:62px;
                 }
                 &-vk,
                 &-tw {
-                    width:70px;
-                    height:70px;
+                    width:68px;
+                    height:68px;
                 }
                 &-gl {
-                    width:29px;
-                    height:29px;
+                    width:28px;
+                    height:28px;
                 }
             }
         }

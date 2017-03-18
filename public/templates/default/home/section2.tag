@@ -4,10 +4,10 @@
         <div class="hidden-sm col-sm-24 col-md-10 col-lg-12 bg-white overflow-hidden text-center">
             <div class="anim anim-lr-soft" data-delta="l">
                 <div class="home__section2__ipad">
-                    <div class="home__section2__ipad__viewport">
-                        <img class="home__section2__ipad__screen" src="/public/images/home/ipad_portrait_screen.png">
+                    <div class="home__section2__ipad__viewport progressive-image">
+                        <div class="home__section2__ipad__screen progressive-image" style="background-image:url(/public/images/home/ipad_portrait_screen.png)"></div>
                     </div>
-                    <div class="home__section2__ipad__overphone"></div>
+                    <div class="home__section2__ipad__overphone progressive-image"></div>
                 </div>
             </div>
         </div>

@@ -30,12 +30,15 @@
     @extend .t0;
     @extend .l50;
     transform:translate3d(-50%, 0, 0);
-    // opacity:0.001;
+    opacity:0.001;
     @extend .willChange-tp;
 
+    // body#renderSide & {
+    //     @extend .opacity-100;
+    // }
     &--animate {
         @extend .opacity-100;
-        transition:opacity 1s $cubic2501, transform 1s $cubic2501;
+        transition:opacity 0.6s $cubic60, transform 1s $cubic2501;
     }
     &--animated {
         @extend .opacity-100;

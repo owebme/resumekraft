@@ -12,6 +12,7 @@ module.exports = function(){
             'assets/js/libs/moment.ru.js',
             'assets/js/libs/store.min.js',
             'assets/js/libs/url.min.js',
+            'assets/js/libs/theia-sticky-sidebar/dist/theia-sticky-sidebar.js',
             'assets/js/libs/afterlag-js/dist/afterlag.min.js'])
     		.pipe(concat('app.jobs.libs.js'))
     		.pipe(uglify())

@@ -113,7 +113,7 @@
                 },
                 {
                     title: "m",
-                    value: 0.55
+                    value: 0.54
                 },
                 {
                     title: "l",

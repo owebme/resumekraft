@@ -1,4 +1,5 @@
 .btn {
+    @include accelerate(true);
     @extend .display-inlineBlock;
     @extend .vAlign-middle;
     @extend .fontFamily-futura;
@@ -6,10 +7,9 @@
     @extend .userSelect-none;
     @extend .nowrap;
     @extend .outline-none;
-    @extend .border-none;
     @extend .cursor-pointer;
     @extend .transition-default;
-    @include accelerate(true);
+    border:none;
     border-radius:100px;
 
     &-disabled {

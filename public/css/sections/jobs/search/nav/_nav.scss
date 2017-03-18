@@ -80,7 +80,8 @@
     }
     &__buttons {
         @extend .nowrap;
-        @extend .pos-rel;
+        @extend .pos-centered-v;
+        @extend .r-l;
         @extend .flex-row-right-center;
         @extend .userSelect-none;
         @extend .zIndex-1;

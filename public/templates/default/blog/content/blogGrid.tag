@@ -5,7 +5,7 @@
             <virtual each={ item, i in opts.params.data.items }>
                 <div class="{ i == 2 ? 'col-md-16' : 'col-md-8' } { 'anim anim-bt-soft' : i > 1 }" data-delay="{ get.delay(i) }" data-duration="m">
                     <a href="/blog/{ item.alias }" class="blog__grid__item" data-grid="{ i == 1 || i == 2 ? 'v2' : 'v1' }">
-                        <div class="blog__grid__item__image" style="background-image:url({ get.image( item.image) })"></div>
+                        <div class="blog__grid__item__image progressive-image" style="background-image:url({ get.image( item.image) })"></div>
                         <div class="blog__grid__item__tag">{ item.keywords }</div>
                         <div class="blog__grid__item__content">
                             <h4 class="blog__grid__item__title"><span>{ item.name }</span></h4>

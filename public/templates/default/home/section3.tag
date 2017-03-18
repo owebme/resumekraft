@@ -10,7 +10,7 @@
         </div>
         <div class="col-sm-12 col-md-14 col-lg-12 bg-white overflow-hidden text-center">
             <div class="pos-abs-full anim anim-bt-soft">
-                <div class="pos-centered-h h100p bg-cover" style="width:1952px; height:1160px; background-image:url(/public/images/home/ipad_screens.png)"></div>
+                <div class="pos-centered-h h100p bg-cover progressive-image" style="width:1952px; height:1160px; background-image:url(/public/images/home/ipad_screens.png)"></div>
             </div>
         </div>
     </div>

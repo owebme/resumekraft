@@ -57,6 +57,10 @@
         @extend .pos-tl;
         @extend .w100p;
         @extend .willChange-transform;
+        width:316px;
+        height:1686px;
+        @extend .bg-cover;
+        background-size:316px 1686px;
     }
 }
 .home__section2__ipad {
@@ -94,6 +98,10 @@
         @extend .pos-tl;
         @extend .w100p;
         @extend .willChange-transform;
+        width:404px;
+        height:1412px;
+        @extend .bg-cover;
+        background-size:404px 1412px;
     }
     &__overphone {
         @extend .pos-bl;

@@ -43,4 +43,21 @@ module.exports = function(){
     		"sound": false,
     	}));
     });
+
+    gulp.task('public.mobile.smallScreen', function() {
+    	return combiner(
+    		gulp.src('assets/css/style.mobile.css'),
+    		px2vw({
+    			width: 360,
+    			minPx: 2,
+    			maxPx: 10000,
+    			replace: true
+    		}),
+    		rename("style.mobile.smallScreen.css"),
+    		gulp.dest('public/css'),
+    		browserSync.stream()
+    	).on('error', notify.onError({
+    		"sound": false,
+    	}));
+    });
 }

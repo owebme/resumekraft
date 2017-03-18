@@ -8,6 +8,7 @@
         this.state = options.data;
         this.previousState = options.previousData;
         this.visits = options.visits;
+        this.device = options.device;
         this.key = options.key;
         this.report = options.report;
         this.init();
@@ -45,8 +46,8 @@
                 }
             }
 
-            state.visits = this.visits ? this.visits : 1;
-            state.device = app.device && app.device.get ? app.device.get() : null;
+            if (this.visits) state.visits = this.visits;
+            if (this.device) state.device = app.device && app.device.get ? app.device.get() : null;
             this.state = new Baobab(state, { autoCommit: true });
 
             this.state.on("write", function(e){
@@ -61,7 +62,7 @@
 
         set: function(path, value, options){
             if (!path || !this.active) return;
-            if (!options) options = {};
+            var options = options || {};
 
             if (options.action == "inc") {
                 var val = this.state.get(path.split(".")) + value;

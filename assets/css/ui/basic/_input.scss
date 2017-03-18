@@ -2,12 +2,12 @@
     @extend .fontFamily-helvetica;
     @extend .c-black;
     @extend .fontWeight-normal;
-    @extend .border-none;
     @extend .borderRadius-m;
     @extend .w100p;
     @extend .vAlign-middle;
     @extend .lineHeight-1;
     @extend .transition-default;
+    border:none;
     box-shadow:inset 0 0 0 1px lighten($grayLighten,5%);
 
     &:hover {

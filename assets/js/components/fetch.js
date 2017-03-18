@@ -40,6 +40,7 @@ app.fetch.API.getDataInit = function(){
                     data: app.metrics.private,
                     previousData: res.metrika,
                     visits: $account.get("visits"),
+                    device: true,
                     report: report
                 });
             }

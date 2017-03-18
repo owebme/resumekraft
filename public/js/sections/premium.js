@@ -12,26 +12,38 @@
         },
 
         render: function(){
+            var ready = 0,
+                isShow = false;
 
-            $dom.body.addClass("no-scroll").scrollTop(0);
+            app.features.navbar.init();
 
-            var $loader = this.el.find(".overview__loader"),
-                $percent = $loader.find(".overview__loader__percent")[0],
-                $progress = $loader.find(".overview__loader__progress"),
-                progress;
+            var imagesLoaded = new app.plugins.imagesLoaded();
 
-            app.loader.images(this.el,
-            function(e){
-                $loader.attr("data-complete", true);
-                $dom.body.removeClass("no-scroll");
-                app.features.premium.init();
-                app.features.navbar.init();
-            },
-            function(ready, total){
-                progress = parseInt(100 * (ready / total));
-                $progress.css("transform", "translate3d(-50%, " + (100 - progress) + "%, 0)");
-                $percent.innerHTML = progress + "<span>%</span>";
+            app.features.premium.init({
+                controllerImage: imagesLoaded
             });
+
+            imagesLoaded.on("complete", function(){
+                $afterlag.run(function(){
+                    app.sections.trigger("ready");
+                });
+            });
+
+            // imagesLoaded.on("image-load", (function(){
+            //     ready += 1;
+            //     if (!isShow && ready > 7){
+            //         isShow = true;
+            //         app.features.premium.init();
+            //     }
+            // }));
+
+            imagesLoaded.load({
+                timeout: 2000
+            });
+
+            app.metrika.set("views.premium", 1, {
+                action: "inc"
+            })
         }
     };
 

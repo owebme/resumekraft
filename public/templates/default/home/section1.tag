@@ -7,12 +7,12 @@
             <button class="btn btn-xl2 c-blue btn-white-hover-success">Смотреть обзор</button>
         </div>
         <div class="col-xs-24 col-md-14 col-lg-12 overflow-hidden text-center">
-            <div class="pos-abs-full bg-cover" style="background-image:url(/public/images/home/man-phone.jpg)"></div>
+            <div class="pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/home/man-phone.jpg)"></div>
             <div class="pos-abs-full bg-overlay opacity-95"></div>
             <div class="anim anim-scale-soft">
                 <div class="home__section1__phone">
-                    <div class="home__section1__phone__viewport">
-                        <img class="home__section1__phone__screen" src="/public/images/home/phone_screen2.png">
+                    <div class="home__section1__phone__viewport progressive-image">
+                        <div class="home__section1__phone__screen progressive-image" style="background-image:url(/public/images/home/phone_screen.png)"></div>
                     </div>
                 </div>
             </div>

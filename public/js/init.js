@@ -15,20 +15,43 @@
 
     app.sections.init();
 
-    riot.compile(function(e){
-        app.sections.trigger("beforeMounted");
+    app.sections.once("ready", function(){
+        riot.compile(function(e){
+            app.sections.trigger("beforeMounted");
 
-        riot.mount("*", {renderClient: true});
+            riot.mount("*", {renderClient: true});
 
-        app.sections.trigger("afterMounted");
+            app.sections.trigger("afterMounted");
 
-        app.tag("section-notify", function(tag){
-            $Notify = tag;
+            app.tag("section-notify", function(tag){
+                $Notify = tag;
+            });
+
+            console.timeEnd("process");
+            var elapsed = new Date().getTime() - start;
+            //alert(elapsed + "ms");
         });
-
-        console.timeEnd("process");
-        var elapsed = new Date().getTime() - start;
-        //alert(elapsed + "ms");
     });
+
+    if (app.config.changeStyles){
+        if (app.device.isPhone){
+            app.plugins.styles.init({
+                elem: "#styles",
+                default: "normal",
+                screens: [
+                    {
+                        title: "small",
+                        maxWidth: 360,
+                        path: "/assets/css/style.smallScreen.mobile.css"
+                    },
+                    {
+                        title: "normal",
+                        minWidth: 360,
+                        path: "/assets/css/style.mobile.css"
+                    }
+                ]
+            });
+        }
+    }
 
 })(app, $, app.$dom, app.utils);

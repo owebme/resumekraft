@@ -20,6 +20,10 @@
 
                 animate.show();
             });
+
+            app.metrika.set("views.jqtest", 1, {
+                action: "inc"
+            })
         }
     };
 

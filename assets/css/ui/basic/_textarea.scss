@@ -2,11 +2,11 @@
     @extend .fontFamily-roboto;
     @extend .c-black;
     @extend .fontWeight-3;
-    @extend .border-none;
     @extend .borderRadius-m;
     @extend .w100p;
     @extend .vAlign-middle;
     @extend .transition-default;
+    border:none;
     box-shadow:inset 0 0 0 1px $grayLighten;
 
     &:hover {

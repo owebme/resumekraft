@@ -99,13 +99,15 @@ app.plugins.marquee = function($frame, settings){
 				}
 				screen.fake.width(app.sizes.width);
 				screen.fake.height(screen.size);
-				if (i > 0 && settings.hideSections){
-					screen.block.css("display", "none");
-				}
 			} else {
 				screen.size = app.sizes.width;
 				screen.fake.width(screen.size);
 				screen.fake.height(app.sizes.height);
+			}
+			if (settings.hideSections){
+				if (!settings.activeClass && i > 0 || settings.activeClass && !screen.block.hasClass(settings.activeClass)){
+					screen.block.css("display", "none");
+				}
 			}
 			screen.offset = offset;
 			screen.ratio = screen.size/marquee.size;

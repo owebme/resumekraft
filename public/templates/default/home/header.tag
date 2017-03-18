@@ -1,6 +1,6 @@
 <home-header class="screen screen--active home__header zIndex-0">
 
-    <video id="video" class="home__header__video" autoplay loop muted>
+    <video id="video" class="home__header__video display-none" autoplay loop muted>
         <source src="/assets/video/jqtest.mp4" type="video/mp4"/>
     </video>
     <div class="container">

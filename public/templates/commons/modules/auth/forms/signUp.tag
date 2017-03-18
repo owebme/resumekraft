@@ -94,6 +94,8 @@
     $.open = function(plan){
         $.active = true;
 
+        $.parent.section = "signup";
+
         $.update({
             plan: plan ? plan : app.metrika.get("plan.name")
         })
@@ -205,9 +207,16 @@
     };
 
     $.close = function(){
-        $.animate.hide(function(){
+        $.active = false;
+        if (app.device.isPhone){
             $.root.setAttribute("data-active", false);
-        });
+        }
+        else {
+            $.animate.hide(function(){
+                $.root.setAttribute("data-active", false);
+            });
+        }
+        $.parent.section = null;
         $.parent.close();
     };
 

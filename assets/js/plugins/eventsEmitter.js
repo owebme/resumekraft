@@ -20,6 +20,20 @@
     			this._events[type].push(fn);
     		},
 
+            once: function(g, j) {
+                var i = this;
+
+                function h(k) {
+                    i.off(g, h);
+                    if (k !== undefined) {
+                        j(k);
+                    } else {
+                        j();
+                    }
+                }
+                this.on(g, h);
+            },
+
     		off: function (type, fn) {
     			if ( !this._events[type] ) {
     				return;

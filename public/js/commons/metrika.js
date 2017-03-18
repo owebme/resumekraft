@@ -11,6 +11,12 @@
         tooltips: {
             regSocial: false
         },
+        views: {
+            home: 0,
+            premium: 0,
+            jqtest: 0,
+            blog: 0
+        },
         offers: {
             popup: {
                 blog: {

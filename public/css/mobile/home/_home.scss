@@ -34,10 +34,10 @@ section-home-mobile {
             @extend .w100p;
             @extend .plr-l;
             @extend .text-center;
-            @extend .zIndex-0;
+            @extend .zIndex-1;
         }
         h2 {
-            @extend .mb-m;
+            @extend .ml0;
         }
         strong {
             @extend .c-blue;
@@ -45,6 +45,10 @@ section-home-mobile {
         &[data-section="intro"]{
             img {
                 @extend .maxW-100p;
+            }
+            h2 {
+                font-size:33px;
+                line-height:38px;
             }
             .screen__button {
                 @extend .pt30;
@@ -413,6 +417,15 @@ section-home-mobile {
 }
 @media screen and (max-height: 565px) {
     section-home-mobile {
+        h2 {
+            font-size:30px;
+            line-height:33px;
+            margin-bottom:10px;
+        }
+        p {
+            font-size:17px;
+            line-height:28px;
+        }
         .screen {
             &[data-section="intro"]{
                 .screen__image {
@@ -421,11 +434,13 @@ section-home-mobile {
                 .screen__text {
                     padding-bottom:30px;
                 }
-                h2 {
-                    margin-bottom:10px;
-                }
             }
-            &[data-section="easy-setup"]{
+            &[data-section="easy-setup"],
+            &[data-section="premium-colors"],
+            &[data-section="pdf"],
+            &[data-section="back-office-inbox"],
+            &[data-section="community"],
+            &[data-section="jq-test"]{
                 .screen__image {
                     margin-top:-45px;
                 }
@@ -435,7 +450,6 @@ section-home-mobile {
             }
             &[data-section="premium-account"],
             &[data-section="premium-responsive"],
-            &[data-section="premium-colors"],
             &[data-section="back-office-mobile"],
             &[data-section="back-office-stat"],
             &[data-section="help"]{
@@ -477,8 +491,17 @@ section-home-mobile {
         }
     }
 }
-@media screen and (min-height: 565px) {
+@media screen and (min-height: 566px) {
     section-home-mobile {
+        h2 {
+            font-size:32px;
+            line-height:35px;
+            margin-bottom:15px;
+        }
+        p {
+            font-size:17px;
+            line-height:28px;
+        }
         .screen {
             &[data-section="intro"],
             &[data-section="easy-setup"],
@@ -491,6 +514,19 @@ section-home-mobile {
                 }
                 .screen__text {
                     padding-bottom:45px;
+                }
+            }
+            &[data-section="intro"]{
+                h2 {
+                    font-size:33px;
+                    line-height:38px;
+                    margin-bottom:10px;
+                }
+                .screen__image {
+                    margin-top:-40px;
+                }
+                .screen__text {
+                    padding-bottom:35px;
                 }
             }
             &[data-section="premium-account"],
@@ -548,18 +584,33 @@ section-home-mobile {
         }
     }
 }
-@media screen and (min-height: 566px) and (max-height: 600px) {
+@media screen and (min-height: 640px) and (max-height: 700px) {
     section-home-mobile {
+        h2 {
+            font-size:33px;
+            line-height:36px;
+        }
+        p {
+            font-size:18px;
+            line-height:30px;
+        }
+    }
+}
+@media screen and (min-height: 700px) {
+    section-home-mobile {
+        h2 {
+            font-size:36px;
+            line-height:38px;
+            padding-bottom:10px;
+        }
+        p {
+            font-size:20px;
+            line-height:30px;
+        }
         .screen {
-            &[data-section="intro"]{
-                .screen__image {
-                    margin-top:-40px;
-                }
-                .screen__text {
-                    padding-bottom:35px;
-                }
-                h2 {
-                    margin-bottom:15px;
+            &[data-section="plans"]{
+                .plan__button {
+                    margin-bottom:10px;
                 }
             }
         }

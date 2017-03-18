@@ -37,6 +37,14 @@
             this.slider();
             this.buttons();
             this.plans();
+
+            $afterlag.run(function(){
+                app.sections.trigger("ready");
+            });            
+
+            app.metrika.set("views.home", 1, {
+                action: "inc"
+            })
         },
 
         buttons: function(){

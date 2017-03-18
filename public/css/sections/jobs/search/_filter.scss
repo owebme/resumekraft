@@ -20,13 +20,9 @@
 }
 .jobs__search__sidebar {
     @include accelerate();
-    @extend .pos-abs;
     @extend .userSelect-none;
     width:274px;
 
-    &[data-fixed="true"]{
-        @extend .pos-fixed;
-    }
     .d-tablet.r-landscape & {
         @extend .trX--m;
         margin-left:-2px;

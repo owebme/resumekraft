@@ -39,6 +39,10 @@
                     }
                 })
             });
+
+            $afterlag.run(function(){
+                app.sections.trigger("ready");
+            });
         },
 
         nav: function(){
@@ -92,7 +96,10 @@
 
                 app.sections.on("afterMounted", function(){
                     app.tag("blog-subscribe-form", function(tag){
-                        tag.one("success fail", function(){
+                        tag.one("success", function(){
+                            $el.remove();
+                        })
+                        tag.one("fail", function(){
                             $el.remove();
                         })
                     });
@@ -101,6 +108,7 @@
                 $button.on("click", function(){
                     $button.remove();
                     $form.css("display", "block");
+                    app.metrika.set("offers.popup.blog.subscribe.show", true);
                 })
             }
             else {

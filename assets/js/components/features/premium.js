@@ -7,16 +7,17 @@
         active: false,
 
         init: function(options){
+            var _this = this;
 
             if (this.active) return;
 
-            var options = options || {};
+            this.options = options || {};
 
-            this.scope = options.scope ? $(options.scope) : $dom.body;
-            this.scroll = options.scroll ? $(options.scroll) : app.$dom.window;
+            this.scope = this.options.scope ? $(this.options.scope) : $dom.body;
+            this.scroll = this.options.scroll ? $(this.options.scroll) : app.$dom.window;
 
             _.each(this.render, function(fn){
-                if (_.isFunction(fn)) fn();
+                if (_.isFunction(fn)) fn(_this);
             });
 
             this.active = true;
@@ -24,7 +25,7 @@
 
         render: {
 
-            header: function(){
+            header: function(parent){
                 var $header = WD.scope.find(".ovpremium__header"),
                     $headerOverlay = $header.find(".ovpremium__header__overlay"),
                     $layers = $header.find(".ovpremium__header__layer"),
@@ -32,12 +33,14 @@
 
                 if (!$header.length) return;
 
-                $layers.each(function(){
+                $layers.each(function(i){
                     var $elem = $(this),
                         transform = $elem.css("transform").match(/matrix\(\d+, ?\d+, ?\d+, ?\d+, ?(\-?\d+), ?(\-?\d+)/),
                         x = transform[1],
                         y = parseInt(transform[2]) + _.random(12, 24),
                         scale = _.random(90, 105) / 100;
+
+                    this._index = i;
 
                     layers.push({
                         elem: $elem,
@@ -62,23 +65,48 @@
 
                 var anim = 0;
 
-                $.each(layers, function(){
-                    var $elem = this.elem;
-                    $elem.addClass("ovpremium__header__layer--animate")
-                    .css({
-                        "transform": this.transform,
-                        "transition-delay": (_.random(0, 15) / 100) + "s"
-                    });
-                    _.onEndTransition($elem[0], function(){
-                        $elem.addClass("ovpremium__header__layer--animated")
-                        .removeClass("ovpremium__header__layer--animate")
-                        .css("transition-delay", "0s");
-                        anim++;
-                        if (anim == layers.length){
-                            WD.headerParallax.start();
+                if (parent.options.controllerImage){
+                    parent.options.controllerImage.on("image-load", (function(elem){
+                        if (elem.classList[0].match(/ovpremium__header__layer/)){
+                            var $layer = $(elem).parent();
+                            $layer.addClass("ovpremium__header__layer--animate")
+                            .css({
+                                "transform": layers[$layer[0]._index].transform
+                            });
+                            _.onEndTransition($layer[0], function(){
+                                $layer.addClass("ovpremium__header__layer--animated");
+                                (function(layer){
+                                    setTimeout(function(){
+                                        layer.removeClass("ovpremium__header__layer--animate");
+                                    }, 200);
+                                })($layer);
+                                anim++;
+                                if (anim == layers.length){
+                                    WD.headerParallax.start();
+                                }
+                            });
                         }
+                    }));
+                }
+                else {
+                    $.each(layers, function(){
+                        var $elem = this.elem;
+                        $elem.addClass("ovpremium__header__layer--animate")
+                        .css({
+                            "transform": this.transform,
+                            "transition-delay": (_.random(0, 15) / 100) + "s"
+                        });
+                        _.onEndTransition($elem[0], function(){
+                            $elem.addClass("ovpremium__header__layer--animated")
+                            .removeClass("ovpremium__header__layer--animate")
+                            .css("transition-delay", "0s");
+                            anim++;
+                            if (anim == layers.length){
+                                WD.headerParallax.start();
+                            }
+                        });
                     });
-                });
+                }
             },
 
             content: function(){
@@ -168,7 +196,9 @@
                     });
                     screen.init();
                     screen.marquee.disableKeyboard();
-                    this.play = screen.play;
+                    if (this.getAttribute("data-autorun") == "true"){
+                        this.play = screen.play;
+                    }
                     WD.screens.push(screen);
                 });
             },

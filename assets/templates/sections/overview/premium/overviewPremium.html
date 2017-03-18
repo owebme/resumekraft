@@ -31,9 +31,11 @@
         $.loader = $.tags["oscreen-loader"];
     });
 
-    $.on("mount", function(){
-        if (!app.device.isSafari) $.show();
-    });
+    // $.on("mount", function(){
+    //     $afterlag.run(function(){
+    //         $.show();
+    //     })
+    // });
 
     $.show = function(){
         if ($.loading || $.active) return;
@@ -41,7 +43,6 @@
         $.loader.show(
             {
                 scope: $.scroll,
-                forceShow: true,
                 content: $.content,
                 tag: function(){
                     return $.section = riot.mount($.content, "overview-premium-content", {
