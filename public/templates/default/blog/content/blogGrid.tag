@@ -1,5 +1,7 @@
 <blog-grid class="section blog__grid">
 
+    <blog-share-button></blog-share-button>
+
     <div class="container">
         <div class="blog__grid__container row">
             <virtual each={ item, i in opts.params.data.items }>

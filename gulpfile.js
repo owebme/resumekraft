@@ -87,7 +87,7 @@ gulp.task('watchPublic', function() {
 		'assets/css/**/*.scss',
 		'public/css/style.scss',
 		'public/css/**/*.scss'
-	], gulp.parallel('public.css', 'public.mobile.css'));
+	], gulp.parallel('public.css'));
 });
 
 gulp.task('css.build', gulp.series('private.css', 'premium.css', 'public.css', gulp.parallel('private.css.largeScreen', 'private.css.smallScreen', 'premium.css.largeScreen', 'premium.css.smallScreen', 'templates.basic', 'templates.basic.view', 'jobs.css', 'jobs.css.smallScreen')));
@@ -98,6 +98,8 @@ gulp.task('public.js', gulp.parallel('public.libs', 'public.app', 'public.templa
 
 gulp.task('public.js.mobile', gulp.parallel('public.libs.mobile', 'public.app.mobile', 'public.templates.mobile'));
 
+gulp.task('promo.js', gulp.parallel('promo.libs', 'promo.templates'));
+
 gulp.task('private.js.build', gulp.parallel('private.libs', 'private.root.templates', 'private.sections.templates', 'private.modules.templates', 'private.resume.templates', 'private.ui.templates', 'private.commons', 'private.plugins'));
 
 gulp.task('premium.js.build', gulp.parallel('premium.app', 'premium.templates', 'premium.ui.templates', 'premium.editable.templates', 'premium.components.templates', 'premium.sections.templates', 'premium.control.templates'));
@@ -105,6 +107,7 @@ gulp.task('premium.js.build', gulp.parallel('premium.app', 'premium.templates', 
 gulp.task('build', gulp.series(
 	gulp.parallel(
 		'css.build',
+		gulp.series('promo.js', 'promo.app.build'),
 		gulp.series('public.js', 'public.app.build'),
 		gulp.series('public.js.mobile', 'public.app.build.mobile'),
 		gulp.series('private.js.build', 'private.templates', 'private.app', 'private.app.build'),
@@ -121,7 +124,7 @@ gulp.task('preview', gulp.series(
 ));
 
 gulp.task('public', gulp.series(
-	gulp.parallel('public.css', 'public.mobile.css', 'jobs.css'),
+	gulp.parallel('public.css', 'public.mobile.css', 'public.mobile.smallScreen', 'jobs.css'),
 	gulp.parallel('serve', 'watchPublic')
 ));
 

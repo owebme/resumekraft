@@ -42,12 +42,31 @@
                     {
                         title: "small",
                         maxWidth: 360,
-                        path: "/assets/css/style.smallScreen.mobile.css"
+                        path: "/public/css/style.mobile.smallScreen.css"
                     },
                     {
                         title: "normal",
                         minWidth: 360,
-                        path: "/assets/css/style.mobile.css"
+                        maxWidth: 767,
+                        path: "/public/css/style.mobile.css"
+                    },
+                    {
+                        title: "tablet",
+                        minWidth: 768,
+                        reload: true
+                    }
+                ]
+            });
+        }
+        else {
+            app.plugins.styles.init({
+                elem: "#styles",
+                default: "normal",
+                screens: [
+                    {
+                        title: "small",
+                        maxWidth: 767,
+                        reload: true
                     }
                 ]
             });

@@ -83,6 +83,45 @@ module.exports = function(){
     		.pipe(gulp.dest('./public/js'));
     });
 
+    gulp.task('promo.templates', function() {
+    	return gulp.src(['assets/templates/sections/offers/premiumContent.html',
+            'assets/templates/ui/icons/icon-device-desktop.html',
+            'assets/templates/ui/icons/icon-device-tablet.html',
+            'assets/templates/ui/icons/icon-device-phones.html'])
+    		.pipe(riot())
+    		.pipe(concat('promo.templates.js'))
+    		.pipe(uglify())
+    		.pipe(gulp.dest('./public/js'));
+    });
+
+    gulp.task('promo.app.build', function() {
+    	return gulp.src(['public/js/promo.libs.js',
+            'public/js/promo.templates.js'])
+    		.pipe(concat('app.promo.build.js'))
+    		.pipe(gulp.dest('./public/js'));
+    });
+
+    gulp.task('promo.libs', function() {
+    	return gulp.src(['assets/js/libs/jquery.min.js',
+            'assets/js/libs/modernizr.custom.js',
+            'assets/js/libs/underscore-min.js',
+            'assets/js/libs/riot-3.3.2/riot+compiler.update.js',
+            'assets/js/libs/afterlag-js/dist/afterlag.min.js',
+            'assets/js/components/commons/app.js',
+            'assets/js/components/commons/common.js',
+            'assets/js/components/commons/modules.js',
+            'assets/js/components/commons/utils.js',
+            'assets/js/components/commons/afterlag.js',
+            'assets/js/plugins/imagesLoaded/imagesLoaded.js',
+            'assets/js/plugins/imagesLoaded/imagesLoaded.EventEmitterMicro.js',
+            'assets/js/plugins/imagesLoaded/imagesLoaded.LiveQueue.js',
+            'assets/js/plugins/imagesLoaded/imagesLoaded.Queue.js',
+            'assets/js/plugins/imagesLoaded/imagesLoaded.QueueItem.js'])
+    		.pipe(concat('promo.libs.js'))
+    		.pipe(uglify())
+    		.pipe(gulp.dest('./public/js'));
+    });
+
     gulp.task('public.app.build', function() {
     	return gulp.src(['public/js/libs.js',
             'public/js/app.js',

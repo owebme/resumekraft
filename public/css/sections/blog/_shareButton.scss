@@ -1,7 +1,7 @@
 .blog__shareButton {
     @extend .pos-abs;
-    top:565px;
-    right:80px;
+    @extend .t--35;
+    @extend .r-xl;
     @extend .zIndex-10;
 
     &:before {

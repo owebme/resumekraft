@@ -50,6 +50,10 @@
         imagesLoader: function(){
             var imagesLoaded = new app.plugins.imagesLoaded();
 
+            imagesLoaded.once("complete", function(){
+                app.sections.trigger("ready");
+            });
+
             imagesLoaded.load({
                 timeout: 2000
             });

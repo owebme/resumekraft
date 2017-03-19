@@ -45,7 +45,7 @@
                                 <div class="plan__premium__item__image__wrapper col-xs-24 col-md-12">
                                     <div class="pl-m pr-l">
                                         <div class="pos-rel">
-                                            <img class="tutorial-step1 plan__premium__item__image" src="/assets/images/mac_large_2x.png" data-image="front">
+                                            <img class="plan__premium__item__image" src="/assets/images/mac_large_2x.png" data-image="front">
                                             <img class="plan__premium__item__image" src="/public/images/promo/premium/slide2_1.png" data-image="back">
                                         </div>
                                         <div class="plan__premium__item__button">
@@ -55,7 +55,7 @@
                                 </div>
                                 <div class="col-md-12 text-left c-blackLight whiteSpace-normal">
                                     <div class="pt-m pl-xs pr-m">
-                                        <div onClick={ open.overview } onUpdate="none" class="tutorial-step2 plan__premium__gallery" style="background-image:url(/public/images/promo/premium/slide2_1.png)">
+                                        <div onClick={ open.overview } onUpdate="none" class="plan__premium__gallery" style="background-image:url(/public/images/promo/premium/slide2_1.png)">
                                             <div class="plan__premium__gallery__pointer"></div>
                                         </div>
                                         <h2 class="fontWeight-8 pt-xs c-blue mb-l letterSpacing-xxxl text-uppercase">Premium</h2>
@@ -63,25 +63,27 @@
                                         <div class="fontSize-0 pt-xxs mb-l">
                                             <div each={ item in $store.colors.get() } class="plan__premium__colors__item bg-{ item.title }"></div>
                                         </div>
-                                        <div class="fontSize-14 fontWeight-8 letterSpacing--s text-uppercase mb-s">отлично подойдет</div>
-                                        <p class="fontSize-20 lineHeight-xl mb-l">Журналистам, художникам, экономистам, финанситсам, бухгалтерам, учителям, юристам, фотографам</p>
-                                        <div class="tutorial-step3 fontSize-0 pt-xs" data-height="65" data-width="400" data-zoom="1.1">
+                                        <div class="fontSize-14 fontWeight-8 letterSpacing--s text-uppercase mb-s">резюме нового формата</div>
+                                        <p class="fontSize-20 lineHeight-xxl mb-m">Яркое, современное и профессионально выполненное резюме поможет быстрее найти работу. Доступен целый ряд уникальных функций. <span class={ display-none : $account.get('plan') == 'premium' }>Если вы не знакомы, <span onClick={ open.overview } onUpdate="none" class="plan__premium__link__overview">перейдите к обзору</span>.</span></p>
+                                        <div class="fontSize-0 pt-xs" data-height="65" data-width="400" data-zoom="1.1">
                                             <div class="plan__premium__icon" data-icon="globe" data-balloon="Резюме на двух языках, на русском и английских языках" data-balloon-length="large" data-balloon-fontSize="large">
                                                 <icon-globe></icon-globe>
                                             </div>
                                             <div class="plan__premium__icon" data-icon="control" data-balloon="Легкая настройка, редактирование в несколько кликов" data-balloon-length="large" data-balloon-fontSize="large">
                                                 <icon-control></icon-control>
                                             </div>
-                                            <div class="plan__premium__icon" data-icon="play" data-balloon="Новый формат резюме в виде презентации" data-balloon-length="large" data-balloon-fontSize="large">
+                                            <div class="plan__premium__icon" data-icon="play" data-balloon="Резюме-презентация с стильным и современным дизайном" data-balloon-length="large" data-balloon-fontSize="large">
                                                 <icon-play></icon-play>
                                             </div>
-                                            <div class="plan__premium__icon" data-icon="chart" data-balloon="Подробная статистика по дням, посещения вашего резюме" data-balloon-length="large" data-balloon-fontSize="large">
+                                            <div class="plan__premium__icon" data-icon="chart" data-balloon="Оценивайте эффективность ваших резюме, подробная статистика по дням" data-balloon-length="large" data-balloon-fontSize="large">
                                                 <icon-chart></icon-chart>
+                                            </div>
+                                            <div class="plan__premium__icon" data-icon="feedback" data-balloon="Получайте приглашения от ваших работадателей" data-balloon-length="large" data-balloon-fontSize="large">
+                                                <icon-feedback></icon-feedback>
                                             </div>
                                             <div class="plan__premium__icon" data-icon="devices" data-balloon="100% адаптация для всех мобильных и не мобильных устройств" data-balloon-length="large" data-balloon-fontSize="large">
                                                 <icon-devices></icon-devices>
                                             </div>
-                                            <div onClick={ open.functions } onUpdate="none" class="pos-rel cursor-pointer display-inlineBlock vAlign-middle fontSize-16 fontWeight-8 letterSpacing--s text-uppercase c-blue" data-icon="devices" data-balloon="Нажмите, чтобы узнать еще о возможностях" data-balloon-length="large" data-balloon-fontSize="large">еще...</div>
                                         </div>
                                     </div>
                                 </div>
@@ -168,14 +170,6 @@
     };
 
     $.open = {
-        tutorial: function(){
-            $Tutorial.show(
-                $scope.find(".largeSlides .slider__item.current"), "selectResumePremium"
-            );
-        },
-        functions: function(){
-            $Sections.overview.functions.show();
-        },
         overview: function(){
             $Sections.overview.premium.show();
         }
@@ -197,7 +191,9 @@
                         $.slider.free.show();
                     });
                 }
-                $.slider.premium.hide();
+                $.slider.premium.hide(function(){
+                    $scope.find(".largeSlides[name='slider-premium'] .slider__item.current").removeClass("current");
+                });
                 app.metrika.set("resume.select.default", "free");
             },
             premium: function(){
@@ -206,6 +202,7 @@
                 })
                 _.onEndTransition($.root, function(){
                     $.slider.premium.show();
+                    $scope.find(".largeSlides[name='slider-premium'] .slider__item").addClass("current");
                 });
                 $.slider.free.hide();
                 app.metrika.set("resume.select.default", "premium");

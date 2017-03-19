@@ -4,7 +4,7 @@
         <div onClick={ close } onUpdate="none" class="button__close" data-color="gray"></div>
     </div>
 
-    <div class="pos-br pr-l pb-l anim-group1 anim-scale zIndex-2" delay-show="l" delay-hide="none">
+    <div if={ $account.get('plan') != 'premium' } class="pos-br pr-l pb-l anim-group1 anim-scale zIndex-2" delay-show="l" delay-hide="none">
         <button onClick={ open.plan } onUpdate="none" class="btn btn-l btn-upper btn-default-hover-success">Подключить</button>
     </div>
 

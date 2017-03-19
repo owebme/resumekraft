@@ -2,32 +2,21 @@
     @extend .pos-rel;
     @extend .c-white;
     @extend .overflow-hidden;
-    height:600px;
+    height:84vh;
+    min-height:600px;
+    max-height:670px;
 
-    @for $i from 1 through 18 {
-        &[data-cover="#{$i}"]:before {
-            background-image:url(/public/images/blog/slide#{$i}.jpg);
-        }
-    }
-    &:before {
-        @extend .content-empty;
+    &__cover {
         @include abs();
         @include animation(bg-zoomer, linear, 40s, 0s, infinite);
         @extend .bg-cover-center;
-        background-image:url(/public/images/blog/slide1.jpg);
-        // /public/images/blog/slide1.jpg
-        // http://www.privilegeapartments.com/wp-content/uploads/2015/04/pannello-rosso.jpg
-        // http://www.nejlepsi-adresa.cz/images/zpravy/orig/3_1415960144.jpg
-        // http://v.img.com.ua/b/1100x999999/a/fa/40f38026f8a1c468a8a0989b273e4faa.jpg
-        // http://www.quailplumbing.com/wp-content/uploads/2016/08/Plumbing-Maintenance.jpg
-        // https://lh3.googleusercontent.com/-81auXQCgH6k/U9gRmXh1dSI/AAAAAAAABYc/NcGgXOvt7Zo/w2048-h1365/nat_IMG_0413.jpg
-        // http://melinda.themes.tvda.eu/wp-content/uploads/2016/04/wood.jpg
-        // http://melinda.themes.tvda.eu/wp-content/uploads/2016/04/man-phone.jpg
-        // http://melinda.themes.tvda.eu/wp-content/uploads/2016/06/briefing.jpg
-        // http://melinda.themes.tvda.eu/wp-content/uploads/revslider/melinda-fullscreen/flower.jpg
-        // http://melinda.themes.tvda.eu/wp-content/uploads/2016/04/man-woman-ipad.jpg
-        // http://melinda.themes.tvda.eu/wp-content/uploads/2016/04/bar.jpg
-        // http://melinda.themes.tvda.eu/wp-content/uploads/2016/04/carbon.jpg
+        background-image:url(/public/images/blog/slide18.jpg);
+
+        @for $i from 1 through 18 {
+            &[data-cover="#{$i}"] {
+                background-image:url(/public/images/blog/slide#{$i}.jpg);
+            }
+        }
     }
     &:after {
         @extend .content-empty;

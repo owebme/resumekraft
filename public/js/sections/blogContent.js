@@ -32,9 +32,13 @@
                 }
             });
 
-            this.share();
+            WD.share();
 
-            this.popup.mount();
+            WD.popup.mount();
+
+            $afterlag.run(function(){
+                app.sections.trigger("ready");
+            });
         },
 
         share: function(){

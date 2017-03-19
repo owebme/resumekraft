@@ -22,6 +22,23 @@ module.exports = function(){
     	}));
     });
 
+    gulp.task('public.css.largeScreen', function() {
+    	return combiner(
+    		gulp.src('public/css/style.css'),
+    		px2vw({
+    			width: 1400,
+    			minPx: 2,
+    			maxPx: 10000,
+    			replace: true
+    		}),
+    		rename("style.largeScreen.css"),
+    		gulp.dest('public/css'),
+    		browserSync.stream()
+    	).on('error', notify.onError({
+    		"sound": false,
+    	}));
+    });
+
     gulp.task('public.mobile.css', function() {
     	return combiner(
     		gulp.src('public/css/style.mobile.scss'),
@@ -46,7 +63,7 @@ module.exports = function(){
 
     gulp.task('public.mobile.smallScreen', function() {
     	return combiner(
-    		gulp.src('assets/css/style.mobile.css'),
+    		gulp.src('public/css/style.mobile.css'),
     		px2vw({
     			width: 360,
     			minPx: 2,

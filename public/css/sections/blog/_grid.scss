@@ -1,4 +1,5 @@
 .blog__grid {
+    @extend .pos-rel;
     padding-top:61px;
 
     &__container {

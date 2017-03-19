@@ -4,8 +4,6 @@
 
     <blog-header params={ opts }></blog-header>
 
-    <blog-share-button></blog-share-button>
-
     <blog-grid params={ opts }></blog-grid>
 
     <blog-pagination params={ opts }></blog-pagination>

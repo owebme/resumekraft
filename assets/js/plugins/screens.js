@@ -153,8 +153,8 @@
             this.scope.off();
             this.marquee.scroll.off();
             this.marquee.destroy();
-            if (this.playScreens){
-                this.playScreens.destroy();
+            if (this.options.play){
+                this.play.destroy();
             }
             $dom.window.off('resize.screens');
             this.active = false;

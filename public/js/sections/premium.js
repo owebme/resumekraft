@@ -12,33 +12,23 @@
         },
 
         render: function(){
-            var ready = 0,
-                isShow = false;
 
             app.features.navbar.init();
 
             var imagesLoaded = new app.plugins.imagesLoaded();
 
             app.features.premium.init({
-                controllerImage: imagesLoaded
+                imagesLoaded: imagesLoaded
             });
 
-            imagesLoaded.on("complete", function(){
+            imagesLoaded.once("complete", function(){
                 $afterlag.run(function(){
                     app.sections.trigger("ready");
                 });
             });
 
-            // imagesLoaded.on("image-load", (function(){
-            //     ready += 1;
-            //     if (!isShow && ready > 7){
-            //         isShow = true;
-            //         app.features.premium.init();
-            //     }
-            // }));
-
             imagesLoaded.load({
-                timeout: 2000
+                timeout: 5000
             });
 
             app.metrika.set("views.premium", 1, {

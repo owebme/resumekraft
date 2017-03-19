@@ -7,8 +7,6 @@
         active: false,
 
         init: function(options){
-            var _this = this;
-
             if (this.active) return;
 
             this.options = options || {};
@@ -16,8 +14,8 @@
             this.scope = this.options.scope ? $(this.options.scope) : $dom.body;
             this.scroll = this.options.scroll ? $(this.options.scroll) : app.$dom.window;
 
-            _.each(this.render, function(fn){
-                if (_.isFunction(fn)) fn(_this);
+            _.each(_.omit(this.render, "content"), function(fn){
+                if (_.isFunction(fn)) fn();
             });
 
             this.active = true;
@@ -25,7 +23,7 @@
 
         render: {
 
-            header: function(parent){
+            header: function(){
                 var $header = WD.scope.find(".ovpremium__header"),
                     $headerOverlay = $header.find(".ovpremium__header__overlay"),
                     $layers = $header.find(".ovpremium__header__layer"),
@@ -35,16 +33,16 @@
 
                 $layers.each(function(i){
                     var $elem = $(this),
-                        transform = $elem.css("transform").match(/matrix\(\d+, ?\d+, ?\d+, ?\d+, ?(\-?\d+), ?(\-?\d+)/),
-                        x = transform[1],
-                        y = parseInt(transform[2]) + _.random(12, 24),
+                        values = $elem.css("transform").split('(')[1].split(')')[0].split(','),
+                        x = values[4],
+                        y = parseInt(values[5]) + _.random(12, 24),
                         scale = _.random(90, 105) / 100;
 
                     this._index = i;
 
                     layers.push({
                         elem: $elem,
-                        transform: "translate3d(" + x + "px, " + transform[2] + "px, 0px) scale3d(1, 1, 1)"
+                        transform: "translate3d(" + x + "px, " + values[5] + "px, 0px) scale3d(1, 1, 1)"
                     });
 
                     $elem.css({
@@ -65,8 +63,8 @@
 
                 var anim = 0;
 
-                if (parent.options.controllerImage){
-                    parent.options.controllerImage.on("image-load", (function(elem){
+                if (WD.options.imagesLoaded){
+                    WD.options.imagesLoaded.on("image-load", (function(elem){
                         if (elem.classList[0].match(/ovpremium__header__layer/)){
                             var $layer = $(elem).parent();
                             $layer.addClass("ovpremium__header__layer--animate")
@@ -83,6 +81,7 @@
                                 anim++;
                                 if (anim == layers.length){
                                     WD.headerParallax.start();
+                                    WD.render.content();
                                 }
                             });
                         }
@@ -103,6 +102,7 @@
                             anim++;
                             if (anim == layers.length){
                                 WD.headerParallax.start();
+                                WD.render.content();
                             }
                         });
                     });
