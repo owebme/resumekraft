@@ -14,7 +14,7 @@
             this.scope = this.options.scope ? $(this.options.scope) : $dom.body;
             this.scroll = this.options.scroll ? $(this.options.scroll) : app.$dom.window;
 
-            _.each(_.omit(this.render, "content"), function(fn){
+            _.each(_.omit(this.render, ["content", "screens", "chart"]), function(fn){
                 if (_.isFunction(fn)) fn();
             });
 
@@ -32,21 +32,19 @@
                 if (!$header.length) return;
 
                 $layers.each(function(i){
-                    var $elem = $(this),
-                        values = $elem.css("transform").split('(')[1].split(')')[0].split(','),
-                        x = values[4],
-                        y = parseInt(values[5]) + _.random(12, 24),
+                    var $elem = $(this).children(),
+                        y = _.random(12, 24),
                         scale = _.random(90, 105) / 100;
 
-                    this._index = i;
+                    $elem[0]._index = i;
 
                     layers.push({
                         elem: $elem,
-                        transform: "translate3d(" + x + "px, " + values[5] + "px, 0px) scale3d(1, 1, 1)"
+                        transform: "translate3d(0px, 0px, 0px) scale3d(1, 1, 1)"
                     });
 
                     $elem.css({
-                        "transform": "translate3d(" + x + "px, " + y + "px, 0px) scale3d(" + scale + ", " + scale + ", 1)"
+                        "transform": "translate3d(0px, " + y + "px, 0px) scale3d(" + scale + ", " + scale + ", 1)"
                     });
                 });
 
@@ -61,48 +59,55 @@
                     }
                 });
 
+                WD.headerParallax.start();
+
                 var anim = 0;
 
                 if (WD.options.imagesLoaded){
-                    WD.options.imagesLoaded.on("image-load", (function(elem){
+
+                    var layersLoaded = new app.plugins.imagesLoaded({
+                        container: $header[0]
+                    });
+
+                    layersLoaded.on("image-load", (function(elem){
                         if (elem.classList[0].match(/ovpremium__header__layer/)){
                             var $layer = $(elem).parent();
-                            $layer.addClass("ovpremium__header__layer--animate")
+                            $layer.addClass("ovpremium__header__layer__inner--animate")
                             .css({
                                 "transform": layers[$layer[0]._index].transform
                             });
                             _.onEndTransition($layer[0], function(){
-                                $layer.addClass("ovpremium__header__layer--animated");
-                                (function(layer){
-                                    setTimeout(function(){
-                                        layer.removeClass("ovpremium__header__layer--animate");
-                                    }, 200);
-                                })($layer);
                                 anim++;
                                 if (anim == layers.length){
-                                    WD.headerParallax.start();
                                     WD.render.content();
+                                    WD.render.screens();
+                                    WD.render.chart();
+                                    WD.options.imagesLoaded.load({
+                                        timeout: 10000
+                                    });
                                 }
                             });
                         }
                     }));
+
+                    layersLoaded.load({
+                        imageClassName: "l-progressive"
+                    });
                 }
                 else {
                     $.each(layers, function(){
                         var $elem = this.elem;
-                        $elem.addClass("ovpremium__header__layer--animate")
+                        $elem.addClass("ovpremium__header__layer__inner--animate")
                         .css({
                             "transform": this.transform,
                             "transition-delay": (_.random(0, 15) / 100) + "s"
                         });
                         _.onEndTransition($elem[0], function(){
-                            $elem.addClass("ovpremium__header__layer--animated")
-                            .removeClass("ovpremium__header__layer--animate")
-                            .css("transition-delay", "0s");
                             anim++;
                             if (anim == layers.length){
-                                WD.headerParallax.start();
                                 WD.render.content();
+                                WD.render.screens();
+                                WD.render.chart();
                             }
                         });
                     });
@@ -127,7 +132,9 @@
                         {
                             elem: ".overview__section[data-section='stat']",
                             callback: function($elem, i){
-                                WD.chartRadial.render([_.random(5, 87), _.random(5, 87), _.random(5, 87)]);
+                                if (WD.chartRadial){
+                                    WD.chartRadial.render([_.random(5, 87), _.random(5, 87), _.random(5, 87)]);
+                                }
                             }
                         }
                     ]

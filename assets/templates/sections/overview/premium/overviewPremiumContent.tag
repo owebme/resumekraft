@@ -1,42 +1,57 @@
 <overview-premium-content class="overview-premium">
 
-    <!-- <div class="overview__loader">
-        <div class="overview__loader__progress"></div>
-        <div class="overview__loader__percent">0<span>%</span></div>
-    </div> -->
-
     <section class="ovpremium__header">
         <div class="ovpremium__header__layers">
             <div class="ovpremium__header__layers__wrapper">
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer1">
-                    <div class="ovpremium__header__layer__iphone__screen bg-cover progressive-image"></div>
+                    <div class="ovpremium__header__layer__inner">
+                        <div class="ovpremium__header__layer__iphone__screen bg-cover l-progressive"></div>
+                    </div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer2">
-                    <div class="ovpremium__header__layer__iphone__screen bg-cover progressive-image"></div>
+                    <div class="ovpremium__header__layer__inner">
+                        <div class="ovpremium__header__layer__iphone__screen bg-cover l-progressive"></div>
+                    </div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer3">
-                    <div class="ovpremium__header__layer__iphone__screen bg-cover progressive-image"></div>
+                    <div class="ovpremium__header__layer__inner">
+                        <div class="ovpremium__header__layer__iphone__screen bg-cover l-progressive"></div>
+                    </div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__ipad ovpremium__header__layer4">
-                    <div class="ovpremium__header__layer__ipad__screen bg-cover progressive-image"></div>
+                    <div class="ovpremium__header__layer__inner">
+                        <div class="ovpremium__header__layer__ipad__screen bg-cover l-progressive"></div>
+                    </div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer5">
-                    <div class="ovpremium__header__layer__iphone__screen bg-cover progressive-image"></div>
+                    <div class="ovpremium__header__layer__inner">
+                        <div class="ovpremium__header__layer__iphone__screen bg-cover l-progressive"></div>
+                    </div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer6">
-                    <div class="ovpremium__header__layer__iphone__screen bg-cover progressive-image"></div>
+                    <div class="ovpremium__header__layer__inner">
+                        <div class="ovpremium__header__layer__iphone__screen bg-cover l-progressive"></div>
+                    </div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer7">
-                    <div class="ovpremium__header__layer__iphone__screen bg-cover progressive-image"></div>
+                    <div class="ovpremium__header__layer__inner">
+                        <div class="ovpremium__header__layer__iphone__screen bg-cover l-progressive"></div>
+                    </div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer8">
-                    <div class="ovpremium__header__layer__iphone__screen bg-cover progressive-image"></div>
+                    <div class="ovpremium__header__layer__inner">
+                        <div class="ovpremium__header__layer__iphone__screen bg-cover l-progressive"></div>
+                    </div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer9">
-                    <div class="ovpremium__header__layer__iphone__screen bg-cover progressive-image"></div>
+                    <div class="ovpremium__header__layer__inner">
+                        <div class="ovpremium__header__layer__iphone__screen bg-cover l-progressive"></div>
+                    </div>
                 </div>
                 <div class="ovpremium__header__layer ovpremium__header__layer__iphone ovpremium__header__layer10">
-                    <div class="ovpremium__header__layer__iphone__screen bg-cover progressive-image"></div>
+                    <div class="ovpremium__header__layer__inner">
+                        <div class="ovpremium__header__layer__iphone__screen bg-cover l-progressive"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -164,7 +179,7 @@
         </div>
     </section>
 
-    <section class="overview__section bg-snow pt-xl" id="section">
+    <section class="overview__section bg-snow pt-xl">
         <div class="container pt-l">
             <div class="row pt-m">
                 <div class="col-md-16 zIndex-0" style="height:874px">
@@ -213,7 +228,10 @@
                                     <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/promo/premium/mobile_office_screen3.png)"></div>
                                 </div>
                                 <div class="screen">
-                                    <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/promo/premium/mobile_inbox_screen.png)"></div>
+                                    <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/promo/premium/mobile_stat_screen.png)"></div>
+                                </div>
+                                <div class="screen">
+                                    <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/promo/premium/mobile_inbox_screen1.png)"></div>
                                 </div>
                                 <div class="screen">
                                     <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/promo/premium/mobile_likes_screen.png)"></div>
@@ -264,8 +282,16 @@
                 <div class="col-md-12 anim anim-scale-soft">
                     <div class="overview__phone" data-align="left" data-color="white">
                         <div class="overview__phone__screen">
-                            <div style="background-image:url(/public/images/promo/premium/mobile_inbox_screen.png)" class="pos-abs-full bg-cover progressive-image"></div>
-                            <div class="ovpremium__inbox__pointer"></div>
+                            <div class="screens screens-desktop" data-vertical="false" data-autorun="true">
+                                <div class="screen screen--active">
+                                    <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/promo/premium/mobile_inbox_screen1.png)">
+                                        <div class="ovpremium__inbox__pointer"></div>
+                                    </div>
+                                </div>
+                                <div class="screen">
+                                    <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/promo/premium/mobile_inbox_screen2.png)"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

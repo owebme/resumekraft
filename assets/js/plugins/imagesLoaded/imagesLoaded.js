@@ -16,7 +16,7 @@
             includeContainer: false
         };
         _.extend(this.options, options);
-        _.extend(app.plugins.imagesLoaded.prototype, new app.plugins.imagesLoaded.EventEmitterMicro());
+        _.extend(app.plugins.imagesLoaded.prototype, new app.commons.EventEmitterMicro());
     };
 
     app.plugins.imagesLoaded.prototype = {

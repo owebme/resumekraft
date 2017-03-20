@@ -8,8 +8,13 @@
     &__video {
         @extend .pos-tl;
         @extend .minWH-100p;
-        // transform:scale(1.34);
+        @extend .willChange-opacity;
+        @extend .opacity-01;
+        transition:opacity 0.5s $cubic2501;
 
+        &[data-show="true"]{
+            @extend .opacity-100;
+        }
         .d-mobile & {
             left:50%;
             transform:translateX(-50%) scale(1.2);

@@ -13,34 +13,9 @@
 
         render: function(){
 
-            var scrollAnimate = new app.plugins.scroll.animate({
-                scroll: $dom.window,
-                container: WD.el.find(".blog__grid"),
-                delta: "xs"
-            });
-
-            scrollAnimate.start();
-
-            var animHeader = new app.plugins.animate(WD.el.find(".blog__header"), {
-                showAfter: 1
-            });
-
-            animHeader.show();
-
-            if (typeof Skycons !== 'undefined'){
-                var skycons = new Skycons(
-                    {"color": "#fff"},
-                    {"resizeClear": true}
-                );
-                skycons.add("blog__grid__weather__canvas", Skycons.PARTLY_CLOUDY_NIGHT);
-                skycons.play();
-            };
-
-            WD.share();
-
-            WD.subscribe();
-
             WD.imagesLoader();
+
+            WD.header();
 
             app.metrika.set("views.blog", 1, {
                 action: "inc"
@@ -50,13 +25,51 @@
         imagesLoader: function(){
             var imagesLoaded = new app.plugins.imagesLoaded();
 
+            imagesLoaded.on("image-load", function(image){
+                if (image.classList.contains("blog__header__cover__image")){
+                    image.parentNode.setAttribute("data-show", true);
+                }
+            });
+
             imagesLoaded.once("complete", function(){
-                app.sections.trigger("ready");
+                WD.content();
+                WD.share();
+                WD.subscribe();
+                $afterlag.run(function(){
+                    app.sections.trigger("ready");
+                });
             });
 
             imagesLoaded.load({
-                timeout: 2000
+                timeout: 5000
             });
+        },
+
+        header: function(){
+            var animHeader = new app.plugins.animate(WD.el.find(".blog__header"), {
+                showAfter: 1
+            });
+
+            animHeader.show();
+        },
+
+        content: function(){
+            var scrollAnimate = new app.plugins.scroll.animate({
+                scroll: $dom.window,
+                container: WD.el.find(".blog__grid"),
+                delta: "xs"
+            });
+
+            scrollAnimate.start();
+
+            if (typeof Skycons !== 'undefined'){
+                var skycons = new Skycons(
+                    {"color": "#fff"},
+                    {"resizeClear": true}
+                );
+                skycons.add("blog__grid__weather__canvas", Skycons.PARTLY_CLOUDY_NIGHT);
+                skycons.play();
+            };
         },
 
         share: function(){
@@ -85,7 +98,10 @@
 
                 app.sections.on("afterMounted", function(){
                     app.tag("blog-subscribe-form", function(tag){
-                        tag.one("success fail", function(){
+                        tag.one("success", function(){
+                            $el.remove();
+                        })
+                        tag.one("fail", function(){
                             $el.remove();
                         })
                     });

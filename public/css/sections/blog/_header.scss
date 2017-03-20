@@ -2,19 +2,32 @@
     @extend .pos-rel;
     @extend .c-white;
     @extend .overflow-hidden;
+    @extend .bg-grayDarken;
     height:84vh;
     min-height:600px;
     max-height:670px;
 
     &__cover {
         @include abs();
-        @include animation(bg-zoomer, linear, 40s, 0s, infinite);
-        @extend .bg-cover-center;
-        background-image:url(/public/images/blog/slide18.jpg);
+        @extend .willChange-opacity;
+        @extend .opacity-01;
+        transition:opacity 0.5s $cubic2501;
 
-        @for $i from 1 through 18 {
-            &[data-cover="#{$i}"] {
-                background-image:url(/public/images/blog/slide#{$i}.jpg);
+        &[data-show="true"]{
+            @extend .opacity-100;
+        }
+        &__image {
+            @include accelerate();
+            @include abs();
+            @extend .bg-cover-center;
+            @extend .willChange-transform;
+            background-image:url(/public/images/blog/slide18.jpg);
+            @include animation(bg-zoomer, linear, 40s, 0s, infinite);
+
+            @for $i from 1 through 18 {
+                &[data-cover="#{$i}"] {
+                    background-image:url(/public/images/blog/slide#{$i}.jpg);
+                }
             }
         }
     }

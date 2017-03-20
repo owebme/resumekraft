@@ -35,6 +35,7 @@ module.exports = function(){
             'assets/js/plugins/animate.js',
             'assets/js/plugins/chartRadial.js',
             'assets/js/plugins/sliderElastic.js',
+            'assets/js/plugins/styles.js',
             'assets/js/plugins/metrika.js',
             'assets/js/plugins/share.js',
             'assets/js/plugins/eventsEmitter.js',

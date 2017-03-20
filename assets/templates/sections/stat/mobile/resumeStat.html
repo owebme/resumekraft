@@ -40,6 +40,10 @@
                         </tbody>
                     </table>
                 </div>
+                
+                <div class="resume__stat__tabs row">
+                    <resume-stat-tabs stat={ all }></resume-stat-tabs>
+                </div>
 
                 <div class="chart__radial" name="chartRadialEl"></div>
 
@@ -63,6 +67,10 @@
 
     $.default = function(){
         return {
+            all: {
+                visits: 0,
+                hits: 0
+            },
             visits: {
                 labels: [],
                 hits: _.shuffle(_.range(13))
@@ -148,6 +156,7 @@
             ]);
         })
         $.update({
+            all: data && data.all ? data.all : null,
             visits: {
                 labels: data.visits.labels.reverse(),
                 hits: data.visits.hits.reverse()

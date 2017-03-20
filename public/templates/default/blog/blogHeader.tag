@@ -1,6 +1,8 @@
 <blog-header class="section blog__header">
 
-    <div class="blog__header__cover progressive-image" data-cover={ parent.opts.utils.random(1, 18) }></div>
+    <div class="blog__header__cover">
+        <div class="blog__header__cover__image progressive-image" data-cover={ parent.opts.utils.random(1, 18) }></div>
+    </div>
 
     <div class="container">
         <div class="blog__header__container row">

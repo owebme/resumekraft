@@ -27,10 +27,6 @@
                 });
             });
 
-            imagesLoaded.load({
-                timeout: 5000
-            });
-
             app.metrika.set("views.premium", 1, {
                 action: "inc"
             })

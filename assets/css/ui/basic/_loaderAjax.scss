@@ -5,14 +5,14 @@
     @extend .t-s;
     @extend .l0;
     @extend .ml-l;
-    @extend .xs-ml-xs;
+    @extend .xs-ml-s;
     @extend .opacity-0;
     @extend .willChange-opacity;
     @extend .zIndex-100;
 
     .d-phone & {
-        width:28px;
-        height:28px;
+        @extend .w32;
+        @extend .h32;
         @extend .bg-white;
         @extend .borderRadius-circle;
     }

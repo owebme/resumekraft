@@ -324,6 +324,17 @@
         }
     }
 }
+.premium-devices-icons {
+    @extend .w80p;
+    @extend .centered;
+    @extend .mt60;
+    @extend .mb60;
+
+    div[class^="col-"] {
+        @extend .flex-centered;
+        @extend .h100;
+    }
+}
 @keyframes ovpremium-pointer-pulse {
     0%, 100% {opacity:1;}
     25%, 75% {opacity:0;}

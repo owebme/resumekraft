@@ -59,16 +59,16 @@
                 return 1024;
             },
             height: function(){
-                return app.sizes.height < 640 ? app.sizes.height : 640;
+                return app.sizes.height < 640 ? app.sizes.height : app.sizes.height < 760 ? 640 : app.sizes.height < 780 ? 700 : 740;
             }
         },
         {
             device: 'phone',
             width: function(){
-                return 375;
+                return app.sizes.height < 760 ? 375 : 414;
             },
             height: function(){
-                return app.sizes.height < 640 ? app.sizes.height : 640;
+                return app.sizes.height < 640 ? app.sizes.height : app.sizes.height < 760 ? 640 : 736;
             }
         }
     ];

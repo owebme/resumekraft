@@ -82,6 +82,13 @@ blog-content {
         @extend .pb-xs;
         line-height:72px;
         text-shadow:0 2px 1px rgba(42,49,57,.6);
+        will-change:filter;
+        filter:blur(5px);
+        transition:filter 0.6s $cubic2501;
+
+        &[data-show="true"]{
+            filter:none;
+        }
     }
     &__tags {
         @extend .c-yellow;
@@ -188,15 +195,18 @@ blog-content {
         @extend .pb-m;
     }
     img {
+        @include accelerate();
         margin:20px 0 15px -15px;
         @extend .borderRadius-xl;
-        will-change:transform, box-shadow;
-        transition:transform .3s $cubic28, box-shadow .3s $cubic28;
+        @extend .willChange-transform;
+        transform:translateY(0px) translateZ(0);
+        // will-change:transform, box-shadow;
+        // transition:transform .3s $cubic28, box-shadow .3s $cubic28;
 
-        &:hover {
-            box-shadow:0 20px 25px rgba(31,35,37,.15);
-            transform:translateY(-15px);
-        }
+        // &:hover {
+        //     box-shadow:0 20px 25px rgba(31,35,37,.15);
+        //     transform:translateY(-15px);
+        // }
     }
     blockquote {
         @extend .pt25;

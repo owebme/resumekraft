@@ -78,7 +78,7 @@
         </div> -->
         <div class="screen" data-section="back-office-mobile">
             <div class="screen__image">
-                <img src="/public/images/mobile/home/screen7a.png">
+                <img src="/public/images/mobile/home/back-office-mobile.png">
             </div>
             <div class="screen__text">
                 <h2>Мобильный офис</h2>

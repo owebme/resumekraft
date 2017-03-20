@@ -17,6 +17,8 @@
             var _this = this,
                 options = options || {};
 
+            this.scroll = options && options.scroll || null;
+
             if (options.forceShow){
                 this.active = true;
                 var $content = $(this.content);
@@ -82,9 +84,9 @@
             this.scope.setAttribute("data-inner", "show");
 
             $afterlag.run(function(){
-                if (options.scroll){
-                    options.scroll.refresh();
-                    options.scroll.scrollTop();
+                if (_this.scroll){
+                    _this.scroll.refresh();
+                    _this.scroll.scrollTop();
                 }
                 _this.scope.setAttribute("data-loading", false);
 

@@ -123,6 +123,7 @@
             }
         }
         &__count {
+            @extend .ml0;
             @extend .flex-centered;
             @extend .fontSize-28;
             @extend .fontWeight-8;

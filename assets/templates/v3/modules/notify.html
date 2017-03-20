@@ -22,16 +22,13 @@
     $.on("mount", function(){
         $.notify = $.refs.notify;
 
-        if (!app.device.isPhone){
-            setTimeout(function(){
-                $.update(
-                    _.extend($.default(), {
-                        active: false
-                    })
-                );
-                $.root.style.display = "block";
-            }, 20);
-        }
+        $afterlag.run(function(){
+            $.update(
+                _.extend($.default(), {
+                    active: false
+                })
+            );
+        });
     });
 
     $.show = function(options){
@@ -41,15 +38,11 @@
 
         clearTimeout($.interval);
 
-        if (app.device.isPhone){
-            $.root.style.display = "block";
-            $afterlag.run(function(){
-                $.update(_.extend($.default(), options));
-            })
-        }
-        else {
+        $.root.style.display = "block";
+
+        $afterlag.run(function(){
             $.update(_.extend($.default(), options));
-        }
+        })
 
         return new Promise(function(resolve, reject){
             _.onEndTransition($.notify, function(){
@@ -74,11 +67,9 @@
             active: false
         });
 
-        if (app.device.isPhone){
-            _.onEndTransition($.notify, function(){
-                $.root.style.display = "none";
-            });
-        }
+        _.onEndTransition($.notify, function(){
+            $.root.style.display = "none";
+        });
     };
 
 </script>

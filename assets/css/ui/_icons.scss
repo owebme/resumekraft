@@ -703,6 +703,36 @@
             margin-bottom:-26px;
         }
     }
+    &-infinity {
+        &.icon-xs {
+            width:24px;
+            height:24px;
+        }
+        &.icon-s {
+            width:32px;
+            height:32px;
+        }
+        &.icon-m {
+            width:40px;
+            height:40px;
+        }
+        &.icon-l {
+            width:50px;
+            height:50px;
+        }
+        &.icon-xl {
+            width:80px;
+            height:80px;
+        }
+        &.icon-xl2 {
+            width:96px;
+            height:96px;
+        }
+        &.icon-large {
+            width:128px;
+            height:128px;
+        }
+    }
     &-fb,
     &-dk,
     &-tw {

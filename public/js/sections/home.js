@@ -13,30 +13,71 @@
 
         render: function(){
 
-            var $sectionFunctions = WD.el.find('.home__functions'),
-                offsetTop = $sectionFunctions.offset().top,
-                animHeader = new app.plugins.animate(WD.el.find('.home__header')),
-                animFunctions = new app.plugins.animate($sectionFunctions, {
-                    showAfter: 1
+            WD.imagesLoaded();
+
+            WD.header();
+
+            WD.screenVideo();
+
+            WD.scrollAnimate();
+
+            WD.scrollParallax();
+
+            app.metrika.set("views.home", 1, {
+                action: "inc"
+            })
+        },
+
+        imagesLoaded: function(){
+
+            var imagesLoaded = new app.plugins.imagesLoaded();
+
+            imagesLoaded.once("complete", function(){
+                $afterlag.run(function(){
+                    app.sections.trigger("ready");
                 });
+            });
+
+            imagesLoaded.load({
+                timeout: 5000
+            });
+        },
+
+        header: function(){
+            var $sectionFunctions = WD.el.find('.home__functions'),
+                animHeader = new app.plugins.animate(WD.el.find('.home__header'));
+
+            WD.offsetFn = $sectionFunctions.offset().top;
+            WD.animFunctions = new app.plugins.animate($sectionFunctions, {
+                showAfter: 1
+            });
 
             animHeader.show();
 
             app.$dom.window.on("scroll.animFunctions", function(){
-                var scroll = app.$dom.document.scrollTop() + (app.sizes.height / 1.3);
-                if (scroll > offsetTop){
-                    app.$dom.window.off("scroll.animFunctions");
-                    animFunctions.show();
-                }
+                _.raf(WD._scroll);
             });
+        },
 
+        _scroll: function(){
+            var scroll = app.$dom.document.scrollTop() + (app.sizes.height / 1.3);
+            if (scroll > WD.offsetFn){
+                _.caf(WD._scroll);
+                app.$dom.window.off("scroll.animFunctions");
+                WD.animFunctions.show();
+            }
+        },
+
+        scrollAnimate: function(){
             var scrollAnimate = new app.plugins.scroll.animate({
                 scroll: app.$dom.window,
                 container: app.$dom.body
             });
 
             scrollAnimate.start();
+        },
 
+        scrollParallax: function(){
             var scrollParallax = new app.plugins.scroll.parallax({
                 scroll: app.$dom.window,
                 scenario: [
@@ -70,24 +111,19 @@
             });
 
             scrollParallax.start();
+        },
 
-            $afterlag.run(function(){
-                WD.el.find('#video').removeClass("display-none");
-            });
+        screenVideo: function(){
+            var video = WD.el.find("#video")[0];
 
-            var imagesLoaded = new app.plugins.imagesLoaded();
-
-            imagesLoaded.on("complete", function(){
-                app.sections.trigger("ready");
-            });
-
-            imagesLoaded.load({
-                timeout: 2000
-            });
-
-            app.metrika.set("views.home", 1, {
-                action: "inc"
-            })
+            function checkLoad() {
+                 if (video.readyState === 4) {
+                     video.setAttribute("data-show", true);
+                 } else {
+                     setTimeout(checkLoad, 100);
+                 }
+            }
+            checkLoad();
         }
     };
 

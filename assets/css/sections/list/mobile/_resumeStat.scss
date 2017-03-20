@@ -70,8 +70,47 @@
             }
         }
     }
+    .resume__stat {
+        &__tabs {
+            @extend .mt30;
+        }
+        &__tab {
+            @include flex("column", "center", "center");
+            @extend .pb-xs;
+            height:112px;
+
+            &[data-tab="hits"]{
+                @extend .pr-s;
+
+                svg {
+                    @extend .w60;
+                    @extend .h60;
+                    @extend .mt-xxs;
+                }
+                .resume__stat__tab__line {
+                    background-color:darken($smokeLight,7%);
+                }
+            }
+            &[data-tab="visits"]{
+                @extend .pl-s;
+
+                svg {
+                    @extend .w58;
+                    @extend .h58;
+                }
+            }
+            &__icon {
+                @extend .h60;
+            }
+            &__count {
+                @extend .fontWeight-bold;
+                @extend .fontSize-32;
+                @extend .pl-xs;
+            }
+        }
+    }
     .chart__radial {
-        @extend .mt-l;
+        @extend .mt30;
 
         &__graph {
             @extend .opacity-95;

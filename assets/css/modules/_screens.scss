@@ -6,6 +6,10 @@
     }
     .horizontal__space ~ .screen {
         transform-origin:100% 50%;
+
+        &:not(.screen--active){
+            @extend .display-none;
+        }        
     }
 }
 .d-mobile .screens-mobile,
@@ -44,9 +48,6 @@
         &--active {
             @extend .display-block;
             @extend .opacity-100;
-        }
-        &:not(.screen--active){
-            @extend .display-none;
         }
     }
     &[data-static="true"] {

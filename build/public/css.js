@@ -12,6 +12,7 @@ module.exports = function(){
             base64({
                 baseDir: './',
                 extensions: ['svg'],
+                exclude: [/_clip/, '.svg#mask'],
                 maxImageSize: 16*1024, // bytes
                 debug: false
             }),
