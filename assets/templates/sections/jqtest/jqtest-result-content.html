@@ -26,13 +26,13 @@
 
     <jqtest-result-personality></jqtest-result-personality>
 
-    <!--<jqtest-result-finish></jqtest-result-finish> -->
+    <jqtest-result-finish></jqtest-result-finish>
 
 <script>
 
     var $ = this;
 
-    $.on("before-mount", function(){
+    $.on("mount", function(){
 
         $.scope = $.opts.scope;
         $.scroll = $.opts.scroll;
@@ -47,18 +47,14 @@
             specialties: $.tags["jqtest-result-specialties"],
             notengage: $.tags["jqtest-result-notengage"]
         };
-    });
-
-    $.on("mount", function(){
 
         if (!app.device.isPhone){
-
             $.scrollAnimate = new app.plugins.scroll.animate({
                 scroll: $.scroll,
                 container: $.scope,
                 elems: ".anim-scroll",
                 delta: "s",
-                scenario: [
+                items: [
                     {
                         elem: ".humps",
                         callback: function(elem){
@@ -72,6 +68,93 @@
                         }
                     }
                 ]
+            });
+
+            var items = [
+                {
+                    elem: $.scope.find("jqtest-result-orientation p.text"),
+                    from: -30,
+                    to: 30,
+                    off: 0,
+                    clipOptions: {
+                        ease: "easeInOutCubic"
+                    }
+                },
+                {
+                    elem: $.scope.find("jqtest-result-stimulus p.text"),
+                    from: 0,
+                    to: 60,
+                    off: 0,
+                    clipOptions: {
+                        ease: "easeInOutCubic"
+                    }
+                },
+                {
+                    elem: $.scope.find("jqtest-result-graph .screen__content"),
+                    from: 0,
+                    to: -60,
+                    off: 60,
+                    clipOptions: {
+                        ease: "easeInOutCubic"
+                    }
+                },
+                {
+                    elem: $.scope.find("jqtest-result-notengage .specialties__circle"),
+                    from: 0,
+                    to: -60,
+                    off: 60,
+                    clipOptions: {
+                        ease: "easeInOutCubic"
+                    }
+                },
+                {
+                    elem: $.scope.find("jqtest-result-notengage p.text"),
+                    from: 0,
+                    to: -30,
+                    off: 30,
+                    clipOptions: {
+                        ease: "easeInOutCubic"
+                    }
+                },
+                {
+                    elem: $.scope.find("jqtest-result-strengths .header__lines"),
+                    from: 0,
+                    to: -30,
+                    off: 30,
+                    clipOptions: {
+                        ease: "easeInOutCubic"
+                    }
+                },
+                {
+                    elem: $.scope.find("jqtest-result-weaksides .header__lines"),
+                    from: 0,
+                    to: -30,
+                    off: 30,
+                    clipOptions: {
+                        ease: "easeInOutCubic"
+                    }
+                }
+            ];
+
+            $afterlag.run(function(){
+                $.scope.find(".path__text").each(function(){
+                    items.push({
+                        elem: this,
+                        from: 0,
+                        to: -20,
+                        off: 20,
+                        clipOptions: {
+                            ease: "easeInOutCubic"
+                        }
+                    })
+                });
+
+                var parallax = new app.plugins.scroll.ParallaxController({
+                    scroll: $.scroll,
+                    items: items
+                });
+
+                parallax.start();
             });
         }
 

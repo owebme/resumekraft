@@ -1,20 +1,31 @@
 .icon {
-    &-fb {
+    &-fb,
+    &-dk {
+        &.icon-xl {
+            width:135px;
+            height:135px;
+        }
         &.icon-m {
             width:68px;
             height:68px;
+        }
+    }
+    &-fb {
+        &.icon-m {
             margin:-9px -10px -10px;
         }
     }
     &-dk {
         &.icon-m {
-            width:68px;
-            height:68px;
             margin:-13px -12px -11px;
         }
     }
     &-vk,
     &-tw {
+        &.icon-xl {
+            width:146px;
+            height:146px;
+        }
         &.icon-m {
             width:78px;
             height:78px;
@@ -27,6 +38,10 @@
         }
     }
     &-gl {
+        &.icon-xl {
+            width:64px;
+            height:64px;
+        }
         &.icon-m {
             width:32px;
             height:32px;

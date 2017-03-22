@@ -1,0 +1,74 @@
+jqtest-result-finish {
+    @extend .c-white;
+    @extend .bg-blue;
+
+    &:before {
+        @extend .content-empty;
+        @extend .pos-tr;
+        @extend .w100p;
+        @extend .bg-blue;
+        height:150px;
+        transform:translate3d(10px, -20px, 0) rotate(4deg) scale(1.1);
+    }
+    .smile {
+        width:280px;
+        height:280px;
+        @extend .trY--m;
+        @extend .mb--45;
+    }
+    .jqtest-result-share {
+        @extend .flex-centered;
+
+        &-item {
+            @extend .pos-rel;
+            @extend .w20p;
+            @extend .h120;
+        }
+        .icon {
+            @extend .pos-centered;
+            @extend .willChange-transform;
+            @extend .cursor-pointer;
+            transition:transform 0.5s $cubic075;
+
+            &:hover {
+                transform:translate3d(-50%, -50%, 0) scale(1.25, 1.25);
+
+                path {
+                    @extend .fill-yellowBright;
+                }
+            }
+            svg {
+                @extend .btn-active;
+            }
+        }
+    }
+    .button-mail {
+        @extend .flex-centered;
+        @extend .pos-br;
+        @extend .w150;
+        @extend .h150;
+        @extend .overflow-hidden;
+
+        &:hover {
+            svg {
+                @extend .scale-110;
+            }
+        }
+        &:before {
+            @extend .content-empty;
+            @include abs();
+            border-radius:50% 0 0 0;
+            @extend .bg-blackLight;
+            transform:translate3d(15px, 30px, 0);
+        }
+        .icon {
+            @extend .pos-rel;
+            @extend .mt50;
+            @extend .ml25;
+            @extend .btn-active;
+        }
+        svg {
+            transition:transform 0.5s $cubic075;
+        }
+    }
+}

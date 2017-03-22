@@ -32,7 +32,7 @@
         <div class="rows screen bg-white" data-screen="test" data-active={ screen == "test" } data-hidden={ hidden == "test" } data-hide={ reload.hide } data-show={ reload.show }>
             <div class="row">
                 <div onClick={ select.q1 } class="que col-xs-24 col-sm-12">
-                    <div class="que__item que__item1" name="que__item">
+                    <div class="que__item que__item1" ref="que__item" name="que__item">
                         <div class="que__text">{ que.q1() }</div>
                     </div>
                 </div>
@@ -44,9 +44,9 @@
             </div>
         </div>
 
-        <div class="screen bg-blue { showAnim : animate }" name="finish" data-screen="finish" data-active={ screen == "finish" } data-hidden={ hidden == "finish" }>
+        <div class="screen bg-blue { showAnim : animate }" data-screen="finish" data-active={ screen == "finish" } data-hidden={ hidden == "finish" }>
             <div class="pos-centered">
-                <div name="circuful" class="circuful anim anim-scale" data-duration={ 'm' : app.device.isPhone }></div>
+                <div ref="circuful" name="circuful" class="circuful anim anim-scale" data-duration={ 'm' : app.device.isPhone }></div>
             </div>
         </div>
 
@@ -62,6 +62,12 @@
 
     $.on("before-mount", function(){
         $.reset();
+    });
+
+    $.on("mount", function(){
+        $Sections.module("jqtest.test", $);
+        if ($.refs) $.circuful = $$($.refs.circuful);
+        //$.show();
     });
 
     $.reset = function(update){
@@ -155,7 +161,7 @@
                 show: false,
                 hide: true
             }
-            _.onEndTransition($["que__item"], function(){
+            _.onEndTransition($.refs ? $.refs["que__item"] : $["que__item"], function(){
                 $.cursor = null;
                 //$.cursor = $.cursor.right();
 

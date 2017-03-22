@@ -90,33 +90,6 @@
 	  return newObj;
     };
 
-	utils.clone = function(a, b){
-		var k = utils.extend;
-		var j = Object.prototype.hasOwnProperty;
-		var m = function(c, b) {
-		    var a;
-		    for (a in b) {
-		        if (j.call(b, a)) {
-		            if (b[a] === null) {
-		                c[a] = null
-		            } else {
-		                if (typeof b[a] === "object") {
-		                    c[a] = utils.isArray(b[a]) ? [] : {};
-		                    m(c[a], b[a])
-		                } else {
-		                    c[a] = b[a]
-		                }
-		            }
-		        }
-		    }
-		    return c
-		};
-		if (b) {
-			return m({}, a);
-		}
-		return k({}, a);
-	};
-
 	utils.sortArray = function(arr, field, direction){
 		var data = _.sortBy(arr, function(item){
 			return item[field];

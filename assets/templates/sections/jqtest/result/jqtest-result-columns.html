@@ -3,8 +3,8 @@
     <div class="chart container">
         <div class="row">
             <div class="col-md-8 h100v">
-                <div name="pointer" class="chart__title" data-active={ titleShow }>{ title }</div>
-                <div class="chart__titles" name="titles">
+                <div ref="pointer" name="pointer" class="chart__title" data-active={ titleShow }>{ title }</div>
+                <div class="chart__titles" ref="titles" name="titles">
                     <div class="chart__titles__item anim anim-lr" data-level="5">увеличенный</div>
                     <div class="chart__titles__item anim anim-lr" data-delay="xs" data-level="4">высокий</div>
                     <div class="chart__titles__item anim anim-lr" data-delay="s" data-level="3">средний</div>
@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="col-md-16 h100v">
-                <div onmouseleave={ mouseleave } class="chart__columns" name="columns">
+                <div onmouseleave={ mouseleave } class="chart__columns" ref="columns" name="columns">
                     <div onmouseenter={ mouseenter } each={ item, i in items } class="chart__column" data-level="{ item.value }" style="height:{ maxHeight }px">
                         <div class="chart__column__item" data-level="{ item.value }" style="height:{ maxHeight / (maxValue / item.value) }px"></div>
                         <span class="chart__column__item__count">{ item.value }</span>
@@ -29,9 +29,16 @@
     $.title = null;
 
     $.on("mount", function(){
-        $.pointer = $$($["pointer"]);
-        $.titles = $$($["titles"]);
-        $.columns = $$($["columns"]);
+        if ($.refs){
+            $.pointer = $$($.refs["pointer"]);
+            $.titles = $$($.refs["titles"]);
+            $.columns = $$($.refs["columns"]);
+        }
+        else {
+            $.pointer = $$($["pointer"]);
+            $.titles = $$($["titles"]);
+            $.columns = $$($["columns"]);
+        }
     });
 
     $.on("update", function(){

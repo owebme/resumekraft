@@ -14,7 +14,7 @@
             this.scope = this.options.scope ? $(this.options.scope) : $dom.body;
             this.scroll = this.options.scroll ? $(this.options.scroll) : app.$dom.window;
 
-            _.each(_.omit(this.render, ["content", "screens", "chart"]), function(fn){
+            _.each(_.omit(this.render, ["content", "screens", "chart", "notebooks"]), function(fn){
                 if (_.isFunction(fn)) fn();
             });
 
@@ -51,7 +51,7 @@
                 WD.headerParallax = new app.plugins.scroll.parallax({
                     scroll: WD.scroll,
                     container: $header,
-                    scenario: WD.items,
+                    items: WD.items,
                     fade: {
                         in: {
                             elem: $headerOverlay
@@ -82,6 +82,7 @@
                                     WD.render.content();
                                     WD.render.screens();
                                     WD.render.chart();
+                                    WD.render.notebooks();
                                     WD.options.imagesLoaded.load({
                                         timeout: 10000
                                     });
@@ -107,6 +108,7 @@
                             if (anim == layers.length){
                                 WD.render.content();
                                 WD.render.screens();
+                                WD.render.notebooks();
                                 WD.render.chart();
                             }
                         });
@@ -118,7 +120,7 @@
                 WD.contentAnimate = new app.plugins.scroll.animate({
                     scroll: WD.scroll,
                     container: WD.scope,
-                    scenario: [
+                    items: [
                         {
                             elem: ".screens",
                             callback: function($elem, i){
@@ -169,7 +171,7 @@
             ipad: function(){
                 WD.ipadParallax = new app.plugins.scroll.parallax({
                     scroll: WD.scroll,
-                    scenario: [
+                    items: [
                     {
                         container: ".slide8-1__viewport",
                         selector: ".slide8-1__screen",
@@ -211,31 +213,25 @@
             },
 
             notebooks: function(){
-                WD.notebooksParallax = new app.plugins.scroll.parallax({
+                WD.notebooksParallax = new app.plugins.scroll.ParallaxController({
                     scroll: WD.scroll,
-                    scenario: [
-                    {
-                        container: ".overview__section[data-section='finish']",
-                        selector: ".slide11-1",
-                        viewports: {
-                            large: {
-                                fromTime: 0,
-                                toTime: 1,
-                                fromX: 0,
-                                toX: 0,
-                                fromY: 100,
-                                toY: -150
-                            }
+                    items: [
+                        {
+                            selector: ".slide11-1",
+                            from: 100,
+                            to: -150,
+                            off: 0
                         }
-                    }]
+                    ]
                 });
-
                 WD.notebooksParallax.start();
             }
         },
 
         destroy: function(){
             this.headerParallax.destroy();
+            this.ipadParallax.destroy();
+            this.notebooksParallax.destroy();
             this.contentAnimate.destroy();
             this.chartRadial.destroy();
             if (this.screens){

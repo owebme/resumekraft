@@ -16,7 +16,6 @@
             includeContainer: false
         };
         _.extend(this.options, options);
-        _.extend(app.plugins.imagesLoaded.prototype, new app.commons.EventEmitterMicro());
     };
 
     app.plugins.imagesLoaded.prototype = {
@@ -137,5 +136,7 @@
             this.trigger("complete")
         }
     };
+
+    _.extend(app.plugins.imagesLoaded.prototype, new app.commons.EventEmitterMicro());
 
 })(app, $, app.$dom, app.events, app.utils);

@@ -11,8 +11,8 @@
         this.scope = options.container ? $(options.container) : null;
         this.scopeOffsetTop = this.scope ? options.container.offset().top : null;
         this.scopeHeight = this.scope ? options.container.height() : null;
-        this.scenario = options.scenario;
         this.fade = options.fade;
+        this._items = options.items;
         this.items = [];
     };
 
@@ -37,8 +37,8 @@
 
             this.items = [];
 
-            if (this.scenario){
-                _.each(this.scenario, function(item, i){
+            if (this._items){
+                _.each(this._items, function(item, i){
                     _this.items.push(item);
                     _this.items[i].cHeights = {
                         large: 4e3,

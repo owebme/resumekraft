@@ -54,24 +54,24 @@
 
             animHeader.show();
 
-            app.$dom.window.on("scroll.animFunctions", function(){
+            $dom.window.on("scroll.animFunctions", function(){
                 _.raf(WD._scroll);
             });
         },
 
         _scroll: function(){
-            var scroll = app.$dom.document.scrollTop() + (app.sizes.height / 1.3);
+            var scroll = $dom.document.scrollTop() + (app.sizes.height / 1.3);
             if (scroll > WD.offsetFn){
                 _.caf(WD._scroll);
-                app.$dom.window.off("scroll.animFunctions");
+                $dom.window.off("scroll.animFunctions");
                 WD.animFunctions.show();
             }
         },
 
         scrollAnimate: function(){
             var scrollAnimate = new app.plugins.scroll.animate({
-                scroll: app.$dom.window,
-                container: app.$dom.body
+                scroll: $dom.window,
+                container: $dom.body
             });
 
             scrollAnimate.start();
@@ -79,8 +79,8 @@
 
         scrollParallax: function(){
             var scrollParallax = new app.plugins.scroll.parallax({
-                scroll: app.$dom.window,
-                scenario: [
+                scroll: $dom.window,
+                items: [
                 {
                     container: ".home__section1__phone__viewport",
                     selector: ".home__section1__phone__screen",

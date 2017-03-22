@@ -19,9 +19,6 @@
 
             $dom.body.scrollTop(0);
 
-            $Sections = new app.plugins.define("$Sections");
-            $Screens = new app.plugins.define("$Screens");
-
             if (!Store.get("vacancyFavorites")){
                 Store.set("vacancyFavorites", []);
             }

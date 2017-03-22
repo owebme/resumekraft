@@ -24,7 +24,7 @@ module.exports = function() {
 
     app._tags.premiumContent = require('../../assets/templates/sections/overview/premium/overviewPremiumContent.tag');
     app._tags.premiumColors = require('../../assets/templates/sections/overview/premium/overviewPremiumColor.tag');
-    app._tags.jqtestEnter = require('../../assets/templates/sections/jqtest/jqtest-enter-content.tag');
+    app._tags.jqtestEnter = require('../../assets/templates/sections/jqtest/jqtest-enter.tag');
 
     app.tags = function(name, device){
         if (device && device.type == "phone") return app._tags.mobile[name];

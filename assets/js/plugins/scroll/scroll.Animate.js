@@ -12,7 +12,7 @@
         this.scroll = $(options.scroll);
         this.scope = options.container ? $(options.container) : this.scroll;
         this.delta = options.delta ? this.deltaValues.getValueByTitle(options.delta) : null;
-        this.scenario = options.scenario;
+        this._items = options.items;
         this.items = [];
     };
 
@@ -40,8 +40,8 @@
 
             this.items = [];
 
-            if (this.scenario){
-                _.each(this.scenario, function(item){
+            if (this._items){
+                _.each(this._items, function(item){
                     _this.scope.find(item.elem).each(function(){
                         _this.each(this, item.callback);
                     });

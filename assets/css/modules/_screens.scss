@@ -9,13 +9,14 @@
 
         &:not(.screen--active){
             @extend .display-none;
-        }        
+        }
     }
 }
 .d-mobile .screens-mobile,
 .d-phone .screens-phone,
 .d-tablet .screens-tablet,
-.d-no-mobile .screens-desktop {
+.d-no-mobile .screens-desktop,
+.screens-every {
     &.screens {
         @include abs();
         @include accelerate(true);

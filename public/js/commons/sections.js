@@ -7,6 +7,9 @@
         init: function(options){
             var options = options || {};
 
+            $Sections = new app.plugins.define("$Sections");
+            $Screens = new app.plugins.define("$Screens");
+
             if (app.plugins.eventsEmitter) app.plugins.eventsEmitter.init(this);
 
             if (_.isFunction(options.beforeInit)) options.beforeInit();

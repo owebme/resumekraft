@@ -40,6 +40,8 @@ module.exports = function(){
     	    'assets/js/components/commons/request.js',
     	    'assets/js/components/commons/modules.js',
     	    'assets/js/components/commons/metrika.js',
+            'assets/js/components/commons/EventEmitter.js',
+            'assets/js/components/commons/EventEmitterMicro.js',
     	    'assets/js/components/features/premium.js',
     	    'assets/js/components/config.js',
     	    'assets/js/components/fetch.js',
@@ -51,11 +53,40 @@ module.exports = function(){
     });
 
     gulp.task('private.plugins', function() {
-    	return gulp.src(['assets/js/plugins/**/*.js',
-    	    'assets/js/plugins/*.js'])
+    	return gulp.src(['assets/js/plugins/*.js',
+            'assets/js/plugins/scroll/*.js'])
     		.pipe(concat('plugins.js'))
     		.pipe(uglify())
     		.pipe(gulp.dest('./assets/js'));
+    });
+
+    gulp.task('private.plugins.parallax', function() {
+        return gulp.src(['assets/js/components/commons/dom/dom.getDimensions.js',
+            'assets/js/components/commons/dom/dom.getScrollX.js',
+            'assets/js/components/commons/dom/dom.getScrollY.js',
+            'assets/js/components/commons/dom/dom.getPagePosition.js',
+            'assets/js/components/commons/dom/styles/styles.combinePartialProperties.js',
+            'assets/js/components/commons/dom/styles/styles.cssToObject.js',
+            'assets/js/components/commons/dom/styles/styles.prefixer.js',
+            'assets/js/components/commons/dom/styles/styles.setStyle.js',
+            'assets/js/plugins/easing/easing.Ease.js',
+            'assets/js/plugins/easing/easing.KeySpline.js',
+            'assets/js/plugins/easing/easing.createBezier.js',
+            'assets/js/plugins/easing/easing.createStep.js',
+            'assets/js/plugins/easing/easing.cssAliases.js',
+            'assets/js/plugins/easing/easing.fn.js',
+            'assets/js/plugins/easing/easing.createPredefined.js',
+            'assets/js/plugins/scroll/parallax/scroll.clock.js',
+            'assets/js/plugins/scroll/parallax/scroll.clip.js',
+            'assets/js/plugins/scroll/parallax/scroll.ScrollTracker.js',
+            'assets/js/plugins/scroll/parallax/scroll.PooledScrollTracker.js',
+            'assets/js/plugins/scroll/parallax/scroll.SmoothScrollTracker.js',
+            'assets/js/plugins/scroll/parallax/scroll.ElementScrollTracker.js',
+            'assets/js/plugins/scroll/parallax/scroll.ParallaxElement.js',
+            'assets/js/plugins/scroll/parallax/scroll.ParallaxController.js'])
+            .pipe(concat('scroll.Parallax.build.js'))
+            .pipe(uglify())
+            .pipe(gulp.dest('./assets/js/plugins/scroll'));
     });
 
     gulp.task('private.root.templates', function() {
@@ -70,6 +101,7 @@ module.exports = function(){
     gulp.task('private.sections.templates', function() {
     	return gulp.src(['assets/templates/sections/*.html',
     		'assets/templates/sections/**/*.html',
+            'assets/templates/sections/jqtest/jqtest-enter.tag',
             'assets/templates/sections/overview/premium/overviewPremiumContent.tag'])
     		.pipe(riot())
     		.pipe(concat('templates.sections.js'))

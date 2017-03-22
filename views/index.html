@@ -30,6 +30,11 @@
 
     {{ content | safe }}
 
+    {% if section == "jq-test" %}
+        <jqtest-content></jqtest-content>
+        <jqtest-result></jqtest-result>
+    {% endif %}
+
     <section-auth></section-auth>
     <section-notify></section-notify>
     <section-loader></section-loader>
@@ -43,33 +48,15 @@
 
     <!--/ JS components /-->
     <script src="/public/js/app.js"></script>
-    <script src="/assets/js/components/commons/utils.js"></script>
-    <script src="/assets/js/components/commons/EventEmitter.js"></script>
-    <script src="/assets/js/components/commons/EventEmitterMicro.js"></script>
-    <script src="/assets/js/components/commons/dom/dom.getDimensions.js"></script>
-    <script src="/assets/js/components/commons/dom/dom.getScrollX.js"></script>
-    <script src="/assets/js/components/commons/dom/dom.getScrollY.js"></script>
-    <script src="/assets/js/components/commons/dom/dom.getPagePosition.js"></script>
-    <script src="/assets/js/components/commons/dom/styles/styles.combinePartialProperties.js"></script>
-    <script src="/assets/js/components/commons/dom/styles/styles.cssToObject.js"></script>
-    <script src="/assets/js/components/commons/dom/styles/styles.prefixer.js"></script>
-    <script src="/assets/js/components/commons/dom/styles/styles.setStyle.js"></script>
-    <script src="/assets/js/plugins/easing/easing.Ease.js"></script>
-    <script src="/assets/js/plugins/easing/easing.KeySpline.js"></script>
-    <script src="/assets/js/plugins/easing/easing.createBezier.js"></script>
-    <script src="/assets/js/plugins/easing/easing.createStep.js"></script>
-    <script src="/assets/js/plugins/easing/easing.cssAliases.js"></script>
-    <script src="/assets/js/plugins/easing/easing.fn.js"></script>
-    <script src="/assets/js/plugins/easing/easing.createPredefined.js"></script>
-    <script src="/assets/js/plugins/scroll/parallax/scroll.clock.js"></script>
-    <script src="/assets/js/plugins/scroll/parallax/scroll.clip.js"></script>
-    <script src="/assets/js/plugins/scroll/parallax/scroll.ScrollTracker.js"></script>
-    <script src="/assets/js/plugins/scroll/parallax/scroll.PooledScrollTracker.js"></script>
-    <script src="/assets/js/plugins/scroll/parallax/scroll.SmoothScrollTracker.js"></script>
-    <script src="/assets/js/plugins/scroll/parallax/scroll.ElementScrollTracker.js"></script>
-    <script src="/assets/js/plugins/scroll/parallax/scroll.ParallaxElement.js"></script>
-    <script src="/assets/js/plugins/scroll/parallax/scroll.ParallaxController.js"></script>
+    <script src="/public/js/sections/jqtest.js"></script>
     <script src="/public/js/sections/blogContent.js"></script>
+    <script src="/assets/js/components/features/premium.js"></script>
+    <script src="/assets/js/jqtest/jq1.js"></script>
+    <script src="/assets/js/jqtest/jq2.js"></script>
+    <script src="/assets/js/jqtest/jq3.js"></script>
+    <script src="/assets/js/jqtest/jq4.js"></script>
+    <script src="/assets/js/jqtest/jq5.js"></script>
+    <script src="/assets/js/jqtest/jq6.js"></script>
     <script src="/public/js/init.js"></script>
 
 </body>

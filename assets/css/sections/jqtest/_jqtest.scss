@@ -4,6 +4,9 @@ jqtest-content {
     transition:background-color 0.2s $cubic60;
     @extend .overflow-hidden;
 
+    #renderSide & {
+        @extend .zIndex-5;
+    }
     .screen {
         @include abs();
         @extend .pointerEvents-none;

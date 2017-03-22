@@ -17,8 +17,6 @@
 
             $dom.root = this.el;
 
-            $Sections = new app.plugins.define("$Sections");
-
             if (!Store.get("vacancyFavorites")){
                 Store.set("vacancyFavorites", []);
             }

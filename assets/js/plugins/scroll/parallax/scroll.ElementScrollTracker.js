@@ -10,15 +10,15 @@
 
     function n(b, a) {
         m.call(this);
-        this.el = b;
+        this.el = _.isElement(b) ? b : b[0];
         this._options = _.extend(this.defaults, a || {});
         if (this._options.tracker) {
             this.tracker = this._options.tracker
         } else {
             if (this._options.smooth) {
-                this.tracker = new p()
+                this.tracker = new p(_.pick(a, 'target', 'start', 'end', 'direction'))
             } else {
-                this.tracker = new w()
+                this.tracker = new w(_.pick(a, 'target', 'start', 'end', 'direction'))
             }
         }
         this.updateRange();

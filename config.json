@@ -29,9 +29,6 @@
             "maxAge": null
         }
     },
-    "blog": {
-        "perPage": "7"
-    },
     "path": {
         "photo": "/public/files/photo/",
         "pdf": "/public/files/pdf/",
@@ -53,6 +50,15 @@
             "height": "auto",
             "timeout": 10000
         }
+    },
+    "blog": {
+        "perPage": "7",
+        "cache": true,
+        "cacheLife": 3600
+    },
+    "jobs": {
+        "cache": true,
+        "cacheLife": 86400
     },
     "hh": {
         "api": "https://api.hh.ru",

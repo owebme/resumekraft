@@ -1,4 +1,4 @@
-<jqtest-enter class="oScreen__jqtest__enter zIndex--1">
+<jqtest-enter class={ 'oScreen__jqtest__enter zIndex--1' : !opts.isserver }>
 
     <div class="anim-group3 anim-tb-soft oScreen__jqtest__enter__angle__link anim-delay-xs" data-duration="m">
         Для соискателей
@@ -18,14 +18,16 @@
             </div>
         </div>
     </div>
-    <div class="oScreen__jqtest__enter__text overview__section container pt70 pb-l">
-        <div class="row">
-            <div class="col-md-offset-4 col-md-16">
-                <small class="mb60 anim-group2 anim-scale-zoom anim-delay-s">Совершенно бесплатно</small>
-                <h1 class="mb25 mlr-m plr-l pt-m fontWeight-8 anim-group2 anim-bt anim-delay-m">JQ-тест версия 2.0</h1>
-                <p class="mb50 fontSize-24 lineHeight-xxxl c-gray anim-group2 anim-bt anim-delay-l">Узнать больше после, чем вы знали до.</p>
-                <div class="anim-group2 anim-scale anim-delay-xl">
-                    <button onClick={ open.test } onUpdate="none" class="btn btn-xl2 btn-primary">Пройти JQ-тест</button>
+    <div class="oScreen__jqtest__enter__text">
+        <div class="oScreen__jqtest__enter__text__inner overview__section container">
+            <div class="row">
+                <div class="centered col-md-16">
+                    <small class="mb{ !opts.isserver ? '60' : '-l' } anim-group2 anim-scale-zoom anim-delay-s">Совершенно бесплатно</small>
+                    <h1 class="mb25 mlr-m plr-l pt-m fontWeight-8 anim-group2 anim-bt anim-delay-m">JQ-тест версия 2.0</h1>
+                    <p class="mb50 fontSize-24 lineHeight-xxxl c-gray anim-group2 anim-bt anim-delay-l">Узнать больше после, чем вы знали до.</p>
+                    <div class="anim-group2 anim-scale anim-delay-xl">
+                        <button onClick={ open.test } onUpdate="none" class="btn btn-xl2 btn-primary">Пройти JQ-тест</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -39,14 +41,16 @@
     var $ = this;
 
     $.on("mount", function(){
-        $.animate = new app.plugins.animate($.root, {
-            showAfter: 2,
-            hide: "noanimate"
-        });
+        try {
+            $.animate = new app.plugins.animate($.root, {
+                showAfter: 2,
+                hide: "noanimate"
+            });
 
-        $.parent.on("hideAnimated", function(){
-            $.animate.hide();
-        });
+            $.parent.on("hideAnimated", function(){
+                $.animate.hide();
+            });
+        } catch(e){}
     });
 
     $.show = function(){

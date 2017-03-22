@@ -17,30 +17,38 @@ module.exports = function(){
 	var handlerReturn = function(url, prop, callback){
 		var hash = app.utils.md5(url);
 
-		app.redis.get(hash, function(err, data) {
-			if (err) callback(true, data);
-			else if (data) {
-				console.log("GET STORE REDIS: " + url);
-				callback(null, JSON.parse(data));
-			}
-			else {
-				console.log("API REQUEST: " + url);
-				handlerRequest(url, function(err, data){
-					if (!err && data){
-						if (prop == "items") data.items = clearSnippet(data.items);
-						if (prop == "items" && !app.utils.isEmpty(data.items) || prop != "items" && data[prop]){
-							saveRedis(hash, data);
+		if (app.config.get('jobs:cache')){
+			app.redis.get(hash, function(err, data) {
+				if (err) callback(true, data);
+				else if (data) {
+					console.log("GET STORE REDIS: " + url);
+					callback(null, JSON.parse(data));
+				}
+				else {
+					console.log("API REQUEST: " + url);
+					handlerRequest(url, function(err, data){
+						if (!err && data){
+							if (prop == "items") data.items = clearSnippet(data.items);
+							if (prop == "items" && !app.utils.isEmpty(data.items) || prop != "items" && data[prop]){
+								saveRedis(hash, data);
+							}
 						}
-					}
-					callback(err, data);
-				});
-			}
-		});
+						callback(err, data);
+					});
+				}
+			});
+		}
+		else {
+			console.log("API REQUEST (cache off): " + url);
+			handlerRequest(url, function(err, data){
+				callback(err, data);
+			});
+		}
 	};
 
 	var saveRedis = function(hash, data){
 		app.redis.set(hash, JSON.stringify(data));
-		app.redis.expireat(hash, parseInt((+new Date)/1000) + 60 * 60 * 24);
+		app.redis.expireat(hash, parseInt((+new Date)/1000) + app.config.get('jobs:cacheLife'));
 	};
 
 	var clearSnippet = function(items){

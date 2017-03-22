@@ -1,7 +1,7 @@
 <jqtest-result-humps class="humps { showHumps : app.device.isMobile }">
 
     <div class="humps__wrapper">
-        <svg id="humps__svg"></svg>
+        <svg ref="humps__svg" id="humps__svg"></svg>
     </div>
 
 <script>
@@ -67,7 +67,12 @@
             // circle.setAttributeNS(null, "onmouseout", "evt.target.setAttribute('r', '6');");
             group.appendChild(circle);
 
-            $["humps__svg"].appendChild(group);
+            if ($.refs){
+                $.refs.humps__svg.appendChild(group);
+            }
+            else {
+                $["humps__svg"].appendChild(group);
+            }
             index++;
         });
     });

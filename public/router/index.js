@@ -20,11 +20,16 @@ module.exports = function(){
     app.get('/resume/:alias', app.controllers.resume("view"));
 
     app.get('/premium/', function(req, res) {
-        var output = app.riot.render(app.tags("premium", req.device), req.appClient);
-        res.render(req.device.type == "phone" ? 'index-mobile' : 'index', {
-            title: app.config.get('title:premium'),
-            content: output
-        });
+        if (req.device.type == "phone"){
+            res.redirect('/');
+        }
+        else {
+            var output = app.riot.render(app.tags("premium", req.device), req.appClient);
+            res.render(req.device.type == "phone" ? 'index-mobile' : 'index', {
+                title: app.config.get('title:premium'),
+                content: output
+            });
+        }
     });
     app.get('/premium/workflow', function(req, res) {
         res.render('workflow');
@@ -44,6 +49,7 @@ module.exports = function(){
         var output = app.riot.render(app.tags("jqtest", req.device), req.appClient);
         res.render(req.device.type == "phone" ? 'index-mobile' : 'index', {
             title: app.config.get('title:jq-test'),
+            section: "jq-test",
             content: output
         });
     });

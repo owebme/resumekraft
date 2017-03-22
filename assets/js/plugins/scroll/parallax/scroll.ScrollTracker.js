@@ -132,6 +132,6 @@
         this._eventData = null
     };
 
-    app.plugins.scroll.ScrollTracker = u
+    app.plugins.scroll.ScrollTracker = u;
 
 })(app, $, app.$dom, app.events, app.utils);

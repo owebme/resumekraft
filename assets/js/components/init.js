@@ -16,7 +16,9 @@
 
     var init = function(){
         app.$dom.root = $('<root-main' + (app.device.isPhone ? '-mobile' : '') + ' id="app"/>').prependTo(app.$dom.body);
-        riot.mount("*");
+        riot.mount("*", {
+            renderClient: true
+        });
 
         console.timeEnd("process");
         var elapsed = new Date().getTime() - start;

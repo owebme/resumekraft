@@ -1,4 +1,7 @@
 jqtest-result {
+    #renderSide & {
+        @extend .zIndex-6;
+    }
     .title {
         .d-phone & {
             @extend .display-block;
@@ -344,7 +347,7 @@ jqtest-result {
         }
     }
     .text {
-        white-space:pre-line;
+        @extend .whiteSpace-preLine;
     }
     .header__lines {
         @extend .display-inlineBlock;

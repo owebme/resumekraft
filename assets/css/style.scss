@@ -64,15 +64,17 @@
 @import 'sections/messenger/messengerLauncher';
 
 // jqtest
-// @import 'sections/jqtest/jqtest';
+@import 'sections/jqtest/jqtest';
 @import 'sections/jqtest/jqtestEnter';
-// @import 'sections/jqtest/result/main';
-// @import 'sections/jqtest/result/columns';
-// @import 'sections/jqtest/result/skills';
-// @import 'sections/jqtest/result/humps';
-// @import 'sections/jqtest/result/graph';
-// @import 'sections/jqtest/result/specialties';
-// @import 'sections/jqtest/result/path';
+@import 'sections/jqtest/result/main';
+@import 'sections/jqtest/result/columns';
+@import 'sections/jqtest/result/skills';
+@import 'sections/jqtest/result/humps';
+@import 'sections/jqtest/result/graph';
+@import 'sections/jqtest/result/specialties';
+@import 'sections/jqtest/result/path';
+@import 'sections/jqtest/result/finish';
+@import 'sections/jqtest/result/ui';
 
 // plan
 @import 'sections/plan/plan';

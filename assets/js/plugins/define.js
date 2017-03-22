@@ -4,7 +4,7 @@
 
     app.plugins.define = function(name){
         this.__name__ = name;
-        window[name] = {};
+        _.extend(this, window[name] || {});
     };
 
     app.plugins.define.prototype = {

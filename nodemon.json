@@ -7,7 +7,8 @@
       "/public/router/*.*",
       "/public/templates/**/*.*",
       "/views/**",
-      "/SERVER.js"
+      "/SERVER.js",
+      "/config.json"
   ],
   "ignore" : [
       "/assets/js/*.*",

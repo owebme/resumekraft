@@ -11,6 +11,7 @@ module.exports = function(){
     		'assets/js/libs/underscore-min.js',
     		'assets/js/libs/iscroll.js',
     		'assets/js/libs/TweenLite-1.19.0.min.js',
+            'assets/js/libs/circliful/js/jquery.circliful.js',
     		'assets/js/libs/afterlag-js/dist/afterlag.min.js',
     		'assets/js/libs/imagesloaded/imagesloaded.pkgd.min.js',
     		'assets/js/libs/store.min.js'])
@@ -26,12 +27,14 @@ module.exports = function(){
             'assets/js/components/commons/common.js',
             'assets/js/components/commons/utils.js',
             'assets/js/components/commons/modules.js',
+            'assets/js/components/commons/EventEmitter.js',
+            'assets/js/components/commons/EventEmitterMicro.js',
             'assets/js/components/features/premium.js',
             'assets/js/components/features/navbar.js',
             'public/js/commons/config.js',
             'public/js/commons/metrika.js',
             'public/js/commons/sections.js',
-            'public/js/commons/EventEmitterMicro.js',
+            'assets/js/plugins/define.js',
             'assets/js/plugins/imagesLoaded/imagesLoaded.js',
             'assets/js/plugins/imagesLoaded/imagesLoaded.LiveQueue.js',
             'assets/js/plugins/imagesLoaded/imagesLoaded.Queue.js',
@@ -42,11 +45,13 @@ module.exports = function(){
             'assets/js/plugins/metrika.js',
             'assets/js/plugins/share.js',
             'assets/js/plugins/styles.js',
+            'assets/js/plugins/define.js',
             'assets/js/plugins/eventsEmitter.js',
             'assets/js/plugins/marquee.js',
             'assets/js/plugins/marquee.effects.js',
             'assets/js/plugins/marquee.play.js',
             'assets/js/plugins/screens.js',
+            'assets/js/plugins/scroll/scroll.Fix.js',
             'assets/js/plugins/scroll/scroll.Animate.js',
             'assets/js/plugins/scroll/scroll.Parallax.js',
             'assets/js/libs/skycons/skycons.js',
@@ -68,11 +73,17 @@ module.exports = function(){
             'public/templates/commons/modules/auth/forms/signIn.tag',
             'public/templates/commons/modules/auth/forms/signUp.tag',
             'public/templates/commons/modules/auth/forms/remember.tag',
+            'assets/templates/modules/oScreenLoader.html',
             'assets/templates/v3/modules/notify.html',
             'assets/templates/modules/loader.html',
             'assets/templates/v3/ui/input.html',
+            'assets/templates/sections/jqtest/*.html',
+            'assets/templates/sections/jqtest/**/*.html',
+            '!assets/templates/sections/jqtest/jqtest.html',
             'public/templates/commons/popup/blogSubscribe.tag',
             'public/templates/commons/popup/blogSubscribeForm.tag',
+            'assets/templates/ui/icons/icon-link.html',
+            'assets/templates/ui/icons/icon-replyMail.html',
             'public/templates/commons/icons/social/icon-fb.tag',
             'public/templates/commons/icons/social/icon-vk.tag',
             'public/templates/commons/icons/social/icon-tw.tag',
@@ -113,8 +124,8 @@ module.exports = function(){
             'assets/js/components/commons/modules.js',
             'assets/js/components/commons/utils.js',
             'assets/js/components/commons/afterlag.js',
+            'assets/js/components/commons/EventEmitterMicro.js',
             'assets/js/plugins/imagesLoaded/imagesLoaded.js',
-            'assets/js/plugins/imagesLoaded/imagesLoaded.EventEmitterMicro.js',
             'assets/js/plugins/imagesLoaded/imagesLoaded.LiveQueue.js',
             'assets/js/plugins/imagesLoaded/imagesLoaded.Queue.js',
             'assets/js/plugins/imagesLoaded/imagesLoaded.QueueItem.js'])
@@ -123,11 +134,19 @@ module.exports = function(){
     		.pipe(gulp.dest('./public/js'));
     });
 
+    // gulp.task('public.app.build', function() {
+    // 	return gulp.src(['public/js/libs.js',
+    //         'public/js/app.js',
+    //         'assets/js/plugins/scroll/scroll.Parallax.build.js',
+    //         'public/js/templates.js'])
+    // 		.pipe(concat('app.build.js'))
+    // 		.pipe(gulp.dest('./public/js'));
+    // });
+
     gulp.task('public.app.build', function() {
-    	return gulp.src(['public/js/libs.js',
-            'public/js/app.js',
-            'public/js/templates.js'])
-    		.pipe(concat('app.build.js'))
+    	return gulp.src(['public/js/app.js',
+            'assets/js/plugins/scroll/scroll.Parallax.build.js'])
+    		.pipe(concat('app.js'))
     		.pipe(gulp.dest('./public/js'));
     });
 }

@@ -73,6 +73,7 @@
                                 $.onHtmlLoaded(options.content);
                             });
                         });
+                        if ($.refs) $.html.update();
                     }
                     else {
                         $.parent.update({

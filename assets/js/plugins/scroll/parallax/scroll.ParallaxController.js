@@ -6,15 +6,17 @@
     var r = app.plugins.scroll.ParallaxElement;
     var x = 0.65;
 
-    var s = function(a) {
+    var s = function(options) {
+        this.options = options || {};
         if (app.device.isMobile) {
             return
         }
         this.els = [];
         this._multiplierEls = [];
-        a.forEach(this._initializeElement.bind(this));
+        this.options.items.forEach(this._initializeElement.bind(this));
         this._translateMultiplier = 1;
         this._updateTranslateMultiplier();
+        this.scroll = this.options.scroll || $dom.window;
         o.on("resize orientationchange", this._updateTranslateMultiplier.bind(this))
     };
     var t = s.prototype;
@@ -71,11 +73,18 @@
         if (f.scrollTracker) {
             c.scrollTracker = f.scrollTracker
         }
-        a = new r(d, c.propsTo, c.propsOff, c, b);
-        this.els.push(a);
-        if (f.useMediumMultiplier !== false) {
-            this._multiplierEls.push(a)
+        if (this.options.scroll && !b.target) {
+            b.target = this.options.scroll
         }
+        (function(_this){
+            setTimeout(function(){
+                a = new r(d, c.propsTo, c.propsOff, c, b);
+                _this.els.push(a);
+                if (f.useMediumMultiplier !== false) {
+                    _this._multiplierEls.push(a)
+                }
+            }, 0);
+        })(this);
     };
     t.start = function() {
         var a;
@@ -94,6 +103,9 @@
         for (a = 0; a < this.els.length; a++) {
             this.els[a].reset()
         }
+    };
+    t.destroy = function() {
+        this.stop()
     };
 
     app.plugins.scroll.ParallaxController = s;

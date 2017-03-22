@@ -641,6 +641,16 @@
             transform:translateY(10px) scale3d(1, 1.15, 1);
         }
     }
+    &-replyMail {
+        &.icon-xl {
+            width:80px;
+            height:80px;
+        }
+        &.icon-l {
+            width:58px;
+            height:58px;
+        }
+    }
     &-skype {
         &.icon-m {
             width:38px;
@@ -736,6 +746,10 @@
     &-fb,
     &-dk,
     &-tw {
+        &.icon-xl {
+            width:54px;
+            height:54px;
+        }
         &.icon-l {
             width:40px;
             height:40px;
@@ -755,6 +769,10 @@
     }
     &-vk,
     &-gl {
+        &.icon-xl {
+            width:64px;
+            height:64px;
+        }
         &.icon-l {
             width:44px;
             height:44px;
