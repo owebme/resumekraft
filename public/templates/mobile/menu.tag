@@ -19,7 +19,7 @@
                 <div class="menu__item__link" data-event="signup">Создать аккаунт</div>
             </div>
             <div class="menu__item">
-                <a class="menu__item__link" href="/jq-test/" data-active="{ opts.section == 'jq-test' }">JQ-тест 2.0</a>
+                <a class="menu__item__link" href="/jp-test/" data-active="{ opts.section == 'jp-test' }">JP-тест 2.0</a>
             </div>
             <div class="menu__item">
                 <a class="menu__item__link" href="/jobs/search" data-active="{ opts.section == 'jobs' }">Найти работу</a>

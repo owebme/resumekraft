@@ -1,7 +1,7 @@
 <resume-navbar class="resume__navbar">
 
     <div class="btn-group">
-        <button onClick={ open.jqtest } onUpdate="none" data-item="jq-test" class="btn btn-m btn-primary-hover btn-jqtest">JQ-Тест 2.0</button>
+        <button onClick={ open.jptest } onUpdate="none" data-item="jp-test" class="btn btn-m btn-primary-hover btn-jptest">JP-Тест 2.0</button>
         <a href="/jobs/search" target="_blank" class="btn btn-m btn-primary-hover btn-jobs">Найти работу</a>
         <button if={ $account.get("plan") == "premium" } onClick={ open.inbox } onUpdate="none" data-item="inbox" class="btn btn-m { $store.inbox.counterAll() > 0 ? 'btn-primary' : 'btn-primary-hover' }">
             Обращения
@@ -21,9 +21,9 @@
     var $ = this;
 
     $.open = {
-        jqtest: function(){
+        jptest: function(){
             $.parent.hide();
-            $Sections.jqtest.section.show(function(){
+            $Sections.jptest.section.show(function(){
                 $.parent.show();
             });
         },

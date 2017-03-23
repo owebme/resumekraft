@@ -55,6 +55,8 @@ blog-content-mobile {
     p {
         @extend .mb-m;
         @extend .pb-s;
+        @extend .fontSize-18;
+        @extend .lineHeight-l;
     }
     img {
         margin:20px calc(-5vw) 0;

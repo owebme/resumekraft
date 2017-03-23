@@ -261,7 +261,7 @@
         function(){
             return {
                 figure: "square",
-                target: ".resume__navbar .btn-jqtest",
+                target: ".resume__navbar .btn-jptest",
                 position: "down",
                 padding: 10,
                 title: "JQ-тест 2.0",

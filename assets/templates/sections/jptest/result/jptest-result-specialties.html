@@ -1,0 +1,57 @@
+<jptest-result-specialties class="{ app.device.isPhone ? 'screen notAnim' : 'pos-abs-full section section-hidden zIndex-2' } { showAnim : active }" data-open={ active } data-marquee="specialties">
+
+    <div class="{ 'overflowX-hidden overflowY-auto h100v' : !app.device.isPhone } text-left">
+        <div class="screen__content container">
+            <div class="row ptb-l xs-ptb0">
+                <div onClick={ hide } onUpdate="none" class="col-xs-24 col-md-7 col-lg-8 xs-pb-xs specialties__close">
+                    <div class="anim anim-tb" delay-show="s" duration-show="l" duration-hide="s">
+                        <div class="specialties__title title xs-mb-s">Наиболее подходящие профессии</div>
+                    </div>
+                </div>
+                <div class="col-xs-24 col-md-9 col-lg-8 specialties__column">
+                    <div class="anim anim-bt" delay-show="s" duration-show="l" duration-hide="s">
+                        <div each={ item, i in _.copyArray(items).splice(0, Math.ceil(items.length / 2)) } class="specialties__item">{ item }</div>
+                    </div>
+                </div>
+                <div class="col-xs-24 col-md-7 col-lg-8 specialties__column">
+                    <div class="anim anim-tb" delay-show="s" duration-show="l" duration-hide="s">
+                        <div each={ item, i in _.copyArray(items).splice(Math.ceil(items.length / 2), items.length) } class="specialties__item">{ item }</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    $.active = false;
+
+    $.on("update", function(){
+        $.items = $jpResult.specialties;
+    });
+
+    $.show = function(){
+        $Sections.jptest.result.trigger("focus", true);
+        $scope.css("top", $.parent.scroll.scrollTop() + "px");
+
+        $.parent.scroll.addClass("overflow-hidden");
+
+        $.update({
+            active: true
+        })
+    };
+
+    $.hide = function(){
+        $.active = false;
+        $Sections.jptest.result.trigger("focus", false);
+        $.parent.sections.notengage.update();
+        $.parent.scroll.removeClass("overflow-hidden");
+        $.update();
+    };
+
+</script>
+
+</jptest-result-specialties>

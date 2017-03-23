@@ -15,6 +15,8 @@
 
         render: function(){
 
+            app.sections.trigger("endLoading");
+
             WD.screens = new app.plugins.screens(WD.el, {
                 static: true,
                 dataAttr: "section"
@@ -40,7 +42,7 @@
 
             $afterlag.run(function(){
                 app.sections.trigger("ready");
-            });            
+            });
 
             app.metrika.set("views.home", 1, {
                 action: "inc"

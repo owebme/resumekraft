@@ -14,7 +14,7 @@
         views: {
             home: 0,
             premium: 0,
-            jqtest: 0,
+            jptest: 0,
             blog: 0
         },
         offers: {

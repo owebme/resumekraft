@@ -1,0 +1,88 @@
+<section-jptest class="oScreen__section section zIndex-2" data-open={ active } data-show="down" data-loading="false" data-inner="hidden">
+
+    <div name="content" class="oScreen__section__content overflow-hidden bg-white">
+
+        <div class="oScreen__section__buttons zIndex-0" data-pos="top-right">
+            <div onClick={ close } onUpdate="none" class="button__close" data-color="gray"></div>
+        </div>
+
+        <div class="section__loading"></div>
+
+        <div class="section__inner">
+
+            <jptest-enter></jptest-enter>
+
+            <jptest-content></jptest-content>
+
+            <jptest-result></jptest-result>
+
+        </div>
+
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.el = $$($.root);
+
+    $.active = false;
+
+    $.on("before-mount", function(){
+        $.sections = {
+            enter: $.tags["jptest-enter"],
+            test: $.tags["jptest-content"],
+            result: $.tags["jptest-result"]
+        };
+    });
+
+    $.on("mount", function(){
+        $.section = new app.plugins.sections($.root, {
+            content: $.content
+        });
+        $.el.on('swipeDown', function(){
+            $.hide();
+        });
+        // $afterlag.run(function(){
+        //     $.show();
+        //     $Sections.jptest.result.show();
+        // });
+    });
+
+    $.show = function(callback){
+        $.section.show({
+            beforeShow: function(){
+                $.active = true;
+                $.callback = callback;
+            },
+            afterShow: function(){
+                $.sections.enter.show();
+            }
+        })
+        app.metrika.set("jptest.show", true);
+    };
+
+    $.close = function(){
+        $.hide();
+        app.metrika.set("jptest.hide", true);
+    };
+
+    $.hide = function(){
+        $.section.hide({
+            beforeHide: function(){
+                $.active = false;
+                if (_.isFunction($.callback)) $.callback();
+                $.trigger("hide");
+            },
+            afterHide: function(){
+                $.trigger("hideAnimated");
+                $.sections.enter.update({
+                    passed: false
+                })
+            }
+        })
+    };
+
+</script>
+
+</section-jptest>

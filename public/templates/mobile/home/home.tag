@@ -188,15 +188,15 @@
                 <p>Уже множество пользователей оценили и нашли лучшую работу</p>
             </div>
         </div>
-        <div class="screen" data-section="jq-test">
+        <div class="screen" data-section="jp-test">
             <div class="screen__image">
-                <img src="/public/images/mobile/home/jq-test_a.png">
+                <img src="/public/images/mobile/home/jp-test_a.png">
                 <div class="screen__button">
-                    <button class="btn btn-xl btn-danger">Пройти тест</button>
+                    <a href="/jp-test/#run" class="btn btn-xl btn-danger">Пройти тест</a>
                 </div>
             </div>
             <div class="screen__text">
-                <h2>JQ-тест 2.0</h2>
+                <h2>JP-тест 2.0</h2>
                 <p>Бесплатно пройти тест на профориентацию + рекомендации</p>
             </div>
         </div>

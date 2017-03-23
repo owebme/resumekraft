@@ -63,18 +63,18 @@
 // messenger
 @import 'sections/messenger/messengerLauncher';
 
-// jqtest
-@import 'sections/jqtest/jqtest';
-@import 'sections/jqtest/jqtestEnter';
-@import 'sections/jqtest/result/main';
-@import 'sections/jqtest/result/columns';
-@import 'sections/jqtest/result/skills';
-@import 'sections/jqtest/result/humps';
-@import 'sections/jqtest/result/graph';
-@import 'sections/jqtest/result/specialties';
-@import 'sections/jqtest/result/path';
-@import 'sections/jqtest/result/finish';
-@import 'sections/jqtest/result/ui';
+// jptest
+@import 'sections/jptest/jptest';
+@import 'sections/jptest/jptestEnter';
+@import 'sections/jptest/result/main';
+@import 'sections/jptest/result/columns';
+@import 'sections/jptest/result/skills';
+@import 'sections/jptest/result/humps';
+@import 'sections/jptest/result/graph';
+@import 'sections/jptest/result/specialties';
+@import 'sections/jptest/result/path';
+@import 'sections/jptest/result/finish';
+@import 'sections/jptest/result/ui';
 
 // plan
 @import 'sections/plan/plan';
@@ -95,7 +95,7 @@
 @import 'sections/overview/premium/header';
 @import 'sections/overview/premium/slides';
 @import 'sections/overview/premium/ui';
-// @import 'sections/overview/jqtest/slides';
+// @import 'sections/overview/jptest/slides';
 // @import 'sections/overview/overviewFunctions';
 
 // Resume list

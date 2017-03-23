@@ -1,0 +1,33 @@
+<jptest-result-skills-mobile class="screen screen--active" data-marquee="skills">
+
+    <div class="screen__content container">
+        <div class="row">
+            <div class="col-xs-24">
+                <div class="title c-smokeDark">Общий профиль</div>
+                <div each={ item, i in items } class="skills__item">
+                    <div class="skills__item__title" data-level="{ item.value }">{ item.title }</div>
+                    <div class="skills__item__line w{ getValue(item) }p" data-level="{ item.value }"></div>
+                    <div class="skills__item__percent">{ getValue(item) }%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.on("update", function(){
+        $.items = $jpResult.profile;
+    });
+
+    $.getValue = function(item){
+             if (item.value == 2) return 20;
+        else if (item.value == 3) return 40;
+        else if (item.value == 4) return 70;
+        else if (item.value == 5) return 85;
+    };
+
+</script>
+
+</jptest-result-skills-mobile>

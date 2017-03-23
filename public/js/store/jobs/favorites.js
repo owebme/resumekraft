@@ -85,6 +85,8 @@
         ]
     }
 
+    _.extend($store.jobs.favorites, new app.commons.EventEmitterMicro());
+
     var $ = $store.jobs.favorites;
 
 })();

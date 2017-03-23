@@ -1,0 +1,183 @@
+jptest-result {
+    .specialties__circle {
+        @extend .display-block;
+        @extend .pos-rel;
+        @include flex("column", "center", "center");
+        @extend .borderRadius-circle;
+        @extend .c-white;
+        @extend .cursor-pointer;
+        width:300px;
+        height:300px;
+        border:3px dashed $snow;
+
+        .d-tablet.r-portrait & {
+            width:388px;
+            height:388px;
+            @extend .mlr-auto;
+            @extend .mb-xl;
+            border-width:4px;
+        }
+        &__count {
+            font-size:88px;
+            line-height:100px;
+            @extend .fontWeight-8;
+            will-change:letter-spacing;
+            transition:letter-spacing .3s $cubic28;
+
+            .d-tablet.r-portrait & {
+                font-size:118px;
+                line-height:118px;
+            }
+        }
+        &__title {
+            @extend .fontSize-20;
+            @extend .willChange-transform;
+            transition:transform .3s $cubic28;
+
+            .d-tablet.r-portrait & {
+                @extend .fontSize-24;
+            }
+        }
+        &__opener {
+            @extend .flex-centered;
+            @extend .pos-abs;
+            @extend .l100;
+            @extend .b0;
+            @extend .pos-centered-v;
+            @extend .w70;
+            @extend .h70;
+            @extend .cursor-pointer;
+            @extend .borderRadius-circle;
+            margin-left:-35px;
+            @extend .zIndex-1;
+
+            &__icon {
+                @include accelerate();
+                @extend .cursor-pointer;
+                @extend .willChange-transform;
+                transition:transform .4s $cubic28;
+
+                &:after {
+                    @extend .content-empty;
+                    @extend .display-block;
+                    @extend .willChange-transform;
+                    @include ui-icon(plus_thin, 32px, 32px);
+                }
+            }
+            &:before {
+                @include accelerate();
+                @extend .content-empty;
+                @include abs();
+                @extend .bg-white;
+                @extend .borderRadius-circle;
+                will-change:transform, background-color;
+                transition:transform .5s $cubic28, background-color .55s $cubic075;
+            }
+            &[data-open="true"]{
+                @extend .cursor-default;
+
+                .specialties__circle__opener__icon {
+                    transform:translate3d(-10vw, 0, 0) rotate(45deg) scale(1.5);
+
+                    &:after {
+                        @include ui-icon(plus_thin_white);
+                    }
+                    .d-tablet & {
+                        transform:translate3d(-18vw, 0, 0) rotate(45deg) scale(1.5);
+                    }
+                }
+                &:before {
+                    @extend .bg-blue;
+                    transform:translate3d(20vw, 0, 0) scale(25);
+                }
+            }
+        }
+        .m-no-touch &:hover {
+            .specialties__circle__opener__icon:after {
+                animation:spinner 0.6s;
+            }
+            .specialties__circle__count {
+                letter-spacing:10px;
+            }
+            .specialties__circle__title {
+                transform:translateY(10px);
+            }
+        }
+    }
+}
+jptest-result-specialties {
+    @extend .c-white;
+
+    .specialties {
+        &__title {
+            @extend .pos-abs;
+            @extend .l-l;
+            @extend .t0;
+            @extend .fontSize-16;
+            @extend .lineHeight-m;
+            @extend .fontWeight-8;
+            letter-spacing:5.5px;
+            @extend .text-uppercase;
+
+            .d-phone & {
+                @extend .pos-rel;
+                @extend .l0;
+            }
+        }
+        &__column {
+            padding-top:100px;
+
+            &:last-child .specialties__item:last-child {
+                .d-phone & {
+                    @extend .mb0;
+                }
+            }
+            .d-tablet & {
+                padding-top:120px;
+            }
+            .d-phone & {
+                @extend .p0;
+            }
+        }
+        &__item {
+            @extend .pos-rel;
+            @extend .letterSpacing-0;
+            @extend .fontSize-18;
+            @extend .text-uppercase;
+            @extend .fontWeight-bold;
+            @extend .mb-m;
+            @extend .pb-xs;
+            @extend .pr-l;
+            @extend .md-pr-m;
+
+            .d-phone & {
+                margin-left:60px;
+                @extend .fontSize-20;
+            }
+            &:before {
+                @extend .content-empty;
+                @extend .pos-tl;
+                width:12px;
+                height:12px;
+                @extend .bg-lime;
+                @extend .borderRadius-xs;
+                box-shadow:0 12px 20px -10px rgba($lime,.28), 0 7px 8px -5px rgba($lime,.2);
+                transform:translate3d(-30px, 6px, 0);
+
+                .d-phone & {
+                    @extend .w15;
+                    @extend .h15;
+                    box-shadow:0 12px 20px -10px rgba($lime,.48), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba($lime,.4);
+                }
+            }
+        }
+        &__close {
+            @extend .h100v;
+            @extend .cursor-pointer;
+
+            .d-phone & {
+                @extend .h-auto;
+            }
+        }
+    }
+}

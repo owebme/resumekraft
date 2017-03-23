@@ -1,0 +1,182 @@
+jptest-content {
+    @include abs();
+    will-change:background-color;
+    transition:background-color 0.2s $cubic60;
+    @extend .overflow-hidden;
+
+    #renderSide & {
+        @extend .zIndex-5;
+    }
+    .screen {
+        @include abs();
+        @extend .pointerEvents-none;
+        @extend .willChange-transform;
+        @extend .overflow-hidden;
+        transform:translate3d(0, 101%, 0);
+
+        &[data-active="true"]{
+            @extend .pointerEvents-all;
+            @extend .transform-default;
+            transition:transform 1s $cubic60;
+
+            .d-mobile & {
+                transition:transform 0.7s $cubic60;
+            }
+        }
+        &[data-hidden="true"]{
+            transition:transform 0.5s $cubic645;
+            transform:translate3d(0, -101%, 0);
+        }
+        &[data-screen="begin"],
+        &[data-screen="beginText"],
+        &[data-screen="finish"]{
+            .container {
+                .d-phone & {
+                    @extend .w100p;
+                }
+            }
+        }
+        &[data-hide="true"]{
+            @extend .pointerEvents-none;
+
+            .que__item {
+                @extend .opacity-0;
+                transform:translate3d(0, -50vh, 0);
+
+                &1 {
+                    transition:transform 0.6s $cubic645 0.1s, opacity 0.5s $cubic645 0.1s;
+                }
+                &2 {
+                    transition:transform 0.6s $cubic645, opacity 0.6s $cubic645;
+                }
+                .d-phone & {
+                    transform:translate3d(0, -20vh, 0);
+
+                    &1 {
+                        transition:transform 0.5s $cubic645, opacity 0.35s $cubic645;
+                    }
+                    &2 {
+                        transition:transform 0.5s $cubic645 0.1s, opacity 0.35s $cubic645 0.1s;
+                    }
+                }
+            }
+        }
+        &[data-show="true"]{
+            .que__item {
+                @extend .opacity-100;
+                @extend .transform-default;
+                transition:transform 0.7s $cubic075, opacity 0.7s $cubic075;
+
+                &1 {
+                    transition:transform 0.7s $cubic075, opacity 0.7s $cubic075;
+                }
+                &2 {
+                    transition:transform 0.55s $cubic075 0.2s, opacity 0.55s $cubic075 0.2s;
+                }
+            }
+        }
+    }
+    .que {
+        @extend .flex-centered;
+        @extend .h100v;
+        @extend .bg-white;
+        @extend .c-blue;
+        @extend .fontSize-28;
+        @extend .lineHeight-xxl;
+        @extend .cursor-pointer;
+        @extend .userSelect-none;
+        @extend .m0;
+        will-change:background-color, color;
+        transition:background-color 0.55s $cubic075, color 0.55s $cubic089;
+
+        .d-phone & {
+            @extend .h50v;
+            @extend .c-blueBright;
+            @extend .plr-m;
+            @extend .overflow-hidden;
+
+            &:active {
+                @extend .c-black;
+                @extend .bg-yellowBright;
+            }
+            &:nth-child(1){
+                border-bottom:2px dashed darken($smokeLight,15%);
+            }
+            &:after {
+                @extend .display-none;
+            }
+        }
+        &__item {
+            @extend .opacity-0;
+            @extend .willChange-tp;
+            transform:translate3d(0, 50vh, 0);
+
+            .d-phone & {
+                transform:translate3d(0, 20vh, 0);
+            }
+        }
+        &__text {
+            @include accelerate(true);
+            @extend .plr-xl;
+            @extend .xs-plr-m;
+            @extend .willChange-transform;
+            transition:transform 0.7s $cubic089;
+        }
+        &:after {
+            @include accelerate();
+            @extend .content-empty;
+            @extend .pos-abs;
+            @extend .b0;
+            @extend .l50;
+            @extend .willChange-transform;
+            transform-style:preserve-3d;
+            transform:translate3d(0, 60px, 0) perspective(500px) rotateX(0deg);
+            @include ui-icon(hand_cursor_white, 190px, 190px);
+            transition:transform 0.3s $cubic215;
+
+            .d-phone & {
+                @extend .display-none;
+            }
+        }
+        .m-no-touch &:hover {
+            @extend .bg-blue;
+            @extend .c-white;
+            @extend .fontWeight-bold;
+
+            &:after {
+                transform:translate3d(0, 40px, 0) perspective(400px) rotateX(15deg);
+            }
+            .que__text {
+                padding:0 60px;
+                transform:scale(1.1);
+            }
+        }
+        .m-no-touch &:active {
+            &:after {
+                transform:translate3d(0, 40px, 0) perspective(400px) rotateX(45deg);
+            }
+        }
+    }
+    .circuful {
+        width:550px;
+        height:550px;
+
+        .d-tablet.r-landscape & {
+            width:480px;
+            height:480px;
+        }
+        .d-phone & {
+            width:480px;
+            height:480px;
+        }
+    }
+}
+@media screen and (max-height: 700px) {
+    .d-phone {
+        jptest-content {
+            .que {
+                font-size:26px;
+            }
+        }
+    }
+}

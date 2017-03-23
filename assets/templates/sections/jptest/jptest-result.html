@@ -1,0 +1,159 @@
+<jptest-result class="oScreen" data-open={ active } data-loader={ loading } data-show="down">
+
+    <div class="oScreen__buttons" data-pos="top-right">
+        <div onClick={ hide } onUpdate="none" ref="close" name="close" class="button__close" data-color="gray"></div>
+    </div>
+
+    <jptest-result-link if={ !app.device.isPhone }></jptest-result-link>
+    <jptest-result-popup></jptest-result-popup>
+
+    <div ref="scroll" name="scroll" class="oScreen__content { app.device.isPhone ? 'notAnim-scroll' : 'bg-white' }">
+
+        <oScreen-loader></oScreen-loader>
+
+        <div ref="content" name="content" class="screens screens-phone"></div>
+
+    </div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    $.active = false;
+
+    $.loading = false;
+
+    $.on("mount", function(){
+        $Sections.module("jptest.result", $);
+        if ($.refs){
+            $.scroll = $$($.refs.scroll);
+            $.content = $$($.refs.content);
+            $.buttonClose = $$($.refs.close);
+        }
+        else {
+            $.scroll = $$($["scroll"]);
+            $.content = $$($["content"]);
+            $.buttonClose = $$($["close"]);
+        }
+        $.loader = $.tags["oscreen-loader"];
+        $.buttonLink = $.tags["jptest-result-link"];
+        $.popupVotes = $.tags["jptest-result-popup"];
+        $afterlag.run(function(){
+            $.show();
+        });
+    });
+
+    $.on("focus", function(value){
+        if (value){
+            $.buttonLink.hide();
+            $.buttonClose.css("transform", "scale(0)");
+        }
+        else {
+            $.buttonLink.show();
+            $.buttonClose.css("transform", "scale(1)");
+        }
+    });
+
+    $.show = function(callback){
+        if ($.loading || $.active) return;
+
+        $jpResult = $store.jptest.jq7;
+
+        $.loader.show(
+            {
+                scope: $.scroll,
+                content: $.content,
+                start: function(){
+                    if (app.device.isPhone){
+                        $.content[0].style.backgroundColor = '#ffffff';
+                    }
+                },
+                tag: function(){
+                    return $.section = riot.mount($.content[0], "jptest-result-content", {
+                        scope: $scope,
+                        scroll: $.scroll,
+                        content: $.content
+                    })[0];
+                },
+                mount: function(){
+                    if (app.device.isPhone){
+                        $.content[0].style.backgroundColor = '';
+                        $afterlag.run(function(){
+                            $.screens = new app.plugins.screens($.content);
+                            $.screens.init();
+
+                            if ($.popupVotes && $.popupVotes.show){
+                                var $screen = $.content.find(".screen"),
+                                    success = false;
+
+                                $screen.on('show', function(e){
+                                    var marquee = this.getAttribute("data-marquee");
+                                    if (!success && marquee == "finish"){
+                                        success = true;
+                                        $screen.off('show');
+                                        setTimeout(function(){
+                                            $.popupVotes.show();
+                                        }, 1500);
+                                    }
+                                });
+                            }
+                        });
+                    }
+                    else {
+                        $afterlag.run(function(){
+                            $scope.find(".chart").addClass("showChart");
+                            $.section.scrollAnimate.start();
+
+                            if ($.popupVotes && $.popupVotes.show){
+                                var $elem = $.content.find("jptest-result-finish");
+
+                                if ($elem.length){
+                                    var scrollTo = app.dom.getPagePosition($elem[0]).top,
+                                        success = false;
+
+                                    (function scrollFn(){
+                                        _.raf(scrollFn);
+                                        var scroll = $.scroll[0].scrollY || $.scroll[0].scrollTop;
+                                        if (!success && scroll > scrollTo){
+                                            success = true;
+                                            _.caf(scrollFn);
+                                            $.popupVotes.show();
+                                        }
+                                    })();
+                                }
+                            }
+                        });
+                        setTimeout(function(){
+                            $.buttonLink.show();
+                        }, 1000);
+                    }
+                    if (_.isFunction(callback)){
+                        callback();
+                    }
+                    if (window.$root && window.$root.focus) $root.focus("jptest-result");
+                }
+            }
+        );
+    };
+
+    $.hide = function(){
+        $.update({
+            active: false
+        })
+        _.onEndTransition($.scroll[0], function(){
+            $.section.unmount(true);
+            if (window.$root && window.$root.focus) $root.focus("all");
+        });
+        if ($.buttonLink && $.buttonLink.hide) $.buttonLink.hide();
+    };
+
+    $.get = {
+        text: function(tag, text){
+            tag.root.innerHTML = text.replace(/\[b\]/gi, '<span class="larger">').replace(/\[\/b\]/gi, '</span>').replace(/\[i\]/gi, '<span class="marker">').replace(/\[\/i\]/gi, '</span>');
+        }
+    };
+
+</script>
+
+</jptest-result>

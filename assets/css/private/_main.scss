@@ -11,7 +11,7 @@ body {
 		@include perspective(500);
 	}
 	&[data-focus="resume-edit"],
-	&[data-focus="jqtest-result"]{
+	&[data-focus="jptest-result"]{
 		app-sections,
 		app-offers,
 		app-overviews {
@@ -19,11 +19,11 @@ body {
 		}
 	}
 	&[data-focus="resume-edit"]{
-		section-jqtest {
+		section-jptest {
 			@extend .display-none;
 		}
 	}
-	&[data-focus="jqtest-result"]{
+	&[data-focus="jptest-result"]{
 		section-plan,
 		section-plan-mobile,
 		section-payment {
@@ -33,7 +33,7 @@ body {
 	&[data-focus="overview"]{
 		app-sections,
         app-offers,
-		section-jqtest {
+		section-jptest {
 			@extend .display-none;
 		}
 	}

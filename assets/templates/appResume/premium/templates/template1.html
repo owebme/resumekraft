@@ -14,7 +14,7 @@
         <div class="screen__content">
             <ux-photo phone="true"></ux-photo>
             <div if={ $store.resume.get('post') } class="screen__post">{ $store.resume.get('post') }</div>
-            <div if={ $State.get('mode') !== "editing" && $store.resume.get('commons', 'contacts', 'city') } class="screen__location">
+            <div if={ $store.resume.get('commons', 'contacts', 'city') } class="screen__location">
                 <span class="display-inlineBlock text-truncate w90p">{ $store.resume.get('commons', 'contacts', 'city') }, { $store.resume.take.relocate() }</span>
                 <div class="screen__progress" style="width:{ $store.resume.get('percent') }%">
                     <div class="screen__progress__line"></div>

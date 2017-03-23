@@ -14,7 +14,7 @@
 
     <home-testdrive></home-testdrive>
 
-    <home-jq-test></home-jq-test>
+    <home-jp-test></home-jp-test>
 
     <home-footer></home-footer>
 

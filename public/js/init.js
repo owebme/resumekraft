@@ -3,17 +3,17 @@
     var start = new Date().getTime();
     console.time("process");
 
+    app.isSite = true;
+
     app.metrika = new app.plugins.metrika({
         key: "public",
         data: app.metrics.public
     });
 
-    if (app.device.isPhone){
+    app.sections.once("endLoading", function(){
         $dom.body.removeClass("appLoading");
         app.features.links.init();
-    }
-
-    app.sections.init();
+    });
 
     app.sections.once("ready", function(){
         riot.compile(function(e){
@@ -32,6 +32,8 @@
             //alert(elapsed + "ms");
         });
     });
+
+    app.sections.init();
 
     if (app.config.changeStyles){
         if (app.device.isPhone){

@@ -612,9 +612,17 @@
     }
 }
 @media screen and (min-height: 640px) {
-    .d-phone #app[data-mode="view"] {
+    .d-phone #app {
          .screen__post {
             padding-bottom:100px;
+        }
+    }
+}
+@media screen and (min-height: 700px) {
+    .d-phone #app {
+        .screen__post {
+            padding-bottom:120px;
+            padding-right:60px;
         }
     }
 }

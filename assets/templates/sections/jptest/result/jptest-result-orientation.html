@@ -1,0 +1,40 @@
+<jptest-result-orientation class="screen" data-marquee="orientation">
+
+    <div class="screen__content container">
+
+        <div class="row">
+            <div class="col-sm-24 col-md-9 col-lg-10 pr-m md-pr-xss anim-scroll anim anim-lr-soft" data-duration="m">
+                <div class="pr-l md-pr0">
+                    <div each={ item, i in items } class="skills__item">
+                        <div class="skills__item__title" data-level="{ item.value }">{ item.title }</div>
+                        <div class="skills__item__line w{ getValue(item) }p" data-level="{ item.value }"></div>
+                        <div class="skills__item__percent">{ getValue(item) }%</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-24 col-md-15 col-lg-14 pt-l pr-l md-pr-xss xsm-pt-xl c-gray anim-scroll anim anim-bt-soft" data-duration="m">
+                <p class="text"><strong class="c-blue">Ориентация на деятельность</strong>&nbsp; &mdash; &nbsp;<jptest-result-text></jptest-result-text></p>
+            </div>
+        </div>
+
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.on("update", function(){
+        $.items = $jpResult.profile;
+        $.parent.get.text($.tags["jptest-result-text"], $jpResult.orientation);
+    });
+
+    $.getValue = function(item){
+             if (item.value == 2) return 20;
+        else if (item.value == 3) return 40;
+        else if (item.value == 4) return 70;
+        else if (item.value == 5) return 85;
+    };
+
+</script>
+
+</jptest-result-orientation>

@@ -1,17 +1,18 @@
-.d-mobile .screens.screens-mobile {
-    @extend .bg-white;
-
-    // .iScrollVerticalScrollbar {
-    //     @extend .w5;
-    // }
+body {
+    @extend .overflowX-hidden;
 }
-.screens__content {
-    margin:0 -7.5px;
-}
-.ui-scroll__bar,
-.ui-scroll__handle__inner {
-	// background-color:#cdb388;
-    @extend .bg-green;
+.screens-mobile {
+    .d-mobile &.screens {
+        @extend .bg-white;
+    }
+    .screens__content {
+        @extend .ml--xss;
+        @extend .mr--xss;
+    }
+    .ui-scroll__bar,
+    .ui-scroll__handle__inner {
+        @extend .bg-green;
+    }
 }
 #loader {
 	@extend .loader;

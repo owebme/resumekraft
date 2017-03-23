@@ -43,6 +43,15 @@ app.fetch.API.getDataInit = function(){
                     device: true,
                     report: report
                 });
+                app.metrikaPublic = new app.plugins.metrika({
+                    key: "public",
+                    data: app.metrics.public,
+                    readOnly: true
+                });
+            }
+            else {
+                app.metrika = new app.plugins.metrika();
+                app.metrikaPublic = new app.plugins.metrika();
             }
 
             resolve(res);

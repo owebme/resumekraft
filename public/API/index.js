@@ -18,4 +18,7 @@ module.exports = function(url){
 	// Blog public API
 	require('./blog')(url + '/blog');
 
+	// JPtest public API
+	require('./jptest')(url + '/jptest');
+
 }

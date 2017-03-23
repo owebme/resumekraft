@@ -40,23 +40,23 @@
 @import 'sections/home/home';
 @import 'sections/home/header';
 @import 'sections/home/functions';
-@import 'sections/home/jqtest';
+@import 'sections/home/jptest';
 @import 'sections/home/sections';
 @import 'sections/home/testdrive';
 @import 'sections/home/footer';
 
-// jqtest
-@import '../../assets/css/sections/jqtest/jqtest';
-@import '../../assets/css/sections/jqtest/jqtestEnter';
-@import '../../assets/css/sections/jqtest/result/main';
-@import '../../assets/css/sections/jqtest/result/columns';
-@import '../../assets/css/sections/jqtest/result/skills';
-@import '../../assets/css/sections/jqtest/result/humps';
-@import '../../assets/css/sections/jqtest/result/graph';
-@import '../../assets/css/sections/jqtest/result/specialties';
-@import '../../assets/css/sections/jqtest/result/path';
-@import '../../assets/css/sections/jqtest/result/finish';
-@import '../../assets/css/sections/jqtest/result/ui';
+// jptest
+@import '../../assets/css/sections/jptest/jptest';
+@import '../../assets/css/sections/jptest/jptestEnter';
+@import '../../assets/css/sections/jptest/result/main';
+@import '../../assets/css/sections/jptest/result/columns';
+@import '../../assets/css/sections/jptest/result/skills';
+@import '../../assets/css/sections/jptest/result/humps';
+@import '../../assets/css/sections/jptest/result/graph';
+@import '../../assets/css/sections/jptest/result/specialties';
+@import '../../assets/css/sections/jptest/result/path';
+@import '../../assets/css/sections/jptest/result/finish';
+@import '../../assets/css/sections/jptest/result/ui';
 
 // blog
 @import 'sections/blog/blog';

@@ -34,7 +34,7 @@
                 free: false,
                 premium: false
             },
-            jqtest: {
+            jptest: {
                 show: false,
                 hide: false,
                 success: false
@@ -51,7 +51,7 @@
                     hide: false,
                     success: false
                 },
-                jqtest: {
+                jptest: {
                     show: false,
                     hide: false,
                     success: false
@@ -63,18 +63,13 @@
                 show: false,
                 hide: false,
                 success: false
-            },
-            jqtest: {
-                show: false,
-                hide: false,
-                success: false
             }
         },
-        jqtest: {
+        jptest: {
             show: false,
             hide: false,
-            new: false,
-            success: false
+            start: false,
+            passed: 0
         },
         resume: {
             buttonNew: false,

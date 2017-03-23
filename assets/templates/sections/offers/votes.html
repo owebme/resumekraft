@@ -21,7 +21,7 @@
         </div>
         <div class="pos-centered { visibility-hidden : !step[2] }">
             <div class="anim-group3 anim-scale">
-                <div class="fontWeight-8 mb-l" style="font-size:110px; line-height:110px; letter-spacing:-1.4px">{ raiting }.0</div>
+                <div class="fontWeight-8 mb-l" style="font-size:110px; line-height:110px; letter-spacing:-1.4px">{ score }.0</div>
                 <p class="fontSize-18 text-uppercase letterSpacing-xxxl">Спасибо за вашу оценку!</p>
             </div>
         </div>
@@ -44,7 +44,8 @@
 
     var $ = this,
     $scope = $$($.root),
-    $votes = $$($.votes);
+    $votes = $$($.votes),
+    starsMax = 10;
 
     $.active = false;
     $.step = _.range(1, 6);
@@ -52,9 +53,9 @@
         if (i > 0) return item = false;
         else return item = true;
     });
-    $.raiting = 0;
+    $.score = 0;
     $.voted = false;
-    $.stars = _.range(1, 11);
+    $.stars = _.range(starsMax);
     $.stars = _.map($.stars, function(item){
         return item = false;
     });
@@ -82,14 +83,14 @@
         $votes.on("mousemove", function(e){
             var x = (e.pageX - $votes.offset().left),
             val = x / size;
-            val *= 10;
+            val *= starsMax;
             val = Math.floor(val);
             val += 1;
 
-            if (!$.voted && $.raiting != val){
-                $.raiting = val;
+            if (!$.voted && $.score != val){
+                $.score = val;
                 _.each($.stars, function(item, i){
-                    if ($.raiting < i + 1){
+                    if ($.score < i + 1){
                         $.stars[i] = false;
                     }
                     else {
@@ -101,7 +102,7 @@
         });
 
         $votes.one("click", function(e){
-            if ($.raiting > 0){
+            if ($.score > 0){
                 $scope.off();
                 $votes.off();
                 $.step[1] = false;
@@ -120,7 +121,7 @@
                     delay: 750,
                     timeout: 1000
                 });
-                app.metrika.set("offers.votes.score", $.raiting);
+                app.metrika.set("offers.votes.score", $.score);
                 app.metrika.set("offers.votes.success", true);
             }
         });

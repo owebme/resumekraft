@@ -101,7 +101,7 @@ module.exports = function(){
     gulp.task('private.sections.templates', function() {
     	return gulp.src(['assets/templates/sections/*.html',
     		'assets/templates/sections/**/*.html',
-            'assets/templates/sections/jqtest/jqtest-enter.tag',
+            'assets/templates/sections/jptest/jptest-enter.tag',
             'assets/templates/sections/overview/premium/overviewPremiumContent.tag'])
     		.pipe(riot())
     		.pipe(concat('templates.sections.js'))

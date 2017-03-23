@@ -22,7 +22,7 @@
         @extend .pointerEvents-all;
         @extend .visibility-visible;
         @extend .transform-default;
-        transition:transform 0.45s $bounceForce, opacity 0.45s $bounceForce;
+        transition:transform 0.5s $bounceForce, opacity 0.5s $bounceForce;
     }
     &__title {
         @extend .fontFamily-futura;
@@ -94,8 +94,10 @@
         @extend .btn-active;
 
         .d-phone & {
-            top:-8px;
-            right:-8px;
+            @extend .t--xs;
+            @extend .r--xs;
+            @extend .w34;
+            @extend .h34;
             background-color:lighten($steel,10%);
         }
         &:before,
@@ -111,6 +113,8 @@
             margin:-1px 0 0 -6px;
 
             .d-phone & {
+                width:14px;
+                margin-left:-7px;
                 @extend .bg-white;
             }
         }
@@ -175,7 +179,8 @@
             @extend .letterSpacing--s;
 
             .d-phone & {
-                @extend .fontSize-24;
+                @extend .fontSize-26;
+                @extend .ml0;
             }
         }
         .popup__text {

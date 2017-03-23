@@ -46,7 +46,7 @@
                 <a class="jobs__search__nav__menu__item__link" href="/jobs/search">Вакансии</a>
             </div>
             <div class="jobs__search__nav__menu__item">
-                <a class="jobs__search__nav__menu__item__link" href="/jq-test/">JQ-тест 2.0</a>
+                <a class="jobs__search__nav__menu__item__link" href="/jp-test/">JP-тест 2.0</a>
             </div>
             <div class="jobs__search__nav__menu__item">
                 <a class="jobs__search__nav__menu__item__link" href="/blog/">Блог</a>

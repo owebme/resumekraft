@@ -1,0 +1,37 @@
+<jptest-result-link onClick={ scrollDown } data-balloon="Получить ссылку" data-balloon-pos="right" data-active={ active }>
+
+    <icon-link color="steel"></icon-link>
+
+<script>
+
+    var $ = this;
+
+    $.show = function(){
+        $.update({
+            active: true
+        })
+    };
+
+    $.scrollDown = function(){
+        var $elem = $.parent.content.find("jptest-result-finish");
+
+        if ($elem.length){
+            var scrollTo = app.dom.getPagePosition($elem[0]).top,
+                delta = Math.abs(scrollTo - $.parent.scroll.scrollTop());
+
+            var duration = delta / 5;
+            duration = duration < 500 ? 500 : duration;
+
+            $.parent.scroll.animate({scrollTop: scrollTo}, duration);
+        }
+    };
+
+    $.hide = function(){
+        $.update({
+            active: false
+        })
+    };
+
+</script>
+
+</jptest-result-link>

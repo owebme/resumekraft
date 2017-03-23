@@ -294,7 +294,7 @@ app.plugins.marquee = function($frame, settings){
 		marquee.draw();
 		marquee.callScreensAPI();
 		if (scroll.moved) {
-			var position = scroll[settings.vertical ? 'y' : 'x'] - (settings.vertical ? -scroll["distY"] : scroll["pointX"]);
+			var position = scroll[settings.vertical ? 'y' : 'x'] - (settings.vertical ? settings.phoneEmulate ? -scroll["distY"] : scroll["pointY"] : scroll["pointX"]);
 			for (var i=0; i<screens.length; i++) {
 				if (position <= -screens[i].offset && position >= -screens[i].offset-screens[i].size) index = i;
 			};

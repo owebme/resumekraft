@@ -1,0 +1,82 @@
+<jptest-result-humps class="humps { showHumps : app.device.isMobile }">
+
+    <div class="humps__wrapper">
+        <svg ref="humps__svg" id="humps__svg"></svg>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.on("mount", function(){
+
+        var values = $jpResult.specification;
+
+        var live_delay = 300;
+        var svgNS = "http://www.w3.org/2000/svg";
+        var index = 0;
+
+        _.each(_.shuffle(values), function(item){
+            var group = document.createElementNS(svgNS, "g"),
+                translate = (100 / values.length) * index;
+
+            group.style["transform"] = "translate(" + translate + "vw, 0)";
+            group.setAttributeNS(null, "class", "humpGroup");
+
+            var hump = document.createElementNS(svgNS, "path");
+            hump.setAttributeNS(null, "style", "transition-delay: "+live_delay*index+"ms");
+            hump.setAttributeNS(null, "d", "m 0,160 c 47.5,0 47.5,-"+item.value+" 95,-"+item.value+" 47.5,0 47.5,"+item.value+" 95,"+item.value);
+            hump.setAttributeNS(null, "class", "hump");
+            group.appendChild(hump);
+
+            var text = document.createElementNS(svgNS, "text");
+            text.setAttributeNS(null, "x", "95");
+            text.setAttributeNS(null, "y", -(item.value+15));
+            text.setAttributeNS(null, "style", "transition-delay: "+live_delay*index+"ms");
+            text.setAttributeNS(null, "text-anchor", "middle");
+            text.setAttributeNS(null, "class", "humpText");
+            text.textContent = item.title;
+            group.appendChild(text);
+
+            var count = document.createElementNS(svgNS, "text");
+            count.setAttributeNS(null, "x", "95");
+            count.setAttributeNS(null, "y", "0");
+            count.setAttributeNS(null, "style", "transition-delay: "+live_delay*index+"ms");
+            count.setAttributeNS(null, "text-anchor", "middle");
+            count.setAttributeNS(null, "class", "humpLevel");
+            count.textContent = item.value / 10;
+            group.appendChild(count);
+
+            var line = document.createElementNS(svgNS, "line");
+            line.setAttributeNS(null, "x1", "95");
+            line.setAttributeNS(null, "y1", 200 - item.value);
+            line.setAttributeNS(null, "x2", "95");
+            line.setAttributeNS(null, "y2", "270");
+            line.setAttributeNS(null, "style", "transition-delay: "+live_delay*index+"ms");
+            line.setAttributeNS(null, "text-anchor", "middle");
+            line.setAttributeNS(null, "class", "humpLine");
+            group.appendChild(line);
+
+            var circle = document.createElementNS(svgNS, "circle");
+            circle.setAttributeNS(null, "cx", "95");
+            circle.setAttributeNS(null, "cy", (180-item.value-20));
+            circle.setAttributeNS(null, "r", "8");
+            circle.setAttributeNS(null, "style", "transition-delay: "+live_delay*index+"ms");
+            circle.setAttributeNS(null, "class", "humpCircle");
+            // circle.setAttributeNS(null, "onmouseover", "evt.target.setAttribute('r', '8');");
+            // circle.setAttributeNS(null, "onmouseout", "evt.target.setAttribute('r', '6');");
+            group.appendChild(circle);
+
+            if ($.refs){
+                $.refs.humps__svg.appendChild(group);
+            }
+            else {
+                $["humps__svg"].appendChild(group);
+            }
+            index++;
+        });
+    });
+
+</script>
+
+</jptest-result-humps>

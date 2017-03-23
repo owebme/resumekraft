@@ -4,15 +4,13 @@ module.exports = function(url) {
 
     route.get('/:id', function(req, res, next) {
         API.jobs.vacancy(req.params.id, function(err, data){
-            if (err) next();
-            else app.errHandler(res, null, data);
+            app.errHandler(res, err, data);
         });
 	});
 
     route.get('/similary/:id', function(req, res, next) {
         API.jobs.vacancySimilary(req.params.id, function(err, data){
-            if (err) next();
-            else app.errHandler(res, null, data);
+            app.errHandler(res, err, data);
         });
 	});
 

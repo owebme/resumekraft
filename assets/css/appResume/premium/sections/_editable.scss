@@ -380,7 +380,7 @@
     }
     #activity {
         @extend .pos-abs;
-        @extend .zIndex-1;
+        @extend .zIndex-3;
 
         .d-no-phone & {
             top:13px;

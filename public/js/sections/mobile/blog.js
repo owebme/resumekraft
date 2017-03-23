@@ -13,6 +13,8 @@
 
         render: function(){
 
+            app.sections.trigger("endLoading");
+
             new app.plugins.scroll.refreshFix(this.el);
 
             this.$nav = this.el.find("section-nav-blog-mobile");

@@ -13,6 +13,8 @@
 
         render: function(){
 
+            app.sections.trigger("endLoading");
+
             WD.subscribe();
 
             WD.share();

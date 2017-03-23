@@ -219,7 +219,8 @@ function setAttr(dom, name, val) {
   if (xlink && xlink[1])
     { dom.setAttributeNS(XLINK_NS, xlink[1], val); }
   else
-    { dom.setAttribute(name, val); }
+  // MY_FIX //
+    { if (dom) { dom.setAttribute(name, val); } }
 }
 
 /**

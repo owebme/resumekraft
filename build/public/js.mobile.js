@@ -9,7 +9,10 @@ module.exports = function(){
             'assets/js/libs/baobab.js',
             'assets/js/libs/underscore-min.js',
             'assets/js/libs/store.min.js',
+            'assets/js/libs/iscroll.js',
             'assets/js/libs/iscroll.static.js',
+            'assets/js/libs/imagesloaded/imagesloaded.pkgd.min.js',
+            'assets/js/libs/circliful/js/jquery.circliful.js',
             'assets/js/libs/afterlag-js/dist/afterlag.min.js'])
     		.pipe(concat('app.libs.mobile.js'))
     		.pipe(uglify())
@@ -29,6 +32,7 @@ module.exports = function(){
             'assets/js/plugins/imagesLoaded/imagesLoaded.LiveQueue.js',
             'assets/js/plugins/imagesLoaded/imagesLoaded.Queue.js',
             'assets/js/plugins/imagesLoaded/imagesLoaded.QueueItem.js',
+            'assets/js/plugins/marquee.js',
             'assets/js/plugins/marquee.static.js',
             'assets/js/plugins/marquee.effects.js',
             'assets/js/plugins/screens.js',
@@ -59,7 +63,12 @@ module.exports = function(){
             'public/templates/commons/modules/auth/forms/remember.tag',
             'assets/templates/modules/notify.html',
             'assets/templates/modules/loader.html',
-            'public/templates/commons/popup/blogSubscribeForm.tag',
+            'assets/templates/modules/oScreenLoader.html',
+            'assets/templates/sections/jptest/*.html',
+            'assets/templates/sections/jptest/**/*.html',
+            '!assets/templates/sections/jptest/jptest.html',
+            'assets/templates/ui/icons/icon-replyMail.html',
+            'public/templates/client/blog/popup/blogSubscribeForm.html',
             'public/templates/commons/icons/social/icon-fb.tag',
             'public/templates/commons/icons/social/icon-vk.tag',
             'public/templates/commons/icons/social/icon-tw.tag',

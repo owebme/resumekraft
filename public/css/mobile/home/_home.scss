@@ -1,4 +1,4 @@
-section-home-mobile {
+.screens-mobile {
     .screen {
         &__image {
             @extend .pos-centered;
@@ -11,6 +11,8 @@ section-home-mobile {
             @extend .pos-centered;
         }
         .btn-xl {
+            @extend .flex-centered;
+
             &.btn-success,
             &.btn-danger {
                 @extend .fontSize-24;
@@ -348,7 +350,7 @@ section-home-mobile {
                 @extend .pt55;
             }
         }
-        &[data-section="jq-test"]{
+        &[data-section="jp-test"]{
             img {
                 @extend .float-left;
                 @extend .ml-l;
@@ -416,7 +418,7 @@ section-home-mobile {
     }
 }
 @media screen and (max-height: 565px) {
-    section-home-mobile {
+    .screens-mobile {
         h2 {
             font-size:30px;
             line-height:33px;
@@ -440,7 +442,7 @@ section-home-mobile {
             &[data-section="pdf"],
             &[data-section="back-office-inbox"],
             &[data-section="community"],
-            &[data-section="jq-test"]{
+            &[data-section="jp-test"]{
                 .screen__image {
                     margin-top:-45px;
                 }
@@ -492,7 +494,7 @@ section-home-mobile {
     }
 }
 @media screen and (min-height: 566px) {
-    section-home-mobile {
+    .screens-mobile {
         h2 {
             font-size:32px;
             line-height:35px;
@@ -557,7 +559,7 @@ section-home-mobile {
             }
             &[data-section="free-makets"],
             &[data-section="back-office-inbox"],
-            &[data-section="jq-test"]{
+            &[data-section="jp-test"]{
                 .screen__image {
                     margin-top:-50px;
                 }
@@ -585,7 +587,7 @@ section-home-mobile {
     }
 }
 @media screen and (min-height: 640px) and (max-height: 700px) {
-    section-home-mobile {
+    .screens-mobile {
         h2 {
             font-size:33px;
             line-height:36px;
@@ -597,7 +599,7 @@ section-home-mobile {
     }
 }
 @media screen and (min-height: 700px) {
-    section-home-mobile {
+    .screens-mobile {
         h2 {
             font-size:36px;
             line-height:38px;

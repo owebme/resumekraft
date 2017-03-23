@@ -39,22 +39,26 @@
 // home
 @import 'mobile/home/home';
 
+// jptest
+// @import 'mobile/jptest/jptest';
+
 // blog
 @import 'mobile/blog/cover';
 @import 'mobile/blog/grid';
 @import 'mobile/blog/content';
 @import 'mobile/blog/social';
 
-// jqtest
-@import '../../assets/css/sections/jqtest/jqtest';
-@import '../../assets/css/sections/jqtest/jqtestEnter';
-@import '../../assets/css/sections/jqtest/result/main';
-@import '../../assets/css/sections/jqtest/result/columns';
-@import '../../assets/css/sections/jqtest/result/skills';
-@import '../../assets/css/sections/jqtest/result/humps';
-@import '../../assets/css/sections/jqtest/result/graph';
-@import '../../assets/css/sections/jqtest/result/specialties';
-@import '../../assets/css/sections/jqtest/result/path';
+// jptest
+@import '../../assets/css/sections/jptest/jptest';
+@import '../../assets/css/sections/jptest/jptestEnter';
+@import '../../assets/css/sections/jptest/result/main';
+@import '../../assets/css/sections/jptest/result/columns';
+@import '../../assets/css/sections/jptest/result/skills';
+@import '../../assets/css/sections/jptest/result/humps';
+@import '../../assets/css/sections/jptest/result/graph';
+@import '../../assets/css/sections/jptest/result/specialties';
+@import '../../assets/css/sections/jptest/result/path';
+@import '../../assets/css/sections/jptest/result/finish';
 
 // blog
 // @import 'mobile/blog/blog';
@@ -73,7 +77,7 @@
 // @import '../../assets/css/sections/overview/premium/header';
 // @import '../../assets/css/sections/overview/premium/slides';
 // @import '../../assets/css/sections/overview/premium/devices';
-// @import '../../assets/css/sections/overview/jqtest/slides';
+// @import '../../assets/css/sections/overview/jptest/slides';
 // @import '../../assets/css/sections/overview/overviewFunctions';
 
 // states

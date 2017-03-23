@@ -4,15 +4,13 @@ module.exports = function(url) {
 
     route.get('/:id', function(req, res, next) {
         API.jobs.employer(req.params.id, function(err, data){
-            if (err) next();
-            else app.errHandler(res, null, data);
+            app.errHandler(res, err, data);
         });
 	});
 
     route.get('/vacancies/:id', function(req, res, next) {
         API.jobs.employerVacancies(req.params.id, function(err, data){
-            if (err) next();
-            else app.errHandler(res, null, data);
+            app.errHandler(res, err, data);
         });
 	});
 

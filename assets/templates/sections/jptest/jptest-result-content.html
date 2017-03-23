@@ -1,0 +1,181 @@
+<jptest-result-content>
+
+    <jptest-result-columns if={ !app.device.isPhone }></jptest-result-columns>
+
+    <jptest-result-orientation if={ !app.device.isPhone }></jptest-result-orientation>
+
+    <jptest-result-skills-mobile if={ app.device.isPhone }></jptest-result-skills-mobile>
+
+    <jptest-result-orientation-mobile if={ app.device.isPhone }></jptest-result-orientation-mobile>
+
+    <jptest-result-stimulus></jptest-result-stimulus>
+
+    <jptest-result-humps if={ !app.device.isMobile }></jptest-result-humps>
+
+    <jptest-result-graph></jptest-result-graph>
+
+    <jptest-result-specialties></jptest-result-specialties>
+
+    <jptest-result-notengage></jptest-result-notengage>
+
+    <jptest-result-strengths></jptest-result-strengths>
+
+    <jptest-result-weaksides></jptest-result-weaksides>
+
+    <jptest-result-development></jptest-result-development>
+
+    <jptest-result-personality></jptest-result-personality>
+
+    <jptest-result-finish></jptest-result-finish>
+
+<script>
+
+    var $ = this;
+
+    $.on("mount", function(){
+
+        $.scope = $.opts.scope;
+        $.scroll = $.opts.scroll;
+        $.content = $.opts.content;
+
+        $.sections = {
+            columns: $.tags["jptest-result-columns"],
+            orientation: $.tags["jptest-result-orientation"],
+            stimulus: $.tags["jptest-result-stimulus"],
+            humps: $.tags["jptest-result-humps"],
+            graph: $.tags["jptest-result-graph"],
+            specialties: $.tags["jptest-result-specialties"],
+            notengage: $.tags["jptest-result-notengage"]
+        };
+
+        if (!app.device.isPhone){
+            $.scrollAnimate = new app.plugins.scroll.animate({
+                scroll: $.scroll,
+                container: $.scope,
+                elems: ".anim-scroll",
+                delta: "s",
+                items: [
+                    {
+                        elem: ".humps",
+                        callback: function(elem){
+                            elem.addClass("showHumps");
+                        }
+                    },
+                    {
+                        elem: ".graph",
+                        callback: function(elem){
+                            elem.addClass("showGraph");
+                        }
+                    }
+                ]
+            });
+
+            var items = [
+                {
+                    elem: $.scope.find("jptest-result-orientation p.text"),
+                    from: -30,
+                    to: 30,
+                    off: 0,
+                    clipOptions: {
+                        ease: "easeInOutCubic"
+                    }
+                },
+                {
+                    elem: $.scope.find("jptest-result-stimulus p.text"),
+                    from: 0,
+                    to: 60,
+                    off: 0,
+                    clipOptions: {
+                        ease: "easeInOutCubic"
+                    }
+                },
+                {
+                    elem: $.scope.find("jptest-result-graph .screen__content"),
+                    from: 0,
+                    to: -60,
+                    off: 60,
+                    clipOptions: {
+                        ease: "easeInOutCubic"
+                    }
+                },
+                {
+                    elem: $.scope.find("jptest-result-notengage .specialties__circle"),
+                    from: 0,
+                    to: -60,
+                    off: 60,
+                    clipOptions: {
+                        ease: "easeInOutCubic"
+                    }
+                },
+                {
+                    elem: $.scope.find("jptest-result-notengage p.text"),
+                    from: 0,
+                    to: -30,
+                    off: 30,
+                    clipOptions: {
+                        ease: "easeInOutCubic"
+                    }
+                },
+                {
+                    elem: $.scope.find("jptest-result-strengths .header__lines"),
+                    from: 0,
+                    to: -30,
+                    off: 30,
+                    clipOptions: {
+                        ease: "easeInOutCubic"
+                    }
+                },
+                {
+                    elem: $.scope.find("jptest-result-weaksides .header__lines"),
+                    from: 0,
+                    to: -30,
+                    off: 30,
+                    clipOptions: {
+                        ease: "easeInOutCubic"
+                    }
+                }
+            ];
+
+            $afterlag.run(function(){
+                $.scope.find(".path__text").each(function(){
+                    items.push({
+                        elem: this,
+                        from: 0,
+                        to: -20,
+                        off: 20,
+                        clipOptions: {
+                            ease: "easeInOutCubic"
+                        }
+                    })
+                });
+
+                var parallax = new app.plugins.scroll.ParallaxController({
+                    scroll: $.scroll,
+                    items: items
+                });
+
+                parallax.start();
+            });
+
+            $.scrollFix = new app.plugins.scroll.fix({
+                scroll: $.scroll,
+                container: $.content
+            });
+            $.scrollFix.init();
+        }
+    });
+
+    $.get = {
+        text: function(tag, text){
+            tag.root.innerHTML = text.replace(/\[b\]/, '<span class="larger">').replace(/\[\/b\]/, '</span>').replace(/\[i\]/, '<span class="marker">').replace(/\[\/i\]/, '</span>');
+        }
+    };
+
+    $.on("unmount", function(){
+        if ($.scrollAnimate) $.scrollAnimate.destroy();
+        if ($.scrollFix) $.scrollFix.destroy();
+    });
+
+</script>
+
+</jptest-result-content>

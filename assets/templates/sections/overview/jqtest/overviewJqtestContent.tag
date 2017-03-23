@@ -1,11 +1,11 @@
-<overview-jqtest-content>
+<overview-jptest-content>
 
     <section class="overview__section" data-bg="gradient-tb">
         <div class="container pt-xl pb-l">
             <div class="row">
                 <div class="col-md-offset-4 col-md-16">
                     <small class="mb-xl">Он расскажет о вас многое</small>
-                    <h1 class="mb-l mlr-m plr-l pt-m">JQ-тестирование.</h1>
+                    <h1 class="mb-l mlr-m plr-l pt-m">JP-тестирование.</h1>
                     <p class="fontSize-24 lineHeight-xxxl c-gray">Всё, что вы любите в iPhone и iPad, было бы невозможно без iOS — операционной системы, которая обеспечивает уникальные функции этих устройств.</p>
                 </div>
             </div>
@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="overview__phone" data-color="white" data-align="left">
-                        <img src="/public/images/promo/jqtest/slide2_1_screen.jpg" class="overview__phone__screen">
+                        <img src="/public/images/promo/jptest/slide2_1_screen.jpg" class="overview__phone__screen">
                     </div>
                 </div>
                 <div class="col-md-12 text-left pt-xl pr-xl">
@@ -129,7 +129,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="overview__phone" data-color="white" data-align="left">
-                        <img src="/public/images/promo/jqtest/slide7_1_screen.png" class="overview__phone__screen">
+                        <img src="/public/images/promo/jptest/slide7_1_screen.png" class="overview__phone__screen">
                     </div>
                 </div>
                 <div class="col-md-12 text-left pt-xl pr-xl">
@@ -216,4 +216,4 @@
 
 </script>
 
-</overview-jqtest-content>
+</overview-jptest-content>

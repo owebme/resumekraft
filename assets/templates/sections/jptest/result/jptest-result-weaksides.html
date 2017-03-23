@@ -1,0 +1,30 @@
+<jptest-result-weaksides class="screen" data-marquee="weaksides">
+
+    <div class="screen__content container">
+        <div class="row mb-xl pb-xxs pt-l xs-pt0 xs-mb0 xs-pb0">
+            <div class="col-xs-24 col-md-24 text-center anim-scroll anim anim-scale-soft" data-duration="m">
+                <div class="header__lines" data-color="blue">
+                    <h2 class="mb-s c-blue title">Слабые стороны</h2>
+                    <p class="larger c-gray subtitle">{ title }</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-24 col-md-offset-1 col-md-23 col-lg-offset-3 col-lg-19 anim-scroll anim anim-bt-soft" data-duration="m">
+                <p class="text"><strong class="hidden-xs c-blue">Слабые стороны вашего типа личности</strong>&nbsp; &mdash; &nbsp;<jptest-result-text></jptest-result-text></p>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.on("update", function(){
+        $.title = $jpResult.weaksides.title;
+        $.parent.get.text($.tags["jptest-result-text"], $jpResult.weaksides.text);
+    });
+
+</script>
+
+</jptest-result-weaksides>

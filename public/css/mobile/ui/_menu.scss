@@ -25,16 +25,17 @@
         transition:transform 0.3s $cubic345, opacity 0.3s $cubic345;
 
         &__link {
-            @extend .c-blackLight;
-            @extend .fontFamily-roboto;
-            font-size:17px;
-            @extend .fontWeight-5;
+            @extend .c-steelDark;
+            @extend .fontFamily-futura;
+            @extend .fontSize-18;
+            @extend .fontWeight-bold;
             letter-spacing:0.18em;
             @extend .text-uppercase;
             @extend .textDecoration-none;
 
             &[data-active="true"]{
                 @extend .c-blueBright;
+                @extend .pointerEvents-none;
             }
         }
     }

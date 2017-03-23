@@ -1,0 +1,30 @@
+<jptest-result-personality class="screen" data-marquee="personality">
+
+    <div class="screen__content container">
+        <div class="row">
+            <div class="col-xs-24 col-md-24 text-center anim-scroll anim anim-scale-soft" data-duration="m">
+                <h2 class="c-blue mb-xl xs-mb-m title">Рекомендации для вашего типа личности</h2>
+            </div>
+        </div>
+        <div each={ item, i in items } class="path__item row mb-xl xs-mb0 anim-scroll anim anim-rl-soft" data-duration="m">
+            <div class="hidden-xs col-md-5">
+                <div class="path__num">{ i + 1 }</div>
+            </div>
+            <div class="col-xs-24 col-md-18 col-lg-16 { xs-mb-xl : i + 1 != items.length }">
+                <span class="visible-xs">
+                    <div class="path__num">{ i + 1 }</div>
+                </span>
+                <p class="path__text">{ item }</p>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    this.on("update", function(){
+        this.items = $jpResult.recommendations.personality;
+    });
+
+</script>
+
+</jptest-result-personality>

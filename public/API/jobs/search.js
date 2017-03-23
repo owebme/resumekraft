@@ -4,8 +4,7 @@ module.exports = function(url) {
 
     route.get('/:url', function(req, res, next) {
         API.jobs.search(req.params.url, function(err, data){
-            if (err) next();
-            else app.errHandler(res, null, data);
+            app.errHandler(res, err, data);
         });
 	});
 

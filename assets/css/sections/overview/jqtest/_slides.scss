@@ -1,4 +1,4 @@
-overview-jqtest {
+overview-jptest {
     .slide1 {
         &__wrapper {
             @extend .pos-rel;
@@ -10,7 +10,7 @@ overview-jqtest {
             @extend .bg-cover;
             width:1084px;
             height:646px;
-            background-image:url('/public/images/promo/jqtest/slide1_1.png');
+            background-image:url('/public/images/promo/jptest/slide1_1.png');
 
             &:before {
                 @extend .content-empty;
@@ -33,7 +33,7 @@ overview-jqtest {
                 width:510px;
                 height:440px;
                 @extend .bg-cover;
-                background-image:url('/public/images/promo/jqtest/slide1_1_screen.jpg');
+                background-image:url('/public/images/promo/jptest/slide1_1_screen.jpg');
             }
             &__lens {
                 @extend .pos-abs;
@@ -56,7 +56,7 @@ overview-jqtest {
                     @extend .ml-m;
                     width:222px;
                     height:222px;
-                    background-image:url('/public/images/promo/jqtest/slide1_2_screen.jpg');
+                    background-image:url('/public/images/promo/jptest/slide1_2_screen.jpg');
                 }
             }
         }
@@ -68,7 +68,7 @@ overview-jqtest {
         width:335px;
         height:335px;
         @extend .mt-l;
-        background-image:url('/public/images/promo/jqtest/slide3_1.svg');
+        background-image:url('/public/images/promo/jptest/slide3_1.svg');
     }
     .slide3-2 {
         @extend .display-block;
@@ -86,13 +86,13 @@ overview-jqtest {
         width:385px;
         height:385px;
         @extend .mt-l;
-        background-image:url('/public/images/promo/jqtest/slide4_1.svg');
+        background-image:url('/public/images/promo/jptest/slide4_1.svg');
     }
     .slide5-1 {
         width: 1087px;
         height: 638px;
         @extend .bg-cover;
-        background-image:url('/public/images/promo/jqtest/slide5_1.jpg');
+        background-image:url('/public/images/promo/jptest/slide5_1.jpg');
     }
     .specialties__circle {
         @extend .display-block;
@@ -152,7 +152,7 @@ overview-jqtest {
         width:365px;
         height:365px;
         @extend .mt-l;
-        background-image:url('/public/images/promo/jqtest/slide8_1.svg');
+        background-image:url('/public/images/promo/jptest/slide8_1.svg');
     }
     .slide8-2 {
         @extend .display-block;
@@ -171,6 +171,6 @@ overview-jqtest {
         width:320px;
         height:320px;
         @extend .mt-l;
-        background-image:url('/public/images/promo/jqtest/slide9_1.svg');
+        background-image:url('/public/images/promo/jptest/slide9_1.svg');
     }
 }

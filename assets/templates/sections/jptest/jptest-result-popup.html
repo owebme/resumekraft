@@ -1,0 +1,104 @@
+<jptest-result-popup class="popup popup-m" data-pos="bottom-right" data-active={ active }>
+
+    <div class="popup__inner">
+        <div class="popup__image">
+            <img src="/assets/images/popup/jptest.png">
+        </div>
+        <div class="popup__content">
+            <div class="popup__title c-blueBright fontWeight-bold xs-plr-m xs-pb-xxs">Пожалуйста оцените результат теста</div>
+            <div ref="votes" name="votes" class="cursor-pointer { app.device.isPhone ? 'fontSize-34' : 'fontSize-28' } ml--xss pt-s pb-m xs-pt-m xs-pb-s">
+                <span each={ item in stars } class="plr-xss { !item ? 'c-gray' : 'c-orange' }">&star;</span>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this,
+    $votes = null,
+    starsMax = 5;
+
+    $.score = 0;
+    $.voted = false;
+    $.stars = _.range(starsMax);
+    $.stars = _.map($.stars, function(item){
+        return item = false;
+    });
+
+    $.on("mount", function(){
+        if (app.metrika.get("jptest.votes.show")){
+            $.unmount();
+        }
+        else {
+            if ($.refs) $votes = $$($.refs.votes);
+            else $votes = $$($.votes);
+            $.init();
+        }
+    });
+
+    $.show = function(){
+        if ($.active) return;
+
+        $.update({
+            active: true
+        })
+
+        app.metrika.set("jptest.votes.show", true);
+    };
+
+    $.init = function(){
+        var size = $votes.width();
+
+        $votes.on("mousemove", function(e){
+            var x = (e.pageX - $votes.offset().left),
+            val = x / size;
+            val *= starsMax;
+            val = Math.floor(val);
+            val += 1;
+
+            if (!$.voted && $.score != val){
+                $.score = val;
+                _.each($.stars, function(item, i){
+                    if ($.score < i + 1){
+                        $.stars[i] = false;
+                    }
+                    else {
+                        $.stars[i] = true;
+                    }
+                });
+                $.update();
+            }
+        });
+
+        $votes.one("click", function(e){
+            if ($.score > 0){
+                $votes.off();
+                $afterlag.run(function(){
+                    $.hide();
+                });
+                app.request("addJptestVotes", {
+                    score: $.score,
+                    site: app.isSite
+                }, {
+                    notify: false,
+                    loader: false
+                })
+                .then(function(){
+                    app.metrika.set("jptest.votes.score", $.score);
+                    app.metrika.set("jptest.votes.success", true);
+                });
+            }
+        });
+    };
+
+    $.hide = function(){
+        if (!$.active) return;
+
+        $.update({
+            active: false
+        })
+    };
+
+</script>
+
+</jptest-result-popup>

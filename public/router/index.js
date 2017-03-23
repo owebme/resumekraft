@@ -46,10 +46,13 @@ module.exports = function(){
     app.get('/premium/editing', app.controllers.resume("demo-editing"));
 
     app.get('/jq-test/', function(req, res) {
-        var output = app.riot.render(app.tags("jqtest", req.device), req.appClient);
+        res.redirect(301, '/jp-test/');
+    });
+    app.get('/jp-test/', function(req, res) {
+        var output = app.riot.render(app.tags("jptest", req.device), req.appClient);
         res.render(req.device.type == "phone" ? 'index-mobile' : 'index', {
-            title: app.config.get('title:jq-test'),
-            section: "jq-test",
+            title: app.config.get('title:jp-test'),
+            section: "jp-test",
             content: output
         });
     });

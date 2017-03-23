@@ -9,7 +9,7 @@
     <section-notify></section-notify>
     <section-alert></section-alert>
     <section-pointer></section-pointer>
-    <section-jqtest></section-jqtest>
+    <section-jptest></section-jptest>
     <section-payment></section-payment>
     <section-tutorial></section-tutorial>
     <section-plan></section-plan>
@@ -36,12 +36,12 @@
         <offer-plan></offer-plan>
         <offer-premium></offer-premium>
         <!-- <offer-votes></offer-votes>
-        <offer-jqtest></offer-jqtest> -->
+        <offer-jptest></offer-jptest> -->
     </app-offers>
 
     <app-overviews>
         <overview-premium></overview-premium>
-        <!-- <overview-jqtest></overview-jqtest>
+        <!-- <overview-jptest></overview-jptest>
         <overview-functions></overview-functions> -->
     </app-overviews>
 
@@ -111,19 +111,19 @@
                 welcome: $root.tags["offer-welcome"],
                 plan: $root.tags["offer-plan"],
                 premium: $root.tags["offer-premium"],
-                jqtest: $root.tags["offer-jqtest"],
+                jptest: $root.tags["offer-jptest"],
                 votes: $root.tags["offer-votes"]
             },
             overview: {
                 premium: $root.tags["overview-premium"],
-                jqtest: $root.tags["overview-jqtest"],
+                jptest: $root.tags["overview-jptest"],
                 functions: $root.tags["overview-functions"]
             },
-            jqtest: {
-                section: $root.tags["section-jqtest"],
-                list: $root.tags["section-jqtest"].tags["jqtest-list"],
-                test: $root.tags["section-jqtest"].tags["jqtest-content"],
-                result: $root.tags["section-jqtest"].tags["jqtest-result"]
+            jptest: {
+                section: $root.tags["section-jptest"],
+                list: $root.tags["section-jptest"].tags["jptest-list"],
+                test: $root.tags["section-jptest"].tags["jptest-content"],
+                result: $root.tags["section-jptest"].tags["jptest-result"]
             },
             plan: $root.tags["section-plan"],
             inbox: {

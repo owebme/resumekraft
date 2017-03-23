@@ -10,8 +10,6 @@
             $Sections = new app.plugins.define("$Sections");
             $Screens = new app.plugins.define("$Screens");
 
-            if (app.plugins.eventsEmitter) app.plugins.eventsEmitter.init(this);
-
             if (_.isFunction(options.beforeInit)) options.beforeInit();
 
             _.each(app.sections, function(item){
@@ -21,5 +19,7 @@
             if (_.isFunction(options.afterInit)) options.afterInit();
         }
     };
+
+    _.extend(app.sections, new app.commons.EventEmitterMicro());
 
 })(app, $, app.$dom, app.events, app.utils);

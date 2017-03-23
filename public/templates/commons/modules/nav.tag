@@ -10,7 +10,7 @@
                     <a href="/" class="nav__menu__item" data-active="{ opts.section == 'home' }">Главная</a>
                     <a href="/examples-resume/" class="nav__menu__item hidden-sm hidden-md" data-active="{ opts.section == 'examples-resume' }">Образцы резюме</a>
                     <a href="/premium/" class="nav__menu__item hidden-sm hidden-md" data-active="{ opts.section == 'premium' }">Premium</a>
-                    <a href="/jq-test/" class="nav__menu__item hidden-sm hidden-md" data-active="{ opts.section == 'jq-test' }">JQ-тест 2.0</a>
+                    <a href="/jp-test/" class="nav__menu__item hidden-sm hidden-md" data-active="{ opts.section == 'jp-test' }">JP-тест 2.0</a>
                     <a href="/jobs/search" class="nav__menu__item hidden-sm hidden-md" data-active="{ opts.section == 'jobs' }">Найти работу</a>
                     <a href="/blog/" class="nav__menu__item" data-active="{ opts.section == 'blog' }">Блог</a>
                 </div>

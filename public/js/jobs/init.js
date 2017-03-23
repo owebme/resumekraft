@@ -8,15 +8,13 @@
         data: app.metrics.jobs
     });
 
-    app.plugins.eventsEmitter.init($store.jobs.favorites);
-
-    app.sections.init();
-
     if (app.device.isPhone){
         app.sections.on("beforeMounted", function(){
             $dom.body.removeClass("appLoading");
         })
     }
+
+    app.sections.init();
 
     riot.compile(function(e){
         app.sections.trigger("beforeMounted");

@@ -1,13 +1,13 @@
-<popup-jqtest class="popup popup-m" data-pos="bottom-right" data-active={ active }>
+<popup-jptest class="popup popup-m" data-pos="bottom-right" data-active={ active }>
 
     <div onClick={ close } onUpdate="none" class="popup__close"></div>
 
     <div class="popup__inner">
         <div class="popup__image">
-            <img src="/assets/images/popup/jqtest.png">
+            <img src="/assets/images/popup/jptest.png">
         </div>
         <div class="popup__content">
-            <div class="popup__title c-green fontWeight-bold">Бесплатный <span class="c-blueLight">JQ-тест 2.0</span></div>
+            <div class="popup__title c-green fontWeight-bold">Бесплатный <span class="c-blueLight">JP-тест 2.0</span></div>
             <div class="popup__text">Хотите узнать больше о своих проффесиональных навыках и получить рекомендации?</div>
             <div onClick={ success } onUpdate="none" class="btn btn-danger">Пройти тест</div>
         </div>
@@ -18,7 +18,7 @@
     var $ = this;
 
     $.on("mount", function(){
-        if (app.metrika.get("offers.popup.jqtest.show")){
+        if (app.metrika.get("offers.popup.jptest.show")){
             $.unmount();
         }
     });
@@ -30,7 +30,7 @@
             active: true
         })
 
-        app.metrika.set("offers.popup.jqtest.show", true);
+        app.metrika.set("offers.popup.jptest.show", true);
 
         return new Promise(function(resolve, reject){
             $.resolve = resolve;
@@ -40,12 +40,12 @@
     $.success = function(){
         $.hide();
         $.resolve();
-        app.metrika.set("offers.popup.jqtest.success", true);
+        app.metrika.set("offers.popup.jptest.success", true);
     };
 
     $.close = function(){
         $.hide();
-        app.metrika.set("offers.popup.jqtest.hide", true);
+        app.metrika.set("offers.popup.jptest.hide", true);
     };
 
     $.hide = function(){
@@ -58,4 +58,4 @@
 
 </script>
 
-</popup-jqtest>
+</popup-jptest>

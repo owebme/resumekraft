@@ -9,7 +9,7 @@
     <section-notify></section-notify>
     <section-alert></section-alert>
     <section-pointer></section-pointer>
-    <section-jqtest></section-jqtest>
+    <section-jptest></section-jptest>
     <section-payment-mobile></section-payment-mobile>
     <section-plan-mobile></section-plan-mobile>
     <section-loader-ajax></section-loader-ajax>
@@ -32,7 +32,7 @@
 
     <app-popups>
         <popup-premium></popup-premium>
-        <popup-jqtest></popup-jqtest>
+        <popup-jptest></popup-jptest>
     </app-popups>
 
     <app-offers>
@@ -42,7 +42,7 @@
 
     <app-overviews>
         <overview-premium></overview-premium>
-        <overview-jqtest></overview-jqtest>
+        <overview-jptest></overview-jptest>
         <overview-functions></overview-functions>
     </app-overviews>
 
@@ -94,7 +94,7 @@
             },
             popup: {
                 premium: $root.tags["popup-premium"],
-                jqtest: $root.tags["popup-jqtest"]
+                jptest: $root.tags["popup-jptest"]
             },
             offers: {
                 plan: $root.tags["offer-plan"],
@@ -102,14 +102,14 @@
             },
             overview: {
                 premium: $root.tags["overview-premium"],
-                jqtest: $root.tags["overview-jqtest"],
+                jptest: $root.tags["overview-jptest"],
                 functions: $root.tags["overview-functions"]
             },
-            jqtest: {
-                section: $root.tags["section-jqtest"],
-                list: $root.tags["section-jqtest"].tags["jqtest-list"],
-                test: $root.tags["section-jqtest"].tags["jqtest-content"],
-                result: $root.tags["section-jqtest"].tags["jqtest-result"]
+            jptest: {
+                section: $root.tags["section-jptest"],
+                list: $root.tags["section-jptest"].tags["jptest-list"],
+                test: $root.tags["section-jptest"].tags["jptest-content"],
+                result: $root.tags["section-jptest"].tags["jptest-result"]
             },
             plan: $root.tags["section-plan-mobile"],
             likes: {

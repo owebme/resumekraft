@@ -1,6 +1,6 @@
 {
   "name": "ResumeKraft",
-  "short_name": "Работа.Компания",
+  "short_name": "JP-тест 2.0",
   "icons": [{
     "src": "/assets/images/favicons/32.png",
     "sizes": "32x32",
@@ -26,7 +26,7 @@
     "sizes": "192x192",
     "type": "image/png"
   }],
-  "start_url": "/jobs/employer/2682/ФИНАМ",
+  "start_url": "/jp-test/",
   "display": "standalone",
   "background_color": "#fff",
   "theme_color": "#265cdc",
