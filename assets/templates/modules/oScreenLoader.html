@@ -25,12 +25,12 @@
                 });
             }
             $$($.parent.scroll).css("transition", "none");
-            $.parent.update({
-                active: true
-            })
+            $.parent.active = true;
+            $.parent.update();
             return;
         }
 
+        $.options = options;
         $.start = options.start || $$.noop;
         $.end = options.end || $$.noop;
         $.callMount = options.mount || $$.noop;
@@ -64,29 +64,6 @@
                 $.onResourcesLoaded();
                 $.updateLoading();
             }
-            $afterlag.run(function(){
-                if (_.isFunction(options.tag)){
-                    $.html = options.tag();
-                    if ($.html){
-                        $.html.one("updated", function(){
-                            $afterlag.run(function(){
-                                $.onHtmlLoaded(options.content);
-                            });
-                        });
-                        if ($.refs) $.html.update();
-                    }
-                    else {
-                        $.parent.update({
-                            loading: false,
-                            animate: false,
-                            active: false
-                        })
-                    }
-                }
-                else {
-                    $.onHtmlLoaded(options.content);
-                }
-            });
         });
     };
 
@@ -112,9 +89,34 @@
 
     $.onResourcesLoaded = function(){
         $.progress.resources = true;
+
         if (app.device.isMobile){
             $.animate = true;
         }
+        $afterlag.run(function(){
+            if (_.isFunction($.options.tag)){
+                $.html = $.options.tag();
+                if ($.html){
+                    $.html.one("updated", function(){
+                        $afterlag.run(function(){
+                            $.onHtmlLoaded($.options.content);
+                        });
+                    });
+                    if ($.refs) $.html.update();
+                }
+                else {
+                    $.parent.update({
+                        loading: false,
+                        animate: false,
+                        active: false
+                    })
+                }
+            }
+            else {
+                $.onHtmlLoaded($.options.content);
+            }
+        });
+
         $.init();
     };
 
@@ -128,10 +130,9 @@
     };
 
     $.hide = function(){
-        $.parent.update({
-            loading: false,
-            active: true
-        })
+        $.parent.loading = false;
+        $.parent.active = true;
+        $.parent.update();
         $.end();
         _.onEndTransition($.scope, function(){
             $.callMount($.html);

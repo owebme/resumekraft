@@ -16,13 +16,14 @@
             $dom.root = this.el;
 
             app.sections.once("afterMounted", function(){
-                WD.el.find(".btn-xl").on("click", function(){
-                    $Sections.jptest.test.show();
-                });
-                if (location.hash.match(/run/)){
-                    $Sections.jptest.test.show();
-                }
-                app.sections.trigger("endLoading");
+                WD.el.find(".screen").height(app.sizes.height);
+
+                app.features.jptest.init({
+                    button: WD.el.find(".btn-xl"),
+                    callback: function(){
+                        app.sections.trigger("endLoading");
+                    }
+                })
             });
 
             app.sections.trigger("ready");

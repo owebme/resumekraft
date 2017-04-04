@@ -1,0 +1,113 @@
+#app[data-animation="true"]{
+    .choose__contact {
+        @extend .opacity-0;
+        transform:rotate(15deg) translate3d(0, -10px, 0) scale(0.8);
+        transition:transform 0.5s $cubic2501, opacity 0.5s $cubic2501;
+
+        &.animated {
+            @extend .opacity-100;
+            @extend .transform-default;
+        }
+    }
+}
+ux-contacts-content {
+    icon-phone {
+        transform:translate3d(-2px, 0, 0);
+    }
+    .choose__contact {
+        @include accelerate();
+        @extend .pos-abs;
+        @extend .t--xs;
+        left:155px;
+        font-size:14px;
+        padding:2px 6px 3px;
+        @extend .c-white;
+        @extend .fontFamily-futura;
+        @extend .fontWeight-bold;
+        @extend .letterSpacing--xs;
+        @extend .borderRadius-m;
+        @extend .bg-primary;
+        @extend .text-lowercase;
+        @extend .willChange-tp;
+
+        .d-phone & {
+            @extend .t--s;
+            @extend .l-55;
+            @extend .letterSpacing-0;
+            padding-bottom:2px;
+        }
+        &:after {
+            @extend .content-empty;
+            @extend .pos-abs;
+            @extend .t100;
+            @extend .l0;
+            @extend .w10;
+            @extend .h10;
+            @extend .bg-primary;
+            transform:rotate(60deg) translate3d(-2px, -10px, 0);
+            @extend .zIndex--1;
+        }
+    }
+}
+ux-contacts-more {
+    .c-header {
+        @extend .pos-rel;
+        @extend .fontSize-18;
+        @extend .fontWeight-bold;
+    }
+}
+.d-no-phone {
+    ux-contacts-more {
+        @extend .bg-primary;
+        @extend .c-white;
+
+        .c-header {
+            @extend .fontSize-15;
+            @extend .text-uppercase;
+            margin-bottom:7px;
+        }
+        .c-text {
+            font-size:17px;
+            @extend .opacity-85;
+        }
+        .contacts-cover {
+            @extend .pos-tl;
+            @extend .h100p;
+            width:200%;
+            @extend .bg-primary;
+            @extend .bg-cover;
+        }
+    }
+}
+.d-phone {
+    ux-contacts-more {
+        @extend .c-blackLight;
+
+        .c-header {
+            @extend .pos-rel;
+            @extend .mb-xs;
+
+            &:before {
+                @extend .content-empty;
+                @extend .pos-abs;
+                @extend .l--l;
+                top:-2px;
+                width:calc(100% + 56px);
+                @extend .h30;
+                @extend .opacity-10;
+                @extend .borderRadiusRight-xxxl;
+            }
+        }
+        .c-text {
+            font-size:20px;
+        }
+    }
+}
+.d-no-phone {
+    .contacts-cover {
+        @extend .pos-tl;
+        @extend .h100p;
+        width:150%;
+        @extend .bg-primary;
+    }
+}

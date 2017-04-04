@@ -3,16 +3,16 @@
     <div class="row">
         <div class="col-xs-24 likes centered" data-gender={ $resume.commons.gender }>
             <div class="likes__cover anim anim-group1 anim-scale">
-                <div if={ $resume.photo } class="likes__cover__photo" style="background-image:url('{ $resume.photo }')"></div>
+                <div if={ $resume.commons.photo } class="likes__cover__photo" style="background-image:url('{ $resume.commons.photo }')"></div>
                 <div if={ $resume.config.likes.count && $resume.likes.length } class="likes__cover__badge">{ $resume.likes.length }</div>
             </div>
-            <div class="likes__text mb-m anim anim-group1 anim-tb-ease">Если вам понравилось мое резюме поставте лайк</div>
+            <div class="likes__text mb-m anim anim-group1 anim-tb-ease">{ $i18n("resume.premium.template.If you liked my resume please supply Like") }</div>
             <div class="anim anim-group1 anim-scale-ease">
-                <div onClick={ liked } class="btn btn-xl2 btn-strong btn-white-hover">Мне нравиться</div>
+                <div onClick={ liked } class="btn btn-xl2 btn-strong btn-white-hover">{ $i18n("resume.premium.template.Like") }</div>
             </div>
             <div class="pos-centered-v flex-column-centered w100p pb-l pointerEvents-none">
                 <div class="ui-icon-check_circle_white w48 h48 mb-s anim-group2 anim-scale" delay-show="xl"></div>
-                <div class="anim-group2 anim-bt-soft plr-l likes__text" delay-show="s" data-duration="l">Спасибо за ваш голос, он будет учтен.</div>
+                <div class="anim-group2 anim-bt-soft plr-l likes__text" delay-show="s" data-duration="l">{ $i18n("resume.premium.template.Thanks for your vote, he will be counted") }.</div>
             </div>
         </div>
     </div>

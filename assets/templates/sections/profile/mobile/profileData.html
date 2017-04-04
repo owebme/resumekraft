@@ -11,7 +11,7 @@
         </div>
         <div name="content" class="section-scroll section__content">
             <div class="pt-xl pb70 plr-m willChange-transform">
-                <profile-data-content class="display-block mb25"></profile-data-content>
+                <profile-data-content cursor={ data.select() } class="display-block mb25"></profile-data-content>
                 <div class="flex-centered">
                     <div onClick={ onSave } onUpdate="none" class="btn btn-xl2 btn-success">Сохранить</div>
                 </div>
@@ -24,7 +24,7 @@
 
     var $ = this;
 
-    $.data = new Baobab($account.deepClone());
+    $.data = new Baobab($account.select('commons').deepClone());
 
     $.on("mount", function(){
         $.section = new app.plugins.sections($.root, {

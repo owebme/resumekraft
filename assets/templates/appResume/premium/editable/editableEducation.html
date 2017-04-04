@@ -8,12 +8,28 @@
 
         <div class="row mb-m">
 
-            <div class="col-md-12">
+            <div class="{ $Editable.component.editing ? 'col-md-12' : 'col-md-24 mb-m' }">
                 <div if={ !$Editable.component.editing } class="pos-rel">
                     <span class="input-title">название секции</span>
                     <input onInput={ $Editable.component.autoCommit } class="input { app.device.isPhone ? 'input-l' : 'input-xl' }" data-name="title" name="title_data" type="text" placeholder="Название секции" autocomplete="off" value={ data && data.title ? data.title : $store.resume.placeholder.education.title() }>
                 </div>
                 <div if={ $Editable.component.editing } class="title title-xl">Редактирование</div>
+            </div>
+
+            <div if={ !$Editable.component.editing } class="col-md-12">
+                <div class="pos-rel xs-mt-l">
+                    <span class="input-title">уровень образования</span>
+                    <div class="select select-xl">
+                        <select onChange={ $Editable.component.autoCommit } data-name="level">
+                            <optgroup label="Высшее образование">
+                                <option if={ item.parent == "higher" || item._id == "higher" } each={ item in $store.education.getItems() } value={ item._id } no-reorder selected={ parent.data.level == item._id }>{ item.title }</option>
+                            </optgroup>
+                            <optgroup label="Среднее образование">
+                                <option if={ item.parent == "0" && item._id != "higher" } each={ item in $store.education.getItems() } value={ item._id } no-reorder selected={ parent.data.level == item._id }>{ item.title }</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
             </div>
 
             <div class="col-md-12 xs-mt-m sm-mt-m target-visible">

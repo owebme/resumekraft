@@ -143,6 +143,12 @@ module.exports = function(){
     // 		.pipe(gulp.dest('./public/js'));
     // });
 
+    gulp.task('public.jptest', function() {
+    	return gulp.src('assets/js/jptest/*.js')
+    		.pipe(concat('jptest.build.js'))
+    		.pipe(gulp.dest('./public/js'));
+    });
+
     gulp.task('public.app.build', function() {
     	return gulp.src(['public/js/app.js',
             'assets/js/plugins/scroll/scroll.Parallax.build.js'])

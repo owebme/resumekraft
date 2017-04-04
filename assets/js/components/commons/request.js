@@ -48,6 +48,9 @@
 
     app.request = function(method, params, opt){
         return new Promise(function(resolve, reject){
+            if (!app.config.request){
+                resolve(true); return;
+            }            
             var url = _.underscored(method)
                         .replace(/^(get|set|add|del)/g, "")
                         .replace(/_/g, "/"),

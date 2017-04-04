@@ -4,7 +4,7 @@ module.exports = function(){
 
         var output = app.riot.render(app.tags("jobs", req.device), req.appClient);
         res.render(req.device.type == "phone" ? 'index-mobile' : 'index', {
-            title: app.config.get('title:jobs'),
+            title: app.config.public.get('title:jobs'),
             content: output
         });
 

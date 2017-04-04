@@ -1,0 +1,84 @@
+<ux-contacts-more class="component col-sm-12 col-md-12 col-lg-8 p-l md-plr-m pr0 xs-p0 zIndex-1 hidden-sm">
+
+    <div class="contacts-cover"></div>
+    <div class="pos-rel minH-100p p-m xs-p0">
+        <btn-editable if={ $State.get('mode') === "editing" } data="true"></btn-editable>
+        <div onClick={ openEditable } onUpdate="none">
+            <div class="hidden-xs opacity-70 f-primary fontSize-20 fontWeight-bold mb-xs">{ $i18n("resume.premium.template.Сitizenship") }</div>
+            <div class="hidden-xs f-primary fontSize-30 fontWeight-8 mb-l">{ $i18n("resume.premium.template.Relocation") }</div>
+            <div class="pt25 xs-pt0">
+                <div class="w100p flex-column-left-center { app.device.isPhone ? 'mb-l' : 'h80' } headline-icons">
+                    <div class="c-header f-primary" data-scrollin-icon>{ $i18n("resume.premium.template.Сitizenship") }</div>
+                    <div class="c-text" data-scrollin-icon="\{'stagger':40\}">
+                        { $store.country.getTitleById($resume.commons.citizenship) }
+                    </div>
+                </div>
+            </div>
+            <div class="w100p flex-column-left-center { app.device.isPhone ? 'mb-l' : 'h80' } headline-icons">
+                <div class="c-header f-primary" data-scrollin-icon>{ $i18n("resume.premium.template.Relocation") }</div>
+                <div class="c-text" data-scrollin-icon="\{'stagger':40\}">
+                    { $store.dictionary.getTitleById($resume.commons.relocation, "relocation") }
+                </div>
+            </div>
+            <div class="w100p flex-column-left-center { app.device.isPhone ? 'mb-l' : 'h80' } headline-icons">
+                <div class="c-header f-primary" data-scrollin-icon>{ $i18n("resume.premium.template.Business trip") }</div>
+                <div class="c-text" data-scrollin-icon="\{'stagger':40\}">
+                    { $store.dictionary.getTitleById($resume.commons.businessTrip, "businessTrip") }
+                </div>
+            </div>
+            <div class="w100p flex-column-left-center { app.device.isPhone ? 'mb-l' : 'h80 mb-m' } headline-icons">
+                <div class="c-header f-primary" data-scrollin-icon>{ $i18n("resume.premium.template.Travel time to work") }</div>
+                <div class="c-text" data-scrollin-icon="\{'stagger':40\}">
+                    { $store.dictionary.getTitleById($resume.commons.travelTime, "travelTime") }
+                </div>
+            </div>
+            <div if={ $store.resume.get('commons', 'schedules').length } class="w100p flex-column-left-center headline-icons">
+                <div class="c-header f-primary" data-scrollin-icon>{ $i18n("resume.premium.template.Work schedule") }</div>
+                <div class="c-text text-lowercase text-uppercase-firstLetter" data-scrollin-icon="\{'stagger':40\}">
+                    { get.schedules() }
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.openEditable = function(){
+        if ($State.get('mode') === "editing"){
+            $Editable.show("more", {
+                title: "График работы",
+                citizenship: $resume.commons.citizenship,
+                businessTrip: $resume.commons.businessTrip,
+                relocation: $resume.commons.relocation,
+                travelTime: $resume.commons.travelTime,
+                schedules: $resume.commons.schedules,
+                callback: function(data){
+                    $store.resume.select('sections', {'name': 'more'}).set('active', true);
+                    _.each(data, function(item, key){
+                        $resume.commons[key] = item;
+                    });
+                    $.update({
+                        editable: false
+                    });
+                }
+            });
+            $.editable = true;
+        }
+        else {
+            return true;
+        }
+    };
+
+    $.get = {
+        schedules: function(){
+            return $resume.commons.schedules.map(function(item){
+                return $store.dictionary.getTitleById(item, "schedules");
+            }).join(", ");
+        }
+    }
+
+</script>
+
+</ux-contacts-more>

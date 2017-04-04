@@ -2,6 +2,9 @@
     $store.inbox = _.extend(new Baobab([]),
         {
             counterAll: function(){
+                return $.get().length;
+            },
+            counterNewAll: function(){
                 return _.where(
                     $.get(), { "new": true }
                 ).length;

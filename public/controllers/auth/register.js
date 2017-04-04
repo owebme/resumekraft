@@ -72,26 +72,37 @@ module.exports = function() {
 				_id: options.id,
 				plan: "free",
 		        balance: 0,
-		        photo: null,
-		        name: "",
-		        surname: "",
-		        gender: "male",
+				login: options.login,
+		        password: app.utils.cryptoPass(options.password),
 				init: options.init,
-		        birthday: {
-		            day: "1",
-		            month: "1",
-		            year: "1990",
-		            hidden: false
-		        },
-		        contacts: {
-					city: options.init.location.city,
-					email: options.login,
-					phone: "",
-					primary: "any",
-					relocate: false,
-					site: "",
-					skype: ""
-		        },
+				commons: {
+					photo: null,
+					name: "",
+					surname: "",
+					gender: "male",
+					birthday: {
+			            day: "1",
+			            month: "1",
+			            year: "1990",
+			            hidden: false
+			        },
+					citizenship: null,
+					businessTrip: null,
+					relocation: null,
+					travelTime: null,
+					specialization: [],
+					employments: [],
+					schedules: [],
+					contacts: {
+						city: null,
+						metro: null,
+						email: options.login,
+						phone: "",
+						primary: null,
+						site: "",
+						skype: ""
+			        }
+				},
 				history: {
 					events: [],
 					visits: [{
@@ -104,8 +115,6 @@ module.exports = function() {
 				metrika: [],
 				log: [],
 				visits: 1,
-		        login: options.login,
-		        password: app.utils.cryptoPass(options.password),
 				paid: null,
 				create: app.moment().format(),
 				update: app.moment().format(),

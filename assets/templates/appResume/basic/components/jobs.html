@@ -7,9 +7,9 @@
         <div class="container content" data-content="jobs" data-editing={ true : editing }>
             <div class="pos-rel pb-l mb-xs" each={ item, i in sort($resume.select("jobs", "items").get()) } no-reorder>
                 <div class="section__num">{ i + 1 }</div>
-                <div if={ editing == item._id } onClick={ close } class="section__btn__close"></div>
-                <div if={ editing != item._id } onClick={ edit } class="section__btn__edit"></div>
-                <resume-screen-jobs-item item={ item } active={ editing && editing == item._id }></resume-screen-jobs-item>
+                <div if={ editing == item.id } onClick={ close } class="section__btn__close"></div>
+                <div if={ editing != item.id } onClick={ edit } class="section__btn__edit"></div>
+                <resume-screen-jobs-item item={ item } active={ editing && editing == item.id }></resume-screen-jobs-item>
             </div>
             <div class="row">
                 <div class="col-xs-24">
@@ -60,7 +60,7 @@
 
         $resume.select("jobs", "items").push(
             {
-                _id: $.editing,
+                id: $.editing,
                 title: null,
                 city: null,
                 post: null,
@@ -103,7 +103,7 @@
             });
         }
         else {
-            $.editing = this.item._id;
+            $.editing = this.item.id;
         }
     };
 
@@ -129,7 +129,7 @@
     };
 
     $.remove = function(){
-        $resume.select("jobs", "items", {_id: this.item._id}).unset();
+        $resume.select("jobs", "items", {id: this.item.id}).unset();
         if (!$resume.get("jobs", "items").length){
             $resume.select("jobs").set(null);
         }

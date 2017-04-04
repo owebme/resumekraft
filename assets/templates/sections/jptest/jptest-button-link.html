@@ -1,10 +1,12 @@
-<jptest-result-link onClick={ scrollDown } data-balloon="Получить ссылку" data-balloon-pos="right" data-active={ active }>
+<jptest-result-link onClick={ scrollDown } data-balloon="{ supportClip ? 'Нажмите, чтобы скопировать ссылку' : 'Получить ссылку' }" data-balloon-pos="right" data-active={ active }>
 
     <icon-link color="steel"></icon-link>
 
 <script>
 
     var $ = this;
+
+    $.supportClip = _.supportClipboard();
 
     $.show = function(){
         $.update({
@@ -13,16 +15,28 @@
     };
 
     $.scrollDown = function(){
-        var $elem = $.parent.content.find("jptest-result-finish");
+        if ($.supportClip){
+            _.copyToClip("http://resumekraft/jp-test/#" + window.$jp.link);
 
-        if ($elem.length){
-            var scrollTo = app.dom.getPagePosition($elem[0]).top,
-                delta = Math.abs(scrollTo - $.parent.scroll.scrollTop());
+            $Notify.show({
+                color: "dark",
+                pos: "top-right",
+                text: "Ссылка на результат теста скопирована в буфер обмена",
+                timeout: 3
+            })
+        }
+        else {
+            var $elem = $.parent.content.find("jptest-result-finish");
 
-            var duration = delta / 5;
-            duration = duration < 500 ? 500 : duration;
+            if ($elem.length){
+                var scrollTo = app.dom.getPagePosition($elem[0]).top,
+                    delta = Math.abs(scrollTo - $.parent.scroll.scrollTop());
 
-            $.parent.scroll.animate({scrollTop: scrollTo}, duration);
+                var duration = delta / 5;
+                duration = duration < 500 ? 500 : duration;
+
+                $.parent.scroll.animate({scrollTop: scrollTo}, duration);
+            }
         }
     };
 

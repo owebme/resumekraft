@@ -1,8 +1,13 @@
 #app {
-    @each $font in ('futura', 'avant', 'helvetica', 'gotham', 'proxima', 'myriad'){
+    @each $font in ('futura', 'avant', 'gotham', 'proxima', 'myriad'){
         &[data-font="#{$font}"]{
             .f-primary {
                 font-family:$font;
+            }
+            .salary__currency {
+                @if $font == 'avant' or $font == 'gotham' or $font == 'proxima' {
+                    font-family:$roboto;
+                }
             }
         }
     }

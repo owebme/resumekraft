@@ -2,8 +2,6 @@ module.exports = function() {
 
 	return function(req, res, next){
 		if (req.body){
-			if (req.body._id) delete req.body._id;
-
 			app.db.collection('accounts').update({
 				"_id": req.accountId
 			},{

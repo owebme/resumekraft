@@ -10,12 +10,12 @@
         </div>
     </section>
 
-    <section if={ app.device.isPhone } class="screen screen--first { 'screen--active' : !$store.resume.select('sections').get({'name': 'coverletter'}).active }" data-section="cover">
+    <section if={ app.device.isPhone } class="screen screen--first { $State.get('mode') !== 'editing' && $store.resume.select('sections').get({'name': 'coverletter'}).active ? null : 'screen--active' }" data-section="cover">
         <div class="screen__content">
             <ux-photo phone="true"></ux-photo>
             <div if={ $store.resume.get('post') } class="screen__post">{ $store.resume.get('post') }</div>
             <div if={ $store.resume.get('commons', 'contacts', 'city') } class="screen__location">
-                <span class="display-inlineBlock text-truncate w90p">{ $store.resume.get('commons', 'contacts', 'city') }, { $store.resume.take.relocate() }</span>
+                <span class="display-inlineBlock text-truncate w90p">{ $store.resume.get('commons', 'contacts', 'city', 'name') }, <span class="text-lowercase">{ $store.resume.take.relocation() }</span></span>
                 <div class="screen__progress" style="width:{ $store.resume.get('percent') }%">
                     <div class="screen__progress__line"></div>
                 </div>
@@ -123,21 +123,28 @@
         </div>
     </section>
 
-    <section class="screen" data-section="contacts" if={ app.device.isPhone && $store.resume.select("sections").get({"name": "contacts"}).active }>
+    <section class="screen" data-section="contacts" if={ app.device.isPhone }>
         <div class="screen__content">
-            <h3 class="title">Контактная информация</h3>
+            <h3 class="title">{ $i18n("resume.premium.template.Contacts info") }</h3>
             <ux-contacts-content></ux-contacts-content>
         </div>
     </section>
 
-    <section class="screen" data-section="feedback" if={ app.device.isPhone && $store.resume.select("sections").get({"name": "feedback"}).active }>
+    <section class="screen" data-section="businessTrip" if={ app.device.isPhone }>
         <div class="screen__content">
-            <h3 class="title">Связаться</h3>
+            <h3 class="title">{ $i18n("resume.premium.template.Business trip, relocation") }</h3>
+            <ux-contacts-more></ux-contacts-more>
+        </div>
+    </section>
+
+    <section class="screen" data-section="feedback" if={ app.device.isPhone }>
+        <div class="screen__content">
+            <h3 class="title">{ $i18n("resume.premium.template.Feedback") }</h3>
             <ux-feedback></ux-feedback>
         </div>
     </section>
 
-    <section class="screen" data-section="contacts" if={ !app.device.isPhone && $store.resume.select("sections").get({"name": "contacts"}).active }>
+    <section class="screen" data-section="contacts" if={ !app.device.isPhone }>
         <div class="screen__content">
             <ux-contacts></ux-contacts>
         </div>
@@ -185,7 +192,7 @@
     $.on("mount", function(){
         if ($State.get('mode') !== "editing"){
 
-            $.notTouch = ['name', 'text', 'contacts', 'feedback', 'contacts-content', 'likes'];
+            $.notTouch = ['name', 'text', 'contacts', 'feedback', 'contacts-content', 'contacts-more', 'likes'];
 
             _.each(this.tags, function(item) {
                 if (item.root && item.root.tagName && item.root.tagName.toLowerCase().match(/^ux-/)){
@@ -198,7 +205,7 @@
             });
 
             _.each($store.resume.get("sections"), function(item){
-                if (item.screen && $.notTouch.indexOf(item.name) === -1 && !$store.resume.get(item.name)){
+                if (item.screen && item.control && $.notTouch.indexOf(item.name) === -1 && !$store.resume.get(item.name)){
                     $Resume.el.find(".screen[data-section=" + item.name + "]").remove();
                 }
             });
@@ -288,7 +295,7 @@
                     var find = false;
 
                     _.each(e.data.currentData.sections, function(item){
-                        if (!item.screen || item.name == "coverletter" || !app.device.isPhone && item.name == "feedback") return;
+                        if (!item.screen || item.screen && !item.control) return;
                         var section = _.findWhere($Resume.screenItems, {"section": item.name});
                         if (!section) section = { active: false };
                         if (item.active !== section.active){
@@ -340,7 +347,10 @@
                 }
                 else if (prop == "photo"){
                     $Resume.sections.photo.update();
-                    $store.resume.select("config", "photo", "noise").set(value);
+                    $store.resume.select("config", "photo", e.data.paths[0][0]).set(value);
+                }
+                else if (prop == "animate"){
+                    $store.resume.select("config", "animate", value);
                 }
             });
 
@@ -368,7 +378,9 @@
     };
 
     $.render = function(){
-        var items = [];
+        var items = [],
+            lang = $store.resume.get("lang");
+
         $.screenColor = [];
 
         setTimeout(function(){
@@ -381,15 +393,21 @@
                     section = this.getAttribute("data-section");
 
                 if (section == "coverletter") return;
-                if (section == "works" || section == "jobs"){
+                if (section == "works" || section == "jobs" || section == "contacts"){
                     if (app.device.isPhone){
+                        if (section == "contacts") return;
                         $.screenColor.push({
                             height: screens[i].size - 120,
                             offset: screens[i].offset + 120
                         });
                     }
                     else {
-                        var $bgSection = $$(this).find(".bg-section");
+                        if (section == "contacts"){
+                            var $bgSection = $section;
+                        }
+                        else {
+                            var $bgSection = $section.find(".bg-section");
+                        }
                         $.screenColor.push({
                             height: $bgSection.height(),
                             offset: $bgSection.offset().top - 80
@@ -398,11 +416,12 @@
                 }
                 var title = null;
                 if (section == "commons"){
-                    title = "Общее";
+                    title = lang == "ru" ? "Общее" : "Main";
                 }
                 else {
-                    var name = $store.resume.select("sections").get({"name": section});
-                    if (name && name.short) title = name.short;
+                    if ($store.resume.placeholder[section]){
+                        title = $store.resume.placeholder[section].shortname[lang];
+                    }
                 }
                 var item = _.findWhere($store.resume.get('sections'), {"name": section});
                 items.push({

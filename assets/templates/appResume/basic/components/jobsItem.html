@@ -94,10 +94,10 @@
 
     $.get = {
         cursor: function(){
-            return $resume.select("jobs", "items", {"_id": $.opts.item._id});
+            return $resume.select("jobs", "items", {"id": $.opts.item.id});
         },
         level: function(){
-            return $resume.select("jobs", "items", {"_id": $.opts.item._id}).get("level");
+            return $resume.select("jobs", "items", {"id": $.opts.item.id}).get("level");
         }
     };
 

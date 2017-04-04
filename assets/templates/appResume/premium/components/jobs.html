@@ -11,7 +11,7 @@
                 <div if={ !$resume.jobs || $resume.jobs && $resume.jobs.text } onClick={ openEditable } onUpdate="none" class="{ blur : !$resume.jobs }">
                     <div class="row mb-l">
                         <div class="col-xs-24 pb-xs">
-                            <p class="editing editing-text editing-jobs-text">{ $resume.jobs && $resume.jobs.text ? $resume.jobs.text : $store.resume.placeholder.jobs.text }</p>
+                            <p class="editing editing-text editing-jobs-text" data-scrollin>{ $resume.jobs && $resume.jobs.text ? $resume.jobs.text : $store.resume.placeholder.jobs.text }</p>
                         </div>
                     </div>
                 </div>
@@ -29,20 +29,20 @@
                     </div>
                     <div class="job-empty-text">Подробнее расскажите о своем профессиональном опыте. Для потенциального работодателя важен результат вашей работы, постарайтесь ярче, желательно в цифрах, описать его.</div>
                 </div>
-                <div each={ item in $store.resume.take.jobs.items() } class="jobs-item editing editing-jobs-item" data-id={ item._id }>
-                    <div class="row pl-m pt-xxs sm-pl0">
-                        <div class="col-md-14">
+                <div each={ item in $store.resume.take.jobs.items() } class="jobs-item editing editing-jobs-item" data-id={ item.id }>
+                    <div class="row pl-m pt-xxs sm-pl0 headline-icons">
+                        <div class="col-md-14" data-scrollin-icon="\{'stagger':60\}">
                             <h3 class="job-title">{ item.post }</h3>
                             <h4 class="job-subtitle">{ $store.resume.take.jobs.period(item) }</h4>
                         </div>
                         <div class="col-md-10">
                             <div class="job-year">{ $store.resume.take.jobs.year(item) }</div>
-                            <h3 class="job-title text-right">{ item.title } &ndash; { item.city }</h3>
+                            <h3 class="job-title text-right" data-scrollin-icon="\{'stagger':120\}">{ item.title } &ndash; { item.city }</h3>
                         </div>
                     </div>
                     <div class="row pl-m pt-xxs pb-xl sm-pl0">
                         <div class="col-xs-24 col-lg-22">
-                            <div class="job-text">
+                            <div class="job-text" data-scrollin>
                                 { item.text }
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                     },
                     item: function(){
                         return  {
-                            _id: _.newId(),
+                            id: _.newId(),
                             title: null,
                             city: null,
                             post: null,

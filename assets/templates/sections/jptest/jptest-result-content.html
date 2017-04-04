@@ -32,6 +32,14 @@
 
     var $ = this;
 
+    $.on("before-mount", function(){
+        $jp.data = $store.jptest["jp" + $jp.id];
+    });
+
+    $.one("update", function(){
+        $jp.data = $store.jptest["jp" + $jp.id];
+    });
+
     $.on("mount", function(){
 
         $.scope = $.opts.scope;
@@ -167,7 +175,7 @@
 
     $.get = {
         text: function(tag, text){
-            tag.root.innerHTML = text.replace(/\[b\]/, '<span class="larger">').replace(/\[\/b\]/, '</span>').replace(/\[i\]/, '<span class="marker">').replace(/\[\/i\]/, '</span>');
+            tag.root.innerHTML = text.replace(/\[b\]/gi, '<span class="larger">').replace(/\[\/b\]/gi, '</span>').replace(/\[i\]/gi, '<span class="marker">').replace(/\[\/i\]/gi, '</span>');
         }
     };
 

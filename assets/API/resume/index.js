@@ -60,6 +60,57 @@ module.exports = function(url){
 		app.errHandler(res, false, "ok");
 	});
 
+	route.post('/import', function(req, res) {
+		app.db.collection('accounts').findOne({
+			"_id": req.accountId,
+		},
+		function(err, account){
+			if (account){
+				var limit = app.config.private.get("resume:importLimit:" + account.plan),
+					history = account.history.events,
+					today = 0,
+					d = app.moment().format("YYMMDD");
+
+				app.utils.each(app.utils.where(history, {name: "resumeImportHH"}), function(item){
+					var date = app.moment(item.date).format("YYMMDD");
+					if (d === date) today++;
+				});
+
+				if (limit < today){
+					app.errHandler(res, err, "overlimit");
+				}
+				else {
+					API.resume.gethh(req.body.id, function(err, resume){
+						if (resume){
+							app.db.collection('accounts').update({
+								"_id": req.accountId
+							},{
+								$push: {
+									"history.events": {
+										name: "resumeImportHH",
+										device: req.device,
+										data: {
+											idhh: resume.idhh,
+											post: resume.post
+										},
+										date: app.moment().format()
+									}
+								}
+							});
+							app.errHandler(res, err, resume);
+						}
+						else {
+							app.errHandler(res, err, resume);
+						}
+					});
+				}
+			}
+			else {
+				app.errHandler(res, err, account);
+			}
+		});
+	});
+
 	route.put('/photo', function(req, res, next) {
 		if (req.body && req.body.id && req.body.image){
 

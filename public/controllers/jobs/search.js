@@ -4,8 +4,8 @@ module.exports = function(){
         var params = app.utils.url.parse(req.url, true).query,
             query = req.url.replace(/\/jobs\/search\//, ""),
             isEmptyParams = app.utils.isEmpty(params),
-            url = app.config.get('hh:api') + "/vacancies/" + (!isEmptyParams ? query + "&clusters=true" : '?clusters=true'),
-            countsAll = app.config.get('hh:vacancy:counter');
+            url = app.config.public.get('hh:api') + "/vacancies/" + (!isEmptyParams ? query + "&clusters=true" : '?clusters=true'),
+            countsAll = app.config.public.get('hh:vacancy:counter');
 
         app.redis.get("jobsCountsAll", function(err, data) {
             if (!err && data) countsAll = data;
@@ -42,7 +42,7 @@ module.exports = function(){
                 }
 
                 res.render('jobs', {
-                    title: app.config.get('title:jobsSearch'),
+                    title: app.config.public.get('title:jobsSearch'),
                     clusters: data ? JSON.stringify(data.clusters) : null,
                     items: data ? JSON.stringify(data.items) : null,
                     found: data && data.found,

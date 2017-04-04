@@ -8,9 +8,40 @@ $store.resume = _.extend(new Baobab({},
                 if ($store.demo) $store.resume.set($store.demo);
                 return $store.resume.get();
             },
-            premium: function(mode){
-                if (mode == "editing"){
-                    $store.resume.set(_.deepExtend({
+            import: function(data){
+                if (data && data.resume){
+        			var options = data.options || {},
+                        resume = data.resume,
+                        account = data.account;
+
+                    resume.public = options.public ? true : false;
+                    resume.plan = options.plan || "free";
+                    resume.commons.photo = options.photo || resume.commons.photo;
+
+        			if (account){
+        				resume.accountId = account._id;
+        				resume.commons.name = account.commons.name;
+        				resume.commons.surname = account.commons.surname;
+        				resume.commons.contacts = account.commons.contacts;
+        				resume.commons.birthday.hidden = account.commons.birthday.hidden;
+        			}
+                    if (resume.plan == "premium"){
+                        resume = $store.resume.prepare.premium(resume);
+                        resume.percent = $store.resume.percentage.calc("premium", resume);
+                    }
+                    else {
+                        resume.percent = $store.resume.percentage.calc("free", resume);
+                    }
+
+        			return resume;
+        		}
+        		else {
+        			return data;
+        		}
+            },
+            premium: function(data, update){
+                if (data){
+                    var resume = _.deepExtend({
                         tags: null,
                         appeal: null,
                         works: null,
@@ -27,42 +58,36 @@ $store.resume = _.extend(new Baobab({},
                             {
                                 name: "salary",
                                 title: "Желаемая зарплата",
-                                short: "Зарплата",
                                 control: true,
                                 active: true
                             },
                             {
                                 name: "tags",
                                 title: "Ключевые навыки",
-                                short: "Навыки",
                                 control: true,
                                 active: true
                             },
                             {
                                 name: "appeal",
                                 title: "Заголовок-обращение",
-                                short: "Обращение",
                                 control: true,
                                 active: true
                             },
                             {
                                 name: "about",
                                 title: "О себе текст",
-                                short: "О себе",
                                 control: true,
                                 active: true
                             },
                             {
                                 name: "social",
                                 title: "Аккаунты в соц. сетях",
-                                short: "Соц. ссылки",
                                 control: true,
                                 active: true
                             },
                             {
                                 name: "works",
                                 title: "Мои проекты",
-                                short: "Проекты",
                                 screen: true,
                                 control: true,
                                 active: true
@@ -70,7 +95,6 @@ $store.resume = _.extend(new Baobab({},
                             {
                                 name: "skills",
                                 title: "Основные компетенции",
-                                short: "Навыки",
                                 screen: true,
                                 control: true,
                                 active: true
@@ -78,7 +102,6 @@ $store.resume = _.extend(new Baobab({},
                             {
                                 name: "education",
                                 title: "Образование",
-                                short: "Учеба",
                                 screen: true,
                                 control: true,
                                 active: true
@@ -86,7 +109,6 @@ $store.resume = _.extend(new Baobab({},
                             {
                                 name: "courses",
                                 title: "Курсы",
-                                short: "Курсы",
                                 screen: true,
                                 control: true,
                                 active: true
@@ -94,7 +116,6 @@ $store.resume = _.extend(new Baobab({},
                             {
                                 name: "languages",
                                 title: "Владение языками",
-                                short: "Языки",
                                 screen: true,
                                 control: true,
                                 active: true
@@ -102,7 +123,6 @@ $store.resume = _.extend(new Baobab({},
                             {
                                 name: "jobs",
                                 title: "Работа в компаниях",
-                                short: "Карьера",
                                 screen: true,
                                 control: true,
                                 active: true
@@ -110,7 +130,6 @@ $store.resume = _.extend(new Baobab({},
                             {
                                 name: "hobby",
                                 title: "Мои хобби",
-                                short: "Хобби",
                                 screen: true,
                                 control: true,
                                 active: true
@@ -118,43 +137,60 @@ $store.resume = _.extend(new Baobab({},
                             {
                                 name: "contacts",
                                 title: "Контакты",
-                                short: "Контакты",
                                 screen: true,
-                                control: true,
+                                control: false,
+                                active: true
+                            },
+                            {
+                                name: "more",
+                                title: "Командировки",
+                                screen: true,
+                                control: false,
                                 active: true
                             },
                             {
                                 name: "feedback",
                                 title: "Обратная связь",
-                                short: "Обратная связь",
                                 screen: true,
-                                control: true,
+                                control: false,
                                 active: true
                             },
                             {
                                 name: "coverletter",
                                 title: "Сопроводительное письмо",
-                                short: "Письмо",
                                 screen: true,
                                 control: false,
                                 active: false
                             }
                         ],
                         config: {
+                            color: "#0084ff",
+                            font: "futura",
                             photo: {
                                 minWidth: 440,
                                 maxHeight: 620,
-                                noise: false
+                                noise: false,
+                                filter: "off"
                             },
                             likes: {
                                 active: true,
                                 count: true
-                            }
+                            },
+                            animate: false
                         }
-                    }, $store.resume.get()));
-                }
+                    }, data);
 
-                return $store.resume.get();
+                    if (update){
+                        $store.resume.set(resume);
+                        return $store.resume.get();
+                    }
+                    else {
+                        return resume;
+                    }
+                }
+                else {
+                    return data;
+                }
             }
         },
         default: {
@@ -166,14 +202,21 @@ $store.resume = _.extend(new Baobab({},
                     template: params.template ? params.template : "1",
                     lang: "ru",
                     post: null,
-                    photo: params.photo,
                     create: moment().format(),
                     update: moment().format(),
                     commons: {
+                        photo: params.photo,
                         name: params.name,
                         surname: params.surname,
                         gender: params.gender,
                         birthday: params.birthday,
+                        citizenship: params.citizenship,
+                        businessTrip: params.businessTrip,
+                        relocation: params.relocation,
+                        travelTime: params.travelTime,
+                        specialization: params.specialization,
+                        employments: params.employments,
+                        schedules: params.schedules,
                         contacts: params.contacts
                     },
                     salary: params.plan == "free" ? $store.resume.default.salary() : null,
@@ -182,19 +225,7 @@ $store.resume = _.extend(new Baobab({},
                     education: null,
                     languages: null,
                     jobs: null,
-                    percent: 0,
-                    config: {
-                        color: "#0084ff",
-                        font: "futura",
-                        photo: {
-                            minWidth: 440,
-                            maxHeight: 620
-                        },
-                        pdf: {
-                            logotype: params.plan == "free" ? true : false
-                        },
-                        stat: false
-                    }
+                    percent: 0
                 }
             },
             salary: function(){
@@ -210,36 +241,143 @@ $store.resume = _.extend(new Baobab({},
                 }
             }
         },
+        percentage: {
+            keys: {
+                free: [
+                    { name: "commons.name", points: 3 },
+                    { name: "commons.surname", points: 3 },
+                    { name: "post", points: 3 },
+                    { name: "commons.photo", points: 5 },
+                    { name: "commons.contacts.city", points: 3 },
+                    { name: "commons.contacts.email", points: 3 },
+                    { name: "commons.contacts.phone", points: 3 },
+                    { name: "commons.contacts.skype", points: 3 },
+                    { name: "salary.active", points: 5 },
+                    { name: "about", points: 10 },
+                    { name: "jobs", items: 5, points: 15 },
+                    { name: "education", items: 5, points: 10 },
+                    { name: "languages", points: 10 }
+                ],
+                premium: [
+                    { name: "commons.name", points: 3 },
+                    { name: "commons.surname", points: 3 },
+                    { name: "post", points: 3 },
+                    { name: "commons.photo", points: 5 },
+                    { name: "commons.contacts.city", points: 3 },
+                    { name: "commons.contacts.email", points: 3 },
+                    { name: "commons.contacts.phone", points: 3 },
+                    { name: "commons.contacts.skype", points: 3 },
+                    { name: "salary", section: true, points: 5 },
+                    { name: "about", section: true, points: 5 },
+                    { name: "appeal", section: true, points: 3 },
+                    { name: "tags", section: true, points: 10 },
+                    { name: "social", section: true, points: 5 },
+                    { name: "works", section: true, points: 8 },
+                    { name: "works.text", section: true, points: 2 },
+                    { name: "jobs", section: true, points: 8 },
+                    { name: "jobs.text", section: true, points: 2 },
+                    { name: "skills", section: true, points: 6 },
+                    { name: "skills.header", section: true, points: 2 },
+                    { name: "skills.text", section: true, points: 2 },
+                    { name: "education", section: true, points: 8 },
+                    { name: "education.text", section: true, points: 2 },
+                    { name: "courses", section: true, points: 8 },
+                    { name: "courses.text", section: true, points: 2 },
+                    { name: "languages", section: true, points: 8 },
+                    { name: "languages.text", section: true, points: 2 },
+                    { name: "hobby", section: true, points: 4 },
+                    { name: "hobby.text", section: true, points: 1 },
+                    { name: "coverletter.text", section: true, points: 5 }
+                ]
+            },
+            calc: function(plan, data, fn){
+                if (!data) return 0;
+
+                var store = !data._cursors ? new Baobab(data) : data,
+                    p = 0;
+
+                if (plan == "free"){
+                    var keys = $store.resume.percentage.keys.free,
+                        all = _.reduce(_.pluck(keys, 'points'), function(memo, num){ return memo + num; }, 0);
+
+                    _.each(keys, function(item){
+                        if (store.get(item.name.split("."))){
+                            if (item.items){
+                                var items = store.get(item.name, "items");
+                                if (items && items.length){
+                                    if (item.items + 1 > items.length){
+                                        p += items.length * item.points;
+                                    }
+                                    else {
+                                        p += item.items * item.points;
+                                    }
+                                }
+                            }
+                            else {
+                                p += item.points;
+                            }
+                        }
+                    });
+                }
+                else if (plan == "premium"){
+                    var keys = $store.resume.percentage.keys.premium,
+                        all = _.reduce(_.pluck(keys, 'points'), function(memo, num){ return memo + num; }, 0);
+
+                    _.each(keys, function(item){
+                        if (store.get(item.name.split("."))){
+                            if (item.section && !item.name.match(/\./)){
+                                if (store.get("sections", {"name": item.name}, "active")){
+                                    p += item.points;
+                                }
+                            }
+                            else {
+                                p += item.points;
+                            }
+                        }
+                    });
+                }
+
+                var result = Math.floor((p / all) * 100);
+
+                result = result > 100 ? 100 : result;
+
+                if (fn){
+                    fn(result);
+                }
+                else {
+                    return result;
+                }
+            }
+        },
         take: {
-            relocate: function(){
+            relocation: function(){
                 var lang = $store.resume.get("lang"),
+                    value = $store.resume.get('commons', 'relocation'),
                     gender = $store.resume.get('commons', 'gender');
 
-                if ($store.resume.get('commons', 'contacts', 'relocate')){
-                    if (lang == "ru"){
-                        if (gender == "male"){
-                            return 'готов к переезду';
+                if (lang == "ru"){
+                    if (value == "no_relocation"){
+                        if (gender == "female"){
+                            return 'не готова к переезду';
                         }
-                        else if (gender == "female"){
+                        else {
+                            return 'не готов к переезду';
+                        }
+                    }
+                    else if (value == "relocation_possible"){
+                        if (gender == "female"){
                             return 'готова к переезду';
+                        }
+                        else {
+                            return 'готов к переезду';
                         }
                     }
                     else {
-                        return 'willing to relocate';
+                        return $store.dictionary.getTitleById(value, "relocation");
                     }
                 }
                 else {
-                    if (lang == "ru"){
-                        if (gender == "male"){
-                            return 'не готов к переезду';
-                        }
-                        else if (gender == "female"){
-                            return 'не готова к переезду';
-                        }
-                    }
-                    else {
-                        return 'not willing to relocate';
-                    }
+                    return $store.dictionary.getTitleById(value, "relocation");
                 }
             },
             birthday: {
@@ -378,11 +516,19 @@ $store.resume = _.extend(new Baobab({},
                 title: function(){
                     return $i18n("resume.premium.template.My projects");
                 },
+                shortname: {
+                    en: "Projects",
+                    ru: "Проекты"
+                },
                 text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. ullam et eros ornare, porttitor urna sed, auctor lacus. Morbi viverra lorem at neque tincidunt consequat. Aenean massa."
             },
             skills: {
                 title: function(){
                     return $i18n("resume.premium.template.Main skills");
+                },
+                shortname: {
+                    en: "Skills",
+                    ru: "Навыки"
                 },
                 header: "We’re full service which means we’ve got you covered on design and content right through to digital.",
                 text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. ullam et eros ornare, porttitor urna sed, auctor lacus. Morbi viverra lorem at neque tincidunt consequat. Aenean massa.",
@@ -409,17 +555,29 @@ $store.resume = _.extend(new Baobab({},
                 title: function(){
                     return $i18n("resume.premium.template.Education");
                 },
+                shortname: {
+                    en: "Education",
+                    ru: "Учеба"
+                },
                 text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. ullam et eros ornare, porttitor urna sed, auctor lacus. Morbi viverra lorem at neque tincidunt consequat. Aenean massa. Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. ullam et eros ornare, porttitor urna sed, auctor lacus. Morbi viverra lorem at neque tincidunt consequat. Aenean massa."
             },
             courses: {
                 title: function(){
                     return $i18n("resume.premium.template.Courses");
                 },
+                shortname: {
+                    en: "Courses",
+                    ru: "Курсы"
+                },
                 text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. ullam et eros ornare, porttitor urna sed, auctor lacus. Morbi viverra lorem at neque tincidunt consequat. Aenean massa. Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. ullam et eros ornare, porttitor urna sed, auctor lacus. Morbi viverra lorem at neque tincidunt consequat. Aenean massa."
             },
             languages: {
                 title: function(){
                     return $i18n("resume.premium.template.Languages");
+                },
+                shortname: {
+                    en: "Langs",
+                    ru: "Языки"
                 },
                 text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
                 items: [
@@ -448,13 +606,27 @@ $store.resume = _.extend(new Baobab({},
                 title: function(){
                     return $i18n("resume.premium.template.Experience");
                 },
+                shortname: {
+                    en: "Jobs",
+                    ru: "Карьера"
+                },
                 text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. ullam et eros ornare, porttitor urna sed, auctor lacus. Morbi viverra lorem at neque tincidunt consequat. Aenean massa."
             },
             hobby: {
                 title: function(){
                     return $i18n("resume.premium.template.My hobby");
                 },
+                shortname: {
+                    en: "Hobby",
+                    ru: "Хобби"
+                },
                 text: "Vivamus eu neque ut sem malesuada consectetur sed sed felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. ullam et eros ornare, porttitor urna sed, auctor lacus. Morbi viverra lorem at neque tincidunt consequat. Aenean massa."
+            },
+            contacts: {
+                shortname: {
+                    en: "Contacts",
+                    ru: "Контакты"
+                },
             }
         }
     }

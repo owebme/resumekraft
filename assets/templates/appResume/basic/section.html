@@ -62,7 +62,7 @@
                     notify: false
                 })
                 .then(function(data){
-                    if (data && data.id){
+                    if (data.id){
                         $resume.select("_id").set(data.id);
                         $store.data.push($resume.get());
                         Store.set('resume', $resume.get());

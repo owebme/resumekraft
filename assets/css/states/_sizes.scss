@@ -108,6 +108,10 @@
     @extend .maxW-auto;
     @extend .maxH-auto;
 }
+.minWH-auto {
+    @extend .minW-auto;
+    @extend .minH-auto;
+}
 .w16v {
     width:16.33vw;
 }
@@ -149,6 +153,12 @@
 }
 .maxH-auto {
     max-height:auto;
+}
+.minW-auto {
+    min-width:auto;
+}
+.minH-auto {
+    min-height:auto;
 }
 .w-auto {
     width:auto;

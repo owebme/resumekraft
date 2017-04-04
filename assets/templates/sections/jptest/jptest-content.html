@@ -30,7 +30,7 @@
         </div>
 
         <div class="rows screen bg-white" data-screen="test" data-active={ screen == "test" } data-hidden={ hidden == "test" } data-hide={ reload.hide } data-show={ reload.show }>
-            <div class="row">
+            <div class="row h100p">
                 <div onClick={ select.q1 } class="que col-xs-24 col-sm-12">
                     <div class="que__item que__item1" ref="que__item" name="que__item">
                         <div class="que__text">{ que.q1() }</div>
@@ -67,13 +67,14 @@
     $.on("mount", function(){
         $Sections.module("jptest.test", $);
         if ($.refs) $.circuful = $$($.refs.circuful);
-        //$.show();
     });
 
     $.reset = function(update){
         $.active = false;
+        $.result = [];
         $.screen = null;
         $.hidden = null;
+        $.counter = 0;
         $.cursor = $.data.root.down();
         $.reload = {
             show: true,
@@ -139,11 +140,22 @@
             $.animate = false;
             $.update();
 
-            $Sections.jptest.result.show(function(){
+            var id = $.getResult($.result);
+
+            $Sections.jptest.result.show(id, function(){
                 $.reset(true);
                 $.trigger("passed");
-                app.metrika.set("jptest.passed", 1, {
-                    action: "inc"
+                app.request("addJptestResult", {
+                    result: id,
+                    site: app.isSite || false
+                }, {
+                    notify: false,
+                    loader: false
+                })
+                .then(function(){
+                    app.metrika.set("jptest.passed", 1, {
+                        action: "inc"
+                    });
                 });
             });
         }
@@ -151,13 +163,15 @@
 
     $.select = {
         q1: function(){
-            $.select.update("1");
+            $.select.update($.counter + 1);
         },
         q2: function(){
-            $.select.update("2");
+            $.select.update($.counter + 2);
         },
         update: function(q){
             if ($.reload.hide) return;
+
+            $.counter += 2;
 
             $.result.push(q);
 
@@ -166,8 +180,8 @@
                 hide: true
             }
             _.onEndTransition($.refs ? $.refs["que__item"] : $["que__item"], function(){
-                $.cursor = null;
-                //$.cursor = $.cursor.right();
+                //$.cursor = null;
+                $.cursor = $.cursor.right();
 
                 if ($.cursor){
                     $.update({
@@ -300,6 +314,62 @@
             q2:'Я считаю, что наибольшего одобрения заслуживает способность с сопереживанию.'
         }
     ]);
+
+    $.getResult = function(data){
+        if (data){
+            var pl = 0, pr = 0, p1, p2, p3, p4, p5, p6, p7, p8, r = 1;
+
+            _.each(data, function(i){
+                if (i < 13){
+                    if (i%2==0){pr += 1;} else {pl += 1;}
+                }
+                else if (i > 12 && i < 25){
+                    if (!p1 && !p2){
+
+                        if (pl > pr){p1 = 1;} else {p2 = 1;}
+                        pl = 0, pr = 0;
+                    }
+                    if (i%2==0){pr += 1;} else {pl += 1;}
+                }
+                else if (i > 24 && i < 37){
+                    if (!p3 && !p4){
+                        if (pl > pr){p3 = 1;} else {p4 = 1;}
+                        pl = 0, pr = 0;
+                    }
+                    if (i%2==0){pr += 1;} else {pl += 1;}
+                }
+                else if (i > 36 && i < 49){
+                    if (!p5 && !p6){
+                        if (pl > pr){p5 = 1;} else {p6 = 1;}
+                        pl = 0, pr = 0;
+                    }
+                    if (i%2==0){pr += 1;} else {pl += 1;}
+                }
+            });
+
+            if (pl > pr){p7 = 1;} else {p8 = 1;}
+
+                 if (p2 && p4 && p6 && p8){r = 1;}
+            else if (p2 && p4 && p5 && p8){r = 2;}
+            else if (p2 && p4 && p6 && p7){r = 3;}
+            else if (p2 && p4 && p5 && p7){r = 4;}
+            else if (p2 && p3 && p6 && p8){r = 5;}
+            else if (p2 && p3 && p5 && p8){r = 6;}
+            else if (p2 && p3 && p6 && p7){r = 7;}
+            else if (p2 && p3 && p5 && p7){r = 8;}
+            else if (p1 && p4 && p6 && p8){r = 9;}
+            else if (p1 && p4 && p5 && p8){r = 10;}
+            else if (p1 && p4 && p6 && p7){r = 11;}
+            else if (p1 && p4 && p5 && p7){r = 12;}
+            else if (p1 && p3 && p6 && p8){r = 13;}
+            else if (p1 && p3 && p5 && p8){r = 14;}
+            else if (p1 && p3 && p6 && p7){r = 15;}
+            else if (p1 && p3 && p5 && p7){r = 16;}
+
+            return r;
+        }
+    };
+
 </script>
 
 </jptest-content>

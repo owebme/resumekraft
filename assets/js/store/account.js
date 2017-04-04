@@ -8,28 +8,26 @@ $store.account = _.extend(new Baobab([]),
                 })
                 .then(function(data){
                     if (data && data.image){
-                        $store.account.select("photo").set(image);
+                        $store.account.select("commons", "photo").set(image);
                     }
                 });
             });
         },
         onSaveData: function(data, callback){
             data.select("name").set(
-                $store.account.get("name").length ? $store.account.get("name") : data.get("name")
+                $store.account.get("commons", "name").length ? $store.account.get("commons", "name") : data.get("name")
             );
             data.select("surname").set(
-                $store.account.get("surname").length ? $store.account.get("surname") : data.get("surname")
+                $store.account.get("commons", "surname").length ? $store.account.get("commons", "surname") : data.get("surname")
             );
 
-            $store.account.set(data.get());
+            $store.account.select("commons").set(data.get());
 
             if (_.isFunction(callback)) callback();
 
-            app.request(
-                "setDataProfile", _.pick($store.account.get(),
-                    ['name', 'surname', 'gender', 'birthday', 'contacts']
-                )
-            );
+            app.request("setDataProfile", {
+                commons: data.get()
+            });
         },
         take: {
             lastVisit: function(){

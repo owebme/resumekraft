@@ -40,6 +40,15 @@
 .alignItems-stretch {
     align-items:stretch;
 }
+.alignContent-flex-start {
+    align-content:flex-start;
+}
+.alignContent-center {
+    align-content:center;
+}
+.flexWrap-wrap {
+    flex-wrap:wrap;
+}
 .flex-row-centered {
     @extend .flex;
     @extend .flexDirection-row;
@@ -90,4 +99,20 @@
     @extend .flexDirection-column;
     @extend .justifyContent-center;
     @extend .alignItems-center;
+}
+.flex-column-left-center {
+    @extend .flex;
+    @extend .flexDirection-column;
+    @extend .justifyContent-center;
+    @extend .alignItems-flex-start;
+}
+.flex-oneByOne {
+    @extend .flex;
+    @extend .flexWrap-wrap;
+    @extend .alignContent-flex-start;
+}
+.flex-oneByOne-centered {
+    @extend .flex;
+    @extend .flexWrap-wrap;
+    @extend .alignContent-center;
 }

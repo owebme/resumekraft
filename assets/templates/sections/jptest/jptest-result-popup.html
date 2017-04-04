@@ -47,11 +47,9 @@
     };
 
     $.init = function(){
-        var size = $votes.width();
-
         $votes.on("mousemove", function(e){
             var x = (e.pageX - $votes.offset().left),
-            val = x / size;
+            val = x / $votes.width();
             val *= starsMax;
             val = Math.floor(val);
             val += 1;
@@ -77,8 +75,7 @@
                     $.hide();
                 });
                 app.request("addJptestVotes", {
-                    score: $.score,
-                    site: app.isSite
+                    score: $.score
                 }, {
                     notify: false,
                     loader: false

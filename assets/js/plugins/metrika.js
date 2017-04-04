@@ -24,6 +24,7 @@
             if (this.active) return;
             if (!this.key) console.log("Not available key attribute");
             if (!this.state) console.log("Not available data attribute");
+            if (!this.key || !this.state) return;
 
             var _this = this,
                 state = this.state,

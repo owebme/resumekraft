@@ -1,0 +1,48 @@
+{
+    "path": {
+        "photo": "/public/files/photo/",
+        "pdf": "/public/files/pdf/",
+        "template": {
+            "basic": "/public/templates/default/resume/basic/index.html"
+        }
+    },
+    "title": {
+        "premium": "Создать премиальное резюме нового формата самому на ResumeKraft. Обзор возможностей",
+        "jp-test": "Бесплатный онлайн тест на профориентацию личности, узнать свои профессии, определение профессионального типа личности, получить рекомендации",
+        "jobs": "Работа, вакансии, база компаний, поиск работы на Resumekraft",
+        "jobsSearch": "Поиск работы, вакансий, база компаний на Resumekraft",
+        "blog": "Блог о работе и карьере, правильное советы при выборе работы, лучшие карьерные советы на ResumeKraft"
+    },
+    "inbox": {
+        "colors": "blue,blueLight,orange,brown,red,pink,violet,violetLight,green,emerald"
+    },    
+    "blog": {
+        "perPage": "7",
+        "cache": true,
+        "cacheLife": 3600
+    },
+    "jobs": {
+        "cache": true,
+        "cacheLife": 86400
+    },
+    "hh": {
+        "api": "https://api.hh.ru",
+        "vacancy": {
+            "counter": "331187"
+        }
+    },
+    "parser": {
+        "weather": {
+            "url": "https://export.yandex.ru/bar/reginfo.xml"
+        },
+		"currency": {
+			"url": "http://www.cbr.ru/scripts/XML_daily.asp",
+			"valuta": ["AUD", "AZN", "GBP", "AMD", "BYR", "BGN", "DKK", "USD", "EUR", "KZT", "CAD", "CNY", "NOK", "TRY", "UAH", "CZK", "SEK", "CHF", "JPY"]
+		}
+    },
+    "payment": {
+        "yamoney": {
+            "secret": "5Bwek7oTVMTq06nEMF6hEmF6"
+        }
+    }
+}

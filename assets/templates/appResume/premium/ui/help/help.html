@@ -56,7 +56,7 @@
         open: function(){
             if ($.open){
                 $Editable.root.setAttribute("data-helper", false);
-                document.removeEventListener('click', $.handleClickOutside);
+                document.addEventListener('click', $.handleClickOutside);
             }
             else {
                 $Editable.root.setAttribute("data-helper", true);

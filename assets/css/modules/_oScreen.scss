@@ -37,6 +37,29 @@
             }
         }
     }
+    &[data-show="modal"]{
+        @extend .pos-fixed;
+
+        .oScreen__content {
+            @extend .scale-80;
+            @extend .opacity-0;
+            @extend .willChange-tp;
+            transform-origin:50% 75%;
+            transition:opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+            &[data-hidden="true"]{
+                @extend .scale-80;
+                @extend .opacity-0;
+                @extend .pointerEvents-none;
+            }
+        }
+        .oScreen__buttons {
+            transition:opacity .2s ease-in-out;
+        }
+        &:before {
+            transition:opacity 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        }
+    }
     &__buttons {
         @extend .display-block;
         @extend .buttons-angle;
@@ -107,6 +130,20 @@
                 .d-phone & {
                     transition:opacity 0.42s $cubic645, background-color 0.42s $cubic645;
                 }
+            }
+        }
+        &[data-show="modal"]{
+            .oScreen__content {
+                @extend .scale-100;
+                @extend .opacity-100;
+                transition:opacity 0.35s $cubic345, transform 0.35s $cubic345;
+            }
+            .oScreen__buttons {
+                @extend .opacity-100;
+                transition:opacity 0.25s $cubic345 0.1s;
+            }
+            &:before {
+                transition:opacity 0.35s $cubic345, background-color 0.35s $cubic345;
             }
         }
     }
@@ -313,7 +350,7 @@
                 }
             }
             &[data-size="xl"]{
-                @extend .fontSize-34;
+                @extend .fontSize-32;
             }
             &[data-size="l"]{
                 @extend .fontSize-28;

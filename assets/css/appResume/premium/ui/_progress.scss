@@ -1,3 +1,15 @@
+#app[data-animation="true"]{
+    .progress {
+        &-line {
+            transform:translate3d(-100%, 0, 0);
+        }
+        &.animated {
+            .progress-line {
+                @extend .transform-default;
+            }
+        }
+    }
+}
 .progress {
     @extend .fontFamily-futura;
     @extend .nowrap;
@@ -7,6 +19,7 @@
         @include flex("row", "flex-start", "center");
         @extend .ptb-xs;
         @extend .w100p;
+        @extend .overflow-hidden;
 
         &:first-child {
             @extend .pt0;
@@ -17,6 +30,15 @@
             @extend .w100p;
             @extend .bg-smoke;
             height:2px;
+        }
+        $n:-1;
+        @for $i from 1 through 10 {
+            $n: $n + 1;
+            &:nth-child(#{$i}) {
+                .progress-line {
+                    transition-delay:0.2s * $n;
+                }
+            }
         }
     }
     &-title {
@@ -31,10 +53,13 @@
         @extend .w10p;
     }
     &-line {
+        @include accelerate();
         @extend .pos-bl;
         @extend .w100p;
         @extend .bg-blue;
         height:2px;
+        @extend .willChange-transform;
+        transition:transform 1.4s $cubic2501;
     }
     &-xl {
         .progress {

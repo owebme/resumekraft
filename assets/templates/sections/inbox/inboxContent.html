@@ -4,7 +4,7 @@
         <div class="inbox__content__title">{ opts.item.title }</div>
         <div class="inbox__content__resume__title">{ $store.data.get({'_id': opts.item.resumeId}).post }</div>
         <div if={ app.device.isPhone || !app.device.isPhone && parent.id } class="inbox__content__from">
-            <a target="_blank" class="inbox__content__email" href="mailto:{ opts.item.from }?subject=Re: { opts.item.title }&body=%0D%0A%0D%0A---%0D%0A%0D%0A{ opts.item.text }">{ opts.item.from }</a>
+            <a class="inbox__content__email" href="mailto:{ opts.item.from }?subject=Re: { opts.item.title }&body=%0D%0A%0D%0A---%0D%0A%0D%0A{ opts.item.text }">{ opts.item.from }</a>
             <div if={ app.device.isPhone } class="inbox__content__date">{ moment(opts.item.create).format('D MMMM') } в { moment(opts.item.create).format('HH:mm') }</div>
         </div>
         <div class="inbox__content__text">{ opts.item.text }</div>
@@ -16,7 +16,5 @@
         <div class="fontSize-26 mt-m">Список входящих пуст</div>
         <div class="fontSize-20 mt-xxs c-gray">Проверьте наличие обратной связи ваших резюме</div>
     </div>
-
-    <!-- https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to={ opts.item.from } -->
 
 </section-inbox-content>

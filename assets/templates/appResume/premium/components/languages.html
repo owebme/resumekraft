@@ -6,16 +6,16 @@
 
     <div onClick={ openEditable } onUpdate="none" class="{ blur : !$resume.languages }">
 
-        <p if={ !$resume.languages || $resume.languages && $resume.languages.text } class="mb-l">{ $resume.languages && $resume.languages.text ? $resume.languages.text : $store.resume.placeholder.languages.text }</p>
+        <p if={ !$resume.languages || $resume.languages && $resume.languages.text } class="mb-l" data-scrollin>{ $resume.languages && $resume.languages.text ? $resume.languages.text : $store.resume.placeholder.languages.text }</p>
 
         <div class="row">
             <div class="editing editing-text editing-lang-items">
-                <div each={ item in ($resume.languages && $resume.languages.items ? $resume.languages.items : $store.resume.placeholder.languages.items ) } no-reorder class="col-xs-24 col-sm-24 col-md-{ item.title == 'native' || item.title == 'de' ? '11' : '13' }">
-                    <h3 class="{ 'c-primary' : item.title == 'native' } mb-l">{ $store.languages.getTitleById(item.title) }<span class="plr-xs">&ndash;</span>
-                        <strong if={ item.title == "native" }>
+                <div each={ item, i in ($resume.languages && $resume.languages.items ? $resume.languages.items : $store.resume.placeholder.languages.items ) } no-reorder class="col-xs-24 col-sm-24 col-md-{ i % 2 == 0 ? '11' : '13' }">
+                    <h3 class="{ 'c-primary' : item.title == 'native' } mb-l headline-icons"><span class="display-block float-left" data-scrollin-icon>{ $store.languages.getTitleById(item.title) }<span class="plr-xs">&ndash;</span></span>
+                        <strong class="display-block" if={ item.title == "native" } data-scrollin-icon="\{'stagger':60\}">
                             { $store.languages.native.getTitleById(item.value) }
                         </strong>
-                        <strong if={ item.title != "native" } class={ 'c-grayDark' : item.value == "1" }>
+                        <strong if={ item.title != "native" } class={ item.value == "1" ? 'display-block c-grayDark' : 'display-block' } data-scrollin-icon="\{'stagger':60\}">
                             { $store.languages.select.getTitleById(item.value) }
                         </strong>
                     </h3>
@@ -39,21 +39,21 @@
                             text: null,
                             items: [
                                 {
-                                    title: "native",
-                                    value: "4"
-                                },
-                                {
-                                    title: "en",
-                                    value: "1"
-                                },
-                                {
-                                    title: "de",
-                                    value: "1"
-                                },
-                                {
-                                    title: "fr",
-                                    value: "1"
-                                }
+            				        title: "native",
+            				        value: "rus"
+            				    },
+            				    {
+            				        title: "eng",
+            				        value: "not"
+            				    },
+            				    {
+            				        title: "deu",
+            				        value: "not"
+            				    },
+            				    {
+            				        title: "fra",
+            				        value: "not"
+            				    }
                             ]
                         }
                     }

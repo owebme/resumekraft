@@ -153,6 +153,10 @@
 	device.isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 	$dom.html.addClass(device.isFirefox ? 'd-firefox' : 'd-no-firefox');
 
+	/* --- IE --- */
+	// device.isIE = !!/msie [\w.]+/.exec(navigator.userAgent.toLowerCase());
+	// $dom.html.addClass(device.isIE ? 'd-ie' : 'd-no-ie');
+
 	/* --- Fix click onTouch device --- */
 	if (device.isMobile && window.FastClick && 'addEventListener' in document) {
 		document.addEventListener('DOMContentLoaded', function() {

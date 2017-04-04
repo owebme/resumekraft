@@ -70,7 +70,6 @@
         }
         else {
             $.parent.sections.test.show();
-            app.metrika.set("jptest.new", true);
         }
     };
 

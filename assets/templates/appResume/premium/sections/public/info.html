@@ -8,9 +8,9 @@
     </div>
 
     <div name="wrapper" class="info-wrapper">
-        <div class="info-photo" style="background-image:url('{ $resume.photo }')"></div>
-        <div class="info-name">{ $resume.commons.name } { $resume.commons.surname }, <span if={ $store.resume.get("sections", {"name": "salary"}).active } class="info-salary">{ $resume.salary.amount / 1000 }K ₽</span></div>
-        <div class="info-city">{ $resume.commons.birthday.hidden ? $store.resume.take.birthday.age() : $store.resume.take.birthday.date() }, { $resume.commons.contacts.city }, { $store.resume.take.relocate() }</div>
+        <div class="info-photo" style="background-image:url('{ $resume.commons.photo }')"></div>
+        <div class="info-name">{ $resume.commons.name }{ $resume.commons.surname ? " " + $resume.commons.surname : null }, <span if={ $store.resume.get("sections", {"name": "salary"}).active } class="info-salary">{ $resume.salary.amount / 1000 }K ₽</span></div>
+        <div class="info-city">{ $resume.commons.birthday.hidden ? $store.resume.take.birthday.age() : $store.resume.take.birthday.date() }, { $resume.commons.contacts.city.name }, { $store.resume.take.relocation() }</div>
         <div class="info-email" if={ $resume.commons.contacts.email }><a href="mailto:{ $resume.commons.contacts.email }">{ $resume.commons.contacts.email }</a></div>
         <div class="info-phone" if={ $resume.commons.contacts.phone }><a href="tel:{ $resume.commons.contacts.phone }">{ $resume.commons.contacts.phone }</a></div>
         <div class="info-post" if={ $resume.post }>{ $resume.post }</div>

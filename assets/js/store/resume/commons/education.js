@@ -1,6 +1,6 @@
 $store.education = _.extend(new Baobab([
     {
-        _id: "1",
+        _id: "higher",
         parent: "0",
         title: {
             en: "Higher",
@@ -8,39 +8,39 @@ $store.education = _.extend(new Baobab([
         }
     },
     {
-        _id: "2",
-        parent: "1",
+        _id: "bachelor",
+        parent: "higher",
         title: {
             en: "Bachelor",
             ru: "Бакалавр"
         }
     },
     {
-        _id: "3",
-        parent: "1",
+        _id: "master",
+        parent: "higher",
         title: {
             en: "Master",
             ru: "Магистр"
         }
     },
     {
-        _id: "4",
-        parent: "1",
+        _id: "candidate",
+        parent: "higher",
         title: {
             en: "Candidate of Sciences",
             ru: "Кандидат наук"
         }
     },
     {
-        _id: "5",
-        parent: "1",
+        _id: "doctor",
+        parent: "higher",
         title: {
             en: "Doctor of Sciences",
             ru: "Доктор наук"
         }
     },
     {
-        _id: "6",
+        _id: "unfinished_higher",
         parent: "0",
         title: {
             en: "Incomplete higher",
@@ -48,7 +48,7 @@ $store.education = _.extend(new Baobab([
         }
     },
     {
-        _id: "7",
+        _id: "special_secondary",
         parent: "0",
         title: {
             en: "Vocational secondary",
@@ -56,7 +56,7 @@ $store.education = _.extend(new Baobab([
         }
     },
     {
-        _id: "8",
+        _id: "secondary",
         parent: "0",
         title: {
             en: "Secondary",

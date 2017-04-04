@@ -17,10 +17,10 @@
             <div class="mb45 xs-mb-m xs-pb-xxs">
                 <div class="switcher-group">
                     <div class="switcher-group-container" style="width:240px">
-                        <input onClick={ changePlan } onUpdate="none" type="radio" name="plan" value="free" id="switcher-plan-free" checked={ plan == "free" }>
-        				<label for="switcher-plan-free">Free</label>
-        				<input onClick={ changePlan } onUpdate="none" type="radio" name="plan" value="premium" id="switcher-plan-premium" checked={ plan == "premium" }>
-        				<label for="switcher-plan-premium">Premium</label>
+                        <input type="radio" name="plan" value="free" checked={ plan == "free" }>
+        				<label onClick={ changePlan }>Free</label>
+        				<input type="radio" name="plan" value="premium" checked={ plan == "premium" }>
+        				<label onClick={ changePlan }>Premium</label>
         				<span class="switcher-group-switch"></span>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
     var $ = this;
 
     $.active = false;
-    $.plan = "free";
+    $.plan = app.metrika.get("plan.name") || "free";
     $.loading = false;
     $.validate = {
         login: {
@@ -96,9 +96,12 @@
 
         $.parent.section = "signup";
 
-        $.update({
-            plan: plan ? plan : app.metrika.get("plan.name")
-        })
+        if (plan && plan != $.plan){
+            $.update({
+                plan: plan
+            })
+            app.metrika.set("plan.name", plan);
+        }
 
         $.root.setAttribute("data-active", true);
 
@@ -122,7 +125,8 @@
     };
 
     $.changePlan = function(e){
-        app.metrika.set("plan.name", e.target.value);
+        $.plan = e.target.previousElementSibling.value;
+        app.metrika.set("plan.name", $.plan);
     };
 
     $.sendForm = function(){

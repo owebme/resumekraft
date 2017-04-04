@@ -46,7 +46,10 @@
         recovery = true;
     }
 
-    $resume = app.demo ? $store.resume.prepare.demo() : $store.resume.prepare.premium("editing");
+    $resume = app.demo ? $store.resume.prepare.demo() : $store.resume.prepare.premium($store.resume.get(), true);
+
+    // var recovery = false;
+    // $resume = $store.resume.prepare.demo();
 
     $i18n.lang($resume.lang);
     moment.locale($resume.lang);
@@ -104,7 +107,7 @@
                     }
                 }
             });
-            $store.resume.select('photo')
+            $store.resume.select('commons', 'photo')
             .set("/preview/images/photo/photo_" + app.device.is + ".jpg");
             $Resume.sections.photo.update();
         }

@@ -1,6 +1,6 @@
-<ux-contacts-content class="col-sm-12 col-md-12 col-lg-8 p-l pr0 xs-p0 { bg-snow : !app.device.isPhone } zIndex-1">
+<ux-contacts-content class="component col-sm-12 col-md-12 col-lg-8 p-l md-plr-m pr0 xs-p0 { bg-snow : !app.device.isPhone } zIndex-1">
 
-    <div class="pos-rel minH-100p p-m xs-p0">
+    <div class="pos-rel minH-100p p-m md-pr0 xs-p0">
         <btn-editable if={ $State.get('mode') === "editing" } data="true"></btn-editable>
         <div if={ !_.some(_.pick($store.resume.get('commons', 'contacts'), 'city', 'email', 'phone', 'skype')) } class="pos-centered text-center w100p pr-l">
             <button onClick={ openEditable } onUpdate="none" class="btn btn-l btn-editable btn-upper" type="button"><svg class="btn-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><path class="btn-svg-color" d="M87.754,45.284H54.716V12.246c0-2.605-2.111-4.716-4.716-4.716c-1.302,0-2.481,0.528-3.334,1.382 c-0.853,0.853-1.381,2.032-1.382,3.334v33.038l-33.038,0c-1.302,0-2.481,0.528-3.334,1.382C8.058,47.519,7.53,48.698,7.53,50 c0,2.605,2.111,4.716,4.716,4.716l33.038,0l0,33.038c0,2.605,2.111,4.716,4.716,4.716c2.604,0,4.716-2.112,4.716-4.716l0-33.038 h33.038c2.604,0,4.716-2.112,4.716-4.716C92.47,47.395,90.359,45.284,87.754,45.284z"></path></svg>Добавить контакты</button>
@@ -8,35 +8,38 @@
         <div onClick={ openEditable } onUpdate="none">
             <div class="hidden-xs c-primary f-primary fontSize-20 fontWeight-bold mb-xs">{ $i18n("resume.premium.template.My") }</div>
             <div class="hidden-xs c-blackLight f-primary fontSize-30 fontWeight-8 mb-l">{ $i18n("resume.premium.template.Contacts info") }</div>
-            <div if={ $store.resume.get('commons', 'contacts', 'city') } class="flex-row-left-center w100p pt30 xs-mb-m">
-                <div class="flex-centered { app.device.isPhone ? 'w100' : 'w80' } h80 ml--m">
+            <div if={ $store.resume.get('commons', 'contacts', 'city') } class="flex-row-left-center w100p pt30 xs-mb-m headline-icons">
+                <div class="flex-centered { app.device.isPhone ? 'w100' : 'w80' } h80 ml--m"  data-scrollin-icon>
                     <icon-city color="primary" size="{ app.device.isPhone ? 'l' : 'm' }"></icon-city>
                 </div>
-                <div class="p h80 c-blackLight pt-s whiteSpace-normal">
-                    { $store.resume.get('commons', 'contacts', 'city') }
+                <div class="p h80 c-blackLight pt-s whiteSpace-normal" data-scrollin-icon="\{'stagger':60\}">
+                    { $store.resume.get('commons', 'contacts', 'city', 'name') }
                 </div>
             </div>
-            <div if={ $store.resume.get('commons', 'contacts', 'phone') } class="flex-row-left-center w100p xs-mb-m">
-                <div class="flex-centered { app.device.isPhone ? 'w100' : 'w80' } h80 ml--m pt-xxs">
+            <div if={ $store.resume.get('commons', 'contacts', 'phone') } class="pos-rel flex-row-left-center w100p xs-mb-m headline-icons">
+                <div if={ $store.resume.get('commons', 'contacts', 'primary') == "phone" } class="choose__contact">{ $i18n("resume.premium.template.Choose") }</div>
+                <div class="flex-centered { app.device.isPhone ? 'w100' : 'w80' } h80 ml--m pt-xxs" data-scrollin-icon>
                     <icon-phone color="primary" size="{ app.device.isPhone ? 'l' : 'm' }"></icon-phone>
                 </div>
-                <div class="h80 c-blackLight f-primary { app.device.isPhone ? 'fontSize-22' : 'fontSize-20' } fontWeight-bold pt-m">
+                <div class="h80 c-blackLight f-primary { app.device.isPhone ? 'fontSize-22' : 'fontSize-20' } fontWeight-bold pt-m" data-scrollin-icon="\{'stagger':60\}">
                     { $store.resume.get('commons', 'contacts', 'phone') }
                 </div>
             </div>
-            <div if={ $store.resume.get('commons', 'contacts', 'email') } class="flex-row-left-center w100p xs-mb-m">
+            <div if={ $store.resume.get('commons', 'contacts', 'email') } class="pos-rel flex-row-left-center w100p xs-mb-m headline-icons" data-scrollin-icon>
+                <div if={ $store.resume.get('commons', 'contacts', 'primary') == "email" } class="choose__contact">{ $i18n("resume.premium.template.Choose") }</div>
                 <div class="flex-centered { app.device.isPhone ? 'w100' : 'w80' } h80 ml--m">
                     <icon-feedback color="primary" size="{ app.device.isPhone ? 'l' : 'm' }"></icon-feedback>
                 </div>
-                <div class="h80 pt-m text-truncate minW-70p maxW-70p">
+                <div class="h80 pt-m text-truncate minW-70p maxW-70p" data-scrollin-icon="\{'stagger':60\}">
                     <a class="p link-primary link-underline { pointerEvents-none : $State.get('mode') === 'editing' } whiteSpace-normal" href="mailto:{ $store.resume.get('contacts', 'email') }">{ $store.resume.get('commons', 'contacts', 'email') }</a>
                 </div>
             </div>
-            <div if={ $store.resume.get('commons', 'contacts', 'skype') } class="flex-row-left-center w100p xs-mb-m">
+            <div if={ $store.resume.get('commons', 'contacts', 'skype') } class="pos-rel flex-row-left-center w100p xs-mb-m headline-icons" data-scrollin-icon>
+                <div if={ $store.resume.get('commons', 'contacts', 'primary') == "skype" } class="choose__contact">{ $i18n("resume.premium.template.Choose") }</div>
                 <div class="flex-centered { app.device.isPhone ? 'w100' : 'w80' } h80 ml--m pb-xxs">
                     <icon-skype color="primary" size="{ app.device.isPhone ? 'l' : 'm' }"></icon-skype>
                 </div>
-                <div class="h80 pt-m text-truncate minW-70p maxW-70p">
+                <div class="h80 pt-m text-truncate minW-70p maxW-70p" data-scrollin-icon="\{'stagger':60\}">
                     <a class="p link-primary { pointerEvents-none : $State.get('mode') === 'editing' } whiteSpace-normal" href="skype:{ $store.resume.get('contacts', 'skype') }">{ $store.resume.get('commons', 'contacts', 'skype') }</a>
                 </div>
             </div>

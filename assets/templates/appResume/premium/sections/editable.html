@@ -18,6 +18,7 @@
                 <editable-languages></editable-languages>
                 <editable-jobs></editable-jobs>
                 <editable-hobby></editable-hobby>
+                <editable-more></editable-more>
                 <editable-visible></editable-visible>
             </div>
         </div>
@@ -33,7 +34,7 @@
 
     $.el = $scope;
     $.editable = null;
-    $.editSimple = ['photo', 'name', 'text', 'salary', 'tags', 'social'];
+    $.editSimple = ['photo', 'name', 'text', 'salary', 'tags', 'social', 'more'];
 
     $.on("mount", function(){
         if (app.device.isMobile && app.device.isTablet){
@@ -188,7 +189,7 @@
             if (params.target && params.store){
                 var $item = $$(params.target).closest("." + params.component + "-item");
                 if ($item && $item.length && $item.data("id")){
-                    var item = _.findWhere(params.store.items, {"_id": String($item.data("id"))});
+                    var item = _.findWhere(params.store.items, {"id": String($item.data("id"))});
                     if (item){
                         $.trigger("editTarget", true);
                         $.component.editing = _.copyArray(item);
@@ -223,7 +224,7 @@
 
         removeItem: function(){
             this.data.items.splice(this.i, 1);
-            if ($.component.editing && $.component.editing._id == this.item._id){
+            if ($.component.editing && $.component.editing.id == this.item.id){
                 $.component.cancelEditing();
             }
         },
@@ -277,7 +278,7 @@
                 });
             }
             if (next){
-                var item = _.findWhere(this.data.items, {"_id": $.component.editing._id});
+                var item = _.findWhere(this.data.items, {"id": $.component.editing.id});
                 if (item){
                     var i = _.indexOf(this.data.items, item);
                     this.data.items[i] = _.copyArray($.component.editing);

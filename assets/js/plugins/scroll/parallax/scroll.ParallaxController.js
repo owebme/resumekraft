@@ -13,6 +13,7 @@
         }
         this.els = [];
         this._multiplierEls = [];
+        this.container = !this.options.container ? document : this.options.container && _.isElement(this.options.container) ? this.options.container : this.options.container[0];
         this.options.items.forEach(this._initializeElement.bind(this));
         this._translateMultiplier = 1;
         this._updateTranslateMultiplier();
@@ -43,7 +44,7 @@
             return
         }
         if (f.selector){
-            d = document.querySelector(f.selector);
+            d = this.container.querySelector(f.selector);
         }
         else if (f.elem){
             d = _.isElement(f.elem) ? f.elem : f.elem[0];

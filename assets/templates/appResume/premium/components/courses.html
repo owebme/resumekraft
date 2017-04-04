@@ -6,14 +6,14 @@
 
     <div onClick={ openEditable } onUpdate="none" class="{ blur : !$resume.courses }">
 
-        <p if={ !$resume.courses || $resume.courses && $resume.courses.text } class="mb-l pos-rel editing editing-text editing-courses-text">{ $resume.courses && $resume.courses.text ? $resume.courses.text : $store.resume.placeholder.courses.text }</p>
+        <p if={ !$resume.courses || $resume.courses && $resume.courses.text } class="mb-l pos-rel editing editing-text editing-courses-text" data-scrollin>{ $resume.courses && $resume.courses.text ? $resume.courses.text : $store.resume.placeholder.courses.text }</p>
 
         <div>
-            <div if={ $resume.courses && $resume.courses.items } each={ item, i in _.sortArray($resume.courses.items, "year", "desc") } class="pos-rel courses-item mtb-xl editing editing-text editing-courses-item" data-id={ item._id }>
+            <div if={ $resume.courses && $resume.courses.items } each={ item, i in _.sortArray($resume.courses.items, "year", "desc") } class="pos-rel courses-item mtb-xl editing editing-text editing-courses-item" data-id={ item.id }>
 
-                <h3 class="c-primary mb-s"><strong>{ item.year }</strong> &ndash; { item.name }</h3>
+                <h3 class="c-primary mb-s headline-icons"><strong class="display-block float-left" data-scrollin-icon>{ item.year }</strong><span class="display-block" data-scrollin-icon="\{'stagger':60\}"><span class="plr-xs">&ndash;</span>{ item.title }</span></h3>
 
-                <h3 class="c-black mb-s"><strong>{ item.title }</strong></h3>
+                <h3 class="c-black mb-s" data-scrollin><strong>{ item.name }</strong></h3>
 
             </div>
         </div>
@@ -37,7 +37,7 @@
                     },
                     item: function(){
                         return  {
-                            _id: _.newId(),
+                            id: _.newId(),
                             name: null,
                             title: null,
                             year: new Date().getFullYear()

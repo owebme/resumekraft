@@ -3,10 +3,10 @@
     <div class="rows section__slider__item__content">
         <div if={ app.device.isPhone } class="row mt--m mb30">
             <div class="col-md-24 flex-centered">
-                <div onClick={ open.changePhoto } onUpdate="none" if={ $store.resume.get('photo') } class="user__photo">
-                    <div class="user__photo__image" style="background-image:url({ $store.resume.get('photo') })"></div>
+                <div onClick={ open.changePhoto } onUpdate="none" if={ $store.resume.get('commons', 'photo') } class="user__photo">
+                    <div class="user__photo__image" style="background-image:url({ $store.resume.get('commons', 'photo') })"></div>
                 </div>
-                <div onClick={ open.changePhoto } onUpdate="none" if={ !$store.resume.get('photo') } class="user__photo" data-place="true">
+                <div onClick={ open.changePhoto } onUpdate="none" if={ !$store.resume.get('commons', 'photo') } class="user__photo" data-place="true">
                     <span class="user__photo__text">загрузить свою фотографию</span>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                 <ui-checkbox update="gender" cursor={ data.select() } group="gender" title="Женский" size="l" theme="blue" value="female"></ui-checkbox>
             </div>
         </div>
-        <div class="row mb-m">
+        <div class="row mb-m xs-pb-xxs">
             <div class="hidden-xs col-sm-8 pt-xs pr-m">
                 <span class="visible-md visible-lg title">Электронная почта</span>
                 <span class="visible-sm title">Эл. почта</span>
@@ -67,22 +67,16 @@
                 <ui-input update="email" cursor={ data.select('contacts') } size="l"></ui-input>
             </div>
         </div>
-        <div class="row mb-xs">
+        <div class="row mb-m xs-pb-xxs">
             <div class="hidden-xs col-sm-8 pt-xs pr-m">
                 <span class="visible-md visible-lg title">Город проживания</span>
                 <span class="visible-sm title">Город</span>
             </div>
             <div class="col-xs-24 col-sm-16">
-                <ui-input update="city" cursor={ data.select('contacts') } size="l"></ui-input>
+                <ui-input update="city" value="name" cursor={ data.select('contacts') } autosuggest="getSuggestCity" autosuggestsize="l" dataonlysuggest="true" size="l"></ui-input>
             </div>
         </div>
-        <div class="row mb-m pb-xs">
-            <div class="hidden-xs col-sm-8 pr-m"></div>
-            <div class="col-xs-24 col-sm-16 text-left pt-s">
-                <ui-checkbox update="relocate" cursor={ data.select('contacts') } title="Возможность перезда" size="l" theme="blue"></ui-checkbox>
-            </div>
-        </div>
-        <div class="row mb-m">
+        <div class="row mb-m xs-pb-xxs">
             <div class="hidden-xs col-sm-8 pt-xs pr-m">
                 <span class="visible-md visible-lg title">Мобильный телефон</span>
                 <span class="visible-sm title">Телефон</span>
@@ -91,7 +85,7 @@
                 <ui-input update="phone" cursor={ data.select('contacts') } mask="phone" size="l"></ui-input>
             </div>
         </div>
-        <div class="row mb-m">
+        <div class="row mb-m xs-pb-xxs">
             <div class="hidden-xs col-sm-8 pt-xs pr-m">
                 <span class="title">Skype</span>
             </div>
@@ -104,7 +98,7 @@
                 <span class="title">Предпочитаемый вид связи</span>
             </div>
             <div class="col-xs-24 col-sm-16">
-                <ui-select update="primary" cursor={ data.select('contacts') } items={ $store.contactsPrimary.get() } size="l"></ui-select>
+                <ui-select update="primary" cursor={ data.select('contacts') } items={ $store.dictionary.get("contactsPrimary") } size="l"></ui-select>
             </div>
         </div>
         <div class="row">
@@ -128,7 +122,7 @@
                 title: 'Ваша фотография',
                 callback: function(image){
                     if (app.demo){
-                        $store.resume.select("photo").set(image);
+                        $store.resume.select('commons', 'photo').set(image);
                         $.update();
                         $Resume.sections.photo.update();
                     }
@@ -141,7 +135,7 @@
                         })
                         .then(function(data){
                             if (data && data.image){
-                                $store.resume.select("photo").set(data.image);
+                                $store.resume.select('commons', 'photo').set(data.image);
                                 $.update();
                                 $Resume.sections.photo.update();
                             }

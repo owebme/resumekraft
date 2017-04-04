@@ -7,7 +7,7 @@
                 <span class="visible-sm visible-md c-gray fontSize-28">Степень</span>
             </div>
             <div class="col-xs-24 col-sm-16">
-                <ui-select onUpdate="all" update="level" cursor={ $resume.select("education", "items", {"_id": opts.item._id}) } items={ $store.education.getItems() } size="xl"></ui-select>
+                <ui-select onUpdate="all" update="level" cursor={ $resume.select("education", "items", {"id": opts.item.id}) } items={ $store.education.getItems() } size="xl"></ui-select>
             </div>
         </div>
         <div class="row mb-m">
@@ -15,7 +15,7 @@
                 <span class="nowrap c-gray fontSize-28">Учебное заведение</span>
             </div>
             <div class="col-xs-24 col-sm-16">
-                <ui-input update="title" cursor={ $resume.select("education", "items", {"_id": opts.item._id}) } placeholder={ 'Учебное заведение' : app.device.isPhone } size="xl"></ui-input>
+                <ui-input update="title" cursor={ $resume.select("education", "items", {"id": opts.item.id}) } placeholder={ 'Учебное заведение' : app.device.isPhone } size="xl"></ui-input>
             </div>
         </div>
         <div if={ get.level() != "8" } class="row mb-m">
@@ -23,7 +23,7 @@
                 <span class="c-gray fontSize-28">Факультет</span>
             </div>
             <div class="col-xs-24 col-sm-16">
-                <ui-input update="faculty" cursor={ $resume.select("education", "items", {"_id": opts.item._id}) } placeholder={ 'Факультет' : app.device.isPhone } size="xl"></ui-input>
+                <ui-input update="faculty" cursor={ $resume.select("education", "items", {"id": opts.item.id}) } placeholder={ 'Факультет' : app.device.isPhone } size="xl"></ui-input>
             </div>
         </div>
         <div if={ get.level() != "8" } class="row mb-m">
@@ -31,7 +31,7 @@
                 <span class="c-gray fontSize-28">Специальность</span>
             </div>
             <div class="col-xs-24 col-sm-16">
-                <ui-input update="speciality" cursor={ $resume.select("education", "items", {"_id": opts.item._id}) } placeholder={ 'Специальность' : app.device.isPhone } size="xl"></ui-input>
+                <ui-input update="speciality" cursor={ $resume.select("education", "items", {"id": opts.item.id}) } placeholder={ 'Специальность' : app.device.isPhone } size="xl"></ui-input>
             </div>
         </div>
         <div class="row mb-m">
@@ -40,7 +40,7 @@
             </div>
             <div class="col-xs-24 col-sm-16">
                 <span class="input-title">Год окончания</span>
-                <ui-select update="year" cursor={ $resume.select("education", "items", {"_id": opts.item._id}) } items={ _.range(1940, new Date().getFullYear() + 1) } size="xl"></ui-select>
+                <ui-select update="year" cursor={ $resume.select("education", "items", {"id": opts.item.id}) } items={ _.range(1940, new Date().getFullYear() + 1) } size="xl"></ui-select>
             </div>
         </div>
         <div if={ opts.active } class="row mb-xl">
@@ -75,10 +75,10 @@
 
     $.get = {
         cursor: function(){
-            return $resume.select("education", "items", {"_id": $.opts.item._id});
+            return $resume.select("education", "items", {"id": $.opts.item.id});
         },
         level: function(){
-            return $resume.select("education", "items", {"_id": $.opts.item._id}).get("level");
+            return $resume.select("education", "items", {"id": $.opts.item.id}).get("level");
         }
     };
 

@@ -183,6 +183,18 @@
                     }
                 }
             }
+            ux-contacts-more {
+                .c-header {
+                    .d-phone & {
+                        color:$color;
+                    }
+                    &:before {
+                        .d-phone & {
+                            background-color:$color;
+                        }
+                    }
+                }
+            }
         }
     }
 }

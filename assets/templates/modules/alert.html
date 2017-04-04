@@ -18,16 +18,18 @@
 
     $.active = false;
 
-    $.data = {
-        title: null,
-        subtitle: null
+    $.default = function(){
+        return {
+            title: null,
+            subtitle: null
+        }
     };
 
     $.show = function(data){
         if (data){
+            $.data = _.extend($.default(), data);
             $.update({
-                active: true,
-                data: data
+                active: true
             })
         }
     };
@@ -49,6 +51,11 @@
     };
 
     $.hide = function(){
+        if ($.data.afterHide && _.isFunction($.data.afterHide)){
+            _.onEndTransition($.wrapper, function(){
+                if ($.data.afterHide) $.data.afterHide();
+            });
+        }
         $.update({
             active: false
         })
@@ -60,7 +67,9 @@
 
     $.on("updated", function(){
         if ($.active){
-            document.addEventListener('click', $.handleClickOutside);
+            setTimeout(function(){
+                document.addEventListener('click', $.handleClickOutside);
+            }, 0);
         }
         else {
             document.removeEventListener('click', $.handleClickOutside)

@@ -10,7 +10,7 @@ $store.langs = _.extend(new Baobab([
     ]),
     {
         getTitleById: function(id){
-            return _.findWhere($store.contactsPrimary.get(), {"_id": id}).title;
+            return _.findWhere($store.langs.get(), {"_id": id}).title;
         }
     }
 );

@@ -89,6 +89,7 @@
                 a = a()
             }
         }
+        if (!a) a = 0;
         return a
     };
     o._updateScrollData = function(a) {

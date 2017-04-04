@@ -91,6 +91,10 @@
             transform:translateY(25.6vh);
             margin-bottom:12.8vh;
         }
+        &[data-editing="more"]{
+            transform:translateY(22.6vh);
+            margin-bottom:8.8vh;
+        }
         &[data-editing="social"],
         &[data-editing="salaryGraph"]{
             transform:translateY(14.6vh);

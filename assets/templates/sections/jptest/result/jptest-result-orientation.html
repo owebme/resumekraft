@@ -24,8 +24,8 @@
     var $ = this;
 
     $.on("update", function(){
-        $.items = $jpResult.profile;
-        $.parent.get.text($.tags["jptest-result-text"], $jpResult.orientation);
+        $.items = $jp.data.profile;
+        $.parent.get.text($.tags["jptest-result-text"], $jp.data.orientation);
     });
 
     $.getValue = function(item){

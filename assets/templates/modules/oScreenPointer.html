@@ -170,9 +170,23 @@
                 if ($.state.position == "left"){
                     $.state.message.width = $.offset.left < $.state.message.width + 105 ? $.offset.left - 105 : $.state.message.width;
                 }
+                else if ($.state.position == "up"){
+                    if ($.targetWidth - 40 < $.state.message.width){
+                        $.state.message.style = "top:" + offsetY + "px; left:" + ($.offset.left - ($.state.message.width - $.targetWidth + 40) / 2) + "px";
+                    }
+                    else {
+                        $.state.message.width = $.targetWidth - 40;
+                    }
+                }
             }
             else if ($.state.position == "down"){
-                $.state.message.style = "top:" + ($.offset.top + $.targetHeight) + "px; left:" + $.offset.left + "px";
+                if ($.targetWidth - 40 < $.state.message.width){
+                    $.state.message.style = "top:" + ($.offset.top + $.targetHeight) + "px; left:" + ($.offset.left - ($.state.message.width - $.targetWidth + 40) / 2) + "px";
+                }
+                else {
+                    $.state.message.style = "top:" + ($.offset.top + $.targetHeight) + "px; left:" + $.offset.left + "px";
+                    $.state.message.width = $.targetWidth - 40;
+                }
             }
         }
     };

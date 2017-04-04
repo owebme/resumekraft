@@ -6,67 +6,34 @@
 
 <script>
 
-    var $ = this,
-    keys = [
-        { name: "commons.name", points: 3 },
-        { name: "commons.surname", points: 3 },
-        { name: "post", points: 3 },
-        { name: "photo", points: 5 },
-        { name: "commons.contacts.city", points: 3 },
-        { name: "commons.contacts.email", points: 3 },
-        { name: "commons.contacts.phone", points: 3 },
-        { name: "commons.contacts.skype", points: 3 },
-        { name: "salary.active", points: 5 },
-        { name: "about", points: 10 },
-        { name: "jobs", items: 5, points: 15 },
-        { name: "education", items: 5, points: 10 },
-        { name: "languages", points: 10 }
-    ];
+    var $ = this;
 
     $.on("before-mount", function(){
-        $.calc();
+        $.result($store.resume.percentage.calc("free", $store.resume));
     });
 
     $.on("mount", function(){
-        var recalc = _.debounce($.calc, 100);
-
+        var recalc = _.debounce($store.resume.percentage.calc, 100);
         $store.resume.on("update", function(e){
-            recalc();
+            if (!$.recalc){
+                recalc("free", $store.resume, $.result);
+            }
         });
     });
 
-    $.calc = function(){
-        var p = 0,
-            all = _.reduce(_.pluck(keys, 'points'), function(memo, num){ return memo + num; }, 0);
-
-        _.each(keys, function(item){
-            if ($store.resume.get(item.name.split("."))){
-                if (item.items){
-                    var items = $store.resume.get(item.name, "items");
-                    if (items && items.length){
-                        if (item.items + 1 > items.length){
-                            p += items.length * item.points;
-                        }
-                        else {
-                            p += item.items * item.points;
-                        }
-                    }
-                }
-                else {
-                    p += item.points;
-                }
-            }
-        });
-
-        var result = Math.floor((p / all) * 100);
-
-        result = result > 100 ? 100 : result
+    $.result = function(percent){
+        $.recalc = true;
 
         $.update({
-            p: result,
-            tY: result > 90 ? 10 : 100 - p
+            p: percent,
+            tY: percent > 90 ? 10 : 100 - percent
         });
-        $store.resume.select("percent").set(result);
+
+        $store.resume.select("percent").set(percent);
+
+        setTimeout(function(){
+            $.recalc = false;
+        }, 20);
     };
 
     $.on("unmount", function(){

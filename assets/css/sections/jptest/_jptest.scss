@@ -90,7 +90,7 @@ jptest-content {
         transition:background-color 0.55s $cubic075, color 0.55s $cubic089;
 
         .d-phone & {
-            @extend .h50v;
+            @extend .h50p;
             @extend .c-blueBright;
             @extend .plr-m;
             @extend .overflow-hidden;
@@ -160,6 +160,7 @@ jptest-content {
     .circuful {
         width:550px;
         height:550px;
+        @extend .ml--s;
 
         .d-tablet.r-landscape & {
             width:480px;

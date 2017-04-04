@@ -23,6 +23,8 @@
 
             WD.scrollParallax();
 
+            WD.createAccount();
+
             app.metrika.set("views.home", 1, {
                 action: "inc"
             })
@@ -124,6 +126,14 @@
                  }
             }
             checkLoad();
+        },
+
+        createAccount: function(){
+            
+            WD.el.on("click", ".createAccount", function(){
+                var plan = this.getAttribute("data-plan");
+                app.tag("section-auth").open("signup", plan);
+            });
         }
     };
 

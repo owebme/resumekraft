@@ -1,4 +1,4 @@
-<jptest-result-development class="screen" data-marquee="development">
+<jptest-result-development class="screen" data-marquee="development" data-large="{ 'true' : items.length > 3 }">
 
     <div class="screen__content container">
         <div class="row">
@@ -20,7 +20,7 @@
 <script>
 
     this.on("update", function(){
-        this.items = $jpResult.recommendations.development;
+        this.items = $jp.data.recommendations.development;
     });
 
 </script>

@@ -393,6 +393,15 @@
 		return String(Math.round(new Date().getTime() / 1000));
 	};
 
+	utils.isJSON = function(str){
+	    try {
+	        JSON.parse(str);
+	    } catch (e) {
+	        return false;
+	    }
+	    return true;
+	};	
+
 	utils.getDateNow = function(){
 		var d = new Date();
 		var hour = d.getHours();

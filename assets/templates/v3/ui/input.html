@@ -8,19 +8,17 @@
 
 <script>
 
-    var $ = this;
+    var $ = this,
+    selected = false;
 
     $.on("before-mount", function(){
-        if ($.opts.update && $.opts.cursor){
-            $.value = $.opts.cursor.get($.opts.update);
-        }
-        else {
-            $.value = $.opts.value;
-        }
         if ($.opts.autosuggest){
             $.suggest = _.debounce($.autosuggest.request, app.device.isMobile ? 300 : 150);
+            if ($.opts.autoselect === false || app.device.isMobile && $.opts.autoselect !== true){
+                $.autosuggest.autoselect = false;
+            }
         }
-    });  
+    });
 
     $.on("mount", function(){
         $.input = $.refs.input;
@@ -40,13 +38,15 @@
     });
 
     $.on("update", function(){
-        if ((!$.opts.value || !$.opts.onupdate) && $.opts.update && $.opts.cursor){
-            $.value = $.opts.cursor.get($.opts.update);
-            $.input.value = $.value;
-        }
-        else if ($.opts.value && $.opts.value !== $.value){
-            $.value = $.opts.value;
-            $.input.value = $.value;
+        if (!selected){
+            if ((!$.opts.value || !$.opts.onupdate) && $.opts.update && $.opts.cursor){
+                $.value = $.opts.cursor.get($.opts.update);
+                $.input.value = $.value || "";
+            }
+            else if ($.opts.value && $.opts.value !== $.value){
+                $.value = $.opts.value;
+                $.input.value = $.value || "";
+            }
         }
     });
 
@@ -85,21 +85,42 @@
 
         items: [],
 
+        autoselect: {
+            interval: null,
+            timeout: app.device.isMobile ? 1000 : 300
+        },
+
         select: function(){
+            selected = true;
             $.autosuggest.update([], this.item);
+            setTimeout(function(){
+                selected = false;
+            }, 5);
         },
 
         request: function(method, value){
             if (value.length > 1){
-                app.request(method, value).then(function(data){
+                app.request(method, value, {
+                    notify: false,
+                    loader: false
+                }).then(function(data){
                     if (data.items){
-                        if (data.items.length == "1" && value == data.items[0].text){
-                            $.autosuggest.items = [];
-                            return;
+                        if (data.items.length == "1"){
+                            if (value == data.items[0].text){
+                                $.autosuggest.items = [];
+                                return;
+                            }
+                            else {
+                                if ($.autosuggest.autoselect){
+                                    $.autosuggest.autoselect.interval = setTimeout(function(){
+                                        $.autosuggest.select.call({
+                                            item: data.items[0]
+                                        })
+                                    }, $.autosuggest.autoselect.timeout);
+                                }
+                            }
                         }
-                        else {
-                            $.autosuggest.update(data.items);
-                        }
+                        $.autosuggest.update(data.items);
                     }
                 })
             }
@@ -125,6 +146,10 @@
         },
 
         navigate: function(e){
+            e.preventUpdate = true;
+            if ($.autosuggest.autoselect){
+                clearTimeout($.autosuggest.autoselect.interval);
+            }
             if ([13, 38, 40].indexOf(e.keyCode) > -1 && _.isEmpty($.autosuggest.items)) {
                 e.preventDefault();
                 return true;

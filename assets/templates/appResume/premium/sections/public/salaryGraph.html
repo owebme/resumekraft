@@ -2,7 +2,7 @@
 
     <div onClick={ hide } onUpdate="none" class="button__close opacity-100" data-color="gray"></div>
 
-    <div class="salary-graph-title">Желаемый график роста оплаты труда</div>
+    <div class="salary-graph-title">{ $i18n("resume.premium.template.Desired salary growth schedule") }</div>
 
     <div class="salary-graph-content">
         <div each={ item, i in _.copyArray($resume.salary.graph.items).reverse() } no-reorder class="salary-graph-item">

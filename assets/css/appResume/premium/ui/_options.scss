@@ -1,0 +1,54 @@
+.options-list {
+    @extend .fontSize-0;
+    @extend .mr--60;
+
+    .d-phone & {
+        @extend .mr--30;
+    }
+    .d-tablet & {
+        @extend .mr--l;
+    }
+    &-item {
+        @extend .pos-rel;
+        @extend .display-inlineBlock;
+        @extend .vAlign-middle;
+        @extend .plr-s;
+        @extend .h40;
+        @extend .c-white;
+        @extend .borderRadius-xxl;
+        font-size:18px;
+        line-height:40px;
+        box-shadow:0 0 0 2px rgba($white,.8);
+        @extend .mr-s;
+        @extend .mb-s;
+        @extend .xs-mb-m;
+        @extend .xs-mr-xs;
+        @extend .plr-m;
+        @extend .cursor-pointer;
+        transition:box-shadow 0.15s;
+
+        .d-phone & {
+            @extend .text-truncate;
+            max-width:170px;
+        }
+        &[checked]{
+            @extend .pr-l;
+            @extend .c-primary;
+            @extend .bg-white;
+            box-shadow:0 0 0 2px $white;
+
+            &:after {
+                @extend .content-empty;
+                @extend .pos-centered-v;
+                @extend .r-s;
+                @extend .w15;
+                @extend .h15;
+                @extend .bg-primary;
+                @extend .borderRadius-circle;
+            }
+        }
+        &:not([checked]):hover {
+            box-shadow:0 0 0 2px $white;
+        }
+    }
+}

@@ -313,6 +313,7 @@
         @extend .pr-xs;
         @extend .fontWeight-bold;
         @extend .mb-xs;
+        @extend .breakWord;
         @include textEllipsis(100%, 56px, 2);
     }
     &__date {

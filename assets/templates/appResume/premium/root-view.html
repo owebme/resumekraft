@@ -1,4 +1,4 @@
-<root-main-view class="appResume section" data-color="{ $State.get('color') }" data-font="{ $State.get('font') }" data-mode="{ $State.get('mode') }" data-coverletter={ $State.get('mode') !== "editing" && $store.resume.select("sections").get({"name": "coverletter"}).active } data-app="premium">
+<root-main-view class="appResume section" data-color="{ $State.get('color') }" data-font="{ $State.get('font') }" data-mode="{ $State.get('mode') }" data-coverletter={ $State.get('mode') !== "editing" && $store.resume.select("sections").get({"name": "coverletter"}).active } data-animation={ !app.device.isPhone && $State.get('mode') === 'view' && $State.get('animate') } data-app="premium">
 
     <section-nav if={ !app.device.isMobile }></section-nav>
 
@@ -21,7 +21,7 @@
 
     $$ = window.jQuery || window.Zepto;
 
-    $resume = app.demo ? $store.resume.prepare.demo() : $store.resume.prepare.premium("view");
+    $resume = app.demo ? $store.resume.prepare.demo() : $store.resume.get();
 
     $i18n.lang($resume.lang);
     moment.locale($resume.lang);
@@ -54,9 +54,50 @@
     });
 
     this.one("ready", function(){
+        if (!app.device.isMobile && $State.get("animate") === true){
+            var photoParallax = new app.plugins.scroll.ParallaxController({
+                items: [
+                    {
+                        selector: app.device.isSafari ? "ux-photo" : ".photo",
+                        from: 100,
+                        to: -150,
+                        off: 0
+                    }
+                ]
+            });
+            photoParallax.start();
+        }
+
         app.$dom.body.removeClass("appLoading")
         .attr("id", "ready");
 
+        if (!app.device.isPhone && $State.get("animate") === true){
+            $afterlag.run(function(){
+                var scrollAnimation = new app.plugins.scroll.AnimationController({
+                    container: $root.root
+                });
+                var progressAnimation = new app.plugins.scroll.animate({
+                    container: $root.root,
+                    onlyItems: true,
+                    items: [
+                        {
+                            elem: ".skills-progress",
+                            callback: function($elem, i){
+                                $elem.addClass("animated");
+                            }
+                        },
+                        {
+                            elem: ".choose__contact",
+                            callback: function($elem, i){
+                                $elem.addClass("animated");
+                            }
+                        }
+                    ]
+                });
+                scrollAnimation.start();
+                progressAnimation.start();
+            });
+        }
         if (app.demo){
             if (window.parent && window.parent){
                 window.parent.postMessage('ready', '*');
@@ -69,10 +110,11 @@
                     }
                 }
             });
-            $store.resume.select('photo')
+            $store.resume.select('commons', 'photo')
             .set("/preview/images/photo/photo_" + app.device.is + ".jpg");
             $Resume.sections.photo.update();
         }
+
         $root.ready = true;
     });
 

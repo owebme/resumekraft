@@ -1,6 +1,6 @@
 <resume-list-item class="resume__item">
 
-    <div class="resume__item__header" style="background-image:url('{ opts.item.photo }')" data-color={ opts.item.plan == "premium" && opts.item.public ? opts.item.config.color : (!opts.item.public ? 'gray' : null) }>
+    <div class="resume__item__header" style="background-image:url('{ opts.item.commons.photo }')" data-color={ opts.item.plan == "premium" && opts.item.public ? opts.item.config.color : (!opts.item.public ? 'gray' : null) }>
         <div if={ opts.item.plan == "free" } class="resume__item__label" data-label="free"></div>
         <div if={ opts.item.plan == "premium" } class="resume__item__label" data-label="premium"></div>
         <div class="resume__item__control">
@@ -9,8 +9,8 @@
         </div>
         <div class="resume__item__control__right">
             <div onClick={ onPublic } onUpdate="none" class="resume__item__noview" data-active={ opts.item.public }></div>
-            <div if={ opts.item.plan == "premium" } onClick={ show.inbox } onUpdate="none" class="resume__item__inbox" data-active={ true : $store.inbox.getCounterByResumeId(item._id) }>
-                <div class="resume__item__inbox__badge">{ $store.inbox.getCounterByResumeId(item._id) }</div>
+            <div if={ opts.item.plan == "premium" } onClick={ show.inbox } onUpdate="none" class="resume__item__inbox" data-active={ true : $store.inbox.getCounterNewByResumeId(item._id) }>
+                <div class="resume__item__inbox__badge">{ $store.inbox.getCounterNewByResumeId(item._id) }</div>
             </div>
         </div>
         <div class="resume__item__control__left">
@@ -21,14 +21,15 @@
         </div>
         <div onClick={ parent.open.resume } onUpdate="none" class="row resume__item__header__text">
             <div class="col-xs-5 col-sm-6">
-                <div if={ opts.item.photo } class="resume__item__photo { opacity-65 : !opts.item.public }" style="background-image:url('{ opts.item.photo }')"></div>
-                <div if={ !opts.item.photo } class="resume__item__photo__blank { opacity-65 : !opts.item.public }"></div>
+                <div if={ opts.item.commons.photo } class="resume__item__photo { opacity-65 : !opts.item.public }" style="background-image:url('{ opts.item.commons.photo }')"></div>
+                <div if={ !opts.item.commons.photo } class="resume__item__photo__blank { opacity-65 : !opts.item.public }"></div>
             </div>
             <div class="col-xs-19 col-sm-18">
                 <div class="resume__item__title">{ opts.item.post ? opts.item.post : 'Продолжить редактирование' }</div>
                 <div class="resume__item__date">Обновлен: { moment(opts.item.update).format('D MMMM YYYY') }</div>
-                <div class="resume__item__salary { 'opacity-70 text-lineThrough' : !opts.item.salary.active || !$store.data.get({'_id': opts.item._id}, 'sections', {'name': 'salary'}).active }">
-                    { _.numberFormat(opts.item.salary.amount, 0, ".", ".") } { $store.currency.getTitleById(opts.item.salary.currency) }
+                <div class="resume__item__salary">
+                    <span if={ !opts.item.salary.active } class="display-block fontSize-24 fontWeight-bold mt--xxs">з/п не указана</span>
+                    <span if={ opts.item.salary.active }>{ _.numberFormat(opts.item.salary.amount, 0, ".", ".") } { $store.currency.getTitleById(opts.item.salary.currency) }</span>
                 </div>
             </div>
         </div>
@@ -36,8 +37,8 @@
     <div class="resume__item__stat">
         <div class="resume__item__stat__wrapper row">
             <div class="resume__item__stat__cell col-xs-15 col-sm-16">
-                <btn-stat onClick={ parent.open.stat } onUpdate="none" color={ opts.item.config.color }></btn-stat>
-                <svg-stat color={ opts.item.config.color }></svg-stat>
+                <btn-stat onClick={ parent.open.stat } onUpdate="none" color={ opts.item.config && opts.item.config.color || "#0084ff" }></btn-stat>
+                <svg-stat color={ opts.item.config && opts.item.config.color || "#0084ff" }></svg-stat>
             </div>
             <div class="resume__item__stat__cell bg-yellow c-blackLight col-xs-9 col-sm-8 resume__item__stat__percentage">
                 { opts.item.percent }%

@@ -1,11 +1,11 @@
-<home-jp-test class="screen home__jptest rellax overflow-hidden zIndex-1" data-rellax-speed="5.25">
+<home-jp-test class="screen home__jptest overflow-hidden zIndex-1">
 
     <div class="pos-rel rows">
         <div class="pos-abs-full zIndex-2">
             <div class="pos-abs-full bg-overlay opacity-80"></div>
             <div class="pos-abs-full bg-radial-black"></div>
             <div class="pos-centered">
-                <div class="rellax anim anim-scale" data-rellax-speed="3.5">
+                <div class="anim anim-scale">
                     <div class="home__jptest__container">
                         <small class="c-white mb-l pb-m sm-pb-l">совершенно бесплатно</small>
                         <h1 class="c-white nowrap textShadow-light mb-m pb-xs">Пройти новейший <span class="c-lime">JP<sup class="pl-xxs">2</sup></span> тест</h1>

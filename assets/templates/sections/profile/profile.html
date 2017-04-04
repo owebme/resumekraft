@@ -12,21 +12,21 @@
                     <div class="col-md-16">
                         <div class="row">
                             <div class="col-md-10 flex-centered">
-                                <div onClick={ open.changePhoto } onUpdate="none" if={ $account.get('photo') } class="user__photo">
-                                    <div class="user__photo__image" style="background-image:url({ $account.get('photo') })"></div>
+                                <div onClick={ open.changePhoto } onUpdate="none" if={ $account.get('commons', 'photo') } class="user__photo">
+                                    <div class="user__photo__image" style="background-image:url({ $account.get('commons', 'photo') })"></div>
                                 </div>
-                                <div onClick={ open.changePhoto } onUpdate="none" if={ !$account.get('photo') } class="user__photo" data-place="true">
+                                <div onClick={ open.changePhoto } onUpdate="none" if={ !$account.get('commons', 'photo') } class="user__photo" data-place="true">
                                     <span class="user__photo__text">загрузить свою фотографию</span>
                                 </div>
                             </div>
                             <div class="col-md-14">
                                 <div class="profile__personal__data fontSize-22 pt-l">
                                     <div class="fontSize-34 mb-m">
-                                        <span class="c-blue fontWeight-bold">{ $account.get('name') }</span> { $account.get('surname') }
+                                        <span class="c-blue fontWeight-bold">{ $account.get('commons', 'name') }</span> { $account.get('commons', 'surname') }
                                     </div>
-                                    <div if={ $account.get('gender') == "male" } class="text-uppercase fontSize-20">муж.</div>
-                                    <div if={ $account.get('gender') == "female" } class="text-uppercase fontSize-20">жен.</div>
-                                    <div if={ $account.get('contacts', 'city') }>{ $account.get('contacts', 'city') }</div>
+                                    <div if={ $account.get('commons', 'gender') == "male" } class="text-uppercase fontSize-20">муж.</div>
+                                    <div if={ $account.get('commons', 'gender') == "female" } class="text-uppercase fontSize-20">жен.</div>
+                                    <div if={ $account.get('commons', 'contacts', 'city') }>{ $account.get('commons', 'contacts', 'city', 'name') }</div>
                                     <span onClick={ open.personalData } onUpdate="none" class="display-inlineBlock link-underline link-default-hover-warning mt-xs tutorial__changeData">Изменить персональные данные</span>
                                     <div class="tutorial__reflink mt-xs fontSize-20 pr-l">
                                         <strong>Получить <span class="c-orange">369 ₽</span> на счет&nbsp; &nbsp;<span onClick={ open.referer } onUpdate="none" class="display-inlineBlock link-underline link-default-hover-warning mt-xs">как подробнее</span></strong>
@@ -60,12 +60,12 @@
                             Номер телефона
                         </div>
                         <div class="{ display-none : !editable.phone } centered mb-m w70p">
-                            <ui-input placeholder="Введите свой телефон" update="phone" align="center" cursor={ $account.select('contacts') } size="l" rounded="true" mask="phone"></ui-input>
+                            <ui-input placeholder="Введите свой телефон" update="phone" align="center" cursor={ $account.select('commons', 'contacts') } size="l" rounded="true" mask="phone"></ui-input>
                         </div>
                         <div class="{ display-none : editable.phone }">
                             <div class="c-gray fontSize-14 text-uppercase mb-xss">Основной:</div>
-                            <div if={ $account.get('contacts', 'phone') } class="fontSize-22 fontWeight-bold mb-m">{ $account.get('contacts', 'phone') }</div>
-                            <div if={ !$account.get('contacts', 'phone') } class="c-gray fontSize-24 mb-m">— &nbsp; — &nbsp; —</div>
+                            <div if={ $account.get('commons', 'contacts', 'phone') } class="fontSize-22 fontWeight-bold mb-m">{ $account.get('commons', 'contacts', 'phone') }</div>
+                            <div if={ !$account.get('commons', 'contacts', 'phone') } class="c-gray fontSize-24 mb-m">— &nbsp; — &nbsp; —</div>
                         </div>
                         <button onClick={ edit.phone } class="btn btn-edit btn-m btn-default-hover-warning">{ editable.phone ? 'Сохранить' : 'Изменить' }</button>
                     </div>
@@ -74,14 +74,14 @@
                             Электронная почта
                         </div>
                         <div class="{ display-none : !editable.email } centered mb-m w80p">
-                            <ui-input update="email" align="center" cursor={ $account.select('contacts') } size="l" rounded="true"></ui-input>
+                            <ui-input update="email" align="center" cursor={ $account.select('commons', 'contacts') } size="l" rounded="true"></ui-input>
                         </div>
                         <div class="{ display-none : editable.email }">
                             <div class="c-gray fontSize-14 text-uppercase mb-xss">Основная:</div>
-                            <div if={ $account.get('contacts', 'email') } class="mb-m">
-                                <span class="fontSize-22 link-underline link-default-hover-warning">{ $account.get('contacts', 'email') }</span>
+                            <div if={ $account.get('commons', 'contacts', 'email') } class="mb-m">
+                                <span class="fontSize-22 link-underline link-default-hover-warning">{ $account.get('commons', 'contacts', 'email') }</span>
                             </div>
-                            <div if={ !$account.get('contacts', 'email') } class="c-gray fontSize-24 mb-m">— &nbsp; — &nbsp; —</div>
+                            <div if={ !$account.get('commons', 'contacts', 'email') } class="c-gray fontSize-24 mb-m">— &nbsp; — &nbsp; —</div>
                         </div>
                         <button onClick={ edit.email } class="btn btn-edit btn-m btn-default-hover-warning">{ editable.email ? 'Сохранить' : 'Изменить' }</button>
                     </div>
@@ -143,7 +143,7 @@
 
             if (!$.editable.phone){
                 app.request("setDataProfile", {
-                    contacts: $account.get("contacts")
+                    commons: $account.get("commons")
                 });
             }
         },
@@ -152,7 +152,7 @@
 
             if (!$.editable.email){
                 app.request("setDataProfile", {
-                    contacts: $account.get("contacts")
+                    commons: $account.get("commons")
                 });
             }
         }

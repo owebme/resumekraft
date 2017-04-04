@@ -1,48 +1,13 @@
-<ux-contacts class="component" data-feedback={ false : !$store.resume.select("sections").get({"name": "feedback"}).active }>
+<ux-contacts class="display-block">
 
     <div class="row">
         <div class="col-xs-24 col-lg-23 col-lg-offset-2 p0">
             <div class="row flex-row-center-stretch">
-                <ux-feedback if={ $store.resume.select("sections").get({"name": "feedback"}).active }></ux-feedback>
+                <ux-feedback></ux-feedback>
                 <ux-contacts-content></ux-contacts-content>
-                <div class="hidden-xs hidden-sm hidden-md col-lg-8 p0 bg-primary">
-                    <div class="contacts-cover" style="background-image:url('/assets/images/resume/bg4.jpg')"></div>
-                    <div if={ !app.demo && $State.get('mode') !== "editing" && $store.resume.get("config", "likes", "active") && !app.isLiked } class="likes { isLiked ? 'isLiked showAnim-group2' : 'showAnim-group1' }" data-gender={ $resume.commons.gender }>
-                        <div class="likes__cover anim anim-group1 anim-scale">
-                            <div if={ $resume.photo } class="likes__cover__photo" style="background-image:url('{ $resume.photo }')"></div>
-                            <div if={ $resume.config.likes.count && $resume.likes.length } class="likes__cover__badge">{ $resume.likes.length }</div>
-                        </div>
-                        <div class="likes__text anim anim-group1 anim-tb-ease">{ $i18n("resume.premium.template.If you liked my resume please supply Like") }</div>
-                        <div class="likes__button anim anim-group1 anim-scale-ease">
-                            <div onClick={ liked } class="btn btn-l2 btn-strong btn-white-hover">{ $i18n("resume.premium.template.Like") }</div>
-                        </div>
-                        <div class="pos-centered-v flex-column-centered w100p pb-l pointerEvents-none">
-                            <div class="ui-icon-check_circle_white w48 h48 mb-s anim-group2 anim-scale" delay-show="xl"></div>
-                            <div class="anim-group2 anim-bt-soft likes__text likes__text--show lineHeight-l" delay-show="s" data-duration="l">{ $i18n("resume.premium.template.Thank you for your vote, he will be counted") }.</div>
-                        </div>
-                    </div>
-                </div>
+                <ux-contacts-more></ux-contacts-more>
             </div>
         </div>
     </div>
-
-<script>
-
-    this.isLiked = false;
-
-    this.liked = function(){
-        this.isLiked = true;
-
-        if (!app.demo){
-            app.request("addResumeLike", {
-                id: $resume._id
-            }, {
-                loader: false,
-                notify: false
-            });
-        }
-    };
-
-</script>
 
 </ux-contacts>

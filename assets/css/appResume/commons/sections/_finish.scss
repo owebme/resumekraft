@@ -115,7 +115,9 @@ resume-edit-finish {
         @extend .l-l;
 
         .d-phone & {
-            @extend .pos-centered-h;
+            @extend .w100p;
+            @extend .plr-m;
+            @extend .l0;
             @extend .b-30;
         }
         &__title {
@@ -145,6 +147,9 @@ resume-edit-finish {
             @extend .willChange-transform;
             transition:transform .5s $cubic075;
 
+            .d-phone & {
+                @extend .w20p;
+            }
             &:hover {
                 transform:translate3d(0, 0, 0) scale(1.25);
             }
@@ -188,8 +193,38 @@ resume-edit-finish {
     }
 }
 
+@media screen and (min-width: 400px) {
+    .d-phone #app {
+        resume-edit-finish {
+            .logo {
+                &__icon {
+                    width:128px;
+                    height:48px;
+                }
+            }
+            .circle2 {
+                right:15px;
+            }
+            .circle3 {
+                left:15px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 360px) {
+    .d-phone #app {
+        resume-edit-finish {
+            .circle2 {
+                right:-10px;
+            }
+            .circle3 {
+                left:-10px;
+            }
+        }
+    }
+}
 @media screen and (max-height: 565px) {
-    #app {
+    .d-phone #app {
         resume-edit-finish {
             .logo {
                 top:20px;
@@ -198,7 +233,7 @@ resume-edit-finish {
                 bottom:20px;
 
                 &__title {
-                    margin-bottom:15px;
+                    display:none;
                 }
             }
         }

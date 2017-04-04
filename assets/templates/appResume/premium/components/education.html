@@ -1,21 +1,21 @@
 <ux-education class="component">
 
-    <h3 class="title">{ $resume.education && $resume.education.title ? $resume.education.title : $store.resume.placeholder.education.title() }</h3>
+    <h3 class="title">{ $resume.education && $resume.education.title ? $resume.education.title : $store.resume.placeholder.education.title() }<span if={ $resume.education.level } class="c-primary"><span class="plr-xs">&ndash;</span>{ $store.education.getTitleById($resume.education.level) }</span></h3>
 
     <btn-editable if={ $State.get('mode') === "editing" } data={ $resume.education }></btn-editable>
 
     <div onClick={ openEditable } onUpdate="none" class="{ blur : !$resume.education }">
 
-        <p if={ !$resume.education || $resume.education && $resume.education.text } class="mb-l pos-rel editing editing-text editing-edu-text">{ $resume.education && $resume.education.text ? $resume.education.text : $store.resume.placeholder.education.text }</p>
+        <p if={ !$resume.education || $resume.education && $resume.education.text } class="mb-l pos-rel editing editing-text editing-edu-text" data-scrollin>{ $resume.education && $resume.education.text ? $resume.education.text : $store.resume.placeholder.education.text }</p>
 
         <div>
-            <div if={ $resume.education && $resume.education.items } each={ item, i in _.sortArray($resume.education.items, "year", "desc") } class="pos-rel education-item mtb-xl editing editing-text editing-edu-item" data-id={ item._id }>
+            <div if={ $resume.education && $resume.education.items } each={ item, i in _.sortArray($resume.education.items, "year", "desc") } class="pos-rel education-item mtb-xl editing editing-text editing-edu-item" data-id={ item.id }>
 
-                <h3 class="c-primary mb-s"><strong>{ item.year }</strong> &ndash; { $store.education.getTitleById(item.level) }</h3>
+                <h3 if={ item.speciality } class="c-primary mb-s headline-icons"><strong class="display-block float-left" data-scrollin-icon>{ item.year }</strong><span class="display-block" data-scrollin-icon="\{'stagger':60\}"><span class="plr-xs">&ndash;</span>{ item.speciality }</span></h3>
 
-                <p class="mb-s" style="line-height:28px">{ item.title }<span if={ item.level != "8" && item.faculty } class="h4 c-primary"><br>{ item.faculty }</span></p>
+                <p class="mb-s" style="line-height:28px" data-scrollin>{ item.title }</p>
 
-                <h3 if={ item.level != "8" && item.speciality } class="c-black mb-s">Специальность &ndash; <strong>{ item.speciality }</strong></h3>
+                <h3 if={ item.faculty } class="c-black mb-s" data-scrollin><strong>{ item.faculty }</strong></h3>
 
             </div>
         </div>
@@ -34,13 +34,13 @@
                         return  {
                             title: null,
                             text: null,
+                            level: "higher",
                             items: null
                         }
                     },
                     item: function(){
                         return  {
-                            _id: _.newId(),
-                            level: "1",
+                            id: _.newId(),
                             title: null,
                             faculty: null,
                             speciality: null,

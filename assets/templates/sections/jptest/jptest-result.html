@@ -24,6 +24,25 @@
 
     $.loading = false;
 
+    $.links = [
+        'ecb996983a5da14f26669b389973bb99',
+        'f2b53bb73c3ee714b6dd6eff0b520bd5',
+        'ba1c3df7631eeed57e0b044836058a19',
+        '938d79f42e0506b9e011b706293dd9ff',
+        'e0a7dc8860a8dd189993491e4d2dbf51',
+        '40b53824d9abfc4fc1d918d1ca04f509',
+        'bb7c00995c73e556b17753443d361436',
+        'ed4e3f6b66976c79a7aee49fe4f20c06',
+        'b54fefb3e044338dd9ae6891746c5886',
+        '7471f4d61295c401c289cf433f23934f',
+        '13cc58b5c01cf21917ea628bd226152a',
+        'd8ae74b113e68ba4201b0db2c4b85dc3',
+        'dbddc7abbbdd66823bb31f2cc0db0c64',
+        '417a4b963d9143ced1c287a313fb1ac9',
+        'ae8391ce871bb43f7187be316261e130',
+        '0a0a6db9bf69afb05107087ae94853b5'
+    ];
+
     $.on("mount", function(){
         $Sections.module("jptest.result", $);
         if ($.refs){
@@ -39,9 +58,6 @@
         $.loader = $.tags["oscreen-loader"];
         $.buttonLink = $.tags["jptest-result-link"];
         $.popupVotes = $.tags["jptest-result-popup"];
-        $afterlag.run(function(){
-            $.show();
-        });
     });
 
     $.on("focus", function(value){
@@ -55,15 +71,27 @@
         }
     });
 
-    $.show = function(callback){
-        if ($.loading || $.active) return;
+    $.show = function(id, callback){
+        if ($.loading || $.active || !id) return;
 
-        $jpResult = $store.jptest.jq7;
+        if (id.length == 32){
+            id = $.links.indexOf(id);
+            if (id !== -1) id += 1;
+            else return;
+        }
+
+        window.$jp = {
+            id: id,
+            link: $.links[id - 1]
+        };
+
+        $.trigger("show", window.$jp);
 
         $.loader.show(
             {
                 scope: $.scroll,
                 content: $.content,
+                resources: ['/public/js/jptest.build.js'],
                 start: function(){
                     if (app.device.isPhone){
                         $.content[0].style.backgroundColor = '#ffffff';
@@ -83,7 +111,7 @@
                             $.screens = new app.plugins.screens($.content);
                             $.screens.init();
 
-                            if ($.popupVotes && $.popupVotes.show){
+                            if (!app.metrika.get("jptest.votes.show")){
                                 var $screen = $.content.find(".screen"),
                                     success = false;
 
@@ -105,7 +133,7 @@
                             $scope.find(".chart").addClass("showChart");
                             $.section.scrollAnimate.start();
 
-                            if ($.popupVotes && $.popupVotes.show){
+                            if (!app.metrika.get("jptest.votes.show")){
                                 var $elem = $.content.find("jptest-result-finish");
 
                                 if ($elem.length){
@@ -131,27 +159,21 @@
                     if (_.isFunction(callback)){
                         callback();
                     }
-                    if (window.$root && window.$root.focus) $root.focus("jptest-result");
+                    if (!app.isSite && window.$root && window.$root.focus) $root.focus("jptest-result");
                 }
             }
         );
     };
 
     $.hide = function(){
-        $.update({
-            active: false
-        })
+        $.active = false;
+        $.update();
         _.onEndTransition($.scroll[0], function(){
-            $.section.unmount(true);
-            if (window.$root && window.$root.focus) $root.focus("all");
+            if ($.section) $.section.unmount(true);
+            if (!app.isSite && window.$root && window.$root.focus) $root.focus("all");
+            $.trigger("hide");
         });
         if ($.buttonLink && $.buttonLink.hide) $.buttonLink.hide();
-    };
-
-    $.get = {
-        text: function(tag, text){
-            tag.root.innerHTML = text.replace(/\[b\]/gi, '<span class="larger">').replace(/\[\/b\]/gi, '</span>').replace(/\[i\]/gi, '<span class="marker">').replace(/\[\/i\]/gi, '</span>');
-        }
     };
 
 </script>

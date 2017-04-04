@@ -149,7 +149,7 @@
                 WD.chartRadial = new app.plugins.chartRadial(WD.scope.find(".chart__radial"), {
                     container: "chart__radial__graph mb-m",
                     labels: "chart__radial__labels c-blackLight",
-                    labelItem: "chart__radial__label mb-xxs"
+                    labelItem: "chart__radial__label mb-xs"
                 });
 
                 WD.chartRadial.render([

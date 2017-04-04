@@ -22,8 +22,8 @@
     var $ = this;
 
     $.on("update", function(){
-        $.specialtiesCount = $jpResult.specialties.length;
-        $.parent.get.text($.tags["jptest-result-text"], $jpResult.notengage);
+        $.specialtiesCount = $jp.data.specialties.length;
+        $.parent.get.text($.tags["jptest-result-text"], $jp.data.notengage);
     });
 
     $.open = {

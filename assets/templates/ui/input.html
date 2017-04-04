@@ -1,6 +1,6 @@
-<ui-input class={ opts.autosuggestsize ? 'display-block input-autosuggest input-autosuggest-' + opts.autosuggestsize : 'display-block input-autosuggest input-autosuggest-m' }>
+<ui-input class={ opts.autosuggestsize ? 'input-autosuggest input-autosuggest-' + opts.autosuggestsize : 'input-autosuggest input-autosuggest-m' } data-errballoon={ error || false }>
 
-    <input name="input" onInput={ onInput } onKeyDown={ opts.autosuggest ? autosuggest.navigate : false } onUpdate={ opts.onupdate ? opts.onupdate : "none" } class="input input-{ opts.size ? opts.size : 'm' } { opts.color } { opts.align ? 'text-' + opts.align : '' } { input-rounded : opts.rounded }" value={ value } placeholder={ opts.placeholder } disabled={ typeof opts.disabled !== 'undefined' } type="text" autocomplete="off" spellcheck="false">
+    <input name="input" onInput={ onInput } onKeyDown={ opts.autosuggest ? autosuggest.navigate : false } onBlur={ opts.dataonlysuggest ? autosuggest.blur : false } onFocus={ opts.dataonlysuggest ? autosuggest.focus : false } onUpdate={ opts.onupdate ? opts.onupdate : "none" } class="input input-{ opts.size ? opts.size : 'm' } { opts.color } { opts.align ? 'text-' + opts.align : '' } { input-rounded : opts.rounded }" value={ value } placeholder={ opts.placeholder } disabled={ typeof opts.disabled !== 'undefined' } type="text" autocomplete="off" spellcheck="false">
 
     <div if={ opts.autosuggest } class="input-autosuggest-items"><div onClick={ autosuggest.select } each={ item in autosuggest.items } no-reorder class="input-autosuggest-item" data-active={ item.active }>
         <div class="input-autosuggest-item-title">{ item.text }</div>
@@ -12,13 +12,19 @@
 
     $.on("before-mount", function(){
         if ($.opts.update && $.opts.cursor){
-            $.value = $.opts.cursor.get($.opts.update);
+            $.value = $.opts.value ? $.opts.cursor.get($.opts.update, $.opts.value) : $.opts.cursor.get($.opts.update);
         }
         else {
             $.value = $.opts.value;
         }
         if ($.opts.autosuggest){
             $.suggest = _.debounce($.autosuggest.request, app.device.isMobile ? 300 : 150);
+            if ($.opts.autoselect === false){
+                $.autosuggest.autoselect = false;
+            }
+            if ($.opts.update && $.opts.cursor && $.opts.value){
+                $.autosuggestgetobject = true;
+            }
         }
     });
 
@@ -39,19 +45,23 @@
 
     $.on("update", function(){
         if ((!$.opts.value || !$.opts.onupdate) && $.opts.update && $.opts.cursor){
-            $.value = $.opts.cursor.get($.opts.update);
-            $.input.value = $.value;
+            if (!$.opts.dataonlysuggest){
+                $.value = $.opts.value ? $.opts.cursor.get($.opts.update, $.opts.value) : $.opts.cursor.get($.opts.update);
+                $.input.value = $.value || "";
+            }
         }
         else if ($.opts.value && $.opts.value !== $.value){
             $.value = $.opts.value;
-            $.input.value = $.value;
+            $.input.value = $.value || "";
         }
     });
 
     $.onInput = function(e){
         var value = e.target.value;
 
-        $.onUpdate(this, value);
+        if (!$.opts.dataonlysuggest){
+            $.onUpdate(this, value);
+        }
 
         if ($.opts.autosuggest && value){
             $.autosuggest.el = e.target;
@@ -63,7 +73,18 @@
 
     $.onUpdate = function(_this, value){
         if ($.opts.update && $.opts.cursor){
-            $.opts.cursor.set($.opts.update, value);
+            if ($.opts.value){
+                if (_.isObject(value)){
+                    $.opts.cursor.select($.opts.update).set(value);
+                    value = value[$.opts.value];
+                }
+                else {
+                    $.opts.cursor.select($.opts.update).set($.opts.value, value);
+                }
+            }
+            else {
+                $.opts.cursor.set($.opts.update, value);
+            }
         }
         if ($.opts.commit === true || $.opts.commit == "true") $.parent.update();
         else if (_.isFunction($.opts.commit)) {
@@ -83,21 +104,63 @@
 
         items: [],
 
+        autoselect: {
+            interval: null,
+            timeout: 300
+        },
+
         select: function(){
             $.autosuggest.update([], this.item);
         },
 
+        blur: function(e){
+            e.preventUpdate = true;
+
+            setTimeout(function(){
+                if ($.value && $.value != _.clean($.input.value)){
+                    $.input.value = $.value;
+                }
+                else if (!$.value){
+                    $.update({
+                        error: $.opts.onerror || "Введите и выберите из списка"
+                    })
+                    $.input.value = "";
+                }
+            }, 100);
+        },
+
+        focus: function(e){
+            e.preventUpdate = true;
+            if ($.error){
+                $.update({
+                    error: false
+                })
+            }
+        },
+
         request: function(method, value){
             if (value.length > 1){
-                app.request(method, value).then(function(data){
+                app.request(method, value, {
+                    notify: false,
+                    loader: false
+                }).then(function(data){
                     if (data.items){
-                        if (data.items.length == "1" && value == data.items[0].text){
-                            $.autosuggest.items = [];
-                            return;
+                        if (data.items.length == "1"){
+                            if (value == data.items[0].text){
+                                $.autosuggest.items = [];
+                                return;
+                            }
+                            else {
+                                if ($.autosuggest.autoselect){
+                                    $.autosuggest.autoselect.interval = setTimeout(function(){
+                                        $.autosuggest.select.call({
+                                            item: data.items[0]
+                                        })
+                                    }, $.autosuggest.autoselect.timeout);
+                                }
+                            }
                         }
-                        else {
-                            $.autosuggest.update(data.items);
-                        }
+                        $.autosuggest.update(data.items);
                     }
                 })
             }
@@ -114,7 +177,18 @@
                     value: item.text
                 })
                 $.trigger("autocomplete.select", item);
-                $.onUpdate(this, item.text);
+                if ($.opts.autosuggesthandler){
+                    $.onUpdate(this, $.opts.autosuggesthandler(item));
+                }
+                else if ($.autosuggestgetobject){
+                    var data = {};
+                    data.id = item.id;
+                    data[$.opts.value] = item.text;
+                    $.onUpdate(this, data);
+                }
+                else {
+                    $.onUpdate(this, item.text);
+                }
             }
             else {
                 $.update();
@@ -122,6 +196,10 @@
         },
 
         navigate: function(e){
+            e.preventUpdate = true;
+            if ($.autosuggest.autoselect){
+                clearTimeout($.autosuggest.autoselect.interval);
+            }
             if ([13, 38, 40].indexOf(e.keyCode) > -1 && _.isEmpty($.autosuggest.items)) {
                 e.preventDefault();
                 return true;

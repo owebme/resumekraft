@@ -21,6 +21,9 @@ module.exports = function(url){
 	// Autosuggest
 	require('./suggest')(url + '/suggest');
 
+	// JPtest private API
+	require('./jptest')(url + '/jptest');
+
 	// Convert PDF resume
 	app.post(url + '/convert/pdf', app.checkAuth(), require('./upload/pdf')());
 

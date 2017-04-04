@@ -12,6 +12,7 @@
         @extend .flex-row-left-center;
     }
     &__slider {
+        @include accelerate();
         @extend .pos-tl;
         @extend .w50;
         @extend .h100p;

@@ -1,9 +1,12 @@
 var nconf = require('nconf');
 
-nconf.argv()
-	.env()
-	.file({
-		file: process.cwd() + '/config.json'
-	});
+module.exports = function(paths){
 
-module.exports = nconf;
+	nconf.env().argv();
+
+	for (var key in paths){
+		nconf.file(key, paths[key]);
+	}
+
+	return nconf;
+}

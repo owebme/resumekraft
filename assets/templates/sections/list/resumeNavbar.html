@@ -2,10 +2,11 @@
 
     <div class="btn-group">
         <button onClick={ open.jptest } onUpdate="none" data-item="jp-test" class="btn btn-m btn-primary-hover btn-jptest">JP-Тест 2.0</button>
+        <button onClick={ open.impResume } onUpdate="none" class="btn btn-m btn-primary-hover btn-import-resume">Импорт резюме</button>
         <a href="/jobs/search" target="_blank" class="btn btn-m btn-primary-hover btn-jobs">Найти работу</a>
-        <button if={ $account.get("plan") == "premium" } onClick={ open.inbox } onUpdate="none" data-item="inbox" class="btn btn-m { $store.inbox.counterAll() > 0 ? 'btn-primary' : 'btn-primary-hover' }">
+        <button if={ $account.get("plan") == "premium" } onClick={ open.inbox } onUpdate="none" data-item="inbox" class="btn btn-m { $store.inbox.counterNewAll() > 0 ? 'btn-primary' : 'btn-primary-hover' }">
             Обращения
-            <div class="btn-badge btn-badge-danger">{ $store.inbox.counterAll() }</div>
+            <div class="btn-badge btn-badge-danger">{ $store.inbox.counterNewAll() }</div>
         </button>
         <button if={ $account.get("plan") != "premium" } onClick={ open.plan } onUpdate="none" data-item="premium" class="btn btn-m btn-primary-hover">Перейти на PREMIUM</button>
         <button onClick={ open.payment } data-item="payment" class="btn btn-m btn-primary">Баланс: { _.numberFormat($account.get('balance'), 1, ",", ",") } ₽</button>
@@ -26,6 +27,9 @@
             $Sections.jptest.section.show(function(){
                 $.parent.show();
             });
+        },
+        impResume: function(){
+            $Sections.resume.import.show();
         },
         inbox: function(){
             $Sections.inbox.section.show();

@@ -17,7 +17,7 @@ module.exports = function(){
 	var handlerReturn = function(url, prop, callback){
 		var hash = app.utils.md5(url);
 
-		if (app.config.get('jobs:cache')){
+		if (app.config.public.get('jobs:cache')){
 			app.redis.get(hash, function(err, data) {
 				if (err) callback(true, data);
 				else if (data) {
@@ -48,7 +48,7 @@ module.exports = function(){
 
 	var saveRedis = function(hash, data){
 		app.redis.set(hash, JSON.stringify(data));
-		app.redis.expireat(hash, parseInt((+new Date)/1000) + app.config.get('jobs:cacheLife'));
+		app.redis.expireat(hash, parseInt((+new Date)/1000) + app.config.public.get('jobs:cacheLife'));
 	};
 
 	var clearSnippet = function(items){
@@ -67,25 +67,25 @@ module.exports = function(){
     };
 
 	API.vacancy = function(id, callback){
-		handlerReturn(app.config.get('hh:api') + "/vacancies/" + id, "id", function(err, data){
+		handlerReturn(app.config.public.get('hh:api') + "/vacancies/" + id, "id", function(err, data){
 			callback(err, data);
 		});
     };
 
 	API.vacancySimilary = function(id, callback){
-		handlerReturn(app.config.get('hh:api') + "/vacancies/" + id + "/similar_vacancies", "items", function(err, data){
+		handlerReturn(app.config.public.get('hh:api') + "/vacancies/" + id + "/similar_vacancies", "items", function(err, data){
 			callback(err, data);
 		});
     };
 
 	API.employer = function(id, callback){
-		handlerReturn(app.config.get('hh:api') + "/employers/" + id, "id", function(err, data){
+		handlerReturn(app.config.public.get('hh:api') + "/employers/" + id, "id", function(err, data){
 			callback(err, data);
 		});
     };
 
 	API.employerVacancies = function(id, callback){
-		handlerReturn(app.config.get('hh:api') + "/vacancies?employer_id=" + id, "items", function(err, data){
+		handlerReturn(app.config.public.get('hh:api') + "/vacancies?employer_id=" + id, "items", function(err, data){
 			callback(err, data);
 		});
     };

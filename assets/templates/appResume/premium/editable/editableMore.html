@@ -1,0 +1,107 @@
+<editable-more class="col-sm-24 col-md-22 col-lg-19 centered section__editable__container" data-editing="more">
+
+    <div class="section__editable__content col-lg-offset-1">
+
+        <div class="title title-main">{ title }</div>
+
+        <div class="row mb35 sm-mb-m xs-mb-m">
+            <div class="col-md-24 xs-mb-xs">
+                <div class="options-list">
+                    <div onClick={ select.schedules } each={ item in $store.dictionary.get("schedules") } class="options-list-item" checked={ _.indexOf(parent.data.get("schedules"), item._id) > -1 }>{ item.title }</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-m sm-mb0 xs-mb0">
+            <div class="hidden-xs col-sm-24 col-md-4">
+                <div class="title title-m pt-xxs">Гражданство</div>
+            </div>
+            <div class="col-xs-24 col-sm-24 col-md-7 xs-mb-m">
+                <span class="input-title pt-xxs">Гражданство</span>
+                <div class="select select-l xs-mb-xs">
+                    <ui-select update="citizenship" cursor={ data.select() } items={ $store.country.get() } size="l"></ui-select>
+                </div>
+            </div>
+            <div class="hidden-xs col-sm-24 col-md-6">
+                <div class="title title-m pl30 sm-pl0 pt-xxs">Время до работы</div>
+            </div>
+            <div class="col-xs-24 col-sm-24 col-md-7 xs-mb-m">
+                <span class="input-title pt-xxs">Время до работы</span>
+                <div class="select select-l xs-mb-xs">
+                    <ui-select update="travelTime" cursor={ data.select() } items={ $store.dictionary.get("travelTime") } size="l"></ui-select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb50 xs-mb-l">
+            <div class="hidden-xs col-sm-24 col-md-4">
+                <div class="title title-m pt-xxs">Переезд</div>
+            </div>
+            <div class="col-xs-24 col-sm-24 col-md-7 xs-mb-m">
+                <span class="input-title pt-xxs">Переезд</span>
+                <div class="select select-l xs-mb-xs">
+                    <ui-select update="relocation" cursor={ data.select() } items={ $store.dictionary.get("relocation") } size="l"></ui-select>
+                </div>
+            </div>
+            <div class="hidden-xs col-sm-24 col-md-6">
+                <div class="title title-m pl30 sm-pl0 pt-xxs">Командировки</div>
+            </div>
+            <div class="col-xs-24 col-sm-24 col-md-7">
+                <span class="input-title pt-xxs">Командировки</span>
+                <div class="select select-l xs-mb-xs">
+                    <ui-select update="businessTrip" cursor={ data.select() } items={ $store.dictionary.get("businessTrip") } size="l"></ui-select>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="section__editable__footer text-center">
+        <button onClick={ onCancel } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper" type="button">Отменить</button>
+        <button onClick={ onSave } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper ml-xs" type="button">Сохранить</button>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.init = function(data){
+        $.data = new Baobab(_.omit(data, 'title', 'callback', 'schedules'));
+        $.data.select('schedules').set(_.copyArray(data.schedules));
+        $.update({
+            title: data.title,
+            callback: data.callback ? data.callback : null
+        });
+    };
+
+    $.select = {
+        schedules: function(e){
+            var value = this.item._id;
+            if (e.target.hasAttribute("checked")){
+                var items = $.data.get('schedules');
+                $.data.get('schedules').splice(_.indexOf(items, value), 1);
+            }
+            else {
+                $.data.select('schedules').push(value);
+            }
+        }
+    };
+
+    $.onCancel = function(){
+        $.hide();
+    };
+
+    $.onSave = function(){
+        if ($.callback) {
+            $.callback($.data.get());
+        }
+        $.hide();
+    };
+
+    $.hide = function(){
+        $Editable.hide();
+    };
+
+</script>
+
+</editable-more>

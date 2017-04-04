@@ -3,16 +3,14 @@
     app.define("plugins.scroll.animate");
 
     app.plugins.scroll.animate = function(options){
-
-        if (!options || options && !options.scroll) return;
-
         this.ready = false;
         this.delay = options.delay;
         this.elems = options.elems ? options.elems : ".anim";
-        this.scroll = $(options.scroll);
+        this.scroll = options.scroll ? $(options.scroll) : $dom.window;
         this.scope = options.container ? $(options.container) : this.scroll;
         this.delta = options.delta ? this.deltaValues.getValueByTitle(options.delta) : null;
         this._items = options.items;
+        this.onlyItems = options.onlyItems;
         this.items = [];
     };
 
@@ -27,8 +25,8 @@
                 this.scroll.on("scroll.animate", function(){
                     if (!_this.scrolling){
                         _this.scrolling = true;
-                        _.raf(function(){
-                            _this.onScroll(_this);
+                        _this.raf = _.raf(function(){
+                            _this.onScroll.call(_this);
                         });
                     }
                 });
@@ -40,53 +38,85 @@
 
             this.items = [];
 
+            this.scrollTop = this.getScrollY.call(this);
+
             if (this._items){
+                var i = 0;
                 _.each(this._items, function(item){
-                    _this.scope.find(item.elem).each(function(){
-                        _this.each(this, item.callback);
-                    });
+                    (function(item){
+                        _this.scope.find(item.elem).each(function(){
+                            _this.each({
+                                elem: this,
+                                index: i,
+                                delta: item.delta,
+                                callback: item.callback
+                            })
+                            i++;
+                        });
+                    })(item);
                 });
             }
 
-            this.scope.find(this.elems).each(function(){
-                _this.each(this);
-            });
+            if (!this.onlyItems){
+                this.scope.find(this.elems).each(function(){
+                    _this.each({
+                        elem: this
+                    })
+                });
+            }
 
             this.ready = true;
         },
 
-        each: function(elem, callback){
-            var _this = this,
-                $elem = $(elem),
-                delta = elem.getAttribute("data-delta");
+        each: function(options){
+            var $elem = $(options.elem),
+                delta = options.delta || options.elem.getAttribute("data-delta");
 
-            if (delta) delta = _this.deltaValues.getValueByTitle(delta);
-            else delta = _this.delta ? _this.delta : _this.deltaValues.getValueByTitle("m");
+            if (delta) delta = this.deltaValues.getValueByTitle(delta);
+            else delta = this.delta ? this.delta : this.deltaValues.getValueByTitle("m");
 
-            _this.items.push({
+            var data = {
                 elem: $elem,
                 anim: false,
                 offset: $elem.offset(),
                 delta: delta,
-                callback: callback ? callback : null
-            });
+                callback: options.callback ? options.callback : null
+            };
+
+            if (!this.iteration(this.scrollTop, data, options.index)){
+                this.items.push(data);
+            }
         },
 
-        onScroll: function(_this){
-            var scroll = _this.scroll[0].scrollTop || _this.scroll[0].scrollY;
+        onScroll: function(){
+            var _this = this,
+                scroll = this.getScrollY.call(this);
 
-            _this.items.forEach(function(item, i){
-                if (!item.anim && (scroll + app.sizes.height * item.delta) > item.offset.top){
-                    item.anim = true;
-                    if (item.callback) item.callback(item.elem, i);
-                    else item.elem.addClass("animated");
-                }
+            this.items.forEach(function(item, i){
+                _this.iteration(scroll, item, i);
             });
-            _this.scrolling = false;
+            this.scrolling = false;
+        },
+
+        getScrollY: function(){
+            return this.scroll[0].scrollTop || this.scroll[0].scrollY;
+        },
+
+        iteration: function(scroll, item, i){
+            if (!item.anim && (scroll + app.sizes.height * item.delta) > item.offset.top){
+                item.anim = true;
+                if (item.callback) item.callback(item.elem, i);
+                else item.elem.addClass("animated");
+                return true;
+            }
+            else {
+                return false;
+            }
         },
 
         destroy: function(){
             this.scroll.off("scroll.animate");
+            _.caf(this.raf);
             this.items.forEach(function(item, i){
                 if (item.anim){
                     item.anim = false;

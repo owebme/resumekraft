@@ -1,0 +1,60 @@
+@font-face {
+  font-family: "SF Display";
+  src: url("/assets/css/fonts/SFDisplay/SFUIDisplay-Light.eot"); /* IE9 Compat Modes */
+  src: url("/assets/css/fonts/SFDisplay/SFUIDisplay-Light.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("/assets/css/fonts/SFDisplay/SFUIDisplay-Light.woff2") format("woff2"), /* Modern Browsers */
+    url("/assets/css/fonts/SFDisplay/SFUIDisplay-Light.woff") format("woff"), /* Modern Browsers */
+    url("/assets/css/fonts/SFDisplay/SFUIDisplay-Light.ttf") format("truetype"); /* Safari, Android, iOS */
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SF Display";
+  src: url("/assets/css/fonts/SFDisplay/SFUIDisplay-Regular.eot"); /* IE9 Compat Modes */
+  src: url("/assets/css/fonts/SFDisplay/SFUIDisplay-Regular.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("/assets/css/fonts/SFDisplay/SFUIDisplay-Regular.woff2") format("woff2"), /* Modern Browsers */
+    url("/assets/css/fonts/SFDisplay/SFUIDisplay-Regular.woff") format("woff"), /* Modern Browsers */
+    url("/assets/css/fonts/SFDisplay/SFUIDisplay-Regular.ttf") format("truetype"); /* Safari, Android, iOS */
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SF Display";
+  src: url("/assets/css/fonts/SFDisplay/SFUIDisplay-Medium.eot"); /* IE9 Compat Modes */
+  src: url("/assets/css/fonts/SFDisplay/SFUIDisplay-Medium.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("/assets/css/fonts/SFDisplay/SFUIDisplay-Medium.woff2") format("woff2"), /* Modern Browsers */
+    url("/assets/css/fonts/SFDisplay/SFUIDisplay-Medium.woff") format("woff"), /* Modern Browsers */
+    url("/assets/css/fonts/SFDisplay/SFUIDisplay-Medium.ttf") format("truetype"); /* Safari, Android, iOS */
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SF Display";
+  src: url("/assets/css/fonts/SFDisplay/SFUIDisplay-Semibold.eot"); /* IE9 Compat Modes */
+  src: url("/assets/css/fonts/SFDisplay/SFUIDisplay-Semibold.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("/assets/css/fonts/SFDisplay/SFUIDisplay-Semibold.woff2") format("woff2"), /* Modern Browsers */
+    url("/assets/css/fonts/SFDisplay/SFUIDisplay-Semibold.woff") format("woff"), /* Modern Browsers */
+    url("/assets/css/fonts/SFDisplay/SFUIDisplay-Semibold.ttf") format("truetype"); /* Safari, Android, iOS */
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SF Display";
+  src: url("/assets/css/fonts/SFDisplay/SFUIDisplay-Bold.eot"); /* IE9 Compat Modes */
+  src: url("/assets/css/fonts/SFDisplay/SFUIDisplay-Bold.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("/assets/css/fonts/SFDisplay/SFUIDisplay-Bold.woff2") format("woff2"), /* Modern Browsers */
+    url("/assets/css/fonts/SFDisplay/SFUIDisplay-Bold.woff") format("woff"), /* Modern Browsers */
+    url("/assets/css/fonts/SFDisplay/SFUIDisplay-Bold.ttf") format("truetype"); /* Safari, Android, iOS */
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SF Display";
+  src: url("/assets/css/fonts/SFDisplay/SFUIDisplay-Heavy.eot"); /* IE9 Compat Modes */
+  src: url("/assets/css/fonts/SFDisplay/SFUIDisplay-Heavy.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("/assets/css/fonts/SFDisplay/SFUIDisplay-Heavy.woff2") format("woff2"), /* Modern Browsers */
+    url("/assets/css/fonts/SFDisplay/SFUIDisplay-Heavy.woff") format("woff"), /* Modern Browsers */
+    url("/assets/css/fonts/SFDisplay/SFUIDisplay-Heavy.ttf") format("truetype"); /* Safari, Android, iOS */
+  font-weight: 800;
+  font-style: normal;
+}

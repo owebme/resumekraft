@@ -10,7 +10,7 @@ module.exports = function(){
             return;
         }
         app.req({
-            url: app.config.get('hh:api') + "/suggests/" + method + "?text=" + encodeURIComponent(text),
+            url: app.config.public.get('hh:api') + "/suggests/" + method + "?text=" + encodeURIComponent(text),
             headers: {
                 'User-Agent': 'request'
             },
@@ -52,6 +52,12 @@ module.exports = function(){
 
     API.city = function(text, callback){
         handlerRequest("areas", text, function(data){
+            callback(data);
+        });
+    };
+
+	API.metro = function(text, callback){
+        handlerRequest("metro", text, function(data){
             callback(data);
         });
     };

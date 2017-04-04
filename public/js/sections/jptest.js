@@ -25,12 +25,10 @@
                 });
             });
 
-            var $button = WD.el.find(".btn-primary");
-
             app.sections.once("afterMounted", function(){
-                $button.on("click", function(){
-                    $Sections.jptest.test.show();
-                });
+                app.features.jptest.init({
+                    button: WD.el.find(".btn-primary")
+                })
             });
 
             app.metrika.set("views.jptest", 1, {

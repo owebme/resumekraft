@@ -5,7 +5,7 @@
             <span class="title">Имя</span>
         </div>
         <div class="col-sm-16">
-            <ui-input placeholder="Имя" update="name" cursor={ parent.data.select() } size="l" disabled={ parent.data.get("name").length }></ui-input>
+            <ui-input placeholder="Имя" update="name" cursor={ opts.cursor } size="l" disabled={ opts.cursor.get("name").length }></ui-input>
         </div>
     </div>
     <div class="row mb-m">
@@ -13,7 +13,7 @@
             <span class="title">Фамилия</span>
         </div>
         <div class="col-sm-16">
-            <ui-input placeholder="Фамилия" update="surname" cursor={ parent.data.select() } size="l" disabled={ parent.data.get("surname").length }></ui-input>
+            <ui-input placeholder="Фамилия" update="surname" cursor={ opts.cursor } size="l" disabled={ opts.cursor.get("surname").length }></ui-input>
         </div>
     </div>
     <div class="row mb-s">
@@ -22,19 +22,19 @@
             <span class="c-blue input-title">Дата рождения</span>
         </div>
         <div class="col-xs-8 col-sm-4">
-            <ui-select update="day" commit={ parent.commit.birthday } cursor={ parent.data.select('birthday') } items={ _.range(1, 32) } size="l" short></ui-select>
+            <ui-select update="day" commit={ parent.commit.birthday } cursor={ opts.cursor.select('birthday') } items={ _.range(1, 32) } size="l" short></ui-select>
         </div>
         <div class="col-xs-16 col-sm-6 xs-mb-m">
-            <ui-select update="month" commit={ parent.commit.birthday } cursor={ parent.data.select('birthday') } items={ $store.month.getItems() } size="l" short></ui-select>
+            <ui-select update="month" commit={ parent.commit.birthday } cursor={ opts.cursor.select('birthday') } items={ $store.month.getItems() } size="l" short></ui-select>
         </div>
         <div class="col-xs-24 col-sm-6">
-            <ui-select update="year" commit={ parent.commit.birthday } cursor={ parent.data.select('birthday') } items={ _.range(1940, new Date().getFullYear() + 1) } size="l" short></ui-select>
+            <ui-select update="year" commit={ parent.commit.birthday } cursor={ opts.cursor.select('birthday') } items={ _.range(1940, new Date().getFullYear() + 1) } size="l" short></ui-select>
         </div>
     </div>
     <div class="row mb-m">
         <div class="hidden-xs col-sm-8 pr-m"></div>
         <div class="col-xs-24 col-sm-16 text-left pt-s">
-            <ui-checkbox name="birthdayHidden" update="hidden" cursor={ parent.data.select('birthday') } title="Пок{ app.device.isPhone ? '-вать' : 'азывать' } только возраст { parent.data.get('birthday', 'hidden') ? '(' + $store.account.take.age(parent.data.get('birthday')) + ')' : '' }" size="xl" theme="blue"></ui-checkbox>
+            <ui-checkbox name="birthdayHidden" update="hidden" cursor={ opts.cursor.select('birthday') } title="Пок{ app.device.isPhone ? '-вать' : 'азывать' } только возраст { opts.cursor.get('birthday', 'hidden') ? '(' + $store.account.take.age(opts.cursor.get('birthday')) + ')' : '' }" size="xl" theme="blue"></ui-checkbox>
         </div>
     </div>
     <div class="row mb-l pt-xxs">
@@ -42,10 +42,10 @@
             <span class="title">Ваш пол</span>
         </div>
         <div class="col-xs-12 col-sm-7 text-left pt-s">
-            <ui-checkbox update="gender" cursor={ parent.data.select() } group="gender" title="Мужской" size="xl" theme="blue" value="male"></ui-checkbox>
+            <ui-checkbox update="gender" cursor={ opts.cursor } group="gender" title="Мужской" size="xl" theme="blue" value="male"></ui-checkbox>
         </div>
         <div class="col-xs-12 col-sm-6 text-left pt-s">
-            <ui-checkbox update="gender" cursor={ parent.data.select() } group="gender" title="Женский" size="xl" theme="blue" value="female"></ui-checkbox>
+            <ui-checkbox update="gender" cursor={ opts.cursor } group="gender" title="Женский" size="xl" theme="blue" value="female"></ui-checkbox>
         </div>
     </div>
     <div class="row mb-m">
@@ -54,22 +54,25 @@
             <span class="visible-sm title">Эл. почта</span>
         </div>
         <div class="col-sm-16">
-            <ui-input placeholder="E-mail" update="email" cursor={ parent.data.select('contacts') } size="l"></ui-input>
+            <ui-input placeholder="E-mail" update="email" cursor={ opts.cursor.select('contacts') } size="l"></ui-input>
         </div>
     </div>
-    <div class="row mb-xs">
+    <div class="row mb-m">
+        <div class="hidden-xs col-sm-8 pt-xs pr-m">
+            <span class="visible-md visible-lg title">Гражданство</span>
+            <span class="visible-sm title">Гражданство</span>
+        </div>
+        <div class="col-xs-24 col-sm-16">
+            <ui-select update="citizenship" cursor={ opts.cursor } items={ $store.country.get() } size="l"></ui-select>
+        </div>
+    </div>
+    <div class="row mb-m">
         <div class="hidden-xs col-sm-8 pt-xs pr-m">
             <span class="visible-md visible-lg title">Город проживания</span>
             <span class="visible-sm title">Город</span>
         </div>
         <div class="col-xs-24 col-sm-16">
-            <ui-input placeholder="Город" update="city" cursor={ parent.data.select('contacts') } size="l"></ui-input>
-        </div>
-    </div>
-    <div class="row mb-m pb-xs">
-        <div class="hidden-xs col-sm-8 pr-m"></div>
-        <div class="col-xs-24 col-sm-16 text-left pt-s">
-            <ui-checkbox update="relocate" cursor={ parent.data.select('contacts') } title="Возможность перезда" size="xl" theme="blue"></ui-checkbox>
+            <ui-input placeholder="Город" update="city" value="name" cursor={ opts.cursor.select('contacts') } autosuggest="getSuggestCity" autosuggestsize="l" dataonlysuggest="true" autoselect={ true } size="l"></ui-input>
         </div>
     </div>
     <div class="row mb-m">
@@ -78,7 +81,7 @@
             <span class="visible-sm title">Телефон</span>
         </div>
         <div class="col-xs-24 col-sm-16">
-            <ui-input placeholder="Телефон" update="phone" cursor={ parent.data.select('contacts') } mask="phone" size="l"></ui-input>
+            <ui-input placeholder="Телефон" update="phone" cursor={ opts.cursor.select('contacts') } mask="phone" size="l"></ui-input>
         </div>
     </div>
     <div class="row mb-m">
@@ -86,16 +89,43 @@
             <span class="title">Skype</span>
         </div>
         <div class="col-xs-24 col-sm-16">
-            <ui-input placeholder="Skype" update="skype" cursor={ parent.data.select('contacts') } size="l"></ui-input>
+            <ui-input placeholder="Skype" update="skype" cursor={ opts.cursor.select('contacts') } size="l"></ui-input>
         </div>
     </div>
-    <div class="row mb30 xs-pb-xxs">
+    <div class="row mb-m">
         <div class="col-xs-24 col-sm-8 pt-xs pr-m xs-pt0">
             <span class="hidden-xs title">Главный вид связи</span>
             <span class="c-blue input-title">Главный вид связи</span>
         </div>
         <div class="col-xs-24 col-sm-16">
-            <ui-select update="primary" cursor={ parent.data.select('contacts') } items={ $store.contactsPrimary.get() } size="l"></ui-select>
+            <ui-select update="primary" cursor={ opts.cursor.select('contacts') } items={ $store.dictionary.get("contactsPrimary", "ru") } size="l"></ui-select>
+        </div>
+    </div>
+    <div class="row mb-m">
+        <div class="col-xs-24 col-sm-8 pt-xs pr-m xs-pt0">
+            <span class="hidden-xs title">Переезд</span>
+            <span class="c-blue input-title">Переезд</span>
+        </div>
+        <div class="col-xs-24 col-sm-16">
+            <ui-select update="relocation" cursor={ opts.cursor } items={ $store.dictionary.get("relocation", "ru") } size="l"></ui-select>
+        </div>
+    </div>
+    <div class="row mb-m">
+        <div class="col-xs-24 col-sm-8 pt-xs pr-m xs-pt0">
+            <span class="hidden-xs title">Командировки</span>
+            <span class="c-blue input-title">Командировки</span>
+        </div>
+        <div class="col-xs-24 col-sm-16">
+            <ui-select update="businessTrip" cursor={ opts.cursor } items={ $store.dictionary.get("businessTrip", "ru") } size="l"></ui-select>
+        </div>
+    </div>
+    <div class="row mb30 xs-pb-xxs">
+        <div class="col-xs-24 col-sm-8 pt-xs pr-m xs-pt0">
+            <span class="hidden-xs title">Время до работы</span>
+            <span class="c-blue input-title">Время до работы</span>
+        </div>
+        <div class="col-xs-24 col-sm-16">
+            <ui-select update="travelTime" cursor={ opts.cursor } items={ $store.dictionary.get("travelTime", "ru") } size="l"></ui-select>
         </div>
     </div>
 

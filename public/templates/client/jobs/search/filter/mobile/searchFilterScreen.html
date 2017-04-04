@@ -4,7 +4,7 @@
         <div class="screenMobile__navbar" data-gradient="white">
             <div onClick={ hide } onUpdate="none" class="screenMobile__nav__back"></div>
             <div class="screenMobile__nav__title" data-align="center">Параметры поиска</div>
-            <div class="screenMobile__nav__options"></div>
+            <div onClick={ open.dropMenu } onUpdate="none" class="screenMobile__nav__options"></div>
         </div>
         <div ref="content" class="section__content pb70">
             <jobs-search-filter></jobs-search-filter>
@@ -46,16 +46,19 @@
 
     $.open = {
         dropMenu: function(e){
-            // $DropMenu.show({
-            //     id: $.item._id,
-            //     item: $.item,
-            //     elem: $$(e.currentTarget),
-            //     pos: "down-left",
-            //     offset: {
-            //         left: 5
-            //     },
-            //     menu: $store.data.dropMenu
-            // });
+            $dropMenu.show({
+                elem: $$(e.currentTarget),
+                pos: "down-left",
+                offset: {
+                    left: 10
+                },
+                menu: [{
+                    title: "Сбросить фильтры"
+                }],
+                callback: function(){
+                    location.replace('/jobs/search/');
+                }
+            });
         }
     };
 

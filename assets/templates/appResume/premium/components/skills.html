@@ -8,21 +8,21 @@
         <div class="row">
             <div if={ $resume.skills && $resume.skills.header } class="col-md-24 col-lg-12">
                 <div class="screen2-col-left">
-                    <h2 class="lineHeight-xxxl c-primary mb-l sm-mb-xl md-pr-l editing editing-text editing-skills-header">{ $resume.skills && $resume.skills.header ? $resume.skills.header : $store.resume.placeholder.skills.header }</h2>
+                    <h2 class="lineHeight-xxxl c-primary pb-l sm-pb-xl md-pr-l editing editing-text editing-skills-header" data-scrollin>{ $resume.skills && $resume.skills.header ? $resume.skills.header : $store.resume.placeholder.skills.header }</h2>
                 </div>
             </div>
             <div if={ $resume.skills && $resume.skills.items || !$resume.skills } class="col-md-21 { $resume.skills.header ? 'col-lg-12' : 'col-lg-17 mt-m' }">
                 <div class="screen2-col-right pb-l { 'pl-m' : $resume.skills.header }">
-                    <div class="progress progress-m w100p editing editing-text editing-skills-progress">
-                        <div each={ item in ($resume.skills && $resume.skills.items ? $resume.skills.items : (!$resume.skills ? $store.resume.placeholder.skills.items : [])) } no-reorder class="progress-item mb-m">
-                            <div class="progress-title f-primary">{ item.title }</div>
-                            <div class="progress-score">{ item.value }%</div>
+                    <div class="skills-progress progress progress-m w100p editing editing-text editing-skills-progress">
+                        <div each={ item in ($resume.skills && $resume.skills.items ? $resume.skills.items : (!$resume.skills ? $store.resume.placeholder.skills.items : [])) } no-reorder class="progress-item mb-m headline-icons">
+                            <div class="progress-title f-primary" data-scrollin-icon>{ item.title }</div>
+                            <div class="progress-score" data-scrollin-icon="\{'stagger':60\}">{ item.value }%</div>
                             <div class="progress-line" style="width:{ item.value }%"></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div if={ !$resume.skills || $resume.skills && $resume.skills.text } class="col-xs-24 editing editing-text editing-skills-text">
+            <div if={ !$resume.skills || $resume.skills && $resume.skills.text } class="col-xs-24 editing editing-text editing-skills-text" data-scrollin>
                 <p class="clear">{ $resume.skills && $resume.skills.text ? $resume.skills.text : $store.resume.placeholder.skills.text }</p>
             </div>
         </div>

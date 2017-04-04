@@ -2,7 +2,7 @@ module.exports = function(){
 
     return function(req, res, next){
         var page = req.params.page,
-            perPage = app.config.get('blog:perPage');
+            perPage = app.config.public.get('blog:perPage');
 
         if (!page) page = 1;
 
@@ -95,7 +95,7 @@ module.exports = function(){
         function result(res, data){
             var output = app.riot.render(app.tags("blog", req.device), data);
             res.render(req.device.type == "phone" ? 'index-mobile' : 'index', {
-                title: app.config.get('title:blog'),
+                title: app.config.public.get('title:blog'),
                 content: output
             });
         }

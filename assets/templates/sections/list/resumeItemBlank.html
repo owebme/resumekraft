@@ -1,6 +1,6 @@
 <resume-list-item-blank class="resume__item" data-blank="true">
 
-    <div class="resume__item__header" style="background-image:url('{ item.photo }')">
+    <div class="resume__item__header" style="background-image:url('{ item.commons.photo }')">
         <div class="resume__item__control">
             <div class="resume__item__control__btn resume__item__control__remove"></div>
             <div class="resume__item__control__btn resume__item__control__menu"></div>
@@ -17,7 +17,7 @@
         </div>
         <div class="row resume__item__header__text">
             <div class="col-xs-5 col-sm-6">
-                <div class="resume__item__photo" style="background-image:url('{ item.photo }')"></div>
+                <div class="resume__item__photo" style="background-image:url('{ item.commons.photo }')"></div>
             </div>
             <div class="col-xs-19 col-sm-18">
                 <div class="resume__item__title">{ item.post }</div>
@@ -40,7 +40,7 @@
         </div>
     </div>
 
-    <div class="resume__item__header" style="background-image:url('{ item.photo }')" data-blank="true">
+    <div class="resume__item__header" style="background-image:url('{ item.commons.photo }')" data-blank="true">
         <div class="resume__item__control">
             <span class="display-inlineBlock w25 h25 bg-white opacity-30 borderRadius-circle mb-m"></span>
             <span class="display-inlineBlock w10 h25 bg-white opacity-30 borderRadius-l"></span>
@@ -83,9 +83,9 @@
         template: "1",
         lang: "ru",
         post: "Web-Designer, Art-director, Illustrator",
-        photo: "/preview/images/photo/photo_phone.jpg",
         update: moment('2017-01-12 11:21:00'),
         commons: {
+            photo: "/preview/images/photo/photo_phone.jpg",
             name: "Виктория",
             surname: "",
             gender: "female",

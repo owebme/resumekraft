@@ -10,17 +10,17 @@
     <div name="content" class="section-scroll section__content">
         <div class="willChange-transform">
             <div class="screenMobile__header" data-header="profile">
-                <div onClick={ open.changePhoto } onUpdate="none" class="screenMobile__header__photo" style="background-image:url({ $account.get('photo') })"></div>
+                <div onClick={ open.changePhoto } onUpdate="none" class="screenMobile__header__photo" style="background-image:url({ $account.get('commons', 'photo') })"></div>
             </div>
             <div class="screenMobile__content">
                 <div class="fontSize-28 plr-m text-center text-truncate mb-m">
-                    <span class="c-blue fontWeight-bold">{ $account.get('name') }</span>
-                    <span>{ $account.get('surname') }</span>
+                    <span class="c-blue fontWeight-bold">{ $account.get('commons', 'name') }</span>
+                    <span>{ $account.get('commons', 'surname') }</span>
                 </div>
-                <div if={ $account.get('gender') || $account.get('contacts', 'city') } class="plr-m text-center text-truncate fontSize-20 mt--xs mb-s">
-                    <span if={ $account.get('gender') == "male" } class="text-uppercase fontSize-20">муж.</span>
-                    <span if={ $account.get('gender') == "female" } class="text-uppercase fontSize-20">жен.</span>
-                    <span if={ $account.get('contacts', 'city') }>{ $account.get('contacts', 'city') }</span>
+                <div if={ $account.get('commons', 'gender') || $account.get('commons', 'contacts', 'city') } class="plr-m text-center text-truncate fontSize-20 mt--xs mb-s">
+                    <span if={ $account.get('commons', 'gender') == "male" } class="text-uppercase fontSize-20">муж.</span>
+                    <span if={ $account.get('commons', 'gender') == "female" } class="text-uppercase fontSize-20">жен.</span>
+                    <span if={ $account.get('commons', 'contacts', 'city') }>{ $account.get('commons', 'contacts', 'city', 'name') }</span>
                 </div>
                 <div class="flex-centered mb30">
                     <div onClick={ open.personalData } onUpdate="none" class="btn btn-l2 btn-primary-hover">
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="flex-column-centered w50p h100p">
-                        <span class="c-blackLight fontSize-34 lineHeight-xl fontWeight-bold">{ $account.get('balance') } ₽</span>
+                        <span class="{ parseInt($account.get('balance')) < 369 ? 'c-grayDarken' : 'c-green' } fontSize-34 lineHeight-xl fontWeight-bold">{ $account.get('balance') } ₽</span>
                         <div class="c-gray">баланс</div>
                     </div>
                 </div>
@@ -49,17 +49,17 @@
                 <div class="row text-center mb-l">
                     <div class="col-xs-12">
                         <div class="title">Телефон</div>
-                        <div if={ $account.get('contacts', 'phone') } class="fontSize-22 fontWeight-bold">
-                            { $account.get('contacts', 'phone') }
+                        <div if={ $account.get('commons', 'contacts', 'phone') } class="fontSize-22 fontWeight-bold">
+                            { $account.get('commons', 'contacts', 'phone') }
                         </div>
-                        <div if={ !$account.get('contacts', 'phone') } class="c-gray fontSize-24">— &nbsp; — &nbsp; —</div>
+                        <div if={ !$account.get('commons', 'contacts', 'phone') } class="c-gray fontSize-24">— &nbsp; — &nbsp; —</div>
                     </div>
                     <div class="col-xs-12">
                         <div class="title">Почта</div>
-                        <div if={ $account.get('contacts', 'email') } class="c-blue fontSize-22 text-truncate">
-                            { $account.get('contacts', 'email') }
+                        <div if={ $account.get('commons', 'contacts', 'email') } class="c-blue fontSize-22 text-truncate">
+                            { $account.get('commons', 'contacts', 'email') }
                         </div>
-                        <div if={ !$account.get('contacts', 'email') } class="c-gray fontSize-24">— &nbsp; — &nbsp; —</div>
+                        <div if={ !$account.get('commons', 'contacts', 'email') } class="c-gray fontSize-24">— &nbsp; — &nbsp; —</div>
                     </div>
                 </div>
                 <div class="row">
@@ -140,7 +140,7 @@
                         }
                     },
                     {
-                        title: $account.get('photo') ? 'Изменить фото' : 'Загрузить фото',
+                        title: $account.get('commons', 'photo') ? 'Изменить фото' : 'Загрузить фото',
                         callback: function(){
                             $account.onPhotoUpload();
                         }

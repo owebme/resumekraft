@@ -40,6 +40,7 @@ module.exports = function(){
     	    'assets/js/components/commons/request.js',
     	    'assets/js/components/commons/modules.js',
     	    'assets/js/components/commons/metrika.js',
+            'public/js/commons/metrika.js',
             'assets/js/components/commons/EventEmitter.js',
             'assets/js/components/commons/EventEmitterMicro.js',
     	    'assets/js/components/features/premium.js',
@@ -54,7 +55,14 @@ module.exports = function(){
 
     gulp.task('private.plugins', function() {
     	return gulp.src(['assets/js/plugins/*.js',
-            'assets/js/plugins/scroll/*.js'])
+            'assets/js/plugins/scroll/scroll.Fix.js',
+            'assets/js/plugins/scroll/scroll.RefreshFix.js',
+            'assets/js/plugins/scroll/scroll.Content.js',
+            'assets/js/plugins/scroll/scroll.Slider.js',
+            'assets/js/plugins/scroll/scroll.Parallax.js',
+            'assets/js/plugins/scroll/scroll.Parallax.build.js',
+            'assets/js/plugins/scroll/scroll.Animation.build.js',
+            'assets/js/plugins/scroll/scroll.Animate.js'])
     		.pipe(concat('plugins.js'))
     		.pipe(uglify())
     		.pipe(gulp.dest('./assets/js'));
@@ -85,6 +93,20 @@ module.exports = function(){
             'assets/js/plugins/scroll/parallax/scroll.ParallaxElement.js',
             'assets/js/plugins/scroll/parallax/scroll.ParallaxController.js'])
             .pipe(concat('scroll.Parallax.build.js'))
+            .pipe(uglify())
+            .pipe(gulp.dest('./assets/js/plugins/scroll'));
+    });
+
+    gulp.task('private.plugins.animation', function() {
+        return gulp.src(['assets/js/plugins/scroll/animation/scroll.math.js',
+            'assets/js/plugins/scroll/animation/scroll.BaseComponent.js',
+            'assets/js/plugins/scroll/animation/scroll.sharedClock.js',
+            'assets/js/plugins/scroll/animation/scroll.MotionEmitter.js',
+            'assets/js/plugins/scroll/animation/scroll.ScrollMotionEmitter.js',
+            'assets/js/plugins/scroll/animation/scroll.Animation.js',
+            'assets/js/plugins/scroll/animation/scroll.AnimationStarter.js',
+            'assets/js/plugins/scroll/animation/scroll.AnimationController.js'])
+            .pipe(concat('scroll.Animation.build.js'))
             .pipe(uglify())
             .pipe(gulp.dest('./assets/js/plugins/scroll'));
     });

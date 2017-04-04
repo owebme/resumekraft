@@ -7,9 +7,9 @@
         <div class="container content" data-content="education" data-editing={ true : editing }>
             <div class="pos-rel pb-l mb-xs xs-pb-m xs-mb0" each={ item, i in _.sortArray($resume.select("education", "items").get(), "year", "desc") } no-reorder>
                 <div class="section__num">{ i + 1 }</div>
-                <div if={ editing == item._id } onClick={ close } class="section__btn__close"></div>
-                <div if={ editing != item._id } onClick={ edit } class="section__btn__edit"></div>
-                <resume-screen-education-item item={ item } active={ editing && editing == item._id }></resume-screen-education-item>
+                <div if={ editing == item.id } onClick={ close } class="section__btn__close"></div>
+                <div if={ editing != item.id } onClick={ edit } class="section__btn__edit"></div>
+                <resume-screen-education-item item={ item } active={ editing && editing == item.id }></resume-screen-education-item>
             </div>
             <div class="row">
                 <div class="col-xs-24">
@@ -49,6 +49,7 @@
         $resume.select("education").set({
             title: null,
             text: null,
+            level: "1",
             items: []
         });
 
@@ -60,8 +61,7 @@
 
         $resume.select("education", "items").push(
             {
-                _id: $.editing,
-                level: "1",
+                id: $.editing,
                 title: null,
                 faculty: null,
                 speciality: null,
@@ -78,7 +78,7 @@
             });
         }
         else {
-            $.editing = this.item._id;
+            $.editing = this.item.id;
         }
     };
 
@@ -104,7 +104,7 @@
     };
 
     $.remove = function(){
-        $resume.select("education", "items", {_id: this.item._id}).unset();
+        $resume.select("education", "items", {id: this.item.id}).unset();
         if (!$resume.get("education", "items").length){
             $resume.select("education").set(null);
         }

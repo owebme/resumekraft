@@ -127,7 +127,9 @@
 
     $.on("updated", function(){
         if ($.active){
-            document.addEventListener('click', $.handleClickOutside);
+            setTimeout(function(){
+                document.addEventListener('click', $.handleClickOutside);
+            }, 0);
         }
         else {
             document.removeEventListener('click', $.handleClickOutside)

@@ -37,7 +37,7 @@
                         Новый формат
                     </div>
                     <div class="overview__functions__item__text">
-                        Новый формат резюме в виде презентации на Premium аккаунте
+                        Новый формат резюме позволит выделить вас среди кандидатов
                     </div>
                 </div>
             </div>
@@ -50,24 +50,11 @@
                         Статистика
                     </div>
                     <div class="overview__functions__item__text">
-                        Подробная статистика по дням, посещения вашего резюме
+                        Оценивайте эффективность ваших резюме, подробная статистика
                     </div>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-8 col-md-6 mb-xl xs-mb-l anim-group2 anim-showDown">
-                <div class="overview__functions__item">
-                    <div class="overview__functions__item__icon">
-                        <icon-glass size="xl" color="blue"></icon-glass>
-                    </div>
-                    <div class="overview__functions__item__title">
-                        Стильный дизайн
-                    </div>
-                    <div class="overview__functions__item__text">
-                        Яркие и стильные цвета на выбор, легко сменить и настроить
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-8 col-md-6 mb-xl xs-mb-l anim-group2 anim-showLeft anim-delay-xs">
                 <div class="overview__functions__item">
                     <div class="overview__functions__item__icon">
                         <icon-feedback size="xl" color="blue"></icon-feedback>
@@ -80,7 +67,33 @@
                     </div>
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-8 col-md-6 mb-xl xs-mb-l anim-group2 anim-showLeft anim-delay-xs">
+                <div class="overview__functions__item">
+                    <div class="overview__functions__item__icon">
+                        <icon-glass size="xl" color="blue"></icon-glass>
+                    </div>
+                    <div class="overview__functions__item__title">
+                        Стильный дизайн
+                    </div>
+                    <div class="overview__functions__item__text">
+                        Потресающий дизайн, яркие и стильные цвета, легко сменить и настроить
+                    </div>
+                </div>
+            </div>
             <div class="col-xs-12 col-sm-8 col-md-6 mb-xl xs-mb-l anim-group2 anim-showUp anim-delay-s">
+                <div class="overview__functions__item">
+                    <div class="overview__functions__item__icon">
+                        <icon-play size="xl" color="blue"></icon-play>
+                    </div>
+                    <div class="overview__functions__item__title">
+                        Живое резюме
+                    </div>
+                    <div class="overview__functions__item__text">
+                        Добавьте анимации, чтобы оживить свое резюме
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-6 mb-xl xs-mb-l anim-group2 anim-showRight anim-delay-m">
                 <div class="overview__functions__item">
                     <div class="overview__functions__item__icon">
                         <icon-pdf size="xl" color="blue"></icon-pdf>
@@ -90,19 +103,6 @@
                     </div>
                     <div class="overview__functions__item__text">
                         Скачать резюме в PDF-формате 1:1 каким его сделали вы
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-8 col-md-6 mb-xl xs-mb-l anim-group2 anim-showRight anim-delay-m">
-                <div class="overview__functions__item">
-                    <div class="overview__functions__item__icon">
-                        <icon-print size="xl" color="blue"></icon-print>
-                    </div>
-                    <div class="overview__functions__item__title">
-                        Распечатать
-                    </div>
-                    <div class="overview__functions__item__text">
-                        Сохранить и распечатать свое резюме
                     </div>
                 </div>
             </div>
@@ -141,7 +141,7 @@
                         Прямая ссылка
                     </div>
                     <div class="overview__functions__item__text">
-                        Получить прямую ссылку на резюме и поделиться им в соц. сетях
+                        Получить прямую ссылку на резюме и поделитесь ей в соц. сетях
                     </div>
                 </div>
             </div>
@@ -151,7 +151,7 @@
                         <icon-help size="xl" color="blue"></icon-help>
                     </div>
                     <div class="overview__functions__item__title">
-                        Помощь в написании
+                        Рекомендации
                     </div>
                     <div class="overview__functions__item__text">
                         Советы наших экспертов помогут получить качественное резюме

@@ -2,18 +2,19 @@
 
     <div class="pos-centered">
         <div class="container anim anim-bt-ease" duration-show="s" duration-hide="xs" delay-show="xs">
-            <div class="row">
-                <div name="wrapper" class="col-md-18 col-lg-15 centered">
+            <div class="pos-rel row">
+                <div name="overlay" class="pos-centered w100v h100v zIndex-1"></div>
+                <div class="col-md-18 col-lg-15 centered zIndex-2">
                     <div onClick={ hide } onUpdate="none" class="button__close" data-color="gray"></div>
                     <div name="content" class="pos-rel maxH-95v overflow-hidden section-scroll bg-white borderRadius-xl zIndex-1">
-                        <profile-data-content class="display-block pt70 pb100 pl45 pr45 text-left fontSize-20 c-gray willChange-transform" style={ 'padding-top:130px' : !$account.get("name").length || !$account.get("surname").length }></profile-data-content>
+                        <profile-data-content cursor={ data.select() } class="display-block pt70 pb100 pl45 pr45 text-left fontSize-20 c-gray willChange-transform" style={ 'padding-top:130px' : firstShow }></profile-data-content>
                         <div class="pos-tl bg-gradient-tb-white w100p h80"></div>
-                        <div if={ !data.get("name").length || !data.get("surname").length } class="pos-tl zIndex-2 w100p bg-gradient-tb-white" style="height:130px">
+                        <div if={ firstShow } class="pos-tl zIndex-2 w100p bg-gradient-tb-white" style="height:130px">
                             <div class="pos-abs-full bg-gradient-tb-white">
                                 <div class="pos-abs-full bg-gradient-tb-white"></div>
                             </div>
                             <div class="col-xs-24">
-                                <p class="c-brown pt30 plr-xl text-center fontSize-20 fontWeight-bold">Вводите свои реальные данные, в дальнейшем ваше имя и фамилию изменить будет нельзя.</p>
+                                <p class="c-blueBright pt-m plr-xl text-center fontSize-20 fontWeight-bold">Предлагаем заполнить профиль, чтобы не вводить данные каждый раз при создании нового резюме.</p>
                             </div>
                         </div>
                         <div class="bg-white pos-bl text-right w100p h90 pr45 pt-s zIndex-2 borderRadiusBottom-xl">
@@ -30,9 +31,9 @@
 
     var $ = this;
 
-    $.firstShow = false;
+    //$.firstShow = true;
 
-    $.data = new Baobab($account.deepClone());
+    $.data = new Baobab($account.select('commons').deepClone());
 
     $.on("mount", function(){
         $afterlag.run(function(){
@@ -42,8 +43,7 @@
     });
 
     $.show = function(){
-        $.data.set($account.deepClone());
-        //$.firstShow = true;
+        $.data.set($account.select('commons').deepClone());
 
         $.root.style.display = "block";
 
@@ -52,6 +52,7 @@
                 active: true
             })
             $.scroll.refresh();
+            $.overlay.addEventListener('click', $.hide);
         });
     };
 
@@ -78,20 +79,8 @@
         _.onEndTransition($.root, function(){
             $.root.style.display = "none";
         });
+        $.overlay.removeEventListener('click', $.hide);
     };
-
-    $.handleClickOutside = function(e){
-        if (!$.wrapper.contains(e.target)) $.hide();
-    };
-
-    $.on("updated", function(){
-        if ($.active){
-            document.addEventListener('click', $.handleClickOutside);
-        }
-        else {
-            document.removeEventListener('click', $.handleClickOutside)
-        }
-    });
 
 </script>
 

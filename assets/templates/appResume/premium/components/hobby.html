@@ -6,14 +6,14 @@
 
     <div class="{ blur : !$resume.hobby }">
 
-        <p onClick={ openEditable } onUpdate="none" data-target="text" if={ !$resume.hobby || $resume.hobby && $resume.hobby.text } class="pos-rel editing editing-text editing-hobby-text">{ $resume.hobby && $resume.hobby.text ? $resume.hobby.text : $store.resume.placeholder.hobby.text }</p>
+        <p onClick={ openEditable } onUpdate="none" data-target="text" if={ !$resume.hobby || $resume.hobby && $resume.hobby.text } class="pos-rel editing editing-text editing-hobby-text" data-scrollin>{ $resume.hobby && $resume.hobby.text ? $resume.hobby.text : $store.resume.placeholder.hobby.text }</p>
 
         <div onClick={ openEditable } onUpdate="none" data-target="hobby" class="pos-rel editing editing-text editing-hobby-items">
             <div class="row hobby-items">
-                <div each={ item in $resume.hobby.items } no-reorder class="col-xs-12 col-md-6">
-                    <div class="hobby-item">
-                        <div class="hobby-icon icon-hobby icon-hobby-{ item }"></div>
-                        <div class="hobby-title">{ $store.hobby.getTitleById(item) }</div>
+                <div each={ item, i in $resume.hobby.items } no-reorder class="col-xs-12 col-md-6">
+                    <div class="hobby-item headline-icons">
+                        <div class="hobby-icon icon-hobby icon-hobby-{ item }" data-scrollin-icon="\{'stagger':{ (i * 40) + 40 }\}"></div>
+                        <div class="hobby-title" data-scrollin-icon="\{'stagger':{ (i * 40) + 30 }\}">{ $store.hobby.getTitleById(item) }</div>
                     </div>
                 </div>
             </div>

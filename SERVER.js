@@ -1,5 +1,4 @@
-var config          = require('./libs/config'),
-    log             = require('./libs/log')(module),
+var log             = require('./libs/log')(module),
     express         = require('express'),
     http            = require('http'),
     request         = require('request'),
@@ -15,7 +14,6 @@ var config          = require('./libs/config'),
     cookieParser    = require('cookie-parser'),
     session         = require('express-session'),
     memoryStore     = session.MemoryStore,
-    deflate         = require('permessage-deflate'),
     underscore      = require('underscore'),
     device          = require('express-device'),
     redis           = require('redis');
@@ -26,10 +24,18 @@ var config          = require('./libs/config'),
 //     api[m] = require(m);
 // });
 
+var config = require('./libs/config')({
+    global: "./config.json",
+    public: "./public/config.json",
+    private: "./assets/config.json"
+});
+
 global.app = express();
 app.express = express;
 app.req = request;
-app.config = config;
+app.config = config.use("global");
+app.config.public = config.use("public");
+app.config.private = config.use("private");
 app.riot = riot;
 app.store = {};
 app._tags = {
@@ -38,8 +44,8 @@ app._tags = {
     mobile: {}
 };
 app.async = require('async');
-app.db = require('./libs/db/mongoose')(log, config);
-app.mysql = require('./libs/db/mysql')(log, config);
+app.db = require('./libs/db/mongoose')(log, app.config);
+app.mysql = require('./libs/db/mysql')(log, app.config);
 app.redis = redis.createClient();
 app.log = log;
 app.errHandler = require('./libs/errHandler');
@@ -71,9 +77,9 @@ app.use(bodyParser.json({limit: '2mb'}));
 app.use(bodyParser.urlencoded({ limit: '2mb', extended: false }));
 app.use(device.capture());
 app.use(session({
-    secret: config.get('session:secret'),
-	key: config.get('session:key'),
-    cookie: config.get('session:cookie'),
+    secret: app.config.get('session:secret'),
+	key: app.config.get('session:key'),
+    cookie: app.config.get('session:cookie'),
     store: new memoryStore(),
     resave: true,
     saveUninitialized: true
@@ -159,6 +165,6 @@ var server = http.createServer(app),
 //     };
 // });
 
-server.listen(config.get('port'), function(){
-	app.log.info('Express server listening on port ' + config.get('port'));
+server.listen(app.config.get('port'), function(){
+	app.log.info('Express server listening on port ' + app.config.get('port'));
 });

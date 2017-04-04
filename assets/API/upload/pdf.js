@@ -6,9 +6,9 @@ module.exports = function(){
 	return function(req, res, next){
 
         var id = req.body.id,
-            pathPdf = app.config.get('path:pdf') + id + '.pdf',
-			options = app.config.get('resume:pdf'),
-            output = app.swig.renderFile(process.cwd() + app.config.get('path:template:basic'), {
+            pathPdf = app.config.public.get('path:pdf') + id + '.pdf',
+			options = app.config.private.get('resume:pdf'),
+            output = app.swig.renderFile(process.cwd() + app.config.public.get('path:template:basic'), {
                 num: req.body.template,
 				stamp: req.body.stamp,
 				width: options.width,

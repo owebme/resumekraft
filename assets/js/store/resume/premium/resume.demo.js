@@ -26,13 +26,13 @@
 $store.demo = {
         _id: "588becda9f1df3915186566b",
         public: true,
-        plan: "basic",
+        plan: "premium",
         template: "1",
         lang: "ru",
         post: "Web-Designer, Art-director, Illustrator",
-        photo: "/preview/images/photo/photo_phone.jpg",
         percent: "97",
         commons: {
+            photo: "/preview/images/photo/photo_phone.jpg",
             name: "Виктория",
             surname: "",
             gender: "female",
@@ -42,12 +42,22 @@ $store.demo = {
                 year: "1986",
                 hidden: true
             },
+            citizenship: "113",
+            businessTrip: "ready",
+            relocation: "no_relocation",
+            travelTime: "any",
+            specialization: [],
+            employments: [],
+            schedules: ['fullDay', 'remote'],
             contacts: {
-                city: "Москва",
+                city: {
+                    id: "1",
+                    name: "Москва"
+                },
+                metro: null,
                 email: "victory@gmail.com",
                 phone: "(900) 500-5550",
-                primary: "any",
-                relocate: true,
+                primary: "email",
                 site: "http://web-projects.me",
                 skype: "myskype"
             }
@@ -94,7 +104,7 @@ $store.demo = {
             text: "Наличие деловых контактов с представителями различных сфер таких как бизнесмены, журналисты, работники творческих профессий (продюсеры, художники, скульпторы, музыканты, и пр.)",
             items: [
                 {
-                    _id: "1",
+                    id: "1",
                     year: "2015",
                     title: "YellStore",
                     text: "Idea, design UI/UX, Single Page App on JS, jQuery, Ajax, catching on client side, templates with mustache, css transform/transition, SVG, responsive, smacss, bem, gulp. Later in the task of writing Rest Full API on backend.",
@@ -114,7 +124,7 @@ $store.demo = {
                     }
                 },
                 {
-                    _id: "2",
+                    id: "2",
                     year: "2014",
                     title: "ResumeKraft",
                     text: "Idea, design UI/UX, ModPerl, frontend only native JS, HTML5, canvas, Ajax, catching on client side, css transform/transition, responsive, smacss, gulp.",
@@ -134,7 +144,7 @@ $store.demo = {
                     }
                 },
                 {
-                    _id: "3",
+                    id: "3",
                     year: "2014",
                     title: "JQ test",
                     text: "Idea, design UI/UX, JS, jQuery, Ajax, css transform/transition, responsive, less, gulp.",
@@ -154,7 +164,7 @@ $store.demo = {
                     }
                 },
                 {
-                    _id: "4",
+                    id: "4",
                     year: "2013",
                     title: "SalesVR",
                     text: "ModPerl, catching on server side, JS (jQuery), bootstrap, fontawesome.",
@@ -174,7 +184,7 @@ $store.demo = {
                     }
                 },
                 {
-                    _id: "5",
+                    id: "5",
                     year: "2012",
                     title: "UpleCEO",
                     text: "Perl, JS (jQuery), bootstrap, fontawesome, connection APIs: YandexMetrica, YandexWebmaster, Sape, eTXT.",
@@ -194,7 +204,7 @@ $store.demo = {
                     }
                 },
                 {
-                    _id: "6",
+                    id: "6",
                     year: "2010",
                     title: "UpleCRM",
                     text: "Idea, design UI/UX, Perl, JS (jQuery), connection API YandexDirect. 18 modules.",
@@ -240,19 +250,18 @@ $store.demo = {
         },
         education: {
             title: "Образование",
+            level: "1",
             text: "Люблю учиться и повышать свои профессиональные навыки.",
             items: [
                 {
-                    _id: "1",
-                    level: "1",
+                    id: "1",
                     title: "Российская академия народного хозяйства и государственной службы при Президенте РФ, Москва",
                     faculty: 'Инновационно-технологического бизнеса',
                     speciality: "Инновационный менеджмент",
                     year: "2013"
                 },
                 {
-                    _id: "2",
-                    level: "1",
+                    id: "2",
                     title: "Международная академия бизнеса и управления (МУБиУ), Москва",
                     faculty: 'Институт дизайна и рекламы',
                     speciality: "Дизайн архитектурной среды",
@@ -265,19 +274,19 @@ $store.demo = {
             text: "Тяга к исследовательской деятельности, постоянному образованию, поиску и внедрению нестандартных решений.",
             items: [
                 {
-                    _id: "1",
+                    id: "1",
                     name: "Тренинговое Агентство «Мастер-Класс», Москва",
                     title: "Семинар «Эффективная рекламная деятельность фирмы»",
                     year: "2008"
                 },
                 {
-                    _id: "2",
+                    id: "2",
                     name: "Тренинговое Агентство «Мастер-Класс», Москва",
                     title: "Тренинг «Эффективное руководство сотрудниками»",
                     year: "2008"
                 },
                 {
-                    _id: "3",
+                    id: "3",
                     name: "DIGITAL PAINTING / Painter, Москва",
                     title: "Школа Real Time",
                     year: "2006"
@@ -290,19 +299,19 @@ $store.demo = {
             items: [
                 {
                     title: "native",
-                    value: "4"
+                    value: "rus"
                 },
                 {
-                    title: "en",
-                    value: "4"
+                    title: "eng",
+                    value: "can_pass_interview"
                 },
                 {
-                    title: "de",
-                    value: "1"
+                    title: "deu",
+                    value: "not"
                 },
                 {
-                    title: "fr",
-                    value: "2"
+                    title: "fra",
+                    value: "basic"
                 }
             ]
         },
@@ -311,7 +320,7 @@ $store.demo = {
             text: "Стабильность и ответственность, способность закрывать участки работ гарантируя полную надежность и прозрачность процесса, принимать ответственные решения, грамотно мотивировать людей, снижать риски и достигать поставленных целей.",
             items: [
                 {
-                    _id: "1",
+                    id: "1",
                     title: "Технопарк Сколково, ООО",
                     city: "Москва",
                     post: "Специалист по коммуникациям",
@@ -327,7 +336,7 @@ $store.demo = {
                     last: true
                 },
                 {
-                    _id: "2",
+                    id: "2",
                     title: "ООО НПП «Тензосенсор»",
                     city: "Москва",
                     post: "Финансовый директор",
@@ -343,7 +352,7 @@ $store.demo = {
                     last: false
                 },
                 {
-                    _id: "3",
+                    id: "3",
                     title: "ООО НТЦ «Интрофизика»",
                     city: "Москва",
                     post: "Заместитель директора по маркетингу",
@@ -366,49 +375,43 @@ $store.demo = {
             items: ['airplane', 'comedy', 'swimmer', 'musical']
         },
         coverletter: {
-            text: "Привет ;)\n Я графический дизайнер. В дизайне предпочитаю лаконичный стиль. В тексте — информационный. Убираю всё, что мешает увидеть суть.",
+            text: "Привет ;)\nЯ графический дизайнер. В дизайне предпочитаю лаконичный стиль. В тексте — информационный. Убираю всё, что мешает увидеть суть.",
             color: "1"
         },
         sections: [
             {
                 name: "salary",
                 title: "Желаемая зарплата",
-                short: "Зарплата",
                 control: true,
                 active: true
             },
             {
                 name: "tags",
                 title: "Ключевые навыки",
-                short: "Навыки",
                 control: true,
                 active: true
             },
             {
                 name: "appeal",
                 title: "Заголовок-обращение",
-                short: "Обращение",
                 control: true,
                 active: true
             },
             {
                 name: "about",
                 title: "О себе текст",
-                short: "О себе",
                 control: true,
                 active: true
             },
             {
                 name: "social",
                 title: "Аккаунты в соц. сетях",
-                short: "Соц. ссылки",
                 control: true,
                 active: true
             },
             {
                 name: "works",
                 title: "Мои проекты",
-                short: "Проекты",
                 screen: true,
                 control: true,
                 active: true
@@ -416,7 +419,6 @@ $store.demo = {
             {
                 name: "skills",
                 title: "Основные компетенции",
-                short: "Навыки",
                 screen: true,
                 control: true,
                 active: true
@@ -424,7 +426,6 @@ $store.demo = {
             {
                 name: "education",
                 title: "Образование",
-                short: "Учеба",
                 screen: true,
                 control: true,
                 active: true
@@ -432,7 +433,6 @@ $store.demo = {
             {
                 name: "courses",
                 title: "Курсы",
-                short: "Курсы",
                 screen: true,
                 control: true,
                 active: true
@@ -440,7 +440,6 @@ $store.demo = {
             {
                 name: "languages",
                 title: "Владение языками",
-                short: "Языки",
                 screen: true,
                 control: true,
                 active: true
@@ -448,7 +447,6 @@ $store.demo = {
             {
                 name: "jobs",
                 title: "Работа в компаниях",
-                short: "Карьера",
                 screen: true,
                 control: true,
                 active: true
@@ -456,7 +454,6 @@ $store.demo = {
             {
                 name: "hobby",
                 title: "Мои хобби",
-                short: "Хобби",
                 screen: true,
                 control: true,
                 active: true
@@ -464,23 +461,27 @@ $store.demo = {
             {
                 name: "contacts",
                 title: "Контакты",
-                short: "Контакты",
                 screen: true,
-                control: true,
+                control: false,
+                active: true
+            },
+            {
+                name: "more",
+                title: "Командировки",
+                screen: true,
+                control: false,
                 active: true
             },
             {
                 name: "feedback",
                 title: "Обратная связь",
-                short: "Обратная связь",
                 screen: true,
-                control: true,
+                control: false,
                 active: true
             },
             {
                 name: "coverletter",
                 title: "Сопроводительное письмо",
-                short: "Письмо",
                 screen: true,
                 control: false,
                 active: false
@@ -492,7 +493,8 @@ $store.demo = {
             photo: {
                 minWidth: 440,
                 maxHeight: 620,
-                noise: false
+                noise: false,
+                filter: "off"
             },
             pdf: {
                 logotype: true
@@ -501,6 +503,7 @@ $store.demo = {
                 active: true,
                 count: true
             },
+            animate: true,
             stat: false
         }
     }

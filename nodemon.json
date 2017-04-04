@@ -6,8 +6,12 @@
       "/public/controllers/**",
       "/public/router/*.*",
       "/public/templates/**/*.*",
+      "/assets/templates/sections/jptest/jptest-enter.tag",
+      "/assets/templates/sections/overview/premium/overviewPremiumContent.tag",
       "/views/**",
       "/SERVER.js",
+      "/assets/config.json",
+      "/public/config.json",
       "/config.json"
   ],
   "ignore" : [

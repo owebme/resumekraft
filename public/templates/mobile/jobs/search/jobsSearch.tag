@@ -6,6 +6,8 @@
 
     <jobs-search-pages page={ opts.page } pages={ opts.pages } utils={ opts.utils }></jobs-search-pages>
 
+    <jobs-footer></jobs-footer>
+
     <screen-search-filter></screen-search-filter>
 
     <screen-vacancy></screen-vacancy>

@@ -1,7 +1,7 @@
 module.exports = function(){
 
     return function(req, res, next){
-        var countsAll = app.config.get('hh:vacancy:counter');
+        var countsAll = app.config.public.get('hh:vacancy:counter');
 
         app.redis.get("jobsCountsAll", function(err, data) {
             if (!err && data) countsAll = data;

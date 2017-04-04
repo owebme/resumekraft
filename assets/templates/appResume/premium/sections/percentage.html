@@ -6,77 +6,34 @@
 
 <script>
 
-    var $ = this,
-    keys = [
-        { name: "commons.name", points: 3 },
-        { name: "commons.surname", points: 3 },
-        { name: "post", points: 3 },
-        { name: "photo", points: 5 },
-        { name: "commons.contacts.city", points: 3 },
-        { name: "commons.contacts.email", points: 3 },
-        { name: "commons.contacts.phone", points: 3 },
-        { name: "commons.contacts.skype", points: 3 },
-        { name: "salary", section: true, points: 5 },
-        { name: "about", section: true, points: 5 },
-        { name: "appeal", section: true, points: 3 },
-        { name: "tags", section: true, points: 10 },
-        { name: "social", section: true, points: 5 },
-        { name: "works", section: true, points: 8 },
-        { name: "works.text", section: true, points: 2 },
-        { name: "jobs", section: true, points: 8 },
-        { name: "jobs.text", section: true, points: 2 },
-        { name: "skills", section: true, points: 6 },
-        { name: "skills.header", section: true, points: 2 },
-        { name: "skills.text", section: true, points: 2 },
-        { name: "education", section: true, points: 8 },
-        { name: "education.text", section: true, points: 2 },
-        { name: "courses", section: true, points: 8 },
-        { name: "courses.text", section: true, points: 2 },
-        { name: "languages", section: true, points: 8 },
-        { name: "languages.text", section: true, points: 2 },
-        { name: "hobby", section: true, points: 4 },
-        { name: "hobby.text", section: true, points: 1 },
-        { name: "coverletter.text", section: true, points: 5 }
-    ];
+    var $ = this;
 
     $.on("before-mount", function(){
-        $.calc();
+        $.result($store.resume.percentage.calc("premium", $store.resume));
     });
 
     $.on("mount", function(){
-        var recalc = _.debounce($.calc, 100);
-
+        var recalc = _.debounce($store.resume.percentage.calc, 100);
         $store.resume.on("update", function(e){
-            recalc();
+            if (!$.recalc){
+                recalc("premium", $store.resume, $.result);
+            }
         });
     });
 
-    $.calc = function(){
-        var p = 0,
-            all = _.reduce(_.pluck(keys, 'points'), function(memo, num){ return memo + num; }, 0);
-
-        _.each(keys, function(item){
-            if ($store.resume.get(item.name.split("."))){
-                if (item.section && !item.name.match(/\./)){
-                    if ($store.resume.get("sections", {"name": item.name}, "active")){
-                        p += item.points;
-                    }
-                }
-                else {
-                    p += item.points;
-                }
-            }
-        });
-
-        var result = Math.floor((p / all) * 100);
-
-        result = result > 100 ? 100 : result
+    $.result = function(percent){
+        $.recalc = true;
 
         $.update({
-            p: result,
-            tY: result > 90 ? 10 : 100 - p
+            p: percent,
+            tY: percent > 90 ? 10 : 100 - percent
         });
-        $store.resume.select("percent").set(result);
+
+        $store.resume.select("percent").set(percent);
+
+        setTimeout(function(){
+            $.recalc = false;
+        }, 20);
     };
 
     $.on("unmount", function(){

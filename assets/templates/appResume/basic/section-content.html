@@ -118,7 +118,7 @@
         photoUpload: function(){
             console.log("photoUpload", $resume.get("_id"));
             $store.data.onPhotoUpload($resume.get("_id"), function(image){
-                $resume.select("photo").set(image);
+                $resume.select('commons', 'photo').set(image);
             });
             app.metrika.set("resume.create.control.photo", true);
         },

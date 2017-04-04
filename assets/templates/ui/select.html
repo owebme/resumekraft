@@ -1,7 +1,7 @@
 <ui-select class="select select-{ opts.size ? opts.size : 'm' } { short : typeof opts.short !== 'undefined' }">
 
     <select name="select" onChange={ onChange } onUpdate={ opts.onupdate ? opts.onupdate : "none" } disabled={ disable }>
-        <option each={ item in opts.items } selected={ item._id == value || item == value } value={ item._id ? item._id : item }>{ item.title ? item.title : item }</option>
+        <option each={ item, i in opts.items } no-reorder selected={ item._id == value || item == value || (value === null && i == 0) } value={ item._id ? item._id : item }>{ item.title ? item.title : item }</option>
     </select>
 
 <script>
@@ -21,11 +21,11 @@
     $.on("update", function(){
         if ((!$.opts.value || !$.opts.onupdate) && $.opts.update && $.opts.cursor){
             $.value = $.opts.cursor.get($.opts.update);
-            $.select.value = $.value;
+            if ($.value !== null && $.value !== undefined) $.select.value = $.value;
         }
         else if ($.opts.value && $.opts.value !== $.value){
             $.value = $.opts.value;
-            $.select.value = $.value;
+            if ($.value !== null && $.value !== undefined) $.select.value = $.value;
         }
         if (_.isBoolean($.opts.disable) && $.opts.disable !== $.disable){
             $.disable = $.opts.disable;

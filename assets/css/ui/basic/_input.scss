@@ -289,6 +289,7 @@
     }
     &-autosuggest {
         @extend .pos-rel;
+        @extend .display-block;
 
         &-items {
             @extend .pos-abs;
@@ -297,6 +298,7 @@
             @extend .w100p;
             @extend .bg-white;
             @extend .ptb-xxs;
+            @extend .text-left;
             @extend .borderRadiusBottom-l;
 
             &:empty {
@@ -304,7 +306,7 @@
                 @extend .pointerEvents-none;
             }
             &:not(:empty) {
-                @extend .boxShadow-25;
+                box-shadow:0 8px 40px 0 rgba(0,0,0,.1), 0 1px 4px 0 rgba(0,0,0,.06);
                 @extend .zIndex-101;
             }
             &[data-image="true"]{
@@ -320,12 +322,13 @@
             @extend .cursor-pointer;
             @extend .plr-m;
             @extend .ptb-xss;
+            @extend .letterSpacing-0;
             border-bottom:1px solid $smokeLight;
 
             .m-no-touch &:hover,
             &[data-active="true"] {
                 @extend .c-black;
-                @extend .bg-smokeLight;
+                background-color:rgba($blueLight,.15);
             }
             &-title {
                 @extend .text-truncate;

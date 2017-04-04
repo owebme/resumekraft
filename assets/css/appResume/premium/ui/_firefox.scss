@@ -1,0 +1,15 @@
+.d-firefox {
+    .form {
+        &-input,
+        &-textarea {
+            border:none;
+        }
+    }
+    .info-opener,
+    .info-photo,
+    .sendmail-button,
+    .salary-graph-opener,
+    .social-btn {
+        border-radius:50%;
+    }
+}

@@ -108,7 +108,7 @@
         input {
             @extend .display-none;
         }
-        input:checked {
+        input[checked] {
             + label {
                 @extend .c-white;
                 @extend .fontWeight-bold;
@@ -125,7 +125,7 @@
             @extend .w50p;
             @extend .h100p;
 
-            &:checked ~ {
+            &[checked] ~ {
                 .switcher-group-switch {
                     transform:translate3d(98%, 0, 0) scale(1.08);
                 }

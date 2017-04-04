@@ -4,6 +4,19 @@
         @extend .overflow-hidden;
         margin-bottom:145px;
 
+        .anim {
+            &.anim-scale-soft[class^="slide"] {
+                transition-duration:1s;
+            }
+            &.anim-rl-soft,
+            &.anim-lr-soft {
+                transition:transform 1.4s $cubic2501, opacity 1s $cubic2501;
+            }
+        }
+        // *[data-scrollin],
+        // *[data-scrollin-icon]{
+        //     @extend .willChange-tp;
+        // }
         &[data-bg="gradient-tb"]{
             background:linear-gradient(to bottom, #fff 0%, #fff 68%, #f2f2f2 100%);
         }

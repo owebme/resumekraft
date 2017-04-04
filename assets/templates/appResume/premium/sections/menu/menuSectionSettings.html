@@ -59,10 +59,27 @@
         </div>
         <div class="row h50 mb-m">
             <div class="col-xs-17 col-sm-12 pt-xs pr-m">
-                <span class="title black">Показывать кол-во лайков</span>
+                <span class="title black">Показывать лайки</span>
             </div>
             <div class="col-xs-7 col-sm-12 pt-xs">
                 <ui-switcher update="count" cursor={ $store.resume.select("config", "likes") }></ui-switcher>
+            </div>
+        </div>
+        <div class="row h50 mb-m hidden-xs">
+            <div class="col-xs-17 col-sm-12 pt-xs pr-m">
+                <span class="title black">Оживить резюме анимацией</span>
+            </div>
+            <div class="col-xs-7 col-sm-12 pt-xs">
+                <ui-switcher update="animate" cursor={ $State.select() }></ui-switcher>
+            </div>
+        </div>
+        <div class="row mb-m">
+            <div class="hidden-xs col-sm-12 pt-xs pr-m">
+                <span class="title black">Фотофильтр</span>
+            </div>
+            <div class="col-xs-24 col-sm-12 select-uppercase">
+                <span class="input-title">Фотофильтр</span>
+                <ui-select update="filter" cursor={ $State.select("photo") } items={ $store.photoFilter.get() } size="l"></ui-select>
             </div>
         </div>
         <div class="row h50">

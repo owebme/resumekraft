@@ -11,7 +11,7 @@ module.exports = function(){
 
             function(callback){
                 request.get({
-            	    uri: app.config.get('parser:weather:url'),
+            	    uri: app.config.public.get('parser:weather:url'),
             		encoding: 'utf8'
             	},
             	function(error, response, xml){
@@ -76,7 +76,7 @@ module.exports = function(){
 
             function(callback){
                 request.get({
-            	    uri: app.config.get('parser:currency:url'),
+            	    uri: app.config.public.get('parser:currency:url'),
             		encoding: 'binary'
             	},
             	function(error, response, xml){
@@ -89,7 +89,7 @@ module.exports = function(){
 
             					var currency = [],
             						date = data.ValCurs.$.Date,
-            						valuta = app.config.get('parser:currency:valuta');
+            						valuta = app.config.public.get('parser:currency:valuta');
 
             					for (var i=0; i < 100; i++){
             						if (data.ValCurs.Valute[i] && valuta.indexOf(data.ValCurs.Valute[i].CharCode) > -1){

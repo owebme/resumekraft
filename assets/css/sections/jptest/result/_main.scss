@@ -160,6 +160,9 @@ jptest-result {
         &[data-marquee="stimulus"] {
             margin-bottom:138px;
 
+            .larger {
+                @extend .c-blackLight;
+            }
             .marker:before {
                 background-color:#A783ED;
             }
@@ -207,7 +210,7 @@ jptest-result {
             }
         }
         &[data-marquee="weaksides"] {
-            margin-bottom:118px;
+            margin-bottom:138px;
 
             .d-phone & {
                 @extend .bg-grayDark;
@@ -235,12 +238,14 @@ jptest-result {
             }
         }
         &[data-marquee="development"] {
-            min-height:1600px;
-            margin-bottom:205px;
+            &[data-large="true"] {
+                min-height:1600px;
+                margin-bottom:205px;
 
-            .d-phone & {
-                min-height:auto;
-                @extend .mb0;
+                .d-phone & {
+                    @extend .minH-auto;
+                    @extend .mb0;
+                }
             }
         }
         &[data-marquee="personality"] {

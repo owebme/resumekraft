@@ -80,6 +80,7 @@
             if (_.isNumber(screen)){
                 if (screen > this.items.length - 1) screen = this.items.length - 1;
                 this.marquee.scrollTo(screen, duration !== undefined ? duration : undefined);
+                if (duration == 0) this.marquee.refresh();
             }
             else {
                 if (!screen) return;
@@ -87,6 +88,7 @@
                 if (item && item.index) {
                     this.state = item.title;
                     this.marquee.scrollTo(item.index, duration !== undefined ? duration : undefined);
+                    if (duration == 0) this.marquee.refresh();
                 }
             }
         },

@@ -5,7 +5,7 @@ module.exports = function() {
 		var $ = req.body,
             id = $.label,
             success = null,
-            secret = app.config.get('payment:yamoney:secret');
+            secret = app.config.public.get('payment:yamoney:secret');
             md5 = app.utils.sha1Hex($.notification_type + "&" + $.operation_id + "&" + $.amount + "&" + $.currency + "&" + $.datetime + "&" + $.sender + "&" + $.codepro + "&" + $.secret + "&" + $.label);
 
 		if (md5 == $["sha1_hash"] && $.amount > 0 && id){
