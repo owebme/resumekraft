@@ -1,9 +1,14 @@
 .section__editable {
     .textarea {
         &-xl {
-            min-height:200px;
+            min-height:38vh;
+            max-height:330px;
             box-shadow:0 0 0 2px $white;
 
+            .d-no-phone & {
+                @extend .pl25;
+                @extend .pr50;
+            }
             .d-phone & {
                 padding-top:8px;
                 padding-bottom:10px;
@@ -18,6 +23,22 @@
         }
         &::-moz-input-placeholder {
             color:rgba($steel,.8);
+        }
+    }
+    .textarea-expand {
+        @extend .display-block;
+        @extend .pos-tr;
+        @extend .pt-xss;
+        @extend .pr-xxs;
+        @extend .pl-xs;
+        @extend .pb-xs;
+        @extend .bg-white;
+        @extend .borderRadius-m;
+        @extend .btn-active;
+
+        svg {
+            @extend .w30;
+            @extend .h30;
         }
     }
 }

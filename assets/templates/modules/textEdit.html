@@ -1,4 +1,4 @@
-<resume-text-edit class="oScreen zIndex-10 c-white" data-show="modal" data-color="blue" data-open={ active }>
+<text-edit class="oScreen zIndex-{ opts.zindex || '101' } c-{ opts.textcolor || 'white' }" data-show="modal" data-color="{ opts.color || 'blue' }" data-open={ active }>
 
     <div name="content" class="oScreen__content">
         <div class="pos-centered">
@@ -9,7 +9,7 @@
                             <div onClick={ hide } onUpdate="none" class="textEdit__button" data-item="close"></div>
                             <div onClick={ save } onUpdate="none" class="textEdit__button" data-item="save"></div>
                         </div>
-                        <textarea name="textarea" class="textarea textarea-xl" placeholder={ item.placeholder }>{ item.cursor.get() }</textarea>
+                        <textarea name="textarea" class="textarea textarea-xl" placeholder={ item.placeholder }>{ item.cursor ? item.cursor.get() : item.value }</textarea>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,8 @@
     $.active = false;
 
     $.show = function(options){
-        $.textarea.value = options.cursor.get();
+        var options = options || {};
+        $.textarea.value = options.cursor ? options.cursor.get() : options.value;
         $.update({
             active: true,
             item: options
@@ -44,4 +45,4 @@
 
 </script>
 
-</resume-text-edit>
+</text-edit>

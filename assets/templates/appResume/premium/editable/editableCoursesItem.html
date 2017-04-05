@@ -1,18 +1,18 @@
 <editable-courses-item>
 
     <div class="row mb-m mt-m">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="pos-rel">
                 <span class="input-title">год окончания</span>
-                <div class="select select-l">
+                <div class="select select-xl">
                     <select onChange={ $Editable.component.autoCommitItems } data-name="year">
                         <option each={ item in _.range(1940, new Date().getFullYear() + 1) } no-reorder value={ item } selected={ editing.year == item }>{ item }</option>
                     </select>
                 </div>
             </div>
         </div>
-        <div class="col-md-12 xsm-mt-m">
-            <input onInput={ $Editable.component.autoCommitItems } class="input input-l" type="text" placeholder="Название площадки / школы" data-name="name" autocomplete="off" value={ opts.item.name }>
+        <div class="col-md-18 xsm-mt-m">
+            <input onInput={ $Editable.component.autoCommitItems } class="input input-xl" type="text" placeholder="Название площадки / школы" data-name="name" autocomplete="off" value={ opts.item.name }>
         </div>
     </div>
     <div class="row mb-m">

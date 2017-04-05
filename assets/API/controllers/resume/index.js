@@ -171,7 +171,7 @@ module.exports = function(){
 					level: value.level && value.level.id && String(value.level.id) || "higher",
 					items: app.utils.map(value.primary, function(item, i){
 						return {
-							id: i + 1,
+							id: String(i + 1),
 		                    title: item.name,
 		                    faculty: item.organization,
 		                    speciality: item.result,
@@ -191,7 +191,7 @@ module.exports = function(){
 					text: null,
 					items: app.utils.map(value.additional, function(item, i){
 						return {
-		                    id: i + 1,
+		                    id: String(i + 1),
 		                    name: item.organization,
 		                    title: item.name,
 		                    year: item.year
@@ -262,7 +262,7 @@ module.exports = function(){
 					experience: experience && String(experience.months) || null,
 					items: app.utils.map(value, function(item, i){
 						return {
-							id: i + 1,
+							id: String(i + 1),
 		                    title: item.company,
 		                    city: item.area && item.area.name || null,
 		                    post: item.position,

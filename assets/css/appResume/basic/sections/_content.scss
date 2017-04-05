@@ -24,10 +24,10 @@
             @extend .l0;
             @extend .ptb-l;
             @extend .pl-m;
-            @extend .pr-s;
+            @extend .pr25;
+            @extend .ml0;
             font-size:38px;
             line-height:38px;
-            margin-left:3px;
         }
     }
     .subtitle {
@@ -90,6 +90,8 @@
             }
         }
         &[data-content="skills"]{
+            @extend .pb70;
+
             .d-no-mobile & {
                 width:850px;
             }

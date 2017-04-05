@@ -39,7 +39,10 @@
             <div class="col-xs-24">
                 <div class="pos-rel">
                     <span class="input-title">вступительный текст</span>
-                    <textarea onInput={ $Editable.component.autoCommit } class="textarea textarea-xl" data-name="text" name="text_data" autocomplete="off">{ data.text }</textarea>
+                    <div class="pos-rel">
+                        <textarea-expand onClick={ $Editable.component.textEdit } data-name="text"></textarea-expand>
+                        <textarea onInput={ $Editable.component.autoCommit } class="textarea textarea-xl" data-name="text" name="text_data" autocomplete="off">{ data.text }</textarea>
+                    </div>
                 </div>
             </div>
         </div>

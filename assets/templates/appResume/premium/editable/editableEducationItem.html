@@ -1,13 +1,7 @@
 <editable-education-item>
 
     <div class="row mb-m mt-m">
-        <div class="col-md-18">
-            <div class="pos-rel">
-                <span class="input-title">название заведения</span>
-                <editable-education-item-name item={ opts.item }></editable-education-item-name>
-            </div>
-        </div>
-        <div class="col-md-6 xsm-mt-m">
+        <div class="col-md-6">
             <div class="pos-rel xs-mt-l">
                 <span class="input-title">год окончания</span>
                 <div class="select select-xl">
@@ -15,6 +9,12 @@
                         <option each={ item in _.range(1940, new Date().getFullYear() + 1) } no-reorder value={ item } selected={ editing.year == item }>{ item }</option>
                     </select>
                 </div>
+            </div>
+        </div>
+        <div class="col-md-18 xsm-mt-m">
+            <div class="pos-rel">
+                <span class="input-title">название заведения</span>
+                <editable-education-item-name item={ opts.item }></editable-education-item-name>
             </div>
         </div>
     </div>

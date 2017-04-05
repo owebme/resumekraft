@@ -30,7 +30,9 @@
         }
         .d-phone & {
             transform:translate3d(0, -55px, 0);
-            padding-top:1px;
+            @extend .w48;
+            @extend .h48;
+            padding-top:2px;
         }
     }
     .content {
@@ -166,6 +168,7 @@
             @extend .r100;
             @extend .mr-l;
             @extend .pl-l;
+            @extend .xs-pl0;
             @extend .c-blue;
             @extend .fontSize-28;
             width:240px;

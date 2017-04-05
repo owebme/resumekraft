@@ -79,6 +79,7 @@
         else {
             $.items.splice(this.i, 1);
         }
+        $.trigger("removeTag", this.i);
     };
 
     $.checkAndInsert = function(value){
@@ -109,6 +110,7 @@
                 value: null
             })
             $.elem.input.focus();
+            $.trigger("addTag", value);
         }
     };
 

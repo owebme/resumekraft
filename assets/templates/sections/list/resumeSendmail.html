@@ -47,11 +47,15 @@
     $.input = $$($.input);
 
     $.show = function(id){
+        if ($.active) return;
+
+        $.active = true;
+
         $.root.style.display = "block";
+
         $afterlag.run(function(){
             $.update({
-                id: id,
-                active: true
+                id: id
             })
             if (!app.device.isMobile){
                 _.onEndTransition($.area, function(){
@@ -59,6 +63,7 @@
                 });
             }
         });
+        document.removeEventListener('click', $.handleClickOutside)
     };
 
     $.onEnter = function(e){
@@ -105,6 +110,8 @@
     };
 
     $.hide = function(){
+        if (!$.active) return;
+
         $.update({
             active: false
         })

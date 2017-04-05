@@ -86,14 +86,14 @@
         &#active {
             @extend .display-block;
         }
-        &[data-editing="textarea"],
         &[data-editing="tags"]{
             transform:translateY(25.6vh);
             margin-bottom:12.8vh;
         }
+        &[data-editing="textarea"],
         &[data-editing="more"]{
             transform:translateY(22.6vh);
-            margin-bottom:8.8vh;
+            margin-bottom:7.8vh;
         }
         &[data-editing="social"],
         &[data-editing="salaryGraph"]{

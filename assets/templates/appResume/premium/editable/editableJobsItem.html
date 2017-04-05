@@ -59,7 +59,10 @@
     </div>
     <div class="row mb-m">
         <div class="col-xs-24 xs-mt-m">
-            <textarea onInput={ $Editable.component.autoCommitItems } class="textarea textarea-xl" placeholder="Описание обязанностей, функции" data-name="text" autocomplete="off">{ opts.item.text }</textarea>
+            <div class="pos-rel">
+                <textarea-expand onClick={ $Editable.component.textEdit } placeholder="Описание обязанностей, функции" data-name="text"></textarea-expand>
+                <textarea onInput={ $Editable.component.autoCommitItems } class="textarea textarea-xl" placeholder="Описание обязанностей, функции" data-name="text" autocomplete="off">{ opts.item.text }</textarea>
+            </div>
         </div>
     </div>
 

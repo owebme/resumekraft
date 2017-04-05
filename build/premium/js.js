@@ -38,6 +38,7 @@ module.exports = function(){
     		'assets/templates/appResume/commons/**/*.html',
             'assets/templates/modules/loader.html',
             'assets/templates/modules/notify.html',
+            'assets/templates/modules/textEdit.html',
             'assets/templates/modules/tutorial.html',
     		'assets/templates/ui/slider.html',
     		'assets/templates/ui/switcher.html',

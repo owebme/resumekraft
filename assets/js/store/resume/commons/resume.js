@@ -243,9 +243,9 @@ $store.resume = _.extend(new Baobab({},
                     { name: "commons.contacts.skype", points: 3 },
                     { name: "salary.active", points: 5 },
                     { name: "about", points: 10 },
-                    { name: "jobs", items: 5, points: 15 },
-                    { name: "education", items: 5, points: 10 },
-                    { name: "courses", items: 2, points: 4 },
+                    { name: "jobs", items: 5, points: 25 },
+                    { name: "education", items: 2, points: 10 },
+                    { name: "courses", items: 2, points: 10 },
                     { name: "tags", points: 10 },
                     { name: "languages", points: 10 }
                 ],
@@ -297,11 +297,11 @@ $store.resume = _.extend(new Baobab({},
                             if (item.items){
                                 var items = store.get(item.name, "items");
                                 if (items && items.length){
-                                    if (item.items + 1 > items.length){
-                                        p += items.length * item.points;
+                                    if (items.length > item.items){
+                                        p += item.points;
                                     }
                                     else {
-                                        p += item.items * item.points;
+                                        p += items.length * (item.points / item.items);
                                     }
                                 }
                             }

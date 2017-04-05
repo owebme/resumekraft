@@ -22,6 +22,19 @@
 
     var $ = this;
 
+    $.on("mount", function(){
+        $.tags["ui-tags"].on("addTag", function(){
+            $afterlag.run(function(){
+                $Sections.resume.edit.section.refresh();
+            });
+        })
+        $.tags["ui-tags"].on("removeTag", function(){
+            $afterlag.run(function(){
+                $Sections.resume.edit.section.refresh();
+            });
+        })
+    });
+
     $.on("updated", function(){
         if ($Sections.resume.edit.section && $Sections.resume.edit.ready){
             $afterlag.run(function(){
@@ -33,6 +46,11 @@
     $.build = function(){
         $resume.select("tags").set([]);
     };
+
+    $.on("before-unmount", function(){
+        $.tags["ui-tags"].off("addTag");
+        $.tags["ui-tags"].off("removeTag");
+    });
 
 </script>
 

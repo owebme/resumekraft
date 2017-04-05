@@ -1,4 +1,4 @@
-<editable-text class="col-sm-offset-4 col-sm-18 col-md-offset-5 col-md-14 col-lg-offset-7 col-lg-12 section__editable__container" data-editing={ 'textarea' : type === 'textarea' }>
+<editable-text class="{ 'textarea' ? 'col-sm-offset-2 col-sm-20 col-md-offset-3 col-md-16 col-lg-offset-6 col-lg-14' : 'col-sm-offset-4 col-sm-18 col-md-offset-5 col-md-14 col-lg-offset-7 col-lg-12' } section__editable__container" data-editing={ 'textarea' : type === 'textarea' }>
 
     <ui-switcher if={ active !== null } id="activity" color="white" value={ active } commit="true"></ui-switcher>
 
@@ -12,7 +12,8 @@
                 <div class="input-autosuggest-item-title">{ item.text }</div>
             </div></div>
         </div>
-        <div if={ type === "textarea" }>
+        <div if={ type === "textarea" } onUpdate="none" class="pos-rel">
+            <textarea-expand onClick={ textEdit }></textarea-expand>
             <textarea class="textarea textarea-xl" name="textarea_data" autocomplete="off">{ editing }</textarea>
         </div>
 
@@ -54,6 +55,16 @@
         }
         $.hide();
     };
+
+    $.textEdit = function(){
+        $Sections.textEdit.show({
+            placeholder: $.title,
+            value: $[$.type + "_data"].value,
+            callback: function(value){
+                $[$.type + "_data"].value = value;
+            }
+        })
+    }
 
     $.hide = function(){
         $Editable.hide();

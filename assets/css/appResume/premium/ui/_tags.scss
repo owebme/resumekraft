@@ -10,7 +10,6 @@
     @extend .text-truncate;
     @extend .bg-blackLight-transparent;
     @extend .fontSize-16;
-    max-width:200px;
     margin:5px 6px 5px 0;
 
     .section__editable__content & {
@@ -19,6 +18,7 @@
     &:not(.tag-input){
         @extend .cursor-default;
         @extend .fontWeight-bold;
+        max-width:200px;
         line-height:40px;
 
         #app[data-mode="editing"]{
@@ -55,9 +55,12 @@
         @extend .lineHeight-1;
         @extend .border-none;
         font-family:$roboto !important;
-        @extend .w200;
+        width:280px;
         @extend .pr-l;
 
+        .d-phone & {
+            @extend .w100p;
+        }
         &::-webkit-input-placeholder {
             color:rgba($white,.7);
             @extend .lineHeight-1;

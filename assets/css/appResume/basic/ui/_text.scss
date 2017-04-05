@@ -1,5 +1,15 @@
 .resumeBasic {
+    .fontSize-38 {
+        .d-phone & {
+            font-size:36px;
+        }
+    }
     .fontSize-28 {
         font-size:26px;
+    }
+    .fontSize-22 {
+        .d-phone & {
+            font-size:21px;
+        }
     }
 }

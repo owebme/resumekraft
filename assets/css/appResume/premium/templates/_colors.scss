@@ -22,7 +22,8 @@
             .borderBottom-primary {
                 border-bottom-color:$color;
             }
-            .fill-primary {
+            .fill-primary,
+            .textarea-expand-color {
                 fill:$color;
             }
             svg[fill-color="primary"]{
@@ -194,6 +195,9 @@
                         }
                     }
                 }
+            }
+            text-edit:before {
+                background-color:rgba($color,.95);
             }
         }
     }

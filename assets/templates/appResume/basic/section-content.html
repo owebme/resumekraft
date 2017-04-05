@@ -20,7 +20,7 @@
 
     <resume-settings></resume-settings>
 
-    <resume-text-edit if={ !app.device.isPhone }></resume-text-edit>
+    <text-edit if={ !app.device.isPhone }></text-edit>
 
     <resume-edit-finish percentage={ sections.percentage } preview={ sections.preview }></resume-edit-finish>
 
@@ -35,7 +35,7 @@
         buttons: $.tags["resume-control-buttons"],
         percentage: $.tags["resume-control-percentage"],
         settings: $.tags["resume-settings"],
-        textEdit: $.tags["resume-text-edit"],
+        textEdit: $.tags["text-edit"],
         finish: $.tags["resume-edit-finish"]
     };
 

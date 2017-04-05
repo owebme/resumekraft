@@ -18,6 +18,7 @@
             <div class="col-md-12 xs-mb-m sm-mb-l">
                 <div class="pos-rel">
                     <span class="input-title">описание компетенций</span>
+                    <textarea-expand onClick={ $Editable.component.textEdit } data-name="text" placeholder="Текст описание, в свободной форме изложите о своих проффесиональных качествах"></textarea-expand>
                     <textarea onInput={ $Editable.component.autoCommit } class="textarea textarea-xl" style="height:330px" data-name="text" name="text_data" autocomplete="off" placeholder="Текст описание, в свободной форме изложите о своих проффесиональных качествах">{ data.text }</textarea>
                 </div>
             </div>

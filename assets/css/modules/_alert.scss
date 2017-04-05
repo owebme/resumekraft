@@ -29,7 +29,7 @@
         height:295px;
         border-radius:12px;
         @extend .bg-snowLight;
-        @extend .boxShadow-25;
+        @extend .boxShadow-larger;
         @extend .willChange-tp;
         transition:opacity 0.15s $cubic2501;
 
@@ -55,7 +55,7 @@
         @extend .plr-l;
 
         .d-phone & {
-            @extend .fontSize-24;
+            @extend .fontSize-22;
             @extend .fontWeight-normal;
             @extend .letterSpacing-0;
         }
@@ -67,7 +67,8 @@
         @extend .plr-l;
 
         .d-phone & {
-            @extend .fontSize-20;
+            @extend .fontSize-18;
+            @extend .letterSpacing-0;
             @extend .fontWeight-normal;
         }
     }

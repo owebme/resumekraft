@@ -88,4 +88,22 @@
             }
         }
     }
+    .textEdit {
+        &__button {
+            &[data-item="close"]{
+                &:after {
+                    @extend .opacity-80;
+                    @include ui-icon("close_black");
+                }
+            }
+            &[data-item="save"]{
+                @extend .bg-lime;
+
+                &:after {
+                    @extend .opacity-65;
+                    @include ui-icon("check_black");
+                }
+            }
+        }
+    }
 }

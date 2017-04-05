@@ -24,6 +24,23 @@
             });
             $.el.init();
 
+            if (app.device.isPhone){
+                $scope.on("focus blur", "textarea", function(e){
+                    if (e.type == "focus" || e.type == "focusin"){
+                        $.el.scope.off('touchmove MSPointerMove dragstart selectstart');
+                        $.el.marquee.disable();
+                    }
+                    else {
+                        $.el.scope.on('touchmove MSPointerMove', function(e){
+                    		e.preventDefault();
+                    	});
+                        $.el.scope.on('dragstart selectstart', function() {
+                            return false;
+                        });
+                        $.el.marquee.enable();
+                    }
+                });
+            }
             if (!app.device.isPhone){
                 $.parent.sections.steps.init();
                 $.parent.sections.buttons.init();
@@ -45,6 +62,7 @@
     };
 
     $.on("unmount", function(){
+        $scope.off();
         app.$dom.document.off("keydown.marquee-tab");
     });
 

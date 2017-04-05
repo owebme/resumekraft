@@ -18,6 +18,7 @@
         <control-public></control-public>
         <section-editable></section-editable>
         <section-percentage if={ !app.device.isMobile }></section-percentage>
+        <text-edit></text-edit>
         <resume-button-save section={ $Sections.finish }></resume-button-save>
 
     </sections-control>
@@ -63,6 +64,7 @@
 
     $Sections = {
         percentage: $root.tags["section-percentage"],
+        textEdit: $root.tags["text-edit"],
         finish: $root.tags["resume-edit-finish"]
     }
 

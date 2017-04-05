@@ -188,8 +188,8 @@
 
             if (params.target && params.store){
                 var $item = $$(params.target).closest("." + params.component + "-item");
-                if ($item && $item.length && $item.data("id")){
-                    var item = _.findWhere(params.store.items, {"id": String($item.data("id"))});
+                if ($item && $item.length && $item.attr("data-id")){
+                    var item = _.findWhere(params.store.items, {"id": String($item.attr("data-id"))});
                     if (item){
                         $.trigger("editTarget", true);
                         $.component.editing = _.copyArray(item);
@@ -220,6 +220,21 @@
             $Editable.autosuggest.items = [];
             $.component.editing = _.copyArray(this.data.items[this.i]);
             $.scrollTo("content");
+        },
+
+        textEdit: function(e){
+            var data = this.editing || this.data,
+                prop = e.currentTarget.getAttribute("data-name"),
+                placeholder = e.currentTarget.getAttribute("placeholder");
+
+            $Sections.textEdit.show({
+                value: data[prop],
+                placeholder: placeholder || null,
+                callback: function(value){
+                    data[prop] = value;
+                    $.component.tag.update();
+                }
+            })
         },
 
         removeItem: function(){
