@@ -2,12 +2,12 @@
 
     <div class="screen__content">
 
-        <div class="title">{ opts.title }</div>
+        <div class="title">{ opts.section }</div>
 
         <div class="container content" data-content="about">
             <div class="row">
-                <div class="col-xs-24">
-                    <ui-textarea update="about" cursor={ $resume.select() } placeholder="В этой графе максимально емко расскажите о своих личных и деловых качествах. Старайтесь не прибегать к шаблонным фразам. Ответьте на вопрос «Кто вы?», «Какой вы?», «В чем ваша индивидуальность?»." size="larger"></ui-textarea>
+                <div onClick={ !app.device.isPhone && textEdit } class="col-xs-24">
+                    <ui-textarea update="about" cursor={ $resume.select() } placeholder={ placeholder } size="larger"></ui-textarea>
                 </div>
             </div>
         </div>
@@ -20,8 +20,22 @@
 
 <script>
 
-    this.finish = function(){
+    var $ = this;
+
+    $.placeholder = "В этой графе максимально емко расскажите о своих личных и деловых качествах. Старайтесь не прибегать к шаблонным фразам. Ответьте на вопрос «Кто вы?», «Какой вы?», «В чем ваша индивидуальность?».";
+
+    $.finish = function(){
         $Sections.resume.edit.section.sections.finish.show();
+    }
+
+    $.textEdit = function(){
+        $Sections.resume.edit.section.sections.textEdit.show({
+            placeholder: $.placeholder,
+            cursor: $resume.select("about"),
+            callback: function(){
+                $.update();
+            }
+        })
     }
 
 </script>

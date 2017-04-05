@@ -2,7 +2,7 @@
 
     <div class="screen__content">
 
-        <div class="title">{ opts.title }</div>
+        <div class="title">{ opts.section }</div>
 
         <div class="container content" data-content="commons">
             <div class="row mb-m">
@@ -10,7 +10,7 @@
                     <span class="c-gray fontSize-28">Должность</span>
                 </div>
                 <div class="col-xs-24 col-sm-16">
-                    <ui-input update="post" cursor={ $resume.select() } placeholder="Желаемая должность" size="xl"></ui-input>
+                    <ui-input update="post" cursor={ $resume.select() } placeholder="Желаемая должность" autosuggest="getSuggestPositions" autosuggestSize="xl" size="xl"></ui-input>
                 </div>
             </div>
             <div class="row mb-m { row-hidden : !$resume.get('salary', 'active') }">
@@ -19,7 +19,7 @@
                     <span class="visible-sm c-gray fontSize-28">Зарплата</span>
                 </div>
                 <div class="col-xs-16 col-sm-7">
-                    <ui-slider update="amount" cursor={ $resume.select('salary') } size="xl" min="1000" max="250000" step="1000"></ui-slider>
+                    <ui-slider update="amount" cursor={ $resume.select('salary') } size="xl" min="1000" max="500000" step="1000"></ui-slider>
                 </div>
                 <div class="col-xs-8 col-sm-3 xs-mb-m">
                     <ui-select update="currency" cursor={ $resume.select('salary') } items={ $store.currency.get() } size="xl" short></ui-select>
@@ -92,17 +92,19 @@
             </div>
             <div class="row mb-m">
                 <div class="hidden-xs col-sm-8 pt-xs pr-m">
+                    <span class="c-gray fontSize-28">Гражданство</span>
+                </div>
+                <div class="col-xs-24 col-sm-16">
+                    <ui-select update="citizenship" cursor={ $resume.select('commons') } items={ $store.country.get() } size="xl"></ui-select>
+                </div>
+            </div>
+            <div class="row mb-m">
+                <div class="hidden-xs col-sm-8 pt-xs pr-m">
                     <span class="visible-md visible-lg c-gray fontSize-28">Город проживания</span>
                     <span class="visible-sm c-gray fontSize-28">Город</span>
                 </div>
                 <div class="col-xs-24 col-sm-16">
-                    <ui-input update="city" cursor={ $resume.select('commons', 'contacts') } placeholder="Город вашего проживания" size="xl"></ui-input>
-                </div>
-            </div>
-            <div class="row mb-l">
-                <div class="hidden-xs col-sm-8 pr-m"></div>
-                <div class="col-xs-24 col-sm-16 text-left pt-s">
-                    <ui-checkbox update="relocate" cursor={ $resume.select('commons', 'contacts') } title="Возможность перезда" size="xxl" theme="blue"></ui-checkbox>
+                    <ui-input update="city" value="name" cursor={ $resume.select('commons', 'contacts') } placeholder="Город вашего проживания" autosuggest="getSuggestCity" autosuggestSize="xl" dataonlysuggest="true" size="xl"></ui-input>
                 </div>
             </div>
             <div class="row mb-m">
@@ -120,6 +122,22 @@
                 </div>
                 <div class="col-xs-24 col-sm-16">
                     <ui-input update="skype" cursor={ $resume.select('commons', 'contacts') }  placeholder="Skype для связи" size="xl"></ui-input>
+                </div>
+            </div>
+            <div class="row mb-m">
+                <div class="hidden-xs col-sm-8 pt-xs pr-m">
+                    <span class="c-gray fontSize-28">Переезд</span>
+                </div>
+                <div class="col-xs-24 col-sm-16">
+                    <ui-select update="relocation" cursor={ $resume.select('commons') } items={ $store.dictionary.get("relocation") } size="xl"></ui-select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="hidden-xs col-sm-8 pt-xs pr-m">
+                    <span class="c-gray fontSize-28">Командировки</span>
+                </div>
+                <div class="col-xs-24 col-sm-16">
+                    <ui-select update="businessTrip" cursor={ $resume.select('commons') } items={ $store.dictionary.get("businessTrip") } size="xl"></ui-select>
                 </div>
             </div>
         </div>

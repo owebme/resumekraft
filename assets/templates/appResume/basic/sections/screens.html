@@ -2,11 +2,13 @@
 
     <div class="screens__content">
 
-        <resume-screen-commons title="Общие данные" step="1"></resume-screen-commons>
-        <resume-screen-education title="Образование" step="2"></resume-screen-education>
-        <resume-screen-langs title="Владение языками" step="3"></resume-screen-langs>
-        <resume-screen-jobs title="Работа в компаниях" step="4"></resume-screen-jobs>
-        <resume-screen-about title="О себе, ваши качества" step="5"></resume-screen-about>
+        <resume-screen-commons section={ $i18n("resume.basic.template.General information") } step="1"></resume-screen-commons>
+        <resume-screen-education section={ $i18n("resume.basic.template.Education") } step="2"></resume-screen-education>
+        <resume-screen-courses section={ $i18n("resume.basic.template.Courses") } step="3"></resume-screen-courses>
+        <resume-screen-langs section={ $resume.get("lang") == "en" ? $i18n("resume.basic.template.Languages") : $i18n("resume.basic.template.Language") } step="4"></resume-screen-langs>
+        <resume-screen-jobs section={ $i18n("resume.basic.template.Experience") } step="5"></resume-screen-jobs>
+        <resume-screen-skills section={ $i18n("resume.basic.template.Main skills") } step="6"></resume-screen-skills>
+        <resume-screen-about section={ $i18n("resume.basic.template.About me, qualities") } step="7"></resume-screen-about>
 
     </div>
 
@@ -25,7 +27,12 @@
             if (!app.device.isPhone){
                 $.parent.sections.steps.init();
                 $.parent.sections.buttons.init();
+
+                app.$dom.document.on("keydown.marquee-tab", function(e){
+                    if (e.which == KEY.TAB) e.preventDefault();
+                });
             }
+            $.parent.trigger("ready");
         });
     });
 
@@ -36,6 +43,10 @@
     $.show = function(){
         $scope.attr("data-hidden", false);
     };
+
+    $.on("unmount", function(){
+        app.$dom.document.off("keydown.marquee-tab");
+    });
 
 </script>
 

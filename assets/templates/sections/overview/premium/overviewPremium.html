@@ -52,7 +52,7 @@
                         utils: app.utils
                     })[0];
                 },
-                mount: function(tag){
+                afterShow: function(tag){
                     tag.scrollFix = new app.plugins.scroll.fix({
                         scroll: $.scroll,
                         container: $.content

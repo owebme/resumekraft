@@ -175,6 +175,7 @@
 
             _.onEndTransition($.root, function(){
                 Store.set('resume', null);
+                moment.locale("ru");
                 $Sections.resume.edit.hide();
                 $Sections.resume.list.update();
             });

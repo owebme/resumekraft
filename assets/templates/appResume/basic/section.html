@@ -17,17 +17,25 @@
 <script>
 
     var $ = this,
-    $scope = $$($.root);
+    $scope = $$($.root),
+    $content = $$($.content),
+    $screens = null;
 
     $.active = false;
 
     $.loading = false;
 
-    $.scroll = $$($["scroll"]);
-
     $.on("before-mount", function(){
         $.loader = $.tags["oscreen-loader"];
     });
+
+    // $.on("mount", function(){
+    //     $afterlag.run(function(){
+    //         $.show({
+    //             id: "58e42d8ceced33f5710cda93"
+    //         });
+    //     });
+    // });
 
     $.show = function(options){
         if ($.loading || $.active) return;
@@ -45,12 +53,7 @@
                     ACCOUNT_ID: $account.get("_id"),
                     plan: "free",
                     template: options.template,
-                    photo: $account.get("photo"),
-                    name: $account.get("name"),
-                    surname: $account.get("surname"),
-                    gender: $account.get("gender"),
-                    birthday: $account.get("birthday"),
-                    contacts: $account.get("contacts")
+                    commons: $account.get("commons")
                 })
             );
 
@@ -58,8 +61,7 @@
                 app.request("addResume", {
                     data: $resume.get()
                 }, {
-                    loader: false,
-                    notify: false
+                    loader: false
                 })
                 .then(function(data){
                     if (data.id){
@@ -67,7 +69,9 @@
                         $store.data.push($resume.get());
                         Store.set('resume', $resume.get());
                     }
-                })
+                }, function(){
+                    if ($.loader) $.loader.hide();
+                });
             }
             else {
                 Store.set('resume', $resume.get());
@@ -79,10 +83,11 @@
 
         $.loader.show(
             {
+                // forceShow: true,
                 scope: $.scroll,
                 content: $.content,
-                start: function(){
-                    $.scroll[0].style.backgroundColor = '#ffffff';
+                init: function(){
+                    $.scroll.style.backgroundColor = '#ffffff';
                 },
                 tag: function(){
                     return $.section = riot.mount($.content, "resume-edit-content", {
@@ -91,8 +96,18 @@
                         content: $.content
                     })[0];
                 },
-                mount: function(){
-                    $.scroll[0].style.backgroundColor = '';
+                updated: function(tag){
+                    tag.one("ready", function(){
+                        $screens = $content.find(".screen:not(:first)");
+                        $screens.css("display", "none");
+                    });
+                },
+                afterShow: function(){
+                    if ($screens){
+                        $content.find(".screen:not(:first)").css("display", "block");
+                        $screens = null;
+                    }
+                    $.scroll.style.backgroundColor = '';
                     $root.focus("resume-edit");
                     $.ready = true;
                     if (recovery){
@@ -117,8 +132,7 @@
         $.update({
             active: false
         })
-        _.onEndTransition($.scroll[0], function(){
-            moment.locale("ru");
+        _.onEndTransition($.scroll, function(){
             $.section.unmount(true);
             $root.focus("all");
             $.ready = false;

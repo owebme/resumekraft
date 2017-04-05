@@ -37,8 +37,8 @@
     <div class="resume__item__stat">
         <div class="resume__item__stat__wrapper row">
             <div class="resume__item__stat__cell col-xs-15 col-sm-16">
-                <btn-stat onClick={ parent.open.stat } onUpdate="none" color={ opts.item.config && opts.item.config.color || "#0084ff" }></btn-stat>
-                <svg-stat color={ opts.item.config && opts.item.config.color || "#0084ff" }></svg-stat>
+                <btn-stat onClick={ parent.open.stat } onUpdate="none" color={ $store.resume.take.color(opts.item) }></btn-stat>
+                <svg-stat color={ $store.resume.take.color(opts.item) }></svg-stat>
             </div>
             <div class="resume__item__stat__cell bg-yellow c-blackLight col-xs-9 col-sm-8 resume__item__stat__percentage">
                 { opts.item.percent }%

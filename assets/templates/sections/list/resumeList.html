@@ -6,7 +6,7 @@
 
     <resume-navbar></resume-navbar>
 
-    <div name="sliderEl" class="resume__list__slider container slider" data-hidden="{ hidden }">
+    <div name="sliderEl" class="resume__list__slider container slider" data-hidden="false">
         <div class="slider__nav slider__nav__prev"></div>
         <div class="slider__nav slider__nav__next"></div>
         <div if={ $store.data.get().length } class="row slider__wrapper">
@@ -58,12 +58,19 @@
     });
 
     $.on("mount", function(){
-        $.slider = new app.plugins.slider($.sliderEl);
+        $.slider = new app.plugins.slider($.sliderEl, {
+            autoUpdate: true
+        });
+        $.slider.scope.on('next', $.onSwiping)
+        .on('prev', $.onSwiping);
     });
 
-    $.on("updated", function(){
-        if ($.ready && $.slider) $.slider.render();
-    });
+    $.onSwiping = function(){
+        $.swiping = true;
+        setTimeout(function(){
+            $.swiping = false;
+        }, 200);
+    };
 
     $.start = function(callback){
         $afterlag.run(function(){
@@ -77,14 +84,13 @@
     };
 
     $.show = function(){
-        $.update({
-            hidden: false
-        })
+        $.hidden = false;
+        $.sliderEl.setAttribute("data-hidden", $.hidden);
     };
 
     $.open = {
         resume: function(){
-            if (!this.item) return;
+            if (!this.item || $.swiping) return;
             $.hide();
             $Sections.resume.section.show(this.item._id, function(){
                 $.show();
@@ -105,7 +111,30 @@
                         });
                     }
                     else if (data.plan == "premium"){
-                        $Sections.plan.show("premium");
+                        if ($account.get("plan") != "premium"){
+                            $Sections.plan.show("premium");
+                        }
+                        else {
+                            var resume = $store.resume.prepare.premium(
+                                $resume.default.resume({
+                                    ACCOUNT_ID: $account.get("_id"),
+                                    plan: "premium",
+                                    commons: $account.get("commons")
+                                })
+                            );
+                            app.request("addResume", {
+                                data: resume
+                            }, {
+                                loader: false
+                            })
+                            .then(function(data){
+                                if (data.id){
+                                    resume._id = data.id;
+                                    $store.data.push(resume);
+                                    $store.data.onEdit(data.id);
+                                }
+                            })
+                        }
                     }
                 })
             }
@@ -130,9 +159,8 @@
     };
 
     $.hide = function(){
-        $.update({
-            hidden: true
-        })
+        $.hidden = true;
+        $.sliderEl.setAttribute("data-hidden", $.hidden);
     };
 
 </script>

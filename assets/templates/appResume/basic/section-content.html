@@ -20,9 +20,9 @@
 
     <resume-settings></resume-settings>
 
-    <resume-edit-finish percentage={ sections.percentage } preview={ sections.preview }></resume-edit-finish>
+    <resume-text-edit if={ !app.device.isPhone }></resume-text-edit>
 
-    <div if={ !app.device.isPhone } class="share__text">Поделиться своим резюме в социальных сетях</div>
+    <resume-edit-finish percentage={ sections.percentage } preview={ sections.preview }></resume-edit-finish>
 
 <script>
 
@@ -35,19 +35,13 @@
         buttons: $.tags["resume-control-buttons"],
         percentage: $.tags["resume-control-percentage"],
         settings: $.tags["resume-settings"],
-        finish: $.tags["resume-edit-finish"],
-        shareButton: $.tags["share-button"]
+        textEdit: $.tags["resume-text-edit"],
+        finish: $.tags["resume-edit-finish"]
     };
 
     $.on("before-mount", function(){
-
-        $.scope = $.opts.scope;
-        $.scroll = $.opts.scroll;
+        $.parentScope = $$($.opts.scroll);
         $.content = $.opts.content;
-
-        // $.sections.photo.init(
-        //     $resume.get("config", "photo")
-        // );
     });
 
     $.on("mount", function(){
@@ -64,7 +58,7 @@
         if (!app.device.isPhone){
             if (!app.metrika.get("resume.create.tutorial.show")){
                 _.onEndTransition($.content, function(){
-                    $Tutorial.show($$($.scope.root), "resumeFree", {
+                    $Tutorial.show($.parentScope, "resumeFree", {
                         animate: false
                     });
                     $Tutorial.one("close", function(){
@@ -89,10 +83,6 @@
         if (!$.screens) return;
 
         $.screens.refresh();
-
-        if ($.sections.steps){
-            $.sections.steps.refresh();
-        }
     };
 
     $.autoSave = function(){
@@ -111,21 +101,19 @@
             }
         },
         preview: function(){
-            console.log("preview");
             $store.data.onPreview($resume.get());
             app.metrika.set("resume.create.control.preview", true);
         },
         photoUpload: function(){
-            console.log("photoUpload", $resume.get("_id"));
             $store.data.onPhotoUpload($resume.get("_id"), function(image){
-                $resume.select('commons', 'photo').set(image);
+                $resume.select('commons', 'photo').set(image + "?" + _.newId());
             });
             app.metrika.set("resume.create.control.photo", true);
         },
         design: {
             free: function(){
                 $Sections.resume.select.show({
-                    plan: app.metrika.get("resume.select.default"),
+                    plan: "free",
                     control: false,
                     template: $resume.get("template")
                 })

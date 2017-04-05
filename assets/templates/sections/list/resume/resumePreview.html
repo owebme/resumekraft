@@ -13,7 +13,7 @@
     $.on("mount", function(){
         $$($["wrapper"]).on("click", "#upload-photo", function(e){
             $store.data.onPhotoUpload($store.resume.get("_id"), function(image){
-                $store.resume.select('commons', 'photo').set(image);
+                $store.resume.select('commons', 'photo').set(image + "?" + _.newId());
                 $.template.update();
                 $.resolve();
             });
@@ -29,6 +29,8 @@
     });
 
     $.show = function(options){
+        var options = options || {};
+        if (options.template === undefined) options.template = "1";
         if (options.template && options.template != $.num) $.change(options.template);
         if (app.device.isPhone){
             $LoaderAjax.show();

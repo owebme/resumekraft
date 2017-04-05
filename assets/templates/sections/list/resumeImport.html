@@ -79,17 +79,18 @@
 
     // $.on("mount", function(){
     //     $afterlag.run(function(){
-    //         //$.success = true;
     //         $.show();
     //     });
     // });
 
-    $.show = function(id){
+    $.show = function(){
+        if ($.active) return;
+
+        $.active = true;
         $.root.style.display = "block";
 
         $afterlag.run(function(){
             $.update({
-                active: true,
                 success: false,
                 alertShow: false
             })
@@ -97,6 +98,7 @@
                 document.addEventListener('click', $.handleClickOutside);
             }, 0);
         });
+        document.removeEventListener('click', $.handleClickOutside);
     };
 
     $.onEnter = function(e){
@@ -147,7 +149,7 @@
     };
 
     $.onEnd = function(){
-        var options = $.options.get();
+        var options = $.options.clone();
 
         if (options.replacePhoto) options.photo = $account.get("commons", "photo");
         if (options.premium) options.plan = "premium";

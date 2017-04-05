@@ -1,6 +1,6 @@
 <resume-control-step class="section steps">
 
-    <div each={ item in items } class="steps__item" data-balloon={ item.title } data-balloon-pos="left">
+    <div each={ item in items } no-reorder class="steps__item" data-balloon={ item.title } data-balloon-pos="left">
         <div onClick={ onChange } class="steps__item__button" data-active={ item.step == step }>{ item.step }</div>
     </div>
 
@@ -18,7 +18,7 @@
         _.each($.parent.sections.screens.tags, function(item, key){
             if (key.match(/resume-screen/)){
                 $.items.push({
-                    title: item.opts.title,
+                    title: item.opts.section,
                     step: item.opts.step,
                     offset: screens[item.opts.step - 1].offset,
                     size: screens[item.opts.step - 1].size
@@ -28,53 +28,23 @@
 
         $.update();
 
-        var _onScroll = _.throttle($.onScroll, 20),
-            scroll = $.parent.screens.get("scroll");
+        $.screens = $.parent.screens.scope.find(".screen");
 
-        (function animationLoop(){
-            app.utils.raf(animationLoop);
-            _onScroll(app.utils.getScroll(scroll));
-        })();
-    };
-
-    $.refresh = function(){
-        var screens = $.parent.screens.scope.data('marquee').screens;
-
-        _.each($.items, function(item, i){
-            $.items[i].offset = screens[i].offset;
-            $.items[i].size = screens[i].size;
+        $.screens.on('show', function(e){
+            $.update({
+                step: $$(this).index() + 1
+            });
         });
     };
 
     $.onChange = function(){
-        $.sliding = true;
         $.step = this.item.step;
         $.parent.screens.nav($.step - 1);
-
-        setTimeout(function(){
-            $.sliding = false;
-        }, 600);
     };
 
-    $.onScroll = function(scroll){
-        if ($.sliding) return;
-
-        var delta = app.sizes.height / 2.7,
-            step = _.findWhere($.items, {"step": $.step}),
-            next = _.findWhere($.items, {"step": String($.step * 1 + 1)}),
-            prev = $.step > 1 ? _.findWhere($.items, {"step": String($.step * 1 - 1)}) : null;
-
-        if (next && scroll.y + delta > next.offset){
-            $.update({
-                step: next.step
-            });
-        }
-        else if (prev && scroll.y + delta < step.offset){
-            $.update({
-                step: prev.step
-            });
-        }
-    };
+    $.on("unmount", function(){
+        $.screens.off('show');
+    });
 
 </script>
 

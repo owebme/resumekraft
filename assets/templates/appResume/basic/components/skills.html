@@ -1,0 +1,39 @@
+<resume-screen-skills class="screen" data-marquee={ opts.step }>
+
+    <div class="screen__content" data-empty={ true : !$resume.get("tags") }>
+
+        <div class="title">{ opts.section }</div>
+
+        <div class="container content" data-content="skills">
+            <ui-tags update="tags" cursor={ $resume.select() } autoSuggest="getSuggestSkills" autoSuggestSize="xl" width="{ app.device.isPhone ? '100%' : '340px' }" size="xl"></ui-tags>
+        </div>
+
+        <div onClick={ build } class="section__create" data-icon="skills">
+            <div class="section__create__button">
+                <div class="section__create__button__opener"></div>
+            </div>
+            <div class="section__create__title">Добавить ключевые навыки</div>
+        </div>
+
+    </div>
+
+
+<script>
+
+    var $ = this;
+
+    $.on("updated", function(){
+        if ($Sections.resume.edit.section && $Sections.resume.edit.ready){
+            $afterlag.run(function(){
+                $Sections.resume.edit.section.refresh();
+            });
+        }
+    });
+
+    $.build = function(){
+        $resume.select("tags").set([]);
+    };
+
+</script>
+
+</resume-screen-skills>

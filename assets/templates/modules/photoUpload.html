@@ -113,13 +113,14 @@
     $.show = function(callback, options){
         if ($.active) return;
 
+        $.active = true;
+
         if (options) $.init(options, true);
 
         $.root.style.display = "block";
 
         $afterlag.run(function(){
             $.update({
-                active: true,
                 uploaded: false,
                 callback: callback ? callback : null
             });

@@ -3,8 +3,9 @@ $store.account = _.extend(new Baobab([]),
         onPhotoUpload: function(){
             $Sections.photoUpload.show(function(image){
                 app.request("setUploadPhoto", {
-                    profile: true,
                     image: image
+                }, {
+                    loader: false
                 })
                 .then(function(data){
                     if (data && data.image){

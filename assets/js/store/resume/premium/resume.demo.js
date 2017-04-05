@@ -250,7 +250,7 @@ $store.demo = {
         },
         education: {
             title: "Образование",
-            level: "1",
+            level: "higher",
             text: "Люблю учиться и повышать свои профессиональные навыки.",
             items: [
                 {

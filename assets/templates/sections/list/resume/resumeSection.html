@@ -16,7 +16,7 @@
                 <ui-switcher update="public" commit={ commit.public } cursor={ item }></ui-switcher>
             </div>
 
-            <div class="resume__section__bg" data-color={ item.get('config', 'color') }>
+            <div class="resume__section__bg" data-color={ $store.resume.take.color(item.get()) }>
                 <div class="resume__section__percent" style="width:{ item.get('percent') }%">
                     <div class="resume__section__percent__title">{ item.get('percent') }%</div>
                 </div>
@@ -66,10 +66,10 @@
                             <span class="fontSize-28 fontWeight-8 text-uppercase">{ item.get('lang') }</span>
                             <div class="fontSize-16 fontWeight-normal mt-xss">язык</div>
                         </div>
-                        <div onClick={ open.photoUpload } onUpdate="none" if={ item.get('photo') } class="user__photo">
-                            <div class="user__photo__image" style="background-image:url({ item.get('photo') })"></div>
+                        <div onClick={ open.photoUpload } onUpdate="none" if={ item.get('commons', 'photo') } class="user__photo">
+                            <div class="user__photo__image" style="background-image:url({ item.get('commons', 'photo') })"></div>
                         </div>
-                        <div onClick={ open.photoUpload } onUpdate="none" if={ !item.get('photo') } class="user__photo" data-place="true" data-color="white">
+                        <div onClick={ open.photoUpload } onUpdate="none" if={ !item.get('commons', 'photo') } class="user__photo" data-place="true" data-color="white">
                             <span class="user__photo__text">загрузить свою фотографию</span>
                         </div>
                         <div class="resume__section__date">Обновлено: <span class="fontWeight-bold">{ moment(item.get('update')).format('D MMMM в HH:mm') }</span></div>
@@ -121,7 +121,7 @@
             </div>
 
             <div if={ item && item.get('plan') == "free" } class="resume__section__template">
-                <img onClick={ open.design.free } onUpdate="none" src="/assets/images/makets/{ item ? 1000 + item.get('template') : '1001' }.png" class="resume__section__template__image">
+                <img onClick={ open.design.free } onUpdate="none" src="/assets/images/makets/{ item ? 1000 + (item.get('template') && parseInt(item.get('template'))) : '1001' }.png" class="resume__section__template__image">
             </div>
 
         </div>
@@ -177,6 +177,7 @@
         preview: function(){
             $store.data.onPreview($.item.get()).then(function(){
                 $.update();
+                $Sections.resume.list.update();
             });
         },
         edit: function(){
@@ -185,8 +186,9 @@
         },
         photoUpload: function(){
             $store.data.onPhotoUpload($.item.get('_id'), function(image){
-                $.item.select("photo").set(image + "?" + _.newId());
+                $.item.select("commons", "photo").set(image + "?" + _.newId());
                 $.update();
+                $Sections.resume.list.update();
             });
             app.metrika.set("resume.create.control.photo", true);
         },

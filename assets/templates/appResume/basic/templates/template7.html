@@ -14,11 +14,11 @@
 			<sup class="t-header-salary-currency">{ $resume.take.salary.worktime() }</sup>
 		</div>
 	</div>
-	<div if={ $resume.get('photo') } id="upload-photo" class="t-header-photo">
-		<div class="t-header-photo-image" style="background-image:url({ $resume.get('photo') })"></div>
+	<div if={ $resume.get('commons', 'photo') } id="upload-photo" class="t-header-photo">
+		<div class="t-header-photo-image" style="background-image:url({ $resume.get('commons', 'photo') })"></div>
 		<i class="icon"></i>
 	</div>
-	<div if={ !$resume.get('photo') } id="upload-photo" class="t-header-photo place">
+	<div if={ !$resume.get('commons', 'photo') } id="upload-photo" class="t-header-photo place">
 		<i class="icon"></i>
 		<span>загрузить свою фотографию</span>
 	</div>

@@ -2,7 +2,7 @@
 
     <div class="screen__content" data-empty={ true : !$resume.get("jobs") }>
 
-        <div class="title">{ opts.title }</div>
+        <div class="title">{ opts.section }</div>
 
         <div class="container content" data-content="jobs" data-editing={ true : editing }>
             <div class="pos-rel pb-l mb-xs" each={ item, i in sort($resume.select("jobs", "items").get()) } no-reorder>
@@ -49,6 +49,7 @@
         $resume.select("jobs").set({
             title: null,
             text: null,
+            experience: null,
             items: []
         });
 
@@ -117,7 +118,7 @@
         else {
             $.editing = null;
             $.update();
-            $.parent.el.nav(3);
+            $.parent.el.nav(4);
         }
     };
 
@@ -134,7 +135,7 @@
             $resume.select("jobs").set(null);
         }
         $.editing = null;
-        $.parent.el.nav(3);
+        $.parent.el.nav(4);
     };
 
 </script>

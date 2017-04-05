@@ -29,10 +29,6 @@
                             })
                             .then(function(){
                                 $.select({'_id': id}).unset();
-
-                                if (!app.device.isPhone && $Sections.resume.list.slider.index > 0){
-                                    $Sections.resume.list.slider.prevSlides();
-                                }
                                 $Sections.resume.list.update();
                             });
                         }
@@ -47,7 +43,7 @@
                     }
                     else {
                         $Loader.show({
-                            color: item.config.color
+                            color: item.config && item.config.color
                         })
                         .then(function(){
                             location.replace('/private/resume/' + id);
@@ -61,15 +57,19 @@
                 }
             },
             onPreview: function(item){
-                var callback = null;
-                $Sections.resume.preview.show({
-                    plan: item.plan,
-                    data: item,
-                    template: item.template
-                })
-                .then(function(){
-                    callback();
-                });
+                if (item.plan == "free"){
+                    var callback = null;
+                    $Sections.resume.preview.show({
+                        data: item,
+                        template: item.template
+                    })
+                    .then(function(){
+                        callback();
+                    });
+                }
+                else {
+                    window.open('/resume/' + item._id, "_blank");
+                }
                 return new Promise(function(resolve, reject){
                     callback = resolve;
                 });
@@ -95,10 +95,10 @@
                     var template = riot.mount($template[0], "resume-basic-template" + num)[0];
 
                     template.one("updated", function(){
-                        app.request('addConvertPdf', {
+                        app.request('addResumePdf', {
                             id: item._id,
                             template: item.template,
-                            stamp: item.config.pdf.logotype,
+                            stamp: $account.get("plan") == "premium" ? false : true,
                             content: $template.html()
                         }, {
                             loader: false
@@ -121,6 +121,8 @@
                                     });
                                 };
                                 oReq.send();
+
+                                moment.locale("ru");
                             }
                         });
                     });
@@ -178,6 +180,7 @@
                     title: "Создать копию",
                     callback: function(id){
                         var resume = $.select({"_id": id}).deepClone();
+                        if (!resume) return;
 
                         if ($account.get("plan") == "premium"){
                             $Alert.show({
@@ -201,6 +204,14 @@
                             copyResume(resume, resume.plan);
                         }
                         function copyResume(resume, plan){
+                            if (resume.plan == "free" && plan == "premium"){
+                                resume = $store.resume.prepare.premium(resume);
+                                resume.percent = $store.resume.percentage.calc("premium", resume);
+                            }
+                            else if (resume.plan == "premium" && plan == "free"){
+                                resume.config.color = "#0084ff";
+                                resume.percent = $store.resume.percentage.calc("free", resume);
+                            }
                             resume.plan = plan;
 
                             app.request("addResume", {

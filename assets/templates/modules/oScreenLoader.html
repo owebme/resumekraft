@@ -19,9 +19,9 @@
 
         if (options.forceShow){
             $.html = options.tag();
-            if (options.mount){
+            if (options.updated){
                 $.html.one("updated", function(){
-                    options.mount($.html);
+                    options.updated($.html);
                 });
             }
             $$($.parent.scroll).css("transition", "none");
@@ -30,13 +30,14 @@
             return;
         }
 
-        $.options = options;
-        $.start = options.start || $$.noop;
-        $.end = options.end || $$.noop;
-        $.callMount = options.mount || $$.noop;
+        $.options = options || {};
+        $.start = options.init || $$.noop;
+        $.beforeShow = options.beforeShow || $$.noop;
+        $.afterShow = options.afterShow || $$.noop;
+        $.callUpdated = options.updated || $$.noop;
         $.callBeforeUnmount = options.beforeUnmount || $$.noop;
         $.callUnmount = options.unmount || $$.noop;
-        $.scope = $$(options.scope)[0];
+        $.scope = _.isElement(options.scope) ? options.scope : $$(options.scope)[0];
 
         $.reset();
 
@@ -98,6 +99,7 @@
                 $.html = $.options.tag();
                 if ($.html){
                     $.html.one("updated", function(){
+                        $.callUpdated($.html);
                         $afterlag.run(function(){
                             $.onHtmlLoaded($.options.content);
                         });
@@ -130,12 +132,12 @@
     };
 
     $.hide = function(){
+        $.beforeShow($.html);
         $.parent.loading = false;
         $.parent.active = true;
         $.parent.update();
-        $.end();
         _.onEndTransition($.scope, function(){
-            $.callMount($.html);
+            $.afterShow($.html);
 
             $.html.one("before-unmount", function(){
                 $.callBeforeUnmount($.html);

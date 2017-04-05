@@ -43,7 +43,7 @@
     .screen__content {
         &[data-empty="true"]{
             @extend .h100v;
-            
+
             .d-phone.d-android & {
                 height:calc(100vh - 22px);
             }
@@ -66,6 +66,11 @@
                     transition:transform .4s $cubic28, opacity .4s $cubic28;
                 }
             }
+        }
+        .text {
+            @extend .whiteSpace-preLine;
+            @extend .breakWord;
+            @include textEllipsis(100%, 200px, 6);
         }
     }
     .section__create {
@@ -111,6 +116,17 @@
                 }
             }
         }
+        &[data-icon="courses"]{
+            &:after {
+                width:148px;
+                height:202px;
+                background-image:url(/assets/images/resume/courses.svg);
+
+                .d-phone & {
+                    @extend .l30;
+                }
+            }
+        }
         &[data-icon="languages"]{
             &:after {
                 width:164px;
@@ -133,11 +149,23 @@
                 }
             }
         }
+        &[data-icon="skills"]{
+            &:after {
+                width:192px;
+                height:192px;
+                background-image:url(/assets/images/resume/skills.svg);
+
+                .d-phone & {
+                    @extend .l30;
+                }
+            }
+        }
         &__title {
             @extend .pos-abs;
             @extend .t0;
             @extend .r100;
             @extend .mr-l;
+            @extend .pl-l;
             @extend .c-blue;
             @extend .fontSize-28;
             width:240px;
@@ -161,15 +189,14 @@
                 @extend .content-empty;
                 @extend .borderRadius-circle;
                 @extend .bg-blue;
+                @extend .scale-85;
                 @include boxShadow-3d($blue);
-                @extend .willChange-transform;
-                transition:transform 0.4s $cubic40;
             }
             &:after {
                 @include abs();
                 @extend .content-empty;
                 @extend .bg-blueLight;
-                @extend .scale-0;
+                @extend .scale-100;
                 @extend .opacity-15;
                 @extend .borderRadius-circle;
                 @extend .zIndex-0;
@@ -181,32 +208,29 @@
                 @extend .flex-centered;
                 @extend .w70;
                 @extend .h70;
+                @extend .bg-white;
                 @extend .borderRadius-circle;
                 @extend .zIndex-1;
-                will-change:background-color;
-                transition:background-color 0.25s $cubic28;
+                @extend .willChange-transform;
+                transition:transform 0.35s $cubic40;
 
                 &:after {
                     @extend .content-empty;
                     @extend .display-block;
-                    @include ui-icon(plus_thin_white, 48px, 48px);
-                    transition:transform 0.4s $cubic40;
+                    @extend .scale-80;
+                    @include ui-icon(plus_thin, 48px, 48px);
+                    transition:transform 0.35s $cubic40;
                 }
             }
-            .m-no-touch &:hover,
-            .m-touch & {
+            .m-no-touch &:hover {
                 &:after {
-                    @extend .scale-100;
-                }
-                &:before {
                     @extend .scale-85;
                 }
                 .section__create__button__opener {
-                    @extend .bg-white;
+                    transform:translate3d(-50%, -50%, 0) scale(1.2);
 
                     &:after {
-                        @include ui-icon(plus_thin);
-                        transform:scale(0.8);
+                        @extend .scale-70;
                     }
                 }
             }

@@ -2,7 +2,7 @@
 
     <div class="screen__content" data-empty={ true : !$resume.get("languages") }>
 
-        <div class="title">{ opts.title }</div>
+        <div class="title">{ opts.section }</div>
 
         <div class="container content" data-content="languages">
             <div each={ item, i in $resume.select("languages", "items").get() } class="row mb-m">

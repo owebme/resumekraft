@@ -92,7 +92,7 @@
                 scope: $.scroll,
                 content: $.content,
                 resources: ['/public/js/jptest.build.js'],
-                start: function(){
+                init: function(){
                     if (app.device.isPhone){
                         $.content[0].style.backgroundColor = '#ffffff';
                     }
@@ -104,7 +104,7 @@
                         content: $.content
                     })[0];
                 },
-                mount: function(){
+                afterShow: function(){
                     if (app.device.isPhone){
                         $.content[0].style.backgroundColor = '';
                         $afterlag.run(function(){

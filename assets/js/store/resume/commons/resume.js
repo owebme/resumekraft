@@ -16,6 +16,7 @@ $store.resume = _.extend(new Baobab({},
 
                     resume.public = options.public ? true : false;
                     resume.plan = options.plan || "free";
+                    resume.template = "1";
                     resume.commons.photo = options.photo || resume.commons.photo;
 
         			if (account){
@@ -42,12 +43,9 @@ $store.resume = _.extend(new Baobab({},
             premium: function(data, update){
                 if (data){
                     var resume = _.deepExtend({
-                        tags: null,
                         appeal: null,
                         works: null,
                         skills: null,
-                        education: null,
-                        courses: null,
                         hobby: null,
                         coverletter: {
                             text: null,
@@ -194,38 +192,28 @@ $store.resume = _.extend(new Baobab({},
             }
         },
         default: {
-            resume: function(params){
+            resume: function(data){
                 return {
-                    accountId: params.ACCOUNT_ID,
+                    accountId: data.ACCOUNT_ID || null,
                     public: true,
-                    plan: params.plan,
-                    template: params.template ? params.template : "1",
+                    plan: data.plan || "free",
+                    template: data.template || "1",
                     lang: "ru",
                     post: null,
                     create: moment().format(),
                     update: moment().format(),
-                    commons: {
-                        photo: params.photo,
-                        name: params.name,
-                        surname: params.surname,
-                        gender: params.gender,
-                        birthday: params.birthday,
-                        citizenship: params.citizenship,
-                        businessTrip: params.businessTrip,
-                        relocation: params.relocation,
-                        travelTime: params.travelTime,
-                        specialization: params.specialization,
-                        employments: params.employments,
-                        schedules: params.schedules,
-                        contacts: params.contacts
-                    },
-                    salary: params.plan == "free" ? $store.resume.default.salary() : null,
+                    commons: data.commons || null,
+                    salary: $store.resume.default.salary(),
+                    tags: null,
                     about: null,
                     social: null,
                     education: null,
+                    courses: null,
                     languages: null,
                     jobs: null,
-                    percent: 0
+                    percent: $store.resume.percentage.calc(data.plan || "free", {
+                        commons: data.commons
+                    })
                 }
             },
             salary: function(){
@@ -244,10 +232,11 @@ $store.resume = _.extend(new Baobab({},
         percentage: {
             keys: {
                 free: [
-                    { name: "commons.name", points: 3 },
-                    { name: "commons.surname", points: 3 },
                     { name: "post", points: 3 },
                     { name: "commons.photo", points: 5 },
+                    { name: "commons.name", points: 3 },
+                    { name: "commons.surname", points: 3 },
+                    { name: "commons.citizenship", points: 3 },
                     { name: "commons.contacts.city", points: 3 },
                     { name: "commons.contacts.email", points: 3 },
                     { name: "commons.contacts.phone", points: 3 },
@@ -256,13 +245,16 @@ $store.resume = _.extend(new Baobab({},
                     { name: "about", points: 10 },
                     { name: "jobs", items: 5, points: 15 },
                     { name: "education", items: 5, points: 10 },
+                    { name: "courses", items: 2, points: 4 },
+                    { name: "tags", points: 10 },
                     { name: "languages", points: 10 }
                 ],
                 premium: [
-                    { name: "commons.name", points: 3 },
-                    { name: "commons.surname", points: 3 },
                     { name: "post", points: 3 },
                     { name: "commons.photo", points: 5 },
+                    { name: "commons.name", points: 3 },
+                    { name: "commons.surname", points: 3 },
+                    { name: "commons.citizenship", points: 3 },
                     { name: "commons.contacts.city", points: 3 },
                     { name: "commons.contacts.email", points: 3 },
                     { name: "commons.contacts.phone", points: 3 },
@@ -350,6 +342,15 @@ $store.resume = _.extend(new Baobab({},
             }
         },
         take: {
+            color: function(data){
+                var data = data || $store.resume.get();
+                if (data && data.config && data.config.color){
+                    return data.config.color;
+                }
+                else {
+                    return "#0084ff";
+                }
+            },
             relocation: function(){
                 var lang = $store.resume.get("lang"),
                     value = $store.resume.get('commons', 'relocation'),

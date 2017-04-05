@@ -13,6 +13,11 @@
         @extend .pt-s;
         @extend .pl-l;
 
+        .d-tablet & {
+            @extend .pl0;
+            @extend .pt-xs;
+            @extend .ml--m;
+        }
         .d-phone & {
             @extend .pos-rel;
             @extend .t0;
@@ -24,6 +29,11 @@
             line-height:38px;
             margin-left:3px;
         }
+    }
+    .subtitle {
+        @extend .c-blue;
+        @extend .breakWord;
+        @include textEllipsis(100%, 64px, 2);
     }
     .content {
         width:780px;
@@ -43,6 +53,7 @@
             }
         }
         &[data-content="education"],
+        &[data-content="courses"],
         &[data-content="jobs"]{
             padding-top:245px;
             padding-left:7.5px;
@@ -74,6 +85,20 @@
             .d-phone & {
                 @extend .pb-l;
             }
+            .d-tablet.r-portrait & {
+                width:640px;
+            }
+        }
+        &[data-content="skills"]{
+            .d-no-mobile & {
+                width:850px;
+            }
+            .d-tablet.r-landscape & {
+                width:800px;
+            }
+            .d-tablet.r-portrait & {
+                width:640px;
+            }
         }
         &[data-content="settings"]{
             @extend .p0;
@@ -96,6 +121,25 @@
             .d-phone & {
                 @extend .ml0;
             }
+        }
+    }
+    .select-education {
+        .d-no-mobile & {
+            @extend .mr--xl;
+            margin-top:-165px;
+            margin-bottom:130px;
+        }
+        .d-tablet.r-landscape & {
+            margin-top:-165px;
+            margin-bottom:105px;
+        }
+        .d-tablet.r-portrait & {
+            @extend .mt--100;
+            @extend .mb-xl;
+        }
+        .d-phone & {
+            @extend .mt--45;
+            @extend .mb-xl;
         }
     }
     .row-hidden {

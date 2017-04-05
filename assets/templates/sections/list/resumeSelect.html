@@ -194,9 +194,7 @@
                         $.slider.free.show();
                     });
                 }
-                $.slider.premium.hide(function(){
-                    $scope.find(".largeSlides[name='slider-premium'] .slider__item.current").removeClass("current");
-                });
+                $.slider.premium.hide();
                 app.metrika.set("resume.select.default", "free");
             },
             premium: function(){
@@ -205,7 +203,6 @@
                 })
                 _.onEndTransition($.root, function(){
                     $.slider.premium.show();
-                    $scope.find(".largeSlides[name='slider-premium'] .slider__item").addClass("current");
                 });
                 $.slider.free.hide();
                 app.metrika.set("resume.select.default", "premium");

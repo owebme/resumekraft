@@ -54,6 +54,9 @@
                 @extend .btn-active;
                 padding-top:4px;
 
+                icon-control {
+                    transform:translateY(1px);
+                }
                 .m-no-touch &:hover {
                     @extend .c-white;
                     @extend .bg-blue;

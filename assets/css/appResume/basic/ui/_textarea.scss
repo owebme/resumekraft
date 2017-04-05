@@ -1,6 +1,11 @@
 .resumeBasic {
     .textarea-xl {
-        min-height:220px;
+        min-height:229px;
+        padding-top:12px;
+
+        &:focus {
+            box-shadow:inset 0 0 0 1px $blueBright;
+        }
     }
     .textarea-larger {
         @extend .textarea-xl;
@@ -9,6 +14,9 @@
         .d-phone & {
             min-height:280px;
         }
+        &:focus {
+            box-shadow:inset 0 0 0 1px $blueBright;
+        }        
     }
     textarea::placeholder {
         @extend .c-gray;

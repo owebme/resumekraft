@@ -1,0 +1,115 @@
+<resume-screen-courses class="screen" data-marquee={ opts.step }>
+
+    <div class="screen__content" data-empty={ true : !$resume.get("courses") }>
+
+        <div class="title">{ opts.section }</div>
+
+        <div class="container content" data-content="courses" data-editing={ true : editing }>
+            <div class="pos-rel pb-l mb-xs xs-pb-m xs-mb0" each={ item, i in _.sortArray($resume.select("courses", "items").get(), "year", "desc") } no-reorder>
+                <div class="section__num">{ i + 1 }</div>
+                <div if={ editing == item.id } onClick={ close } class="section__btn__close"></div>
+                <div if={ editing != item.id } onClick={ edit } class="section__btn__edit"></div>
+                <resume-screen-courses-item item={ item } active={ editing && editing == item.id }></resume-screen-courses-item>
+            </div>
+            <div class="row">
+                <div class="col-xs-24">
+                    <div if={ !editing } onClick={ create } class="section__btn__plus">
+                        <div class="section__btn__plus__icon"></div>
+                        <span class="hidden-xs">Добавить ещё курсы</span>
+                        <span class="visible-xs">Ещё курсы</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div onClick={ build } class="section__create" data-icon="courses">
+            <div class="section__create__button">
+                <div class="section__create__button__opener"></div>
+            </div>
+            <div class="section__create__title">Добавить курсы</div>
+        </div>
+
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.editing = null;
+
+    $.on("updated", function(){
+        if ($Sections.resume.edit.section && $Sections.resume.edit.ready){
+            $afterlag.run(function(){
+                $Sections.resume.edit.section.refresh();
+            });
+        }
+    });
+
+    $.build = function(){
+        $resume.select("courses").set({
+            title: null,
+            text: null,
+            items: []
+        });
+
+        $.create();
+    };
+
+    $.create = function(){
+        $.editing = _.newId();
+
+        $resume.select("courses", "items").push(
+            {
+                id: $.editing,
+                name: null,
+                title: null,
+                year: new Date().getFullYear()
+            }
+        );
+    };
+
+    $.edit = function(){
+        if ($.editing){
+            $Alert.show({
+                title: "Вы не закончили редактирование",
+                subtitle: "Закончите пожалуйста"
+            });
+        }
+        else {
+            $.editing = this.item.id;
+        }
+    };
+
+    $.saved = function(){
+        if (!_.clean(this.item.title)){
+            $Alert.show({
+                title: "Вы не заполнили поля",
+                subtitle: "Заполните пожалуйста"
+            });
+        }
+        else {
+            $.editing = null;
+            $.update();
+            $.parent.el.nav(2);
+        }
+    };
+
+    $.close = function(){
+        if (!_.clean(this.item.title)){
+            $.remove.call(this);
+        }
+        $.editing = null;
+    };
+
+    $.remove = function(){
+        $resume.select("courses", "items", {id: this.item.id}).unset();
+        if (!$resume.get("courses", "items").length){
+            $resume.select("courses").set(null);
+        }
+        $.editing = null;
+        $.parent.el.nav(2);
+    };
+
+</script>
+
+</resume-screen-courses>

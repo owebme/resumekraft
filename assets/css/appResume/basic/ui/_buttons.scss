@@ -1,4 +1,9 @@
 .resumeBasic {
+    .btn-primary {
+        .m-no-touch &:hover {
+            @extend .bg-blueBright;
+        }
+    }
     .section__btn__edit,
     .section__btn__close {
         @extend .pos-tr;

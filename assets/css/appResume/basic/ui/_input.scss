@@ -2,8 +2,12 @@
     .input-xl {
         @extend .fontFamily-proxima;
         @extend .fontWeight-normal;
-        color:$blackDark;
+        @extend .c-blackDark;
         font-size:22px;
+
+        &:focus {
+            box-shadow:inset 0 0 0 1px $blueBright;
+        }
     }
     input[type="number"] {
         @extend .c-blue;
@@ -13,5 +17,14 @@
     }
     .input-title {
         @extend .c-blue;
+    }
+    .input-autosuggest-item {
+        font-size:18px;
+        line-height:32px;
+
+        &:hover {
+            @extend .c-white;
+            @extend .bg-blueBright;
+        }
     }
 }

@@ -1,10 +1,7 @@
 .resume__section {
     &:not([data-active="true"]){
         .resume__section__bg {
-            background-color:$silver;
-        }
-        .user__photo__image {
-            @extend .opacity-65;
+            @extend .bg-silver;
         }
     }
     &__bg {
@@ -25,7 +22,7 @@
         @extend .trX--xl;
         @extend .borderRadius-xxxxl;
         @extend .minW-20p;
-        @extend .maxW-80p;
+        @extend .maxW-75p;
         box-shadow:0 12px 20px -10px rgba($lime,.28), 0 4px 20px 0px rgba($lime,.12), 0 7px 8px -5px rgba($lime,.2);
 
         &__title {

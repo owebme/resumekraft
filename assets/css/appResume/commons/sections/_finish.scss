@@ -1,4 +1,33 @@
 resume-edit-finish {
+    &:before {
+        @extend .display-none;
+    }
+    &:after {
+        @include accelerate();
+        @extend .content-empty;
+        @extend .pos-abs;
+        @extend .t50;
+        @extend .l50;
+        @extend .w100;
+        @extend .h100;
+        @extend .bg-white;
+        @extend .borderRadius-circle;
+        @extend .opacity-80;
+        @extend .zIndex--1;
+        transform:translate3d(-50%, -50%, 0) scale(0.01);
+        @extend .visibility-hidden;
+        @extend .pointerEvents-none;
+        @extend .willChange-tp;
+        transition:transform 0.3s $cubic345, opacity 0s 0.3s, visibility 0s 0.3s;
+    }
+    &[data-open="true"]{
+        &:after {
+            @extend .opacity-100;
+            @extend .visibility-visible;
+            transform:translate3d(-50%, -50%, 0) scale(20);
+            transition:transform 1s $cubic345, opacity 0.5s $cubic2501;
+        }
+    }
     .logo {
         @extend .pos-centered-h;
         @extend .t-l;

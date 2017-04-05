@@ -245,11 +245,13 @@ app.plugins.marqueeStatic = function($frame, options){
 			if (i==visible[0] || i==visible[1]) {
 				screens[i].api.state.isFullHide = false;
 				// screens[i].$block[0].style.display = 'block';
+				if (options.activeClass) screens[i].$block.addClass(options.activeClass);
 			} else if (!screens[i].api.state.isFullHide) {
 				// screens[i].$block[0].style.display = 'none';
 				if (!app.device.isMobile) screens[marquee.index].$block.triggerHandler('hide');
 				screens[i].$block.triggerHandler('fullHide');
 				screens[i].api.state.isFullHide = true;
+				if (options.activeClass) screens[i].$block.removeClass(options.activeClass);
 			}
 		}
 	};

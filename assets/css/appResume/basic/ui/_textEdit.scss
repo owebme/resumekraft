@@ -1,0 +1,52 @@
+.textEdit {
+    .d-tablet.r-portrait & {
+        @extend .ml-xss;
+    }
+    .textarea {
+        color:#151515;
+        font-size:17px;
+        padding:32px 30px;
+        @extend .fontWeight-normal;
+        @extend .fontFamily-helvetica;
+        @extend .boxShadow-none;
+        border-radius:6px 0 6px 6px;
+        height:87vh;
+
+        &:focus {
+            @extend .boxShadow-none;
+        }
+    }
+    &__buttons {
+        @extend .pos-abs;
+        @extend .t0;
+        @extend .l100;
+        @extend .ml--xss;
+    }
+    &__button {
+        @extend .pos-rel;
+        @extend .w60;
+        @extend .h60;
+        @extend .cursor-pointer;
+
+        &[data-item="close"]{
+            @extend .bg-white;
+            border-radius:0 4px 0 0;
+
+            &:after {
+                @extend .content-empty;
+                @extend .pos-centered;
+                @include ui-icon("close", 28px, 28px);
+            }
+        }
+        &[data-item="save"]{
+            @extend .bg-green;
+            border-radius:0 0 4px 0;
+
+            &:after {
+                @extend .content-empty;
+                @extend .pos-centered;
+                @include ui-icon("check_white", 32px, 32px);
+            }
+        }
+    }
+}

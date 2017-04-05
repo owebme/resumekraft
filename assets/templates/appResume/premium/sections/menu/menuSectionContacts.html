@@ -135,7 +135,7 @@
                         })
                         .then(function(data){
                             if (data && data.image){
-                                $store.resume.select('commons', 'photo').set(data.image);
+                                $store.resume.select('commons', 'photo').set(data.image + "?" + _.newId());
                                 $.update();
                                 $Resume.sections.photo.update();
                             }

@@ -7,7 +7,7 @@
                 <span class="visible-sm visible-md c-gray fontSize-28">Компания</span>
             </div>
             <div class="col-xs-24 col-sm-16">
-                <ui-input update="title" cursor={ get.cursor() } placeholder={ 'Название компании' : app.device.isPhone } size="xl"></ui-input>
+                <ui-input update="title" cursor={ get.cursor() } placeholder={ 'Название компании' : app.device.isPhone } autosuggest="getSuggestCompanies" autosuggestSize="xl" size="xl"></ui-input>
             </div>
         </div>
         <div class="row mb-m">
@@ -15,7 +15,7 @@
                 <span class="c-gray fontSize-28">Регион</span>
             </div>
             <div class="col-xs-24 col-sm-16">
-                <ui-input update="city" cursor={ get.cursor() } placeholder={ 'Регион' : app.device.isPhone } size="xl"></ui-input>
+                <ui-input update="city" cursor={ get.cursor() } placeholder={ 'Регион' : app.device.isPhone } autosuggest="getSuggestCity" autosuggestSize="xl" size="xl"></ui-input>
             </div>
         </div>
         <div class="row mb-m">
@@ -23,7 +23,7 @@
                 <span class="c-gray fontSize-28">Должность</span>
             </div>
             <div class="col-xs-24 col-sm-16">
-                <ui-input update="post" cursor={ get.cursor() } placeholder={ 'Должность' : app.device.isPhone } size="xl"></ui-input>
+                <ui-input update="post" cursor={ get.cursor() } placeholder={ 'Должность' : app.device.isPhone } autosuggest="getSuggestPositions" autosuggestSize="xl" size="xl"></ui-input>
             </div>
         </div>
         <div class="row mb-m xs-mb-xxs">
@@ -31,13 +31,13 @@
                 <span class="hidden-xs c-gray fontSize-28">Начало работы</span>
                 <span class="input-title">Начало работы</span>
             </div>
-            <div class="col-xs-12 col-sm-7 col-md-6">
+            <div class="col-xs-12 col-sm-7 col-md-7">
                 <ui-select update="month" cursor={ get.cursor().select("from") } items={ $store.month.getItems() } size="xl"></ui-select>
             </div>
-            <div class="col-xs-12 col-sm-7 col-md-4">
+            <div class="col-xs-12 col-sm-7 col-md-5">
                 <ui-select update="year" cursor={ get.cursor().select("from") } items={ _.range(1940, new Date().getFullYear() + 1) } size="xl"></ui-select>
             </div>
-            <div class="col-xs-24 col-sm-2 col-md-6 pt-s xs-pr-xs dateToNow">
+            <div class="col-xs-24 col-sm-2 col-md-4 pl-m xsm-pl-xss md-pl-xss pt-s xs-pr-xs dateToNow">
                 <ui-checkbox onUpdate="parent" update="last" cursor={ get.cursor() } title="По настоящее" size="20" theme="blue"></ui-checkbox>
             </div>
         </div>
@@ -46,19 +46,19 @@
                 <span class="hidden-xs c-gray fontSize-28">Окончание</span>
                 <span class="input-title">Окончание</span>
             </div>
-            <div class="col-xs-12 col-sm-7 col-md-6">
+            <div class="col-xs-12 col-sm-7 col-md-7">
                 <ui-select update="month" cursor={ get.cursor().select("to") } items={ $store.month.getItems() } size="xl" disable={ get.cursor().get('last') }></ui-select>
             </div>
-            <div class="col-xs-12 col-sm-7 col-md-4">
+            <div class="col-xs-12 col-sm-7 col-md-5">
                 <ui-select update="year" cursor={ get.cursor().select("to") } items={ _.range(1940, new Date().getFullYear() + 1) } size="xl" disable={ get.cursor().get('last') }></ui-select>
             </div>
         </div>
-        <div class="row mb-m">
+        <div class="row mb-l">
             <div class="hidden-xs col-sm-8 pt-xs pr-m">
-                <span class="c-gray fontSize-28 nowrap-lg">Обязанности, функции</span>
+                <span class="c-gray fontSize-28">Обязанности и достижения</span>
             </div>
-            <div class="col-xs-24 col-sm-16">
-                <span class="input-title">Обязанности, функции</span>
+            <div onClick={ !app.device.isPhone && textEdit } onUpdate="none" class="col-xs-24 col-sm-16">
+                <span class="input-title">Обязанности и достижения</span>
                 <ui-textarea update="text" cursor={ get.cursor() } size="xl"></ui-textarea>
             </div>
         </div>
@@ -75,15 +75,15 @@
                 <div class="trY--xl pt-xs">{ opts.item.last ? new Date().getFullYear() : opts.item.to.year }</div>
             </div>
             <div class="col-xs-24 col-sm-10 xs-mb-s">
-                <h3 class="c-blue">{ item.post }</h3>
+                <h3 class="subtitle">{ item.post }</h3>
             </div>
             <div class="col-xs-24 col-sm-14 text-right">
-                <h3 class="c-blue">{ opts.item.title } &ndash; { opts.item.city }</h3>
+                <h3 class="subtitle">{ opts.item.title } <span if={ opts.item.city }>&ndash; { opts.item.city }</span></h3>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-24">
-                <p class="c-gray fontSize-22 lineHeight-xl">{ opts.item.text }</p>
+                <p class="c-gray fontSize-22 lineHeight-xl text">{ opts.item.text }</p>
             </div>
         </div>
     </div>
@@ -95,11 +95,18 @@
     $.get = {
         cursor: function(){
             return $resume.select("jobs", "items", {"id": $.opts.item.id});
-        },
-        level: function(){
-            return $resume.select("jobs", "items", {"id": $.opts.item.id}).get("level");
         }
     };
+
+    $.textEdit = function(){
+        $Sections.resume.edit.section.sections.textEdit.show({
+            placeholder: "Обязанности и достижения",
+            cursor: $.get.cursor().select("text"),
+            callback: function(){
+                $.update();
+            }
+        })
+    }
 
 </script>
 

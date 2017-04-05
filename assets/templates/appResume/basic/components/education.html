@@ -2,9 +2,19 @@
 
     <div class="screen__content" data-empty={ true : !$resume.get("education") }>
 
-        <div class="title">{ opts.title }</div>
+        <div class="title">{ opts.section }</div>
 
         <div class="container content" data-content="education" data-editing={ true : editing }>
+            <div class="row select-education">
+                <div class="hidden-xs col-sm-offset-4 col-sm-8 col-lg-offset-6 col-lg-8 pt-xs pr-m">
+                    <span class="visible-lg c-gray fontSize-28">Уровень образования</span>
+                    <span class="visible-sm visible-md c-gray fontSize-28">Степень</span>
+                </div>
+                <div class="col-xs-24 col-sm-12 col-lg-10">
+                    <span class="input-title">Уровень образования</span>
+                    <ui-select update="level" cursor={ $resume.select("education", "level") } items={ $store.education.getItems() } size="xl"></ui-select>
+                </div>
+            </div>
             <div class="pos-rel pb-l mb-xs xs-pb-m xs-mb0" each={ item, i in _.sortArray($resume.select("education", "items").get(), "year", "desc") } no-reorder>
                 <div class="section__num">{ i + 1 }</div>
                 <div if={ editing == item.id } onClick={ close } class="section__btn__close"></div>
@@ -49,7 +59,7 @@
         $resume.select("education").set({
             title: null,
             text: null,
-            level: "1",
+            level: "higher",
             items: []
         });
 
