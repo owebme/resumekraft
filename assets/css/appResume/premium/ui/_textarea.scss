@@ -7,7 +7,7 @@
 
             .d-no-phone & {
                 @extend .pl25;
-                @extend .pr50;
+                @extend .pr25;
             }
             .d-phone & {
                 padding-top:8px;
