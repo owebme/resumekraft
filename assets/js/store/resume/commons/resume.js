@@ -16,7 +16,7 @@ $store.resume = _.extend(new Baobab({},
 
                     resume.public = options.public ? true : false;
                     resume.plan = options.plan || "free";
-                    resume.template = "1";
+                    resume.template = "7";
                     resume.commons.photo = options.photo || resume.commons.photo;
 
         			if (account){
@@ -47,6 +47,12 @@ $store.resume = _.extend(new Baobab({},
                         works: null,
                         skills: null,
                         hobby: null,
+                        salary: {
+                            graph: {
+                                active: false,
+                                items: ["50000", "50000", "50000", "50000", "50000", "50000"]
+                            }
+                        },
                         coverletter: {
                             text: null,
                             color: "1"
@@ -203,7 +209,12 @@ $store.resume = _.extend(new Baobab({},
                     create: moment().format(),
                     update: moment().format(),
                     commons: data.commons || null,
-                    salary: $store.resume.default.salary(),
+                    salary: {
+                        amount: "50000",
+                        currency: "1",
+                        worktime: "1",
+                        active: true
+                    },
                     tags: null,
                     about: null,
                     social: null,
@@ -214,18 +225,6 @@ $store.resume = _.extend(new Baobab({},
                     percent: $store.resume.percentage.calc(data.plan || "free", {
                         commons: data.commons
                     })
-                }
-            },
-            salary: function(){
-                return {
-                    amount: "50000",
-                    currency: "1",
-                    worktime: "1",
-                    graph: {
-                        active: false,
-                        items: ["50000", "50000", "50000", "50000", "50000", "50000"]
-                    },
-                    active: true
                 }
             }
         },
@@ -351,6 +350,9 @@ $store.resume = _.extend(new Baobab({},
                     return "#0084ff";
                 }
             },
+            citizenship: function(){
+                return $store.country.getTitleById($store.resume.get('commons', 'citizenship'));
+            },
             relocation: function(){
                 var lang = $store.resume.get("lang"),
                     value = $store.resume.get('commons', 'relocation'),
@@ -380,6 +382,9 @@ $store.resume = _.extend(new Baobab({},
                 else {
                     return $store.dictionary.getTitleById(value, "relocation");
                 }
+            },
+            businessTrip: function(){
+                return $store.dictionary.getTitleById($store.resume.get('commons', 'businessTrip'), "businessTrip");
             },
             birthday: {
                 date: function(){
@@ -415,6 +420,9 @@ $store.resume = _.extend(new Baobab({},
                 }
             },
             education: {
+                level: function(){
+                    return $store.education.getTitleById($store.resume.get('education', 'level'));
+                },
                 items: function(){
                     return _.sortArray($store.resume.get('education', 'items'), "year", "desc");
                 }
@@ -427,6 +435,36 @@ $store.resume = _.extend(new Baobab({},
             jobs: {
                 items: function(){
                     return $store.resume.take.jobs.sort($store.resume.get('jobs', 'items'));
+                },
+                experience: function(items){
+                    if (items){
+                        if (!_.isEmpty(items)){
+                            var day = new Date().getDate();
+
+                            return _.reduce(items, function(memo, item){
+                                var months = 0;
+
+                                if (item.last){
+                                    months = moment().diff(item.from.year + '-' + (item.from.month < 10 ? '0' + item.from.month : item.from.month) + '-' + (day < 10 ? '0' + day : day), 'month');
+                                }
+                                else {
+                                    months = moment(item.to.year + '-' + (item.to.month < 10 ? '0' + item.to.month : item.to.month) + '-' + (day < 10 ? '0' + day : day)).diff(item.from.year + '-' + (item.from.month < 10 ? '0' + item.from.month : item.from.month) + '-' + (day < 10 ? '0' + day : day), 'month');
+                                }
+
+                                return memo + (months > 0 ? months : 0);
+                            }, 0);
+                        }
+                        else {
+                            return null;
+                        }
+                    }
+                    else {
+                        return $store.resume.take.jobs.calc({
+                            lang: $store.resume.get("lang"),
+                            months: $store.resume.get("jobs", "experience"),
+                            short: true
+                        })
+                    }
                 },
                 period: function(item, short){
                     var lang = $store.resume.get("lang"),
@@ -444,12 +482,29 @@ $store.resume = _.extend(new Baobab({},
                         months = moment(item.to.year + '-' + (item.to.month < 10 ? '0' + item.to.month : item.to.month) + '-' + (day < 10 ? '0' + day : day)).diff(item.from.year + '-' + (item.from.month < 10 ? '0' + item.from.month : item.from.month) + '-' + (day < 10 ? '0' + day : day), 'month');
                     }
 
+                    return $store.resume.take.jobs.calc({
+                        lang: lang,
+                        months: months > 0 ? months : 0,
+                        short: short,
+                        t: t,
+                        f: f
+                    })
+                },
+                calc: function(data){
+                    var data = data || {},
+                        lang = data.lang,
+                        months = data.months && parseInt(data.months),
+                        short = data.short,
+                        t = data.t,
+                        f = data.f,
+                        years = 0;
+
                     if (months > 0){
                         years = Math.floor(months / 12);
                         if (years == "1") years = years + (lang == "ru" ? ' год' : ' year');
                         else if (years > 1 && years < 5) years = years + (lang == "ru" ? ' года' : ' year');
                         else if (years < 1) years = "";
-                        else years = years + (lang == "ru" ? ' лет' : ' year');
+                        else years = years + (lang == "ru" ? ' лет' : ' years');
                     }
                     if (months){
                         months = months - Math.floor(months / 12) * 12;
@@ -493,6 +548,16 @@ $store.resume = _.extend(new Baobab({},
                 color: function(){
                     return $store.coverletter.getColorById($store.resume.get('coverletter', 'color'));
                 }
+            }
+        },
+        isLargeAboutMe: function(){
+            if (app.device.isPhone) return false;
+            var about = $store.resume.get('about');
+            if (about && about.length && about.length > 800){
+                return true;
+            }
+            else {
+                return false;
             }
         },
         placeholder: {

@@ -8,7 +8,7 @@
             <div onClick={ show.dropMenu } onUpdate="none" class="resume__item__control__btn resume__item__control__menu"></div>
         </div>
         <div class="resume__item__control__right">
-            <div onClick={ onPublic } onUpdate="none" class="resume__item__noview" data-active={ opts.item.public }></div>
+            <div onClick={ onPreview } onUpdate="none" class="resume__item__preview"></div>
             <div if={ opts.item.plan == "premium" } onClick={ show.inbox } onUpdate="none" class="resume__item__inbox" data-active={ true : $store.inbox.getCounterNewByResumeId(item._id) }>
                 <div class="resume__item__inbox__badge">{ $store.inbox.getCounterNewByResumeId(item._id) }</div>
             </div>
@@ -54,8 +54,8 @@
         $store.data.onRemove($.opts.item._id);
     };
 
-    $.onPublic = function(){
-        $store.data.onPublic($.opts.item._id, !$.opts.item.public, function(){
+    $.onPreview = function(){
+        $store.data.onPreview($.opts.item).then(function(){
             $.update();
         })
     };

@@ -34,6 +34,16 @@ body {
 	background: #eee;
     -webkit-font-smoothing: antialiased;
 }
+body#print {
+	background:#fff;
+}
+body#print #wrapper {
+	width:1188px;
+}
+body#print .stamp {
+	display:none;
+}
+{% if !print %}
 #wrapper {
 	opacity:0;
     margin:3px auto 30px;
@@ -52,6 +62,7 @@ body {
     -o-transition: transform .6s cubic-bezier(0.5, 0, 0, 1);
     transition: transform .6s cubic-bezier(0.5, 0, 0, 1);
 }
+{% endif %}
 #upload-photo .icon {
 	display:none !important;
 }
@@ -87,7 +98,7 @@ body {
 }
 {% endif %}
 </style>
-<body>
+<body{% if print %} id="print"{% endif %}>
 	<div id="wrapper">
 		<div id="t{{ num }}" class="template-resume"></div>
 
@@ -101,7 +112,7 @@ body {
     <link rel="stylesheet" type="text/css" href="/assets/css/appResume/basic/templates/style{% if isMobile %}.view{% endif %}.css" />
     </head>
     <script src="/assets/js/libs/modernizr.custom.js"></script>
-    <script src="/assets/js/libs/riot/riot+compiler.update.js"></script>
+    <script src="/assets/js/libs/riot-3.3.2/riot+compiler.update.js"></script>
     <script src="/assets/js/libs/riot/riot-i18n.js"></script>
     <script src="/assets/js/libs/baobab.js"></script>
     <script src="/assets/js/libs/underscore-min.js"></script>
@@ -121,12 +132,13 @@ body {
 {% endif %}
 
     <script src="/assets/js/components/commons/utils.js"></script>
-    <script src="/assets/js/store/resume/commons/contactsPrimary.js"></script>
     <script src="/assets/js/store/resume/commons/education.js"></script>
     <script src="/assets/js/store/resume/commons/languages.js"></script>
     <script src="/assets/js/store/resume/commons/resume.js"></script>
     <script src="/assets/js/store/resume/premium/resume.demo.js"></script>
     <script src="/assets/js/store/resume/commons/salary.js"></script>
+	<script src="/assets/js/store/resume/commons/country.js"></script>
+	<script src="/assets/js/store/resume/commons/dictionary.js"></script>
     <script src="/assets/js/store/month.js"></script>
     <script src="/public/js/resume/init.js"></script>
 

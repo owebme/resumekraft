@@ -41,10 +41,12 @@
 
                     <ux-text if={ $store.resume.select("sections").get({"name": "appeal"}).active } classname="larger mb-l" center="true" size="l" update="appeal" cursor={ $store.resume.select() } activity="true" title={ $store.resume.select("sections").get({"name": "appeal"}).title } type="textarea"></ux-text>
 
-                    <ux-text if={ $store.resume.select("sections").get({"name": "about"}).active } classname="p mb-l" center="true" update="about" cursor={ $store.resume.select() } activity="true" title={ $store.resume.select("sections").get({"name": "about"}).title } type="textarea"></ux-text>
+                    <ux-text name="ux-about" if={ $store.resume.select("sections").get({"name": "about"}).active && !$store.resume.isLargeAboutMe() } classname="p mb-l" center="true" update="about" cursor={ $store.resume.select() } activity="true" title={ $store.resume.select("sections").get({"name": "about"}).title } type="textarea"></ux-text>
 
                     <ux-social if={ $store.resume.select("sections").get({"name": "social"}).active } classname="social" size="l" title={ $store.resume.select("sections").get({"name": "social"}).title }></ux-social>
+
                 </div>
+                <ux-text-large name="ux-about-large" class="display-block col-xs-24 col-md-18 col-md-offset-6"></ux-text-large>
             </div>
         </div>
     </section>
@@ -347,7 +349,7 @@
                 }
                 else if (prop == "photo"){
                     $Resume.sections.photo.update();
-                    $store.resume.select("config", "photo", e.data.paths[0][0]).set(value);
+                    $store.resume.select("config", "photo", e.data.paths[0][1]).set(value);
                 }
                 else if (prop == "animate"){
                     $store.resume.select("config", "animate", value);

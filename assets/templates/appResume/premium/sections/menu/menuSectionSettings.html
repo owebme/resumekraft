@@ -1,22 +1,9 @@
 <menu-section-settings class="section__slider__item">
 
     <div class="rows section__slider__item__content">
-        <div class="row mb-s">
-            <div class="col-xs-17 col-sm-12 pr-m">
-                <span class="title black">Опубликовать резюме</span>
-            </div>
-            <div class="col-xs-7 col-sm-12">
-                <ui-switcher commit="true" update="public" cursor={ $store.resume.select() }></ui-switcher>
-            </div>
-        </div>
-        <div class="row mb-l xs-mb-m xs-pb-s">
-            <div class="col-xs-24">
-                <input class="input input-m { $store.resume.get('public') ? 'c-primary' : 'c-gray opacity-50' }" value="{ app.demo ? 'http://resumekraft.ru/premium/demo' : ' http://resumekraft.ru/resume/' + $store.resume.get('_id') }">
-            </div>
-        </div>
         <div class="row mb-m">
             <div class="hidden-xs col-sm-12 pt-xs pr-m">
-                <span class="title black">Язык резюме</span>
+                <span class="title">Язык резюме</span>
             </div>
             <div class="col-xs-24 col-sm-12 select-uppercase">
                 <span class="input-title">Язык резюме</span>
@@ -25,7 +12,7 @@
         </div>
         <div class="row mb-m">
             <div class="hidden-xs col-sm-12 pt-xs pr-m">
-                <span class="title black">Семейство шрифта</span>
+                <span class="title">Семейство шрифта</span>
             </div>
             <div class="col-xs-24 col-sm-12 select-uppercase">
                 <span class="input-title">Семейство шрифта</span>
@@ -34,7 +21,7 @@
         </div>
         <div class="row mb-m xs-pb-xxs">
             <div class="hidden-xs col-sm-12 pt-xs pr-m">
-                <span class="title black">Цветовая схема</span>
+                <span class="title">Цветовая схема</span>
             </div>
             <div class="col-xs-24 col-sm-12 select-uppercase">
                 <span class="input-title">Цветовая схема</span>
@@ -43,15 +30,7 @@
         </div>
         <div class="row h50 mb-m">
             <div class="col-xs-17 col-sm-12 pt-xs pr-m">
-                <span class="title black">Форма обратной связи</span>
-            </div>
-            <div class="col-xs-7 col-sm-12 pt-xs">
-                <ui-switcher commit={ autoCommit.feedback } value={ $store.resume.select("sections").get({"name": "feedback"}).active }></ui-switcher>
-            </div>
-        </div>
-        <div class="row h50 mb-m">
-            <div class="col-xs-17 col-sm-12 pt-xs pr-m">
-                <span class="title black">Получать лайки</span>
+                <span class="title">Получать лайки</span>
             </div>
             <div class="col-xs-7 col-sm-12 pt-xs">
                 <ui-switcher update="active" cursor={ $store.resume.select("config", "likes") }></ui-switcher>
@@ -59,7 +38,7 @@
         </div>
         <div class="row h50 mb-m">
             <div class="col-xs-17 col-sm-12 pt-xs pr-m">
-                <span class="title black">Показывать лайки</span>
+                <span class="title">Показывать лайки</span>
             </div>
             <div class="col-xs-7 col-sm-12 pt-xs">
                 <ui-switcher update="count" cursor={ $store.resume.select("config", "likes") }></ui-switcher>
@@ -67,15 +46,15 @@
         </div>
         <div class="row h50 mb-m hidden-xs">
             <div class="col-xs-17 col-sm-12 pt-xs pr-m">
-                <span class="title black">Оживить резюме анимацией</span>
+                <span class="title">Оживить резюме анимацией</span>
             </div>
             <div class="col-xs-7 col-sm-12 pt-xs">
-                <ui-switcher update="animate" cursor={ $State.select() }></ui-switcher>
+                <ui-switcher update="animate" cursor={ $store.resume.select("config") }></ui-switcher>
             </div>
         </div>
         <div class="row mb-m">
             <div class="hidden-xs col-sm-12 pt-xs pr-m">
-                <span class="title black">Фотофильтр</span>
+                <span class="title">Фотофильтр</span>
             </div>
             <div class="col-xs-24 col-sm-12 select-uppercase">
                 <span class="input-title">Фотофильтр</span>
@@ -84,7 +63,7 @@
         </div>
         <div class="row h50">
             <div class="col-xs-17 col-sm-12 pt-xs pr-m">
-                <span class="title black">Киноэффект на фото</span>
+                <span class="title">Киноэффект на фото</span>
             </div>
             <div class="col-xs-7 col-sm-12 pt-xs">
                 <ui-switcher update="noise" cursor={ $State.select("photo") }></ui-switcher>

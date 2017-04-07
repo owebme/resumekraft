@@ -65,8 +65,8 @@
                 screen: e.currentTarget.getAttribute("data-screen"),
                 callback: function(active, salary){
                     $store.resume.select('sections', {'name': 'salary'}).set('active', active);
-                    $resume.salary = salary ? salary : null;
-                    if (salary) $resume.salary.active = active;
+                    $resume.salary = salary;
+                    $resume.salary.active = active;
                     $.update();
                 }
             });

@@ -36,18 +36,26 @@ module.exports = function(mode){
                         editing: true
                     });
                 }
-                else if (mode == "view" && resume.plan == "free" && resume.public){
-                    addHits(resume._id, req);
+                else if (mode == "view" && (resume.plan == "free" || req.query.print) && resume.public){
+                    var template = resume.template;
+                    if (req.query.print){
+                        template = "7";
+                        resume.template = template;
+                    }
+                    else {
+                        addHits(resume._id, req);
+                    }
                     res.render('resumeView', {
                         post: resume.post,
                         resume: JSON.stringify(resume),
-                        num: resume.template,
+                        num: template,
                         isMobile: req.device.isMobile,
-                        stamp: true,
+                        print: req.query.print ? true : false,
+                        stamp: req.query.print ? false : true,
                         editing: false
                     });
                 }
-                else if (mode == "view" && resume.plan == "premium" && resume.public){
+                else if (mode == "view" && resume.plan == "premium" && resume.public && !req.query.print){
                     addHits(resume._id, req);
                     res.render('premiumView', {
                         color: resume.config.color,

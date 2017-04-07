@@ -1,248 +1,328 @@
 #t4 {
-  font-family: 'HypatiaLight', Arial, Helvetica, sans-serif;
-  font-size: 22px;
-  line-height: 27px;
-  color: #555;
-  padding: 0 0 80px 0;
-}
-#t4 .t-gray {
-  color: #aaa !important;
-}
-#t4 #t-header {
-  text-align: left;
-  min-width: 1084px;
-  padding-left: 134px;
-  padding-right: 98px;
-  box-sizing: border-box;
-  margin-bottom: 47px;
-}
-#t4 #t-header:after {
-  clear: both;
-}
-#t4 #t-header:after,
-#t4 #t-header:before {
-  display: table;
-  content: " ";
-}
-#t4 #t-header-names {
-  padding-top: 98px;
-  margin-left: -13px;
-  margin-bottom: -4px;
-  white-space: nowrap;
+    font-family: 'HypatiaLight', Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    line-height: 27px;
+    color: #555;
+    padding: 0 0 80px;
 
-  &[data-long="true"]{
-      .t-header-name {
-          font-size:102px;
-          line-height:117px;
-      }
-      .t-header-name.bold {
-          font-size:105px;
-          line-height:117px;
-      }
-  }
-}
-#t4 .t-header-name {
-  display: inline-block;
-  color: #919190;
-  font: 114px/117px 'SegoeL';
-  letter-spacing: -0.09em;
-  text-transform: uppercase;
-}
-#t4 .t-header-name.bold {
-  color: #1F8CEB;
-  font: 117px/117px 'HypatiaRegular';
-  letter-spacing: -0.09em;
-  text-transform: uppercase;
-}
-#t4 #t-header-surname {
-  padding-left: 8px;
-}
-#t4 #t-header-string {
-  width: 1000px;
-  margin-bottom: 22px;
-}
-#t4 .t-header-string-element {
-  position: relative;
-  display: inline-block;
-  vertical-align:top;
-  height:26px;
-  padding-right: 11px;
-  padding-left: 21px;
-  font-size: 23px;
-  letter-spacing: -0.01em;
-}
-#t4 .t-header-string-element:first-child {
-  padding-left: 0px;
-}
-#t4 .t-header-string-element:first-child i {
-  background: none;
-}
-#t4 .t-header-string-element i {
-  display: block;
-  position: absolute;
-  bottom: 10px;
-  left: 0;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  font-style: normal;
-  background: #1F8CEB;
-}
-#t4 .t-header-string-salary {
-    font:500 22px/24px 'Roboto';
-    white-space:nowrap;
-
-    rub:after {
-        content:"₽";
-        display:inline-block;
-        vertical-align:top;
+    a {
+        color: #555;
+        text-decoration:none;
     }
 }
+
+#t4 .t-gray {
+    color: #aaa !important;
+}
+
+#t4 #t-header {
+    text-align: left;
+    min-width: 1084px;
+    padding-left: 134px;
+    padding-right: 98px;
+    box-sizing: border-box;
+    margin-bottom: 47px;
+}
+
+#t4 #t-header:after {
+    clear: both;
+}
+
+#t4 #t-header:after,
+#t4 #t-header:before {
+    display: table;
+    content: " ";
+}
+
+#t4 #t-header-names {
+    padding-top: 98px;
+    margin-left: -13px;
+    margin-bottom: -4px;
+    white-space: nowrap;
+
+    &[data-long="true"] {
+        .t-header-name {
+            font-size: 102px;
+            line-height: 117px;
+        }
+
+        .t-header-name.bold {
+            font-size: 105px;
+            line-height: 117px;
+        }
+    }
+}
+
+#t4 .t-header-name {
+    display: inline-block;
+    color: #888;
+    font: 114px/117px 'SegoeL';
+    letter-spacing: -0.09em;
+    text-transform: uppercase;
+}
+
+#t4 .t-header-name.bold {
+    color: #1F8CEB;
+    font: 117px/117px 'HypatiaRegular';
+    letter-spacing: -0.09em;
+    text-transform: uppercase;
+}
+
+#t4 #t-header-surname {
+    padding-left: 8px;
+}
+
+#t4 #t-header-string {
+    width: 1000px;
+    margin-bottom: 22px;
+}
+
+#t4 .t-header-string-element {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    height: 26px;
+    padding-right: 11px;
+    padding-left: 21px;
+    font-size: 23px;
+    letter-spacing: -0.01em;
+}
+
+#t4 .t-header-string-element:first-child {
+    padding-left: 0;
+}
+
+#t4 .t-header-string-element:first-child i {
+    background: none;
+}
+
+#t4 .t-header-string-element i {
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    font-style: normal;
+    background: #1F8CEB;
+}
+
+#t4 .t-header-string-salary {
+    font: 500 22px/24px 'Roboto';
+    white-space: nowrap;
+
+    rub:after {
+        content: "₽";
+        display: inline-block;
+        vertical-align: top;
+    }
+}
+
 #t4 .t-header-string-salary sup {
-    display:inline-block;
-    vertical-align:top;
-    color:#fff;
-    font:500 15px/25px 'Roboto';
-    background-color:#1F8CEB;
-    padding:0 9px;
-    height:24px;
-    border-radius:100px;
-    margin-left:5px;
-    margin-top:-5px;
+    display: inline-block;
+    vertical-align: top;
+    color: #fff;
+    font: 500 15px/25px 'Roboto';
+    background-color: #1F8CEB;
+    padding: 0 9px;
+    height: 24px;
+    border-radius: 100px;
+    margin-left: 5px;
+    margin-top: -5px;
 }
+
 #t4 #t-header-post {
-  color: #1F8CEB;
-  font: 42px/44px 'HypatiaRegular';
-  letter-spacing: -0.05em;
-  text-align: right;
-  text-transform: uppercase;
-  padding-left: 20%;
+    color: #1F8CEB;
+    font: 42px/44px 'HypatiaRegular';
+    letter-spacing: -0.05em;
+    text-align: right;
+    text-transform: uppercase;
+    padding-left: 20%;
 }
+
 #t4 #t-container-salary {
-  color: #919190;
-  font: 42px/40px 'HypatiaRegular';
-  text-align: right;
-  text-transform: uppercase;
-  margin-top: -1px;
-  margin-bottom: -30px;
+    color: #888;
+    font: 42px/40px 'HypatiaRegular';
+    text-align: right;
+    text-transform: uppercase;
+    margin-top: -1px;
+    margin-bottom: -30px;
 }
+
 #t4 #t-container-salary span {
-  font-family: 'SegoeL';
-  padding-right: 3px;
+    font-family: 'SegoeL';
+    padding-right: 3px;
 }
+
 #t4 #t-container-salary em {
-  display: inline-block;
-  position: relative;
-  font-style: normal;
+    display: inline-block;
+    position: relative;
+    font-style: normal;
 }
+
 #t4 #t-container-salary i {
-  font-size: 38px;
-  position: absolute;
-  top: 3px;
-  left: -3px;
+    font-size: 38px;
+    position: absolute;
+    top: 3px;
+    left: -3px;
 }
+
 #t4 #t-container-wrapper {
-  padding: 0 100px 0 134px;
-  clear: both;
+    padding: 0 100px 0 134px;
+    clear: both;
 }
+
 #t4 .t-container {
-  position: relative;
-  margin: 68px 0;
+    position: relative;
+    margin: 68px 0;
 }
+
 #t4 .t-container-name {
-  position: absolute;
-  top: 3px;
-  left: 0;
-  color: #1F8CEB;
-  font: 24px/24px 'HypatiaSemibold';
-  letter-spacing: -0.025em;
-  width: 190px;
-  text-align: left;
-  text-transform: uppercase;
+    position: absolute;
+    top: 3px;
+    left: 0;
+    color: #1F8CEB;
+    font: 24px/24px 'HypatiaSemibold';
+    letter-spacing: -0.025em;
+    width: 190px;
+    text-align: left;
+    text-transform: uppercase;
 }
+
 #t4 .t-container-item {
-  position: relative;
-  padding-top:2px;
-  padding-left: 224px;
-  margin-bottom: 22px;
+    position: relative;
+    padding-top: 2px;
+    padding-left: 224px;
+    margin-bottom: 22px;
 }
-#t4 .t-container-title,
-#t4 .t-container-desc-title span {
-  font: 24px/24px 'HypatiaRegular';
-  letter-spacing: -0.025em;
-  margin-bottom: 6px;
+
+#t4 .t-container-item--line {
+    font-weight:normal;
+    margin-bottom:25px !important;
+    padding-bottom:15px;
+    padding-left:234px;
+    margin-left:-10px;
+    margin-right:-10px;
+    width:calc(100% + 20px);
+    border-bottom:1px solid #ddd;
 }
+
+#t4 .t-container-desc-title span,
+#t4 .t-container-title {
+    font: 24px/24px 'HypatiaRegular';
+    letter-spacing: -0.025em;
+    margin-bottom: 6px;
+}
+
 #t4 .t-container-title span {
-  color: #1F8CEB;
-  font: 25px/24px 'HypatiaSemibold';
-  letter-spacing: -0.04em;
+    color: #1F8CEB;
+    font: 25px/24px 'HypatiaSemibold';
+    letter-spacing: -0.04em;
 }
+
+#t4 .t-container-title em {
+    color: #888;
+    font-style:normal;
+    font-size:23px;
+}
+
 #t4 .t-container-desc-text {
-  font-size: 21px;
-  line-height:29px;
+    font-size: 21px;
+    line-height: 29px;
 }
+
 #t4 .t-container-edu.t-container {
-    margin-top:38px;
+    margin-top: 38px;
 }
+
 #t4 .t-container-edu .speciality {
-    margin-top:4px;
+    margin-top: 4px;
 }
+
 #t4 .t-container-edu .t-container-item {
-  padding-right: 65px;
+    padding-right: 65px;
 }
+
 #t4 .t-container-edu .t-container-title span {
-  line-height: 28px;
+    line-height: 28px;
 }
+
 #t4 .t-container-lang .t-container-item {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
 }
+
 #t4 .t-container-lang .t-container-title {
-  font-size: 23px;
-  text-transform: uppercase;
-  color: #646464;
+    font-size: 23px;
+    text-transform: uppercase;
+    color: #646464;
 }
+
 #t4 .t-container-lang .t-container-title span {
-  font-size: 25px;
-  display: inline-block;
-  width: 168px;
-  text-transform: none;
+    font-size: 25px;
+    display: inline-block;
+    width: 195px;
+    text-transform: none;
 }
+
 #t4 .t-container-lang .t-container-title.t-gray span {
-  color: #aaa;
+    color: #aaa;
 }
+
 #t4 .t-container-job .t-container-item {
-  margin-bottom: 40px;
+    margin-bottom: 40px;
 }
+
+#t4 .t-container-job .t-container-title {
+    padding-right:200px;
+}
+
+#t4 .t-container-job .t-container-city {
+    color: #888;
+    position:absolute;
+    top:35px;
+    right:0;
+    font-size:23px;
+}
+
 #t4 .t-container-year {
-  display:table;
-  width:100%;
-  font: 22px/25px 'HypatiaLight';
-  margin-bottom: 9px;
-  white-space:nowrap;
+    display: table;
+    width: 100%;
+    font: 22px/25px 'HypatiaLight';
+    margin-bottom: 9px;
+    white-space: nowrap;
 }
+
 #t4 .t-container-job-cell {
-  display:table-cell;
-  vertical-align:top;
+    display: table-cell;
+    vertical-align: top;
 }
+
 #t4 .t-container-job-cell-left {
-  padding-right:20px;
+    color:#888;
+    font-weight:bold;
+    padding-right: 20px;
 }
+
 #t4 .t-container-job-cell-line {
-    width:100%;
-    vertical-align:middle;
+    width: 100%;
+    vertical-align: middle;
 }
+
 #t4 .t-container-job-cell-right {
-  padding-left:20px;
+    padding-left: 20px;
 }
+
 #t4 .t-container-job-line {
-    position:relative;
-    display:inline-block;
-    width:100%;
-    height:1px;
-    background-color:#1F8CEB;
-    vertical-align:middle;
-    margin-bottom:1px;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 1px;
+    background-color: #1F8CEB;
+    vertical-align: middle;
+    margin-bottom: 1px;
 }
+
 #t4 .t-container-job-line i {
     display: block;
     position: absolute;
@@ -254,19 +334,24 @@
     font-style: normal;
     background: #1F8CEB;
 }
+
 #t4 .t-container-post {
-  font: 24px/24px 'HypatiaRegular';
-  margin-bottom: 7px;
+    color:#3c3c3c;
+    font: 24px/24px 'HypatiaRegular';
+    margin-bottom: 7px;
 }
+
 #t4 .t-container-length {
-  color:#1F8CEB;
-  font: 22px/25px 'HypatiaRegular';
-  letter-spacing: -0.025em;
-  white-space: nowrap;
+    color: #1F8CEB;
+    font: 22px/25px 'HypatiaRegular';
+    letter-spacing: -0.025em;
+    white-space: nowrap;
 }
+
 #t4 .t-container-about {
-    margin-top:78px;
+    margin-top: 78px;
 }
+
 #t4 .preline {
-    white-space:pre-line;
+    white-space: pre-line;
 }

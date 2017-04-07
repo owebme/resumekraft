@@ -137,18 +137,29 @@
         @extend .zIndex-2;
         transform:translate3d(2px, 0, 0);
     }
-    &__noview {
+    // &__noview {
+    //     @extend .display-block;
+    //     @extend .mlr-xss;
+    //     @extend .opacity-85;
+    //     @extend .transition-default;
+    //     @extend .cursor-pointer;
+    //     @include ui-icon("unvisible_white", 26px, 26px);
+    //
+    //     &[data-active="true"]{
+    //         @include ui-icon("visible_white", 29px, 29px);
+    //         transform:translate3d(1px, 2px, 0);
+    //     }
+    //     &:hover {
+    //         @extend .opacity-100;
+    //     }
+    // }
+    &__preview {
         @extend .display-block;
         @extend .mlr-xss;
         @extend .opacity-85;
-        @extend .transition-default;
-        @extend .cursor-pointer;
-        @include ui-icon("unvisible_white", 26px, 26px);
+        @extend .btn-active;
+        @include ui-icon("visible_white", 29px, 29px);
 
-        &[data-active="true"]{
-            @include ui-icon("visible_white", 29px, 29px);
-            transform:translate3d(1px, 2px, 0);
-        }
         &:hover {
             @extend .opacity-100;
         }
@@ -157,7 +168,7 @@
         @extend .pos-rel;
         @extend .mlr-xxs;
         @extend .opacity-100;
-        @extend .cursor-pointer;
+        @extend .btn-active;
 
         &:after {
             @include accelerate();

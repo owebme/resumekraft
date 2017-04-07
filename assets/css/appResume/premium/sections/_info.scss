@@ -95,9 +95,9 @@
         @extend .c-steel;
         @extend .bg-white;
         @extend .boxShadow-30;
-        @extend .ptb-m;
+        @extend .pb-m;
         @extend .pl30;
-        @extend .pr30;
+        @extend .pr-l;
         @extend .pointerEvents-none;
         @extend .opacity-0;
         will-change:transform, opacity, background-color;
@@ -105,11 +105,15 @@
         transform-origin:0% 50%;
         transform:translate3d(-20%, 0, 0) scale3d(1, 0.5, 1);
         transition:transform .2s $cubic345, opacity .2s $cubic345;
-        width:340px;
+        width:348px;
 
+        .d-no-phone & {
+            padding-top:21px;
+        }
         .d-phone & {
             @extend .t-xl;
             @extend .l--s;
+            @extend .pt-m;
             @extend .pl-l;
             @extend .pr-s;
             @extend .c-white;
@@ -144,38 +148,42 @@
         }
     }
     &-name {
-        @extend .f-primary;
-        @extend .fontSize-20;
         @extend .fontWeight-bold;
+        letter-spacing:-0.02em;
 
         .d-no-phone & {
             @extend .c-primary;
+            @extend .fontSize-18;
+            @extend .pt-xxs;
         }
         .d-phone & {
-            @extend .fontSize-24;
+            @extend .fontSize-22;
             @extend .ptb-xxs;
         }
     }
     &-salary {
-        @extend .fontFamily-helvetica;
         @extend .nowrap;
+        @extend .fontFamily-roboto;
     }
     &-email {
-        @extend .pb-xs;
-
         .d-no-phone & {
             @extend .c-primary;
+            font-size:16.5px;
+            padding-top:3px;
+            @extend .pb-xs;
 
             a {
                 @extend .border-primary;
             }
         }
         .d-phone & {
-            @extend .c-white;
+            @extend .c-yellowBright;
             @extend .fontSize-20;
+            @extend .pt-xxs;
+            @extend .pb-s;
 
             a {
-                @extend .borderColor-white;
+                @extend .borderColor-yellowBright;
             }
         }
         a {
@@ -184,13 +192,15 @@
         }
     }
     &-phone {
-        @extend .fontSize-18;
-        @extend .mb-xxs;
+        @extend .pt-xxs;
         @extend .fontWeight-bold;
 
+        .d-no-phone & {
+            @extend .fontSize-18;
+            @extend .mb-xxs;
+        }
         .d-phone & {
             @extend .fontSize-22;
-            @extend .pt-xxs;
             @extend .mb-xs;
         }
     }

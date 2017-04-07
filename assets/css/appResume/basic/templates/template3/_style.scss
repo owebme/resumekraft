@@ -5,6 +5,10 @@
     color:#313232;
     padding:0 0 80px 0;
 
+    a {
+        color: #313232;
+        text-decoration:none;
+    }
     .t-gray {
         color:#989898 !important;
     }
@@ -82,6 +86,21 @@
     }
     .t-container-string-element {
         margin-bottom:18px;
+
+        &-email {
+            position:relative;
+
+            &:before {
+                content:'';
+                position:absolute;
+                top:60%;
+                left:-2px;
+                width:calc(100% + 4px);
+                height:9px;
+                background-color:#02bdf3;
+                opacity:0.15;
+            }
+        }
     }
     #t-container-post {
         color:#646464;
@@ -119,8 +138,23 @@
         position:relative;
         margin:58px 0 58px 0;
     }
+    .t-tag {
+        display:inline-block;
+        color:#666;
+        background-color:#F0F1F2;
+        padding:0 11px;
+        height:35px;
+        font-size:20px;
+        line-height:35px;
+        margin:0 6px 6px 0;
+        border-radius:6px;
+    }
+    .t-container.t-container-tags {
+        margin-top:37px;
+        margin-bottom:48px;
+    }
     .t-container.t-container-edu {
-        margin-top:27px;
+        margin-top:37px;
     }
     .t-container-name {
         position:absolute;
@@ -142,8 +176,14 @@
         font-style:normal;
         border-radius:0 4px 4px 0;
     }
+    .t-container-tags .t-container-name i,
+    .t-container-tags .t-container-dates div {
+        background:#f59c00;
+    }
     .t-container-edu .t-container-name i,
-    .t-container-edu .t-container-dates div {
+    .t-container-edu .t-container-dates div,
+    .t-container-courses .t-container-name i,
+    .t-container-courses .t-container-dates div {
         background:#02bdf3;
     }
     .t-container-edu .t-container-desc-name {
@@ -195,13 +235,23 @@
     }
     .t-container-about .t-container-name i,
     .t-container-about .t-container-dates div {
-        background:#000;
+        background:#151515;
         color:#fff;
     }
     .t-container-item {
         display:table;
         width:100%;
         margin:0 0 22px 0;
+    }
+    .t-container-item--line {
+        position:relative;
+        margin-left:46%;
+        color:#989898;
+        padding-bottom:11px;
+        width:51%;
+        top:-8px;
+        margin-bottom:22px !important;
+        border-bottom:1px solid #d6d6d6;
     }
     .t-container-dates {
         display:table-cell;
@@ -218,7 +268,7 @@
         font:25px/25px 'FuturaB';
         padding:8px 10px 9px 12px;
         margin-bottom:-3px;
-        border-radius:4px 0 0 0;
+        border-radius:4px 0 0 4px;
     }
     .t-container-dates-title {
         font:bold 21px/24px 'Avant';
@@ -228,6 +278,10 @@
     .t-container-dates-title.t-gray {
         color:#444 !important;
         background:#eaeaea !important;
+    }
+    .t-container-dates-title.t-black {
+        color:#fff !important;
+        background:#151515 !important;
     }
     .t-container-dates-name {
         font:22px/22px 'NeoSansProRegular';

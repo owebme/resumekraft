@@ -146,6 +146,7 @@
             defaults: defaults,
             requires: requires,
             target: e && e.target,
+            handler: callback && callback.handler || null,
             callback: function(active, data){
                 $store.resume.select('sections', {'name': component}).set('active', active);
                 $resume[component] = _.any(_.values(_.omit(data, "title"))) ? data : null;
@@ -206,6 +207,7 @@
                 data: _.copyArray(params.store),
                 defaults: params.defaults,
                 requires: params.requires,
+                handler: params.handler || null,
                 callback: params.callback ? params.callback : null
             });
         },
@@ -330,7 +332,7 @@
                     }
                     this.data.items = this.data.items.length ? this.data.items : null;
                 }
-                this.callback(this.switcher.value, this.data);
+                this.callback(this.switcher.value, this.handler ? this.handler(this.data) : this.data);
             }
 
             $Editable.hide();

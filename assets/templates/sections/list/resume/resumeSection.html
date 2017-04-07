@@ -180,6 +180,9 @@
                 $Sections.resume.list.update();
             });
         },
+        print: function(){
+            $store.data.onPrint($.item.get('_id'));
+        },
         edit: function(){
             if ($.item.get('plan') == "free" ) $.hide();
             $store.data.onEdit($.item.get('_id'));

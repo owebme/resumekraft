@@ -5,6 +5,10 @@
     color:#313232;
     padding:0 0 80px 0;
 
+    a {
+        color: #313232;
+        text-decoration:none;
+    }
     .t-gray {
         color:#989898 !important;
     }
@@ -83,6 +87,7 @@
         line-height:24px;
         text-align:right;
         box-sizing:border-box;
+        z-index:1;
     }
     #t-header-city {
         margin-bottom:4px;
@@ -102,8 +107,18 @@
         font-size:26px;
         line-height:34px;
         font-family:'HelveticaNeue';
+        margin:0 20px 15px 190px;
+        letter-spacing: -0.007em;
+    }
+    #t-header-substring {
+        font-size:22px;
+        line-height:30px;
+        font-family:'HelveticaNeue';
         margin:0 20px 25px 190px;
         letter-spacing: -0.007em;
+    }
+    .t-header-substring-element {
+        padding-right:15px;
     }
     .t-header-string-element {
         display:inline-block;
@@ -150,6 +165,10 @@
         position:relative;
         margin:58px 0;
     }
+    .t-container.t-container-tags {
+        margin-top:-12px;
+        margin-bottom:38px;
+    }
     .t-container.t-container-edu {
         margin-top:-12px;
     }
@@ -178,6 +197,11 @@
         text-transform:uppercase;
         margin-bottom:25px;
         letter-spacing: -0.01em;
+
+        &-small {
+            color:#afafaf;
+            padding-left:15px;
+        }
     }
     .t-container-dates {
         display:table-cell;
@@ -186,8 +210,9 @@
         vertical-align:top;
     }
     .t-container-dates-year {
-        font:36px 'PFDin';
+        font:32px 'PFDin';
         letter-spacing: -0.046em;
+        padding-top:10px;
     }
     .t-container-dates-title {
         font-size:20px;
@@ -254,7 +279,7 @@
     }
     .t-container-desc-length {
         position:relative;
-        color:#646464;
+        color:#afafaf;
         font:24px/27px 'PTSansNarrow';
         text-transform:uppercase;
     }
@@ -265,6 +290,21 @@
         margin-left:37px;
         width:100px;
         text-align:right;
+    }
+    .t-container-tags {
+        .t-container-desc {
+            background:none;
+        }
+    }
+    .t-tag {
+        display:inline-block;
+        background-color:#F0F1F2;
+        padding:0 11px;
+        height:35px;
+        font-size:20px;
+        line-height:35px;
+        margin:0 8px 8px 0;
+        border-radius:6px;
     }
     .preline {
         white-space:pre-line;

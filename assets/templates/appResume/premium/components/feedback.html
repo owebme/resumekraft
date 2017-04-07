@@ -22,9 +22,9 @@
 
     <div class="pos-centered w100p text-center pointerEvents-none">
         <div class="anim-group2 anim-scale" delay-show="xl">
-            <icon-feedback color="{ app.device.isPhone ? 'primary' : 'white' }" size="xl"></icon-feedback>
+            <icon-feedback color="{ app.device.isPhone ? 'primary' : 'white' }" size="{ app.device.isPhone ? 'xl2' : 'xl' }"></icon-feedback>
         </div>
-        <div class="anim-group2 anim-bt-soft f-primary fontSize-20 plr-l pt-m { app.device.isPhone ? 'c-primary' : 'c-white' }" delay-show="s" data-duration="l">{ $i18n("resume.premium.template.Thanks, your message was successfully") }.</div>
+        <div class="anim-group2 anim-bt-soft f-primary plr-l pt-m xs-pb-l { app.device.isPhone ? 'c-primary fontSize-28' : 'c-white fontSize-20' }" delay-show="s" data-duration="l">{ $i18n("resume.premium.template.Thanks, your message was successfully") }.</div>
     </div>
 
 <script>

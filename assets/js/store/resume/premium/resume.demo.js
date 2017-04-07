@@ -45,6 +45,7 @@ $store.demo = {
             citizenship: "113",
             businessTrip: "ready",
             relocation: "no_relocation",
+            relocationCity: null,
             travelTime: "any",
             specialization: [],
             employments: [],
@@ -318,6 +319,7 @@ $store.demo = {
         jobs: {
             title: "Работа в компаниях",
             text: "Стабильность и ответственность, способность закрывать участки работ гарантируя полную надежность и прозрачность процесса, принимать ответственные решения, грамотно мотивировать людей, снижать риски и достигать поставленных целей.",
+            experience: "76",
             items: [
                 {
                     id: "1",

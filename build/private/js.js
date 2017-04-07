@@ -24,6 +24,7 @@ module.exports = function(){
     		'assets/js/libs/file-saver/FileSaver.min.js',
     		'assets/js/libs/afterlag-js/dist/afterlag.min.js',
     		'assets/js/libs/imagesloaded/imagesloaded.pkgd.min.js',
+            'assets/js/libs/history.js/scripts/bundled/html5/jquery.history.js',
     		'assets/js/libs/mouseweel.js',
     		'assets/js/libs/store.min.js',
     		'assets/js/libs/url.min.js'])

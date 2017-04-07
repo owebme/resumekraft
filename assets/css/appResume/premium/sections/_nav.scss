@@ -9,7 +9,7 @@
 
     &__container {
         @extend .pos-rel;
-        @extend .flex-row-left-center;
+        @extend .flex-centered;
     }
     &__slider {
         @include accelerate();

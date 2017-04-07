@@ -32,9 +32,20 @@
                         $store.resume.select('sections', {'name': $.opts.update}).set('active', active);
                     }
                     $.opts.cursor.set($.opts.update, data ? data : null);
-                    $.update({
-                        editable: false
-                    });
+
+                    if (!app.device.isPhone && $.opts.update == "about"){
+                        $Resume.tags["ux-about"].update({
+                            editable: false
+                        });
+                        $Resume.tags["ux-about-large"].update({
+                            editable: false
+                        });
+                    }
+                    else {
+                        $.update({
+                            editable: false
+                        });
+                    }
                 }
             });
             $.editable = true;

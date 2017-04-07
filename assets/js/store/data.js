@@ -46,6 +46,7 @@
                             color: item.config && item.config.color
                         })
                         .then(function(){
+                            History.pushState(null, null, '/private');
                             location.replace('/private/resume/' + id);
                         });
                     }
@@ -73,6 +74,9 @@
                 return new Promise(function(resolve, reject){
                     callback = resolve;
                 });
+            },
+            onPrint: function(id){
+                window.open('/resume/' + id + "?print=true", "_blank");
             },
             onStat: function(id, item){
                 $Sections.resume.stat.show(id, item);
@@ -230,8 +234,8 @@
                 {
                     hidden: app.device.isMobile,
                     title: "Распечатать",
-                    callback: function(){
-                        alert("Распечатать");
+                    callback: function(id){
+                        $.onPrint(id);
                     }
                 },
                 {

@@ -2,9 +2,9 @@
 
 	<div id="t-header">
 		<div id="t-header-contacts">
-			<div if={ $resume.get('commons', 'contacts', 'city') } id="t-header-city">{ $resume.get('commons', 'contacts', 'city') }</div>
-			<div if={ $resume.get('commons', 'contacts', 'phone') } id="t-header-phone">{ $resume.get('commons', 'contacts', 'phone') }</div>
-			<div if={ $resume.get('commons', 'contacts', 'skype') } id="t-header-skype">Skype: { $resume.get('commons', 'contacts', 'skype') }</div>
+			<div if={ $resume.get('commons', 'contacts', 'city') } id="t-header-city">{ $resume.get('commons', 'contacts', 'city', 'name') }</div>
+			<div if={ $resume.get('commons', 'contacts', 'phone') } id="t-header-phone"><a href="tel:{ $resume.get('commons', 'contacts', 'phone').replace(/[\s|\-|\(|\)]/g, "") }">{ $resume.get('commons', 'contacts', 'phone') }</a></div>
+			<div if={ $resume.get('commons', 'contacts', 'skype') } id="t-header-skype">Skype: <a href="skype:{ $resume.get('commons', 'contacts', 'skype') }">{ $resume.get('commons', 'contacts', 'skype') }</a></div>
 		</div>
 		<div if={ !$resume.get('commons', 'surname') } id="t-header-names" data-long={ $resume.get('commons', 'name').length > 7 }>
 			<div id="t-header-stroke"><div></div></div>
@@ -23,7 +23,7 @@
 			</div>
 		</div>
 		<div id="t-header-string">
-			<div if={ $resume.get('commons', 'contacts', 'email').length } class="t-header-string-element email">{ $resume.get('commons', 'contacts', 'email') }</div>
+			<div if={ $resume.get('commons', 'contacts', 'email').length } class="t-header-string-element email"><a href="mailto:{ $resume.get('commons', 'contacts', 'email') }">{ $resume.get('commons', 'contacts', 'email') }</a></div>
 			<div class="t-header-string-element">
 				<span if={ !$resume.get('commons', 'birthday', 'hidden') }>{ $resume.take.birthday.date() }</span>
 				<span class="age">({ $resume.take.birthday.age() })</span>
@@ -35,38 +35,54 @@
 				<sup>{ $resume.take.salary.worktime() }</sup>
 			</div>
 		</div>
+		<div id="t-header-substring">
+			<span class="t-header-substring-element">
+				<span class="t-gray">{ $i18n("resume.basic.template.Citizenship") }:</span> { $resume.take.citizenship() }
+			</span>
+			<span class="t-header-substring-element">
+				<span class="t-gray">{ $i18n("resume.basic.template.Relocation") }:</span> { $resume.take.relocation() }
+			</span>
+			<span class="t-header-substring-element">
+				<span class="t-gray">{ $i18n("resume.basic.template.Business trip") }:</span> { $resume.take.businessTrip() }
+			</span>
+		</div>
 	</div>
 	<div id="t-container-wrapper">
 		<div if={ $resume.get('post').length } id="t-container-post">{ $resume.get('post') }</div>
+		<div if={ $resume.get('tags').length } class="t-container t-container-tags">
+			<div class="t-container-name">{ $i18n("resume.basic.template.Main skills") }</div>
+			<div class="t-container-item">
+				<div class="t-container-dates"></div>
+				<div class="t-container-desc">
+					<span each={ item in $resume.get('tags') } no-reorder class="t-tag">{ item }</span>
+				</div>
+			</div>
+		</div>
 		<div if={ $resume.get('education', 'items').length } class="t-container t-container-edu">
-			<div class="t-container-name">{ $i18n("resume.basic.template.Education") }</div>
-			<div each={ edu, i in $resume.take.education.items() } class="t-container-item">
+			<div class="t-container-name">{ $i18n("resume.basic.template.Education") }<span class="t-container-name-small">{ $resume.take.education.level() }</span></div>
+			<div each={ edu, i in $resume.take.education.items() } no-reorder class="t-container-item">
 				<div class="t-container-dates">
 					<div class="t-container-dates-year">{ edu.year }</div>
-					<div class="t-container-dates-title">{ $store.education.getTitleById(edu.level) }</div>
 				</div>
-				<div if={ edu.level != 8 } class="t-container-desc">
+				<div class="t-container-desc">
 					<div class="t-container-desc-title">{ edu.title }</div>
+					<div if={ edu.speciality } class="t-container-desc-name">{ edu.speciality }</div>
 					<div if={ edu.faculty } class="t-container-desc-name">{ edu.faculty }</div>
-					<div if={ edu.speciality } class="t-container-desc-name">{ $i18n("resume.basic.template.Specialty") } &ndash; { edu.speciality }</div>
-				</div>
-				<div if={ edu.level == 8 } class="t-container-desc">
-					<div class="t-container-desc-title not-line">{ edu.title }</div>
 				</div>
 			</div>
 			<div class="t-container-stroke"></div>
 		</div>
 		<div class="t-container t-container-lang">
 			<div class="t-container-name">{ $i18n("resume.basic.template.Languages") }</div>
-			<div each={ lang, i in $resume.get('languages', 'items') } class="t-container-item">
+			<div each={ lang, i in $resume.get('languages', 'items') } no-reorder class="t-container-item">
 				<div class="t-container-dates">
-					<div class="t-container-dates-title { 't-gray' : lang.title != 'native' && lang.value == '1' }">{ $store.languages.getTitleById(lang.title) }</div>
+					<div class="t-container-dates-title { 't-gray' : lang.title != 'native' && lang.value == 'not' }">{ $store.languages.getTitleById(lang.title) }</div>
 				</div>
 				<div class="t-container-desc">
 					<div if={ lang.title == "native" } class="t-container-desc-title">
 						{ $store.languages.native.getTitleById(lang.value) }
 					</div>
-					<div if={ lang.title != "native" } class="t-container-desc-title { 't-gray' : lang.value == '1' }">
+					<div if={ lang.title != "native" } class="t-container-desc-title { 't-gray' : lang.value == 'not' }">
 						{ $store.languages.select.getTitleById(lang.value) }
 					</div>
 				</div>
@@ -74,8 +90,8 @@
 			<div class="t-container-stroke"></div>
 		</div>
 		<div if={ $resume.get('jobs', 'items').length } class="t-container t-container-job">
-			<div class="t-container-name">{ $i18n("resume.basic.template.Experience") }</div>
-			<div each={ job, i in $resume.take.jobs.items() } class="t-container-item">
+			<div class="t-container-name">{ $i18n("resume.basic.template.Experience") }<span class="t-container-name-small">{ $resume.take.jobs.experience() }</span></div>
+			<div each={ job, i in $resume.take.jobs.items() } no-reorder class="t-container-item">
 				<div class="t-container-dates">
 					<div class="t-container-dates-year">
 						{ job.from.year }-<span if={ job.last }>NOW</span><span if={ !job.last }>{ job.to.year }</span>
@@ -93,6 +109,19 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div if={ $resume.get('courses', 'items').length } class="t-container t-container-edu">
+			<div class="t-container-name">{ $i18n("resume.basic.template.Courses") }</div>
+			<div each={ edu, i in $resume.take.courses.items() } no-reorder class="t-container-item">
+				<div class="t-container-dates">
+					<div class="t-container-dates-year">{ edu.year }</div>
+				</div>
+				<div class="t-container-desc">
+					<div class="t-container-desc-title">{ edu.title }</div>
+					<div class="t-container-desc-name">{ edu.name }</div>
+				</div>
+			</div>
+			<div class="t-container-stroke"></div>
 		</div>
 		<div if={ $resume.get('about').length } class="t-container t-container-about">
 			<div class="t-container-name">{ $i18n("resume.basic.template.About me") }</div>

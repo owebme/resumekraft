@@ -89,6 +89,7 @@ module.exports = function() {
 					citizenship: null,
 					businessTrip: null,
 					relocation: null,
+					relocationCity: null,
 					travelTime: null,
 					specialization: [],
 					employments: [],

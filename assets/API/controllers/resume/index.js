@@ -43,6 +43,7 @@ module.exports = function(){
 					citizenship: this._citizenship(data.citizenship),
 					businessTrip: this._businessTrip(data.business_trip_readiness),
 					relocation: this._relocation(data.relocation),
+					relocationCity: this._relocationCity(data.relocation),
 					travelTime: this._travelTime(data.travel_time),
 					specialization: this._specialization(data.specialization),
 					employments: this._employments(data.employments),
@@ -110,6 +111,19 @@ module.exports = function(){
         _relocation: function(value){
             return value && value.type && value.type.id || null;
         },
+		_relocationCity: function(value){
+			if (value && value.area && !app.utils.isEmpty(value.area)){
+				return app.utils.map(value.area, function(item, i){
+					return {
+						id: item.id,
+						name: item.name
+					}
+				})
+			}
+            else {
+				return null
+			}
+        },
         _travelTime: function(value){
             return value && value.id || null;
         },
@@ -147,22 +161,27 @@ module.exports = function(){
 			}
 		},
 		_salary: function(value){
-			var amount = value && value.amount || null;
+			var amount = value && value.amount || null,
+				currency = "1";
+
 			if (amount){
-				var item = app.utils.findWhere(resumeBuild._currencyList, {"code": value.currency});
-				amount *= item && item.rate && (1 / item.rate) || 1;
+				if (resumeBuild._currencyList.indexOf(value.currency) > -1){
+					if (value.currency == "USD") currency = "2";
+					if (value.currency == "EUR") currency = "3";
+				}
+				else {
+					var item = app.utils.findWhere(resumeBuild._currencyDictionary, {"code": value.currency});
+					amount *= item && item.rate && (1 / item.rate) || 1;
+				}
 			}
 			return {
 				amount: amount && String(parseInt(amount)) || "50000",
-				currency: "1",
+				currency: currency,
 				worktime: "1",
-				graph: {
-					active: false,
-					items: ["50000", "50000", "50000", "50000", "50000", "50000"]
-				},
 				active: amount ? true : false
 			}
 		},
+		_currencyList: ['USD', 'EUR', 'RUR'],
 		_education: function(value){
 			if (value && value.primary && value.primary.length){
 				return {
@@ -284,7 +303,7 @@ module.exports = function(){
 				return null;
 			}
 		},
-		_currencyList: [{
+		_currencyDictionary: [{
 	        "rate": 1.0,
 	        "code": "RUR",
 	        "abbr": "руб.",

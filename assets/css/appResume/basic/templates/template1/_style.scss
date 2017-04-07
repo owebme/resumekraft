@@ -5,6 +5,10 @@
     color:#313232;
     padding:0 49px 80px 0;
 
+    a {
+        color: #313232;
+        text-decoration:none;
+    }
     .t-gray {
         color:#989898 !important;
     }
@@ -84,22 +88,22 @@
         height:16.66%;
     }
     .t-container-colors-item#t-color1 {
-        background:#c9e9e5;
+        background:saturate(#c9e9e5,12%);
     }
     .t-container-colors-item#t-color2 {
-        background:#cdeeaa;
+        background:saturate(#cdeeaa,12%);
     }
     .t-container-colors-item#t-color3 {
-        background:#f9f0a8;
+        background:saturate(#f9f0a8,12%);
     }
     .t-container-colors-item#t-color4 {
-        background:#e0cfdf;
+        background:saturate(#e0cfdf,12%);
     }
     .t-container-colors-item#t-color5 {
-        background:#faced2;
+        background:saturate(#faced2,12%);
     }
     .t-container-colors-item#t-color6 {
-        background:#bcd8f0;
+        background:saturate(#bcd8f0,12%);
     }
     .t-container {
         position:relative;
@@ -125,8 +129,17 @@
         width:100%;
         margin-bottom:25px;
     }
+    .t-container-item--line {
+        padding-left:47%;
+        color:#989898;
+        padding-bottom:11px;
+        margin-left:-10px;
+        width:calc(100% + 10px);
+        margin-bottom:25px !important;
+        border-bottom:1px solid #d6d6d6;
+    }
     .t-container-job .t-container-item {
-        margin-bottom:31px;
+        margin-bottom:45px;
     }
     .t-container-dates {
         display:table-cell;
@@ -191,6 +204,20 @@
     }
     .t-container-about {
         margin-top:78px;
+    }
+    .t-container-tags {
+        margin-bottom:62px;
+    }
+    .t-tag {
+        display:inline-block;
+        color:#666;
+        background-color:#F0F1F2;
+        padding:0 11px;
+        height:35px;
+        font-size:20px;
+        line-height:35px;
+        margin:0 6px 6px 0;
+        border-radius:6px;
     }
     .preline {
         white-space:pre-line;

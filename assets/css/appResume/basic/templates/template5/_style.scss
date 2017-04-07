@@ -1,179 +1,246 @@
 #t5 {
-  font-family: 'MyriadRegular', Arial, Helvetica, sans-serif;
-  font-size: 22px;
-  line-height: 27px;
-  color: #727272;
-  padding: 0 0 80px 116px;
-}
-#t5 .t-gray {
-  color: #aaa !important;
-}
-#t5 #t-header {
-  position: relative;
-  text-align: left;
-}
-#t5 #t-header-names {
-  padding-top: 105px;
-  color: #007aff;
-  font: 59px/59px 'MyriadThin';
-  letter-spacing: -0.042em;
-  white-space: nowrap;
-  margin-left: -3px;
-  margin-bottom: 16px;
-}
-#t5 #t-header-surname {
-  display: inline-block;
-}
-#t5 #t-header-name {
-  display: inline-block;
-}
-#t5 #t-header-string {
-  display: table;
-  width: 75%;
-  margin-bottom: 95px;
-}
-#t5 .t-header-string-left {
-  display: table-cell;
-  width: 50%;
-}
-#t5 .t-header-string-right {
-  display: table-cell;
-  width: 50%;
-}
-#t5 .t-header-string-element {
-  padding-top: 36px;
-}
-#t5 .t-header-string-element span {
-  color: #007aff;
-  font: 24.5px/22px 'MyriadSemibold';
-  letter-spacing: -0.03em;
-}
-#t5 #t-header-post {
-  position: absolute;
-  right: 83px;
-  top: 78px;
-  color:#555;
-  font: 32px/30px "MyriadThin";
-  text-align: right;
-  width: 36%;
-}
-#t5 .t-header-string-salary {
-    color:#555;
-    font:500 25px/24px 'Roboto';
-    white-space:nowrap;
+    font-family: 'MyriadRegular', Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    line-height: 27px;
+    color: #727272;
+    padding: 0 0 80px 116px;
 
-    rub:after {
-        content:"₽";
+    a {
+        color: #727272;
+        text-decoration:none;
     }
 }
+
+#t5 .t-gray {
+    color: #8492A6 !important;
+}
+
+#t5 #t-header {
+    position: relative;
+    text-align: left;
+}
+
+#t5 #t-header-names {
+    padding-top: 105px;
+    color: #007aff;
+    font: 59px/59px 'MyriadThin';
+    letter-spacing: -0.042em;
+    white-space: nowrap;
+    margin-left: -3px;
+    margin-bottom: 16px;
+}
+
+#t5 #t-header-surname {
+    display: inline-block;
+}
+
+#t5 #t-header-name {
+    display: inline-block;
+}
+
+#t5 #t-header-string {
+    display: table;
+    width: 75%;
+    margin-bottom: 95px;
+}
+
+#t5 .t-header-string-left {
+    display: table-cell;
+    width: 50%;
+}
+
+#t5 .t-header-string-right {
+    display: table-cell;
+    width: 50%;
+}
+
+#t5 .t-header-string-element {
+    padding-top: 36px;
+}
+
+#t5 .t-header-string-element span {
+    color: #007aff;
+    font: 24.5px/22px 'MyriadSemibold';
+    letter-spacing: -0.03em;
+    padding-right:5px;
+}
+
+#t5 #t-header-post {
+    position: absolute;
+    right: 83px;
+    top: 78px;
+    color: #555;
+    font: 32px/30px "MyriadThin";
+    text-align: right;
+    width: 36%;
+}
+
+#t5 .t-header-string-salary {
+    color: #555;
+    font: 500 25px/24px 'Roboto';
+    white-space: nowrap;
+
+    rub:after {
+        content: "₽";
+    }
+}
+
 #t5 .t-header-string-salary sup {
-    display:inline-block;
-    color:#fff;
-    font:500 15px/25px 'Roboto';
-    background-color:#007aff;
-    padding:0 9px;
-    height:24px;
-    border-radius:100px;
-    margin-left:5px;
-    transform:translateY(-5px);
+    display: inline-block;
+    color: #fff;
+    font: 500 15px/25px 'Roboto';
+    background-color: #007aff;
+    padding: 0 9px;
+    height: 24px;
+    border-radius: 100px;
+    margin-left: 5px;
+    transform: translateY(-5px);
 }
+
 #t5 #t-container-wrapper {
-  padding: 0 100px 0 0;
-  clear: both;
+    padding: 0 100px 0 0;
+    clear: both;
 }
+
 #t5 .t-container {
-  position: relative;
-  margin: 68px 0;
+    position: relative;
+    margin: 68px 0;
 }
+
 #t5 .t-container-name {
-  position: absolute;
-  top: 6px;
-  left: 0;
-  color: #007aff;
-  font: 24px/24px 'MyriadSemibold';
-  letter-spacing: -0.022em;
-  width: 190px;
-  text-align: left;
-  text-transform: uppercase;
+    position: absolute;
+    top: 6px;
+    left: 0;
+    color: #007aff;
+    font: 24px/24px 'MyriadSemibold';
+    letter-spacing: -0.022em;
+    width: 190px;
+    text-align: left;
+    text-transform: uppercase;
 }
+
 #t5 .t-container-item {
-  position: relative;
-  padding-top:5px;
-  padding-left: 224px;
-  margin-bottom: 22px;
+    position: relative;
+    padding-top: 5px;
+    padding-left: 224px;
+    margin-bottom: 22px;
 }
+
+#t5 .t-container-item--line {
+    color:#8492A6;
+    font-weight:normal;
+    margin-bottom:22px !important;
+    padding-bottom:15px;
+    padding-left:234px;
+    margin-left:-10px;
+    margin-right:-10px;
+    width:calc(100% + 20px);
+    border-bottom:1px solid #E0E6ED;
+}
+
 #t5 .t-container-title {
-  color: #646464;
-  font: 24px/24px 'MyriadRegular';
-  letter-spacing: -0.015em;
-  margin-bottom: 6px;
+    color: #646464;
+    font: 24px/24px 'MyriadRegular';
+    letter-spacing: -0.015em;
+    margin-bottom: 6px;
 }
+
 #t5 .t-container-title span {
-  color: #007aff;
-  font: 24px/24px 'MyriadSemibold';
-  letter-spacing: -0.04em;
+    color: #007aff;
+    font: 24px/24px 'MyriadSemibold';
+    letter-spacing: -0.04em;
 }
+
+#t5 .t-container-title em {
+    color: #8492A6;
+    font-style:normal;
+}
+
 #t5 .t-container-edu.t-container {
-    margin-top:38px;
+    margin-top: 38px;
 }
+
 #t5 .t-container-edu .speciality {
-    margin-top:4px;
+    margin-top: 4px;
 }
+
 #t5 .t-container-edu .t-container-item {
-  padding-right: 65px;
+    padding-right: 65px;
 }
+
 #t5 .t-container-edu .t-container-title span {
-  line-height: 28px;
+    line-height: 28px;
 }
+
 #t5 .t-container-lang .t-container-item {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
 }
+
 #t5 .t-container-lang .t-container-title {
-  font-size: 24px;
-  color: #646464;
+    font-size: 24px;
+    color: #646464;
 }
+
 #t5 .t-container-lang .t-container-title span {
-  font-size: 24px;
-  display: inline-block;
-  width: 168px;
-  text-transform: none;
+    font-size: 24px;
+    display: inline-block;
+    width: 195px;
+    text-transform: none;
 }
+
 #t5 .t-container-lang .t-container-title.t-gray span {
-  color: #aaa;
+    color: #8492A6;
 }
+
 #t5 .t-container-job .t-container-item {
-  margin-bottom: 40px;
+    margin-bottom: 40px;
 }
+
 #t5 .t-container-job .t-container-title {
-  font-size: 23px;
-  margin-bottom: 5px;
+    position:relative;
+    font-size: 23px;
+    padding-right:200px;
+    margin-bottom: 5px;
 }
+
+#t5 .t-container-job .t-container-city {
+    position:absolute;
+    top:0;
+    right:0;
+}
+
 #t5 .t-container-year {
-  font: 23px/25px 'MyriadRegular';
-  margin-bottom: 8px;
+    color: #8492A6;
+    font: 23px/25px 'MyriadRegular';
+    margin-bottom: 8px;
 }
+
 #t5 .t-container-post {
-  color:#555;
-  font: 23px/24px 'MyriadSemibold';
-  letter-spacing: -0.01em;
-  margin-bottom: 5px;
+    color: #555;
+    font: 23px/24px 'MyriadSemibold';
+    letter-spacing: -0.01em;
+    margin-bottom: 5px;
 }
+
 #t5 .t-container-length {
-  position: absolute;
-  top: 5px;
-  right: 0;
-  color:#007aff;
-  font: 22px/24px 'MyriadRegular';
-  letter-spacing: -0.025em;
-  white-space: nowrap;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    color: #8492A6;
+    font: 22px/24px 'MyriadRegular';
+    letter-spacing: -0.025em;
+    white-space: nowrap;
 }
+
 #t5 .t-container-desc-text {
     font-size: 21px;
-    line-height:29px;
+    line-height: 29px;
 }
+
 #t5 .t-container-about {
-    margin-top:78px;
+    margin-top: 78px;
 }
+
 #t5 .preline {
-    white-space:pre-line;
+    white-space: pre-line;
 }

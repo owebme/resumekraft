@@ -117,6 +117,9 @@
         }
         else {
             $.editing = null;
+            var experience = $store.resume.take.jobs.experience($resume.get("jobs", "items"));
+            $resume.select("jobs", "experience")
+            .set(experience > 0 && String(experience) || null);
             $.update();
             $.parent.el.nav(4);
         }

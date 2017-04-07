@@ -6,7 +6,7 @@
 
                 <btn-editable if={ $State.get('mode') === "editing" } data={ $resume.jobs }></btn-editable>
 
-                <h3 class="title">{ $resume.jobs && $resume.jobs.title ? $resume.jobs.title : $store.resume.placeholder.jobs.title() }</h3>
+                <h3 class="title">{ $resume.jobs && $resume.jobs.title ? $resume.jobs.title : $store.resume.placeholder.jobs.title() }<span if={ $resume.jobs && !_.isEmpty($resume.jobs.items) } class="c-primary"><span class="plr-xs">&ndash;</span>{ $store.resume.take.jobs.experience() }</span></h3>
 
                 <div if={ !$resume.jobs || $resume.jobs && $resume.jobs.text } onClick={ openEditable } onUpdate="none" class="{ blur : !$resume.jobs }">
                     <div class="row mb-l">
@@ -37,7 +37,7 @@
                         </div>
                         <div class="col-md-10">
                             <div class="job-year">{ $store.resume.take.jobs.year(item) }</div>
-                            <h3 class="job-title text-right" data-scrollin-icon="\{'stagger':120\}">{ item.title } &ndash; { item.city }</h3>
+                            <h3 class="job-title text-right" data-scrollin-icon="\{'stagger':120\}">{ item.title } <span if={ item.city }>&ndash; { item.city }</span></h3>
                         </div>
                     </div>
                     <div class="row pl-m pt-xxs pb-xl sm-pl0">
@@ -64,6 +64,7 @@
                         return  {
                             title: null,
                             text: null,
+                            experience: null,
                             items: null
                         }
                     },
@@ -103,7 +104,14 @@
                         field: "text",
                         alert: "Введите описание"
                     }
-                ]
+                ],
+                {
+                    handler: function(data){
+                        data.experience = $store.resume.take.jobs.experience(data.items);
+                        data.experience = data.experience > 0 && String(data.experience) || null;
+                        return data;
+                    }
+                }
             );
         }
         else {

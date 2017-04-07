@@ -7,18 +7,21 @@
     @extend .borderRadius-xxl;
     @extend .c-blackLight;
     @extend .f-primary;
-    @extend .text-truncate;
     @extend .bg-blackLight-transparent;
     @extend .fontSize-16;
     margin:5px 6px 5px 0;
 
     .section__editable__content & {
         @extend .pr35;
+        @extend .text-truncate;
+
+        &:not(.tag-input){
+            max-width:200px;
+        }
     }
     &:not(.tag-input){
         @extend .cursor-default;
         @extend .fontWeight-bold;
-        max-width:200px;
         line-height:40px;
 
         #app[data-mode="editing"]{

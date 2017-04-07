@@ -103,6 +103,13 @@
             return;
         }
         if ($store.resume.get("plan") == "premium"){
+            app.request("setResume", {
+                data: $store.resume.get()
+            }, {
+                loader: false,
+                notify: false
+            });
+            $.hide();
             window.open('/resume/' + $store.resume.get("_id"), "_blank");
         }
         else {
