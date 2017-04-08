@@ -19,11 +19,13 @@
     <photo-upload></photo-upload>
 
     <app-sections>
+        <section-master></section-master>
         <resume-stat></resume-stat>
         <section-inbox></section-inbox>
 
         <section-profile></section-profile>
         <section-profile-data></section-profile-data>
+        <section-profile-password></section-profile-password>
 
         <ui-dropmenu></ui-dropmenu>
     </app-sections>
@@ -81,6 +83,7 @@
         }
         $afterlag.xs(function(){
             app.$dom.body.removeClass("appLoading");
+            //$$($Sections.resume.list.root).addClass("transitionAll-none");
             $root.trigger("ready");
         });
     });
@@ -91,9 +94,13 @@
 
     this.init = function(){
         $Sections = {
+            master: {
+                section: $root.tags["section-master"]
+            },
             profile: {
                 section: $root.tags["section-profile"],
-                data: $root.tags["section-profile-data"]
+                data: $root.tags["section-profile-data"],
+                password: $root.tags["section-profile-password"]
             },
             resume: {
                 navbar: $root.tags["resume-list"].tags["resume-navbar"],
@@ -131,6 +138,7 @@
             inbox: {
                 section: $root.tags["section-inbox"]
             },
+            messenger: $root.tags["resume-list"].tags["messenger-launcher"],
             payment: $root.tags["section-payment"],
             photoUpload: $root.tags["photo-upload"],
             progress: $root.tags["section-progress"]

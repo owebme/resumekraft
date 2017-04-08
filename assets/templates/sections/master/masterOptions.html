@@ -1,0 +1,19 @@
+<section-master-options class="master__options container">
+
+    <div class="row">
+        <div class="col-md-10 centered">
+            <div class="master__title master__title__options">
+                <div class="master__back__menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 89 83.75" version="1.1" x="0px" y="0px"><path d="M40.6905999,22.9084973 C43.189915,20.4107944 43.1878426,16.3670515 40.6908497,13.8716693 C38.1933078,11.3757384 34.1453197,11.3763989 31.6481888,13.871919 L3.02022521,42.4814165 C1.35220089,44.1483649 1.34975893,46.8485819 3.02022521,48.5179706 L31.6481888,77.1274682 C34.1475039,79.6251711 38.1938568,79.6231001 40.6908497,77.1277178 C43.1883916,74.631787 43.1877307,70.5864099 40.6905999,68.0908898 L24.420338,51.8311228 L83.6087564,51.8311228 C87.1361983,51.8311228 90,48.9703003 90,45.441297 C90,41.9115177 87.1385428,39.0514711 83.6087564,39.0514711 L24.5372066,39.0514711 L40.6905999,22.9084973 Z"/></svg>
+                </div>
+                <div onClick={ parent.onBack } onUpdate="none"  class="master__title__options__inner">Меню</div>
+            </div>
+            <div class="master__options__content">
+                <div class="master__options__sel__title">Выберите резюме</div>
+                <ui-select color="white" size="xl" items={ $store.data.getItemsMenu() }></ui-select>
+                <div onClick={ parent.onSuccess } onUpdate="none" class="btn btn-xl2 c-blue btn-white-hover-success { btn-loading : loading } mt-l">{ button }</div>
+            </div>
+        </div>
+    </div>
+
+</section-master-options>

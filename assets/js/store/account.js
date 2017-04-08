@@ -23,7 +23,7 @@ $store.account = _.extend(new Baobab([]),
 
             if (_.isFunction(callback)) callback();
 
-            app.request("setDataProfile", {
+            app.request("setProfile", {
                 commons: data.get()
             });
         },

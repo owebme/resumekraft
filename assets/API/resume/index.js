@@ -60,7 +60,58 @@ module.exports = function(url){
 	});
 
 	route.post('/sendmail', function(req, res) {
-		app.errHandler(res, false, "ok");
+		if (!req.body.from) app.errHandler(res, true, null);
+
+		app.db.collection('accounts').findOne({
+			"_id": req.accountId,
+		},
+		function(err, account){
+			if (account){
+				if (API.utils.overlimit(account.history.events, app.config.private.get("resume:sendmailLimit:" + account.plan), "resumeSendmail")){
+					app.errHandler(res, err, "overlimit");
+				}
+				else {
+					var text = req.body.lang == "en" ? 'Look at my resume' : 'Посмотрите моё резюме',
+						body = {
+							from: {
+								name: req.body.from.name,
+								email: req.body.from.email
+							},
+							to: req.body.to,
+							subject: req.body.title,
+							html: text + ' <a rel="noopener" href="' + app.config.public.get('domain') + '/resume/' + req.body.id + '">' + req.body.title + '</a>'
+						};
+
+					if (req.body.pdf){
+						body.attach = [
+							{
+								filename: req.body.title + '.pdf',
+								path: '.' + app.config.public.get('path:pdf') + req.body.id + '.pdf'
+							}
+						]
+					}
+
+					app.mailer.send(body, function(err, data){
+						app.db.collection('accounts').update({
+							"_id": req.accountId
+						},{
+							$push: {
+								"history.events": {
+									name: "resumeSendmail",
+									device: req.device,
+									data: body,
+									date: app.moment().format()
+								}
+							}
+						});
+						app.errHandler(res, err, data);
+					});
+				}
+			}
+			else {
+				app.errHandler(res, err, account);
+			}
+		});
 	});
 
 	route.post('/import', function(req, res) {
@@ -69,17 +120,7 @@ module.exports = function(url){
 		},
 		function(err, account){
 			if (account){
-				var limit = app.config.private.get("resume:importLimit:" + account.plan),
-					history = account.history.events,
-					today = 0,
-					d = app.moment().format("YYMMDD");
-
-				app.utils.each(app.utils.where(history, {name: "resumeImportHH"}), function(item){
-					var date = app.moment(item.date).format("YYMMDD");
-					if (d === date) today++;
-				});
-
-				if (limit < today){
+				if (API.utils.overlimit(account.history.events, app.config.private.get("resume:importLimit:" + account.plan), "resumeImportHH")){
 					app.errHandler(res, err, "overlimit");
 				}
 				else {
@@ -125,6 +166,7 @@ module.exports = function(url){
 				content: req.body.content
 			});
 
+		options.base = app.config.public.get('domain');
 		options.width = options.width + "px";
 
 		pdf.create(output, options).toFile(process.cwd() + pathPdf, function(err, data) {

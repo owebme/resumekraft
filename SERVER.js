@@ -33,6 +33,7 @@ var config = require('./libs/config')({
 global.app = express();
 app.express = express;
 app.req = request;
+app.mailer = require('./libs/sendmail')();
 app.config = config.use("global");
 app.config.public = config.use("public");
 app.config.private = config.use("private");

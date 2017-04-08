@@ -400,7 +400,13 @@
 	        return false;
 	    }
 	    return true;
-	};	
+	};
+
+	utils.opener = function(url){
+		var otherWindow = window.open();
+		otherWindow.opener = null;
+		otherWindow.location = url;
+	};
 
 	utils.getDateNow = function(){
 		var d = new Date();

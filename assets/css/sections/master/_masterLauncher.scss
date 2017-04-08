@@ -1,0 +1,51 @@
+.master__launcher {
+    @extend .flex-centered;
+    @extend .pos-abs;
+    @extend .t100;
+    @extend .pos-centered-h;
+    width:202px;
+    height:202px;
+    box-shadow:0 20px 25px rgba(0,0,0,.15);
+    @extend .mt--100;
+    @extend .bg-white;
+    @extend .borderRadius-circle;
+    @extend .cursor-pointer;
+    @extend .zIndex-1;
+
+    &:hover {
+        &:before {
+            transform:translate3d(-50%, -50%, 0) scale(10);
+        }
+        svg {
+            transform:translate3d(0, 5px, 0) scale(1.1);
+        }
+        path {
+            @extend .fill-white;
+        }
+    }
+    svg {
+        @extend .pos-rel;
+        width:66px;
+        height:66px;
+        @extend .mt--xl;
+        @extend .willChange-transform;
+        transition:transform 0.5s $bounce;
+    }
+    path {
+        @extend .fill-blue;
+        will-change:fill;
+        transition:fill 0.4s $cubic345;
+    }
+    &:before {
+        @include accelerate();
+        @extend .content-empty;
+        @extend .pos-centered;
+        @extend .w20;
+        @extend .h20;
+        @extend .borderRadius-circle;
+        @extend .bg-blue;
+        @extend .opacity-95;
+        @extend .bg-white;
+        transition:transform 0.4s $cubic345;
+    }
+}

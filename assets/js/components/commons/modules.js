@@ -42,6 +42,10 @@
 	var updateSizes = function(){
 		sizes.width = $dom.window.width();
 		sizes.height = parseInt(window.innerHeight,10);
+		if (sizes.width <= 735) sizes.size = "small";
+        else if (sizes.width >= 736 && sizes.width <= 1068) sizes.size = "medium";
+        else if (sizes.width >= 1069 && sizes.width <= 1441) sizes.size = "large";
+        else if (sizes.width >= 1442) sizes.size = "xlarge";
 	};
 	// {event} window resize
 	$dom.window.on('resize.app', updateSizes);
@@ -73,10 +77,12 @@
 
 	/* --- sizeCheck --- */
 	var sizeCheck = function(){
-		var width = $dom.window.width();
+		var width = app.sizes.width || $dom.window.width();
+
 		device.isPhone = (width < 768);
 		device.isTablet = (width < 1025 && width > 767);
 		device.orientation = (device.isTablet && width < 1025 && width > 991 || device.isPhone && width > 480 ? "landscape" : "portrait");
+
 		$dom.html
 		.addClass(device.isPhone ? 'd-phone' : 'd-no-phone')
 		.removeClass(device.isPhone ? 'd-no-phone' : 'd-phone')
@@ -84,6 +90,20 @@
 		.removeClass(device.isTablet ? 'd-no-tablet' : 'd-tablet')
 		.addClass(device.orientation === "landscape" ? 'r-landscape' : 'r-portrait')
 		.removeClass(device.orientation !== "landscape" ? 'r-landscape' : 'r-portrait');
+
+		if (app.sizes.size && app.sizes.size.match(/large/)){
+			if (app.sizes.size === "large"){
+				$dom.html.addClass('d-largeScreen')
+				.removeClass('d-xlargeScreen');
+			}
+			else if (app.sizes.size === "xlarge"){
+				$dom.html.addClass('d-xlargeScreen')
+				.removeClass('d-largeScreen');
+			}
+		}
+		else {
+			$dom.html.removeClass('d-largeScreen d-xlargeScreen');
+		}
 		device.is = device.isPhone ? 'phone' : (device.isTablet ? 'tablet' : 'desktop');
 	};
 	$dom.window.on('resize.sizeCheck', sizeCheck);

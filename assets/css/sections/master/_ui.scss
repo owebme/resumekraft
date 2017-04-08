@@ -1,0 +1,38 @@
+.section__master {
+    .select {
+        @extend .bg-none;
+
+        &:after {
+            border-top-color:$white;
+        }
+        select {
+            @extend .bg-none;
+            @extend .c-white;
+            box-shadow:0 0 0 2px $white;
+        }
+    }
+}
+.master__close {
+    @extend .centered;
+    @extend .mt-l;
+    @extend .mb--xl;
+    @extend .opacity-0;
+    @extend .willChange-tp;
+    @extend .text-center;
+    transform:translate3d(0, 20px, 0) rotate(45deg);
+
+    &__button {
+        @extend .display-inlineBlock;
+        @extend .opacity-70;
+        @extend .btn-active;
+        @include ui-icon("close_fill_white", 35px, 35px);
+
+        .d-xlargeScreen & {
+            @extend .w40;
+            @extend .h40;
+        }
+        &:hover {
+            @extend .opacity-100;
+        }
+    }
+}

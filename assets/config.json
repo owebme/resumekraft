@@ -4,8 +4,11 @@
             "free": 2,
             "premium": 999
         },
+        "sendmailLimit": {
+            "free": 1,
+            "premium": 999
+        },
         "pdf": {
-            "base": "http://192.168.1.64:3000",
             "width": "1218",
             "height": "auto",
             "timeout": 10000

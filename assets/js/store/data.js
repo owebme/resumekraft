@@ -18,22 +18,45 @@
                     });
                 });
             },
-            onRemove: function(id){
-                $Alert.show({
-                    title: "Удалить резюме?",
-                    subtitle: "Вы уверены?",
-                    success: {
-                        callback: function(){
-                            app.request('delResume', {
-                                id: id
+            onCreate: function(lang){
+                $Sections.resume.select.show({
+                    plan: app.metrika.get("resume.select.default")
+                })
+                .then(function(data){
+                    if (data.plan == "free"){
+                        $Sections.resume.edit.show({
+                            lang: lang || "ru",
+                            template: data.template
+                        });
+                    }
+                    else if (data.plan == "premium"){
+                        if ($account.get("plan") != "premium"){
+                            $Sections.plan.show("premium");
+                        }
+                        else {
+                            var resume = $store.resume.prepare.premium(
+                                $resume.default.resume({
+                                    ACCOUNT_ID: $account.get("_id"),
+                                    plan: "premium",
+                                    lang: lang || "ru",
+                                    commons: $account.get("commons")
+                                })
+                            );
+                            app.request("addResume", {
+                                data: resume
+                            }, {
+                                loader: false
                             })
-                            .then(function(){
-                                $.select({'_id': id}).unset();
-                                $Sections.resume.list.update();
-                            });
+                            .then(function(data){
+                                if (data.id){
+                                    resume._id = data.id;
+                                    $store.data.push(resume);
+                                    $store.data.onEdit(data.id);
+                                }
+                            })
                         }
                     }
-                });
+                })
             },
             onEdit: function(id){
                 var item = $store.data.get({"_id": id});
@@ -69,14 +92,31 @@
                     });
                 }
                 else {
-                    window.open('/resume/' + item._id, "_blank");
+                    app.utils.opener('/resume/' + item._id);
                 }
                 return new Promise(function(resolve, reject){
                     callback = resolve;
                 });
             },
+            onRemove: function(id){
+                $Alert.show({
+                    title: "Удалить резюме?",
+                    subtitle: "Вы уверены?",
+                    success: {
+                        callback: function(){
+                            app.request('delResume', {
+                                id: id
+                            })
+                            .then(function(){
+                                $.select({'_id': id}).unset();
+                                $Sections.resume.list.update();
+                            });
+                        }
+                    }
+                });
+            },
             onPrint: function(id){
-                window.open('/resume/' + id + "?print=true", "_blank");
+                app.utils.opener('/resume/' + id + '?print=true');
             },
             onStat: function(id, item){
                 $Sections.resume.stat.show(id, item);
@@ -84,7 +124,8 @@
             onSendMail: function(id){
                 $Sections.resume.sendmail.show(id);
             },
-            onGetPdf: function(item){
+            onGetPdf: function(item, options){
+                var options = options || {};
                 $Sections.progress.show(function(){
                     var post = item.post,
                         num = item.template,
@@ -111,12 +152,21 @@
                             if (data && data.pdf){
 
                                 template.unmount();
+                                moment.locale("ru");
+
+                                if (options.skipGetFile){
+                                    if (_.isFunction(options.callback)){
+                                        $Sections.progress.hide(function(){
+                                            options.callback();
+                                        });
+                                    }
+                                    return;
+                                }
 
                                 var oReq = new XMLHttpRequest();
                                 oReq.open("GET", data.pdf, true);
                                 oReq.responseType = "arraybuffer";
                                 oReq.onload = function() {
-
                                     var response = this.response;
 
                                     $Sections.progress.hide(function(){
@@ -125,8 +175,6 @@
                                     });
                                 };
                                 oReq.send();
-
-                                moment.locale("ru");
                             }
                         });
                     });

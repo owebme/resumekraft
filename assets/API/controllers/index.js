@@ -4,7 +4,8 @@ module.exports = function(){
         suggest: require('./suggest')(),
         jptest: require('./jptest')(),
         jobs: require('./jobs')(),
-        resume: require('./resume')()
+        resume: require('./resume')(),
+        utils: require('./utils')()
     }
 
 }

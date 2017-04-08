@@ -1,0 +1,310 @@
+<section-master class="section__master" data-open="false" data-menu="false" data-options="false">
+
+    <div class="master__title__main">
+        <div class="master__title master__title__main__inner">
+            Я хочу
+        </div>
+        <div class="master__close">
+            <div class="master__close__button" onClick={ hide } onUpdate="none"></div>
+        </div>
+    </div>
+
+    <section-master-options></section-master-options>
+
+    <div class="master__block" data-pos="left">
+        <div onClick={ onSelect } onUpdate="none" each={ item in get.items("left") } no-reorder class="master__block__item">
+            <span class="master__block__link">{ item.title }</span>
+        </div>
+    </div>
+
+    <div class="master__block" data-pos="top">
+        <div onClick={ onSelect } onUpdate="none" each={ item in get.items("top") } no-reorder class="master__block__item">
+            <span class="master__block__link">{ item.title }</span>
+        </div>
+    </div>
+
+    <div class="master__block" data-pos="bottom">
+        <div onClick={ onSelect } onUpdate="none" each={ item in get.items("bottom") } no-reorder class="master__block__item">
+            <span class="master__block__link">{ item.title }</span>
+        </div>
+    </div>
+
+    <div class="master__block" data-pos="right">
+        <div onClick={ onSelect } onUpdate="none" each={ item in get.items("right") } no-reorder class="master__block__item">
+            <span class="master__block__link">{ item.title }</span>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.default = function(){
+        return {
+            force: false,
+            notHide: false,
+            waterfall: false
+        }
+    };
+
+    $.items = [
+        {
+            pos: "left",
+            title: "Отчет о просмотрах резюме",
+            waterfall: true,
+            button: {
+                title: "Смотреть статистику",
+                callback: function(){
+                    $Sections.resume.stat.show($.get.id());
+                    app.metrika.set("master.stat", true);
+                }
+            }
+        },
+        {
+            pos: "left",
+            title: "Отправить резюме по почте",
+            waterfall: true,
+            button: {
+                title: "Перейти к отправке",
+                callback: function(){
+                    $Sections.resume.sendmail.show($.get.id());
+                    app.metrika.set("master.sendmail", true);
+                }
+            }
+        },
+        {
+            pos: "left",
+            title: "Сохранить резюме в PDF",
+            waterfall: true,
+            button: {
+                title: "Получить PDF",
+                callback: function(){
+                    $store.data.onGetPdf($store.data.select({"_id": $.get.id()}).get());
+                    app.metrika.set("master.pdf", true);
+                }
+            }
+        },
+        {
+            pos: "left",
+            title: "Распечатать резюме",
+            options: {
+                force: true,
+                notHide: true
+            },
+            waterfall: true,
+            button: {
+                title: "Распечатать",
+                callback: function(){
+                    $store.data.onPrint($.get.id());
+                    app.metrika.set("master.print", true);
+                }
+            }
+        },
+        {
+            pos: "top",
+            title: "Импорт резюме из HH.ru",
+            callback: function(){
+                $Sections.resume.import.show();
+                app.metrika.set("master.import", true);
+            }
+        },
+        {
+            pos: "top",
+            title: "Пополнить баланс",
+            callback: function(){
+                $Sections.payment.show();
+                app.metrika.set("master.payment", true);
+            }
+        },
+        {
+            pos: "top",
+            title: "Посмотреть входящие",
+            callback: function(){
+                $Sections.inbox.section.show();
+                app.metrika.set("master.inbox", true);
+            }
+        },
+        {
+            pos: "top",
+            title: "Обратиться в поддержку",
+            callback: function(){
+                $Sections.messenger.show();
+                app.metrika.set("master.messenger", true);
+            }
+        },
+        {
+            pos: "bottom",
+            title: "Найти работу",
+            options: {
+                force: true,
+                notHide: true,
+            },
+            callback: function(){
+                _.opener("/jobs/search");
+                app.metrika.set("master.jobs", true);
+            }
+        },
+        {
+            pos: "bottom",
+            title: "Редактировать профиль",
+            callback: function(){
+                $Sections.profile.data.show();
+                app.metrika.set("master.profile", true);
+            }
+        },
+        {
+            pos: "bottom",
+            title: "Сменить пароль",
+            callback: function(){
+                $Sections.profile.password.show();
+                app.metrika.set("master.password", true);
+            }
+        },
+        {
+            pos: "right",
+            title: "Создать резюме на английском",
+            callback: function(){
+                $store.data.onCreate("en");
+                app.metrika.set("master.createEng", true);
+            }
+        },
+        {
+            pos: "right",
+            title: "Заказать написание резюме",
+            callback: function(){
+
+                app.metrika.set("master.order", true);
+            }
+        },
+        {
+            pos: "right",
+            title: "Выбрать образец из базы",
+            callback: function(){
+
+                app.metrika.set("master.samples", true);
+            }
+        },
+        {
+            pos: "right",
+            title: "Пройти тест профориентации",
+            callback: function(){
+                $Sections.resume.list.hide();
+                $Sections.jptest.section.show(function(){
+                    $Sections.resume.list.show();
+                });
+                app.metrika.set("master.jptest", true);
+            }
+        }
+    ];
+
+    $.on("mount", function(){
+        $.control = $.tags["section-master-options"];
+        // $afterlag.xl(function(){
+        //     $.show();
+        // })
+    });
+
+    $.show = function(){
+        $.root.setAttribute("data-open", true);
+        $.root.setAttribute("data-menu", true);
+    };
+
+    $.get = {
+        items: function(pos){
+            return _.filter($.items, function(item){
+                return item.pos == pos;
+            });
+        },
+        id: function(){
+            $.control.tags["ui-select"].update();
+            return $.control.tags["ui-select"].select.value;
+        }
+    };
+
+    $.onSelect = function(){
+        $.options = _.extend($.default(), this.item.options);
+        if (this.item.callback){
+            if ($.options.force){
+                this.item.callback();
+            }
+            else {
+                $.afterHide(this.item.callback);
+            }
+            if (!$.options.notHide) $.hide();
+        }
+        else if (this.item.button){
+            if (this.item.waterfall){
+                var items = $store.data.get();
+                if (items && items.length){
+                    if (items.length == 1){
+                        $.afterHide(this.item.button.callback);
+                        $.hide();
+                    }
+                    else {
+                        $.onControl(this.item.button);
+                    }
+                }
+                else {
+                    $Alert.show({
+                        title: "У вас нет ни одного резюме",
+                        subtitle: "Создайте и повторите операцию"
+                    })
+                }
+            }
+            else {
+                $.onControl(this.item.button);
+            }
+        }
+    };
+
+    $.onControl = function(options){
+        $.callback = options.callback;
+        $.control.update({
+            button: options.title
+        })
+        $.hide("menu");
+    };
+
+    $.onBack = function(){
+        $.root.setAttribute("data-options", false);
+        $.root.setAttribute("data-menu", true);
+    };
+
+    $.onSuccess = function(){
+        if ($.options.force){
+            $.callback();
+        }
+        else {
+            $.afterHide($.callback);
+        }
+        if (!$.options.notHide) $.hide();
+        else {
+            $.onBack();
+        }
+    };
+
+    $.afterHide = function(callback){
+        $afterlag.run(function(){
+            callback();
+        }, {
+            iterations: 5,
+            timeout: 700,
+            delay: 700
+        });
+    };
+
+    $.hide = function(option){
+        if (option == "menu"){
+            $.root.setAttribute("data-menu", false);
+            $.root.setAttribute("data-options", true);
+        }
+        else {
+            $.root.setAttribute("data-open", false);
+            $.root.setAttribute("data-menu", false);
+            $.root.setAttribute("data-options", false);
+        }
+    };
+
+</script>
+
+</section-master>

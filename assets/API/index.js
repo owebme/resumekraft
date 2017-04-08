@@ -6,11 +6,11 @@ module.exports = function(url){
 	// Initialize
 	app.get(url + '/data/init', app.checkAuth(), require('./data/init')());
 
-	// Profile data
-	app.put(url + '/data/profile', app.checkAuth(), require('./data/profile')());
-
 	// Upload photo profile
 	app.put(url + '/upload/photo', app.checkAuth(), require('./upload/photo')());
+
+	// Profile
+	require('./profile')(url + '/profile');
 
 	// Resume private API
 	require('./resume')(url + '/resume');

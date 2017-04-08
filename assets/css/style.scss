@@ -61,6 +61,12 @@
 @import 'sections/mobile/tutorial/welcome';
 @import 'sections/profile/profile';
 
+// master
+@import 'sections/master/master';
+@import 'sections/master/ui';
+@import 'sections/master/masterContent';
+@import 'sections/master/masterLauncher';
+
 // messenger
 @import 'sections/messenger/messengerLauncher';
 
@@ -96,6 +102,7 @@
 @import 'sections/overview/premium/header';
 @import 'sections/overview/premium/slides';
 @import 'sections/overview/premium/ui';
+
 // @import 'sections/overview/jptest/slides';
 // @import 'sections/overview/overviewFunctions';
 

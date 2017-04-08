@@ -18,11 +18,7 @@
         this.element = !options.container ? $dom.body[0] : options.container && _.isElement(options.container) ? options.container : options.container[0];
         this.scroll = options.scroll || $dom.window;
         A.call(this);
-        var d;
-        if (app.sizes.width <= 735) d = "small";
-        else if (app.sizes.width >= 736 && app.sizes.width <= 1068) d = "medium";
-        else if (app.sizes.width >= 1069 && app.sizes.width <= 1441) d = "large";
-        else if (app.sizes.width >= 1442) d = "xlarge";
+        var d = sizes.size.size;
         this.currentBreakpoint = d;
         this.animations = {};
         this.animateEls = $("[data-animate], [data-scrollin], [data-scrollin-icon]", this.element);

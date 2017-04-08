@@ -1,4 +1,5 @@
 {
+    "domain": "http://192.168.1.64:3000",
     "path": {
         "photo": "/public/files/photo/",
         "pdf": "/public/files/pdf/",
@@ -15,7 +16,7 @@
     },
     "inbox": {
         "colors": "blue,blueLight,orange,brown,red,pink,violet,violetLight,green,emerald"
-    },    
+    },
     "blog": {
         "perPage": "7",
         "cache": true,

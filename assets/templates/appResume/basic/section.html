@@ -52,6 +52,7 @@
                 options.id ? $store.data.get({ "_id": options.id }) : $resume.default.resume({
                     ACCOUNT_ID: $account.get("_id"),
                     plan: "free",
+                    lang: options.lang || "ru",
                     template: options.template,
                     commons: $account.get("commons")
                 })

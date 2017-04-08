@@ -5,7 +5,7 @@
     @extend .visibility-hidden;
     @extend .pointerEvents-none;
     transition:visibility 0s 0.2s;
-    @extend .zIndex-100;
+    @extend .zIndex-101;
 
     .d-phone & {
         padding:0 15px;

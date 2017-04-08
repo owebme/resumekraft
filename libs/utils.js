@@ -1,5 +1,4 @@
 var libs = process.cwd() + '/libs/';
-var config = require(libs + 'config');
 var crypto = require('crypto');
 var sha1Hex = require('sha1-hex');
 var md5 = require('md5');
@@ -14,7 +13,7 @@ var utils = {
 	},
 
 	cryptoPass: function(pass){
-		return crypto.createHash('sha256').update(pass + "." + config.get('session:secret')).digest('hex');
+		return crypto.createHash('sha256').update(pass + "." + app.config.get('session:secret')).digest('hex');
 	},
 
 	cryptoHash: function(login, pass, id){

@@ -142,7 +142,7 @@
             $.editable.phone = !$.editable.phone;
 
             if (!$.editable.phone){
-                app.request("setDataProfile", {
+                app.request("setProfile", {
                     commons: $account.get("commons")
                 });
             }
@@ -151,7 +151,7 @@
             $.editable.email = !$.editable.email;
 
             if (!$.editable.email){
-                app.request("setDataProfile", {
+                app.request("setProfile", {
                     commons: $account.get("commons")
                 });
             }

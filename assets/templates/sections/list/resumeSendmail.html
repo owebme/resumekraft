@@ -15,13 +15,8 @@
                         <div class="anim anim-bt-ease { animated : !success } xs-plr-m">
                             <div class="mb-s fontSize-22">Укажите адрес получения резюме</div>
                             <input onKeydown={ onEnter } name="input" class="pointer-for-input input input-{ app.device.isPhone ? 'l' : 'xl' } input-white input-rounded mb-m text-center" placeholder="Введите e-mail" autocomplete="off">
-                            <div class="row mb-l text-left-xs xs-pl-l xs-mb-m xs-pb-xxs">
-                                <div class="col-xs-24 col-sm-12 xs-mb-s">
-                                    <ui-checkbox title="Ссылка на резюме" color="white" size="xl" value={ attach.link }></ui-checkbox>
-                                </div>
-                                <div class="col-xs-24 col-sm-12">
-                                    <ui-checkbox title="Прикрепить PDF" color="white" size="xl" value={ attach.pdf }></ui-checkbox>
-                                </div>
+                            <div class="mb-l text-left-xs xs-pl-l xs-mb-m xs-pb-xxs">
+                                <ui-checkbox commit={ onAttach } title="Прикрепить PDF файл к письму" color="white" size="xl" value={ attach }></ui-checkbox>
                             </div>
                             <div onClick={ onSuccess } onUpdate="none" class="btn btn-xl2 c-blue btn-white-hover-success { btn-loading : loading }">Отправить</div>
                         </div>
@@ -40,10 +35,7 @@
     $scope = $$($.root);
 
     $.active = false;
-    $.attach = {
-        link: true,
-        pdf: false
-    };
+    $.attach = false;
     $.input = $$($.input);
 
     $.show = function(id){
@@ -55,7 +47,8 @@
 
         $afterlag.run(function(){
             $.update({
-                id: id
+                id: id,
+                item: $store.data.get({"_id": id})
             })
             if (!app.device.isMobile){
                 _.onEndTransition($.area, function(){
@@ -74,27 +67,33 @@
         return true;
     };
 
+    $.onAttach = function(value){
+        $.attach = value;
+    };
+
     $.onSuccess = function(){
         if (!$.id) return;
 
-        if (_.isEmail($.input.val())){
-            $.update({
-                loading: true
-            })
-            app.request('addResumeSendmail', {
-                id: $.id
-            })
-            .then(function(){
-                $.update({
-                    success: true,
-                    loading: false
-                })
-                _.onEndTransition($.icon, function(){
-                    $afterlag.xl(function(){
-                        $.hide();
-                    });
-                });
+        if (!_.isEmail($.item.commons.contacts.email)){
+            $Alert.show({
+                title: 'У вас не указан email в резюме',
+                subtitle: 'Действие отменено'
             });
+            return;
+        }
+
+        if (_.isEmail($.input.val())){
+            if ($.attach){
+                $store.data.onGetPdf($.item, {
+                    skipGetFile: true,
+                    callback: function(){
+                        $.request();
+                    }
+                })
+            }
+            else {
+                $.request();
+            }
         }
         else {
             $Pointer.show({
@@ -107,6 +106,63 @@
                 padding: 18
             })
         }
+    };
+
+    $.request = function(){
+        if (!$.id || !$.item || $.loading) return;
+        $.update({
+            loading: true
+        })
+        app.request('addResumeSendmail', {
+            id: $.id,
+            title: $.item.post,
+            lang: $.item.lang,
+            from: {
+                name: $.item.post,
+                email: $.item.commons.contacts.email
+            },
+            to: $.input.val(),
+            pdf: $.attach
+        })
+        .then(function(data){
+            if (data == "overlimit"){
+                $Notify.show({
+                    text: "К сожалению, лимит отправки на сегодня исчерпан",
+                    color: "info"
+                })
+                if ($account.get("plan") == "free"){
+                    $Alert.show({
+                        title: "Перейдите на премиум аккаунт",
+                        subtitle: "Чтобы иметь больше возможностей",
+                        success: {
+                            title: "Перейти на Premium",
+                            callback: function(){
+                                $.hide();
+                                $Sections.plan.show("premium");
+                            }
+                        }
+                    })
+                }
+                $.update({loading: false})
+            }
+            else {
+                $.update({
+                    success: true,
+                    loading: false
+                })
+                _.onEndTransition($.icon, function(){
+                    $afterlag.xl(function(){
+                        $.hide();
+                    });
+                });
+            }
+        },
+        function(){
+            $.update({
+                loading: false
+            })
+            $.hide();
+        });
     };
 
     $.hide = function(){

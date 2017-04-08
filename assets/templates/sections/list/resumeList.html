@@ -35,7 +35,8 @@
         </div>
     </div>
 
-    <section-messenger></section-messenger>
+    <master-launcher></master-launcher>
+    <messenger-launcher></messenger-launcher>
 
     <div onClick={ open.sharePanel } class="resume__list__shareButton">
         <div class="resume__list__shareButton__text">Поделиться сервисом</div>
@@ -101,42 +102,7 @@
                 $Sections.offers.plan.show();
             }
             else {
-                $Sections.resume.select.show({
-                    plan: app.metrika.get("resume.select.default")
-                })
-                .then(function(data){
-                    if (data.plan == "free"){
-                        $Sections.resume.edit.show({
-                            template: data.template
-                        });
-                    }
-                    else if (data.plan == "premium"){
-                        if ($account.get("plan") != "premium"){
-                            $Sections.plan.show("premium");
-                        }
-                        else {
-                            var resume = $store.resume.prepare.premium(
-                                $resume.default.resume({
-                                    ACCOUNT_ID: $account.get("_id"),
-                                    plan: "premium",
-                                    commons: $account.get("commons")
-                                })
-                            );
-                            app.request("addResume", {
-                                data: resume
-                            }, {
-                                loader: false
-                            })
-                            .then(function(data){
-                                if (data.id){
-                                    resume._id = data.id;
-                                    $store.data.push(resume);
-                                    $store.data.onEdit(data.id);
-                                }
-                            })
-                        }
-                    }
-                })
+                $store.data.onCreate();
             }
             app.metrika.set("resume.buttonNew", true);
         },

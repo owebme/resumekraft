@@ -16,7 +16,8 @@
 
     $.show = function(callback){
         $.update({
-            active: true
+            active: true,
+            loaded: false
         })
         _.onEndTransition($.root, function(){
             $.update({
@@ -45,26 +46,35 @@
             fontColor: '#fff'
         }, function(){
             $.trigger('loaded');
+            $.loaded = true;
         });
     };
 
-    $.hide = function(callback){
+    $.hide = function(callback, force){
         if (_.isFunction(callback)){
-            $.one('loaded', function() {
-                $.update({
-                    active: false,
-                    animate: false
+            if ($.loaded || force){
+                $.onEnd(callback);
+            }
+            else {
+                $.one('loaded', function() {
+                    $.onEnd(callback);
                 })
-                _.onEndTransition($.root, function(){
-                    callback();
-                });
-            })
+            }
         }
         else {
-            $.update({
-                active: false,
-                animate: false
-            })
+            $.onEnd();
+        }
+    };
+
+    $.onEnd = function(callback){
+        $.update({
+            active: false,
+            animate: false
+        })
+        if (callback){
+            _.onEndTransition($.root, function(){
+                callback();
+            });
         }
     };
 
