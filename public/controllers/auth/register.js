@@ -84,7 +84,7 @@ module.exports = function() {
 			            day: "1",
 			            month: "1",
 			            year: "1990",
-			            hidden: false
+			            hidden: true
 			        },
 					citizenship: null,
 					businessTrip: null,

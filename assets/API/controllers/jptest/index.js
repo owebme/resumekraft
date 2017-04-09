@@ -5,14 +5,14 @@ module.exports = function(){
 	API.result = function(req, callback){
         if (req.body && req.body.result){
 			app.db.collection('jptestStat').update({
-				"ua": req.headers['user-agent'],
+				"ua": req.device.ua,
 				"ip": req.clientIP
 			},
 			{
 				result: req.body.result,
 				site: req.body.site,
-				device: req.device && req.device.type,
-				ua: req.headers['user-agent'],
+				device: req.device.type,
+				ua: req.device.ua,
 				ip: req.clientIP,
 				create: app.utils.moment().format()
 			},
@@ -31,7 +31,7 @@ module.exports = function(){
 	API.votes = function(req, callback){
         if (req.body && req.body.score){
 			app.db.collection('jptestStat').update({
-				"ua": req.headers['user-agent'],
+				"ua": req.device.ua,
 				"ip": req.clientIP
 			},
 			{

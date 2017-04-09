@@ -790,4 +790,26 @@
             height:21px;
         }
     }
+    &-tg {
+        &.icon-xl {
+            width:74px;
+            height:74px;
+        }
+        &.icon-l {
+            width:64px;
+            height:64px;
+        }
+        &.icon-m {
+            width:56px;
+            height:56px;
+        }
+        &.icon-s {
+            width:44px;
+            height:44px;
+        }
+        &.icon-xs {
+            width:34px;
+            height:34px;
+        }
+    }
 }

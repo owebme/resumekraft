@@ -20,6 +20,7 @@
 
     <app-sections>
         <section-master></section-master>
+        <section-order-writing></section-order-writing>
         <resume-stat></resume-stat>
         <section-inbox></section-inbox>
 
@@ -137,6 +138,9 @@
             plan: $root.tags["section-plan"],
             inbox: {
                 section: $root.tags["section-inbox"]
+            },
+            order: {
+                writing: $root.tags["section-order-writing"]
             },
             messenger: $root.tags["resume-list"].tags["messenger-launcher"],
             payment: $root.tags["section-payment"],

@@ -137,6 +137,12 @@
                 @extend .scale-100;
                 @extend .opacity-100;
                 transition:opacity 0.35s $cubic345, transform 0.35s $cubic345;
+
+                &[data-hidden="true"]{
+                    @extend .scale-80;
+                    @extend .opacity-0;
+                    @extend .pointerEvents-none;
+                }
             }
             .oScreen__buttons {
                 @extend .opacity-100;

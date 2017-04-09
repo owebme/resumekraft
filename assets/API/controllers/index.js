@@ -5,6 +5,7 @@ module.exports = function(){
         jptest: require('./jptest')(),
         jobs: require('./jobs')(),
         resume: require('./resume')(),
+        orders: require('./orders')(),
         utils: require('./utils')()
     }
 

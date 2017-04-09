@@ -72,14 +72,6 @@
             @extend .willChange-tp;
             @extend .trY-m;
         }
-        &__sel__title {
-            @extend .fontSize-13;
-            @extend .fontWeight-bold;
-            @extend .text-uppercase;
-            @extend .text-left;
-            @extend .mb-xxs;
-            @extend .opacity-70;
-        }
     }
     &__back__menu {
         @extend .flex-column-centered;

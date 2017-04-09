@@ -20,7 +20,7 @@
             },
             onCreate: function(lang){
                 $Sections.resume.select.show({
-                    plan: app.metrika.get("resume.select.default")
+                    plan: app.metrika.get("resume.select.default") || "free"
                 })
                 .then(function(data){
                     if (data.plan == "free"){
@@ -198,7 +198,7 @@
                 return _.map($.get(), function(item){
                     return {
                         _id: item._id,
-                        title: item.post
+                        title: item.post || "Новое резюме"
                     }
                 });
             },

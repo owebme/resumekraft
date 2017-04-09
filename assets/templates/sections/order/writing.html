@@ -1,0 +1,185 @@
+<section-order-writing class="oScreen zIndex-3 c-white" data-show="modal" data-color="dark" data-open="false" style="display:none">
+
+    <div onClick={ hide } onUpdate="none">
+        <div class="button__close opacity-80" data-color="white"></div>
+    </div>
+
+    <div name="area1" class="oScreen__content" data-hidden={ step != 1 }>
+        <div class="pos-centered { w100p : app.device.isPhone }">
+            <h1 class="mb45 opacity-75">Выберите эксперта</h1>
+            <div class="carousel__list">
+                <div onClick={ nav.prev } class="carousel__arrow" data-arrow="prev"></div>
+                <div onClick={ nav.next } class="carousel__arrow" data-arrow="next"></div>
+                <div class="carousel__items">
+                    <div onClick={ nav.select } each={ item, i in items.get() } no-reorder class="carousel__item" data-item={ get.pos(i) }>
+                        <div class="carousel__item__image" style="background-image:url({ item.photo })"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel__content">
+                <div each={ item, i in items.get() } no-reorder class="carousel__content__item" data-item={ get.pos(i) }>
+                    <div class="carousel__content__title c-yellowBright">{ item.title }</div>
+                    <div class="carousel__content__text">{ item.text }</div>
+                    <div onClick={ select.expert } class="btn btn-xl btn-upper btn-white-hover-success">Выбрать</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div name="area2" class="oScreen__content" data-hidden={ step != 2 }>
+        <div class="pos-centered container { w100p : app.device.isPhone }">
+            <div class="row">
+                <div class="col-md-14 centered">
+                    <h1 class="mb-l opacity-75">Выберите ваш общий стаж</h1>
+                    <div class="plr-xl mb-m">
+                        <ui-select color="white" size="xl" commit={ commit.experience } value={ order.experience } items={ $store.dictionary.get('experience', 'ru') }></ui-select>
+                    </div>
+                    <div class="fontSize-20 opacity-85 plr-xl mb30">Стоимость услуги составляет 1.719 руб. с учетом НДС, предоплата не взымается.</div>
+                    <div onClick={ onSuccess } onUpdate="none" class="btn btn-xl btn-upper btn-success">Отправить заказ</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.on("before-mount", function(){
+        $.reset();
+        $.cursor = $.items.select(1);
+    });
+
+    $.on("mount", function(){
+        $.section = new app.plugins.sections($.root, {
+            mode: "light",
+            content: function(){
+                return $["area" + String($.step)];
+            }
+        })
+        // $afterlag.xl(function(){
+        //     $.show();
+        // })
+    });
+
+    $.default = function(){
+        return {
+            step: 1,
+            order: {
+                expert: "2",
+                experience: "noExperience"
+            }
+        }
+    };
+
+    $.items = new Baobab([
+        {
+            id: "1",
+            photo: '/public/images/writing/photo1.png',
+            title: 'Алена Выходцева',
+            text: 'Более 9 лет опыта в подборе персонала в крупных международных компаниях, включая топовые консалтинговые компании, крупнейшую в мире торговую сеть и девелоперскую компанию.'
+        },
+        {
+            id: "2",
+            photo: '/public/images/writing/photo4.png',
+            title: 'Людмила Авдонина',
+            text: 'С 2003 года работает в сфере управления персоналом в крупных холдинговых структурах. Имеет обширный опыт найма и подбора на вакансии в различных профессиональных областях.'
+        },
+        {
+            id: "3",
+            photo: '/public/images/writing/photo2.png',
+            title: 'Еремеева Юлия',
+            text: 'Юлия работает в сфере подбора, оценки и обучения персонала более 13 лет. Из них более 2 лет в качестве консультанта по развитию карьеры.'
+        },
+        {
+            id: "4",
+            photo: '/public/images/writing/photo3.png',
+            title: 'Лариса Сазонова',
+            text: 'Лариса более 10 лет работает в сфере подбора и оценки персонала в крупных компаниях, среди которых Microsoft и РБК. Выступала как в роли рекрутера на стороне агентства.'
+        }
+    ]);
+
+    $.show = function(){
+        $.section.show();
+    };
+
+    $.reset = function(update){
+        _.extend($, $.default());
+        if (update) $.update();
+    };
+
+    $.nav = {
+        select: function(){
+            $.cursor = $.items.select(this.i == 0 ? "0" : this.i);
+        },
+        prev: function(){
+            $.cursor = $.cursor.left();
+            if (!$.cursor) {
+                $.cursor = $.items.root.down().rightmost();
+            }
+        },
+        next: function(){
+            $.cursor = $.cursor.right();
+            if (!$.cursor) {
+                $.cursor = $.items.root.down().leftmost();
+            }
+        }
+    };
+
+    $.get = {
+        pos: function(i){
+            var index = $.cursor.path[0];
+
+            if (i == index){
+                return "active";
+            }
+            else if (i == index - 1 || index == 0 && i == $.items.get().length - 1){
+                return "prev";
+            }
+            else if (i == index + 1 || i == 0 && index == $.items.get().length - 1){
+                return "next";
+            }
+        }
+    };
+
+    $.commit = {
+        experience: function(value){
+            $.order.experience = value;
+        }
+    };
+
+    $.select = {
+        expert: function(){
+            $.order.expert = this.item.id;
+            $.step = 2;
+        }
+    };
+
+    $.onSuccess = function(){
+        app.request("addOrdersWriting", {
+            data: $.order
+        })
+        .then(function(){
+            $Notify.show({
+                text: "Ваш заказ успешно отправлен, с вами свяжутся в ближайшее время",
+                timeout: 3
+            })
+        });
+        $.hide();
+    };
+
+    $.hide = function(){
+        $.section.hide({
+            afterHide: function(){
+                if ($.step > 1){
+                    $.update({
+                        step: 1
+                    })
+                }
+            }
+        });
+    };
+
+</script>
+
+</section-order-writing>

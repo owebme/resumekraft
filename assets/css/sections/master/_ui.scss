@@ -1,17 +1,3 @@
-.section__master {
-    .select {
-        @extend .bg-none;
-
-        &:after {
-            border-top-color:$white;
-        }
-        select {
-            @extend .bg-none;
-            @extend .c-white;
-            box-shadow:0 0 0 2px $white;
-        }
-    }
-}
 .master__close {
     @extend .centered;
     @extend .mt-l;

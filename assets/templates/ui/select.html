@@ -1,4 +1,4 @@
-<ui-select class="select select-{ opts.size ? opts.size : 'm' } { short : typeof opts.short !== 'undefined' }">
+<ui-select class="select select-{ opts.size ? opts.size : 'm' } { opts.color } { short : typeof opts.short !== 'undefined' }">
 
     <select name="select" onChange={ onChange } onUpdate={ opts.onupdate ? opts.onupdate : "none" } disabled={ disable }>
         <option each={ item, i in opts.items } no-reorder selected={ item._id == value || item == value || (value === null && i == 0) } value={ item._id ? item._id : item }>{ item.title ? item.title : item }</option>

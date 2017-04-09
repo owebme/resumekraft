@@ -127,4 +127,25 @@
             margin-top:-3px;
         }
     }
+    &-label {
+        @extend .fontFamily-futura;
+        @extend .fontSize-13;
+        @extend .fontWeight-bold;
+        @extend .text-uppercase;
+        @extend .text-left;
+        @extend .mb-xxs;
+        @extend .opacity-70;
+    }
+    &.white {
+        @extend .bg-none;
+
+        &:after {
+            border-top-color:$white;
+        }
+        select {
+            @extend .bg-none;
+            @extend .c-white;
+            box-shadow:0 0 0 2px $white;
+        }
+    }
 }

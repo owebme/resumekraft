@@ -21,6 +21,9 @@ module.exports = function(url){
 	// Autosuggest
 	require('./suggest')(url + '/suggest');
 
+	// Orders private API
+	require('./orders')(url + '/orders');
+
 	// JPtest private API
 	require('./jptest')(url + '/jptest');
 

@@ -19,9 +19,10 @@
 
             this.scroll = options && options.scroll || null;
 
+            this.active = true;
+
             if (options.forceShow){
-                this.active = true;
-                var $content = $(this.content);
+                var $content = $(this.getContent());
                 $content.addClass("transition-none");
                 this.scope.setAttribute("data-inner", "show");
                 this.scope.setAttribute("data-open", true);
@@ -52,29 +53,48 @@
                 return;
             }
 
-            this.scope.setAttribute("data-open", true);
-            this.scope.setAttribute("data-loading", true);
-
-            if (_.isFunction(options.beforeShow)){
-                options.beforeShow();
+            if (this.options.mode === "light"){
+                this.scope.style.display = "block";
+                $afterlag.run(function(){
+                    _this.scope.setAttribute("data-open", true);
+                    if (_.isFunction(options.afterShow)){
+                        options.afterShow();
+                    }
+                });
             }
-            _.onEndTransition(this.content, function(){
-                if (_.isFunction(options.callback)){
-                    options.callback(_this._afterShow.bind(_this), _this.hide.bind(_this));
+            else {
+                this.scope.setAttribute("data-open", true);
+                this.scope.setAttribute("data-loading", true);
+
+                if (_.isFunction(options.beforeShow)){
+                    options.beforeShow();
                 }
-                else {
-                    if (options.update && options.tag){
-                        options.tag.one("updated", function(){
-                            _this._afterShow(options);
-                        });
-                        options.tag.update(options.update);
+                _.onEndTransition(this.getContent(), function(){
+                    if (_.isFunction(options.callback)){
+                        options.callback(_this._afterShow.bind(_this), _this.hide.bind(_this));
                     }
                     else {
-                        _this._afterShow(options);
+                        if (options.update && options.tag){
+                            options.tag.one("updated", function(){
+                                _this._afterShow(options);
+                            });
+                            options.tag.update(options.update);
+                        }
+                        else {
+                            _this._afterShow(options);
+                        }
                     }
-                }
-                _this.active = true;
-            });
+                });
+            }
+        },
+
+        getContent: function(){
+            if (this.options.content && _.isFunction(this.content)){
+                return this.content();
+            }
+            else {
+                return this.content;
+            }
         },
 
         _afterShow: function(options){
@@ -118,20 +138,34 @@
             var _this = this,
                 options = options || {};
 
-            this.scope.setAttribute("data-open", false);
-            this.scope.setAttribute("data-loading", false);
-
-            if (_.isFunction(options.beforeHide)){
-                options.beforeHide();
+            if (this.options.mode === "light"){
+                this.scope.setAttribute("data-open", false);
+                $afterlag.run(function(){
+                    _.onEndTransition(_this.getContent(), function(){
+                        _this.scope.style.display = "none";
+                        if (_.isFunction(options.afterHide)){
+                            options.afterHide();
+                        }
+                        _this.active = false;
+                    });
+                });
             }
-            _.onEndTransition(this.content, function(){
-                _this.scope.setAttribute("data-inner", "hidden");
+            else {
+                this.scope.setAttribute("data-open", false);
+                this.scope.setAttribute("data-loading", false);
 
-                if (_.isFunction(options.afterHide)){
-                    options.afterHide();
+                if (_.isFunction(options.beforeHide)){
+                    options.beforeHide();
                 }
-                _this.active = false;
-            });
+                _.onEndTransition(this.getContent(), function(){
+                    _this.scope.setAttribute("data-inner", "hidden");
+
+                    if (_.isFunction(options.afterHide)){
+                        options.afterHide();
+                    }
+                    _this.active = false;
+                });
+            }
         }
     };
 

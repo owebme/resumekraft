@@ -2,6 +2,22 @@
     @extend .flex-centered;
     @extend .display-block;
 
+    &[data-hover="true"]{
+        .shareButton__inline__item {
+            @extend .transition-xs;
+
+            &:hover {
+                @extend .bg-blue;
+
+                path, rect, polygon, circle {
+                    @extend .fill-white;
+                }
+            }
+            path, rect, polygon, circle {
+                @extend .transition-xs;
+            }
+        }
+    }
     &__item {
         @extend .pos-rel;
         @extend .borderRadius-circle;
@@ -10,6 +26,9 @@
         .icon {
             @extend .pos-centered;
             padding-top:3px;
+        }
+        icon-email.icon {
+            padding-top:0px;
         }
     }
     &[data-size="l"]{

@@ -159,6 +159,36 @@ $store.dictionary = {
             }
         }
     ]),
+    experience: new Baobab([
+    {
+        _id: "noExperience",
+        title: {
+            en: "No experience",
+            ru: "Нет опыта"
+        }
+    },
+    {
+        _id: "between1And3",
+        title: {
+            en: "From 1 year to 3 years",
+            ru: "От 1 года до 3 лет"
+        }
+    },
+    {
+        _id: "between3And6",
+        title: {
+            en: "3 to 6 years",
+            ru: "От 3 до 6 лет"
+        }
+    },
+    {
+        _id: "moreThan6",
+        title: {
+            en: "More than 6 years",
+            ru: "Более 6 лет"
+        }
+    }
+    ]),
     get: function(name, lang){
         if (name){
             return _.map($store.dictionary[name].get(), function(item){

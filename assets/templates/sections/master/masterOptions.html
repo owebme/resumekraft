@@ -9,7 +9,7 @@
                 <div onClick={ parent.onBack } onUpdate="none"  class="master__title__options__inner">Меню</div>
             </div>
             <div class="master__options__content">
-                <div class="master__options__sel__title">Выберите резюме</div>
+                <div class="select-label">Выберите резюме</div>
                 <ui-select color="white" size="xl" items={ $store.data.getItemsMenu() }></ui-select>
                 <div onClick={ parent.onSuccess } onUpdate="none" class="btn btn-xl2 c-blue btn-white-hover-success { btn-loading : loading } mt-l">{ button }</div>
             </div>

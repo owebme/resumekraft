@@ -27,7 +27,7 @@
                 <ui-input placeholder="Фамилия" update="surname" cursor={ data.select() } size="l"></ui-input>
             </div>
         </div>
-        <div class="row mb-s">
+        <div class="row mb-m">
             <div class="hidden-xs col-sm-8 pt-xs pr-m">
                 <span class="title">Дата рождения</span>
             </div>
@@ -39,12 +39,6 @@
             </div>
             <div class="col-xs-24 col-sm-6">
                 <ui-select update="year" cursor={ data.select('birthday') } items={ _.range(1940, new Date().getFullYear() + 1) } size="l" short></ui-select>
-            </div>
-        </div>
-        <div class="row mb-m">
-            <div class="hidden-xs col-sm-8 pr-m"></div>
-            <div class="col-xs-24 col-sm-16 text-left pt-s">
-                <ui-checkbox update="hidden" cursor={ data.select('birthday') } title="Показывать только возраст" size="l" theme="blue"></ui-checkbox>
             </div>
         </div>
         <div class="row mb-l pt-xxs">
