@@ -28,15 +28,15 @@
                                     <div if={ $account.get('commons', 'gender') == "female" } class="text-uppercase fontSize-20">жен.</div>
                                     <div if={ $account.get('commons', 'contacts', 'city') }>{ $account.get('commons', 'contacts', 'city', 'name') }</div>
                                     <span onClick={ open.personalData } onUpdate="none" class="display-inlineBlock link-underline link-default-hover-warning mt-xs tutorial__changeData">Изменить персональные данные</span>
-                                    <div class="tutorial__reflink mt-xs fontSize-20 pr-l">
+                                    <!-- <div class="tutorial__reflink mt-xs fontSize-20 pr-l">
                                         <strong>Получить <span class="c-orange">369 ₽</span> на счет&nbsp; &nbsp;<span onClick={ open.referer } onUpdate="none" class="display-inlineBlock link-underline link-default-hover-warning mt-xs">как подробнее</span></strong>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <div class="profile__column__right fontSize-20 pt45">
+                        <div class="profile__column__right fontSize-20 pt-l">
                             <div class="fontSize-28 mb-s">Ваш тариф: <span class="c-blue fontWeight-bold text-capitalize">{ $account.get('plan') }</span></div>
                             <div if={ $account.get('plan') != "premium" }>
                                 <span onClick={ open.changePlan } onUpdate="none" class="link-underline link-default-hover-warning">Сменить тариф</span>
@@ -45,7 +45,7 @@
                                 Оплачен до: <span class="c-blue fontWeight-bold">28 ноября 2017</span>
                             </div>
                             <div class="mt-xxs">
-                                <span class="link-underline link-default-hover-warning">Сменить пароль</span>
+                                <span onClick={ open.changePassword } onUpdate="none" class="link-underline link-default-hover-warning">Сменить пароль</span>
                             </div>
                             <div class="mt-xxs">
                                 <span onClick={ open.payment } onUpdate="none" class="link-underline link-default-hover-warning">Пополнить баланс</span>
@@ -167,6 +167,9 @@
         },
         changePlan: function(){
             $Sections.plan.show("premium");
+        },
+        changePassword: function(){
+            $Sections.profile.password.show();
         },
         payment: function(){
             $Sections.payment.show();

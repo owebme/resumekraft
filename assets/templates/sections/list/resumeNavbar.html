@@ -23,10 +23,15 @@
 
     $.open = {
         jptest: function(){
-            $.parent.hide();
-            $Sections.jptest.section.show(function(){
-                $.parent.show();
-            });
+            if ($Sections.jptest.section.isMounted){
+                $.parent.hide();
+                $Sections.jptest.section.show(function(){
+                    $.parent.show();
+                });
+            }
+            else {
+                _.opener("/jp-test/");
+            }
         },
         impResume: function(){
             $Sections.resume.import.show();

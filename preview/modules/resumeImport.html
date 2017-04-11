@@ -1,0 +1,193 @@
+<resume-import class="oScreen zIndex-3 c-white" data-show="modal" data-color="dark" data-open={ active } style="display:none">
+
+    <div ref="area" class="oScreen__content">
+        <div ref="wrapper" class="pos-centered { w100p : app.device.isPhone }">
+            <img style="width:123px; height:70px" src="/public/images/jobs/hh/hh-white-red.png" class="display-block mb30 xs-mb-m centered">
+            <div class="xs-plr-m">
+                <div class="mb-s fontSize-22">Импорт резюме из сервиса HeadHunter</div>
+                <input onKeydown={ onEnter } ref="input" class="fontFamily-helvetica letterSpacing-0 pointer-for-input input input-{ app.device.isPhone ? 'l' : 'xl' } input-white input-rounded mb-l text-center" placeholder="Вставьте полный адрес ссылки на резюме" autocomplete="off" style="font-size:21.5px; width:600px">
+                <div onClick={ onSuccess } onUpdate="none" class="btn btn-xl2 btn-success { btn-loading : loading }">Получить резюме</div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this,
+    $scope = $$($.root);
+
+    $.on("mount", function(){
+        $.input = $$($.refs.input);
+        // $afterlag.xl(function(){
+        //     $.show();
+        // });
+        if (location.hash.match(/#hh/)){
+            $.show();
+        }
+    });
+
+    $.show = function(){
+        if ($.active) return;
+
+        $.active = true;
+        $.root.style.display = "block";
+
+        $afterlag.run(function(){
+            $.update();
+        });
+
+        setTimeout(function(){
+            document.addEventListener('click', $.handleClickOutside);
+        }, 0);
+    };
+
+    $.onEnter = function(e){
+        e.preventUpdate = true;
+        if (e.which === KEY.ENTER){
+            $.onSuccess();
+        }
+        return true;
+    };
+
+    $.onSuccess = function(){
+        var link = $.isValid(_.clean($.input.val()));
+        if (link && link.length){
+            var id = link[0].replace(/resume\//gi, "");
+            $.request(id);
+        }
+        else {
+            app.tag("section-notify").show({
+                text: "Проверьте корректность ссылки",
+                color: "danger"
+            })
+        }
+    };
+
+    $.request = function(id){
+        $.update({
+            loading: true
+        })
+        app.$dom.body.addClass('apploading');
+        app.request('addResumeImport', {
+            id: id
+        }, {
+            notify: false,
+            loader: false
+        })
+        .then(function(data){
+            if (data == "overlimit"){
+                app.tag("section-notify").show({
+                    text: "К сожалению, лимит на сегодня исчерпан, создайте премиум аккаунт для больших возможностей",
+                    color: "info",
+                    timeout: 3
+                })
+                $.update({loading: false})
+                $.hide();
+            }
+            else {
+                $.update({
+                    loading: false
+                })
+                $.hide();
+
+                data._id = app.utils.newId();
+                data.commons.photo = data.commons.photo || $.get.photo(data.commons.gender);
+
+                $frame[0].contentWindow.postMessage({
+                    resume: data
+                }, '*');
+
+                app.$dom.window.one("message", function(e){
+                    var data = e.originalEvent.data;
+                    if (data && _.isObject(data) && data.resume){
+                        $afterlag.run(function(){
+                            app.$dom.body.removeClass('apploading');
+                            var notify = app.tag("section-notify");
+                            notify.show({
+                                pos: "bottom-left",
+                                text: "Ваше резюме заполнено на " + data.resume.percent + "%, создайте полное и продающее резюме на премиум аккаунте.",
+                                color: "info",
+                                width: "375px",
+                                timeout: 3600
+                            })
+                            $$(notify.root).off("click").one("click", function(){
+                                location.replace("/?signup&plan=premium");
+                            });
+                        });
+                    }
+                });
+            }
+        },
+        function(){
+            app.tag("section-notify").show({
+                text: "Ошибка получения резюме, проверьте ссылку",
+                color: "danger"
+            })
+            $.update({loading: false})
+            app.$dom.body.removeClass('apploading');
+        });
+    };
+
+    $.get = {
+        photo: function(gender){
+            return _.shuffle($.photos[gender])[0];
+        }
+    };
+
+    $.isValid = function(value){
+        return value && value.length && value.match(/resume\/.{38}/gi);
+    };
+
+    $.hide = function(){
+        if (!$.active) return;
+
+        $.update({
+            active: false
+        })
+        _.onEndTransition($.refs.area, function(){
+            if (!$.active){
+                $.input.val("");
+                $.root.style.display = "none";
+            }
+        });
+        document.removeEventListener('click', $.handleClickOutside);
+    };
+
+    $.handleClickOutside = function(e){
+        if ($.active && !$.success && !$.refs.wrapper.contains(e.target)) $.hide();
+    };
+
+    $.photos = {
+        "male": [
+            'https://scontent-arn2-1.cdninstagram.com/t51.2885-15/e35/14592068_1825528711058860_6525389476905091072_n.jpg?ig_cache_key=MTQwODE3NjcxNjcyODA3ODA5Ng%3D%3D.2',
+            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/c7694e14247631.562802bc4267a.jpg',
+            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/3f035714247631.562804c77e127.jpg',
+            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/4e76a214247631.562802bd25cea.jpg',
+            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/62458114247631.5628028887b81.jpg',
+            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/e23cab14247631.56280304c505c.jpg',
+            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/6a645b14247631.562804c758e52.jpg',
+            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/7c415414247631.5628030528bff.jpg',
+            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/849e4714247631.562802889ec08.jpg',
+            'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5af34843755199.57fbc5cb5f1bb.jpg',
+            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/69b04f16142017.562a5eb7224ce.jpg',
+            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/af60b616142017.562a5f0c0d4d5.jpg',
+            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/8c556216142017.5632b4073672d.jpg'
+        ],
+        "female": [
+            'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/18235126033139.5634e8d8b1adc.jpg',
+            'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/750ee935139279.5852ed2f4dd5f.jpg',
+            'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/091df946261671.584e198a52ec6.jpg',
+            'http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/vertical15.jpg',
+            'http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/vertical9.jpg',
+            'http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/horizontal10.jpg',
+            'http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/horizontal2.jpg',
+            'http://demo.massivedynamic.co/fashion-photography/wp-content/uploads/2015/10/16_02.jpg',
+            'http://lionesseflatiron.org/wp-content/uploads/2015/08/Lionesse-Things-to-Know-Before-Going-Bronde.jpg',
+            'https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/d67e9349841247.58c09a76daedd.jpg',
+            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/23386321049159.562fabde4b72c.jpg'
+        ]
+    };
+
+</script>
+
+</resume-import>

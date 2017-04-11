@@ -173,7 +173,10 @@
     &__premium {
         &__gallery {
             @include accelerate();
-            @extend .pos-tr;
+            @extend .pos-abs;
+            @extend .t0;
+            @extend .r--l;
+            @extend .md-mr--l;
             @extend .w80;
             @extend .h80;
             @extend .borderRadius-circle;
@@ -236,7 +239,8 @@
                 &__wrapper {
                     height:550px;
 
-                    &:hover {
+                    .m-no-touch &:hover,
+                    .m-touch & {
                         .plan__premium__item__image {
                             transition:opacity 0.4s $cubic2501 0.25s, transform 0.4s $cubic2501 0.25s;
 
@@ -249,16 +253,6 @@
                                 transform:translate3d(-50%, -20px, 0) scale(1);
                             }
                         }
-                    }
-                }
-                .tutorial-current & {
-                    &[data-image="front"]{
-                        @extend .opacity-0;
-                        transform:translate3d(-15px, -75px, 0) scale(0.95);
-                    }
-                    &[data-image="back"]{
-                        @extend .opacity-100;
-                        transform:translate3d(-50%, -20px, 0) scale(1);
                     }
                 }
                 &[data-image="front"]{
@@ -300,6 +294,9 @@
                     @extend .transform-default;
                     transition:opacity 0.5s 0.1s, transform 0.5s 0.1s;
                 }
+                .d-tablet & {
+                    padding-bottom:175px;
+                }
                 .d-phone & {
                     @extend .pos-centered-v;
                     @extend .b-auto;
@@ -314,20 +311,24 @@
         &__colors__item {
             @include accelerate(true);
             @extend .display-inlineBlock;
-            @extend .w40;
-            @extend .h40;
+            @extend .w38;
+            @extend .h38;
             @extend .borderRadius-circle;
             @extend .mr-xs;
             @extend .cursor-default;
             will-change:transform, box-shadow;
             transition:transform 0.35s $cubic40, box-shadow 0.35s $cubic40;
 
+            .d-mobile & {
+                @extend .w36;
+                @extend .h36;
+            }
             &:hover {
                 @extend .trY--xs;
             }
             @each $title, $color in (blue: $blue, blueLight: $blueLight, brown: $brown, red: $red, pink: $pink, orange: $orange, violet: $violet, violetLight: $violetLight, green: $green, emerald: $emerald){
                 &.bg-#{$title}:hover {
-                    box-shadow:0 22px 40px -10px rgba($color,.48), 0 14px 30px 0px rgba($color,.2), 0 7px 20px -5px rgba($color,.3);
+                    box-shadow:0 22px 30px -10px rgba($color,.48), 0 14px 30px 0px rgba($color,.2), 0 7px 20px -5px rgba($color,.3);
                 }
             }
         }

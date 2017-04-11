@@ -13,7 +13,9 @@ module.exports = function(){
     });
 
     app.get('/private/', app.checkAuth('/?signin'), function(req, res) {
-        res.render('private');
+        res.render('private', {
+            isMobile: req.device.isMobile
+        });
     });
 
     app.get('/private/resume/:alias', app.checkAuth('/?signin'), app.controllers.resume("editing"));

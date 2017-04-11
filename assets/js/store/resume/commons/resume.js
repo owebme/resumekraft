@@ -186,6 +186,61 @@ $store.resume = _.extend(new Baobab({},
 
                     if (update){
                         $store.resume.set(resume);
+                        if (update === "demo"){
+                            var lang = resume.lang;
+                            $store.resume.select("commons", "name").set(lang == "ru" ? 'Ваше имя' : 'Your name');
+                            $store.resume.select("commons", "surname").set(lang == "ru" ? 'Фамилия' : 'Surname');
+                            $store.resume.select("commons", "birthday", "hidden").set(true);
+                            $store.resume.select("commons", "contacts", "email").set(lang == "ru" ? 'ваша@почта.ru' : 'your@gmail.com');
+                            $store.resume.select("commons", "contacts", "phone").set(lang == "ru" ? 'Мобильный телефон' : 'Mobile phone number');
+                            if (!$store.resume.get("salary", "active")){
+                                $store.resume.select("sections", {"name": "salary"}, "active").set(false);
+                            }
+                            $store.resume.select("percent").set($store.resume.percentage.calc("premium", $store.resume.get()));
+                            $store.resume.select("commons", "contacts", "skype").set("mySkype");
+                            $store.resume.select("social").set({
+                                title: lang == "ru" ? 'Укажите присутствие в социальных медиа' : 'Share links in social media',
+                                items: [
+                                    {
+                                        title: 'fb',
+                                        value: 'http://facebook.com'
+                                    },
+                                    {
+                                        title: 'vk',
+                                        value: 'http://vk.com'
+                                    },
+                                    {
+                                        title: 'in',
+                                        value: 'http://instagram.com'
+                                    },
+                                    {
+                                        title: 'lk',
+                                        value: 'http://linkedin.com'
+                                    }
+                                ]
+                            });
+                            $store.resume.select("config", "photo", "filter").set("auto");
+                            if ($store.resume.get("salary", "active")){
+                                var items = [],
+                                    amount = $store.resume.get("salary", "amount");
+
+                                items.push(parseInt(amount * 0.7));
+                                items.push(parseInt(amount * 0.8));
+                                items.push(parseInt(amount * 0.9));
+                                items.push(parseInt(amount));
+                                items.push(parseInt(amount * 1.15));
+                                items.push(parseInt(amount * 1.3));
+
+                                $store.resume.select("salary", "graph", "active").set(true);
+                                $store.resume.select("salary", "graph", "items").set(items);
+                            }
+                            $store.resume.select("education", "text").set(lang == "ru" ? 'Расскажите подробней о своем образовании' : 'Write more about your education');
+                            $store.resume.select("languages", "text").set(lang == "ru" ? 'Возможно добавить больше информации о владении языков' : 'It is possible to add more about language proficiency');
+                            $store.resume.select("jobs", "text").set(lang == "ru" ? 'Расскажите подробней о своей карьерном пути' : 'Write more about your career path');
+                            if ($store.resume.get("courses")){
+                                $store.resume.select("courses", "text").set(lang == "ru" ? 'Расскажите подробней о дополнительном образовании, возможно о полученнии сертификатов' : 'Write more about the additional education, possibly about obtaining certificates');
+                            }
+                        }
                         return $store.resume.get();
                     }
                     else {
@@ -258,6 +313,7 @@ $store.resume = _.extend(new Baobab({},
                     { name: "commons.contacts.email", points: 3 },
                     { name: "commons.contacts.phone", points: 3 },
                     { name: "commons.contacts.skype", points: 3 },
+                    { name: "salary.graph.active", points: 5 },
                     { name: "salary", section: true, points: 5 },
                     { name: "about", section: true, points: 5 },
                     { name: "appeal", section: true, points: 3 },

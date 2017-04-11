@@ -110,7 +110,7 @@ section-order-writing {
         @extend .scale-0;
         transition:transform 0.4s $cubic68;
 
-        &:hover {
+        .m-no-touch &:hover {
             &:before {
                 @extend .opacity-40;
             }

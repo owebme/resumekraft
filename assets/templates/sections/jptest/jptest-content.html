@@ -5,7 +5,7 @@
         <div class="screen bg-blackLight" data-screen="begin" data-active={ screen == "begin" } data-hidden={ hidden == "begin" }>
             <div class="container pos-centered">
                 <div class="row c-white fontSize-24">
-                    <div class="col-xs-24 col-lg-offset-5 col-lg-14">
+                    <div class="col-xs-24 col-md-16 col-lg-14 centered">
                         <div class="xs-plr-xs">
                             <div class="ui-icon-hand_cursor_white w95 h95 mlr-auto mb-l"></div>
                             <div class="mb-l">Необходимо помнить, результат будет зависеть от того, насколько честно вы отвечаете на все вопросы.</div>
@@ -19,7 +19,7 @@
         <div class="screen bg-blue" data-screen="beginText" data-active={ screen == "beginText" } data-hidden={ hidden == "beginText" }>
             <div class="container pos-centered">
                 <div class="row c-white { app.device.isPhone ? 'fontSize-26' : 'fontSize-28' } lineHeight-xxl">
-                    <div class="col-xs-24 col-lg-offset-5 col-lg-14">
+                    <div class="col-xs-24 col-md-17 col-lg-14 centered">
                         <div class="xs-plr-xs">
                             <div class="mb-l">Вам будут предложены 24 пары ответов, вам нужно выбрать один вариант из пары, близкий вашим убеждениям.</div>
                             <button onClick={ next.test } class="btn btn-xxl c-blue btn-white-hover">Понятно</button>
@@ -146,7 +146,10 @@
                 $.reset(true);
                 $.trigger("passed");
                 app.request("addJptestResult", {
-                    result: id,
+                    result: {
+                        id: id,
+                        hash: $Sections.jptest.result.getHash(id)
+                    },
                     site: app.isSite || false
                 }, {
                     notify: false,
@@ -180,8 +183,8 @@
                 hide: true
             }
             _.onEndTransition($.refs ? $.refs["que__item"] : $["que__item"], function(){
-                //$.cursor = null;
-                $.cursor = $.cursor.right();
+                $.cursor = null;
+                //$.cursor = $.cursor.right();
 
                 if ($.cursor){
                     $.update({

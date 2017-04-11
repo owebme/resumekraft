@@ -5,7 +5,7 @@
             "premium": 999
         },
         "sendmailLimit": {
-            "free": 1,
+            "free": 2,
             "premium": 999
         },
         "pdf": {

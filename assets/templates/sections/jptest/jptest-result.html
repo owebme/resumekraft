@@ -7,7 +7,7 @@
     <jptest-result-link if={ !app.device.isPhone }></jptest-result-link>
     <jptest-result-popup></jptest-result-popup>
 
-    <div ref="scroll" name="scroll" class="oScreen__content { app.device.isPhone ? 'notAnim-scroll' : 'bg-white' }">
+    <div ref="scroll" name="scroll" class="oScreen__content { app.device.isPhone ? 'notAnim-scroll' : app.device.isMobile ? 'notAnim-scroll bg-white' : 'bg-white' }">
 
         <oScreen-loader></oScreen-loader>
 
@@ -82,7 +82,7 @@
 
         window.$jp = {
             id: id,
-            link: $.links[id - 1]
+            link: $.getHash(id)
         };
 
         $.trigger("show", window.$jp);
@@ -129,28 +129,33 @@
                         });
                     }
                     else {
+                        alert("1");
                         $afterlag.run(function(){
                             $scope.find(".chart").addClass("showChart");
                             $.section.scrollAnimate.start();
 
-                            if (!app.metrika.get("jptest.votes.show")){
+                            //if (!app.metrika.get("jptest.votes.show")){
                                 var $elem = $.content.find("jptest-result-finish");
 
+                                //alert($elem.length);
+
                                 if ($elem.length){
-                                    var scrollTo = app.dom.getPagePosition($elem[0]).top,
+                                    var scrollTo = parseInt(app.dom.getPagePosition($elem[0]).top) - (app.device.isMobile ? 200 : 0),
                                         success = false;
 
+
+
                                     (function scrollFn(){
-                                        _.raf(scrollFn);
+                                        $.scrollFn = _.raf(scrollFn);
                                         var scroll = $.scroll[0].scrollY || $.scroll[0].scrollTop;
                                         if (!success && scroll > scrollTo){
                                             success = true;
-                                            _.caf(scrollFn);
+                                            _.caf($.scrollFn);
                                             $.popupVotes.show();
                                         }
                                     })();
                                 }
-                            }
+                            //}
                         });
                         setTimeout(function(){
                             $.buttonLink.show();
@@ -163,6 +168,10 @@
                 }
             }
         );
+    };
+
+    $.getHash = function(id){
+        return $.links[id - 1];
     };
 
     $.hide = function(){

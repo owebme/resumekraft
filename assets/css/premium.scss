@@ -22,6 +22,7 @@
 @import 'ui/basic/loaderAjax';
 @import 'ui/basic/spinner';
 @import 'ui/basic/notify';
+@import 'ui/basic/popup';
 @import 'ui/basic/arrowPointer';
 @import 'ui/basic/dropMenu';
 @import 'ui/basic/table';
@@ -117,6 +118,7 @@
 
 // states responsive
 @import 'states/responsive/border';
+@import 'states/responsive/position';
 @import 'states/responsive/margin';
 @import 'states/responsive/padding';
 @import 'states/responsive/text';

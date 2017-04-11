@@ -42,8 +42,8 @@
                             <!-- // Mobile screen -->
 
                             <div if={ !app.device.isPhone } class="hidden-xs row slider__item__inner">
-                                <div class="plan__premium__item__image__wrapper col-xs-24 col-md-12">
-                                    <div class="pl-m pr-l">
+                                <div class="plan__premium__item__image__wrapper col-xs-24 col-md-11 col-lg-12">
+                                    <div class="pl-m pr-l md-pl0 md-ml--xs md-pr-m">
                                         <div class="pos-rel">
                                             <img class="plan__premium__item__image" src="/assets/images/mac_large_2x.png" data-image="front">
                                             <img class="plan__premium__item__image" src="/public/images/promo/premium/slide2_1.png" data-image="back">
@@ -53,32 +53,32 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12 text-left c-blackLight whiteSpace-normal">
-                                    <div class="pt-m pl-xs pr-m">
+                                <div class="col-md-13 col-lg-12 text-left c-blackLight whiteSpace-normal">
+                                    <div class="pt-m pl-xs pr-m md-pl-xs md-pr0 md-mr--l">
                                         <div onClick={ open.overview } onUpdate="none" class="plan__premium__gallery" style="background-image:url(/public/images/promo/premium/slide2_1.png)">
                                             <div class="plan__premium__gallery__pointer"></div>
                                         </div>
-                                        <h2 class="fontWeight-8 pt-xs c-blue mb-l letterSpacing-xxxl text-uppercase">Premium</h2>
+                                        <h2 class="fontSize-32 fontWeight-8 pt-xs md-pt-xxs c-blue mb-l letterSpacing-xxxl text-uppercase">Premium резюме</h2>
                                         <div class="fontSize-14 fontWeight-8 letterSpacing--s text-uppercase mb-m">яркие и стильные цвета</div>
                                         <div class="fontSize-0 pt-xxs mb-l">
                                             <div each={ item in $store.colors.get() } class="plan__premium__colors__item bg-{ item.title }"></div>
                                         </div>
                                         <div class="fontSize-14 fontWeight-8 letterSpacing--s text-uppercase mb-s">резюме нового формата</div>
-                                        <p class="fontSize-20 lineHeight-xxl mb-m">Яркое, современное и профессионально выполненное резюме поможет быстрее найти работу. Доступен целый ряд уникальных функций. <span class={ display-none : $account.get('plan') == 'premium' }>Если вы не знакомы, <span onClick={ open.overview } onUpdate="none" class="plan__premium__link__overview">перейдите к обзору</span>.</span></p>
+                                        <p class="fontSize-20 lineHeight-xxl mb-m md-pr-l">Яркое, современное и профессионально выполненное резюме поможет быстрее найти работу. Доступен целый ряд уникальных функций. <span class={ display-none : $account.get('plan') == 'premium' }>Если вы не знакомы, <span onClick={ open.overview } onUpdate="none" class="plan__premium__link__overview">перейдите к обзору</span>.</span></p>
                                         <div class="fontSize-0 pt-xs" data-height="65" data-width="400" data-zoom="1.1">
                                             <div class="plan__premium__icon" data-icon="globe" data-balloon="Резюме на двух языках, на русском и английских языках" data-balloon-length="large" data-balloon-fontSize="large">
                                                 <icon-globe></icon-globe>
                                             </div>
-                                            <div class="plan__premium__icon" data-icon="control" data-balloon="Легкая настройка, редактирование в несколько кликов" data-balloon-length="large" data-balloon-fontSize="large">
+                                            <div class="plan__premium__icon" data-icon="control" data-balloon="Легкая настройка, создание и редактирование в несколько кликов" data-balloon-length="large" data-balloon-fontSize="large">
                                                 <icon-control></icon-control>
                                             </div>
-                                            <div class="plan__premium__icon" data-icon="play" data-balloon="Резюме-презентация с стильным и современным дизайном" data-balloon-length="large" data-balloon-fontSize="large">
+                                            <div class="plan__premium__icon" data-icon="play" data-balloon="Живое резюме с анимацией, стильным и современным дизайном" data-balloon-length="large" data-balloon-fontSize="large">
                                                 <icon-play></icon-play>
                                             </div>
                                             <div class="plan__premium__icon" data-icon="chart" data-balloon="Оценивайте эффективность ваших резюме, подробная статистика по дням" data-balloon-length="large" data-balloon-fontSize="large">
                                                 <icon-chart></icon-chart>
                                             </div>
-                                            <div class="plan__premium__icon" data-icon="feedback" data-balloon="Получайте приглашения от ваших работадателей" data-balloon-length="large" data-balloon-fontSize="large">
+                                            <div class="plan__premium__icon" data-icon="feedback" data-balloon="Получайте больше приглашения от ваших работадателей" data-balloon-length="large" data-balloon-fontSize="large">
                                                 <icon-feedback></icon-feedback>
                                             </div>
                                             <div class="plan__premium__icon" data-icon="devices" data-balloon="100% адаптация для всех мобильных и не мобильных устройств" data-balloon-length="large" data-balloon-fontSize="large">
@@ -101,12 +101,12 @@
                 <div class="{ app.device.isPhone ? 'rows largeSlides' : 'container' } slider" name="slider-free">
                     <div class="slider__nav slider__nav__prev anim anim-fadeIn" data-duration="xs"></div>
                     <div class="slider__nav slider__nav__next anim anim-fadeIn" data-duration="xs"></div>
-                    <div class="row slider__wrapper">
+                    <div class="row slider__wrapper md-plr-xl">
                         <div each={ item, i in items.free } no-reorder class="slider__item col-md-12 col-lg-8">
                             <div class="plan__basic__item plr-l" data-active={ parent.template == i + 1 }>
                                 <img class="plan__basic__item__image" src="/assets/images/makets/{ item }.png">
                                 <div class="plan__basic__item__button">
-                                    <button onClick={ select.template.free } class="btn { app.device.isPhone ? 'btn-xl2 btn-primary btn-shadow' : 'btn-l2 btn-default-hover-success' } mb-xs">Выбрать этот</button>
+                                    <button onClick={ select.template.free } class="btn { app.device.isMobile ? 'btn-xl2 btn-primary btn-shadow' : 'btn-l2 btn-default-hover-success' } mb-xs">Выбрать этот</button>
                                 </div>
                             </div>
                         </div>
@@ -174,7 +174,12 @@
 
     $.open = {
         overview: function(){
-            $Sections.overview.premium.show();
+            if ($Sections.overview.premium){
+                $Sections.overview.premium.show();
+            }
+            else {
+                _.opener("/premium/");
+            }
         }
     };
 

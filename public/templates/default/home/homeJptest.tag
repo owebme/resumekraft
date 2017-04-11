@@ -8,8 +8,8 @@
                 <div class="anim anim-scale">
                     <div class="home__jptest__container">
                         <small class="c-white mb-l pb-m sm-pb-l">совершенно бесплатно</small>
-                        <h1 class="c-white nowrap textShadow-light mb-m pb-xs">Пройти новейший <span class="c-lime">JP<sup class="pl-xxs">2</sup></span> тест</h1>
-                        <p class="c-white mb-m sm-mb-l">Получить ответы на профессиональные вопросы + рекомендации.</p>
+                        <h1 class="c-white nowrap textShadow-light mb-m sm-pb-xs">Пройти новейший <span class="c-lime">JP<sup class="pl-xxs">2</sup></span> тест</h1>
+                        <p class="c-white mb30 sm-mb-l">Получить ответы на профессиональные вопросы + рекомендации.</p>
                         <div class="inline">
                             <a href="/jp-test/" class="btn btn-danger btn-upper btn-xl mlr-s">перейти к тесту</a>
                         </div>

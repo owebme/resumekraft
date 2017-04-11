@@ -1,0 +1,186 @@
+.oScreen {
+    @include accelerate(true);
+    @include perspective(1000);
+    @include abs();
+    @extend .display-block;
+    @extend .pointerEvents-none;
+    @extend .visibility-hidden;
+    @extend .overflow-hidden;
+    @extend .text-center;
+    @extend .zIndex-1;
+    transition:visibility 0s 0.4s;
+
+    &[data-show="up"],
+    &[data-show="down"],
+    &[data-show="left"],
+    &[data-show="right"]{
+        transition:visibility 0s 0.7s;
+
+        &:before {
+            transition:opacity 0.5s $cubic645, background-color 0.5s $cubic645;
+        }
+    }
+    &[data-show="up"],
+    &[data-show="down"]{
+        &:before {
+            .d-phone & {
+                transition:opacity 0.5s $cubic645, background-color 0.5s $cubic645;
+            }
+        }
+    }
+    &[data-show="left"],
+    &[data-show="right"]{
+        &:before {
+            .d-phone & {
+                transition:opacity 0.5s $cubic40, background-color 0.5s $cubic40;
+            }
+        }
+    }
+    &[data-show="modal"]{
+        @extend .pos-fixed;
+
+        .oScreen__content {
+            @extend .scale-80;
+            @extend .opacity-0;
+            @extend .willChange-tp;
+            transform-origin:50% 75%;
+            transition:opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+            &[data-hidden="true"]{
+                @extend .scale-80;
+                @extend .opacity-0;
+                @extend .pointerEvents-none;
+            }
+        }
+        .oScreen__buttons {
+            transition:opacity .2s ease-in-out;
+        }
+        &:before {
+            transition:opacity 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        }
+    }
+    &__content {
+        @include accelerate();
+        @include abs();
+        @extend .overflowX-hidden;
+        @extend .overflowY-auto;
+        @extend .zIndex-1;
+    }
+    &:before {
+        @extend .content-empty;
+        @include accelerate(true);
+        @include abs();
+        @extend .bg-overlay;
+        @extend .opacity-0;
+        will-change:opacity, background-color;
+        transition:opacity 0.4s $cubic40, background-color 0.5s $cubic645;
+
+        .d-phone & {
+            transition:opacity 0.4s $cubic345, background-color 0.25s ease-out;
+        }
+    }
+    &[data-open="true"]{
+        @extend .pointerEvents-all;
+        @extend .visibility-visible;
+        transition:visibility 0s;
+
+        &:before {
+            @extend .opacity-100;
+        }
+        &[data-show="up"],
+        &[data-show="down"],
+        &[data-show="left"],
+        &[data-show="right"]{
+            transition:visibility 0s;
+
+            &:before {
+                transition:opacity 0.7s $cubic60, background-color 0.7s $cubic60;
+
+                .d-mobile & {
+                    transition:opacity 0.55s $cubic60, background-color 0.55s $cubic60;
+                }
+            }
+            .oScreen__content {
+                transition:transform 0.7s $cubic60;
+
+                .d-mobile & {
+                    transition:transform 0.55s $cubic60;
+                }
+            }
+            .oScreen__buttons {
+                @extend .opacity-100;
+                transition:opacity .4s $cubic40 .2s;
+            }
+        }
+        &[data-show="left"],
+        &[data-show="right"]{
+            &:before {
+                .d-phone & {
+                    transition:opacity 0.42s $cubic645, background-color 0.42s $cubic645;
+                }
+            }
+            .oScreen__content {
+                .d-phone & {
+                    transition:transform 0.42s $cubic645;
+                }
+            }
+        }
+        &[data-show="modal"]{
+            .oScreen__content {
+                @extend .scale-100;
+                @extend .opacity-100;
+                transition:opacity 0.35s $cubic345, transform 0.35s $cubic345;
+
+                &[data-hidden="true"]{
+                    @extend .scale-80;
+                    @extend .opacity-0;
+                    @extend .pointerEvents-none;
+                }
+            }
+            .oScreen__buttons {
+                @extend .opacity-100;
+                transition:opacity 0.25s $cubic345 0.1s;
+            }
+            &:before {
+                transition:opacity 0.35s $cubic345, background-color 0.35s $cubic345;
+            }
+        }
+    }
+    &[data-color="white"]{
+        &[data-open="true"]{
+            &:before {
+                @extend .bg-white;
+            }
+        }
+    }
+    &[data-color="dark"]{
+        &[data-open="true"]{
+            &:before {
+                background:radial-gradient(rgba(64,64,75,.9), rgba(17,17,24,.9)) rgba(34,34,40,.52);
+
+                .d-phone & {
+                    background:rgba($blackLight,.95);
+                }
+            }
+        }
+    }
+    &[data-color="darkLight"]{
+        &[data-open="true"]{
+            &:before {
+                background:radial-gradient(rgba(40,47,51,.5), rgba(40,47,51,.76)) rgba(40,47,51,.42);
+            }
+        }
+    }
+    &[data-color="blue"]{
+        &[data-open="true"]{
+            &:before {
+                background-color:rgba($blue,.97);
+            }
+        }
+    }
+    &[data-color="none"]{
+        &:before {
+            @extend .display-none;
+        }
+    }
+}

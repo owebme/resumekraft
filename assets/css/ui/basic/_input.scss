@@ -10,7 +10,7 @@
     border:none;
     box-shadow:inset 0 0 0 1px lighten($grayLighten,5%);
 
-    &:hover {
+    .m-no-touch &:hover {
         box-shadow:inset 0 0 0 1px lighten($grayLight,5%);
     }
     &:focus {
@@ -239,7 +239,7 @@
             @extend .c-white;
             @extend .fontFamily-roboto;
             @extend .fontWeight-5;
-            background-color:transparent;
+            @extend .bg-none;
             box-shadow:0 0 0 2px rgba($white,.5);
 
             .d-no-phone & {

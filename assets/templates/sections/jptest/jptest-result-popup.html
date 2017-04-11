@@ -26,14 +26,14 @@
     });
 
     $.on("mount", function(){
-        if (app.metrika.get("jptest.votes.show")){
-            $.unmount();
-        }
-        else {
+        // if (app.metrika.get("jptest.votes.show")){
+        //     $.unmount();
+        // }
+        // else {
             if ($.refs) $votes = $$($.refs.votes);
             else $votes = $$($.votes);
             $.init();
-        }
+        //}
     });
 
     $.show = function(){

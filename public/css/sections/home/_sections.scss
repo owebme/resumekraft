@@ -1,20 +1,8 @@
 .home__section1__container,
 .home__section2__container,
-.home__section3__container {
+.home__section3__container,
+.home__section4__container {
     height:720px;
-}
-.home__section1__container,
-.home__section2__container,
-.home__section3__container {
-    .d-phone & {
-        @extend .h-auto;
-    }
-}
-.home__section1__container__inner {
-    .d-phone & {
-        @extend .m0;
-        @extend .p0;
-    }
 }
 .home__section2__container {
     .d-tablet.r-portrait & {
@@ -114,5 +102,23 @@
 .home__section2__plan__container {
     .d-mobile & {
         @extend .text-center;
+    }
+}
+.home__section4 {
+    .hh {
+        &__link {
+            &:hover {
+                .hh__logo {
+                    transform:rotateY(360deg);
+                    transition:transform .7s;
+                }
+            }
+        }
+        .hh__logo {
+            @include accelerate();
+            @extend .willChange-transform;
+            transform-origin:50%;
+            transform:rotateY(0deg);
+        }
     }
 }

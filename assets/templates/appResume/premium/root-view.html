@@ -23,17 +23,21 @@
 
     $resume = app.demo ? $store.resume.prepare.demo() : $store.resume.get();
 
-    $i18n.lang($resume.lang);
-    moment.locale($resume.lang);
+    this.init = function(){
+        $i18n.lang($resume.lang);
+        moment.locale($resume.lang);
 
-    var mode = this.opts.editing == "true" ? "editing" : "view",
-        config = $store.resume.select("config").deepClone();
+        var mode = this.opts.editing == "true" ? "editing" : "view",
+            config = $store.resume.select("config").deepClone();
 
-    config.mode = mode;
-    config.public = $store.resume.get("public");
-    config.lang = $store.resume.get("lang");
+        config.mode = mode;
+        config.public = $store.resume.get("public");
+        config.lang = $store.resume.get("lang");
 
-    $State = new Baobab(config, { autoCommit: true });
+        $State = new Baobab(config, { autoCommit: true });
+    };
+
+    this.init();
 
     this.on("before-mount", function(){
 
@@ -108,6 +112,19 @@
                     if (data.color && $State.get('color') != data.color){
                         $State.select('color').set(data.color);
                     }
+                    if (data.resume){
+                        $Resume.unmount(true);
+                        $resume = $store.resume.prepare.premium(data.resume, "demo");
+                        $root.init();
+                        $Resume = riot.mount("resume-template1")[0];
+                        $Resume.one("updated", function(){
+                            $Salary.opener.update();
+                            $Salary.graph.update();
+                            window.parent.postMessage({
+                                resume: $store.resume.get()
+                            }, '*');
+                        });
+                    }
                 }
             });
             $store.resume.select('commons', 'photo')
@@ -133,7 +150,7 @@
         else if (mode == "coverletter"){
             $root.root.setAttribute("data-coverletter", value);
         }
-    }); 
+    });
 
     if (app.config.changeStyles){
         app.plugins.styles.init({

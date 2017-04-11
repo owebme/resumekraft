@@ -3,8 +3,9 @@ i18n.dictionary({
         resume: {
             premium: {
                 template: {
-                    "Growth salary": "График роста",
+                    "Graph salary": "График роста",
                     "Desired salary growth schedule": "Желаемый график роста оплаты труда",
+                    "You can compose your own schedule": "Вы можете составить свой произвольный график",
                     "I am in social media": "Я в социальных медиа",
                     "My projects": "Мои проекты",
                     "Main skills": "Основные компетенции",

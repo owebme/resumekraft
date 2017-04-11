@@ -41,7 +41,9 @@ $store.account = _.extend(new Baobab([]),
             age: function(birthday){
                 var lang = 'ru',
                     b = birthday,
-                    years = moment().diff(moment(b.year + "-" + b.month + "-" + b.day), 'years');
+                    month = b.month < 10 ? "0" + b.month : b.month,
+                    day = b.day < 10 ? "0" + b.day : b.day,
+                    years = moment().diff(moment(b.year + "-" + month + "-" + day), 'years');
 
                 if (years == "1") years = years + (lang == "ru" ? " год" : " year");
                 else if (years > 1 && years < 5) years = years + (lang == "ru" ? " года" :  "year");

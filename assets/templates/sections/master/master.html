@@ -187,11 +187,20 @@
         {
             pos: "right",
             title: "Пройти тест профориентации",
+            options: {
+                force: app.device.isMobile,
+                notHide: app.device.isMobile,
+            },
             callback: function(){
-                $Sections.resume.list.hide();
-                $Sections.jptest.section.show(function(){
-                    $Sections.resume.list.show();
-                });
+                if (app.device.isMobile){
+                    _.opener("/jp-test/");
+                }
+                else {
+                    $Sections.resume.list.hide();
+                    $Sections.jptest.section.show(function(){
+                        $Sections.resume.list.show();
+                    });
+                }
                 app.metrika.set("master.jptest", true);
             }
         }

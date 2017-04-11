@@ -71,12 +71,16 @@
         @extend .borderRadius-circle;
         @extend .cursor-pointer;
         @extend .mt--l;
-        @extend .willChange-transform;
+        @extend .willChange-tp;
         background-color:rgba($black,.2);
         transform:scale(0);
-        transition:transform 0.3s $cubic345;
+        transition:all 0.3s $cubic345, 0.2s background-color;
         @extend .zIndex-1;
 
+        .m-no-touch &:hover,
+        .m-touch & {
+            background-color:rgba(#1F2D3D,.35);
+        }
         .showSlides & {
             transform:scale(1);
         }

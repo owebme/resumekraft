@@ -31,6 +31,9 @@
             transition:all 0.25s $cubic215;
             box-shadow:inset 0 0 0 1px rgba($white,.5);
 
+            .m-touch & {
+                @extend .transition-none;
+            }
             &:after {
                 @extend .content-empty;
                 @extend .pos-abs;
@@ -49,8 +52,12 @@
                 @extend .opacity-0;
                 @extend .willChange-opacity;
                 transition:opacity 0.25s $cubic215;
+
+                .m-touch & {
+                    @extend .transition-none;
+                }
             }
-            &:hover {
+            .m-no-touch &:hover {
                 @extend .opacity-100;
                 box-shadow:inset 0 0 0 1px rgba($white,.7);
             }

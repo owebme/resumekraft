@@ -189,8 +189,6 @@
             }
 
             this.index = index;
-
-    		//if( $('.no-csstransitions').length > 0 ) updateSlider('next', actual, following);
     	},
 
     	prevSlides: function() {
@@ -215,8 +213,6 @@
             }
 
             this.index = index;
-
-    		//if( $('.no-csstransitions').length > 0 ) updateSlider('prev', actual);
     	},
 
     	updateSlider: function(direction, actual, numerFollowing) {
@@ -232,6 +228,27 @@
                     actual.addClass('previous')
                     .next('.slider__item')
                     .addClass('current');
+                }
+                else if (this.cnt == 2){
+                    if (numerFollowing > (this.cnt + 1)) {
+        				actual.addClass('previous')
+                        .next('.slider__item')
+                        .next('.slider__item')
+                        .addClass('current');
+        			}
+                    else if (numerFollowing == (this.cnt + 1)) {
+        				actual.next('.slider__item')
+                        .next('.slider__item')
+                        .addClass('current')
+                        .prev('.slider__item')
+                        .addClass('previous');
+        			}
+                    else {
+        				actual.next('.slider__item')
+                        .addClass('current')
+                        .end()
+                        .addClass('previous');
+        			}
                 }
                 else {
         			if (numerFollowing > (this.cnt + 1)) {
@@ -269,6 +286,16 @@
                 if (this.cnt == 1){
                     actual.prev('.slider__item')
                     .addClass('previous');
+                }
+                else if (this.cnt == 2){
+                    if (actual.prevAll('.slider__item').length > (this.cnt - 1)) {
+        				actual.prev('.slider__item')
+                        .prev('.slider__item')
+                        .addClass('previous');
+        			}
+                    else {
+        				(!this.wrapper.children('.slider__item').eq(0).hasClass('current')) && this.wrapper.children('.slider__item').eq(0).addClass('previous');
+        			}
                 }
                 else {
         			if (actual.prevAll('.slider__item').length > (this.cnt - 1)) {

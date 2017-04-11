@@ -92,6 +92,7 @@
         background-color:lighten($silver,32%);
         @extend .transition-default;
         @extend .btn-active;
+        @extend .zIndex-1;
 
         .d-phone & {
             @extend .t--xs;

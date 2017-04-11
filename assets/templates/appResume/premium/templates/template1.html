@@ -13,7 +13,11 @@
     <section if={ app.device.isPhone } class="screen screen--first { $State.get('mode') !== 'editing' && $store.resume.select('sections').get({'name': 'coverletter'}).active ? null : 'screen--active' }" data-section="cover">
         <div class="screen__content">
             <ux-photo phone="true"></ux-photo>
-            <div if={ $store.resume.get('post') } class="screen__post">{ $store.resume.get('post') }</div>
+            <div if={ $store.resume.get('post') } class="screen__post">
+                <div class="screen__post__text">
+                    { $store.resume.get('post') }
+                </div>
+            </div>
             <div if={ $store.resume.get('commons', 'contacts', 'city') } class="screen__location">
                 <span class="display-inlineBlock text-truncate w90p">{ $store.resume.get('commons', 'contacts', 'city', 'name') }, <span class="text-lowercase">{ $store.resume.take.relocation() }</span></span>
                 <div class="screen__progress" style="width:{ $store.resume.get('percent') }%">
@@ -158,11 +162,14 @@
         </div>
     </section>
 
+    <popup-likes if={ !app.device.isPhone && $State.get('mode') !== "editing" && $store.resume.get("config", "likes", "active") && !app.isLiked }></popup-likes>
+
 <script>
 
     var $ = this;
 
     $.el = $$(this.root);
+    $screens = null;
 
     $.screenItems = null;
     $.screenColor = null;
@@ -227,17 +234,17 @@
                 $.initScroll();
 
                 (function animationLoop(){
-                    app.utils.raf(animationLoop);
+                    $.raf = app.utils.raf(animationLoop);
                     onScroll(app.utils.getScroll($.scroll));
                 })();
 
                 $root.trigger("ready");
 
                 if ($State.get('mode') !== "editing" && $store.resume.select("sections").get({"name": "coverletter"}).active){
-                    var show = true,
-                        screens = $Resume.el.find(".screen");
+                    var show = true;
+                    $screens = $Resume.el.find(".screen");
 
-                    screens.on('show', function(){
+                    $screens.on('show', function(){
                         var section = this.getAttribute("data-section");
 
                         if (section == "coverletter" && !show){
@@ -355,12 +362,6 @@
                     $store.resume.select("config", "animate", value);
                 }
             });
-
-            if (app.demo){
-                $Sections.finish.one("show", function(){
-                    showOffer = true;
-                })
-            }
         }
         else if (app.demo){
             _.bbUpdate($State, function(prop, value, e){
@@ -443,7 +444,9 @@
     };
 
     var previousTop = 0,
-        showOffer = false;
+        showOffer = false,
+        showLikesPopup = false,
+        likesPopup = !app.demo && !app.device.isPhone && $root.opts.editing != "true" && $store.resume.get("config", "likes", "active") && !app.isLiked;
 
     $.onScroll = function(scroll){
         var scroll = scroll && scroll.y || app.$dom.document.scrollTop(),
@@ -463,14 +466,29 @@
         if (!find && $.color != "primary"){
             $root.root.setAttribute("data-control-color", "primary");
         }
-        if (app.demo && !showOffer && $root.opts.editing == "true"){
+        if (app.demo && !showOffer && $root.opts.editing == "true" || likesPopup && !showLikesPopup){
             var scrollHeight = $Resume.el && $Resume.el[0] && $Resume.el[0].scrollHeight;
             if (scrollHeight && scrollHeight > 0 && scroll + app.sizes.height + 20 > scrollHeight && previousTop < scroll){
-                $Sections.finish.show();
+                if (app.demo && !showOffer && $root.opts.editing == "true"){
+                    showOffer = true;
+                    $Sections.finish.show();
+                }
+                else if (likesPopup && !showLikesPopup){
+                    showLikesPopup = true;
+                    $Resume.tags["popup-likes"].show();
+                }
             }
             previousTop = scroll;
         }
     };
+
+    $.on("before-unmount", function(){
+        if ($screens) $screens.off('show');
+        $.screens.destroy();
+        $store.resume.off();
+        $State.off();
+        _.caf($.raf);
+    });
 
 </script>
 

@@ -30,6 +30,10 @@ $store.photoFilter = _.extend(new Baobab([
     {
         _id: "transfer",
         title: "Transfer"
+    },
+    {
+        _id: "auto",
+        title: "Auto"
     }
     ]),
     {

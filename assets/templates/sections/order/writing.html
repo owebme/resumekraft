@@ -29,7 +29,7 @@
     <div name="area2" class="oScreen__content" data-hidden={ step != 2 }>
         <div class="pos-centered container { w100p : app.device.isPhone }">
             <div class="row">
-                <div class="col-md-14 centered">
+                <div class="col-md-16 col-lg-14 centered">
                     <h1 class="mb-l opacity-75">Выберите ваш общий стаж</h1>
                     <div class="plr-xl mb-m">
                         <ui-select color="white" size="xl" commit={ commit.experience } value={ order.experience } items={ $store.dictionary.get('experience', 'ru') }></ui-select>

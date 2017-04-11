@@ -3,6 +3,8 @@
     @extend .opacity-0;
     @extend .c-white;
     @extend .borderRadius-l;
+    @extend .userSelect-none;
+    @extend .cursor-default;    
     @extend .zIndex-101;
     min-width:300px;
     max-width:380px;

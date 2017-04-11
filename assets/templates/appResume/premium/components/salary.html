@@ -13,7 +13,7 @@
             <div if={ $resume.salary.graph.active } onClick={ $State.get('mode') === "editing" ? openEditable : graph.open } onUpdate="none" data-screen="graph" class="col-xs-24 col-sm-12 col-md-24">
                 <div class="salary-graph-mini">
                     <span class="salary-graph-mini-bar">{ $resume.salary.graph.items.join(",") }</span>
-                    <span class="salary-graph-mini-title">{ $i18n("resume.premium.template.Growth salary") }</span>
+                    <span class="salary-graph-mini-title">{ $i18n("resume.premium.template.Graph salary") }</span>
                 </div>
             </div>
         </div>

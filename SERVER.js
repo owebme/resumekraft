@@ -96,6 +96,7 @@ app.use(function(req, res, next) {
         isMobile: req.device.type.match(/tablet|phone/) ? true : false
     };
     req.device.ua = device.ua;
+    req.device.isMobile = device.isMobile;
     req.appClient = {
         utils: app.utils,
         moment: app.moment,

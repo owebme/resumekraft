@@ -54,7 +54,7 @@
                 @extend .display-inlineBlock;
                 @extend .btn-active;
 
-                &:hover {
+                .m-no-touch &:hover {
                     @extend .c-yellowBright;
                 }
             }
@@ -114,6 +114,17 @@
                 bottom:8.58vh;
             }
         }
+        .d-tablet & {
+            font-size:20px;
+            @extend .letterSpacing-xs;
+
+            &[data-pos="left"]{
+                @extend .l-25;
+            }
+            &[data-pos="right"]{
+                @extend .r-25;
+            }
+        }
         &[data-pos="left"]{
             @extend .pos-centered-v;
             left:6.25vw;
@@ -142,7 +153,7 @@
             .d-xlargeScreen & {
                 @extend .pb-m;
             }
-            &:hover {
+            .m-no-touch &:hover {
                 .master__block__link {
                     @extend .c-yellowBright;
                     transition:transform 0.2s $cubic645;

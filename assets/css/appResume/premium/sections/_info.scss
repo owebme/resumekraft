@@ -155,6 +155,7 @@
             @extend .c-primary;
             @extend .fontSize-18;
             @extend .pt-xxs;
+            padding-bottom:2px;
         }
         .d-phone & {
             @extend .fontSize-22;

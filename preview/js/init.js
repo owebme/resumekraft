@@ -12,11 +12,13 @@
         },
         $device = $("#device"),
         $container = $device.find(".frame-container"),
-        $frame = $('<iframe id="frame" src="/premium/demo" frameborder="none"/>').prependTo($container),
         $loader = $device.find(".loader"),
         $loaderBg = $loader.find(".loader-bg"),
         $share = $(".button__like"),
-        $menu = $(".menu");
+        $menu = $(".menu"),
+        $btnImport = $(".button__import__item");
+
+    window.$frame = $('<iframe id="frame" src="/premium/demo" frameborder="none"/>').prependTo($container);
 
     $share.opener = $share.find(".button__like__opener"),
     $menu.opener = $(".menu__opener");
@@ -83,6 +85,10 @@
 
     $share.opener.on("click", function(){
         $share.attr("data-open", true);
+    });
+
+    $btnImport.on("click", function(){
+        app.tag("resume-import").show();
     });
 
     $control.device.on("click", function(){
@@ -167,6 +173,7 @@
 
     new app.plugins.share($share, {
         buttons: '.button__like__item',
+        url: app.domain() + "/premium/",
         share: {
             title: "Премиальное резюме нового формата на ResumeKraft.ru"
         }

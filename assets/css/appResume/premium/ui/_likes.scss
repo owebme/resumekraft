@@ -1,32 +1,54 @@
 .resume {
     .likes {
-        @extend .flex-column-centered;
-
+        .d-phone & {
+            @extend .flex-column-centered;
+        }
         &__cover {
             @extend .pos-rel;
             @extend .w130;
             @extend .h130;
-            @extend .mb-s;
+            @extend .mb-xs;
 
+            .d-no-phone & {
+                @extend .mt--xxs;
+                @extend .mb--m;
+            }
             &:before {
                 @extend .content-empty;
                 @extend .display-block;
                 @extend .opacity-30;
+                @extend .visible-xs;
                 @include ui-icon("like_fill_white", 130px, 130px);
                 animation:pulse-heart 1s infinite;
             }
+            &__heart {
+                @extend .w100p;
+                @extend .h100p;
+                @extend .opacity-30;
+                animation:pulse-heart 1s infinite;
+
+                path {
+                    @extend .fill-primary;
+                }
+            }
             &__photo {
                 @extend .pos-centered;
-                width:62px;
-                height:62px;
+                @extend .w62;
+                @extend .h62;
                 @extend .bg-cover;
                 @extend .borderRadius-circle;
                 @extend .mt--s;
+
+                .d-no-phone & {
+                    @extend .w64;
+                    @extend .h64;
+                    @extend .mt--m;
+                }
             }
             &__badge {
                 @extend .pos-abs;
-                bottom:65%;
-                right:60%;
+                @extend .b65;
+                @extend .r60;
                 width:29px;
                 height:29px;
                 @extend .fontFamily-futura;
@@ -36,6 +58,15 @@
                 @extend .fontWeight-8;
                 @extend .borderRadius-circle;
                 padding-top:1px;
+
+                .d-no-phone & {
+                    @extend .bg-pink;
+                    @extend .pt0;
+                    @extend .w24;
+                    @extend .h24;
+                    @extend .b70;
+                    font-size:13px;
+                }
             }
         }
         &__text {
@@ -58,6 +89,11 @@
                 @include ui-icon("like_fill_pink", 24px, 24px);
             }
         }
+        &__checked {
+            path {
+                @extend .fill-primary;
+            }
+        }
         .btn {
             @extend .bg-white;
             @extend .c-black;
@@ -67,6 +103,19 @@
                 @extend .display-inlineBlock;
                 @extend .vAlign-middle;
                 margin:0 12px 0 -10px;
+
+                .d-no-phone & {
+                    @extend .w20;
+                    @extend .h20;
+                    margin-top:1px;
+                }
+            }
+            .d-no-phone & {
+                box-shadow:inset 0 -2px 0 rgba($white,.15), 1px 0 0 0 rgba(31,45,61,.2), 0 1px 0 0 rgba(31,45,61,.2), -1px 0 0 0 rgba(31,45,61,.2), 0 -1px 0 0 rgba(31,45,61,.2);
+
+                &:hover {
+                    box-shadow:inset 0 -2px 0 rgba(31,45,61,.1), 1px 0 0 0 rgba(31,45,61,.2), 0 1px 0 0 rgba(31,45,61,.2), -1px 0 0 0 rgba(31,45,61,.2), 0 -1px 0 0 rgba(31,45,61,.2);
+                }
             }
         }
     }

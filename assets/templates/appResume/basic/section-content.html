@@ -36,7 +36,8 @@
         percentage: $.tags["resume-control-percentage"],
         settings: $.tags["resume-settings"],
         textEdit: $.tags["text-edit"],
-        finish: $.tags["resume-edit-finish"]
+        finish: $.tags["resume-edit-finish"],
+        preview: $Sections.resume.preview
     };
 
     $.on("before-mount", function(){
@@ -107,6 +108,20 @@
         photoUpload: function(){
             $store.data.onPhotoUpload($resume.get("_id"), function(image){
                 $resume.select('commons', 'photo').set(image + "?" + _.newId());
+                if ($resume.get("template") < 7){
+                    $afterlag.m(function(){
+                        $Alert.show({
+                            title: "Вы выбрали шаблон резюме без фотографии",
+                            subtitle: "Перейти к выбору шаблонов",
+                            success: {
+                                title: "Изменить шаблон",
+                                callback: function(){
+                                    $.open.design.free();
+                                }
+                            }
+                        })
+                    });
+                }
             });
             app.metrika.set("resume.create.control.photo", true);
         },
@@ -130,6 +145,13 @@
             }
         },
         print: function(){
+            app.request("setResume", {
+                data: $resume.get()
+            }, {
+                loader: false,
+                notify: false
+            });
+            $store.data.onPrint($resume.get("_id"));
             app.metrika.set("resume.create.control.print", true);
         },
         settings: function(){

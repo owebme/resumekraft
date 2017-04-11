@@ -112,6 +112,19 @@
                 ]
             });
 
+            var bgParallax = new app.plugins.scroll.ParallaxController({
+                items: [
+                    {
+                        selector: ".bgParallax",
+                        from: 100,
+                        to: -150,
+                        off: 0
+                    }
+                ]
+            });
+
+            bgParallax.start();
+
             scrollParallax.start();
         },
 
@@ -129,7 +142,7 @@
         },
 
         createAccount: function(){
-            
+
             WD.el.on("click", ".createAccount", function(){
                 var plan = this.getAttribute("data-plan");
                 app.tag("section-auth").open("signup", plan);

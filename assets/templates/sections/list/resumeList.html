@@ -9,7 +9,7 @@
     <div name="sliderEl" class="resume__list__slider container slider" data-hidden="false">
         <div class="slider__nav slider__nav__prev"></div>
         <div class="slider__nav slider__nav__next"></div>
-        <div if={ $store.data.get().length } class="row slider__wrapper">
+        <div if={ $store.data.get().length } class="row slider__wrapper md-plr-l">
             <virtual each={ item, i in _.sortByDate($store.data.get(), "update", "desc") } no-reorder>
                 <div class="slider__item col-md-12 col-lg-8">
                     <resume-list-item item={ item }></resume-list-item>

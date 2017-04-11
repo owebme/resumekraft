@@ -13,8 +13,8 @@
     transition:box-shadow .4s, transform .4s;
 
     .d-tablet & {
-        @extend .ml30;
-        @extend .mr30;
+        @extend .ml25;
+        @extend .mr25;
         @extend .mb0;
     }
     .m-no-touch &:hover {

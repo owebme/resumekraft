@@ -103,6 +103,9 @@
         &[data-filter="transfer"]{
             filter:sepia(0.4) saturate(1.3);
         }
+        &[data-filter="auto"]{
+            filter:contrast(112%) saturate(103%);
+        }
         &-changer {
             @extend .pos-rel;
             @extend .display-inlineBlock;
@@ -538,6 +541,10 @@
             line-height:44px;
             background:linear-gradient(to top, $steelDark, rgba($steelDark,0));
             @extend .zIndex-1;
+
+            &__text {
+                @include textEllipsis(100%, 175px, 4);
+            }
         }
         .screen__location {
             @extend .flex-row-left-center;

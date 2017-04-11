@@ -10,3 +10,7 @@ $helvetica: "HelveticaNeue", sans-serif;
 .fontFamily-default {
     font-family:$helvetica;
 }
+.fontFamily-helvetica,
+.fontFamily-roboto {
+    @extend .fontFamily-default;
+}

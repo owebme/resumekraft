@@ -1,6 +1,5 @@
 @each $icon in (
-    minus, minus_white, close_fill, close_fill_gray, help, close_fill_white,
-    menu_white, menu, loading, info_white
+    close_strong, info_white
 ){
     .ui-icon-#{$icon} {
         background:url('/assets/images/ui/ui-#{$icon}.svg') no-repeat 0 0 / cover;

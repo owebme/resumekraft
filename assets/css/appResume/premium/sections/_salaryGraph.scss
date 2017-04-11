@@ -19,16 +19,23 @@
     .d-tablet.r-landscape & {
         width:680px;
     }
+    .d-phone #app[demo="true"][data-mode="view"] &:hover {
+        .salary-graph-title-front {
+            @extend .opacity-0;
+        }
+        .salary-graph-title-back {
+            @extend .opacity-100;
+        }
+    }
     .d-phone &,
     .d-tablet.r-portrait & {
         @extend .w100p;
     }
     &-title {
         @extend .pos-abs;
-        @extend .t-m;
+        @extend .t-30;
         @extend .l-xl;
-        @extend .pt-xs;
-        @extend .pr-xl;
+        @extend .w60p;
         @extend .f-primary;
 
         .d-no-phone & {
@@ -39,6 +46,15 @@
         }
         .d-phone & {
             @extend .fontSize-18;
+        }
+        &-front,
+        &-back {
+            @extend .pos-tl;
+            @extend .willChange-opacity;
+            transition:opacity 0.5s $cubic2501 0.2s;
+        }
+        &-back {
+            @extend .opacity-0;
         }
     }
     &-item {
@@ -102,6 +118,10 @@
             .d-tablet.r-portrait & {
                 font-size:25px;
             }
+            span {
+                @extend .fontWeight-normal;
+                padding-left:3px;
+            }
             &-ruble {
                 @extend .display-block;
                 @extend .fontFamily-roboto;
@@ -152,6 +172,7 @@
         @extend .boxShadow-default;
         @extend .zIndex-5;
         @extend .bg-primary;
+        @extend .cursor-default;
         will-change:transform, background-color;
 
         .d-phone & {
@@ -175,6 +196,8 @@
         &-valuta {
             @extend .fontFamily-gotham;
             @extend .c-white;
+            will-change:color;
+            transition:color 0.2s $cubic215;
             font-size:36px;
             transform:translateY(2px);
 

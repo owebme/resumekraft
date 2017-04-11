@@ -39,7 +39,7 @@ module.exports = function(){
 					name: null,
 					surname: null,
                     gender: this._gender(data.gender),
-					birthday: this._birthday(),
+					birthday: this._birthday(data.birth_date),
 					citizenship: this._citizenship(data.citizenship),
 					businessTrip: this._businessTrip(data.business_trip_readiness),
 					relocation: this._relocation(data.relocation),
@@ -74,13 +74,23 @@ module.exports = function(){
         _gender: function(value){
 			return value && value.id || null;
 		},
-        _birthday: function(){
-            return {
-                day: app.utils.shuffle(app.utils.range(1, 29))[0],
-                month: app.utils.shuffle(app.utils.range(1, 13))[0],
-                year: app.utils.shuffle(app.utils.range(1970, 1996))[0],
-                hidden: false
-            }
+        _birthday: function(value){
+			if (value && value.match(/\d+-\d+-\d+/)){
+	            return {
+	                day: parseInt(value.match(/(\d+)-(\d+)-(\d+)/)[3]),
+	                month: parseInt(value.match(/(\d+)-(\d+)-(\d+)/)[2]),
+	                year: parseInt(value.match(/(\d+)-(\d+)-(\d+)/)[1]),
+	                hidden: false
+	            }
+			}
+			else {
+				return {
+	                day: "1",
+	                month: "1",
+	                year: "1990",
+	                hidden: true
+	            }
+			}
         },
 		_citizenship: function(value){
 			if (value && !app.utils.isEmpty(value)){

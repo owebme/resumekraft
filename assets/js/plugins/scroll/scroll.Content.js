@@ -34,15 +34,15 @@
                 tap: false,
                 preventDefault: true,
                 eventPassthrough: 'horizontal',
-                forceBounds: app.device.isPhone ? true : false,
-    			boundDeceleration: app.device.isPhone ? 3.5 : false,
+                forceBounds: app.device.isMobile ? true : false,
+    			boundDeceleration: app.device.isMobile ? 3.5 : false,
                 scrollbars: 'custom',
                 interactiveScrollbars: !app.device.support.touch,
                 probeType: app.device.support.touch ? false : 3,
             }
             if (this.options) _.extend(options, this.options);
 
-            if (app.device.isPhone){
+            if (app.device.isMobile){
                 options.deceleration = 0.0006;
             }
 

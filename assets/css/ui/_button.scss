@@ -15,6 +15,9 @@
         .d-phone & {
             transform:translate3d(-10px, 12px, 0);
         }
+        .d-tablet & {
+            transform:translate3d(-12px, 12px, 0);
+        }
     }
     &-tl, &[data-pos="top-left"] {
         @extend .pos-tl;
@@ -56,6 +59,11 @@
         @include ui-icon(minus);
         margin:15px 17px 0 0;
 
+        .d-tablet & {
+            @extend .w34;
+            @extend .h34;
+            margin:12px 12px 0 0;
+        }
         &[data-color="white"]{
             @include ui-icon(minus_white);
         }
@@ -86,6 +94,31 @@
         transform:translate3d(0, -3px, 0);
     }
 }
+.oScreen,
+.oScreen__section {
+    &__buttons {
+        @extend .display-block;
+        @extend .buttons-angle;
+        @include accelerate();
+        @extend .opacity-01;
+        transition:opacity .4s $cubic40;
+        @extend .willChange-opacity;
+        @extend .zIndex-2;
+
+        &[data-pos="top-right"]{
+            @extend .buttons-angle-tr;
+        }
+        &[data-pos="top-left"]{
+            @extend .buttons-angle-tl;
+        }
+        &[data-pos="bottom-right"]{
+            @extend .buttons-angle-br;
+        }
+        &[data-pos="bottom-right"]{
+            @extend .buttons-angle-bl;
+        }
+    }
+}
 .main {
     &__button {
         @extend .pos-abs;
@@ -103,7 +136,7 @@
         &[data-color="white"] {
             @extend .bg-white;
 
-            &:hover {
+            .m-no-touch &:hover {
                 @extend .bg-blue;
 
                 &:after {
@@ -130,18 +163,14 @@
             transition:opacity 0.3s $cubic215;
             transform:translateY(2px);
         }
-        &:hover:after {
+        .m-no-touch &:hover:after {
             @extend .opacity-100;
         }
-        .d-mobile & {
+        .d-tablet & {
             top:15px;
             left:15px;
             width:56px;
             height:56px;
-
-            &:after {
-                @extend .opacity-70;
-            }
         }
     }
 }

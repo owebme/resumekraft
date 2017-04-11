@@ -26,4 +26,7 @@
         @extend .pointerEvents-none;
         @extend .visibility-hidden;
     }
+    a {
+        @extend .pointerEvents-none;
+    }
 }

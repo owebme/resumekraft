@@ -53,6 +53,10 @@ app.tag = function(name, callback){
     }
 }
 
+app.domain = function(){
+    return location.protocol + "//" + location.hostname;
+}
+
 window.Store = window.store || {};
 
 window.$store = {};

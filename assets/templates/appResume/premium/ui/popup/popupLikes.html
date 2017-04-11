@@ -1,0 +1,81 @@
+<popup-likes class="popup popup-m { isLiked ? 'showAnim-group2' : 'showAnim-group1' }" data-pos="bottom-right" data-active={ active }>
+
+    <div onClick={ close } onUpdate="none" class="popup__close"></div>
+
+    <div class="popup__inner pos-rel likes" data-gender={ $resume.commons.gender }>
+        <div class="popup__image overflow-visible">
+            <div class="likes__cover anim anim-group1 anim-scale">
+                <svg class="likes__cover__heart" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 18 20" version="1.1" x="0px" y="0px"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g><path d="M9,1.82234332 C8.019,0.70626703 6.516,0 4.95,0 C2.178,0 0,2.11008174 0,4.79564033 C0,8.09155313 3.06,10.7771117 7.695,14.8577657 L9,16 L10.305,14.8490463 C14.94,10.7771117 18,8.09155313 18,4.79564033 C18,2.11008174 15.822,0 13.05,0 C11.484,0 9.981,0.70626703 9,1.82234332 Z"/></g></g></svg>
+                <div if={ $resume.commons.photo } class="likes__cover__photo" style="background-image:url('{ $resume.commons.photo }')"></div>
+                <div if={ $resume.config.likes.count && $resume.likes.length } class="likes__cover__badge">{ $resume.likes.length }</div>
+            </div>
+        </div>
+        <div class="popup__content overflow-hidden">
+            <div class="popup__text anim anim-group1 anim-bt-ease">{ $i18n("resume.premium.template.If you liked my resume please supply Like") }</div>
+            <div class="anim anim-group1 anim-bt-ease">
+                <div onClick={ liked } class="btn btn-xl2">{ $i18n("resume.premium.template.Like") }</div>
+            </div>
+        </div>
+        <div class="pos-centered flex-column-centered w100p pb-xs pointerEvents-none">
+            <svg name="checked" class="likes__checked w48 h48 mb-xs anim-group2 anim-scale" delay-show="xl" xmlns:x="http://ns.adobe.com/Extensibility/1.0/" xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/" xmlns:graph="http://ns.adobe.com/Graphs/1.0/" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><switch><foreignObject requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/" x="0" y="0" width="1" height="1"/><g i:extraneous="self"><path d="M50.0000038,5.250001c-24.7548161,0-44.8225327,20.067749-44.8225327,44.8225327    s20.0677147,44.8225021,44.8225327,44.8225021c24.7546883,0,44.8225288-20.0677185,44.8225288-44.8225021    S74.7546921,5.250001,50.0000038,5.250001z M43.7936974,68.9786072L21.3821106,46.5665054l3.3547878-3.3547859    l19.0567989,19.0562859l30.3382759-30.3382778l3.3547897,3.3547878L43.7936974,68.9786072z"/></g></switch></svg>
+            <div class="anim-group2 anim-bt-soft" delay-show="s" data-duration="l">{ $i18n("resume.premium.template.Thanks for your vote, he will be counted") }.</div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.isLiked = false;
+
+    // $.on("mount", function(){
+    //     $afterlag.run(function(){
+    //         $.show();
+    //     })
+    // });
+
+    $.liked = function(){
+        $.isLiked = true;
+
+        if (!app.demo){
+            app.request("addResumeLike", {
+                id: $resume._id
+            }, {
+                loader: false,
+                notify: false
+            });
+        }
+        _.onEndTransition($.checked, function(){
+            $afterlag.xl(function(){
+                $.hide();
+            });
+        });
+    };
+
+    $.show = function(){
+        if ($.active) return;
+
+        $.update({
+            active: true
+        })
+
+        return new Promise(function(resolve, reject){
+            $.resolve = resolve;
+        });
+    };
+
+    $.close = function(){
+        $.hide();
+    };
+
+    $.hide = function(){
+        if (!$.active) return;
+
+        $.update({
+            active: false
+        })
+    };
+
+</script>
+
+</popup-likes>

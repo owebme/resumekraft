@@ -6,7 +6,7 @@
                 <div name="overlay" class="pos-centered w100v h100v zIndex-1"></div>
                 <div class="col-md-18 col-lg-15 centered zIndex-2">
                     <div onClick={ hide } onUpdate="none" class="button__close" data-color="gray"></div>
-                    <div name="content" class="pos-rel maxH-95v overflow-hidden section-scroll bg-white borderRadius-xl zIndex-1">
+                    <div name="content" class="pos-rel { app.sizes.size == 'medium' ? 'maxH-85v' : 'maxH-95v' } overflow-hidden section-scroll bg-white borderRadius-xl zIndex-1">
                         <profile-data-content cursor={ data.select() } class="display-block pt70 pb100 pl45 pr45 text-left fontSize-20 c-gray willChange-transform" style={ 'padding-top:130px' : firstShow }></profile-data-content>
                         <div class="pos-tl bg-gradient-tb-white w100p h80"></div>
                         <div if={ firstShow } class="pos-tl zIndex-2 w100p bg-gradient-tb-white" style="height:130px">

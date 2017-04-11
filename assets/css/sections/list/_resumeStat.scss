@@ -67,7 +67,12 @@
         @extend .overflow-hidden;
         @extend .bg-cover;
         @extend .zIndex-1;
-        @extend .opacity-85;
+        @extend .opacity-90;
+
+        .d-tablet & {
+            @extend .t-s;
+            @extend .l-s;    
+        }
     }
     &__select {
         @extend .opacity-0;

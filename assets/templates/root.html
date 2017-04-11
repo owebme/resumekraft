@@ -10,7 +10,7 @@
     <section-notify></section-notify>
     <section-alert></section-alert>
     <section-pointer></section-pointer>
-    <section-jptest></section-jptest>
+    <section-jptest if={ !app.device.isMobile }></section-jptest>
     <section-payment></section-payment>
     <section-tutorial></section-tutorial>
     <section-plan></section-plan>
@@ -43,7 +43,7 @@
         <offer-jptest></offer-jptest> -->
     </app-offers>
 
-    <app-overviews>
+    <app-overviews if={ !app.device.isMobile }>
         <overview-premium></overview-premium>
         <!-- <overview-jptest></overview-jptest>
         <overview-functions></overview-functions> -->
@@ -65,6 +65,14 @@
             $Sections.resume.stat.offer.unmount();
             $Sections.inbox.section.offer.unmount();
             $Sections.plan.unmount();
+            $Sections.offers.premium = null;
+            $Sections.resume.stat.offer = null;
+            $Sections.inbox.section.offer = null;
+            $Sections.plan = null;
+        }
+        if (app.device.isMobile){
+            $Sections.jptest.section = null;
+            $Sections.overview.premium = null;
         }
     });
 
@@ -131,9 +139,9 @@
             },
             jptest: {
                 section: $root.tags["section-jptest"],
-                list: $root.tags["section-jptest"].tags["jptest-list"],
-                test: $root.tags["section-jptest"].tags["jptest-content"],
-                result: $root.tags["section-jptest"].tags["jptest-result"]
+                list: $root.tags["section-jptest"] && $root.tags["section-jptest"].tags["jptest-list"],
+                test: $root.tags["section-jptest"] && $root.tags["section-jptest"].tags["jptest-content"],
+                result: $root.tags["section-jptest"] && $root.tags["section-jptest"].tags["jptest-result"]
             },
             plan: $root.tags["section-plan"],
             inbox: {

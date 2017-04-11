@@ -118,6 +118,7 @@ jptest-content {
         &__text {
             @include accelerate(true);
             @extend .plr-xl;
+            @extend .md-plr-l;
             @extend .xs-plr-m;
             @extend .willChange-transform;
             transition:transform 0.7s $cubic089;

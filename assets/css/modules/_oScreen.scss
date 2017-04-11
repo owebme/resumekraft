@@ -60,28 +60,6 @@
             transition:opacity 0.2s ease-in-out, background-color 0.2s ease-in-out;
         }
     }
-    &__buttons {
-        @extend .display-block;
-        @extend .buttons-angle;
-        @include accelerate();
-        @extend .opacity-01;
-        transition:opacity .4s $cubic40;
-        @extend .willChange-opacity;
-        @extend .zIndex-2;
-
-        &[data-pos="top-right"]{
-            @extend .buttons-angle-tr;
-        }
-        &[data-pos="top-left"]{
-            @extend .buttons-angle-tl;
-        }
-        &[data-pos="bottom-right"]{
-            @extend .buttons-angle-br;
-        }
-        &[data-pos="bottom-right"]{
-            @extend .buttons-angle-bl;
-        }
-    }
     &__content {
         @include accelerate();
         @include abs();

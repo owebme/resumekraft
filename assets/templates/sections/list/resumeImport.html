@@ -1,8 +1,6 @@
 <resume-import class="oScreen zIndex-3 c-white" data-show="modal" data-color="dark" data-open={ active } style="display:none">
 
-    <div onClick={ hide } onUpdate="none">
-        <div class="button__close opacity-80" data-color="white"></div>
-    </div>
+    <div class="button__close opacity-80" data-color="white"></div>
 
     <div name="step1" class="oScreen__content" data-hidden={ success }>
         <div class="pos-centered { w100p : app.device.isPhone }">
@@ -94,11 +92,11 @@
                 success: false,
                 alertShow: false
             })
-            setTimeout(function(){
-                document.addEventListener('click', $.handleClickOutside);
-            }, 0);
         });
-        document.removeEventListener('click', $.handleClickOutside);
+
+        setTimeout(function(){
+            document.addEventListener('click', $.handleClickOutside);
+        }, 0);
     };
 
     $.onEnter = function(e){
@@ -240,20 +238,22 @@
         })
         $afterlag.run(function(){
             _.onEndTransition($.success ? $.step2 : $.step1, function(){
-                if ($.success){
-                    $.update({
-                        success: false
-                    })
+                if (!$.active){
+                    if ($.success){
+                        $.update({
+                            success: false
+                        })
+                    }
+                    $.input.val("");
+                    $.root.style.display = "none";
                 }
-                $.input.val("");
-                $.root.style.display = "none";
             });
         });
         document.removeEventListener('click', $.handleClickOutside);
     };
 
     $.handleClickOutside = function(e){
-        if (!$.success && !$.wrapper.contains(e.target) && !$.alertShow) $.hide();
+        if ($.active && !$.success && !$.wrapper.contains(e.target) && !$.alertShow) $.hide();
     };
 
 </script>

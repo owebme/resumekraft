@@ -45,5 +45,25 @@ module.exports = function(url){
         }
 	});
 
+	route.post('/import', function(req, res) {
+		var hash = "resume:import:" + app.clientIP;
+
+		app.redis.get(hash, function(err, data) {
+			// if (err) app.errHandler(res, err, data);
+			// else {
+			// 	if (data && data > 0 && data >= app.config.public.get("resume:import:limit")){
+			// 		app.errHandler(res, err, "overlimit");
+			// 	}
+			// 	else {
+					app.redis.set(hash, data ? data + 1 : 1);
+					app.redis.expireat(hash, parseInt((+new Date)/1000) + app.config.public.get('resume:import:blockLife'));
+					API.resume.gethh(req.body.id, function(err, resume){
+						app.errHandler(res, err, resume);
+					});
+			// 	}
+			// }
+		});
+	});
+
 	app.use(url, route);
 };

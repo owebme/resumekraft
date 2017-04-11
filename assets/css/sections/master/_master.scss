@@ -28,10 +28,18 @@
             background-color:rgba($blue,.95);
             transition:transform 1s $cubic345;
             transform:translate3d(-50%, 100vh, 0) scale(10);
+
+            .d-tablet & {
+                transform:translate3d(-50%, 100vh, 0) scale(8.33);
+            }
         }
         &[data-menu="true"]{
             &:before {
                 transform:translate3d(-50%, 100vh, 0) scale(10);
+
+                .d-tablet & {
+                    transform:translate3d(-50%, 100vh, 0) scale(8.33);
+                }
             }
             .master__close {
                 transition-delay:0.85s;
@@ -75,31 +83,23 @@
         }
     }
 }
-.master {
-    &__close {
-        transition:transform 0.6s $cubic215, opacity 0.42s $cubic215;
+.master__title__options,
+.master__options__content,
+.master__block__item {
+    transition:transform 0.55s $cubic215, opacity 0.37s $cubic215;
+
+    .d-mobile & {
+        transition:transform 0.45s $cubic215, opacity 0.3s $cubic215;
     }
-    &__title {
-        &__main {
-            &__inner {
-                transition:transform 0.6s $cubic215, opacity 0.42s $cubic215;
-            }
-        }
-        &__options {
-            transition:transform 0.5s $cubic215, opacity 0.37s $cubic215;
-        }
+}
+.master__close,
+.master__title__main__inner {
+    transition:transform 0.6s $cubic215, opacity 0.42s $cubic215;
+
+    .d-mobile & {
+        transition:transform 0.5s $cubic215, opacity 0.37s $cubic215;
     }
-    &__options {
-        &__content {
-            transition:transform 0.5s $cubic215, opacity 0.37s $cubic215;
-        }
-    }
-    &__block {
-        &__item {
-            transition:transform 0.5s $cubic645, opacity 0.37s $cubic645;
-        }
-        &__link:before {
-            transition:transform 0.6s $cubic345 0.08s;
-        }
-    }
+}
+.master__block__link:before {
+    transition:transform 0.6s $cubic345 0.08s;
 }

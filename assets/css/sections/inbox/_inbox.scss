@@ -8,10 +8,14 @@
     &__list,
     &__content {
         @extend .h85v;
+        max-height:620px;
 
         .d-tablet & {
             @extend .h80v;
         }
+    }
+    .d-tablet & {
+        @extend .mt-s;
     }
     &__list {
         @extend .pos-rel;
@@ -25,7 +29,7 @@
             transform:translateX(1px);
             @extend .w2px;
 
-            &:hover {
+            .m-no-touch &:hover {
                 @extend .w4px;
             }
         }
@@ -63,7 +67,7 @@
                     @extend .t-m;
                 }
             }
-            &:active {
+            .m-no-touch &:active {
                 background-color:rgba($blue,.1);
 
                 .inbox__list__item__icon {
@@ -235,7 +239,7 @@
         &__email {
             @extend .transition-default;
 
-            &:hover {
+            .m-no-touch &:hover {
                 @extend .c-blueLight;
             }
             .d-phone & {

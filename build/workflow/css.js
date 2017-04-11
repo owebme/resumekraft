@@ -1,6 +1,6 @@
 module.exports = function(){
 
-    gulp.task('preview.css', function() {
+    gulp.task('workflow.css', function() {
     	return combiner(
     		gulp.src('preview/css/style.scss'),
     		sass(),
