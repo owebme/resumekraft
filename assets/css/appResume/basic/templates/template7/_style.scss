@@ -82,7 +82,7 @@
     transition: opacity 0.1s ease;
 }
 
-.m-no-touch #t7 .t-header-photo:hover .t-header-photo-image {
+html.m-no-touch #t7 .t-header-photo:hover .t-header-photo-image {
     opacity: 0.85;
 }
 
@@ -105,7 +105,7 @@
     z-index: 1;
 }
 
-.m-no-touch #t7 .t-header-photo:hover .icon {
+html.m-no-touch #t7 .t-header-photo:hover .icon {
     top: 50%;
     opacity: 0.85;
 }

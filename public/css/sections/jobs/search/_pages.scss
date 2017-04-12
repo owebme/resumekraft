@@ -5,7 +5,7 @@
     @extend .userSelect-none;
     @extend .pointerEvents-none;
 
-    .d-phone & {
+    html.d-phone & {
         @extend .pos-static;
         @extend .mt--1;
         @extend .mlr0;
@@ -18,7 +18,7 @@
         @extend .ml-s;
         @extend .pointerEvents-all;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .w100v;
             @extend .ml0;
             @extend .flex-row-left-center;
@@ -45,7 +45,7 @@
             @extend .text-left;
             transform-origin:25% 50%;
 
-            .d-tablet & {
+            html.d-tablet & {
                 @extend .opacity-0;
 
                 &:after {
@@ -55,11 +55,11 @@
             &[data-active="true"]{
                 @extend .c-blackLight;
 
-                .d-tablet & {
+                html.d-tablet & {
                     @extend .opacity-100;
                     @extend .c-blueBright;
                 }
-                .m-no-touch &:hover {
+                html.m-no-touch &:hover {
                     @extend .c-blueBright;
                 }
             }
@@ -68,7 +68,7 @@
             @extend .text-right;
             transform-origin:75% 50%;
 
-            .d-tablet & {
+            html.d-tablet & {
                 &:after {
                     content:"→";
                 }
@@ -80,7 +80,7 @@
         &[data-active="true"]{
             @extend .pointerEvents-all;
         }
-        .d-tablet & {
+        html.d-tablet & {
             @extend .fontSize-0;
 
             &:after {
@@ -94,7 +94,7 @@
         @extend .bg-snowSilver;
         @extend .btn-active;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .w16p;
             height:9vh;
             min-height:54px;
@@ -120,7 +120,7 @@
             @extend .bg-silver;
             @extend .pointerEvents-none;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .borderTopWidth-1;
                 @extend .borderColor-blueBright;
                 @extend .bg-blueBright;
@@ -129,7 +129,7 @@
                 @extend .borderLeft-none;
             }
         }
-        .m-no-touch &:hover {
+        html.m-no-touch &:hover {
             @extend .c-white;
             @extend .bg-blueBright;
         }
@@ -137,11 +137,11 @@
             @extend .display-none;
             @extend .borderLeft-none;
 
-            .d-no-phone & {
+            html.d-no-phone & {
                 @extend .display-none;
             }
             &[data-active="true"]{
-                .d-phone & {
+                html.d-phone & {
                     @extend .flex-centered;
                     @extend .pointerEvents-all;
                 }

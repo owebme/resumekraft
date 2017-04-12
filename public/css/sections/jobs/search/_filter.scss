@@ -23,7 +23,7 @@
     @extend .userSelect-none;
     width:274px;
 
-    .d-tablet.r-landscape & {
+    html.d-tablet.r-landscape & {
         @extend .trX--m;
         margin-left:-2px;
     }
@@ -53,7 +53,7 @@
             @extend .boxShadow-raise;
             transition:transform 0.3s $cubic68, opacity 0.3s $cubic68;
         }
-        .m-no-touch &:hover {
+        html.m-no-touch &:hover {
             &:before {
                 @extend .opacity-100;
                 @extend .scale-100;
@@ -82,7 +82,7 @@
                     }
                 }
                 .jobs__search__filter__items {
-                    .d-mobile & {
+                    html.d-mobile & {
                         @extend .display-block;
                     }
                 }
@@ -101,7 +101,7 @@
                 .jobs__search__filter__items {
                     @extend .h0;
 
-                    .d-mobile & {
+                    html.d-mobile & {
                         @extend .display-none;
                     }
                 }
@@ -133,7 +133,7 @@
                 @extend .opacity-0;
                 transition:transform 0.3s $cubic345, opacity 0.3s $cubic345;
 
-                .d-phone & {
+                html.d-phone & {
                     top:16px;
                     @extend .r0;
                     @extend .transition-none;
@@ -156,18 +156,18 @@
         &[data-animate="true"]{
             transition:height 0.4s $cubic345;
 
-            .d-mobile & {
+            html.d-mobile & {
                 @extend .transition-none;
             }
             .jobs__search__filter__items__list {
                 transition:opacity 0.4s $cubic345;
 
-                .d-mobile & {
+                html.d-mobile & {
                     @extend .transition-none;
                 }
             }
         }
-        .d-mobile & {
+        html.d-mobile & {
             height:auto !important;
         }
     }
@@ -185,12 +185,12 @@
         margin-bottom:-1px;
         @extend .cursor-pointer;
 
-        .m-no-touch &:hover + .jobs__search__filter__block__opener,
-        .d-phone & + .jobs__search__filter__block__opener {
+        html.m-no-touch &:hover + .jobs__search__filter__block__opener,
+        html.d-phone & + .jobs__search__filter__block__opener {
             @extend .opacity-100;
             @extend .scale-100;
         }
-        .d-tablet & {
+        html.d-tablet & {
             @extend .pos-rel;
             margin-bottom:-2px;
 
@@ -200,7 +200,7 @@
                 transform:translate3d(0, -5px, 0) scale3d(1, 1.2, 1);
             }
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .c-blackLight;
             @extend .fontSize-14;
             @extend .mlr--mobile;
@@ -219,10 +219,10 @@
         @extend .xs-plr0;
         @extend .xs-ptb-xss;
 
-        .d-tablet & {
+        html.d-tablet & {
             padding:4px 10px 3px;
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .c-black;
             @extend .fontSize-16;
             border-bottom:1px solid;
@@ -231,7 +231,7 @@
         &[data-hidden="true"]{
             @extend .display-none;
         }
-        .m-no-touch &:hover {
+        html.m-no-touch &:hover {
             @extend .bg-smokeLight;
             color:#000;
         }
@@ -245,7 +245,7 @@
             @extend .display-tableCell;
             @extend .text-right;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .fontSize-14;
             }
         }
@@ -257,7 +257,7 @@
             @extend .xs-ptb-xs;
             width:calc(100% + 4px);
 
-            .d-no-phone & {
+            html.d-no-phone & {
                 &:before,
                 &:after {
                     @extend .content-empty;
@@ -277,7 +277,7 @@
                     transform:translate3d(0, -50%, 0) rotate(-45deg);
                 }
             }
-            .d-phone & {
+            html.d-phone & {
                 @extend .c-white;
                 @extend .bg-blueBright;
                 @extend .w100v;
@@ -295,7 +295,7 @@
                     @include ui-icon("close_strong_white", 28px, 28px);
                 }
             }
-            .m-no-touch &:hover {
+            html.m-no-touch &:hover {
                 background-color:darken($smokeLight,3%);
 
                 &:before,
@@ -315,13 +315,13 @@
         @extend .xs-pl0;
         @extend .xs-mt-xss;
 
-        .d-tablet & {
+        html.d-tablet & {
             padding-top:4px;
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .fontSize-15;
         }
-        .m-no-touch &:hover {
+        html.m-no-touch &:hover {
             @extend .c-blueBright;
         }
     }
@@ -337,7 +337,7 @@
         @extend .fontSize-18;
         @extend .letterSpacing-0;
 
-        .d-phone & {
+        html.d-phone & {
             font-size:21px;
             @extend .pt-m;
             padding-bottom:2px;
@@ -351,7 +351,7 @@
             height:21px;
             transform:scale3d(1.1, 1, 1);
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .w24;
                 @extend .h24;
                 @extend .transform-default;

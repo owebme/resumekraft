@@ -26,7 +26,7 @@
             &:nth-of-type(4) {
                 transition:transform 0.48s 0.15s;
             }
-            .d-mobile & {
+            html.d-mobile & {
                 transition:transform 0.5s;
             }
         }
@@ -40,7 +40,7 @@
             transform:translate3d(0, 40px, 0);
             transition:opacity 0.6s $cubic345, transform 0.6s $cubic345;
 
-            .d-mobile & {
+            html.d-mobile & {
                 @extend .animation-none;
                 transition:opacity 0.4s $cubic345, transform 0.4s $cubic345;
             }
@@ -77,7 +77,7 @@
         transition:all 0.3s $cubic345, 0.2s background-color;
         @extend .zIndex-1;
 
-        .m-no-touch &:hover,
+        html.m-no-touch &:hover,
         .m-touch & {
             background-color:rgba(#1F2D3D,.35);
         }
@@ -116,21 +116,21 @@
         .largeSlides & {
             transition:transform 0.6s $cubic345;
 
-            .d-mobile & {
+            html.d-mobile & {
                 transition:transform 0.42s $cubic345;
             }
         }
         .largeSlides.hideSlides & {
             transition:transform 0s 0.3s;
         }
-        .d-phone & {
+        html.d-phone & {
             div + .previous,
             .current + div {
                 @extend .opacity-01;
                 @extend .scale-40;
             }
         }
-        .d-no-mobile & {
+        html.d-no-mobile & {
             &.next {
                 div.current {
                     animation:cd-slide-1 0.5s;

@@ -12,7 +12,7 @@
                 @extend .h25;
             }
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .ml-xxs;
         }        
     }

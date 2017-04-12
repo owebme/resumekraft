@@ -7,7 +7,7 @@
     @extend .willChange-transform;
     @extend .transition-default;
 
-    .d-phone & {
+    html.d-phone & {
         @extend .t-s;
         @extend .r-s;
     }
@@ -22,7 +22,7 @@
         @extend .bg-primary;
         will-change:transform, background-color;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .w60;
             @extend .h60;
         }

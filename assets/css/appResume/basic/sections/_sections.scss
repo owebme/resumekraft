@@ -21,14 +21,14 @@
             @extend .w100;
             border-bottom:1px solid $blue;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .display-none;
             }
         }
-        .d-tablet.r-portrait & {
+        html.d-tablet.r-portrait & {
             transform:translate3d(-30px, -55px, 0);
         }
-        .d-phone & {
+        html.d-phone & {
             transform:translate3d(0, -55px, 0);
             @extend .w48;
             @extend .h48;
@@ -38,7 +38,7 @@
     .content {
         @extend .willChange-tp;
 
-        .m-no-touch & {
+        html.m-no-touch & {
             transition:transform 0.5s $cubic40, opacity 0.5s $cubic40;
         }
     }
@@ -46,7 +46,7 @@
         &[data-empty="true"]{
             @extend .h100v;
 
-            .d-phone.d-android & {
+            html.d-phone.d-android & {
                 height:calc(100vh - 22px);
             }
             .content {
@@ -54,7 +54,7 @@
                 transform:translate3d(0, 2vh, 0) scale(0.85);
                 @extend .pointerEvents-none;
 
-                .m-no-touch & {
+                html.m-no-touch & {
                     transition:transform 0.3s $cubic40, opacity 0.3s $cubic40;
                 }
             }
@@ -64,7 +64,7 @@
                 @extend .pointerEvents-all;
                 transform:translate3d(-50%, -50%, 0) scale(1);
 
-                .m-no-touch & {
+                html.m-no-touch & {
                     transition:transform .4s $cubic28, opacity .4s $cubic28;
                 }
             }
@@ -89,11 +89,11 @@
         @extend .visibility-hidden;
         transform:translate3d(-50%, -50%, 0) scale(0);
 
-        .d-phone & {
+        html.d-phone & {
             width:202px;
             height:202px;
         }
-        .m-no-touch & {
+        html.m-no-touch & {
             transition:transform .3s $bounceForce, opacity .3s $bounceForce, visibility 0s .3s;
         }
         &:after {
@@ -103,7 +103,7 @@
             @extend .ml-l;
             @extend .bg-cover;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .zIndex--1;
             }
         }
@@ -113,7 +113,7 @@
                 height:192px;
                 background-image:url(/assets/images/resume/education.svg);
 
-                .d-phone & {
+                html.d-phone & {
                     @extend .l30;
                 }
             }
@@ -124,7 +124,7 @@
                 height:202px;
                 background-image:url(/assets/images/resume/courses.svg);
 
-                .d-phone & {
+                html.d-phone & {
                     @extend .l30;
                 }
             }
@@ -135,7 +135,7 @@
                 height:164px;
                 background-image:url(/assets/images/resume/languages.svg);
 
-                .d-phone & {
+                html.d-phone & {
                     @extend .l40;
                 }
             }
@@ -146,7 +146,7 @@
                 height:192px;
                 background-image:url(/assets/images/resume/jobs.svg);
 
-                .d-phone & {
+                html.d-phone & {
                     @extend .l55;
                 }
             }
@@ -157,7 +157,7 @@
                 height:192px;
                 background-image:url(/assets/images/resume/skills.svg);
 
-                .d-phone & {
+                html.d-phone & {
                     @extend .l30;
                 }
             }
@@ -174,7 +174,7 @@
             width:240px;
             @extend .text-right;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .l0;
                 @extend .r-auto;
                 top:50vh;
@@ -225,7 +225,7 @@
                     transition:transform 0.35s $cubic40;
                 }
             }
-            .m-no-touch &:hover {
+            html.m-no-touch &:hover {
                 &:after {
                     @extend .scale-85;
                 }

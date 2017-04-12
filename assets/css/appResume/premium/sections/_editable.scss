@@ -65,7 +65,7 @@
         @extend .pb-l;
         min-height:480px;
 
-        .d-no-mobile & {
+        html.d-no-mobile & {
             @extend .willChange-transform;
             transform:translate3d(0, -10vh, 0) perspective(500px) rotateX(30deg) scale3d(0.8, 0.8, 1);
             transition:transform 0.25s $cubic2501;
@@ -122,20 +122,20 @@
             transform:translateY(8.6vh);
             margin-bottom:4.3vh;
 
-            .d-phone & {
+            html.d-phone & {
                 @include abs();
                 @extend .m0;
                 @extend .p0;
             }
         }
-        .d-no-phone & {
+        html.d-no-phone & {
             @extend .pb-m;
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .transform-default;
             @extend .mtb0;
         }
-        .d-phone &[data-uploaded="true"]{
+        html.d-phone &[data-uploaded="true"]{
             .image-editor {
                 @extend .bg-black;
             }
@@ -178,7 +178,7 @@
                 transform:translate3d(0, 0, 0) scale3d(1, 1, 1);
                 transition:transform 0.6s $cubic345 0.01s, opacity 0.3s $cubic345 0.05s, visibility  0.01s;
             }
-            .d-phone & {
+            html.d-phone & {
                 @extend .pt-xs;
                 @extend .visibility-visible;
                 @extend .pointerEvents-none;
@@ -191,7 +191,7 @@
                     top:5px !important;
                 }
             }
-            .d-phone .section__editable[data-open="true"] & {
+            html.d-phone .section__editable[data-open="true"] & {
                 &[data-active="true"]{
                     @extend .pointerEvents-all;
                 }
@@ -214,7 +214,7 @@
         @extend .willChange-tp;
         transition:transform 0.3s $cubic345, opacity 0.3s $cubic345;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .flex-row-left-center;
             @extend .t-m;
             @extend .mt0;
@@ -235,12 +235,12 @@
             @include ui-icon("back_white", 48px, 48px);
             transition:transform 0.35s $cubic215;
 
-            .d-phone & {
+            html.d-phone & {
                 @include ui-icon("back_lime", 30px, 30px);
                 @extend .transition-none;
             }
         }
-        .d-phone & {
+        html.d-phone & {
             &[data-pos="left"],
             &[data-pos="right"]{
                 @extend .l-l;
@@ -259,7 +259,7 @@
                 }
             }
         }
-        .d-no-phone & {
+        html.d-no-phone & {
             &[data-closer="true"]{
                 @extend .mt65;
 
@@ -271,7 +271,7 @@
                 }
             }
         }
-        .d-tablet & {
+        html.d-tablet & {
             &[data-closer="true"]{
                 &[data-pos="left"]{
                     @extend .mr0;
@@ -312,7 +312,7 @@
             @extend .pointerEvents-all;
             @extend .transform-default;
         }
-        .m-no-touch &:hover {
+        html.m-no-touch &:hover {
             &[data-pos="left"]{
                 &:after {
                     transform:translate3d(-12px, -50%, 0) scale3d(1, 1.35, 1);
@@ -332,13 +332,13 @@
 
         &.text-center {
             .btn {
-                .d-no-phone & {
+                html.d-no-phone & {
                     @extend .mlr-xs;
                 }
             }
         }
         .btn {
-            .d-phone & {
+            html.d-phone & {
                 font-size:17px;
             }
         }
@@ -355,7 +355,7 @@
             @include abs();
             transform:scale(2);
         }
-        .d-phone & {
+        html.d-phone & {
             transform:translate3d(-12px, 15px, 0);
         }
     }
@@ -371,7 +371,7 @@
         @extend .pointerEvents-all;
         transition:opacity 0.25s $cubic2501, visibility 0s;
 
-        .d-no-mobile & {
+        html.d-no-mobile & {
             .section__editable__wrapper {
                 transform:translate3d(0, 0, 0) perspective(500px) rotateX(0deg) scale3d(1, 1, 1);
                 transition:transform 0.4s $cubic2501;
@@ -386,11 +386,11 @@
         @extend .pos-abs;
         @extend .zIndex-3;
 
-        .d-no-phone & {
+        html.d-no-phone & {
             top:13px;
             @extend .r-xss;
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .t-s;
             @extend .r0;
         }
@@ -402,12 +402,12 @@
             @extend .letterSpacing--xl;
             @extend .mb-l;
 
-            .d-no-phone & {
+            html.d-no-phone & {
                 font-size:46px;
                 line-height:46px;
                 margin-left:-3px;
             }
-            .d-phone & {
+            html.d-phone & {
                 font-size:34px;
                 line-height:38px;
                 margin-left:-2px;
@@ -421,7 +421,7 @@
             margin-left:-3px;
             @extend .letterSpacing--l;
 
-            .d-phone & {
+            html.d-phone & {
                 height:40px;
                 line-height:40px;
                 margin-left:-2px;
@@ -457,7 +457,7 @@
 		box-shadow:0 0 0 2px rgba($white,.5);
 		background-color:transparent;
 
-		.m-no-touch &:hover {
+		html.m-no-touch &:hover {
             @extend .bg-white;
 			box-shadow:0 0 0 2px $white;
 		}
@@ -482,7 +482,7 @@
             margin-left:-11px;
             transform:translate3d(-1px, -2px, 0);
 
-            .d-phone & {
+            html.d-phone & {
                 width:20px;
                 height:20px;
             }
@@ -496,7 +496,7 @@
         width:calc(100% + 4px);
         transform:translate3d(-2px, 0, 0);
 
-        .d-phone & {
+        html.d-phone & {
             transform:translate3d(-2px, -1px, 0);
         }
     }

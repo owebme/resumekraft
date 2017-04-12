@@ -164,7 +164,7 @@
         }
     }
     .switcher {
-        .d-phone & {
+        html.d-phone & {
             transform:translateY(-4px);
         }
     }

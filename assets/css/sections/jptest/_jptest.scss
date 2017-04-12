@@ -19,7 +19,7 @@ jptest-content {
             @extend .transform-default;
             transition:transform 1s $cubic60;
 
-            .d-mobile & {
+            html.d-mobile & {
                 transition:transform 0.7s $cubic60;
             }
         }
@@ -31,7 +31,7 @@ jptest-content {
         &[data-screen="beginText"],
         &[data-screen="finish"]{
             .container {
-                .d-phone & {
+                html.d-phone & {
                     @extend .w100p;
                 }
             }
@@ -49,7 +49,7 @@ jptest-content {
                 &2 {
                     transition:transform 0.6s $cubic645, opacity 0.6s $cubic645;
                 }
-                .d-phone & {
+                html.d-phone & {
                     transform:translate3d(0, -20vh, 0);
 
                     &1 {
@@ -89,7 +89,7 @@ jptest-content {
         will-change:background-color, color;
         transition:background-color 0.55s $cubic075, color 0.55s $cubic089;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .h50p;
             @extend .c-blueBright;
             @extend .plr-m;
@@ -111,7 +111,7 @@ jptest-content {
             @extend .willChange-tp;
             transform:translate3d(0, 50vh, 0);
 
-            .d-phone & {
+            html.d-phone & {
                 transform:translate3d(0, 20vh, 0);
             }
         }
@@ -135,11 +135,11 @@ jptest-content {
             @include ui-icon(hand_cursor_white, 190px, 190px);
             transition:transform 0.3s $cubic215;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .display-none;
             }
         }
-        .m-no-touch &:hover {
+        html.m-no-touch &:hover {
             @extend .bg-blue;
             @extend .c-white;
             @extend .fontWeight-bold;
@@ -152,7 +152,7 @@ jptest-content {
                 transform:scale(1.1);
             }
         }
-        .m-no-touch &:active {
+        html.m-no-touch &:active {
             &:after {
                 transform:translate3d(0, 40px, 0) perspective(400px) rotateX(45deg);
             }
@@ -163,18 +163,18 @@ jptest-content {
         height:550px;
         @extend .ml--s;
 
-        .d-tablet.r-landscape & {
+        html.d-tablet.r-landscape & {
             width:480px;
             height:480px;
         }
-        .d-phone & {
+        html.d-phone & {
             width:480px;
             height:480px;
         }
     }
 }
 @media screen and (max-height: 700px) {
-    .d-phone {
+    html.d-phone {
         jptest-content {
             .que {
                 font-size:26px;

@@ -16,7 +16,7 @@
         }
     }
     &-row {
-        .m-no-touch &:hover {
+        html.m-no-touch &:hover {
             .table-cell {
                 @extend .c-blue;
             }

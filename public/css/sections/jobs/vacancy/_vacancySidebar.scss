@@ -12,7 +12,7 @@
             @extend .c-blueBright;
             @extend .mb-s;
 
-            .d-phone & {
+            html.d-phone & {
                 font-size:25px;
                 @extend .fontFamily-graphik;
             }
@@ -34,7 +34,7 @@
         @extend .xs-mt0;
         @extend .mb-l;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .w-auto;
             @extend .maxW-50v;
             @extend .maxH-30v;
@@ -44,7 +44,7 @@
     }
     &__skills {
         &__item {
-            .d-no-phone & {
+            html.d-no-phone & {
                 @extend .pos-rel;
                 @extend .ml-xss;
                 @extend .mb-s;
@@ -58,7 +58,7 @@
                     @include ui-icon("check", 20px, 20px);
                 }
             }
-            .d-phone & {
+            html.d-phone & {
                 @extend .display-inlineFlex;
                 @extend .h32;
                 font-size:16px;

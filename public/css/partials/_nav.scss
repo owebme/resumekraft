@@ -83,7 +83,7 @@ $navHeight: 94px;
         margin-top:-1px;
 
         &:hover {
-            .m-no-touch & {
+            html.m-no-touch & {
                 color:$blue !important;
             }
         }

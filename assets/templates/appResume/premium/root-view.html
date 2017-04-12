@@ -1,4 +1,4 @@
-<root-main-view class="appResume section" data-color="{ $State.get('color') }" data-font="{ $State.get('font') }" data-mode="{ $State.get('mode') }" data-coverletter={ $State.get('mode') !== "editing" && $store.resume.select("sections").get({"name": "coverletter"}).active } data-animation={ !app.device.isPhone && $State.get('mode') === 'view' && $State.get('animate') } data-app="premium">
+<root-main-view class="appResume section" data-lang="{ $resume.lang }" data-color="{ $State.get('color') }" data-font="{ $State.get('font') }" data-mode="{ $State.get('mode') }" data-coverletter={ $State.get('mode') !== "editing" && $store.resume.select("sections").get({"name": "coverletter"}).active } data-animation={ !app.device.isPhone && $State.get('mode') === 'view' && $State.get('animate') } data-app="premium">
 
     <section-nav if={ !app.device.isMobile }></section-nav>
 

@@ -52,7 +52,7 @@
             @extend .text-truncate;
             @extend .maxW-100p;
 
-            .d-tablet & {
+            html.d-tablet & {
                 @extend .fontSize-28;
             }
         }
@@ -69,7 +69,7 @@
         @extend .zIndex-1;
         @extend .opacity-90;
 
-        .d-tablet & {
+        html.d-tablet & {
             @extend .t-s;
             @extend .l-s;    
         }

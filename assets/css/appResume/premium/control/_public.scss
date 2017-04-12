@@ -19,7 +19,7 @@
         @extend .scale-100;
         @extend .pointerEvents-all;
     }
-    .d-phone & {
+    html.d-phone & {
         top:21px;
         @extend .l-90;
     }

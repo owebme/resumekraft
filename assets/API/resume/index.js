@@ -45,7 +45,7 @@ module.exports = function(url){
 
     route.post('/', function(req, res) {
 		if (req.body.data._id) delete req.body.data._id;
-		if (req.body.data.likes) req.body.data.likes = null;
+		if (!app.utils.isEmpty(req.body.data.likes)) req.body.data.likes = [];
         req.body.data.accountId = req.accountId;
 
         app.db.collection('resumes').insert(req.body.data,

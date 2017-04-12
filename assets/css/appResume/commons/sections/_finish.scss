@@ -38,12 +38,12 @@ resume-edit-finish {
             height:48px;
             background-image:url(/public/images/logotype_b.png);
 
-            .d-phone & {
+            html.d-phone & {
                 width:112px;
                 height:42px;
             }
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .t-25;
         }
     }
@@ -89,14 +89,14 @@ resume-edit-finish {
     .circle1 {
         @extend .pos-centered;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .mt30;
         }
         .circle {
             &:before {
                 background-color:rgba($blueLight,.2);
             }
-            .m-no-touch &:hover:before {
+            html.m-no-touch &:hover:before {
                 @extend .scale-110;
             }
         }
@@ -106,7 +106,7 @@ resume-edit-finish {
         @extend .t10;
         @extend .r15;
 
-        .d-phone & {
+        html.d-phone & {
             top:12%;
             @extend .r0;
         }
@@ -114,7 +114,7 @@ resume-edit-finish {
             &:before {
                 background-color:rgba($greenLight,.2);
             }
-            .m-no-touch &:hover:before {
+            html.m-no-touch &:hover:before {
                 @extend .scale-115;
             }
         }
@@ -124,7 +124,7 @@ resume-edit-finish {
         @extend .t15;
         @extend .l15;
 
-        .d-phone & {
+        html.d-phone & {
             top:17%;
             @extend .l0;
             @extend .zIndex-1;
@@ -133,7 +133,7 @@ resume-edit-finish {
             &:before {
                 background-color:rgba($orange,.2);
             }
-            .m-no-touch &:hover:before {
+            html.m-no-touch &:hover:before {
                 @extend .scale-115;
             }
         }
@@ -143,7 +143,7 @@ resume-edit-finish {
         @extend .b-l;
         @extend .l-l;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .w100p;
             @extend .plr-m;
             @extend .l0;
@@ -160,7 +160,7 @@ resume-edit-finish {
             @extend .xs-pl0;
             @extend .text-center-xs;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .letterSpacing-xxl;
             }
         }
@@ -176,7 +176,7 @@ resume-edit-finish {
             @extend .willChange-transform;
             transition:transform .5s $cubic075;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .w20p;
             }
             &:hover {
@@ -223,7 +223,7 @@ resume-edit-finish {
 }
 
 @media screen and (min-width: 400px) {
-    .d-phone #app {
+    html.d-phone #app {
         resume-edit-finish {
             .logo {
                 &__icon {
@@ -241,7 +241,7 @@ resume-edit-finish {
     }
 }
 @media screen and (max-width: 360px) {
-    .d-phone #app {
+    html.d-phone #app {
         resume-edit-finish {
             .circle2 {
                 right:-10px;
@@ -253,7 +253,7 @@ resume-edit-finish {
     }
 }
 @media screen and (max-height: 565px) {
-    .d-phone #app {
+    html.d-phone #app {
         resume-edit-finish {
             .logo {
                 top:20px;

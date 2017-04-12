@@ -58,10 +58,7 @@
                             <div class="fontSize-28 fontWeight-8 text-capitalize">{ item.get('plan') }</div>
                             <div class="fontSize-16 fontWeight-normal mt-xss">тарифный план</div>
                         </div>
-                        <div onClick={ open.stat } onUpdate="none" class="pos-abs t10 r10 text-center w70 cursor-pointer">
-                            <span class="fontSize-34 fontWeight-8">+18</span>
-                            <div class="fontSize-16 fontWeight-normal mt-xss">просмотры</div>
-                        </div>
+                        <resume-section-views></resume-section-views>
                         <div class="pos-abs t50 r10 text-center w70">
                             <span class="fontSize-28 fontWeight-8 text-uppercase">{ item.get('lang') }</span>
                             <div class="fontSize-16 fontWeight-normal mt-xss">язык</div>
@@ -152,6 +149,11 @@
             },
             beforeShow: function(){
                 $.callback = callback;
+                if ($account.get("plan") == "premium"){
+                    $afterlag.run(function(){
+                        $.tags["resume-section-views"].refresh(id);
+                    });
+                }                
             },
             afterShow: function(){
                 $.active = true;

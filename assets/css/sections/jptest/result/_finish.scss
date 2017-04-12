@@ -16,7 +16,7 @@ jptest-result-finish {
         @extend .trY--m;
         @extend .mb--45;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .mt--m;
             @extend .mb--xl;
         }
@@ -31,7 +31,7 @@ jptest-result-finish {
         @extend .xsm-plr-m;
         @extend .text-center-xs;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .fontWeight-bold;
             @extend .fontFamily-futura;
             @extend .fontSize-30;
@@ -72,14 +72,14 @@ jptest-result-finish {
         @extend .h150;
         @extend .overflow-hidden;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .overflow-visible;
             @extend .pos-abs;
             @extend .t100;
             @extend .l50;
             transform:translate3d(-50%, -90px, 0);
         }
-        .m-no-touch &:hover {
+        html.m-no-touch &:hover {
             svg {
                 @extend .scale-110;
             }
@@ -91,7 +91,7 @@ jptest-result-finish {
             @extend .bg-blackLight;
             transform:translate3d(15px, 30px, 0);
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .bg-white;
                 @extend .boxShadow-default;
                 @extend .transform-default;
@@ -105,7 +105,7 @@ jptest-result-finish {
             @extend .xs-ml0;
             @extend .btn-active;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .mt--s;
                 @extend .pos-centered;
             }
@@ -113,7 +113,7 @@ jptest-result-finish {
         svg {
             transition:transform 0.5s $cubic075;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .w54;
                 @extend .h54;
             }

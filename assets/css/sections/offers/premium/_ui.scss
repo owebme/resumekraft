@@ -25,13 +25,13 @@
             @extend .fontWeight-3;
             @extend .letterSpacing-0;
 
-            .d-tablet & {
+            html.d-tablet & {
                 @extend .l-60;
                 @extend .fontSize-28;
                 @extend .lineHeight-44;
                 @extend .letterSpacing-0;
             }
-            .d-tablet.r-portrait & {
+            html.d-tablet.r-portrait & {
                 top:150px;
                 @extend .transform-default;
             }
@@ -50,18 +50,18 @@
             font-size:44px;
             @extend .c-brown;
 
-            .d-tablet & {
+            html.d-tablet & {
                 font-size:34px;
             }
         }
         &[data-finish="true"]{
             .offer__premium__slider__text__title {
-                .d-tablet & {
+                html.d-tablet & {
                     font-size:34px;
                 }
             }
             .larger {
-                .d-tablet & {
+                html.d-tablet & {
                     font-size:38px;
                 }
             }
@@ -87,7 +87,7 @@
                 animation:spinner linear 1s infinite;
             }
         }
-        .m-no-touch &:hover {
+        html.m-no-touch &:hover {
             color:darken($brown,15%);
         }
     }
@@ -98,13 +98,13 @@
         @extend .pointerEvents-none;
         margin-top:220px;
 
-        .d-tablet & {
+        html.d-tablet & {
             @extend .l0;
             @extend .w50v;
             @extend .pl30;
             @extend .pr30;
         }
-        .d-tablet.r-portrait & {
+        html.d-tablet.r-portrait & {
             @extend .w100v;
             @extend .m0;
             @extend .transform-default;
@@ -162,10 +162,10 @@
         @extend .fontSize-0;
         @extend .zIndex-2;
 
-        .d-tablet & {
+        html.d-tablet & {
             @extend .l-55;
         }
-        .d-tablet.r-portrait & {
+        html.d-tablet.r-portrait & {
             @extend .b-75;
         }
         &__item {
@@ -186,7 +186,7 @@
                 @extend .bg-gray;
                 @extend .borderRadius-circle;
             }
-            .m-no-touch &:hover,
+            html.m-no-touch &:hover,
             &--active {
                 @extend .opacity-100;
             }
@@ -209,10 +209,10 @@
         @extend .h3px;
         @extend .overflow-hidden;
 
-        .d-tablet & {
+        html.d-tablet & {
             @extend .l-50;
         }
-        .d-tablet.r-portrait & {
+        html.d-tablet.r-portrait & {
             @extend .b-l;
         }
         &__line {

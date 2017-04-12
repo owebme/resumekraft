@@ -3,13 +3,13 @@
         @extend .pos-rel;
         height:498px;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .h100v;
         }
         &__select {
             @extend .mb-s;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .pos-centered-h;
                 @extend .mt35;
             }
@@ -21,7 +21,7 @@
         @extend .w100p;
         @extend .visibility-hidden;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .h100v;
         }
         &[data-active="true"]{
@@ -33,12 +33,12 @@
             }
         }
         &[data-screen="free"]{
-            .d-phone & {
+            html.d-phone & {
                 @include abs();
             }
         }
         .slider[name="slider-free"]{
-            .d-phone & {
+            html.d-phone & {
                 @extend .pos-centered-v;
                 @extend .w100p;
                 height:326px;
@@ -46,7 +46,7 @@
             }
         }
         .slider[name="slider-premium"]{
-            .d-phone & {
+            html.d-phone & {
                 @extend .pos-tl;
                 @extend .w100v;
                 @extend .h100v;
@@ -56,12 +56,12 @@
             .slider__wrapper {
                 height:498px;
 
-                .d-phone & {
+                html.d-phone & {
                     @include abs();
                 }
             }
             .slider__item {
-                .d-phone & {
+                html.d-phone & {
                     @include abs();
                 }
             }
@@ -124,7 +124,7 @@
                 box-shadow:5px 8.66px 30px 0 rgba(31,35,37,.078);
                 transition:all 0.4s;
 
-                .d-phone & {
+                html.d-phone & {
                     transition:all 0.2s;
                 }
             }
@@ -140,7 +140,7 @@
                 @extend .willChange-tp;
                 transition:all 0.4s;
 
-                .d-phone & {
+                html.d-phone & {
                     transition:all 0.2s;
                 }
             }
@@ -152,7 +152,7 @@
                         transform:translate3d(0, -15px, 0) scale(1.03);
                         transition:all 0.4s 0.05s;
 
-                        .d-phone & {
+                        html.d-phone & {
                             transition:all 0.2s;
                         }
                     }
@@ -162,7 +162,7 @@
                         @extend .transform-default;
                         transition:all 0.4s 0.05s;
 
-                        .d-phone & {
+                        html.d-phone & {
                             transition:all 0.2s;
                         }
                     }
@@ -239,7 +239,7 @@
                 &__wrapper {
                     height:550px;
 
-                    .m-no-touch &:hover,
+                    html.m-no-touch &:hover,
                     .m-touch & {
                         .plan__premium__item__image {
                             transition:opacity 0.4s $cubic2501 0.25s, transform 0.4s $cubic2501 0.25s;
@@ -294,10 +294,10 @@
                     @extend .transform-default;
                     transition:opacity 0.5s 0.1s, transform 0.5s 0.1s;
                 }
-                .d-tablet & {
+                html.d-tablet & {
                     padding-bottom:175px;
                 }
-                .d-phone & {
+                html.d-phone & {
                     @extend .pos-centered-v;
                     @extend .b-auto;
                     @extend .pb0;
@@ -319,7 +319,7 @@
             will-change:transform, box-shadow;
             transition:transform 0.35s $cubic40, box-shadow 0.35s $cubic40;
 
-            .d-mobile & {
+            html.d-mobile & {
                 @extend .w36;
                 @extend .h36;
             }

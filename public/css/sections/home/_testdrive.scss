@@ -3,11 +3,11 @@
         @extend .pt100;
         @extend .pb100;
 
-        .d-tablet.r-landscape & {
+        html.d-tablet.r-landscape & {
             @extend .pt90;
             @extend .pb80;
         }
-        .d-tablet.r-portrait & {
+        html.d-tablet.r-portrait & {
             @extend .pt60;
             @extend .pb60;
         }

@@ -42,6 +42,10 @@
         $.parent.screens.nav($.step - 1);
     };
 
+    $.on("before-unmount", function(){
+        $.screens.off('show');
+    });
+
 </script>
 
 </resume-control-step>

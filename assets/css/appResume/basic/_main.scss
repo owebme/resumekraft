@@ -35,7 +35,7 @@
         }
     }
     .shareButton {
-        .d-phone & {
+        html.d-phone & {
             @extend .display-none;
         }
     }

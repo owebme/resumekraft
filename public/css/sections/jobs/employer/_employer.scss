@@ -1,7 +1,7 @@
 .employer {
     @extend .pb70;
 
-    .d-phone & {
+    html.d-phone & {
         @extend .pb60;
     }
     .title {
@@ -12,10 +12,10 @@
         @extend .text-right-xs;
     }
     &__type {
-        .d-no-phone & {
+        html.d-no-phone & {
             @extend .fontSize-14;
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .c-blueBright;
             @extend .fontSize-20;
             @extend .fontWeight-bold;
@@ -26,10 +26,10 @@
         @extend .display-block;
         @extend .centered;
 
-        .d-no-phone & {
+        html.d-no-phone & {
             @extend .w90p;
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .maxW-65v;
             @extend .maxH-35v;
             @extend .mt-m;
@@ -45,7 +45,7 @@
         @extend .xs-pt0;
         @extend .lineHeight-24;
 
-        .d-tablet & {
+        html.d-tablet & {
             @extend .pr-m;
         }
     }
@@ -57,7 +57,7 @@
         @extend .mlr--mobile;
         @extend .plr-mobile;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .bg-none;
         }
         img {

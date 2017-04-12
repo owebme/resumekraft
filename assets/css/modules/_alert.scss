@@ -7,7 +7,7 @@
     transition:visibility 0s 0.2s;
     @extend .zIndex-101;
 
-    .d-phone & {
+    html.d-phone & {
         padding:0 15px;
     }
     &:before {
@@ -33,7 +33,7 @@
         @extend .willChange-tp;
         transition:opacity 0.15s $cubic2501;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .w100p;
             max-width:448px;
             min-width:238px;
@@ -54,7 +54,7 @@
         @extend .mb-m;
         @extend .plr-l;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .fontSize-22;
             @extend .fontWeight-normal;
             @extend .letterSpacing-0;
@@ -66,7 +66,7 @@
         @extend .fontWeight-3;
         @extend .plr-l;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .fontSize-18;
             @extend .letterSpacing-0;
             @extend .fontWeight-normal;
@@ -80,7 +80,7 @@
         height:26%;
         border-top:1px solid darken($smoke,1.5%);
 
-        .d-phone & {
+        html.d-phone & {
             @extend .h30p;
         }
     }
@@ -94,7 +94,7 @@
         padding-bottom:3px;
         transition:all 0.12s $cubic645;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .fontSize-20;
         }
         .m-touch & {

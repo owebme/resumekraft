@@ -46,7 +46,7 @@
             <div class="col-xs-24 col-sm-16 text-left pt-s">
                 <ui-checkbox update="hidden" cursor={ data.select('birthday') } title="Показывать только возраст" size="l" theme="blue"></ui-checkbox>
             </div>
-        </div>        
+        </div>
         <div class="row mb-l pt-xxs">
             <div class="hidden-xs col-sm-8 pt-s pr-m">
                 <span class="title">Ваш пол</span>
@@ -150,14 +150,27 @@
         $.btnSave.addClass("btn-loading");
         setTimeout(function(){
             $store.resume.select("commons").set($.data.get());
-            $Resume.update();
-            $Resume.one("updated", function(){
-                $afterlag.run(function(){
-                    $.btnSave.removeClass("btn-loading");
-                    $Menu.hide();
-                }, {
-                    iterations: 2
+            app.request("setResume", {
+                data: {
+                    _id: $store.resume.get("_id"),
+                    commons: $store.resume.get("commons")
+                }
+            }, {
+                loader: false
+            })
+            .then(function(){
+                $Resume.update();
+                $Resume.one("updated", function(){
+                    $afterlag.run(function(){
+                        $.btnSave.removeClass("btn-loading");
+                        $Menu.hide();
+                    }, {
+                        iterations: 2
+                    });
                 });
+            },
+            function(){
+                $.btnSave.removeClass("btn-loading");
             });
         }, 5);
     };

@@ -26,11 +26,11 @@
             @extend .borderColor-smoke;
             border-bottom:1px solid;
 
-            .d-phone & {
+            html.d-phone & {
                 padding-top:21px;
                 padding-bottom:24px;
             }
-            .m-no-touch &:hover {
+            html.m-no-touch &:hover {
                 @extend .bg-snowSilver;
             }
             &__name,
@@ -44,17 +44,17 @@
                 @extend .pr30;
                 @extend .plr-mobile;
 
-                .d-phone & {
+                html.d-phone & {
                     @extend .w100p;
                 }
             }
             &__date {
                 @extend .mt-xxs;
 
-                .d-no-phone & {
+                html.d-no-phone & {
                     @extend .fontSize-14;
                 }
-                .d-phone & {
+                html.d-phone & {
                     @extend .fontSize-12;
                     @extend .text-uppercase;
                 }
@@ -65,7 +65,7 @@
                 @extend .xs-pl0;
                 @extend .c-black;
 
-                .d-phone & {
+                html.d-phone & {
                     @extend .c-blackLight;
                     @extend .pt-xxs;
                     @extend .fontFamily-roboto;
@@ -87,7 +87,7 @@
                 @extend .text-uppercase;
                 @extend .transition-default;
 
-                .d-phone & {
+                html.d-phone & {
                     @extend .fontSize-16;
                     @extend .lineHeight-24;
                 }

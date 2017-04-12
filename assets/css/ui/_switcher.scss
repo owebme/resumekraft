@@ -34,11 +34,11 @@
     &[active="true"] > .switch {
         @extend .transform-default;
     }
-    .m-no-touch &[active="true"]:hover .switch-label {
+    html.m-no-touch &[active="true"]:hover .switch-label {
         margin:3px -19px;
         width:26px;
     }
-    .m-no-touch &:hover .switch-label {
+    html.m-no-touch &:hover .switch-label {
         margin:3px -15px;
         width:26px;
     }
@@ -107,11 +107,11 @@
                 text-indent:-33px;
             }
         }
-        .m-no-touch &[active="true"]:hover .switch-label {
+        html.m-no-touch &[active="true"]:hover .switch-label {
             margin:3px -24px;
             width:19px;
         }
-        .m-no-touch &:hover .switch-label {
+        html.m-no-touch &:hover .switch-label {
             margin:3px -21px;
             width:19px;
         }

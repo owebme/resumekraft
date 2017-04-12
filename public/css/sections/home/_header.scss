@@ -15,7 +15,7 @@
         &[data-show="true"]{
             @extend .opacity-100;
         }
-        .d-mobile & {
+        html.d-mobile & {
             left:50%;
             transform:translateX(-50%) scale(1.2);
         }
@@ -31,10 +31,10 @@
         padding-top:29.6vh;
         @extend .zIndex-2;
 
-        .d-tablet & {
+        html.d-tablet & {
             padding-top:27.6vh;
         }
-        .d-phone & {
+        html.d-phone & {
             padding-top:30px;
             @extend .pos-centered;
         }
@@ -46,12 +46,12 @@
         @extend .textShadow-light;
         letter-spacing:-0.04em;
 
-        .d-tablet.r-landscape & {
+        html.d-tablet.r-landscape & {
             @extend .letterSpacing--xxxl;
             margin-left:-10px;
             margin-right:-10px;
         }
-        .d-phone & {
+        html.d-phone & {
             font-size:66px;
             line-height:66px;
             margin-left:0;
@@ -68,7 +68,7 @@
         //     @extend .c-lime;
         //     box-shadow:inset 0 0 0 2px $lime;
         // }
-        .d-phone &,
+        html.d-phone &,
         &:hover {
             @extend .bg-lime;
             @extend .c-blackLight;

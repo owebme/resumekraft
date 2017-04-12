@@ -173,12 +173,14 @@
         })
         $afterlag.run(function(){
             _.onEndTransition($.area, function(){
-                if ($.success){
-                    $.update({
-                        success: false
-                    })
+                if (!$.active){
+                    if ($.success){
+                        $.update({
+                            success: false
+                        })
+                    }
+                    $.root.style.display = "none";
                 }
-                $.root.style.display = "none";
             });
         });
     };

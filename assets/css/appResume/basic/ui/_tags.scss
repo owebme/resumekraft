@@ -5,7 +5,7 @@
     .tag-item {
         color:#151515;
 
-        .d-phone & {
+        html.d-phone & {
             font-size:18px;
             line-height:54px;
             @extend .h50;
@@ -15,7 +15,7 @@
         }
     }
     .tag-input {
-        .d-phone & {
+        html.d-phone & {
             @extend .mr0;
             @extend .mb-s;
         }

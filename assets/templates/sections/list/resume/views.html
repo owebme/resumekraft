@@ -1,0 +1,31 @@
+<resume-section-views onClick={ parent.open.stat } onUpdate="none" class="pos-abs t10 r10 text-center w70 cursor-pointer">
+
+    <span class="fontSize-34 fontWeight-8">{ count ? "+" + count : '...' }</span>
+    <div class="fontSize-16 fontWeight-normal mt-xss">просмотры</div>
+
+<script>
+
+    var $ = this;
+
+    $.refresh = function(id){
+        $store.visits.request(id).then(function(data){
+            if (data && data.all && data.all.hits){
+                $.update({
+                    count: data.all.hits
+                })
+            }
+            else {
+                $.update({
+                    count: null
+                })
+            }
+        }, function(){
+            $.update({
+                count: null
+            })
+        });
+    }
+
+</script>
+
+</resume-section-views>

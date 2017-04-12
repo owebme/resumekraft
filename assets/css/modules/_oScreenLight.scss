@@ -23,7 +23,7 @@
     &[data-show="up"],
     &[data-show="down"]{
         &:before {
-            .d-phone & {
+            html.d-phone & {
                 transition:opacity 0.5s $cubic645, background-color 0.5s $cubic645;
             }
         }
@@ -31,7 +31,7 @@
     &[data-show="left"],
     &[data-show="right"]{
         &:before {
-            .d-phone & {
+            html.d-phone & {
                 transition:opacity 0.5s $cubic40, background-color 0.5s $cubic40;
             }
         }
@@ -75,7 +75,7 @@
         will-change:opacity, background-color;
         transition:opacity 0.4s $cubic40, background-color 0.5s $cubic645;
 
-        .d-phone & {
+        html.d-phone & {
             transition:opacity 0.4s $cubic345, background-color 0.25s ease-out;
         }
     }
@@ -96,14 +96,14 @@
             &:before {
                 transition:opacity 0.7s $cubic60, background-color 0.7s $cubic60;
 
-                .d-mobile & {
+                html.d-mobile & {
                     transition:opacity 0.55s $cubic60, background-color 0.55s $cubic60;
                 }
             }
             .oScreen__content {
                 transition:transform 0.7s $cubic60;
 
-                .d-mobile & {
+                html.d-mobile & {
                     transition:transform 0.55s $cubic60;
                 }
             }
@@ -115,12 +115,12 @@
         &[data-show="left"],
         &[data-show="right"]{
             &:before {
-                .d-phone & {
+                html.d-phone & {
                     transition:opacity 0.42s $cubic645, background-color 0.42s $cubic645;
                 }
             }
             .oScreen__content {
-                .d-phone & {
+                html.d-phone & {
                     transition:transform 0.42s $cubic645;
                 }
             }
@@ -158,7 +158,7 @@
             &:before {
                 background:radial-gradient(rgba(64,64,75,.9), rgba(17,17,24,.9)) rgba(34,34,40,.52);
 
-                .d-phone & {
+                html.d-phone & {
                     background:rgba($blackLight,.95);
                 }
             }

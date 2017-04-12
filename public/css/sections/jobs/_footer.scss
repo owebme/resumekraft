@@ -20,7 +20,7 @@
             @extend .plr-xs;
             @extend .xs-pl-xs;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .w50p;
             }
             a {
@@ -29,10 +29,10 @@
                 @extend .text-uppercase;
                 @extend .transition-default;
 
-                .m-no-touch &:hover {
+                html.m-no-touch &:hover {
                     @extend .c-blueBright;
                 }
-                .d-phone & {
+                html.d-phone & {
                     @extend .c-steel;
                 }
             }

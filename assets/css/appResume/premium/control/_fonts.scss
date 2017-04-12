@@ -13,7 +13,7 @@
     transition:width 0s 0.4s;
     @extend .zIndex-5;
 
-    .d-phone & {
+    html.d-phone & {
         @extend .t-s;
         @extend .r--xxs;
     }
@@ -51,7 +51,7 @@
             transition:color 0.2s $cubic215, background-color 0.2s $cubic215;
             transform:translate3d(0, 0, 0) scale(1);
         }
-        .m-no-touch &:hover {
+        html.m-no-touch &:hover {
             @extend .c-white;
             @extend .bg-primary;
         }
@@ -67,7 +67,7 @@
             @extend .display-none;
         }
     }
-    .m-no-touch &:hover {
+    html.m-no-touch &:hover {
         @extend .overflow-visible;
         width:440px;
         transition:width 0s;

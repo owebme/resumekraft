@@ -1,4 +1,4 @@
-.m-no-touch #app[data-mode="editing"]{
+html.m-no-touch #app[data-mode="editing"]{
     .editing {
         &:after {
             box-sizing:content-box;

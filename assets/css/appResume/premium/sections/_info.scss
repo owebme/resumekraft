@@ -7,11 +7,11 @@
 
     &[data-open="true"]{
         .info-opener {
-            .d-no-phone & {
+            html.d-no-phone & {
                 @extend .scale-0;
                 @extend .pointerEvents-none;
             }
-            .d-phone & {
+            html.d-phone & {
                 .info-opener-icon {
                     @extend .scale-0;
                 }
@@ -43,7 +43,7 @@
         will-change:transform, background-color;
         transition:transform .3s $cubic345, background-color 0.2s $cubic215;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .t-m;
             @extend .l-m;
             @extend .w40;
@@ -75,7 +75,7 @@
                 @extend .fill-white;
                 @extend .transition-default;
             }
-            .d-phone & {
+            html.d-phone & {
                 width:28px;
                 height:28px;
                 transition:transform .3s $cubic345;
@@ -107,10 +107,10 @@
         transition:transform .2s $cubic345, opacity .2s $cubic345;
         width:348px;
 
-        .d-no-phone & {
+        html.d-no-phone & {
             padding-top:21px;
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .t-xl;
             @extend .l--s;
             @extend .pt-m;
@@ -136,12 +136,12 @@
         @extend .trY-m;
         box-shadow:0 0 0 3px rgba($white,.6), 5px 10px 30px 0 rgba(31,35,37,.15);
 
-        .d-no-phone & {
+        html.d-no-phone & {
             @extend .l-m;
             @extend .w40;
             @extend .h40;
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .r-l;
             width:46px;
             height:46px;
@@ -151,13 +151,13 @@
         @extend .fontWeight-bold;
         letter-spacing:-0.02em;
 
-        .d-no-phone & {
+        html.d-no-phone & {
             @extend .c-primary;
             @extend .fontSize-18;
             @extend .pt-xxs;
             padding-bottom:2px;
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .fontSize-22;
             @extend .ptb-xxs;
         }
@@ -167,7 +167,7 @@
         @extend .fontFamily-roboto;
     }
     &-email {
-        .d-no-phone & {
+        html.d-no-phone & {
             @extend .c-primary;
             font-size:16.5px;
             padding-top:3px;
@@ -177,7 +177,7 @@
                 @extend .border-primary;
             }
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .c-yellowBright;
             @extend .fontSize-20;
             @extend .pt-xxs;
@@ -196,24 +196,24 @@
         @extend .pt-xxs;
         @extend .fontWeight-bold;
 
-        .d-no-phone & {
+        html.d-no-phone & {
             @extend .fontSize-18;
             @extend .mb-xxs;
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .fontSize-22;
             @extend .mb-xs;
         }
     }
     &-post {
-        .d-phone & {
+        html.d-phone & {
             @extend .pb-xxs;
         }
     }
     &-social {
         @extend .pt-s;
 
-        .d-no-phone & {
+        html.d-no-phone & {
             @extend .mb--xxs;
         }
         .social-btn {
@@ -227,7 +227,7 @@
         @extend .btn-active;
         @include ui-icon(close_fill_gray, 28px, 28px);
 
-        .d-phone & {
+        html.d-phone & {
             @extend .display-none;
         }
     }

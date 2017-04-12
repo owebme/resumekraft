@@ -10,7 +10,7 @@
     border:none;
     box-shadow:inset 0 0 0 1px lighten($grayLighten,5%);
 
-    .m-no-touch &:hover {
+    &:hover {
         box-shadow:inset 0 0 0 1px lighten($grayLight,5%);
     }
     &:focus {
@@ -242,7 +242,7 @@
             @extend .bg-none;
             box-shadow:0 0 0 2px rgba($white,.5);
 
-            .d-no-phone & {
+            html.d-no-phone & {
                 &::-webkit-input-placeholder {
                     color:rgba($white,.6);
                     font-weight:normal;
@@ -252,7 +252,7 @@
                     font-weight:normal;
                 }
             }
-            .d-phone & {
+            html.d-phone & {
                 &::-webkit-input-placeholder {
                     font-family:$helvetica;
                     font-weight:normal;
@@ -372,7 +372,7 @@
                 @extend .ptb-xxs;
             }
         }
-        .d-phone & {
+        html.d-phone & {
             .input-autosuggest-item {
                 font-size:18px;
                 @extend .plr-m;

@@ -10,7 +10,7 @@
         @extend .h80v;
         @extend .trX--m;
 
-        .d-tablet & {
+        html.d-tablet & {
             @extend .trX--l;
         }
         &__title {
@@ -57,7 +57,7 @@
                     @extend .transition-none;
                 }
             }
-            .m-no-touch &:hover {
+            html.m-no-touch &:hover {
                 @extend .opacity-100;
                 box-shadow:inset 0 0 0 1px rgba($white,.7);
             }
@@ -101,7 +101,7 @@
         @extend .l--m;
         @extend .text-left;
 
-        .d-tablet & {
+        html.d-tablet & {
             @extend .t--m;
             @extend .l--l;
             @extend .ml--m;
@@ -136,7 +136,7 @@
         width:120px;
         height:120px;
 
-        .d-tablet & {
+        html.d-tablet & {
             @extend .r--xl;
         }
         &:before {

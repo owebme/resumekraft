@@ -9,11 +9,14 @@
             box-shadow:inset 0 0 0 1px $blueBright;
         }
     }
-    input[type="number"] {
-        @extend .c-blue;
-        @extend .fontFamily-futura;
-        @extend .fontWeight-bold;
-        font-size:25px;
+    ui-slider {
+        .input {
+            @extend .c-blue;
+            @extend .fontFamily-futura;
+            @extend .fontWeight-bold;
+            font-size:25px;
+            box-shadow:0 0 0 1px lighten($grayLighten,5%);
+        }
     }
     .input-title {
         @extend .c-blue;

@@ -6,7 +6,7 @@
         background-color:transparent;
         box-shadow:0 0 0 2px rgba($white,.5);
 
-        .d-no-phone & {
+        html.d-no-phone & {
             &::-webkit-input-placeholder {
                 color:rgba($white,.6);
                 font-weight:normal;
@@ -16,7 +16,7 @@
                 font-weight:normal;
             }
         }
-        .d-phone & {
+        html.d-phone & {
             &::-webkit-input-placeholder {
                 color:rgba($steel,.8);
                 font-family:$helvetica;
@@ -60,15 +60,15 @@
             height:16px;
             border-radius:7px 7px 0 0;
 
-            .d-no-mobile & {
+            html.d-no-mobile & {
                 @extend .bg-white;
                 transform:translate3d(2px, -17px, 0);
             }
-            .d-mobile & {
+            html.d-mobile & {
                 color:$white !important;
                 transform:translate3d(-5px, -17px, 0);
             }
-            .d-tablet.r-landscape & {
+            html.d-tablet.r-landscape & {
                 transform:translate3d(-5px, -22px, 0);
             }
         }
@@ -98,10 +98,10 @@
             &-color {
                 @extend .opacity-70;
 
-                .d-no-phone & {
+                html.d-no-phone & {
                     @extend .fill-white;
                 }
-                .d-phone & {
+                html.d-phone & {
                     @extend .fill-primary;
                 }
             }
@@ -141,7 +141,7 @@
                 margin-left:-3px;
 
                 &-color {
-                    .d-no-phone & {
+                    html.d-no-phone & {
                         fill:$white;
                     }
                 }
@@ -161,13 +161,13 @@
         }
         &:focus {
             + .input-icon .input-svg-color {
-                .d-no-phone & {
+                html.d-no-phone & {
                     fill:$white;
                 }
                 @extend .opacity-100;
             }
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .fontWeight-normal;
             @extend .c-black;
             @extend .bg-white;

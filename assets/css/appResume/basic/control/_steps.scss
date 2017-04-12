@@ -6,8 +6,8 @@
         @extend .userSelect-none;
         @extend .zIndex-2;
 
-        .d-tablet.r-portrait &,
-        .d-phone & {
+        html.d-tablet.r-portrait &,
+        html.d-phone & {
             @extend .display-none;
         }
         &__item {

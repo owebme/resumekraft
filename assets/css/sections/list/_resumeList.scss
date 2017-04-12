@@ -36,7 +36,7 @@
         @extend .overflow-hidden;
         @extend .zIndex-1;
 
-        .d-no-mobile & {
+        html.d-no-mobile & {
             padding-top:22.6vh;
         }
         .main__button {
@@ -61,15 +61,15 @@
             @extend .willChange-transform;
             transition:transform 0.5s $cubic40 0.1s;
 
-            .d-no-mobile & {
+            html.d-no-mobile & {
                 width:1190px;
             }
-            .d-tablet & {
+            html.d-tablet & {
                 @extend .pos-centered;
             }
             .slider__item {
                 &:first-child {
-                    .d-tablet & {
+                    html.d-tablet & {
                         @extend .ml-xxs;
                     }
                 }
@@ -78,7 +78,7 @@
                 transform:perspective(500px) scale(0.8);
                 transition:transform 0.6s $cubic645;
 
-                .d-tablet & {
+                html.d-tablet & {
                     transform:perspective(500px) translate3d(-50%, -50%, 0) scale(0.8);
                 }
             }

@@ -3,7 +3,7 @@ jptest-result {
         @extend .zIndex-6;
     }
     .title {
-        .d-phone & {
+        html.d-phone & {
             @extend .display-block;
             @extend .pos-rel;
             @extend .pb-l;
@@ -32,7 +32,7 @@ jptest-result {
         }
     }
     .subtitle {
-        .d-phone & {
+        html.d-phone & {
             @extend .display-block;
             @extend .pb-l;
             @extend .pl-m;
@@ -48,14 +48,14 @@ jptest-result {
         }
     }
     .screen__content {
-        .d-phone & {
+        html.d-phone & {
             padding-top:140px;
             @extend .pb85;
             @extend .plr0;
         }
     }
     .container {
-        .d-tablet.r-portrait & {
+        html.d-tablet.r-portrait & {
             @extend .plr-s;
         }
     }
@@ -70,14 +70,14 @@ jptest-result {
         @extend .letterSpacing-0;
         @extend .ml0;
 
-        .d-phone & {
+        html.d-phone & {
             font-size:19px;
             line-height:24px;
             @extend .lineHeight-xxl;
             @extend .mlr-m;
         }
         .title {
-            .d-phone & {
+            html.d-phone & {
                 margin-left:-12px;
             }
         }
@@ -115,7 +115,7 @@ jptest-result {
         @extend .pos-rel;
         @extend .text-left;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .m0;
             @extend .p0;
         }
@@ -152,7 +152,7 @@ jptest-result {
             .marker:before {
                 background-color:#ff82c3;
             }
-            .d-tablet.r-portrait & {
+            html.d-tablet.r-portrait & {
                 margin-top:195px;
                 @extend .mb-xl;
             }
@@ -166,7 +166,7 @@ jptest-result {
             .marker:before {
                 background-color:#A783ED;
             }
-            .d-tablet.r-landscape & {
+            html.d-tablet.r-landscape & {
                 margin-bottom:195px;
             }
         }
@@ -174,7 +174,7 @@ jptest-result {
         &[data-marquee="specialties"],
         &[data-marquee="strengths"],
         &[data-marquee="finish"] {
-            .d-phone & {
+            html.d-phone & {
                 @extend .bg-blue;
             }
         }
@@ -183,10 +183,10 @@ jptest-result {
             @extend .c-white;
             padding-bottom:168px;
 
-            .d-tablet.r-portrait & {
+            html.d-tablet.r-portrait & {
                 padding-bottom:148px;
             }
-            .d-phone & {
+            html.d-phone & {
                 @extend .bg-blackLight;
             }
         }
@@ -204,7 +204,7 @@ jptest-result {
                 height:150px;
                 transform:translate3d(10px, 40px, 0) rotate(4deg) scale(1.1);
             }
-            .d-tablet.r-portrait & {
+            html.d-tablet.r-portrait & {
                 @extend .pb-xl;
                 margin-bottom:130px;
             }
@@ -212,13 +212,13 @@ jptest-result {
         &[data-marquee="weaksides"] {
             margin-bottom:138px;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .bg-grayDark;
                 @extend .c-white;
             }
             .title,
             .subtitle {
-                .d-phone & {
+                html.d-phone & {
                     @extend .c-white;
                 }
             }
@@ -226,7 +226,7 @@ jptest-result {
         &[data-marquee="strengths"],
         &[data-marquee="weaksides"] {
             &:hover,
-            .d-tablet.r-portrait & {
+            html.d-tablet.r-portrait & {
                 .header__lines {
                     &:before {
                         transform:translateX(-30px) rotate(30deg);
@@ -242,7 +242,7 @@ jptest-result {
                 min-height:1600px;
                 margin-bottom:205px;
 
-                .d-phone & {
+                html.d-phone & {
                     @extend .minH-auto;
                     @extend .mb0;
                 }
@@ -257,7 +257,7 @@ jptest-result {
                 height:84px;
                 @extend .mlr-auto;
 
-                .d-phone & {
+                html.d-phone & {
                     @extend .w100;
                     @extend .h100;
                 }
@@ -287,7 +287,7 @@ jptest-result {
                 transform-style:preserve-3d;
                 transition:box-shadow .4s, transform .4s;
 
-                .d-tablet.r-landscape & {
+                html.d-tablet.r-landscape & {
                     width:350px;
                 }
                 &__icon {
@@ -323,7 +323,7 @@ jptest-result {
                         }
                     }
                 }
-                .m-no-touch & {
+                html.m-no-touch & {
                     &:hover {
                         box-shadow:0 20px 25px rgba(0,0,0,.2);
                         transform:translateY(-15px);
@@ -335,7 +335,7 @@ jptest-result {
                 &__cell {
                     @extend .flex-centered;
 
-                    .d-tablet.r-landscape & {
+                    html.d-tablet.r-landscape & {
                         &:nth-child(1) {
                             @extend .flex-row-right-center;
                         }
@@ -386,7 +386,7 @@ jptest-result {
             @extend .willChange-transform;
             transition:transform 0.3s $cubic28;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .display-none;
             }
         }

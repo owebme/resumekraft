@@ -4,7 +4,7 @@
             &[data-image="notebook-mac"]{
                 @extend .pos-centered;
 
-                .d-tablet & {
+                html.d-tablet & {
                     @extend .mt--60;
                 }
             }
@@ -12,10 +12,10 @@
                 @extend .pos-centered;
                 margin-top:255px;
 
-                .d-tablet & {
+                html.d-tablet & {
                     margin-top:155px;
                 }
-                .d-tablet.r-portrait & {
+                html.d-tablet.r-portrait & {
                     margin-top:215px;
                 }
             }
@@ -27,7 +27,7 @@
             transform:translate3d(60px, 0, 0);
             background-image:url(/assets/images/promo/premium/start_macbook_imac.png);
 
-            .d-tablet & {
+            html.d-tablet & {
                 width:796px;
                 height:483px;
             }
@@ -39,7 +39,7 @@
             transform:translate3d(-60px, 0, 0);
             background-image:url(/assets/images/promo/premium/start_macbook.png);
 
-            .d-tablet & {
+            html.d-tablet & {
                 width:553px;
                 height:330px;
             }
@@ -51,10 +51,10 @@
                 @extend .pos-centered-v;
                 @extend .l--100;
 
-                .d-tablet & {
+                html.d-tablet & {
                     left:-130px
                 }
-                .d-tablet.r-portrait & {
+                html.d-tablet.r-portrait & {
                     left:-320px;
                     bottom:145px;
                     @extend .t-auto;
@@ -66,11 +66,11 @@
                 bottom:-140px;
                 @extend .r--xl;
 
-                .d-tablet & {
+                html.d-tablet & {
                     @extend .b--70;
                     @extend .r--60;
                 }
-                .d-tablet.r-portrait & {
+                html.d-tablet.r-portrait & {
                     @extend .b--xl;
                     @extend .r--50;
                 }
@@ -83,7 +83,7 @@
             transform:translate3d(-60px, 0, 0);
             background-image:url(/assets/images/promo/premium/mobile_iphones.png);
 
-            .d-tablet & {
+            html.d-tablet & {
                 width:425px;
                 height:519px;
             }
@@ -95,7 +95,7 @@
             transform:translate3d(0, 80px, 0) scale(1.15);
             background-image:url(/assets/images/promo/premium/mobile_phone_samsung.png);
 
-            .d-tablet & {
+            html.d-tablet & {
                 width:489px;
                 height:580px;
             }
@@ -108,11 +108,11 @@
                 right:-185px;
                 @extend .mt35;
 
-                .d-tablet & {
+                html.d-tablet & {
                     right:-260px;
                     @extend .mt50;
                 }
-                .d-tablet.r-portrait & {
+                html.d-tablet.r-portrait & {
                     right:-265px;
                     @extend .mt-xl;
                 }
@@ -122,11 +122,11 @@
                 @extend .b--45;
                 @extend .l--xl;
 
-                .d-tablet & {
+                html.d-tablet & {
                     @extend .b0;
                     @extend .l--100;
                 }
-                .d-tablet.r-portrait & {
+                html.d-tablet.r-portrait & {
                     bottom:-105px;
                     @extend .l--30;
                 }
@@ -146,7 +146,7 @@
             transform:translate3d(0, 0, 0) scale(1.1);
             background-image:url(/assets/images/promo/premium/skills_iphone.png);
 
-            .d-tablet.r-landscape & {
+            html.d-tablet.r-landscape & {
                 width:283px;
                 height:510px;
             }
@@ -157,10 +157,10 @@
             &[data-image="macbook"]{
                 @extend .pos-centered;
 
-                .d-tablet & {
+                html.d-tablet & {
                     @extend .ml--45;
                 }
-                .d-tablet.r-portrait & {
+                html.d-tablet.r-portrait & {
                     margin-left:-130px;
                     @extend .mt100;
                 }
@@ -169,10 +169,10 @@
                 @extend .pos-centered;
                 margin:100px 0 0 185px;
 
-                .d-tablet & {
+                html.d-tablet & {
                     margin-left:115px;
                 }
-                .d-tablet.r-portrait & {
+                html.d-tablet.r-portrait & {
                     @extend .ml-l;
                     margin-top:215px;
                 }
@@ -198,7 +198,7 @@
             &[data-image="devices"]{
                 @extend .pos-centered;
 
-                .d-tablet.r-portrait & {
+                html.d-tablet.r-portrait & {
                     @extend .ml--l;
                     @extend .mt50;
                 }
@@ -207,7 +207,7 @@
                 @extend .pos-centered;
                 margin:205px 0 0 -215px;
 
-                .d-tablet.r-portrait & {
+                html.d-tablet.r-portrait & {
                     margin:255px 0 0 -255px;
                 }
             }
@@ -219,7 +219,7 @@
             transform:translate3d(80px, 0, 0);
             background-image:url(/assets/images/promo/premium/inbox_devices.png);
 
-            .d-tablet & {
+            html.d-tablet & {
                 width:893px;
                 height:526px;
             }
@@ -231,7 +231,7 @@
             transform:translate3d(-30px, 40px, 0) scale(1.1);
             background-image:url(/assets/images/promo/premium/inbox_iphone.png);
 
-            .d-tablet & {
+            html.d-tablet & {
                 width:229px;
                 height:135px;
             }
@@ -243,11 +243,11 @@
                 @extend .pos-centered-v;
                 @extend .r--65;
 
-                .d-tablet & {
+                html.d-tablet & {
                     right:-120px;
                     @extend .mt--m;
                 }
-                .d-tablet.r-portrait & {
+                html.d-tablet.r-portrait & {
                     right:-220px;
                 }
             }
@@ -256,10 +256,10 @@
                 bottom:-240px;
                 left:-160px;
 
-                .d-tablet & {
+                html.d-tablet & {
                     bottom:-232px;
                 }
-                .d-tablet.r-portrait & {
+                html.d-tablet.r-portrait & {
                     bottom:-200px;
                     @extend .l--70;
                 }
@@ -272,7 +272,7 @@
             transform:translate3d(-60px, 0, 0);
             background-image:url(/assets/images/promo/premium/salary_ipad.png);
 
-            .d-tablet & {
+            html.d-tablet & {
                 width:640px;
                 height:453px;
             }
@@ -292,11 +292,11 @@
                 @extend .l--xl;
                 bottom:-135px;
 
-                .d-tablet & {
+                html.d-tablet & {
                     left:-110px;
                     bottom:-120px;
                 }
-                .d-tablet.r-portrait & {
+                html.d-tablet.r-portrait & {
                     left:-138px;
                     @extend .b--90;
                 }
@@ -322,10 +322,10 @@
                 right:74px;
                 @extend .zIndex-1;
 
-                .d-tablet & {
+                html.d-tablet & {
                     right:66px;
                 }
-                .d-tablet.r-portrait & {
+                html.d-tablet.r-portrait & {
                     bottom:150px;
                 }
             }
@@ -335,10 +335,10 @@
                 right:581px;
                 @extend .zIndex-2;
 
-                .d-tablet & {
+                html.d-tablet & {
                     right:522px;
                 }
-                .d-tablet.r-portrait & {
+                html.d-tablet.r-portrait & {
                     bottom:140px;
                 }
             }
@@ -350,7 +350,7 @@
             transform:translate3d(60px, 0, 0) scale(0.95);
             background-image:url(/assets/images/promo/premium/control_imac.png);
 
-            .d-tablet & {
+            html.d-tablet & {
                 width:380px;
                 height:503px;
             }
@@ -362,7 +362,7 @@
             transform:translate3d(-60px, 0, 0);
             background-image:url(/assets/images/promo/premium/control_macbook.png);
 
-            .d-tablet & {
+            html.d-tablet & {
                 width:544px;
                 height:311px;
             }
@@ -374,7 +374,7 @@
             transform:translate3d(-20px, 0, 0) scale(1.1);
             background-image:url(/assets/images/promo/premium/control_iphone.png);
 
-            .d-tablet & {
+            html.d-tablet & {
                 width:102px;
                 height:209px;
             }
@@ -389,10 +389,10 @@
                 @extend .pos-centered;
                 margin-left:-250px;
 
-                .d-tablet & {
+                html.d-tablet & {
                     margin-left:-220px;
                 }
-                .d-tablet.r-portrait & {
+                html.d-tablet.r-portrait & {
                     margin-left:-180px;
                 }
             }
@@ -401,7 +401,7 @@
                 @extend .mt30;
                 margin-left:240px;
 
-                .d-tablet.r-landscape & {
+                html.d-tablet.r-landscape & {
                     margin-left:270px;
                 }
             }

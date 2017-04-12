@@ -1,0 +1,32 @@
+.resumeBasic {
+    .sidebar__control {
+        @include accelerate();
+        @include flex("column", "flex-start", "center");
+        @extend .pos-tr;
+        @extend .w100;
+        @extend .h100p;
+        @extend .bg-blue;
+        @extend .zIndex-10;
+
+        &__item {
+            @extend .flex-centered;
+            @extend .w100p;
+            height:14.28%;
+            @extend .btn-active;
+
+            &[data-item="lang"]{
+                @extend .c-white;
+                @extend .fontWeight-bold;
+                @extend .fontSize-24;
+                @extend .ml0;
+                @extend .letterSpacing--xs;
+                @extend .text-uppercase;
+            }
+        }
+        &__close:after {
+            @extend .content-empty;
+            @extend .display-block;
+            @include ui-icon("close_white", 29px, 29px);
+        }
+    }
+}

@@ -42,7 +42,7 @@
         <div class="resume__list__shareButton__text">Поделиться сервисом</div>
     </div>
 
-    <share-panel title={ app.config.share.title } url={ link } color="white" size="m" tooltip="true"></share-panel>
+    <share-panel title={ app.config.share.title } url={ app.domain() } color="white" size="m" tooltip="true"></share-panel>
 
     <div onClick={ sharePanel.hide } class="section__overlay"></div>
 

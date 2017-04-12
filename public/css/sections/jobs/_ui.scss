@@ -19,7 +19,7 @@
         // line-height:33px;
         // letter-spacing:-0.025em;
 
-        .d-phone & {
+        html.d-phone & {
             font-size:27px;
             line-height:32px;
             letter-spacing:-0.037em;
@@ -54,12 +54,12 @@
         border-color:$smokeDarken;
     }
     .c-blackLight {
-        .d-phone & {
+        html.d-phone & {
             color:$steelDark;
         }
     }
     .c-gray {
-        .d-phone & {
+        html.d-phone & {
             color:$silver;
         }
     }
@@ -74,7 +74,7 @@
             font-size:16px;
         }
         &-l {
-            .d-phone & {
+            html.d-phone & {
                 font-size:17.5px;
             }
         }
@@ -126,7 +126,7 @@
             @extend .h44;
             @extend .plr-m;
 
-            .d-phone & {
+            html.d-phone & {
                 height:42px;
             }
         }
@@ -160,7 +160,7 @@
                 font-size:15px;
             }
         }
-        .d-phone & {
+        html.d-phone & {
             &::-webkit-input-placeholder {
                 color:$silver;
             }
@@ -172,7 +172,7 @@
     .input-svg path {
         @extend .fill-grayLight;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .fill-silver;
         }
     }
@@ -213,12 +213,12 @@
             @extend .c-white;
             @extend .bg-green;
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .borderRadius-none;
         }
     }
     .input-autosuggest-item {
-        .d-phone & {
+        html.d-phone & {
             @extend .ptb-xs;
 
             &:last-child {

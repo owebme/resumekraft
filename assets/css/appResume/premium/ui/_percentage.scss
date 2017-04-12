@@ -6,8 +6,8 @@
     @extend .zIndex-6;
     @extend .h80v;
 
-    .d-tablet &,
-    .d-phone & {
+    html.d-tablet &,
+    html.d-phone & {
         @extend .display-none;
     }
     &__container {

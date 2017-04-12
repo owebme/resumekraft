@@ -5,14 +5,14 @@ jptest-result-graph {
     padding-top:5px;
     padding-bottom:125px;
 
-    .d-tablet & {
+    html.d-tablet & {
         padding-top:60px;
         margin-top:145px;
     }
-    .d-tablet.r-portrait & {
+    html.d-tablet.r-portrait & {
         padding:60px 0 70px;
     }
-    .d-phone & {
+    html.d-phone & {
         @extend .p0;
     }
     &:before {
@@ -31,11 +31,11 @@ jptest-result-graph {
         @extend .mb-l;
 
         &:last-child {
-            .d-phone & {
+            html.d-phone & {
                 @extend .mb0;
             }
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .pos-rel;
             @extend .display-block;
         }
@@ -53,16 +53,16 @@ jptest-result-graph {
             @extend .letterSpacing-xxl;
             @extend .w30p;
 
-            .d-tablet & {
+            html.d-tablet & {
                 @extend .fontSize-16;
                 @extend .w35p;
                 line-height:42px;
             }
-            .d-tablet.r-portrait & {
+            html.d-tablet.r-portrait & {
                 line-height:28px;
                 @extend .pt-xxs;
             }
-            .d-phone & {
+            html.d-phone & {
                 @extend .pos-abs;
                 @extend .t0;
                 @extend .l-m;
@@ -81,7 +81,7 @@ jptest-result-graph {
                 @extend .opacity-20;
                 border-top:2px solid $white;
 
-                .d-phone & {
+                html.d-phone & {
                     @extend .display-none;
                 }
             }
@@ -92,7 +92,7 @@ jptest-result-graph {
                 @extend .pr-m;
                 @extend .zIndex-1;
 
-                .d-phone & {
+                html.d-phone & {
                     @extend .bg-none;
                 }
             }
@@ -118,7 +118,7 @@ jptest-result-graph {
                 transform:scale3d(0, 0, 1) translateZ(0);
                 transition:transform .6s $cubic645;
 
-                .d-phone & {
+                html.d-phone & {
                     box-sizing:content-box;
                     @extend .pr-l;
                 }
@@ -150,7 +150,7 @@ jptest-result-graph {
                 @extend .fontWeight-bold;
                 @extend .pl-m;
 
-                .d-phone & {
+                html.d-phone & {
                     @include accelerate();
                     @extend .pos-abs;
                     @extend .r-s;
@@ -168,7 +168,7 @@ jptest-result-graph {
         .graph__item__column__item {
             transform:scale3d(1, 1, 1) translateZ(0);
 
-            .d-phone & {
+            html.d-phone & {
                 transform:translateX(-20px);
             }
         }

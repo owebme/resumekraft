@@ -2,18 +2,18 @@
     &__content {
         @extend .fontSize-15;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .fontSize-16;
         }
     }
     .share {
-        .d-no-phone & {
+        html.d-no-phone & {
             @extend .pos-abs;
             @extend .t--xxs;
             @extend .r--m;
         }
         &__opener {
-            .d-phone & {
+            html.d-phone & {
                 @extend .pos-abs;
                 bottom:13px;
                 right:12px;
@@ -21,10 +21,10 @@
         }
     }
     .employer__link {
-        .d-no-phone & {
+        html.d-no-phone & {
             max-width:calc(100% - 165px);
         }
-        .d-phone & {
+        html.d-phone & {
             max-width:calc(100% - 65px);
         }
     }
@@ -35,7 +35,7 @@
         @extend .md-pr-l;
         @extend .breakWord;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .pt30;
         }
         p {
@@ -44,14 +44,14 @@
             &:first-child {
                 @extend .mt0;
             }
-            .d-phone &:not(:first-child) {
+            html.d-phone &:not(:first-child) {
                 @extend .mt25;
             }
         }
         p.h {
             margin-bottom:14px;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .mb-s;
             }
             strong {
@@ -62,7 +62,7 @@
                 @extend .text-uppercase;
                 @extend .letterSpacing--xs;
 
-                .d-phone & {
+                html.d-phone & {
                     font-size:18px;
                 }
             }
@@ -94,7 +94,7 @@
         p:not(.h) strong {
             font-size:15.5px;
 
-            .d-phone & {
+            html.d-phone & {
                 font-size:16.5px;
             }
         }
@@ -128,11 +128,11 @@
         iframe {
             @extend .mtb-xss;
 
-            .d-no-phone & {
+            html.d-no-phone & {
                 @extend .w100p;
                 height:335px;
             }
-            .d-phone & {
+            html.d-phone & {
                 @extend .w100v;
                 @extend .h40v;
                 @extend .mlr--mobile;

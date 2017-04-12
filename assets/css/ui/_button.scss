@@ -12,10 +12,10 @@
         @extend .pos-tr;
         transform:translate3d(-17px, 15px, 0);
 
-        .d-phone & {
+        html.d-phone & {
             transform:translate3d(-10px, 12px, 0);
         }
-        .d-tablet & {
+        html.d-tablet & {
             transform:translate3d(-12px, 12px, 0);
         }
     }
@@ -23,7 +23,7 @@
         @extend .pos-tl;
         transform:translate3d(17px, 15px, 0);
 
-        .d-phone & {
+        html.d-phone & {
             transform:translate3d(10px, 12px, 0);
         }
     }
@@ -31,7 +31,7 @@
         @extend .pos-bl;
         transform:translate3d(17px, -15px, 0);
 
-        .d-phone & {
+        html.d-phone & {
             transform:translate3d(10px, -12px, 0);
         }
     }
@@ -39,7 +39,7 @@
         @extend .pos-br;
         transform:translate3d(-17px, -15px, 0);
 
-        .d-phone & {
+        html.d-phone & {
             transform:translate3d(-10px, -12px, 0);
         }
     }
@@ -54,14 +54,12 @@
         @extend .btn-hover;
         @extend .btn-active;
         @extend .zIndex-2;
-        width:38px;
-        height:38px;
+        @extend .w38;
+        @extend .h38;
         @include ui-icon(minus);
         margin:15px 17px 0 0;
 
-        .d-tablet & {
-            @extend .w34;
-            @extend .h34;
+        html.d-tablet & {
             margin:12px 12px 0 0;
         }
         &[data-color="white"]{
@@ -81,7 +79,7 @@
             width:32px;
             height:32px;
         }
-        .d-phone & {
+        html.d-phone & {
             margin:12px 10px 0 0;
         }
     }
@@ -136,7 +134,7 @@
         &[data-color="white"] {
             @extend .bg-white;
 
-            .m-no-touch &:hover {
+            html.m-no-touch &:hover {
                 @extend .bg-blue;
 
                 &:after {
@@ -163,14 +161,8 @@
             transition:opacity 0.3s $cubic215;
             transform:translateY(2px);
         }
-        .m-no-touch &:hover:after {
+        html.m-no-touch &:hover:after {
             @extend .opacity-100;
-        }
-        .d-tablet & {
-            top:15px;
-            left:15px;
-            width:56px;
-            height:56px;
         }
     }
 }

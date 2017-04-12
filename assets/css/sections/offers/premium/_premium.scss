@@ -36,7 +36,7 @@
             @extend .text-left;
             @extend .zIndex-1;
 
-            .d-tablet.r-portrait & {
+            html.d-tablet.r-portrait & {
                 @extend .w50p;
             }
             &[data-finish="true"]{
@@ -45,13 +45,13 @@
                 transform:translate3d(0, 60px, 0);
                 transition:transform 0.7s $cubic32 0.2s, opacity 0.5s $cubic60 0.2s;
 
-                .d-tablet.r-portrait & {
+                html.d-tablet.r-portrait & {
                     @extend .w100p;
                 }
                 .offer__premium__slider__text__title {
                     @extend .pos-centered;
 
-                    .d-tablet.r-portrait & {
+                    html.d-tablet.r-portrait & {
                         @extend .pos-centered;
                         @extend .w100p;
                     }

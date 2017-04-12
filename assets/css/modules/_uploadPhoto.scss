@@ -9,14 +9,14 @@
     height:620px;
     border:3px dashed $white;
 
-    .d-phone & {
+    html.d-phone & {
         @extend .l50;
         @extend .border-none;
         transform:translateX(-50%);
         width:440px;
         height:620px;
     }
-    .d-phone &[data-uploaded="true"]{
+    html.d-phone &[data-uploaded="true"]{
         @extend .bg-black;
 
         .image-editor {
@@ -26,18 +26,18 @@
     &__wrapper {
         @extend .pos-centered;
 
-        .d-phone & {
+        html.d-phone & {
             @include abs();
             @extend .transform-none;
         }
         .container {
-            .d-phone & {
+            html.d-phone & {
                 @include abs();
             }
         }
     }
     &__container {
-        .d-phone & {
+        html.d-phone & {
             @include abs();
             @extend .overflow-hidden;
             @extend .m0;
@@ -55,11 +55,11 @@
             background:rgba($white,.2);
             @extend .zIndex-1;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .h100v;
             }
         }
-        .d-phone & {
+        html.d-phone & {
             overflow:visible !important;
         }
     }
@@ -80,7 +80,7 @@
         line-height:38px;
         width:300px;
 
-        .d-phone & {
+        html.d-phone & {
             top:50vh;
             @extend .fontSize-32;
             transform:translate3d(-50%, -50vh);
@@ -91,7 +91,7 @@
             @include ui-icon(upload_white, 100px, 100px);
             margin:-2px auto 7px;
 
-            .d-phone & {
+            html.d-phone & {
                 width:125px;
                 height:125px;
                 margin:-30px auto 8px;
@@ -137,7 +137,7 @@
         border-radius:5px;
         width:220px;
 
-        .d-phone & {
+        html.d-phone & {
             width:62vw;
         }
         &::-webkit-slider-thumb {
@@ -150,7 +150,7 @@
             @extend .transition-default;
             @extend .cursor-pointer;
 
-            .d-mobile & {
+            html.d-mobile & {
                 width:26px;
                 height:26px;
             }
@@ -161,7 +161,7 @@
         }
     }
     &__control {
-        .d-phone & {
+        html.d-phone & {
             @extend .pos-bl;
             @extend .plr0;
             @extend .pb-m;

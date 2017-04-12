@@ -45,7 +45,7 @@
             transition:all 0.35s $cubic23;
             transform:translate3d(0, 120px, 0) scale(0.95);
         }
-        .m-no-touch & {
+        html.m-no-touch & {
             &:hover {
                 transform:translateY(-15px);
 

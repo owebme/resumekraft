@@ -13,12 +13,12 @@
         @extend .pt-s;
         @extend .pl-l;
 
-        .d-tablet & {
+        html.d-tablet & {
             @extend .pl0;
             @extend .pt-xs;
             @extend .ml--m;
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .pos-rel;
             @extend .t0;
             @extend .l0;
@@ -41,13 +41,13 @@
         padding:215px 0 18.5vh;
 
         &[data-content="commons"]{
-            .d-no-mobile & {
+            html.d-no-mobile & {
                 padding-bottom:22.5vh;
             }
-            .d-tablet.r-portrait & {
+            html.d-tablet.r-portrait & {
                 @extend .trX--m;
             }
-            .d-phone & {
+            html.d-phone & {
                 @extend .pt-xs;
                 @extend .pb100;
             }
@@ -59,18 +59,18 @@
             padding-left:7.5px;
             padding-right:7.5px;
 
-            .d-tablet.r-portrait & {
+            html.d-tablet.r-portrait & {
                 width:620px;
                 padding-top:225px;
             }
-            .d-phone & {
+            html.d-phone & {
                 @extend .pt-l;
                 @extend .mt-s;
             }
             .btn-l2 {
                 height:53px;
 
-                .d-phone & {
+                html.d-phone & {
                     padding-top:2px;
                     @extend .pl30;
                     @extend .pr30;
@@ -82,23 +82,23 @@
         }
         &[data-content="languages"],
         &[data-content="about"]{
-            .d-phone & {
+            html.d-phone & {
                 @extend .pb-l;
             }
-            .d-tablet.r-portrait & {
+            html.d-tablet.r-portrait & {
                 width:640px;
             }
         }
         &[data-content="skills"]{
             @extend .pb70;
 
-            .d-no-mobile & {
+            html.d-no-mobile & {
                 width:850px;
             }
-            .d-tablet.r-landscape & {
+            html.d-tablet.r-landscape & {
                 width:800px;
             }
-            .d-tablet.r-portrait & {
+            html.d-tablet.r-portrait & {
                 width:640px;
             }
         }
@@ -108,38 +108,38 @@
         &[data-editing="true"]{
             @extend .pb0;
         }
-        .d-tablet.r-landscape & {
+        html.d-tablet.r-landscape & {
             width:750px;
         }
-        .d-tablet.r-portrait & {
+        html.d-tablet.r-portrait & {
             width:700px;
             padding-top:195px;
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .w100p;
             padding:0 20px 70px;
         }
         h2, h3 {
-            .d-phone & {
+            html.d-phone & {
                 @extend .ml0;
             }
         }
     }
     .select-education {
-        .d-no-mobile & {
+        html.d-no-mobile & {
             @extend .mr--xl;
             margin-top:-165px;
             margin-bottom:130px;
         }
-        .d-tablet.r-landscape & {
+        html.d-tablet.r-landscape & {
             margin-top:-165px;
             margin-bottom:105px;
         }
-        .d-tablet.r-portrait & {
+        html.d-tablet.r-portrait & {
             @extend .mt--100;
             @extend .mb-xl;
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .mt--45;
             @extend .mb-xl;
         }
@@ -158,7 +158,7 @@
         }
     }
     .dateToNow .fontSize-22 {
-        .d-tablet.r-portrait & {
+        html.d-tablet.r-portrait & {
             @extend .fontSize-0;
             @extend .pl-m;
         }

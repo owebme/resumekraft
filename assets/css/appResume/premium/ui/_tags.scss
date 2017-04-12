@@ -11,7 +11,7 @@
     @extend .fontSize-16;
     margin:5px 6px 5px 0;
 
-    .d-phone .screen__content & {
+    html.d-phone .screen__content & {
         @extend .text-truncate;
         @extend .maxW-100p;
     }
@@ -68,7 +68,7 @@
         width:280px;
         @extend .pr-l;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .w100p;
         }
         &::-webkit-input-placeholder {

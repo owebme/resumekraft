@@ -9,14 +9,14 @@ jptest-result-skills-mobile {
         @extend .cursor-default;
 
         &:last-child {
-            .d-phone & {
+            html.d-phone & {
                 @extend .mb0;
             }
         }
-        .d-tablet.r-portrait & {
+        html.d-tablet.r-portrait & {
             @extend .h50;
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .h45;
             transform:translateX(-20px);
         }
@@ -25,8 +25,8 @@ jptest-result-skills-mobile {
             @extend .h100p;
             @extend .opacity-15;
 
-            .d-tablet.r-portrait &,
-            .d-phone & {
+            html.d-tablet.r-portrait &,
+            html.d-phone & {
                 @extend .opacity-100;
                 border-radius:100px;
             }
@@ -41,8 +41,8 @@ jptest-result-skills-mobile {
             transition:color .3s $cubic215, transform .3s $cubic215;
             @extend .zIndex-1;
 
-            .d-tablet.r-portrait &,
-            .d-phone & {
+            html.d-tablet.r-portrait &,
+            html.d-phone & {
                 @extend .flex-row-left-center;
                 @extend .c-white;
                 @extend .fontFamily-gotham;
@@ -52,11 +52,11 @@ jptest-result-skills-mobile {
                 border-radius:100px;
                 text-shadow:0 1px 1px rgba(31,35,37,.3);
             }
-            .d-tablet.r-portrait & {
+            html.d-tablet.r-portrait & {
                 @extend .fontSize-20;
                 @extend .h50;
             }
-            .d-phone & {
+            html.d-phone & {
                 @extend .h45;
                 @extend .letterSpacing--xs;
             }
@@ -72,20 +72,20 @@ jptest-result-skills-mobile {
             padding-top:3px;
             transition:opacity .3s $cubic215, transform .3s $cubic215;
 
-            .d-tablet.r-portrait &,
-            .d-phone & {
+            html.d-tablet.r-portrait &,
+            html.d-phone & {
                 padding-top:8px;
             }
-            .d-tablet.r-portrait & {
+            html.d-tablet.r-portrait & {
                 @extend .opacity-100;
                 @extend .c-blackLight;
             }
-            .d-phone & {
+            html.d-phone & {
                 @extend .c-gray;
                 @extend .opacity-50;
             }
         }
-        .m-no-touch &:hover {
+        html.m-no-touch &:hover {
             .skills__item__title {
                 @extend .c-blackLight;
                 transform:scale(1.2);

@@ -111,7 +111,7 @@
             will-change:transform, background-color;
             transition:transform .25s $cubic28, background-color .2s;
 
-            .m-no-touch &:hover {
+            html.m-no-touch &:hover {
                 @extend .opacity-100;
                 @extend .bg-white;
                 transform:translateY(-10px);
@@ -133,7 +133,7 @@
                     }
                 }
             }
-            .m-no-touch &:active {
+            html.m-no-touch &:active {
                 transform:translateY(-5px);
                 transition:transform .2s, background-color .2s;
             }

@@ -12,7 +12,7 @@
     @extend .cursor-pointer;
     @extend .zIndex-1;
 
-    .m-no-touch &:hover {
+    html.m-no-touch &:hover {
         &:before {
             transform:translate3d(-50%, -50%, 0) scale(10);
         }
@@ -23,7 +23,7 @@
             @extend .fill-white;
         }
     }
-    .d-safari.m-no-touch &:hover {
+    html.d-safari.m-no-touch &:hover {
         &:before {
             @extend .w200;
             @extend .h200;

@@ -2,14 +2,14 @@
     @extend .display-block;
     @extend .zIndex-10;
 
-    .d-no-mobile & {
+    html.d-no-mobile & {
         @extend .perspective-500;
     }
-    .d-no-phone & {
+    html.d-no-phone & {
         @include accelerate(true);
         @extend .pos-tl-fixed;
     }
-    .d-phone & {
+    html.d-phone & {
         @include abs();
         @extend .bg-white;
     }
@@ -105,7 +105,7 @@
         @extend .transition-default;
         @extend .zIndex-10;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .t-s;
             @extend .l-s;
         }

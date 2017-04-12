@@ -66,7 +66,7 @@
 
             if (screen !== undefined) this.nav(screen, 0);
 
-            if (app.device.isMobile) this.embeds();
+            if (app.device.isPhone) this.embeds();
 
             if (this.options.play){
                 this.play = new app.plugins.marquee.playScreens(this, this.options.play);

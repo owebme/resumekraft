@@ -3,7 +3,7 @@
         &-items {
             @extend .text-center;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .ml--m;
                 @extend .mr--m;
             }
@@ -17,7 +17,7 @@
             @extend .c-primary;
             font-size:96px;
 
-            .d-phone & {
+            html.d-phone & {
                 font-size:84px;
             }
         }
@@ -42,7 +42,7 @@
             @extend .mb-xxs;
             @extend .xs-mt-xxs;
 
-            .m-no-touch &:hover {
+            html.m-no-touch &:hover {
                 @extend .bg-primary;
                 box-shadow:0 0 0 1px $white, 0 12px 20px -10px rgba($white,.28), 0 4px 20px 0px rgba($white,.12), 0 7px 8px -5px rgba($white,.2);
             }
@@ -55,7 +55,7 @@
                 @include ui-icon("check_circle_lime", 24px, 24px);
                 transition:transform .3s $cubic089;
 
-                .d-phone & {
+                html.d-phone & {
                     width:28px;
                     height:28px;
                 }
@@ -70,7 +70,7 @@
             @extend .c-white;
             font-size:60px;
 
-            .d-mobile & {
+            html.d-mobile & {
                 font-size:64px;
             }
         }

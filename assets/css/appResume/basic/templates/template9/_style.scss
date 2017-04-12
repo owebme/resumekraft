@@ -213,7 +213,7 @@
     transition: opacity 0.1s ease;
 }
 
-.m-no-touch #t9 .t-column-right-photo:hover .t-column-right-photo-image {
+html.m-no-touch #t9 .t-column-right-photo:hover .t-column-right-photo-image {
     opacity: 0.85;
 }
 
@@ -240,7 +240,7 @@
     z-index: 1;
 }
 
-.m-no-touch #t9 .t-column-right-photo:hover .icon {
+html.m-no-touch #t9 .t-column-right-photo:hover .icon {
     top: 50%;
     opacity: 0.85;
 }

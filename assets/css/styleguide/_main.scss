@@ -8,8 +8,8 @@ body {
 
 /* All phones besides iPhone and all tablet devices */
 @media screen and (max-width: $w1024) {
-	.d-phone.d-no-ios,
-	.m-touch.d-no-phone {
+	html.d-phone.d-no-ios,
+	html.m-touch.d-no-phone {
 		body {
 			overflow:hidden;
 		}

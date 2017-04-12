@@ -2,7 +2,7 @@ body {
     @extend .overflowX-hidden;
 }
 .screens-mobile {
-    .d-mobile &.screens {
+    html.d-mobile &.screens {
         @extend .bg-white;
     }
     .screens__content {

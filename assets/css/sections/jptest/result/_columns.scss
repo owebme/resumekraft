@@ -35,7 +35,7 @@ jptest-result-columns {
                 transition:all 0.2s $cubic215;
                 @extend .text-uppercase;
 
-                .d-mobile & {
+                html.d-mobile & {
                     @extend .transition-none;
                 }
                 &[data-active="true"]{
@@ -159,10 +159,10 @@ jptest-result {
         }
         .skills__item__title {
             &[data-level="#{$i}"]{
-                .d-tablet.r-portrait & {
+                html.d-tablet.r-portrait & {
                     background-color:rgba(saturate($color,20%),.33);
                 }
-                .d-phone & {
+                html.d-phone & {
                     background-color:rgba(saturate($color,20%),.5);
                 }
             }

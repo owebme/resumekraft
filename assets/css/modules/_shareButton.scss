@@ -7,7 +7,7 @@
         @extend .b-l;
         @extend .r-l;
 
-        .d-tablet.r-portrait & {
+        html.d-tablet.r-portrait & {
             @extend .r-m;
         }
     }

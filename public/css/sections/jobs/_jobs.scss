@@ -14,7 +14,7 @@ html, body {
     padding-top:160px;
     @extend .fontFamily-helvetica;
 
-    .d-phone & {
+    html.d-phone & {
         padding-top:54px;
     }
     .screenMobile {
@@ -77,28 +77,28 @@ html, body {
         }
     }
     .w-mobile {
-        .d-phone & {
+        html.d-phone & {
             width:90vw;
         }
     }
     .pl-mobile {
-        .d-phone & {
+        html.d-phone & {
             padding-left:5vw;
         }
     }
     .pr-mobile {
-        .d-phone & {
+        html.d-phone & {
             padding-right:5vw;
         }
     }
     .plr-mobile {
-        .d-phone & {
+        html.d-phone & {
             padding-left:5vw;
             padding-right:5vw;
         }
     }
     .mlr--mobile {
-        .d-phone & {
+        html.d-phone & {
             margin-left:-5vw;
             margin-right:-5vw;
         }
@@ -106,7 +106,7 @@ html, body {
     .section__content {
         @include accelerate(true);
 
-        .d-phone & {
+        html.d-phone & {
             @extend .pt70;
             @extend .plr-mobile;
             @extend .maxW-100v;
@@ -114,27 +114,27 @@ html, body {
             @extend .overflowY-auto;
         }
         .section__container {
-            .d-phone & {
+            html.d-phone & {
                 @extend .plr0;
                 @extend .pt-s;
             }
         }
     }
     .section__container {
-        .d-no-phone & {
+        html.d-no-phone & {
             @extend .pos-rel;
             @extend .centered;
             @extend .pt-s;
             @extend .pb-l;
         }
-        .d-no-mobile & {
+        html.d-no-mobile & {
             @extend .w90p;
             max-width:770px;
         }
-        .d-tablet & {
+        html.d-tablet & {
             @extend .w85p;
         }
-        .d-phone & {
+        html.d-phone & {
             @include accelerate(true);
             @extend .pt30;
             @extend .plr-mobile;

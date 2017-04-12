@@ -1,5 +1,5 @@
 .textEdit {
-    .d-tablet.r-portrait & {
+    html.d-tablet.r-portrait & {
         @extend .ml-xss;
     }
     .textarea {

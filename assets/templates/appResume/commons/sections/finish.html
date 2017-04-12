@@ -116,7 +116,10 @@
             $.hide();
             if ($.opts.preview){
                 $afterlag.run(function(){
-                    $.opts.preview.show();
+                    $.opts.preview.show({
+                        data: $store.resume.get(),
+                        template: $store.resume.get("template")
+                    });
                 })
             }
         }

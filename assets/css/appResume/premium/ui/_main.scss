@@ -3,18 +3,18 @@
         @extend .c-gray;
         @extend .whiteSpace-preLine;
 
-        .d-no-phone & {
+        html.d-no-phone & {
             font-size:18px;
             @extend .lineHeight-l;
         }
-        .d-phone & {
+        html.d-phone & {
             font-size:20px;
             @extend .lineHeight-xl;
         }
-        .d-tablet.r-landscape & {
+        html.d-tablet.r-landscape & {
             line-height:38px;
         }
-        .d-tablet.r-portrait & {
+        html.d-tablet.r-portrait & {
             @extend .lineHeight-xxl;
         }
         &.c-black {
@@ -49,7 +49,7 @@
                 @extend .bg-blue;
             }
         }
-        .d-phone #app:not([data-font="futura"]) & {
+        html.d-phone #app:not([data-font="futura"]) & {
             line-height:38px;
         }
     }
@@ -60,7 +60,7 @@
         @extend .lineHeight-xxl;
         letter-spacing:0 !important;
 
-        .d-tablet.r-portrait & {
+        html.d-tablet.r-portrait & {
             @extend .lineHeight-xxxl;
         }
     }
@@ -71,7 +71,7 @@
         @extend .letterSpacing--xl;
         @extend .mb-xs;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .fontWeight-bold;
             @extend .lineHeight-xxxxxl;
             @extend .letterSpacing--xxl;
@@ -86,7 +86,7 @@
         #app[data-font="myriad"] & {
             font-size:26px;
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .pt-xxs;
         }
     }
@@ -124,7 +124,7 @@
             @extend .sm-mt0;
             @extend .cursor-pointer;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .float-left;
             }
             &-title {
@@ -174,11 +174,11 @@
         @extend .pos-abs-full;
         @extend .w100v;
 
-        .d-tablet.r-portrait & {
+        html.d-tablet.r-portrait & {
             width:120vw;
             left:-20vw;
         }
-        .d-phone & {
+        html.d-phone & {
             height:105%;
         }
     }
@@ -186,10 +186,10 @@
     .job-items {
         @extend .fontSize-0;
 
-        .d-phone & {
+        html.d-phone & {
             margin-left:-32.5px;
         }
-        .d-tablet.r-portrait & {
+        html.d-tablet.r-portrait & {
             @extend .mt-l;
         }
     }
@@ -203,11 +203,11 @@
         @extend .float-none;
         @extend .mb-xl;
 
-        .d-no-phone & {
+        html.d-no-phone & {
             @extend .pr-l;
             min-height:140px;
         }
-        .d-tablet.r-portrait & {
+        html.d-tablet.r-portrait & {
             @extend .pr0;
         }
     }
@@ -270,24 +270,24 @@
         @extend .c-white;
         @extend .opacity-85;
 
-        .d-no-phone & {
+        html.d-no-phone & {
             font-size:18px;
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .fontSize-18;
             @extend .lineHeight-xl;
         }
-        .d-tablet.r-portrait & {
+        html.d-tablet.r-portrait & {
             @extend .lineHeight-xxl;
         }
     }
     .work-text {
-        .d-no-phone & {
+        html.d-no-phone & {
             line-height:32px;
         }
     }
     .job-text {
-        .d-no-phone & {
+        html.d-no-phone & {
             line-height:34px;
         }
         &:after {
@@ -464,7 +464,7 @@
             @extend .visibility-hidden;
             @extend .opacity-0;
             transition:opacity .35s $cubic32, visibility 0s .35s;
-            @extend .zIndex-101;
+            @extend .zIndex-102;
 
             &[data-color="black"]{
                 background:radial-gradient(rgba(64,64,75,.9), rgba(17,17,24,.9)) rgba(34,34,40,.52);
@@ -543,7 +543,7 @@
 }
 body#ready {
     #app[data-coverletter="true"]{
-        .d-no-mobile & {
+        html.d-no-mobile & {
             section[data-section="commons"] {
                 filter:blur(14px);
             }
@@ -567,7 +567,7 @@ body#ready {
     }
 }
 #app[data-coverletter="true"]{
-    .d-phone & {
+    html.d-phone & {
         .info-opener,
         section-sendmail,
         salary-graph-opener {

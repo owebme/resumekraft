@@ -30,7 +30,7 @@ ux-contacts-content {
         @extend .text-lowercase;
         @extend .willChange-tp;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .t--s;
             @extend .l-55;
             @extend .letterSpacing-0;

@@ -2,10 +2,10 @@
     @extend .fontSize-0;
     @extend .mr--60;
 
-    .d-phone & {
+    html.d-phone & {
         @extend .mr--30;
     }
-    .d-tablet & {
+    html.d-tablet & {
         @extend .mr--l;
     }
     &-item {
@@ -27,7 +27,7 @@
         @extend .cursor-pointer;
         transition:box-shadow 0.15s;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .text-truncate;
             max-width:170px;
         }

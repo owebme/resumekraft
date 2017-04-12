@@ -21,10 +21,10 @@
         padding:3px 0 6px 0;
         min-width:160px;
 
-        .d-no-phone & {
+        html.d-no-phone & {
             box-shadow:0 20px 25px rgba(31,35,37,.15), 1px 0 0 0 rgba(31,45,61,.08), 0 1px 0 0 rgba(31,45,61,.08), -1px 0 0 0 rgba(31,45,61,.08), 0 -1px 0 0 rgba(31,45,61,.08);
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .bg-blue;
             @extend .maxW-85v;
             padding:6px 0 10px 0;
@@ -42,7 +42,7 @@
             border-right:11px solid rgba(0, 0, 0, 0);
             transform:translate3d(-50%, 0, 0);
 
-            .d-phone & {
+            html.d-phone & {
                 border-bottom-color:$blue;
             }
         }
@@ -57,7 +57,7 @@
         @extend .cursor-pointer;
         padding:6px 38px 6px 20px;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .c-white;
             @extend .fontSize-18;
             @extend .lineHeight-m;
@@ -82,7 +82,7 @@
             &:after {
                 @extend .display-block;
             }
-            .d-phone & {
+            html.d-phone & {
                 @extend .c-white;
             }
         }
@@ -110,7 +110,7 @@
                 @extend .l-s;
                 @include ui-icon(check_muted);
 
-                .d-phone & {
+                html.d-phone & {
                     @extend .opacity-0;
                 }
             }
@@ -122,7 +122,7 @@
                 &:after {
                     @include ui-icon(check);
 
-                    .d-phone & {
+                    html.d-phone & {
                         @extend .opacity-100;
                         @include ui-icon(check_white);
                     }
@@ -270,7 +270,7 @@
         transition:opacity 0.2s $cubic215, transform 0.3s $bounceForce, visibility 0s;
         @extend .transform-none;
 
-        .d-phone & {
+        html.d-phone & {
             transition:opacity 0.2s $cubic215, transform 0.2s $cubic089, visibility 0s;
         }
     }

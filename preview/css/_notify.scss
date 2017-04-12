@@ -46,7 +46,7 @@
         max-width:calc(100vw - 40px);
         transition:visibility 0s .4s;
 
-        .d-phone & {
+        html.d-phone & {
             max-width:calc(100vw - 30px);
         }
         &[data-pos="top-center"]{
@@ -58,7 +58,7 @@
             .notify {
                 transform:translate3d(0, -40px, 0);
             }
-            .d-phone & {
+            html.d-phone & {
                 @extend .l0;
                 @extend .transform-default;
             }
@@ -92,7 +92,7 @@
             .notify {
                 transform:translate3d(0, 40px, 0);
             }
-            .d-phone & {
+            html.d-phone & {
                 @extend .l0;
                 @extend .transform-default;
             }

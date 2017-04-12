@@ -1,6 +1,6 @@
 jobs-search-content {
     .jobs__list {
-        .d-phone & {
+        html.d-phone & {
             @extend .w100v;
             @extend .overflow-hidden;
         }
@@ -22,7 +22,7 @@ jobs-search-content {
                     &__panel {
                         transform:translate3d(0, 94px, 0);
 
-                        .d-phone & {
+                        html.d-phone & {
                             transform:translate3d(0, 296px, 0);
                         }
                     }
@@ -53,7 +53,7 @@ jobs-search-content {
                     }
                 }
                 &[data-show="true"]{
-                    .d-phone & {
+                    html.d-phone & {
                         box-shadow:0 20px 62px rgba($black,.3);
                     }
                     .jobs__search__nav__form__wrapper {
@@ -78,7 +78,7 @@ jobs-search-content {
                     }
                 }
                 .input-autosuggest-items {
-                    .d-phone & {
+                    html.d-phone & {
                         @extend .w100v;
                         @extend .ml--xss;
                     }
@@ -86,7 +86,7 @@ jobs-search-content {
             }
         }
         &__content {
-            .d-tablet.r-landscape & {
+            html.d-tablet.r-landscape & {
                 @extend .trX-s;
             }
         }
@@ -96,7 +96,7 @@ jobs-search-content {
             @extend .pos-fixed;
             transform:translate3d(0, -94px, 0);
 
-            .d-phone & {
+            html.d-phone & {
                 transform:translate3d(0, -296px, 0);
             }
             &__menu {
@@ -142,7 +142,7 @@ jobs-search-content {
             }
         }
     }
-    .d-no-phone & {
+    html.d-no-phone & {
         .jobs__list__item__title,
         .jobs__list__item__salary,
         .jobs__list__item__text,
@@ -190,7 +190,7 @@ jobs-search-content {
             }
         }
     }
-    .d-no-mobile & {
+    html.d-no-mobile & {
         &[data-search="true"]{
             .jobs__list__item__title,
             .jobs__list__item__salary,
@@ -205,7 +205,7 @@ jobs-search-content {
             }
         }
     }
-    .d-tablet & {
+    html.d-tablet & {
         &[data-search="true"]{
             .jobs__list__item__buttons {
                 @extend .opacity-0;
@@ -213,7 +213,7 @@ jobs-search-content {
             }
         }
     }
-    .d-phone & {
+    html.d-phone & {
         .section {
             &[data-search="true"]{
                 @extend [data-loading="true"];

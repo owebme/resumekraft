@@ -7,16 +7,16 @@
     @extend .text-left;
     box-shadow:0 20px 25px rgba(31,35,37,.3);
 
-    .d-no-mobile & {
+    html.d-no-mobile & {
         margin-top:1.64vw;
         @extend .centered;
         width:1218px;
     }
-    .d-mobile & {
+    html.d-mobile & {
         margin:1.64vw auto 2.34vw;
         width:95.15vw;
     }
-    .d-phone & {
+    html.d-phone & {
         margin-top:2.34vw;
         min-height:96.7vh;
     }

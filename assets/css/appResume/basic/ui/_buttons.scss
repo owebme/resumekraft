@@ -1,6 +1,6 @@
 .resumeBasic {
     .btn-primary {
-        .m-no-touch &:hover {
+        html.m-no-touch &:hover {
             @extend .bg-blueBright;
         }
     }
@@ -30,21 +30,21 @@
             @extend .w80;
             border-bottom:1px solid $blue;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .w50;
                 @extend .mr-xs;
             }
         }
-        .m-no-touch &:hover {
+        html.m-no-touch &:hover {
             @extend .bg-blue;
         }
-        .d-tablet.r-landscape & {
+        html.d-tablet.r-landscape & {
             transform:translate3d(20px, -48px, 0);
         }
-        .d-tablet.r-portrait & {
+        html.d-tablet.r-portrait & {
             transform:translate3d(30px, -48px, 0);
         }
-        .d-phone & {
+        html.d-phone & {
             transform:translate3d(0, -48px, 0);
         }
     }
@@ -52,7 +52,7 @@
         &:before {
             @include ui-icon(pencil, 18px, 18px);
         }
-        .m-no-touch &:hover {
+        html.m-no-touch &:hover {
             &:before {
                 @include ui-icon(pencil_white);
             }
@@ -62,7 +62,7 @@
         &:before {
             @include ui-icon(close_strong, 28px, 28px);
         }
-        .m-no-touch &:hover {
+        html.m-no-touch &:hover {
             &:before {
                 @include ui-icon(close_strong_white);
             }
@@ -93,7 +93,7 @@
                 @include ui-icon(plus_thin, 28px, 28px);
             }
         }
-        .m-no-touch &:hover {
+        html.m-no-touch &:hover {
             .section__btn__plus__icon {
                 @extend .bg-blue;
 
@@ -102,7 +102,7 @@
                 }
             }
         }
-        .d-phone & {
+        html.d-phone & {
             @include flex("row", "center", "center");
             @extend .float-none;
         }

@@ -25,12 +25,12 @@
             <icon-pdf size="s" color="blue"></icon-pdf>
         </div>
     </div>
-    <div onClick={ parent.open.settings } onUpdate="none" class="control__buttons__item" data-balloon="Настройки" data-balloon-color="blue" data-balloon-size="medium" data-balloon-pos="down">
-        <div class="control__buttons__item__icon">
-            <icon-control size="s" color="blue"></icon-control>
+    <div onClick={ parent.change.lang } class="control__buttons__item" data-balloon="Изменить язык" data-balloon-color="blue" data-balloon-size="medium" data-balloon-pos="down">
+        <div class="control__buttons__item__icon" data-item="lang">
+            { $resume.get('lang') }
         </div>
     </div>
-    <div onClick={ parent.open.menu } onUpdate="none" class="control__buttons__item control__buttons__opener">
+    <div onClick={ app.device.isMobile && parent.open.sidebar } onUpdate="none" class="control__buttons__item control__buttons__opener">
         <div class="control__buttons__item__icon control__buttons__opener__icon"></div>
     </div>
 
@@ -45,16 +45,18 @@
             scroll = $.parent.screens.get("scroll");
 
         (function animationLoop(){
-            app.utils.raf(animationLoop);
+            $.raf = app.utils.raf(animationLoop);
             _onScroll(app.utils.getScroll(scroll));
         })();
     };
 
     $.onScroll = function(scroll){
         if (!$.active && scroll.y < 20){
-            $.update({
-                active: true
-            });
+            if (!app.device.isMobile || app.device.isMobile && !$.parent.sections.sidebar.active){
+                $.update({
+                    active: true
+                });
+            }
         }
         else if ($.active && scroll.y > 19){
             $.update({
@@ -62,6 +64,10 @@
             });
         }
     };
+
+    $.on("before-unmount", function(){
+        _.caf($.raf);
+    });
 
 </script>
 

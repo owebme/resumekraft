@@ -149,7 +149,7 @@
     }
 }
 @media screen and (max-height: 640px) {
-    .d-largeScreen {
+    html.d-largeScreen {
         .oScreen__jptest__enter {
             &__faces {
                 &:after {

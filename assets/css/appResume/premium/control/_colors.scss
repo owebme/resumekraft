@@ -13,7 +13,7 @@
     transition:width 0s 0.4s, height 0s 0.4s;
     @extend .zIndex-5;
 
-    .d-phone & {
+    html.d-phone & {
         @extend .t-90;
         right:5px;
     }
@@ -41,7 +41,7 @@
         		transition:opacity 0.2s $cubic215;
                 z-index:1;
         	}
-        	.m-no-touch &:hover {
+        	html.m-no-touch &:hover {
                 @extend .boxShadow-default;
 
                 &:after {
@@ -86,7 +86,7 @@
             @extend .display-none;
         }
     }
-    .m-no-touch &:hover {
+    html.m-no-touch &:hover {
         overflow:visible;
         width:170px;
         height:250px;

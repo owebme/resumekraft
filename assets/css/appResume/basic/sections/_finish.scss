@@ -5,16 +5,16 @@
             height:500px;
             margin-left:-380px;
 
-            .d-tablet.r-landscape & {
+            html.d-tablet.r-landscape & {
                 width:480px;
                 height:480px;
                 margin-left:-320px;
             }
-            .d-tablet.r-portrait & {
+            html.d-tablet.r-portrait & {
                 margin-top:200px;
                 margin-left:-360px;
             }
-            .d-phone & {
+            html.d-phone & {
                 width:480px;
                 height:480px;
                 margin-left:-320px;
@@ -31,20 +31,20 @@
                 @extend .content-empty;
                 @include ui-icon("resume_white", 300px, 300px);
             }
-            .d-tablet & {
+            html.d-tablet & {
                 &:after {
                     width:320px;
                     height:320px;
                 }
             }
-            .d-tablet.r-landscape & {
+            html.d-tablet.r-landscape & {
                 @extend .l--55;
             }
-            .d-tablet.r-portrait & {
+            html.d-tablet.r-portrait & {
                 left:-120px;
                 @extend .b-l;
             }
-            .d-phone & {
+            html.d-phone & {
                 @extend .display-none;
             }
         }

@@ -16,7 +16,7 @@
             </div>
             <div class="col-xs-24 col-sm-12 select-uppercase">
                 <span class="input-title">Семейство шрифта</span>
-                <ui-select update="font" cursor={ $State.select() } items={ $store.fonts.get() } size="l"></ui-select>
+                <ui-select update="font" cursor={ $State.select() } items={ $store.fonts.getItems("ru") } size="l"></ui-select>
             </div>
         </div>
         <div class="row mb-m xs-pb-xxs">
@@ -61,12 +61,18 @@
                 <ui-select update="filter" cursor={ $State.select("photo") } items={ $store.photoFilter.get() } size="l"></ui-select>
             </div>
         </div>
-        <div class="row h50">
+        <div class="row h50 mb-m xs-pb-xxs">
             <div class="col-xs-17 col-sm-12 pt-xs pr-m">
                 <span class="title">Киноэффект на фото</span>
             </div>
             <div class="col-xs-7 col-sm-12 pt-xs">
                 <ui-switcher update="noise" cursor={ $State.select("photo") }></ui-switcher>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-24 { app.device.isPhone ? 'flex-centered' : 'text-right' }">
+                <button onClick={ onCancel } onUpdate="none" class="btn btn-{ app.device.isPhone ? 'l2 h55' : 'xl' } cancel mr-xs xs-plr-m">Отменить</button>
+                <button name="btnSave" onClick={ onSave } onUpdate="none" class="btn btn-{ app.device.isPhone ? 'l2 h55' : 'xl' } success">Сохранить</button>
             </div>
         </div>
     </div>
@@ -75,10 +81,36 @@
 
     var $ = this;
 
-    $.autoCommit = {
-        feedback: function(value){
-            $store.resume.select("sections", {"name": "feedback"}).set("active", value);
-        }
+    $.btnSave = $$($.btnSave);
+
+    $.onSave = function(){
+        $.btnSave.addClass("btn-loading");
+        setTimeout(function(){
+            app.request("setResume", {
+                data: {
+                    _id: $store.resume.get("_id"),
+                    lang: $store.resume.get("lang"),
+                    config: $store.resume.get("config")
+                }
+            }, {
+                loader: false
+            })
+            .then(function(){
+                $afterlag.run(function(){
+                    $.btnSave.removeClass("btn-loading");
+                    $Menu.hide();
+                }, {
+                    iterations: 2
+                });
+            },
+            function(){
+                $.btnSave.removeClass("btn-loading");
+            });
+        }, 5);
+    };
+
+    $.onCancel = function(){
+        $Menu.hide();
     };
 
 </script>

@@ -36,7 +36,7 @@
         }, 20);
     };
 
-    $.on("unmount", function(){
+    $.on("before-unmount", function(){
         $store.resume.off("update");
     });
 

@@ -15,10 +15,10 @@
             background:linear-gradient(225deg, lighten(#3e4757,14%) 0%, lighten(#1f242c,14%) 100%);
             @extend .ptb-l;
 
-            .d-no-phone & {
+            html.d-no-phone & {
                 min-height:434px;
             }
-            .d-phone & {
+            html.d-phone & {
                 @extend .pb60;
             }
             .screenMobile & {
@@ -79,7 +79,7 @@
             @extend .plr-xs;
             @extend .xs-plr0;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .w100p;
             }
             &:visited {
@@ -87,8 +87,8 @@
                     color:lighten($silver,3%);
                 }
             }
-            .m-no-touch &:hover,
-            .m-no-touch &:visited:hover {
+            html.m-no-touch &:hover,
+            html.m-no-touch &:visited:hover {
                 .vacancy__similary__item__title {
                     @extend .c-yellowBright;
                 }
@@ -114,7 +114,7 @@
                 @extend .transition-default;
                 @extend .mb-xxs;
 
-                .d-phone & {
+                html.d-phone & {
                     @extend .fontSize-16;
                     @extend .lineHeight-24;
                 }
@@ -132,7 +132,7 @@
             }
         }
         &__resumeOffer {
-            .d-phone & {
+            html.d-phone & {
                 @extend .mt-m;
                 @extend .pt30;
                 border-top:1px dashed rgba($white,.4);
@@ -154,7 +154,7 @@
                     @extend .fontWeight-3;
                     margin-bottom:24px;
 
-                    .d-tablet & {
+                    html.d-tablet & {
                         @extend .w100p;
                     }
                     &:before {

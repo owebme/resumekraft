@@ -7,7 +7,7 @@
         @extend .bg-primary;
         @extend .zIndex-1;
 
-        .d-tablet.r-landscape & {
+        html.d-tablet.r-landscape & {
             @extend .ml--s;
         }
     }
@@ -28,12 +28,12 @@
             border-left:2px dashed $white;
             @extend .opacity-40;
 
-            .d-tablet.r-landscape & {
+            html.d-tablet.r-landscape & {
                 right:135px;
             }
         }
-        .d-tablet.r-portrait &,
-        .d-phone & {
+        html.d-tablet.r-portrait &,
+        html.d-phone & {
             @extend .display-none;
         }
         &-bg {
@@ -42,13 +42,13 @@
             @extend .bg-primary;
             @extend .zIndex-4;
 
-            .d-tablet.r-portrait &,
-            .d-phone & {
+            html.d-tablet.r-portrait &,
+            html.d-phone & {
                 @extend .display-none;
             }
         }
     }
-    .d-no-phone & {
+    html.d-no-phone & {
         section {
             margin-bottom:195px;
         }
@@ -142,7 +142,7 @@
                     @extend .opacity-80;
                 }
             }
-            .m-no-touch &:hover {
+            html.m-no-touch &:hover {
                 .photo-changer {
                     &-bg {
                         @extend .opacity-100;
@@ -236,20 +236,20 @@
             @extend .bg-primary;
             @extend .md-ml--s;
 
-            .d-tablet.r-portrait &,
-            .d-phone & {
+            html.d-tablet.r-portrait &,
+            html.d-phone & {
                 @extend .display-none;
             }
         }
         &[data-section="contacts"]{
-            .d-tablet.r-landscape & {
-                margin:0 -27.5px;
+            html.d-tablet.r-landscape & {
+                margin:0 -28px;
             }
-            .d-tablet.r-portrait & {
+            html.d-tablet.r-portrait & {
                 margin:0 -50px;
             }
         }
-        .d-no-phone & {
+        html.d-no-phone & {
             @extend .pos-rel;
 
             .work-items,
@@ -390,23 +390,23 @@
                 }
             }
         }
-        .d-tablet.r-landscape &[data-section="contacts"]{
+        html.d-tablet.r-landscape &[data-section="contacts"]{
             .edit-pointer {
                 @extend .r-xs;
             }
         }
-        .d-phone &[data-section="works"],
-        .d-phone &[data-section="jobs"]{
+        html.d-phone &[data-section="works"],
+        html.d-phone &[data-section="jobs"]{
             .screen__content {
                 @extend .pb0;
             }
         }
-        .d-phone &[data-section="coverletter"]{
+        html.d-phone &[data-section="coverletter"]{
             .screen__content {
                 @extend .ptb-l;
             }
         }
-        .d-phone &[data-section="feedback"]{
+        html.d-phone &[data-section="feedback"]{
             .screen__content {
                 @extend .pb50;
             }
@@ -446,11 +446,11 @@
         @extend .lineHeight-xxl;
         @extend .text-center;
 
-        .d-tablet.r-portrait & {
+        html.d-tablet.r-portrait & {
             @extend .w100p;
             @extend .pt-l;
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .display-none;
         }
     }
@@ -459,21 +459,21 @@
         @extend .pr-m;
         @extend .md-pl-m;
     }
-    .d-tablet & {
+    html.d-tablet & {
         .screen2 {
             &-col-right {
                 @extend .plr0;
             }
         }
     }
-    .d-tablet.r-landscape & {
+    html.d-tablet.r-landscape & {
         .screen2 {
             &-col-right {
                 @extend .plr0;
             }
         }
     }
-    .d-tablet.r-portrait & {
+    html.d-tablet.r-portrait & {
         .screen--first {
             padding-top:200px;
         }
@@ -499,7 +499,7 @@
             @extend .plr0;
         }
     }
-    .d-phone & {
+    html.d-phone & {
         .screen--first {
             @extend .bg-black;
             @extend .h100v;
@@ -654,21 +654,21 @@
     }
 }
 @media screen and (max-height: 639px) {
-    .d-phone .template1 {
+    html.d-phone .template1 {
         .screen__location {
             display:none !important;
         }
     }
 }
 @media screen and (min-height: 640px) {
-    .d-phone #app {
+    html.d-phone #app {
          .screen__post {
             padding-bottom:100px;
         }
     }
 }
 @media screen and (min-height: 700px) {
-    .d-phone #app {
+    html.d-phone #app {
         .screen__post {
             padding-bottom:120px;
             padding-right:60px;
@@ -676,7 +676,7 @@
     }
 }
 @media screen and (min-width: 400px) {
-    .d-phone #app {
+    html.d-phone #app {
         .screen__content {
              .title {
                 padding-right:15px;

@@ -1,6 +1,6 @@
 .resume {
     .likes {
-        .d-phone & {
+        html.d-phone & {
             @extend .flex-column-centered;
         }
         &__cover {
@@ -9,9 +9,13 @@
             @extend .h130;
             @extend .mb-xs;
 
-            .d-no-phone & {
+            html.d-no-phone #app[data-lang="ru"] & {
                 @extend .mt--xxs;
                 @extend .mb--m;
+            }
+            html.d-no-phone #app[data-lang="en"] & {
+                @extend .trY-xs;
+                @extend .mb-xxs;
             }
             &:before {
                 @extend .content-empty;
@@ -39,7 +43,7 @@
                 @extend .borderRadius-circle;
                 @extend .mt--s;
 
-                .d-no-phone & {
+                html.d-no-phone & {
                     @extend .w64;
                     @extend .h64;
                     @extend .mt--m;
@@ -59,7 +63,7 @@
                 @extend .borderRadius-circle;
                 padding-top:1px;
 
-                .d-no-phone & {
+                html.d-no-phone & {
                     @extend .bg-pink;
                     @extend .pt0;
                     @extend .w24;
@@ -67,6 +71,11 @@
                     @extend .b70;
                     font-size:13px;
                 }
+            }
+        }
+        .popup__content {
+            html.d-no-phone #app[data-lang="en"] & {
+                @extend .pt-s;
             }
         }
         &__text {
@@ -104,13 +113,13 @@
                 @extend .vAlign-middle;
                 margin:0 12px 0 -10px;
 
-                .d-no-phone & {
+                html.d-no-phone & {
                     @extend .w20;
                     @extend .h20;
                     margin-top:1px;
                 }
             }
-            .d-no-phone & {
+            html.d-no-phone & {
                 box-shadow:inset 0 -2px 0 rgba($white,.15), 1px 0 0 0 rgba(31,45,61,.2), 0 1px 0 0 rgba(31,45,61,.2), -1px 0 0 0 rgba(31,45,61,.2), 0 -1px 0 0 rgba(31,45,61,.2);
 
                 &:hover {

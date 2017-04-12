@@ -12,7 +12,7 @@
     &__options__item {
         height:46px;
 
-        .d-phone & {
+        html.d-phone & {
             height:54px;
         }
     }
@@ -30,13 +30,13 @@
         @extend .bg-white;
 
         .row {
-            .d-phone & {
+            html.d-phone & {
                 @extend .pos-rel;
                 @extend .bg-white;
                 @extend .zIndex-1;
             }
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .display-block;
             @extend .pos-tl-fixed;
             @extend .plr-xss;
@@ -170,7 +170,7 @@
         @extend .flex-row-left-center;
         @extend .pointerEvents-none;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .pos-rel;
             @extend .opacity-100;
             @extend .pointerEvents-all;
@@ -179,10 +179,10 @@
             @extend .pr0;
         }
         input {
-            .d-no-phone & {
+            html.d-no-phone & {
                 @extend .pointerEvents-none;
             }
-            .d-phone &:not(:focus) {
+            html.d-phone &:not(:focus) {
                 @extend .text-truncate;
             }
         }
@@ -196,7 +196,7 @@
             &:first-child {
                 @extend .w60p;
 
-                .d-phone & {
+                html.d-phone & {
                     @extend .w100p;
                 }
             }

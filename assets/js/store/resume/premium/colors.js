@@ -85,7 +85,7 @@ $store.colors = _.extend(new Baobab([
             return _.map($store.colors.get(), function(item){
                 return {
                     _id: item._id,
-                    title: item.titles[lang]
+                    title: item.titles[lang || $store.resume.get("lang")]
                 }
             });
         },

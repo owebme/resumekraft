@@ -24,7 +24,7 @@
     &[data-show="up"],
     &[data-show="down"]{
         &:before {
-            .d-phone & {
+            html.d-phone & {
                 transition:opacity 0.5s $cubic645, background-color 0.5s $cubic645;
             }
         }
@@ -32,7 +32,7 @@
     &[data-show="left"],
     &[data-show="right"]{
         &:before {
-            .d-phone & {
+            html.d-phone & {
                 transition:opacity 0.5s $cubic40, background-color 0.5s $cubic40;
             }
         }
@@ -76,7 +76,7 @@
         will-change:opacity, background-color;
         transition:opacity 0.4s $cubic40, background-color 0.5s $cubic645;
 
-        .d-phone & {
+        html.d-phone & {
             transition:opacity 0.4s $cubic345, background-color 0.25s ease-out;
         }
     }
@@ -97,7 +97,7 @@
             &:before {
                 transition:opacity 0.7s $cubic60, background-color 0.7s $cubic60;
 
-                .d-mobile & {
+                html.d-mobile & {
                     transition:opacity 0.55s $cubic60, background-color 0.55s $cubic60;
                 }
             }
@@ -105,7 +105,7 @@
         &[data-show="left"],
         &[data-show="right"]{
             &:before {
-                .d-phone & {
+                html.d-phone & {
                     transition:opacity 0.42s $cubic645, background-color 0.42s $cubic645;
                 }
             }
@@ -143,7 +143,7 @@
             &:before {
                 background:radial-gradient(rgba(64,64,75,.9), rgba(17,17,24,.9)) rgba(34,34,40,.52);
 
-                .d-phone & {
+                html.d-phone & {
                     background:rgba($blackLight,.95);
                 }
             }
@@ -177,11 +177,11 @@
             width:550px;
             height:550px;
 
-            .d-tablet.r-landscape & {
+            html.d-tablet.r-landscape & {
                 width:480px;
                 height:480px;
             }
-            .d-phone & {
+            html.d-phone & {
                 width:480px;
                 height:480px;
             }
@@ -399,8 +399,8 @@
                 @extend .willChange-transform;
                 transition:transform 0.5s $cubic645;
             }
-            .d-phone .#{$title}[data-show="left"] &,
-            .d-phone .#{$title}[data-show="right"] & {
+            html.d-phone .#{$title}[data-show="left"] &,
+            html.d-phone .#{$title}[data-show="right"] & {
                 transition:transform 0.5s $cubic40;
             }
             .#{$title}[data-show="up"] & {
@@ -431,7 +431,7 @@
                 .#{$title}__content {
                     transition:transform 0.7s $cubic60;
 
-                    .d-mobile & {
+                    html.d-mobile & {
                         transition:transform 0.55s $cubic60;
                     }
                 }
@@ -443,7 +443,7 @@
             &[data-show="left"],
             &[data-show="right"]{
                 .#{$title}__content {
-                    .d-phone & {
+                    html.d-phone & {
                         transition:transform 0.42s $cubic645;
                     }
                 }
@@ -453,7 +453,7 @@
                     @extend .opacity-100;
                     transition:opacity 0.7s $cubic60;
 
-                    .d-mobile & {
+                    html.d-mobile & {
                         transition:opacity 0.55s $cubic60;
                     }
                 }
@@ -467,7 +467,7 @@
             &:before {
                 @extend .opacity-10;
 
-                .d-phone & {
+                html.d-phone & {
                     @extend .opacity-40;
                 }
             }
@@ -483,7 +483,7 @@
                 transform:translate3d(0, 80%, 0);
                 transition:transform 0.5s $cubic60;
 
-                .d-mobile & {
+                html.d-mobile & {
                     transition:transform 0.4s $cubic60;
                 }
             }

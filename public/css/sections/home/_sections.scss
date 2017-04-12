@@ -5,7 +5,7 @@
     height:720px;
 }
 .home__section2__container {
-    .d-tablet.r-portrait & {
+    html.d-tablet.r-portrait & {
         height:620px;
     }
 }
@@ -60,7 +60,7 @@
     @extend .bg-cover;
     background-image:url(/public/images/home/ipad_portrait.png);
 
-    .d-mobile & {
+    html.d-mobile & {
         transform:translate3d(0, 60px, 0);
     }
     &__viewport {
@@ -100,7 +100,7 @@
     }
 }
 .home__section2__plan__container {
-    .d-mobile & {
+    html.d-mobile & {
         @extend .text-center;
     }
 }

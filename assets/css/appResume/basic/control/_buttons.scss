@@ -1,6 +1,6 @@
 .resumeBasic {
     .oScreen__section__buttons {
-        .d-phone & {
+        html.d-phone & {
             @extend .display-none;
         }
     }
@@ -17,25 +17,17 @@
         @extend .overflow-hidden;
         @extend .zIndex-2;
 
-        .d-tablet.r-portrait &,
-        .d-phone & {
+        html.d-tablet.r-portrait &,
+        html.d-phone & {
             @extend .pr0;
             @extend .r0;
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .t--xxs;
             @extend .mr--xxs;
         }
-        // .d-mobile & {
-        //     &:before {
-        //         @extend .content-empty;
-        //         @extend .pos-tr;
-        //         @extend .h60;
-        //         @extend .w60;
-        //         @extend .zIndex--1;
-        //     }
-        // }
         &__item {
+            @include accelerate();
             @extend .pos-rel;
             @extend .willChange-transform;
             transition:transform .7s $bounceSoft;
@@ -54,10 +46,15 @@
                 @extend .btn-active;
                 padding-top:4px;
 
-                icon-control {
-                    transform:translateY(1px);
+                &[data-item="lang"]{
+                    @extend .fontWeight-bold;
+                    @extend .fontSize-24;
+                    @extend .mlr-xs;
+                    @extend .letterSpacing--xs;
+                    @extend .text-uppercase;
+                    @extend .pt0;
                 }
-                .m-no-touch &:hover {
+                html.m-no-touch &:hover {
                     @extend .c-white;
                     @extend .bg-blue;
                     @extend .borderColor-blue;
@@ -76,23 +73,29 @@
             }
         }
         &__opener {
+            @include accelerate();
             @extend .pos-tr;
             @extend .opacity-0;
-            transform:scale(0);
-            margin:5px 40px 0 0;
+            @extend .willChange-tp;
+            @extend .scale-0;
+            @extend .mt-xxs;
+            @extend .mr-l;
 
-            .d-tablet.r-landscape & {
-                margin:35px 0 0 0;
+            html.d-tablet.r-landscape & {
+                @extend .mt35;
+                @extend .mr0;
             }
-            .d-tablet.r-portrait & {
-                margin:20px -5px 0 0;
+            html.d-tablet.r-portrait & {
+                @extend .mt-m;
+                @extend .mr--xxs;
             }
-            .d-phone & {
-                margin:10px -12px 0 0;
+            html.d-phone & {
+                @extend .mt-xs;
+                margin-right:-12px;
             }
             &__icon {
-                .d-tablet.r-portrait &,
-                .d-phone & {
+                html.d-tablet.r-portrait &,
+                html.d-phone & {
                     @extend .border-none;
                 }
                 &:after {
@@ -101,22 +104,22 @@
                     @include ui-icon(more_h, 32px, 32px);
                     transform:translateY(-2px);
 
-                    .d-tablet &,
-                    .d-phone & {
+                    html.d-tablet &,
+                    html.d-phone & {
                         @include ui-icon(more_v);
                     }
                 }
             }
         }
         &[data-hidden="true"],
-        .d-tablet.r-portrait &,
-        .d-phone & {
-            width:120px;
-            height:70px;
+        html.d-tablet.r-portrait &,
+        html.d-phone & {
+            @extend .w120;
+            @extend .h70;
             transition:width 0s .4s, height 0s .4s;
 
-            .d-tablet & {
-                height:100px;
+            html.d-tablet & {
+                @extend .h100;
             }
             .control__buttons__item {
                 transition:transform .5s $bounceSoft;
@@ -124,9 +127,9 @@
             .control__buttons__item:not(.control__buttons__opener){
                 @extend .opacity-0;
                 @extend .pointerEvents-none;
-                transform:scale(0.4);
+                @extend .scale-40;
 
-                .d-phone & {
+                html.d-phone & {
                     @extend .display-none;
                 }
             }
@@ -135,15 +138,15 @@
                 @extend .transform-none;
             }
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .w50;
             @extend .h70;
             @extend .overflow-hidden;
         }
-        .m-no-touch &[data-hidden="true"]:hover {
+        html.m-no-touch &[data-hidden="true"]:hover {
             width:560px;
             height:120px;
-            transition:width 0s .2s, height 0s .2s;
+            transition:width 0s .1s, height 0s .1s;
 
             .control__buttons__item__icon {
                 @extend .bg-white;
@@ -156,12 +159,12 @@
                 @extend .opacity-100;
                 @extend .pointerEvents-all;
                 @extend .transform-none;
-                transition:transform .5s $bounceSoft .2s;
+                transition:transform .5s $bounceSoft .1s;
             }
             .control__buttons__opener {
                 @extend .opacity-0;
-                transform:scale(0);
-                transition:transform .5s $bounceSoft .2s, opacity 0s .2s;
+                @extend .scale-0;
+                transition:transform .5s $bounceSoft .1s, opacity 0s .1s;
 
                 &:hover {
                     .control__buttons__opener__icon:after {

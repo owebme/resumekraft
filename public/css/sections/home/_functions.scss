@@ -5,16 +5,16 @@
     padding-top:80px;
     padding-bottom:25px;
 
-    .d-tablet.r-landscape & {
+    html.d-tablet.r-landscape & {
         padding-top:65px;
     }
-    .d-phone & {
+    html.d-phone & {
         @extend .bg-blackLight;
         padding-top:20px;
         padding-bottom:80px;
     }
     &__items {
-        .d-tablet.r-landscape & {
+        html.d-tablet.r-landscape & {
             margin-left:-25px;
             margin-right:-25px;
         }

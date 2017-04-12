@@ -8,7 +8,7 @@
         @extend .overflow-hidden;
         @extend .zIndex-1;
 
-        .d-no-phone & {
+        html.d-no-phone & {
             @extend .t-30;
             @extend .l-25;
             width:calc(50vw - 20px);
@@ -23,16 +23,16 @@
             transform:translate3d(-20%, 0, 0) scale3d(1, 0.5, 1);
             transition:transform .2s $cubic345, opacity .2s $cubic345;
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .t0;
             @extend .l0;
             @extend .w100p;
             @extend .h100p;
         }
-        .d-tablet.r-landscape & {
+        html.d-tablet.r-landscape & {
             width:calc(70vw - 20px);
         }
-        .d-tablet.r-portrait & {
+        html.d-tablet.r-portrait & {
             width:calc(100vw - 50px);
         }
         &__navbar {
@@ -92,7 +92,7 @@
                     }
                 }
             }
-            .d-phone & {
+            html.d-phone & {
                 transform:translateY(-4px);
             }
         }

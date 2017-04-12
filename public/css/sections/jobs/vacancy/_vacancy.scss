@@ -1,7 +1,7 @@
 .vacancy {
     padding-bottom:42px;
 
-    .d-phone & {
+    html.d-phone & {
         @extend .pb70;
     }
     .title {
@@ -21,7 +21,7 @@
         @extend .borderRadius-l;
         @include boxShadow-3d($blueBright);
 
-        .d-phone & {
+        html.d-phone & {
             @extend .w100v;
             @extend .mlr--mobile;
             @extend .plr0;
@@ -39,7 +39,7 @@
             @extend .xs-ptb-m;
             @extend .vAlign-top;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .pos-rel;
                 @extend .display-block;
                 @extend .w100p;
@@ -115,7 +115,7 @@
                 @extend .fontSize-18;
                 @extend .fontWeight-bold;
 
-                .d-phone & {
+                html.d-phone & {
                     font-size:22px;
                     @extend .letterSpacing-0;
                 }

@@ -29,7 +29,7 @@
         <div class="row">
             <div class="col-md-24 { app.device.isPhone ? 'flex-centered' : 'text-right' }">
                 <button onClick={ onCancel } onUpdate="none" class="btn btn-{ app.device.isPhone ? 'l2 h55' : 'xl' } cancel mr-xs xs-plr-m">Отменить</button>
-                <button onClick={ onSave } onUpdate="none" class="btn btn-{ app.device.isPhone ? 'l2 h55' : 'xl' } success">Сохранить</button>
+                <button name="btnSave" onClick={ onSave } onUpdate="none" class="btn btn-{ app.device.isPhone ? 'l2 h55' : 'xl' } success">Сохранить</button>
             </div>
         </div>
     </div>
@@ -37,6 +37,8 @@
 <script>
 
     var $ = this;
+
+    $.btnSave = $$($.btnSave);
 
     $.active = $store.resume.select("sections").get({"name": "coverletter"}).active;
 
@@ -51,10 +53,31 @@
     };
 
     $.onSave = function(){
-        $store.resume.select("coverletter").set($.data.get());
-        $store.resume.select("sections", {"name": "coverletter"}).set("active", $.active);
-        if ($Resume.sections.coverletter) $Resume.sections.coverletter.update();
-        $Menu.hide();
+        $.btnSave.addClass("btn-loading");
+        setTimeout(function(){
+            $store.resume.select("coverletter").set($.data.get());
+            $store.resume.select("sections", {"name": "coverletter"}).set("active", $.active);
+            app.request("setResume", {
+                data: {
+                    _id: $store.resume.get("_id"),
+                    coverletter: $store.resume.get("coverletter"),
+                    sections: $store.resume.get("sections")
+                }
+            }, {
+                loader: false
+            })
+            .then(function(){
+                $afterlag.run(function(){
+                    $.btnSave.removeClass("btn-loading");
+                    $Menu.hide();
+                }, {
+                    iterations: 2
+                });
+            },
+            function(){
+                $.btnSave.removeClass("btn-loading");
+            });
+        }, 5);
     };
 
     $.onCancel = function(){

@@ -2,13 +2,13 @@
 
     <div onClick={ changeFont } onUpdate="none" class="control__fonts__item control__fonts__item--active fontFamily-{ $State.get('font') }">Aa</div>
     <div class="control__fonts__items">
-        <div onClick={ onSelect } onUpdate="none" each={ item in $store.fonts.get() } no-reorder class="control__fonts__item fontFamily-{ item }">Aa</div>
+        <div onClick={ onSelect } onUpdate="none" each={ item in $store.fonts.getItems() } no-reorder class="control__fonts__item fontFamily-{ item._id }">Aa</div>
     </div>
 
 <script>
 
     this.onSelect = function(){
-        this.onChange(this.item);
+        this.onChange(this.item._id);
     };
 
     this.onChange = function(font){
@@ -17,14 +17,14 @@
 
     this.changeFont = function(){
         if (app.device.isMobile){
-            var items = $store.fonts.get(),
-                counts = items.length - 1,
-                index = _.indexOf(items, $State.get('font')),
-                i = index + 1;
+            var item = $store.fonts
+                .select({'_id': $State.get('font')})
+                .right();
 
-            if (i > counts) i = 0;
+            if (!item) item = $store.fonts.get(0);
+            else item = item.get()
 
-            this.onChange(items[i]);
+            this.onChange(item._id);
         }
     };
 

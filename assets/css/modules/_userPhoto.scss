@@ -7,7 +7,7 @@
     @extend .userSelect-none;
     @extend .overflow-hidden;
 
-    .d-tablet & {
+    html.d-tablet & {
         width:200px;
         height:200px;
     }
@@ -24,7 +24,7 @@
         @extend .bg-cover;
         transition:opacity 0.1s ease;
     }
-    .m-no-touch &:hover {
+    html.m-no-touch &:hover {
         .user__photo__image {
             @extend .opacity-85;
         }

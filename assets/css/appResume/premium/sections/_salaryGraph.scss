@@ -7,7 +7,7 @@
     @extend .bg-white;
     @extend .zIndex-8;
 
-    .d-no-phone & {
+    html.d-no-phone & {
         &.section-hidden {
             transition:transform .5s $cubic40, visibility 0s .5s;
 
@@ -16,10 +16,10 @@
             }
         }
     }
-    .d-tablet.r-landscape & {
+    html.d-tablet.r-landscape & {
         width:680px;
     }
-    .d-phone #app[demo="true"][data-mode="view"] &:hover {
+    html.d-phone #app[demo="true"][data-mode="view"] &:hover {
         .salary-graph-title-front {
             @extend .opacity-0;
         }
@@ -27,8 +27,8 @@
             @extend .opacity-100;
         }
     }
-    .d-phone &,
-    .d-tablet.r-portrait & {
+    html.d-phone &,
+    html.d-tablet.r-portrait & {
         @extend .w100p;
     }
     &-title {
@@ -38,13 +38,13 @@
         @extend .w60p;
         @extend .f-primary;
 
-        .d-no-phone & {
+        html.d-no-phone & {
             @extend .fontSize-22;
         }
-        .d-tablet.r-portrait & {
+        html.d-tablet.r-portrait & {
             @extend .ml-l;
         }
-        .d-phone & {
+        html.d-phone & {
             @extend .fontSize-18;
         }
         &-front,
@@ -71,7 +71,7 @@
         height:calc((100vh - 140px) / 6);
         border-bottom:2px dashed $smokeLight;
 
-        .d-tablet.r-portrait & {
+        html.d-tablet.r-portrait & {
             height:calc((100vh - 180px) / 6);
         }
         &:nth-child(1),
@@ -99,7 +99,7 @@
             @extend .text-uppercase;
             @extend .nowrap;
 
-            .d-tablet.r-portrait & {
+            html.d-tablet.r-portrait & {
                 @extend .fontSize-18;
             }
         }
@@ -112,10 +112,10 @@
             @extend .pl-l;
             @extend .h100p;
 
-            .d-tablet & {
+            html.d-tablet & {
                 padding-left:30px;
             }
-            .d-tablet.r-portrait & {
+            html.d-tablet.r-portrait & {
                 font-size:25px;
             }
             span {
@@ -132,7 +132,7 @@
                 &-color {
                     @extend .fill-gray;
                 }
-                .d-tablet.r-portrait & {
+                html.d-tablet.r-portrait & {
                     width:27px;
                     height:27px;
                 }
@@ -149,7 +149,7 @@
                 border-left:10px solid transparent;
                 @extend .mt--xxs;
 
-                .d-tablet.r-portrait & {
+                html.d-tablet.r-portrait & {
                     border-bottom-width:17px;
                     border-right-width:14px;
                     border-left-width:14px;
@@ -175,7 +175,7 @@
         @extend .cursor-default;
         will-change:transform, background-color;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .t-90;
             @extend .r-m;
             @extend .w50;
@@ -188,7 +188,7 @@
             &-color {
                 @extend .fill-white;
             }
-            .d-phone & {
+            html.d-phone & {
                 width:36px;
                 height:36px;
             }
@@ -201,7 +201,7 @@
             font-size:36px;
             transform:translateY(2px);
 
-            .d-phone & {
+            html.d-phone & {
                 font-size:33px;
             }
         }

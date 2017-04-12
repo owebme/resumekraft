@@ -9,7 +9,7 @@
             @extend .c-primary;
             background-color:rgba($white,.22);
         }
-        .d-mobile & {
+        html.d-mobile & {
             height:54px;
             font-size:17px;
             line-height:52px;
@@ -47,7 +47,7 @@
                 width:20px;
                 height:20px;
             }
-            .d-mobile & {
+            html.d-mobile & {
                 padding-left:35px;
                 padding-right:35px;
             }

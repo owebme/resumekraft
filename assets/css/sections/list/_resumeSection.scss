@@ -81,7 +81,7 @@
         @extend .text-center;
         @extend .pt50;
 
-        .d-tablet & {
+        html.d-tablet & {
             @extend .pt70;
         }
     }
@@ -134,7 +134,7 @@
                 padding-top:4px;
                 box-shadow:0 12px 20px -10px rgba($grayDark,.28), 0 4px 20px 0px rgba($grayDark,.12), 0 7px 8px -5px rgba($grayDark,.2);
 
-                .m-no-touch &:hover {
+                html.m-no-touch &:hover {
                     @extend .bg-blackLight;
 
                     path, rect, polygon, circle {
@@ -294,7 +294,7 @@
     }
 }
 @media screen and (min-height: 640px){
-    .d-no-mobile {
+    html.d-no-mobile {
         .resume__section {
             &__template {
                 display:block;

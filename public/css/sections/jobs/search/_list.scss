@@ -11,7 +11,7 @@
         @extend .xs-plr0;
         border-bottom:1px solid $smokeLight;
 
-        .d-phone & {
+        html.d-phone & {
             @extend .borderColor-smokeDarken;
             @extend .borderStyle-dashed;
         }
@@ -26,7 +26,7 @@
             @extend .boxShadow-raise;
             transition:transform 0.3s $cubic68, opacity 0.3s $cubic68;
         }
-        .m-no-touch &:hover {
+        html.m-no-touch &:hover {
             &:before {
                 @extend .opacity-100;
                 @extend .scale-100;
@@ -36,7 +36,7 @@
                 @extend .pointerEvents-all;
             }
         }
-        .d-mobile & {
+        html.d-mobile & {
             .jobs__list__item__buttons {
                 @extend .opacity-100;
                 @extend .pointerEvents-all;
@@ -45,7 +45,7 @@
         &__content {
             @extend .pos-rel;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .w-mobile;
                 @extend .m0-auto;
             }
@@ -62,10 +62,10 @@
             .d-no-touch &:hover {
                 @extend .transition-default;
             }
-            .d-tablet & {
+            html.d-tablet & {
                 @extend .mb0;
             }
-            .d-phone & {
+            html.d-phone & {
                 @extend .fontSize-22;
                 line-height:26px;
                 margin-bottom:2px;
@@ -74,8 +74,8 @@
             &:visited {
                 @extend .c-violet;
             }
-            .m-no-touch &:hover,
-            .m-no-touch &:visited:hover {
+            html.m-no-touch &:hover,
+            html.m-no-touch &:visited:hover {
                 @extend .c-green;
             }
         }
@@ -83,7 +83,7 @@
             @extend .c-grayDarken;
             margin:1px 0 2px;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .fontFamily-roboto;
                 @extend .fontWeight-5;
                 @extend .fontSize-20;
@@ -100,10 +100,10 @@
             @extend .fontSize-14;
             line-height:19px;
 
-            .d-tablet & {
+            html.d-tablet & {
                 line-height:21px;
             }
-            .d-phone & {
+            html.d-phone & {
                 @extend .fontSize-16;
                 line-height:24px;
             }
@@ -138,7 +138,7 @@
                 @extend .maxW-75p;
                 padding-right:19px;
 
-                .d-phone & {
+                html.d-phone & {
                     @extend .maxW-100p;
                 }
                 &[data-trusted="true"]{
@@ -159,7 +159,7 @@
             @extend .c-gray;
             margin-top:1px;
 
-            .d-phone & {
+            html.d-phone & {
                 @extend .maxW-100p;
             }
             &__city {
@@ -179,7 +179,7 @@
             @extend .pointerEvents-none;
             @extend .transition-default;
 
-            .d-phone & {
+            html.d-phone & {
                 top:-9px;
                 right:-9px;
                 @extend .b-auto;
@@ -193,7 +193,7 @@
                 transform-origin:50% 200%;
                 margin-right:7px;
 
-                .d-tablet & {
+                html.d-tablet & {
                     margin-bottom:1px;
                 }
             }
@@ -201,13 +201,13 @@
                 margin-right:9px;
             }
             .icon-like {
-                .d-phone & {
+                html.d-phone & {
                     @extend .opacity-85;
                     @extend .mr0;
                 }
             }
             .icon-like-fill {
-                .d-phone & {
+                html.d-phone & {
                     @extend .pos-rel;
                     @extend .display-block;
                     @extend .cursor-pointer;
@@ -217,7 +217,7 @@
                 }
             }
             .btn-default {
-                .d-phone & {
+                html.d-phone & {
                     @extend .display-none;
                 }
             }

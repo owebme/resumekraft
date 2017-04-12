@@ -1,7 +1,7 @@
 .jobs {
     screen-favorites {
         .section__content {
-            .d-phone & {
+            html.d-phone & {
                 padding-top:54px;
             }
         }
@@ -72,7 +72,7 @@
         @extend .m0-auto;
         background-image:url(/assets/images/like_bg.png);
 
-        .d-no-phone & {
+        html.d-no-phone & {
             width:112px;
             height:122px;
         }
@@ -85,7 +85,7 @@
         @extend .mb30;
         @extend .letterSpacing--xs;
 
-        .d-no-phone & {
+        html.d-no-phone & {
             @extend .fontSize-18;
             @extend .mb55;
         }

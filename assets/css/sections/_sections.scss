@@ -333,10 +333,10 @@
 	            @extend .pb70;
 	            @extend .xs-pb-l;
 
-	            .d-no-phone & {
+	            html.d-no-phone & {
 	                @extend .plr-l;
 	            }
-	            .d-phone & {
+	            html.d-phone & {
 	                @extend .pl25;
 	                @extend .pr25;
 	            }

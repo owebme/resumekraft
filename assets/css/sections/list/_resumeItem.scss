@@ -12,12 +12,12 @@
     will-change:box-shadow, transform;
     transition:box-shadow .4s, transform .4s;
 
-    .d-tablet & {
+    html.d-tablet & {
         @extend .ml25;
         @extend .mr25;
         @extend .mb0;
     }
-    .m-no-touch &:hover {
+    html.m-no-touch &:hover {
         // box-shadow:0 5px 40px rgba(0,0,0,.16);
         // box-shadow:0 20px 40px rgba(0,0,0,.16);
         box-shadow:0 20px 25px rgba(0,0,0,.15);
@@ -31,7 +31,7 @@
         @extend .cursor-pointer;
         font-size:26px;
 
-        .m-no-touch &:hover:before {
+        html.m-no-touch &:hover:before {
             animation:spinner 0.6s;
         }
         &:before {

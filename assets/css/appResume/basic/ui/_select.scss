@@ -11,7 +11,7 @@
         &[update="currency"].short select {
             font-size:27px;
 
-            .d-mobile & {
+            html.d-mobile & {
                 @extend .fontFamily-roboto;
             }
         }

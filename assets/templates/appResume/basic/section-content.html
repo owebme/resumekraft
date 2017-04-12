@@ -16,9 +16,9 @@
 
     <resume-control-menu></resume-control-menu>
 
-    <resume-button-save section={ sections.finish }></resume-button-save>
+    <resume-control-sidebar if={ app.device.isMobile && app.device.isTablet }></resume-control-sidebar>
 
-    <resume-settings></resume-settings>
+    <resume-button-save section={ sections.finish }></resume-button-save>
 
     <text-edit if={ !app.device.isPhone }></text-edit>
 
@@ -33,6 +33,7 @@
         menu: $.tags["resume-control-menu"],
         steps: $.tags["resume-control-step"],
         buttons: $.tags["resume-control-buttons"],
+        sidebar: $.tags["resume-control-sidebar"],
         percentage: $.tags["resume-control-percentage"],
         settings: $.tags["resume-settings"],
         textEdit: $.tags["text-edit"],
@@ -95,10 +96,22 @@
         }, app.config.resume.free.autoSave.interval * 1000);
     };
 
+    $.change = {
+        lang: function(){
+            $resume.select('lang')
+            .set($resume.get('lang') === "en" ? "ru" : "en");
+        }
+    };
+
     $.open = {
         menu: function(){
-            if (app.device.isMobile){
+            if (app.device.isPhone){
                 $.sections.menu.show();
+            }
+        },
+        sidebar: function(){
+            if (app.device.isMobile){
+                $.sections.sidebar.show();
             }
         },
         preview: function(){

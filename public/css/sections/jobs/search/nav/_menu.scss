@@ -10,7 +10,7 @@
             @extend .flex-centered;
             @extend .mr-l;
 
-            .m-no-touch &:hover {
+            html.m-no-touch &:hover {
                 @extend .c-blueBright;
 
                 &:before {
@@ -47,7 +47,7 @@
                 }
             }
         }
-        .m-no-touch &:hover {
+        html.m-no-touch &:hover {
             .jobs__search__nav__menu__item {
                 &[data-active="true"]{
                     &:before {

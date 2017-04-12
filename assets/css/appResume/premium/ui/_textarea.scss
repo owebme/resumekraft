@@ -5,11 +5,11 @@
             max-height:330px;
             box-shadow:0 0 0 2px $white;
 
-            .d-no-phone & {
+            html.d-no-phone & {
                 @extend .pl25;
                 @extend .pr25;
             }
-            .d-phone & {
+            html.d-phone & {
                 padding-top:8px;
                 padding-bottom:10px;
             }

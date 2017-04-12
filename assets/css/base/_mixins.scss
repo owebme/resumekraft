@@ -45,8 +45,8 @@
     }
 }
 @mixin perspective($value: false) {
-    .d-no-safari &,
-    .d-phone.d-no-ios & {
+    html.d-no-safari &,
+    html.d-phone.d-no-ios & {
         @if $value {
             @if $value == 500 {
                 @extend .perspective-500;

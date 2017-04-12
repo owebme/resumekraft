@@ -1,0 +1,41 @@
+<resume-control-sidebar class="sidebar__control section section-hidden" data-short="true" data-pos="right" data-open={ active }>
+
+    <div onClick={ hide } onUpdate="none" class="sidebar__control__item sidebar__control__close"></div>
+    <div onClick={ parent.open.preview } onUpdate="none" class="sidebar__control__item">
+        <icon-eye size="m" color="white"></icon-eye>
+    </div>
+    <div onClick={ parent.open.photoUpload } onUpdate="none" class="sidebar__control__item">
+        <icon-camera size="m" color="white"></icon-camera>
+    </div>
+    <div onClick={ parent.open.design.free } onUpdate="none" class="sidebar__control__item">
+        <icon-design size="m" color="white"></icon-design>
+    </div>
+    <div onClick={ parent.open.print } onUpdate="none" class="sidebar__control__item">
+        <icon-print size="m" color="white"></icon-print>
+    </div>
+    <div onClick={ parent.get.pdf } onUpdate="none" class="sidebar__control__item">
+        <icon-pdf size="m" color="white"></icon-pdf>
+    </div>
+    <div onClick={ parent.change.lang } class="sidebar__control__item" data-item="lang">
+        { $resume.get('lang') }
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.show = function(){
+        $.update({
+            active: true
+        })
+    }
+
+    $.hide = function(){
+        $.update({
+            active: false
+        })
+    }
+
+</script>
+
+</resume-control-sidebar>

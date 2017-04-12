@@ -10,11 +10,11 @@
         @extend .h85v;
         max-height:620px;
 
-        .d-tablet & {
+        html.d-tablet & {
             @extend .h80v;
         }
     }
-    .d-tablet & {
+    html.d-tablet & {
         @extend .mt-s;
     }
     &__list {
@@ -29,7 +29,7 @@
             transform:translateX(1px);
             @extend .w2px;
 
-            .m-no-touch &:hover {
+            html.m-no-touch &:hover {
                 @extend .w4px;
             }
         }
@@ -55,11 +55,11 @@
             @extend .transition-default;
             border-bottom:1px solid $smokeLight;
 
-            .d-phone & {
+            html.d-phone & {
                 padding-right:30px;
                 padding-left:6px;
             }
-            .d-no-phone &:first-child {
+            html.d-no-phone &:first-child {
                 height:135px;
                 @extend .pt30;
 
@@ -67,7 +67,7 @@
                     @extend .t-m;
                 }
             }
-            .m-no-touch &:active {
+            html.m-no-touch &:active {
                 background-color:rgba($blue,.1);
 
                 .inbox__list__item__icon {
@@ -87,7 +87,7 @@
                 @extend .willChange-transform;
                 @extend .transition-default;
 
-                .d-phone & {
+                html.d-phone & {
                     width:48px;
                     height:48px;
                 }
@@ -96,7 +96,7 @@
                 width:calc(100% - 50px);
                 @extend .pl-s;
 
-                .d-phone & {
+                html.d-phone & {
                     width:calc(100% - 65px);
                 }
             }
@@ -114,7 +114,7 @@
                 @extend .text-truncate;
                 @extend .pr-m;
 
-                .d-phone & {
+                html.d-phone & {
                     @extend .fontSize-20;
                     padding-bottom:2px;
                 }
@@ -124,7 +124,7 @@
                 @extend .lineHeight-s;
                 @include textEllipsis(100%, 70px, 3);
 
-                .d-phone & {
+                html.d-phone & {
                     line-height:22px;
                     @extend .fontFamily-helvetica;
                     @extend .c-gray;
@@ -141,13 +141,13 @@
                     @extend .bg-greenLight;
                     @extend .borderRadius-circle;
 
-                    .d-phone & {
+                    html.d-phone & {
                         @extend .w10;
                         @extend .h10;
                     }
                 }
             }
-            .d-no-phone &[data-active="true"]{
+            html.d-no-phone &[data-active="true"]{
                 background-color:rgba($blue,.07);
                 @extend .pointerEvents-none;
 
@@ -155,7 +155,7 @@
                     @extend .c-blue;
                 }
             }
-            .m-no-touch &:hover {
+            html.m-no-touch &:hover {
                 background-color:rgba($blue,.07);
             }
         }
@@ -163,7 +163,7 @@
     &__content {
         @extend .display-block;
 
-        .d-no-phone & {
+        html.d-no-phone & {
             @extend .pos-rel;
             @extend .w100p;
             @extend .c-blackLight;
@@ -187,7 +187,7 @@
             }
         }
         &__scroll {
-            .d-no-phone & {
+            html.d-no-phone & {
                 @extend .willChange-transform;
                 @extend .pt70;
                 @extend .pl30;
@@ -200,7 +200,7 @@
             @extend .c-gray;
             @extend .zIndex-1;
 
-            .d-no-phone & {
+            html.d-no-phone & {
                 @extend .pos-abs;
                 @extend .t-30;
                 @extend .r-l;
@@ -231,7 +231,7 @@
             @extend .text-uppercase;
             border-bottom:1px solid $smokeDark;
 
-            .d-phone & {
+            html.d-phone & {
                 @include flex("row", "space-between", "flex-start");
                 @extend .nowrap;
             }
@@ -239,10 +239,10 @@
         &__email {
             @extend .transition-default;
 
-            .m-no-touch &:hover {
+            html.m-no-touch &:hover {
                 @extend .c-blueLight;
             }
-            .d-phone & {
+            html.d-phone & {
                 @extend .c-blueLight;
                 @extend .text-truncate;
                 @extend .maxW-60p;

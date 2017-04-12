@@ -61,8 +61,9 @@
         $scope.attr("data-hidden", false);
     };
 
-    $.on("unmount", function(){
+    $.on("before-unmount", function(){
         $scope.off();
+        $.el.destroy();
         app.$dom.document.off("keydown.marquee-tab");
     });
 
