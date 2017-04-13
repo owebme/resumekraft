@@ -240,7 +240,7 @@
                     height:550px;
 
                     html.m-no-touch &:hover,
-                    .m-touch & {
+                    html.m-touch & {
                         .plan__premium__item__image {
                             transition:opacity 0.4s $cubic2501 0.25s, transform 0.4s $cubic2501 0.25s;
 

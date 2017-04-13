@@ -208,7 +208,7 @@ module.exports = function(url){
 						"accountId": req.accountId
 					},{
 						$set: {
-							"photo": pathImage
+							"commons.photo": pathImage
 						}
 					});
                     res.statusCode = 200;

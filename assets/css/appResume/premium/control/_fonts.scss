@@ -63,7 +63,7 @@
         @extend .t0;
         right:90px;
 
-        .m-touch & {
+        html.m-touch & {
             @extend .display-none;
         }
     }

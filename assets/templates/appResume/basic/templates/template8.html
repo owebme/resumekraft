@@ -51,7 +51,7 @@
 				<h3>{ $i18n("resume.basic.template.About me") }</h3>
 				<div class="preline">{ $resume.get('about') }</div>
 			</div>
-			<div class="t-container t-container-lang">
+			<div if={ $resume.get('languages', 'items').length } class="t-container t-container-lang">
 				<h3>{ $i18n("resume.basic.template.Languages") }</h3>
 				<virtual each={ lang, i in $resume.get('languages', 'items') } no-reorder>
 					<div if={ lang.title == "native" } class="t-container-item">
@@ -95,7 +95,7 @@
 				<div each={ job, i in $resume.take.jobs.items() } no-reorder class="t-container-item">
 					<div class="t-container-dates">
 						<div class="t-container-dates-year">{ job.from.year }-<span if={ job.last }>NOW</span><span if={ !job.last }>{ job.to.year }</span></div>
-						<div class="t-container-dates-title">{ job.city }</div>
+						<div if={ job.city } class="t-container-dates-title">{ job.city }</div>
 					</div>
 					<div class="t-container-desc">
 						<div class="t-container-desc-title">{ job.title }</div>

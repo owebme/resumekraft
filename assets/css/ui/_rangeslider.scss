@@ -12,7 +12,7 @@
         @extend .bg-blue;
         @extend .cursor-pointer;
 
-        .m-touch & {
+        html.m-touch & {
             &:before {
                 @extend .content-empty;
                 @include abs();

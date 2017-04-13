@@ -162,9 +162,19 @@
         },
         {
             pos: "right",
+            title: "Создать премиум резюме",
+            callback: function(){
+                $store.data.onCreate({
+                    plan: "premium"
+                });
+                app.metrika.set("master.createPremium", true);
+            }
+        },
+        {
+            pos: "right",
             title: "Создать резюме на английском",
             callback: function(){
-                $store.data.onCreate("en");
+                $store.data.onSelect("en");
                 app.metrika.set("master.createEng", true);
             }
         },

@@ -72,7 +72,7 @@
 			</div>
 			<div class="t-container-stroke"></div>
 		</div>
-		<div class="t-container t-container-lang">
+		<div if={ $resume.get('languages', 'items').length } class="t-container t-container-lang">
 			<div class="t-container-name">{ $i18n("resume.basic.template.Languages") }</div>
 			<div each={ lang, i in $resume.get('languages', 'items') } no-reorder class="t-container-item">
 				<div class="t-container-dates">
@@ -96,7 +96,7 @@
 					<div class="t-container-dates-year">
 						{ job.from.year }-<span if={ job.last }>NOW</span><span if={ !job.last }>{ job.to.year }</span>
 					</div>
-					<div class="t-container-dates-city">{ job.city }</div>
+					<div if={ job.city } class="t-container-dates-city">{ job.city }</div>
 				</div>
 				<div class="t-container-desc">
 					<div class="t-container-desc-length">

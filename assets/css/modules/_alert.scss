@@ -97,7 +97,7 @@
         html.d-phone & {
             @extend .fontSize-20;
         }
-        .m-touch & {
+        html.m-touch & {
             @extend .transition-none;
         }
         &:first-child {

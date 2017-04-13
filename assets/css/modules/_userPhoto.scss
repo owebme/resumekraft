@@ -8,8 +8,8 @@
     @extend .overflow-hidden;
 
     html.d-tablet & {
-        width:200px;
-        height:200px;
+        @extend .w200;
+        @extend .h200;
     }
     &:before {
         @include abs();
@@ -33,7 +33,7 @@
             @extend .opacity-85;
         }
     }
-    .m-touch &:not([data-place="true"]) {
+    html.m-touch &:not([data-place="true"]) {
         &:before {
             @extend .bg-steel;
             @extend .opacity-30;
@@ -51,8 +51,8 @@
         @extend .content-empty;
         @extend .display-block;
         @extend .pos-abs;
-        top:65%;
-        left:50%;
+        @extend .t65;
+        @extend .l50;
         margin:-64px 0 0 -66px;
         @include ui-icon("upload_white", 120px, 120px);
         transition:all 0.25s ease;
@@ -60,7 +60,7 @@
         @extend .zIndex-2;
     }
     &[data-place="true"] {
-        border:3px dashed rgba($blue,.8);
+        border:3px dashed rgba($gray,.8);
 
         .user__photo__text {
             @extend .display-block;

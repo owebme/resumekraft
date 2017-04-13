@@ -82,7 +82,7 @@
         top:0;
         right:70px;
 
-        .m-touch & {
+        html.m-touch & {
             @extend .display-none;
         }
     }

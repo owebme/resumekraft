@@ -86,7 +86,7 @@
 				</span>
 			</div>
 		</div>
-		<div class="t-container-string t-container-string-lang">
+		<div if={ $resume.get('languages', 'items').length } class="t-container-string t-container-string-lang">
 			<virtual each={ lang, i in $resume.get('languages', 'items') } no-reorder>
 				<div if={ lang.title == "native" } class="t-container-string-element mt-10">
 					<span class="cell cell-name">{ $i18n("resume.basic.template.Languages") }</span>
@@ -113,7 +113,7 @@
 				<span class="cell cell-name"></span>
 				<span class="cell cell-text">
 					<div><strong>{ job.title }</strong></div>
-					<div>{ job.city }</div>
+					<div if={ job.city }>{ job.city }</div>
 					<div><strong class="text-blue">{ job.post }</strong></div>
 					<div><strong>{ $resume.take.jobs.period(job) }</strong></div>
 					<div class="mt5 preline">{ job.text }</div>

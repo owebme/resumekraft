@@ -30,37 +30,37 @@ module.exports = function(){
 		get: function(data){
 			return {
 				idhh: data.id,
-				lang: this._lang(data.resume_locale),
+				lang: this.lang(data.resume_locale),
 				post: data.title,
 				create: app.utils.moment().format(),
 				update: app.utils.moment().format(),
 				commons: {
-					photo: this._photo(data.photo),
+					photo: this.photo(data.photo),
 					name: null,
 					surname: null,
-                    gender: this._gender(data.gender),
-					birthday: this._birthday(data.birth_date),
-					citizenship: this._citizenship(data.citizenship),
-					businessTrip: this._businessTrip(data.business_trip_readiness),
-					relocation: this._relocation(data.relocation),
-					relocationCity: this._relocationCity(data.relocation),
-					travelTime: this._travelTime(data.travel_time),
-					specialization: this._specialization(data.specialization),
-					employments: this._employments(data.employments),
-					schedules: this._schedules(data.schedules),
-					contacts: this._contacts(data.area, data.metro)
+                    gender: this.gender(data.gender),
+					birthday: this.birthday(data.birth_date),
+					citizenship: this.citizenship(data.citizenship),
+					businessTrip: this.businessTrip(data.business_trip_readiness),
+					relocation: this.relocation(data.relocation),
+					relocationCity: this.relocationCity(data.relocation),
+					travelTime: this.travelTime(data.travel_time),
+					specialization: this.specialization(data.specialization),
+					employments: this.employments(data.employments),
+					schedules: this.schedules(data.schedules),
+					contacts: this.contacts(data.area, data.metro)
 				},
 				social: null,
-				salary: this._salary(data.salary),
+				salary: this.salary(data.salary),
 				tags: data.skill_set || null,
 				about: data.skills && data.skills.replace(/<.*?>/gi, "") || null,
-				education: this._education(data.education),
-				courses: this._courses(data.education),
-				languages: this._languages(data.language),
-				jobs: this._jobs(data.experience, data.total_experience)
+				education: this.education(data.education),
+				courses: this.courses(data.education),
+				languages: this.languages(data.language),
+				jobs: this.jobs(data.experience, data.total_experience)
 			}
 		},
-		_lang: function(value){
+		lang: function(value){
 			if (value && value.id){
 				return value.id.toLowerCase();
 			}
@@ -68,13 +68,13 @@ module.exports = function(){
 				return "ru";
 			}
 		},
-		_photo: function(value){
+		photo: function(value){
 			return value && (value["500"] || value["100"] || value["40"]) || null;
 		},
-        _gender: function(value){
+        gender: function(value){
 			return value && value.id || null;
 		},
-        _birthday: function(value){
+        birthday: function(value){
 			if (value && value.match(/\d+-\d+-\d+/)){
 	            return {
 	                day: parseInt(value.match(/(\d+)-(\d+)-(\d+)/)[3]),
@@ -92,7 +92,7 @@ module.exports = function(){
 	            }
 			}
         },
-		_citizenship: function(value){
+		citizenship: function(value){
 			if (value && !app.utils.isEmpty(value)){
 				return value[0].id;
 			}
@@ -100,7 +100,7 @@ module.exports = function(){
 				return null;
 			}
 		},
-		_specialization: function(value){
+		specialization: function(value){
             if (value && value.length){
     			return app.utils.map(value, function(item, i){
     				return {
@@ -115,13 +115,13 @@ module.exports = function(){
                 return null;
             }
 		},
-        _businessTrip: function(value){
+        businessTrip: function(value){
 			return value && value.id || null;
 		},
-        _relocation: function(value){
+        relocation: function(value){
             return value && value.type && value.type.id || null;
         },
-		_relocationCity: function(value){
+		relocationCity: function(value){
 			if (value && value.area && !app.utils.isEmpty(value.area)){
 				return app.utils.map(value.area, function(item, i){
 					return {
@@ -134,10 +134,10 @@ module.exports = function(){
 				return null
 			}
         },
-        _travelTime: function(value){
+        travelTime: function(value){
             return value && value.id || null;
         },
-        _employments: function(value){
+        employments: function(value){
             if (value && value.length){
                 return app.utils.pluck(value, "id");
             }
@@ -145,7 +145,7 @@ module.exports = function(){
                 return null;
             }
         },
-        _schedules: function(value){
+        schedules: function(value){
             if (value && value.length){
                 return app.utils.pluck(value, "id");
             }
@@ -153,7 +153,7 @@ module.exports = function(){
                 return null;
             }
         },
-		_contacts: function(area, metro){
+		contacts: function(area, metro){
 			return {
 				city: area && {
 					id: area.id,
@@ -170,17 +170,17 @@ module.exports = function(){
 				skype: null
 			}
 		},
-		_salary: function(value){
+		salary: function(value){
 			var amount = value && value.amount || null,
 				currency = "1";
 
 			if (amount){
-				if (resumeBuild._currencyList.indexOf(value.currency) > -1){
+				if (resumeBuild.currencyList.indexOf(value.currency) > -1){
 					if (value.currency == "USD") currency = "2";
 					if (value.currency == "EUR") currency = "3";
 				}
 				else {
-					var item = app.utils.findWhere(resumeBuild._currencyDictionary, {"code": value.currency});
+					var item = app.utils.findWhere(resumeBuild.currencyDictionary, {"code": value.currency});
 					amount *= item && item.rate && (1 / item.rate) || 1;
 				}
 			}
@@ -191,8 +191,8 @@ module.exports = function(){
 				active: amount ? true : false
 			}
 		},
-		_currencyList: ['USD', 'EUR', 'RUR'],
-		_education: function(value){
+		currencyList: ['USD', 'EUR', 'RUR'],
+		education: function(value){
 			if (value && value.primary && value.primary.length){
 				return {
 					title: null,
@@ -213,7 +213,7 @@ module.exports = function(){
 				return null;
 			}
 		},
-		_courses: function(value){
+		courses: function(value){
 			if (value && value.additional && value.additional.length){
 				return {
 					title: null,
@@ -232,7 +232,7 @@ module.exports = function(){
 				return null;
 			}
 		},
-		_languages: function(value){
+		languages: function(value){
 			if (value && value.length){
 				var items = [
 				    {
@@ -253,7 +253,7 @@ module.exports = function(){
 				    }
 				];
 				app.utils.each(value, function(item, i){
-					if (item.level.id == 'native' || resumeBuild._languagesList.indexOf(item.id) > -1){
+					if (item.level.id == 'native' || resumeBuild.languagesList.indexOf(item.id) > -1){
 						if (item.level.id == 'native'){
 							items[0] = {
 								title: item.level.id,
@@ -282,8 +282,8 @@ module.exports = function(){
 				return null;
 			}
 		},
-		_languagesList: ['rus', 'eng', 'deu', 'fra'],
-		_jobs: function(value, experience){
+		languagesList: ['rus', 'eng', 'deu', 'fra'],
+		jobs: function(value, experience){
 			if (value && value.length){
 				return {
 					title: null,
@@ -313,7 +313,7 @@ module.exports = function(){
 				return null;
 			}
 		},
-		_currencyDictionary: [{
+		currencyDictionary: [{
 	        "rate": 1.0,
 	        "code": "RUR",
 	        "abbr": "руб.",

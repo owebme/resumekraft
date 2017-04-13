@@ -61,7 +61,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="t-container t-container-lang">
+		<div if={ $resume.get('languages', 'items').length } class="t-container t-container-lang">
 			<div class="t-container-name"><i></i>{ $i18n("resume.basic.template.Languages") }</div>
 			<div each={ lang, i in $resume.get('languages', 'items') } no-reorder class="t-container-item">
 				<div class="t-container-dates">
@@ -87,7 +87,7 @@
 					<div class="t-container-dates-year">{ $store.month.getTitleById(job.from.month) } { job.from.year } &mdash;</div><br>
 					<div if={ job.last } class="t-container-dates-year">{ $i18n("resume.basic.template.Until Now") }</div><div if={ !job.last } class="t-container-dates-year">{ $store.month.getTitleById(job.to.month) } { job.to.year }</div><br>
 					<div class="t-container-dates-title">{ job.title }</div><br>
-					<div class="t-container-dates-name">{ job.city }</div>
+					<div if={ job.city } class="t-container-dates-name">{ job.city }</div>
 				</div>
 				<div class="t-container-desc">
 					<div class="t-container-desc-title">{ $resume.take.jobs.period(job, true) }</div>

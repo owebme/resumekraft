@@ -63,12 +63,21 @@ body#print .stamp {
     transition: transform .6s cubic-bezier(0.5, 0, 0, 1);
 }
 {% endif %}
-#upload-photo .icon {
+#upload-photo.place {
 	display:none !important;
 }
+.t-header-photo {
+	position: absolute;
+	width: 276px;
+	height: 276px;
+}
 .t-header-photo-image {
-	opacity:1 !important;
-	cursor:default;
+	width: 276px;
+	height: 276px;
+	background-repeat: top center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 50%;
 }
 .stamp {
 	display:block;

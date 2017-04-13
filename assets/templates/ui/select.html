@@ -15,6 +15,12 @@
         else {
             $.value = $.opts.value;
         }
+        if (!$.value && $.opts.items && $.opts.items[0]){
+            $.value = $.opts.items[0]._id || $.opts.items[0];
+            if ($.opts.update && $.opts.cursor){
+                $.opts.cursor.set($.opts.update, $.value);
+            }
+        }
         $.disable = $.opts.disable;
     });
 

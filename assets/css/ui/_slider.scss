@@ -78,7 +78,7 @@
         @extend .zIndex-1;
 
         html.m-no-touch &:hover,
-        .m-touch & {
+        html.m-touch & {
             background-color:rgba(#1F2D3D,.35);
         }
         .showSlides & {

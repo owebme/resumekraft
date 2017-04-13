@@ -2,7 +2,7 @@ module.exports = function() {
 
 	return function(req, res, next){
 
-		var login = req.body.login,
+		var login = req.body.login && req.body.login.toLowerCase(),
 			password = req.body.password,
 			location = {
 				country: req.body.country,

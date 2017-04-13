@@ -61,7 +61,7 @@
 					<div class="t-container-item { i % 2 ? '' : 'right' }">
 						<div class="t-container-dates">
 							<div class="t-container-dates-year">{ job.title }</div>
-							<div class="t-container-dates-title">{ job.city }</div>
+							<div if={ job.city } class="t-container-dates-title">{ job.city }</div>
 							<div class="t-container-dates-length">
 								{ $store.month.getTitleById(job.from.month) } { job.from.year } &mdash;
 								<virtual if={ job.last }>{ $i18n("resume.basic.template.Until Now") }</virtual>
@@ -85,12 +85,12 @@
 			<div id="t-column-right-border"></div>
 			<div id="t-column-right-corner"></div>
 			<div id="t-column-right-content">
-				<div if={ $resume.get('photo') } id="upload-photo" class="t-column-right-photo">
-					<div class="t-column-right-photo-image" style="background-image:url({ $resume.get('photo') })"></div>
+				<div if={ $resume.get('photo') } id="upload-photo" class="t-header-photo t-column-right-photo">
+					<div class="t-header-photo-image t-column-right-photo-image" style="background-image:url({ $resume.get('photo') })"></div>
 					<i class="icon"></i>
 					<div class="img-shadow"></div>
 				</div>
-				<div if={ !$resume.get('photo') } id="upload-photo" class="t-column-right-photo place">
+				<div if={ !$resume.get('photo') } id="upload-photo" class="t-header-photo t-column-right-photo place">
 					<i class="icon"></i>
 					<span>загрузить свою фотографию</span>
 				</div>
@@ -108,7 +108,7 @@
 						{ $resume.get('about') }
 					</div>
 				</div>
-				<div class="t-container t-container-lang">
+				<div if={ $resume.get('languages', 'items').length } class="t-container t-container-lang">
 					<div class="t-container-name">{ $i18n("resume.basic.template.Languages") }</div>
 					<virtual each={ lang, i in $resume.get('languages', 'items') }>
 						<div if={ lang.title == "native" } class="t-container-item">

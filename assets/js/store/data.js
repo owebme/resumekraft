@@ -18,45 +18,50 @@
                     });
                 });
             },
-            onCreate: function(lang){
+            onSelect: function(lang){
                 $Sections.resume.select.show({
                     plan: app.metrika.get("resume.select.default") || "free"
                 })
                 .then(function(data){
-                    if (data.plan == "free"){
-                        $Sections.resume.edit.show({
-                            lang: lang || "ru",
-                            template: data.template
-                        });
-                    }
-                    else if (data.plan == "premium"){
-                        if ($account.get("plan") != "premium"){
-                            $Sections.plan.show("premium");
-                        }
-                        else {
-                            var resume = $store.resume.prepare.premium(
-                                $resume.default.resume({
-                                    ACCOUNT_ID: $account.get("_id"),
-                                    plan: "premium",
-                                    lang: lang || "ru",
-                                    commons: $account.get("commons")
-                                })
-                            );
-                            app.request("addResume", {
-                                data: resume
-                            }, {
-                                loader: false
-                            })
-                            .then(function(data){
-                                if (data.id){
-                                    resume._id = data.id;
-                                    $store.data.push(resume);
-                                    $store.data.onEdit(data.id);
-                                }
-                            })
-                        }
-                    }
+                    $.onCreate(_.extend(data, {
+                        lang: lang
+                    }))
                 })
+            },
+            onCreate: function(data){
+                if (data.plan == "free"){
+                    $Sections.resume.edit.show({
+                        lang: data.lang || "ru",
+                        template: data.template
+                    });
+                }
+                else if (data.plan == "premium"){
+                    if ($account.get("plan") != "premium"){
+                        $Sections.plan.show("premium");
+                    }
+                    else {
+                        var resume = $store.resume.prepare.premium(
+                            $resume.default.resume({
+                                ACCOUNT_ID: $account.get("_id"),
+                                plan: "premium",
+                                lang: data.lang || "ru",
+                                commons: $account.get("commons")
+                            })
+                        );
+                        app.request("addResume", {
+                            data: resume
+                        }, {
+                            loader: false
+                        })
+                        .then(function(data){
+                            if (data.id){
+                                resume._id = data.id;
+                                $store.data.push(resume);
+                                $store.data.onEdit(data.id);
+                            }
+                        })
+                    }
+                }
             },
             onEdit: function(id){
                 var item = $store.data.get({"_id": id});

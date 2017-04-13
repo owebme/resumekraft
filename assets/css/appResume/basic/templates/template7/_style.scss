@@ -62,80 +62,8 @@
 }
 
 #t7 .t-header-photo {
-    position: absolute;
     top: 50px;
     right: 50px;
-    width: 276px;
-    height: 276px;
-    border-radius: 50%;
-    cursor: pointer;
-    overflow: hidden;
-}
-
-#t7 .t-header-photo-image {
-    width: 276px;
-    height: 276px;
-    background-repeat: top center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 50%;
-    transition: opacity 0.1s ease;
-}
-
-html.m-no-touch #t7 .t-header-photo:hover .t-header-photo-image {
-    opacity: 0.85;
-}
-
-#t7 .t-header-photo .icon,
-#t7 .t-header-photo span {
-    display: none;
-}
-
-#t7 .t-header-photo .icon {
-    display: block;
-    position: absolute;
-    top: 65%;
-    left: 50%;
-    margin: -64px 0 0 -66px;
-    width: 128px;
-    height: 128px;
-    background: url("/assets/images/ui/ui-upload_white.svg") no-repeat 0 0 / cover;
-    transition: all 0.25s ease;
-    opacity: 0;
-    z-index: 1;
-}
-
-html.m-no-touch #t7 .t-header-photo:hover .icon {
-    top: 50%;
-    opacity: 0.85;
-}
-
-#t7 .t-header-photo.place {
-    border: 3px dashed rgba(#265cdc,.8);
-}
-
-#t7 .t-header-photo.place span {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    margin-top: 50px;
-    color: #265cdc;
-    opacity: 0.8;
-    font: bold 16px/24px "Gotham", Helvetica;
-    padding: 0 30px;
-    text-align: center;
-    box-sizing: border-box;
-    text-transform: uppercase;
-}
-
-#t7 .t-header-photo.place .icon {
-    top: 50%;
-    margin-top: -90px;
-    background-image: url("/assets/images/ui/ui-upload.svg");
-    opacity: 0.85;
-    transition: none;
 }
 
 #t7 #t-container-wrapper {

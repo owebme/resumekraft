@@ -2,7 +2,7 @@ module.exports = function() {
 
 	return function(req, res, next){
 
-		var login = req.body.login,
+		var login = req.body.login && req.body.login.toLowerCase(),
 			password = req.body.password,
 			plan = req.body.plan,
 			location = {
@@ -77,8 +77,8 @@ module.exports = function() {
 				init: options.init,
 				commons: {
 					photo: null,
-					name: "",
-					surname: "",
+					name: null,
+					surname: null,
 					gender: "male",
 					birthday: {
 			            day: "1",
@@ -98,10 +98,10 @@ module.exports = function() {
 						city: null,
 						metro: null,
 						email: options.login,
-						phone: "",
+						phone: null,
 						primary: null,
-						site: "",
-						skype: ""
+						site: null,
+						skype: null
 			        }
 				},
 				history: {

@@ -53,7 +53,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="t-container t-container-lang">
+		<div if={ $resume.get('languages', 'items').length } class="t-container t-container-lang">
 			<div class="t-container-name">{ $i18n("resume.basic.template.Languages") }</div>
 			<div each={ lang, i in $resume.get('languages', 'items') } no-reorder class="t-container-item">
 				<div if={ lang.title == "native" } class="t-container-title">
@@ -87,7 +87,7 @@
 				</div>
 				<div class="t-container-title">
 					<span>{ job.title }</span>
-					<div class="t-container-city">— &nbsp;{ job.city }</div>
+					<div if={ job.city } class="t-container-city">— &nbsp;{ job.city }</div>
 				</div>
 				<div class="t-container-post">{ job.post }</div>
 				<div class="t-container-desc">

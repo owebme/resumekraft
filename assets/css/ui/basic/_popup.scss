@@ -35,6 +35,7 @@
         @extend .flex-row-left-center;
     }
     &__image {
+        @extend .pos-rel;
         @extend .flex-centered;
         width:37%;
         @extend .h100p;
@@ -56,6 +57,16 @@
         }
         img {
             @extend .maxW-100p;
+        }
+        &[data-corner="true"]{
+            &:after {
+                @extend .content-empty;
+                @extend .pos-tr;
+                @extend .w30;
+                @extend .h100p;
+                @extend .bg-white;
+                transform:translate3d(15px, 0, 0) rotate(10deg);
+            }
         }
     }
     &__content {

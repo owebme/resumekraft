@@ -31,7 +31,7 @@
             transition:all 0.25s $cubic215;
             box-shadow:inset 0 0 0 1px rgba($white,.5);
 
-            .m-touch & {
+            html.m-touch & {
                 @extend .transition-none;
             }
             &:after {
@@ -53,7 +53,7 @@
                 @extend .willChange-opacity;
                 transition:opacity 0.25s $cubic215;
 
-                .m-touch & {
+                html.m-touch & {
                     @extend .transition-none;
                 }
             }

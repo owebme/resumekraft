@@ -64,7 +64,7 @@ $sidebarNavbarHeight: 54px;
         box-shadow:0 2px 3px 1px rgba(#000,.2);
 
         .d-macOS &,
-        .m-touch & {
+        html.m-touch & {
             width:370px;
         }
     }
