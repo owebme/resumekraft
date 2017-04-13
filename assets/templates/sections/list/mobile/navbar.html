@@ -26,14 +26,7 @@
             $Sections.likes.section.show();
         },
         createResume: function(){
-            if (!app.metrika.get("offers.plan.show")){
-                $Sections.offers.plan.show();
-            }
-            else {
-                $Sections.resume.select.show({
-                    plan: app.metrika.get("resume.select.default")
-                });
-            }
+            $store.data.onSelect();
             app.metrika.set("resume.buttonNew", true);
         }
     };

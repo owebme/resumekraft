@@ -2,7 +2,11 @@ module.exports = function(){
 
     app.get('/', function(req, res) {
         var output = app.riot.render(app.tags("home", req.device), req.appClient);
-        res.render(req.device.type == "phone" ? 'index-mobile' : 'index', {content: output});
+        res.render(req.device.type == "phone" ? 'index-mobile' : 'index', {
+            content: output,
+            device: req.device.type,
+            isMobile: req.device.isMobile            
+        });
     });
 
     app.post('/login', app.controllers.auth.login);
@@ -14,6 +18,7 @@ module.exports = function(){
 
     app.get('/private/', app.checkAuth('/?signin'), function(req, res) {
         res.render('private', {
+            device: req.device.type,
             isMobile: req.device.isMobile
         });
     });
@@ -29,7 +34,9 @@ module.exports = function(){
             var output = app.riot.render(app.tags("premium", req.device), req.appClient);
             res.render(req.device.type == "phone" ? 'index-mobile' : 'index', {
                 title: app.config.get('title:premium'),
-                content: output
+                content: output,
+                device: req.device.type,
+                isMobile: req.device.isMobile
             });
         }
     });
@@ -55,7 +62,9 @@ module.exports = function(){
         res.render(req.device.type == "phone" ? 'index-mobile' : 'index', {
             title: app.config.get('title:jp-test'),
             section: "jp-test",
-            content: output
+            content: output,
+            device: req.device.type,
+            isMobile: req.device.isMobile
         });
     });
 

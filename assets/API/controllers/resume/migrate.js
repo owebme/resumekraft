@@ -20,6 +20,8 @@ module.exports = function(){
 	            resumes.push(resumesBuild.get(app.utils.findWhere(ids, {"id": item.uid}).ObjectId, item));
 	        })
 
+			app.db.collection('accounts').drop();
+			app.db.collection('resumes').drop();
 			app.db.collection('accounts').insert(accounts);
 			app.db.collection('resumes').insert(resumes);
 

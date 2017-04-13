@@ -43,13 +43,15 @@ body#print #wrapper {
 body#print .stamp {
 	display:none;
 }
+.template-resume {
+	min-height:1776px;
+}
 {% if !print %}
 #wrapper {
 	opacity:0;
     margin:3px auto 30px;
     width:1218px;
     max-width:100%;
-    min-height:1565px;
     background:#fff;
     box-shadow:0 0 62px rgba(0, 0, 0, 0.08), 0 5px 25px rgba(0, 0, 0, 0.12);
 	-webkit-transform:translateY(2000px);
@@ -70,6 +72,8 @@ body#print .stamp {
 	position: absolute;
 	width: 276px;
 	height: 276px;
+	border-radius: 50%;
+	cursor:default !important;
 }
 .t-header-photo-image {
 	width: 276px;

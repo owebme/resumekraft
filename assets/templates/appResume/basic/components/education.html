@@ -1,6 +1,6 @@
 <resume-screen-education class="screen" data-marquee={ opts.step }>
 
-    <div class="screen__content" data-empty={ true : !$resume.get("education") }>
+    <div class="screen__content" data-empty={ true : !$resume.get("education", "items") }>
 
         <div class="title">{ opts.section }</div>
 
@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-xs-24 col-sm-12 col-lg-10">
                     <span class="input-title">Уровень образования</span>
-                    <ui-select update="level" cursor={ $resume.select("education", "level") } items={ $store.education.getItems() } size="xl"></ui-select>
+                    <ui-select update="level" cursor={ $resume.select("education") } items={ $store.education.getItems() } size="xl"></ui-select>
                 </div>
             </div>
             <div class="pos-rel pb-l mb-xs xs-pb-m xs-mb0" each={ item, i in _.sortArray($resume.select("education", "items").get(), "year", "desc") } no-reorder>

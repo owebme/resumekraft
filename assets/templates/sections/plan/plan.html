@@ -4,7 +4,7 @@
         <div onClick={ close } class="button__close opacity-50" data-color="white"></div>
     </div>
 
-    <div name="popup" class="pos-centered perspective-1000" style="width:984px; height:636px">
+    <div name="popup" class="plan__table__wrapper">
         <div class="rows h100p bg-white borderRadius-xl text-left anim-group1 anim-bt-soft" duration-show="s" duration-hide="xs" delay-show="xs">
             <div class="row flex-row-center-stretch h100p">
                 <div class="col-md-16">
@@ -209,7 +209,7 @@
                     index: $item.index(),
                     name: plan,
                     width: parseInt($item.innerWidth()),
-                    left: parseInt($item.offset().left) - $.popup.offset().left - 47.5
+                    left: (parseInt($item.offset().left) - $.popup.offset().left - 47.5) - (app.sizes.width >= 1600 && app.sizes.width < 1900 ? 5 : app.sizes.width > 1900 ? 15 : 0)
                 }
             }
         });

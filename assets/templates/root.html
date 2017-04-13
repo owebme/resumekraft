@@ -15,6 +15,7 @@
     <section-tutorial></section-tutorial>
     <section-plan></section-plan>
     <section-loader></section-loader>
+    <section-loader-ajax if={ app.device.isMobile }></section-loader-ajax>
     <section-progress></section-progress>
     <photo-upload></photo-upload>
 
@@ -77,7 +78,7 @@
     });
 
     this.on("mount", function(){
-        if (!app.device.isMobile && !app.metrika.get("offers.welcome.show") && $Sections.offers && $Sections.offers.welcome){
+        if (!app.device.isMobile && !app.metrika.get("offers.welcome.hide") && !app.metrika.get("offers.welcome.success") && $Sections.offers && $Sections.offers.welcome){
             $Sections.offers.welcome.show();
         }
         else {
@@ -169,23 +170,30 @@
         if (app.config.changeStyles){
             app.plugins.styles.init({
                 elem: "#styles",
-                default: "normal",
                 screens: [
                     {
-                        title: "small",
-                        maxWidth: 360,
-                        path: "/assets/css/style.smallScreen.css"
+                        title: "phone",
+                        minWidth: 360,
+                        maxWidth: 767,
+                        reload: true
+                    },
+                    {
+                        title: "tablet",
+                        minWidth: 768,
+                        maxWidth: 1068,
+                        reload: true
                     },
                     {
                         title: "normal",
-                        minWidth: 360,
-                        maxWidth: 1680,
-                        path: "/assets/css/style.css"
+                        minWidth: 1069,
+                        maxWidth: 1441,
+                        path: "/assets/css/style.css?" + _.newId()
                     },
                     {
                         title: "large",
-                        minWidth: 1680,
-                        path: "/assets/css/style.largeScreen.css"
+                        minWidth: 1442,
+                        path: "/assets/css/style.largeScreen.css?" + _.newId(),
+                        refresh: true
                     }
                 ],
                 callback: function(screen){

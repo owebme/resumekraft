@@ -32,7 +32,8 @@
         var options = options || {};
         if (options.template === undefined) options.template = "1";
         if (options.template && options.template != $.num) $.change(options.template);
-        if (app.device.isPhone){
+        $.root.setAttribute("data-open", true);
+        if (app.device.isMobile){
             $LoaderAjax.show();
             $.template.one("updated", function(){
                 $LoaderAjax.hide();
@@ -46,9 +47,6 @@
         $.template.update();
         $["wrapper"].scrollTop = 0;
         $["content"].style.display = "block";
-        $afterlag.run(function(){
-            $.root.setAttribute("data-open", true);
-        });
         return new Promise(function(resolve, reject){
             $.resolve = resolve;
         });

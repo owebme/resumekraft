@@ -1,40 +1,42 @@
-<photo-upload class="oScreen zIndex-10" data-color="blue" data-open="{ active }" style="display:none">
+<photo-upload class="oScreen zIndex-10" data-show="modal" data-color="blue" data-open="false" style="display:none">
 
-    <div if={ !uploaded } class="pos-rel visible-sm visible-xs anim anim-fadeIn zIndex-1 { animated : active }" data-duration="s" delay-show="xs">
+    <div if={ !uploaded } class="pos-rel visible-sm visible-xs anim anim-fadeIn zIndex-2 { animated : active }" data-duration="s" delay-show="xs">
         <div onClick={ hide } onUpdate="none" class="button__close" data-color="white"></div>
     </div>
 
-    <div class="editable__photo__wrapper">
-        <div class="container anim anim-bt-ease { animated : active }" data-duration="m">
-            <div class="editable__photo__container col-sm-offset-0 col-sm-24 col-md-offset-1 col-md-22 col-lg-offset-4 col-lg-20" data-uploaded="{ uploaded }">
+    <div class="oScreen__content">
+        <div class="editable__photo__wrapper">
+            <div class="container anim anim-bt-ease { animated : active }" data-duration="m">
+                <div class="editable__photo__container col-sm-offset-0 col-sm-24 col-md-offset-1 col-md-22 col-lg-offset-4 col-lg-20" data-uploaded="{ uploaded }">
 
-                <div class="row image-editor">
-                    <div class="{ uploaded ? 'col-xs-24 col-sm-15 col-md-13 col-lg-12' : 'col-md-24 col-lg-20 text-center' }">
-                        <div name="imagePreviewEl" class="editable__photo cropit-preview { editable__photo--empty : !uploaded }">
-                            <input name="upload" type="file" class="editable__photo__input cropit-image-input { display-none : uploaded }">
-                            <div if={ app.device.isMobile } class="editable__photo__text">Выбрать файл</div>
-                            <div if={ !app.device.isMobile } class="editable__photo__text">
-                                Выберите файл
-                                <div class="editable__photo__text__or">или</div>
-                                перетащите его сюда
+                    <div class="row image-editor">
+                        <div class="{ uploaded ? 'col-xs-24 col-sm-15 col-md-13 col-lg-12' : 'col-md-24 col-lg-20 text-center' }">
+                            <div name="imagePreviewEl" class="editable__photo cropit-preview { editable__photo--empty : !uploaded }">
+                                <input name="upload" type="file" class="editable__photo__input cropit-image-input { display-none : uploaded }">
+                                <div if={ app.device.isMobile } class="editable__photo__text">Выбрать файл</div>
+                                <div if={ !app.device.isMobile } class="editable__photo__text">
+                                    Выберите файл
+                                    <div class="editable__photo__text__or">или</div>
+                                    перетащите его сюда
+                                </div>
+                            </div>
+                        </div>
+                        <div class="editable__photo__control col-xs-24 col-sm-9 col-md-10 col-lg-10 text-left { display-none : !uploaded }">
+                            <div class="pl-s pt-l sm-pl-m xs-p0">
+                                <button class="btn btn-m btn-white-hover btn-strong btn-upper btn-uploadImage mb-l hidden-xs">Другой файл...</button>
+                                <div class="c-white fontSize-24 fontFamily-futura mb-m">Масштабирование</div>
+                                <div class="mb-l">
+                                    <input type="range" class="editable__photo__slider cropit-image-zoom-input">
+                                </div>
+                                <div class="nowrap-xs nowrap-md">
+                                    <button onClick={ hide } onUpdate="none" class="btn btn-l btn-white-hover btn-strong btn-upper sm-mb-m" type="button">Отменить</button>
+                                    <button onClick={ onSave } onUpdate="none" class="btn btn-l btn-white-hover btn-strong btn-upper ml-xs sm-ml0" type="button">Сохранить</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="editable__photo__control col-xs-24 col-sm-9 col-md-10 col-lg-10 text-left { display-none : !uploaded }">
-                        <div class="pl-s pt-l sm-pl-m xs-p0">
-                            <button class="btn btn-m btn-white-hover btn-strong btn-upper btn-uploadImage mb-l hidden-xs">Другой файл...</button>
-                            <div class="c-white fontSize-24 fontFamily-futura mb-m">Масштабирование</div>
-                            <div class="mb-l">
-                                <input type="range" class="editable__photo__slider cropit-image-zoom-input">
-                            </div>
-                            <div class="nowrap-xs nowrap-md">
-                                <button onClick={ hide } onUpdate="none" class="btn btn-l btn-white-hover btn-strong btn-upper sm-mb-m" type="button">Отменить</button>
-                                <button onClick={ onSave } onUpdate="none" class="btn btn-l btn-white-hover btn-strong btn-upper ml-xs sm-ml0" type="button">Сохранить</button>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
-
             </div>
         </div>
     </div>
@@ -117,23 +119,26 @@
 
         if (options) $.init(options, true);
 
-        $.root.style.display = "block";
+        $.one("updated", function(){
+            $.root.style.display = "block";
 
-        $afterlag.run(function(){
-            $.update({
-                uploaded: false,
-                callback: callback ? callback : null
+            $afterlag.run(function(){
+                $.root.setAttribute("data-open", true);
             });
+
+            if (!app.device.isPhone){
+                $scope.one("click", function(e){
+                    if (e.target.tagName.toLowerCase() != "input"){
+                        $.hide();
+                    }
+                });
+            }
         });
 
-        if (!app.device.isPhone){
-            $scope.on("click", function(e){
-                if ($.uploaded) $scope.off("click");
-                else if (e.target.tagName.toLowerCase() != "input"){
-                    $.hide();
-                }
-            });
-        }
+        $.update({
+            uploaded: false,
+            callback: callback ? callback : null
+        });
     };
 
     $.onSave = function(e){
@@ -165,12 +170,13 @@
         $scope.off("click");
         $.upload.value = "";
 
-        $.update({
-            active: false
-        })
+        $.root.setAttribute("data-open", false);
+
         _.onEndTransition($.root, function(){
             $.root.style.display = "none";
         });
+
+        $.active = false;
     };
 
 </script>

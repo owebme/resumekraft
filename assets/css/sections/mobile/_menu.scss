@@ -38,6 +38,12 @@
                 @extend .pos-tl;
                 @extend .h100p;
                 @extend .w80;
+
+                &[data-item="lang"]{
+                    @extend .fontWeight-bold;
+                    @extend .fontSize-30;
+                    @extend .text-uppercase;
+                }
             }
             &__title {
                 @extend .pl-m;

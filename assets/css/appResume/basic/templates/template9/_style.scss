@@ -125,7 +125,7 @@
 #t9 #t-container-wrapper {
     position: relative;
     width: 100%;
-    min-height: 1500px;
+    min-height: 2000px;
     background: url("/assets/css/appResume/basic/templates/template9/img/bg.png") repeat;
     overflow: hidden;
 }
@@ -194,6 +194,7 @@
 }
 
 #t9 .t-column-right-photo {
+    position:relative;
     margin: 40px auto 0;
     border: 5px solid rgba(116, 163, 199, 0.5);
 }
@@ -206,6 +207,10 @@
     height: 274px;
     box-shadow: 0 0 21px rgba(31,35,37,.15) inset;
     border-radius: 50%;
+}
+
+#t9 .t-column-right-photo.place span {
+    box-sizing: border-box;
 }
 
 #t9 .t-container-about {

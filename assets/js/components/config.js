@@ -3,7 +3,7 @@ app.config = {
     api: '/private/api',
     request: function(){
         return {
-            loader: true,
+            loader: app.device.isMobile,
             notify: true
         }
     },
@@ -40,5 +40,5 @@ app.config = {
     share: {
         title: 'Создать крутое резюме и получить престижную работу'
     },
-    changeStyles: false
+    changeStyles: true
 };

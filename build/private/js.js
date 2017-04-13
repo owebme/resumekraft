@@ -175,6 +175,8 @@ module.exports = function(){
     gulp.task('private.app', function() {
     	return gulp.src(['assets/js/commons.js',
                 'assets/js/plugins.js',
+                'assets/js/components/tutorial/welcome.js',
+                'assets/js/components/tutorial/resume/free/interface.js',
                 'assets/js/store/*.js',
                 'assets/js/store/**/*.js'
             ])

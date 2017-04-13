@@ -15,7 +15,7 @@
         </div>
         <div class="resume__item__control__left">
             <div if={ opts.item.plan == "premium" } class="resume__item__likes" data-active={ opts.item.likes.length ? true : null }>
-                <div class="resume__item__likes__badge">{ opts.item.likes.length }</div>
+                <div class="resume__item__likes__badge" data-more={ opts.item.likes.length > 9 && opts.item.likes.length < 100 } data-moree={ opts.item.likes.length > 99 }>{ opts.item.likes.length }</div>
             </div>
             <div class="resume__item__lang">{ opts.item.lang }</div>
         </div>

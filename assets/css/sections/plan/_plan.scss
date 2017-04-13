@@ -1,3 +1,8 @@
+.plan__table__wrapper {
+    @extend .pos-centered;
+    width:984px;
+    height:636px;
+}
 .plan__list {
     @extend .pos-rel;
 

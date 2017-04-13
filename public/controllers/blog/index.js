@@ -96,7 +96,9 @@ module.exports = function(){
             var output = app.riot.render(app.tags("blog", req.device), data);
             res.render(req.device.type == "phone" ? 'index-mobile' : 'index', {
                 title: app.config.public.get('title:blog'),
-                content: output
+                content: output,
+                device: req.device.type,
+                isMobile: req.device.isMobile
             });
         }
     }

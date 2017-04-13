@@ -13,10 +13,10 @@
         @extend .btn-active;
         @include ui-icon("close_fill_white", 35px, 35px);
 
-        .d-xlargeScreen & {
-            @extend .w40;
-            @extend .h40;
-        }
+        // .d-xlargeScreen & {
+        //     @extend .w40;
+        //     @extend .h40;
+        // }
         &:hover {
             @extend .opacity-100;
         }

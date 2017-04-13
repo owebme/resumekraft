@@ -56,7 +56,7 @@ gulp.task('watch', function() {
 	gulp.watch([
 		'assets/css/style.scss',
 		'assets/css/**/*.scss'
-	], {debounceDelay: 1000}, gulp.parallel('private.css'));
+	], {debounceDelay: 1000}, gulp.series('private.css', gulp.parallel('private.css.largeScreen', 'private.css.smallScreen')));
 
 	gulp.watch([
 		'assets/css/**/templates/style.scss',
@@ -125,6 +125,6 @@ gulp.task('public', gulp.series(
 ));
 
 gulp.task('dev', gulp.series(
-	gulp.parallel('private.css', 'premium.css'),
+	gulp.parallel('private.css', 'private.css.largeScreen', 'private.css.smallScreen', 'premium.css'),
 	gulp.parallel('serve', 'watch')
 ));

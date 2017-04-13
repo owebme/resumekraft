@@ -17,7 +17,7 @@
             }
             &:after {
                 @extend .pos-tl;
-                @extend .h35p;
+                @extend .h40p;
                 transform:translate3d(-50%, 0, 0) rotate(-22deg);
             }
         }

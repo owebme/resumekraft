@@ -8,7 +8,7 @@
             Обращения
             <div class="btn-badge btn-badge-danger">{ $store.inbox.counterNewAll() }</div>
         </button>
-        <button if={ $account.get("plan") != "premium" } onClick={ open.plan } onUpdate="none" data-item="premium" class="btn btn-m btn-primary-hover">Перейти на PREMIUM</button>
+        <button if={ $account.get("plan") != "premium" } onClick={ open.plan } onUpdate="none" data-item="premium" class="btn btn-m btn-primary-hover">{ app.device.isMobile ? 'Сменить тариф' : 'Перейти на PREMIUM' }</button>
         <button onClick={ open.payment } data-item="payment" class="btn btn-m btn-primary">Баланс: { _.numberFormat($account.get('balance'), 1, ",", ",") } ₽</button>
         <a href="/logout" data-item="logout" class="btn btn-m btn-primary-hover">
             <svg class="btn-svg btn-svg-exit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26">

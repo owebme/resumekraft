@@ -486,7 +486,7 @@ app.plugins.marqueeStatic = function($frame, options){
 
 	// {fn} destroy marquee
 	marquee.destroy = function(){
-		marquee.disable();
+		if (marquee.disable) marquee.disable();
 		screens[marquee.index].$block.triggerHandler('fullHide');
 		$frame.removeData('marquee');
 		scroll.destroy();

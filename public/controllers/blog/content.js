@@ -50,7 +50,9 @@ module.exports = function(){
                 var output = app.riot.render(app.tags("blogContent", req.device), req.appClient);
                 res.render(req.device.type == "phone" ? 'index-mobile' : 'index', {
                     title: data.item.name,
-                    content: output
+                    content: output,
+                    device: req.device.type,
+                    isMobile: req.device.isMobile
                 });
             }
         });

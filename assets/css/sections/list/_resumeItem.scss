@@ -314,6 +314,7 @@
         }
     }
     &__photo {
+        @include accelerate(true);
         @extend .w60;
         @extend .h60;
         @extend .bg-cover;

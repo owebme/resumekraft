@@ -26,7 +26,7 @@ module.exports = function(){
     	return combiner(
     		gulp.src('assets/css/style.css'),
     		px2vw({
-    			width: 1680,
+    			width: 1440,
     			minPx: 2,
     			maxPx: 10000,
     			replace: true

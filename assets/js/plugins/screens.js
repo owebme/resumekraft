@@ -115,12 +115,6 @@
 
             $dom.window.on('resize.screens', function(){
                 _this.scope.scrollTop(0);
-
-                if (_this.options.static && state == "focus" && $focus){
-                    setTimeout(function(){
-                        centered(app.sizes.height / 1.3, 0);
-                    }, 150);
-                }
                 if (_this.options.resizeRefresh) resize.call(_this);
         	});
 
@@ -132,9 +126,21 @@
                         state = "focus";
 
                         centered(app.sizes.height / 2.5, 400);
+
+                        setTimeout(function(){
+                            centered(app.sizes.height / 2.5, 0);
+                        }, 300);
                     }
                     else {
                         state = "blur";
+                        setTimeout(function(){
+                            if (state == "focus"){
+                                centered(app.sizes.height / 2.5, 0);
+                            }
+                            else if (state == "blur"){
+                                resize.call(_this);
+                            }
+                        }, 500);
                     }
                     _this.scope.scrollTop(0);
                 });

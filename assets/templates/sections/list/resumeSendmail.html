@@ -16,7 +16,7 @@
                             <div class="mb-s fontSize-22">Укажите адрес получения резюме</div>
                             <input onKeydown={ onEnter } name="input" class="pointer-for-input input input-{ app.device.isPhone ? 'l' : 'xl' } input-white input-rounded mb-m text-center" placeholder="Введите e-mail" autocomplete="off">
                             <div class="mb-l text-left-xs xs-pl-l xs-mb-m xs-pb-xxs">
-                                <ui-checkbox commit={ onAttach } title="Прикрепить PDF файл к письму" color="white" size="xl" value={ attach }></ui-checkbox>
+                                <ui-checkbox commit={ onAttach } title="Прикрепить PDF файл { 'к письму' : !app.device.isPhone }" color="white" size="xl" value={ attach }></ui-checkbox>
                             </div>
                             <div onClick={ onSuccess } onUpdate="none" class="btn btn-xl2 c-blue btn-white-hover-success { btn-loading : loading }">Отправить</div>
                         </div>

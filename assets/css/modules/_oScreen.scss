@@ -176,11 +176,9 @@
         &__circuful {
             width:550px;
             height:550px;
+            @extend .ml--s;
 
-            html.d-tablet.r-landscape & {
-                width:480px;
-                height:480px;
-            }
+            html.d-tablet.r-landscape &,
             html.d-phone & {
                 width:480px;
                 height:480px;

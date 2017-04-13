@@ -16,6 +16,16 @@
             @extend .fontWeight-bold;
             font-size:25px;
             box-shadow:0 0 0 1px lighten($grayLighten,5%);
+
+            &[type="number"]{
+                @extend .boxShadow-none;
+                @extend .bg-none;
+                border:1px solid lighten($grayLighten,5%);
+
+                &:focus {
+                    @extend .borderColor-blueBright;
+                }
+            }
         }
     }
     .input-title {

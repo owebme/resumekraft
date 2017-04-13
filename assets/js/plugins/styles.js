@@ -12,8 +12,6 @@
 
             this.el = $(options.elem);
 
-            this.screen = options.default;
-
             this.screens = options.screens;
 
             this.callback = options.callback;
@@ -42,15 +40,15 @@
                     if (screen.reload && WD.ready && WD.screen != screen.title){
                         window.location.reload();
                     }
-                    else if (screen.path){
+                    else if (screen.path && WD.screen || !WD.screen && screen.refresh){
                         WD.el.attr("href", screen.path);
+
+                        WD.screen = screen.title;
+
+                        console.log("resize: " + screen.title);
+
+                        return WD.screen;
                     }
-
-                    WD.screen = screen.title;
-
-                    console.log("resize: " + screen.title);
-
-                    return WD.screen;
                 }
             })
         }

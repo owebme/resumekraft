@@ -8,8 +8,9 @@
     @extend .overflow-hidden;
 
     html.d-tablet & {
-        @extend .w200;
-        @extend .h200;
+        width:220px;
+        height:220px;
+        @extend .trX--xs;
     }
     &:before {
         @include abs();
@@ -62,6 +63,9 @@
     &[data-place="true"] {
         border:3px dashed rgba($gray,.8);
 
+        html.d-tablet & {
+            @extend .borderWidth-2;
+        }
         .user__photo__text {
             @extend .display-block;
             @extend .pos-abs;

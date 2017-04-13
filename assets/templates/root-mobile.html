@@ -15,6 +15,7 @@
     <section-loader-ajax></section-loader-ajax>
     <section-loader></section-loader>
     <section-progress></section-progress>
+    <photo-upload></photo-upload>
 
     <app-sections>
         <resume-stat-mobile></resume-stat-mobile>
@@ -25,7 +26,6 @@
 
         <section-profile-mobile></section-profile-mobile>
         <section-profile-data-mobile></section-profile-data-mobile>
-        <photo-upload></photo-upload>
 
         <ui-dropmenu></ui-dropmenu>
     </app-sections>
@@ -133,6 +133,38 @@
         $LoaderAjax = $root.tags["section-loader-ajax"];
         $Alert = $root.tags["section-alert"];
         $DropMenu = $root.tags["ui-dropmenu"];
+
+        if (app.config.changeStyles){
+            app.plugins.styles.init({
+                elem: "#styles",
+                screens: [
+                    {
+                        title: "small",
+                        maxWidth: 360,
+                        path: "/assets/css/style.smallScreen.css?" + _.newId(),
+                        refresh: true
+                    },
+                    {
+                        title: "phone",
+                        minWidth: 360,
+                        maxWidth: 735,
+                        path: "/assets/css/style.css?" + _.newId()
+                    },
+                    {
+                        title: "tablet",
+                        minWidth: 736,
+                        reload: true
+                    }
+                ],
+                callback: function(screen){
+                    if ($Sections && $Sections.resume && $Sections.resume.edit && $Sections.resume.edit.active){
+                        $afterlag.run(function(){
+                            $Sections.resume.edit.section.refresh();
+                        });
+                    }
+                }
+            });
+        }
     };
 
 </script>

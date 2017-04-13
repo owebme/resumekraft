@@ -85,12 +85,12 @@
 			<div id="t-column-right-border"></div>
 			<div id="t-column-right-corner"></div>
 			<div id="t-column-right-content">
-				<div if={ $resume.get('photo') } id="upload-photo" class="t-header-photo t-column-right-photo">
-					<div class="t-header-photo-image t-column-right-photo-image" style="background-image:url({ $resume.get('photo') })"></div>
+				<div if={ $resume.get('commons', 'photo') } id="upload-photo" class="t-header-photo t-column-right-photo">
+					<div class="t-header-photo-image t-column-right-photo-image" style="background-image:url({ $resume.get('commons', 'photo') })"></div>
 					<i class="icon"></i>
 					<div class="img-shadow"></div>
 				</div>
-				<div if={ !$resume.get('photo') } id="upload-photo" class="t-header-photo t-column-right-photo place">
+				<div if={ !$resume.get('commons', 'photo') } id="upload-photo" class="t-header-photo t-column-right-photo place">
 					<i class="icon"></i>
 					<span>загрузить свою фотографию</span>
 				</div>
