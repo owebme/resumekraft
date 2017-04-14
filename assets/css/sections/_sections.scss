@@ -30,20 +30,20 @@
 		@extend .willChange-transform;
 		transition:transform .5s $cubic645, visibility 0s .5s;
 
-		.d-mobile & {
+		html.d-mobile & {
 			transition:transform .42s $cubic645, visibility 0s .42s;
 		}
 		&[data-short="true"]{
 			transition:transform .4s $cubic40, visibility 0s .4s;
 
-			.d-mobile & {
+			html.d-mobile & {
 				transition:transform .3s $cubic28, visibility 0s .3s;
 			}
 		}
 		&[data-slow="true"]{
 			transition:transform .7s $cubic60, visibility 0s .7s;
 
-			.d-mobile & {
+			html.d-mobile & {
 				transition:transform .4s $cubic40, visibility 0s .4s;
 			}
 		}
@@ -99,7 +99,7 @@
 			@extend .transform-default;
 			transition:transform .7s $cubic60, visibility 0s;
 
-			.d-mobile & {
+			html.d-mobile & {
 				transition:transform .42s $cubic645, visibility 0s;
 			}
 			&[data-notfully="true"] {
@@ -109,14 +109,14 @@
 				@extend .transform-default;
 				transition:transform .55s $cubic28, visibility 0s;
 
-				.d-mobile & {
+				html.d-mobile & {
 					transition:transform .42s $cubic645, visibility 0s;
 				}
 			}
 			&[data-slow="true"]{
 				transition:transform 1s $cubic60, visibility 0s;
 
-				.d-mobile & {
+				html.d-mobile & {
 					transition:transform .5s $cubic32, visibility 0s;
 				}
 			}
@@ -135,7 +135,7 @@
 	        transform-origin:0% 50%;
 	        transition:transform 0.5s $cubic40, opacity 0.5s $cubic40;
 
-			.d-no-phone & {
+			html.d-no-phone & {
 				transition:transform 0.5s $cubic645, opacity 0.5s $cubic645;
 			}
 		}
@@ -150,7 +150,7 @@
 			transform:perspective(500px) scale(.96) translateX(4%) rotateY(4deg);
 			transition:transform 0.42s $cubic645, opacity 0.42s $cubic645;
 
-			.d-no-phone & {
+			html.d-no-phone & {
 				@extend .opacity-40;
 				transform:perspective(500px) scale(.95) translateX(3%) rotateY(1deg);
 				transition:transform 0.6s $cubic60, opacity 0.6s $cubic60;
@@ -208,7 +208,7 @@
 		}
 	}
 	&-scroll {
-		.d-mobile & {
+		html.d-mobile & {
 			.iScrollVerticalScrollbar {
 				@extend .willChange-opacity;
 				@extend .opacity-0;
@@ -299,7 +299,7 @@
 				@extend .h100p;
 				@extend .opacity-0;
 
-				.d-mobile & {
+				html.d-mobile & {
 					@extend .l0;
 					@extend .w100p;
 				}

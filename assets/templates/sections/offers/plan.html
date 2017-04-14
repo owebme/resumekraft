@@ -10,16 +10,16 @@
 
             <div class="hidden-xs w100p mb-l" style="height:280px">
                 <div class="pos-centered pt-l opacity-70">
-                    <img src="http://resumekraft.ru/makets/images/1004.png" style="width:220px; transform:rotate(15deg)">
+                    <img src="/assets/images/makets/1004.png" style="width:220px; transform:rotate(15deg)">
                 </div>
                 <div class="pos-centered pt-l opacity-80">
-                    <img src="http://resumekraft.ru/makets/images/1003.png" style="width:220px; transform:rotate(-15deg)">
+                    <img src="/assets/images/makets/1003.png" style="width:220px; transform:rotate(-15deg)">
                 </div>
                 <div class="pos-centered pt-l opacity-90">
-                    <img src="http://resumekraft.ru/makets/images/1002.png" style="width:220px; transform:rotate(9deg)">
+                    <img src="/assets/images/makets/1002.png" style="width:220px; transform:rotate(9deg)">
                 </div>
                 <div class="pos-centered pt-l">
-                    <img src="http://resumekraft.ru/makets/images/1001.png" style="width:220px; transform:rotate(-9deg)">
+                    <img src="/assets/images/makets/1001.png" style="width:220px; transform:rotate(-9deg)">
                 </div>
             </div>
 
@@ -58,9 +58,11 @@
     var $ = this;
 
     $.on("mount", function(){
-        $.animate = new app.plugins.animate($.root);
         if (app.metrika.get("offers.plan.show")){
             $.unmount();
+        }
+        else {
+            $.animate = new app.plugins.animate($.root);
         }
     });
 
@@ -86,6 +88,7 @@
             app.metrika.set("offers.plan.free", true);
         },
         promoPremium: function(){
+            $.hide();
             $Sections.overview.premium.show();
             app.metrika.set("offers.plan.premium", true);
         }

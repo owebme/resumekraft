@@ -1,7 +1,7 @@
 html, body {
     @extend .h100p;
 }
-.d-phone {
+html.d-phone {
     .dropmenu {
         @extend .display-none;
 

@@ -55,7 +55,7 @@
         @extend .bg-white;
         transition:transform 0.4s $cubic345;
 
-        .d-safari & {
+        html.d-safari & {
             transition:all 0.4s $cubic345;
         }
     }

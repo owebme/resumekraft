@@ -113,7 +113,7 @@ app.use(function(req, res, next) {
         req.account = {
             plan: "premium"
         }
-        req.accountId = app.utils.ObjectId('0002c698e6fb62a4c5a375c7');
+        req.accountId = app.utils.ObjectId('0002c6981e0f711c72e7d444');
     }
     req.device.type = req.query.debug ? req.query.debug : req.device.type;
     req.clientIP = app.utils.getClientAddress(req);
@@ -140,7 +140,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-//API.migrate.accounts();
+// API.migrate.accounts();
 
 var server = http.createServer(app),
     ipTables = {};

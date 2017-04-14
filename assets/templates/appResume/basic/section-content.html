@@ -124,10 +124,10 @@
                 if ($resume.get("template") < 7){
                     $afterlag.m(function(){
                         $Alert.show({
-                            title: "Вы выбрали шаблон резюме без фотографии",
-                            subtitle: "Перейти к выбору шаблонов",
+                            title: "Вы выбрали шаблон без фотографии",
+                            subtitle: "Перейти к выбору резюме",
                             success: {
-                                title: "Изменить шаблон",
+                                title: "Изменить",
                                 callback: function(){
                                     $.open.design.free();
                                 }
@@ -178,8 +178,7 @@
         }
     };
 
-    $.on("unmount", function(){
-        $.screens.destroy();
+    $.on("before-unmount", function(){
         $store.resume.off("write");
         clearInterval($.autoSaveInterval);
     });

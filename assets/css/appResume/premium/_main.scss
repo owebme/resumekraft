@@ -1,5 +1,5 @@
 body {
-	.d-tablet.d-ios & {
+	html.d-tablet.d-ios & {
 		&:before {
 			content:"";
 			width:1px;
@@ -13,7 +13,7 @@ body {
 			clear:both;
 		}
 	}
-	.d-phone & {
+	html.d-phone & {
 		&.d-no-ios {
 			@extend .perspective-500;
 		}
@@ -21,10 +21,10 @@ body {
 	}
 }
 #app[data-app="premium"]{
-	.d-no-phone & {
+	html.d-no-phone & {
 		@extend .overflowX-hidden;
 	}
-	.d-phone & {
+	html.d-phone & {
 		@include abs();
 		@extend .overflow-hidden;
 	}

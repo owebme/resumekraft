@@ -59,7 +59,7 @@
             @extend .breakWord;
             margin-bottom:1px;
 
-            .d-no-touch &:hover {
+            html.d-no-touch &:hover {
                 @extend .transition-default;
             }
             html.d-tablet & {

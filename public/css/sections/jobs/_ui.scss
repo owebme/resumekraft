@@ -232,7 +232,7 @@
         @extend .letterSpacing-0;
     }
 }
-.d-no-phone {
+html.d-no-phone {
     .dropmenu {
         &__item {
             &:hover {

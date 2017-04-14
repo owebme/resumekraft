@@ -502,7 +502,7 @@
     }
 }
 
-.d-phone {
+html.d-phone {
     .section__editable {
         .btn {
             @extend .pl30;
@@ -523,7 +523,7 @@
         }
     }
 }
-.d-tablet.r-portrait {
+html.d-tablet.r-portrait {
     .section__editable {
         &__container {
             @extend .plr-s;

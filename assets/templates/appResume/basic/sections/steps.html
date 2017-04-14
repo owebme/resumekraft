@@ -43,7 +43,7 @@
     };
 
     $.on("before-unmount", function(){
-        $.screens.off('show');
+        if ($.screens) $.screens.off('show');
     });
 
 </script>

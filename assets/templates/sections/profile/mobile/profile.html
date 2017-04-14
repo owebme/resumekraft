@@ -10,7 +10,7 @@
     <div name="content" class="section-scroll section__content">
         <div class="willChange-transform">
             <div class="screenMobile__header" data-header="profile">
-                <div onClick={ open.changePhoto } onUpdate="none" class="screenMobile__header__photo" style="background-image:url({ $account.get('commons', 'photo') })"></div>
+                <div onClick={ open.changePhoto } onUpdate="none" class="screenMobile__header__photo" data-empty={ !$account.get('commons', 'photo') } style="background-image:url({ $account.get('commons', 'photo') })"></div>
             </div>
             <div class="screenMobile__content">
                 <div class="fontSize-28 plr-m text-center text-truncate mb-m">
@@ -49,7 +49,7 @@
                 <div class="row text-center mb-l">
                     <div class="col-xs-12">
                         <div class="title">Телефон</div>
-                        <div if={ $account.get('commons', 'contacts', 'phone') } class="fontSize-22 fontWeight-bold">
+                        <div if={ $account.get('commons', 'contacts', 'phone') } class="fontSize-22 fontWeight-bold text-truncate">
                             { $account.get('commons', 'contacts', 'phone') }
                         </div>
                         <div if={ !$account.get('commons', 'contacts', 'phone') } class="c-gray fontSize-24">— &nbsp; — &nbsp; —</div>
@@ -134,7 +134,7 @@
                 },
                 menu: [
                     {
-                        title: 'Изменить данные',
+                        title: 'Редактировать',
                         callback: function(){
                             $.open.personalData();
                         }

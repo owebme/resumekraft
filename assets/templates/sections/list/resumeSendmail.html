@@ -20,8 +20,8 @@
                             </div>
                             <div onClick={ onSuccess } onUpdate="none" class="btn btn-xl2 c-blue btn-white-hover-success { btn-loading : loading }">Отправить</div>
                         </div>
-                        <div class="anim anim-bt-ease fontSize-34 pointerEvents-none { animated : success }">
-                            <div class="trY--xl { app.device.isPhone ? 'mt--xl' : 'mt--l' }">Резюме отправлено</div>
+                        <div class="anim anim-bt-ease fontSize-{ app.device.isPhone ? '30' : '34' } pointerEvents-none { animated : success }">
+                            <div class="trY--xl { app.device.isPhone ? 'mt--60' : 'mt--l' }">Резюме отправлено</div>
                         </div>
                     </div>
                 </div>
@@ -123,6 +123,8 @@
             },
             to: $.input.val(),
             pdf: $.attach
+        }, {
+            loader: false
         })
         .then(function(data){
             if (data == "overlimit"){

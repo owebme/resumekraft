@@ -5,8 +5,8 @@
     @extend .l-35;
     @extend .zIndex-3;
 
-    .d-no-safari &,
-    .d-no-ios & {
+    html.d-no-safari &,
+    html.d-no-ios & {
         @extend .perspective-500;
     }
     &__icon {

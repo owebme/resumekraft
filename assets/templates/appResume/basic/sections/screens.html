@@ -62,7 +62,6 @@
     };
 
     $.on("before-unmount", function(){
-        $scope.off();
         $.el.destroy();
         app.$dom.document.off("keydown.marquee-tab");
     });

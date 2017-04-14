@@ -56,6 +56,17 @@
                 @extend .borderRadius-circle;
                 @extend .boxShadow-24;
                 @extend .zIndex-1;
+
+                &[data-empty="true"]{
+                    @extend .bg-green;
+
+                    &:after {
+                        @extend .content-empty;
+                        @extend .pos-centered;
+                        @include ui-icon("uploadPhoto_white", 68px, 68px);
+                        @extend .mt--1;
+                    }
+                }
             }
         }
         .screenMobile__content {

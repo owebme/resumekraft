@@ -56,7 +56,7 @@ ux-contacts-more {
         @extend .fontWeight-bold;
     }
 }
-.d-no-phone {
+html.d-no-phone {
     ux-contacts-more {
         @extend .bg-primary;
         @extend .c-white;
@@ -79,7 +79,7 @@ ux-contacts-more {
         }
     }
 }
-.d-phone {
+html.d-phone {
     ux-contacts-more {
         @extend .c-blackLight;
 
@@ -103,7 +103,7 @@ ux-contacts-more {
         }
     }
 }
-.d-no-phone {
+html.d-no-phone {
     .contacts-cover {
         @extend .pos-tl;
         @extend .h100p;

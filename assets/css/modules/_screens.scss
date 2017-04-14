@@ -1,7 +1,7 @@
 .screens {
     @extend .display-block;
 
-    .d-safari & {
+    html.d-safari & {
         perspective:none !important;
     }
     .horizontal__space ~ .screen {
@@ -12,10 +12,10 @@
         }
     }
 }
-.d-mobile .screens-mobile,
-.d-phone .screens-phone,
-.d-tablet .screens-tablet,
-.d-no-mobile .screens-desktop,
+html.d-mobile .screens-mobile,
+html.d-phone .screens-phone,
+html.d-tablet .screens-tablet,
+html.d-no-mobile .screens-desktop,
 .screens-every {
     &.screens {
         @include abs();
