@@ -454,8 +454,8 @@
     }
 	.btn {
         @extend .c-white;
+        @extend .bg-transparent;
 		box-shadow:0 0 0 2px rgba($white,.5);
-		background-color:transparent;
 
 		html.m-no-touch &:hover {
             @extend .bg-white;

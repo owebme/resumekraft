@@ -1,0 +1,160 @@
+<ui-input-phone class="input-phone input-phone-{ opts.size ? opts.size : 'm' } { input-phone-rounded : opts.rounded }">
+
+    <div class="flag-container">
+        <div onClick={ show } class="selected-flag" title="{ item.title }: +{ item.code }">
+            <div class="iti-flag { item._id }"></div>
+            <div class="arrow"></div>
+        </div>
+        <select if={ app.device.isMobile } onChange={ onChange }>
+            <option each={ item, i in opts.items } no-reorder value={ item._id } selected={ value.id == item._id || !value.id && item._id == "ru" }>{ item.title } +{ item.code }</option>
+        </select>
+        <ul if={ !app.device.isMobile } name="select" class="country-list dropup" data-hidden={ !active }>
+            <virtual each={ item in preferred() } no-reorder>
+                <li onClick={ onSelect } class="country">
+                    <div class="flag">
+                        <div class="iti-flag { item._id }"></div>
+                    </div>
+                    <span class="country-name">{ item.title }</span>
+                    <span class="dial-code">+{ item.code }</span>
+                </li>
+            </virtual>
+            <div class="divider"></div>
+            <virtual each={ item in opts.items } no-reorder>
+                <li onClick={ onSelect } class="country">
+                    <div class="flag">
+                        <div class="iti-flag { item._id }"></div>
+                    </div>
+                    <span class="country-name">{ item.title }</span>
+                    <span class="dial-code">+{ item.code }</span>
+                </li>
+            </virtual>
+        </ul>
+    </div>
+
+    <input name="input" onInput={ onInput } onUpdate={ opts.onupdate ? opts.onupdate : "none" } class="input input-{ opts.size ? opts.size : 'm' } { opts.color } { opts.align ? 'text-' + opts.align : '' } { input-rounded : opts.rounded }" value={ value.number } placeholder={ opts.placeholder } disabled={ typeof opts.disabled !== 'undefined' } type="text" autocomplete="off" spellcheck="false">
+
+<script>
+
+    var $ = this,
+    $input = null;
+
+    $.active = false;
+    $.item = null;
+    $.value = {
+        id: null,
+        code: null,
+        number: ""
+    };
+
+    $.on("before-mount", function(){
+        if ($.opts.update && $.opts.cursor){
+            var value = $.opts.cursor.get($.opts.update);
+            if (value) $.value = value;
+        }
+        else {
+            $.value.number = $.opts.value;
+        }
+        if (!$.value.id && $.opts.items){
+            $.item = _.findWhere($.preferred(), {"_id": "ru"});
+            $.value.id = $.item.id;
+            $.value.code = $.item.code;
+            if ($.opts.update && $.opts.cursor){
+                $.opts.cursor.set($.opts.update, $.value);
+            }
+        }
+        else if ($.value && $.value.id && $.opts.items){
+            $.item = _.findWhere($.opts.items, {"_id": $.value.id});
+        }
+        $.disable = $.opts.disable;
+    });
+
+    $.on("mount", function(){
+        if (!window.$$ || window.$$ && !$$.fn.mask) return;
+        $input = $$($.input);
+        $input.mask("(000) 000-0000");
+    });
+
+    $.on("update", function(){
+        if ((!$.opts.value || !$.opts.onupdate) && $.opts.update && $.opts.cursor){
+            $.value = $.opts.cursor.get($.opts.update);
+        }
+        else if ($.opts.value && $.opts.value !== $.value){
+            $.value = $.opts.value;
+        }
+        if (_.isBoolean($.opts.disable) && $.opts.disable !== $.disable){
+            $.disable = $.opts.disable;
+        }
+    });
+
+    $.show = function(){
+        $.active = !$.active;
+        if ($.active){
+            setTimeout(function(){
+                document.addEventListener('click', $.handleClickOutside);
+            }, 0);
+        }
+        else {
+            document.removeEventListener('click', $.handleClickOutside);
+        }
+    };
+
+    $.onInput = function(e){
+        $.value.number = e.target.value;
+        $.onUpdate($.value);
+    };
+
+    $.onSelect = function(e){
+        e.preventUpdate = true;
+        $.item = this.item;
+        $.value.id = $.item._id;
+        $.value.code = $.item.code;
+        $.onUpdate($.value);
+        $.hide();
+    };
+
+    $.onChange = function(e){
+        $.item = _.findWhere($.opts.items, {"_id": e.target.value});
+        $.value.id = $.item._id;
+        $.value.code = $.item.code;
+        $.onUpdate($.value);
+    };
+
+    $.onUpdate = function(value){
+        if ($.opts.update && $.opts.cursor){
+            $.opts.cursor.set($.opts.update, value);
+        }
+        if ($.opts.commit === true || $.opts.commit == "true") $.parent.update();
+        else if (_.isFunction($.opts.commit)) {
+            $.opts.commit.call(this, value, $.opts.i);
+        }
+        else if ($.opts.commit && $.parent[$.opts.commit]){
+            $.parent[$.opts.commit](value, $.opts.i);
+        }
+    };
+
+    $.preferred = function(){
+        return _.filter($.opts.items, function(item){
+            return item._id === "ru" || item._id === "ua" || item._id === "kz" || item._id === "by";
+        })
+    };
+
+    $.handleClickOutside = function(e){
+        if (!$.select.contains(e.target)) $.hide();
+    };
+
+    $.hide = function(){
+        $.update({
+            active: false
+        })
+        document.removeEventListener('click', $.handleClickOutside);
+    };
+
+    $.on("unmount", function(){
+        if ($input && $input.mask){
+            $input.unmask();
+        }
+    });
+
+</script>
+
+</ui-input-phone>

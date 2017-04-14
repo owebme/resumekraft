@@ -44,6 +44,7 @@ module.exports = function(){
     		'assets/templates/ui/switcher.html',
     		'assets/templates/ui/checkbox.html',
     		'assets/templates/ui/input.html',
+            'assets/templates/ui/phone.html',
     		'assets/templates/ui/textarea.html',
     		'assets/templates/ui/select.html',
     		'assets/templates/ui/checkbox.html',

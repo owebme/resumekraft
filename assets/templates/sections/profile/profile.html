@@ -60,12 +60,12 @@
                             Номер телефона
                         </div>
                         <div class="{ display-none : !editable.phone } centered mb-m w70p">
-                            <ui-input placeholder="Введите свой телефон" update="phone" align="center" cursor={ $account.select('commons', 'contacts') } size="l" rounded="true" mask="phone"></ui-input>
+                            <ui-input-phone placeholder="Введите телефон" update="phone" items={ $store.countryCode } cursor={ $account.select('commons', 'contacts') } size="l" rounded="true"></ui-input-phone>
                         </div>
                         <div class="{ display-none : editable.phone }">
                             <div class="c-gray fontSize-14 text-uppercase mb-xss">Основной:</div>
-                            <div if={ $account.get('commons', 'contacts', 'phone') } class="fontSize-22 fontWeight-bold mb-m">{ $account.get('commons', 'contacts', 'phone') }</div>
-                            <div if={ !$account.get('commons', 'contacts', 'phone') } class="c-gray fontSize-24 mb-m">— &nbsp; — &nbsp; —</div>
+                            <div if={ $account.get('commons', 'contacts', 'phone', 'number') } class="fontSize-22 fontWeight-bold mb-m">{ $account.take.phone() }</div>
+                            <div if={ !$account.get('commons', 'contacts', 'phone', 'number') } class="c-gray fontSize-24 mb-m">— &nbsp; — &nbsp; —</div>
                         </div>
                         <button onClick={ edit.phone } class="btn btn-edit btn-m btn-default-hover-warning">{ editable.phone ? 'Сохранить' : 'Изменить' }</button>
                     </div>

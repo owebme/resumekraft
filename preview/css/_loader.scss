@@ -56,7 +56,7 @@ body.apploading {
     &-bg {
         @include abs();
         @include accelerate();
-        background-color:transparent;
+        @extend .bg-transparent;
         will-change:transform, background-color, border-radius;
         transition:background-color 0.3s ease-out, border-radius 0.3s ease-out;
         box-shadow:0 45px 100px rgba(0, 0, 0, 0.4);

@@ -8,7 +8,7 @@ module.exports = function(){
 	        var accounts = [],
 				resumes = [];
 
-	        app.utils.each([app.store.migrate.users[0]], function(item, i){
+	        app.utils.each(app.store.migrate.users, function(item, i){
 				var ObjectId = app.utils.ObjectId(item.apl_id);
 				ids.push({
 					id: item.apl_id,
@@ -16,7 +16,7 @@ module.exports = function(){
 				})
 	            accounts.push(accountBuild.get(ObjectId, item));
 	        })
-			app.utils.each([app.store.migrate.resumes[0]], function(item, i){
+			app.utils.each(app.store.migrate.resumes, function(item, i){
 	            resumes.push(resumesBuild.get(app.utils.findWhere(ids, {"id": item.uid}).ObjectId, item));
 	        })
 
@@ -45,11 +45,11 @@ module.exports = function(){
                     surname: item.r_name_f || null,
                     gender: item.r_gender || "male",
                     birthday: accountBuild.birthday(item.r_birthday, item.r_birthday_hide),
-                    citizenship: null,
-                    businessTrip: null,
-                    relocation: null,
+                    citizenship: "113",
+                    businessTrip: "ready",
+                    relocation: "no_relocation",
                     relocationCity: null,
-                    travelTime: null,
+                    travelTime: "any",
                     specialization: [],
                     employments: [],
                     schedules: [],
@@ -163,12 +163,12 @@ module.exports = function(){
 							city: item.r_job_city,
 							post: item.r_job_post,
 							from: {
-								month: item.r_job_month_from,
+								month: String(item.r_job_month_from),
 								year: item.r_job_year_from
 							},
 							to: {
-								month: item.r_job_month_to,
-								year: item.r_job_year_to
+								month: item.r_jobLast != "1" ? String(item.r_job_month_to) : "1",
+								year: item.r_jobLast != "1" ? item.r_job_year_to : "2000"
 							},
 							text: item.r_job_desc,
 							last: !!item.r_jobLast

@@ -21,7 +21,7 @@
 
         .image-editor {
             @extend .bg-black;
-        }        
+        }
     }
     &__wrapper {
         @extend .pos-centered;
@@ -145,10 +145,10 @@
             width:18px;
             height:18px;
             background:$yellow;
-            @extend .border-none;
-            @extend .borderRadius-circle;
-            @extend .transition-default;
-            @extend .cursor-pointer;
+            border:none;
+            border-radius:50%;
+            transition:all 0.08s;
+            cursor:pointer;
 
             html.d-mobile & {
                 width:26px;

@@ -8,6 +8,7 @@ global.riot = require('gulp-riot');
 global.rename = require('gulp-rename');
 global.uglify = require('gulp-uglify');
 global.concat = require('gulp-concat');
+global.replace = require('gulp-replace');
 global.px2vw = require('gulp-px2vw');
 global.px2rem = require('gulp-px2rem');
 global.combiner = require('stream-combiner2').obj;

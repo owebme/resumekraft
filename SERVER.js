@@ -113,7 +113,7 @@ app.use(function(req, res, next) {
         req.account = {
             plan: "premium"
         }
-        req.accountId = app.utils.ObjectId('0002c6981e0f711c72e7d444');
+        req.accountId = app.utils.ObjectId('0b8e197c544244bd44ce8c01');
     }
     req.device.type = req.query.debug ? req.query.debug : req.device.type;
     req.clientIP = app.utils.getClientAddress(req);

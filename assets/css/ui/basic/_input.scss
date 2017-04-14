@@ -4,10 +4,11 @@
     @extend .fontWeight-normal;
     @extend .borderRadius-m;
     @extend .w100p;
+    @extend .border-none;
     @extend .vAlign-middle;
     @extend .lineHeight-1;
     @extend .transition-default;
-    border:none;
+    @extend .border-none;
     box-shadow:inset 0 0 0 1px lighten($grayLighten,5%);
 
     &:hover {
@@ -201,7 +202,7 @@
     &-transparent {
         color:$white !important;
         @extend .fontWeight-5;
-        background-color:transparent;
+        @extend .bg-transparent;
         box-shadow:0 0 0 2px rgba($white,.5);
 
         &.input-xl {
@@ -384,6 +385,147 @@
                 &-logo {
                     @extend .maxH-60p;
                 }
+            }
+        }
+    }
+    &-phone {
+        @extend .display-block;
+        @extend .pos-rel;
+        @extend .w100p;
+
+        .country-list {
+            &[data-hidden="true"] {
+                @extend .display-none;
+            }
+        }
+        .flag-container {
+            @extend .pos-abs;
+            @extend .t0;
+            @extend .b0;
+            padding:1px;
+
+            &:hover {
+                @extend .cursor-pointer;
+            }
+        }
+        input[disabled] + .flag-container:hover,
+        input[readonly] + .flag-container:hover {
+            @extend .cursor-default;
+        }
+        input[disabled] + .flag-container:hover .selected-flag,
+        input[readonly] + .flag-container:hover .selected-flag {
+            @extend .bg-transparent;
+        }
+        select {
+            @include abs();
+            @extend .opacity-0;
+            @extend .zIndex-1;
+        }
+        .country {
+            @extend .fontFamily-helvetica;
+
+            &:hover {
+                @extend .bg-snowSilver;
+            }
+        }
+        .dial-code {
+            @extend .c-silver;
+        }
+        .selected-flag {
+            @extend .bg-snowSilver;
+            @extend .borderRadiusLeft-m;
+            @extend .transition-default;
+        }
+        .flag-container:hover .selected-flag {
+            @extend .bg-blueBright-transparent;
+        }
+        &-xl {
+            input[type=text] {
+                padding-left: 80px
+            }
+            .selected-flag {
+                width: 66px;
+                padding-left: 20px
+            }
+            .country {
+                height: 60px;
+                font-size:18px;
+                line-height:60px;
+                padding: 0 0 0 20px
+            }
+            .country-list {
+                height:242px;
+            }
+            .flag {
+                margin-right: 20px
+            }
+        }
+        &-l {
+            input[type=text] {
+                padding-left: 78px
+            }
+            .selected-flag {
+                width: 62px;
+                padding-left: 16px
+            }
+            .country {
+                height: 50px;
+                font-size:16px;
+                line-height:50px;
+                padding: 0 0 0 16px
+            }
+            .country-list {
+                height:202px;
+            }
+            .flag {
+                margin-right: 16px
+            }
+        }
+        &-m {
+            input[type=text] {
+                padding-left: 70px
+            }
+            .selected-flag {
+                width: 58px;
+                padding-left: 12px
+            }
+            .country {
+                height: 40px;
+                font-size:15px;
+                line-height: 40px;
+                padding: 0 0 0 12px
+            }
+            .country-list {
+                height:162px;
+            }
+            .flag {
+                margin-right: 12px
+            }
+        }
+        &-s {
+            input[type=text] {
+                padding-left: 62px
+            }
+            .selected-flag {
+                width: 54px;
+                padding-left: 8px
+            }
+            .country {
+                height: 30px;
+                font-size:14px;
+                line-height: 30px;
+                padding: 0 0 0 8px
+            }
+            .country-list {
+                height:122px;
+            }
+            .flag {
+                margin-right: 8px
+            }
+        }
+        &-rounded {
+            .selected-flag {
+                @extend .borderRadiusLeft-xxxxxl;
             }
         }
     }

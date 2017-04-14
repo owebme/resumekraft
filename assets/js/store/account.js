@@ -50,6 +50,15 @@ $store.account = _.extend(new Baobab([]),
                 else years = years + (lang == "ru" ? " лет" : " year");
 
                 return years;
+            },
+            phone: function(){
+                var phone = $store.account.get("commons", "contacts", "phone");
+                if (phone && phone.number){
+                    return "+" + phone.code + " " + phone.number;
+                }
+                else {
+                    return "";
+                }
             }
         }
     }

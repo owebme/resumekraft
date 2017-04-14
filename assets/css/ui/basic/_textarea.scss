@@ -6,7 +6,7 @@
     @extend .w100p;
     @extend .vAlign-middle;
     @extend .transition-default;
-    border:none;
+    @extend .border-none;
     box-shadow:inset 0 0 0 1px $grayLighten;
 
     &:hover {
@@ -21,7 +21,7 @@
     }
     &::placeholder {
         color:rgba($steel,.8);
-        @extend .lineHeight-l;
+        line-height:30px;
     }
     &::-webkit-input-placeholder {
         line-height:normal;

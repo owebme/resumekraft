@@ -16,7 +16,6 @@
         @extend .outline-none;
         @extend .w100p;
         @extend .transition-default;
-        appearance:none;
         box-shadow:inset 0 0 0 1px lighten($grayLighten,5%);
 
         &:hover {

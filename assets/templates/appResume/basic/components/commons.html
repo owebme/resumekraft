@@ -113,7 +113,7 @@
                     <span class="visible-sm c-gray fontSize-28">Телефон</span>
                 </div>
                 <div class="col-xs-24 col-sm-16">
-                    <ui-input mask="phone" update="phone" cursor={ $resume.select('commons', 'contacts') } placeholder="Телефон для связи" size="xl"></ui-input>
+                    <ui-input-phone placeholder="Телефон для связи" update="phone" items={ $store.countryCode } cursor={ $resume.select('commons', 'contacts') } size="xl"></ui-input-phone>
                 </div>
             </div>
             <div class="row mb-m">

@@ -161,21 +161,45 @@
 
 	device.platform = device.isWin ? 'win' : (device.isMac ? 'mac' : (device.isLinux ? 'linux' : 'unknown'));
 
+	var _ua = device.ua;
+	device.browser = {
+	  version: (_ua.match( /.+(?:me|ox|on|rv|it|era|opr|ie)[\/: ]([\d.]+)/ ) || [0,'0'])[1],
+	  opera: (/opera/i.test(_ua) || /opr/i.test(_ua)),
+	  msie: (/msie/i.test(_ua) && !/opera/i.test(_ua) || /trident\//i.test(_ua)),
+	  msie6: (/msie 6/i.test(_ua) && !/opera/i.test(_ua)),
+	  msie7: (/msie 7/i.test(_ua) && !/opera/i.test(_ua)),
+	  msie8: (/msie 8/i.test(_ua) && !/opera/i.test(_ua)),
+	  msie9: (/msie 9/i.test(_ua) && !/opera/i.test(_ua)),
+	  mozilla: /firefox/i.test(_ua),
+	  chrome: /chrome/i.test(_ua),
+	  safari: (!(/chrome/i.test(_ua)) && /webkit|safari|khtml/i.test(_ua)),
+	  iphone: /iphone/i.test(_ua),
+	  ipod: /ipod/i.test(_ua),
+	  iphone4: /iphone.*OS 4/i.test(_ua),
+	  ipod4: /ipod.*OS 4/i.test(_ua),
+	  ipad: /ipad/i.test(_ua),
+	  android: /android/i.test(_ua),
+	  bada: /bada/i.test(_ua),
+	  mobile: /iphone|ipod|ipad|opera mini|opera mobi|iemobile|android/i.test(_ua),
+	  msieMobile: /iemobile/i.test(_ua),
+	  safariMobile: /iphone|ipod|ipad/i.test(_ua),
+	  operaMobile: /opera mini|opera mobi/i.test(_ua),
+	  operaMini: /opera mini/i.test(_ua),
+	  mac: /mac/i.test(_ua),
+	  searchBot: /(yandex|google|stackrambler|aport|slurp|msnbot|bingbot|twitterbot|ia_archiver|facebookexternalhit)/i.test(_ua)
+	};
+
 	/* --- Chrome --- */
-	device.isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+	device.isChrome = device.browser.chrome;
 	$dom.html.addClass(device.isChrome ? 'd-chrome' : 'd-no-chrome');
 
 	/* --- Safari --- */
-	device.isSafari = !device.isChrome && navigator.userAgent.toLowerCase().indexOf('safari') > -1;
+	device.isSafari = device.browser.safari;
 	$dom.html.addClass(device.isSafari ? 'd-safari' : 'd-no-safari');
 
 	/* --- Firefox --- */
-	device.isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+	device.isFirefox = device.browser.mozilla;
 	$dom.html.addClass(device.isFirefox ? 'd-firefox' : 'd-no-firefox');
-
-	/* --- IE --- */
-	// device.isIE = !!/msie [\w.]+/.exec(navigator.userAgent.toLowerCase());
-	// $dom.html.addClass(device.isIE ? 'd-ie' : 'd-no-ie');
 
 	/* --- Fix click onTouch device --- */
 	if (device.isMobile && window.FastClick && 'addEventListener' in document) {

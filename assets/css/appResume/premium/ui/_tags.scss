@@ -73,11 +73,11 @@
         }
         &::-webkit-input-placeholder {
             color:rgba($white,.7);
-            @extend .lineHeight-1;
+            line-height:1;
         }
         &::-moz-input-placeholder {
             color:rgba($white,.7);
-            @extend .lineHeight-1;
+            line-height:1;
         }
         &:focus {
             box-shadow:0 0 0 2px $white;

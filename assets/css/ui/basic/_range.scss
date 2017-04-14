@@ -14,10 +14,10 @@ input.range[type=range]::-moz-focus-outer {
     border:none;
 }
 input.range[type=range]::-webkit-slider-thumb {
-    @extend .appearance-none;
-    @extend .border-none;
-    @extend .cursor-pointer;
-    @extend .transition-default;
+    appearance:none;
+    border:none;
+    cursor:pointer;
+    transition:all 0.08s;
 }
 input.range[type=range] {
     &.range-xl {

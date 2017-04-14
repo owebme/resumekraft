@@ -50,13 +50,17 @@
                     iterations: 3
                 })
                 $.slider.one("success", function(){
-                    $.hide();
+                    $.hide(function(){
+                        if ($account.get("plan") == "free"){
+                            $Sections.plan.show("premium");
+                        }
+                    });
                 });
             }
         });
     };
 
-    $.hide = function(){
+    $.hide = function(callback){
         $.section.hide({
             beforeHide: function(){
                 $.slider.onReset();
@@ -68,6 +72,7 @@
                     slide: null,
                     finish: false
                 })
+                if (_.isFunction(callback)) callback();
             }
         })
     };

@@ -409,6 +409,24 @@ $store.resume = _.extend(new Baobab({},
             citizenship: function(){
                 return $store.country.getTitleById($store.resume.get('commons', 'citizenship'));
             },
+            phone: function(){
+                var phone = $store.resume.get("commons", "contacts", "phone");
+                if (phone && phone.number){
+                    return "+" + phone.code + " " + phone.number;
+                }
+                else {
+                    return "";
+                }
+            },
+            phoneLink: function(){
+                var phone = $store.resume.get("commons", "contacts", "phone");
+                if (phone && phone.number){
+                    return "tel:" + (phone.code + "" + phone.number).replace(/[\s|\-|\(|\)]/g, "");
+                }
+                else {
+                    return "";
+                }
+            },
             relocation: function(){
                 var lang = $store.resume.get("lang"),
                     value = $store.resume.get('commons', 'relocation'),

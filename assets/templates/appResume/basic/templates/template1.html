@@ -20,7 +20,7 @@
 				<sup>{ $resume.take.salary.worktime() }</sup>
 			</div>
 			<div if={ $resume.get('commons', 'contacts', 'skype').length } class="t-header-string-element">Skype: <a href="skype:{ $resume.get('commons', 'contacts', 'skype') }">{ $resume.get('commons', 'contacts', 'skype') }</a></div>
-			<div if={ $resume.get('commons', 'contacts', 'phone').length } class="t-header-string-element"><a href="tel:{ $resume.get('commons', 'contacts', 'phone').replace(/[\s|\-|\(|\)]/g, "") }">{ $resume.get('commons', 'contacts', 'phone') }</a></div>
+			<div if={ $resume.get('commons', 'contacts', 'phone', 'number') } class="t-header-string-element"><a href="{ $store.resume.take.phoneLink() }">{ $store.resume.take.phone() }</a></div>
 			<div if={ $resume.get('commons', 'contacts', 'email').length } class="t-header-string-element"><a href="mailto:{ $resume.get('commons', 'contacts', 'email') }">{ $resume.get('commons', 'contacts', 'email') }</a></div>
 			<div class="t-header-string-element">
 				<span if={ !$resume.get('commons', 'birthday', 'hidden') }>{ $resume.take.birthday.date() }</span>
