@@ -155,12 +155,12 @@
     if (app.config.changeStyles){
         app.plugins.styles.init({
             elem: "#styles",
-            default: "normal",
             screens: [
                 {
                     title: "small",
                     maxWidth: 360,
-                    path: "/assets/css/premium.smallScreen.css?" + _.newId()
+                    path: "/assets/css/premium.smallScreen.css?" + _.newId(),
+                    refresh: true
                 },
                 {
                     title: "phone",
@@ -170,15 +170,16 @@
                 },
                 {
                     title: "normal",
-                    minWidth: 1025,
-                    maxWidth: 1400,
+                    minWidth: 768,
+                    maxWidth: 1681,
                     path: "/assets/css/premium.css?" + _.newId(),
                     reload: true
                 },
                 {
                     title: "large",
-                    minWidth: 1400,
-                    path: "/assets/css/premium.largeScreen.css?" + _.newId()
+                    minWidth: 1682,
+                    path: "/assets/css/premium.largeScreen.css?" + _.newId(),
+                    refresh: true
                 }
             ]
         });

@@ -110,6 +110,9 @@
                 @extend .btn-active;
                 border-radius:0 20px 20px 0;
 
+                html.d-phone & {
+                    @extend .r0;
+                }
                 &-svg {
                     @extend .pos-centered;
                     width:23px;

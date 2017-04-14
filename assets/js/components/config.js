@@ -1,10 +1,12 @@
 app.config = {
     domain: null,
     api: '/private/api',
-    request: function(){
-        return {
-            loader: app.device.isMobile,
-            notify: true
+    request: {
+        options: function(){
+            return {
+                loader: app.device.isMobile,
+                notify: true
+            }
         }
     },
     logger: {

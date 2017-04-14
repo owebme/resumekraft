@@ -57,7 +57,11 @@ $store.demo = {
                 },
                 metro: null,
                 email: "victory@gmail.com",
-                phone: "(900) 500-5550",
+                phone: {
+                    id: "ru",
+                    code: "7",
+                    number: "(900) 500-5550"
+                },
                 primary: "email",
                 site: "http://web-projects.me",
                 skype: "myskype"

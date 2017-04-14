@@ -2,7 +2,7 @@
 
     <span if={ opts.title } class="input-title">{ opts.title }</span>
     <input class="display-none" name="slider_input" type="range" value={ opts.value } min="{ opts.min }" max="{ opts.max }" step="{ opts.step }">
-    <input class="input input-{ opts.size ? opts.size : 'm' }" onBlur={ onBlur } name="slider_data" type={ app.device.isPhone ? 'number' : 'text' } autocomplete="off" value={ opts.value } readonly={ !app.device.isPhone && app.device.isMobile }>
+    <input class="input input-{ opts.size ? opts.size : 'm' }" onInput={ !opts.phone && app.device.isPhone && onInput } onBlur={ onBlur } name="slider_data" type={ app.device.isPhone && _.isNumber(opts.value) ? 'number' : 'text' } autocomplete="off" value={ opts.value } readonly={ !app.device.isPhone && app.device.isMobile }>
     <div if={ opts.ed && !app.device.isPhone } class="pos-tr fontSize-20 fontWeight-5 fontFamily-roboto c-white flex-centered w40 h100p">{ opts.ed }</div>
 
 <script>
@@ -57,7 +57,12 @@
         $.changed = false;
     };
 
+    $.onInput = function(e){
+        $.fnCommit(e.target.value);
+    };
+
     $.onBlur = function(e){
+        e.preventUpdate = true;
         if (!$.opts.phone && app.device.isPhone) return;
         var value = e.target.value;
         $.value = value;
@@ -84,7 +89,7 @@
         }
     };
 
-    this.on("unmount", function(){
+    $.on("unmount", function(){
         if ($.slider) $.slider.rangeslider('destroy');
     });
 

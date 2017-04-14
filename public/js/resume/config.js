@@ -1,10 +1,12 @@
 app.config = {
     domain: null,
     api: '/public/api',
-    request: function(){
-        return {
-            loader: false,
-            notify: true
+    request: {
+        options: function(){
+            return {
+                loader: false,
+                notify: true
+            }
         }
     },
     logger: {
@@ -14,5 +16,5 @@ app.config = {
     share: {
         title: 'Создать крутое резюме и получить престижную работу'
     },
-    changeStyles: false
+    changeStyles: true
 };

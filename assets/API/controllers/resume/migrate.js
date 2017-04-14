@@ -57,7 +57,7 @@ module.exports = function(){
                         city: accountBuild.city(item.r_city),
                         metro: null,
                         email: item.r_email,
-                        phone: item.r_phone || null,
+                        phone: accountBuild.phone(item.r_phone),
                         primary: null,
                         site: null,
                         skype: item.r_skype || null
@@ -233,7 +233,7 @@ module.exports = function(){
                         city: accountBuild.city(user.apl_city),
                         metro: null,
                         email: user.apl_login,
-                        phone: user.apl_phone || null,
+                        phone: accountBuild.phone(user.apl_phone),
                         primary: null,
                         site: null,
                         skype: user.apl_skype || null,
@@ -276,6 +276,18 @@ module.exports = function(){
 				return null;
 			}
         },
+		phone: function(value){
+			if (value){
+				return {
+					id: "ru",
+					code: "7",
+					number: value.replace(/^[\+7|8]/g, "")
+				}
+			}
+			else {
+				return null;
+			}
+		},
         birthday: function(value, hidden){
             if (value && value.match(/\d+-\d+-\d+/)){
 	            return {

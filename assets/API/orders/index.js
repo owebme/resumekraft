@@ -8,5 +8,5 @@ module.exports = function(url){
         });
 	});
 
-	app.use(url, route);
+	app.use(url, app.checkAuth(), route);
 };

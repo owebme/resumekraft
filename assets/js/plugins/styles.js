@@ -49,6 +49,9 @@
 
                         return WD.screen;
                     }
+                    else {
+                        WD.screen = screen.title;
+                    }
                 }
             })
         }

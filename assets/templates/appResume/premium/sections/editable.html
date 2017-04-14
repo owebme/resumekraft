@@ -43,6 +43,29 @@
                 $.scrollPos = app.$dom.document.scrollTop();
             });
         }
+        if (app.device.isPhone){
+            var target = null;
+
+            $scope.on("focus", "input[type='text'], textarea", function(e){
+                target = e.target;
+
+                centered(app.sizes.height / 2.5);
+
+                setTimeout(function(){
+                    centered(app.sizes.height / 2.5);
+                }, 300);
+            });
+
+            var centered = function(delta){
+                var top = app.dom.getPagePosition(target).top;
+                if (top < 0){
+                    $.scroll.scrollTop = -top + delta;
+                }
+                else if (top > delta){
+                    $.scroll.scrollTop = top - delta;
+                }
+            };
+        }
     });
 
     $.on("editTarget", function(active){
@@ -374,6 +397,7 @@
                 })
                 $.autosuggest.items = [];
             }
+            $.autosuggest.tag.trigger("autocomplete.select", $.autosuggest.el.value);
         },
 
         request: function(method, value){

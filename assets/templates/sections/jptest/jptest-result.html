@@ -129,33 +129,28 @@
                         });
                     }
                     else {
-                        alert("1");
                         $afterlag.run(function(){
                             $scope.find(".chart").addClass("showChart");
                             $.section.scrollAnimate.start();
 
-                            //if (!app.metrika.get("jptest.votes.show")){
+                            if (!app.metrika.get("jptest.votes.show")){
                                 var $elem = $.content.find("jptest-result-finish");
-
-                                //alert($elem.length);
 
                                 if ($elem.length){
                                     var scrollTo = parseInt(app.dom.getPagePosition($elem[0]).top) - (app.device.isMobile ? 200 : 0),
                                         success = false;
 
-
-
                                     (function scrollFn(){
-                                        $.scrollFn = _.raf(scrollFn);
+                                        $.raf = _.raf(scrollFn);
                                         var scroll = $.scroll[0].scrollY || $.scroll[0].scrollTop;
                                         if (!success && scroll > scrollTo){
                                             success = true;
-                                            _.caf($.scrollFn);
+                                            _.caf($.raf);
                                             $.popupVotes.show();
                                         }
                                     })();
                                 }
-                            //}
+                            }
                         });
                         setTimeout(function(){
                             $.buttonLink.show();

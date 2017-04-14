@@ -48,14 +48,14 @@
 
     app.request = function(method, params, opt){
         return new Promise(function(resolve, reject){
-            if (!app.config.request){
+            if (!app.config.request || app.config.request.handler && !app.config.request.handler(method)){
                 resolve(true); return;
-            }            
+            }
             var url = _.underscored(method)
                         .replace(/^(get|set|add|del)/g, "")
                         .replace(/_/g, "/"),
                 type = null,
-                options = app.config.request();
+                options = app.config.request.options();
 
             if (opt) _.extend(options, opt);
 

@@ -1,4 +1,4 @@
-<jptest-result-link onClick={ scrollDown } data-balloon="{ supportClip ? 'Нажмите, чтобы скопировать ссылку' : 'Получить ссылку' }" data-balloon-pos="right" data-active={ active }>
+<jptest-result-link onClick={ onClip } data-balloon="{ supportClip ? 'Нажмите, чтобы скопировать ссылку' : 'Получить ссылку' }" data-balloon-pos="right" data-active={ active }>
 
     <icon-link color="steel"></icon-link>
 
@@ -14,8 +14,8 @@
         })
     };
 
-    $.scrollDown = function(){
-        if ($.supportClip){
+    $.onClip = function(){
+        if (!app.device.isMobile && $.supportClip){
             _.copyToClip("http://resumekraft/jp-test/#" + window.$jp.link);
 
             $Notify.show({

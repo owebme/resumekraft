@@ -49,8 +49,8 @@
                 <div class="row text-center mb-l">
                     <div class="col-xs-12">
                         <div class="title">Телефон</div>
-                        <div if={ $account.get('commons', 'contacts', 'phone') } class="fontSize-22 fontWeight-bold text-truncate">
-                            { $account.get('commons', 'contacts', 'phone') }
+                        <div if={ $account.get('commons', 'contacts', 'phone', 'number') } class="fontSize-22 fontWeight-bold text-truncate">
+                            { $account.take.phone() }
                         </div>
                         <div if={ !$account.get('commons', 'contacts', 'phone') } class="c-gray fontSize-24">— &nbsp; — &nbsp; —</div>
                     </div>

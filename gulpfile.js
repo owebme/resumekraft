@@ -57,7 +57,7 @@ gulp.task('watch', function() {
 	gulp.watch([
 		'assets/css/style.scss',
 		'assets/css/**/*.scss'
-	], {debounceDelay: 1000}, gulp.series('private.css', gulp.parallel('private.css.largeScreen', 'private.css.smallScreen')));
+	], {debounceDelay: 1000}, gulp.series('premium.css'));
 
 	gulp.watch([
 		'assets/css/**/templates/style.scss',

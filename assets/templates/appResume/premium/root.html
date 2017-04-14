@@ -49,9 +49,6 @@
 
     $resume = app.demo ? $store.resume.prepare.demo() : $store.resume.prepare.premium($store.resume.get(), true);
 
-    // var recovery = false;
-    // $resume = $store.resume.prepare.demo();
-
     $i18n.lang($resume.lang);
     moment.locale($resume.lang);
 
@@ -111,7 +108,14 @@
             });
             $store.resume.select('commons', 'photo')
             .set("/preview/images/photo/photo_" + app.device.is + ".jpg");
+
             $Resume.sections.photo.update();
+
+            app.config.request.handler = function(method){
+                if (method.match(/Suggest/)){
+                    return true;
+                }
+            }
         }
         else {
             // app.$dom.body.scrollTop(0);
@@ -165,12 +169,12 @@
     if (app.config.changeStyles){
         app.plugins.styles.init({
             elem: "#styles",
-            default: "normal",
             screens: [
                 {
                     title: "small",
                     maxWidth: 360,
-                    path: "/assets/css/premium.smallScreen.css?" + _.newId()
+                    path: "/assets/css/premium.smallScreen.css?" + _.newId(),
+                    refresh: true
                 },
                 {
                     title: "phone",
@@ -180,15 +184,16 @@
                 },
                 {
                     title: "normal",
-                    minWidth: 1025,
-                    maxWidth: 1680,
+                    minWidth: 768,
+                    maxWidth: 1681,
                     path: "/assets/css/premium.css?" + _.newId(),
                     reload: true
                 },
                 {
                     title: "large",
-                    minWidth: 1680,
-                    path: "/assets/css/premium.largeScreen.css?" + _.newId()
+                    minWidth: 1682,
+                    path: "/assets/css/premium.largeScreen.css?" + _.newId(),
+                    refresh: true
                 }
             ]
         });

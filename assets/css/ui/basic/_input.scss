@@ -405,6 +405,7 @@
             @extend .t0;
             @extend .b0;
             padding:1px;
+            @extend .zIndex-2;
 
             &:hover {
                 @extend .cursor-pointer;
@@ -437,6 +438,10 @@
             @extend .bg-snowSilver;
             @extend .borderRadiusLeft-m;
             @extend .transition-default;
+
+            html.m-touch & {
+                background-color:rgba($blueBright,.1);
+            }
         }
         .flag-container:hover .selected-flag {
             background-color:rgba($blueBright,.1);
@@ -453,7 +458,7 @@
                 height: 60px;
                 font-size:18px;
                 line-height:60px;
-                padding: 0 0 0 20px
+                padding: 0 20px
             }
             .country-list {
                 height:242px;
@@ -474,7 +479,7 @@
                 height: 50px;
                 font-size:16px;
                 line-height:50px;
-                padding: 0 0 0 16px
+                padding: 0 16px
             }
             .country-list {
                 height:202px;
@@ -495,7 +500,7 @@
                 height: 40px;
                 font-size:15px;
                 line-height: 40px;
-                padding: 0 0 0 12px
+                padding: 0 12px
             }
             .country-list {
                 height:162px;
@@ -516,7 +521,7 @@
                 height: 30px;
                 font-size:14px;
                 line-height: 30px;
-                padding: 0 0 0 8px
+                padding: 0 8px
             }
             .country-list {
                 height:122px;

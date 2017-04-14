@@ -44,5 +44,5 @@ module.exports = function(url){
         });
 	});
 
-	app.use(url, app.checkAuth(), route);
+	app.use(url, route);
 };

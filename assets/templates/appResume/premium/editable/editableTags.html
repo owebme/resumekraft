@@ -47,6 +47,10 @@
         });
     };
 
+    $.on("autocomplete.select", function(value){
+        $.checkAndInsert(value);
+    });
+
     $.addTag = function(){
         var value = _.clean($["input"].value),
             length = value && value.length;

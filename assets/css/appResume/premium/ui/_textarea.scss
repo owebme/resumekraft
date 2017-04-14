@@ -7,9 +7,10 @@
 
             html.d-no-phone & {
                 @extend .pl25;
-                @extend .pr25;
+                @extend .pr35;
             }
             html.d-phone & {
+                min-height:228px;
                 padding-top:8px;
                 padding-bottom:10px;
             }
@@ -30,8 +31,8 @@
         @extend .pos-tr;
         @extend .pt-xss;
         @extend .pr-xxs;
-        @extend .pl-xs;
-        @extend .pb-xs;
+        @extend .pl-xxs;
+        @extend .pb-xxs;
         @extend .bg-white;
         @extend .borderRadius-m;
         @extend .btn-active;

@@ -5,7 +5,6 @@
 
     riot.compile(function(){
         if (app.demo){
-            app.config.request = false;
             riot.mount("*");
         }
         else {

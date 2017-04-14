@@ -9,8 +9,8 @@
     @extend .outline-none;
     @extend .cursor-pointer;
     @extend .border-none;
-    @extend .borderRadius-xxxxxl;
     @extend .transition-default;
+    border-radius:100px;
 
     &-disabled {
         @extend .opacity-100;

@@ -411,7 +411,7 @@ $store.resume = _.extend(new Baobab({},
             },
             phone: function(){
                 var phone = $store.resume.get("commons", "contacts", "phone");
-                if (phone && phone.number){
+                if (phone && phone.code && phone.number){
                     return "+" + phone.code + " " + phone.number;
                 }
                 else {
@@ -420,8 +420,8 @@ $store.resume = _.extend(new Baobab({},
             },
             phoneLink: function(){
                 var phone = $store.resume.get("commons", "contacts", "phone");
-                if (phone && phone.number){
-                    return "tel:" + (phone.code + "" + phone.number).replace(/[\s|\-|\(|\)]/g, "");
+                if (phone && phone.code && phone.number){
+                    return "tel:+" + (phone.code + "" + phone.number).replace(/[\s|\-|\(|\)]/g, "");
                 }
                 else {
                     return "";

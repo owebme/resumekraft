@@ -188,6 +188,16 @@
                     _this.scope.scrollTop(0);
                 });
             }
+            if (!app.device.isMobile){
+                this.scope.on("mouseenter mouseleave", ".country-list", function(e){
+                    if (e.type == "mouseenter"){
+                        scroll.disable();
+                    }
+                    else {
+                        scroll.enable();
+                    }
+                });
+            }
 
             var centered = function(delta, duration){
                 var top = $focus.offset().top;

@@ -66,7 +66,7 @@
 
             if (screen !== undefined) this.nav(screen, 0);
 
-            if (app.device.isPhone) this.embeds();
+            this.embeds();
 
             if (this.options.play){
                 this.play = new app.plugins.marquee.playScreens(this, this.options.play);
@@ -108,53 +108,66 @@
         },
 
         embeds: function(){
-            var _this = this,
-                state = null,
-                $focus = null,
-                resize = _.debounce(this.refresh, 300);
+            var _this = this;
 
-            $dom.window.on('resize.screens', function(){
-                _this.scope.scrollTop(0);
-                if (_this.options.resizeRefresh) resize.call(_this);
-        	});
-
-            if (_this.options.static){
-                this.scope.on("focus blur", "input[type='text'], textarea", function(e){
-                    if (e.type == "focusin" || e.type == "focus"){
-                        $focus = $(e.target);
-
-                        state = "focus";
-
-                        centered(app.sizes.height / 2.5, 400);
-
-                        setTimeout(function(){
-                            centered(app.sizes.height / 2.5, 0);
-                        }, 300);
+            if (!app.device.isMobile){
+                this.scope.on("mouseenter mouseleave", ".country-list", function(e){
+                    if (e.type == "mouseenter"){
+                        scroll.disable();
                     }
                     else {
-                        state = "blur";
-                        setTimeout(function(){
-                            if (state == "focus"){
-                                centered(app.sizes.height / 2.5, 0);
-                            }
-                            else if (state == "blur"){
-                                resize.call(_this);
-                            }
-                        }, 500);
+                        scroll.enable();
                     }
-                    _this.scope.scrollTop(0);
                 });
             }
+            if (app.device.isPhone){
+                var state = null,
+                    $focus = null,
+                    resize = _.debounce(this.refresh, 300);
 
-            var centered = function(delta, duration){
-                var top = $focus.offset().top;
-                if (top < 0){
-                    _this.marquee.scroll.scrollBy(0, (-top + delta), duration, (_this.options.static ? IScrollStatic.utils.ease.cubicOut : IScroll.utils.ease.cubicOut));
+                $dom.window.on('resize.screens', function(){
+                    _this.scope.scrollTop(0);
+                    if (_this.options.resizeRefresh) resize.call(_this);
+            	});
+
+                if (_this.options.static){
+                    this.scope.on("focus blur", "input[type='text'], textarea", function(e){
+                        if (e.type == "focusin" || e.type == "focus"){
+                            $focus = $(e.target);
+
+                            state = "focus";
+
+                            centered(app.sizes.height / 2.5, 400);
+
+                            setTimeout(function(){
+                                centered(app.sizes.height / 2.5, 0);
+                            }, 300);
+                        }
+                        else {
+                            state = "blur";
+                            setTimeout(function(){
+                                if (state == "focus"){
+                                    centered(app.sizes.height / 2.5, 0);
+                                }
+                                else if (state == "blur"){
+                                    resize.call(_this);
+                                }
+                            }, 500);
+                        }
+                        _this.scope.scrollTop(0);
+                    });
                 }
-                else if (top > delta){
-                    _this.marquee.scroll.scrollBy(0, -(top - delta), duration, (_this.options.static ? IScrollStatic.utils.ease.cubicOut : IScroll.utils.ease.cubicOut));
-                }
-            };
+
+                var centered = function(delta, duration){
+                    var top = $focus.offset().top;
+                    if (top < 0){
+                        _this.marquee.scroll.scrollBy(0, (-top + delta), duration, (_this.options.static ? IScrollStatic.utils.ease.cubicOut : IScroll.utils.ease.cubicOut));
+                    }
+                    else if (top > delta){
+                        _this.marquee.scroll.scrollBy(0, -(top - delta), duration, (_this.options.static ? IScrollStatic.utils.ease.cubicOut : IScroll.utils.ease.cubicOut));
+                    }
+                };
+            }
         },
 
         destroy: function(){

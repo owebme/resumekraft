@@ -31,7 +31,7 @@
                     <icon-feedback color="primary" size="{ app.device.isPhone ? 'l' : 'm' }"></icon-feedback>
                 </div>
                 <div class="h80 pt-m text-truncate minW-70p maxW-70p" data-scrollin-icon="\{'stagger':60\}">
-                    <a href="mailto:{ $store.resume.get('contacts', 'email') }" class="p link-primary link-underline { pointerEvents-none : $State.get('mode') === 'editing' } whiteSpace-normal">{ $store.resume.get('commons', 'contacts', 'email') }</a>
+                    <a href="mailto:{ $store.resume.get('commons', 'contacts', 'email') }" class="p link-primary link-underline { pointerEvents-none : $State.get('mode') === 'editing' } whiteSpace-normal">{ $store.resume.get('commons', 'contacts', 'email') }</a>
                 </div>
             </div>
             <div if={ $store.resume.get('commons', 'contacts', 'skype') } class="pos-rel flex-row-left-center w100p xs-mb-m headline-icons" data-scrollin-icon>
@@ -40,7 +40,7 @@
                     <icon-skype color="primary" size="{ app.device.isPhone ? 'l' : 'm' }"></icon-skype>
                 </div>
                 <div class="h80 pt-m text-truncate minW-70p maxW-70p" data-scrollin-icon="\{'stagger':60\}">
-                    <a class="p link-primary { pointerEvents-none : $State.get('mode') === 'editing' } whiteSpace-normal" href="skype:{ $store.resume.get('contacts', 'skype') }">{ $store.resume.get('commons', 'contacts', 'skype') }</a>
+                    <a href="skype:{ $store.resume.get('commons', 'contacts', 'skype') }" class="p link-primary { pointerEvents-none : $State.get('mode') === 'editing' } whiteSpace-normal">{ $store.resume.get('commons', 'contacts', 'skype') }</a>
                 </div>
             </div>
             <div if={ $resume.social } class="mt-m">
