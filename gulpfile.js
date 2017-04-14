@@ -110,13 +110,13 @@ gulp.task('premium.js.build', gulp.parallel('premium.app', 'premium.templates', 
 gulp.task('build', gulp.series(
 	gulp.parallel(
 		'css.build',
-		// gulp.series('promo.js', 'promo.app.build'),
-		// gulp.series('public.js', 'public.app.build'),
-		// gulp.series('workflow.js'),
-		// gulp.series('public.js.mobile', 'public.app.build.mobile'),
-		gulp.series('private.js.build', 'private.templates', 'private.app', 'private.app.build')
-		// gulp.series('premium.js.build', 'premium.app.build'),
-		// gulp.series('jobs.js.build', 'jobs.app.build')
+		gulp.series('promo.js', 'promo.app.build'),
+		gulp.series('public.js', 'public.app.build'),
+		gulp.series('workflow.js'),
+		gulp.series('public.js.mobile', 'public.app.build.mobile'),
+		gulp.series('private.js.build', 'private.templates', 'private.app', 'private.app.build'),
+		gulp.series('premium.js.build', 'premium.app.build'),
+		gulp.series('jobs.js.build', 'jobs.app.build')
 	)
 ));
 

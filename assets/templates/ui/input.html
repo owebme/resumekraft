@@ -8,8 +8,7 @@
 
 <script>
 
-    var $ = this,
-    $input = null;
+    var $ = this;
 
     $.on("before-mount", function(){
         if ($.opts.update && $.opts.cursor){
@@ -25,21 +24,6 @@
             }
             if ($.opts.update && $.opts.cursor && $.opts.value){
                 $.autosuggestgetobject = true;
-            }
-        }
-    });
-
-    $.on("mount", function(){
-        if (!window.$$ || window.$$ && !$$.fn.mask) return;
-        if ($.opts.pattern || $.opts.mask){
-            $input = $$($.input);
-            if ($.opts.pattern){
-                $input.mask($.opts.pattern);
-            }
-            else if ($.opts.mask){
-                if ($.opts.mask == "phone"){
-                    $input.mask("(000) 000-0000");
-                }
             }
         }
     });
@@ -247,12 +231,6 @@
             document.removeEventListener('click', $.autosuggest.handleClickOutside);
         }
     };
-
-    $.on("unmount", function(){
-        if ($.opts.pattern || $.opts.mask){
-            $$($.input).unmask();
-        }
-    });
 
 </script>
 

@@ -43,9 +43,9 @@
 					<span class="cell cell-name">Email:</span>
 					<span class="cell"><a class="cell-email" href="mailto:{ $resume.get('commons', 'contacts', 'email') }">{ $resume.get('commons', 'contacts', 'email') }</a></span>
 				</div>
-				<div if={ $resume.get('commons', 'contacts', 'phone') } class="t-container-string-element">
+				<div if={ $resume.get('commons', 'contacts', 'phone', 'number') } class="t-container-string-element">
 					<span class="cell cell-name">{ $i18n("resume.basic.template.Phone") }:</span>
-					<span class="cell"><a href="tel:{ $resume.get('commons', 'contacts', 'phone').replace(/[\s|\-|\(|\)]/g, "") }">{ $resume.get('commons', 'contacts', 'phone') }</a></span>
+					<span class="cell"><a href="{ $store.resume.take.phoneLink() }">{ $store.resume.take.phone() }</a></span>
 				</div>
 				<div if={ $resume.get('commons', 'contacts', 'skype') } class="t-container-string-element">
 					<span class="cell cell-name">Skype:</span>

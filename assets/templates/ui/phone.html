@@ -8,7 +8,7 @@
         <select if={ app.device.isMobile } onChange={ onChange }>
             <option each={ item, i in opts.items } no-reorder value={ item._id } selected={ value.id == item._id || !value.id && item._id == "ru" }>{ item.title } +{ item.code }</option>
         </select>
-        <ul if={ !app.device.isMobile } name="select" class="country-list dropup" data-hidden={ !active }>
+        <ul if={ !app.device.isMobile } name="select" class="country-list dropup" data-hidden={ !showList }>
             <virtual each={ item in preferred() } no-reorder>
                 <li onClick={ onSelect } class="country">
                     <div class="flag">
@@ -38,7 +38,7 @@
     var $ = this,
     $input = null;
 
-    $.active = false;
+    $.showList = false;
     $.item = null;
     $.value = {
         id: null,
@@ -87,8 +87,8 @@
     });
 
     $.show = function(){
-        $.active = !$.active;
-        if ($.active){
+        $.showList = !$.showList;
+        if ($.showList){
             setTimeout(function(){
                 document.addEventListener('click', $.handleClickOutside);
             }, 0);
@@ -144,7 +144,7 @@
 
     $.hide = function(){
         $.update({
-            active: false
+            showList: false
         })
         document.removeEventListener('click', $.handleClickOutside);
     };

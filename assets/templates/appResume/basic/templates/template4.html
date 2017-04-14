@@ -18,8 +18,8 @@
 			<div class="t-header-string-element">
 				<i></i><span if={ !$resume.get('commons', 'birthday', 'hidden') }>{ $resume.take.birthday.date() }&nbsp;</span><span class="age">({ $resume.take.birthday.age() })</span>
 			</div>
-			<div if={ $resume.get('commons', 'contacts', 'city') || $resume.get('commons', 'contacts', 'phone') } class="t-header-string-element">
-				<i></i><span if={ $resume.get('commons', 'contacts', 'city') }>{ $resume.get('commons', 'contacts', 'city', 'name') }</span><span if={ $resume.get('commons', 'contacts', 'phone') }>,&nbsp; <a href="tel:{ $resume.get('commons', 'contacts', 'phone').replace(/[\s|\-|\(|\)]/g, "") }">{ $resume.get('commons', 'contacts', 'phone') }</a></span>
+			<div if={ $resume.get('commons', 'contacts', 'city') || $resume.get('commons', 'contacts', 'phone', 'number') } class="t-header-string-element">
+				<i></i><span if={ $resume.get('commons', 'contacts', 'city') }>{ $resume.get('commons', 'contacts', 'city', 'name') }</span><span if={ $resume.get('commons', 'contacts', 'phone', 'number') }>,&nbsp; <a href="{ $store.resume.take.phoneLink() }">{ $store.resume.take.phone() }</a></span>
 			</div>
 			<div if={ $resume.get('commons', 'contacts', 'email') } class="t-header-string-element"><i></i><a href="mailto:{ $resume.get('commons', 'contacts', 'email') }">{ $resume.get('commons', 'contacts', 'email') }</a></div>
 			<div if={ $resume.get('commons', 'contacts', 'skype') } class="t-header-string-element"><i></i>Skype: <a href="skype:{ $resume.get('commons', 'contacts', 'skype') }">{ $resume.get('commons', 'contacts', 'skype') }</a></div>

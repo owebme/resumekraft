@@ -22,19 +22,6 @@
 
     $.on("mount", function(){
         $.input = $.refs.input;
-
-        if (!window.$$ || window.$$ && !$$.fn.mask) return;
-        if ($.opts.pattern || $.opts.mask){
-            var $input = $$($.input);
-            if ($.opts.pattern){
-                $input.mask($.opts.pattern);
-            }
-            else if ($.opts.mask){
-                if ($.opts.mask == "phone"){
-                    $input.mask("(000) 000-0000");
-                }
-            }
-        }
     });
 
     $.on("update", function(){

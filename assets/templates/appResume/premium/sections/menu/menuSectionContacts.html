@@ -82,7 +82,7 @@
                 <span class="visible-sm title">Телефон</span>
             </div>
             <div class="col-xs-24 col-sm-16">
-                <ui-input update="phone" cursor={ data.select('contacts') } mask="phone" size="l"></ui-input>
+                <ui-input-phone update="phone" items={ $store.countryCode } cursor={ data.select('contacts') } size="l"></ui-input-phone>
             </div>
         </div>
         <div class="row mb-m xs-pb-xxs">

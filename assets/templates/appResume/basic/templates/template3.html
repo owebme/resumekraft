@@ -3,7 +3,7 @@
 	<div id="t-header">
 		<div id="t-header-contacts">
 			<div if={ $resume.get('commons', 'contacts', 'city') } id="t-header-city">{ $resume.get('commons', 'contacts', 'city', 'name') }</div>
-			<div if={ $resume.get('commons', 'contacts', 'phone') } id="t-header-phone"><a href="tel:{ $resume.get('commons', 'contacts', 'phone').replace(/[\s|\-|\(|\)]/g, "") }">{ $resume.get('commons', 'contacts', 'phone') }</a></div>
+			<div if={ $resume.get('commons', 'contacts', 'phone', 'number') } id="t-header-phone"><a href="{ $store.resume.take.phoneLink() }">{ $store.resume.take.phone() }</a></div>
 			<div if={ $resume.get('commons', 'contacts', 'skype') } id="t-header-skype">Skype: <a href="skype:{ $resume.get('commons', 'contacts', 'skype') }">{ $resume.get('commons', 'contacts', 'skype') }</a></div>
 		</div>
 		<div if={ !$resume.get('commons', 'surname') } id="t-header-names" data-long={ $resume.get('commons', 'name').length > 8 }>

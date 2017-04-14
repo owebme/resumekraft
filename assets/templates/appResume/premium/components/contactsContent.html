@@ -16,14 +16,14 @@
                     { $store.resume.get('commons', 'contacts', 'city', 'name') }
                 </div>
             </div>
-            <div if={ $store.resume.get('commons', 'contacts', 'phone') } class="pos-rel flex-row-left-center w100p xs-mb-m headline-icons">
+            <div if={ $store.resume.get('commons', 'contacts', 'phone', 'number') } class="pos-rel flex-row-left-center w100p xs-mb-m headline-icons">
                 <div if={ $store.resume.get('commons', 'contacts', 'primary') == "phone" } class="choose__contact">{ $i18n("resume.premium.template.Choose") }</div>
                 <div class="flex-centered { app.device.isPhone ? 'w100' : 'w80' } h80 ml--m pt-xxs" data-scrollin-icon>
                     <icon-phone color="primary" size="{ app.device.isPhone ? 'l' : 'm' }"></icon-phone>
                 </div>
-                <div class="h80 c-blackLight f-primary { app.device.isPhone ? 'fontSize-22' : 'fontSize-20' } fontWeight-bold pt-m" data-scrollin-icon="\{'stagger':60\}">
-                    { $store.resume.get('commons', 'contacts', 'phone') }
-                </div>
+                <a href="{ $store.resume.take.phoneLink() }" class="display-block h80 c-blackLight f-primary textDecoration-none { app.device.isPhone ? 'fontSize-22' : 'fontSize-20' } fontWeight-bold pt-m" data-scrollin-icon="\{'stagger':60\}">
+                    { $store.resume.take.phone() }
+                </a>
             </div>
             <div if={ $store.resume.get('commons', 'contacts', 'email') } class="pos-rel flex-row-left-center w100p xs-mb-m headline-icons" data-scrollin-icon>
                 <div if={ $store.resume.get('commons', 'contacts', 'primary') == "email" } class="choose__contact">{ $i18n("resume.premium.template.Choose") }</div>
@@ -31,7 +31,7 @@
                     <icon-feedback color="primary" size="{ app.device.isPhone ? 'l' : 'm' }"></icon-feedback>
                 </div>
                 <div class="h80 pt-m text-truncate minW-70p maxW-70p" data-scrollin-icon="\{'stagger':60\}">
-                    <a class="p link-primary link-underline { pointerEvents-none : $State.get('mode') === 'editing' } whiteSpace-normal" href="mailto:{ $store.resume.get('contacts', 'email') }">{ $store.resume.get('commons', 'contacts', 'email') }</a>
+                    <a href="mailto:{ $store.resume.get('contacts', 'email') }" class="p link-primary link-underline { pointerEvents-none : $State.get('mode') === 'editing' } whiteSpace-normal">{ $store.resume.get('commons', 'contacts', 'email') }</a>
                 </div>
             </div>
             <div if={ $store.resume.get('commons', 'contacts', 'skype') } class="pos-rel flex-row-left-center w100p xs-mb-m headline-icons" data-scrollin-icon>

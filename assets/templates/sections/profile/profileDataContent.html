@@ -81,7 +81,7 @@
             <span class="visible-sm title">Телефон</span>
         </div>
         <div class="col-xs-24 col-sm-16">
-            <ui-input placeholder="Телефон" update="phone" cursor={ opts.cursor.select('contacts') } mask="phone" size="l"></ui-input>
+            <ui-input-phone placeholder="Телефон" update="phone" items={ $store.countryCode } cursor={ opts.cursor.select('contacts') } size="xl"></ui-input-phone>
         </div>
     </div>
     <div class="row mb-m">
