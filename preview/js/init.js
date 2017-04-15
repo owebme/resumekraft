@@ -4,6 +4,9 @@
         location.replace("/premium/editing");
         return;
     }
+    else if (location.href.match(/\?hh\=.{38}/)){
+        window.$idhh = location.href.match(/\?hh\=(.{38})/)[1];
+    }
 
     var $body = app.$dom.body,
         $control = {
@@ -120,8 +123,14 @@
             app.$dom.window.one("message", function(e){
                 var data = e.originalEvent.data;
                 if (data && data == "ready"){
-                    changeColor($State.get("color"));
-                    $body.removeClass('apploading');
+                    if (window.$idhh){
+                        app.tag("resume-import").request(window.$idhh);
+                        window.$idhh = null;
+                    }
+                    else {
+                        changeColor($State.get("color"));
+                        $body.removeClass('apploading');
+                    }
                     if (callback) callback();
                 }
             });
@@ -144,6 +153,9 @@
 
         if (currentDevice != "phone"){
             $body.attr("data-help", false);
+        }
+        if (previousScreen.device == "phone" && app.tag("section-notify").active) {
+            app.tag("section-notify").hide();
         }
 
         $body.addClass('apploading');

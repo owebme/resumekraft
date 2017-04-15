@@ -30,6 +30,7 @@ module.exports = function(){
             'assets/js/components/commons/EventEmitter.js',
             'assets/js/components/commons/EventEmitterMicro.js',
             'assets/js/components/features/premium.js',
+            'assets/js/components/features/jptest.js',
             'assets/js/components/features/navbar.js',
             'public/js/commons/config.js',
             'public/js/commons/metrika.js',
@@ -55,13 +56,7 @@ module.exports = function(){
             'assets/js/plugins/scroll/scroll.Animate.js',
             'assets/js/plugins/scroll/scroll.Parallax.js',
             'assets/js/libs/skycons/skycons.js',
-            'public/js/sections/nav.js',
-            'public/js/sections/home.js',
-            'public/js/sections/premium.js',
-            'public/js/sections/jptest.js',
-            'public/js/sections/blog.js',
-            'public/js/sections/blogContent.js',
-            'public/js/sections/jobs/jobsHome.js'])
+            'public/js/sections/*.js'])
     		.pipe(concat('app.js'))
     		.pipe(uglify())
     		.pipe(gulp.dest('./public/js'));

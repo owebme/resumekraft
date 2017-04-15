@@ -1,38 +1,45 @@
 <raw-content>
     <script>
     this.on("update", function(){
-        if (this.opts.content && this.opts.content.length){
-             var content = this.opts.content;
-             content = content.replace(/<[^\/]>[\s|\r|\n]{0,}<\/.+?>/gi, "");
+        try {
+            if (this.opts.content && this.opts.content.length){
+                 var content = this.opts.content;
+                 content = content.replace(/<[^\/]>[\s|\r|\n]{0,}<\/.+?>/gi, "");
 
-             content = content.replace(/(&nbsp;)+/gi, " ");
-             content = content.replace(/\s+/gi, " ");
-             content = content.replace(/(<br \/>)+/gi, "");
+                 content = content.replace(/(&nbsp;)+/gi, " ");
+                 content = content.replace(/\s+/gi, " ");
+                 content = content.replace(/(<br \/>)+/gi, "");
 
-             content = content.replace(/<p><br \/><strong>/gi, "<p><strong>");
-             content = content.replace(/<strong>(.+?)<\/strong>:/gi, "<strong>$1:</strong>");
-             content = content.replace(/<em><strong>(.+?)<\/strong><\/em>/gi, "<strong>$1</strong>");
-             content = content.replace(/<strong><em>(.+?)<\/em><\/strong>/gi, "<strong>$1</strong>");
-             content = content.replace(/<\/(\w+)>\s+<(\w+)/gi, "</$1><$2");
+                 content = content.replace(/<p><br \/><strong>/gi, "<p><strong>");
+                 content = content.replace(/<strong>(.+?)<\/strong>:/gi, "<strong>$1:</strong>");
+                 content = content.replace(/<em><strong>(.+?)<\/strong><\/em>/gi, "<strong>$1</strong>");
+                 content = content.replace(/<strong><em>(.+?)<\/em><\/strong>/gi, "<strong>$1</strong>");
+                 content = content.replace(/<\/(\w+)>\s+<(\w+)/gi, "</$1><$2");
 
-             content = content.replace(/<p><strong>([a-zа-яё\s\.,]+):[\s|\r|\n]?<\/strong><\/p>/gi, "<p class='h'>$1:</p>");
-             content = content.replace(/<strong>([a-zа-яё\s\.,]+):[\s|\r|\n]?<\/strong>/gi, "<p class='h'>$1:</p>");
-             content = content.replace(/<p class='h'>(.+?):<\/p>/gi, "<p class='h'><strong>$1:</strong></p>");
-             content = content.replace(/<p><strong>([a-zа-яё\s\.,]+)(?!:)[\s|\r|\n]?<\/strong><\/p><ul>/gi, "<p class='h'><strong>$1:</strong></p><ul>");
-             content = content.replace(/<p>([a-zа-яё\s\.,]+):[\s|\r|\n]?<\/p><ul>/gi, "<p class='h'><strong>$1:</strong></p><ul>");
+                 content = content.replace(/<p><strong>([a-zа-яё\s\.,]+):[\s|\r|\n]?<\/strong><\/p>/gi, "<p class='h'>$1:</p>");
+                 content = content.replace(/<strong>([a-zа-яё\s\.,]+):[\s|\r|\n]?<\/strong>/gi, "<p class='h'>$1:</p>");
+                 content = content.replace(/<p class='h'>(.+?):<\/p>/gi, "<p class='h'><strong>$1:</strong></p>");
+                 content = content.replace(/<p><strong>([a-zа-яё\s\.,]+)(?!:)[\s|\r|\n]?<\/strong><\/p><ul>/gi, "<p class='h'><strong>$1:</strong></p><ul>");
+                 content = content.replace(/<p>([a-zа-яё\s\.,]+):[\s|\r|\n]?<\/p><ul>/gi, "<p class='h'><strong>$1:</strong></p><ul>");
 
-             content = content.replace(/<li>[\s|\r|\n]?<strong>(.+?)<\/strong>[\s|\r|\n]?<\/li>/gi, "<li class='s'><strong>$1</strong></li>");
+                 content = content.replace(/<li>[\s|\r|\n]?<strong>(.+?)<\/strong>[\s|\r|\n]?<\/li>/gi, "<li class='s'><strong>$1</strong></li>");
 
-             content = content.replace(/<li>[\s|\r|\n]?<p>(.+?)<\/p>[\s|\r|\n]?<\/li>/gi, "<li>$1</li>");
+                 content = content.replace(/<li>[\s|\r|\n]?<p>(.+?)<\/p>[\s|\r|\n]?<\/li>/gi, "<li>$1</li>");
 
-             content = content.replace(/http:\/\/www\./gi, "http://");
+                 content = content.replace(/http:\/\/www\./gi, "http://");
 
-             var urlRegex =/\b((ht|f)tp(s)?:\/\/[\w]+[^ \,\"\n\r\t<]*)\b/gi;
-             content = content.replace(urlRegex, function(url) {
-                 return '<a href="' + url + '" target="_blank">' + url + '</a>';
-             });
+                 var urlRegex =/\b((ht|f)tp(s)?:\/\/[\w]+[^ \,\"\n\r\t<]*)\b/gi;
+                 content = content.replace(urlRegex, function(url) {
+                     return '<a href="' + url + '" target="_blank">' + url + '</a>';
+                 });
 
-             this.root.innerHTML = convertVideoLinks(content);
+                 this.root.innerHTML = convertVideoLinks(content);
+            }
+            else {
+                this.root.innerHTML = 'Компания еще не добавила описание о себе.';
+            }
+        } catch(e){
+            this.root.innerHTML = this.opts.content && this.opts.content.length && this.opts.content || 'Компания еще не добавила описание о себе.';
         }
     	function convertVideoLinks(html)
     	{

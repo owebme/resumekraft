@@ -18,6 +18,7 @@
     <photo-upload></photo-upload>
 
     <app-sections>
+        <section-master></section-master>
         <resume-stat-mobile></resume-stat-mobile>
         <section-inbox-mobile></section-inbox-mobile>
         <section-inbox-content-mobile></section-inbox-content-mobile>
@@ -79,6 +80,9 @@
 
     this.init = function(){
         $Sections = {
+            master: {
+                section: $root.tags["section-master"]
+            },            
             profile: {
                 section: $root.tags["section-profile-mobile"],
                 data: $root.tags["section-profile-data-mobile"]

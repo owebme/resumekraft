@@ -28,6 +28,7 @@ module.exports = function(){
             'assets/js/components/commons/modules.js',
             'assets/js/components/commons/EventEmitterMicro.js',
             'assets/js/components/features/links.js',
+            'assets/js/components/features/jptest.js',
             'assets/js/plugins/imagesLoaded/imagesLoaded.js',
             'assets/js/plugins/imagesLoaded/imagesLoaded.LiveQueue.js',
             'assets/js/plugins/imagesLoaded/imagesLoaded.Queue.js',

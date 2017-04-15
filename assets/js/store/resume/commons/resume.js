@@ -192,7 +192,9 @@ $store.resume = _.extend(new Baobab({},
                             $store.resume.select("commons", "surname").set(lang == "ru" ? 'Фамилия' : 'Surname');
                             $store.resume.select("commons", "birthday", "hidden").set(true);
                             $store.resume.select("commons", "contacts", "email").set(lang == "ru" ? 'ваша@почта.ru' : 'your@gmail.com');
-                            $store.resume.select("commons", "contacts", "phone").set(lang == "ru" ? 'Мобильный телефон' : 'Mobile phone number');
+                            $store.resume.select("commons", "contacts", "phone").set({
+                                number: lang == "ru" ? 'Мобильный телефон' : 'Mobile phone number'
+                            });
                             if (!$store.resume.get("salary", "active")){
                                 $store.resume.select("sections", {"name": "salary"}, "active").set(false);
                             }
@@ -411,8 +413,8 @@ $store.resume = _.extend(new Baobab({},
             },
             phone: function(){
                 var phone = $store.resume.get("commons", "contacts", "phone");
-                if (phone && phone.code && phone.number){
-                    return "+" + phone.code + " " + phone.number;
+                if (phone && phone.number){
+                    return (phone.code ? "+" + phone.code + " " : "") + phone.number;
                 }
                 else {
                     return "";

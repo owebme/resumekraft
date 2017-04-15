@@ -6,42 +6,18 @@
         @extend .btn-hover;
         @extend .btn-active;
         @extend .cursor-pointer;
-        margin:0 0 0 15px;
     }
     &-tr, &[data-pos="top-right"] {
         @extend .pos-tr;
-        transform:translate3d(-17px, 15px, 0);
-
-        html.d-phone & {
-            transform:translate3d(-10px, 12px, 0);
-        }
-        html.d-tablet & {
-            transform:translate3d(-12px, 12px, 0);
-        }
     }
     &-tl, &[data-pos="top-left"] {
         @extend .pos-tl;
-        transform:translate3d(17px, 15px, 0);
-
-        html.d-phone & {
-            transform:translate3d(10px, 12px, 0);
-        }
     }
     &-bl, &[data-pos="bottom-left"] {
         @extend .pos-bl;
-        transform:translate3d(17px, -15px, 0);
-
-        html.d-phone & {
-            transform:translate3d(10px, -12px, 0);
-        }
     }
     &-br, &[data-pos="bottom-right"] {
         @extend .pos-br;
-        transform:translate3d(-17px, -15px, 0);
-
-        html.d-phone & {
-            transform:translate3d(-10px, -12px, 0);
-        }
     }
     &.zIndex-0 {
         @extend .zIndex-0;
@@ -62,6 +38,9 @@
         html.d-tablet & {
             margin:12px 12px 0 0;
         }
+        html.d-phone & {
+            margin:12px 10px 0 0;
+        }
         &[data-color="white"]{
             @include ui-icon(minus_white);
         }
@@ -78,9 +57,6 @@
         &.small {
             width:32px;
             height:32px;
-        }
-        html.d-phone & {
-            margin:12px 10px 0 0;
         }
     }
     &__help {

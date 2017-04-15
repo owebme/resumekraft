@@ -5,7 +5,7 @@ module.exports = function(){
         res.render(req.device.type == "phone" ? 'index-mobile' : 'index', {
             content: output,
             device: req.device.type,
-            isMobile: req.device.isMobile            
+            isMobile: req.device.isMobile
         });
     });
 
@@ -68,7 +68,9 @@ module.exports = function(){
         });
     });
 
-    app.get('/jobs/', app.controllers.jobs.index);
+    app.get('/jobs/', function(req, res) {
+        res.redirect(301, '/jobs/search');
+    });
     app.get('/jobs/search', app.controllers.jobs.search);
     app.get('/jobs/vacancy/:alias/:name', app.controllers.jobs.vacancy);
     app.get('/jobs/employer/:alias/:name', app.controllers.jobs.employer);
