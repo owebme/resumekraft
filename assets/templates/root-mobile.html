@@ -31,21 +31,21 @@
         <ui-dropmenu></ui-dropmenu>
     </app-sections>
 
-    <app-popups>
+    <!-- <app-popups>
         <popup-premium></popup-premium>
         <popup-jptest></popup-jptest>
-    </app-popups>
+    </app-popups> -->
 
-    <app-offers>
-        <!-- <offer-plan></offer-plan> -->
+    <!-- <app-offers>
+        <offer-plan></offer-plan>
         <offer-votes></offer-votes>
-    </app-offers>
+    </app-offers> -->
 
-    <app-overviews>
+    <!-- <app-overviews>
         <overview-premium></overview-premium>
         <overview-jptest></overview-jptest>
         <overview-functions></overview-functions>
-    </app-overviews>
+    </app-overviews> -->
 
 <script>
 
@@ -82,7 +82,7 @@
         $Sections = {
             master: {
                 section: $root.tags["section-master"]
-            },            
+            },
             profile: {
                 section: $root.tags["section-profile-mobile"],
                 data: $root.tags["section-profile-data-mobile"]
@@ -104,17 +104,17 @@
                 // plan: $root.tags["offer-plan"],
                 votes: $root.tags["offer-votes"]
             },
-            overview: {
-                premium: $root.tags["overview-premium"],
-                jptest: $root.tags["overview-jptest"],
-                functions: $root.tags["overview-functions"]
-            },
-            jptest: {
-                section: $root.tags["section-jptest"],
-                list: $root.tags["section-jptest"].tags["jptest-list"],
-                test: $root.tags["section-jptest"].tags["jptest-content"],
-                result: $root.tags["section-jptest"].tags["jptest-result"]
-            },
+            // overview: {
+            //     premium: $root.tags["overview-premium"],
+            //     jptest: $root.tags["overview-jptest"],
+            //     functions: $root.tags["overview-functions"]
+            // },
+            // jptest: {
+            //     section: $root.tags["section-jptest"],
+            //     list: $root.tags["section-jptest"].tags["jptest-list"],
+            //     test: $root.tags["section-jptest"].tags["jptest-content"],
+            //     result: $root.tags["section-jptest"].tags["jptest-result"]
+            // },
             plan: $root.tags["section-plan-mobile"],
             likes: {
                 section: $root.tags["section-likes-mobile"]

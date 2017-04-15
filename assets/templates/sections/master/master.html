@@ -1,6 +1,6 @@
 <section-master class="section__master" data-open="false" data-menu="false" data-options="false">
 
-    <div class="master__title__main">
+    <div class="master__title__main hidden-xs">
         <div class="master__title master__title__main__inner">
             Я хочу
         </div>
@@ -9,35 +9,48 @@
         </div>
     </div>
 
+    <div onClick={ hide } onUpdate="none" class="master__close__mobile visible-xs"></div>
+    <div onClick={ nextSlide } onUpdate="none" class="master__arrow__mobile visible-xs"></div>
+
     <section-master-options></section-master-options>
 
-    <div class="master__block" data-pos="left">
-        <div onClick={ onSelect } onUpdate="none" each={ item in get.items("left") } no-reorder class="master__block__item">
-            <span class="master__block__link">{ item.title }</span>
-        </div>
-    </div>
-
-    <div class="master__block" data-pos="top">
-        <div onClick={ onSelect } onUpdate="none" each={ item in get.items("top") } no-reorder class="master__block__item">
-            <span class="master__block__link">{ item.title }</span>
-        </div>
-    </div>
-
-    <div class="master__block" data-pos="bottom">
-        <div onClick={ onSelect } onUpdate="none" each={ item in get.items("bottom") } no-reorder class="master__block__item">
-            <span class="master__block__link">{ item.title }</span>
-        </div>
-    </div>
-
-    <div class="master__block" data-pos="right">
-        <div onClick={ onSelect } onUpdate="none" each={ item in get.items("right") } no-reorder class="master__block__item">
-            <span class="master__block__link">{ item.title }</span>
+    <div name="screensEl" class="screens screens-phone" data-fixed="true">
+        <div class="screens__content">
+            <div class="master__block screen" data-pos={ left : !app.device.isPhone }>
+                <div class="master__block__items">
+                    <div onClick={ onSelect } onUpdate="none" each={ item in get.items("left") } no-reorder class="master__block__item">
+                        <span class="master__block__link">{ item.title }</span>
+                    </div>
+                </div>
+            </div>
+            <div class="master__block screen" data-pos={ top : !app.device.isPhone }>
+                <div class="master__block__items">
+                    <div onClick={ onSelect } onUpdate="none" each={ item in get.items("top") } no-reorder class="master__block__item">
+                        <span class="master__block__link">{ item.title }</span>
+                    </div>
+                </div>
+            </div>
+            <div class="master__block screen" data-pos={ bottom : !app.device.isPhone }>
+                <div class="master__block__items">
+                    <div onClick={ onSelect } onUpdate="none" each={ item in get.items("bottom") } no-reorder class="master__block__item">
+                        <span class="master__block__link">{ item.title }</span>
+                    </div>
+                </div>
+            </div>
+            <div class="master__block screen" data-pos={ right : !app.device.isPhone }>
+                <div class="master__block__items">
+                    <div onClick={ onSelect } onUpdate="none" each={ item in get.items("right") } no-reorder class="master__block__item">
+                        <span class="master__block__link">{ item.title }</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
 <script>
 
-    var $ = this;
+    var $ = this,
+    $scope = $$($.root);
 
     $.default = function(){
         return {
@@ -216,16 +229,73 @@
         }
     ];
 
+    $.screens = {};
+
     $.on("mount", function(){
         $.control = $.tags["section-master-options"];
-        // $afterlag.xl(function(){
+        $afterlag.run(function(){
+            $.init.screens();
+        });
+        // $afterlag.m(function(){
         //     $.show();
-        // })
+        // });
     });
 
     $.show = function(){
         $.root.setAttribute("data-open", true);
         $.root.setAttribute("data-menu", true);
+
+        if (app.device.isPhone){
+            $.screens.el.find(".screen:eq("+ $.screens.index +")")
+            .attr("data-transform", "top")
+            .attr("data-active", true);
+        }
+    };
+
+    $.init = {
+        screens: function(){
+            if (app.device.isPhone){
+                $.screens.plugin = new app.plugins.screens($.screensEl, {
+                    static: true
+                });
+
+                $.screens.plugin.init();
+
+                $.screens.el = $$($.screensEl);
+                $.screens.items = $.screens.el.find(".screen");
+                $.screens.index = 0;
+
+                $.screens.items.on('show hide', function(e){
+                    var $item = $$(this);
+                    if (e.type == "show"){
+                        var i = $item.index();
+                        if (i > $.screens.index){
+                            $item.attr("data-transform", "top");
+                        }
+                        else {
+                            $item.attr("data-transform", "bottom");
+                        }
+                        $item.attr("data-active", true);
+                        $.screens.index = i;
+                        if ($.screens.items.length == $.screens.index + 1){
+                            $scope.attr("data-last", true);
+                        }
+                        else {
+                            if ($scope.attr("data-last")){
+                                $scope.removeAttr("data-last");
+                            }
+                        }
+                    }
+                    else {
+                        $item.removeAttr("data-active");
+                    }
+                });
+            }
+        }
+    };
+
+    $.nextSlide = function(){
+        $.screens.plugin.nav($.screens.index + 1);
     };
 
     $.get = {
@@ -307,8 +377,8 @@
             callback();
         }, {
             iterations: 5,
-            timeout: 700,
-            delay: 700
+            timeout: app.device.isPhone ? 400 : 700,
+            delay: app.device.isPhone ? 400 : 700
         });
     };
 
@@ -321,6 +391,11 @@
             $.root.setAttribute("data-open", false);
             $.root.setAttribute("data-menu", false);
             $.root.setAttribute("data-options", false);
+
+            if (app.device.isPhone){
+                $.screens.el.find(".screen:eq("+ $.screens.index +")")
+                .removeAttr("data-active");
+            }
         }
     };
 

@@ -9,7 +9,7 @@
             line-height:62px;
             @extend .pointerEvents-none;
 
-            // .d-xlargeScreen & {
+            // html.d-xlargeScreen & {
             //     font-size:72px;
             // }
             &__inner {
@@ -31,62 +31,11 @@
                     @extend .borderRadius-xs;
                     @extend .zIndex--1;
 
-                    // .d-xlargeScreen & {
+                    // html.d-xlargeScreen & {
                     //     @extend .t85;
                     // }
                 }
             }
-        }
-        &__options {
-            @include accelerate();
-            @extend .opacity-0;
-            @extend .pos-rel;
-            @extend .flex-centered;
-            font-size:36px;
-            line-height:36px;
-            @extend .text-uppercase;
-            @extend .mb30;
-            @extend .willChange-tp;
-            @extend .trX--m;
-            @extend .nowrap;
-
-            &__inner {
-                @extend .display-inlineBlock;
-                @extend .btn-active;
-
-                html.m-no-touch &:hover {
-                    @extend .c-yellowBright;
-                }
-            }
-        }
-    }
-    &__options {
-        @extend .pos-centered;
-        @extend .minH-50v;
-        @extend .text-center;
-        @extend .pointerEvents-none;
-
-        &__content {
-            @include accelerate();
-            @extend .opacity-0;
-            @extend .willChange-tp;
-            @extend .trY-m;
-        }
-    }
-    &__back__menu {
-        @extend .flex-column-centered;
-        @extend .w40;
-        @extend .h50;
-        @extend .mr-xxs;
-        @extend .ml--m;
-        transform:translateY(-2px);
-
-        svg {
-            @extend .w32;
-            @extend .h32;
-        }
-        path {
-            @extend .fill-yellowBright;
         }
     }
     &__block {
@@ -97,7 +46,7 @@
         @extend .letterSpacing-xs;
         @extend .pointerEvents-none;
 
-        // .d-xlargeScreen & {
+        // html.d-xlargeScreen & {
         //     font-size:23.5px;
         //     @extend .letterSpacing-xs;
         //
@@ -145,12 +94,13 @@
             @extend .text-center;
         }
         &__item {
-            @include accelerate();
-            @extend .opacity-0;
-            @extend .pb-s;
-            @extend .willChange-tp;
-
-            // .d-xlargeScreen & {
+            html.d-no-phone & {
+                @include accelerate();
+                @extend .opacity-0;
+                @extend .pb-s;
+                @extend .willChange-tp;
+            }
+            // html.d-xlargeScreen & {
             //     @extend .pb-m;
             // }
             html.m-no-touch &:hover {
@@ -164,7 +114,7 @@
                 }
             }
             @for $i from 1 through 7 {
-                &:nth-child(#{$i}){
+                html.d-no-phone &:nth-child(#{$i}){
                     transform:translate3d(-#{($i * 2 + 16)}px, 0, 0);
                     transition-delay:#{($i / 30)}s;
                 }
@@ -181,7 +131,7 @@
                 @extend .t100;
                 left:-2px;
                 width:calc(100% + 4px);
-                height:2px;
+                @extend .h2px;
                 @extend .bg-yellowBright;
                 @extend .opacity-50;
                 @extend .zIndex--1;

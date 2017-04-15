@@ -2,10 +2,10 @@
     &[data-tutorial="true"]{
         .resume__list-m__menu {
             @extend .pointerEvents-none;
-
-            &:after {
-                @extend .zIndex-5;
-            }
+        }
+        .master__launcher__mobile {
+            @extend .zIndex-5;
+            @extend .pointerEvents-none;
         }
         .navbar__mobile {
             @extend .bg-none;
@@ -99,6 +99,18 @@
             @extend .bg-white;
             @extend .opacity-70;
             @extend .mt-s;
+        }
+    }
+    .help5 {
+        @extend .t0;
+        @extend .r-s;
+        @extend .w120;
+        @extend .mt85;
+        @extend .mr-m;
+
+        .icon {
+            @extend .l0;
+            transform:scaleY(-1) rotate(80deg);
         }
     }
     .help__text {

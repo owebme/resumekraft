@@ -5,6 +5,7 @@
     @extend .opacity-0;
     @extend .willChange-tp;
     @extend .text-center;
+    @extend .pointerEvents-none;
     transform:translate3d(0, 20px, 0) rotate(45deg);
 
     &__button {
@@ -13,7 +14,7 @@
         @extend .btn-active;
         @include ui-icon("close_fill_white", 35px, 35px);
 
-        // .d-xlargeScreen & {
+        // html.d-xlargeScreen & {
         //     @extend .w40;
         //     @extend .h40;
         // }

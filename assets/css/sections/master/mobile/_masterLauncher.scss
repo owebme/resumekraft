@@ -1,0 +1,59 @@
+.master__launcher__mobile {
+    @extend .pos-abs;
+    @extend .t-xs;
+    @extend .r-xs;
+    @extend .w25;
+    @extend .h25;
+    @extend .backVisible-hidden;
+    transform-style:preserve-3d;
+    animation:master__launcher__icons 18s infinite;
+    @extend .zIndex-1;
+
+    &:after {
+        @extend .content-empty;
+        @include abs();
+        @extend .scale-170;
+    }
+    &__logo {
+        @include accelerate();
+        @include abs();
+        @extend .backVisible-hidden;
+        @extend .bg-cover;
+        background-image:url(/assets/images/favicons/60.png);
+        transform:rotateY(180deg) translateZ(0);
+    }
+    &__info {
+        @include accelerate();
+        @extend .pos-abs;
+        @extend .t50;
+        @extend .l50;
+        @extend .backVisible-hidden;
+        background-color:rgba(#fd0202,.7);
+        @extend .w26;
+        @extend .h26;
+        @extend .borderRadius-circle;
+        transform:rotateY(0deg) translate3d(-50%, -50%, 0);
+
+        svg {
+            @extend .pos-centered;
+            @extend .w22;
+            @extend .h22;
+            margin-top:2px;
+        }
+        path {
+            @extend .fill-white;
+        }
+    }
+}
+
+@keyframes master__launcher__icons {
+    0%, 73.3% {
+        transform:translate3d(0, 0, 0) rotateY(0deg);
+    }
+    76%, 98.1% {
+        transform:translate3d(0, 0, 0) rotateY(180deg);
+    }
+    100% {
+        transform:translate3d(0, 0, 0) rotateY(0deg);
+    }
+}

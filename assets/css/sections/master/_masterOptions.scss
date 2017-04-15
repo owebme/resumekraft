@@ -1,0 +1,61 @@
+.master {
+    &__title {
+        &__options {
+            @include accelerate();
+            @extend .opacity-0;
+            @extend .pos-rel;
+            @extend .flex-centered;
+            font-size:36px;
+            line-height:36px;
+            @extend .text-uppercase;
+            @extend .mb30;
+            @extend .willChange-tp;
+            @extend .trX--m;
+            @extend .nowrap;
+
+            &__inner {
+                @extend .display-inlineBlock;
+                @extend .btn-active;
+
+                html.m-no-touch &:hover {
+                    @extend .c-yellowBright;
+                }
+            }
+        }
+    }
+    &__options {
+        @extend .pos-centered;
+        @extend .minH-50v;
+        @extend .text-center;
+        @extend .pointerEvents-none;
+        @extend .zIndex-1;
+
+        html.d-phone & {
+            @extend .w100v;
+            @extend .pl25;
+            @extend .pr25;
+        }
+        &__content {
+            @include accelerate();
+            @extend .opacity-0;
+            @extend .willChange-tp;
+            @extend .trY-m;
+        }
+    }
+    &__back__menu {
+        @extend .flex-column-centered;
+        @extend .w40;
+        @extend .h50;
+        @extend .mr-xxs;
+        @extend .ml--m;
+        transform:translateY(-2px);
+
+        svg {
+            @extend .w32;
+            @extend .h32;
+        }
+        path {
+            @extend .fill-yellowBright;
+        }
+    }
+}

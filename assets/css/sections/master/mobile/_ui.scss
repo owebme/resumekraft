@@ -1,0 +1,50 @@
+.master {
+    &__close__mobile {
+        @extend .pos-abs;
+        @extend .l50;
+        @extend .t-l;
+        @extend .opacity-0;
+        @extend .willChange-tp;
+        transform:translate3d(-50%, 20px, 0) rotate(45deg);
+        @include ui-icon("close_fill_white", 38px, 38px);
+        @extend .zIndex-2;
+    }
+    &__arrow__mobile {
+        @extend .pos-abs;
+        @extend .l50;
+        @extend .b-25;
+        width:17px;
+        height:17px;
+        margin-left:-8px;
+        border:4px solid #fff;
+        border-left:none;
+        border-top:none;
+        border-bottom-width:3px;
+        border-right-width:3px;
+        @extend .borderRadius-xs;
+        @extend .opacity-0;
+        @extend .willChange-tp;
+        @extend .zIndex-2;
+        transform:translate3d(0, 0, 0) rotate(45deg) scale(0);
+    }
+}
+.section__master {
+    .screens.screens-phone {
+        .ui-scroll {
+            @extend .opacity-0;
+            @extend .willChange-opacity;
+            transition:opacity 0.2s $cubic263;
+        }
+        .iScrollIndicator {
+            @extend .opacity-90;
+
+            #app & {
+                @extend .bg-yellowBright;
+            }
+        }
+        .ui-scroll__bar {
+            @extend .opacity-10;
+            @extend .bg-white;
+        }
+    }
+}

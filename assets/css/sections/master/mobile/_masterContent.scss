@@ -1,0 +1,31 @@
+html.d-phone {
+    .master {
+        &__block {
+            font-size:21px;
+            letter-spacing:-0.016em;
+
+            &__items {
+                @extend .flex-column-left-center;
+                @include accelerate();
+                @include abs();
+                @extend .willChange-tp;
+                @extend .opacity-0;
+                transform-origin:top;
+                transition:transform 0.25s $cubic263, opacity 0.25s $cubic263;
+                transform:scaleY(1.2) translateZ(0);
+            }
+            &__item {
+                @extend .pl-l;
+                @extend .pb-m;
+            }
+            &__link {
+                &:before {
+                    @extend .h1px;
+                    @extend .opacity-30;
+                    @extend .bg-white;
+                    transform:translate3d(0, 3px, 0);
+                }
+            }
+        }
+    }
+}
