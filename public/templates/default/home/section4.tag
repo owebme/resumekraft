@@ -2,7 +2,7 @@
 
     <div class="screen__content home__section4__container flex-row-center-stretch row overflow-hidden">
         <div class="col-md-12">
-            <div class="bgParallax pos-tl w100p willChange-transform bg-cover progressive-image" style="margin-top:-15%; height:135%; background-image:url(/assets/images/resume/bg4.jpg)"></div>
+            <div class="bgParallax pos-tl w100p willChange-transform bg-cover progressive-image" style="margin-top:-15%; height:135%; background-image:url(/public/images/home/section4.jpg)"></div>
         </div>
         <div class="col-md-12 bg-redSoft">
             <a href="/premium/workflow" class="hh__link display-block pos-centered w60p">

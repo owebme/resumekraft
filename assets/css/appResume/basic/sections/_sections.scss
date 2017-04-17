@@ -111,7 +111,7 @@
             &:after {
                 width:192px;
                 height:192px;
-                background-image:url(/assets/images/resume/education.svg);
+                background-image:url(/public/images/resume/education.svg);
 
                 html.d-phone & {
                     @extend .l30;
@@ -122,7 +122,7 @@
             &:after {
                 width:148px;
                 height:202px;
-                background-image:url(/assets/images/resume/courses.svg);
+                background-image:url(/public/images/resume/courses.svg);
 
                 html.d-phone & {
                     @extend .l30;
@@ -133,7 +133,7 @@
             &:after {
                 width:164px;
                 height:164px;
-                background-image:url(/assets/images/resume/languages.svg);
+                background-image:url(/public/images/resume/languages.svg);
 
                 html.d-phone & {
                     @extend .l40;
@@ -144,7 +144,7 @@
             &:after {
                 width:192px;
                 height:192px;
-                background-image:url(/assets/images/resume/jobs.svg);
+                background-image:url(/public/images/resume/jobs.svg);
 
                 html.d-phone & {
                     @extend .l55;
@@ -155,7 +155,7 @@
             &:after {
                 width:192px;
                 height:192px;
-                background-image:url(/assets/images/resume/skills.svg);
+                background-image:url(/public/images/resume/skills.svg);
 
                 html.d-phone & {
                     @extend .l30;

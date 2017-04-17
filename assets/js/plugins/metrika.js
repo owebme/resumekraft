@@ -15,6 +15,7 @@
         this.readOnly = options.readOnly;
         this.key = options.key;
         this.report = options.report;
+        this.safeMode = !app.device.isStorage;
         this.init();
     };
 
@@ -55,6 +56,7 @@
                 }
             }
 
+            if (this.visits > 0 && this.visits != state.visits && state.timer) delete state.timer;
             if (this.visits) state.visits = this.visits;
             if (this.device) state.device = app.device && app.device.get ? app.device.get() : null;
             this.state = new Baobab(state, { autoCommit: true });
@@ -72,7 +74,7 @@
         },
 
         set: function(path, value, options){
-            if (!path || !this.active || this.readOnly) return;
+            if (!path || !this.active || this.readOnly || this.safeMode) return;
             var options = options || {};
 
             if (options.action == "inc") {
@@ -92,8 +94,18 @@
         },
 
         get: function(path){
-            if (!path || !this.active) return;
-            return this.state.get(path.split("."));
+            if (!this.active) return;
+            if (this.safeMode){
+                return true;
+            }
+            else {
+                if (path){
+                    return this.state.get(path.split("."));
+                }
+                else {
+                    return this.state.get();
+                }
+            }
         },
 
         logger: function(){
@@ -107,11 +119,16 @@
 
                 if (_this.lastState != stateJSON){
                     _this.lastState = stateJSON;
-
+                    if (_this.timer){
+                        state.timer = _this.timer;
+                        Store.set(_this.key, state);
+                    }
                     app.request(method, state, {
                         loader: false,
                         notify: false
                     });
+
+                    if (state.timer) delete state.timer;
                 }
             }
 
@@ -123,6 +140,37 @@
                     _this.logger.request();
 
                 }, interval * 1000);
+
+                if (!app.safeMode){
+                    this.timer = this.state.get("timer") || {
+                        passive: 0,
+                        active: 0
+                    };
+                    setInterval(function(){
+                        _this.timer.passive++;
+                    }, 1000);
+
+                    if (!app.device.isMobile){
+                        var cords = null,
+                            lastCords = null;
+
+                        try {
+                            app.$dom.document.on("mousemove.metrika", function(e){
+                                _.raf(function(){
+                                    cords = String(e.pageX + "" + e.pageY);
+                                });
+                            });
+
+                            setInterval(function(){
+                                if (lastCords !== cords){
+                                    _this.timer.active++;
+                                    lastCords = cords;
+                                }
+                            }, 1000);
+
+                        } catch(e){}
+                    }
+                }
             }
         }
     };

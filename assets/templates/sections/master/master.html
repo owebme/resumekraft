@@ -18,28 +18,28 @@
         <div class="screens__content">
             <div class="master__block screen" data-pos={ left : !app.device.isPhone }>
                 <div class="master__block__items">
-                    <div onClick={ onSelect } onUpdate="none" each={ item in get.items("left") } no-reorder class="master__block__item">
+                    <div if={ !item.hidden } onClick={ onSelect } onUpdate="none" each={ item in get.items("left") } no-reorder class="master__block__item">
                         <span class="master__block__link">{ item.title }</span>
                     </div>
                 </div>
             </div>
             <div class="master__block screen" data-pos={ top : !app.device.isPhone }>
                 <div class="master__block__items">
-                    <div onClick={ onSelect } onUpdate="none" each={ item in get.items("top") } no-reorder class="master__block__item">
+                    <div if={ !item.hidden } onClick={ onSelect } onUpdate="none" each={ item in get.items("top") } no-reorder class="master__block__item">
                         <span class="master__block__link">{ item.title }</span>
                     </div>
                 </div>
             </div>
             <div class="master__block screen" data-pos={ bottom : !app.device.isPhone }>
                 <div class="master__block__items">
-                    <div onClick={ onSelect } onUpdate="none" each={ item in get.items("bottom") } no-reorder class="master__block__item">
+                    <div if={ !item.hidden } onClick={ onSelect } onUpdate="none" each={ item in get.items("bottom") } no-reorder class="master__block__item">
                         <span class="master__block__link">{ item.title }</span>
                     </div>
                 </div>
             </div>
             <div class="master__block screen" data-pos={ right : !app.device.isPhone }>
                 <div class="master__block__items">
-                    <div onClick={ onSelect } onUpdate="none" each={ item in get.items("right") } no-reorder class="master__block__item">
+                    <div if={ !item.hidden } onClick={ onSelect } onUpdate="none" each={ item in get.items("right") } no-reorder class="master__block__item">
                         <span class="master__block__link">{ item.title }</span>
                     </div>
                 </div>
@@ -140,9 +140,10 @@
         {
             pos: "top",
             title: "Обратиться в поддержку",
+            hidden: app.device.isPhone,
             callback: function(){
                 $Sections.messenger.show();
-                app.metrika.set("master.messenger", true);
+                app.metrika.set("master.support", true);
             }
         },
         {
@@ -174,6 +175,15 @@
             }
         },
         {
+            pos: "bottom",
+            title: "Добавить на главный экран",
+            hidden: !app.device.isPhone,
+            callback: function(){
+                //$Sections.profile.password.show();
+                app.metrika.set("master.addHomeScreen", true);
+            }
+        },
+        {
             pos: "right",
             title: "Создать премиум резюме",
             callback: function(){
@@ -202,8 +212,8 @@
         {
             pos: "right",
             title: "Выбрать образец из базы",
+            hidden: true,
             callback: function(){
-
                 app.metrika.set("master.samples", true);
             }
         },
@@ -233,9 +243,7 @@
 
     $.on("mount", function(){
         $.control = $.tags["section-master-options"];
-        $afterlag.run(function(){
-            $.init.screens();
-        });
+        $.init.screens();
         // $afterlag.m(function(){
         //     $.show();
         // });
@@ -313,21 +321,14 @@
     $.onSelect = function(){
         $.options = _.extend($.default(), this.item.options);
         if (this.item.callback){
-            if ($.options.force){
-                this.item.callback();
-            }
-            else {
-                $.afterHide(this.item.callback);
-            }
-            if (!$.options.notHide) $.hide();
+            $.onEnd(this.item);
         }
         else if (this.item.button){
             if (this.item.waterfall){
                 var items = $store.data.get();
                 if (items && items.length){
                     if (items.length == 1){
-                        $.afterHide(this.item.button.callback);
-                        $.hide();
+                        $.onEnd(this.item.button);
                     }
                     else {
                         $.onControl(this.item.button);
@@ -346,6 +347,25 @@
         }
     };
 
+    $.onSuccess = function(){
+        $.onEnd($, $.onBack);
+    };
+
+    $.onEnd = function(item, callback){
+        if ($.options.force){
+            item.callback();
+        }
+        else {
+            $.afterHide(item.callback);
+        }
+        if (!$.options.notHide) $.hide();
+        else {
+            if (_.isFunction(callback)){
+                callback();
+            }
+        }
+    };
+
     $.onControl = function(options){
         $.callback = options.callback;
         $.control.update({
@@ -357,19 +377,6 @@
     $.onBack = function(){
         $.root.setAttribute("data-options", false);
         $.root.setAttribute("data-menu", true);
-    };
-
-    $.onSuccess = function(){
-        if ($.options.force){
-            $.callback();
-        }
-        else {
-            $.afterHide($.callback);
-        }
-        if (!$.options.notHide) $.hide();
-        else {
-            $.onBack();
-        }
     };
 
     $.afterHide = function(callback){

@@ -70,6 +70,11 @@ module.exports = function() {
 		var getAccount = function(options){
 			return {
 				_id: options.id,
+				active: false,
+				activate: {
+					hash: app.utils.md5(options.login + ":" + app.config.get("session:secret")),
+					sendmail: true
+				},
 				plan: "free",
 		        balance: 0,
 				login: options.login,

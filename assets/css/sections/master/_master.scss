@@ -21,22 +21,22 @@ html.d-no-phone {
             transform:translate3d(-50%, calc(50vh - 50%), 0);
             transition:transform 0.8s $cubic645, background-color 0.35s $cubic645 0.45s, opacity 0.2s 0.6s;
         }
-        &:after {
-            @include accelerate(true);
-            @extend .content-empty;
-            @include abs();
-            @extend .opacity-0;
-            @extend .pointerEvents-none;
-            @extend .willChange-opacity;
-            background:url(/assets/images/messenger-client/bg1@2x.png);
-            transition:opacity 0.3s;
-        }
+        // &:after {
+        //     @include accelerate(true);
+        //     @extend .content-empty;
+        //     @include abs();
+        //     @extend .opacity-0;
+        //     @extend .pointerEvents-none;
+        //     @extend .willChange-opacity;
+        //     background:url(/assets/images/messenger/bg1@2x.png);
+        //     transition:opacity 0.3s;
+        // }
         &[data-open="true"]{
             @extend .pointerEvents-all;
 
             &:before {
                 @extend .opacity-100;
-                background-color:rgba($blue,.97);
+                background-color:rgba($blue,.96);
                 transition:transform 1s $cubic345;
                 transform:translate3d(-50%, 100vh, 0) scale(10);
 
@@ -44,10 +44,10 @@ html.d-no-phone {
                     transform:translate3d(-50%, 100vh, 0) scale(8.33);
                 }
             }
-            &:after {
-                opacity:0.67;
-                transition:opacity 0.3s $cubic215 0.5s;
-            }
+            // &:after {
+            //     opacity:0.67;
+            //     transition:opacity 0.3s $cubic215 0.5s;
+            // }
             &[data-menu="true"]{
                 &:before {
                     transform:translate3d(-50%, 100vh, 0) scale(10);

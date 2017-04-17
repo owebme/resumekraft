@@ -18,13 +18,13 @@
             </div>
         </div>
         <div if={ !parent.opts.device.isMobile } class="row">
-            <div each={ item, i in (parent.opts.utils.range(1, 9)) } class="home__jptest__grid__item progressive-image col-md-6" style="background-image:url(/assets/images/promo/peoples/team{ i + 1 }.jpg)"></div>
+            <div each={ item, i in (parent.opts.utils.range(1, 9)) } class="home__jptest__grid__item progressive-image col-md-6" style="background-image:url(/public/images/home/peoples/team{ i + 1 }.jpg)"></div>
         </div>
         <div if={ parent.opts.device.isMobile } class="visible-md row">
-            <div each={ item, i in ["1", "2", "3", "5", "6", "7"] } class="home__jptest__grid__item progressive-image col-md-8" style="background-image:url(/assets/images/promo/peoples/team{ item }.jpg)"></div>
+            <div each={ item, i in ["1", "2", "3", "5", "6", "7"] } class="home__jptest__grid__item progressive-image col-md-8" style="background-image:url(/public/images/home/peoples/team{ item }.jpg)"></div>
         </div>
         <div if={ parent.opts.device.isMobile } class="visible-sm row">
-            <div each={ item, i in ["1", "2", "6", "3"] } class="home__jptest__grid__item progressive-image col-sm-12" style="background-image:url(/assets/images/promo/peoples/team{ item }.jpg)"></div>
+            <div each={ item, i in ["1", "2", "6", "3"] } class="home__jptest__grid__item progressive-image col-sm-12" style="background-image:url(/public/images/home/peoples/team{ item }.jpg)"></div>
         </div>
     </div>
 

@@ -455,7 +455,7 @@
     }
 }
 
-.d-no-phone {
+html.d-no-phone {
     .resume {
         section[data-section="coverletter"] {
             @include abs("fixed");

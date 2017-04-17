@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <resume-control-menu></resume-control-menu>
+    <resume-control-menu if={ app.device.isPhone }></resume-control-menu>
 
     <resume-control-sidebar if={ app.device.isMobile && app.device.isTablet }></resume-control-sidebar>
 
@@ -35,7 +35,6 @@
         buttons: $.tags["resume-control-buttons"],
         sidebar: $.tags["resume-control-sidebar"],
         percentage: $.tags["resume-control-percentage"],
-        settings: $.tags["resume-settings"],
         textEdit: $.tags["text-edit"],
         finish: $.tags["resume-edit-finish"],
         preview: $Sections.resume.preview
@@ -100,6 +99,7 @@
         lang: function(){
             $resume.select('lang')
             .set($resume.get('lang') === "en" ? "ru" : "en");
+            app.metrika.set("resume.create.control.lang", true);
         }
     };
 
@@ -129,7 +129,7 @@
                             success: {
                                 title: "Изменить",
                                 callback: function(){
-                                    $.open.design.free();
+                                    $.open.design();
                                 }
                             }
                         })
@@ -138,24 +138,17 @@
             });
             app.metrika.set("resume.create.control.photo", true);
         },
-        design: {
-            free: function(){
-                $Sections.resume.select.show({
-                    plan: "free",
-                    control: false,
-                    template: $resume.get("template")
-                })
-                .then(function(data){
-                    $resume.select("template").set(data.template);
-                    $Sections.resume.preview.change(data.template);
-                })
-                app.metrika.set("resume.create.control.design", true);
-            },
-            premium: function(){
-                $Sections.resume.select.show({
-                    plan: "premium"
-                });
-            }
+        design: function(){
+            $Sections.resume.select.show({
+                plan: "free",
+                control: false,
+                template: $resume.get("template")
+            })
+            .then(function(data){
+                $resume.select("template").set(data.template);
+                $Sections.resume.preview.change(data.template);
+            })
+            app.metrika.set("resume.create.control.design", true);
         },
         print: function(){
             app.request("setResume", {
@@ -166,15 +159,13 @@
             });
             $store.data.onPrint($resume.get("_id"));
             app.metrika.set("resume.create.control.print", true);
-        },
-        settings: function(){
-            $.sections.settings.show();
         }
     };
 
     $.get = {
         pdf: function(){
             $store.data.onGetPdf($resume.get());
+            app.metrika.set("resume.create.control.pdf", true);
         }
     };
 

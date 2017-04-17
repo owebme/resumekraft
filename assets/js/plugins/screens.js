@@ -113,10 +113,10 @@
             if (!app.device.isMobile){
                 this.scope.on("mouseenter mouseleave", ".country-list", function(e){
                     if (e.type == "mouseenter"){
-                        scroll.disable();
+                        _this.marquee.scroll.disable();
                     }
                     else {
-                        scroll.enable();
+                        _this.marquee.scroll.enable();
                     }
                 });
             }

@@ -40,14 +40,11 @@
         <offer-welcome></offer-welcome>
         <offer-plan></offer-plan>
         <offer-premium></offer-premium>
-        <!-- <offer-votes></offer-votes>
-        <offer-jptest></offer-jptest> -->
+        <!-- <offer-votes></offer-votes> -->
     </app-offers>
 
     <app-overviews if={ !app.device.isMobile }>
         <overview-premium></overview-premium>
-        <!-- <overview-jptest></overview-jptest>
-        <overview-functions></overview-functions> -->
     </app-overviews>
 
 <script>
@@ -130,13 +127,10 @@
                 welcome: $root.tags["offer-welcome"],
                 plan: $root.tags["offer-plan"],
                 premium: $root.tags["offer-premium"],
-                jptest: $root.tags["offer-jptest"],
                 votes: $root.tags["offer-votes"]
             },
             overview: {
-                premium: $root.tags["overview-premium"],
-                jptest: $root.tags["overview-jptest"],
-                functions: $root.tags["overview-functions"]
+                premium: $root.tags["overview-premium"]
             },
             jptest: {
                 section: $root.tags["section-jptest"],

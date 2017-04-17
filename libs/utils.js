@@ -13,7 +13,7 @@ var utils = {
 	},
 
 	cryptoPass: function(pass){
-		return crypto.createHash('sha256').update(pass + "." + app.config.get('session:secret')).digest('hex');
+		return md5(pass);
 	},
 
 	cryptoHash: function(login, pass, id){

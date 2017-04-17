@@ -30,7 +30,7 @@ html.d-phone {
             @extend .pointerEvents-none;
             @extend .willChange-opacity;
             @extend .bg-cover;
-            background-image:url(/assets/images/messenger-client/bg1@2x.png);
+            background-image:url(/assets/images/messenger/bg1@2x.png);
             transition:opacity 0.2s $cubic263 0.2s;
         }
         .screens {

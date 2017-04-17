@@ -45,6 +45,7 @@
     "gulp-sass-inheritance": "^0.5.1",
     "gulp-sass-partials-imported": "^1.0.5",
     "gulp-scss": "^1.4.0",
+    "gulp-ssh": "^0.6.0",
     "gulp-uglify": "^2.0.0",
     "hbs": "^4.0.1",
     "html-pdf": "^2.1.0",

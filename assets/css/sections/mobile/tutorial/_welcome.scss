@@ -5,7 +5,16 @@
         }
         .master__launcher__mobile {
             @extend .zIndex-5;
+            @extend .animation-none;
             @extend .pointerEvents-none;
+
+            &__info {
+                box-shadow:inset 0 0 0 1px $white;
+
+                path {
+                    @extend .fill-white;
+                }
+            }
         }
         .navbar__mobile {
             @extend .bg-none;

@@ -27,11 +27,6 @@
             },
             plan: {
                 show: false,
-                free: false,
-                premium: false
-            },
-            jptest: {
-                show: false,
                 hide: false,
                 success: false
             },
@@ -71,7 +66,6 @@
         resume: {
             buttonNew: false,
             select: {
-                default: "free",
                 show: false,
                 hide: false,
                 template: null,
@@ -85,13 +79,7 @@
                     photo: false,
                     design: false,
                     print: false,
-                    pdf: false
-                },
-                settings: {
-                    show: false,
-                    hide: false,
-                    logotype: false,
-                    stat: false,
+                    pdf: false,
                     lang: false
                 },
                 tutorial: {

@@ -49,12 +49,12 @@
             $.scroll = new app.plugins.scroll.content($.content);
             $.scroll.init();
 
-            //if (!app.metrika.get("offers.welcome.mobile.show")){
+            if (!app.metrika.get("mobile.offers.welcome.success")){
                 $.offers.show();
-            // }
-            // else {
-            //     $.offers.unmount();
-            // }
+            }
+            else {
+                $.offers.unmount();
+            }
         });
     });
 

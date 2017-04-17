@@ -141,7 +141,7 @@
             @extend .opacity-75;
             @extend .zIndex-0;
             transform:translate3d(-30px, 50px, 0);
-            background-image:url(/assets/images/promo/phone_shadow.png);
+            background-image:url(/public/images/promo/phone_shadow.png);
         }
         &:after {
             @include accelerate();
@@ -164,7 +164,7 @@
         }
         &[data-color="white"]{
             &:after {
-                background-image:url(/assets/images/promo/phone_white_clear.png);
+                background-image:url(/public/images/promo/phone_white_clear.png);
             }
             .overview__phone__screen {
                 top:157px;
@@ -176,7 +176,7 @@
         }
         &[data-color="black"]{
             &:after {
-                background-image:url(/assets/images/promo/phone_black_shadow.png);
+                background-image:url(/public/images/promo/phone_black_shadow.png);
             }
             .overview__phone__screen {
                 top:158px;

@@ -331,7 +331,7 @@
                     width:192px;
                     height:192px;
                     @extend .trY-l;
-                    background-image:url(/assets/images/resume/skills_white.svg);
+                    background-image:url(/public/images/resume/skills_white.svg);
                 }
             }
             &[data-section="education"]{
@@ -343,7 +343,7 @@
                     height:192px;
                     transform:translateY(70px);
                     @extend .md-ml--xs;
-                    background-image:url(/assets/images/resume/education_white.svg);
+                    background-image:url(/public/images/resume/education_white.svg);
                 }
             }
             &[data-section="courses"]{
@@ -357,7 +357,7 @@
                     height:202px;
                     @extend .trY-xs;
                     @extend .md-ml-s;
-                    background-image:url(/assets/images/resume/courses_white.svg);
+                    background-image:url(/public/images/resume/courses_white.svg);
                 }
             }
             &[data-section="languages"]{
@@ -370,7 +370,7 @@
                     height:164px;
                     transform:translateY(70px);
                     @extend .md-ml-xs;
-                    background-image:url(/assets/images/resume/languages_white.svg);
+                    background-image:url(/public/images/resume/languages_white.svg);
                 }
             }
             &[data-section="hobby"]{
@@ -379,7 +379,7 @@
                     height:164px;
                     @extend .trY-l;
                     @extend .md-ml-xs;
-                    background-image:url(/assets/images/resume/hobby_white.svg);
+                    background-image:url(/public/images/resume/hobby_white.svg);
                 }
             }
             &[data-section="contacts"]{
@@ -625,11 +625,11 @@
     }
     .work-icon {
         @extend .bg-cover;
-        background-image:url(/assets/images/resume/works_white.svg);
+        background-image:url(/public/images/resume/works_white.svg);
     }
     .job-icon {
         @extend .bg-cover;
-        background-image:url(/assets/images/resume/jobs_white.svg);
+        background-image:url(/public/images/resume/jobs_white.svg);
     }
 }
 

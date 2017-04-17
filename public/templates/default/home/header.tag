@@ -1,7 +1,7 @@
 <home-header class="screen screen--active home__header zIndex-0">
 
     <video id="video" class="home__header__video" autoplay loop muted preload>
-        <source src="/assets/video/video.mp4" type="video/mp4"/>
+        <source src="/public/video/video.mp4" type="video/mp4"/>
     </video>
     <div class="container">
         <div class="row">

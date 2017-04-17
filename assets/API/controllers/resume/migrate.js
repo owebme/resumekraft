@@ -3,6 +3,36 @@ module.exports = function(){
 	var API = {},
 		ids = [];
 
+	app.store.migrate = {};
+
+    app.utils.fs.readFile(process.cwd() + '/store/users.json', "utf8", function(err, data){
+        if (!err) app.store.migrate.users = JSON.parse(data);
+    });
+
+    app.utils.fs.readFile(process.cwd() + '/store/city.json', "utf8", function(err, data){
+        if (!err) app.store.migrate.city = JSON.parse(data);
+    });
+
+    app.utils.fs.readFile(process.cwd() + '/store/langList.json', "utf8", function(err, data){
+        if (!err) app.store.migrate.langList = JSON.parse(data);
+    });
+
+    app.utils.fs.readFile(process.cwd() + '/store/resumes.json', "utf8", function(err, data){
+        if (!err) app.store.migrate.resumes = JSON.parse(data);
+    });
+
+    app.utils.fs.readFile(process.cwd() + '/store/resumesEducation.json', "utf8", function(err, data){
+        if (!err) app.store.migrate.resumesEducation = JSON.parse(data);
+    });
+
+    app.utils.fs.readFile(process.cwd() + '/store/resumesJob.json', "utf8", function(err, data){
+        if (!err) app.store.migrate.resumesJob = JSON.parse(data);
+    });
+
+    app.utils.fs.readFile(process.cwd() + '/store/resumesLanguage.json', "utf8", function(err, data){
+        if (!err) app.store.migrate.resumesLanguage = JSON.parse(data);
+    });
+
 	API.accounts = function(){
 		setTimeout(function(){
 	        var accounts = [],
@@ -20,10 +50,17 @@ module.exports = function(){
 	            resumes.push(resumesBuild.get(app.utils.findWhere(ids, {"id": item.uid}).ObjectId, item));
 	        })
 
+			// app.utils.each(resumes, function(item){
+			// 	console.log(item.commons.contacts.phone && item.commons.contacts.phone.number + " " + item.salary.amount);
+			// })
+
 			app.db.collection('accounts').drop();
 			app.db.collection('resumes').drop();
 			app.db.collection('accounts').insert(accounts);
 			app.db.collection('resumes').insert(resumes);
+			app.db.collection('resumes').ensureIndex({accountId: 1});
+			app.db.collection('inbox').ensureIndex({accountId: 1});
+			app.db.collection('orders').ensureIndex({accountId: 1});
 
 		}, 1000);
     };
@@ -64,7 +101,7 @@ module.exports = function(){
                     }
 				},
 				salary: {
-					amount: item.r_salary || "50000",
+					amount: resumesBuild.salary(item.r_salary),
 					currency: "1",
 					worktime: "1",
 					active: item.r_salary ? true : false
@@ -77,6 +114,14 @@ module.exports = function(){
 				languages: resumesBuild.languages(item.r_id),
 				jobs: resumesBuild.jobs(item.r_id),
 				percent: String(item.r_percent)
+			}
+		},
+		salary: function(value){
+			if (value){
+				return String(value).replace(/^\D+/g, "").replace(/\D+\d+/g, "").replace(/[\D+|\s]/g, "");
+			}
+			else {
+				return "50000";
 			}
 		},
 		education: function(id){
@@ -205,6 +250,11 @@ module.exports = function(){
 		get: function(id, user){
             return {
                 _id: id,
+				active: false,
+				activate: {
+					hash: app.utils.md5(user.apl_login.toLowerCase() + ":" + app.config.get("session:secret")),
+					sendmail: false
+				},
                 isOld: true,
                 plan: "free",
                 balance: 0,
@@ -213,7 +263,9 @@ module.exports = function(){
                 init: {
                     plan: "free",
                     device: "desktop",
-                    location: null
+                    location: {
+						city: accountBuild.city(user.apl_city, true),
+					}
                 },
                 commons: {
                     photo: null,
@@ -254,13 +306,14 @@ module.exports = function(){
                 visite: null
             }
         },
-        city: function(value){
+        city: function(value, onlyName){
             if (value){
                 var city = value;
                 if (app.utils.isNumber(value)){
                     var item = app.utils.deepFindWhere(app.store.migrate.city, "id", value);
                     if (item) city = item.city
                 }
+				if (onlyName) return city || null;
                 var item = app.utils.deepFindWhere(app.store.jobs.area, "name", city);
                 if (item){
                     return {
@@ -281,7 +334,7 @@ module.exports = function(){
 				return {
 					id: "ru",
 					code: "7",
-					number: value.replace(/^[\+7|8]/g, "")
+					number: value.replace(/[\s|\-|\(|\)]/g, "").replace(/^\+/g, "").replace(/^[7|8|375|380]/g, "").replace(/\D+\d+/g, "").replace(/\D+/g, "")
 				}
 			}
 			else {

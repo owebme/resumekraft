@@ -31,21 +31,15 @@
         <ui-dropmenu></ui-dropmenu>
     </app-sections>
 
-    <!-- <app-popups>
+    <app-popups>
         <popup-premium></popup-premium>
-        <popup-jptest></popup-jptest>
-    </app-popups> -->
+        <!-- <popup-jptest></popup-jptest> -->
+    </app-popups>
 
     <!-- <app-offers>
         <offer-plan></offer-plan>
         <offer-votes></offer-votes>
     </app-offers> -->
-
-    <!-- <app-overviews>
-        <overview-premium></overview-premium>
-        <overview-jptest></overview-jptest>
-        <overview-functions></overview-functions>
-    </app-overviews> -->
 
 <script>
 
@@ -55,10 +49,6 @@
     $rootScope = $$(this.root);
 
     $resume = $store.resume;
-
-    // $store.inbox.set([]);
-    // $store.data.set([]);
-    // $store.likes.set([]);
 
     this.on("before-mount", function(){
         this.init();
@@ -101,20 +91,8 @@
                 jptest: $root.tags["popup-jptest"]
             },
             offers: {
-                // plan: $root.tags["offer-plan"],
                 votes: $root.tags["offer-votes"]
             },
-            // overview: {
-            //     premium: $root.tags["overview-premium"],
-            //     jptest: $root.tags["overview-jptest"],
-            //     functions: $root.tags["overview-functions"]
-            // },
-            // jptest: {
-            //     section: $root.tags["section-jptest"],
-            //     list: $root.tags["section-jptest"].tags["jptest-list"],
-            //     test: $root.tags["section-jptest"].tags["jptest-content"],
-            //     result: $root.tags["section-jptest"].tags["jptest-result"]
-            // },
             plan: $root.tags["section-plan-mobile"],
             likes: {
                 section: $root.tags["section-likes-mobile"]
@@ -123,7 +101,7 @@
                 section: $root.tags["section-inbox-mobile"],
                 content: $root.tags["section-inbox-content-mobile"]
             },
-            navbar: $root.tags["resume-list-mobile"].tags["navbar-mobile"],
+            navbar: $root.tags["resume-list-mobile"] && $root.tags["resume-list-mobile"].tags["navbar-mobile"],
             payment: $root.tags["section-payment-mobile"],
             photoUpload: $root.tags["photo-upload"],
             progress: $root.tags["section-progress"]

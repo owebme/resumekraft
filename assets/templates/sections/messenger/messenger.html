@@ -50,6 +50,17 @@
     $.photo = 'https://randomuser.me/api/portraits/women/' + _.random(1, 99) + '.jpg';
     $.name = _.shuffle(['Ирина', 'Светлана', 'Виктория', 'Вероника', 'Екатерина', 'Ольга', 'Мария', 'Надежда', 'Наталья'])[0];
 
+    $.on("mount", function(){
+        if (!app.metrika.get("support.success")){
+            $$($.buttons).on("click", ".messenger__launcher__buttons__item", function(e){
+                app.metrika.set("support.channel", e.currentTarget.getAttribute("data-item"));
+                app.metrika.set("support.success", true, {
+                    force: true
+                })
+            });
+        }
+    });
+
     $.show = function(){
         $.update({
             active: !$.active
@@ -59,10 +70,12 @@
                 $.root.style.zIndex = "1";
                 $.parent.root.setAttribute("data-overlay", $.active);
             });
+            app.metrika.set("support.show", true);
         }
         else {
             $.root.style.zIndex = "6";
             $.parent.root.setAttribute("data-overlay", $.active);
+            app.metrika.set("support.hide", true);
         }
     };
 
@@ -76,6 +89,7 @@
             $.root.style.zIndex = "1";
             $.parent.root.setAttribute("data-overlay", false);
         });
+        app.metrika.set("support.hide", true);
     };
 
     $.handleClickOutside = function(e){

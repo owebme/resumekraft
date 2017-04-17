@@ -41,7 +41,7 @@
 
             <p class="hidden-xs c-blackLight fontSize-20 lineHeight-xxl mb-xl anim-group3 anim-scale anim-delay-xs">Создание классной резюме-презентации с крутым дизайном. Просмотр на всех мобильных устройствах, обратная связь, на 2-х языках, статистика и многое другое</p>
 
-            <img class="hidden-xs pos-br" style="height:480px; transform:translate3d(-50px, 100px, 0)" src="/assets/images/devices_large_2x.png">
+            <img class="hidden-xs pos-br" style="height:480px; transform:translate3d(-50px, 100px, 0)" src="/assets/images/premium/devices.png">
 
             <div class="pos-bl w100p h100 bg-gradient-bt-white opacity-70"></div>
 
@@ -58,7 +58,7 @@
     var $ = this;
 
     $.on("mount", function(){
-        if (app.metrika.get("offers.plan.show")){
+        if (app.metrika.get("offers.plan.hide") || app.metrika.get("offers.plan.success")){
             $.unmount();
         }
         else {
@@ -81,16 +81,14 @@
     $.open = {
         selectResume: function(){
             $.hide(function(){
-                $Sections.resume.select.show({
-                    plan: "free"
-                });
+                $store.data.onSelect();
             });
-            app.metrika.set("offers.plan.free", true);
+            app.metrika.set("offers.plan.hide", true);
         },
         promoPremium: function(){
             $.hide();
             $Sections.overview.premium.show();
-            app.metrika.set("offers.plan.premium", true);
+            app.metrika.set("offers.plan.success", true);
         }
     };
 

@@ -25,7 +25,7 @@
             height:568px;
             @extend .bg-cover;
             transform:translate3d(60px, 0, 0);
-            background-image:url(/assets/images/promo/premium/start_macbook_imac.png);
+            background-image:url(/public/images/promo/slider/start_macbook_imac.png);
 
             html.d-tablet & {
                 width:796px;
@@ -37,7 +37,7 @@
             height:388px;
             @extend .bg-cover;
             transform:translate3d(-60px, 0, 0);
-            background-image:url(/assets/images/promo/premium/start_macbook.png);
+            background-image:url(/public/images/promo/slider/start_macbook.png);
 
             html.d-tablet & {
                 width:553px;
@@ -81,7 +81,7 @@
             height:546px;
             @extend .bg-cover;
             transform:translate3d(-60px, 0, 0);
-            background-image:url(/assets/images/promo/premium/mobile_iphones.png);
+            background-image:url(/public/images/promo/slider/mobile_iphones.png);
 
             html.d-tablet & {
                 width:425px;
@@ -93,7 +93,7 @@
             height:659px;
             @extend .bg-cover;
             transform:translate3d(0, 80px, 0) scale(1.15);
-            background-image:url(/assets/images/promo/premium/mobile_phone_samsung.png);
+            background-image:url(/public/images/promo/slider/mobile_phone_samsung.png);
 
             html.d-tablet & {
                 width:489px;
@@ -137,14 +137,14 @@
             height:614px;
             @extend .bg-cover;
             transform:translate3d(80px, 0, 0);
-            background-image:url(/assets/images/promo/premium/skills_ipad.png);
+            background-image:url(/public/images/promo/slider/skills_ipad.png);
         }
         .offer__premium__slider__images__iphone {
             width:314px;
             height:567px;
             @extend .bg-cover;
             transform:translate3d(0, 0, 0) scale(1.1);
-            background-image:url(/assets/images/promo/premium/skills_iphone.png);
+            background-image:url(/public/images/promo/slider/skills_iphone.png);
 
             html.d-tablet.r-landscape & {
                 width:283px;
@@ -183,14 +183,14 @@
             height:423px;
             @extend .bg-cover;
             transform:translate3d(-60px, 0, 0);
-            background-image:url(/assets/images/promo/premium/projects_macbook.png);
+            background-image:url(/public/images/promo/slider/projects_macbook.png);
         }
         .offer__premium__slider__images__iphone {
             width:202px;
             height:355px;
             @extend .bg-cover;
             transform:translate3d(40px, 0, 0);
-            background-image:url(/assets/images/promo/premium/projects_iphone.png);
+            background-image:url(/public/images/promo/slider/projects_iphone.png);
         }
     }
     &[data-slide="inbox"]{
@@ -217,7 +217,7 @@
             height:584px;
             @extend .bg-cover;
             transform:translate3d(80px, 0, 0);
-            background-image:url(/assets/images/promo/premium/inbox_devices.png);
+            background-image:url(/public/images/promo/slider/inbox_devices.png);
 
             html.d-tablet & {
                 width:893px;
@@ -229,7 +229,7 @@
             height:150px;
             @extend .bg-cover;
             transform:translate3d(-30px, 40px, 0) scale(1.1);
-            background-image:url(/assets/images/promo/premium/inbox_iphone.png);
+            background-image:url(/public/images/promo/slider/inbox_iphone.png);
 
             html.d-tablet & {
                 width:229px;
@@ -270,7 +270,7 @@
             height:503px;
             @extend .bg-cover;
             transform:translate3d(-60px, 0, 0);
-            background-image:url(/assets/images/promo/premium/salary_ipad.png);
+            background-image:url(/public/images/promo/slider/salary_ipad.png);
 
             html.d-tablet & {
                 width:640px;
@@ -282,7 +282,7 @@
             height:730px;
             @extend .bg-cover;
             transform:translate3d(40px, 80px, 0) scale(1.15);
-            background-image:url(/assets/images/promo/premium/salary_phone_samsung.png);
+            background-image:url(/public/images/promo/slider/salary_phone_samsung.png);
         }
     }
     &[data-slide="likes-hobby"]{
@@ -307,7 +307,7 @@
             height:670px;
             @extend .bg-cover;
             transform:translate3d(0, 40px, 0) scale(1.1);
-            background-image:url(/assets/images/promo/premium/likes_hobby_iphones.png);
+            background-image:url(/public/images/promo/slider/likes_hobby_iphones.png);
         }
     }
     &[data-slide="control"]{
@@ -348,7 +348,7 @@
             height:559px;
             @extend .bg-cover;
             transform:translate3d(60px, 0, 0) scale(0.95);
-            background-image:url(/assets/images/promo/premium/control_imac.png);
+            background-image:url(/public/images/promo/slider/control_imac.png);
 
             html.d-tablet & {
                 width:380px;
@@ -360,7 +360,7 @@
             height:345px;
             @extend .bg-cover;
             transform:translate3d(-60px, 0, 0);
-            background-image:url(/assets/images/promo/premium/control_macbook.png);
+            background-image:url(/public/images/promo/slider/control_macbook.png);
 
             html.d-tablet & {
                 width:544px;
@@ -372,7 +372,7 @@
             height:232px;
             @extend .bg-cover;
             transform:translate3d(-20px, 0, 0) scale(1.1);
-            background-image:url(/assets/images/promo/premium/control_iphone.png);
+            background-image:url(/public/images/promo/slider/control_iphone.png);
 
             html.d-tablet & {
                 width:102px;
@@ -411,14 +411,14 @@
             height:499px;
             @extend .bg-cover;
             transform:translate3d(-40px, 0, 0);
-            background-image:url(/assets/images/promo/premium/finish_macbook_left.png);
+            background-image:url(/public/images/promo/slider/finish_macbook_left.png);
         }
         .offer__premium__slider__images__macbook__right {
             width:840px;
             height:499px;
             @extend .bg-cover;
             transform:translate3d(60px, 0, 0);
-            background-image:url(/assets/images/promo/premium/finish_macbook_right.png);
+            background-image:url(/public/images/promo/slider/finish_macbook_right.png);
         }
     }
 }

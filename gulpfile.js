@@ -11,6 +11,7 @@ global.concat = require('gulp-concat');
 global.replace = require('gulp-replace');
 global.px2vw = require('gulp-px2vw');
 global.px2rem = require('gulp-px2rem');
+global.GulpSSH = require('gulp-ssh');
 global.combiner = require('stream-combiner2').obj;
 global.browserSync = require('browser-sync').create();
 global.reload = browserSync.reload;
@@ -28,6 +29,7 @@ require('./build/premium/css')();
 require('./build/premium/js')();
 require('./build/jobs/css')();
 require('./build/jobs/js')();
+require('./build/sftp/js')();
 require('./build/styleguide/css')();
 
 gulp.task('serve', function() {
@@ -57,7 +59,7 @@ gulp.task('watch', function() {
 	gulp.watch([
 		'assets/css/style.scss',
 		'assets/css/**/*.scss'
-	], {debounceDelay: 1000}, gulp.series('private.css'));
+	], gulp.series('private.css'));
 
 	gulp.watch([
 		'assets/css/**/templates/style.scss',
@@ -91,7 +93,7 @@ gulp.task('watchPublic', function() {
 	], gulp.parallel('public.css', 'public.mobile.css'));
 });
 
-gulp.task('css.build', gulp.series('private.css', 'premium.css', 'public.css', gulp.parallel('private.css.largeScreen', 'private.css.smallScreen', 'premium.css.largeScreen', 'premium.css.smallScreen', 'templates.basic', 'templates.basic.view', 'jobs.css', 'jobs.css.smallScreen', 'workflow.css')));
+gulp.task('css.build', gulp.series('private.css', 'private.mobile.css', 'premium.css', 'public.css', gulp.parallel('private.css.largeScreen', 'private.mobile.css.smallScreen', 'premium.css.largeScreen', 'premium.css.smallScreen', 'templates.basic', 'templates.basic.view', 'jobs.css', 'jobs.css.smallScreen', 'workflow.css')));
 
 gulp.task('jobs.js.build', gulp.parallel('jobs.libs', 'jobs.app', 'jobs.templates'));
 
@@ -121,11 +123,11 @@ gulp.task('build', gulp.series(
 ));
 
 gulp.task('public', gulp.series(
-	gulp.parallel('public.css', 'public.mobile.css', 'public.mobile.smallScreen', 'jobs.css'),
+	gulp.parallel('public.css', 'public.mobile.css', 'jobs.css'),
 	gulp.parallel('serve', 'watchPublic')
 ));
 
 gulp.task('dev', gulp.series(
-	gulp.parallel('private.css', 'private.css.largeScreen', 'private.css.smallScreen', 'premium.css'),
+	gulp.parallel('private.css', 'private.mobile.css', 'premium.css'),
 	gulp.parallel('serve', 'watch')
 ));

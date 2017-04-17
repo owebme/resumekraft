@@ -18,11 +18,6 @@ var log             = require('./libs/log')(module),
     device          = require('express-device'),
     redis           = require('redis');
 
-// global.api = {};
-//
-// ['fs', 'os', 'util', 'http'].map(function(m) {
-//     api[m] = require(m);
-// });
 
 var config = require('./libs/config')({
     global: "./config.json",
@@ -105,16 +100,18 @@ app.use(function(req, res, next) {
         isServer: true
     };
 
-    if (process.env.NODE_ENV == "production"){
+    //if (process.env.NODE_ENV == "production"){
         req.account = req.session.user;
         req.accountId = req.session.user ? app.utils.ObjectId(req.session.user.accountID) : null;
-    }
-    else {
-        req.account = {
-            plan: "premium"
-        }
-        req.accountId = app.utils.ObjectId('0b8e197c544244bd44ce8c01');
-    }
+    //}
+    // else {
+    //     req.account = {
+    //         plan: "premium"
+    //     }
+    //     req.accountId = app.utils.ObjectId('0b8e197c3f54cb1d652d15eb');
+    // }
+    //88314527400@mail.ru
+    //verenitch-irina2010@yandex.ru
     req.device.type = req.query.debug ? req.query.debug : req.device.type;
     req.clientIP = app.utils.getClientAddress(req);
     next();
@@ -140,7 +137,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-// API.migrate.accounts();
+//API.migrate.accounts();
 
 var server = http.createServer(app),
     ipTables = {};

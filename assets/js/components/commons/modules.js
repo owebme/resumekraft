@@ -161,6 +161,8 @@
 
 	device.platform = device.isWin ? 'win' : (device.isMac ? 'mac' : (device.isLinux ? 'linux' : 'unknown'));
 
+	device.isStorage = Storage !== undefined;
+
 	var _ua = device.ua;
 	device.browser = {
 	  version: (_ua.match( /.+(?:me|ox|on|rv|it|era|opr|ie)[\/: ]([\d.]+)/ ) || [0,'0'])[1],
@@ -223,7 +225,7 @@
 	}
 
 	app.device.get = function(){
-		return _.extend(_.omit(app.device, ['get', 'support']), {
+		return _.extend(_.omit(app.device, ['get', 'support', 'browser']), {
 			screen: app.sizes
 		});
 	}

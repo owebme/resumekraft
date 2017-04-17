@@ -7,14 +7,14 @@
     <div class="oScreen__jptest__enter__phone__left">
         <div class="anim-group1 anim-fadeIn" data-duration="xs">
             <div class="overview__phone" data-color="white" data-align="left">
-                <div style="background-image:url('/public/images/promo/jptest/slide2_1_screen.png')" class="overview__phone__screen bg-cover"></div>
+                <div style="background-image:url('/public/images/jptest/screen1.png')" class="overview__phone__screen bg-cover"></div>
             </div>
         </div>
     </div>
     <div class="oScreen__jptest__enter__phone__right">
         <div class="anim-group1 anim-fadeIn" data-duration="xs">
             <div class="overview__phone" data-color="black" data-align="right">
-                <div style="background-image:url('/public/images/promo/jptest/slide7_1_screen.png')" class="overview__phone__screen bg-cover"></div>
+                <div style="background-image:url('/public/images/jptest/screen2.png')" class="overview__phone__screen bg-cover"></div>
             </div>
         </div>
     </div>

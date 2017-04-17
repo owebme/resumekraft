@@ -37,10 +37,7 @@
         }
         .iScrollIndicator {
             @extend .opacity-90;
-
-            #app & {
-                @extend .bg-yellowBright;
-            }
+            @extend .bg-yellowBright;
         }
         .ui-scroll__bar {
             @extend .opacity-10;

@@ -3,7 +3,7 @@
     <div class="screens__content">
         <div class="screen" data-section="intro">
             <div class="screen__image">
-                <img src="/public/images/mobile/home/screen1a.png">
+                <img src="/public/images/home/mobile/screen1a.png">
                 <div class="screen__button">
                     <button class="btn btn-xl btn-success">Создать резюме</button>
                 </div>
@@ -15,7 +15,7 @@
         </div>
         <div class="screen" data-section="premium-account">
             <div class="screen__image">
-                <img src="/public/images/mobile/home/screen2a.png">
+                <img src="/public/images/home/mobile/screen2a.png">
             </div>
             <div class="screen__text">
                 <h2>Premium резюме</h2>
@@ -24,7 +24,7 @@
         </div>
         <div class="screen" data-section="premium-mobile" data-theme="white">
             <div class="screen__image">
-                <img src="/public/images/mobile/home/screen3.png">
+                <img src="/public/images/home/mobile/screen3.png">
             </div>
             <div class="screen__text">
                 <h2>Мобильность</h2>
@@ -33,7 +33,7 @@
         </div>
         <div class="screen" data-section="premium-responsive">
             <div class="screen__image">
-                <img src="/public/images/mobile/home/screen4a.png">
+                <img src="/public/images/home/mobile/screen4a.png">
             </div>
             <div class="screen__text">
                 <h2>Адаптивность</h2>
@@ -42,7 +42,7 @@
         </div>
         <div class="screen" data-section="premium-colors">
             <div class="screen__image">
-                <img src="/public/images/mobile/home/screen6.png">
+                <img src="/public/images/home/mobile/screen6.png">
             </div>
             <div class="screen__text">
                 <h2>Яркие цвета</h2>
@@ -51,7 +51,7 @@
         </div>
         <div class="screen" data-section="easy-setup">
             <div class="screen__image">
-                <img src="/public/images/mobile/home/screen5.png">
+                <img src="/public/images/home/mobile/screen5.png">
             </div>
             <div class="screen__text">
                 <h2>Легко настроить</h2>
@@ -60,7 +60,7 @@
         </div>
         <div class="screen" data-section="pdf">
             <div class="screen__image">
-                <img src="/public/images/mobile/home/pdf.png">
+                <img src="/public/images/home/mobile/pdf.png">
             </div>
             <div class="screen__text">
                 <h2>Сохранить в PDF</h2>
@@ -69,7 +69,7 @@
         </div>
         <!-- <div class="screen" data-section="coverletter">
             <div class="screen__image">
-                <img src="/public/images/mobile/home/coverletter.png">
+                <img src="/public/images/home/mobile/coverletter.png">
             </div>
             <div class="screen__text">
                 <h2>Cover Letter</h2>
@@ -78,7 +78,7 @@
         </div> -->
         <div class="screen" data-section="back-office-mobile">
             <div class="screen__image">
-                <img src="/public/images/mobile/home/back-office-mobile.png">
+                <img src="/public/images/home/mobile/back-office-mobile.png">
             </div>
             <div class="screen__text">
                 <h2>Мобильный офис</h2>
@@ -87,7 +87,7 @@
         </div>
         <div class="screen" data-section="back-office-stat">
             <div class="screen__image">
-                <img src="/public/images/mobile/home/screen8a.png">
+                <img src="/public/images/home/mobile/screen8a.png">
             </div>
             <div class="screen__text">
                 <h2>Статистика</h2>
@@ -96,7 +96,7 @@
         </div>
         <div class="screen" data-section="back-office-inbox">
             <div class="screen__image">
-                <img src="/public/images/mobile/home/inbox.png">
+                <img src="/public/images/home/mobile/inbox.png">
             </div>
             <div class="screen__text">
                 <h2>Приглашения</h2>
@@ -169,7 +169,7 @@
         </div>
         <div class="screen" data-section="help">
             <div class="screen__image">
-                <img src="/public/images/mobile/home/help.png">
+                <img src="/public/images/home/mobile/help.png">
             </div>
             <div class="screen__text">
                 <h2>Наша помощь</h2>
@@ -178,7 +178,7 @@
         </div>
         <div class="screen" data-section="community">
             <div class="screen__image">
-                <img src="/public/images/mobile/home/community.jpg">
+                <img src="/public/images/home/mobile/community.jpg">
                 <div class="screen__button">
                     <button class="btn btn-xl btn-success">Создать аккаунт</button>
                 </div>
@@ -190,7 +190,7 @@
         </div>
         <div class="screen" data-section="jp-test">
             <div class="screen__image">
-                <img src="/public/images/mobile/home/jp-test_a.png">
+                <img src="/public/images/home/mobile/jp-test_a.png">
                 <div class="screen__button">
                     <a href="/jp-test/#run" class="btn btn-xl btn-danger">Пройти тест</a>
                 </div>

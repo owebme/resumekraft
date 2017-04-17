@@ -41,13 +41,8 @@ body {
 .screens__content {
     transform-style:flat;
 }
-.resume__preview {
-    min-height:200vh;
-}
 html.d-phone {
-    #app {
-        .iScrollIndicator {
-            background-color:rgba($blueLight,.6);
-        }
+    .iScrollIndicator {
+        background-color:rgba($blueLight,.6);
     }
 }
