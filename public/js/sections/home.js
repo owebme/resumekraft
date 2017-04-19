@@ -15,15 +15,20 @@
 
             WD.imagesLoaded();
 
-            WD.header();
-
             WD.screenVideo();
 
-            WD.scrollAnimate();
+            $afterlag.run(function(){
 
-            WD.scrollParallax();
+                WD.header();
 
-            WD.createAccount();
+                WD.scrollAnimate();
+
+                WD.scrollParallax();
+
+                WD.createAccount();
+            }, {
+                timeout: 1000
+            });
 
             app.metrika.set("views.home", 1, {
                 action: "inc"
@@ -57,14 +62,14 @@
             animHeader.show();
 
             $dom.window.on("scroll.animFunctions", function(){
-                _.raf(WD._scroll);
+                WD.raf = _.raf(WD._scroll);
             });
         },
 
         _scroll: function(){
             var scroll = $dom.document.scrollTop() + (app.sizes.height / 1.3);
             if (scroll > WD.offsetFn){
-                _.caf(WD._scroll);
+                _.caf(WD.raf);
                 $dom.window.off("scroll.animFunctions");
                 WD.animFunctions.show();
             }

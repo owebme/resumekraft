@@ -2,7 +2,7 @@ module.exports = function(){
 
     app.get('/', function(req, res) {
         var output = app.riot.render(app.tags("home", req.device), req.appClient);
-        res.render(req.device.type == "phone" ? 'index-mobile' : 'index', {
+        res.render('index', {
             content: output,
             device: req.device.type,
             isMobile: req.device.isMobile
@@ -32,7 +32,7 @@ module.exports = function(){
         }
         else {
             var output = app.riot.render(app.tags("premium", req.device), req.appClient);
-            res.render(req.device.type == "phone" ? 'index-mobile' : 'index', {
+            res.render('index', {
                 title: app.config.get('title:premium'),
                 content: output,
                 device: req.device.type,
@@ -59,7 +59,7 @@ module.exports = function(){
     });
     app.get('/jp-test/', function(req, res) {
         var output = app.riot.render(app.tags("jptest", req.device), req.appClient);
-        res.render(req.device.type == "phone" ? 'index-mobile' : 'index', {
+        res.render('index', {
             title: app.config.get('title:jp-test'),
             section: "jp-test",
             content: output,

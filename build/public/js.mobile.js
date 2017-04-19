@@ -84,7 +84,8 @@ module.exports = function(){
     gulp.task('public.app.build.mobile', function() {
     	return gulp.src(['public/js/app.libs.mobile.js',
             'public/js/app.mobile.js',
-            'public/js/templates.mobile.js'])
+            'public/js/templates.mobile.js',
+            'public/js/init.js'])
     		.pipe(concat('app.build.mobile.js'))
     		.pipe(gulp.dest('./public/js'));
     });

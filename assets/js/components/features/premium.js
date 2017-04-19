@@ -43,9 +43,16 @@
                         transform: "translate3d(0px, 0px, 0px) scale3d(1, 1, 1)"
                     });
 
-                    $elem.css({
-                        "transform": "translate3d(0px, " + y + "px, 0px) scale3d(" + scale + ", " + scale + ", 1)"
-                    });
+                    if (WD.options.imagesLoaded){
+                        $elem.css({
+                            "transform": "translate3d(0px, 30px, 0px)"
+                        });
+                    }
+                    else {
+                        $elem.css({
+                            "transform": "translate3d(0px, " + y + "px, 0px) scale3d(" + scale + ", " + scale + ", 1)"
+                        });
+                    }
                 });
 
                 WD.headerParallax = new app.plugins.scroll.parallax({
@@ -61,7 +68,7 @@
 
                 WD.headerParallax.start();
 
-                var anim = 0;
+                var anim = 0, start = 0;
 
                 if (WD.options.imagesLoaded){
 
@@ -70,24 +77,28 @@
                     });
 
                     layersLoaded.on("image-load", (function(elem){
-                        if (elem.classList[0].match(/ovpremium__header__layer/)){
+                        if (!elem.classList[0].match(/ovpremium__header__layer__inner/)){
                             var $layer = $(elem).parent();
-                            $layer.addClass("ovpremium__header__layer__inner--animate")
-                            .css({
-                                "transform": layers[$layer[0]._index].transform
-                            });
-                            _.onEndTransition($layer[0], function(){
-                                anim++;
-                                if (anim == layers.length){
-                                    WD.render.content();
-                                    WD.render.screens();
-                                    WD.render.chart();
-                                    WD.render.notebooks();
-                                    WD.options.imagesLoaded.load({
-                                        timeout: 10000
-                                    });
-                                }
-                            });
+                            if (!layers[$layer[0]._index]) return;
+
+                            setTimeout(function(){
+                                $layer.addClass("ovpremium__header__layer__inner--animate")
+                                .css({
+                                    "transform": layers[$layer[0]._index].transform
+                                });
+                                _.onEndTransition($layer[0], function(){
+                                    anim++;
+                                    if (anim == layers.length){
+                                        WD.render.content();
+                                        WD.render.screens();
+                                        WD.render.chart();
+                                        WD.render.notebooks();
+                                        WD.options.imagesLoaded.load({
+                                            timeout: 10000
+                                        });
+                                    }
+                                });
+                            }, _.random(500, 1000));
                         }
                     }));
 
@@ -124,7 +135,7 @@
                         {
                             elem: ".screens",
                             callback: function($elem, i){
-                                if ($elem[0].play){
+                                if (!app.device.isMobile && $elem[0].play){
                                     setTimeout(function(){
                                         $elem[0].play.run(true);
                                     }, 1500);
@@ -169,6 +180,8 @@
             },
 
             ipad: function(){
+                if (app.device.isMobile) return;
+
                 WD.ipadParallax = new app.plugins.scroll.parallax({
                     scroll: WD.scroll,
                     items: [
@@ -199,13 +212,13 @@
                         vertical: this.getAttribute("data-vertical") == "true" ? true : false,
                         mousewheel: false,
                         phoneEmulate: true,
-                        play: {
+                        play: !app.device.isMobile && {
                             round: this.getAttribute("data-round") == "true" ? true : false
                         }
                     });
                     screen.init();
                     screen.marquee.disableKeyboard();
-                    if (this.getAttribute("data-autorun") == "true"){
+                    if (!app.device.isMobile && this.getAttribute("data-autorun") == "true"){
                         this.play = screen.play;
                     }
                     WD.screens.push(screen);
@@ -213,6 +226,8 @@
             },
 
             notebooks: function(){
+                if (app.device.isMobile) return;
+
                 WD.notebooksParallax = new app.plugins.scroll.ParallaxController({
                     scroll: WD.scroll,
                     items: [
@@ -230,8 +245,10 @@
 
         destroy: function(){
             this.headerParallax.destroy();
-            this.ipadParallax.destroy();
-            this.notebooksParallax.destroy();
+            if (!app.device.isMobile){
+                this.ipadParallax.destroy();
+                this.notebooksParallax.destroy();
+            }
             this.contentAnimate.destroy();
             this.chartRadial.destroy();
             if (this.screens){
@@ -302,7 +319,7 @@
                     toY: -1e3
                 },
                 medium: {
-                    fromY: -187
+                    fromY: -63
                 },
                 small: {
                     fromY: 28,
@@ -399,7 +416,7 @@
                     toY: 0
                 },
                 medium: {
-                    fromY: 535
+                    fromY: 481
                 },
                 small: {
                     toY: -460,

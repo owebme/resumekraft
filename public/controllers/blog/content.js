@@ -9,7 +9,7 @@ module.exports = function(){
 
                 var output = app.riot.render(app.tags("blogContent", req.device), req.appClient);
 
-                res.render(req.device.type == "phone" ? 'index-mobile' : 'index', {
+                res.render('index', {
                     title: data.item.name,
                     content: output,
                     device: req.device.type,

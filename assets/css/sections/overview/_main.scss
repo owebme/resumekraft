@@ -13,10 +13,6 @@
                 transition:transform 1.4s $cubic2501, opacity 1s $cubic2501;
             }
         }
-        // *[data-scrollin],
-        // *[data-scrollin-icon]{
-        //     @extend .willChange-tp;
-        // }
         &[data-bg="gradient-tb"]{
             background:linear-gradient(to bottom, #fff 0%, #fff 68%, #f2f2f2 100%);
         }
@@ -42,6 +38,21 @@
             @extend .letterSpacing--xl;
             font-size:45px;
 
+            html.d-mobile.d-ios & {
+                @extend .fontFamily-helvetica;
+                @extend .letterSpacing--s;
+            }
+            html.d-mobile.d-no-ios & {
+                @extend .fontFamily-roboto;
+                @extend .letterSpacing--m;
+            }
+            html.d-tablet & {
+                font-size:34px;
+                line-height:48px;
+            }
+            html.d-tablet.r-portrait & {
+                @extend .ml0;
+            }
             &.large {
                 font-size:63px;
                 @extend .letterSpacing--xxl;
@@ -75,6 +86,16 @@
             @extend .lineHeight-xxxl;
             @extend .letterSpacing--m;
             font-size:23px;
+
+            html.d-tablet & {
+                // font-size:22px;
+                // @extend .letterSpacing--s;
+                @extend .fontFamily-sftext;
+                @extend .lineHeight-xxl;
+                @extend .fontWeight-normal;
+                font-size:18px;
+                letter-spacing:-.02em;
+            }
         }
         .v-lineRight {
             &:after {
@@ -133,6 +154,10 @@
         width:613px;
         height:994px;
 
+        html.d-tablet.r-landscape & {
+            width:572px;
+            height:839px;
+        }
         &:before {
             @include accelerate();
             @extend .content-empty;
@@ -141,7 +166,15 @@
             @extend .opacity-75;
             @extend .zIndex-0;
             transform:translate3d(-30px, 50px, 0);
-            background-image:url(/public/images/promo/phone_shadow.png);
+            background-image:url('/public/images/promo/phone_shadow_large.png');
+
+            html.d-tablet.r-landscape & {
+                background-image:url('/public/images/promo/phone_shadow_medium_2x.png');
+            }
+            html.d-retina.d-no-tablet &,
+            html.d-tablet.r-portrait & {
+                background-image:url('/public/images/promo/phone_shadow_large_2x.png');
+            }
         }
         &:after {
             @include accelerate();
@@ -157,14 +190,33 @@
             @extend .zIndex-1;
         }
         &[data-align="left"]{
-            transform:translateX(-65px);
+            transform:translateX(-65px) translateZ(0);
+
+            html.d-tablet.r-landscape & {
+                transform:translateX(-77px) translateZ(0);
+            }
+            html.d-tablet.r-portrait & {
+                @extend .transform-default;
+                @extend .centered;
+            }
         }
         &[data-align="right"]{
-            transform:translateX(-115px);
+            transform:translateX(-115px) translateZ(0);
         }
         &[data-color="white"]{
             &:after {
-                background-image:url(/public/images/promo/phone_white_clear.png);
+                background-image:url('/public/images/promo/phone_white_large.png');
+
+                html.d-tablet.r-landscape & {
+                    width:306px;
+                    height:624px;
+                    transform:translate3d(160px, 50px, 0);
+                    background-image:url('/public/images/promo/phone_white_medium_2x.png');
+                }
+                html.d-retina.d-no-tablet &,
+                html.d-tablet.r-portrait & {
+                    background-image:url('/public/images/promo/phone_white_large_2x.png');
+                }
             }
             .overview__phone__screen {
                 top:157px;
@@ -172,11 +224,26 @@
                 width:318px;
                 height:566px;
                 @extend .overflow-hidden;
+
+                html.d-tablet.r-landscape & {
+                    top:127px;
+                    left:181px;
+                    width:264px;
+                    height:470px;
+                }
             }
         }
         &[data-color="black"]{
             &:after {
-                background-image:url(/public/images/promo/phone_black_shadow.png);
+                background-image:url('/public/images/promo/phone_black_large.png');
+
+                html.d-tablet.r-landscape & {
+                    background-image:url('/public/images/promo/phone_black_medium_2x.png');
+                }
+                html.d-retina.d-no-tablet &,
+                html.d-tablet.r-portrait & {
+                    background-image:url('/public/images/promo/phone_black_large_2x.png');
+                }
             }
             .overview__phone__screen {
                 top:158px;
@@ -185,6 +252,47 @@
                 height:562px;
                 @extend .overflow-hidden;
             }
+        }
+    }
+    &__ipad {
+        @include accelerate();
+        @extend .pos-rel;
+        @extend .bg-cover;
+
+        &[data-color="black"]{
+            width:1380px;
+            height:1140px;
+            background-image:url('/public/images/promo/ipad_black_large.png');
+
+            html.d-tablet & {
+                width:1063px;
+                height:878px;
+                background-image:url('/public/images/promo/ipad_black_medium_2x.png');
+            }
+            html.d-retina.d-no-tablet {
+                background-image:url('/public/images/promo/ipad_black_large_2x.png');
+            }
+            .overview__ipad__screen {
+                @extend .pos-abs;
+                top:165px;
+                left:219px;
+                width:980px;
+                height:736px;
+                @extend .overflow-hidden;
+
+                html.d-tablet & {
+                    top:127px;
+                    left:169px;
+                    width:755px;
+                    height:567px;
+                }
+            }
+        }
+        &[data-align="left"]{
+            transform:translateX(-60px) translateZ(0);
+        }
+        &[data-align="right"]{
+            transform:translateX(-110px) translateZ(0);
         }
     }
     &__loader {
@@ -284,6 +392,9 @@
             @extend .flex-centered;
             @extend .h100;
 
+            html.d-tablet & {
+                @extend .w40p;
+            }
             &[data-arrow="right"]{
                 &:after {
                     @extend .content-empty;
@@ -294,6 +405,10 @@
         }
         &__text {
             @extend .flex-row-left-center;
+
+            html.d-tablet & {
+                @extend .w60p;
+            }
         }
     }
 }

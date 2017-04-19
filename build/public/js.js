@@ -129,25 +129,26 @@ module.exports = function(){
     		.pipe(gulp.dest('./public/js'));
     });
 
-    // gulp.task('public.app.build', function() {
-    // 	return gulp.src(['public/js/libs.js',
-    //         'public/js/app.js',
-    //         'assets/js/plugins/scroll/scroll.Parallax.build.js',
-    //         'public/js/templates.js'])
-    // 		.pipe(concat('app.build.js'))
-    // 		.pipe(gulp.dest('./public/js'));
-    // });
-
     gulp.task('public.jptest', function() {
     	return gulp.src('assets/js/jptest/*.js')
     		.pipe(concat('jptest.build.js'))
     		.pipe(gulp.dest('./public/js'));
     });
 
-    gulp.task('public.app.build', function() {
+    gulp.task('public.app.dev', function() {
     	return gulp.src(['public/js/app.js',
             'assets/js/plugins/scroll/scroll.Parallax.build.js'])
     		.pipe(concat('app.js'))
+    		.pipe(gulp.dest('./public/js'));
+    });
+
+    gulp.task('public.app.build', function() {
+    	return gulp.src(['public/js/libs.js',
+            'public/js/app.js',
+            'assets/js/plugins/scroll/scroll.Parallax.build.js',
+            'public/js/templates.js',
+            'public/js/init.js'])
+    		.pipe(concat('app.build.js'))
     		.pipe(gulp.dest('./public/js'));
     });
 }

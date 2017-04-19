@@ -18,7 +18,7 @@ module.exports = function(){
 
                 var output = app.riot.render(app.tags("blog", req.device), req.appClient);
 
-                res.render(req.device.type == "phone" ? 'index-mobile' : 'index', {
+                res.render('index', {
                     title: app.config.public.get('title:blog'),
                     content: output,
                     device: req.device.type,

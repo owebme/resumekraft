@@ -52,70 +52,140 @@ body#renderSide {
         transform:translate3d(-645px, -70px, 0px);
 
         .ovpremium__header__layer__iphone__screen {
-            background-image:url("/public/images/promo/premium/header/screen1_large_2x.png");
+            background-image:url("/public/images/promo/premium/header/screen1_large.png");
+
+            html.d-tablet & {
+                background-image:url("/public/images/promo/premium/header/screen1_medium_2x.jpg");
+            }
+            html.d-retina.d-no-tablet & {
+                background-image:url("/public/images/promo/premium/header/screen1_large_2x.png");
+            }
         }
     }
     &2 {
         transform:translate3d(-323px, -245px, 0px);
 
         .ovpremium__header__layer__iphone__screen {
-            background-image:url("/public/images/promo/premium/header/screen2_large_2x.png");
+            background-image:url("/public/images/promo/premium/header/screen2_large.png");
+
+            html.d-tablet & {
+                background-image:url("/public/images/promo/premium/header/screen2_medium_2x.jpg");
+            }
+            html.d-retina.d-no-tablet & {
+                background-image:url("/public/images/promo/premium/header/screen2_large_2x.png");
+            }
         }
     }
     &3 {
         transform:translate3d(0px, -110px, 0px);
 
         .ovpremium__header__layer__iphone__screen {
-            background-image:url("/public/images/promo/premium/header/screen3_large_2x.png");
+            background-image:url("/public/images/promo/premium/header/screen3_large.png");
+
+            html.d-tablet & {
+                background-image:url("/public/images/promo/premium/header/screen3_medium_2x.jpg");
+            }
+            html.d-retina.d-no-tablet & {
+                background-image:url("/public/images/promo/premium/header/screen3_large_2x.png");
+            }
         }
     }
     &4 {
         transform:translate3d(582px, 466px, 0px);
 
         .ovpremium__header__layer__ipad__screen {
-            background-image:url("/public/images/promo/premium/header/screen4_large_2x.png");
+            background-image:url("/public/images/promo/premium/header/screen4_large.png");
+
+            html.d-tablet & {
+                background-image:url("/public/images/promo/premium/header/screen4_medium_2x.jpg");
+            }
+            html.d-retina.d-no-tablet & {
+                background-image:url("/public/images/promo/premium/header/screen4_large_2x.png");
+            }
         }
     }
     &5 {
         transform:translate3d(-645px, 567px, 0px);
 
         .ovpremium__header__layer__iphone__screen {
-            background-image:url("/public/images/promo/premium/header/screen5_large_2x.png");
+            background-image:url("/public/images/promo/premium/header/screen5_large.png");
+
+            html.d-tablet & {
+                background-image:url("/public/images/promo/premium/header/screen5_medium_2x.jpg");
+            }
+            html.d-retina.d-no-tablet & {
+                background-image:url("/public/images/promo/premium/header/screen5_large_2x.png");
+            }
         }
     }
     &6 {
         transform:translate3d(-323px, 392px, 0px);
 
         .ovpremium__header__layer__iphone__screen {
-            background-image:url("/public/images/promo/premium/header/screen6_large_2x.png");
+            background-image:url("/public/images/promo/premium/header/screen6_large.png");
+
+            html.d-tablet & {
+                background-image:url("/public/images/promo/premium/header/screen6_medium_2x.jpg");
+            }
+            html.d-retina.d-no-tablet & {
+                background-image:url("/public/images/promo/premium/header/screen6_large_2x.png");
+            }
         }
     }
     &7 {
         transform:translate3d(0px, 527px, 0px);
 
         .ovpremium__header__layer__iphone__screen {
-            background-image:url("/public/images/promo/premium/header/screen7_large_2x.png");
+            background-image:url("/public/images/promo/premium/header/screen7_large.png");
+
+            html.d-tablet & {
+                background-image:url("/public/images/promo/premium/header/screen7_medium_2x.jpg");
+            }
+            html.d-retina.d-no-tablet & {
+                background-image:url("/public/images/promo/premium/header/screen7_large_2x.png");
+            }
         }
     }
     &8 {
         transform:translate3d(323px, -175px, 0px);
 
         .ovpremium__header__layer__iphone__screen {
-            background-image:url("/public/images/promo/premium/header/screen8_large_2x.png");
+            background-image:url("/public/images/promo/premium/header/screen8_large.png");
+
+            html.d-tablet & {
+                background-image:url("/public/images/promo/premium/header/screen8_medium_2x.jpg");
+            }
+            html.d-retina.d-no-tablet & {
+                background-image:url("/public/images/promo/premium/header/screen8_large_2x.png");
+            }
         }
     }
     &9 {
         transform:translate3d(645px, -268px, 0px);
 
         .ovpremium__header__layer__iphone__screen {
-            background-image:url("/public/images/promo/premium/header/screen9_large_2x.png");
+            background-image:url("/public/images/promo/premium/header/screen9_large.png");
+
+            html.d-tablet & {
+                background-image:url("/public/images/promo/premium/header/screen9_medium_2x.jpg");
+            }
+            html.d-retina.d-no-tablet & {
+                background-image:url("/public/images/promo/premium/header/screen9_large_2x.png");
+            }
         }
     }
     &10 {
         transform:translate3d(-323px, 1126px, 0px);
 
         .ovpremium__header__layer__iphone__screen {
-            background-image:url("/public/images/promo/premium/header/screen10_large_2x.png");
+            background-image:url("/public/images/promo/premium/header/screen10_large.png");
+
+            html.d-tablet & {
+                background-image:url("/public/images/promo/premium/header/screen10_medium_2x.jpg");
+            }
+            html.d-retina.d-no-tablet & {
+                background-image:url("/public/images/promo/premium/header/screen10_large_2x.png");
+            }
         }
     }
     &__iphone {
@@ -174,11 +244,11 @@ body#renderSide {
     .ovpremium__header__layer {
         &1 {transform:translate3d(-500px, 50px, 0px);}
         &2 {transform:translate3d(-252px, -95px, 0px);}
-        &3 {transform:translate3d(0px, -187px, 0px);}
+        &3 {transform:translate3d(0px, -63px, 0px);}
         &4 {transform:translate3d(450px, 462px, 0px);}
         &5 {transform:translate3d(-500px, 540px, 0px);}
         &6 {transform:translate3d(-252px, 396px, 0px);}
-        &7 {transform:translate3d(0px, 535px, 0px);}
+        &7 {transform:translate3d(0px, 481px, 0px);}
         &8 {transform:translate3d(252px, -38px, 0px);}
         &9 {transform:translate3d(500px, -126px, 0px);}
         &10 {transform:translate3d(-252px, 974px, 0px);}
@@ -186,10 +256,12 @@ body#renderSide {
     .ovpremium__header__layer__iphone {
         width:282px;
         height:522px;
-        background-size:282px 522px;
-        background-image:url("/public/images/promo/premium/hardware/hardware_full_silver_medium_2x.png");
         margin-left:-141px;
 
+        .ovpremium__header__layer__inner {
+            background-size:282px 522px;
+            background-image:url("/public/images/promo/premium/hardware/hardware_full_silver_medium_2x_light.png");
+        }
         &__screen {
             width:200px;
             height:356px;
@@ -200,10 +272,12 @@ body#renderSide {
     .ovpremium__header__layer__ipad {
         width:668px;
         height:925px;
-        background-size:668px 925px;
-        background-image:url("/public/images/promo/premium/hardware/hero_hardware_ipad_medium_2x.png");
         margin-left:-334px;
 
+        .ovpremium__header__layer__inner {
+            background-size:668px 925px;
+            background-image:url("/public/images/promo/premium/hardware/hero_hardware_ipad_medium_2x_light.png");
+        }
         &__screen {
             width:542px;
             height:723px;
@@ -228,10 +302,12 @@ body#renderSide {
     .ovpremium__header__layer__iphone {
         width:193px;
         height:340px;
-        background-size:193px 340px;
-        background-image:url("/public/images/promo/premium/hardware/hero_hardware_full_silver_small_2x.png");
         margin-left:-96.5px;
 
+        .ovpremium__header__layer__inner {
+            background-size:193px 340px;
+            background-image:url("/public/images/promo/premium/hardware/hero_hardware_full_silver_small_2x_light.png");
+        }
         &__screen {
             width:119px;
             height:212px;
@@ -242,10 +318,12 @@ body#renderSide {
     .ovpremium__header__layer__ipad {
         width:415px;
         height:571px;
-        background-size:415px 571px;
-        background-image:url("/public/images/promo/premium/hardware/hero_hardware_ipad_small_2x.png");
         margin-left:-207.5px;
 
+        .ovpremium__header__layer__inner {
+            background-size:415px 571px;
+            background-image:url("/public/images/promo/premium/hardware/hero_hardware_ipad_small_2x_light.png");
+        }
         &__screen {
             width:323px;
             height:430px;

@@ -33,4 +33,13 @@ module.exports = function(){
     		.pipe(uglify())
     		.pipe(gulp.dest('./preview/js'));
     });
+
+    gulp.task('workflow.build', function() {
+    	return gulp.src(['preview/js/workflow.libs.js',
+            'preview/js/workflow.templates.js',
+            'preview/js/config.js',
+            'preview/js/init.js'])
+    		.pipe(concat('workflow.build.js'))
+    		.pipe(gulp.dest('./preview/js'));
+    });
 }

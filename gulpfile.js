@@ -90,10 +90,10 @@ gulp.task('watchPublic', function() {
 		'assets/css/**/*.scss',
 		'public/css/style.scss',
 		'public/css/**/*.scss'
-	], gulp.parallel('public.css', 'public.mobile.css'));
+	], gulp.parallel('public.css'));
 });
 
-gulp.task('css.build', gulp.series('private.css', 'private.mobile.css', 'premium.css', 'public.css', gulp.parallel('private.css.largeScreen', 'private.mobile.css.smallScreen', 'premium.css.largeScreen', 'premium.css.smallScreen', 'templates.basic', 'templates.basic.view', 'jobs.css', 'jobs.css.smallScreen', 'workflow.css')));
+gulp.task('css.build', gulp.series('private.css', 'private.mobile.css', 'premium.css', 'public.css', 'public.mobile.css', gulp.parallel('private.css.largeScreen', 'private.mobile.css.smallScreen', 'premium.css.largeScreen', 'premium.css.smallScreen', 'templates.basic', 'templates.basic.view', 'jobs.css', 'jobs.css.smallScreen', 'workflow.css')));
 
 gulp.task('jobs.js.build', gulp.parallel('jobs.libs', 'jobs.app', 'jobs.templates'));
 
@@ -113,13 +113,14 @@ gulp.task('build', gulp.series(
 	gulp.parallel(
 		'css.build',
 		gulp.series('promo.js', 'promo.app.build'),
-		gulp.series('public.js', 'public.app.build'),
-		gulp.series('workflow.js'),
+		gulp.series('public.js', 'public.app.dev', 'public.app.build'),
+		gulp.series('workflow.js', 'workflow.build'),
 		gulp.series('public.js.mobile', 'public.app.build.mobile'),
 		gulp.series('private.js.build', 'private.templates', 'private.app', 'private.app.build'),
 		gulp.series('premium.js.build', 'premium.app.build'),
 		gulp.series('jobs.js.build', 'jobs.app.build')
-	)
+	),
+	gulp.parallel('sftp-jptest.js', 'sftp-public.js', 'sftp-public.css', 'sftp-public.mobile.js', 'sftp-public.mobile.css', 'sftp-public.mobile.smallScreen.css', 'sftp-workflow.js', 'sftp-workflow.css', 'sftp-jobs.js', 'sftp-jobs.css', 'sftp-jobs.smallScreen.css')
 ));
 
 gulp.task('public', gulp.series(

@@ -22,13 +22,19 @@
     <meta name="format-detection" content="telephone=no" />
 	<meta name="google" content="notranslate" />
     <link rel="manifest" href="/manifest.json">
-    <link id="styles" rel="stylesheet" href="/public/css/style.css">
+    <link id="styles" rel="stylesheet" href="/public/css/style{% if device == 'phone' %}.mobile{% endif %}.css">
     <!-- <link media="screen and (max-width:1440px)" id="styles" rel="stylesheet" href="/public/css/style.css">
     <link media="screen and (min-width:1441px)" id="styles" rel="stylesheet" href="/public/css/style.largeScreen.css"> -->
 </head>
-<body id="renderSide">
+<body id="renderSide"{% if device == 'phone' %} class="appLoading"{% endif %}>
 
     {{ content | safe }}
+
+    {% if device == "phone" %}
+    <div id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+    {% endif %}
 
     {% if section == "jp-test" %}
         <jptest-content></jptest-content>
@@ -39,6 +45,15 @@
     <section-notify></section-notify>
     <section-loader></section-loader>
 
+    {% if device == "phone" %}
+
+    <script src="/public/js/app.libs.mobile.js"></script>
+    <script src="/public/js/app.mobile.js"></script>
+    <script src="/public/js/templates.mobile.js"></script>
+    <script src="/public/js/init.js"></script>
+
+    {% else %}
+
     <!--/ VENDORS /-->
     <script src="/public/js/libs.js"></script>
 
@@ -48,7 +63,13 @@
 
     <!--/ JS components /-->
     <script src="/public/js/app.js"></script>
+    <script src="/assets/js/plugins/screens.js"></script>
+    <script src="/public/js/sections/home.js"></script>
+    <script src="/assets/js/plugins/scroll/scroll.Parallax.js"></script>
+    <script src="/assets/js/components/features/premium.js"></script>
     <script src="/public/js/init.js"></script>
+
+    {% endif %}
 
 </body>
 </html>

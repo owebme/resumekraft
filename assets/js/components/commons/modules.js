@@ -88,8 +88,8 @@
 		.removeClass(device.isPhone ? 'd-no-phone' : 'd-phone')
 		.addClass(device.isTablet ? 'd-tablet' : 'd-no-tablet')
 		.removeClass(device.isTablet ? 'd-no-tablet' : 'd-tablet')
-		.addClass(device.orientation === "landscape" ? 'r-landscape' : 'r-portrait')
-		.removeClass(device.orientation !== "landscape" ? 'r-landscape' : 'r-portrait');
+		.addClass(device.isMobile && device.orientation === "landscape" ? 'r-landscape' : device.isMobile ? 'r-portrait' : null)
+		.removeClass(device.isMobile && device.orientation !== "landscape" ? 'r-landscape' : device.isMobile ? 'r-portrait' : null);
 
 		if (app.sizes.size && app.sizes.size.match(/large/)){
 			if (app.sizes.size === "large"){
@@ -231,3 +231,29 @@
 	}
 
 })(app.device, app.$dom, app.utils);
+
+(function(){
+    if (typeof Object.assign != 'function') {
+        (function () {
+            Object.assign = function (target) {
+                'use strict';
+                if (target === undefined || target === null) {
+                    throw new TypeError('Cannot convert undefined or null to object');
+                }
+
+                var output = Object(target);
+                for (var index = 1; index < arguments.length; index++) {
+                    var source = arguments[index];
+                    if (source !== undefined && source !== null) {
+                        for (var nextKey in source) {
+                            if (source.hasOwnProperty(nextKey)) {
+                                output[nextKey] = source[nextKey];
+                            }
+                        }
+                    }
+                }
+                return output;
+            };
+        })();
+    }
+})();

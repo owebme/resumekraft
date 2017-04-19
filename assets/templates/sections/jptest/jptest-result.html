@@ -91,7 +91,7 @@
             {
                 scope: $.scroll,
                 content: $.content,
-                resources: ['/public/js/jptest.build.js'],
+                resources: ['/public/js/jptest.build.js' + _.newId()],
                 init: function(){
                     if (app.device.isPhone){
                         $.content[0].style.backgroundColor = '#ffffff';

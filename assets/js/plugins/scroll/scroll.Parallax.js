@@ -38,14 +38,23 @@
             this.items = [];
 
             if (this._items){
+
+                this.pViewports = ["large", "medium", "small"];
+                this.cHeights = {
+                    large: 4e3,
+                    medium: 3e3,
+                    small: 2800
+                };
+                this.viewport = "xlarge" === app.sizes.size ? "large" : app.sizes.size;
+
                 _.each(this._items, function(item, i){
                     _this.items.push(item);
-                    _this.items[i].cHeights = {
-                        large: 4e3,
-                        medium: 3e3,
-                        small: 2800
-                    };
                     _this.items[i].it = 0;
+
+                    for (var t = {}, e = 0; e < _this.pViewports.length && (Object.assign(t, _this.items[i].viewports[_this.pViewports[e]]), _this.pViewports[e] !== _this.viewport); e++);
+                    this.fromTime = t.fromTime, this.toTime = t.toTime, this.fromX = t.fromX, this.toX = t.toX, this.fromY = t.fromY, this.toY = t.toY;
+
+                    _this.items[i].viewports[_this.viewport] = t;
 
                     if (_this.scope){
                         _this.items[i].offset = {
@@ -76,14 +85,14 @@
                 delta = scrollTop + app.sizes.height;
 
             _this.items.forEach(function(item, i){
-                var viewport = item.viewports.large,
+                var viewport = item.viewports[_this.viewport],
                     scroll = scrollTop - item.offset.top;
 
                 if (delta > item.offset.top && scrollTop < item.offset.top + item.offset.height + 10){
 
                     if (item.offset.top > app.sizes.height) scroll += app.sizes.height;
 
-                    item.cHeight = 1 - item.offset.height / item.cHeights.large;
+                    item.cHeight = 1 - item.offset.height / _this.cHeights[_this.viewport];
                     item.progress = scroll / item.offset.height;
                     item.t = _this.smoothstep(viewport.fromTime, viewport.toTime, item.progress);
                     item.t *= item.cHeight;
