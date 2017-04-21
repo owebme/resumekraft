@@ -171,11 +171,16 @@
             notify: false
         });
     },
-    sendReport = _.debounce(logger, 1000, true);
+    sendReport = _.debounce(logger, 1000, true),
+    lastError = null;
 
     window.onerror = function(msg, url, line) {
     	if (app && app.config && app.config.logger && app.config.logger.report){
-            sendReport(msg, url, line);
+            var hash = msg + "" + url + "" + line;
+            if (hash !== lastError){
+                sendReport(msg, url, line);
+                lastError = hash;
+            }
     	}
     };
 

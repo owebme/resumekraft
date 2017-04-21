@@ -81,27 +81,37 @@
         @extend .pos-abs;
         @extend .t0;
         @extend .r100;
+        @extend .userSelect-none;
         transform:translate3d(-20px, 40px, 0);
 
         &__button {
             @extend .flex-centered;
-            @extend .bg-blue;
             @extend .w60;
             @extend .h60;
             @extend .cursor-pointer;
-            will-change:transform;
+            @extend .willChange-transform;
             transition:transform .3s $cubic075, background-color .2s;
             @extend .borderRadius-circle;
             @extend .mb-s;
             @extend .pt-xxs;
             @extend .ml-xs;
 
+            &[data-social="gl"]{
+                @extend .bg-white;
+                box-shadow:inset 0 0 0 4px rgba($silver,.25);
+            }
+            &:not([data-social="gl"]){
+                @extend .bg-blue;
+            }
             &:hover {
                 transform:scale(1.2);
-                @extend .bg-white;
 
-                path {
-                    @extend .fill-blue;
+                &:not([data-social="gl"]){
+                    @extend .bg-white;
+
+                    path {
+                        @extend .fill-blue;
+                    }
                 }
             }
             &:active {

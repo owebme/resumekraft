@@ -1,5 +1,5 @@
 @each $icon in (
-    loading, loading_mini, loading_mini_white, close_strong, minus, minus_white, plus_thin, plus_thin_white, menu, menu_white, back, back_white, help, close_fill, close_fill_gray, close_fill_white, info_white, check, check_black, check_white, check_gray, check_muted, check_circle_lime, hand_cursor_white, repeat, grid_white
+    loading, loading_mini, loading_mini_white, close_strong, minus, minus_white, plus_thin, plus_thin_white, menu, menu_white, back, back_white, help, close_fill, close_fill_gray, close_fill_white, info_white, check, check_black, check_white, check_gray, check_muted, check_circle_lime, hand_cursor_white, repeat, grid_white, user_oval_white, google, facebook, vkontakte, odnoklassniki, twitter
 ){
     .ui-icon-#{$icon} {
         background:url('/assets/images/ui/ui-#{$icon}.svg') no-repeat 0 0 / cover;
@@ -683,4 +683,14 @@
             height:32px;
         }
     }
+    &-glc {
+        &.icon-xl {
+            width:64px;
+            height:64px;
+        }
+        &.icon-m {
+            width:32px;
+            height:32px;
+        }
+    }    
 }

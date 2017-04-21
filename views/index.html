@@ -26,7 +26,7 @@
     <!-- <link media="screen and (max-width:1440px)" id="styles" rel="stylesheet" href="/public/css/style.css">
     <link media="screen and (min-width:1441px)" id="styles" rel="stylesheet" href="/public/css/style.largeScreen.css"> -->
 </head>
-<body id="renderSide"{% if device == 'phone' %} class="appLoading"{% endif %}>
+<body id="renderSide"{% if device == 'phone' %} class="appLoading"{% endif %} class="appLoading">
 
     {{ content | safe }}
 
@@ -43,33 +43,60 @@
 
     <section-auth></section-auth>
     <section-notify></section-notify>
-    <section-loader></section-loader>
+    <section-loader-user></section-loader-user>
 
     {% if device == "phone" %}
 
     <script src="/public/js/app.libs.mobile.js"></script>
     <script src="/public/js/app.mobile.js"></script>
     <script src="/public/js/templates.mobile.js"></script>
+    <script src="/assets/templates/modules/loaderUser.html" type="riot/tag"></script>
+    <script src="/public/templates/commons/modules/auth/auth.tag" type="riot/tag"></script>
+    <script src="/public/templates/commons/modules/auth/forms/signIn.tag" type="riot/tag"></script>
+    <script src="/public/templates/commons/modules/auth/forms/signUp.tag" type="riot/tag"></script>
+    <script src="/public/templates/commons/modules/auth/authSocial.tag" type="riot/tag"></script>
     <script src="/public/js/init.js"></script>
 
     {% else %}
+
+    <script src="/assets/templates/modules/loaderUser.html" type="riot/tag"></script>
+    <script src="/public/templates/commons/modules/auth/auth.tag" type="riot/tag"></script>
+    <script src="/public/templates/commons/modules/auth/forms/signIn.tag" type="riot/tag"></script>
+    <script src="/public/templates/commons/modules/auth/forms/signUp.tag" type="riot/tag"></script>
+    <script src="/public/templates/commons/modules/auth/authSocial.tag" type="riot/tag"></script>
+
 
     <!--/ VENDORS /-->
     <script src="/public/js/libs.js"></script>
 
     <!--/ templates /-->
-    <!-- <script src="/public/templates/commons/modules/auth/auth.tag" type="riot/tag"></script> -->
     <script src="/public/js/templates.js"></script>
 
     <!--/ JS components /-->
     <script src="/public/js/app.js"></script>
-    <script src="/assets/js/plugins/screens.js"></script>
+    <!-- <script src="/assets/js/plugins/screens.js"></script>
     <script src="/public/js/sections/home.js"></script>
+    <script src="/assets/js/plugins/scroll/scroll.Animate.js"></script>
     <script src="/assets/js/plugins/scroll/scroll.Parallax.js"></script>
-    <script src="/assets/js/components/features/premium.js"></script>
+    <script src="/assets/js/components/features/premium.js"></script> -->
     <script src="/public/js/init.js"></script>
 
     {% endif %}
+
+    <script>
+        var $loader = $("#loader");
+
+        $loader.on("click", function(){
+            var attr = $loader.attr("data-fadeIn");
+            if (attr){
+                $loader.removeAttr("data-fadeIn");
+            }
+            else {
+                $loader.attr("data-fadeIn", true);
+            }
+        });
+
+    </script>
 
 </body>
 </html>

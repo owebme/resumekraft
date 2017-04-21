@@ -48,7 +48,95 @@
                 })
             }
         };
+
+        app.$dom.window.on("message", function(e){
+            var data = e.originalEvent.data;
+            if (data && data.user){
+                var OAUTH = _.isJSON(data.user) && JSON.parse(data.user) || data.user;
+                if (OAUTH.error){
+                    app.tag("section-notify").show({
+                        color: "danger",
+                        text: "Ошибка проведения верификации, повторите попытку чуть позже"
+                    })
+                }
+                else {
+                    var json = JSON.stringify(OAUTH);
+                    $$.post({
+                        url: '/auth',
+                        data: {
+                            oauth: json
+                        },
+                        dataType : "json",
+                        success: function(data, status){
+                            var user = {
+                                oauth: OAUTH.channel,
+                                avatar: OAUTH.avatar,
+                                name: OAUTH.name,
+                                surname: OAUTH.surname
+                            }
+                            if (data.user){
+                                user.avatar = data.user.photo || user.avatar;
+                                user.name = data.user.name;
+                                user.surname = data.user.surname;
+                            }
+                            app.tag("section-loader-user").show({
+                                user: user
+                            })
+                            .then(function(){
+                                $.tags["auth-" + data.auth].form
+                                .find("input[name=oauth]").val(json);
+
+                                $.submit($.tags["auth-" + data.auth].form);
+                            });
+                        },
+                        error: function(){
+                            var text = "Ошибка авторизации, повторите попытку чуть позже";
+                            if ($.auth.notify){
+                                $.auth.notify.show({
+                                    color: "danger",
+                                    text: "Ошибка авторизации, повторите попытку чуть позже"
+                                })
+                            }
+                            else {
+                                alert(text);
+                            }
+                        }
+                    });
+                }
+            }
+        });
     });
+
+    $.referer = function(){
+        return app.metrika.get("referer");
+    };
+
+    $.regSocial = function(){
+        if (!app.metrika.get("tooltips.regSocial")){
+            app.tag("section-notify").show({
+                color: "info",
+                text: "Для регистрации/авторизации в один клик, используйте свою социальную сеть",
+                pos: app.device.isPhone ? "top-left" : "bottom-left",
+                timeout: app.device.isPhone ? 3.5 : 5
+            });
+            app.metrika.set("tooltips.regSocial", true);
+        }
+    };
+
+    $.oauth = function(e){
+        var channel = e.currentTarget.getAttribute("data-social");
+        window.open("/auth/" + channel,"","width=600,height=400,left=350,top=170,status=no,toolbar=no,menubar=no");
+    };
+
+    $.submit = function($form){
+        $afterlag.run(function(){
+            $form.submit();
+        }, {
+            iterations: 5,
+            timeout: 500,
+            delay: 200
+        });
+    };
 
     $.open = function(section, param){
         if (!$.firstOpen){

@@ -1,8 +1,10 @@
 <auth-signup class="section auth" data-active="false" data-form="signup">
 
-    <form ref="form" method="post" action="/register" class="auth__form anim-group1 anim-scale{ '-ease' : app.device.isPhone }" duration-show="m" duration-hide="{ app.device.isPhone ? 's' : 'm' }">
+    <form ref="form" method="post" action="/auth" class="auth__form anim-group1 anim-scale{ '-ease' : app.device.isPhone }" duration-show="m" duration-hide="{ app.device.isPhone ? 's' : 'm' }">
+        <input type="hidden" name="oauth" value="false">
+        <input type="hidden" name="auth" value="signup">
         <input type="hidden" name="logined" value="true">
-        <input type="hidden" name="referer" riot-value={ get.referer() }>
+        <input type="hidden" name="referer" riot-value={ parent.referer() }>
         <input type="hidden" name="country" riot-value={ parent.location.country }>
         <input type="hidden" name="city" riot-value={ parent.location.city }>
         <input type="hidden" name="region" riot-value={ parent.location.region }>
@@ -74,6 +76,7 @@
     }
 
     $.on("mount", function(){
+        $.auth = $.parent;
         $.form = $$($.refs.form);
         $.animate = new app.plugins.animate($.root);
     });
@@ -85,16 +88,10 @@
         }
     });
 
-    $.get = {
-        referer: function(){
-            return false;
-        }
-    };
-
     $.open = function(plan){
         $.active = true;
 
-        $.parent.section = "signup";
+        $.auth.section = "signup";
 
         if (plan && plan != $.plan){
             $.update({
@@ -106,14 +103,7 @@
         $.root.setAttribute("data-active", true);
 
         $.animate.show(function(){
-            if (!app.device.isPhone && !app.metrika.get("tooltips.regSocial")){
-                app.tag("section-notify").show({
-                    text: "Для регистрации вы можете использовать свою социальную сеть",
-                    pos: "bottom-left",
-                    timeout: 5
-                });
-                app.metrika.set("tooltips.regSocial", true);
-            }
+            $.parent.regSocial();
         });
     };
 
@@ -121,7 +111,7 @@
         $.active = false;
         $.root.setAttribute("data-active", false);
         $.animate.hide();
-        $.parent.tags["auth-signin"].open();
+        $.auth.tags["auth-signin"].open();
     };
 
     $.changePlan = function(e){
@@ -133,6 +123,7 @@
         if ($.loading) return;
 
         var params = {
+            auth: "signup",
             login: _.clean($.refs.login.value, []),
             password: _.clean($.refs.password.value, [])
         },
@@ -146,7 +137,7 @@
 
         setTimeout(function(){
             $$.post({
-                url: '/register',
+                url: '/auth',
                 data: params,
                 dataType : "json",
                 success: function(data, status){
@@ -158,9 +149,12 @@
                             })
                         }
                         else if (data.status == "OK"){
-                            app.tag("section-loader").show()
+                            app.metrika.set("auth.login", params.login);
+                            app.tag("section-loader-user").show({
+                                user: {}
+                            })
                             .then(function(){
-                                $.form.submit();
+                                $.parent.submit($.form);
                             });
                         }
                     }
@@ -220,8 +214,8 @@
                 $.root.setAttribute("data-active", false);
             });
         }
-        $.parent.section = null;
-        $.parent.close();
+        $.auth.section = null;
+        $.auth.close();
     };
 
 </script>

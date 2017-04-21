@@ -115,7 +115,7 @@ module.exports = function(){
     gulp.task('private.root.templates', function() {
     	return gulp.src(['assets/templates/root.html',
             'assets/templates/root-mobile.html'])
-    		.pipe(riot())
+            .pipe(riot())
     		.pipe(concat('templates.root.js'))
     		.pipe(uglify())
     		.pipe(gulp.dest('./assets/js'));
@@ -162,13 +162,11 @@ module.exports = function(){
 
     gulp.task('private.templates', function() {
     	return gulp.src(['assets/js/templates.root.js',
-            'assets/js/templates.ui.js',
+            'assets/js/templates.resume.js',
             'assets/js/templates.modules.js',
-            'assets/js/templates.sections.js',
-            'assets/js/templates.resume.js'])
-    		.pipe(riot())
+            'assets/js/templates.ui.js',
+            'assets/js/templates.sections.js'])
     		.pipe(concat('templates.js'))
-    		.pipe(uglify())
     		.pipe(gulp.dest('./assets/js'));
     });
 
@@ -186,9 +184,9 @@ module.exports = function(){
     });
 
     gulp.task('private.app.build', function() {
-    	return gulp.src(['assets/js/libs.js',
-            'assets/js/app.js',
-            'assets/js/templates.js'])
+    	return gulp.src(['assets/js/app.js',
+            'assets/js/templates.js',
+            'assets/js/components/init.js'])
     		.pipe(concat('app.build.js'))
     		.pipe(gulp.dest('./assets/js'));
     });

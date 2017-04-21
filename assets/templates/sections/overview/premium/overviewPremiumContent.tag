@@ -140,15 +140,15 @@
         <div class="slide5-1 bg-cover progressive-image anim anim-scale-soft"></div>
     </section>
 
-    <section class="overview__section bg-snow pb100 mb0" data-section="stat" data-delta="xl">
+    <section class="slide6 overview__section bg-snow pb100 mb0" data-section="stat" data-delta="xl">
         <div class="container pt-xl pb-l">
             <div class="row pt-l">
                 <div class="col-md-10 text-left zIndex-1">
                     <small class="mb-l">Доступная статистика</small>
                     <h1 class="mb-l pt-l">Отслеживате просмотры вашего резюме.</h1>
-                    <p class="pb-xl">Понимайте эффективность ваших резюме. Будьте в курсе сколько и когда просмотрели ваши резюме, теперь это легко и доступно в вашем кармане. Вы можете создать несколько резюме и сравнить их эффективность опираясь на доступные показатели посетителей и просмотров.</p>
+                    <p class="pb-xl sm-pb0">Понимайте эффективность ваших резюме. Будьте в курсе сколько и когда просмотрели ваши резюме, теперь это легко и доступно в вашем кармане. Вы можете создать несколько резюме и сравнить их эффективность опираясь на доступные показатели посетителей и просмотров.</p>
                     <div class="chart__radial anim anim-scale-soft" name="chartRadialEl"  data-delta="xs"></div>
-                    <small class="slide6__small-text"><span>У вас есть возможность создать продающее резюме и сделать его еще эффективней, используя доступный функционал.</span></small>
+                    <small class="hidden-sm slide6__small-text"><span>У вас есть возможность создать продающее резюме и сделать его еще эффективней, используя доступный функционал.</span></small>
                 </div>
                 <div class="slide6__wrapper col-md-14 anim anim-rl-soft" data-duration="xl"  data-delta="l">
                     <div class="slide6__container">
@@ -554,19 +554,19 @@
         </div>
         <div class="pos-rel nowrap" style="height:555px">
             <div class="pos-tl w50p h100p bg-blackLight">
-                <small class="pos-tr p-xl c-white">попробовать на 1 месяц</small>
+                <small class="pos-tr p-xl sm-plr0 text-center-sm w100p-sm c-white">попробовать на 1 месяц</small>
                 <div class="pos-centered">
                     <div class="anim anim-scale-soft" data-delta="s">
-                        <div class="c-white fontWeight-8 mb-m" style="font-size:100px; line-height:100px; letter-spacing:-1.4px">369 ₽</div>
+                        <div class="ovpremium__price c-white fontWeight-8 mb-m">369 ₽</div>
                         <button class="btn btn-white-hover btn-upper btn-xl successPlanMonth">попробовать</button>
                     </div>
                 </div>
             </div>
             <div class="pos-tr w50p h100p bg-blue">
-                <small class="pos-tl p-xl c-white">подписка на год</small>
+                <small class="pos-tl p-xl sm-plr0 text-center-sm w100p-sm c-white">подписка на год</small>
                 <div class="pos-centered">
                     <div class="anim anim-scale-soft" data-delta="s">
-                        <div class="c-white fontWeight-8 textShadow-light mb-m" style="font-size:100px; line-height:100px; letter-spacing:-1.4px">1,769 ₽</div>
+                        <div class="ovpremium__price c-white fontWeight-8 textShadow-light mb-m">1,769 ₽</div>
                         <button class="btn btn-white-hover btn-upper btn-xl successPlanYear">подключить</button>
                     </div>
                     <div class="ovpremium__sale">

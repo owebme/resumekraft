@@ -59,7 +59,7 @@ gulp.task('watch', function() {
 	gulp.watch([
 		'assets/css/style.scss',
 		'assets/css/**/*.scss'
-	], gulp.series('private.css'));
+	], gulp.series('private.css', 'private.mobile.css'));
 
 	gulp.watch([
 		'assets/css/**/templates/style.scss',
@@ -90,7 +90,7 @@ gulp.task('watchPublic', function() {
 		'assets/css/**/*.scss',
 		'public/css/style.scss',
 		'public/css/**/*.scss'
-	], gulp.parallel('public.css'));
+	], gulp.parallel('public.css', 'public.mobile.css'));
 });
 
 gulp.task('css.build', gulp.series('private.css', 'private.mobile.css', 'premium.css', 'public.css', 'public.mobile.css', gulp.parallel('private.css.largeScreen', 'private.mobile.css.smallScreen', 'premium.css.largeScreen', 'premium.css.smallScreen', 'templates.basic', 'templates.basic.view', 'jobs.css', 'jobs.css.smallScreen', 'workflow.css')));
@@ -109,18 +109,20 @@ gulp.task('private.js.build', gulp.parallel('private.libs', 'private.root.templa
 
 gulp.task('premium.js.build', gulp.parallel('premium.app', 'premium.templates', 'premium.ui.templates', 'premium.editable.templates', 'premium.components.templates', 'premium.sections.templates', 'premium.control.templates'));
 
+gulp.task('sftp', gulp.parallel('sftp-assets.js', 'sftp-assets.css', 'sftp-premium.js', 'sftp-public.js', 'sftp-resume.js', 'sftp-public.css', 'sftp-workflow.js', 'sftp-workflow.css', 'sftp-resume.css')
+);
+
 gulp.task('build', gulp.series(
 	gulp.parallel(
 		'css.build',
-		gulp.series('promo.js', 'promo.app.build'),
-		gulp.series('public.js', 'public.app.dev', 'public.app.build'),
-		gulp.series('workflow.js', 'workflow.build'),
-		gulp.series('public.js.mobile', 'public.app.build.mobile'),
-		gulp.series('private.js.build', 'private.templates', 'private.app', 'private.app.build'),
-		gulp.series('premium.js.build', 'premium.app.build'),
-		gulp.series('jobs.js.build', 'jobs.app.build')
-	),
-	gulp.parallel('sftp-jptest.js', 'sftp-public.js', 'sftp-public.css', 'sftp-public.mobile.js', 'sftp-public.mobile.css', 'sftp-public.mobile.smallScreen.css', 'sftp-workflow.js', 'sftp-workflow.css', 'sftp-jobs.js', 'sftp-jobs.css', 'sftp-jobs.smallScreen.css')
+		// gulp.series('promo.js', 'promo.app.build'),
+		gulp.series('public.js', 'public.app.dev', 'public.app.build')
+		// gulp.series('workflow.js', 'workflow.build'),
+		// gulp.series('public.js.mobile', 'public.app.build.mobile'),
+		// gulp.series('private.js.build', 'private.templates', 'private.app', 'private.app.build'),
+		// gulp.series('premium.js.build', 'premium.app.build'),
+		// gulp.series('jobs.js.build', 'jobs.app.build')
+	), 'sftp'
 ));
 
 gulp.task('public', gulp.series(

@@ -37,7 +37,8 @@
             transform:translateX(1px);
         }
     }
-    &-gl {
+    &-gl,
+    &-glc {
         &.icon-xl {
             width:64px;
             height:64px;

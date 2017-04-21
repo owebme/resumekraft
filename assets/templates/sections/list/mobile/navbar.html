@@ -12,7 +12,7 @@
             <div if={ $store.likes.counterAll() } class="navbar__mobile__item__icon__badge">{ $store.likes.counterAll() }</div>
         </div>
     </div>
-    <div onClick={ open.createResume } onUpdate="none" class="navbar__mobile__create"></div>
+    <div onClick={ open.master } onUpdate="none" class="master__launcher__mobile"></div>
 
 <script>
 
@@ -25,9 +25,8 @@
         likes: function(){
             $Sections.likes.section.show();
         },
-        createResume: function(){
-            $store.data.onSelect();
-            app.metrika.set("resume.buttonNew", true);
+        master: function(){
+            $Sections.master.section.show();
         }
     };
 

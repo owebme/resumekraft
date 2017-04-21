@@ -18,10 +18,7 @@ module.exports = function(){
 
     app.controllers.parser = require('./parser')();
 
-    app.controllers.auth = {
-        login: require('./auth/login')(),
-        register: require('./auth/register')()
-    }
+    app.controllers.auth = require('./auth')();
 
     app.controllers.payment = require('./payment')();
 

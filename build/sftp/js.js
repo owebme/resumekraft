@@ -16,48 +16,65 @@ module.exports = function(){
         .exec(['rm -r /var/cache/nginx/resume_temp/*'], {filePath: 'sftp.log'})
         .pipe(gulp.dest('./logs'))
     });
-    gulp.task('sftp-jptest.js', function () {
-    	return gulp.src('public/js/jptest.build.js')
-          .pipe(gulpSSH.sftp('write', path + '/public/js/jptest.build.js'));
+    gulp.task('sftp-assets.js', function () {
+    	return gulp.src(['assets/js/libs.js',
+            'assets/js/app.build.js'
+        ])
+        .pipe(gulpSSH.dest(path + '/assets/js/'));
+    });
+    gulp.task('sftp-assets.css', function () {
+    	return gulp.src(['assets/css/style.css',
+            'assets/css/style.largeScreen.css',
+            'assets/css/style.mobile.css',
+            'assets/css/style.mobile.smallScreen.css',
+            'assets/css/premium.css',
+            'assets/css/premium.largeScreen.css',
+            'assets/css/premium.smallScreen.css'
+        ])
+        .pipe(gulpSSH.dest(path + '/assets/css/'));
+    });
+    gulp.task('sftp-premium.js', function () {
+    	return gulp.src(['assets/js/premium/app.build.js',
+            'assets/js/premium/config.js',
+            'assets/js/premium/init.js'
+        ])
+        .pipe(gulpSSH.dest(path + '/assets/js/premium/'));
     });
     gulp.task('sftp-public.js', function () {
-    	return gulp.src('public/js/app.build.js')
-          .pipe(gulpSSH.sftp('write', path + '/public/js/app.build.js'));
+    	return gulp.src(['public/js/jptest.build.js',
+            'public/js/app.build.js',
+            'public/js/app.build.mobile.js',
+            'public/js/app.build.jobs.js'
+        ])
+        .pipe(gulpSSH.dest(path + '/public/js/'));
+    });
+    gulp.task('sftp-resume.js', function () {
+    	return gulp.src(['public/js/resume/config.js',
+            'public/js/resume/init.js'
+        ])
+        .pipe(gulpSSH.dest(path + '/public/js/'));
     });
     gulp.task('sftp-public.css', function () {
-    	return gulp.src('public/css/style.css')
-    	  .pipe(gulpSSH.sftp('write', path + '/public/css/style.css'));
-    });
-    gulp.task('sftp-public.mobile.js', function () {
-    	return gulp.src('public/js/app.build.mobile.js')
-          .pipe(gulpSSH.sftp('write', path + '/public/js/app.build.mobile.js'));
-    });
-    gulp.task('sftp-public.mobile.css', function () {
-    	return gulp.src('public/css/style.mobile.css')
-    	  .pipe(gulpSSH.sftp('write', path + '/public/css/style.mobile.css'));
-    });
-    gulp.task('sftp-public.mobile.smallScreen.css', function () {
-    	return gulp.src('public/css/style.mobile.smallScreen.css')
-    	  .pipe(gulpSSH.sftp('write', path + '/public/css/style.mobile.smallScreen.css'));
+    	return gulp.src(['public/css/style.css',
+            'public/css/style.mobile.css',
+            'public/css/style.mobile.smallScreen.css',
+            'public/css/jobs.css',
+            'public/css/jobs.smallScreen.css'
+        ])
+        .pipe(gulpSSH.dest(path + '/public/css/'));
     });
     gulp.task('sftp-workflow.js', function () {
     	return gulp.src('preview/js/workflow.build.js')
-          .pipe(gulpSSH.sftp('write', path + '/preview/js/workflow.build.js'));
+        .pipe(gulpSSH.dest(path + '/preview/js/'));
     });
     gulp.task('sftp-workflow.css', function () {
     	return gulp.src('preview/css/style.css')
-    	  .pipe(gulpSSH.sftp('write', path + '/preview/css/style.css'));
+        .pipe(gulpSSH.dest(path + '/preview/css/'));
     });
-    gulp.task('sftp-jobs.js', function () {
-    	return gulp.src('public/js/app.build.jobs.js')
-          .pipe(gulpSSH.sftp('write', path + '/public/js/app.build.jobs.js'));
+    gulp.task('sftp-resume.css', function () {
+    	return gulp.src(['assets/css/appResume/basic/templates/style.css',
+        'assets/css/appResume/basic/templates/style.view.css'])
+        .pipe(gulpSSH.dest(path + '/assets/css/appResume/basic/templates/'));
     });
-    gulp.task('sftp-jobs.css', function () {
-    	return gulp.src('public/css/jobs.css')
-    	  .pipe(gulpSSH.sftp('write', path + '/public/css/jobs.css'));
-    });
-    gulp.task('sftp-jobs.smallScreen.css', function () {
-    	return gulp.src('public/css/jobs.smallScreen.css')
-    	  .pipe(gulpSSH.sftp('write', path + '/public/css/jobs.smallScreen.css'));
-    });
+
 }

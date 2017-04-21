@@ -31,8 +31,33 @@
 </head>
 <body class="appLoading">
 
-    <div id="loader">
-        <div class="loader-spinner"></div>
+    <div id="loader" data-loader="user" data-fadeIn="true">
+        <div class="loader-container">
+            <div class="loader-user"
+
+            {% if !user.oauth && user.photo %}
+                style="background-image:url({{ user.photo }})"
+            {% endif %}
+
+            {% if user.oauth %}
+                data-oauth="{{ user.oauth.channel }}"
+            {% endif %}
+
+            {% if !user.oauth && !user.photo %}
+                data-empty="true"
+            {% endif %}>
+
+            {% if user.oauth && user.oauth.avatar %}
+                <div class="loader-user-avatar" style="background-image:url({{ user.oauth.avatar }})"></div>
+            {% endif %}
+
+            </div>
+            <div class="loader-spinner"></div>
+            <div class="loader-text">
+                <div class="loader-name">{% if user.name || user.surname %}{{ user.name }} {{ user.surname }}{% else %}Пользователь{% endif %}</div>
+                <div class="loader-title">Вхожу в кабинет</div>
+            </div>
+        </div>
     </div>
 
     <!--/ VENDORS /-->
@@ -48,11 +73,19 @@
     <script src="/assets/js/templates.ui.js"></script>
     <script src="/assets/js/templates.sections.js"></script>
 
+
+    <script src="/assets/templates/sections/list/resumeSelect.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/list/mobile/resumeList.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/offers/mobile/welcome.html" type="riot/tag"></script>
     <script src="/assets/templates/sections/master/master.html" type="riot/tag"></script>
+    <script src="/assets/templates/sections/list/mobile/navbar.html" type="riot/tag"></script>
+
 
 
     <!--/ JS components /-->
     <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/store/account.js"></script>
+    <script src="/assets/js/store/resume/commons/resume.js"></script>
     <script src="/assets/js/components/config.js"></script>
     <script src="/assets/js/components/init.js"></script>
 

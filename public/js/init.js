@@ -10,6 +10,10 @@
         data: app.metrics.public
     });
 
+    if (!app.metrika.get("referer")){
+        app.metrika.set("referer", document.referrer);
+    }
+
     app.sections.once("endLoading", function(){
         $dom.body.removeClass("appLoading");
         app.features.links.init();

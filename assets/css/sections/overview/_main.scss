@@ -87,14 +87,14 @@
             @extend .letterSpacing--m;
             font-size:23px;
 
-            html.d-tablet & {
-                // font-size:22px;
-                // @extend .letterSpacing--s;
-                @extend .fontFamily-sftext;
-                @extend .lineHeight-xxl;
-                @extend .fontWeight-normal;
-                font-size:18px;
-                letter-spacing:-.02em;
+            html.d-mobile & {
+                font-size:22px;
+                @extend .letterSpacing--s;
+                // @extend .fontFamily-sftext;
+                // @extend .lineHeight-xxl;
+                // @extend .fontWeight-normal;
+                // font-size:18px;
+                // letter-spacing:-.021em;
             }
         }
         .v-lineRight {

@@ -73,17 +73,35 @@ section-auth {
 
         &__button {
             @extend .flex-centered;
-            @extend .bg-grayDark;
-            @extend .w40;
-            @extend .h40;
+            @extend .bg-white;
+            @extend .w48;
+            @extend .h48;
             @extend .willChange-transform;
             @extend .borderRadius-circle;
-            @extend .mlr-xs;
+            @extend .mlr-xss;
             @extend .pt-xxs;
+            box-shadow:inset 0 0 0 3px rgba($silver,.25);
             @extend .btn-active;
 
-            .icon {
-                @extend .scale-85;
+            &[data-social="fb"]{
+                path {
+                    fill:#3B5998;
+                }
+            }
+            &[data-social="vk"]{
+                path {
+                    fill:#507299;
+                }
+            }
+            &[data-social="dk"]{
+                path {
+                    fill:#EE8208;
+                }
+            }
+            &[data-social="tw"]{
+                path {
+                    fill:#1DA1F2;
+                }
             }
         }
     }

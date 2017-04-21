@@ -16,12 +16,12 @@ var utils = {
 		return md5(pass);
 	},
 
-	cryptoHash: function(login, pass, id){
-		return crypto.createHash('sha256').update(login + "." + pass + "." + id).digest('hex');
+	cryptoHash: function(pass, id){
+		return crypto.createHash('sha256').update(pass + "." + app.config.get("session:secret") + "." + id).digest('hex');
 	},
 
-	cryptoCheck: function(login, pass, id, hash){
-		if (crypto.createHash('sha256').update(login + "." + pass + "." + id).digest('hex') !== hash){
+	cryptoCheck: function(pass, id, hash){
+		if (utils.cryptoHash(pass, id) !== hash){
 			return false;
 		}
 		else {

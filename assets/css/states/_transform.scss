@@ -1,15 +1,15 @@
 @each $title, $size in (xxs: 5px, xss: 7.5px, xs: 10px, s: 15px, m: 20px, l: 40px, xl: 80px){
     .trY-#{$title} {
-        transform:translateY($size);
+        transform:translateY($size) translateZ(0);
     }
     .trX-#{$title} {
-        transform:translateX($size);
+        transform:translateX($size) translateZ(0);
     }
     .trY--#{$title} {
-        transform:translateY(-$size);
+        transform:translateY(-$size) translateZ(0);
     }
     .trX--#{$title} {
-        transform:translateX(-$size);
+        transform:translateX(-$size) translateZ(0);
     }
 }
 @for $i from 1 through 40 {

@@ -15,6 +15,7 @@ var log             = require('./libs/log')(module),
     session         = require('express-session'),
     memoryStore     = session.MemoryStore,
     underscore      = require('underscore'),
+    passport        = require('passport'),
     device          = require('express-device'),
     redis           = require('redis');
 
@@ -80,6 +81,8 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+app.use(passport.initialize());
+// app.use(passport.session());
 app.use(express.static(path.join(__dirname, '/')));
 
 app.checkAuth = require('./public/router/checkAuth');
@@ -137,6 +140,8 @@ app.use(function(err, req, res, next) {
   });
 });
 
+// app.db.collection('accounts').drop();
+// app.db.collection('resumes').drop();
 //API.migrate.accounts();
 
 var server = http.createServer(app),

@@ -1,0 +1,47 @@
+<section-loader-user class="loader" data-show="{ active }" data-color="{ color }" data-loader="user">
+
+    <div class="loader-container">
+        <div if={ user.oauth || user.photo } class="loader-user" style="{ user.photo ? 'background-image:url(' + user.photo + ')' : null }" data-oauth={ user.oauth }>
+            <div if={ user.avatar } class="loader-user-avatar" style="background-image:url({ user.avatar })"></div>
+        </div>
+        <div if={ !user.oauth && !user.photo } class="loader-user" data-empty="true"></div>
+        <div class="loader-spinner"></div>
+        <div class="loader-text">
+            <div class="loader-name">{ user.name || user.surname ? user.name + ' ' + user.surname : 'Пользователь' }</div>
+            <div class="loader-title">{ user.title || 'Вхожу в кабинет' }</div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.default = function(){
+        return {
+            user: null,
+            color: null,
+            active: true
+        }
+    };
+
+    $.show = function(options){
+        app.$dom.body.addClass("no-scroll");
+        $.update(_.extend($.default(), options));
+
+        return new Promise(function(resolve, reject){
+            _.onEndTransition($.root, function(){
+                $.root.setAttribute("data-fadeIn", true);
+                return resolve();
+            });
+        });
+    };
+
+    $.hide = function(){
+        $.update({
+            active: false
+        });
+    };
+
+</script>
+
+</section-loader-user>

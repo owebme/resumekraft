@@ -6,7 +6,7 @@
 
             <div onClick={ open.profile } onUpdate="none" class="resume__list-m__menu"></div>
 
-            <div class="container borderBottomWidth-1 borderStyle-solid borderColor-smoke">
+            <div class="container">
                 <div class="row">
                     <div class="resume__list-m__header col-xs-offset-5 col-xs-19">
                         <div class="resume__list-m__title">Мой список резюме</div>
@@ -28,13 +28,6 @@
 
         <navbar-mobile></navbar-mobile>
 
-    </div>
-
-    <div onClick={ open.master } onUpdate="none" class="master__launcher__mobile">
-        <div class="master__launcher__mobile__info">
-            <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px" y="0px" viewBox="0 0 100 125"><g transform="translate(0,-952.36218)"><path d="m 59.001949,957.35871 c -3.3137,0 -6,2.6863 -6,6 0,3.3137 2.6863,6 6,6 3.3137,0 6,-2.6863 6,-6 0,-3.3137 -2.6863,-6 -6,-6 z m -8.1562,16.0312 c -4.4334,0.2551 -9.0287,2.9626 -13,6.5313 l -0.4376,5.4375 c 3.7521,-1.7212 10.7531,-3.2851 11.9063,0.8125 2.8068,9.9677 -9.9671,28.98669 -12.5937,38.12499 -7.2455,26.8259 9.9823,27.2451 21.625,16.4688 l 0.4062,-5.4688 c -6.9985,2.8736 -16.7901,4.5005 -10.1562,-13.1563 1.8487,-6.2476 18.6918,-36.68479 9.875,-46.18749 -2.3607,-1.9777 -4.9651,-2.7155 -7.625,-2.5625 z" stroke="none" marker="none" visibility="visible" display="inline" overflow="visible"/></g></svg>
-        </div>
-        <div class="master__launcher__mobile__logo"></div>
     </div>
 
 <script>
@@ -65,9 +58,6 @@
     });
 
     $.open = {
-        master: function(){
-            $Sections.master.section.show();
-        },
         profile: function(){
             $.hide();
             $Sections.profile.section.show(function(){

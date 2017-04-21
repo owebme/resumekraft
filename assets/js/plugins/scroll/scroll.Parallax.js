@@ -29,11 +29,19 @@
                     _this.raf = _.raf(scrollParallax);
                     if (_this.ready) _this.onScroll(_this);
                 })();
+
+                var resize = _.debounce(this.render, 300);
+
+                $dom.window.on('resize.scroll-parallax', function(){
+                    resize.call(_this);
+            	});
             }
         },
 
         render: function(){
             var _this = this;
+
+            this.ready = false;
 
             this.items = [];
 
@@ -146,6 +154,7 @@
 
         destroy: function(){
             _.caf(this.raf);
+            $dom.window.off('resize.scroll-parallax');
             this.ready = false;
         }
     };

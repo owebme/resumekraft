@@ -30,11 +30,19 @@
                         });
                     }
                 });
+
+                var resize = _.debounce(this.render, 1000);
+
+                $dom.window.on('resize.scroll-animate', function(){
+                    resize.call(_this);
+            	});
             }
         },
 
         render: function(){
             var _this = this;
+
+            this.ready = false;
 
             this.items = [];
 
@@ -89,6 +97,8 @@
         },
 
         onScroll: function(){
+            if (!this.ready) return;
+
             var _this = this,
                 scroll = this.getScrollY.call(this);
 
@@ -115,6 +125,7 @@
         },
 
         destroy: function(){
+            $dom.window.off('resize.scroll-animate');
             this.scroll.off("scroll.animate");
             _.caf(this.raf);
             this.items.forEach(function(item, i){

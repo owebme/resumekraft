@@ -9,7 +9,6 @@ module.exports = function(){
     		'assets/js/components/commons/modules.js',
             'assets/js/components/commons/EventEmitter.js',
             'assets/js/components/commons/EventEmitterMicro.js',
-            'assets/js/premium/config.js',
     		'assets/js/components/help/resume/premium/*.js',
     		'assets/js/components/i18n/i18n.js',
     		'assets/js/plugins/eventsEmitter.js',

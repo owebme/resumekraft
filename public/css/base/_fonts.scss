@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,300,500,700&subset=cyrillic-ext,latin');
 @import '../../assets/css/fonts/Futura/style';
-@import '../../assets/css/fonts/SFDisplay/style';
+// @import '../../assets/css/fonts/Museo/style';
+// @import '../../assets/css/fonts/SFDisplay/style';
 @import '../../assets/css/fonts/Gotham/style';
 @import '../../assets/css/fonts/Graphik/style';
 @import '../../assets/css/fonts/HelveticaNeue/style';
@@ -14,6 +15,9 @@
 }
 .fontFamily-sftext {
     font-family:$sftext;
+}
+.fontFamily-sfdisplay {
+    font-family:$sfdisplay;
 }
 .fontFamily-gotham {
     font-family:$gotham;

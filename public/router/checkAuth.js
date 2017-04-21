@@ -6,7 +6,7 @@ module.exports = function(redirect) {
 		//if (process.env.NODE_ENV == "production"){
 			if (!req.session.user
 				|| req.session.user && (!req.session.user.accountID
-				|| !utils.cryptoCheck(req.session.user.login, req.session.user.password, req.session.user.accountID, req.session.user.hash))){
+				|| !utils.cryptoCheck(req.session.user.password, req.session.user.accountID, req.session.user.hash))){
 					if (redirect){
 						return res.redirect(redirect);
 					}

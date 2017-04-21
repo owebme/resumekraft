@@ -1,7 +1,10 @@
 <auth-signin class="section auth" data-active="false" data-form="signin">
 
-    <form ref="form" method="post" action="/login" class="auth__form anim-group1 anim-scale{ '-ease' : app.device.isPhone }" duration-show="m" duration-hide="{ app.device.isPhone ? 's' : 'm' }">
+    <form ref="form" method="post" action="/auth" class="auth__form anim-group1 anim-scale{ '-ease' : app.device.isPhone }" duration-show="m" duration-hide="{ app.device.isPhone ? 's' : 'm' }">
+        <input type="hidden" name="oauth" value="false">
+        <input type="hidden" name="auth" value="signin">
         <input type="hidden" name="logined" value="true">
+        <input type="hidden" name="referer" riot-value={ parent.referer() }>
         <input type="hidden" name="country" riot-value={ parent.location.country }>
         <input type="hidden" name="city" riot-value={ parent.location.city }>
         <input type="hidden" name="region" riot-value={ parent.location.region }>
@@ -56,6 +59,7 @@
     }
 
     $.on("mount", function(){
+        $.auth = $.parent;
         $.form = $$($.refs.form);
         $.animate = new app.plugins.animate($.root);
     });
@@ -69,9 +73,11 @@
 
     $.open = function(){
         $.active = true;
-        $.parent.section = "signin";
+        $.auth.section = "signin";
         $.root.setAttribute("data-active", true);
-        $.animate.show();
+        $.animate.show(function(){
+            $.parent.regSocial();
+        });
     };
 
     $.show = {
@@ -79,13 +85,13 @@
             $.active = false;
             $.root.setAttribute("data-active", false);
             $.animate.hide();
-            $.parent.tags["auth-signup"].open();
+            $.auth.tags["auth-signup"].open();
         },
         remember: function(){
             $.active = false;
             $.root.setAttribute("data-active", false);
             $.animate.hide();
-            $.parent.tags["auth-remember"].open();
+            $.auth.tags["auth-remember"].open();
         }
     };
 
@@ -98,6 +104,7 @@
         if ($.loading) return;
 
         var params = {
+            auth: "signin",
             login: _.clean($.refs.login.value, []),
             password: _.clean($.refs.password.value, [])
         },
@@ -111,15 +118,15 @@
 
         setTimeout(function(){
             $$.post({
-                url: '/login',
+                url: '/auth',
                 data: params,
                 dataType : "json",
                 success: function(data, status){
                     if (data && data.status){
                         if (data.status == "error"){
                             var text = "Не верный логин и/или пароль";
-                            if ($.parent.notify){
-                                $.parent.notify.show({
+                            if ($.auth.notify){
+                                $.auth.notify.show({
                                     color: "danger",
                                     text: text
                                 })
@@ -129,17 +136,19 @@
                             }
                         }
                         else if (data.status == "OK"){
-                            app.tag("section-loader").show()
+                            app.tag("section-loader-user").show({
+                                user: data.user
+                            })
                             .then(function(){
-                                $.form.submit();
+                                $.parent.submit($.form);
                             });
                         }
                     }
                 },
                 error: function(){
                     var text = "Ошибка авторизации, повторите попытку чуть позже";
-                    if ($.parent.notify){
-                        $.parent.notify.show({
+                    if ($.auth.notify){
+                        $.auth.notify.show({
                             color: "danger",
                             text: "Ошибка авторизации, повторите попытку чуть позже"
                         })
@@ -183,8 +192,8 @@
                 $.root.setAttribute("data-active", false);
             });
         }
-        $.parent.section = null;
-        $.parent.close();
+        $.auth.section = null;
+        $.auth.close();
     };
 
 </script>

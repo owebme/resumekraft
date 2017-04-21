@@ -1,4 +1,17 @@
 .resume__list-m {
+    &__items {
+        @extend .pos-rel;
+        @extend .zIndex-1;
+
+        &:after {
+            @extend .content-empty;
+            @extend .pos-tl;
+            @extend .w100p;
+            @extend .h1px;
+            @extend .bg-smoke;
+            @extend .mt--1;
+        }
+    }
     &__item {
         @include accelerate();
         @extend .pos-rel;

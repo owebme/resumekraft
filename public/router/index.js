@@ -9,8 +9,7 @@ module.exports = function(){
         });
     });
 
-    app.post('/login', app.controllers.auth.login);
-    app.post('/register', app.controllers.auth.register);
+    app.post('/auth', app.controllers.auth);
     app.get('/logout', function(req, res) {
         delete req.session.user;
         res.redirect('/');
@@ -19,7 +18,13 @@ module.exports = function(){
     app.get('/private/', app.checkAuth('/?signin'), function(req, res) {
         res.render('private', {
             device: req.device.type,
-            isMobile: req.device.isMobile
+            isMobile: req.device.isMobile,
+            user: {
+                oauth: req.account.oauth,
+                photo: req.account.photo,
+                name: req.account.name,
+                surname: req.account.surname
+            }
         });
     });
 
@@ -83,6 +88,7 @@ module.exports = function(){
 
     app.post('/payment/?pay=yamoney', app.controllers.payment);
 
+    require(process.cwd() + '/public/controllers/auth/passport')('/auth');
     require(process.cwd() + '/assets/API')('/private/api');
     require(process.cwd() + '/public/API')('/public/api');
 }

@@ -14,9 +14,7 @@
             this.scope = this.options.scope ? $(this.options.scope) : $dom.body;
             this.scroll = this.options.scroll ? $(this.options.scroll) : app.$dom.window;
 
-            _.each(_.omit(this.render, ["content", "screens", "chart", "notebooks"]), function(fn){
-                if (_.isFunction(fn)) fn();
-            });
+            this.render.header();
 
             this.active = true;
         },
@@ -68,7 +66,7 @@
 
                 WD.headerParallax.start();
 
-                var anim = 0, start = 0;
+                var anim = 0;
 
                 if (WD.options.imagesLoaded){
 
@@ -90,9 +88,9 @@
                                     anim++;
                                     if (anim == layers.length){
                                         WD.render.content();
-                                        WD.render.screens();
-                                        WD.render.chart();
-                                        WD.render.notebooks();
+                                        _.each(_.omit(WD.render, ["header", "content"]), function(fn){
+                                            if (_.isFunction(fn)) fn();
+                                        });
                                         WD.options.imagesLoaded.load({
                                             timeout: 10000
                                         });
@@ -118,9 +116,9 @@
                             anim++;
                             if (anim == layers.length){
                                 WD.render.content();
-                                WD.render.screens();
-                                WD.render.notebooks();
-                                WD.render.chart();
+                                _.each(_.omit(WD.render, ["header", "content"]), function(fn){
+                                    if (_.isFunction(fn)) fn();
+                                });
                             }
                         });
                     });

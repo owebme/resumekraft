@@ -1,0 +1,32 @@
+@media screen and (min-width: $w1200) {
+    .w100p-lg {
+        width:100%;
+    }
+    .w100p-lg {
+        height:100%;
+    }
+}
+@media screen and (min-width: $w992) and (max-width: $w1024) {
+    .w100p-md {
+        width:100%;
+    }
+    .w100p-md {
+        height:100%;
+    }
+}
+@media screen and (min-width: $w768) and (max-width: $w991) {
+    .w100p-sm {
+        width:100%;
+    }
+    .w100p-sm {
+        height:100%;
+    }
+}
+@media screen and (max-width: $w767) {
+    .w100p-xs {
+        width:100%;
+    }
+    .w100p-xs {
+        height:100%;
+    }
+}

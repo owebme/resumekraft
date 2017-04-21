@@ -70,7 +70,7 @@ module.exports = function(){
             'public/templates/commons/modules/auth/forms/remember.tag',
             'assets/templates/modules/oScreenLoader.html',
             'assets/templates/v3/modules/notify.html',
-            'assets/templates/modules/loader.html',
+            'assets/templates/modules/loaderUser.html',
             'assets/templates/v3/ui/input.html',
             'assets/templates/sections/jptest/*.html',
             'assets/templates/sections/jptest/**/*.html',
@@ -83,7 +83,8 @@ module.exports = function(){
             'public/templates/commons/icons/social/icon-vk.tag',
             'public/templates/commons/icons/social/icon-tw.tag',
             'public/templates/commons/icons/social/icon-dk.tag',
-            'public/templates/commons/icons/social/icon-gl.tag'])
+            'public/templates/commons/icons/social/icon-gl.tag',
+            'public/templates/commons/icons/social/icon-glc.tag'])
     		.pipe(riot())
     		.pipe(concat('templates.js'))
     		.pipe(uglify())

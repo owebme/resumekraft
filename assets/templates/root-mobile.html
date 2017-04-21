@@ -56,8 +56,17 @@
 
     this.on("mount", function(){
         $afterlag.xs(function(){
-            app.$dom.body.removeClass("appLoading");
+            var $loader = app.$dom.body.find("> #loader");
+            $loader.attr("data-fadeOut", true)
+            .removeAttr("data-fadeIn");
+
+            _.onEndTransition($loader[0], function(){
+                app.$dom.body.removeClass("appLoading");
+                $loader.remove();
+            });
+
             $root.trigger("ready");
+
             // $afterlag.xl(function(){
             //     $Sections.offers.votes.show();
             // })

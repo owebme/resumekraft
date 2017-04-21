@@ -4,6 +4,7 @@
     @extend .visibility-hidden;
     @extend .bg-blue;
     @extend .zIndex-102;
+    @extend .pointerEvents-none;
     @extend .willChange-opacity;
 
     @each $color in ($green, $emerald, $orange, $red, $violet, $violetLight, $brown, $pink){
@@ -46,17 +47,17 @@
 
 @keyframes loader-animate1 {
 	0% {
-		transform:rotate(0);
+		transform:rotate(0) translateZ(0);
 	}
 	100% {
-		transform:rotate(220deg);
+		transform:rotate(220deg) translateZ(0);
 	}
 }
 @keyframes loader-animate2 {
 	0% {
-		transform:rotate(-140deg);
+		transform:rotate(-140deg) translateZ(0);
 	}
 	100% {
-		transform:rotate(140deg);
+		transform:rotate(140deg) translateZ(0);
 	}
 }

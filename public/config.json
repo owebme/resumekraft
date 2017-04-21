@@ -1,5 +1,33 @@
 {
     "domain": "http://192.168.1.64:3000",
+    "auth": {
+        "vk": {
+            "clientID": "5357003",
+            "clientSecret": "PwCGFkwKDgft05o9ZHhI",
+            "callbackURL": "http://v2.resumekraft.ru/auth/vk/callback"
+        },
+        "fb": {
+            "clientID": "1807891412771161",
+            "clientSecret": "78b1eb1254b72b233f9c2a6a38c4b3f8",
+            "callbackURL": "http://v2.resumekraft.ru/auth/fb/callback"
+        },
+        "tw": {
+            "consumerKey": "AJ1SGaYgTXPmi7bSrV1EJlyGH",
+            "consumerSecret": "AwmXAYddJkxQHDUkKy7qsVj2IjsxtDhZiHdFsSBAfsomrJCDtJ",
+            "callbackURL": "http://v2.resumekraft.ru/auth/tw/callback"
+        },
+        "dk": {
+            "clientID": "1250822400",
+            "clientPublic": "CBAKAPILEBABABABA",
+            "clientSecret": "79CFF476B75E94D50E45ADA9",
+            "callbackURL": "http://v2.resumekraft.ru/auth/dk/callback"
+        },
+        "gl": {
+            "clientID": "473167333833-boetapfsq7fa6s9e9aq8bcjdc18idr36.apps.googleusercontent.com",
+            "clientSecret": "eBW5363w7o2w46XHTGajgALk",
+            "callbackURL": "http://v2.resumekraft.ru/auth/gl/callback"
+        }
+    },
     "path": {
         "photo": "/public/files/photo/",
         "pdf": "/public/files/pdf/",

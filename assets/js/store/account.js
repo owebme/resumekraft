@@ -15,8 +15,10 @@ $store.account = _.extend(new Baobab([]),
             });
         },
         onSaveData: function(data, callback){
+            var surname = $store.account.get("commons", "surname");
+
             data.select("surname").set(
-                $store.account.get("commons", "surname").length ? $store.account.get("commons", "surname") : data.get("surname")
+                surname && surname.length ? surname : data.get("surname")
             );
 
             $store.account.select("commons").set(data.get());
