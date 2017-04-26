@@ -17,22 +17,6 @@ module.exports = function(){
 				'window.opener.focus();' +
 				'window.close();' +
 			'</script>');
-		},
-		serializeUser: function(user){
-			if (user.birthday && user.birthday.length){
-	            if (parseInt(user.birthday[1]) > 0) {
-	                user.birthday = {
-	    	            day: parseInt(user.birthday[3]),
-	    	            month: parseInt(user.birthday[2]),
-	    	            year: parseInt(user.birthday[1]),
-	    	            hidden: true
-	    	        }
-	            }
-	            else {
-	                user.birthday = null;
-	            }
-	        }
-			return user;
 		}
 	};
 
@@ -79,22 +63,40 @@ module.exports = function(){
 				oauth[data.oauth.channel] = data.oauth.profileId;
 				data.name = data.oauth.name;
 				data.surname = data.oauth.surname;
-				data.birthday = data.oauth.birthday;
 				data.login = null;
 				data.email = data.oauth.email;
 				data.password = data.oauth.profileId;
+				data.profileUrl = data.oauth.url;
+
+				if (data.oauth.birthday && data.oauth.birthday.length){
+					var birthday = data.oauth.birthday.match(/(.+)-(.+)-(.+)/);
+		            if (birthday && birthday.length && parseInt(birthday[1]) > 0) {
+		                data.birthday = {
+		    	            day: parseInt(birthday[3]),
+		    	            month: parseInt(birthday[2]),
+		    	            year: parseInt(birthday[1]),
+		    	            hidden: true
+		    	        }
+		            }
+		        }
 			}
 			else {
+				data.activate = {
+					active: false,
+					hash: app.utils.md5(data.login + ":" + app.config.get("session:secret"))
+				}
 				data.email = data.login;
 			}
 			app.db.collection('accounts').insertOne(API.getAccount({
 				oauth: oauth,
+				activate: data.activate,
 				device: req.device && req.device.type,
 				login: data.login,
 				password: data.password,
 				name: data.name,
 				surname: data.surname,
 				email: data.email,
+				profileUrl: data.profileUrl,
 				birthday: data.birthday,
 				init: {
 					plan: data.plan,
@@ -107,8 +109,23 @@ module.exports = function(){
 					next(err);
 				}
 				else if (isUser && isUser.ops && isUser.ops.length){
-					API.init(req, isUser.ops[0], data.oauth);
-					res.redirect('/private/');
+					if (oauth){
+						API.init(req, isUser.ops[0], data.oauth);
+						res.redirect('/private/');
+					}
+					else {
+						var accountId = isUser.ops[0]._id;
+						global.API.mailer.send({
+							to: data.login,
+							subject: 'Добро пожаловать на ResumeKraft',
+							html: {
+								template: "register",
+								link: app.config.public.get('domain') + "/activate/" + accountId + "/" + data.activate.hash
+							}
+						}, function(err, data){
+							app.errHandler(res, err, data);
+						});
+					}
 				}
 				else {
 					next();
@@ -125,11 +142,7 @@ module.exports = function(){
 
     API.getAccount = function(data){
 		return {
-			active: data.oauth ? true : false,
-			activate: data.login && {
-				hash: app.utils.md5(data.login + ":" + app.config.get("session:secret")),
-				sendmail: false
-			} || {},
+			activate: data.activate || {},
 			oauth: data.oauth || {},
 			plan: "free",
 	        balance: 0,
@@ -163,7 +176,7 @@ module.exports = function(){
 					primary: null,
 					site: null,
 					skype: null,
-					socialProfile: data.oauth && data.oauth.url || null
+					socialProfile: data.profileUrl || null
 		        }
 			},
 			history: {

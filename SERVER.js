@@ -29,7 +29,7 @@ var config = require('./libs/config')({
 global.app = express();
 app.express = express;
 app.req = request;
-app.mailer = require('./libs/sendmail')();
+app.swig = swig;
 app.config = config.use("global");
 app.config.public = config.use("public");
 app.config.private = config.use("private");
@@ -85,6 +85,16 @@ app.use(passport.initialize());
 // app.use(passport.session());
 app.use(express.static(path.join(__dirname, '/')));
 
+if (process.env.NODE_ENV == "production"){
+    app.use(function(req, res, next) {
+        if (req.headers.host.slice(0, 4) === 'www.') {
+            var newHost = req.headers.host.slice(4);
+            return res.redirect(301, req.protocol + '://' + newHost + req.originalUrl);
+        }
+        next();
+    });
+}
+
 app.checkAuth = require('./public/router/checkAuth');
 
 app.use(function(req, res, next) {
@@ -95,6 +105,9 @@ app.use(function(req, res, next) {
     };
     req.device.ua = device.ua;
     req.device.isMobile = device.isMobile;
+    delete req.device.parser;
+    delete req.device.name;
+
     req.appClient = {
         utils: app.utils,
         moment: app.moment,
@@ -106,15 +119,13 @@ app.use(function(req, res, next) {
     //if (process.env.NODE_ENV == "production"){
         req.account = req.session.user;
         req.accountId = req.session.user ? app.utils.ObjectId(req.session.user.accountID) : null;
-    //}
+    // }
     // else {
     //     req.account = {
-    //         plan: "premium"
+    //         plan: "free"
     //     }
-    //     req.accountId = app.utils.ObjectId('0b8e197c3f54cb1d652d15eb');
+    //     req.accountId = app.utils.ObjectId('58febc2354e905a282ccf03f');
     // }
-    //88314527400@mail.ru
-    //verenitch-irina2010@yandex.ru
     req.device.type = req.query.debug ? req.query.debug : req.device.type;
     req.clientIP = app.utils.getClientAddress(req);
     next();

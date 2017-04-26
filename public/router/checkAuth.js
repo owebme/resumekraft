@@ -3,7 +3,7 @@ var utils = require(process.cwd() + '/libs/utils');
 module.exports = function(redirect) {
 
 	return function(req, res, next){
-		//if (process.env.NODE_ENV == "production"){
+		if (process.env.NODE_ENV == "production"){
 			if (!req.session.user
 				|| req.session.user && (!req.session.user.accountID
 				|| !utils.cryptoCheck(req.session.user.password, req.session.user.accountID, req.session.user.hash))){
@@ -15,7 +15,10 @@ module.exports = function(redirect) {
 						return res.send({status: 'Unauthorized'});
 					}
 				}
-		//}
+				else {
+					next();
+				}
+		}
 		next();
 	}
 };

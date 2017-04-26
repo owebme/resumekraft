@@ -6,7 +6,7 @@
 
         <div class="screenMobile__navbar" data-gradient="white">
             <div onClick={ hide } onUpdate="none" class="screenMobile__nav__close"></div>
-            <div class="screenMobile__nav__title maxW-70p text-truncate">{ item.post ? item.post : 'Новое резюме' }</div>
+            <div class="screenMobile__nav__title maxW-70p text-truncate">{ item && item.post || 'Новое резюме' }</div>
             <div onClick={ open.dropMenu } onUpdate="none" class="screenMobile__nav__options { pointerEvents-none : isEmpty }"></div>
         </div>
         <div name="content" class="section-scroll section__content">
@@ -40,7 +40,7 @@
                         </tbody>
                     </table>
                 </div>
-                
+
                 <div class="resume__stat__tabs row">
                     <resume-stat-tabs stat={ all }></resume-stat-tabs>
                 </div>

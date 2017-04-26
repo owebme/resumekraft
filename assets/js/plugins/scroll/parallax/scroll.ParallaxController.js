@@ -88,6 +88,9 @@
         })(this);
     };
     t.start = function() {
+        if (app.device.isMobile) {
+            return
+        }        
         var a;
         for (a = 0; a < this.els.length; a++) {
             this.els[a].start()

@@ -13,6 +13,7 @@
         this.scopeHeight = this.scope ? options.container.height() : null;
         this.fade = options.fade;
         this._items = options.items;
+        this.eventResize = app.device.isMobile ? 'orientationchange' : 'resize';
         this.items = [];
     };
 
@@ -32,7 +33,7 @@
 
                 var resize = _.debounce(this.render, 300);
 
-                $dom.window.on('resize.scroll-parallax', function(){
+                $dom.window.on(this.eventResize + '.scroll-parallax', function(){
                     resize.call(_this);
             	});
             }
@@ -154,7 +155,7 @@
 
         destroy: function(){
             _.caf(this.raf);
-            $dom.window.off('resize.scroll-parallax');
+            $dom.window.off(this.eventResize + '.scroll-parallax');
             this.ready = false;
         }
     };

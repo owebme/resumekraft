@@ -4,6 +4,10 @@
     @extend .willChange-transform;
     @extend .pointerEvents-none;
     transition:transform .25s $cubic345;
+
+    html.d-tablet.r-portrait & {
+        @extend .transition-none;
+    }
 }
 .help__item {
     @extend .pos-abs;
@@ -32,7 +36,8 @@
 .help__text__back {
     @extend .opacity-0;
 }
-body[data-help="true"] {
+html.d-no-tablet body[data-help="true"],
+html.d-tablet.r-landscape body[data-help="true"]{
     .help__item,
     .help__text {
         @extend .scale-100;

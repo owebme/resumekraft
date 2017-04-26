@@ -27,7 +27,9 @@
     $.graph = {
         init: function(){
             var $graph = $Resume.el.find(".screen[data-section='commons']").find(".salary-graph-mini"),
-                width = app.device.isPhone ? (app.sizes.width - 157.5) + "px" : "220px";
+                width = app.device.isPhone ? app.sizes.width - 157.5 : 220;
+
+            width = (app.device.isPhone && width > 230 ? 230 : width) + "px";
 
             $graph.css("width", width);
 

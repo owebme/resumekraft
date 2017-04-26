@@ -9,7 +9,7 @@
             <div class="row flex-row-center-stretch h100p">
                 <div class="col-md-16">
                     <div class="ptb-l pl-l pr-m">
-                        <div class="fontSize-28 c-blue ml0 mb-m"><span class="c-gray fontWeight-bold">Выбор</span> тарифного плана</div>
+                        <div class="fontSize-28 c-blue ml0 mb-m"><span class="c-gray fontWeight-bold">Подключить</span> <strong>Premium</strong> тариф</div>
                         <div class="pos-rel">
                             <div name="table-cursor" class="pos-abs borderRadius-l borderWidth-1 borderStyle-solid borderColor-blue pointerEvents-none h100p transition-m transition-delay-xxs { animate ? 'opacity-30' : 'opacity-0' }"></div>
                             <table name="table" class="table table-l" first-cell="text-left">
@@ -36,7 +36,7 @@
                                     </tr>
                                     <tr class="table-row">
                                         <td class="table-cell">
-                                            <div class="pos-rel" data-balloon="Резюме-презентация с стильным и современным дизайном" data-balloon-length="large" data-balloon-fontSize="medium">Резюме-презентация</div>
+                                            <div class="pos-rel" data-balloon="Новый формат резюме позволит выделить вас среди кандидатов" data-balloon-length="large" data-balloon-fontSize="medium">Новый формат</div>
                                         </td>
                                         <td class="table-cell text-center pt-xxs">
                                             <div class="display-inlineBlock w25 h1px bg-gray mb-xxs"></div>
@@ -58,7 +58,7 @@
                                     </tr>
                                     <tr class="table-row">
                                         <td class="table-cell">
-                                            <div class="pos-rel" data-balloon="Получайте приглашения от вашего работадателя" data-balloon-length="large" data-balloon-fontSize="medium">Получать приглашения</div>
+                                            <div class="pos-rel" data-balloon="Получайте больше откликов и приглашений от своих работадателей" data-balloon-length="large" data-balloon-fontSize="medium">Получать приглашения</div>
                                         </td>
                                         <td class="table-cell text-center pt-xxs">
                                             <div class="display-inlineBlock w25 h1px bg-gray mb-xxs"></div>
@@ -168,6 +168,9 @@
     $.show = function(plan, period){
         if ($.active) return;
 
+        if (period && !$store.paymentPeriod.get({"period": period})){
+            period = null;
+        }
         if (plan && plan != $.plan) {
             $.plan = plan;
             $.hovered = plan;

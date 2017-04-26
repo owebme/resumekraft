@@ -18,6 +18,12 @@ body {
     line-height:1.8;
     text-align:center;
 }
+.black {
+    color:#1b1b1b;
+}
+.gray {
+    color:#7f8c8d;
+}
 .blue {
     color:#265cdc;
 }
@@ -40,10 +46,22 @@ h2 {
     line-height:1.2;
     margin:1em 0 0;
 }
+h3 {
+    font-weight:bold;
+    font-size:54px;
+    line-height:1.2;
+    letter-spacing:-0.4px;
+    margin:1em 0 0;
+}
 p {
     color:#aaa;
     font-size:30px;
     margin-bottom:0;
+}
+.small {
+    font-family:'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif;
+    font-size:22px;
+    line-height:1.7;
 }
 a {
     display:inline-block;

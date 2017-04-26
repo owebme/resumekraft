@@ -18,6 +18,10 @@
         background:rgba(darken($grayDark,15%),.7);
         @extend .willChange-opacity;
         transition:opacity 0.15s $cubic2501;
+
+        html.d-phone & {
+            background:rgba($steel,.8);
+        }
     }
     &__wrapper {
         @extend .opacity-01;
@@ -35,9 +39,10 @@
 
         html.d-phone & {
             @extend .w100p;
+            @extend .h-auto;
             max-width:448px;
             min-width:238px;
-            height:220px;
+            min-height:220px;
             @extend .fontFamily-helvetica;
             @extend .borderRadius-xl;
         }
@@ -47,6 +52,12 @@
         @extend .w100p;
         height:74.6%;
         @extend .text-center;
+
+        html.d-phone & {
+            @extend .h-auto;
+            @extend .pt30;
+            padding-bottom:26%;
+        }
     }
     &__title {
         @extend .c-blue;
@@ -58,6 +69,7 @@
             @extend .fontSize-22;
             @extend .fontWeight-normal;
             @extend .letterSpacing-0;
+            @extend .mb-xs;
         }
     }
     &__subtitle {
@@ -82,6 +94,7 @@
 
         html.d-phone & {
             @extend .h30p;
+            @extend .pos-bl;
         }
     }
     &__button {

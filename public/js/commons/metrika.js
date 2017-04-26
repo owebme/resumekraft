@@ -6,10 +6,10 @@
         ver: "1.0",
         plan: {
             name: "free",
-            period: "month"
+            period: "month1"
         },
-        tooltips: {
-            regSocial: false
+        notify: {
+            oauth: false
         },
         views: {
             home: 0,

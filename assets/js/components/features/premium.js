@@ -203,7 +203,7 @@
             },
 
             screens: function(){
-                WD.screens = [];
+                WD.screensItems = [];
 
                 WD.scope.find(".screens").each(function(i){
                     var screen = new app.plugins.screens(this, {
@@ -219,7 +219,7 @@
                     if (!app.device.isMobile && this.getAttribute("data-autorun") == "true"){
                         this.play = screen.play;
                     }
-                    WD.screens.push(screen);
+                    WD.screensItems.push(screen);
                 });
             },
 
@@ -249,8 +249,8 @@
             }
             this.contentAnimate.destroy();
             this.chartRadial.destroy();
-            if (this.screens){
-                _.each(this.screens, function(screen){
+            if (this.screensItems){
+                _.each(this.screensItems, function(screen){
                     screen.destroy();
                 });
             }

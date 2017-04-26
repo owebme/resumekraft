@@ -2,9 +2,9 @@
 
     <form method="POST" action="https://money.yandex.ru/quickpay/confirm.xml">
         <input type="hidden" name="receiver" value="{ app.config.payment.yamoney }">
-        <input type="hidden" name="formcomment" value="{ get.comment() }">
+        <input type="hidden" name="formcomment" value="Сервис создания резюме">
         <input type="hidden" name="short-dest" value="{ get.comment() }">
-        <input type="hidden" name="label" value="{ opts.accountId }">
+        <input type="hidden" name="label" value="{ opts.accountid }:balance:{ opts.period }">
         <input type="hidden" name="quickpay-form" value="shop">
         <input type="hidden" name="targets" value="Пополнение баланса">
         <input type="hidden" name="sum" value="{ $store.paymentPeriod.getPriceByPeriod(opts.period) }" data-type="number">

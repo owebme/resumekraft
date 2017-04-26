@@ -1,0 +1,38 @@
+resume-import {
+    .example__link {
+        @extend .pos-centered-h;
+        @extend .nowrap;
+        @extend .mt-xl;
+        @extend .fontFamily-helvetica;
+        @extend .fontSize-18;
+        color:rgba($white,.6);
+
+        &__tooltip {
+            @extend .pos-abs;
+            @extend .t--l;
+            @extend .l100;
+            @extend .trX--l;
+            @extend .ml--m;
+            @extend .mt--xxs;
+            font-size:16px;
+            padding:0 6px 1px;
+            @extend .c-white;
+            @extend .fontFamily-futura;
+            @extend .letterSpacing--xs;
+            @extend .borderRadius-m;
+            @extend .bg-redBright;
+
+            &:after {
+                @extend .content-empty;
+                @extend .pos-abs;
+                @extend .t100;
+                @extend .l0;
+                @extend .w10;
+                @extend .h10;
+                @extend .bg-redBright;
+                transform:rotate(60deg) translate3d(-2px, -10px, 0);
+                @extend .zIndex--1;
+            }
+        }
+    }
+}

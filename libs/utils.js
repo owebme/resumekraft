@@ -1,6 +1,5 @@
 var libs = process.cwd() + '/libs/';
 var crypto = require('crypto');
-var sha1Hex = require('sha1-hex');
 var md5 = require('md5');
 var iconv = require('iconv-lite');
 var ObjectId = require('mongodb').ObjectID;
@@ -30,7 +29,7 @@ var utils = {
 	},
 
 	sha1Hex: function(value){
-		return sha1Hex(value);
+		return crypto.createHash('sha1').update(value).digest('hex');
 	},
 
 	md5: function(value){

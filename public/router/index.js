@@ -1,18 +1,45 @@
 module.exports = function(){
 
     app.get('/', function(req, res) {
-        var output = app.riot.render(app.tags("home", req.device), req.appClient);
-        res.render('index', {
-            content: output,
-            device: req.device.type,
-            isMobile: req.device.isMobile
-        });
+        if (req.session.user && (req.query.signin !== undefined || req.query.signup !== undefined)){
+            res.redirect('/private');
+        }
+        else {
+            var output = app.riot.render(app.tags("home", req.device), req.appClient);
+            res.render('index', {
+                content: output,
+                device: req.device.type,
+                isMobile: req.device.isMobile
+            });
+        }
     });
 
-    app.post('/auth', app.controllers.auth);
+    app.post('/auth', app.controllers.auth.index);
+    app.get('/activate/:id/:hash', app.controllers.auth.activate);
     app.get('/logout', function(req, res) {
         delete req.session.user;
         res.redirect('/');
+    });
+
+    app.get('/test_mailer', function(req, res){
+        var compile = app.swig.compileFile(process.cwd() + '/public/templates/mailer/simple.html');
+        var output = compile({
+            cover: "resume",
+            subject: "Завершение регистрации",
+            title: "Активация входа по паролю",
+            text: "Для завершения активации нажмите кнопку ниже.",
+            button: "Подтвердить активацию",
+            link: "http://resumekraft.ru"
+        });
+        // var body = {
+        //     to: "workkraft@yandex.ru, owebme@gmail.com, maxfull@mail.ru",
+        //     subject: 'Письмо',
+        //     html: output
+        // }
+        // API.mailer.send(body, function(err, data){
+        //     res.send(data);
+        // });
+        res.end(output);
     });
 
     app.get('/private/', app.checkAuth('/?signin'), function(req, res) {
@@ -33,7 +60,7 @@ module.exports = function(){
 
     app.get('/premium/', function(req, res) {
         if (req.device.type == "phone"){
-            res.redirect('/');
+            res.redirect(302, '/');
         }
         else {
             var output = app.riot.render(app.tags("premium", req.device), req.appClient);
@@ -50,7 +77,7 @@ module.exports = function(){
     });
     app.get('/premium/promo', function(req, res) {
         if (req.device.type == "phone"){
-            res.redirect('/');
+            res.redirect(302, '/');
         }
         else {
             res.render('premiumSlider');
@@ -74,7 +101,7 @@ module.exports = function(){
     });
 
     app.get('/jobs/', function(req, res) {
-        res.redirect(301, '/jobs/search');
+        res.redirect(302, '/jobs/search');
     });
     app.get('/jobs/search', app.controllers.jobs.search);
     app.get('/jobs/vacancy/:alias/:name', app.controllers.jobs.vacancy);
@@ -86,9 +113,10 @@ module.exports = function(){
 
     app.get('/parser/all', app.controllers.parser);
 
-    app.post('/payment/?pay=yamoney', app.controllers.payment);
+    app.post('/payment/yamoney', app.controllers.payment);
 
     require(process.cwd() + '/public/controllers/auth/passport')('/auth');
+    require(process.cwd() + '/public/controllers/auth/remember')('/remember');
     require(process.cwd() + '/assets/API')('/private/api');
     require(process.cwd() + '/public/API')('/public/api');
 }

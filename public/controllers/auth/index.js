@@ -18,9 +18,11 @@ module.exports = function() {
 
         if (!OAUTH && (!AUTH || !LOGIN || !PASSWORD)) return res.sendStatus(401);
 
-		var unAuth = function(logined){
+		var unAuth = function(logined, activate){
 			if (logined) res.sendStatus(401);
-			else res.send({status: 'error'});
+			else {
+				res.send({status: AUTH == "signin" && activate === false ? 'notActivate' : 'error'});
+			}
 		};
 
         app.db.collection('accounts').findOne(query,
@@ -64,15 +66,20 @@ module.exports = function() {
 							res.redirect('/private/');
 						}
 						else {
-							res.send({
-								status: 'OK',
-								auth: "signin",
-								user: {
-									photo: isUser.commons.photo,
-									name: isUser.commons.name,
-									surname: isUser.commons.surname
-								}
-							});
+							if (AUTH == "signin" && isUser.activate && !isUser.activate.active){
+								unAuth(LOGINED, isUser.activate.active);
+							}
+							else {
+								res.send({
+									status: 'OK',
+									auth: "signin",
+									user: {
+										photo: isUser.commons.photo,
+										name: isUser.commons.name,
+										surname: isUser.commons.surname
+									}
+								});
+							}
 						}
                     }
                 }

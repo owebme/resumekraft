@@ -83,8 +83,8 @@
                                 user: user
                             })
                             .then(function(){
-                                $.tags["auth-" + data.auth].form
-                                .find("input[name=oauth]").val(json);
+                                $.tags["auth-" + data.auth].form.removeAttr("target");
+                                $.tags["auth-" + data.auth].form.find("input[name=oauth]").val(json);
 
                                 $.submit($.tags["auth-" + data.auth].form);
                             });
@@ -111,15 +111,29 @@
         return app.metrika.get("referer");
     };
 
-    $.regSocial = function(){
-        if (!app.metrika.get("tooltips.regSocial")){
+    $.notifyOAuth = function(){
+        if (!app.metrika.get("notify.oauth") || location.hash.match(/oauth/)){
             app.tag("section-notify").show({
                 color: "info",
-                text: "Для регистрации/авторизации в один клик, используйте свою социальную сеть",
+                text: "Для регистрации/авторизации в один клик, выберите свою социальную сеть",
                 pos: app.device.isPhone ? "top-left" : "bottom-left",
                 timeout: app.device.isPhone ? 3.5 : 5
             });
-            app.metrika.set("tooltips.regSocial", true);
+            app.metrika.set("notify.oauth", true);
+        }
+    };
+
+    $.onNotify = function(text, color, timeout){
+        if (!text) return;
+        if ($.notify){
+            $.notify.show({
+                color: color,
+                text: text,
+                timeout: timeout || 1.5
+            })
+        }
+        else {
+            alert(text);
         }
     };
 

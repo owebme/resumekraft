@@ -54,21 +54,22 @@
                         _.deepExtend(state, store);
                     }
                 }
-            }
 
-            if (this.visits > 0 && this.visits != state.visits && state.timer) delete state.timer;
-            if (this.visits) state.visits = this.visits;
-            if (this.device) state.device = app.device && app.device.get ? app.device.get() : null;
-            this.state = new Baobab(state, { autoCommit: true });
+                if (this.visits > 0 && this.visits != state.visits && state.timer) delete state.timer;
+                if (this.visits) state.visits = this.visits;
+                if (this.device) state.device = app.device && app.device.get ? app.device.get() : null;
+                this.state = new Baobab(state, { autoCommit: true });
 
-            if (!this.readOnly){
                 this.state.on("write", function(e){
                     Store.set(key, _this.state.get());
                 });
                 Store.set(key, this.state.get());
-            }
 
-            if (this.report) this.logger();
+                if (this.report) this.logger();
+            }
+            else {
+                this.state = new Baobab(store || {});
+            }
 
             this.active = true;
         },

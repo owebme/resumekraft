@@ -1,29 +1,6 @@
 $navHeightSmall: 60px;
 
 .nav {
-    &__cell,
-    &__border,
-    &__menu {
-        will-change:height;
-        transition:all 0.4s $cubic28;
-    }
-    &__cell {
-        will-change:height, padding;
-        transition:all 0.4s $cubic28;
-    }
-    &__menu__item {
-        will-change:opacity, color, font-size, transform;
-        transition:color 0.4s $cubic28, transform 0.2s $cubic645, opacity .15s;
-
-        &:after {
-            will-change:background-color, width;
-            transition:background-color 0.4s $cubic28, width 0.4s;
-        }
-    }
-    &__logotype {
-        will-change:transform;
-        transition:all 0.4s $cubic28;
-    }
     &[data-fixed="true"]{
         @include accelerate();
         @extend .pos-fixed;
@@ -56,12 +33,40 @@ $navHeightSmall: 60px;
             &:hover {
                 @extend .c-black;
             }
+            &__badge {
+                top:-13px;
+                font-size:10.5px;
+                line-height:11px;
+                padding:1px 3px;
+
+                &:after {
+                    @extend .display-none;
+                }
+            }
+            &--opener {
+                &:before {
+                    @include ui-icon("more_h");
+                }
+            }
         }
         .nav__logotype {
             width:109px;
             height:40px;
             transform:translateY(2px);
             background-image:url(/public/images/logotype_b.png);
+
+            html.d-tablet & {
+                @extend .pos-centered-v;
+                width:104px;
+                height:38px;
+                margin-top:1px;
+            }
+            html.d-tablet.r-portrait & {
+                @extend .pos-centered-v;
+                width:96px;
+                height:35px;
+                margin-top:1px;
+            }
         }
         .nav__button {
             @extend .c-blue;
@@ -77,6 +82,14 @@ $navHeightSmall: 60px;
                 }
                 &:hover:after {
                     @include ui-icon("addUser_white");
+                }
+            }
+            &__exit {
+                &:after {
+                    @include ui-icon("exit");
+                }
+                &:hover:after {
+                    @include ui-icon("exit_white");
                 }
             }
         }

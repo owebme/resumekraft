@@ -22,7 +22,7 @@ module.exports = function(url){
             surname: profile._json.last_name || null,
             gender: profile.gender || null,
             avatar: profile._json.photo_big && !profile._json.photo_big.match(/camera_/) && profile._json.photo_big || null,
-            birthday: profile.birthday && profile.birthday.match(/(.+)-(.+)-(.+)/) || null
+            birthday: profile.birthday || null
         }
         return done(null, data);
     }));

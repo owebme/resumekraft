@@ -2,7 +2,7 @@
 
     <div class="screen" data-section="jp-test">
         <div class="screen__image">
-            <img src="/public/images/home/mobile/jp-test_a.png">
+            <img src="/public/images/home/mobile/jp-test.png">
             <div class="screen__button">
                 <button class="btn btn-xl btn-danger">Пройти тест</button>
             </div>

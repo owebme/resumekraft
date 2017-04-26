@@ -32,7 +32,7 @@
 		.addClass(device.orientation === "landscape" ? 'r-landscape' : 'r-portrait')
 		.removeClass(device.orientation !== "landscape" ? 'r-landscape' : 'r-portrait');
 	};
-	$dom.window.on('resize.sizeCheck', sizeCheck);
+	$dom.window.on((device.isMobile ? 'orientationchange' : 'resize') + '.sizeCheck', sizeCheck);
 	sizeCheck();
 
 	if (navigator.userAgent.match(/(iPhone)/i)) device.isPhone = true;

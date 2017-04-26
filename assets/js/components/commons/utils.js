@@ -225,10 +225,10 @@
 	    function loadHandler() {
 	        if (loaded) return;
 	        loaded = true;
-			callback(true);
+			if (callback) callback(true);
 	    }
 		function errHandler() {
-	        callback(false);
+	        if (callback) callback(false);
 	    }
 		img.src = url;
 		img.onerror = errHandler;
@@ -243,10 +243,10 @@
 	    function loadHandler() {
 	        if (loaded) return;
 	        loaded = true;
-			callback(img.naturalWidth, img.naturalHeight);
+			if (callback) callback(img.naturalWidth, img.naturalHeight);
 	    }
 		function errHandler() {
-	        callback(false);
+	     	if (callback) callback(false);
 	    }
 		img.src = url;
 		img.onerror = errHandler;
@@ -406,6 +406,15 @@
 		var otherWindow = window.open();
 		otherWindow.opener = null;
 		otherWindow.location = url;
+	};
+
+	utils.emailLinkProvider = function(value){
+		if (value && value.length){
+				 if (value.match(/gmail\.com/i)) return 'https://mail.google.com/mail/';
+			else if (value.match(/[mail|inbox|list|bk]\.ru/i)) return 'https://e.mail.ru/messages/inbox/';
+			else if (value.match(/[yandex|ya]\.ru/i)) return 'https://mail.yandex.ru/';
+			else if (value.match(/rambler\.ru/i)) return 'https://mail.rambler.ru/';
+		}
 	};
 
 	utils.getDateNow = function(){

@@ -78,7 +78,7 @@
         scrollAnimate: function(){
             var scrollAnimate = new app.plugins.scroll.animate({
                 scroll: $dom.window,
-                container: $dom.body
+                container: WD.el
             });
 
             scrollAnimate.start();

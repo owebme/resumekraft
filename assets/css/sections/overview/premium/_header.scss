@@ -10,6 +10,7 @@ body#renderSide {
     @extend .text-center;
     @extend .fontSize-0;
     @extend .bg-snowLight;
+    @extend .pointerEvents-none;
     @extend .transform-default;
     @extend .zIndex-1;
 }

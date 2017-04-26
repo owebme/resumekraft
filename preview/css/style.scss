@@ -15,8 +15,10 @@
 @import 'ui';
 @import 'help';
 @import 'notify';
+@import '../../public/css/partials/_menu.scss';
 @import '../../assets/css/ui/basic/button';
 @import '../../assets/css/ui/basic/input';
+@import '../../assets/css/sections/list/resumeImport';
 
 // modules
 @import '../../assets/css/modules/oScreenLight';

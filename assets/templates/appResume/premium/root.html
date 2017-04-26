@@ -106,10 +106,6 @@
                     }
                 }
             });
-            $store.resume.select('commons', 'photo')
-            .set("/preview/images/photo/photo_" + app.device.is + ".jpg");
-
-            $Resume.sections.photo.update();
 
             app.config.request.handler = function(method){
                 if (method.match(/Suggest/)){

@@ -6,7 +6,7 @@
         <div class="container pt-xl xs-pt0">
             <div class="row mb-l xs-mb0">
                 <div class="col-xs-24 col-md-15 centered">
-                    <div class="{ app.device.isPhone ? 'fontSize-38 fontWeight-8' : 'h1' } c-white anim anim-scale mb-xl xs-mb-xs xs-plr-m">{ $store.inbox.get().length ? 'Продолжить' : 'Хотите' } получать отклики на ваши резюме?</div>
+                    <div class="{ app.device.isPhone ? 'fontSize-34 lineHeight-44 fontWeight-8' : 'h1' } c-white anim anim-scale mb-xl xs-mb-xs xs-plr-m">{ $store.inbox.get().length ? 'Продолжить' : 'Хотите' } получать отклики на ваши резюме?</div>
                     <div class="pt-xs anim anim-scale anim-delay-{ app.device.isPhone ? 'xs' : 'm' }">
                         <button if={ !$store.inbox.get().length } onClick={ open.plan } onUpdate="none" class="btn btn-xxl { app.device.isPhone ? 'btn-success btn-shadow-strong' : 'btn-white-hover' }">Да, хочу</button>
                         <button if={ $store.inbox.get().length } onClick={ open.payment } onUpdate="none" class="btn btn-xxl { app.device.isPhone ? 'btn-success btn-shadow' : 'btn-success' }">Перейти на Premium</button>

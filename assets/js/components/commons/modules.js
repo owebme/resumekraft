@@ -48,7 +48,7 @@
         else if (sizes.width >= 1442) sizes.size = "xlarge";
 	};
 	// {event} window resize
-	$dom.window.on('resize.app', updateSizes);
+	$dom.window.on('resize.app orientationchange.app', updateSizes);
 	// init
 	updateSizes();
 })(app.sizes, app.$dom);
@@ -106,7 +106,7 @@
 		}
 		device.is = device.isPhone ? 'phone' : (device.isTablet ? 'tablet' : 'desktop');
 	};
-	$dom.window.on('resize.sizeCheck', sizeCheck);
+	$dom.window.on((device.isMobile ? 'orientationchange' : 'resize') + '.sizeCheck', sizeCheck);
 	sizeCheck();
 
 	device.ua = navigator.userAgent;
@@ -210,7 +210,7 @@
 		}, false);
 	}
 
-	if (!device.isMobile){
+	if (!device.isPhone && device.isRetina && !device.isSafari){
 		var timer, body = $dom.body[0];
 		$dom.window[0].addEventListener('scroll', function(){
 			clearTimeout(timer);

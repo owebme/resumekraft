@@ -3,6 +3,7 @@ module.exports = function(){
     global.API = {
         auth: require('./auth')(),
         suggest: require('./suggest')(),
+        mailer: require('./mailer')(),
         jptest: require('./jptest')(),
         blog: require('./blog')(),
         jobs: require('./jobs')(),

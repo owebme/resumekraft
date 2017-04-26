@@ -199,6 +199,9 @@
     });
 
     $.on("mount", function(){
+        var photo = $store.resume.get('commons', 'photo');
+        if (photo) _.onLoadImage(photo);
+
         if ($State.get('mode') !== "editing"){
 
             $.notTouch = ['name', 'text', 'contacts', 'feedback', 'contacts-content', 'contacts-more', 'likes'];

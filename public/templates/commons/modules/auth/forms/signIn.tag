@@ -31,11 +31,11 @@
                 </div>
             </div>
             <div class="mb-m xs-mb-xs pr-xxs pb-xs text-right">
-                <span onClick={ show.remember } class="link-gray-hover-primary text-uppercase fontSize-xs fontFamily-helvetica letterSpacing-l cursor-pointer">Забыли пароль?</span>
+                <span onClick={ show.remember } onUpdate="none" class="link-gray-hover-primary text-uppercase fontSize-xs fontFamily-helvetica letterSpacing-l cursor-pointer">Забыли пароль?</span>
             </div>
-            <div onClick={ sendForm } class="btn btn-xxl btn-{ app.device.isPhone ? 'success' : 'default-hover-success' } { btn-loading : loading }"><span class="plr-s">Войти</span></div>
+            <div onClick={ sendForm } onUpdate="none" class="btn btn-xxl btn-{ app.device.isPhone ? 'success' : 'default-hover-success' } { btn-loading : loading }"><span class="plr-s">Войти</span></div>
             <div if={ !app.device.isPhone } class="mt-xs pt-m pb-xs text-center">
-                <a onClick={ show.signup } class="link-gray-hover-primary text-uppercase fontSize-s fontFamily-helvetica letterSpacing-l cursor-pointer">У вас нет аккаунта?</a>
+                <a onClick={ show.signup } onUpdate="none" class="link-gray-hover-primary text-uppercase fontSize-s fontFamily-helvetica letterSpacing-l cursor-pointer">У вас нет аккаунта?</a>
             </div>
         </div>
         <auth-social></auth-social>
@@ -76,7 +76,12 @@
         $.auth.section = "signin";
         $.root.setAttribute("data-active", true);
         $.animate.show(function(){
-            $.parent.regSocial();
+            if (location.hash.match(/activate/)){
+                $.auth.onNotify("Ваш доступ успешно активирован, можно использовать свой логин и пароль для входа", "info", 5);
+            }
+            else {
+                $.parent.notifyOAuth();
+            }
         });
     };
 
@@ -96,7 +101,10 @@
     };
 
     $.onKeydown = function(e){
-        if (e.which == 13) $.sendForm();
+        if (e.which == 13){
+            e.preventDefault();
+            $.sendForm();
+        }
         return true;
     };
 
@@ -124,16 +132,10 @@
                 success: function(data, status){
                     if (data && data.status){
                         if (data.status == "error"){
-                            var text = "Не верный логин и/или пароль";
-                            if ($.auth.notify){
-                                $.auth.notify.show({
-                                    color: "danger",
-                                    text: text
-                                })
-                            }
-                            else {
-                                alert(text);
-                            }
+                            $.auth.onNotify("Не верный логин и/или пароль", "danger");
+                        }
+                        else if (data.status == "notActivate"){
+                            $.auth.onNotify("Ваш доступ еще не активирован, проверьте свой e-mail c письмом активации", "warning");
                         }
                         else if (data.status == "OK"){
                             app.tag("section-loader-user").show({
@@ -146,16 +148,7 @@
                     }
                 },
                 error: function(){
-                    var text = "Ошибка авторизации, повторите попытку чуть позже";
-                    if ($.auth.notify){
-                        $.auth.notify.show({
-                            color: "danger",
-                            text: "Ошибка авторизации, повторите попытку чуть позже"
-                        })
-                    }
-                    else {
-                        alert(text);
-                    }
+                    $.auth.onNotify("Ошибка авторизации, повторите попытку чуть позже", "danger");
                 },
                 complete: function(data, status){
                     $.update({

@@ -62,7 +62,7 @@
             var photoParallax = new app.plugins.scroll.ParallaxController({
                 items: [
                     {
-                        selector: app.device.isSafari ? "ux-photo" : ".photo",
+                        selector: "ux-photo",
                         from: 100,
                         to: -150,
                         off: 0
@@ -77,9 +77,12 @@
 
         if (!app.device.isPhone && $State.get("animate") === true){
             $afterlag.run(function(){
-                var scrollAnimation = new app.plugins.scroll.AnimationController({
-                    container: $root.root
-                });
+                if (!app.device.isMobile){
+                    var scrollAnimation = new app.plugins.scroll.AnimationController({
+                        container: $root.root
+                    });
+                    scrollAnimation.start();
+                }
                 var progressAnimation = new app.plugins.scroll.animate({
                     container: $root.root,
                     onlyItems: true,
@@ -98,7 +101,6 @@
                         }
                     ]
                 });
-                scrollAnimation.start();
                 progressAnimation.start();
             });
         }
@@ -127,9 +129,6 @@
                     }
                 }
             });
-            $store.resume.select('commons', 'photo')
-            .set("/preview/images/photo/photo_" + app.device.is + ".jpg");
-            $Resume.sections.photo.update();
         }
 
         $root.ready = true;

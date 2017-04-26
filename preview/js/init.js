@@ -1,7 +1,7 @@
 (function(){
 
-    if (app.device.isMobile){
-        location.replace("/premium/editing");
+    if (app.device.isPhone){
+        location.replace("/premium/demo");
         return;
     }
     else if (location.href.match(/\?hh\=.{38}/)){
@@ -94,18 +94,28 @@
         app.tag("resume-import").show();
     });
 
-    $control.device.on("click", function(){
-        var device = $State.get("device");
-        if (device == "phone"){
-            changeDevice(device, "desktop");
-        }
-        else if (device == "desktop"){
-            changeDevice(device, "tablet");
-        }
-        else if (device == "tablet"){
-            changeDevice(device, "phone");
-        }
-    });
+    if (app.device.isMobile){
+        $control.device.find(".help__text")
+        .text("Версия для планшетов");
+
+        $control.device.on("click", function(){
+            _.opener("/premium/demo");
+        });
+    }
+    else {
+        $control.device.on("click", function(){
+            var device = $State.get("device");
+            if (device == "phone"){
+                changeDevice(device, "desktop");
+            }
+            else if (device == "desktop"){
+                changeDevice(device, "tablet");
+            }
+            else if (device == "tablet"){
+                changeDevice(device, "phone");
+            }
+        });
+    }
 
     $control.colors.on("click", function(){
         var item = $store.colors

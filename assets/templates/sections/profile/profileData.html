@@ -7,19 +7,11 @@
                 <div class="col-md-18 col-lg-15 centered zIndex-2">
                     <div onClick={ hide } onUpdate="none" class="button__close" data-color="gray"></div>
                     <div name="content" class="pos-rel { app.sizes.size == 'medium' ? 'maxH-85v' : 'maxH-90v' } overflow-hidden section-scroll bg-white borderRadius-xl zIndex-1">
-                        <profile-data-content cursor={ data.select() } class="display-block pt70 pb100 pl45 pr45 text-left fontSize-20 c-gray willChange-transform" style={ 'padding-top:130px' : firstShow }></profile-data-content>
+                        <profile-data-content cursor={ data.select() } class="display-block pt70 pb100 pl45 pr45 text-left fontSize-20 c-gray willChange-transform"></profile-data-content>
                         <div class="pos-tl bg-gradient-tb-white w100p h80"></div>
-                        <div if={ firstShow } class="pos-tl zIndex-2 w100p bg-gradient-tb-white" style="height:130px">
-                            <div class="pos-abs-full bg-gradient-tb-white">
-                                <div class="pos-abs-full bg-gradient-tb-white"></div>
-                            </div>
-                            <div class="col-xs-24">
-                                <p class="c-blueBright pt-m plr-xl text-center fontSize-20 fontWeight-bold">Предлагаем заполнить профиль, чтобы не вводить данные каждый раз при создании нового резюме.</p>
-                            </div>
-                        </div>
                         <div class="bg-white pos-bl text-right w100p h90 pr45 pt-s zIndex-2 borderRadiusBottom-xl">
                             <button onClick={ onSave } onUpdate="none" class="btn btn-l2 btn-success">Сохранить</button>
-                            <button onClick={ hide } onUpdate="none" class="btn btn-l2 btn-primary-hover ml-xs xs-plr-m">{ firstShow ? 'Заполнить позже' : 'Отменить' }</button>
+                            <button onClick={ hide } onUpdate="none" class="btn btn-l2 btn-primary-hover ml-xs xs-plr-m">Отменить</button>
                         </div>
                     </div>
                 </div>
@@ -30,8 +22,6 @@
 <script>
 
     var $ = this;
-
-    //$.firstShow = true;
 
     $.data = new Baobab($account.select('commons').deepClone());
 
@@ -74,7 +64,6 @@
         $.update({
             active: false
         })
-        $.firstShow = false;
 
         _.onEndTransition($.root, function(){
             $.root.style.display = "none";

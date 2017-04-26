@@ -8,13 +8,17 @@
                 <div class="row">
                     <div name="wrapper" class="col-xs-24 col-sm-17 col-md-15 col-lg-13 centered xs-pb-l">
                         <img style="width:123px; height:70px" src="/public/images/jobs/hh/hh-white-red.png" class="display-block mb30 xs-mb-m centered">
-                        <div class="xs-plr-m">
-                            <div class="mb-s fontSize-22">Импорт резюме из сервиса HeadHunter</div>
-                            <input onKeydown={ onEnter } name="input" class="fontFamily-helvetica letterSpacing-0 pointer-for-input input input-{ app.device.isPhone ? 'l' : 'xl' } input-white input-rounded mb-l text-center" placeholder="Вставьте полный адрес ссылки на резюме" autocomplete="off" style="font-size:22px">
-                            <div onClick={ onSuccess } onUpdate="none" class="btn btn-xl2 btn-success { btn-loading : loading }">Получить резюме</div>
+                        <div class="xs-plr-s">
+                            <div class="mb-s xs-ptb-xs fontSize-22">Импорт резюме из сервиса HeadHunter</div>
+                            <input onKeydown={ onEnter } name="input" class="fontFamily-helvetica letterSpacing-0 pointer-for-input input input-xl input-white input-rounded mb-l xs-mb-m text-center" placeholder="{ app.device.isPhone ? 'Вставьте ссылку на резюме' : 'Вставьте полный адрес ссылки на резюме'}" autocomplete="off" style="{ app.device.isPhone ? 'font-size:19px; padding-bottom:1px' : 'font-size:22px' }">
+                            <div onClick={ onSuccess } onUpdate="none" class="btn btn-xl2 btn-success { btn-loading : loading } xs-mt-xxs">Получить резюме</div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="example__link hidden-xs">
+                <div class="example__link__tooltip">Пример ссылки</div>
+                https://hh.ru/resume/3919341f0000eca4580039ed1f57XXXXXXXXXX
             </div>
         </div>
     </div>
@@ -24,36 +28,36 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-24 col-sm-17 col-md-15 col-lg-13 centered xs-pb-l">
-                        <h1 class="mb-l">Резюме успешно получено</h1>
+                        <div class="{ app.device.isPhone ? 'h2' : 'h1' } xs-plr-m mb-l">Резюме успешно получено</div>
                         <div class="row mb35">
-                            <div class="col-xs-16 col-md-offset-2 text-left">
-                                <h3 class="pt-xs pl-xs opacity-70">Опубликовать резюме</h3>
+                            <div class="col-xs-20 col-sm-16 col-sm-offset-2 text-left">
+                                <h3 class="pt-xs pl-xs xs-pt-s xs-pl-m opacity-70 { 'fontSize-22 fontWeight-normal letterSpacing--xs' : app.device.isPhone }">Опубликовать резюме</h3>
                             </div>
-                            <div class="col-xs-6">
+                            <div class="col-xs-4 col-sm-6">
                                 <ui-checkbox update="public" cursor={ options.select() }></ui-checkbox>
                             </div>
                         </div>
                         <div class="w100p h1px bg-white opacity-15 mb-s"></div>
                         <div if={ $account.get("plan") == "premium" }>
                             <div class="row mb35">
-                                <div class="col-xs-16 col-md-offset-2 text-left">
-                                    <h3 class="pt-xs pl-xs opacity-70">Премиальное резюме</h3>
+                                <div class="col-xs-20 col-sm-16 col-sm-offset-2 text-left">
+                                    <h3 class="pt-xs pl-xs xs-pt-s xs-pl-m opacity-70 { 'fontSize-22 fontWeight-normal letterSpacing--xs' : app.device.isPhone }">Премиальное резюме</h3>
                                 </div>
-                                <div class="col-xs-6">
+                                <div class="col-xs-4 col-sm-6">
                                     <ui-checkbox update="premium" cursor={ options.select() }></ui-checkbox>
                                 </div>
                             </div>
                             <div class="w100p h1px bg-white opacity-15 mb-s"></div>
                         </div>
                         <div if={ $account.get("commons", "photo") } class="row mb55">
-                            <div class="col-xs-16 col-md-offset-2 text-left">
-                                <h3 class="pt-xs pl-xs opacity-70">Установить фото из профиля</h3>
+                            <div class="col-xs-20 col-sm-16 col-sm-offset-2 text-left">
+                                <h3 class="pt-xs pl-xs xs-pt-s xs-pl-m opacity-70 { 'fontSize-22 fontWeight-normal letterSpacing--xs' : app.device.isPhone }">Установить фото из профиля</h3>
                             </div>
-                            <div class="col-xs-6">
+                            <div class="col-xs-4 col-sm-6">
                                 <ui-checkbox update="replacePhoto" cursor={ options.select() }></ui-checkbox>
                             </div>
                         </div>
-                        <div onClick={ onEnd } onUpdate="none" class="btn btn-xl2 btn-success { btn-loading : loading }">Завершить импорт</div>
+                        <div onClick={ onEnd } onUpdate="none" class="btn btn-xl2 btn-success { btn-loading : loading } xs-mt-xxs">Завершить импорт</div>
                     </div>
                 </div>
             </div>

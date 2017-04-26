@@ -44,8 +44,7 @@
     };
 
     $.showTutorial = function(){
-        $.active = false;
-        $.animate = false;
+        $.hide();
 
         $afterlag.s(function(){
             $Tutorial.show($rootScope, "welcome", {
@@ -61,7 +60,7 @@
                 app.metrika.set("offers.welcome.tutorial.success", true);
             });
             $Tutorial.one("hideAfterAnimate", function(){
-                $.hide();
+                $.hideTutorial();
             });
 
             app.metrika.set("offers.welcome.tutorial.show", true);
@@ -71,19 +70,34 @@
 
     $.close = function(){
         $.hide();
+        $.hideTutorial();
         app.metrika.set("offers.welcome.hide", true);
     };
 
     $.hide = function(){
         $.active = false;
         $.animate = false;
+    };
 
+    $.hideTutorial = function(){
         if ($Sections.resume.list.hidden){
             $Sections.profile.section.hide();
             $afterlag.s(function(){
-                $Sections.resume.list.start();
+                $Sections.resume.list.start(function(){
+                    $.offerPlan();
+                });
                 $Sections.resume.list.show();
             });
+        }
+        else {
+            $.offerPlan();
+        }
+    };
+
+    $.offerPlan = function(){
+        if ($account.get("plan") == "free" && (app.metrikaPublic.get("plan.name") == "premium" || $account.get("init", "plan") == "premium")){
+            var period = app.metrikaPublic.get("plan.period");
+            $Sections.plan.show("premium", period);
         }
     };
 

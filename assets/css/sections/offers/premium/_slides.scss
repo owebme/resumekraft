@@ -25,11 +25,14 @@
             height:568px;
             @extend .bg-cover;
             transform:translate3d(60px, 0, 0);
-            background-image:url(/public/images/promo/slider/start_macbook_imac.png);
+            background-image:url('/public/images/promo/slider/start_macbook_imac.png');
 
             html.d-tablet & {
                 width:796px;
                 height:483px;
+            }
+            html.d-retina & {
+                background-image:url('/public/images/promo/slider/start_macbook_imac_2x.png');
             }
         }
         .offer__premium__slider__images__macbook {
@@ -37,11 +40,14 @@
             height:388px;
             @extend .bg-cover;
             transform:translate3d(-60px, 0, 0);
-            background-image:url(/public/images/promo/slider/start_macbook.png);
+            background-image:url('/public/images/promo/slider/start_macbook.png');
 
             html.d-tablet & {
                 width:553px;
                 height:330px;
+            }
+            html.d-retina & {
+                background-image:url('/public/images/promo/slider/start_macbook_2x.png');
             }
         }
     }
@@ -81,11 +87,14 @@
             height:546px;
             @extend .bg-cover;
             transform:translate3d(-60px, 0, 0);
-            background-image:url(/public/images/promo/slider/mobile_iphones.png);
+            background-image:url('/public/images/promo/slider/mobile_iphones.png');
 
             html.d-tablet & {
                 width:425px;
                 height:519px;
+            }
+            html.d-retina & {
+                background-image:url('/public/images/promo/slider/mobile_iphones_2x.png');
             }
         }
         .offer__premium__slider__images__phone__samsung {
@@ -93,11 +102,14 @@
             height:659px;
             @extend .bg-cover;
             transform:translate3d(0, 80px, 0) scale(1.15);
-            background-image:url(/public/images/promo/slider/mobile_phone_samsung.png);
+            background-image:url('/public/images/promo/slider/mobile_phone_samsung.png');
 
             html.d-tablet & {
                 width:489px;
                 height:580px;
+            }
+            html.d-retina & {
+                background-image:url('/public/images/promo/slider/mobile_phone_samsung_2x.png');
             }
         }
     }
@@ -137,18 +149,25 @@
             height:614px;
             @extend .bg-cover;
             transform:translate3d(80px, 0, 0);
-            background-image:url(/public/images/promo/slider/skills_ipad.png);
+            background-image:url('/public/images/promo/slider/skills_ipad.png');
+
+            html.d-retina & {
+                background-image:url('/public/images/promo/slider/skills_ipad_2x.png');
+            }
         }
         .offer__premium__slider__images__iphone {
             width:314px;
             height:567px;
             @extend .bg-cover;
             transform:translate3d(0, 0, 0) scale(1.1);
-            background-image:url(/public/images/promo/slider/skills_iphone.png);
+            background-image:url('/public/images/promo/slider/skills_iphone.png');
 
             html.d-tablet.r-landscape & {
                 width:283px;
                 height:510px;
+            }
+            html.d-retina & {
+                background-image:url('/public/images/promo/slider/skills_iphone_2x.png');
             }
         }
     }
@@ -183,14 +202,22 @@
             height:423px;
             @extend .bg-cover;
             transform:translate3d(-60px, 0, 0);
-            background-image:url(/public/images/promo/slider/projects_macbook.png);
+            background-image:url('/public/images/promo/slider/projects_macbook.png');
+
+            html.d-retina & {
+                background-image:url('/public/images/promo/slider/projects_macbook_2x.png');
+            }
         }
         .offer__premium__slider__images__iphone {
             width:202px;
             height:355px;
             @extend .bg-cover;
             transform:translate3d(40px, 0, 0);
-            background-image:url(/public/images/promo/slider/projects_iphone.png);
+            background-image:url('/public/images/promo/slider/projects_iphone.png');
+
+            html.d-retina & {
+                background-image:url('/public/images/promo/slider/projects_iphone_2x.png');
+            }
         }
     }
     &[data-slide="inbox"]{
@@ -217,11 +244,14 @@
             height:584px;
             @extend .bg-cover;
             transform:translate3d(80px, 0, 0);
-            background-image:url(/public/images/promo/slider/inbox_devices.png);
+            background-image:url('/public/images/promo/slider/inbox_devices.png');
 
             html.d-tablet & {
                 width:893px;
                 height:526px;
+            }
+            html.d-retina & {
+                background-image:url('/public/images/promo/slider/inbox_devices_2x.png');
             }
         }
         .offer__premium__slider__images__iphone {
@@ -229,11 +259,14 @@
             height:150px;
             @extend .bg-cover;
             transform:translate3d(-30px, 40px, 0) scale(1.1);
-            background-image:url(/public/images/promo/slider/inbox_iphone.png);
+            background-image:url('/public/images/promo/slider/inbox_iphone.png');
 
             html.d-tablet & {
                 width:229px;
                 height:135px;
+            }
+            html.d-retina & {
+                background-image:url('/public/images/promo/slider/inbox_iphone_2x.png');
             }
         }
     }
@@ -270,11 +303,14 @@
             height:503px;
             @extend .bg-cover;
             transform:translate3d(-60px, 0, 0);
-            background-image:url(/public/images/promo/slider/salary_ipad.png);
+            background-image:url('/public/images/promo/slider/salary_ipad.png');
 
             html.d-tablet & {
                 width:640px;
                 height:453px;
+            }
+            html.d-retina & {
+                background-image:url('/public/images/promo/slider/salary_ipad_2x.png');
             }
         }
         .offer__premium__slider__images__phone__samsung {
@@ -282,7 +318,11 @@
             height:730px;
             @extend .bg-cover;
             transform:translate3d(40px, 80px, 0) scale(1.15);
-            background-image:url(/public/images/promo/slider/salary_phone_samsung.png);
+            background-image:url('/public/images/promo/slider/salary_phone_samsung.png');
+
+            html.d-retina & {
+                background-image:url('/public/images/promo/slider/salary_phone_samsung_2x.png');
+            }
         }
     }
     &[data-slide="likes-hobby"]{
@@ -307,7 +347,11 @@
             height:670px;
             @extend .bg-cover;
             transform:translate3d(0, 40px, 0) scale(1.1);
-            background-image:url(/public/images/promo/slider/likes_hobby_iphones.png);
+            background-image:url('/public/images/promo/slider/likes_hobby_iphones.png');
+
+            html.d-retina & {
+                background-image:url('/public/images/promo/slider/likes_hobby_iphones_2x.png');
+            }
         }
     }
     &[data-slide="control"]{
@@ -348,11 +392,14 @@
             height:559px;
             @extend .bg-cover;
             transform:translate3d(60px, 0, 0) scale(0.95);
-            background-image:url(/public/images/promo/slider/control_imac.png);
+            background-image:url('/public/images/promo/slider/control_imac.png');
 
             html.d-tablet & {
                 width:380px;
                 height:503px;
+            }
+            html.d-retina & {
+                background-image:url('/public/images/promo/slider/control_imac_2x.png');
             }
         }
         .offer__premium__slider__images__macbook {
@@ -360,11 +407,14 @@
             height:345px;
             @extend .bg-cover;
             transform:translate3d(-60px, 0, 0);
-            background-image:url(/public/images/promo/slider/control_macbook.png);
+            background-image:url('/public/images/promo/slider/control_macbook.png');
 
             html.d-tablet & {
                 width:544px;
                 height:311px;
+            }
+            html.d-retina & {
+                background-image:url('/public/images/promo/slider/control_macbook_2x.png');
             }
         }
         .offer__premium__slider__images__iphone {
@@ -372,11 +422,14 @@
             height:232px;
             @extend .bg-cover;
             transform:translate3d(-20px, 0, 0) scale(1.1);
-            background-image:url(/public/images/promo/slider/control_iphone.png);
+            background-image:url('/public/images/promo/slider/control_iphone.png');
 
             html.d-tablet & {
                 width:102px;
                 height:209px;
+            }
+            html.d-retina & {
+                background-image:url('/public/images/promo/slider/control_iphone_2x.png');
             }
         }
     }
@@ -411,14 +464,22 @@
             height:499px;
             @extend .bg-cover;
             transform:translate3d(-40px, 0, 0);
-            background-image:url(/public/images/promo/slider/finish_macbook_left.png);
+            background-image:url('/public/images/promo/slider/finish_macbook_left.png');
+
+            html.d-retina & {
+                background-image:url('/public/images/promo/slider/finish_macbook_left_2x.png');
+            }
         }
         .offer__premium__slider__images__macbook__right {
             width:840px;
             height:499px;
             @extend .bg-cover;
             transform:translate3d(60px, 0, 0);
-            background-image:url(/public/images/promo/slider/finish_macbook_right.png);
+            background-image:url('/public/images/promo/slider/finish_macbook_right.png');
+
+            html.d-retina & {
+                background-image:url('/public/images/promo/slider/finish_macbook_right_2x.png');
+            }
         }
     }
 }

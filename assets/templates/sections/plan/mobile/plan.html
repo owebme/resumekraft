@@ -359,6 +359,9 @@
         $.section.show({
             scroll: $.scroll,
             afterShow: function(){
+                if (period && !$store.paymentPeriod.get({"period": period})){
+                    period = null;
+                }
                 if (plan && plan != $.plan) {
                     $afterlag.s(function(){
                         if (period) $.period = period;

@@ -1,14 +1,14 @@
 <home-section4 class="home__section4 rows screen c-white text-center pos-rel zIndex-1">
 
     <div class="screen__content home__section4__container flex-row-center-stretch row overflow-hidden">
-        <div class="col-md-12">
-            <div class="bgParallax pos-tl w100p willChange-transform bg-cover progressive-image" style="margin-top:-15%; height:135%; background-image:url(/public/images/home/section4.jpg)"></div>
+        <div class="col-sm-12 col-md-12">
+            <div class="bgParallax progressive-image"></div>
         </div>
-        <div class="col-md-12 bg-redSoft">
-            <a href="/premium/workflow" class="hh__link display-block pos-centered w60p">
-                <img src="/public/images/jobs/hh/min-hh-white2.png" class="hh__logo display-block w70 h70 mb-m centered">
-                <h1 class="mb25"><span class="opacity-75">Есть своё резюме на</span> <strong class="fontWeight-8 letterSpacing--l">HeadHunter?</strong></h1>
-                <p class="fontSize-24">Сделайте его мобильным</p>
+        <div class="col-sm-12 col-md-12 bg-redSoft">
+            <a href="/premium/workflow" class="hh__link">
+                <img src="/public/images/jobs/hh/min-hh-white2.png" class="hh__logo">
+                <h1 class="mb25"><span class="hh__subtext">Есть своё <span class="nowrap">резюме на</span></span> <strong class="fontWeight-8 letterSpacing--l">HeadHunter?</strong></h1>
+                <p class="hh__text"><span class="hh__smalltext">Сделайте его мобильным</span><span class="hh__smalltext__hidden">в один клик</span></p>
             </a>
         </div>
     </div>

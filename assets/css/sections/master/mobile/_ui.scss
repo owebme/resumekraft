@@ -21,7 +21,6 @@
         border-top:none;
         border-bottom-width:3px;
         border-right-width:3px;
-        @extend .borderRadius-xs;
         @extend .opacity-0;
         @extend .willChange-tp;
         @extend .zIndex-2;
@@ -36,7 +35,6 @@
             transition:opacity 0.2s $cubic263;
         }
         .iScrollIndicator {
-            @extend .opacity-90;
             @extend .bg-yellowBright;
         }
         .ui-scroll__bar {

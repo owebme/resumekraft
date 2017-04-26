@@ -118,7 +118,7 @@
             title: $.item.post,
             lang: $.item.lang,
             from: {
-                name: $.item.post,
+                name: $.item.commons.name + "" + $.item.commons.surnname ? " " + $.item.commons.surnname : "",
                 email: $.item.commons.contacts.email
             },
             to: $.input.val(),

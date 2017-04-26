@@ -36,7 +36,7 @@ $i:0;
         }
     }
 }
-@each $title, $color, $hover in (dark, $blackLight, $blackDark), (light, $gray, $blackLight), (white, rgba($white,.7), $white){
+@each $title, $color, $hover in (primary, $blue, $blueBright), (blue, $blueLight, lighten($blueLight,3%)), (dark, $blackLight, $blackDark), (light, $gray, $blackLight), (white, rgba($white,.7), $white){
     .link-#{$title} {
         color:$color;
         @extend .link;
@@ -273,6 +273,9 @@ $i:0;
     }
     &:hover {
         color:$white;
+    }
+    &.btn-larger {
+        padding:1px 42px 0;
     }
 }
 .btn-brown-hover-success {

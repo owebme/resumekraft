@@ -71,27 +71,33 @@ module.exports = function(url){
 					app.errHandler(res, err, "overlimit");
 				}
 				else {
-					var text = req.body.lang == "en" ? 'Look at my resume' : 'Посмотрите моё резюме',
+					var title = req.body.title || req.body.lang == "en" ? "My resume" : "Моё резюме";
 						body = {
 							from: {
-								name: req.body.from.name,
-								email: req.body.from.email
+								name: req.body.from.name
+								// email: req.body.from.email
 							},
 							to: req.body.to,
-							subject: req.body.title,
-							html: text + ' <a rel="noopener" href="' + app.config.public.get('domain') + '/resume/' + req.body.id + '">' + req.body.title + '</a>'
+							subject: title,
+							html: {
+								cover: "resume",
+								title: title,
+								text: req.body.lang == "en" ? 'Hello, look at my resume' : 'Преветствую, посмотрите моё резюме',
+								button: req.body.lang == "en" ? 'Go to resume' : 'Перейти к резюме',
+								link: app.config.public.get('domain') + '/resume/' + req.body.id
+							}
 						};
 
 					if (req.body.pdf){
 						body.attach = [
 							{
-								filename: req.body.title + '.pdf',
+								filename: title + '.pdf',
 								path: '.' + app.config.public.get('path:pdf') + req.body.id + '.pdf'
 							}
 						]
 					}
 
-					app.mailer.send(body, function(err, data){
+					API.mailer.send(body, function(err, data){
 						app.db.collection('accounts').update({
 							"_id": req.accountId
 						},{

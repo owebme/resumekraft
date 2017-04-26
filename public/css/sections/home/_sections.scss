@@ -4,9 +4,16 @@
 .home__section4__container {
     height:720px;
 }
-.home__section2__container {
-    html.d-tablet.r-portrait & {
-        height:620px;
+.home__section1__container {
+    html.d-tablet.r-landscape & {
+        height:800px;
+    }
+}
+.home__section2__container,
+.home__section3__container,
+.home__section4__container {
+    html.d-tablet.r-landscape & {
+        @extend .h100v;
     }
 }
 .home__section1__header {
@@ -60,8 +67,8 @@
     @extend .bg-cover;
     background-image:url(/public/images/home/ipad_portrait.png);
 
-    html.d-mobile & {
-        transform:translate3d(0, 60px, 0);
+    html.d-tablet & {
+        transform:translate3d(24px, 52px, 0);
     }
     &__viewport {
         @include accelerate();
@@ -109,28 +116,180 @@
         width:1952px;
         height:1160px;
         background-image:url('/public/images/home/ipad_screens.png');
-        // background-image:url('/public/images/promo/premium/slide4_1_2.jpg');
-        //
-        // @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx), (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi){
-        //     background-image:url('/public/images/promo/premium/slide4_1_2@2x.jpg');
-        // }
+
+        html.d-tablet & {
+            background-image:url('/public/images/promo/premium/slide4_1_2_large_2x.jpg');
+        }
+    }
+}
+.home__testdrive__container {
+    .premium-devices-icons {
+        html.d-tablet.r-portrait & {
+            @extend .w100p;
+        }
     }
 }
 .home__section4 {
+    .bgParallax {
+        @extend .pos-tl;
+        @extend .w100p;
+        margin-top:-15%;
+        height:135%;
+        @extend .bg-cover;
+        background-image:url(/public/images/home/iphone_red.jpg);
+        @extend .willChange-transform;
+
+        html.d-retina & {
+            background-image:url(/public/images/home/iphone_red_2x.jpg);
+        }
+    }
+    h1 {
+        strong {
+            @extend .letterSpacing--xl;
+        }
+    }
+    html.d-tablet & {
+        h1 {
+            .hh__subtext {
+                @extend .display-block;
+                margin-bottom:7px;
+            }
+        }
+    }
+    html.d-tablet.r-landscape & {
+        h1 {
+            .hh__subtext {
+                font-size:48px;
+                line-height:54px;
+            }
+            strong {
+                font-size:66px;
+                line-height:60px;
+            }
+        }
+    }
+    html.d-tablet.r-portrait & {
+        h1 {
+            .hh__subtext {
+                font-size:40px;
+                line-height:48px;
+            }
+            strong {
+                font-size:54px;
+                line-height:50px;
+            }
+        }
+    }
+    html.d-no-tablet & {
+        h1 {
+            .hh__subtext {
+                font-size:40px;
+                line-height:46px;
+            }
+            strong {
+                font-size:56px;
+                line-height:52px;
+            }
+        }
+    }
     .hh {
         &__link {
-            &:hover {
+            @extend .display-block;
+
+            html.d-no-tablet & {
+                @extend .w70p;
+                @extend .pos-centered;
+            }
+            html.d-tablet & {
+                @extend .w30p;
+                @extend .pos-centered-v;
+                @extend .l-l;
+                @extend .text-left;
+            }
+            html.m-no-touch &:hover {
                 .hh__logo {
                     transform:rotateY(360deg);
                     transition:transform .7s;
                 }
+                .hh__smalltext {
+                    @extend .transform-default;
+                    transition-delay:0.25s;
+
+                    &__hidden {
+                        @extend .opacity-100;
+                        transition-delay:0.25s;
+                        transform:translate3d(0, 0, 0) scale3d(1, 1, 1);
+                    }
+                }
+            }
+            html.m-touch & {
+                .hh__logo {
+                    transform:translateX(-2px);
+                }
+                .hh__smalltext {
+                    @extend .transform-default;
+
+                    &__hidden {
+                        @extend .opacity-100;
+                        @extend .transform-default;
+                    }
+                }
             }
         }
-        .hh__logo {
+        &__subtext {
+            @extend .opacity-75;
+        }
+        &__smalltext,
+        &__smalltext__hidden {
             @include accelerate();
+            @extend .display-inlineBlock;
+            @extend .vAlign-middle;
+            @extend .willChange-tp;
+            transition:transform 0.7s $cubic263, opacity 0.3s $cubic263;
+        }
+        &__text {
+            @extend .nowrap;
+            @extend .fontSize-24;
+        }
+        &__smalltext {
+            transform:translate3d(53px, 0, 0);
+
+            &__hidden {
+                @extend .pos-rel;
+                @extend .opacity-0;
+                margin-left:6px;
+                @extend .plr-xxs;
+                @extend .fontSize-20;
+                transform:translate3d(0, 40px, 0) scale3d(0.4, 1.4, 1);
+                transform-origin:top;
+                @extend .c-redSoft;
+
+                &:before {
+                    @extend .content-empty;
+                    @extend .pos-centered;
+                    @extend .w100p;
+                    height:96%;
+                    @extend .bg-white;
+                    @extend .borderRadius-xl;
+                    @extend .zIndex--1;
+                    margin-top:2px;
+                }
+            }
+        }
+        &__logo {
+            @extend .display-block;
+            @extend .w70;
+            @extend .h70;
+            @extend .mb-m;
             @extend .willChange-transform;
-            transform-origin:50%;
-            transform:rotateY(0deg);
+
+            html.d-no-tablet & {
+                @extend .centered;
+            }
+            html.d-tablet.r-portrait & {
+                @extend .w60;
+                @extend .h60;
+            }
         }
     }
 }

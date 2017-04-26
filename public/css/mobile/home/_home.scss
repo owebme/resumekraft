@@ -334,7 +334,7 @@
                     height:24px;
                 }
             }
-            &[data-period="year"]{
+            &[data-period="year1"]{
                 .plan__item[data-item="premium"]{
                     @extend .pr-xs;
                 }

@@ -14,7 +14,7 @@
     html.d-phone & {
         font-size:19.5px;
         line-height:27px;
-        padding:20px 30px 28px 26px;
+        padding:20px 30px 25px 26px;
     }
     &:before {
         @extend .content-empty;
@@ -60,7 +60,8 @@
         transition:visibility 0s .4s;
 
         html.d-phone & {
-            max-width:calc(100vw - 30px);
+            max-width:calc(100vw - 25px);
+            min-width:calc(100vw - 25px);
         }
         &[data-pos="top-center"]{
             @extend .t0;

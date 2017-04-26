@@ -3,7 +3,7 @@
     <div class="screens__content">
         <div class="screen" data-section="intro">
             <div class="screen__image">
-                <img src="/public/images/home/mobile/screen1a.png">
+                <img src="/public/images/home/mobile/intro.png">
                 <div class="screen__button">
                     <button class="btn btn-xl btn-success">Создать резюме</button>
                 </div>
@@ -15,7 +15,7 @@
         </div>
         <div class="screen" data-section="premium-account">
             <div class="screen__image">
-                <img src="/public/images/home/mobile/screen2a.png">
+                <img src="/public/images/home/mobile/premium-account.png">
             </div>
             <div class="screen__text">
                 <h2>Premium резюме</h2>
@@ -24,7 +24,7 @@
         </div>
         <div class="screen" data-section="premium-mobile" data-theme="white">
             <div class="screen__image">
-                <img src="/public/images/home/mobile/screen3.png">
+                <img src="/public/images/home/mobile/premium-mobile.png">
             </div>
             <div class="screen__text">
                 <h2>Мобильность</h2>
@@ -33,7 +33,7 @@
         </div>
         <div class="screen" data-section="premium-responsive">
             <div class="screen__image">
-                <img src="/public/images/home/mobile/screen4a.png">
+                <img src="/public/images/home/mobile/premium-responsive.png">
             </div>
             <div class="screen__text">
                 <h2>Адаптивность</h2>
@@ -42,7 +42,7 @@
         </div>
         <div class="screen" data-section="premium-colors">
             <div class="screen__image">
-                <img src="/public/images/home/mobile/screen6.png">
+                <img src="/public/images/home/mobile/premium-colors.png">
             </div>
             <div class="screen__text">
                 <h2>Яркие цвета</h2>
@@ -51,7 +51,7 @@
         </div>
         <div class="screen" data-section="easy-setup">
             <div class="screen__image">
-                <img src="/public/images/home/mobile/screen5.png">
+                <img src="/public/images/home/mobile/easy-setup.png">
             </div>
             <div class="screen__text">
                 <h2>Легко настроить</h2>
@@ -67,15 +67,6 @@
                 <p>Скачать резюме в PDF-формате 1:1 на любом устройстве</p>
             </div>
         </div>
-        <!-- <div class="screen" data-section="coverletter">
-            <div class="screen__image">
-                <img src="/public/images/home/mobile/coverletter.png">
-            </div>
-            <div class="screen__text">
-                <h2>Cover Letter</h2>
-                <p>Подготовить сопроводительное письмо на <strong>Premium</strong> аккаунте</p>
-            </div>
-        </div> -->
         <div class="screen" data-section="back-office-mobile">
             <div class="screen__image">
                 <img src="/public/images/home/mobile/back-office-mobile.png">
@@ -87,7 +78,7 @@
         </div>
         <div class="screen" data-section="back-office-stat">
             <div class="screen__image">
-                <img src="/public/images/home/mobile/screen8a.png">
+                <img src="/public/images/home/mobile/back-office-stat.png">
             </div>
             <div class="screen__text">
                 <h2>Статистика</h2>
@@ -96,7 +87,7 @@
         </div>
         <div class="screen" data-section="back-office-inbox">
             <div class="screen__image">
-                <img src="/public/images/home/mobile/inbox.png">
+                <img src="/public/images/home/mobile/back-office-inbox.png">
             </div>
             <div class="screen__text">
                 <h2>Приглашения</h2>
@@ -125,12 +116,12 @@
                 <p><strong>9 бесплатных</strong> шаблонов с абонентской оплатой <strong>0 рублей</strong></p>
             </div>
         </div>
-        <div class="screen" data-section="plans" data-plan="premium" data-period="month">
+        <div class="screen" data-section="plans" data-plan="premium" data-period="month1">
             <div class="plan__controls">
-                <div class="plan__control__item" data-active="true" data-period="month">
+                <div class="plan__control__item" data-active="true" data-period="month1">
                     Месяц
                 </div>
-                <div class="plan__control__item" data-period="year">
+                <div class="plan__control__item" data-period="year1">
                     На 1 год
                     <div class="plan__control__item__discount">
                         -60%
@@ -190,7 +181,7 @@
         </div>
         <div class="screen" data-section="jp-test">
             <div class="screen__image">
-                <img src="/public/images/home/mobile/jp-test_a.png">
+                <img src="/public/images/home/mobile/jp-test.png">
                 <div class="screen__button">
                     <a href="/jp-test/#run" class="btn btn-xl btn-danger">Пройти тест</a>
                 </div>

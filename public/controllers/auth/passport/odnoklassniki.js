@@ -20,7 +20,7 @@ module.exports = function(url){
             surname: profile._json.last_name || null,
             gender: profile._json.gender || null,
             avatar: profile._json.pic_3 && !profile._json.pic_3.match(/stub_/) && profile._json.pic_3 || null,
-            birthday: profile._json.birthday && profile._json.birthday.match(/(.+)-(.+)-(.+)/) || null
+            birthday: profile._json.birthday || null
         }
         return done(null, data);
     }));

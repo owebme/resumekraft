@@ -16,6 +16,9 @@
         &[data-bg="gradient-tb"]{
             background:linear-gradient(to bottom, #fff 0%, #fff 68%, #f2f2f2 100%);
         }
+        &[data-bg="gradient-tb-light"]{
+            background:linear-gradient(to bottom, #fafafa 0%, #fafafa 68%, #f7f7f7 100%);
+        }
         &[data-section="phone"]{
             min-height:1014px;
             @extend .mb--l;

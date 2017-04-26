@@ -37,7 +37,7 @@
     transform:translate3d(0, 0, 0) scale(1.18);
     z-index: 3000;
 
-    .d-no-macOS & {
+    html.d-no-macOS & {
 		font-family:$helvetica;
 	}
     &-show {

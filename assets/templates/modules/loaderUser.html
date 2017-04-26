@@ -7,7 +7,7 @@
         <div if={ !user.oauth && !user.photo } class="loader-user" data-empty="true"></div>
         <div class="loader-spinner"></div>
         <div class="loader-text">
-            <div class="loader-name">{ user.name || user.surname ? user.name + ' ' + user.surname : 'Пользователь' }</div>
+            <div class="loader-name">{ user.name ? user.name + (user.surname ? ' ' + user.surname : '') : 'Пользователь' }</div>
             <div class="loader-title">{ user.title || 'Вхожу в кабинет' }</div>
         </div>
     </div>

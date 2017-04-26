@@ -12,8 +12,8 @@
         <div class="hidden-xs col-sm-8 pt-xs pr-m">
             <span class="title">Фамилия</span>
         </div>
-        <div class="col-sm-16" data-balloon={ 'Фамилию возможно изменить, обратившись в службу поддержки, указав причину смены.' : opts.cursor.get("surname").length } data-balloon-pos="down" data-balloon-length="large" data-balloon-fontSize="small">
-            <ui-input placeholder="Фамилия" update="surname" cursor={ opts.cursor } size="l" disabled={ opts.cursor.get("surname").length }></ui-input>
+        <div class="col-sm-16" data-balloon={ 'Фамилию возможно изменить, обратившись в службу поддержки, указав причину смены.' : $account.get("plan") == "premium" && opts.cursor.get("surname").length } data-balloon-pos="down" data-balloon-length="large" data-balloon-fontSize="small">
+            <ui-input placeholder="Фамилия" update="surname" cursor={ opts.cursor } size="l" disabled={ $account.get("plan") == "premium" && opts.cursor.get("surname").length }></ui-input>
         </div>
     </div>
     <div class="row mb-s">
@@ -72,7 +72,7 @@
             <span class="visible-sm title">Город</span>
         </div>
         <div class="col-xs-24 col-sm-16">
-            <ui-input placeholder="Город" update="city" value="name" cursor={ opts.cursor.select('contacts') } autosuggest="getSuggestCity" autosuggestsize="l" dataonlysuggest="true" autoselect={ true } size="l"></ui-input>
+            <ui-input placeholder="{ app.device.isPhone ? 'Введите свой город' : 'Начните вводить свой город' }" update="city" value="name" cursor={ opts.cursor.select('contacts') } autosuggest="getSuggestCity" autosuggestsize="l" dataonlysuggest="true" autoselect={ true } size="l"></ui-input>
         </div>
     </div>
     <div class="row mb-m">
@@ -89,7 +89,15 @@
             <span class="title">Skype</span>
         </div>
         <div class="col-xs-24 col-sm-16">
-            <ui-input placeholder="Skype" update="skype" cursor={ opts.cursor.select('contacts') } size="l"></ui-input>
+            <ui-input placeholder="Skype для связи" update="skype" cursor={ opts.cursor.select('contacts') } size="l"></ui-input>
+        </div>
+    </div>
+    <div class="row mb-m">
+        <div class="hidden-xs col-sm-8 pt-xs pr-m">
+            <span class="title">Личный сайт</span>
+        </div>
+        <div class="col-xs-24 col-sm-16">
+            <ui-input placeholder="{ app.device.isPhone ? 'Личный сайт' : 'http://' }" update="site" cursor={ opts.cursor.select('contacts') } size="l"></ui-input>
         </div>
     </div>
     <div class="row mb-m">

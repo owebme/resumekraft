@@ -13,7 +13,7 @@ module.exports = function(url){
     });
 
     passport.serializeUser(function (user, done) {
-        done(null, JSON.stringify(API.auth.passport.serializeUser(user)));
+        done(null, JSON.stringify(user));
     });
     passport.deserializeUser(function (data, done) {
         try {

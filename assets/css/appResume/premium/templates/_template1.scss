@@ -56,6 +56,7 @@
             @include accelerate();
             @extend .transform-default;
             @extend .willChange-transform;
+            @extend .mt-xxs;
         }
         .screen--first {
             padding-top:250px;
@@ -75,7 +76,6 @@
         @extend .boxShadow-30;
         @extend .bg-cover;
         @extend .userSelect-none;
-        @extend .mt-xxs;
 
         &[data-noise="true"]{
             @extend .pos-rel;

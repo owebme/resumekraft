@@ -23,6 +23,7 @@
     &__text {
         @extend .c-gray;
         @extend .fontSize-22;
+        @extend .lineHeight-32;
         @extend .plr-l;
         @extend .mt30;
     }

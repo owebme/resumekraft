@@ -90,16 +90,14 @@
             height:1160px;
             background-image:url('/public/images/promo/premium/slide4_1_2_large.jpg');
 
-            html.d-tablet & {
-                background-image:url('/public/images/promo/premium/slide4_1_2_medium_2x.png');
-            }
             html.d-tablet.r-landscape & {
                 height:893px;
             }
             html.d-tablet.r-portrait & {
                 height:800px;
             }
-            html.d-retina.d-no-tablet & {
+            html.d-retina.d-no-tablet &,
+            html.d-tablet & {
                 background-image:url('/public/images/promo/premium/slide4_1_2_large_2x.jpg');
             }
         }
@@ -125,6 +123,37 @@
         }
         html.d-retina.d-no-tablet & {
             background-image:url('/public/images/promo/premium/slide5_1_large_2x.png');
+        }
+    }
+    .slide6-1m {
+        @extend .pos-abs;
+        @extend .t0;
+        @extend .r-35;
+        width:559px;
+        height:682px;
+        background-image:url('/public/images/promo/premium/slide6_1m_large.png');
+
+        html.d-tablet & {
+            width:431px;
+            height:525px;
+            background-image:url('/public/images/promo/premium/slide6_1m_medium_2x.png');
+        }
+        html.d-tablet.r-portrait & {
+            @extend .pos-centered-h;
+        }
+        html.d-retina.d-no-tablet & {
+            background-image:url('/public/images/promo/premium/slide6_1m_large_2x.png');
+        }
+        &__container {
+            @extend .pos-rel;
+            height:682px;
+
+            html.d-tablet & {
+                height:525px;
+            }
+            html.d-tablet.r-portrait & {
+                @extend .mt-l;
+            }
         }
     }
     .slide6 {
@@ -186,7 +215,7 @@
             html.d-tablet.r-landscape & {
                 background-image:url('/public/images/promo/premium/slide6_1_large_2x.png');
             }
-            .d-firefox & {
+            html.d-firefox & {
                 clip-path:url("/public/images/promo/premium/slide6_1_clip.svg#mask");
             }
         }
@@ -292,7 +321,7 @@
             -webkit-mask-size:828px 856px;
             -webkit-mask-image:url('/public/images/promo/premium/slide7_3_mask.svg');
 
-            .d-firefox & {
+            html.d-firefox & {
                 clip-path:url("/public/images/promo/premium/slide7_3_clip.svg#mask");
             }
             html.d-tablet & {
@@ -384,8 +413,11 @@
     }
     .slide9 {
         &__wrapper {
-            height:1000px;
+            height:1140px;
 
+            html.d-tablet.r-landscape & {
+                height:1000px;
+            }
             html.d-tablet.r-portrait & {
                 height:860px;
             }

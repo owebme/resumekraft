@@ -28,6 +28,11 @@
             "callbackURL": "http://v2.resumekraft.ru/auth/gl/callback"
         }
     },
+    "email": {
+        "noreply": "noreply@resumekraft.ru",
+        "inbox": "inbox@resumekraft.ru",
+        "support": "support@resumekraft.ru"
+    },
     "path": {
         "photo": "/public/files/photo/",
         "pdf": "/public/files/pdf/",

@@ -17,3 +17,7 @@ https://yandex.ru/yaca/geo.c2n - коды городов
 
 // Themes
 // seti-ui
+
+<!-- <h1 class="home__header__title anim-group1 anim-scale-soft">Это <span class="c-lime">лучшее,</span> что <span class="c-lime">может быть сегодня</span> для создания <span class="c-lime">резюме.</span></h1>
+<h1 class="home__header__title anim-group1 anim-scale-soft">Это <span class="c-lime">лучшее,</span> что <span class="c-lime">есть сегодня</span> для <span class="c-lime">создания</span> крутого <span class="c-lime">резюме.</span></h1> -->
+<!-- <h1 class="home__header__title anim-group1 anim-scale-soft">Ещё <span class="c-lime">никогда</span> не было <span class="c-lime">создание резюме</span> таким <span class="c-lime">простым.</span></h1> -->

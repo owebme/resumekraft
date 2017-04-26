@@ -4,6 +4,7 @@
     <resume-edit></resume-edit>
     <resume-section-mobile></resume-section-mobile>
     <resume-select></resume-select>
+    <resume-import></resume-import>
     <resume-preview></resume-preview>
     <resume-sendmail></resume-sendmail>
     <section-notify></section-notify>
@@ -78,6 +79,11 @@
     };
 
     this.init = function(){
+        app.initQuery = Url.parseQuery();
+
+        if (initQuery.homescreen){
+            app.isHomeScreen = true;
+        }
         $Sections = {
             master: {
                 section: $root.tags["section-master"]
@@ -93,6 +99,7 @@
                 select: $root.tags["resume-select"],
                 preview: $root.tags["resume-preview"],
                 section: $root.tags["resume-section-mobile"],
+                impt: $root.tags["resume-import"],
                 sendmail: $root.tags["resume-sendmail"]
             },
             popup: {
@@ -132,7 +139,7 @@
                     {
                         title: "small",
                         maxWidth: 360,
-                        path: "/assets/css/style.smallScreen.css?" + _.newId(),
+                        path: "/assets/css/style.mobile.smallScreen.css?" + _.newId(),
                         refresh: true
                     },
                     {

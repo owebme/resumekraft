@@ -21,13 +21,20 @@
                             </div>
                             <div class="col-md-14">
                                 <div class="profile__personal__data fontSize-22 pt-l">
-                                    <div class="fontSize-34 mb-m">
-                                        <span class="c-blue fontWeight-bold">{ $account.get('commons', 'name') }</span> { $account.get('commons', 'surname') }
+                                    <div if={ !$account.get('commons', 'name') }>
+                                        <span class="display-inlineBlock w40p h25 bg-blue opacity-15 borderRadius-l"></span>
+                                        <span class="display-inlineBlock w60p h30 bg-blue opacity-15 borderRadius-l"></span><br>
+                                        <span class="display-inlineBlock w25p h25 bg-gray opacity-20 borderRadius-l mt-xxs"></span>
                                     </div>
-                                    <div if={ $account.get('commons', 'gender') == "male" } class="text-uppercase fontSize-20">муж.</div>
-                                    <div if={ $account.get('commons', 'gender') == "female" } class="text-uppercase fontSize-20">жен.</div>
-                                    <div if={ $account.get('commons', 'contacts', 'city') }>{ $account.get('commons', 'contacts', 'city', 'name') }</div>
-                                    <span onClick={ open.personalData } onUpdate="none" class="display-inlineBlock link-underline link-default-hover-warning mt-xs tutorial__changeData">Изменить персональные данные</span>
+                                    <div if={ $account.get('commons', 'name') }>
+                                        <div class="fontSize-34 mb-m">
+                                            <span class="c-blue fontWeight-bold">{ $account.get('commons', 'name') }</span> { $account.get('commons', 'surname') }
+                                        </div>
+                                        <div if={ $account.get('commons', 'gender') == "male" } class="text-uppercase fontSize-20">муж.</div>
+                                        <div if={ $account.get('commons', 'gender') == "female" } class="text-uppercase fontSize-20">жен.</div>
+                                        <div if={ $account.get('commons', 'contacts', 'city') }>{ $account.get('commons', 'contacts', 'city', 'name') }</div>
+                                    </div>
+                                    <span onClick={ open.personalData } onUpdate="none" class="display-inlineBlock link-underline link-default-hover-warning mt-xs tutorial__changeData">{ $account.get('commons', 'name') ? 'Изменить' : 'Заполнить' } персональные данные</span>
                                     <!-- <div class="tutorial__reflink mt-xs fontSize-20 pr-l">
                                         <strong>Получить <span class="c-orange">369 ₽</span> на счет&nbsp; &nbsp;<span onClick={ open.referer } onUpdate="none" class="display-inlineBlock link-underline link-default-hover-warning mt-xs">как подробнее</span></strong>
                                     </div> -->
@@ -45,7 +52,7 @@
                                 Оплачен до: <span class="c-blue fontWeight-bold">28 ноября 2017</span>
                             </div>
                             <div class="mt-xxs">
-                                <span onClick={ open.changePassword } onUpdate="none" class="link-underline link-default-hover-warning">Сменить пароль</span>
+                                <span onClick={ open.changePassword } onUpdate="none" class="link-underline link-default-hover-warning">{ !$account.get("login") ? 'Создать вход по паролю' : 'Сменить пароль' }</span>
                             </div>
                             <div class="mt-xxs">
                                 <span onClick={ open.payment } onUpdate="none" class="link-underline link-default-hover-warning">Пополнить баланс</span>
@@ -126,6 +133,7 @@
         $.popup = {
             referer: $.tags["popup-referer"]
         }
+        //$.show();
     });
 
     $.show = function(callback){

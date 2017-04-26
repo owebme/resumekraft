@@ -19,6 +19,10 @@
         .auth__body {
             width:575px;
             @extend .pb-m;
+
+            html.d-tablet & {
+                width:550px;
+            }
         }
         .auth__header {
             @extend .mb-xs;

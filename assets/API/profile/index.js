@@ -60,7 +60,7 @@ module.exports = function(url){
 		}
 		else {
 			app.errHandler(res);
-		}		
+		}
 	});
 
 	route.put('/password', function(req, res) {
@@ -82,6 +82,72 @@ module.exports = function(url){
 			function(err, data){
 				app.errHandler(res, err, data);
 			});
+		}
+		else {
+			app.errHandler(res);
+		}
+	});
+
+	route.put('/login', function(req, res) {
+		if (req.body && req.body.login && req.body.password && req.body.password.length > 5){
+			var login = req.body.login.toLowerCase();
+
+			app.db.collection('accounts').findOne({
+				login: login
+			},
+	        function(err, isUser){
+				if (isUser){
+					isUser.isUser = true;
+					app.errHandler(res, err, isUser);
+				}
+				else if (!err && !isUser){
+					var password = req.body.password,
+						activate = app.utils.md5(login + ":" + app.config.get("session:secret")),
+						body = {
+							to: login,
+							subject: 'Активация входа',
+							html: {
+								title: "Активация входа по паролю",
+								text: "Для завершения активации нажмите кнопку ниже.",
+								button: "Подтвердить активацию",
+								link: app.config.public.get('domain') + "/activate/" + req.accountId + "/" + activate
+							}
+						};
+
+					API.mailer.send(body, function(err, data){
+						if (err && !data){
+							app.errHandler(res, err, data);
+						}
+						else {
+							app.db.collection('accounts').update({
+								"_id": req.accountId
+							},{
+								$set: {
+									activate: {
+										active: false,
+										hash: activate
+									},
+									login: login,
+									password: app.utils.cryptoPass(password)
+								},
+								$push: {
+									"history.events": {
+					                    name: "profileLoginCreate",
+					                    device: req.device,
+					                    date: app.moment().format()
+					            	}
+								}
+							},
+							function(err, data){
+								app.errHandler(res, err, data);
+							});
+						}
+					});
+				}
+				else {
+					app.errHandler(res, err, data);
+				}
+			})
 		}
 		else {
 			app.errHandler(res);

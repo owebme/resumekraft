@@ -11,6 +11,7 @@
         this.delta = options.delta ? this.deltaValues.getValueByTitle(options.delta) : null;
         this._items = options.items;
         this.onlyItems = options.onlyItems;
+        this.eventResize = app.device.isMobile ? 'orientationchange' : 'resize';
         this.items = [];
     };
 
@@ -33,7 +34,7 @@
 
                 var resize = _.debounce(this.render, 1000);
 
-                $dom.window.on('resize.scroll-animate', function(){
+                $dom.window.on(this.eventResize + '.scroll-animate', function(){
                     resize.call(_this);
             	});
             }
@@ -87,7 +88,7 @@
                 elem: $elem,
                 anim: false,
                 offset: $elem.offset(),
-                delta: delta,
+                delta: app.device.isMobile && app.device.orientation === "portrait" ? delta * 1.25 : delta,
                 callback: options.callback ? options.callback : null
             };
 
@@ -125,7 +126,7 @@
         },
 
         destroy: function(){
-            $dom.window.off('resize.scroll-animate');
+            $dom.window.off(this.eventResize + '.scroll-animate');
             this.scroll.off("scroll.animate");
             _.caf(this.raf);
             this.items.forEach(function(item, i){

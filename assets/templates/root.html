@@ -84,7 +84,13 @@
             }
             $root.one("ready", function(){
                 if ($Sections.resume && $Sections.resume.list && $Sections.resume.list.start){
-                    $Sections.resume.list.start();
+                    $Sections.resume.list.start(function(){
+                        if (app.initQuery && app.initQuery.plan){
+                            if ($account.get("plan") == "free" && app.initQuery.plan == "premium"){
+                                $Sections.plan.show("premium", app.initQuery.period);
+                            }
+                        }                        
+                    });
                 }
             });
         }
@@ -108,6 +114,8 @@
     };
 
     this.init = function(){
+        app.initQuery = Url.parseQuery();
+
         $Sections = {
             master: {
                 section: $root.tags["section-master"]

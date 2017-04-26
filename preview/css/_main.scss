@@ -1,4 +1,11 @@
+html,
+body {
+    @extend .w100;
+    @extend .h100;
+    @extend .overflow-hidden;
+}
 #page {
+    @include abs();
     @extend .overflow-hidden;
     @extend .c-blackLight;
 

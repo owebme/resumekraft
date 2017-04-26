@@ -38,6 +38,7 @@
     });
 
     app.sections.init();
+    app.features.navbar.init();
 
     if (app.config.changeStyles){
         if (app.device.isPhone){

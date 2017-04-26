@@ -35,6 +35,16 @@ $navHeight: 94px;
         @extend .bg-cover;
         transform:translateY(3px);
         background-image:url(/public/images/logotype_w.png);
+
+        html.d-tablet & {
+            @extend .pos-centered-v;
+            width:122px;
+            height:45px;
+            margin-top:1px;
+        }
+        html.d-tablet.r-portrait & {
+            @extend .l-s;
+        }
     }
     &__menu {
         @include flex("row", "flex-end", "center");
@@ -52,6 +62,8 @@ $navHeight: 94px;
             @extend .cursor-pointer;
             @extend .opacity-70;
             @extend .ml-l;
+            will-change:opacity, color;
+            transition:color 0.4s $cubic28, opacity .15s;
 
             &:after {
                 @extend .content-empty;
@@ -67,11 +79,60 @@ $navHeight: 94px;
                 }
             }
             &[data-active="true"],
-            &:hover {
+            html.m-no-touch &:hover {
                 @extend .opacity-100;
 
                 &:after {
                     @extend .w100p;
+                }
+            }
+            &[data-hidden="true"]{
+                @extend .opacity-100;
+                @extend .pointerEvents-none;
+
+                .nav__menu__item__inner {
+                    @extend .opacity-70;
+                }
+                &:after {
+                    @extend .display-none;
+                }
+            }
+            &__badge {
+                @extend .pos-abs;
+                @extend .flex-centered;
+                @extend .t--m;
+                @extend .l100;
+                @extend .trX--m;
+                @extend .ml--xxs;
+                @extend .fontWeight-bold;
+                @extend .bg-pink;
+                @extend .c-white;
+                font-size:12px;
+                line-height:12px;
+                padding:2px 4px;
+                @extend .borderRadius-m;
+
+                &:after {
+                    @extend .content-empty;
+                    @extend .pos-abs;
+                    @extend .t100;
+                    @extend .l0;
+                    width:8px;
+                    height:8px;
+                    @extend .bg-pink;
+                    transform:rotate(60deg) translate3d(-2px, -8px, 0);
+                    @extend .zIndex--1;
+                }
+            }
+            &--opener {
+                @extend .visible-sm;
+                @extend .opacity-100;
+                @extend .mr-xxs;
+
+                &:before {
+                    @extend .content-empty;
+                    @extend .display-block;
+                    @include ui-icon("more_h_white", 26px, 26px);
                 }
             }
         }
@@ -95,6 +156,17 @@ $navHeight: 94px;
             }
             &:hover:after {
                 @include ui-icon("addUser");
+            }
+        }
+        &__exit {
+            &:after {
+                @extend .content-empty;
+                @extend .pos-centered;
+                margin:-1px 0 0 2px;
+                @include ui-icon("exit_white", 38px, 38px);
+            }
+            &:hover:after {
+                @include ui-icon("exit");
             }
         }
     }

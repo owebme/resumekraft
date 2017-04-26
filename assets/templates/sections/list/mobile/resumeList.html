@@ -47,6 +47,11 @@
             }
             else {
                 $.offers.unmount();
+                if (app.initQuery && app.initQuery.plan){
+                    if ($account.get("plan") == "free" && app.initQuery.plan == "premium"){
+                        $Sections.plan.show("premium", app.initQuery.period);
+                    }
+                }
             }
         });
     });

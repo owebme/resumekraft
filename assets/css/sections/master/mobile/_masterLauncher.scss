@@ -7,16 +7,22 @@
     @extend .bg-blue;
     @extend .borderRadius-circle;
     box-shadow:0 12px 20px -10px rgba($blue,.28), 0 4px 20px 0px rgba(31,35,37,.12), 0 7px 8px -5px rgba($blue,.2);
-    // box-shadow:0 2px 10px 0 rgba(#000,.25);
+    @extend .willChange-transform;
     @extend .transition-default;
 
     &:after {
+        @include accelerate(true);
         @extend .content-empty;
         @include abs_50(32, 32);
+        @extend .willChange-transform;
         @include ui-icon("plus_thin_white", 32px, 32px);
     }
     &:active {
         transform:translate3d(-50%, 0, 0) scale(0.88);
+
+        &:after {
+            animation:spinner 0.6s;
+        }
     }
     &[data-anim="true"]:after {
         @include animation(spinner, linear, .6s, false, infinite);
