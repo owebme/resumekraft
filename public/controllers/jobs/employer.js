@@ -17,6 +17,11 @@ module.exports = function(){
                 API.jobs.employerVacancies(req.params.alias, function(err, data){
                     app.errHandler(res, err, data, callback);
                 });
+            },
+            informers: function(callback){
+                API.informers.get(function(err, data){
+                    app.errHandler(res, err, data, callback);
+                });
             }
         },
         function(err, results){
@@ -27,6 +32,7 @@ module.exports = function(){
                 req.appClient.items = results.vacancies && results.vacancies.items;
                 req.appClient.countsAll = countsAll;
                 req.appClient.currency = app.store.jobs.currency;
+                req.appClient.informers = API.informers.prepare(results.informers);
 
                 res.render('jobs', {
                     title: "Вакансии компании «" + employer.name + "», работа в компании в " + employer.area.name,

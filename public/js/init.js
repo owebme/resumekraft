@@ -38,18 +38,21 @@
     });
 
     app.sections.init();
-    app.features.navbar.init();
+
+    if (!app.device.isPhone && app.features && app.features.navbar){
+        app.features.navbar.init();
+    }
 
     if (app.config.changeStyles){
         if (app.device.isPhone){
             app.plugins.styles.init({
                 elem: "#styles",
-                default: "normal",
                 screens: [
                     {
                         title: "small",
                         maxWidth: 360,
-                        path: "/public/css/style.mobile.smallScreen.css"
+                        path: "/public/css/style.mobile.smallScreen.css",
+                        refresh: true
                     },
                     {
                         title: "normal",
@@ -68,7 +71,6 @@
         else {
             app.plugins.styles.init({
                 elem: "#styles",
-                default: "normal",
                 screens: [
                     {
                         title: "small",

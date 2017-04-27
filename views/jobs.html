@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" class="{% if device == 'phone' %}d-phone d-mobile{% else %}d-no-phone{% endif %}{% if device == 'tablet' %} d-tablet d-mobile{% else %} d-no-tablet{% endif %}{% if device == 'desktop' %} d-no-mobile{% endif %}">
+<html lang="ru" class="{% if device == 'phone' %}d-phone d-mobile m-touch{% else %}d-no-phone{% endif %}{% if device == 'tablet' %} d-tablet d-mobile m-touch{% else %} d-no-tablet{% endif %}{% if device == 'desktop' %} d-no-mobile m-no-touch{% endif %}">
 <head>
     <title>{% if title %}{{ title | safe }}{% else %}Cервис создания резюме, помощь в составлении резюме, рекомендации профессионалов, примеры, образцы резюме. ResumeKraft{% endif %}</title>
     <meta charset="utf-8" />

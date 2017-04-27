@@ -14,7 +14,7 @@
                         <a href="/premium/">Премиум резюме</a>
                     </div>
                     <div class="jobs__footer__menu__item">
-                        <a href="/?signup=true">Создать резюме</a>
+                        <a href="/?signup">Создать резюме</a>
                     </div>
                     <div class="jobs__footer__menu__item">
                         <a href="/jobs/search">Вакансии</a>

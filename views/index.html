@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="{% if device == 'phone' %}d-phone d-mobile m-touch{% else %}d-no-phone{% endif %}{% if device == 'tablet' %} d-tablet d-mobile m-touch{% else %} d-no-tablet{% endif %}{% if device == 'desktop' %} d-no-mobile m-no-touch{% endif %}">
 <head>
     <title>{% if title %}{{ title }}{% else %}Cервис создания резюме, помощь в составлении резюме, рекомендации профессионалов, примеры, образцы резюме. ResumeKraft{% endif %}</title>
     <meta charset="utf-8" />
@@ -54,6 +54,7 @@
 
     {% else %}
 
+    <!-- <script src="/assets/templates/modules/loaderUser.html" type="riot/tag"></script> -->
     <!-- <script src="/public/templates/commons/modules/auth/auth.tag" type="riot/tag"></script>
     <script src="/public/templates/commons/modules/auth/forms/signIn.tag" type="riot/tag"></script>
     <script src="/public/templates/commons/modules/auth/forms/signUp.tag" type="riot/tag"></script>

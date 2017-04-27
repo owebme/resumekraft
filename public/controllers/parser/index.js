@@ -113,7 +113,7 @@ module.exports = function(){
             					});
             					app.db.collection('informers').insert(currency);
 
-                                callback(null, data);
+                                callback(null, currency);
             				}
             			});
             		}
@@ -123,11 +123,21 @@ module.exports = function(){
 
         function(err, data){
             if (data && data.length){
-                return res.send(JSON.stringify({
+                var informers = JSON.stringify({
                     traffic: data[0].traffic,
                     weather: data[0].weather,
                     currency: data[1]
-                }));
+                })
+                if (app.config.public.get('informers:cache')){
+                    var hash = "informers:cache";
+                    app.redis.set(hash, informers);
+            		app.redis.expireat(hash, parseInt((+new Date)/1000) + app.config.public.get('informers:cacheLife'));
+                    console.log("REDIS SAVE: informers");
+                }
+                return res.send(informers);
+            }
+            else {
+                res.send(null);
             }
         });
     }

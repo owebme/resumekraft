@@ -11,10 +11,27 @@ module.exports = function(){
         //     });
         // });
 
-        API.blog.index(req, function(err, data){
-            if (!err && data){
+        app.async.parallel({
+            data: function(callback){
+                API.blog.index(req, function(err, data){
+                    app.errHandler(res, err, data, callback);
+                });
+            },
+            informers: function(callback){
+                API.informers.get(function(err, data){
+                    app.errHandler(res, err, data, callback);
+                });
+            }
+        }, function(err, results){
+            if (!err && results){
 
-                req.appClient.data = data;
+                req.appClient.data = results.data;
+
+                var informers = API.informers.prepare(results.informers);
+
+                if (informers){
+                    app.utils.extend(req.appClient.data, informers);
+                }
 
                 var output = app.riot.render(app.tags("blog", req.device), req.appClient);
 

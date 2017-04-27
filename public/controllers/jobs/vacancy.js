@@ -22,6 +22,11 @@ module.exports = function(){
                             API.jobs.vacancySimilary(vacancy.id, function(err, data){
                                 app.errHandler(res, err, data, callback);
                             });
+                        },
+                        informers: function(callback){
+                            API.informers.get(function(err, data){
+                                app.errHandler(res, err, data, callback);
+                            });
                         }
 	        		},
 	                function(err, results){
@@ -41,6 +46,7 @@ module.exports = function(){
             req.appClient.items = results.vacancies && results.vacancies.items;
             req.appClient.countsAll = countsAll;
             req.appClient.currency = app.store.jobs.currency;
+            req.appClient.informers = API.informers.prepare(results.informers);
 
             res.render('jobs', {
                 title: "Вакансия на должность «" + results.vacancy.name + "» в " + results.vacancy.area.name + ", работа в компании " + results.vacancy.employer.name,

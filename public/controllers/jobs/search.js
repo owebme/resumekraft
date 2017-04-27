@@ -11,10 +11,22 @@ module.exports = function(){
             if (!err && data) countsAll = data;
         });
 
-        API.jobs.search(url, function(err, data){
+        app.async.parallel({
+            data: function(callback){
+                API.jobs.search(url, function(err, data){
+                    app.errHandler(res, err, data, callback);
+                });
+            },
+            informers: function(callback){
+                API.informers.get(function(err, data){
+                    app.errHandler(res, err, data, callback);
+                });
+            }
+        }, function(err, results){
             if (err) next();
             else {
-                var state = {};
+                var data = results.data,
+                    state = {};
 
                 if (isEmptyParams && data.found && countsAll != data.found){
                     app.redis.set('jobsCountsAll', data.found);
@@ -41,6 +53,8 @@ module.exports = function(){
                     })
                 }
 
+                req.appClient.informers = API.informers.prepare(results.informers);
+
                 res.render('jobs', {
                     title: app.config.public.get('title:jobsSearch'),
                     clusters: data ? JSON.stringify(data.clusters) : null,
@@ -58,10 +72,5 @@ module.exports = function(){
                 });
             }
         });
-
-        // app.utils.fs.readFile(process.cwd() + '/public/json/vacancy.json', "utf8", function(err, data){
-        //
-        // });
-
     };
 }

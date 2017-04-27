@@ -32,4 +32,37 @@
         //alert(elapsed + "ms");
     });
 
+    if (app.config.changeStyles){
+        if (app.device.isPhone){
+            app.plugins.styles.init({
+                elem: "#styles",
+                screens: [
+                    {
+                        title: "small",
+                        maxWidth: 360,
+                        path: "/public/css/jobs.smallScreen.css",
+                        refresh: true
+                    },
+                    {
+                        title: "tablet",
+                        minWidth: 768,
+                        reload: true
+                    }
+                ]
+            });
+        }
+        else {
+            app.plugins.styles.init({
+                elem: "#styles",
+                screens: [
+                    {
+                        title: "small",
+                        maxWidth: 767,
+                        reload: true
+                    }
+                ]
+            });
+        }
+    }
+
 })(app, $, app.$dom, app.utils);

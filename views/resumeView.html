@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="{% if device == 'phone' %}d-phone d-mobile m-touch{% else %}d-no-phone{% endif %}{% if device == 'tablet' %} d-tablet d-mobile m-touch{% else %} d-no-tablet{% endif %}{% if device == 'desktop' %} d-no-mobile m-no-touch{% endif %}">
 <head>
 	<meta charset="utf-8">
 	<title>{% if post %}{{ post }} // ResumeKraft{% endif %}</title>

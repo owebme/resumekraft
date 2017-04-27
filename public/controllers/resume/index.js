@@ -32,6 +32,7 @@ module.exports = function(mode){
                 else if (mode == "editing" && req.account && req.account.plan == "premium"){
                     res.render('premium', {
                         color: resume.config.color,
+                        device: req.device.type,
                         resume: JSON.stringify(resume),
                         editing: true
                     });
@@ -49,6 +50,7 @@ module.exports = function(mode){
                         post: resume.post,
                         resume: JSON.stringify(resume),
                         num: template,
+                        device: req.device.type,
                         isMobile: req.device.isMobile,
                         print: req.query.print ? true : false,
                         stamp: req.query.print ? false : true,
@@ -61,6 +63,7 @@ module.exports = function(mode){
                         color: resume.config.color,
                         ip: req.clientIP,
                         post: resume.post,
+                        device: req.device.type,
                         resume: JSON.stringify(resume),
                         editing: false
                     });

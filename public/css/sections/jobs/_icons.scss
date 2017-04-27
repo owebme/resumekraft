@@ -1,5 +1,5 @@
 @each $icon in (
-    loading, back_gray, close_gray, close_strong_gray, check, more_v, more_v_gray
+    loading, back_gray, close_gray, close_strong_gray, check, more_v, more_v_gray, city
 ){
     .ui-icon-#{$icon} {
         background:url('/public/images/jobs/icons/ui-#{$icon}.svg') no-repeat 0 0 / cover;

@@ -25,7 +25,7 @@ module.exports = function(){
 		}
 		else {
 			console.log("MYSQL REQUEST (cache off): " + url);
-			handlerRequest(url, function(err, data){
+			handler(function(err, data){
 				callback(err, data);
 			});
 		}
@@ -43,9 +43,9 @@ module.exports = function(){
 
             if (!page) page = 1;
 
-            app.async.parallel([
+            app.async.parallel({
 
-                function(callback){
+                items: function(callback){
                     if (req.device.type == "phone"){
                         var query = "name, keywords, image, color, date_update AS date, alias";
                     }
@@ -58,48 +58,23 @@ module.exports = function(){
                     });
                 },
 
-                function(callback){
+                size: function(callback){
                     app.mysql.query("SELECT id FROM blog", function(err, data){
                         callback(err, data);
                     });
-                },
-
-                function(callback){
-                    app.db.collection('informers').find().toArray(function(err, data){
-                        callback(err, data);
-                    });
-                },
-            ],
+                }
+            },
 
             function(err, data){
-                if (data && data.length){
-
-                    var pages = 1, count = data[1].length;
+                if (data){
+                    var pages = 1, count = data.size.length;
                     if (count) pages = parseInt(Math.floor(count / perPage));
 
-                    var currency = app.utils.findWhere(data[2], {'_id': 'currency'}) || null,
-                        weather = app.utils.findWhere(data[2], {'_id': 'weather'}),
-                        traffic = app.utils.findWhere(data[2], {'_id': 'traffic'});
-
-                    if (currency){
-                        currency = currency.items || null;
-                        if (currency){
-                            currency = {
-                                usd: app.utils.findWhere(currency, {'code': 'USD'}).value,
-                                euro: app.utils.findWhere(currency, {'code': 'EUR'}).value,
-                                date: app.utils.findWhere(currency, {'code': 'USD'}).date
-                            }
-                        }
-                    }
-
                     var data = {
-                        headers: app.utils.copyArray(data[0]).slice(0, 4),
-                        items: data[0],
+                        headers: app.utils.copyArray(data.items).slice(0, 4),
+                        items: data.items,
                         pages: pages,
-                        page: page ? parseInt(page) : 1,
-                        weather: weather && weather.now || null,
-                        traffic: traffic || null,
-                        currency: currency
+                        page: page ? parseInt(page) : 1
                     };
 
                     data.headers = app.utils.map(data.headers, function(item, i){

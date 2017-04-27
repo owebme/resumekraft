@@ -288,7 +288,7 @@
                 <div class="col-md-12 anim anim-scale-soft sm-mb--l">
                     <div class="overview__phone" data-align="right" data-color="white">
                         <div class="overview__phone__screen">
-                            <div class="pos-tl w100p pointerEvents-none zIndex-2 bg-cover progressive-image" style="height:136px; background-image:url(/public/images/promo/premium/mobile_resume_nav.png)"></div>
+                            <div class="overview__phone__nav bg-cover progressive-image"></div>
                             <div class="screens screens-tablet screens-desktop" data-vertical="true" data-round="true" data-autorun="true">
                                 <div each={ item, i in opts.utils.range(12) } no-reorder class="screen { screen--active : i == 0 }">
                                     <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/promo/premium/mobile_resume_screen{ item + 1 }.png)"></div>

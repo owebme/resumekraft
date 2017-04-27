@@ -55,6 +55,10 @@
         "cache": true,
         "cacheLife": 3600
     },
+    "informers": {
+        "cache": true,
+        "cacheLife": 3600
+    },
     "resume": {
         "import": {
             "blockLife": 43200,

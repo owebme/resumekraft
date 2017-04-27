@@ -73,14 +73,18 @@ module.exports = function(){
         }
     });
     app.get('/premium/workflow', function(req, res) {
-        res.render('workflow');
+        res.render('workflow', {
+            device: req.device.type
+        });
     });
     app.get('/premium/promo', function(req, res) {
         if (req.device.type == "phone"){
             res.redirect(302, '/');
         }
         else {
-            res.render('premiumSlider');
+            res.render('premiumSlider', {
+                device: req.device.type
+            });
         }
     });
     app.get('/premium/demo', app.controllers.resume("demo"));

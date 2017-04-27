@@ -1,6 +1,11 @@
 html, body {
     @extend .h100p;
 }
+html.d-no-phone {
+    body {
+        color:#1d2129;
+    }
+}
 html.d-phone {
     .dropmenu {
         @extend .display-none;
@@ -59,6 +64,8 @@ html.d-phone {
                 transform:translateX(4px);
             }
             &__close {
+                @extend .w32;
+                @extend .h32;
                 @extend .opacity-85;
                 @include ui-icon("close_strong_gray");
             }

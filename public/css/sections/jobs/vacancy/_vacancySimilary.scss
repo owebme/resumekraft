@@ -146,13 +146,14 @@
                 &__title {
                     @extend .pos-rel;
                     @extend .c-yellowBright;
-                    @extend .w70p;
+                    @extend .w80p;
                     @extend .pl-m;
                     @extend .fontFamily-roboto;
                     @extend .fontSize-30;
                     line-height:41px;
                     @extend .fontWeight-3;
                     margin-bottom:24px;
+                    letter-spacing:-0.016em;
 
                     html.d-tablet & {
                         @extend .w100p;
@@ -165,7 +166,20 @@
                         @extend .bg-yellowBright;
                     }
                 }
+                &__container {
+                    @extend .pos-rel;
+                    height:137px;
+                }
+                &__image {
+                    @extend .pos-abs;
+                    @extend .t--xxs;
+                    @extend .l0;
+                    width:210px;
+                    height:114px;
+                }
                 &__text {
+                    @extend .opacity-0;
+                    @extend .pointerEvents-none;
                     font-size:17px;
                     @extend .lineHeight-28;
                     margin-bottom:16px;

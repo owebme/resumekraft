@@ -36,6 +36,7 @@ module.exports = function(){
             'public/js/store/jobs/favorites.js',
             'assets/js/plugins/define.js',
             'assets/js/plugins/sections.js',
+            'assets/js/plugins/styles.js',
             'assets/js/plugins/metrika.js',
             'assets/js/plugins/share.js',
             'assets/js/plugins/scroll/scroll.RefreshFix.js',
