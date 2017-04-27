@@ -54,7 +54,10 @@ var e=this;e.success=function(){if(_.isEmail(e.refs.input.value)){var t=e.refs.i
     });
 
     app.sections.init();
-    app.features.navbar.init();
+
+    if (!app.device.isPhone && app.features && app.features.navbar){
+        app.features.navbar.init();
+    }
 
     if (app.config.changeStyles){
         if (app.device.isPhone){
@@ -64,7 +67,8 @@ var e=this;e.success=function(){if(_.isEmail(e.refs.input.value)){var t=e.refs.i
                     {
                         title: "small",
                         maxWidth: 360,
-                        path: "/public/css/style.mobile.smallScreen.css"
+                        path: "/public/css/style.mobile.smallScreen.css",
+                        refresh: true
                     },
                     {
                         title: "normal",

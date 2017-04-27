@@ -77,7 +77,7 @@
     },
     "parser": {
         "weather": {
-            "url": "https://export.yandex.ru/bar/reginfo.xml"
+            "url": "https://export.yandex.ru/bar/reginfo.xml?region=213"
         },
 		"currency": {
 			"url": "http://www.cbr.ru/scripts/XML_daily.asp",

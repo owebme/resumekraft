@@ -4,11 +4,12 @@ module.exports = function(url){
 
 	route.post('/subscribe', function(req, res) {
         if (req.body && req.body.email){
+			var email = req.body.email.toLowerCase();
 
             app.db.collection('subscribe').update({
-                "email": req.body.email
+                "email": email
             },{
-                "email": req.body.email,
+                "email": email,
 				"device": req.device.type
             },{
                 upsert: true
