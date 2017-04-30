@@ -25,6 +25,9 @@
         @extend .maxW-75p;
         box-shadow:0 12px 20px -10px rgba($lime,.28), 0 4px 20px 0px rgba($lime,.12), 0 7px 8px -5px rgba($lime,.2);
 
+        html.d-tablet & {
+            @extend .maxW-70p;
+        }
         &__title {
             @extend .pos-abs;
             @extend .t100;
@@ -263,7 +266,7 @@
             @extend .lineHeight-m;
             @extend .letterSpacing-s;
         }
-        &:hover {
+        html.m-no-touch &:hover { 
             @extend .bg-blackLight;
 
             &:after {
@@ -274,7 +277,7 @@
                 transform:translate3d(-50%, -97px, 0);
             }
         }
-        &:active {
+        html.m-no-touch &:active {
             transform:translate3d(-50%, -112px, 0) scale(0.85);
         }
     }

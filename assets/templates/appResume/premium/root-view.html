@@ -152,36 +152,42 @@
     });
 
     if (app.config.changeStyles){
-        app.plugins.styles.init({
-            elem: "#styles",
-            screens: [
-                {
-                    title: "small",
-                    maxWidth: 360,
-                    path: "/assets/css/premium.smallScreen.css?" + _.newId(),
-                    refresh: true
-                },
-                {
-                    title: "phone",
-                    minWidth: 360,
-                    maxWidth: 767,
-                    reload: true
-                },
-                {
-                    title: "normal",
-                    minWidth: 768,
-                    maxWidth: 1681,
-                    path: "/assets/css/premium.css?" + _.newId(),
-                    reload: true
-                },
-                {
-                    title: "large",
-                    minWidth: 1682,
-                    path: "/assets/css/premium.largeScreen.css?" + _.newId(),
-                    refresh: true
-                }
-            ]
-        });
+        if (app.device.isPhone){
+            app.plugins.styles.init({
+                elem: "#styles",
+                screens: [
+                    {
+                        title: "small",
+                        maxWidth: 360,
+                        path: "/assets/css/premium.smallScreen.css",
+                        refresh: true
+                    },
+                    {
+                        title: "normal",
+                        minWidth: 360,
+                        maxWidth: 767,
+                        path: "/assets/css/premium.css"
+                    },
+                    {
+                        title: "tablet",
+                        minWidth: 768,
+                        reload: true
+                    }
+                ]
+            });
+        }
+        else {
+            app.plugins.styles.init({
+                elem: "#styles",
+                screens: [
+                    {
+                        title: "small",
+                        maxWidth: 767,
+                        reload: true
+                    }
+                ]
+            });
+        }
     }
 
 </script>

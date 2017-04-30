@@ -101,6 +101,16 @@
             }
         },
         {
+            id: "removeLogo",
+            pos: "left",
+            title: "Резюме в PDF без логотипа",
+            hidden: $account.get("plan") == "premium",
+            callback: function(){
+                $Sections.plan.show("premium");
+                app.metrika.set("master.removeLogo", true);
+            }
+        },
+        {
             id: "print",
             pos: "left",
             title: "Распечатать резюме",
@@ -189,9 +199,12 @@
             id: "addHomeScreen",
             pos: "bottom",
             title: "Добавить на главный экран",
-            hidden: !app.device.isPhone,
+            hidden: !app.device.isPhone || app.isStandalone,
+            options: {
+                notHide: true
+            },
             callback: function(){
-                //$Sections.profile.password.show();
+                $Sections.popup.homescreen.show();
                 app.metrika.set("master.addHomeScreen", true);
             }
         },
@@ -344,7 +357,7 @@
                     kit = ['import', 'payment', 'support', 'stat'];
                 }
                 else if (num === "screen3"){
-                    kit = ['sendmail', 'pdf', 'inbox', 'jptest'];
+                    kit = ['sendmail', 'pdf', 'removeLogo', 'inbox', 'jptest'];
                 }
                 else if (num === "screen4"){
                     kit = ['jobs', 'profile', 'password', 'addHomeScreen'];

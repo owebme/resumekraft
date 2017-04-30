@@ -3,7 +3,7 @@
 	<div id="t-header">
 		<div if={ $resume.get('commons', 'contacts', 'city') } id="t-header-city">{ $resume.get('commons', 'contacts', 'city', 'name') }</div>
 		<div id="t-header-names">
-			<div if={ $resume.get('commons', 'surname').length > $resume.get('commons', 'name').length }>
+			<div if={ $resume.get('commons', 'surname').length >= $resume.get('commons', 'name').length }>
 				<div id="t-header-name" class="{ short : $resume.get('commons', 'name').length > 9 }">{ $resume.get('commons', 'name') }</div>
 				<div id="t-header-surname" class="{ short : $resume.get('commons', 'surname').length > 9 }">{ $resume.get('commons', 'surname') }</div>
 			</div>

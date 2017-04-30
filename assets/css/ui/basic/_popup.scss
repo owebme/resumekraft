@@ -23,6 +23,10 @@
         @extend .visibility-visible;
         @extend .transform-default;
         transition:transform 0.5s $bounceForce, opacity 0.5s $bounceForce;
+
+        html.d-mobile & {
+            transition:transform 0.35s $cubic68, opacity 0.35s $cubic68;
+        }
     }
     &__title {
         @extend .fontFamily-futura;
@@ -54,6 +58,10 @@
             @extend .bg-white;
             @extend .boxShadow-close;
             @extend .overflow-hidden;
+
+            &.borderRadius-circle {
+                @extend .borderRadius-circle;
+            }
         }
         img {
             @extend .maxW-100p;
@@ -69,6 +77,24 @@
             }
         }
     }
+    &__icon {
+        @extend .pos-rel;
+        @extend .flex-centered;
+        margin-left:calc(18% - 40px);
+        margin-right:calc(12% - 40px);
+        @extend .w80;
+        @extend .h80;
+        @extend .borderRadius-circle;
+
+        html.d-phone & {
+            @extend .pos-centered-h;
+            @extend .t--l;
+            @extend .w64;
+            @extend .h64;
+            @extend .mlr0;
+            @extend .boxShadow-close;
+        }
+    }
     &__content {
         @include flex("column", "center", "flex-start");
         width:63%;
@@ -79,6 +105,7 @@
         html.d-phone & {
             @extend .flex-column-centered;
             @extend .w100p;
+            min-height:128px;
             @extend .text-center;
             @extend .pt30;
             @extend .pl25;
@@ -201,8 +228,8 @@
 
             html.d-phone & {
                 font-size:18px;
-                @extend .lineHeight-28;
-                @extend .mb-xss;
+                line-height:29px;
+                margin:3px 0 6px;
             }
         }
         .btn {

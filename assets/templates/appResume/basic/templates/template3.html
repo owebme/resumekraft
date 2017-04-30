@@ -11,7 +11,7 @@
 			<div id="t-header-name" class="t-header-name big">{ $resume.get('commons', 'name') }</div>
 		</div>
 		<div if={ $resume.get('commons', 'surname') } id="t-header-names" data-long={ $resume.get('commons', 'name').length > 8 || $resume.get('commons', 'surname').length > 8 }>
-			<div if={ $resume.get('commons', 'name').length > $resume.get('commons', 'surname').length }>
+			<div if={ $resume.get('commons', 'name').length >= $resume.get('commons', 'surname').length }>
 				<div id="t-header-surname" class="t-header-name small">{ $resume.get('commons', 'surname') }</div>
 				<div id="t-header-name" class="t-header-name big">{ $resume.get('commons', 'name') }</div>
 			</div>

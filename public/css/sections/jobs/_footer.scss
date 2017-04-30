@@ -1,11 +1,13 @@
 .jobs__footer {
-    @extend .pt50;
-    @extend .xs-pt-l;
     @extend .pb-l;
     @extend .xs-ml--s;
     @extend .xs-mr--s;
     @extend .bg-snowSilver;
 
+    &__container {
+        @extend .pt50;
+        @extend .xs-pt-l;        
+    }
     &__menu {
         @extend .flex;
         @extend .w100p;

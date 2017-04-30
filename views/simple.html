@@ -1,0 +1,25 @@
+{% extends "layouts/basic.html" %}
+
+{% block styles %}/assets/css/server.css{% endblock %}
+
+{% block body %}
+<body>
+
+    <h3 class="blue">{{ title }}</h3>
+
+    <br>
+
+    <p class="gray small" style="margin:0 auto; max-width:700px">{{ text }}</p>
+
+    <br><br>
+
+    {% if redirect %}
+    <script>
+        setTimeout(function(){
+            location.replace("{{ redirect }}");
+        }, {% if timeout %}{{ timeout * 1000 }}{% else %}5000{% endif %});
+    </script>
+    {% endif %}
+
+</body>
+{% endblock %}

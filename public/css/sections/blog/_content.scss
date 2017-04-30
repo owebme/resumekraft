@@ -22,6 +22,10 @@ blog-content {
             @extend .zIndex-1;
             @extend .bg-white;
             transform:rotate(-5deg) translate3d(2vw, 10.5vh, 0);
+
+            html.d-tablet & {
+                bottom:-6px;
+            }
         }
         &__image {
             @include abs();
@@ -65,7 +69,7 @@ blog-content {
             @include ui-icon(back_white, 24px, 24px);
             transform:translate3d(-5px, -2px, 0);
         }
-        &:hover {
+        html.m-no-touch &:hover {
             transform:translate3d(-10px, -60px, 0);
         }
     }
@@ -84,8 +88,12 @@ blog-content {
         text-shadow:0 2px 1px rgba(42,49,57,.6);
         will-change:filter;
         filter:blur(5px);
-        transition:filter 0.6s $cubic2501;
+        transition:filter 0.7s $cubic32;
 
+        html.d-tablet & {
+            font-size:67px;
+            line-height:67px;
+        }
         &[data-show="true"]{
             filter:none;
         }
@@ -125,7 +133,7 @@ blog-content {
             margin-right:0;
             margin-left:-20px;
         }
-        &:hover {
+        html.m-no-touch &:hover {
             box-shadow:0 20px 25px rgba(31,35,37,.15);
             transform:translateY(-15px);
         }
@@ -136,7 +144,7 @@ blog-content {
 }
 .blog__content {
     &__wrapper {
-        @extend .c-blackLight;
+        @extend .c-steel;
         @extend .pt-xl;
         @extend .mt-m;
         @extend .pl-m;
@@ -144,6 +152,10 @@ blog-content {
         @extend .fontFamily-helvetica;
         @extend .fontSize-18;
         @extend .lineHeight-xxl;
+
+        html.d-tablet & {
+            @extend .pr0;
+        }
     }
     h1, h2, h3, h4 {
         @extend .pos-rel;
@@ -187,7 +199,7 @@ blog-content {
     strong {
         @extend .fontFamily-futura;
         @extend .fontWeight-8;
-        @extend .c-blackLight;
+        @extend .c-steelDark;
         @extend .fontSize-22;
     }
     p {
@@ -207,6 +219,10 @@ blog-content {
         //     box-shadow:0 20px 25px rgba(31,35,37,.15);
         //     transform:translateY(-15px);
         // }
+
+        html.d-tablet & {
+            max-width:680px;
+        }
     }
     blockquote {
         @extend .pt25;
@@ -214,7 +230,7 @@ blog-content {
         @extend .pl-l;
         @extend .pr-m;
         @extend .mb-l;
-        @extend .c-blackLight;
+        @extend .c-steelDark;
         @extend .fontFamily-futura;
         @extend .fontSize-22;
         @extend .lineHeight-34;

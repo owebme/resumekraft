@@ -7,7 +7,7 @@
         <div class="popup__content">
             <div class="popup__title c-blueBright fontWeight-bold xs-plr-m xs-pb-xxs">Пожалуйста оцените результат теста</div>
             <div ref="votes" name="votes" class="cursor-pointer { app.device.isPhone ? 'fontSize-34' : 'fontSize-28' } ml--xss pt-s pb-m xs-pt-m xs-pb-s">
-                <span each={ item in stars } class="plr-xss { !item ? 'c-gray' : 'c-orange' }">&star;</span>
+                <span each={ item, i in stars } data-score="{ i + 1 }" class="plr-xss { !item ? 'c-gray' : 'c-orange' }">&star;</span>
             </div>
         </div>
     </div>
@@ -22,7 +22,7 @@
     $.voted = false;
     $.stars = _.range(starsMax);
     $.stars = _.map($.stars, function(item){
-        return item = false;
+        return item = app.device.isMobile;
     });
 
     $.on("mount", function(){
@@ -68,23 +68,28 @@
             }
         });
 
-        $votes.one("click", function(e){
-            if ($.score > 0){
-                $votes.off();
-                $afterlag.run(function(){
-                    $.hide();
-                });
-                app.request("addJptestVotes", {
-                    score: $.score
-                }, {
-                    notify: false,
-                    loader: false
-                })
-                .then(function(){
-                    app.metrika.set("jptest.votes.score", $.score);
-                    app.metrika.set("jptest.votes.success", true);
-                });
+        $votes.one("click", "span", function(e){
+            $.score = e.currentTarget.getAttribute("data-score");
+            if ($.score && parseInt($.score) > 0){
+                $.request();
             }
+        });
+    };
+
+    $.request = function(){
+        $votes.off();
+        $afterlag.run(function(){
+            $.hide();
+        });
+        app.request("addJptestVotes", {
+            score: $.score
+        }, {
+            notify: false,
+            loader: false
+        })
+        .then(function(){
+            app.metrika.set("jptest.votes.score", $.score);
+            app.metrika.set("jptest.votes.success", true);
         });
     };
 

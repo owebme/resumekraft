@@ -121,13 +121,9 @@
         <div name="finishSlideAnim" ref="finishSlideAnim" class="offer__premium__slider__text" data-finish="true">
             <div class="offer__premium__slider__text__title">
 
-                <div if={ opts.site }>Создайте <span class="larger">продающее</span> резюме</div>
-                <div if={ opts.site }>
-                    <div class="offer__premium__slider__text__subtitle">Станьте лучшим кандидатом и найдите работу своей мечты</div>
-                    <a href="/premium/" class="btn btn-xl btn-upper mt-m">Узнать больше о продукте</a>
-                </div>
-
-                <div if={ !opts.site }>Получите <span class="larger">престижную</span> работу</div>
+                <div >Создайте <span class="larger">продающее</span> резюме</div>
+                <div class="offer__premium__slider__text__subtitle">Станьте лучшим кандидатом и найдите работу своей мечты</div>
+                <a if={ opts.site } href="/premium/" class="btn btn-xl btn-upper mt-m">Узнать больше о продукте</a>
                 <div if={ !opts.site } onClick={ onSuccess } onUpdate="none" class="btn btn-xl btn-upper mt-m">Перейти на Premium</div>
 
                 <div onClick={ onRepeat } class="offer__premium__slider__repeat">
@@ -204,15 +200,33 @@
     });
 
     $.change = function(){
-        $.slide = this.i + 1;
-        setTimeout(function(){
-            $.onSlide();
-        }, 5);
+        var _this = this,
+            slide = this.i + 1;
+
+        $.trigger("slide", slide);
+
+        if ($.opts.site){
+            $.slide = slide;
+            setTimeout(function(){
+                $.onSlide();
+            }, 5);
+        }
+        else {
+            $afterlag.xs(function(){
+                $.update({
+                    slide: slide
+                })
+                setTimeout(function(){
+                    $.onSlide();
+                }, 5);
+            });
+        }
     };
 
     $.onRepeat = function(){
         $.finish = false;
         $.slide = null;
+        $.trigger("slide", 1);
         _.onEndTransition($.finishSlideAnim, function(){
             $.update({
                 slide: 1
@@ -238,11 +252,20 @@
 
         var callback = function(){
             $.slide++;
+            $.trigger("slide", $.slide);
             if ($.slides.length < $.slide){
                 $.finish = true;
             }
-            $.update();
-            if (!$.finish) $.onSlide();
+            if ($.opts.site){
+                $.update();
+                if (!$.finish) $.onSlide();
+            }
+            else {
+                $afterlag.run(function(){
+                    $.update();
+                    if (!$.finish) $.onSlide();
+                });
+            }
 	    };
 
         $.circle = $.pigination.find(".offer__premium__slider__pigination__item--active").find("circle");

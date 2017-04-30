@@ -2,7 +2,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-6 h130">
+            <div class="col-md-8 col-lg-6 h130">
                 <div class="blog__subscribe pos-centered w100p text-left pr-l">
                     <h4 class="c-blackLight mb-xxs">Подписаться на наш блог</h4>
                     <div class="blog__subscribe__form"></div>

@@ -7,7 +7,7 @@
         <div class="blog__header__image" style="background-image:url({ get.image( opts.data.item.image) })"></div>
         <div class="container">
             <div class="blog__header__container row">
-                <div class="col-md-offset-8 col-md-16">
+                <div class="col-md-offset-6 col-md-18 col-lg-offset-8 col-lg-16">
                     <div class="blog__item">
                         <div class="blog__item__image" style="background-image:url({ get.image( opts.data.item.image) })"></div>
                         <a class="blog__item__back" href="/blog/">Блог</a>
@@ -21,7 +21,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-4 col-md-18">
+            <div class="col-md-offset-3 col-md-18 col-lg-offset-4 col-lg-18">
                 <div class="blog__item__avatar">
                     <img class="blog__item__avatar__image" src="http://resumekraft.ru/assets/img/testimonials/testimonial9.jpg">
                     <span class="blog__item__avatar__title">Опубликовано: <span class="c-blue">Ирина Лата</span>, { opts.data.item.date }</span>
@@ -31,7 +31,7 @@
                     <div class="blog__content" name="content">
                         { get.content(opts.data.item.text) }
                     </div>
-                    <div if={ opts.data.item.source } class="text-right c-gray fontSize-16 pt-m">
+                    <div if={ opts.data.item.source } class="text-right c-gray fontSize-16 pt-m md-mr--xl">
                         Источник: { opts.data.item.source }
                     </div>
                     <div class="text-center mt-l mb-m">
@@ -41,7 +41,7 @@
                     <div class="text-center mt-m mb-xl fontSize-20 c-gray fontFamily-futura">
                         Ирина Лата
                     </div>
-                    <div class="fontFamily-futura">
+                    <div class="fontFamily-futura md-ml--l md-mr--l">
                         <a if={ opts.data.prevItem } href="/blog/{ opts.data.prevItem.alias }" class="blog__item__nearby float-left pos-rel w50p borderRadius-xl bg-cover overflow-hidden" style="background-image:url({ get.image( opts.data.prevItem.image) });">
                             <div class="pos-abs-full bg-overlay opacity-70"></div>
                             <div class="blog__item__nearby__title pos-tr pos-centered-v w100p fontWeight-8 fontSize-28 c-white text-right pr-l pl-m">{ opts.data.prevItem.name }</div>

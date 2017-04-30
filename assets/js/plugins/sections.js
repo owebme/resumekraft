@@ -140,14 +140,12 @@
 
             if (this.options.mode === "light"){
                 this.scope.setAttribute("data-open", false);
-                $afterlag.run(function(){
-                    _.onEndTransition(_this.getContent(), function(){
-                        _this.scope.style.display = "none";
-                        if (_.isFunction(options.afterHide)){
-                            options.afterHide();
-                        }
-                        _this.active = false;
-                    });
+                _.onEndTransition(_this.getContent(), function(){
+                    _this.scope.style.display = "none";
+                    if (_.isFunction(options.afterHide)){
+                        options.afterHide();
+                    }
+                    _this.active = false;
                 });
             }
             else {

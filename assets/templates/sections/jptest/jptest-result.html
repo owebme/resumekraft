@@ -91,7 +91,7 @@
             {
                 scope: $.scroll,
                 content: $.content,
-                resources: ['/public/js/jptest.build.js' + _.newId()],
+                resources: ['/public/js/jptest.build.js?' + _.newId()],
                 init: function(){
                     if (app.device.isPhone){
                         $.content[0].style.backgroundColor = '#ffffff';
@@ -131,13 +131,15 @@
                     else {
                         $afterlag.run(function(){
                             $scope.find(".chart").addClass("showChart");
-                            $.section.scrollAnimate.start();
 
+                            if (!app.device.isMobile){
+                                $.section.scrollAnimate.start();
+                            }
                             if (!app.metrika.get("jptest.votes.show")){
                                 var $elem = $.content.find("jptest-result-finish");
 
                                 if ($elem.length){
-                                    var scrollTo = parseInt(app.dom.getPagePosition($elem[0]).top) - (app.device.isMobile ? 200 : 0),
+                                    var scrollTo = parseInt(app.dom.getPagePosition($elem[0]).top) - (app.device.isMobile ? 300 : 150),
                                         success = false;
 
                                     (function scrollFn(){

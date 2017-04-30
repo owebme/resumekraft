@@ -41,7 +41,7 @@
         });
 
         setTimeout(function(){
-            document.addEventListener('click', $.handleClickOutside);
+            $.root.addEventListener('click', $.handleClickOutside);
         }, 0);
     };
 
@@ -80,13 +80,16 @@
         })
         .then(function(data){
             if (data == "overlimit"){
-                app.tag("section-notify").show({
-                    text: "К сожалению, лимит на сегодня исчерпан, создайте премиум аккаунт для больших возможностей",
-                    color: "info",
-                    timeout: 3
-                })
-                $.update({loading: false})
                 $.hide();
+                $afterlag.xl(function(){
+                    app.tag("section-notify").show({
+                        text: "К сожалению, лимит на сегодня исчерпан, создайте премиум аккаунт для больших возможностей",
+                        color: "info",
+                        timeout: 3
+                    })
+                    $.update({loading: false})
+                    app.$dom.body.removeClass('apploading');
+                });
             }
             else {
                 $.update({
@@ -154,7 +157,7 @@
                 $.root.style.display = "none";
             }
         });
-        document.removeEventListener('click', $.handleClickOutside);
+        $.root.removeEventListener('click', $.handleClickOutside);
     };
 
     $.handleClickOutside = function(e){
@@ -163,32 +166,32 @@
 
     $.photos = {
         "male": [
-            'https://scontent-arn2-1.cdninstagram.com/t51.2885-15/e35/14592068_1825528711058860_6525389476905091072_n.jpg?ig_cache_key=MTQwODE3NjcxNjcyODA3ODA5Ng%3D%3D.2',
-            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/c7694e14247631.562802bc4267a.jpg',
-            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/3f035714247631.562804c77e127.jpg',
-            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/4e76a214247631.562802bd25cea.jpg',
-            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/62458114247631.5628028887b81.jpg',
-            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/e23cab14247631.56280304c505c.jpg',
-            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/6a645b14247631.562804c758e52.jpg',
-            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/7c415414247631.5628030528bff.jpg',
-            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/849e4714247631.562802889ec08.jpg',
-            'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5af34843755199.57fbc5cb5f1bb.jpg',
-            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/69b04f16142017.562a5eb7224ce.jpg',
-            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/af60b616142017.562a5f0c0d4d5.jpg',
-            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/8c556216142017.5632b4073672d.jpg'
+            '/preview/images/male/14592068_1825528711058860.jpg',
+            '/preview/images/male/c7694e14247631.562802bc4267a.jpg',
+            '/preview/images/male/3f035714247631.562804c77e127.jpg',
+            '/preview/images/male/4e76a214247631.562802bd25cea.jpg',
+            '/preview/images/male/62458114247631.5628028887b81.jpg',
+            '/preview/images/male/e23cab14247631.56280304c505c.jpg',
+            '/preview/images/male/6a645b14247631.562804c758e52.jpg',
+            '/preview/images/male/7c415414247631.5628030528bff.jpg',
+            '/preview/images/male/849e4714247631.562802889ec08.jpg',
+            '/preview/images/male/5af34843755199.57fbc5cb5f1bb.jpg',
+            '/preview/images/male/69b04f16142017.562a5eb7224ce.jpg',
+            '/preview/images/male/af60b616142017.562a5f0c0d4d5.jpg',
+            '/preview/images/male/8c556216142017.5632b4073672d.jpg'
         ],
         "female": [
-            'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/18235126033139.5634e8d8b1adc.jpg',
-            'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/750ee935139279.5852ed2f4dd5f.jpg',
-            'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/091df946261671.584e198a52ec6.jpg',
-            'http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/vertical15.jpg',
-            'http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/vertical9.jpg',
-            'http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/horizontal10.jpg',
-            'http://ottawa.fatmoon.kinsta.com/wp-content/uploads/sites/52/2016/04/horizontal2.jpg',
-            'http://demo.massivedynamic.co/fashion-photography/wp-content/uploads/2015/10/16_02.jpg',
-            'http://lionesseflatiron.org/wp-content/uploads/2015/08/Lionesse-Things-to-Know-Before-Going-Bronde.jpg',
-            'https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/d67e9349841247.58c09a76daedd.jpg',
-            'https://mir-s3-cdn-cf.behance.net/project_modules/disp/23386321049159.562fabde4b72c.jpg'
+            '/preview/images/female/18235126033139.5634e8d8b1adc.jpg',
+            '/preview/images/female/750ee935139279.5852ed2f4dd5f.jpg',
+            '/preview/images/female/091df946261671.584e198a52ec6.jpg',
+            '/preview/images/female/vertical15.jpg',
+            '/preview/images/female/vertical9.jpg',
+            '/preview/images/female/horizontal10.jpg',
+            '/preview/images/female/horizontal2.jpg',
+            '/preview/images/female/16_02.jpg',
+            '/preview/images/female/Lionesse-Things-to-Know-Before-Going-Bronde.jpg',
+            '/preview/images/female/d67e9349841247.58c09a76daedd.jpg',
+            '/preview/images/female/23386321049159.562fabde4b72c.jpg'
         ]
     };
 

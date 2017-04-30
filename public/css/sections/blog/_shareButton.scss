@@ -4,6 +4,10 @@
     @extend .r-xl;
     @extend .zIndex-10;
 
+    html.d-tablet & {
+        @extend .t--25;
+        @extend .r-l;
+    }
     &:before {
         @extend .content-empty;
         @extend .pos-br;
@@ -31,7 +35,7 @@
             @include ui-icon(plus_thin, 32px, 32px);
         }
     }
-    &:hover {
+    html.m-no-touch &:hover {
         &:before {
             width:250px;
             height:250px;
@@ -79,7 +83,7 @@
         transition:transform .5s $cubic075, opacity .5s $cubic075, background-color .2s;
         @extend .borderRadius-circle;
 
-        &:hover {
+        html.m-no-touch &:hover {
             @extend .bg-blue;
 
             path {

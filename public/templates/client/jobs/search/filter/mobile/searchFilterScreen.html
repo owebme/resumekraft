@@ -56,7 +56,7 @@
                     title: "Сбросить фильтры"
                 }],
                 callback: function(){
-                    location.replace('/jobs/search/');
+                    location.replace('/jobs/search/' + (Url.parseQuery().standalone ? "?standalone" : ""));
                 }
             });
         }

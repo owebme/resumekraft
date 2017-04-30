@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru" class="{% if device == 'phone' %}d-phone d-mobile m-touch{% else %}d-no-phone{% endif %}{% if device == 'tablet' %} d-tablet d-mobile m-touch{% else %} d-no-tablet{% endif %}{% if device == 'desktop' %} d-no-mobile m-no-touch{% endif %}">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="{% block viewport %}width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no{% endblock %}">
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="screen-orientation" content="portrait">
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="width" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+	<meta name="google" content="notranslate" />
+    <meta property="og:image" content="{% block image %}https://resumekraft.ru/public/images/ogimage.png{% endblock %}" />
+    <meta property="og:title" content="{% block title %}{% endblock %}" />
+	<meta property="og:description" content="Посмотреть" />
+    <link rel="icon" type="image/png" href="/assets/images/favicons/32.png">
+    <link rel="apple-touch-icon" href="/assets/images/favicons/60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicons/76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicons/120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicons/152.png">
+    <link rel="manifest" href="/manifest/{% block manifest %}home{% endblock %}.json">
+    <link id="styles" rel="stylesheet" href="{% block styles %}{% endblock %}">
+</head>
+{% block body %}{% endblock %}
+</html>

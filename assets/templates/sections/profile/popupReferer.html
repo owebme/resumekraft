@@ -24,7 +24,7 @@
     var $ = this;
 
     $.supportClip = _.supportClipboard();
-    $.link = 'http://resumekraft.ru/rf' + $account.get('_id');
+    $.link = app.domain() + '/rf' + $account.get('_id');
 
     $.show = function(){
         $.update({

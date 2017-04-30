@@ -36,6 +36,7 @@ module.exports = function(){
 
                 res.render('jobs', {
                     title: "Вакансии компании «" + employer.name + "», работа в компании в " + employer.area.name,
+                    image: results.employer.logo_urls && results.employer.logo_urls.original || null,
                     device: req.device.type,
                     content: app.riot.render(app.tags("employer", req.device), req.appClient)
                     .replace(/<raw-content content=".+?">/, "")

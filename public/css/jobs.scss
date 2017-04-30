@@ -44,7 +44,7 @@
 @import 'sections/jobs/jobs';
 @import 'sections/jobs/footer';
 @import 'sections/jobs/sidebar';
-@import 'sections/jobs/informers';
+@import 'sections/jobs/aside';
 @import 'sections/jobs/search/nav/nav';
 @import 'sections/jobs/search/nav/header';
 @import 'sections/jobs/search/nav/menu';
@@ -52,7 +52,6 @@
 @import 'sections/jobs/search/search';
 @import 'sections/jobs/search/list';
 @import 'sections/jobs/search/filter';
-@import 'sections/jobs/search/aside';
 @import 'sections/jobs/search/pages';
 @import 'sections/jobs/search/progress';
 
@@ -105,4 +104,5 @@
 @import '../../assets/css/states/responsive/margin';
 @import '../../assets/css/states/responsive/padding';
 @import '../../assets/css/states/responsive/position';
+@import '../../assets/css/states/responsive/sizes';
 @import '../../assets/css/states/responsive/text';

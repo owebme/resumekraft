@@ -35,8 +35,8 @@
 }
 
 #t4 #t-header-names {
-    padding-top: 98px;
-    margin-left: -13px;
+    padding-top: 90px;
+    margin-left: -6px;
     margin-bottom: -4px;
     white-space: nowrap;
 
@@ -176,6 +176,12 @@
 #t4 .t-container {
     position: relative;
     margin: 68px 0;
+
+    &.t-container-skills {
+        .t-container-item {
+            line-height:32px;
+        }
+    }
 }
 
 #t4 .t-container-name {

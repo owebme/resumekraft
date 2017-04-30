@@ -2,11 +2,11 @@
     "resume": {
         "importLimit": {
             "free": 2,
-            "premium": 999
+            "premium": 10
         },
         "sendmailLimit": {
             "free": 2,
-            "premium": 999
+            "premium": 10
         },
         "pdf": {
             "width": "1218",

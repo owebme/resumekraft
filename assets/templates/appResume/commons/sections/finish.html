@@ -66,7 +66,7 @@
     $.on("mount", function(){
         $.share = new app.plugins.share($.root, {
             buttons: ".share__item",
-            url: app.demo ? 'http://resumekraft/premium/' : 'http://resumekraft/resume/' + $store.resume.get('_id'),
+            url: app.demo ? app.domain() + '/premium/' : app.domain() + '/resume/' + $store.resume.get('_id'),
             share: {
                 title: function(){
                     if (app.demo){

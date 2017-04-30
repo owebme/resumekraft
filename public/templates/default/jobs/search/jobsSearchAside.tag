@@ -22,6 +22,13 @@
             <div class="jobs__blockInfo__text">{ get.data("traffic").status.ru }</div>
         </a>
     </div>
+    <a href="http://rehh.ru" class="jobs__blockAddress">
+        <div class="jobs__blockAddress__label">наш короткий адрес</div>
+        <div class="jobs__blockAddress__title">rehh.ru</div>
+    </a>
+    <div class="jobs__webmobile">
+        <div class="jobs__webmobile__title">Наш ресурс доступен на мобильных устройствах</div>
+    </div>
 
 <script>
 
@@ -33,9 +40,10 @@
         },
         traffic: function(){
             var level = $.parent.opts.informers.traffic.level;
+
                  if (level == 1) return level + " балл";
             else if (level > 1 && level < 5) return level + " балла";
-            else if (level > 4) return level + " баллов";
+            else if (level > 4 || level == 0) return level + " баллов";
         }
     }
 

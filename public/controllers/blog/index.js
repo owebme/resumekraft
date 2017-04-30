@@ -37,6 +37,7 @@ module.exports = function(){
 
                 res.render('index', {
                     title: app.config.public.get('title:blog'),
+                    image: app.config.public.get('domain') + "/public/images/popup/blog.png",
                     content: output,
                     device: req.device.type,
                     isMobile: req.device.isMobile

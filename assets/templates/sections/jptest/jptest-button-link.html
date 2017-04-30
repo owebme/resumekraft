@@ -16,7 +16,7 @@
 
     $.onClip = function(){
         if (!app.device.isMobile && $.supportClip){
-            _.copyToClip("http://resumekraft/jp-test/#" + window.$jp.link);
+            _.copyToClip(app.domain() + "/jp-test/#" + window.$jp.link);
 
             $Notify.show({
                 color: "dark",

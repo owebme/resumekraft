@@ -22,8 +22,10 @@
                     <div class="resumeOffer">
                         <div class="resumeOffer__title">У вас уже есть продающее резюме?</div>
                         <div class="resumeOffer__container">
-                            <a target="_blank" href="/premium/"><img class="resumeOffer__image" src="/public/images/jobs/banners/premium-banner-mini.png"></a>
-                            <div class="resumeOffer__text">Создайте премиальное резюме нового формата, чтобы работодатели смогли заметить вас и пригласить на работу.</div>
+                            <a target="_blank" href="/premium/">
+                                <div class="resumeOffer__image"></div>
+                                <div class="resumeOffer__text">Создайте премиальное резюме нового формата, чтобы работодатели смогли заметить вас и пригласить на работу.</div>
+                            </a>
                         </div>
                         <a target="_blank" href="/premium/" class="btn-default btn-l btn-white">Узнать больше</a>
                     </div>

@@ -24,6 +24,10 @@ section-order-writing {
     &__content {
         width:640px;
         @extend .centered;
+
+        html.d-phone & {
+            @extend .w100p;
+        }
     }
     &__item {
         @include accelerate();
@@ -51,7 +55,7 @@ section-order-writing {
             transition-delay:0.1s;
             @extend .pointerEvents-all;
 
-            &:hover {
+            html.m-no-touch &:hover {
                 @extend .opacity-100;
             }
         }
@@ -81,6 +85,10 @@ section-order-writing {
             transition:opacity 0.4s;
             @extend .pointerEvents-none;
 
+            html.d-phone & {
+                @extend .pl25;
+                @extend .pr25;
+            }
             &[data-item="active"]{
                 @extend .opacity-100;
                 @extend .pointerEvents-all;
@@ -94,6 +102,10 @@ section-order-writing {
             @extend .fontSize-18;
             @extend .lineHeight-l;
             @extend .mb30;
+
+            html.d-phone & {
+                @include textEllipsis(100%, 86px, 3);
+            }
         }
     }
     &__arrow {

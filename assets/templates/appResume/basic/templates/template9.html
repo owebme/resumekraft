@@ -97,12 +97,7 @@
 				<div class="t-container-about">
 					<div class="t-container-about-title">
 						{ $resume.get('commons', 'contacts', 'city', 'name') },
-						<span>
-							{ $resume.take.birthday.age() }
-							<em if={ !$resume.get('commons', 'birthday', 'hidden') }>
-								({ $resume.take.birthday.date() })
-							</em>
-						</span>
+						<span>{ $resume.take.birthday.age() }</span>
 					</div>
 					<div class="t-container-about-desc preline">
 						{ $resume.get('about') }

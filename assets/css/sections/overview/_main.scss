@@ -241,6 +241,8 @@
                 background-image:url('/public/images/promo/phone_black_large.png');
 
                 html.d-tablet.r-landscape & {
+                    width:513px;
+                    height:832px;
                     background-image:url('/public/images/promo/phone_black_medium_2x.png');
                 }
                 html.d-retina.d-no-tablet &,
@@ -254,6 +256,13 @@
                 width:316px;
                 height:562px;
                 @extend .overflow-hidden;
+
+                html.d-tablet.r-landscape & {
+                    top:132px;
+                    left:143px;
+                    width:264px;
+                    height:470px;
+                }
             }
         }
         &__nav {

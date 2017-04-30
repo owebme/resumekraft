@@ -64,6 +64,11 @@
         $.value = value;
     };
 
+    $.onClear = function(){
+        $.onUpdate(this, "");
+        $.update();
+    };
+
     $.autosuggest = {
 
         el: null,

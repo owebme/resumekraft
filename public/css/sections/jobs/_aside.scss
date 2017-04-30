@@ -1,0 +1,171 @@
+.jobs__search__aside {
+    width:240px;
+    @extend .trX-s;
+}
+.jobs__blockAddress {
+    @extend .pos-rel;
+    @extend .display-block;
+    @extend .c-white;
+    @extend .bg-pink;
+    @extend .plr-s;
+    @extend .h62;
+
+    html.d-phone & {
+        padding-left:17.5px;
+        padding-right:17.5px;
+    }
+    &__label {
+        @extend .pos-abs;
+        @extend .t-xs;
+        @extend .l-s;
+        @extend .xs-mt-xxs;
+        @extend .xs-ml-xl;
+        font-size:11.5px;
+        @extend .text-uppercase;
+    }
+    &__title {
+        @extend .fontSize-18;
+        @extend .fontWeight-bold;
+        padding-top:28px;
+        @extend .text-right;
+
+        html.d-phone & {
+            @extend .fontSize-22;
+            @extend .letterSpacing-0;
+        }
+    }
+}
+.jobs__blockHomeScreen {
+    @extend .flex-row-center-stretch;
+    @extend .pt25;
+    @extend .pb25;
+    @extend .c-white;
+    @extend .bg-steel;
+    @extend .overflow-hidden;
+    height:118px;
+
+    &__image {
+        @extend .pos-rel;
+        @extend .w40p;
+
+        &:after {
+            @extend .content-empty;
+            @extend .pos-centered-h;
+            top:-14px;
+            @include ui-icon("homescreen_white", 128px, 128px);
+        }
+    }
+    &__title {
+        @extend .flex-centered;
+        @extend .w60p;
+        @extend .pr-l;
+    }
+}
+.jobs__webmobile {
+    @extend .mt--1;
+    @extend .p-m;
+    @extend .borderRadiusBottom-xs;
+    border:1px dashed rgba($silver,.4);
+
+    &:before {
+        @extend .content-empty;
+        @extend .display-block;
+        width:204px;
+        height:434px;
+        @extend .bg-cover;
+        @extend .centered;
+        background-image:url(/public/images/jobs/banners/web-mobile.png);
+    }
+    &__title {
+        @extend .c-silver;
+        @extend .text-center;
+    }
+}
+.jobs__blockInfo {
+    @extend .mb-l;
+
+    &__tile {
+        @extend .display-block;
+        @extend .pos-rel;
+
+        &__weather {
+            @extend .pt30;
+            @extend .mb-l;
+
+            &:before {
+                @extend .content-empty;
+                @extend .display-block;
+                @extend .centered;
+                @extend .mb25;
+                @include ui-icon("city", 120px, 120px);
+            }
+            .jobs__blockInfo__text {
+                @extend .mb-m;
+            }
+            .jobs__blockInfo__title {
+                @extend .c-silver;
+            }
+        }
+        &__currency {
+            @extend .pt-l;
+            @extend .mb50;
+
+            .jobs__blockInfo__currency {
+                &:first-child {
+                    @extend .lineHeight-18;
+                }
+                &:last-child {
+                    @extend .lineHeight-32;
+                    margin-left:-4px;
+                }
+            }
+            .jobs__blockInfo__devider {
+                margin:3px 0;
+            }
+        }
+        &__traffic {
+            .jobs__blockInfo__title {
+                @extend .mb-xxs;
+            }
+            .jobs__blockInfo__label {
+                @extend .trY--l;
+            }
+        }
+    }
+    &__label {
+        @extend .c-silver;
+        @extend .fontSize-12;
+        @extend .text-uppercase;
+    }
+    &__title {
+        @extend .c-blue;
+        @extend .fontSize-20;
+        @extend .fontWeight-bold;
+    }
+    &__text {
+        @extend .c-silver;
+        @extend .fontSize-16;
+    }
+    &__devider {
+        @extend .h1px;
+        @extend .bg-silver;
+        @extend .opacity-30;
+        @extend .mtb-xs;
+        @extend .trX--xs;
+        width:calc(100% + 10px);
+    }
+    &__weather {
+        @extend .c-blue;
+        @extend .fontSize-26;
+        @extend .letterSpacing--xs;
+        @extend .fontWeight-bold;
+        @extend .mb-xs;
+    }
+    &__currency {
+        @extend .c-silver;
+        @extend .fontSize-22;
+        @extend .fontWeight-bold;
+        @extend .letterSpacing--xs;
+    }
+
+}

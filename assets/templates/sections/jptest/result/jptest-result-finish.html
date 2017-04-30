@@ -32,7 +32,7 @@
         </div>
     </div>
 
-    <a href="mailto:?subject=Пройден JP-тест 2.0. Результаты&body=http://resumekraft/jp-test/#{ window.$jp.link }" class="button-mail">
+    <a href="mailto:?subject=Пройден JP-тест 2.0. Результаты&body={ app.domain() }/jp-test/#{ window.$jp.link }" class="button-mail">
         <icon-replymail color={ app.device.isPhone ? 'blueBright' : 'yellowBright' } size="l"></icon-replymail>
     </a>
 
@@ -41,7 +41,7 @@
     this.on("mount", function(){
         this.share = new app.plugins.share(this.root, {
             buttons: ".jptest-result-share-item",
-            url: 'http://resumekraft.ru/jp-test/',
+            url: app.domain() + '/jp-test/',
             share: {
                 title: 'Всем рекомендую пройти новый бесплатный тест на профориентацию личности'
             }

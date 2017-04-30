@@ -142,6 +142,7 @@
                 @extend .pl-m;
                 @extend .plr-mobile;
                 @extend .c-white;
+                @extend .text-center-xs;
 
                 &__title {
                     @extend .pos-rel;
@@ -155,7 +156,7 @@
                     margin-bottom:24px;
                     letter-spacing:-0.016em;
 
-                    html.d-tablet & {
+                    html.d-mobile & {
                         @extend .w100p;
                     }
                     &:before {
@@ -164,18 +165,36 @@
                         @extend .w5;
                         @extend .h55;
                         @extend .bg-yellowBright;
+
+                        html.d-phone & {
+                            @extend .h80;
+                        }
                     }
                 }
                 &__container {
                     @extend .pos-rel;
                     height:137px;
+
+                    html.d-phone & {
+                        @extend .h-auto;
+                    }
                 }
                 &__image {
                     @extend .pos-abs;
                     @extend .t--xxs;
                     @extend .l0;
-                    width:210px;
-                    height:114px;
+                    @extend .bg-cover;
+                    // width:210px;
+                    // height:114px;
+                    width:195px;
+                    height:128px;
+                    background-image:url(/public/images/jobs/banners/premium-banner-mini2.png);
+
+                    html.d-phone & {
+                        @extend .pos-rel;
+                        @extend .centered-h;
+                        @extend .mb-xxs;
+                    }
                 }
                 &__text {
                     @extend .opacity-0;
@@ -183,11 +202,21 @@
                     font-size:17px;
                     @extend .lineHeight-28;
                     margin-bottom:16px;
+
+                    html.d-phone & {
+                        @extend .opacity-100;
+                    }
                 }
                 .btn-default {
                     @extend .float-left;
                     @extend .w200;
                     @extend .borderRadius-xs;
+
+                    html.d-phone & {
+                        @extend .w100p;
+                        @extend .h50;
+                        line-height:50px;
+                    }
                 }
             }
         }

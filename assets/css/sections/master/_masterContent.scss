@@ -9,9 +9,9 @@
             line-height:62px;
             @extend .pointerEvents-none;
 
-            // html.d-xlargeScreen & {
-            //     font-size:72px;
-            // }
+            html.d-xlargeScreen & {
+                font-size:72px;
+            }
             &__inner {
                 @extend .pos-rel;
                 @include accelerate();
@@ -31,9 +31,9 @@
                     @extend .borderRadius-xs;
                     @extend .zIndex--1;
 
-                    // html.d-xlargeScreen & {
-                    //     @extend .t85;
-                    // }
+                    html.d-xlargeScreen & {
+                        @extend .t85;
+                    }
                 }
             }
         }
@@ -46,23 +46,23 @@
         @extend .letterSpacing-xs;
         @extend .pointerEvents-none;
 
-        // html.d-xlargeScreen & {
-        //     font-size:23.5px;
-        //     @extend .letterSpacing-xs;
-        //
-        //     &[data-pos="left"]{
-        //         left:9.375vw;
-        //     }
-        //     &[data-pos="right"]{
-        //         right:9.375vw;
-        //     }
-        //     &[data-pos="top"]{
-        //         top:8.58vh;
-        //     }
-        //     &[data-pos="bottom"]{
-        //         bottom:8.58vh;
-        //     }
-        // }
+        html.d-xlargeScreen & {
+            font-size:23.5px;
+            @extend .letterSpacing-xs;
+
+            &[data-pos="left"]{
+                left:9.375vw;
+            }
+            &[data-pos="right"]{
+                right:9.375vw;
+            }
+            &[data-pos="top"]{
+                top:8.58vh;
+            }
+            &[data-pos="bottom"]{
+                bottom:8.58vh;
+            }
+        }
         html.d-tablet & {
             font-size:20px;
             @extend .letterSpacing-xs;
@@ -100,9 +100,9 @@
                 @extend .pb-s;
                 @extend .willChange-tp;
             }
-            // html.d-xlargeScreen & {
-            //     @extend .pb-m;
-            // }
+            html.d-xlargeScreen & {
+                @extend .pb-m;
+            }
             html.m-no-touch &:hover {
                 .master__block__link {
                     @extend .c-yellowBright;

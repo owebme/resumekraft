@@ -11,6 +11,7 @@ module.exports = function(){
 
                 res.render('index', {
                     title: data.item.name,
+                    image: app.config.public.get('domain') + data.item.image,
                     content: output,
                     device: req.device.type,
                     isMobile: req.device.isMobile

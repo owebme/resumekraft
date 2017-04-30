@@ -15,7 +15,7 @@
         svg path {
             @extend .fill-gray;
         }
-        &:hover {
+        html.m-no-touch &:hover {
             .icon {
                 transform:translateY(-5px);
             }
@@ -33,19 +33,32 @@
         @extend .pos-tr;
         @extend .pb-s;
         border-bottom:1px solid rgba($gray,.25);
+
+        html.d-tablet & {
+            @extend .mr--l;
+        }
     }
     &[data-pos="left"]{
         @extend .pos-tl-fixed;
         @extend .pointerEvents-none;
         @extend .visibility-hidden;
-        transition:transform .5s $cubic075, visibility .5s 0s;
-        transform:translate3d(-50px, 80px, 0);
+        transition:visibility .5s 0s;
+        transform:translate3d(0, 80px, 0);
 
         .blog__social__panel__item {
+            @include accelerate();
             @extend .flex-centered;
             @extend .w70;
             height:74px;
+            transform:scaleX(3) translate3d(-50px, 0, 0);
+            transform-origin:0% 50%;
+            transition:transform .5s $cubic075;
 
+            @for $i from 2 through 4 {
+                &:nth-child(#{$i}){
+                    transition-delay:#{(($i - 1) / 20)}s;
+                }
+            }
             .icon {
                 @extend .m0;
                 transition:transform .3s $cubic075;
@@ -83,7 +96,7 @@
                     }
                 }
             }
-            &:hover {
+            html.m-no-touch &:hover {
                 .icon {
                     transform:scale(1.25);
                 }
@@ -97,8 +110,18 @@
         &[data-active="true"]{
             @extend .pointerEvents-all;
             @extend .visibility-visible;
-            transition:transform .5s $cubic075, visibility 0s;
-            transform:translate3d(33px, 80px, 0);
+            transition:visibility 0s;
+
+            .blog__social__panel__item {
+                transition:transform .7s $cubic345;
+                transform:scaleX(1) translate3d(33px, 0, 0);
+
+                @for $i from 2 through 4 {
+                    &:nth-child(#{$i}){
+                        transition-delay:#{(($i - 1) / 20)}s;
+                    }
+                }
+            }
         }
     }
     &[data-pos="center"]{

@@ -34,6 +34,7 @@
 
     <app-popups>
         <popup-premium></popup-premium>
+        <popup-homescreen></popup-homescreen>
     </app-popups>
 
     <app-offers>
@@ -89,7 +90,7 @@
                             if ($account.get("plan") == "free" && app.initQuery.plan == "premium"){
                                 $Sections.plan.show("premium", app.initQuery.period);
                             }
-                        }                        
+                        }
                     });
                 }
             });
@@ -116,6 +117,9 @@
     this.init = function(){
         app.initQuery = Url.parseQuery();
 
+        if (app.initQuery.standalone){
+            app.isStandalone = true;
+        }
         $Sections = {
             master: {
                 section: $root.tags["section-master"]
@@ -137,7 +141,8 @@
                 sendmail: $root.tags["resume-sendmail"]
             },
             popup: {
-                premium: $root.tags["popup-premium"]
+                premium: $root.tags["popup-premium"],
+                homescreen: $root.tags["popup-homescreen"]
             },
             offers: {
                 welcome: $root.tags["offer-welcome"],
@@ -192,19 +197,19 @@
                         minWidth: 768,
                         maxWidth: 1068,
                         reload: true
-                    },
-                    {
-                        title: "normal",
-                        minWidth: 1069,
-                        maxWidth: 1441,
-                        path: "/assets/css/style.css?" + _.newId()
-                    },
-                    {
-                        title: "large",
-                        minWidth: 1442,
-                        path: "/assets/css/style.largeScreen.css?" + _.newId(),
-                        refresh: true
                     }
+                    // {
+                    //     title: "normal",
+                    //     minWidth: 1069,
+                    //     maxWidth: 1441,
+                    //     path: "/assets/css/style.css?" + _.newId()
+                    // },
+                    // {
+                    //     title: "large",
+                    //     minWidth: 1442,
+                    //     path: "/assets/css/style.largeScreen.css?" + _.newId(),
+                    //     refresh: true
+                    // }
                 ],
                 callback: function(screen){
                     if ($Sections && $Sections.resume && $Sections.resume.edit && $Sections.resume.edit.active){

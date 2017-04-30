@@ -27,7 +27,7 @@ module.exports = function(){
     	return combiner(
     		gulp.src('public/css/style.css'),
     		px2vw({
-    			width: 1400,
+    			width: 1440,
     			minPx: 2,
     			maxPx: 10000,
     			replace: true
@@ -62,7 +62,7 @@ module.exports = function(){
     	}));
     });
 
-    gulp.task('public.mobile.smallScreen', function() {
+    gulp.task('public.css.smallScreen', function() {
     	return combiner(
     		gulp.src('public/css/style.mobile.css'),
     		px2vw({

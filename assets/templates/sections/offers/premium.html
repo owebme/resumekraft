@@ -35,6 +35,7 @@
     });
 
     $.show = function(callback){
+        $.iPreloader.start();
         $.section.show({
             // forceShow: true,
             beforeShow: function(){
@@ -60,11 +61,50 @@
         });
     };
 
+    $.iPreloader = {
+        selector: ".offer__premium__slider__item",
+        start: function(){
+           this.el = $$($.content);
+           this.el.find($.iPreloader.selector + ":not(:first)").css("display", "none");
+           this.onSlide(0);
+           $.slider.on("slide", function(slide){
+               $.iPreloader.onSlide(slide - 1);
+           });
+        },
+        onSlide: function(slide){
+            if ($.imagesLoaded){
+                $.imagesLoaded.destroy();
+                $.imagesLoaded = null;
+            }
+            var $slide = $.iPreloader.el.find($.iPreloader.selector + ":eq(" + slide + ")");
+            if ($slide.length){
+                $slide.css("display", "block");
+                $.imagesLoaded = new app.plugins.imagesLoaded({
+                    container: $.iPreloader.el.find($.iPreloader.selector + ":eq(" + slide + ")")[0]
+                });
+                $.imagesLoaded.load({
+                    timeout: 2000
+                });
+                if (slide > 0){
+                    $afterlag.xl(function(){
+                        var $prevSlide = $.iPreloader.el.find($.iPreloader.selector + ":eq("+ (slide - 1) +")");
+                        $prevSlide.css("display", "none");
+                        $prevSlide.find(".offer__premium__slider__image").addClass("progressive-image");
+                    });
+                }
+            }
+        }
+    };
+
     $.hide = function(callback){
         $.section.hide({
             beforeHide: function(){
                 $.slider.onReset();
+                $.slider.off("slide");
                 $.slider.off("success");
+                if ($.imagesLoaded){
+                    $.imagesLoaded.destroy();
+                }
                 if (_.isFunction($.callback)) $.callback();
             },
             afterHide: function(){

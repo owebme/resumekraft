@@ -1,0 +1,63 @@
+{% extends "layouts/basic.html" %}
+
+{% block title %}{{ title | safe }}{% endblock %}
+
+{% block viewport %}width={% if device == 'tablet' %}1000{% else %}device-width{% endif %}, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no{% endblock %}
+
+{% block image %}{% if image %}{{ image }}{% else %}https://resumekraft.ru/assets/images/favicons/120.png{% endif %}{% endblock %}
+
+{% block manifest %}jobs{% endblock %}
+
+{% block styles %}{{ cachify('/public/css/jobs.css') }}{% endblock %}
+
+{% block body %}
+<body id="renderServer"{% if device == "phone" %} class="appLoading"{% endif %}>
+
+    {{ content | safe }}
+
+    {% if device == "phone" %}
+        <div id="loader">
+            <div class="loader-spinner"></div>
+        </div>
+    {% endif %}
+
+    <section-notify></section-notify>
+    <ui-dropmenu></ui-dropmenu>
+    <popup-homescreen></popup-homescreen>
+
+    <script src="{{ cachify('/public/js/app.build.jobs.js') }}"></script>
+
+    {% if clusters %}
+    <script>
+        {% if state %}
+            $store.jobs.state = {{ state | safe }};
+        {% endif %}
+        $store.jobs.clusters = {{ clusters | safe }};
+        $store.jobs.items = {{ items | safe }};
+        $store.jobs.pages = {{ pages }};
+        $store.jobs.found = {{ found }};
+    </script>
+    {% endif %}
+
+    {% if item %}
+    <script>
+        $store.jobs.item = {{ item | safe }};
+    </script>
+    {% endif %}
+
+    <script src="{{ cachify('/public/js/jobs/init.js') }}"></script>
+
+    {% if device != 'phone' %}
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.8&appId=1807891412771161";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    {% endif %}
+
+</body>
+{% endblock %}

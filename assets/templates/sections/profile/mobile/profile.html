@@ -75,7 +75,7 @@
                             <span onClick={ open.personalData } onUpdate="none" class="link-underline link-default-hover-warning fontSize-22 nowrap">Изменить данные</span>
                         </div>
                         <div>
-                            <span class="link-underline link-default-hover-warning fontSize-22 nowrap">Сменить пароль</span>
+                            <span onClick={ open.changePassword } onUpdate="none" class="link-underline link-default-hover-warning fontSize-22 nowrap">{ !$account.get("login") ? 'Вход по паролю' : 'Сменить пароль' }</span>
                         </div>
                     </div>
                 </div>
@@ -122,6 +122,9 @@
         changePlan: function(){
             $Sections.plan.show("premium");
         },
+        changePassword: function(){
+            $Sections.profile.password.show();
+        },
         payment: function(){
             $Sections.payment.show();
         },
@@ -148,7 +151,7 @@
                     {
                         title: 'Пароль аккаунта',
                         callback: function(){
-
+                            $Sections.profile.password.show();
                         }
                     },
                     {

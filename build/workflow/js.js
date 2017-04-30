@@ -40,6 +40,7 @@ module.exports = function(){
             'preview/js/config.js',
             'preview/js/init.js'])
     		.pipe(concat('workflow.build.js'))
+            .pipe(uglify())
     		.pipe(gulp.dest('./preview/js'));
     });
 }

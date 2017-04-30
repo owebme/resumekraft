@@ -1,0 +1,49 @@
+{% extends "layouts/basic.html" %}
+
+{% block title %}Личный кабинет // ResumeKraft{% endblock %}
+
+{% block viewport %}width={% if device == 'tablet' %}1000{% else %}device-width{% endif %}, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no{% endblock %}
+
+{% block manifest %}private{% endblock %}
+
+{% block styles %}{% if device == 'phone' %}{{ cachify('/assets/css/style.mobile.css') }}{% else %}{{ cachify('/assets/css/style.css') }}{% endif %}{% endblock %}
+
+{% block body %}
+<body class="appLoading">
+
+    <div id="loader" data-loader="user" data-fadeIn="true">
+        <div class="loader-container">
+            <div class="loader-user"
+
+            {% if !user.oauth && user.photo %}
+                style="background-image:url({{ user.photo }})"
+            {% endif %}
+
+            {% if user.oauth %}
+                data-oauth="{{ user.oauth.channel }}"
+            {% endif %}
+
+            {% if !user.oauth && !user.photo %}
+                data-empty="true"
+            {% endif %}>
+
+            {% if user.oauth && user.oauth.avatar %}
+                <div class="loader-user-avatar" style="background-image:url({{ user.oauth.avatar }})"></div>
+            {% endif %}
+
+            </div>
+            <div class="loader-spinner"></div>
+            <div class="loader-text">
+                <div class="loader-name">{% if user.name || user.surname %}{{ user.name }} {{ user.surname }}{% else %}Пользователь{% endif %}</div>
+                <div class="loader-title">Вхожу в кабинет</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ cachify('/assets/js/libs.js') }}"></script>
+    <script src="{{ cachify('/assets/js/app.build.js') }}"></script>
+
+    <link rel="stylesheet" href="{% if isMobile %}{{ cachify('/assets/css/appResume/basic/templates/style.view.css') }}{% else %}{{ cachify('/assets/css/appResume/basic/templates/style.css') }}{% endif %}">
+
+</body>
+{% endblock %}

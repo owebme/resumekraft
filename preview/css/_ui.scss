@@ -98,10 +98,10 @@
         @extend .willChange-transform;
         transition:transform .5s $cubic075;
 
-        &:hover {
+        html.m-no-touch &:hover {
             transform:translate3d(0, 0, 0) scale(1.25);
         }
-        &:active {
+        html.m-no-touch &:active {
             transform:translate3d(0, 1px, 0) scale(0.9);
         }
     }

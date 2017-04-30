@@ -1,0 +1,21 @@
+{% extends "layouts/basic.html" %}
+
+{% block title %}Премиальное резюме нового формата на Resumekraft{% endblock %}
+
+{% block styles %}{{ cachify('/public/css/style.css') }}{% endblock %}
+
+{% block body %}
+<body id="renderSide">
+
+    <offer-premium-content></offer-premium-content>
+
+    <script src="{{ cachify('/public/js/app.promo.build.js') }}"></script>
+
+    <script>
+        riot.compile(function(e){
+            riot.mount("*", { site: true });
+        });
+    </script>
+
+</body>
+{% endblock %}

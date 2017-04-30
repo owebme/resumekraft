@@ -89,26 +89,29 @@ jptest-content {
         will-change:background-color, color;
         transition:background-color 0.55s $cubic075, color 0.55s $cubic089;
 
+        html.m-touch & {
+            &:active {
+                @extend .c-black;
+                @extend .bg-yellowBright;
+            }
+            &:after {
+                @extend .display-none;
+            }
+        }
         html.d-phone & {
             @extend .h50p;
             @extend .c-blueBright;
             @extend .plr-m;
             @extend .overflow-hidden;
 
-            &:active {
-                @extend .c-black;
-                @extend .bg-yellowBright;
-            }
             &:nth-child(1){
                 border-bottom:2px dashed darken($smokeLight,15%);
-            }
-            &:after {
-                @extend .display-none;
             }
         }
         &__item {
             @extend .opacity-0;
             @extend .willChange-tp;
+            max-width:680px;
             transform:translate3d(0, 50vh, 0);
 
             html.d-phone & {

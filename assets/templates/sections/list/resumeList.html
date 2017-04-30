@@ -38,8 +38,12 @@
     <master-launcher></master-launcher>
     <messenger-launcher></messenger-launcher>
 
-    <div onClick={ open.sharePanel } class="resume__list__shareButton">
+    <div if={ !app.device.isMobile || app.device.isMobile && app.isStandalone } onClick={ open.sharePanel } class="resume__list__shareButton">
         <div class="resume__list__shareButton__text">Поделиться сервисом</div>
+    </div>
+
+    <div if={ app.device.isMobile && !app.isStandalone } onClick={ open.addHomeScreen } onUpdate="none" class="resume__list__shareButton">
+        <div class="resume__list__shareButton__text">Добавить на главный экран</div>
     </div>
 
     <share-panel title={ app.config.share.title } url={ app.domain() } color="white" size="m" tooltip="true"></share-panel>
@@ -121,6 +125,9 @@
         sharePanel: function(){
             $.overlay = true;
             $.sharePanel.show();
+        },
+        addHomeScreen: function(){
+            $Sections.popup.homescreen.show();
         }
     };
 

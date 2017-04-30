@@ -30,7 +30,7 @@
     };
     n.handleScroll = function(a) {
         if (typeof a !== "number") {
-            a = window.pageYOffset || (document.documentElement || document.body).scrollTop || a.target.scrollTop;
+            a = window.pageYOffset || (document.documentElement || document.body).scrollTop || (a.target && a.target.scrollTop);
         }
         var b;
         if (a < this.min) {

@@ -195,6 +195,42 @@
             transform:translateY(3px);
         }
     }
+    .input-clear {
+        @extend .display-none;
+        @extend .pos-tr;
+        @extend .w35;
+        @extend .h100p;
+        @extend .cursor-pointer;
+
+        html.d-phone & {
+            @extend .r-auto;
+            @extend .l0;
+            @extend .w50;
+
+            &:after {
+                @extend .w28;
+                @extend .h28;
+                @extend .mt--1;
+            }
+        }
+        &:after {
+            @extend .content-empty;
+            @extend .pos-centered;
+            @extend .bg-white;
+            @include ui-icon("close_strong_gray", 20px, 20px);
+        }
+        &:before {
+            @extend .content-empty;
+            @extend .pos-centered-v;
+            @extend .r75;
+            width:6px;
+            @extend .h90p;
+            @extend .bg-white;
+        }
+        &[data-visible="true"]{
+            @extend .display-block;
+        }
+    }
     .input-group-l .input-icon {
         @extend .w50;
 

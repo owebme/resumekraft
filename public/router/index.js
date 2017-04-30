@@ -121,6 +121,7 @@ module.exports = function(){
 
     require(process.cwd() + '/public/controllers/auth/passport')('/auth');
     require(process.cwd() + '/public/controllers/auth/remember')('/remember');
+    require(process.cwd() + '/public/controllers/support')('/private/support');
     require(process.cwd() + '/assets/API')('/private/api');
     require(process.cwd() + '/public/API')('/public/api');
 }

@@ -122,9 +122,9 @@ app.use(function(req, res, next) {
     }
     else {
         req.account = {
-            plan: "free"
+            plan: "premium"
         }
-        req.accountId = app.utils.ObjectId('58febc2354e905a282ccf03f');
+        req.accountId = app.utils.ObjectId('58febc8f54e905a282ccf040');
     }
     req.device.type = req.query.debug ? req.query.debug : req.device.type;
     req.clientIP = app.utils.getClientAddress(req);

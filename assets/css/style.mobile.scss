@@ -65,6 +65,9 @@
 @import 'sections/master/mobile/masterLauncher';
 @import 'sections/master/mobile/ui';
 
+// messenger
+@import 'sections/messenger/mobile/messenger';
+
 // plan
 @import 'sections/plan/plan';
 
@@ -116,3 +119,4 @@
 @import 'states/responsive/margin';
 @import 'states/responsive/padding';
 @import 'states/responsive/text';
+@import 'states/responsive/sizes';

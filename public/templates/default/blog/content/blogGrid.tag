@@ -20,7 +20,7 @@
                 <div if={ i == 0 } class="col-md-8">
                     <div class="blog__grid__item blog__grid__item--blockInfo" data-grid="v1">
                         <a target="_blank" href="https://yandex.ru/pogoda/moscow" class="display-block">
-                            <div class="pos-tl p-m ml-xs fontSize-14 opacity-85 text-uppercase">сегодня</div>
+                            <div class="pos-tl p-m ml-xs md-pl-s fontSize-14 opacity-85 text-uppercase">сегодня</div>
                             <canvas id="blog__grid__weather__canvas" class="mb-m"></canvas>
                             <div class="fontSize-34 fontWeight-8 mb-xs nowrap">{ get.data("weather").from }° ... { get.data("weather").to }°</div>
                             <div class="fontSize-22 opacity-85 mb-xxs">{ get.data("weather").type }</div>
@@ -54,9 +54,10 @@
         },
         traffic: function(){
             var level = $.opts.params.data.traffic.level;
+
                  if (level == 1) return level + " балл";
             else if (level > 1 && level < 5) return level + " балла";
-            else if (level > 4) return level + " баллов";
+            else if (level > 4 || level == 0) return level + " баллов";
         },
         image: function(url){
             return "http://resumekraft.ru/" + url.replace(/http:\/\/resumekraft\.ru\//g, "");

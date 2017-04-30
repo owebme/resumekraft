@@ -83,7 +83,7 @@
                 @extend .transition-default;
                 border-bottom:1px solid rgba($white,.5);
             }
-            &:hover {
+            html.m-no-touch &:hover {
                 @extend .c-yellowLight;
                 transform:translate3d(10px, 0, 0);
 

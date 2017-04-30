@@ -6,7 +6,7 @@
 
     <div class="container">
         <div class="blog__header__container row">
-            <div class="col-md-17">
+            <div class="col-md-16 col-lg-17">
                 <div class="blog__header__post">
                     <div class="blog__header__post__date mb-xxs anim-group1 anim-bt">
                         { opts.params.data.headers[0].date }, <span class="blog__header__post__time">{ opts.params.data.headers[0].time }</span>
@@ -21,7 +21,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-8 col-lg-7">
                 <div class="blog__header__list">
                     <div if={ i > 0 } each={ item, i in opts.params.data.headers } class="anim-group2 anim-bt { anim-delay-xs : i == 2, anim-delay-s : i == 3 }">
                         <a href="/blog/{ item.alias }" class="blog__header__list__item" data-first="{ i == 1 }">

@@ -73,6 +73,20 @@
                     }
                 });
 
+                if (Url.parseQuery().standalone){
+                    WD.el.find("jobs-footer").remove();
+                    if ($Sections.popup && $Sections.popup.homescreen){
+                        $Sections.popup.homescreen.unmount();
+                    }
+                }
+                else {
+                    WD.el.find("jobs-footer .jobs__blockHomeScreen").on("click", function(){
+                        if ($Sections.popup && $Sections.popup.homescreen){
+                            $Sections.popup.homescreen.show();
+                        }
+                    });
+                }
+
                 // WD.el.on("click", "a.map", function(e){
                 //     var $link = $(this),
                 //         address = $link.attr("data-addr");

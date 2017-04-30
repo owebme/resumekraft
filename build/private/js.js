@@ -63,7 +63,11 @@ module.exports = function(){
             'assets/js/plugins/scroll/scroll.Parallax.js',
             'assets/js/plugins/scroll/scroll.Parallax.build.js',
             'assets/js/plugins/scroll/scroll.Animation.build.js',
-            'assets/js/plugins/scroll/scroll.Animate.js'])
+            'assets/js/plugins/scroll/scroll.Animate.js',
+            'assets/js/plugins/imagesLoaded/imagesLoaded.js',
+            'assets/js/plugins/imagesLoaded/imagesLoaded.LiveQueue.js',
+            'assets/js/plugins/imagesLoaded/imagesLoaded.Queue.js',
+            'assets/js/plugins/imagesLoaded/imagesLoaded.QueueItem.js'])
     		.pipe(concat('plugins.js'))
     		.pipe(uglify())
     		.pipe(gulp.dest('./assets/js'));
@@ -125,6 +129,7 @@ module.exports = function(){
     	return gulp.src(['assets/templates/sections/*.html',
     		'assets/templates/sections/**/*.html',
             'assets/templates/sections/jptest/jptest-enter.tag',
+            'assets/templates/sections/overview/premium/overviewPremiumColor.tag',
             'assets/templates/sections/overview/premium/overviewPremiumContent.tag'])
     		.pipe(riot())
     		.pipe(concat('templates.sections.js'))

@@ -21,11 +21,9 @@
     this.on("mount", function(){
         this.share = new app.plugins.share(this.root, {
             buttons: ".shareButton__item",
-            url: 'http://resumekraft.ru',
+            url: app.domain(),
             share: {
-                title: function(){
-                    return $resume.get('post') ? $resume.get('post') : app.config.share.title;
-                }
+                title: app.config.share && app.config.share.title
             }
         })
     });

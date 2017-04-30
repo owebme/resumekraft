@@ -1,0 +1,52 @@
+<messenger-mobile class="oScreen zIndex-3 c-white" data-show="modal" data-color="dark" data-open="false" style="display:none">
+
+    <div onClick={ hide } onUpdate="none">
+        <div class="button__close opacity-60" data-color="white"></div>
+    </div>
+
+    <div class="oScreen__content">
+        <div class="messenger__mobile">
+            <div class="messenger__mobile__title">Выберите удобный канал общения</div>
+            <a href="mailto:inbox@resumekraft.ru" class="messenger__mobile__item" data-channel="el">
+                <icon-el size={ size } color="white"></icon-el>
+            </a>
+            <a href="https://web.telegram.org/#/im?p=@RKraftBot" target="_blank" class="messenger__mobile__item" data-channel="tg">
+                <icon-tg size={ size } color="white"></icon-tg>
+            </a>
+            <a href="https://m.me/resumekraft" target="_blank" class="messenger__mobile__item" data-channel="fb">
+                <icon-fb size={ size } color="white"></icon-fb>
+            </a>
+            <a href="https://vk.me/resumekraft" target="_blank" class="messenger__mobile__item" data-channel="vk">
+                <icon-vk size={ size } color="white"></icon-vk>
+            </a>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.size = "m";
+
+    // $.on("mount", function(){
+    //     $.show();
+    // });
+
+    $.show = function(){
+        $.root.style.display = "block";
+        $afterlag.xs(function(){
+            $.root.setAttribute("data-open", true);
+
+        });
+    };
+
+    $.hide = function(){
+        $.root.setAttribute("data-open", false);
+        _.onEndTransition($.root, function(){
+            $.root.style.display = "none";
+        })
+    };
+
+</script>
+
+</messenger-mobile>

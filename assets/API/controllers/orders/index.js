@@ -7,6 +7,7 @@ module.exports = function(){
 			app.db.collection('orders').insert({
                 accountId: req.accountId,
 				data: req.body.data,
+				status: "new",
 				device: req.device.type,
 				ua: req.device.ua,
 				ip: req.clientIP,

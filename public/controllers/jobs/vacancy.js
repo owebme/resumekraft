@@ -50,6 +50,7 @@ module.exports = function(){
 
             res.render('jobs', {
                 title: "Вакансия на должность «" + results.vacancy.name + "» в " + results.vacancy.area.name + ", работа в компании " + results.vacancy.employer.name,
+                image: results.vacancy.employer.logo_urls && results.vacancy.employer.logo_urls.original || null,
                 item: results.vacancy ? JSON.stringify(results.vacancy) : null,
                 device: req.device.type,
                 content: app.riot.render(app.tags("vacancy", req.device), req.appClient)

@@ -61,7 +61,7 @@ module.exports = function(){
     	}));
     });
 
-    gulp.task('private.mobile.css.smallScreen', function() {
+    gulp.task('private.css.smallScreen', function() {
     	return combiner(
     		gulp.src('assets/css/style.mobile.css'),
     		px2vw({

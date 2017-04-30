@@ -1,12 +1,12 @@
 <section-order-writing class="oScreen zIndex-3 c-white" data-show="modal" data-color="dark" data-open="false" style="display:none">
 
     <div onClick={ hide } onUpdate="none">
-        <div class="button__close opacity-80" data-color="white"></div>
+        <div class="button__close opacity-{ app.device.isPhone ? '60' : '80' }" data-color="white"></div>
     </div>
 
     <div name="area1" class="oScreen__content" data-hidden={ step != 1 }>
-        <div class="pos-centered { w100p : app.device.isPhone }">
-            <h1 class="mb45 opacity-75">Выберите эксперта</h1>
+        <div class="pos-centered mt--m w100p-xs">
+            <h1 class="mb45 xs-mb-m opacity-75 { fontSize-38 : app.device.isPhone }">Выберите эксперта</h1>
             <div class="carousel__list">
                 <div onClick={ nav.prev } class="carousel__arrow" data-arrow="prev"></div>
                 <div onClick={ nav.next } class="carousel__arrow" data-arrow="next"></div>
@@ -27,14 +27,14 @@
     </div>
 
     <div name="area2" class="oScreen__content" data-hidden={ step != 2 }>
-        <div class="pos-centered container { w100p : app.device.isPhone }">
+        <div class="pos-centered container w100p-xs">
             <div class="row">
                 <div class="col-md-16 col-lg-14 centered">
-                    <h1 class="mb-l opacity-75">Выберите ваш общий стаж</h1>
-                    <div class="plr-xl mb-m">
-                        <ui-select color="white" size="xl" commit={ commit.experience } value={ order.experience } items={ $store.dictionary.get('experience', 'ru') }></ui-select>
+                    <h1 class="mb-l xs-mb-m xs-pl-s xs-pr-l opacity-75 text-left-xs { fontSize-34 : app.device.isPhone }">Выберите ваш общий стаж</h1>
+                    <div class="plr-xl mb-m xs-plr-s xs-mb-s">
+                        <ui-select color="white" size="{ app.device.isPhone ? 'l' : 'xl' }" commit={ commit.experience } value={ order.experience } items={ $store.dictionary.get('experience', 'ru') }></ui-select>
                     </div>
-                    <div class="fontSize-20 opacity-85 plr-xl mb30">Стоимость услуги составляет 1.719 руб. с учетом НДС, предоплата не взымается.</div>
+                    <div class="fontSize-20 opacity-85 plr-xl mb30 xs-plr-s xs-mb-m">Стоимость услуги составляет 1.719 руб. с учетом НДС, предоплата не взымается.</div>
                     <div onClick={ onSuccess } onUpdate="none" class="btn btn-xl btn-upper btn-success">Отправить заказ</div>
                 </div>
             </div>
@@ -76,26 +76,26 @@
         {
             id: "1",
             photo: '/public/images/writing/photo1.png',
-            title: 'Алена Выходцева',
-            text: 'Более 9 лет опыта в подборе персонала в крупных международных компаниях, включая топовые консалтинговые компании, крупнейшую в мире торговую сеть и девелоперскую компанию.'
+            title: 'Ирина Беляева',
+            text: 'Более 7 лет работает в сфере подбора и оценки персонала в крупных московских компаниях. Начинала свою карьеру рекрутером в кадровом агентстве, затем продолжила в роли ведущего менеджера по подбору персонала внутри компании.'
         },
         {
             id: "2",
             photo: '/public/images/writing/photo4.png',
-            title: 'Людмила Авдонина',
-            text: 'С 2003 года работает в сфере управления персоналом в крупных холдинговых структурах. Имеет обширный опыт найма и подбора на вакансии в различных профессиональных областях.'
+            title: 'Светлана Тюгина',
+            text: 'Более 5 лет имела опыт работы в одном из ведущих кадровых агентств Москвы. Разнообразная отраслевая специализация по направлениям подбора: строительство, продажи, банки/финансы, маркетинг/PR, СМИ.'
         },
         {
             id: "3",
             photo: '/public/images/writing/photo2.png',
-            title: 'Еремеева Юлия',
-            text: 'Юлия работает в сфере подбора, оценки и обучения персонала более 13 лет. Из них более 2 лет в качестве консультанта по развитию карьеры.'
+            title: 'Мария Скокина',
+            text: 'На протяжении 4-ти лет имела опыт работы в должности менеджера по подбору персонала в кадровом агентстве Санкт-Петербурга. Основная специализация — компании фармацевтических и юридических сегментов рынка.'
         },
         {
             id: "4",
             photo: '/public/images/writing/photo3.png',
-            title: 'Лариса Сазонова',
-            text: 'Лариса более 10 лет работает в сфере подбора и оценки персонала в крупных компаниях, среди которых Microsoft и РБК. Выступала как в роли рекрутера на стороне агентства.'
+            title: 'Елена Темникова',
+            text: 'Большой опыт во внутреннем подборе персонала — 8 лет, более 3 лет работала специалистом в департаменте оценки, обучения и развития персонала в крупном производственном холдинге. Владеет методиками соционики, среди которых MBTI, PAEI.'
         }
     ]);
 
@@ -160,10 +160,13 @@
             data: $.order
         })
         .then(function(){
-            $Notify.show({
-                text: "Ваш заказ успешно отправлен, с вами свяжутся в ближайшее время",
-                timeout: 3
-            })
+            $afterlag.s(function(){
+                $Notify.show({
+                    color: "danger",
+                    text: "Приносим свои извинения, сейчас все специалисты заняты, как только один из сотрудников освободится, с вами свяжутся в ближайшее время.",
+                    timeout: 5
+                })
+            });
         });
         $.hide();
     };

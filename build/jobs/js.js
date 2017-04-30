@@ -58,6 +58,7 @@ module.exports = function(){
             'assets/templates/v3/modules/notify.html',
             'assets/templates/v3/ui/input.html',
             'assets/templates/ui/dropMenu.html',
+            'assets/templates/sections/popup/homescreen.html',
             'public/templates/client/**/*.html',
             'public/templates/default/jobs/search/jobsSearchContent.tag',
             'public/templates/default/jobs/search/jobsSearchListitem.tag',

@@ -1,0 +1,31 @@
+{% extends "layouts/basic.html" %}
+
+{% block title %}{% if post %}{{ post }} // ResumeKraft{% else %}Создать премиальное резюме на ResumeKraft{% endif %}{% endblock %}
+
+{% block styles %}{{ cachify('/assets/css/premium.css') }}{% endblock %}
+
+{% block body %}
+<body class="appLoading">
+
+    <root-main-view id="app" demo="{{ demo }}"></root-main-view>
+
+    <div id="loader" data-color="{{ color }}">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <script src="{{ cachify('/assets/js/libs.js') }}"></script>
+    <script src="{{ cachify('/assets/js/premium/app.build.js') }}"></script>
+    <script src="{{ cachify('/public/js/resume/config.js') }}"></script>
+
+{% if resume %}
+    <script>
+        app.json = {};
+        app.json.ip = "{{ ip }}";
+        app.json.resume = {{ resume | safe }};
+    </script>
+{% endif %}
+
+    <script src="{{ cachify('/assets/js/premium/init.js') }}"></script>
+
+</body>
+{% endblock %}

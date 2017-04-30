@@ -1,0 +1,36 @@
+{% extends "layouts/basic.html" %}
+
+{% block title %}{% if title %}{{ title | safe }}{% else %}Cервис создания резюме, помощь в составлении резюме, рекомендации профессионалов, примеры, образцы резюме. ResumeKraft{% endif %}{% endblock %}
+
+{% block image %}{% if image %}{{ image }}{% else %}https://resumekraft.ru/public/images/ogimage.png{% endif %}{% endblock %}
+
+{% block styles %}{% if device == 'phone' %}{{ cachify('/public/css/style.mobile.css') }}{% else %}{{ cachify('/public/css/style.css') }}{% endif %}{% endblock %}
+
+{% block body %}
+<body id="renderSide"{% if device == 'phone' %} class="appLoading"{% endif %}>
+
+    {{ content | safe }}
+
+    {% if device == "phone" %}
+    <div id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+    {% endif %}
+
+    {% if section == "jp-test" %}
+        <jptest-content></jptest-content>
+        <jptest-result></jptest-result>
+    {% endif %}
+
+    <section-auth></section-auth>
+    <section-notify></section-notify>
+    <section-loader-user></section-loader-user>
+
+    {% if device == 'phone' %}
+    <script src="{{ cachify('/public/js/app.build.mobile.js') }}"></script>
+    {% else %}
+    <script src="{{ cachify('/public/js/app.build.js') }}"></script>
+    {% endif %}
+
+</body>
+{% endblock %}

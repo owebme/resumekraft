@@ -13,8 +13,5 @@ app.config = {
         method: "addLog",
         report: false
     },
-    share: {
-        title: 'Создать крутое резюме и получить престижную работу'
-    },
     changeStyles: true
 };

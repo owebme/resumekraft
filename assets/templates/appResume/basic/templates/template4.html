@@ -5,7 +5,7 @@
 			<div id="t-header-name" class="t-header-name bold">{ $resume.get('commons', 'name') }</div>
 		</div>
 		<div if={ $resume.get('commons', 'surname') } id="t-header-names" data-long={ $resume.get('commons', 'name').length > 8 || $resume.get('commons', 'surname').length > 8 }>
-			<div if={ $resume.get('commons', 'name').length > $resume.get('commons', 'surname').length }>
+			<div if={ $resume.get('commons', 'name').length >= $resume.get('commons', 'surname').length }>
 				<div id="t-header-surname" class="t-header-name bold">{ $resume.get('commons', 'surname') }</div>
 				<div id="t-header-name" class="t-header-name">{ $resume.get('commons', 'name') }</div>
 			</div>
@@ -34,7 +34,7 @@
 		<div if={ $resume.get('post').length } id="t-header-post">{ $resume.get('post') }</div>
 	</div>
 	<div id="t-container-wrapper">
-		<div if={ $resume.get('tags').length } class="t-container">
+		<div if={ $resume.get('tags').length } class="t-container t-container-skills">
 			<div class="t-container-name">{ $i18n("resume.basic.template.Main skills") }</div>
 			<div class="t-container-item">
 				<span each={ item, i in $resume.get('tags') } no-reorder><span if={ i > 0 }>,</span> { item }</span>
