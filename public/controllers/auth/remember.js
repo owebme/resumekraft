@@ -67,7 +67,7 @@ module.exports = function(url) {
                         $push: {
                             "history.events": {
                                 name: "profileResetPassword",
-                                device: req.device,
+                                device: req.device.type,
                                 date: app.utils.moment().format()
                             }
                         }

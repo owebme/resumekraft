@@ -13,7 +13,6 @@
     &__items {
         @extend .pos-centered;
         @extend .w100p;
-        @extend .mt-s;
     }
     &__item {
         @include accelerate();
@@ -35,7 +34,6 @@
 
             &[data-active="true"]{
                 @extend .c-blueBright;
-                @extend .pointerEvents-none;
             }
         }
     }
@@ -87,8 +85,7 @@
         }
     }
     &__close {
-        @extend .pos-centered-h;
-        top:5vh;
+        @extend .pos-abs;
         width:28px;
         height:28px;
         @extend .cursor-pointer;
@@ -150,10 +147,24 @@
     }
 }
 @media screen and (max-height: 565px) {
-
+    .menu {
+        &__close {
+            top:15px;
+            right:15px;
+        }
+    }
 }
 @media screen and (min-height: 565px) {
-
+    .menu {
+        &__close {
+            top:5vh;
+            left:50%;
+            transform:translate3d(-50%, 0, 0);
+        }
+        &__items {
+            margin-top:15px;
+        }
+    }
 }
 
 @keyframes animMenuLine {

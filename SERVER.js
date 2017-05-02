@@ -116,16 +116,16 @@ app.use(function(req, res, next) {
         isServer: true
     };
 
-    if (process.env.NODE_ENV == "production"){
+    //if (process.env.NODE_ENV == "production"){
         req.account = req.session.user;
         req.accountId = req.session.user ? app.utils.ObjectId(req.session.user.accountID) : null;
-    }
-    else {
-        req.account = {
-            plan: "premium"
-        }
-        req.accountId = app.utils.ObjectId('58febc8f54e905a282ccf040');
-    }
+    //}
+    // else {
+    //     req.account = {
+    //         plan: "premium"
+    //     }
+    //     req.accountId = app.utils.ObjectId('58febc8f54e905a282ccf040');
+    // }
     req.device.type = req.query.debug ? req.query.debug : req.device.type;
     req.clientIP = app.utils.getClientAddress(req);
     next();

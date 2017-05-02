@@ -11,7 +11,7 @@ module.exports = function(url){
 				$push: {
 					"history.events": {
 	                    name: "profileUpdate",
-	                    device: req.device,
+	                    device: req.device.type,
 	                    date: app.moment().format()
 	            	}
 				}
@@ -42,7 +42,7 @@ module.exports = function(url){
 						$push: {
 							"history.events": {
 								name: "profileUploadPhoto",
-								device: req.device,
+								device: req.device.type,
 								date: app.moment().format()
 							}
 						}
@@ -74,7 +74,7 @@ module.exports = function(url){
 				$push: {
 					"history.events": {
 	                    name: "profilePasswordUpdate",
-	                    device: req.device,
+	                    device: req.device.type,
 	                    date: app.moment().format()
 	            	}
 				}
@@ -133,7 +133,7 @@ module.exports = function(url){
 								$push: {
 									"history.events": {
 					                    name: "profileLoginCreate",
-					                    device: req.device,
+					                    device: req.device.type,
 					                    date: app.moment().format()
 					            	}
 								}

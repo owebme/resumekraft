@@ -97,6 +97,7 @@ module.exports = function(){
         var output = app.riot.render(app.tags("jptest", req.device), req.appClient);
         res.render('index', {
             title: app.config.get('title:jp-test'),
+            image: app.config.public.get('domain') + "/public/images/popup/jptest.png",
             section: "jp-test",
             content: output,
             device: req.device.type,

@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-md-offset-3 col-md-18 col-lg-offset-4 col-lg-18">
                 <div class="blog__item__avatar">
-                    <img class="blog__item__avatar__image" src="http://resumekraft.ru/assets/img/testimonials/testimonial9.jpg">
+                    <img class="blog__item__avatar__image" src="/public/images/blog/avatar.jpg">
                     <span class="blog__item__avatar__title">Опубликовано: <span class="c-blue">Ирина Лата</span>, { opts.data.item.date }</span>
                 </div>
                 <blog-social-buttons data-pos="right"></blog-social-buttons>
@@ -37,7 +37,7 @@
                     <div class="text-center mt-l mb-m">
                         <blog-social-buttons data-pos="center"></blog-social-buttons>
                     </div>
-                    <img class="display-block m0-auto blog__item__avatar__image" src="http://resumekraft.ru/assets/img/testimonials/testimonial9.jpg">
+                    <img class="display-block m0-auto blog__item__avatar__image" src="/public/images/blog/avatar.jpg">
                     <div class="text-center mt-m mb-xl fontSize-20 c-gray fontFamily-futura">
                         Ирина Лата
                     </div>
@@ -77,7 +77,7 @@
 
     this.get = {
         content: function(text){
-            var content = text.replace(/src="\/files\/blog\/images/g, "src=\"http://resumekraft.ru/files/blog/images/");
+            var content = text.replace(/src="http:\/\/resumekraft\.ru\//g, "src=\"/").replace(/\/files\/blog\/images/g, "/public/files/blog/images");
             content = content.replace(/<[p|strong|span|em|i]*?><\/[p|strong|span|em|i]*?>/gi, "");
             content = content.replace(/<[^\/]>[\s|\r|\n]{0,}<\/.+?>/gi, "");
             content = content.replace(/<p>\s*<br>\s*<\/p>/gi, "");
@@ -86,7 +86,7 @@
             $.content.innerHTML = content;
         },
         image: function(url){
-            return "http://resumekraft.ru/" + url.replace(/http:\/\/resumekraft\.ru\//g, "");
+            return url.replace(/http:\/\/resumekraft\.ru\//g, "/").replace(/\/files\/blog\/images/g, "/public/files/blog/images");
         }
     }
 

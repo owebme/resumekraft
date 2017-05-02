@@ -18,7 +18,7 @@
 
     this.get = {
         image: function(url){
-            return "http://resumekraft.ru/" + url.replace(/http:\/\/resumekraft\.ru\//g, "");
+            return url.replace(/http:\/\/resumekraft\.ru\//g, "/").replace(/\/files\/blog\/images/g, "/public/files/blog/images");
         }
     }
 

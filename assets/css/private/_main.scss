@@ -4,9 +4,6 @@ html, body {
 body {
     @extend .overflow-hidden;
 }
-.progressive-image {
-    background-image:none !important;
-}
 #app {
 	&[data-app="private"]{
 		@extend .bg-blackDark;

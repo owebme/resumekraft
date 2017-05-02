@@ -1,6 +1,6 @@
 {% extends "layouts/basic.html" %}
 
-{% block title %}{% if title %}{{ title | safe }}{% else %}Cервис создания резюме, помощь в составлении резюме, рекомендации профессионалов, примеры, образцы резюме. ResumeKraft{% endif %}{% endblock %}
+{% block title %}{% if title %}{{ title | safe }}{% else %}Создать классное резюме и найти работу на ResumeKraft{% endif %}{% endblock %}
 
 {% block image %}{% if image %}{{ image }}{% else %}https://resumekraft.ru/public/images/ogimage.png{% endif %}{% endblock %}
 
@@ -32,5 +32,4 @@
     <script src="{{ cachify('/public/js/app.build.js') }}"></script>
     {% endif %}
 
-</body>
 {% endblock %}

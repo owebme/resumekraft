@@ -141,7 +141,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="plan__item" data-item="premium" data-month="369" data-year="1,769" data-active="true">
+                <div class="plan__item" data-item="premium" data-month1="369" data-year1="1,769" data-active="true">
                     <div class="plan__checkbox">
                         <label class="checkbox" data-color="blue">
                             <input type="checkbox" checked="">

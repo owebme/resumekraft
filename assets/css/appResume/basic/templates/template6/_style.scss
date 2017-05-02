@@ -38,15 +38,30 @@
 
 #t6 #t-header-post {
     font-size: 24px;
-    line-height: 24px;
+    line-height: 32px;
     margin-bottom: 40px;
+    width:60%;
 }
 
 #t6 #t-header-salary {
     font: bold 24px/24px 'Roboto';
 
+    rub {
+        display:inline-block;
+        position:relative;
+        line-height:20px;
+    }
+    rub:before {
+        content: "Р";
+        line-height:20px;
+    }
     rub:after {
-        content: "₽";
+        content:"—";
+        position:absolute;
+        left:-1px;
+        bottom:-5px;
+        font-size:70%;
+        line-height:20px;
     }
 }
 

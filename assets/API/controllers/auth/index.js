@@ -90,7 +90,7 @@ module.exports = function(){
 			app.db.collection('accounts').insertOne(API.getAccount({
 				oauth: oauth,
 				activate: data.activate,
-				device: req.device && req.device.type,
+				device: req.device,
 				login: data.login,
 				password: data.password,
 				name: data.name,
@@ -181,16 +181,16 @@ module.exports = function(){
 			},
 			history: {
 				events: [],
-				visits: [{
+				visits: data.oauth && [{
 					device: data.device,
 					location: data.init && data.init.location || null,
 					date: app.moment().format()
-				}]
+				}] || []
 			},
 			payment: [],
 			metrika: [],
 			log: [],
-			visits: 1,
+			visits: data.oauth ? 1 : 0,
 			paid: null,
 			create: app.moment().format(),
 			update: app.moment().format(),

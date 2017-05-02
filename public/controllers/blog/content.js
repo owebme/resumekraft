@@ -11,7 +11,7 @@ module.exports = function(){
 
                 res.render('index', {
                     title: data.item.name,
-                    image: app.config.public.get('domain') + data.item.image,
+                    image: app.config.public.get('domain') + data.item.image.replace(/http:\/\/resumekraft\.ru\//g, "/").replace(/\/files\/blog\/images/g, "/public/files/blog/images"),
                     content: output,
                     device: req.device.type,
                     isMobile: req.device.isMobile

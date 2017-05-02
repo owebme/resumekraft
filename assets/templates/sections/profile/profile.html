@@ -49,7 +49,7 @@
                                 <span onClick={ open.changePlan } onUpdate="none" class="link-underline link-default-hover-warning">Сменить тариф</span>
                             </div>
                             <div if={ $account.get('plan') == "premium" } class="c-gray mb-xs fontSize-18">
-                                Оплачен до: <span class="c-blue fontWeight-bold">28 ноября 2017</span>
+                                Оплачен до: <span class="c-blue fontWeight-bold">{ moment($account.get('paid')).format('DD MMMM YYYY') }</span>
                             </div>
                             <div class="mt-xxs">
                                 <span onClick={ open.changePassword } onUpdate="none" class="link-underline link-default-hover-warning">{ !$account.get("login") ? 'Создать вход по паролю' : 'Сменить пароль' }</span>

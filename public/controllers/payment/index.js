@@ -58,7 +58,7 @@ module.exports = function() {
 			                    "payment": pay,
 								"history.events": {
 				                    name: "payBalance",
-				                    device: req.device,
+				                    device: req.device.type,
 				                    date: app.moment().format()
 				            	}
 			                }

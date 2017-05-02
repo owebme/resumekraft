@@ -8,7 +8,8 @@
         window.$idhh = location.href.match(/\?hh\=(.{38})/)[1];
     }
 
-    var $body = app.$dom.body,
+    var isStart = false,
+        $body = app.$dom.body,
         $control = {
             device: $(".control__device"),
             colors: $(".control__colors")
@@ -20,8 +21,6 @@
         $share = $(".button__like"),
         $menu = $(".menu"),
         $btnImport = $(".button__import__item");
-
-    window.$frame = $('<iframe id="frame" src="/premium/demo" frameborder="none"/>').prependTo($container);
 
     $share.opener = $share.find(".button__like__opener"),
     $menu.opener = $(".menu__opener");
@@ -142,6 +141,7 @@
                         $body.removeClass('apploading');
                     }
                     if (callback) callback();
+                    isStart = true;
                 }
             });
         });
@@ -189,9 +189,18 @@
         });
     };
 
+    window.$frame = $('<iframe id="frame" src="/premium/demo" frameborder="none"/>').prependTo($container);
+
     frameOnLoad(function(){
         $body.attr("data-help", true);
     });
+
+    setTimeout(function(){
+        if (!isStart){
+            $body.removeClass('apploading');
+            $body.attr("data-help", true);
+        }
+    }, 5000);
 
     new app.plugins.share($share, {
         buttons: '.button__like__item',

@@ -1,7 +1,10 @@
 .offer__premium {
     @extend .display-block;
-    
+
     &__slider {
+        .progressive-image {
+            background-image:none !important;
+        }        
         &[data-show="true"]{
             .offer__premium__slider__item:first-child {
                 .offer__premium__slider__text {

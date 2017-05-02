@@ -10,6 +10,17 @@ module.exports = function(url){
         if (data._id) delete data._id;
         if (data.accountId) delete data.accountId;
 
+		if (data.commons && data.commons.name && !req.account.name){
+			req.account.name = data.commons.name;
+			app.db.collection('accounts').update({
+				"_id": req.accountId
+			},{
+				$set: {
+					"commons": data.commons
+				}
+			});
+		}
+
 		app.db.collection('resumes').update({
 			"_id": app.utils.ObjectId(id),
 			"accountId": req.accountId
@@ -71,7 +82,7 @@ module.exports = function(url){
 					app.errHandler(res, err, "overlimit");
 				}
 				else {
-					var title = req.body.title || req.body.lang == "en" ? "My resume" : "Моё резюме";
+					var title = req.body.title || (req.body.lang == "en" ? "My resume" : "Моё резюме");
 						body = {
 							from: {
 								name: req.body.from.name
@@ -104,7 +115,7 @@ module.exports = function(url){
 							$push: {
 								"history.events": {
 									name: "resumeSendmail",
-									device: req.device,
+									device: req.device.type,
 									data: body,
 									date: app.moment().format()
 								}
@@ -138,7 +149,7 @@ module.exports = function(url){
 								$push: {
 									"history.events": {
 										name: "resumeImportHH",
-										device: req.device,
+										device: req.device.type,
 										data: {
 											idhh: resume.idhh,
 											post: resume.post
@@ -183,7 +194,7 @@ module.exports = function(url){
 					$push: {
 						"history.events": {
 							name: "resumeConvertPdf",
-							device: req.device,
+							device: req.device.type,
 							date: app.moment().format()
 						}
 					}

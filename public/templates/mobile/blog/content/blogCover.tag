@@ -3,7 +3,7 @@
     <a href="/blog/{ opts.params.alias }" class="blog__cover__image" style="background-image:url({ get.image( opts.params.image) })"></a>
     <div class="blog__cover__content cover__bg{ opts.params.color }">
         <div class="blog__cover__content__bg"></div>
-        <img class="blog__cover__avatar" src="http://resumekraft.ru/assets/img/testimonials/testimonial9.jpg">
+        <img class="blog__cover__avatar" src="/public/images/blog/avatar.jpg">
         <div class="blog__cover__avatar__name">Ирина Лата</div>
         <div class="blog__cover__date">{ opts.params.date }</div>
         <div class="blog__cover__title">{ opts.params.title }</div>
@@ -21,7 +21,7 @@
 
     this.get = {
         image: function(url){
-            return "http://resumekraft.ru/" + url.replace(/http:\/\/resumekraft\.ru\//g, "");
+            return url.replace(/http:\/\/resumekraft\.ru\//g, "/").replace(/\/files\/blog\/images/g, "/public/files/blog/images");
         }
     }
 

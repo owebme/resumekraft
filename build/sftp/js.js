@@ -44,6 +44,7 @@ module.exports = function(){
     	return gulp.src(['public/js/jptest.build.js',
             'public/js/app.build.js',
             'public/js/app.build.mobile.js',
+            'public/js/app.build.resume.js',
             'public/js/app.promo.build.js',
             'public/js/app.build.jobs.js'
         ])

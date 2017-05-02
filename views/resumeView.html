@@ -4,7 +4,7 @@
 
 {% block viewport %}width=device-width, initial-scale=1, maximum-scale=2.8, minimum-scale=1{% endblock %}
 
-{% block styles %}https://fonts.googleapis.com/css?family=Roboto:400,700{% endblock %}
+{% block styles %}https://fonts.googleapis.com/css?family=Roboto:400,700&subset=cyrillic-ext,latin{% endblock %}
 
 {% block body %}
 <style>
@@ -53,6 +53,12 @@ body#print .stamp {
 #upload-photo.place {
 	display:none !important;
 }
+#upload-photo {
+	pointer-events:none !important;
+}
+#upload-photo .icon {
+	display:none !important;
+}
 .t-header-photo {
 	position: absolute;
 	width: 276px;
@@ -67,6 +73,7 @@ body#print .stamp {
 	background-repeat: no-repeat;
 	background-size: cover;
 	border-radius: 50%;
+	opacity:1 !important;
 }
 .stamp {
 	display:block;
@@ -77,6 +84,24 @@ body#print .stamp {
 	height:160px;
 	background:url(/assets/images/resumePreviewStamp.png) 0 0 / cover;
 	z-index:1;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url(/assets/css/appResume/basic/templates/fonts/RobotoRegular.woff) format('woff');
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url(/assets/css/appResume/basic/templates/fonts/RobotoMedium.woff) format('woff');
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url(/assets/css/appResume/basic/templates/fonts/RobotoBold.woff) format('woff');
+  font-style: normal;
+  font-weight: 700;
 }
 {% if isMobile %}
 @media screen and (max-width: 1024px) {
@@ -108,16 +133,7 @@ body#print .stamp {
     <link rel="stylesheet" type="text/css" href="/assets/css/appResume/basic/templates/template{{ num }}/fonts.css" />
     <link rel="stylesheet" type="text/css" href="/assets/css/appResume/basic/templates/style{% if isMobile %}.view{% endif %}.css" />
     </head>
-    <script src="/assets/js/libs/modernizr.custom.js"></script>
-    <script src="/assets/js/libs/riot-3.3.2/riot+compiler.update.js"></script>
-    <script src="/assets/js/libs/riot/riot-i18n.js"></script>
-    <script src="/assets/js/libs/baobab.js"></script>
-    <script src="/assets/js/libs/underscore-min.js"></script>
-    <script src="/assets/js/libs/moment.min.js"></script>
-    <script src="/assets/js/libs/moment.ru.js"></script>
-    <script src="/assets/js/components/i18n/i18n.js"></script>
-    <script src="/assets/js/components/i18n/resume/basic/template/ru.js"></script>
-    <script src="/assets/templates/appResume/basic/templates/template{{ num }}.html" type="riot/tag"></script>
+	<script src="/assets/templates/appResume/basic/templates/template{{ num }}.html" type="riot/tag"></script>
 
 {% if resume %}
     <script>
@@ -128,6 +144,15 @@ body#print .stamp {
     </script>
 {% endif %}
 
+	<!-- <script src="/assets/js/libs/modernizr.custom.js"></script>
+	<script src="/assets/js/libs/riot-3.3.2/riot+compiler.update.js"></script>
+	<script src="/assets/js/libs/riot/riot-i18n.js"></script>
+	<script src="/assets/js/libs/baobab.js"></script>
+	<script src="/assets/js/libs/underscore-min.js"></script>
+	<script src="/assets/js/libs/moment.min.js"></script>
+	<script src="/assets/js/libs/moment.ru.js"></script>
+	<script src="/assets/js/components/i18n/i18n.js"></script>
+	<script src="/assets/js/components/i18n/resume/basic/template/ru.js"></script>
     <script src="/assets/js/components/commons/utils.js"></script>
     <script src="/assets/js/store/resume/commons/education.js"></script>
     <script src="/assets/js/store/resume/commons/languages.js"></script>
@@ -137,7 +162,9 @@ body#print .stamp {
 	<script src="/assets/js/store/resume/commons/country.js"></script>
 	<script src="/assets/js/store/resume/commons/dictionary.js"></script>
     <script src="/assets/js/store/month.js"></script>
-    <script src="/public/js/resume/init.js"></script>
+    <script src="/public/js/resume/init.js"></script> -->
+
+	<script src="/public/js/app.build.resume.js"></script>
 
 </body>
 {% endblock %}

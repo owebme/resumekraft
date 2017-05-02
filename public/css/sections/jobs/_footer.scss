@@ -1,12 +1,14 @@
 .jobs__footer {
     @extend .pb-l;
-    @extend .xs-ml--s;
-    @extend .xs-mr--s;
     @extend .bg-snowSilver;
 
+    html.d-phone & {
+        @extend .w100v;
+        @extend .overflow-hidden;
+    }
     &__container {
         @extend .pt50;
-        @extend .xs-pt-l;        
+        @extend .xs-pt-l;
     }
     &__menu {
         @extend .flex;
@@ -53,11 +55,15 @@
             @extend .text-right;
         }
         &__logotype {
-            width:56px;
+            width:53px;
             @extend .h30;
             @extend .ml-s;
             @extend .bg-cover;
             background-image:url(/public/images/jobs/hh/hh-black.png);
+
+            html.d-phone & {
+                width:64px;
+            }
         }
     }
     &__copyright {

@@ -8,6 +8,7 @@
 
         this.ready = false;
         this.scroll = $(options.scroll);
+        this.scrollTracker = app.device.isIE && options.scroll === $dom.window ? document.documentElement : (_.isElement(options.scroll) ? options.scroll : options.scroll[0]);
         this.scope = options.container ? $(options.container) : null;
         this.scopeOffsetTop = this.scope ? options.container.offset().top : null;
         this.scopeHeight = this.scope ? options.container.height() : null;
@@ -90,7 +91,7 @@
         },
 
         onScroll: function(_this){
-            var scrollTop = _this.scroll[0].scrollTop || _this.scroll[0].scrollY,
+            var scrollTop = _this.scrollTracker.scrollTop || _this.scrollTracker.scrollY,
                 delta = scrollTop + app.sizes.height;
 
             _this.items.forEach(function(item, i){
@@ -123,14 +124,7 @@
                         }
                     }
 
-                    //console.log(item.cHeight, item.progress, item.t, item.it);
-
-                    var transform = item.$elem.css("transform").match(/matrix\(\d+, ?\d+, ?\d+, ?\d+, ?(\-?\d+), ?(\-?\d+)/);
-
-                    if (transform && transform[1]){
-                        item.x = transform[1];
-                        _this.update(item.$elem, item.x, item.y);
-                    }
+                    _this.update(item.$elem, viewport.fromX || 0, item.y);
                 }
             });
         },

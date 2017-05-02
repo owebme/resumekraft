@@ -90,12 +90,27 @@
     font: 400 29px/30px "Open Sans";
     font-style: italic;
 
-    rub:after {
-        content: "₽";
-        display: inline-block;
-        font: 400 29px/30px 'Roboto';
+    rub {
+        display:inline-block;
+        position:relative;
+        line-height:29px;
+    }
+    rub:before {
+        display:inline-block;
+        content: "Р";
+        line-height:20px;
+        font:400 29px/30px 'Roboto';
         transform: skewX(-9deg);
         -webkit-transform: skewX(-9deg);
+    }
+    rub:after {
+        content:"—";
+        position:absolute;
+        left:-3px;
+        bottom:-5px;
+        font-size:70%;
+        font-family:'Roboto';
+        line-height:29px;
     }
 }
 
@@ -132,7 +147,7 @@
     }
     &.w50p {
         width: 50%;
-    }    
+    }
     em,
     a {
         display:inline-block;

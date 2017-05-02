@@ -22,7 +22,7 @@ module.exports = function() {
     					$push: {
     						"history.events": {
     		                    name: "profileLoginActivate",
-    		                    device: req.device,
+    		                    device: req.device.type,
     		                    date: app.moment().format()
     		            	}
     					}

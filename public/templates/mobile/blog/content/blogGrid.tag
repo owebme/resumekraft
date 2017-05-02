@@ -5,7 +5,7 @@
             <div class="blog__grid__item__image progressive-image" style="background-image:url({ get.image( item.image) })"></div>
             <div class="blog__grid__item__content">
                 <div class="blog__grid__item__date">{ item.dateShort }</div>
-                <img class="blog__grid__item__avatar" src="http://resumekraft.ru/assets/img/testimonials/testimonial9.jpg">
+                <img class="blog__grid__item__avatar" src="/public/images/blog/avatar.jpg">
                 <div class="blog__grid__item__title">{ item.name }</div>
                 <div class="blog__grid__item__tag">{ item.keywords }</div>
             </div>
@@ -18,7 +18,7 @@
 
     this.get = {
         image: function(url){
-            return "http://resumekraft.ru/" + url.replace(/http:\/\/resumekraft\.ru\//g, "");
+            return url.replace(/http:\/\/resumekraft\.ru\//g, "/").replace(/\/files\/blog\/images/g, "/public/files/blog/images");
         }
     }
 

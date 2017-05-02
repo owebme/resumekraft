@@ -109,13 +109,25 @@
 }
 
 #t4 .t-header-string-salary {
-    font: 500 22px/24px 'Roboto';
+    font: 400 22px/24px 'Roboto';
     white-space: nowrap;
 
+    rub {
+        display:inline-block;
+        position:relative;
+        line-height:20px;
+    }
+    rub:before {
+        content: "Р";
+        line-height:20px;
+    }
     rub:after {
-        content: "₽";
-        display: inline-block;
-        vertical-align: top;
+        content:"—";
+        position:absolute;
+        left:-1px;
+        bottom:-4px;
+        font-size:70%;
+        line-height:20px;
     }
 }
 

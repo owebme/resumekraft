@@ -7,6 +7,7 @@
         this.delay = options.delay;
         this.elems = options.elems ? options.elems : ".anim";
         this.scroll = options.scroll ? $(options.scroll) : $dom.window;
+        this.scrollTracker = options.scroll ? (app.device.isIE && options.scroll === $dom.window ? document.documentElement : (_.isElement(options.scroll) ? options.scroll : options.scroll[0])) : (app.device.isIE ? document.documentElement : $dom.window[0]);
         this.scope = options.container ? $(options.container) : this.scroll;
         this.delta = options.delta ? this.deltaValues.getValueByTitle(options.delta) : null;
         this._items = options.items;
@@ -110,7 +111,7 @@
         },
 
         getScrollY: function(){
-            return this.scroll[0].scrollTop || this.scroll[0].scrollY;
+            return this.scrollTracker.scrollTop || this.scrollTracker.scrollY;
         },
 
         iteration: function(scroll, item, i){

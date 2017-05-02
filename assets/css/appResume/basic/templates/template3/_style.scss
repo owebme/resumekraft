@@ -119,8 +119,22 @@
         text-align:right;
         white-space:nowrap;
 
+        rub {
+            display:inline-block;
+            position:relative;
+            line-height:32px;
+        }
+        rub:before {
+            content: "Р";
+            line-height:32px;
+        }
         rub:after {
-            content:"₽";
+            content:"—";
+            position:absolute;
+            left:-1px;
+            bottom:-7px;
+            font-size:70%;
+            line-height:32px;
         }
         sup {
             display:inline-block;

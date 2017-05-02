@@ -1,6 +1,6 @@
 {% extends "layouts/basic.html" %}
 
-{% block title %}{% if title %}{{ title | safe }}{% else %}Cервис создания резюме, помощь в составлении резюме, рекомендации профессионалов, примеры, образцы резюме. ResumeKraft{% endif %}{% endblock %}
+{% block title %}{% if title %}{{ title | safe }}{% else %}Создать классное резюме и найти работу на ResumeKraft{% endif %}{% endblock %}
 
 {% block image %}{% if image %}{{ image }}{% else %}https://resumekraft.ru/public/images/ogimage.png{% endif %}{% endblock %}
 
@@ -31,6 +31,7 @@
     <script src="/public/js/app.libs.mobile.js"></script>
     <script src="/public/js/app.mobile.js"></script>
     <script src="/public/js/templates.mobile.js"></script>
+    <script src="/public/templates/commons/modules/auth/forms/signUp.tag" type="riot/tag"></script>
     <script src="/public/js/init.js"></script>
 
     {% else %}
@@ -43,6 +44,7 @@
 
     <!--/ JS components /-->
     <script src="/public/js/app.js"></script>
+
     <!-- <script src="/assets/js/plugins/screens.js"></script>
     <script src="/public/js/sections/home.js"></script>
     <script src="/assets/js/plugins/scroll/scroll.Animate.js"></script>

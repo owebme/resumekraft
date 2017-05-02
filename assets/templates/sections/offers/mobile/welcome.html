@@ -38,6 +38,12 @@
         app.metrika.set("mobile.offers.welcome.success", true);
         $.parent.root.setAttribute("data-tutorial", false);
         $.parent.scroll.show();
+        $afterlag.xs(function(){
+            if ($account.get("plan") == "free" && (app.metrikaPublic.get("plan.name") == "premium" || $account.get("init", "plan") == "premium")){
+                var period = app.metrikaPublic.get("plan.period");
+                $Sections.plan.show("premium", period);
+            }
+        });
     };
 
 </script>

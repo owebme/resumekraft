@@ -10,7 +10,7 @@
                 <div class="blog__header__post">
                     <div class="blog__header__post__date mb-xxs anim-group1 anim-bt">
                         { opts.params.data.headers[0].date }, <span class="blog__header__post__time">{ opts.params.data.headers[0].time }</span>
-                        <img class="blog__header__post__avatar" src="http://resumekraft.ru/assets/img/testimonials/testimonial9.jpg">
+                        <img class="blog__header__post__avatar" src="/public/images/blog/avatar.jpg">
                         <span class="blog__header__post__tags">{ opts.params.data.headers[0].keywords }</span>
                     </div>
                     <div class="anim-group1 anim-bt anim-delay-xs">

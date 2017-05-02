@@ -562,7 +562,7 @@
             <div class="row">
                 <div class="col-md-16 centered anim anim-scale-soft" data-delta="s">
                     <h1 class="mb-m pt-xs">Начать легко и доступно.</h1>
-                    <p>Вы можете выбрать ежемесячную подписку или на год с приличной скидкой.</p>
+                    <p>Вы можете выбрать ежемесячную подписку или на год. Для России и стран СНГ действует программа лояльности, успейте приобрести по сниженной цене.</p>
                 </div>
             </div>
             <div class="slide11-1__wrapper anim anim-bt-soft" data-delta="s" data-duration="xl">

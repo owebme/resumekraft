@@ -17,14 +17,14 @@
         </div>
         <div class="auth__body">
             <div class="pos-abs-full anim anim-bt-ease anim-duration-l anim-delay-xs { success ? 'animated' : 'pointerEvents-none' }">
-                <div class="flex-column-centered pos-centered pt-l w80p">
-                    <div class="flex-centered w110 h110 bg-green borderRadius-circle anim anim-scale anim-delay-m { success ? 'animated' : 'pointerEvents-none' }">
-                        <svg class="w96 h96" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+                <div class="flex-column-centered pos-centered pt-l xs-pt0 { app.device.isPhone ? 'w95p' : 'w80p' }">
+                    <div class="flex-centered w100 h100 bg-green borderRadius-circle anim anim-scale anim-delay-m { success ? 'animated' : 'pointerEvents-none' }">
+                        <svg class="w80 h80" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
                             <path d="M15.57,26.49l-3.87-3.7a2.52,2.52,0,0,1,0-3.49l0,0a2.35,2.35,0,0,1,3.39,0L17,21l8-7.35a2.43,2.43,0,0,1,3.3,0l0,0a2.12,2.12,0,0,1,0,3.12L18.16,26.49a1.91,1.91,0,0,1-2.59,0" class="fill-white"/>
                         </svg>
                     </div>
-                    <h2 class="mt-l c-green">Отлично, осталось активировать!</h2>
-                    <h3 class="c-gray mt-m fontWeight-normal lineHeight-36">Проверьте <a if={ emailLink() } href="{ emailLink() }" class="link-blue link-underline">свой e-mail</a><span if={ !emailLink() }>свой e-mail</span>, на него отправлено письмо для активации аккаунта.</h3>
+                    <h2 class="c-green { 'fontSize-28' : app.device.isPhone } mt-l xs-mt-m fontWeight-bold">Отлично, осталось активировать!</h2>
+                    <h3 class="c-gray mt-m xs-mt-s fontWeight-normal { app.device.isPhone ? 'fontSize-22 lineHeight-32' : 'lineHeight-36' }">Проверьте <a if={ emailLink() } href="{ emailLink() }" class="link-blue link-underline">свой e-mail</a><span if={ !emailLink() }>свой e-mail</span>, на него отправлено письмо для активации аккаунта.</h3>
                 </div>
             </div>
             <div class="anim anim-scale-ease anim-duration-m { success ? 'pointerEvents-none' : 'animated' }">

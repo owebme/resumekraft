@@ -4,6 +4,60 @@
     @extend .text-left;
     @extend .userSelect-none;
 
+    &__ssl {
+        @extend .pos-abs;
+        @extend .b0;
+        right:-32px;
+        @extend .w180;
+        @extend .cursor-default;
+        @extend .flex-column-centered;
+        @extend .text-center;
+
+        html.d-tablet & {
+            @extend .r--60;
+        }
+        &__score {
+            @extend .flex-centered;
+            @extend .c-yellowBright;
+            @extend .fontSize-34;
+            @extend .fontWeight-bold;
+            @extend .ml0;
+            @extend .mb-s;
+            @extend .letterSpacing-0;
+            padding:9px 10px 10px;
+            box-shadow:0 0 0 1px $yellowBright;
+            @extend .borderRadius-l;
+            @extend .transition-s;
+        }
+        &__text {
+            @extend .c-grayLight;
+            @extend .fontSize-12;
+            @extend .text-uppercase;
+            @extend .transition-s;
+
+            &__bright {
+                @extend .c-white;
+                @extend .transition-s;
+            }
+        }
+        html.m-no-touch &:hover {
+            .payment__ssl {
+                &__score {
+                    //color:#77d345;
+                    color:#151515;
+                    @extend .bg-yellowBright;
+                    box-shadow:0 0 0 1px $yellowBright, 0 12px 30px -10px rgba($yellowBright,.48), 0 4px 30px 0px rgba($yellowBright,.2), 0 7px 16px -5px rgba($yellowBright,.3);
+                }
+                &__text {
+                    @extend .c-white;
+
+                    &__bright {
+                        @extend .c-yellowBright;
+                    }
+                }
+            }
+        }
+    }
     &__list {
         @include flex("column", "center", "flex-start");
         @extend .w100p;
@@ -102,9 +156,8 @@
         @extend .text-left;
 
         html.d-tablet & {
-            @extend .t--m;
+            @extend .t0;
             @extend .l--l;
-            @extend .ml--m;
         }
         &:before {
             @extend .content-empty;
@@ -137,7 +190,7 @@
         height:120px;
 
         html.d-tablet & {
-            @extend .r--xl;
+            @extend .r--60;
         }
         &:before {
             @extend .content-empty;

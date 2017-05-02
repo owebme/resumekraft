@@ -27,7 +27,8 @@
 
                 WD.createAccount();
             }, {
-                timeout: 1000
+                timeout: 1000,
+                delay: app.device.isIE ? 1000 : null
             });
 
             app.metrika.set("views.home", 1, {

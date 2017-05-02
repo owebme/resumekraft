@@ -50,8 +50,22 @@
         font:bold 26px/20px 'Roboto';
         white-space:nowrap;
 
+        rub {
+            display:inline-block;
+            position:relative;
+            line-height:22px;
+        }
+        rub:before {
+            content: "Р";
+            line-height:22px;
+        }
         rub:after {
-            content:"₽";
+            content:"—";
+            position:absolute;
+            left:-1px;
+            bottom:-5px;
+            font-size:70%;
+            line-height:22px;
         }
         sup {
             display:inline-block;

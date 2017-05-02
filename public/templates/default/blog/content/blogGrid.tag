@@ -13,7 +13,7 @@
                             <h4 class="blog__grid__item__title"><span>{ item.name }</span></h4>
                             <div class="blog__grid__item__text">{ item.text_sm }</div>
                             <div class="blog__grid__item__date">{ item.date }</div>
-                            <img class="blog__grid__item__avatar" src="http://resumekraft.ru/assets/img/testimonials/testimonial9.jpg">
+                            <img class="blog__grid__item__avatar" src="/public/images/blog/avatar.jpg">
                         </div>
                     </a>
                 </div>
@@ -60,7 +60,7 @@
             else if (level > 4 || level == 0) return level + " баллов";
         },
         image: function(url){
-            return "http://resumekraft.ru/" + url.replace(/http:\/\/resumekraft\.ru\//g, "");
+            return url.replace(/http:\/\/resumekraft\.ru\//g, "/").replace(/\/files\/blog\/images/g, "/public/files/blog/images");
         },
         delay: function(i){
             if (i == 3 || i == 5) return "xs";
