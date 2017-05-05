@@ -12,6 +12,7 @@
                 <h2>Продающее <span class="c-pink">резюме</span></h2>
                 <p>Уникальная возможность создать самому за несколько минут</p>
             </div>
+            <div class="screen__arrow"></div>
         </div>
         <div class="screen" data-section="premium-account">
             <div class="screen__image">

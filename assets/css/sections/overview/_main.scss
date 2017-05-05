@@ -37,31 +37,23 @@
         }
         h1 {
             @extend .c-blue;
-            @extend .lineHeight-xxxxl;
-            @extend .letterSpacing--xl;
-            font-size:45px;
+            @extend .fontFamily-fira;
+            font-size:41px;
+            line-height:54px;
+            letter-spacing:-0.021em;
 
-            html.d-mobile.d-ios & {
-                @extend .fontFamily-helvetica;
-                @extend .letterSpacing--s;
+            html.d-no-mobile &.larger {
+                font-size:45px;
+                line-height:58px;
+                letter-spacing:-0.026em;
             }
-            html.d-mobile.d-no-ios & {
-                @extend .fontFamily-roboto;
-                @extend .letterSpacing--m;
+            html.d-mobile & {
+                font-size:40px;
+                line-height:52px;
             }
-            html.d-tablet & {
-                font-size:34px;
-                line-height:48px;
-            }
-            html.d-tablet.r-portrait & {
-                @extend .ml0;
-            }
-            &.large {
-                font-size:63px;
-                @extend .letterSpacing--xxl;
-            }
-            &.main {
-                font-size:48px;
+            html.d-mobile &.larger {
+                font-size:43px;
+                line-height:54px;
             }
         }
         h2 {
@@ -93,11 +85,6 @@
             html.d-mobile & {
                 font-size:22px;
                 @extend .letterSpacing--s;
-                // @extend .fontFamily-sftext;
-                // @extend .lineHeight-xxl;
-                // @extend .fontWeight-normal;
-                // font-size:18px;
-                // letter-spacing:-.021em;
             }
         }
         .v-lineRight {

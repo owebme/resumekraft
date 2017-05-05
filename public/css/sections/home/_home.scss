@@ -7,8 +7,10 @@
         @extend .display-block;
     }
     h2 {
+        @extend .fontFamily-govern;
         font-size:38px;
         line-height:46px;
+        @extend .mt--s;
     }
     small {
         @extend .display-block;

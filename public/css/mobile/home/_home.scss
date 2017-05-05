@@ -10,6 +10,38 @@
         &__button {
             @extend .pos-centered;
         }
+        &__arrow {
+            @include accelerate();
+            @extend .pos-abs;
+            @extend .l50;
+            @extend .b-25;
+            margin-left:-12px;
+            transform:translate3d(0, 66%, 0);
+            @extend .pointerEvents-none;
+            @extend .willChange-tp;
+            @extend .zIndex-2;
+            animation:scroll__arrow 1.4s infinite;
+
+            &:before {
+                @extend .display-block;
+                @extend .content-empty;
+                @extend .w20;
+                @extend .h20;
+                border:4px solid $pink;
+                border-left:none;
+                border-top:none;
+                transform:rotate(45deg) translateZ(0);
+            }
+        }
+        @keyframes scroll__arrow {
+            from {
+                transform:translate3d(0, -33%, 0);
+            }
+            to {
+                transform:translate3d(0, 66%, 0);
+                opacity:0;
+            }
+        }
         .btn-xl {
             @extend .flex-centered;
 
@@ -35,11 +67,26 @@
             @extend .pos-bl;
             @extend .w100p;
             @extend .plr-l;
+            @extend .bg-white;
             @extend .text-center;
             @extend .zIndex-1;
+
+            &:before {
+                @extend .content-empty;
+                @extend .pos-abs;
+                @extend .t--l;
+                @extend .l0;
+                @extend .h80;
+                @extend .w100p;
+                background:linear-gradient(to top, #fff 0%, #fff 68%, rgba(#fff,0));
+            }
         }
         h2 {
             @extend .ml0;
+        }
+        h2, p {
+            @extend .pos-rel;
+            @extend .zIndex-1;
         }
         strong {
             @extend .c-blue;
@@ -434,7 +481,7 @@
                     margin-top:-45px;
                 }
                 .screen__text {
-                    padding-bottom:30px;
+                    padding-bottom:60px;
                 }
             }
             &[data-section="easy-setup"],
@@ -528,7 +575,7 @@
                     margin-top:-40px;
                 }
                 .screen__text {
-                    padding-bottom:35px;
+                    padding-bottom:65px;
                 }
             }
             &[data-section="premium-account"],

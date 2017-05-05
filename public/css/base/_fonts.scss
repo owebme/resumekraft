@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,300,500,700&subset=cyrillic-ext,latin');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:700&subset=cyrillic');
 @import '../../assets/css/fonts/Futura/style';
 // @import '../../assets/css/fonts/Museo/style';
 // @import '../../assets/css/fonts/SFDisplay/style';
+// @import '../../assets/css/fonts/ALS/style';
+@import '../../assets/css/fonts/Govern/style';
 @import '../../assets/css/fonts/Gotham/style';
 @import '../../assets/css/fonts/Graphik/style';
 @import '../../assets/css/fonts/HelveticaNeue/style';
@@ -13,11 +16,17 @@
 .fontFamily-futura {
     font-family:$futura;
 }
+.fontFamily-fira {
+    font-family:$fira;
+}
 .fontFamily-sftext {
     font-family:$sftext;
 }
 .fontFamily-sfdisplay {
     font-family:$sfdisplay;
+}
+.fontFamily-govern {
+    font-family:$govern;
 }
 .fontFamily-gotham {
     font-family:$gotham;

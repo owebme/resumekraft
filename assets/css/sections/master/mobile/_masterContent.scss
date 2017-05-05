@@ -1,8 +1,9 @@
 html.d-phone {
     .master {
         &__block {
-            font-size:21px;
-            letter-spacing:-0.016em;
+            font-size:21.5px;
+            line-height:28px;
+            letter-spacing:-0.021em;
 
             &__items {
                 @extend .flex-column-left-center;
@@ -15,7 +16,7 @@ html.d-phone {
                 transform:scaleY(1.2) translateZ(0);
             }
             &__item {
-                @extend .pl-l;
+                @extend .pl30;
                 @extend .pb-m;
             }
             &__link {

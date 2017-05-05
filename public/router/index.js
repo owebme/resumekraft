@@ -73,9 +73,14 @@ module.exports = function(){
         }
     });
     app.get('/premium/workflow', function(req, res) {
-        res.render('workflow', {
-            device: req.device.type
-        });
+        if (req.device.type == "phone"){
+            res.redirect(302, '/premium/demo');
+        }
+        else {
+            res.render('workflow', {
+                device: req.device.type
+            });
+        }
     });
     app.get('/premium/promo', function(req, res) {
         if (req.device.type == "phone"){
@@ -119,6 +124,10 @@ module.exports = function(){
     app.get('/parser/all', app.controllers.parser);
 
     app.post('/payment/yamoney', app.controllers.payment);
+
+    app.get('/applicant/resumes/*', function(req, res) {
+        res.redirect(301, '/');
+    });
 
     require(process.cwd() + '/public/controllers/auth/passport')('/auth');
     require(process.cwd() + '/public/controllers/auth/remember')('/remember');

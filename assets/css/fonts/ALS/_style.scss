@@ -1,0 +1,67 @@
+@font-face {
+	font-family: 'ALS';
+	src: url('//img.artlebedev.ru/svalka/artemius-webfont/serif/ALSArtemius-Regular.eot');
+	src: url('//img.artlebedev.ru/svalka/artemius-webfont/serif/ALSArtemius-Regular.eot?#iefix') format('embedded-opentype'),
+    url('//img.artlebedev.ru/svalka/artemius-webfont/serif/ALSArtemius-Regular.otf') format('opentype'),
+    url('//img.artlebedev.ru/svalka/artemius-webfont/serif/ALSArtemius-Regular.woff') format('woff'),
+    url('//img.artlebedev.ru/svalka/artemius-webfont/serif/ALSArtemius-Regular.ttf') format('truetype'),
+		url('//img.artlebedev.ru/svalka/artemius-webfont/serif/ALSArtemius-Regular.svg#ALSArtemius-Regular') format('svg');
+    font-weight: 400;
+	font-style: normal;
+	font-stretch: normal;
+}
+@font-face {
+	font-family: 'ALS';
+	src: url('//img.artlebedev.ru/svalka/artemius-webfont/serif/ALSArtemius-Bold.eot') format('embedded-opentype');
+	src: url('//img.artlebedev.ru/svalka/artemius-webfont/serif/ALSArtemius-Bold.eot?#iefix') format('embedded-opentype'),
+         url('//img.artlebedev.ru/svalka/artemius-webfont/serif/ALSArtemius-Bold.otf') format('opentype'),
+         url('//img.artlebedev.ru/svalka/artemius-webfont/serif/ALSArtemius-Bold.woff') format('woff'),
+         url('//img.artlebedev.ru/svalka/artemius-webfont/serif/ALSArtemius-Bold.ttf') format('truetype'),
+         url('//img.artlebedev.ru/svalka/artemius-webfont/serif/ALSArtemius-Bold.svg#ALSArtemius-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+	font-family: 'ALS';
+	src: url('//img.artlebedev.ru/svalka/artemius-webfont/serif/ALSArtemius-Italic.eot') format('embedded-opentype');
+	src: url('//img.artlebedev.ru/svalka/artemius-webfont/serif/ALSArtemius-Italic.eot?#iefix') format('embedded-opentype'),
+         url('//img.artlebedev.ru/svalka/artemius-webfont/serif/ALSArtemius-Italic.otf') format('opentype'),
+         url('//img.artlebedev.ru/svalka/artemius-webfont/serif/ALSArtemius-Italic.woff') format('woff'),
+         url('//img.artlebedev.ru/svalka/artemius-webfont/serif/ALSArtemius-Italic.ttf') format('truetype'),
+         url('//img.artlebedev.ru/svalka/artemius-webfont/serif/ALSArtemius-Italic.svg#ALSArtemius-Italic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+	font-family: 'ALS';
+	src: url('//img.artlebedev.ru/svalka/artemius-webfont/sans/ALSArtemiusSans-Regular.eot') format('embedded-opentype');
+	src: url('//img.artlebedev.ru/svalka/artemius-webfont/sans/ALSArtemiusSans-Regular.eot?#iefix') format('embedded-opentype'),
+         url('//img.artlebedev.ru/svalka/artemius-webfont/sans/ALSArtemiusSans-Regular.otf') format('opentype'),
+         url('//img.artlebedev.ru/svalka/artemius-webfont/sans/ALSArtemiusSans-Regular.woff') format('woff'),
+         url('//img.artlebedev.ru/svalka/artemius-webfont/sans/ALSArtemiusSans-Regular.ttf') format('truetype'),
+         url('//img.artlebedev.ru/svalka/artemius-webfont/sans/ALSArtemiusSans-Regular.svg#ALSArtemiusSans-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+	font-family: 'ALS';
+	src: url('//img.artlebedev.ru/svalka/artemius-webfont/sans/ALSArtemiusSans-Italic.eot') format('embedded-opentype');
+	src: url('//img.artlebedev.ru/svalka/artemius-webfont/sans/ALSArtemiusSans-Italic.eot?#iefix') format('embedded-opentype'),
+         url('//img.artlebedev.ru/svalka/artemius-webfont/sans/ALSArtemiusSans-Italic.otf') format('opentype'),
+         url('//img.artlebedev.ru/svalka/artemius-webfont/sans/ALSArtemiusSans-Italic.woff') format('woff'),
+         url('//img.artlebedev.ru/svalka/artemius-webfont/sans/ALSArtemiusSans-Italic.ttf') format('truetype'),
+         url('//img.artlebedev.ru/svalka/artemius-webfont/sans/ALSArtemiusSans-Italic.svg#ALSArtemius-Italic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+	font-family: 'ALS';
+	src: url('//img.artlebedev.ru/svalka/artemius-webfont/sans/ALSArtemiusSans-Bold.eot') format('embedded-opentype');
+	src: url('//img.artlebedev.ru/svalka/artemius-webfont/sans/ALSArtemiusSans-Bold.eot?#iefix') format('embedded-opentype'),
+         url('//img.artlebedev.ru/svalka/artemius-webfont/sans/ALSArtemiusSans-Bold.otf') format('opentype'),
+         url('//img.artlebedev.ru/svalka/artemius-webfont/sans/ALSArtemiusSans-Bold.woff') format('woff'),
+         url('//img.artlebedev.ru/svalka/artemius-webfont/sans/ALSArtemiusSans-Bold.ttf') format('truetype'),
+         url('//img.artlebedev.ru/svalka/artemius-webfont/sans/ALSArtemiusSans-Bold.svg#ALSArtemius-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}

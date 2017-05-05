@@ -3,9 +3,9 @@
     <video id="video" class="home__header__video" autoplay loop muted preload>
         <source src="/public/video/video.mp4" type="video/mp4"/>
     </video>
-    <div class="container">
+    <div class="home__header__container container">
         <div class="row">
-            <div class="home__header__text col-sm-24 col-md-24 col-lg-21 centered">
+            <div class="home__header__text col-sm-24 col-md-24 col-lg-21">
                 <h1 class="home__header__title anim-group1 anim-scale-soft">Создайте <span class="c-lime">лучшее резюме</span> и <span class="c-lime">получите</span> престижную <span class="c-lime">работу.</span></h1>
                 <div class="home__header__subtitle plr-xl mlr-l sm-mlr0 anim-group1 anim-bt" data-delay="s">По-настоящему уникальная возможность создать классное резюме самому за несколько минут.</div>
                 <div class="inline">
@@ -24,6 +24,8 @@
         </div>
     </div>
 
-    <div class="nav__opener visible-xs"></div>
+    <div class="home__header__arrow">
+        <div class="home__header__arrow__small"></div>
+    </div>
 
 </home-header>

@@ -61,14 +61,17 @@
     }
     &__title {
         @extend .c-blue;
-        @extend .fontSize-32;
+        @extend .fontFamily-fira;
+        @extend .fontSize-30;
+        @extend .fontWeight-5;
+        @extend .letterSpacing--m;
         @extend .mb-m;
         @extend .plr-l;
 
         html.d-phone & {
-            @extend .fontSize-22;
-            @extend .fontWeight-normal;
-            @extend .letterSpacing-0;
+            font-size:23.5px;
+            line-height:29px;
+            @extend .letterSpacing--s;
             @extend .mb-xs;
         }
     }

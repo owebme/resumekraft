@@ -40,33 +40,31 @@
     }
     &__block {
         @extend .pos-abs;
-        font-size:19.5px;
+        font-size:20.5px;
+        line-height:27px;
         @extend .userSelect-none;
-        @extend .fontFamily-helvetica;
-        @extend .letterSpacing-xs;
+        @extend .fontFamily-fira;
+        @extend .letterSpacing--s;
         @extend .pointerEvents-none;
 
         html.d-xlargeScreen & {
-            font-size:23.5px;
-            @extend .letterSpacing-xs;
+            font-size:24px;
+            line-height:32px;
 
             &[data-pos="left"]{
-                left:9.375vw;
+                left:9vw;
             }
             &[data-pos="right"]{
-                right:9.375vw;
+                right:9vw;
             }
             &[data-pos="top"]{
-                top:8.58vh;
+                top:7.5vh;
             }
             &[data-pos="bottom"]{
-                bottom:8.58vh;
+                bottom:7.5vh;
             }
         }
         html.d-tablet & {
-            font-size:20px;
-            @extend .letterSpacing-xs;
-
             &[data-pos="left"]{
                 @extend .l-25;
             }

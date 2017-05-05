@@ -53,8 +53,10 @@
 
         header: function(){
             var $sectionFunctions = WD.el.find('.home__functions'),
-                animHeader = new app.plugins.animate(WD.el.find('.home__header'));
+                $header = WD.el.find('.home__header'),
+                animHeader = new app.plugins.animate($header);
 
+            WD.arrow = $header.find(".home__header__arrow");
             WD.offsetFn = $sectionFunctions.offset().top;
             WD.animFunctions = new app.plugins.animate($sectionFunctions, {
                 showAfter: 1
@@ -73,6 +75,7 @@
                 _.caf(WD.raf);
                 $dom.window.off("scroll.animFunctions");
                 WD.animFunctions.show();
+                WD.arrow.attr("data-hidden", true);
             }
         },
 

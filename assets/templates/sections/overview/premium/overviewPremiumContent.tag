@@ -61,9 +61,9 @@
     <section class="overview__section">
         <div class="container pt-xl pb-xl">
             <div class="row">
-                <div class="col-md-18 col-lg-16 centered">
+                <div class="col-md-19 col-lg-17 centered">
                     <small class="mb-xl">premium аккаунт</small>
-                    <h1 class="mb-l mlr-m plr-l pt-m">Представляем cовершенно новый формат резюме для продвинутых соискателей.</h1>
+                    <h1 class="mb-l mlr-m plr-l pt-m">Представляем резюме следующего поколения в новом формате.</h1>
                     <p class="fontSize-24 lineHeight-xxxl c-gray">Создавая премиальное резюме, мы поставили перед собой цель, которая казалась невозможной: разработать невероятно функциональный, удобный, яркий, мобильный сервис, который позволит выделить вас среди кандидатов и поможет быстрее найти достойную работу. Предлагаем ознакомиться с ними поближе.</p>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                     <div class="ptb-l">
                         <icon-control size="xl"></icon-control>
                     </div>
-                    <h1 class="mb-l pt-m">Не нужно объяснять.</h1>
+                    <h1 class="mb-l pt-m larger">Не нужно объяснять.</h1>
                     <p class="pb-l">Мы убеждены, что комфортная работа в интерфейсе невозможна без его интеллектуальной простоты. Зачем что-то объяснять, когда все работает интуитивно понятно для вас, обеспечивая моментальный доступ ко всем функциям интерфейса. И уже через несколько минут вы получаете то резюме, которое всегда хотели.</p>
                     <div class="slide2-1 bg-cover progressive-image anim anim-rl-soft" data-duration="xl"></div>
                 </div>
@@ -91,7 +91,7 @@
     <section class="overview__section mb0" data-bg="gradient-tb">
         <div class="container">
             <div class="row">
-                <div class="col-md-18 col-lg-16 centered">
+                <div class="col-md-19 col-lg-16 centered">
                     <small class="mb-l">стильный и запоминающийся дизайн</small>
                     <div class="ptb-l">
                         <icon-glass size="xl"></icon-glass>
@@ -145,7 +145,7 @@
             <div class="row">
                 <div class="col-md-18 col-lg-16 centered">
                     <small class="mb-l">Доступная статистика</small>
-                    <h1 class="mb-l pt-m">Отслеживайте просмотры резюме.</h1>
+                    <h1 class="mb-l pt-m larger">Отслеживайте просмотры резюме.</h1>
                     <p>Мы разработали web-приложение, благодаря которому, легко и естественно решаются все задачи по контролю над вашими резюме — это создание, управление, статистика, просмотр входящих от компаний, сохранить в PDF, отправить на почту, поделиться с друзьями и коллегами, множество других полезных и удобных функций.</p>
                 </div>
             </div>
@@ -520,7 +520,7 @@
             <div class="row pl-xl">
                 <div class="col-md-12 pt55 pr-m zIndex-1">
                     <small class="mb-l nowrap">Найдите работу своей мечты</small>
-                    <h1 class="mb-l pt-l">Создайте лучшее резюме.</h1>
+                    <h1 class="mb-l pt-l larger">Создайте лучшее резюме.</h1>
                     <p>Весь заряженный функционал в премиальном резюме нацелен продвинуть вашу кандидатуру на более высокий и профессиональный уровень, презентовав вас, как ценного профессионала в своей специализации и своем деле.</p>
                 </div>
                 <div class="col-md-12 anim anim-rl-soft" data-duration="xl">
@@ -560,8 +560,8 @@
     <section class="overview__section mb0" data-section="finish">
         <div class="container">
             <div class="row">
-                <div class="col-md-16 centered anim anim-scale-soft" data-delta="s">
-                    <h1 class="mb-m pt-xs">Начать легко и доступно.</h1>
+                <div class="col-md-18 col-lg-16 centered anim anim-scale-soft" data-delta="s">
+                    <h1 class="mb-m pt-xs larger">Начать легко и доступно.</h1>
                     <p>Вы можете выбрать ежемесячную подписку или на год. Для России и стран СНГ действует программа лояльности, успейте приобрести по сниженной цене.</p>
                 </div>
             </div>
