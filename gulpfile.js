@@ -60,7 +60,7 @@ gulp.task('watch', function() {
 	gulp.watch([
 		'assets/css/style.scss',
 		'assets/css/**/*.scss'
-	], gulp.series('private.css'));
+	], gulp.series('private.css', 'private.mobile.css'));
 
 	gulp.watch([
 		'assets/css/**/templates/style.scss',
@@ -68,7 +68,8 @@ gulp.task('watch', function() {
 	], gulp.series('templates.basic', 'templates.basic.view'));
 
 	gulp.watch([
-		'preview/css/*.scss'
+		'preview/css/*.scss',
+		'public/css/partials/*.scss'
 	], gulp.series('workflow.css'));
 });
 
@@ -91,7 +92,7 @@ gulp.task('watchPublic', function() {
 		'assets/css/**/*.scss',
 		'public/css/style.scss',
 		'public/css/**/*.scss'
-	], gulp.parallel('public.css'));
+	], gulp.parallel('public.css', 'public.mobile.css'));
 });
 
 gulp.task('css.build', gulp.series('private.css', 'private.mobile.css', 'premium.css', 'public.css', 'public.mobile.css', 'public.css.smallScreen', gulp.parallel('private.css.smallScreen', 'premium.css.smallScreen', 'templates.basic', 'templates.basic.view', 'jobs.css', 'jobs.css.smallScreen', 'workflow.css')));

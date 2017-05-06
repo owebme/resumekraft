@@ -116,6 +116,9 @@
                 @extend .opacity-100;
                 transition:opacity 0.35s $cubic345, transform 0.35s $cubic345;
 
+                html.d-phone & {
+                    transition:opacity 0.3s $cubic4001, transform 0.3s $cubic4001;
+                }
                 &[data-hidden="true"]{
                     @extend .scale-80;
                     @extend .opacity-0;
@@ -128,6 +131,10 @@
             }
             &:before {
                 transition:opacity 0.35s $cubic345, background-color 0.35s $cubic345;
+
+                html.d-phone & {
+                    transition:opacity 0.3s $cubic4001, background-color 0.3s $cubic4001;
+                }
             }
         }
     }
@@ -397,9 +404,13 @@
                 @extend .willChange-transform;
                 transition:transform 0.5s $cubic645;
             }
+            html.d-phone .#{$title}[data-show="up"] &,
+            html.d-phone .#{$title}[data-show="down"] & {
+                transition:transform 0.575s $cubic4001;
+            }
             html.d-phone .#{$title}[data-show="left"] &,
             html.d-phone .#{$title}[data-show="right"] & {
-                transition:transform 0.5s $cubic40;
+                transition:transform 0.5s $cubic4001; //$cubic40
             }
             .#{$title}[data-show="up"] & {
                 transform:translate3d(0, -101%, 0);
@@ -438,11 +449,19 @@
                     transition:opacity .4s $cubic40 .2s;
                 }
             }
+            &[data-show="up"],
+            &[data-show="down"]{
+                .#{$title}__content {
+                    html.d-phone & {
+                        transition:transform 0.5s $cubic4001;
+                    }
+                }
+            }
             &[data-show="left"],
             &[data-show="right"]{
                 .#{$title}__content {
                     html.d-phone & {
-                        transition:transform 0.42s $cubic645;
+                        transition:transform 0.42s $cubic4001; //$cubic645
                     }
                 }
             }

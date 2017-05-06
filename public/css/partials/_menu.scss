@@ -13,12 +13,12 @@
 
     &__items {
         width:600px;
+        margin-top:3vh;
         @extend .pos-centered;
     }
     &__item {
         @include accelerate();
-        @extend .mt50;
-        @extend .mb50;
+        margin:8vh 0;
         @extend .opacity-0;
         @extend .willChange-tp;
         transform-origin:50% 0;
@@ -27,37 +27,48 @@
 
         &__link {
             @extend .c-steel;
-            font-size:18.5px;
-            @extend .fontWeight-bold;
-            @extend .letterSpacing-xxxxl;
+            @extend .fontFamily-fira;
+            font-size:18px;
+            @extend .fontWeight-5;
+            letter-spacing:5.5px;
             @extend .text-uppercase;
             @extend .textDecoration-none;
-            transition:all 0.35s $cubic215;
+            transition:all 0.3s $cubic4001;
 
             html.m-no-touch &:hover,
             &[data-active="true"] {
-                @extend .c-blueBright;
-                @extend .fontWeight-8;
-                letter-spacing:6px;
+                @extend .c-pink;
+                @extend .fontWeight-bold;
+                letter-spacing:6.5px;
             }
         }
     }
     &__close {
-        @extend .pos-centered-h;
-        @extend .t-l;
-        width:32px;
-        height:32px;
+        @include accelerate();
+        @extend .pos-abs;
+        top:6vh;
+        @extend .l50;
+        @extend .w40;
+        @extend .h40;
+        @extend .borderRadius-circle;
+        @extend .bg-blackLight;
         @extend .cursor-pointer;
+        transition:transform 0.3s $cubic215, background-color 0.2s $cubic215;
+        transform:translate3d(-50%, 0, 0) scale3d(0, 0, 1);
 
+        html.m-no-touch &:hover {
+            @extend .bg-pink;
+            transition-delay:0s;
+        }
         &:before,
         &:after {
             @extend .content-empty;
             @extend .pos-abs;
             @extend .t50;
             @extend .l50;
-            @extend .w100p;
+            @extend .w33p;
             @extend .h2px;
-            @extend .bg-blueBright;
+            @extend .bg-white;
             @extend .opacity-0;
             @extend .willChange-tp;
             transition:transform 0.4s $cubic215, opacity 0.4s $cubic215;
@@ -88,10 +99,13 @@
                 }
             }
             &__close {
+                transform:translate3d(-50%, 0, 0) scale3d(1, 1, 1);
+                transition-delay:.5s;
+
                 &:before,
                 &:after {
                     @extend .opacity-100;
-                    transition-delay:.5s;
+                    transition-delay:.55s;
                 }
                 &:before {
                     transform:translate3d(-50%, -50%, 0) rotate(45deg);
@@ -99,6 +113,11 @@
                 &:after {
                     transform:translate3d(-50%, -50%, 0) rotate(-45deg);
                 }
+            }
+        }
+        &[data-showed="true"]{
+            .menu__close {
+                transition-delay:0s;
             }
         }
     }

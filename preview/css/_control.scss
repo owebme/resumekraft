@@ -9,6 +9,11 @@
     box-shadow:0 8.66px 30px 0 rgba(31,35,37,.078);
     @extend .zIndex-1;
 
+    &:hover {
+        .control__device__icon {
+            animation:spinner linear 1.4s infinite;
+        }
+    }
     &__item {
         @extend .willChange-transform;
         transition:transform .2s;
@@ -32,9 +37,7 @@
 
         &:after {
             @extend .content-empty;
-            @extend .pos-centered;
-            @extend .w20;
-            @extend .h20;
+            @include abs_50(20, 20);
             @extend .bg-cover;
             background-image:url(/preview/images/options_white.svg);
         }

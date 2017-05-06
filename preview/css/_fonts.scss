@@ -1,11 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:500,700&subset=cyrillic');
 @import '../../assets/css/fonts/Futura/style';
 @import '../../assets/css/fonts/HelveticaNeue/style';
 
 $futura: "Futura", sans-serif;
+$fira: "Fira Sans", sans-serif;
 $helvetica: "HelveticaNeue", sans-serif;
 
 .fontFamily-futura {
     font-family:$futura;
+}
+.fontFamily-fira {
+    font-family:$fira;
 }
 .fontFamily-default {
     font-family:$helvetica;

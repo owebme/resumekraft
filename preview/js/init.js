@@ -20,6 +20,7 @@
         $loaderBg = $loader.find(".loader-bg"),
         $share = $(".button__like"),
         $menu = $(".menu"),
+        $scrollHelp = $(".scroll__help"),
         $btnImport = $(".button__import__item");
 
     $share.opener = $share.find(".button__like__opener"),
@@ -79,9 +80,13 @@
 
     $menu.opener.on("click", function(){
         $menu.attr("data-open", true);
+        _.onEndTransition($menu.close[0], function(){
+            $menu.attr("data-showed", true);
+        });
     });
 
     $menu.close.on("click", function(){
+        $menu.attr("data-showed", false);
         $menu.attr("data-open", false);
     });
 
@@ -128,6 +133,7 @@
     });
 
     var frameOnLoad = function(callback){
+        window.loadedFrame = false;
         $frame.one("load", function(){
             app.$dom.window.one("message", function(e){
                 var data = e.originalEvent.data;
@@ -141,10 +147,17 @@
                         $body.removeClass('apploading');
                     }
                     if (callback) callback();
-                    isStart = true;
+                    clearTimeout(window.waitLoadFrame);
+                    window.loadedFrame = true;
                 }
             });
         });
+        window.waitLoadFrame = setTimeout(function(){
+            if (!window.loadedFrame){
+                $body.removeClass('apploading');
+                $body.attr("data-help", true);
+            }
+        }, 5000);
     };
 
     var changeColor = function(value){
@@ -195,12 +208,14 @@
         $body.attr("data-help", true);
     });
 
-    setTimeout(function(){
-        if (!isStart){
-            $body.removeClass('apploading');
-            $body.attr("data-help", true);
+    $frame.on("mouseenter mouseleave", function(e){
+        if (e.type === "mouseenter"){
+            $scrollHelp.attr("data-text", "down");
         }
-    }, 5000);
+        else if (e.type === "mouseleave"){
+            $scrollHelp.attr("data-text", "up");
+        }
+    });
 
     new app.plugins.share($share, {
         buttons: '.button__like__item',

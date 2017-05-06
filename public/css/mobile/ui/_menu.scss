@@ -25,15 +25,15 @@
 
         &__link {
             @extend .c-steelDark;
-            @extend .fontFamily-futura;
+            @extend .fontFamily-fira;
             @extend .fontSize-18;
-            @extend .fontWeight-bold;
+            @extend .fontWeight-5;
             letter-spacing:0.18em;
             @extend .text-uppercase;
             @extend .textDecoration-none;
 
             &[data-active="true"]{
-                @extend .c-blueBright;
+                @extend .c-silver;
             }
         }
     }
@@ -85,11 +85,16 @@
         }
     }
     &__close {
+        @include accelerate();
         @extend .pos-abs;
-        width:28px;
-        height:28px;
+        width:13px;
+        height:13px;
+        @extend .borderRadius-circle;
+        @extend .bg-blackLight;
         @extend .cursor-pointer;
         @extend .zIndex-1;
+        box-shadow:0 0 0 12px $blackLight;
+        transition:transform 0.3s $cubic215;
 
         &:before,
         &:after {
@@ -100,10 +105,9 @@
             @extend .l50;
             @extend .w100p;
             @extend .h2px;
-            @extend .bg-steel;
-            @extend .opacity-0;
-            @extend .willChange-tp;
-            transition:transform 0.3s $cubic215, opacity 0.3s $cubic215;
+            @extend .bg-white;
+            @extend .willChange-transform;
+            transition:transform 0.3s $cubic215;
         }
         &:before {
             transform:translate3d(-50%, -50%, 0) rotate(0deg);
@@ -131,10 +135,11 @@
                 }
             }
             &__close {
+                transition-delay:.35s;
+
                 &:before,
                 &:after {
-                    @extend .opacity-35;
-                    transition-delay:.35s;
+                    transition-delay:.4s;
                 }
                 &:before {
                     transform:translate3d(-50%, -50%, 0) rotate(45deg);
@@ -149,20 +154,31 @@
 @media screen and (max-height: 565px) {
     .menu {
         &__close {
-            top:15px;
-            right:15px;
+            top:28px;
+            right:28px;
+            transform:scale3d(0, 0, 0);
+        }
+        &[data-open="true"]{
+            .menu__close {
+                transform:scale3d(1, 1, 1);
+            }
         }
     }
 }
 @media screen and (min-height: 565px) {
     .menu {
         &__close {
-            top:5vh;
+            top:6vh;
             left:50%;
-            transform:translate3d(-50%, 0, 0);
+            transform:translate3d(-50%, 0, 0) scale3d(0, 0, 0);
         }
         &__items {
             margin-top:15px;
+        }
+        &[data-open="true"]{
+            .menu__close {
+                transform:translate3d(-50%, 0, 0) scale3d(1, 1, 1);
+            }
         }
     }
 }

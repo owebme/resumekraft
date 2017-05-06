@@ -291,19 +291,93 @@
     @extend .t50;
     left:80.2%;
     transform:translate3d(-50%, -50%, 0) scale(0);
-    @extend .w100;
-    @extend .h100;
-    @extend .opacity-80;
     @extend .pointerEvents-none;
     transition:transform .25s $cubic345;
+}
+html.d-no-mobile {
+    .scroll {
+        &__help {
+            &[data-text="up"]{
+                .scroll__text {
+                    &[data-pos="up"]{
+                        @extend .opacity-100;
+                        transform:translate3d(0, 0, 0) scale3d(1, 1, 1);
+                    }
+                }
+            }
+            &[data-text="down"]{
+                .scroll__text {
+                    &[data-pos="down"]{
+                        @extend .opacity-100;
+                        transform:translate3d(0, 0, 0) scale3d(1, 1, 1);
+                    }
+                }
+            }
+        }
+        &__text {
+            @include accelerate();
+            @extend .opacity-0;
+            @extend .pos-abs;
+            @extend .l--60;
+            @extend .w120;
+            @extend .text-right;
+            transition:transform 0.6s $cubic075, opacity 0.15s ease-in-out;
+            transition-delay:0.2s;
 
-    path {
-        @extend .fill-blackLight;
+            &[data-pos="up"]{
+                @extend .b100;
+                transform-origin:50% 0;
+                transform:translate3d(0, 40px, 0) scale3d(0.4, 1, 1);
+            }
+            &[data-pos="down"]{
+                @extend .t90;
+                transform-origin:50% 100%;
+                transform:translate3d(0, -40px, 0) scale3d(0.4, 1, 1);
+            }
+        }
+        &__icon {
+            @extend .pos-rel;
+            @extend .display-block;
+            @extend .w100;
+            @extend .h100;
+            @extend .opacity-80;
+            @extend .zIndex-1;
+
+            path {
+                @extend .fill-blackLight;
+            }
+            &__arrow {
+                @include accelerate();
+                @extend .willChange-tp;
+                transform:translate3d(0, 66%, 0);
+                animation:scroll__arrow 1.4s infinite;
+            }
+            &__wheel {
+                @include accelerate();
+                @extend .willChange-transform;
+                transform-origin:50% 0%;
+                animation:scroll__wheel 1.4s infinite;
+            }
+        }
     }
-    &__arrow {
-        @extend .willChange-tp;
-        transform:translate3d(0, 66%, 0);
-        animation:scroll__arrow 1.4s infinite;
+}
+html.d-mobile {
+    .scroll {
+        left:76%;
+
+        &__help,
+        &__icon {
+            @extend .display-none;
+        }
+        &:after {
+            @extend .content-empty;
+            @extend .display-block;
+            @extend .w90;
+            @extend .h90;
+            @extend .bg-cover;
+            @extend .opacity-80;
+            background-image:url(/preview/images/swipeDown.svg);
+        }
     }
 }
 .vk__like {
@@ -367,6 +441,17 @@
     }
 }
 
+@keyframes scroll__wheel {
+    0%, 100% {
+        transform:scaleY(.4) translateY(0) translateZ(0);
+    }
+    20% {
+        transform:scaleY(1) translateY(0) translateZ(0);
+    }
+    60% {
+        transform:scaleY(.4) translateY(12px) translateZ(0);
+    }
+}
 @keyframes scroll__arrow {
     from {
         transform:translate3d(0, -33%, 0);
