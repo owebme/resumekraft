@@ -21,8 +21,11 @@
         $share = $(".button__like"),
         $menu = $(".menu"),
         $scrollHelp = $(".scroll__help"),
-        $btnImport = $(".button__import__item");
+        $btnImport = $(".button__import__item"),
+        $tutorial = $(".tutorial__screens");
 
+    $tutorial.screens = $tutorial.find(".tutorial__screens__items");
+    $tutorial.num = $tutorial.find(".tutorial__screens__num__items");
     $share.opener = $share.find(".button__like__opener"),
     $menu.opener = $(".menu__opener");
     $menu.close = $menu.find(".menu__close");
@@ -222,6 +225,33 @@
         url: app.domain() + "/premium/",
         share: {
             title: "Премиальное резюме нового формата на ResumeKraft.ru"
+        }
+    });
+
+    var currentScreen = "cover",
+        previousScreen = null;
+
+    app.$dom.window.on("message", function(e){
+        var data = e.originalEvent.data;
+        if (data && data.screen){
+            previousScreen = currentScreen;
+            currentScreen = data.screen;
+            var $screen = $tutorial.screens.find(".tutorial__screen[data-screen='" + currentScreen + "']");
+            $screen.attr("data-active", true)
+            .siblings()
+            .attr("data-active", false);
+
+            if (currentScreen === "likes"){
+                $body.attr("data-tutorial", "finish");
+            }
+            else {
+                var num = parseInt($screen.index()) + 1;
+                $tutorial.num.text(num < 10 ? "0" + num : num);
+
+                if (previousScreen === "likes"){
+                    $body.attr("data-tutorial", true);
+                }
+            }
         }
     });
 

@@ -9,13 +9,22 @@
 
     html.d-no-phone & {
         &.section-hidden {
-            transition:transform .5s $cubic40, visibility 0s .5s;
+            transition:transform .6s $cubic4001, visibility 0s .6s;
 
             &[data-open="true"]{
-                transition:transform .55s $cubic28, visibility 0s;
+                transition:transform .6s $cubic4001, visibility 0s;
             }
         }
     }
+    // html.d-phone & {
+    //     &.section-hidden {
+    //         transition:transform .5s $cubic4001, visibility 0s .5s;
+    //
+    //         &[data-open="true"]{
+    //             transition:transform .42s $cubic4001, visibility 0s;
+    //         }
+    //     }
+    // }
     html.d-tablet.r-landscape & {
         width:680px;
     }
@@ -57,6 +66,11 @@
             @extend .opacity-0;
         }
     }
+    &-content {
+        @include abs();
+        @extend .pr-m;
+        padding-top:105px;
+    }
     &-item {
         @extend .pos-rel;
         @include flex("row", "space-between", "center");
@@ -68,11 +82,11 @@
         @extend .xs-pl-l;
         @extend .xs-pr0;
         @extend .fontFamily-gotham;
-        height:calc((100vh - 140px) / 6);
+        height:calc((100% - 20px) / 6);
         border-bottom:2px dashed $smokeLight;
 
         html.d-tablet.r-portrait & {
-            height:calc((100vh - 180px) / 6);
+            height:calc((100% - 80px) / 6);
         }
         &:nth-child(1),
         &:nth-child(3),
@@ -108,12 +122,14 @@
             @extend .flex-centered;
             @extend .c-gray;
             font-size:20px;
+            line-height:23px;
             @extend .fontWeight-bold;
             @extend .pl-l;
             @extend .h100p;
 
             html.d-tablet & {
-                padding-left:30px;
+                @extend .pt-xxs;
+                @extend .pl30;
             }
             html.d-tablet.r-portrait & {
                 font-size:25px;
@@ -125,15 +141,14 @@
             &-ruble {
                 @extend .display-block;
                 @extend .fontFamily-roboto;
-                width:22px;
-                height:22px;
-                transform:translateY(1px);
+                width:24px;
+                height:23px;
 
                 &-color {
                     @extend .fill-gray;
                 }
                 html.d-tablet.r-portrait & {
-                    width:27px;
+                    width:28px;
                     height:27px;
                 }
             }
@@ -155,6 +170,13 @@
                     border-left-width:14px;
                     @extend .mt--xs;
                 }
+                html.d-no-mobile &,
+                html.d-tablet.r-landscape & {
+                    border-bottom-width:13px;
+                    border-right-width:11px;
+                    border-left-width:11px;
+                    margin-top:-7px;
+                }
             }
         }
     }
@@ -172,7 +194,7 @@
         @extend .boxShadow-default;
         @extend .zIndex-5;
         @extend .bg-primary;
-        @extend .cursor-default;
+        @extend .cursor-pointer;
         will-change:transform, background-color;
 
         html.d-phone & {
@@ -203,6 +225,57 @@
 
             html.d-phone & {
                 font-size:33px;
+            }
+        }
+    }
+}
+@media screen and (max-height: 565px) {
+    html.d-phone {
+        .salary-graph {
+            &-item {
+                &-amount {
+                    font-size:18px;
+
+                    &-ruble {
+                        width:22px;
+                        height:21px;
+                    }
+                    &:after {
+                        border-bottom-width:11px;
+                        border-right-width:9px;
+                        border-left-width:9px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (min-height: 700px) {
+    html.d-phone {
+        .salary-graph {
+            &-title {
+                left:85px;
+                width:50%;
+            }
+            &-item {
+                &-month {
+                    font-size:15px;
+                }
+                &-amount {
+                    font-size:22px;
+                    padding-top:3px;
+
+                    &-ruble {
+                        width:26px;
+                        height:25px;
+                    }
+                    &:after {
+                        border-bottom-width:13px;
+                        border-right-width:11px;
+                        border-left-width:11px;
+                        margin-top:-7px;
+                    }
+                }
             }
         }
     }

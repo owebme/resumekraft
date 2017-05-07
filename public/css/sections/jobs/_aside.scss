@@ -10,6 +10,9 @@
     @extend .plr-s;
     @extend .h62;
 
+    .employer & {
+        @extend .display-none;
+    }
     html.d-phone & {
         padding-left:17.5px;
         padding-right:17.5px;
@@ -67,6 +70,9 @@
     @extend .borderRadiusBottom-xs;
     border:1px dashed rgba($silver,.4);
 
+    .employer & {
+        @extend .display-none;
+    }
     &:before {
         @extend .content-empty;
         @extend .display-block;

@@ -14,6 +14,15 @@ module.exports = function(){
         }
     });
 
+    app.get('/auth/', function(req, res) {
+        res.redirect(301, '/?signin');
+    });
+    app.get('/remember/', function(req, res) {
+        res.redirect(301, '/?signin');
+    });
+    app.get('/feadback/', function(req, res) {
+        res.redirect(302, '/');
+    });
     app.post('/auth', app.controllers.auth.index);
     app.get('/activate/:id/:hash', app.controllers.auth.activate);
     app.get('/logout', function(req, res) {
@@ -22,18 +31,16 @@ module.exports = function(){
     });
 
     app.get('/test_mailer', function(req, res){
-        var compile = app.swig.compileFile(process.cwd() + '/public/templates/mailer/simple.html');
+        var compile = app.swig.compileFile(process.cwd() + '/public/templates/mailer/test.html');
         var output = compile({
-            cover: "resume",
-            subject: "Завершение регистрации",
-            title: "Активация входа по паролю",
-            text: "Для завершения активации нажмите кнопку ниже.",
-            button: "Подтвердить активацию",
-            link: "http://resumekraft.ru"
+            //cover: "bg",
+            //text: "Мы рады, что вы обратились к нам за услугой. Наши специалисты с удовольствием вам помогут в написании резюме и свяжутся с вами 10 мая 2017 г. На майские праздники у нас действует акция - в подарок ",
+            //button: "Подтвердить активацию",
+            domain: "https://resumekraft.ru"
         });
         // var body = {
-        //     to: "workkraft@yandex.ru, owebme@gmail.com, maxfull@mail.ru",
-        //     subject: 'Письмо',
+        //     to: "workkraft@yandex.ru, owebme@gmail.com, maxfull@mail.ru, i-domashova@mail.ru",
+        //     subject: 'Ваш заказ принят!',
         //     html: output
         // }
         // API.mailer.send(body, function(err, data){
@@ -96,6 +103,9 @@ module.exports = function(){
     app.get('/premium/editing', app.controllers.resume("demo-editing"));
 
     app.get('/jq-test/', function(req, res) {
+        res.redirect(301, '/jp-test/');
+    });
+    app.get('/jq-test/example', function(req, res) {
         res.redirect(301, '/jp-test/');
     });
     app.get('/jp-test/', function(req, res) {

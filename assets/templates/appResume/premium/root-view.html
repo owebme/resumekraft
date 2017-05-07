@@ -104,9 +104,18 @@
                 progressAnimation.start();
             });
         }
-        if (app.demo){
-            if (window.parent && window.parent){
-                window.parent.postMessage('ready', '*');
+        if (app.demo && window.parent){
+            window.parent.postMessage('ready', '*');
+
+            if (app.device.isPhone){
+                var $screens = $Resume.el.find(".screen");
+
+                $screens.on('show', function(){
+                    var section = this.getAttribute("data-section");
+                    window.parent.postMessage({
+                        screen: section
+                    }, '*');
+                });
             }
             app.$dom.window.on("message", function(e){
                 var data = e.originalEvent.data;

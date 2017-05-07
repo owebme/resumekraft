@@ -20,6 +20,7 @@
         @extend .borderRadius-circle;
         @extend .boxShadow-default;
         @extend .bg-primary;
+        @extend .cursor-pointer;
         will-change:transform, background-color;
 
         html.d-phone & {

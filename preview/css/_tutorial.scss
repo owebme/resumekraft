@@ -1,0 +1,169 @@
+#device {
+    @extend .willChange-transform;
+    transition:transform 1.25s $cubic645;
+}
+body {
+    &[data-tutorial="true"],
+    &[data-tutorial="finish"]{
+        #device {
+            @extend .zIndex-2;
+        }
+        .scroll,
+        .tutorial__screens {
+            @extend .zIndex-1;
+        }
+        .tutorial__help__item {
+            @extend .opacity-100;
+        }
+    }
+    &[data-tutorial="finish"]{
+        #device {
+            transform:translate3d(50%, -50%, 0);
+        }
+    }
+}
+.tutorial {
+    &__help {
+        &__item {
+            @extend .pos-abs;
+            @extend .opacity-0;
+            @extend .willChange-opacity;
+            @extend .pointerEvents-none;
+            color:$snowSilverDark;
+            transition:opacity 0.3s $cubic215;
+
+            &:before {
+                @extend .content-empty;
+                @extend .pos-abs;
+                @extend .w80;
+                @extend .h1px;
+                @extend .bg-white;
+                @extend .opacity-65;
+            }
+            &[data-help="info"]{
+                @extend .t-20;
+                @extend .r100;
+                @extend .mr-m;
+                @extend .pr100;
+                width:230px;
+
+                &:before {
+                    @extend .pos-centered-v;
+                    @extend .r-xs;
+                }
+            }
+            &[data-help="sendmail"]{
+                @extend .t-25;
+                @extend .l100;
+                @extend .ml-m;
+                @extend .pl100;
+                @extend .w200;
+                @extend .text-right;
+
+                &:before {
+                    @extend .pos-centered-v;
+                    @extend .l-xs;
+                }
+            }
+            &[data-help="salary"]{
+                @extend .t-95;
+                @extend .l100;
+                @extend .ml-m;
+                @extend .pl100;
+                width:250px;
+
+                &:before {
+                    @extend .pos-centered-v;
+                    @extend .l-xs;
+                }
+            }
+        }
+    }
+    &__screens {
+        @extend .pos-centered-h;
+        @extend .w100p;
+        max-width:1400px;
+        @extend .h100p;
+
+        &__items {
+            @extend .pos-abs;
+            left:8%;
+            @extend .c-white;
+            @extend .h100p;
+            @extend .zIndex-2;
+        }
+        &__num {
+            @extend .pos-centered-v;
+            height:230px;
+
+            &__items {
+                @extend .pos-abs;
+                @extend .t100;
+                @extend .l0;
+                @extend .fontWeight-8;
+                font-size:100px;
+                line-height:100px;
+                @extend .opacity-15;
+                transform:translate3d(-38px, 80px, 0);
+            }
+        }
+    }
+    &__screen {
+        @extend .fontFamily-helvetica;
+        @extend .pos-centered-v;
+        width:320px;
+        @extend .pointerEvents-none;
+        @extend .pr-l;
+
+        &[data-active="true"]{
+            @extend .pointerEvents-all;
+
+            .tutorial__screen__title__inner,
+            .tutorial__screen__text__inner {
+                @extend .transform-default;
+            }
+            .tutorial__screen__title__inner {
+                transition-delay:0.65s;
+            }
+            .tutorial__screen__text__inner {
+                transition-delay:0.85s;
+            }
+        }
+        &[data-screen="likes"]{
+            width:570px;
+            @extend .pr0;
+            @extend .ml70;
+            @extend .text-right;
+        }
+        &__title {
+            @extend .c-yellowBright;
+            font-size:35px;
+            line-height:44px;
+            @extend .letterSpacing--xs;
+            @extend .fontWeight-bold;
+            margin-bottom:7px;
+            @extend .w100p;
+            @extend .overflow-hidden;
+        }
+        &__text {
+            font-size:17px;
+            line-height:33px;
+            @extend .w100p;
+            @extend .overflow-hidden;
+        }
+        &__title__inner,
+        &__text__inner {
+            @include accelerate();
+            @extend .willChange-transform;
+            transition:transform 0.65s $cubic4001;
+        }
+        &__title__inner {
+            transform:translate3d(0, -100%, 0);
+            transition-delay:0s;
+        }
+        &__text__inner {
+            transform:translate3d(0, 100%, 0);
+            transition-delay:0.3s;
+        }
+    }
+}

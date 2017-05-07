@@ -30,7 +30,12 @@
             duration = delta / 5;
             duration = duration < 500 ? 500 : duration;
 
-            app.$dom.body.animate({scrollTop: $.contactsOffset}, duration);
+            if (app.device.isMobile){
+                app.$dom.body.scrollTop($.contactsOffset);
+            }
+            else {
+                app.$dom.body.animate({scrollTop: $.contactsOffset}, duration);
+            }
         }
     };
 

@@ -2,8 +2,11 @@ module.exports = function(){
 
     return function(req, res, next){
         var params = app.utils.url.parse(req.url, true).query,
-            query = req.url.replace(/\/jobs\/search\//, ""),
-            isEmptyParams = app.utils.isEmpty(params),
+            query = req.url.replace(/\/jobs\/search\//g, "").replace(/[\?|&]yclid\=.+?$/g, "");
+
+        if (params.yclid) delete params.yclid;
+
+        var isEmptyParams = app.utils.isEmpty(params),
             url = app.config.public.get('hh:api') + "/vacancies/" + (!isEmptyParams ? query + "&clusters=true" : '?clusters=true'),
             countsAll = app.config.public.get('hh:vacancy:counter');
 
