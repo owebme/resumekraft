@@ -1,0 +1,27 @@
+<prof-opener onClick={ open } onUpdate="none" class="prof__opener">
+
+    <div class="prof__opener__photo">
+        <div class="prof__opener__photo__image" style="background-image:url(/preview/images/prof/small/{ id }.jpg)"></div>
+    </div>
+    <div class="prof__opener__chevron"></div>
+    <div class="prof__opener__label">
+        <div class="prof__opener__label__text">Изменить</div>
+    </div>
+
+<script>
+
+    var self = this;
+
+    self.id = "1";
+
+    self.on("mount", function(){
+        app.workflow.profOpener = self;
+    });
+
+    self.open = function(){
+        app.workflow.profList.show();
+    };
+
+</script>
+
+</prof-opener>

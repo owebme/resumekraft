@@ -108,12 +108,13 @@
             window.parent.postMessage('ready', '*');
 
             if (app.device.isPhone){
-                var $screens = $Resume.el.find(".screen");
+                var $screens = $Resume.el.find(".screen"),
+                    currentScreen = null;
 
                 $screens.on('show', function(){
-                    var section = this.getAttribute("data-section");
+                    currentScreen = this.getAttribute("data-section");
                     window.parent.postMessage({
-                        screen: section
+                        screen: currentScreen
                     }, '*');
                 });
             }
@@ -123,7 +124,10 @@
                     if (data.color && $State.get('color') != data.color){
                         $State.select('color').set(data.color);
                     }
-                    if (data.resume){
+                    else if (data.font && $State.get('font') != data.font){
+                        $State.select('font').set(data.font);
+                    }
+                    else if (data.resume){
                         $Resume.unmount(true);
                         $resume = $store.resume.prepare.premium(data.resume, "demo");
                         $root.init();
@@ -135,6 +139,15 @@
                                 resume: $store.resume.get()
                             }, '*');
                         });
+                    }
+                    else if (data.scrollTo){
+                        var item = _.findWhere($Resume.screenItems, {"section": currentScreen}),
+                            duration = undefined;
+
+                        if (item) duration = item.step * 250;
+                        if (duration < 600) duration = 600;
+                        else if (duration > 3000) duration = 3000;
+                        $Resume.screens.nav(data.scrollTo, duration);
                     }
                 }
             });

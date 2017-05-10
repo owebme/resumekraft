@@ -32,7 +32,7 @@ $store.demo = {
         post: "Web-Designer, Art-director, Illustrator",
         percent: "97",
         commons: {
-            photo: "/preview/images/photo/photo_phone_large.jpg",
+            photo: "/preview/images/prof/6.jpg",
             name: "Виктория",
             surname: "",
             gender: "female",

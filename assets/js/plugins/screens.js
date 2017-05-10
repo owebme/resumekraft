@@ -85,7 +85,7 @@
             else {
                 if (!screen) return;
                 var item = _.findWhere(this.items, {"title": screen});
-                if (item && item.index) {
+                if (item && _.isNumber(item.index)) {
                     this.state = item.title;
                     this.marquee.scrollTo(item.index, duration !== undefined ? duration : undefined);
                     if (duration == 0) this.marquee.refresh();

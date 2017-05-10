@@ -1,0 +1,92 @@
+<prof-list class="prof__wrapper" data-open="false">
+
+    <div ref="container" class="prof__container">
+        <div class="prof__header" data-title={ titleShow }>
+            <div class="prof__header__top">
+                <div class="prof__label">Выберите профессию</div>
+                <div class="prof__switcher" data-select="{ switcher }">
+                    <div onClick={ onSwitch } class="prof__switcher__item" data-item="photo">Фотографии</div>
+                    <div onClick={ onSwitch } class="prof__switcher__item" data-item="list">Списком</div>
+                    <div class="prof__switcher__cursor"></div>
+                </div>
+            </div>
+            <div class="prof__header__title">{ title }</div>
+        </div>
+        <div ref="items" class="prof__items">
+            <div each={ item in _.range(42) } no-reorder class="prof__item" style="transition-delay:{ _.random(item, 20) * 0.05 }s">
+                <div onClick={ onSelect } onUpdate="none" class="prof__item__inner" data-active={ parent.larges.indexOf(item + 1) !== -1 }>
+                    <div class="prof__item__photo" style="background-image:url(/preview/images/prof/small/{ item + 1 }.jpg)"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var self = this;
+
+    self.title = null;
+    self.titleShow = false;
+    self.switcher = "photo";
+    self.larges = [5, 9, 10, 13, 15, 20, 24, 26, 31, 33];
+
+    self.titles = ["Менеджер по продажам", "Бухгалтер", "Автомеханик специалист", "Менеджер туркомпании", "Юрисконсульт"];
+
+    self.on("mount", function(){
+        app.workflow.profList = self;
+
+        $(self.refs.items).on("mouseenter mouseleave", ".prof__item", function(e){
+            if (e.type === "mouseenter"){
+                self.update({
+                    title: _.shuffle(self.titles)[0],
+                    titleShow: true
+                })
+            }
+            else {
+                self.update({
+                    titleShow: false
+                })
+            }
+        });
+    });
+
+    self.show = function(){
+        if (self.refs.container.style.display === "none"){
+            self.refs.container.style.display = "block";
+            $afterlag.xs(function(){
+                self.root.setAttribute("data-open", true);
+            });
+        }
+        else {
+            self.root.setAttribute("data-open", true);
+        }
+    };
+
+    self.onSwitch = function(e){
+        self.switcher = e.currentTarget.getAttribute("data-item");
+    };
+
+    self.onSelect = function(){
+        var item = this.item;
+
+        app.workflow.profOpener.update({
+            id: item + 1
+        });
+
+        self.root.setAttribute("data-open", false);
+
+        app.$dom.body.addClass('apploading');
+
+        if (app.$dom.body.attr("data-start") == "false"){
+            app.$dom.body.attr("data-start", true)
+        }
+
+        $afterlag.xl(function(){
+            self.refs.container.style.display = "none";
+            app.workflow.onSelect(item);
+        });
+    };
+
+</script>
+
+</prof-list>

@@ -1,24 +1,69 @@
-#device {
-    @extend .willChange-transform;
-    transition:transform 1.25s $cubic645;
-}
 body {
     &[data-tutorial="true"],
     &[data-tutorial="finish"]{
+        .scroll__lens {
+            transition:transform 1s $cubic345;
+            transition-delay:0.25s;
+            transform:translate3d(-50%, -50%, 0) scale3d(1, 1, 1);
+        }
+        .tutorial__close {
+            @extend .scale-100;
+            @extend .opacity-95;
+            transition:transform 0.6s $cubic4001 1.25s;
+        }
+    }
+    &[data-tutorial]{
         #device {
             @extend .zIndex-2;
+            @extend .willChange-transform;
+            transition:transform 1.25s $cubic645;
         }
-        .scroll,
         .tutorial__screens {
             @extend .zIndex-1;
+
+            &__items {
+                @extend .pointerEvents-all;
+            }
         }
-        .tutorial__help__item {
+        .tutorial__help__item,
+        .tutorial__screens__num {
+            transition:opacity 0.6s $cubic4001;
+        }
+        .help__item,
+        .help__text {
+            @extend .display-none;
+        }
+    }
+    &[data-tutorial-help="true"]{
+        .tutorial__help__item,
+        .tutorial__screens__num {
             @extend .opacity-100;
+            transition-delay:0.3s;
         }
     }
     &[data-tutorial="finish"]{
         #device {
             transform:translate3d(50%, -50%, 0);
+        }
+    }
+    html.d-no-tablet &,
+    html.d-tablet.r-landscape & {
+        &[data-tutorial="true"],
+        &[data-tutorial="false"],
+        &[data-tutorial="finish"]{
+            .scroll {
+                transform:translate3d(-50%, -50%, 0) scale(1);
+                transition:transform .55s $bounceForce .3s;
+            }
+        }
+    }
+    &[data-tutorial="false"]{
+        .scroll__lens {
+            transition:transform .6s $cubic4001;
+            transition-delay:0.6s;
+        }
+        .tutorial__close {
+            transition:transform 0.25s $cubic4001;
         }
     }
 }
@@ -30,7 +75,6 @@ body {
             @extend .willChange-opacity;
             @extend .pointerEvents-none;
             color:$snowSilverDark;
-            transition:opacity 0.3s $cubic215;
 
             &:before {
                 @extend .content-empty;
@@ -57,7 +101,7 @@ body {
                 @extend .l100;
                 @extend .ml-m;
                 @extend .pl100;
-                @extend .w200;
+                width:240px;
                 @extend .text-right;
 
                 &:before {
@@ -79,22 +123,150 @@ body {
             }
         }
     }
+    &__close {
+        @include accelerate();
+        @extend .pos-abs;
+        top:18px;
+        right:18px;
+        @extend .scale-0;
+        @extend .opacity-0;
+        @extend .cursor-default;
+        @extend .willChange-tp;
+        @extend .zIndex-2;
+
+        html.m-no-touch &:hover {
+            opacity:1 !important;
+
+            &:before {
+                @extend .opacity-25;
+                @extend .scale-125;
+            }
+            .tutorial__close__button {
+                + .tutorial__close__label {
+                    .tutorial__close__label__text {
+                        @extend .transform-default;
+                    }
+                }
+            }
+        }
+        &:before {
+            @extend .content-empty;
+            @extend .pos-abs;
+            @extend .t0;
+            @extend .r-xs;
+            @extend .w110;
+            @extend .h100p;
+            @extend .scale-50;
+            @extend .opacity-0;
+            @extend .bg-black;
+            @extend .willChange-tp;
+            @extend .borderRadius-xxxxxl;
+            transition:transform 0.3s $cubic4001, opacity 0.15s $cubic4001;
+        }
+        &__label {
+            @extend .pos-centered-v;
+            @extend .r100;
+            @extend .mr-s;
+            @extend .w100;
+            @extend .nowrap;
+            @extend .overflow-hidden;
+            @extend .text-right;
+            padding-bottom:1px;
+
+            &__text {
+                @extend .c-white;
+                @extend .willChange-transform;
+                transform:translate3d(0, 100%, 0);
+                transition:transform 0.3s $cubic4001;
+            }
+        }
+        &__button {
+            @extend .pos-rel;
+            @extend .w40;
+            @extend .h40;
+            @extend .cursor-pointer;
+
+            html.m-no-touch &:hover {
+                &:before {
+                    @extend .bg-white;
+                    @extend .scale-105;
+                }
+                .tutorial__close__button__cross {
+                    &:before,
+                    &:after {
+                        @extend .bg-black;
+                    }
+                }
+            }
+            &:before {
+                @include accelerate();
+                @extend .content-empty;
+                @include abs();
+                @extend .borderRadius-circle;
+                @extend .bg-black;
+                @extend .scale-100;
+                @extend .willChange-transform;
+                transition:transform 0.3s $cubic4001, background-color 0.15s $cubic4001;
+            }
+            &__cross {
+                &:before,
+                &:after {
+                    @extend .content-empty;
+                    @extend .pos-abs;
+                    @extend .t50;
+                    @extend .l50;
+                    width:13px;
+                    @extend .h2px;
+                    @extend .bg-white;
+                    transition:background-color 0.15s $cubic4001;
+                }
+                &:before {
+                    transform:translate3d(-50%, -50%, 0) rotate(45deg);
+                }
+                &:after {
+                    transform:translate3d(-50%, -50%, 0) rotate(-45deg);
+                }
+            }
+        }
+    }
     &__screens {
         @extend .pos-centered-h;
         @extend .w100p;
         max-width:1400px;
         @extend .h100p;
 
+        .scroll__lens {
+            @include accelerate();
+            @extend .pos-abs;
+            @extend .t50;
+            @extend .l50;
+            width:264px;
+            height:264px;
+            @extend .mt--s;
+            @extend .ml--m;
+            @extend .borderRadius-circle;
+            transform:translate3d(-50%, -50%, 0) scale3d(0, 0, 1);
+            box-shadow:0 0 0 2000px rgba($steel,0.97);
+
+            html.d-safari & {
+                box-sizing:content-box;
+                box-shadow:none;
+                border:2000px solid rgba($steel,0.97);
+            }
+        }
         &__items {
             @extend .pos-abs;
             left:8%;
             @extend .c-white;
             @extend .h100p;
+            @extend .pointerEvents-none;
             @extend .zIndex-2;
         }
         &__num {
+            @extend .opacity-0;
             @extend .pos-centered-v;
             height:230px;
+            @extend .willChange-opacity;
 
             &__items {
                 @extend .pos-abs;
@@ -119,7 +291,8 @@ body {
             @extend .pointerEvents-all;
 
             .tutorial__screen__title__inner,
-            .tutorial__screen__text__inner {
+            .tutorial__screen__text__inner,
+            .tutorial__screen__button {
                 @extend .transform-default;
             }
             .tutorial__screen__title__inner {
@@ -127,6 +300,12 @@ body {
             }
             .tutorial__screen__text__inner {
                 transition-delay:0.85s;
+            }
+            .tutorial__screen__button:first-child {
+                transition-delay:1s;
+            }
+            .tutorial__screen__button:last-child {
+                transition-delay:1.2s;
             }
         }
         &[data-screen="likes"]{
@@ -137,8 +316,8 @@ body {
         }
         &__title {
             @extend .c-yellowBright;
-            font-size:35px;
-            line-height:44px;
+            font-size:34px;
+            line-height:42px;
             @extend .letterSpacing--xs;
             @extend .fontWeight-bold;
             margin-bottom:7px;
@@ -147,12 +326,13 @@ body {
         }
         &__text {
             font-size:17px;
-            line-height:33px;
+            line-height:34px;
             @extend .w100p;
             @extend .overflow-hidden;
         }
         &__title__inner,
-        &__text__inner {
+        &__text__inner,
+        &__button {
             @include accelerate();
             @extend .willChange-transform;
             transition:transform 0.65s $cubic4001;
@@ -164,6 +344,63 @@ body {
         &__text__inner {
             transform:translate3d(0, 100%, 0);
             transition-delay:0.3s;
+        }
+        &__button:first-child {
+            transition-delay:0s;
+        }
+        &__button:last-child {
+            transition-delay:0.3s;
+        }
+        &__buttons {
+            @extend .fontSize-0;
+            @extend .ptb-m;
+            @extend .pr-xs;
+            @extend .w100p;
+            @extend .trX-m;
+            @extend .overflow-hidden;
+        }
+        &__button {
+            @include accelerate();
+            @extend .pos-rel;
+            @extend .display-inlineBlock;
+            @extend .h70;
+            @extend .pl-l;
+            @extend .pr-l;
+            @extend .c-white;
+            @extend .fontFamily-futura;
+            @extend .borderRadius-xxxxxl;
+            @extend .cursor-pointer;
+            @extend .mlr-xs;
+            @extend .willChange-transform;
+            transform:translate3d(0, 130%, 0);
+
+            &:hover {
+                &:before {
+                    transform:translate3d(0, 0, 0) scale3d(1.07, 1.07, 1);
+                    @extend .bg-white;
+                }
+                .tutorial__screen__button__label {
+                    color:#151515;
+                }
+            }
+            &:before {
+                @include accelerate(true);
+                @extend .content-empty;
+                @include abs();
+                @extend .borderRadius-xxxxxl;
+                @extend .willChange-transform;
+                background-color:#151515;
+                transition:transform 0.3s $cubic4001, background-color 0.3s $cubic4001;
+            }
+            &__label {
+                @extend .display-block;
+                @extend .pos-rel;
+                font-size:20px;
+                line-height:66px;
+                @extend .fontWeight-bold;
+                @extend .textDecoration-none;
+                transition:color 0.3s $cubic4001;
+            }
         }
     }
 }

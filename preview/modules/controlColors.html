@@ -1,0 +1,30 @@
+<control-colors class="control__colors">
+
+    <div class="control__colors__items" style="-webkit-transform:translate3d({ style }px, 0, 0); transform:translate3d({ style }px, 0, 0)">
+        <div onClick={ change } each={ item, i in $store.colors.get() } no-reorder class="control__colors__item bg-{ item.title }" data-active={ $State.get('color') === item._id }></div>
+    </div>
+
+<script>
+
+    var self = this;
+
+    self.style = 0;
+
+    self.on("mount", function(){
+        app.workflow.control.color = self;
+    });
+
+    self.change = function(color){
+        if (this.item && this.item._id) color = this.item._id;
+        $State.select('color').set(color);
+
+        if (this.i !== undefined) self.style = -(this.i * 40);
+
+        app.workflow.control.device.frame[0].contentWindow.postMessage({
+            color: color
+        }, '*');
+    }
+
+</script>
+
+</control-colors>

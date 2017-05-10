@@ -19,6 +19,7 @@ body {
     @include accelerate();
     @extend .pos-centered;
     @extend .maxH-100v;
+    @extend .zIndex-3;
     // box-shadow: 0 45px 100px rgba(0, 0, 0, 0.4);
     // box-shadow:0 8.66px 30px 0 rgba(31,35,37,.078);
 }
@@ -36,4 +37,15 @@ body {
 }
 .section {
     @extend .display-block;
+}
+body {
+    &[data-start="false"]{
+        #device,
+        .control__colors,
+        .control__fonts,
+        .control__device,
+        .prof__opener {
+            @extend .visibility-hidden;
+        }
+    }
 }

@@ -6,8 +6,8 @@ $store.resume = _.extend(new Baobab({},
         prepare: {
             demo: function(){
                 if ($store.demo) $store.resume.set($store.demo);
-                $store.resume.select('commons', 'photo')
-                .set("/preview/images/photo/photo_" + app.device.is + "_large" + (app.device.isRetina ? "_2x" : "") + ".jpg");
+                // $store.resume.select('commons', 'photo')
+                // .set("/preview/images/photo/photo_" + app.device.is + "_large" + (app.device.isRetina ? "_2x" : "") + ".jpg");
                 return $store.resume.get();
             },
             import: function(data){
