@@ -1,0 +1,415 @@
+.overview {
+    &__section {
+        @extend .maxW-100v;
+        @extend .overflow-hidden;
+        margin-bottom:145px;
+
+        .anim {
+            &.anim-scale-soft[class^="slide"] {
+                transition-duration:1s;
+            }
+            &.anim-rl-soft,
+            &.anim-lr-soft {
+                transition:transform 1.4s $cubic2501, opacity 1s $cubic2501;
+            }
+        }
+        &[data-bg="gradient-tb"]{
+            background:linear-gradient(to bottom, $white 0%, $white 68%, $snow2 100%);
+        }
+        &[data-bg="gradient-tb-light"]{
+            background:linear-gradient(to bottom, $snowA 0%, $snowA 68%, $snow7 100%);
+        }
+        &[data-section="phone"]{
+            min-height:1014px;
+            @extend .mb--l;
+        }
+        &.bg-snow {
+            background-color:$snow7;
+        }
+        &.mb105 {
+            margin-bottom:105px;
+        }
+        &.mb195 {
+            margin-bottom:195px;
+        }
+        &.mb245 {
+            margin-bottom:245px;
+        }
+        &.mb295 {
+            margin-bottom:295px;
+        }
+        h1, h2, h3, h4 {
+            @extend .fontFamily-myriad;
+            @extend .c-primary;
+            @extend .fontWeight-4;
+            letter-spacing:-0.016em;
+        }
+        h1 {
+            font-size:40px;
+            line-height:50px;
+
+            &.larger {
+                font-size:43.5px;
+                line-height:50px;
+                letter-spacing:-0.021em;
+            }
+        }
+        h2 {
+            font-size:38px;
+            line-height:46px;
+        }
+        h3 {
+            @extend .c-steel;
+            font-size:28px;
+            line-height:38px;
+        }
+        small {
+            @extend .display-block;
+            @extend .fontFamily-myriad;
+            @extend .c-gray;
+            @extend .fontSize-16;
+            letter-spacing:5.5px;
+            @extend .text-uppercase;
+        }
+        p {
+            @extend .c-gray;
+            @extend .fontFamily-myriad;
+            font-size:20px;
+            line-height:36px;
+        }
+        .v-lineRight {
+            &:after {
+                @extend .content-empty;
+                @extend .pos-abs;
+                @extend .t0;
+                @extend .r0;
+                @extend .h100p;
+                @extend .w1px;
+                background:linear-gradient(to bottom, rgba($smoke,0), rgba($smokeDark,.8), rgba($smoke,0));
+            }
+        }
+        .c-white {
+            @extend .c-white;
+        }
+        .c-blue {
+            @extend .c-blue;
+        }
+        .fontFamily-avant {
+            .fontSize-34 {
+                font-size:30px;
+                letter-spacing:-1.4px;
+            }
+            .fontSize-24 {
+                font-size:19px;
+            }
+        }
+        .fontFamily-gotham {
+            .fontSize-34 {
+                font-size:30px;
+                letter-spacing:-2px;
+            }
+            .fontSize-24 {
+                font-size:19px;
+                letter-spacing:-1.4px;
+            }
+        }
+        .fontFamily-proxima {
+            .fontSize-34 {
+                font-size:30px;
+                letter-spacing:-2px;
+            }
+            .fontSize-24 {
+                font-size:21px;
+            }
+        }
+        .fontFamily-myriad {
+            .fontSize-24 {
+                font-size:23px;
+            }
+        }
+    }
+    &__phone {
+        @include accelerate();
+        @extend .pos-rel;
+        width:613px;
+        height:994px;
+
+        html.d-tablet.r-landscape & {
+            width:572px;
+            height:839px;
+        }
+        &:before {
+            @include accelerate();
+            @extend .content-empty;
+            @include abs();
+            @extend .bg-cover;
+            @extend .opacity-75;
+            @extend .zIndex-0;
+            transform:translate3d(-30px, 50px, 0);
+            background-image:url('/public/images/promo/phone_shadow_large_light.png');
+
+            html.d-tablet.r-landscape & {
+                background-image:url('/public/images/promo/phone_shadow_medium_2x_light.png');
+            }
+            html.d-retina.d-no-tablet &,
+            html.d-tablet.r-portrait & {
+                background-image:url('/public/images/promo/phone_shadow_large_2x_light.png');
+            }
+        }
+        &:after {
+            @include accelerate();
+            @extend .content-empty;
+            @include abs();
+            @extend .bg-cover;
+            @extend .zIndex-0;
+        }
+        &__screen {
+            @include accelerate();
+            @extend .pos-abs;
+            @extend .borderRadius-xs;
+            @extend .zIndex-1;
+        }
+        &[data-align="left"]{
+            transform:translateX(-65px) translateZ(0);
+
+            html.d-tablet.r-landscape & {
+                transform:translateX(-77px) translateZ(0);
+            }
+            html.d-tablet.r-portrait & {
+                @extend .transform-default;
+                @extend .centered;
+            }
+        }
+        &[data-align="right"]{
+            transform:translateX(-115px) translateZ(0);
+        }
+        &[data-color="white"]{
+            &:after {
+                background-image:url('/public/images/promo/phone_white_large.png');
+
+                html.d-tablet.r-landscape & {
+                    width:306px;
+                    height:624px;
+                    transform:translate3d(160px, 50px, 0);
+                    background-image:url('/public/images/promo/phone_white_medium_2x.png');
+                }
+                html.d-retina.d-no-tablet &,
+                html.d-tablet.r-portrait & {
+                    background-image:url('/public/images/promo/org/phone_white_large_2x.png');
+                }
+            }
+            .overview__phone__screen {
+                top:157px;
+                left:169px;
+                width:318px;
+                height:566px;
+                @extend .overflow-hidden;
+
+                html.d-tablet.r-landscape & {
+                    top:127px;
+                    left:181px;
+                    width:264px;
+                    height:470px;
+                }
+            }
+        }
+        &[data-color="black"]{
+            &:after {
+                background-image:url('/public/images/promo/phone_black_large.png');
+
+                html.d-tablet.r-landscape & {
+                    width:513px;
+                    height:832px;
+                    background-image:url('/public/images/promo/phone_black_medium_2x.png');
+                }
+                html.d-retina.d-no-tablet &,
+                html.d-tablet.r-portrait & {
+                    background-image:url('/public/images/promo/phone_black_large_2x.png');
+                }
+            }
+            .overview__phone__screen {
+                top:158px;
+                left:172px;
+                width:316px;
+                height:562px;
+                @extend .overflow-hidden;
+
+                html.d-tablet.r-landscape & {
+                    top:132px;
+                    left:143px;
+                    width:264px;
+                    height:470px;
+                }
+            }
+        }
+        &__nav {
+            @extend .pos-tl;
+            @extend .w100p;
+            @extend .pointerEvents-none;
+            @extend .zIndex-2;
+            height:136px;
+            background-image:url(/public/images/promo/premium/mobile_resume_nav.png);
+
+            html.d-tablet.r-landscape & {
+                height:104px;
+            }
+        }
+    }
+    &__ipad {
+        @include accelerate();
+        @extend .pos-rel;
+        @extend .bg-cover;
+
+        &[data-color="black"]{
+            width:1380px;
+            height:1140px;
+            background-image:url('/public/images/promo/ipad_black_large.png');
+
+            html.d-tablet & {
+                width:1063px;
+                height:878px;
+                background-image:url('/public/images/promo/ipad_black_medium_2x.png');
+            }
+            html.d-retina.d-no-tablet {
+                background-image:url('/public/images/promo/ipad_black_large_2x.png');
+            }
+            .overview__ipad__screen {
+                @extend .pos-abs;
+                top:165px;
+                left:219px;
+                width:980px;
+                height:736px;
+                @extend .overflow-hidden;
+
+                html.d-tablet & {
+                    top:127px;
+                    left:169px;
+                    width:755px;
+                    height:567px;
+                }
+            }
+        }
+        &[data-align="left"]{
+            transform:translateX(-60px) translateZ(0);
+        }
+        &[data-align="right"]{
+            transform:translateX(-110px) translateZ(0);
+        }
+    }
+    &__loader {
+        @extend .display-none;
+        @include abs(fixed);
+        @extend .overflow-hidden;
+        @extend .zIndex-2;
+
+        &[data-complete="true"]{
+            @extend .pointerEvents-none;
+            @extend .visibility-hidden;
+            transition:visibility 0s 0.8s;
+
+            &:before {
+                transform:translate3d(-100%, 0, 0);
+            }
+            &:after {
+                transform:translate3d(100%, 0, 0);
+            }
+            .overview__loader__progress {
+                @extend .opacity-0;
+            }
+            .overview__loader__percent {
+                @extend .opacity-0;
+                transform:translate3d(-50%, -50%, 0) scale(0.6);
+            }
+        }
+        &:before,
+        &:after {
+            @include accelerate(true);
+            @extend .content-empty;
+            @extend .pos-abs;
+            @extend .t0;
+            @extend .w50p;
+            @extend .h100p;
+            @extend .bg-white;
+            @extend .willChange-transform;
+            transition:transform .8s $cubic60;
+        }
+        &:before {
+            @extend .l0;
+        }
+        &:after {
+            @extend .r0;
+        }
+        body#renderSide & {
+            @extend .display-block;
+        }
+        &__percent {
+            @include accelerate();
+            @extend .pos-abs;
+            @extend .t50;
+            @extend .l50;
+            @extend .c-silver;
+            @extend .fontFamily-helvetica;
+            font-size:82px;
+            padding-left:50%;
+            letter-spacing:0.062em;
+            @extend .willChange-tp;
+            transform-origin:100% 50%;
+            transform:translate3d(-50%, -50%, 0) scale(1);
+            transition:transform 0.35s $cubic60, opacity 0.35s $cubic60;
+            @extend .fontWeight-bold;
+            @extend .zIndex-1;
+
+            span {
+                font-size:38px;
+                @extend .pl-xxs;
+                @extend .fontWeight-3;
+            }
+        }
+        &__progress {
+            @include accelerate();
+            @extend .pos-abs;
+            @extend .t0;
+            @extend .l50;
+            @extend .w1px;
+            @extend .h100p;
+            background-color:rgba($silver,.3);
+            @extend .willChange-transform;
+            transition:transform 0.3s;
+            transform:translate3d(-50%, 100%, 0);
+            @extend .willChange-opacity;
+            transition:opacity 0.3s $cubic68;
+            @extend .zIndex-1;
+        }
+    }
+    &__swipe__hand {
+        @extend .flex-centered;
+        @extend .w100p;
+
+        &__icon,
+        &__text {
+            @extend .w50p;
+        }
+        &__icon {
+            @extend .flex-centered;
+            @extend .h100;
+
+            html.d-tablet & {
+                @extend .w40p;
+            }
+            &[data-arrow="right"]{
+                &:after {
+                    @extend .content-empty;
+                    @extend .display-block;
+                    @include ui-icon("swipeRight", 104px, 104px);
+                }
+            }
+        }
+        &__text {
+            @extend .flex-row-left-center;
+
+            html.d-tablet & {
+                @extend .w60p;
+            }
+        }
+    }
+}

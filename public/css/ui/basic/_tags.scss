@@ -1,0 +1,123 @@
+.tag {
+    &-list {
+        @extend .flex-oneByOne;
+        @extend .mb--xss;
+        @extend .clear;
+
+        &[data-size="xl"]{
+            .tag {
+                &-item {
+                    @extend .pr50;
+                    font-size:1.12em;
+
+                    &-remove {
+                        @extend .w50;
+
+                        &:after {
+                            @extend .w25;
+                            @extend .h25;
+                        }
+                    }
+                }
+                &-input {
+                    .input {
+                        @extend .pr60;
+                    }
+                }
+            }
+        }
+        &[data-size="l"]{
+            .tag {
+                &-item {
+                    @extend .pr45;
+                    font-size:1em;
+
+                    &-remove {
+                        @extend .w45;
+
+                        &:after {
+                            @extend .w22;
+                            @extend .h22;
+                        }
+                    }
+                }
+                &-input {
+                    .input {
+                        @extend .pr50;
+                    }
+                }
+            }
+        }
+        &[data-size="m"]{
+            .tag {
+                &-item {
+                    @extend .pr-l;
+                    font-size:0.95em;
+
+                    &-remove {
+                        @extend .w40;
+
+                        &:after {
+                            width:21px;
+                            height:21px;
+                        }
+                    }
+                }
+                &-input {
+                    .input {
+                        @extend .pr-l;
+                    }
+                }
+            }
+        }
+    }
+    &-input {
+        @extend .pos-rel;
+        @extend .float-left;
+        @extend .mb-xss;
+        @extend .mr-xss;
+
+        .btn {
+            @extend .pos-tr;
+            @extend .zIndex-102;
+
+            &:hover {
+                .btn-svg-color {
+                    @extend .fill-primary;
+                }
+            }
+        }
+    }
+    &-item {
+        @extend .pos-rel;
+        @extend .w-auto;
+        @extend .mr-xss;
+        @extend .mb-xss;
+        @extend .input;
+        @extend .cursor-default;
+
+        &-remove {
+            @extend .pos-tr;
+            @extend .h100p;
+            @extend .cursor-pointer;
+
+            &:after {
+                @extend .content-empty;
+                @extend .pos-centered;
+                @extend .bg-cover;
+                @include ui-icon(remove_fill);
+                @extend .mt--1;
+            }
+        }
+        &[data-avail="true"]{
+            animation:tag-item-avail 1.4s linear;
+        }
+        @keyframes tag-item-avail {
+            25%, 75% {
+                color:$white;
+                box-shadow:inset 0 0 0 1px $red;
+                background:$red;
+            }
+        }
+    }
+}

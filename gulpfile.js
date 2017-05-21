@@ -69,6 +69,7 @@ gulp.task('watch', function() {
 
 	gulp.watch([
 		'preview/css/*.scss',
+		'assets/css/modules/*.scss',
 		'public/css/partials/*.scss'
 	], gulp.series('workflow.css'));
 });
@@ -95,6 +96,17 @@ gulp.task('watchPublic', function() {
 	], gulp.parallel('public.css'));
 });
 
+gulp.task('watchStyleguide', function() {
+	browserSync.watch([
+		'public/styleguide/**/*.html'
+	]).on('change', reload);
+
+	gulp.watch([
+		'public/css/styleguide.scss',
+		'public/css/**/*.scss'
+	], gulp.parallel('styleguide.css'));
+});
+
 gulp.task('css.build', gulp.series('private.css', 'private.mobile.css', 'premium.css', 'public.css', 'public.mobile.css', 'public.css.smallScreen', gulp.parallel('private.css.smallScreen', 'premium.css.smallScreen', 'templates.basic', 'templates.basic.view', 'jobs.css', 'jobs.css.smallScreen', 'workflow.css')));
 
 gulp.task('jobs.js.build', gulp.parallel('jobs.libs', 'jobs.app', 'jobs.templates'));
@@ -116,7 +128,7 @@ gulp.task('sftp', gulp.parallel('sftp-assets.js', 'sftp-assets.css', 'sftp-premi
 
 gulp.task('build', gulp.series(
 	gulp.parallel(
-		'css.build',
+		//'css.build',
 		gulp.series('promo.js', 'promo.app.build'),
 		gulp.series('public.js', 'public.app.dev', 'public.app.build'),
 		gulp.series('workflow.js', 'workflow.build'),
@@ -125,7 +137,12 @@ gulp.task('build', gulp.series(
 		gulp.series('premium.js.build', 'premium.app.build'),
 		gulp.series('jobs.js.build', 'jobs.app.build'),
 		gulp.series('resumeView.build')
-	), 'sftp'
+	)
+));
+
+gulp.task('styleguide', gulp.series(
+	gulp.parallel('styleguide.css'),
+	gulp.parallel('serve', 'watchStyleguide')
 ));
 
 gulp.task('public', gulp.series(

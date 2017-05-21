@@ -26,23 +26,38 @@ body {
                 border-top-color:$steel;
             }
         }
+        .control__colors,
+        .control__device {
+            @include rippleDark();
+        }
         .control__colors {
-            &:after {
-                @extend .opacity-25;
-                @extend .borderColor-steel;
+            &__container {
+                &:after {
+                    @extend .opacity-25;
+                    @extend .borderColor-steel;
+                }
+                html.m-no-touch &:hover {
+                    &:after {
+                        @extend .opacity-25;
+                    }
+                    .control__colors__items:before {
+                        @extend .opacity-70;
+                    }
+                }
+            }
+            &__label__text {
+                @extend .c-blackLight;
+                @extend .opacity-100;
             }
             &__items {
                 &:before {
                     @extend .bg-white;
                 }
             }
-            html.m-no-touch &:hover {
-                &:after {
-                    @extend .opacity-25;
-                }
-                .control__colors__items:before {
-                    @extend .opacity-70;
-                }
+        }
+        .control__fonts {
+            &__label__text {
+                @extend .opacity-0;
             }
         }
         .button__like {

@@ -30,7 +30,12 @@
     };
     n.handleScroll = function(a) {
         if (typeof a !== "number") {
-            a = window.pageYOffset || (document.documentElement || document.body).scrollTop || (a.target && a.target.scrollTop);
+            //var _a = a;
+            a = window.pageYOffset || (document.documentElement || document.body).scrollTop;
+            //if (!a){
+            //     a = _a.target && _a.target.scrollTop;
+            //     if (!a) return;
+            // }
         }
         var b;
         if (a < this.min) {

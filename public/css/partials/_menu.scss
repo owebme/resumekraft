@@ -13,12 +13,12 @@
 
     &__items {
         width:600px;
-        margin-top:3vh;
+        margin-top:3.5vh;
         @extend .pos-centered;
     }
     &__item {
         @include accelerate();
-        margin:8vh 0;
+        margin:8.5vh 0;
         @extend .opacity-0;
         @extend .willChange-tp;
         transform-origin:50% 0;
@@ -26,11 +26,11 @@
         transition:transform 0.4s $bounceForce, opacity 0.4s $bounceForce;
 
         &__link {
-            @extend .c-steel;
-            @extend .fontFamily-fira;
+            @extend .c-black;
+            @extend .fontFamily-myriad;
             font-size:18px;
             @extend .fontWeight-5;
-            letter-spacing:5.5px;
+            letter-spacing:5px;
             @extend .text-uppercase;
             @extend .textDecoration-none;
             transition:all 0.3s $cubic4001;
@@ -39,7 +39,7 @@
             &[data-active="true"] {
                 @extend .c-pink;
                 @extend .fontWeight-bold;
-                letter-spacing:6.5px;
+                letter-spacing:6px;
             }
         }
     }

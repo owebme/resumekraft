@@ -36,7 +36,7 @@ module.exports = function(){
 		app.redis.expireat(hash, parseInt((+new Date)/1000) + app.config.public.get('blog:cacheLife'));
 	};
 
-	API.index = function(req, callback){
+	API.items = function(req, callback){
 		handlerReturn(req.url + ":" + req.device.type, function(callback){
             var page = req.params.page,
                 perPage = app.config.public.get('blog:perPage');
@@ -71,23 +71,14 @@ module.exports = function(){
                     if (count) pages = parseInt(Math.floor(count / perPage));
 
                     var data = {
-                        headers: app.utils.copyArray(data.items).slice(0, 4),
                         items: data.items,
                         pages: pages,
                         page: page ? parseInt(page) : 1
                     };
 
-                    data.headers = app.utils.map(data.headers, function(item, i){
-                        var date = item.date;
-                        if (i == 0) item.date = app.utils.moment(date).format("MMMM D, YYYY");
-                        else item.date = app.utils.moment(date).format("D/MM, YYYY");
-                        item.time = app.utils.moment(date).format("HH:MM");
-                        return item;
-                    });
-
                     data.items = app.utils.map(data.items, function(item){
                         item.dateShort = app.utils.moment(item.date).format("D/MM");
-                        item.date = app.utils.moment(item.date).format("MMMM D, YYYY, HH:MM");
+                        item.date = app.utils.moment(item.date).format("MMM D, YYYY");
                         return item;
                     });
 

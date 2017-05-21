@@ -41,38 +41,47 @@
             }
         },
 
-        render: function(){
+        render: function(force){
             var _this = this;
 
             this.ready = false;
 
-            this.items = [];
-
             this.scrollTop = this.getScrollY.call(this);
 
-            if (this._items){
-                var i = 0;
-                _.each(this._items, function(item){
-                    (function(item){
-                        _this.scope.find(item.elem).each(function(){
-                            _this.each({
-                                elem: this,
-                                index: i,
-                                delta: item.delta,
-                                callback: item.callback
-                            })
-                            i++;
-                        });
-                    })(item);
+            if (!force && !_.isEmpty(this.items)){
+                _.each(this.items, function(item){
+                    if (!item.anim){
+                        item.offset = item.elem.offset();
+                    }
                 });
             }
+            else {
+                this.items = [];
 
-            if (!this.onlyItems){
-                this.scope.find(this.elems).each(function(){
-                    _this.each({
-                        elem: this
-                    })
-                });
+                if (this._items){
+                    var i = 0;
+                    _.each(this._items, function(item){
+                        (function(item){
+                            _this.scope.find(item.elem).each(function(){
+                                _this.each({
+                                    elem: this,
+                                    index: i,
+                                    delta: item.delta,
+                                    callback: item.callback
+                                })
+                                i++;
+                            });
+                        })(item);
+                    });
+                }
+
+                if (!this.onlyItems){
+                    this.scope.find(this.elems).each(function(){
+                        _this.each({
+                            elem: this
+                        })
+                    });
+                }
             }
 
             this.ready = true;

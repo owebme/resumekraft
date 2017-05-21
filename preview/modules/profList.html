@@ -1,4 +1,4 @@
-<prof-list class="prof__wrapper" data-open="false">
+<prof-list class="prof__wrapper" data-items="{ switcher }" data-open="false">
 
     <div ref="container" class="prof__container">
         <div class="prof__header" data-title={ titleShow }>
@@ -12,11 +12,22 @@
             </div>
             <div class="prof__header__title">{ title }</div>
         </div>
-        <div ref="items" class="prof__items">
-            <div each={ item in _.range(42) } no-reorder class="prof__item" style="transition-delay:{ _.random(item, 20) * 0.05 }s">
-                <div onClick={ onSelect } onUpdate="none" class="prof__item__inner" data-active={ parent.larges.indexOf(item + 1) !== -1 }>
-                    <div class="prof__item__photo" style="background-image:url(/preview/images/prof/small/{ item + 1 }.jpg)"></div>
+        <div ref="items" class="prof__items__photo">
+            <div each={ item in _.range(42) } no-reorder class="prof__item__photo" style="transition-delay:{ _.random(item, 20) * 0.05 }s">
+                <div onClick={ onSelect } onUpdate="none" class="prof__item__photo__inner" data-active={ parent.larges.indexOf(item + 1) !== -1 } data-ripple>
+                    <div class="prof__item__photo__image" style="background-image:url(/preview/images/prof/small/{ item + 1 }.jpg)"></div>
                 </div>
+            </div>
+        </div>
+        <div class="prof__items__list">
+            <div class="w33p">
+                <div onClick={ onSelect } onUpdate="none" each={ item in _.range(14) } no-reorder class="prof__item__list" style="transition-delay:{ _.random(item, 14) * 0.05 }s">{ _.shuffle(parent.titles)[0] }</div>
+            </div>
+            <div class="w33p">
+                <div onClick={ onSelect } onUpdate="none" each={ item in _.range(14) } no-reorder class="prof__item__list" style="transition-delay:{ _.random(item, 14) * 0.05 }s">{ _.shuffle(parent.titles)[0] }</div>
+            </div>
+            <div class="w33p">
+                <div onClick={ onSelect } onUpdate="none" each={ item in _.range(14) } no-reorder class="prof__item__list" style="transition-delay:{ _.random(item, 14) * 0.05 }s">{ _.shuffle(parent.titles)[0] }</div>
             </div>
         </div>
     </div>
@@ -35,7 +46,7 @@
     self.on("mount", function(){
         app.workflow.profList = self;
 
-        $(self.refs.items).on("mouseenter mouseleave", ".prof__item", function(e){
+        $(self.refs.items).on("mouseenter mouseleave", ".prof__item__photo", function(e){
             if (e.type === "mouseenter"){
                 self.update({
                     title: _.shuffle(self.titles)[0],
@@ -69,10 +80,6 @@
     self.onSelect = function(){
         var item = this.item;
 
-        app.workflow.profOpener.update({
-            id: item + 1
-        });
-
         self.root.setAttribute("data-open", false);
 
         app.$dom.body.addClass('apploading');
@@ -83,7 +90,7 @@
 
         $afterlag.xl(function(){
             self.refs.container.style.display = "none";
-            app.workflow.onSelect(item);
+            app.workflow.onSelect(item + 1);
         });
     };
 

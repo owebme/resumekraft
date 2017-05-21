@@ -1,51 +1,821 @@
+@each $icon in (
+    swipeRight, facebook_white, vkontakte_white, twitter_white, eyes_white
+){
+    .ui-icon-#{$icon} {
+        background:url('/public/images/ui/ui-#{$icon}.svg') no-repeat 0 0 / cover;
+    }
+}
+@each $icon in (
+    loading, loading_white, loading_mini, loading_mini_white, close, close_white, close_strong, close_strong_white, minus, minus_white, plus, plus_white, plus_thin, plus_thin_white, plus_thin_black, pencil, pencil_white, menu, menu_white, menu2_white, menu_lime, remove_fill, remove_fill_white, upload, upload_white, video_white, images_white, link_white, more_h, more_h_white, more_h_white, more_v, more_v_white, back, back_gray, back_white, back_lime, help, close_fill, close_fill_gray, close_fill_white, arrow_curved_white, info_white, check, check_black, check_white, check_gray, check_muted, check_circle_lime, edit, edit_white, share, share_white, hand_cursor_white, repeat, resume_white, feedback_white, addUser, addUser_white, time_muted, bankcard, bankcard_white, wallet, wallet_white, device_phones, device_phones_white, like_fill_white, like_fill_pink, crown, crown_white, coderwall_fill_white, visible, unvisible_gray, visible_white, unvisible_white, user_white, user_oval_white, chart, like_fill_white, uploadPhoto_white, google, facebook, vkontakte, odnoklassniki, twitter, exit, exit_white
+){
+    .ui-icon-#{$icon} {
+        background:url('/assets/images/ui/ui-#{$icon}.svg') no-repeat 0 0 / cover;
+    }
+}
+@mixin ui-icon($icon, $width: false, $height: false) {
+    @if $width {
+        width:#{$width};
+    }
+    @if $height {
+        height:#{$height};
+    }
+    @extend .ui-icon-#{$icon};
+}
 .icon {
-    &-fb,
-    &-dk {
-        &.icon-xl {
-            width:140px;
-            height:140px;
+    @extend .display-inlineBlock;
+    @extend .vAlign-middle;
+
+    path {
+        transition:fill 0.2s $cubic215;
+    }
+    &-globe {
+        &.icon-xs {
+            width:22px;
+            height:22px;
+        }
+        &.icon-s {
+            width:28px;
+            height:28px;
         }
         &.icon-m {
+            width:40px;
+            height:40px;
+        }
+        &.icon-l {
+            width:60px;
+            height:60px;
+        }
+        &.icon-xl {
+            width:80px;
+            height:80px;
+        }
+    }
+    &-control {
+        &.icon-s {
+            width:50px;
+            height:50px;
+            transform:translateY(4px);
+        }
+        &.icon-m {
+            width:62px;
+            height:62px;
+            margin-top:-11px;
+            margin-bottom:-11px;
+            transform:translateY(6px);
+        }
+        &.icon-l {
+            width:94px;
+            height:94px;
+            margin-top:-17px;
+            margin-bottom:-17px;
+            transform:translateY(9px);
+        }
+        &.icon-xl {
+            width:130px;
+            height:130px;
+            margin-top:-26px;
+            margin-bottom:-26px;
+            transform:translateY(14px);
+        }
+    }
+    &-like {
+        &.icon-xs {
+            width:28px;
+            height:28px;
+            transform:translateY(4px);
+        }
+        &.icon-s {
+            width:35px;
+            height:35px;
+            transform:translateY(4px);
+        }
+    }
+    &-location {
+        &.icon-s {
+            width:38px;
+            height:38px;
+            transform:translateY(4px);
+        }
+    }
+    &-user {
+        &.icon-s {
+            width:50px;
+            height:50px;
+            transform:translateY(6px);
+        }
+        &.icon-m {
+            width:62px;
+            height:62px;
+            margin-top:-11px;
+            margin-bottom:-11px;
+            transform:translateY(6px);
+        }
+        &.icon-l {
+            width:94px;
+            height:94px;
+            margin-top:-17px;
+            margin-bottom:-17px;
+            transform:translateY(9px);
+        }
+        &.icon-xl {
+            width:128px;
+            height:128px;
+            margin-top:-24px;
+            margin-bottom:-24px;
+            transform:translateY(12px);
+        }
+    }
+    &-play {
+        &.icon-xs {
+            width:26px;
+            height:26px;
+        }
+        &.icon-s {
+            width:34px;
+            height:34px;
+        }
+        &.icon-m {
+            width:46px;
+            height:46px;
+            margin-top:-3px;
+            margin-bottom:-3px;
+        }
+        &.icon-l {
+            width:70px;
+            height:70px;
+            margin-top:-5px;
+            margin-bottom:-5px;
+        }
+        &.icon-xl {
+            width:100px;
+            height:100px;
+            margin-top:-10px;
+            margin-bottom:-10px;
+        }
+    }
+    &-diamond {
+        &.icon-xs {
+            width:24px;
+            height:24px;
+        }
+        &.icon-s {
+            width:30px;
+            height:30px;
+            transform:translateY(1px);
+        }
+        &.icon-m {
+            width:44px;
+            height:44px;
+        }
+        &.icon-l {
+            width:64px;
+            height:64px;
+        }
+        &.icon-xl {
+            width:88px;
+            height:88px;
+        }
+    }
+    &-chart {
+        &.icon-xs {
+            width:22px;
+            height:22px;
+        }
+        &.icon-s {
+            width:28px;
+            height:28px;
+        }
+        &.icon-m {
+            width:40px;
+            height:40px;
+        }
+        &.icon-l {
+            width:60px;
+            height:60px;
+        }
+        &.icon-xl {
+            width:80px;
+            height:80px;
+        }
+    }
+    &-devices {
+        &.icon-xs {
+            width:26px;
+            height:26px;
+            transform:translateY(5px);
+        }
+        &.icon-s {
+            width:33px;
+            height:33px;
+            transform:translateY(5px);
+        }
+        &.icon-m {
+            width:46px;
+            height:46px;
+            margin-top:-3px;
+            margin-bottom:-3px;
+            transform:translateY(5px);
+        }
+        &.icon-l {
+            width:72px;
+            height:72px;
+            margin-top:-6px;
+            margin-bottom:-6px;
+            transform:translateY(7px);
+        }
+        &.icon-xl {
+            width:102px;
+            height:102px;
+            margin-top:-11px;
+            margin-bottom:-11px;
+            transform:translateY(11px);
+        }
+    }
+    &-device-desktop {
+        &.icon-l {
+            width:108px;
+            height:57px;
+        }
+        &.icon-xl {
+            width:136px;
+            height:72px;
+        }
+    }
+    &-device-tablet {
+        &.icon-l {
+            width:50px;
+            height:71px;
+        }
+        &.icon-xl {
+            width:65px;
+            height:94px;
+        }
+    }
+    &-device-phones {
+        &.icon-l {
+            width:57px;
+            height:70px;
+        }
+        &.icon-xl {
+            width:72px;
+            height:88px;
+        }
+    }
+    &-feedback {
+        &.icon-xs {
+            width:24px;
+            height:24px;
+        }
+        &.icon-s {
+            width:30px;
+            height:30px;
+        }
+        &.icon-m {
+            width:37px;
+            height:37px;
+            transform:translateY(-2px);
+        }
+        &.icon-l {
+            width:48px;
+            height:48px;
+            transform:translateY(-2px);
+        }
+        &.icon-xl {
+            width:80px;
+            height:80px;
+        }
+        &.icon-xl2 {
+            width:96px;
+            height:96px;
+        }
+        &.icon-large {
+            width:128px;
+            height:128px;
+        }
+    }
+    &-pdf {
+        &.icon-xs {
+            width:40px;
+            height:40px;
+            margin-top:-4px;
+            margin-bottom:-4px;
+            transform:translateY(5px);
+        }
+        &.icon-s {
+            width:52px;
+            height:52px;
+            margin-top:-4px;
+            margin-bottom:-4px;
+            transform:translateY(7px);
+        }
+        &.icon-m {
+            width:66px;
+            height:66px;
+            transform:translateY(12px);
+        }
+        &.icon-l {
+            width:86px;
+            height:86px;
+            margin-top:-3px;
+            margin-bottom:-3px;
+            transform:translateY(10px);
+        }
+        &.icon-xl {
+            width:142px;
+            height:142px;
+            margin-top:-31px;
+            margin-bottom:-31px;
+            transform:translateY(27px);
+        }
+        &.icon-large {
+            width:190px;
+            height:190px;
+            margin-top:-31px;
+            margin-bottom:-31px;
+            transform:translateY(17px);
+        }
+    }
+    &-print {
+        &.icon-xs {
+            width:22px;
+            height:22px;
+        }
+        &.icon-s {
+            width:28px;
+            height:28px;
+        }
+        &.icon-m {
+            width:40px;
+            height:40px;
+        }
+        &.icon-xl {
+            width:86px;
+            height:86px;
+            margin-top:-3px;
+            margin-bottom:-3px;
+            transform:translateY(6px);
+        }
+    }
+    &-eye {
+        &.icon-xs {
+            width:24px;
+            height:24px;
+        }
+        &.icon-s {
+            width:32px;
+            height:32px;
+            transform:translateY(1px);
+        }
+        &.icon-m {
+            width:44px;
+            height:44px;
+        }
+        &.icon-l {
             width:68px;
             height:68px;
+            transform:translateY(2px);
+        }
+        &.icon-xl {
+            width:86px;
+            height:86px;
+            margin-top:-3px;
+            margin-bottom:-3px;
+            transform:translateY(6px);
         }
     }
-    &-fb {
+    &-glass {
+        &.icon-xs {
+            width:26px;
+            height:26px;
+        }
+        &.icon-s {
+            width:34px;
+            height:34px;
+        }
         &.icon-m {
-            margin:-9px -10px -10px;
+            width:46px;
+            height:46px;
+            margin-top:-3px;
+            margin-bottom:-3px;
+        }
+        &.icon-l {
+            width:60px;
+            height:60px;
+        }
+        &.icon-xl {
+            width:98px;
+            height:98px;
+            margin-top:-10px;
+            margin-bottom:-10px;
+            transform:translateY(-2px);
         }
     }
-    &-dk {
+    &-colors {
+        &.icon-xs {
+            width:32px;
+            height:32px;
+            transform:translate3d(1px, 1px, 0);
+        }
+        &.icon-s {
+            width:48px;
+            height:48px;
+        }
         &.icon-m {
-            margin:-13px -12px -11px;
+            width:64px;
+            height:64px;
+        }
+        &.icon-l {
+            width:80px;
+            height:80px;
+        }
+        &.icon-xl {
+            width:96px;
+            height:96px;
+        }
+    }
+    &-design {
+        &.icon-xs {
+            width:22px;
+            height:22px;
+        }
+        &.icon-s {
+            width:28px;
+            height:28px;
+        }
+        &.icon-m {
+            width:40px;
+            height:40px;
+        }
+        &.icon-l {
+            width:54px;
+            height:54px;
+        }
+        &.icon-xl {
+            width:86px;
+            height:86px;
+            margin-top:-3px;
+            margin-bottom:-3px;
+            transform:translateY(6px);
+        }
+    }
+    &-crown {
+        &.icon-xs {
+            width:26px;
+            height:26px;
+        }
+        &.icon-s {
+            width:42px;
+            height:42px;
+            transform:translateY(4px);
+        }
+        &.icon-m {
+            width:46px;
+            height:46px;
+            margin-top:-3px;
+            margin-bottom:-3px;
+        }
+        &.icon-l {
+            width:70px;
+            height:70px;
+            margin-top:-5px;
+            margin-bottom:-5px;
+            transform:translateY(6px);
+        }
+        &.icon-xl {
+            width:124px;
+            height:124px;
+            margin-top:-22px;
+            margin-bottom:-22px;
+            transform:translateY(10px);
+        }
+    }
+    &-link {
+        &.icon-s {
+            width:40px;
+            height:40px;
+            margin-top:-3px;
+            margin-bottom:-3px;
+            transform:translateY(4px);
+        }
+        &.icon-m {
+            width:46px;
+            height:46px;
+            margin-top:-3px;
+            margin-bottom:-3px;
+        }
+        &.icon-l {
+            width:70px;
+            height:70px;
+            margin-top:-5px;
+            margin-bottom:-5px;
+        }
+        &.icon-xl {
+            width:124px;
+            height:124px;
+            margin-top:-22px;
+            margin-bottom:-22px;
+            transform:translateY(15px);
+        }
+    }
+    &-test {
+        &.icon-xs {
+            width:26px;
+            height:26px;
+        }
+        &.icon-s {
+            width:32px;
+            height:32px;
+            transform:translateY(1px);
+        }
+        &.icon-m {
+            width:46px;
+            height:46px;
+            margin-top:-3px;
+            margin-bottom:-3px;
+        }
+        &.icon-l {
+            width:70px;
+            height:70px;
+            margin-top:-5px;
+            margin-bottom:-5px;
+        }
+        &.icon-xl {
+            width:100px;
+            height:100px;
+            margin-top:-10px;
+            margin-bottom:-10px;
+            transform:translateY(-2px);
+        }
+    }
+    &-share {
+        &.icon-xs {
+            width:22px;
+            height:22px;
+        }
+        &.icon-s {
+            width:28px;
+            height:28px;
+        }
+        &.icon-m {
+            width:40px;
+            height:40px;
+        }
+        &.icon-l {
+            width:72px;
+            height:72px;
+            margin-top:-6px;
+            margin-bottom:-6px;
+            transform:translateY(7px);
+        }
+        &.icon-xl {
+            width:80px;
+            height:80px;
+        }
+    }
+    &-camera {
+        &.icon-xs {
+            width:24px;
+            height:24px;
+            transform:translateY(1px);
+        }
+        &.icon-s {
+            width:31px;
+            height:31px;
+        }
+        &.icon-m {
+            width:40px;
+            height:40px;
+        }
+        &.icon-l {
+            width:56px;
+            height:56px;
+        }
+        &.icon-xl {
+            width:80px;
+            height:80px;
+        }
+    }
+    &-city {
+        &.icon-xs {
+            width:36px;
+            height:36px;
+        }
+        &.icon-s {
+            width:56px;
+            height:56px;
+        }
+        &.icon-m {
+            width:76px;
+            height:76px;
+        }
+        &.icon-l {
+            width:95px;
+            height:95px;
+        }
+        &.icon-xl {
+            width:120px;
+            height:120px;
+        }
+    }
+    &-phone {
+        &.icon-xs {
+            width:24px;
+            height:24px;
+        }
+        &.icon-s {
+            width:44px;
+            height:44px;
+        }
+        &.icon-m {
+            width:64px;
+            height:64px;
+        }
+        &.icon-l {
+            width:84px;
+            height:84px;
+        }
+        &.icon-xl {
+            width:112px;
+            height:112px;
+        }
+    }
+    &-email {
+        &.icon-m {
+            width:60px;
+            height:60px;
+            transform:translateY(10px) scale3d(1, 1.15, 1);
+        }
+    }
+    &-replyMail {
+        &.icon-xl {
+            width:80px;
+            height:80px;
+        }
+        &.icon-l {
+            width:58px;
+            height:58px;
+        }
+    }
+    &-skype {
+        &.icon-m {
+            width:38px;
+            height:38px;
+        }
+        &.icon-l {
+            width:48px;
+            height:48px;
+        }
+    }
+    &-help {
+        &.icon-s {
+            width:50px;
+            height:50px;
+            transform:translateY(3px);
+        }
+        &.icon-m {
+            width:62px;
+            height:62px;
+            margin-top:-11px;
+            margin-bottom:-11px;
+            transform:translateY(6px);
+        }
+        &.icon-l {
+            width:94px;
+            height:94px;
+            margin-top:-17px;
+            margin-bottom:-17px;
+            transform:translateY(9px);
+        }
+        &.icon-xl {
+            width:148px;
+            height:148px;
+            margin-top:-34px;
+            margin-bottom:-34px;
+            transform:translateY(14px);
+        }
+    }
+    &-arrow {
+        &.icon-s {
+            width:50px;
+            height:50px;
+        }
+        &.icon-m {
+            width:62px;
+            height:62px;
+            margin-top:-11px;
+            margin-bottom:-11px;
+        }
+        &.icon-l {
+            width:94px;
+            height:94px;
+            margin-top:-17px;
+            margin-bottom:-17px;
+        }
+        &.icon-xl {
+            width:132px;
+            height:132px;
+            margin-top:-26px;
+            margin-bottom:-26px;
+        }
+    }
+    &-infinity {
+        &.icon-xs {
+            width:24px;
+            height:24px;
+        }
+        &.icon-s {
+            width:32px;
+            height:32px;
+        }
+        &.icon-m {
+            width:40px;
+            height:40px;
+        }
+        &.icon-l {
+            width:50px;
+            height:50px;
+        }
+        &.icon-xl {
+            width:80px;
+            height:80px;
+        }
+        &.icon-xl2 {
+            width:96px;
+            height:96px;
+        }
+        &.icon-large {
+            width:128px;
+            height:128px;
+        }
+    }
+    &-fb,
+    &-dk,
+    &-tw {
+        &.icon-xl {
+            width:54px;
+            height:54px;
+        }
+        &.icon-l {
+            width:40px;
+            height:40px;
+        }
+        &.icon-m {
+            width:30px;
+            height:30px;
+        }
+        &.icon-s {
+            width:24px;
+            height:24px;
+        }
+        &.icon-xs {
+            width:20px;
+            height:20px;
         }
     }
     &-vk,
-    &-tw {
-        &.icon-xl {
-            width:150px;
-            height:150px;
-        }
-        &.icon-m {
-            width:78px;
-            height:78px;
-            margin:-14px;
-        }
-    }
-    &-tw {
-        &.icon-m {
-            transform:translateX(1px);
-        }
-    }
     &-gl,
-    &-glc {
+    &-el {
         &.icon-xl {
             width:64px;
             height:64px;
         }
+        &.icon-l {
+            width:44px;
+            height:44px;
+        }
         &.icon-m {
-            width:32px;
-            height:32px;
+            width:34px;
+            height:34px;
+        }
+        &.icon-s {
+            width:28px;
+            height:28px;
+        }
+        &.icon-xs {
+            width:21px;
+            height:21px;
+        }
+    }
+    &-tg {
+        &.icon-xl {
+            width:74px;
+            height:74px;
+        }
+        &.icon-l {
+            width:64px;
+            height:64px;
+        }
+        &.icon-m {
+            width:56px;
+            height:56px;
+        }
+        &.icon-s {
+            width:44px;
+            height:44px;
+        }
+        &.icon-xs {
+            width:34px;
+            height:34px;
         }
     }
 }

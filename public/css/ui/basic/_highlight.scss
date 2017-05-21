@@ -1,0 +1,61 @@
+.code-preview {
+    @extend .bg-snow;
+    @extend .borderWidth-1;
+    @extend .borderStyle-solid;
+    @extend .borderColor-smoke;
+    @extend .overflow-auto;
+    font-size:13px;
+    line-height:22px;
+    @extend .w100p;
+    @extend .p-m;
+    @extend .borderRadius-m;
+}
+code, kbd, pre, samp {
+    font-family:Menlo, Monaco, Courier, monospace;
+}
+pre {
+    overflow:auto;
+    word-break:normal;
+    white-space:nowrap;
+}
+code {
+	color:$silver;
+	white-space:pre-wrap;
+}
+.hljs {
+    display:block;
+    color:$silver;
+
+    &-comment {
+        color:$silver;
+        font-style:italic;
+    }
+    &-addition,
+    &-keyword,
+    &-selector-tag,
+    &-attr,
+    &-attribute,
+    &-class .hljs-title,
+    &-template-variable,
+    &-type,
+    &-variable {
+        color:$greenDark;
+    }
+    &-doctag,
+    &-literal,
+    &-meta .hljs-meta-string,
+    &-number,
+    &-regexp,
+    &-string,
+    &-value {
+        color:$cherry;
+    }
+    &-class,
+    &-name,
+    &-section,
+    &-selector-class,
+    &-selector-id,
+    &-title {
+        color:$black;
+    }
+}

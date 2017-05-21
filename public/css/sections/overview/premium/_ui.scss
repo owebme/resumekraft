@@ -1,0 +1,408 @@
+$c_red: #d93663;
+$c_orange: #ea7f07;
+$c_green: #74b027;
+$c_emerald: #0bb5b7;
+$c_blue: #265cdc;
+$c_blueLight: #0084ff;
+$c_violet: #5856d6;
+$c_violetLight: #ab81cd;
+$c_brown: #c1a16b;
+$c_pink: #ff7272;
+
+@each $title, $color in (primary: $primary, blue: $c_blue, blueLight: $c_blueLight, green: $c_green, emerald: $c_emerald, pink: $c_pink, orange: $c_orange, violetLight: $c_violetLight, slate: $slate){
+    .boxShadow-3d-#{$title} {
+        box-shadow:0 12px 20px -10px rgba($color,.28), 0 4px 20px 0px rgba($color,.12), 0 7px 8px -5px rgba($color,.2);
+    }
+    .boxShadow-3d-#{$title}-strong {
+        box-shadow:0 12px 30px -10px rgba($color,.48), 0 4px 30px 0px rgba($color,.2), 0 7px 16px -5px rgba($color,.3);
+    }
+}
+.ovpremium {
+    &__colors {
+        @include flex("row", "space-between", "center");
+        @extend .w90p;
+        @extend .centered;
+
+        &.anim {
+            @extend .opacity-100;
+        }
+        &.animated {
+            .ovpremium__colors__item {
+                @extend .opacity-100;
+                @extend .scale-100;
+            }
+        }
+        &__item {
+            @extend .display-block;
+            @extend .pos-rel;
+            @extend .w50;
+            @extend .h50;
+            @extend .scale-0;
+            @extend .opacity-0;
+            @extend .willChange-tp;
+            transition:transform 0.7s $cubic68, opacity 0.7s $cubic68;
+
+            $n:-1;
+            @for $i from 1 through 10 {
+                $n: $n + 1;
+                &:nth-child(#{$i}) {
+                    transition-delay:0.15s * $n;
+                }
+            }
+            svg {
+                @extend .pos-abs;
+                @extend .t50p;
+                @extend .l50p;
+                width:76px;
+                height:76px;
+                @extend .willChange-transform;
+                transform:translate3d(-50%, -50%, 0) scale3d(-1, 1, 1);
+                transition:transform 0.5s $cubic075;
+
+                &:hover {
+                    transform:translate3d(-50%, -50%, 0) scale3d(-1.2, 1.2, 1);
+                }
+            }
+            path {
+                @each $title, $color in (blue: $c_blue, blueLight: $c_blueLight, brown: $c_brown, red: $c_red, pink: $c_pink, orange: $c_orange, violet: $c_violet, violetLight: $c_violetLight, green: $c_green, emerald: $c_emerald){
+                    &.fill-#{$title} {
+                        fill:$color;
+                    }
+                }
+            }
+        }
+    }
+    &__inbox {
+        &__items {
+            @extend .pos-abs;
+            @extend .t100p;
+            @extend .l0;
+            @extend .pt-xl;
+            @extend .flex-row-left-center;
+
+            &.anim {
+                @extend .opacity-100;
+            }
+            &.animated {
+                .ovpremium__inbox__item {
+                    @extend .opacity-100;
+                    @extend .scale-100;
+                }
+            }
+        }
+        &__item {
+            @include accelerate();
+            @extend .cursor-default;
+            @extend .mr-l;
+            @extend .scale-0;
+            @extend .opacity-0;
+            @extend .willChange-tp;
+            transition:transform 0.7s $cubic68, opacity 0.7s $cubic68;
+
+            $n:-1;
+            @for $i from 1 through 6 {
+                $n: $n + 1;
+                &:nth-child(#{$i}) {
+                    transition-delay:0.15s * $n;
+                }
+            }
+            &__circle {
+                @extend .flex-centered;
+                @extend .w60;
+                @extend .h60;
+                @extend .c-white;
+                font-size:28px;
+                @extend .pt4;
+                @extend .fontWeight-bold;
+                @extend .borderRadius-circle;
+                will-change:transform, box-shadow;
+                transition:transform 0.35s $cubic40, box-shadow 0.35s $cubic40;
+
+                @each $title, $color in (blue: $c_blue, blueLight: $c_blueLight, brown: $c_brown, red: $c_red, pink: $c_pink, orange: $c_orange, violet: $c_violet, violetLight: $c_violetLight, green: $c_green, emerald: $c_emerald){
+                    &[data-color="#{$title}"] {
+                        background-color:$color;
+                    }
+                }
+            }
+            &:hover {
+                .ovpremium__inbox__item__circle {
+                    transform:translate3d(0, -10px, 0);
+
+                    @each $title, $color in (blue: $c_blue, blueLight: $c_blueLight, brown: $c_brown, red: $c_red, pink: $c_pink, orange: $c_orange, violet: $c_violet, violetLight: $c_violetLight, green: $c_green, emerald: $c_emerald){
+                        &[data-color="#{$title}"] {
+                            box-shadow:0 22px 40px -10px rgba($color,.48), 0 14px 30px 0px rgba($color,.2), 0 14px 20px -5px rgba($color,.3);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__hobby {
+        &__items {
+            @extend .mt--s;
+            @extend .ml--30;
+            width:120%;
+
+            html.d-tablet.r-landscape & {
+                width:150%;
+            }
+            &.anim {
+                @extend .opacity-100;
+            }
+            &.animated {
+                .ovpremium__hobby__item {
+                    @extend .opacity-100;
+                    @extend .scale-100;
+                }
+            }
+        }
+        &__item {
+            @include accelerate();
+            @extend .pos-rel;
+            @extend .display-inlineFlex;
+            @extend .w100;
+            @extend .h100;
+            @extend .mlr-m;
+            @extend .mb-l;
+            @extend .scale-0;
+            @extend .opacity-0;
+            @extend .willChange-tp;
+            transition:transform 0.7s $cubic68, opacity 0.7s $cubic68;
+
+            html.d-tablet.r-landscape & {
+                @extend .mr0;
+                @extend .mb-m;
+            }
+            &__icon {
+                @extend .c-white;
+                @extend .flex-centered;
+                @extend .pos-centered;
+                @extend .w80;
+                @extend .h80;
+                font-size:46px;
+                @extend .bg-blue;
+                border-radius:22px;
+                @extend .boxShadow-3d-blue;
+                will-change:transform, box-shadow, background-color;
+                transition:all 0.35s $cubic40;
+
+                &:hover {
+                    transform:translate3d(-50%, calc(-50% - 10px), 0);
+                }
+            }
+            $i:0; $n:-1;
+            @each $color in (rgb(248, 167, 36), $emerald, rgb(229, 57, 53), $violetLight, rgb(125, 86, 193), rgb(103, 158, 55), rgb(235, 63, 121), rgb(140, 109, 98), rgb(255, 111, 66), $brown, rgb(169, 0, 255), $pink){
+                $i: $i + 1;
+                $n: $n + 1;
+                &:nth-child(#{$i}) {
+                    transition-delay:0.15s * $n;
+
+                    &:hover {
+                        .ovpremium__hobby__item__icon {
+                            background-color:$color;
+                            box-shadow:0 22px 40px -10px rgba($color,.48), 0 14px 30px 0px rgba($color,.2), 0 7px 20px -5px rgba($color,.3);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__tags {
+        &__items {
+            margin-top:-13px;
+            @extend .ml--xxs;
+        }
+        &__item {
+            @extend .cursor-default;
+            @extend .display-inlineFlex;
+            @extend .plr-s;
+            @extend .h40;
+            @extend .borderRadius-xxl;
+            @extend .fontFamily-myriad;
+            font-size:16px;
+            line-height:40px;
+            max-width:200px;
+            margin:15px 8px 0 0;
+            @extend .c-white;
+            @extend .text-truncate;
+            @extend .fontWeight-5;
+            @extend .bg-black;
+            @extend .boxShadow-3d-slate;
+            will-change:transform, box-shadow, background-color;
+            transition:all 0.35s $cubic40;
+
+            &:hover {
+                transform:translate3d(0, -8px, 0);
+                background-color:$blue;
+                box-shadow:0 22px 35px -10px rgba($blue,.48), 0 14px 25px 0px rgba($blue,.2), 0 7px 20px -5px rgba($blue,.3);
+            }
+        }
+    }
+    &__progress {
+        &__items {
+            @extend .nowrap;
+            @extend .pr25;
+            @extend .fontFamily-myriad;
+            padding-left:2px;
+
+            &.anim {
+                @extend .opacity-100;
+            }
+            &.animated {
+                .ovpremium__progress__line {
+                    @extend .transform-default;
+                }
+            }
+        }
+        &__item {
+            @extend .pos-rel;
+            @include flex("row", "flex-start", "center");
+            @extend .pt-xs;
+            @extend .pb-s;
+            @extend .w100p;
+            @extend .mb-s;
+            @extend .overflow-hidden;
+
+            &:first-child {
+                @extend .pt0;
+            }
+            &:before {
+                @extend .content-empty;
+                @extend .pos-abs;
+                @extend .l0;
+                @extend .b-xs;
+                @extend .w100p;
+                @extend .bg-smoke;
+                @extend .h3px;
+            }
+            $n:-1;
+            @for $i from 1 through 6 {
+                $n: $n + 1;
+                &:nth-child(#{$i}) {
+                    .ovpremium__progress__line {
+                        transition-delay:0.2s * $n;
+                    }
+                }
+            }
+        }
+        &__title {
+            @extend .c-black;
+            @extend .fontWeight-5;
+            @extend .fontSize-20;
+            @extend .text-left;
+            @extend .w90p;
+        }
+        &__score {
+            @extend .c-gray;
+            @extend .fontWeight-normal;
+            @extend .text-right;
+            @extend .w10p;
+            @extend .fontSize-20;
+        }
+        &__line {
+            @include accelerate();
+            @extend .pos-abs;
+            @extend .l0;
+            @extend .b-xs;
+            @extend .w100p;
+            @extend .bg-blue;
+            @extend .h3px;
+            @extend .willChange-transform;
+            transform:translate3d(-100%, 0, 0);
+            transition:transform 1.4s $cubic215;
+
+            &__peg {
+                @extend .pos-tr;
+                @extend .w100;
+                @extend .h10;
+                @extend .overflow-hidden;
+
+                &:after {
+                    @extend .content-empty;
+                    @extend .pos-tr;
+                    @extend .w100;
+                    @extend .h3px;
+                    box-shadow:0 0 10px $blue, 0 0 6px $blue;
+                    transform:rotate(3deg) translate(0px, -4px);
+                }
+            }
+        }
+    }
+    &__inbox__pointer {
+        @extend .pos-abs;
+        @extend .pointerEvents-none;
+        top:154px;
+        left:0;
+        @extend .w100p;
+        height:107px;
+        @extend .borderRadius-xs;
+        box-shadow:inset 0 0 0 2px #007ec1, 0 2px 4px 0 rgba(#000,.1);
+        background-color:rgba(154,220,255,.6);
+        animation:ovpremium-pointer-pulse 1.5s infinite ease-in-out;
+
+        html.d-tablet.r-landscape & {
+            top:130px;
+            height:84px;
+        }
+    }
+    &__salary__pointer {
+        @extend .pos-abs;
+        @extend .pointerEvents-none;
+        top:70px;
+        right:11px;
+        @extend .w54;
+        @extend .h54;
+        @extend .borderRadius-circle;
+        box-shadow:inset 0 0 0 2px #007ec1, 0 2px 4px 0 rgba(#000,.1), 0 12px 30px -10px rgba(154,220,255,.48), 0 4px 30px 0px rgba(154,220,255,.2), 0 7px 16px -5px rgba(154,220,255,.3);
+        background-color:rgba(154,220,255,.6);
+        animation:ovpremium-pointer-pulse 1.5s infinite ease-in-out;
+
+        html.d-tablet.r-landscape & {
+            top:60px;
+            right:11px;
+            @extend .w42;
+            @extend .h42;
+        }
+    }
+    &__price {
+        @extend .fontFamily-myriad;
+        @extend .fontWeight-bold;
+        font-size:103px;
+        line-height:103px;
+
+        html.d-tablet.r-portrait & {
+            font-size:90px;
+        }
+    }
+    &__sale {
+        @extend .pos-tr;
+        transform:translate3d(20px, -40px, 0);
+
+        &__badge {
+            @extend .flex-centered;
+            @extend .plr-xs;
+            @extend .h24;
+            background-color:#FF7272;
+            @extend .fontFamily-helvetica;
+            @extend .pt2;
+            @extend .c-white;
+            @extend .fontWeight-bold;
+            @extend .borderRadius-xxxxl;
+        }
+    }
+}
+.premium-devices-icons {
+    @extend .w80p;
+    @extend .centered;
+    @extend .mt60;
+    @extend .mb60;
+
+    div[class^="col-"] {
+        @extend .flex-centered;
+        @extend .h100;
+    }
+}
+@keyframes ovpremium-pointer-pulse {
+    0%, 100% {opacity:1;}
+    25%, 75% {opacity:0;}
+}

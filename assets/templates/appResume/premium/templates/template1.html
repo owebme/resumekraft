@@ -367,13 +367,22 @@
             });
         }
         else if (app.demo){
+
             _.bbUpdate($State, function(prop, value, e){
                 if (!$root.ready) return;
 
                 if (prop == "color"){
-                    $Control.colors.update();
                     $root.root.setAttribute("data-color", value);
                     $Resume.sections.salary.graph.refresh();
+                }
+                else if (prop == "font"){
+                    $root.root.setAttribute("data-font", value);
+                    $afterlag.run(function(){
+                        if (app.device.isPhone){
+                            $Resume.screens.refresh();
+                        }
+                        $Resume.render();
+                    });
                 }
             });
         }

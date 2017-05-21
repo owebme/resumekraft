@@ -1,0 +1,116 @@
+.notify {
+    @include notify();
+    @include accelerate();
+    @extend .opacity-0;
+    @extend .pointerEvents-none;
+    @extend .zIndex-101;
+    transition:transform .5s $bounceForce, opacity .4s $cubic40;
+
+    &:before {
+        @include notify-icon();
+        @extend .content-empty;
+        @extend .pos-tl;
+    }
+    &-wrapper {
+        @extend .display-none;
+        @extend .pos-fixed;
+        @extend .visibility-hidden;
+        @extend .zIndex-101;
+        max-width:calc(100vw - 40px);
+        transition:visibility 0s .4s;
+
+        .d-phone & {
+            max-width:calc(100vw - 30px);
+        }
+        &[data-pos="top-center"]{
+            @extend .t0;
+            @extend .mt-m;
+            @extend .xs-mt-s;
+            @extend .xs-ml-s;
+            @extend .l50p;
+            transform:translateX(-50%);
+
+            .notify {
+                transform:translate3d(0, -40px, 0);
+            }
+            .d-phone & {
+                @extend .l0;
+                @extend .transform-default;
+            }
+        }
+        &[data-pos="top-left"]{
+            @extend .t0;
+            @extend .l0;
+            @extend .mt-m;
+            @extend .ml-m;
+            @extend .xs-mt-s;
+            @extend .xs-ml-s;
+
+            .notify {
+                transform:translate3d(0, -40px, 0);
+            }
+        }
+        &[data-pos="top-right"]{
+            @extend .t0;
+            @extend .r0;
+            @extend .mt-m;
+            @extend .mr-m;
+            @extend .xs-mt-s;
+            @extend .xs-mr-s;
+
+            .notify {
+                transform:translate3d(0, -40px, 0);
+            }
+        }
+        &[data-pos="bottom-center"]{
+            @extend .b0;
+            @extend .mb-m;
+            @extend .xs-mb-s;
+            @extend .xs-ml-s;
+            @extend .l50p;
+            transform:translateX(-50%);
+
+            .notify {
+                transform:translate3d(0, 40px, 0);
+            }
+            .d-phone & {
+                @extend .l0;
+                @extend .transform-default;
+            }
+        }
+        &[data-pos="bottom-left"]{
+            @extend .b0;
+            @extend .l0;
+            @extend .mb-m;
+            @extend .ml-m;
+            @extend .xs-mb-s;
+            @extend .xs-ml-s;
+
+            .notify {
+                transform:translate3d(0, 40px, 0);
+            }
+        }
+        &[data-pos="bottom-right"]{
+            @extend .b0;
+            @extend .r0;
+            @extend .mb-m;
+            @extend .mr-m;
+            @extend .xs-mb-s;
+            @extend .xs-mr-s;
+
+            .notify {
+                transform:translate3d(0, 40px, 0);
+            }
+        }
+        &[data-active="true"]{
+            @extend .pointerEvents-all;
+            @extend .visibility-visible;
+            transition:visibility 0s;
+
+            .notify {
+                @extend .opacity-100;
+                @extend .transform-default;
+            }
+        }
+    }
+}

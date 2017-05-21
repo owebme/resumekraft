@@ -24,8 +24,8 @@
                     attr = item.getAttribute(dataAttr);
 
                 if (attr){
-                    var title = options.share && options.share.title || document.title,
-            		    url = options.url || window.location.href;
+                    var title = item.getAttribute("data-title") || options.share && options.share.title || document.title,
+            		    url = item.getAttribute("data-url") || options.url || window.location.href;
 
             		if (attr == "fb") _this.fb(url, (_.isFunction(title) ? title() : title));
             		else if (attr == "vk") _this.vk(url, (_.isFunction(title) ? title() : title));

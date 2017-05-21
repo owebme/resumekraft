@@ -6,8 +6,6 @@
 
         active: false,
 
-        help: false,
-
         currentScreen: "cover",
 
         previousScreen: null,
@@ -33,8 +31,42 @@
             $afterlag.s(function(){
                 WD.screens.find(".tutorial__screen:first")
                 .attr("data-active", true);
+                $afterlag.xl(function(){
+                    WD.detectZone();
+                });
                 WD.active = true;
             });
+        },
+
+        embeds: {
+
+            active: false,
+
+            show: function(){
+                WD.embeds.active = true;
+                $dom.body.attr("data-tutorial-help", true);
+            },
+
+            hide: function(){
+                WD.embeds.active = false;
+                $dom.body.attr("data-tutorial-help", false);
+            }
+        },
+
+        detectZone: function(){
+            if (!WD.embeds.active){
+                if (app.device.isMobile){
+                    WD.embeds.show();
+                }
+                else {
+                    var offset = app.workflow.control.device.el.offset(),
+                        width = app.workflow.control.device.el.width();
+
+                    if (offset.left <= app.cords.x && (offset.left + width) >= app.cords.x){
+                        WD.embeds.show();
+                    }
+                }
+            }
         },
 
         render: function(){
@@ -45,13 +77,23 @@
             WD.el.find(".tutorial__screen__button__hide").on("click", function(){
                 WD.hide();
             });
+
+            if (!app.device.isMobile){
+                app.cords = {};
+                $dom.document.on("mousemove.metrika", function(e){
+                    _.raf(function(){
+                        app.cords.x = e.pageX;
+                        app.cords.y = e.pageY;
+                    })
+                });
+            }
         },
 
         hide: function(){
             if (!WD.active) return;
 
             $dom.body.attr("data-tutorial", false);
-            $dom.body.attr("data-tutorial-help", false);
+            WD.embeds.hide();
 
             WD.screens.find(".tutorial__screen[data-active=true]")
             .attr("data-active", false);
@@ -70,10 +112,12 @@
         observer: function(){
             $dom.window.on("message", function(e){
                 var data = e.originalEvent.data;
-                if (data && data.screen && WD.active){
+                if (data && data.screen){
 
                     WD.previousScreen = WD.currentScreen;
                     WD.currentScreen = data.screen;
+
+                    if (!WD.active) return;
 
                     var $screen = WD.screens.find(".tutorial__screen[data-screen='" + WD.currentScreen + "']");
                     $screen.attr("data-active", true)

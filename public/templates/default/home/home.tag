@@ -1,23 +1,23 @@
-<section-home id="home" class="screens">
+<section-home id="home">
 
     <section-nav section="home" user={ opts.user }></section-nav>
 
-    <home-header></home-header>
+    <div id="content">
 
-    <home-functions></home-functions>
+        <home-sticky-nav></home-sticky-nav>
 
-    <home-section1></home-section1>
+        <home-hero></home-hero>
 
-    <home-section2></home-section2>
+        <home-professions></home-professions>
 
-    <home-section3></home-section3>
+        <home-promo></home-promo>
 
-    <home-testdrive></home-testdrive>
+        <section-main-blocks></section-main-blocks>
 
-    <home-section4></home-section4>
+        <section-plans></section-plans>
 
-    <home-jp-test></home-jp-test>
+        <home-employers></home-employers>
 
-    <home-footer></home-footer>
+    </div>
 
 </section-home>

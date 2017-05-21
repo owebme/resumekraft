@@ -36,8 +36,8 @@
 .help__text__back {
     @extend .opacity-0;
 }
-html.d-no-tablet body[data-help="true"],
-html.d-tablet.r-landscape body[data-help="true"]{
+html.d-no-tablet body[data-help="true"]:not([data-tutorial]),
+html.d-tablet.r-landscape body[data-help="true"]:not([data-tutorial]){
     .help__item,
     .help__text {
         @extend .scale-100;

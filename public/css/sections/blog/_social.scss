@@ -11,31 +11,43 @@
         .icon {
             @extend .cursor-pointer;
             transition:transform 0.2s $cubic28;
-        }
-        svg path {
-            @extend .fill-gray;
-        }
-        html.m-no-touch &:hover {
-            .icon {
-                transform:translateY(-5px);
-            }
-            path {
-                @extend .fill-blue;
-            }
-        }
-        &:active {
-            .icon {
-                transform:translateY(-3px) scale(.8);
-            }
-        }
-    }
-    &[data-pos="right"]{
-        @extend .pos-tr;
-        @extend .pb-s;
-        border-bottom:1px solid rgba($gray,.25);
 
-        html.d-tablet & {
-            @extend .mr--l;
+            &-fb {
+                width:27px;
+                height:27px;
+
+                path {
+                    fill:#3b5999;
+                }
+            }
+            &-vk {
+                width:32px;
+                height:32px;
+
+                path {
+                    fill:#507299;
+                }
+            }
+            &-tw {
+                width:28px;
+                height:28px;
+
+                path {
+                    fill:#55acee;
+                }
+            }
+            &-dk {
+                width:26px;
+                height:26px;
+
+                path {
+                    fill:#EE8208;
+                }
+            }
+            &-glc {
+                width:28px;
+                height:28px;
+            }
         }
     }
     &[data-pos="left"]{
@@ -43,16 +55,16 @@
         @extend .pointerEvents-none;
         @extend .visibility-hidden;
         transition:visibility .5s 0s;
-        transform:translate3d(0, 80px, 0);
+        transform:translate3d(0, 195px, 0);
 
         .blog__social__panel__item {
             @include accelerate();
             @extend .flex-centered;
             @extend .w70;
-            height:74px;
+            @extend .h70;
             transform:scaleX(3) translate3d(-50px, 0, 0);
             transform-origin:0% 50%;
-            transition:transform .5s $cubic075;
+            transition:transform .5s $cubic4001;
 
             @for $i from 2 through 4 {
                 &:nth-child(#{$i}){
@@ -61,39 +73,27 @@
             }
             .icon {
                 @extend .m0;
-                transition:transform .3s $cubic075;
+                transition:transform .3s $cubic4001;
 
                 &-fb {
-                    width:80px;
-                    height:80px;
-
-                    path {
-                        fill:#3b5999;
-                    }
-                }
-                &-dk {
-                    width:80px;
-                    height:80px;
-
-                    path {
-                        fill:#EE8208;
-                    }
+                    width:27px;
+                    height:27px;
                 }
                 &-vk {
-                    width:86px;
-                    height:86px;
-
-                    path {
-                        fill:#507299;
-                    }
+                    width:27px;
+                    height:27px;
                 }
                 &-tw {
-                    width:86px;
-                    height:86px;
-
-                    path {
-                        fill:#55acee;
-                    }
+                    width:26px;
+                    height:26px;
+                }
+                &-dk {
+                    width:26px;
+                    height:26px;
+                }
+                &-glc {
+                    width:26px;
+                    height:26px;
                 }
             }
             html.m-no-touch &:hover {
@@ -113,8 +113,8 @@
             transition:visibility 0s;
 
             .blog__social__panel__item {
-                transition:transform .7s $cubic345;
-                transform:scaleX(1) translate3d(33px, 0, 0);
+                transition:transform .7s $cubic4001;
+                transform:scaleX(1) translate3d(23px, 0, 0);
 
                 @for $i from 2 through 4 {
                     &:nth-child(#{$i}){
@@ -135,22 +135,22 @@
         &:before {
             @extend .content-empty;
             @extend .pos-abs;
-            @extend .t50;
-            @extend .r100;
+            @extend .t50p;
+            @extend .r100p;
             @extend .h1px;
-            @extend .bg-grayLighten;
+            @extend .bg-smoke;
             width:230px;
-            transform:translate3d(-20px, -10px, 0);
+            transform:translate3d(-20px, -50%, 0);
         }
         &:after {
             @extend .content-empty;
             @extend .pos-abs;
-            @extend .t50;
-            @extend .l100;
+            @extend .t50p;
+            @extend .l100p;
             @extend .h1px;
-            @extend .bg-grayLighten;
+            @extend .bg-smoke;
             width:230px;
-            transform:translate3d(20px, -10px, 0);
+            transform:translate3d(20px, -50%, 0);
         }
     }
 }

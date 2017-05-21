@@ -7,7 +7,7 @@ module.exports = function(){
 
                 req.appClient.data = data;
 
-                var output = app.riot.render(app.tags("blogContent", req.device), req.appClient);
+                var output = app.riot.render(app.tags("blogArticle", req.device), req.appClient);
 
                 res.render('index', {
                     title: data.item.name,

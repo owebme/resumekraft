@@ -1,8 +1,8 @@
 module.exports = function(){
 
-    gulp.task('styleguide', function() {
+    gulp.task('styleguide.css', function() {
     	return combiner(
-    		gulp.src('assets/css/styleguide.scss'),
+    		gulp.src('public/1v2/css/styleguide.scss'),
     		sass(),
     		csso(),
     		autoprefixer({
@@ -15,7 +15,7 @@ module.exports = function(){
                 maxImageSize: 16*1024, // bytes
                 debug: false
             }),
-    		gulp.dest('assets/css'),
+    		gulp.dest('public/1v2/css'),
     		browserSync.stream()
     	).on('error', notify.onError({
     		"sound": false,

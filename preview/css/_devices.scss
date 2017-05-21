@@ -17,6 +17,10 @@ body {
             width:375px;
             height:640px;
         }
+        .prof__opener,
+        .control__colors__container {
+            @extend .scale-100;
+        }
     }
     &[data-device="tablet"],
     html.d-mobile & {

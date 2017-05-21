@@ -13,103 +13,97 @@
 
         render: function(){
 
-            WD.imagesLoader();
+            WD.grid = WD.el.find(".blog__grid");
 
-            WD.header();
+            WD.content();
+
+            WD.loading();
+
+            WD.arrowTop();
+
+            WD.share();
 
             app.metrika.set("views.blog", 1, {
                 action: "inc"
             })
         },
 
-        imagesLoader: function(){
-            var imagesLoaded = new app.plugins.imagesLoaded();
-
-            imagesLoaded.on("image-load", function(image){
-                if (image.classList.contains("blog__header__cover__image")){
-                    image.parentNode.setAttribute("data-show", true);
-                }
-            });
-
-            imagesLoaded.once("complete", function(){
-                WD.content();
-                WD.share();
-                WD.subscribe();
-                $afterlag.run(function(){
-                    app.sections.trigger("ready");
-                });
-            });
-
-            imagesLoaded.load({
-                timeout: 5000
-            });
-        },
-
-        header: function(){
-            var animHeader = new app.plugins.animate(WD.el.find(".blog__header"), {
-                showAfter: 1
-            });
-
-            animHeader.show();
-        },
-
         content: function(){
-            var scrollAnimate = new app.plugins.scroll.animate({
-                scroll: $dom.window,
+            WD.showItems = new app.plugins.scroll.animate({
                 container: WD.el.find(".blog__grid"),
                 delta: "xs"
             });
 
-            scrollAnimate.start();
+            WD.showItems.start();
+        },
 
-            if (typeof Skycons !== 'undefined'){
-                var skycons = new Skycons(
-                    {"color": "#fff"},
-                    {"resizeClear": true}
-                );
-                skycons.add("blog__grid__weather__canvas", Skycons.PARTLY_CLOUDY_NIGHT);
-                skycons.play();
-            };
+        loading: function(){
+            var height = $dom.document.height(),
+                page = parseInt(WD.el.attr("data-page")),
+                pages = parseInt(WD.el.attr("data-pages")),
+                $loader = WD.el.find(".loading"),
+                show = false;
+
+            if (page != pages){
+                $dom.window.on("scroll.preloader", function(){
+                    if (!show && (this.scrollY + app.sizes.height > height - 40)){
+                        show = true;
+                        page += 1;
+                        if (page <= pages){
+                            $loader.attr("data-active", true);
+                            app.request("getBlogItems", page).then(function(data){
+                                var $items = $('<div>').appendTo(WD.grid);
+                                var tag = riot.mount($items[0], "blog-grid", {
+                                    domain: app.domain(),
+                                    items: data.items
+                                });
+                                $afterlag.run(function(){
+                                    var $grid = WD.grid.find(".blog__grid");
+
+                                    WD.shareLinks($grid);
+
+                                    WD.grid.find(".blog__grid > a").unwrap();
+
+                                    $loader.attr("data-active", false);
+
+                                    WD.showItems.render(true);
+
+                                    height = $dom.document.height();
+                                    show = false;
+                                });
+                            })
+                        }
+                        else {
+                            $dom.window.off("scroll.preloader");
+                        }
+                    }
+                });
+            }
+        },
+
+        arrowTop: function(){
+
+            WD.el.find("btn-arrow-top").on("click", function(){
+                var top = $dom.document.scrollTop(),
+                duration = top / 5;
+                duration = duration < 500 ? 500 : duration;
+
+                $dom.body.animate({scrollTop: 0}, duration);
+            });
         },
 
         share: function(){
-            $.shareButton = WD.el.find(".blog__shareButton");
-
-            $.shareButton.on("mouseenter mouseleave", function(e){
-                if (e.type === "mouseenter"){
-                    WD.el.attr("data-overlay", "true");
-                }
-                else {
-                    WD.el.attr("data-overlay", "false");
-                }
+            WD.grid.on("click", ".blog__grid__item__share", function(e){
+                e.preventDefault();
             });
-
-            new app.plugins.share($.shareButton, {
-                buttons: ".blog__shareButton__item",
-                dataAttr: "share"
-            });
+            WD.shareLinks(WD.grid);
         },
 
-        subscribe: function(){
-            var $el = WD.el.find(".blog__subscribe");
-
-            if (!app.metrika.get("offers.popup.blog.subscribe.success")){
-                $("<blog-subscribe-form>").appendTo($el.find(".blog__subscribe__form"));
-
-                app.sections.on("afterMounted", function(){
-                    app.tag("blog-subscribe-form", function(tag){
-                        tag.one("success", function(){
-                            $el.remove();
-                        })
-                        tag.one("fail", function(){
-                            $el.remove();
-                        })
-                    });
-                });
-            }
-            else {
-                $el.remove();
-            }
+        shareLinks: function($scope){
+            new app.plugins.share($scope.find(".blog__grid__item__share"), {
+                buttons: ".blog__grid__item__share__link",
+                dataAttr: "item"
+            });
         }
     };
 

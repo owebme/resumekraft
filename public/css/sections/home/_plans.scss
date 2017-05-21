@@ -1,0 +1,152 @@
+section-plans {
+    .plans {
+        @extend .fontFamily-myriad;
+        @extend .text-left;
+        border-bottom:1px solid $smoke;
+    }
+    .plan {
+        @extend .pos-rel;
+        @extend .overflow-hidden;
+        will-change:height;
+        height:124px;
+        transition:height 0.55s $cubic60;
+
+        &--show.plan {
+            height:400px;
+
+            .plan__item {
+                @extend .bg-none;
+            }
+            .plan__title {
+                @extend .c-primary;
+            }
+            .plan__buttons {
+                @extend .opacity-100;
+            }
+            .plan__item:hover .plan__opener__svg,
+            .plan__opener__svg {
+                transform:translate3d(15px, 0, 0) rotate(90deg);
+                @extend .bg-primary;
+                @extend .opacity-100;
+
+                &__arrow {
+                    @extend .fill-white;
+                }
+                &__circle {
+                    @extend .fill-primary;
+                }
+            }
+        }
+        &__item {
+            @extend .flex-row-center-stretch;
+            @extend .c-black;
+            @extend .userSelect-none;
+            @extend .cursor-pointer;
+            transition:background-color 0.4s $cubic4001;
+            border-top:1px solid $smoke;
+
+            &:hover {
+                background-color:rgba($snow,.6);
+
+                .plan__title {
+                    @extend .c-primary;
+                }
+                .plan__opener__svg {
+                    @extend .trX-s;
+                    @extend .bg-primary;
+                    @extend .opacity-100;
+
+                    &__arrow {
+                        @extend .fill-white;
+                    }
+                    &__circle {
+                        @extend .fill-primary;
+                    }
+                }
+                .plan__buttons {
+                    @extend .pointerEvents-all;
+                    @extend .opacity-100;
+                }
+            }
+        }
+        &__title {
+            @extend .flex-row-left-center;
+            @extend .ptb-l;
+            padding-left:53px;
+            @extend .fontSize-40;
+            @extend .fontWeight-2;
+            transition:color 0.4s $cubic4001;
+        }
+        &__buttons {
+            @include accelerate(true);
+            @extend .opacity-0;
+            @extend .flex-row-right-center;
+            @extend .pointerEvents-none;
+            @extend .willChange-opacity;
+            transition:opacity 0.4s $cubic4001;
+
+            .btn {
+                &:last-child {
+                    @extend .ml-s;
+                }
+            }
+        }
+        &__price {
+            @extend .flex-row-right-center;
+            @extend .fontSize-30;
+            @extend .fontWeight-3;
+        }
+        &__open {
+            @extend .flex-row-left-center;
+            @extend .pl-s;
+        }
+        &__opener {
+            &__svg {
+                @extend .w30;
+                @extend .h30;
+                @extend .willChange-tp;
+                @extend .opacity-70;
+                @extend .borderRadius-circle;
+                transition:all 0.4s $cubic4001;
+
+                path {
+                    @extend .fill-primary;
+                    transition:all 0.4s $cubic4001;
+                }
+            }
+        }
+        &__options {
+            @extend .pos-abs;
+            top:124px;
+            @extend .l0;
+            @extend .w100p;
+            @extend .ml--xxs;
+            padding:0 53px 40px;
+        }
+        &__option {
+            @extend .pt-l;
+
+            &:first-child {
+                @extend .pt0;
+            }
+            &:last-child {
+                .plan__option__text {
+                    @extend .border-none;
+                }
+            }
+            &__title {
+                @extend .fontSize-28;
+                @extend .fontWeight-3;
+            }
+            &__text {
+                @extend .fontSize-18;
+                @extend .lineHeight-26;
+                @extend .pt4;
+                @extend .pb-l;
+                @extend .pl0;
+                @extend .pr-xl;
+                border-bottom:1px solid $smokeDark;
+            }
+        }
+    }
+}

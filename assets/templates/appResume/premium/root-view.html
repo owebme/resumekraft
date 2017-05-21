@@ -71,6 +71,11 @@
             });
             photoParallax.start();
         }
+        if (app.device.isPhone){
+            $afterlag.xs(function(){
+                $Resume.screens.refresh();
+            });
+        }
 
         app.$dom.body.removeClass("appLoading")
         .attr("id", "ready");
@@ -127,6 +132,10 @@
                     else if (data.font && $State.get('font') != data.font){
                         $State.select('font').set(data.font);
                     }
+                    else if (data.photo){
+                        $store.resume.select("commons", "photo").set(data.photo);
+                        $Resume.sections.photo.update();
+                    }
                     else if (data.resume){
                         $Resume.unmount(true);
                         $resume = $store.resume.prepare.premium(data.resume, "demo");
@@ -141,12 +150,17 @@
                         });
                     }
                     else if (data.scrollTo){
-                        var item = _.findWhere($Resume.screenItems, {"section": currentScreen}),
-                            duration = undefined;
+                        var duration = undefined;
 
-                        if (item) duration = item.step * 250;
-                        if (duration < 600) duration = 600;
-                        else if (duration > 3000) duration = 3000;
+                        if (data.scrollDuration !== undefined){
+                            duration = data.scrollDuration
+                        }
+                        else {
+                            var item = _.findWhere($Resume.screenItems, {"section": currentScreen});
+                            if (item) duration = item.step * 250;
+                            if (duration < 600) duration = 600;
+                            else if (duration > 3000) duration = 3000;
+                        }
                         $Resume.screens.nav(data.scrollTo, duration);
                     }
                 }

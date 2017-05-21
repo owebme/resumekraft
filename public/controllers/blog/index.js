@@ -13,7 +13,7 @@ module.exports = function(){
 
         app.async.parallel({
             data: function(callback){
-                API.blog.index(req, function(err, data){
+                API.blog.items(req, function(err, data){
                     app.errHandler(res, err, data, callback);
                 });
             },
@@ -38,7 +38,9 @@ module.exports = function(){
                 res.render('index', {
                     title: app.config.public.get('title:blog'),
                     image: app.config.public.get('domain') + "/public/images/popup/blog.png",
-                    content: output,
+                    content: output
+                    .replace(/<blog-grid/, "<blog-grid-side")
+                    .replace(/<\/blog-grid>/, "</blog-grid-side>"),
                     device: req.device.type,
                     isMobile: req.device.isMobile
                 });

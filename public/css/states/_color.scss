@@ -1,0 +1,330 @@
+$i:0;
+@each $color in (#9471DB, #4D71DB, #FFB84D, #B871B8, #71B84D, #FFDB71, #4DB8B8, #4DB8DB, #DB94DB, #FFACC5, #FF944D, #B8DB4D, #FF7194, #6AD19F){
+    $i: $i + 1;
+    .color__bg#{$i} {
+        background-color:$color;
+    }
+    svg[fill-color="fill#{$i}"]{
+        path, rect, polygon, circle {
+            fill:$color;
+        }
+    }
+}
+@each $title, $color in (primary: $primary, black: $black, blackA: $blackA, blackB: $blackB, steel: $steel, steelA: $steelA, slate: $slate, slateA: $slateA, white: $white, silver: $silver, gray: $gray, smoke: $smoke, smokeDark: $smokeDark, smokeDarken: $smokeDarken, snow: $snow, snowA: $snowA, snowB: $snowB, snowC: $snowC, snowD: $snowD, snow2: $snow2, snow7: $snow7, snowDark: $snowDark, snowDarken: $snowDarken, blue: $blue, blueLight: $blueLight, blueDark: $blueDark, breeze: $breeze, water: $water, yellow: $yellow, yellowLight: $yellowLight, yellowBright: $yellowBright, yellowDark: $yellowDark, red: $red, redDark: $redDark, cherry: $cherry, pink: $pink, pinkLight: $pinkLight, pinkDark: $pinkDark, orange: $orange, orangeLight: $orangeLight, orangeDark: $orangeDark, violet: $violet, violetLight: $violetLight, violetDark: $violetDark, green: $green, greenLight: $greenLight, greenDark: $greenDark){
+    .bg-#{$title},
+    .text-strike[data-color=#{$title}]:after {
+        background-color:$color;
+    }
+    .bg-#{$title}-transparent {
+        background-color:rgba($color,.1);
+    }
+    .c-#{$title} {
+        color:$color;
+    }
+    .fill-#{$title} {
+        fill:$color;
+    }
+    .borderColor-#{$title} {
+        border-color:$color;
+    }
+    .borderColor-#{$title}-transparent {
+        border-color:rgba($color,.1);
+    }
+    .boxShadow-#{$title} {
+        box-shadow:0 0 0 1px $color;
+    }
+    .boxShadowInset-#{$title} {
+        box-shadow:inset 0 0 0 1px $color;
+    }
+    svg[fill-color="#{$title}"]{
+        path, rect, polygon, circle {
+            fill:$color;
+        }
+    }
+}
+@each $title, $color, $hover in (primary, $primary, $blue), (success, $green, $greenDark), (danger, $red, $redDark), (warning, $yellow, $yellowDark), (gray, $silver, $gray), (white, rgba($white,.7), $white){
+    .link-#{$title} {
+		color:$color;
+
+	    &:hover,
+        &-hover:hover {
+            color:$hover;
+	    }
+        &-hover {
+            color:$silver;
+        }
+    }
+}
+.link-underline:hover,
+.btn-link-underline:hover {
+    text-decoration:underline;
+}
+@each $title, $color in (primary: $primary, success: $green, danger: $red, warning: $yellow, dark: $black){
+    .btn-#{$title} {
+        color:$white;
+        background-color:$color;
+
+        .btn-svg-color {
+            fill:$white;
+        }
+        &:hover {
+            background-color:lighten($color,3%);
+        }
+    }
+    .btn-link-#{$title} {
+        color:$color;
+        @extend .bg-none;
+
+        .btn-svg-color {
+            fill:$color;
+        }
+    }
+    .btn-link-#{$title}-hover {
+        color:$silver;
+        @extend .bg-none;
+
+        .btn-svg-color {
+            fill:$slate;
+        }
+        &:hover {
+            color:$color;
+
+            .btn-svg-color {
+                fill:$color;
+            }
+        }
+    }
+    .btn-#{$title}-hover {
+        color:$color;
+        box-shadow:inset 0 0 0 1px $color;
+
+        &.btn-s,
+        &.btn-xs {
+            box-shadow:0 0 0 1px $color;
+
+            &:hover {
+                box-shadow:0 0 0 1px $color;
+            }
+        }
+        .btn-svg-color {
+            fill:$slate;
+        }
+        &:hover {
+            color:$white;
+            background-color:$color;
+            box-shadow:none;
+
+            .btn-svg-color {
+                fill:$white;
+            }
+        }
+    }
+    .btn-default-hover-#{$title} {
+        color:$white;
+        box-shadow:inset 0 0 0 1px $primary;
+        background-color:$primary;
+
+        &:hover {
+            background-color:$color;
+            box-shadow:none;
+        }
+    }
+    .notify[data-color=#{$title}] {
+        background-color:$color;
+        box-shadow:0 12px 20px -10px rgba($color,.28), 0 4px 20px 0px rgba($color,.12), 0 7px 8px -5px rgba($color,.2);
+    }
+    .arrow-pointer[data-color=#{$title}]:before {
+        border-color:$color;
+    }
+}
+@each $title, $color in (info: $primary, success: $green, danger: $orange, warning: $yellow){
+    .btn-badge-#{$title} {
+        background-color:$color;
+    }
+}
+@each $title, $color in (primary: $primary, green: $green, red: $red){
+    input.range-#{$title}[type=range]::-webkit-slider-thumb {
+        background-color:$color;
+    }
+    input.range-#{$title}[type=range]::-moz-range-thumb {
+        background-color:$color;
+    }
+    input.range-#{$title}[type=range]::-ms-thumb {
+        background-color:$color;
+    }
+}
+@each $title, $color in (primary: $primary, danger: $red, success: $green, water: $water){
+    [data-balloon-color="#{$title}"] {
+        &:after {
+            background-color:$color;
+
+            @if $title == 'water' {
+                color:$slate;
+            }
+        }
+        &:before {
+            background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="36px" height="12px"><path fill="#{$color}" transform="rotate(0)" d="M2.658,0.000 C-13.615,0.000 50.938,0.000 34.662,0.000 C28.662,0.000 23.035,12.002 18.660,12.002 C14.285,12.002 8.594,0.000 2.658,0.000 Z"/></svg>');
+        }
+        &[data-balloon-pos="left"]:before {
+            background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12px" height="36px"><path fill="#{$color}" transform="rotate(-90 18 18)" d="M2.658,0.000 C-13.615,0.000 50.938,0.000 34.662,0.000 C28.662,0.000 23.035,12.002 18.660,12.002 C14.285,12.002 8.594,0.000 2.658,0.000 Z"/></svg>');
+        }
+        &[data-balloon-pos="right"]:before {
+            background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12px" height="36px"><path fill="#{$color}" transform="rotate(90 6 6)" d="M2.658,0.000 C-13.615,0.000 50.938,0.000 34.662,0.000 C28.662,0.000 23.035,12.002 18.660,12.002 C14.285,12.002 8.594,0.000 2.658,0.000 Z"/></svg>');
+        }
+        &[data-balloon-pos="down"]:before {
+            background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="36px" height="12px"><path fill="#{$color}" transform="rotate(180 18 6)" d="M2.658,0.000 C-13.615,0.000 50.938,0.000 34.662,0.000 C28.662,0.000 23.035,12.002 18.660,12.002 C14.285,12.002 8.594,0.000 2.658,0.000 Z"/></svg>');
+        }
+    }
+}
+.link-primary-hover:hover {
+    color:$primary;
+}
+.btn-link-primary:hover {
+    color:$blue;
+}
+.btn-default {
+    @extend .c-white;
+    @extend .bg-primary;
+
+    &:hover {
+        @extend .bg-blue;
+    }
+    &-hover-primary {
+        &:hover {
+            background-color:$blue;
+        }
+    }
+    &-hover-white {
+        @extend .btn-primary;
+
+        &:hover {
+            color:$primary;
+            background-color:$white;
+            @extend .boxShadow-none;
+        }
+    }
+    &-hover-outline {
+        @extend .btn-primary;
+
+        &:hover {
+            color:$primary;
+            @extend .bg-none;
+            @extend .boxShadowInset-primary;
+
+            .btn-svg-color {
+                @extend .fill-primary;
+            }
+        }
+    }
+}
+.btn-orange {
+    &-hover-success {
+        color:$white;
+        background:$orange;
+
+        &:hover {
+            background:$green;
+        }
+    }
+}
+.btn-badge-white {
+    @extend .bg-white;
+    @extend .c-primary;
+}
+.btn-white {
+    &-hover-primary,
+    &-hover-success,
+    &-hover-yellow {
+        @extend .c-primary;
+        @extend .boxShadow-none;
+        @extend .bg-white;
+
+        .btn-svg-color {
+            @extend .fill-primary;
+        }
+        &:hover {
+            @extend .c-white;
+
+            .btn-svg-color {
+                @extend .fill-white;
+            }
+        }
+    }
+    &-hover-primary {
+        &:hover {
+            @extend .bg-primary;
+        }
+    }
+    &-hover-success {
+        &:hover {
+            @extend .bg-green;
+        }
+    }
+    &-hover-yellow {
+        &.btn {
+            &:hover {
+                @extend .c-steel;
+                @extend .bg-yellowBright;
+            }
+        }
+    }
+    &-hover-outline {
+        @extend .c-primary;
+        @extend .boxShadowInset-white;
+        @extend .bg-white;
+
+        .btn-svg-color {
+            @extend .fill-primary;
+        }
+        &:hover {
+            @extend .c-white;
+            @extend .bg-none;
+
+            .btn-svg-color {
+                @extend .fill-white;
+            }
+        }
+    }
+}
+.btn-white-hover {
+    @extend .c-white;
+    box-shadow:inset 0 0 0 1px rgba($white,.3);
+    background-color:transparent;
+
+    .btn-svg-color {
+        @extend .fill-white;
+    }
+    &:hover {
+        @extend .c-black;
+        @extend .boxShadow-none;
+        @extend .bg-white;
+
+        .btn-svg-color {
+            @extend .fill-black;
+        }
+    }
+}
+.arrow-pointer[data-color="white"]:before {
+    border-color:$white;
+}
+.bg-overlay {
+    background-color:rgba(40,47,51,.76);
+}
+.bg-radial-blue {
+    background:radial-gradient(rgba($blue,.0), $blue);
+}
+.bg-radial-black {
+    background:radial-gradient(rgba($black,.0), $black);
+}
+.bg-gradient-tb-white {
+	background:linear-gradient(to bottom, #fff, rgba(#fff,0));
+}
+.bg-gradient-bt-white {
+	background:linear-gradient(to top, #fff, rgba(#fff,0));
+}
+.bg-gradient-lr-white {
+	background:linear-gradient(to right, #fff, rgba(#fff,0));
+}
+.bg-gradient-rl-white {
+	background:linear-gradient(to left, #fff, rgba(#fff,0));
+}

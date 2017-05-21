@@ -16,6 +16,10 @@ module.exports = function(){
         content: require('./blog/content')()
     }
 
+    app.controllers.samples = {
+        index: require('./samples')()
+    }
+
     app.controllers.parser = require('./parser')();
 
     app.controllers.auth = {

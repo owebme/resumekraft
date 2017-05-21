@@ -13,148 +13,93 @@
 
         render: function(){
 
-            WD.imagesLoaded();
+            WD.header();
 
-            WD.screenVideo();
+            WD.content();
 
-            $afterlag.run(function(){
+            WD.plans();
 
-                WD.header();
-
-                WD.scrollAnimate();
-
-                WD.scrollParallax();
-
-                WD.createAccount();
-            }, {
-                timeout: 1000,
-                delay: app.device.isIE ? 1000 : null
-            });
+            WD.createAccount();
 
             app.metrika.set("views.home", 1, {
                 action: "inc"
             })
         },
 
-        imagesLoaded: function(){
-
-            var imagesLoaded = new app.plugins.imagesLoaded();
-
-            imagesLoaded.once("complete", function(){
-                $afterlag.run(function(){
-                    app.sections.trigger("ready");
-                });
-            });
-
-            imagesLoaded.load({
-                timeout: 5000
-            });
-        },
-
         header: function(){
-            var $sectionFunctions = WD.el.find('.home__functions'),
-                $header = WD.el.find('.home__header'),
-                animHeader = new app.plugins.animate($header);
+            var $phones = WD.el.find('home-hero .phones'),
+                $stickyNav = WD.el.find('.stickyNav'),
+                animHeader = new app.plugins.animate(WD.el, {
+                    showAfter: 1
+                });
 
-            WD.arrow = $header.find(".home__header__arrow");
-            WD.offsetFn = $sectionFunctions.offset().top;
-            WD.animFunctions = new app.plugins.animate($sectionFunctions, {
-                showAfter: 1
-            });
-
-            animHeader.show();
-
-            $dom.window.on("scroll.animFunctions", function(){
-                WD.raf = _.raf(WD._scroll);
+            animHeader.show(function(){
+                $phones.attr("data-show", true);
             });
         },
 
-        _scroll: function(){
-            var scroll = $dom.document.scrollTop() + (app.sizes.height / 1.3);
-            if (scroll > WD.offsetFn){
-                _.caf(WD.raf);
-                $dom.window.off("scroll.animFunctions");
-                WD.animFunctions.show();
-                WD.arrow.attr("data-hidden", true);
-            }
-        },
-
-        scrollAnimate: function(){
-            var scrollAnimate = new app.plugins.scroll.animate({
-                scroll: $dom.window,
-                container: WD.el
-            });
-
-            scrollAnimate.start();
-        },
-
-        scrollParallax: function(){
-            var scrollParallax = new app.plugins.scroll.parallax({
-                scroll: $dom.window,
-                items: [
-                {
-                    container: ".home__section1__phone__viewport",
-                    selector: ".home__section1__phone__screen",
-                    viewports: {
-                        large: {
-                            fromTime: 0.67,
-                            toTime: 2.9,
-                            fromX: 0,
-                            toX: 0,
-                            fromY: 0,
-                            toY: -1000
-                        }
-                    }
-                },
-                {
-                    container: ".home__section2__ipad__viewport",
-                    selector: ".home__section2__ipad__screen",
-                    viewports: {
-                        large: {
-                            fromTime: 0.15,
-                            toTime: 3.2,
-                            fromY: 0,
-                            toY: -1000
-                        }
-                    }
-                }
-                ]
-            });
-
-            var bgParallax = new app.plugins.scroll.ParallaxController({
+        content: function(){
+            WD.contentAnimate = new app.plugins.scroll.animate({
+                container: $dom.body,
+                onlyItems: true,
                 items: [
                     {
-                        selector: ".bgParallax",
-                        from: 100,
-                        to: -150,
-                        off: 0
+                        delta: "xs",
+                        elem: "home-professions .prof__items__photo",
+                        callback: function($elem, i){
+                            $elem.attr("data-show", true);
+                        }
+                    },
+                    {
+                        delta: "xs",
+                        elem: "home-promo .phones",
+                        callback: function($elem, i){
+                            $elem.attr("data-show", true);
+                        }
                     }
                 ]
             });
 
-            bgParallax.start();
-
-            scrollParallax.start();
+            WD.contentAnimate.start();
         },
 
-        screenVideo: function(){
-            var video = WD.el.find("#video")[0];
+        plans: function(){
+            var $plans = WD.el.find(".plans");
 
-            function checkLoad() {
-                 if (video.readyState === 4) {
-                     video.setAttribute("data-show", true);
-                 } else {
-                     setTimeout(checkLoad, 100);
-                 }
-            }
-            checkLoad();
+            $plans.on("click", ".plan__item", function(e){
+                if ($(e.target).hasClass("btn-order")){
+
+                }
+                else {
+                    var $item = $(this),
+                        $plan = $item.closest(".plan"),
+                        $open = $item.find(".btn-open");
+
+                    $plan.toggleClass("plan--show");
+
+                    if ($plan.hasClass("plan--show")){
+                        $plan.height($plan.find(".plan__options").outerHeight() + $item.height());
+                        $open.text("Закрыть");
+                    }
+                    else {
+                        $plan.removeAttr("style");
+                        $open.text("Подробнее");
+                    }
+                }
+            });
         },
 
         createAccount: function(){
 
             WD.el.on("click", ".createAccount", function(){
-                var plan = this.getAttribute("data-plan");
-                app.tag("section-auth").open("signup", plan);
+                var period = this.getAttribute("data-period") || "month1";
+                if (WD.auth){
+                    _.opener("/private/?plan=premium&period=" + period);
+                }
+                else {
+                    app.tag("section-auth").open("signup", "premium");
+                    app.metrika.set("plan.period", period);
+                }
             });
         }
     };

@@ -1,28 +1,3 @@
 #home {
     @extend .display-block;
-    @extend .bg-blackLight;
-    @extend .overflow-hidden;
-
-    .screen {
-        @extend .display-block;
-    }
-    h2 {
-        @extend .fontFamily-govern;
-        font-size:38px;
-        line-height:46px;
-        @extend .mt--s;
-    }
-    small {
-        @extend .display-block;
-        @extend .fontSize-16;
-        letter-spacing:5.5px;
-        @extend .text-uppercase;
-    }
-    .ui-scroll {
-        @extend .zIndex-101;
-    }
-    .ui-scroll__bar,
-    .ui-scroll__handle__inner {
-    	@extend .bg-lime;
-    }
 }

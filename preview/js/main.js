@@ -4,7 +4,7 @@
 
     app.workflow = {
 
-        isStart: false,
+        active: false,
 
         init: function(){
             if (app.device.isPhone){
@@ -17,25 +17,27 @@
 
             window.$State = new Baobab({
                 device: "phone",
+                photo: "1",
                 color: "#0084ff",
-                font: null
+                font: "futura"
             },
             { autoCommit: true });
 
             WD.observer();
             WD.render();
             WD.share();
+
+            WD.ripple = new app.plugins.ripple();
         },
 
-        observer: function(){
+        start: function(){
+            if (WD.active) return;
 
-            _.bbUpdate($State, function(prop, value, e){
-                if (prop == "color"){
-                    $dom.body.attr("data-color", value);
-                }
-                if (prop == "device" && value == "phone"){
-                    $dom.body.attr("data-help", true);
-                }
+            $afterlag.run(function(){
+                app.tag("prof-list", function(tag){
+                    tag.show();
+                    WD.active = true;
+                });
             });
         },
 
@@ -51,6 +53,7 @@
             });
 
             var $menu = $(".menu"),
+                $audio = $("#audio"),
                 $btnImport = $(".button__import__item");
 
             $menu.opener = $(".menu__opener");
@@ -75,14 +78,15 @@
             app.workflow.control.init();
             app.workflow.tutorial.init();
 
-            $afterlag.run(function(){
-                app.tag("prof-list", function(tag){
-                    tag.show();
-                });
-            });
+            if ($audio.length){
+                $audio[0].volume = 0.3;
+            }
+
+            WD.start();
         },
 
-        onSelect: function(){
+        onSelect: function(id){
+            $State.select('photo').set(id);
             app.workflow.control.device.load();
         },
 
@@ -92,6 +96,23 @@
                 url: app.domain() + "/premium/",
                 share: {
                     title: "Премиальное резюме нового формата на ResumeKraft.ru"
+                }
+            });
+        },
+
+        observer: function(){
+
+            _.bbUpdate($State, function(prop, value, e){
+                if (prop == "color"){
+                    $dom.body.attr("data-color", value);
+                }
+                if (prop == "device" && value == "phone"){
+                    $dom.body.attr("data-help", true);
+                }
+                if (prop == "photo"){
+                    app.workflow.profOpener.update({
+                        id: value
+                    });
                 }
             });
         }

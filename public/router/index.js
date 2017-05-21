@@ -131,6 +131,8 @@ module.exports = function(){
     app.get('/blog/page_:page', app.controllers.blog.index);
     app.get('/blog/:alias', app.controllers.blog.content);
 
+    app.get('/samples/', app.controllers.samples.index);
+
     app.get('/parser/all', app.controllers.parser);
 
     app.post('/payment/yamoney', app.controllers.payment);

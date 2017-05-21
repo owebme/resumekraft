@@ -1,0 +1,155 @@
+home-promo {
+    &:after {
+        @extend .pos-rel;
+        @extend .display-block;
+        @extend .content-empty;
+        @extend .l50p;
+        width:1376px;
+        height:788px;
+        @extend .bg-cover;
+        background-image:url(/public/images/home/screen1_large.jpg);
+        margin-left:-658px;
+        @extend .mb-l;
+
+        html.d-retina.d-no-tablet & {
+            background-image:url(/public/images/home/screen1_large_2x.jpg);
+        }
+    }
+    .content__block {
+        @extend .pb-m;
+    }
+    .opener {
+        @extend .pos-centered-h;
+        @extend .t--100;
+        @extend .c-primary;
+        @extend .fontSize-16;
+        @extend .fontWeight-3;
+        @extend .text-center;
+        @extend .transition-default;
+        @extend .cursor-pointer;
+
+        &:hover {
+            @extend .c-green;
+
+            .opener__circle {
+                @extend .bg-green;
+            }
+        }
+        &__circle {
+            @extend .pos-rel;
+            @extend .t--xs;
+            @extend .display-inlineBlock;
+            @extend .w38;
+            @extend .h38;
+            @extend .bg-primary;
+            @extend .borderRadius-circle;
+            @extend .transition-default;
+
+            &:before,
+            &:after {
+                @extend .content-empty;
+                @extend .pos-centered;
+                @extend .bg-white;
+            }
+            &:before {
+                @extend .w2px;
+                @extend .h50p;
+            }
+            &:after {
+                @extend .w50p;
+                @extend .h2px;
+            }
+        }
+    }
+    .phones {
+        @extend .pos-rel;
+        @extend .w100p;
+        height:780px;
+        @extend .nowrap;
+        @extend .fontSize-0;
+        @extend .overflow-hidden;
+
+        &__container {
+            @extend .pos-centered-h;
+            @extend .t0;
+        }
+        &[data-show="true"]{
+            .phone {
+                @extend .opacity-100;
+
+                &:nth-child(1),
+                &:nth-child(3),
+                &:nth-child(5){
+                    @extend .transform-default;
+                }
+                &:nth-child(2),
+                &:nth-child(4){
+                    transform:translate3d(0, 100px, 0);
+                }
+            }
+        }
+    }
+    .phone {
+        @include accelerate();
+        @extend .opacity-0;
+        @extend .display-inlineBlock;
+        width:351px;
+        height:660px;
+        background-size:351px 660px;
+        background-repeat:no-repeat;
+        background-image:url("/public/images/promo/premium/hardware/hardware_full_silver_large.png");
+        @extend .willChange-tp;
+        transition:opacity 1s $cubic2501, transform 1s $cubic2501;
+
+        &__screen {
+            width:260px;
+            height:462px;
+            background-size:260px 462px;
+            background-repeat:no-repeat;
+            transform:translate(47px, 86px);
+        }
+        html.d-retina & {
+            background-image:url("/public/images/promo/premium/hardware/hardware_full_silver_large_2x.png");
+        }
+        &:nth-child(1){
+            transform:translate3d(0, 100px, 0);
+            transition-delay:0.2s;
+
+            .phone__screen {
+                background-image:url("/public/images/promo/premium/header/org/screen1_large_2x.png");
+            }
+        }
+        &:nth-child(2){
+            transform:translate3d(0, 200px, 0);
+            transition-delay:0s;
+
+            .phone__screen {
+                background-image:url("/public/images/promo/premium/header/org/screen6_large_2x.png");
+            }
+        }
+        &:nth-child(3){
+            transform:translate3d(0, 100px, 0);
+            transition-delay:0.4s;
+
+            .phone__screen {
+                background-image:url("/public/images/promo/premium/header/org/screen10_large_2x.png");
+            }
+        }
+        &:nth-child(4){
+            transform:translate3d(0, 200px, 0);
+            transition-delay:0.6s;
+
+            .phone__screen {
+                background-image:url("/public/images/promo/premium/header/org/screen3_large_2x.png");
+            }
+        }
+        &:nth-child(5){
+            transform:translate3d(0, 100px, 0);
+            transition-delay:0.8s;
+
+            .phone__screen {
+                background-image:url("/public/images/promo/premium/header/org/screen2_large_2x.png");
+            }
+        }
+    }
+}

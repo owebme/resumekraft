@@ -1,0 +1,153 @@
+$samples__nav__height: 45px;
+
+.samples__nav {
+    @extend .pos-abs;
+    @extend .t100p;
+    @extend .l0;
+    @extend .w100p;
+    @extend .bg-white;
+    height:$samples__nav__height;
+    border-top:1px solid $snowB;
+    border-bottom:1px solid $snowB;
+
+    &__select {
+        @extend .pos-rel;
+        @extend .flex-row-left-center;
+        @extend .c-gray;
+        height:$samples__nav__height;
+        @extend .pr-l;
+        @extend .pb-xxs;
+        @extend .cursor-pointer;
+        @extend .transition-default;
+
+        &__label {
+            @extend .text-truncate;
+        }
+        &__chevron {
+            @extend .pos-centered-v;
+            @extend .r0;
+            height:18px;
+
+            &:before,
+            &:after {
+                @include accelerate();
+                @extend .content-empty;
+                @extend .pos-abs;
+                top:10px;
+                width:12px;
+                height:1px;
+                @extend .bg-silver;
+                @extend .willChange-transform;
+                transition:transform .3s $cubic86, transform-origin .3s $cubic86;
+            }
+            &:before {
+                right:12px;
+                transform-origin:100% 100%;
+                transform:rotate(40deg) scaleY(1.5);
+            }
+            &:after {
+                @extend .r0;
+                transform-origin:0 100%;
+                transform:rotate(-40deg) scaleY(1.5);
+            }
+        }
+        &[data-active="true"] {
+            @extend .c-primary;
+
+            .samples__nav__select__chevron {
+                &:before {
+                    transform-origin:100% 0;
+                    transform:rotate(-40deg) scaleY(1.5);
+                }
+                &:after {
+                    transform-origin:0 0;
+                    transform:rotate(40deg) scaleY(1.5);
+                }
+            }
+        }
+    }
+    &__items {
+        @extend .display-table;
+        height:$samples__nav__height;
+    }
+    &__item {
+        @extend .pos-rel;
+        @extend .display-tableCell;
+        @extend .vAlign-middle;
+        @extend .fontFamily-myriad;
+        @extend .c-silver;
+        @extend .fontSize-18;
+        @extend .text-uppercase;
+        @extend .plr-xs;
+        @extend .btn-active;
+
+        &:hover {
+            @extend .c-primary;
+            background-color:rgba($primary,.06);
+        }
+        &[data-active="true"]{
+            @extend .bg-primary;
+            @extend .c-white;
+            @extend .pointerEvents-none;
+        }
+    }
+}
+.samples {
+    @extend .bg-snow;
+
+    &__items {
+        @extend .display-block;
+        padding:84px 0 34px;
+
+        &__list {
+            @extend .pos-rel;
+            @extend .pr-l;
+            @extend .mb-l;
+        }
+        &__alpha {
+            @extend .pos-abs;
+            top:-3px;
+            @extend .l--60;
+            @extend .c-silver;
+            @extend .fontWeight-bold;
+            font-size:48px;
+            line-height:1;
+            @extend .opacity-25;
+        }
+        &__item {
+            @extend .fontSize-0;
+            @extend .pb-xxs;
+
+            &__link {
+                @extend .pos-rel;
+                @extend .display-inlineBlock;
+                @extend .fontFamily-myriad;
+                @extend .c-steel;
+                @extend .fontSize-18;
+                @extend .maxW-100p;
+                @extend .text-truncate;
+                transition:color 0.3s $cubic4001;
+
+                &:after {
+                    @extend .opacity-0;
+                    @extend .content-empty;
+                    @extend .pos-bl;
+                    @extend .w100p;
+                    @extend .h1px;
+                    @extend .bg-primary;
+                    transform-origin:0% 50%;
+                    transform:translate3d(0, 0, 0) scale3d(0, 1, 1);
+                    transition:transform 0.3s $cubic4001;
+                }
+                &:hover {
+                    @extend .c-primary;
+
+                    &:after {
+                        @extend .opacity-50;
+                        transform:translate3d(0, 0, 0) scale3d(1, 1, 1);
+                    }
+                }
+            }
+        }
+    }
+}

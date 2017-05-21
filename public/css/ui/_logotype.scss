@@ -1,0 +1,78 @@
+.logotype {
+    @extend .pos-rel;
+    @extend .display-block;
+
+    &-l {
+        @extend .w48;
+        @extend .h48;
+
+        &:after {
+            @extend .l--m;
+            @extend .mt--xxs;
+            @extend .w28;
+            @extend .h28;
+            @extend .borderRadius-circle;
+            @extend .bg-white;
+        }
+        .logotype__label:after {
+            @extend .fontSize-36;
+            transform:translate3d(13px, 0, 0);
+        }
+    }
+    &-m {
+        @extend .w40;
+        @extend .h40;
+
+        &:after {
+            @extend .l--xs;
+            @extend .mt--xxs;
+            @extend .w18;
+            @extend .h18;
+            @extend .borderRadius-circle;
+            @extend .bg-white;
+        }
+        .logotype__label:after {
+            @extend .fontSize-28;
+            transform:translate3d(10px, 0, 0);
+        }
+    }
+    &:before {
+        @include abs();
+        @extend .content-empty;
+        background-image:url(/public/images/logotype_new.svg);
+        @extend .bg-cover;
+    }
+    &:after {
+        @extend .content-empty;
+        @extend .pos-centered-v;
+    }
+    &__label {
+        @include abs();
+        @extend .flex-centered;
+        @extend .borderRadius-circle;
+        @extend .pos-centered;
+        @extend .overflow-hidden;
+
+        &:after {
+            @extend .display-block;
+            content:"!R";
+            @extend .c-white;
+            @extend .fontFamily-gotham;
+            @extend .fontWeight-bold;
+        }
+    }
+    &__title {
+        @extend .pos-centered-v;
+        @extend .l100p;
+        @extend .ml-xxs;
+        @extend .c-gray;
+        @extend .fontFamily-gotham;
+        font-size:19px;
+        @extend .fontWeight-5;
+        @extend .letterSpacing--xs;
+
+        span {
+            @extend .fontWeight-normal;
+        }
+    }
+}

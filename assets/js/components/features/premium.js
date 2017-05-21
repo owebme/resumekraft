@@ -88,7 +88,7 @@
                                     anim++;
                                     if (anim == layers.length){
                                         WD.render.content();
-                                        _.each(_.omit(WD.render, ["header", "content"]), function(fn){
+                                        _.each(_.omit(WD.render, ["header", "content", "clouds"]), function(fn){
                                             if (_.isFunction(fn)) fn();
                                         });
                                         WD.options.imagesLoaded.load({
@@ -116,7 +116,7 @@
                             anim++;
                             if (anim == layers.length){
                                 WD.render.content();
-                                _.each(_.omit(WD.render, ["header", "content"]), function(fn){
+                                _.each(_.omit(WD.render, ["header", "content", "clouds"]), function(fn){
                                     if (_.isFunction(fn)) fn();
                                 });
                             }
@@ -146,6 +146,13 @@
                                 if (WD.chartRadial){
                                     WD.chartRadial.render([_.random(5, 87), _.random(5, 87), _.random(5, 87)]);
                                 }
+                            }
+                        },
+                        {
+                            elem: ".overview__section[data-section='clouds']",
+                            callback: function($elem, i){
+                                WD.render.clouds();
+                                $elem.find(".ovpremium__prof__items").attr("data-show", true);
                             }
                         }
                     ]
@@ -221,6 +228,33 @@
                     }
                     WD.screensItems.push(screen);
                 });
+            },
+
+            clouds: function(){
+                var $clouds = WD.scope.find(".ovpremium__clouds"),
+                    $items = $clouds.find(".ovpremium__clouds__fly__item");
+
+                $clouds.parallax();
+
+                $items.each(function() {
+                    var e = $(this),
+                        i = e.width(),
+                        t = e.offset().left;
+                    TweenMax.to(e, 50 * t / app.sizes.width, {
+                        x: -t - i,
+                        ease: Linear.easeNone,
+                        onComplete: function() {
+                            TweenMax.fromTo(e, 45, {
+                                left: "100%",
+                                x: 0
+                            }, {
+                                x: -app.sizes.width - i,
+                                ease: Linear.easeNone,
+                                repeat: -1
+                            })
+                        }
+                    })
+                })
             },
 
             notebooks: function(){

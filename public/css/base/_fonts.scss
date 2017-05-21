@@ -1,32 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,300,500,700&subset=cyrillic-ext,latin');
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans:500,700&subset=cyrillic');
-@import '../../assets/css/fonts/Futura/style';
-// @import '../../assets/css/fonts/Museo/style';
-// @import '../../assets/css/fonts/SFDisplay/style';
-// @import '../../assets/css/fonts/ALS/style';
-@import '../../assets/css/fonts/Govern/style';
-@import '../../assets/css/fonts/Gotham/style';
-@import '../../assets/css/fonts/Graphik/style';
-@import '../../assets/css/fonts/HelveticaNeue/style';
-@import '../../assets/css/fonts/Icons/hobby/style';
+@import '../../../assets/css/fonts/HelveticaNeue/style';
+@import '../../../assets/css/fonts/Myriad/style';
+@import '../../../assets/css/fonts/Gotham/style';
+@import '../../../assets/css/fonts/Graphik/style';
+@import '../../../assets/css/fonts/Futura/style';
+@import '../../../assets/css/fonts/Icons/hobby/style';
 
+.fontFamily-helvetica {
+    font-family:$helvetica;
+}
+.fontFamily-myriad {
+    font-family:$myriad;
+}
 .fontFamily-roboto {
     font-family:$roboto;
-}
-.fontFamily-futura {
-    font-family:$futura;
-}
-.fontFamily-fira {
-    font-family:$fira;
-}
-.fontFamily-sftext {
-    font-family:$sftext;
-}
-.fontFamily-sfdisplay {
-    font-family:$sfdisplay;
-}
-.fontFamily-govern {
-    font-family:$govern;
 }
 .fontFamily-gotham {
     font-family:$gotham;
@@ -34,9 +21,9 @@
 .fontFamily-graphik {
     font-family:$graphik;
 }
-.fontFamily-helvetica {
-    font-family:$helvetica;
+.fontFamily-futura {
+    font-family:$futura;
 }
-.fontFamily-arial {
-    font-family:$arial;
+.fontFamily-default {
+    font-family:$helvetica;
 }

@@ -2,7 +2,7 @@
 
 {% block title %}Премиальное резюме на разных мобильных платформах на Resumekraft{% endblock %}
 
-{% block styles %}/preview/css/style.css{% endblock %}
+{% block styles %}/preview/css/style.v2.css{% endblock %}
 
 {% block body %}
 <body id="page" data-start="false" data-device="phone" data-color="#0084ff" data-theme="white">
@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    <div class="menu__opener">
+    <div class="menu__opener" data-ripple>
         <div class="menu__opener__items">
             <div class="menu__opener__line"></div>
             <div class="menu__opener__line"></div>
@@ -52,7 +52,7 @@
                 <a class="menu__item__link" href="/?signup&plan=premium">Создать акканут</a>
             </div>
             <div class="menu__item">
-                <a class="menu__item__link" href="/premium/">Узнать больше о продукте</a>
+                <a class="menu__item__link" href="/premium/">Узнать больше о резюме</a>
             </div>
             <div class="menu__item">
                 <a class="menu__item__link" href="/jp-test/">JP-тест 2.0</a>
@@ -66,7 +66,7 @@
         </div>
     </div>
 
-    <div class="control__device">
+    <div class="control__device" data-ripple>
         <div class="control__device__item"></div>
         <div class="control__device__icon"></div>
         <div class="control__device__help help__item">
@@ -75,7 +75,7 @@
     </div>
 
     <div class="button__import">
-        <div class="button__import__item"></div>
+        <div class="button__import__item" data-ripple></div>
         <div class="button__import__help help__item">
             <div class="help__text">
                 <div class="help__text__front">Есть резюме на HH.ru?</div>
@@ -84,19 +84,12 @@
         </div>
     </div>
 
-    <div class="control__fonts">
-        <div class="control__fonts__text">
-            A<span class="control__fonts__text__letter">a</span><span class="control__fonts__text__letter">b</span>
-        </div>
-        <div class="control__fonts__help__top help__item">
-            <div class="help__text">Изменить шрифт</div>
-        </div>
-    </div>
+    <control-fonts></control-fonts>
 
     <control-colors></control-colors>
 
     <div class="tutorial__close">
-        <div class="tutorial__close__button">
+        <div class="tutorial__close__button" data-ripple>
             <div class="tutorial__close__button__cross"></div>
         </div>
         <div class="tutorial__close__label">
@@ -203,16 +196,16 @@
             </div>
             <div class="tutorial__screen" data-screen="likes">
                 <div class="tutorial__screen__title">
-                    <div class="tutorial__screen__title__inner">Хотите себе подобное резюме?</div>
+                    <div class="tutorial__screen__title__inner">Хотите себе такое резюме?</div>
                 </div>
                 <div class="tutorial__screen__text">
-                    <div class="tutorial__screen__text__inner">Вы можете открыть премиум аккаунт сейчас и уже начать создавать своё резюме сами или обратиться к нашим экспертам за написанием резюме и получить 1 месяц премиум аккаунта в подарок. <span class="c-yellowBright">Вы только, что посмотрели резюме на смартфонах, также можно посмотреть пример этого резюме на планшетах и десктопах.</span></div>
+                    <div class="tutorial__screen__text__inner">Вы можете сейчас перейти к созданию резюме или обратиться к нашим экспертам за <a href="#">написанием</a> профессионального резюме и получить <strong>7 дней премиум аккаунта</strong> в подарок. <span class="c-yellowBright">Вы только, что посмотрели резюме для смартфонов, также можно посмотреть пример этого резюме на планшетах и десктопах.</span></div>
                 </div>
                 <div class="tutorial__screen__buttons">
-                    <div class="tutorial__screen__button">
+                    <div class="tutorial__screen__button" data-ripple>
                         <div class="tutorial__screen__button__label tutorial__screen__button__hide">Ещё посмотрю</div>
                     </div>
-                    <div class="tutorial__screen__button">
+                    <div class="tutorial__screen__button" data-ripple>
                         <a href="/?signup&plan=premium" class="tutorial__screen__button__label">Создать резюме</a>
                     </div>
                 </div>
@@ -258,6 +251,7 @@
 
     <!--/ templates /-->
     <script src="/preview/js/workflow.templates.js"></script>
+    <script src="/preview/modules/controlFonts.html" type="riot/tag"></script>
     <script src="/preview/modules/controlColors.html" type="riot/tag"></script>
     <script src="/preview/modules/profOpener.html" type="riot/tag"></script>
     <script src="/preview/modules/profList.html" type="riot/tag"></script>
@@ -268,9 +262,12 @@
     <script src="/preview/js/main.js"></script>
     <script src="/preview/js/control.js"></script>
     <script src="/preview/js/tutorial.js"></script>
-    <script src="/preview/js/init.js"></script>
+    <script src="/assets/js/store/resume/premium/fonts.js"></script>
+    <script src="/assets/js/plugins/ripple.js"></script>
 
-    <!-- <audio src="/public/sound/650915480.m4a" autoplay loop> -->
+    <!-- <audio id="audio" src="/public/sound/oscar_hill_and_justin_black_light_haze.mp3" autoplay loop> -->
+
+    <script src="/preview/js/init.js"></script>
 
 </body>
 {% endblock %}

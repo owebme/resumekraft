@@ -109,6 +109,7 @@ app.use(function(req, res, next) {
     delete req.device.name;
 
     req.appClient = {
+        domain: app.config.public.get("domain"),
         utils: app.utils,
         moment: app.moment,
         device: device,

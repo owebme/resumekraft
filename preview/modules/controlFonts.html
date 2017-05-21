@@ -1,0 +1,45 @@
+<control-fonts class="control__fonts" data-ripple="true">
+
+    <div onClick={ change } onUpdate="none" class="control__fonts__text">
+        A<span class="control__fonts__text__letter">a</span><span class="control__fonts__text__letter">b</span>
+    </div>
+    <div class="control__fonts__help help__item">
+        <div class="help__text">Изменить шрифт</div>
+    </div>
+    <div class="control__fonts__label">
+        <div class="control__fonts__label__text">Шрифт</div>
+    </div>
+
+<script>
+
+    var self = this;
+
+    self.on("mount", function(){
+        app.workflow.control.font = self;
+    });
+
+    self.change = function(font){
+        if (!_.isString(font)){
+            var item = $store.fonts
+                .select({'_id': $State.get('font')})
+                .right();
+
+            if (!item) item = $store.fonts.get(0);
+            else item = item.get();
+
+            $State.select('font').set(item._id);
+
+            if (app.workflow.tutorial && app.workflow.tutorial.currentScreen === "cover"){
+                app.workflow.control.device.scrollTo("commons");
+            }
+
+            font = item._id;
+        }
+        app.workflow.control.device.frame[0].contentWindow.postMessage({
+            font: font
+        }, '*');
+    }
+
+</script>
+
+</control-fonts>

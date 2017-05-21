@@ -1,0 +1,14 @@
+.loading {
+    width:102px;
+    height:102px;
+    @extend .m0-auto;
+    @extend .bg-cover;
+    background-image:url(/public/images/loading.gif);
+    @extend .willChange-opacity;
+    @extend .opacity-0;
+    @extend .transition-default;
+
+    &[data-active="true"]{
+        @extend .opacity-100;
+    }
+}

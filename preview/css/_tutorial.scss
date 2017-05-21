@@ -14,24 +14,29 @@ body {
     }
     &[data-tutorial]{
         #device {
-            @extend .zIndex-2;
+            @extend .zIndex-3;
             @extend .willChange-transform;
             transition:transform 1.25s $cubic645;
         }
         .tutorial__screens {
             @extend .zIndex-1;
-
-            &__items {
-                @extend .pointerEvents-all;
-            }
+            @extend .pointerEvents-all;
+        }
+        .prof__opener,
+        .control__colors {
+            @extend .zIndex-2;
         }
         .tutorial__help__item,
         .tutorial__screens__num {
             transition:opacity 0.6s $cubic4001;
         }
-        .help__item,
-        .help__text {
-            @extend .display-none;
+        .scroll {
+            &:after {
+                html.d-mobile & {
+                    @extend .opacity-65;
+                    background-image:url(/preview/images/swipeDown_white.svg);
+                }
+            }
         }
     }
     &[data-tutorial-help="true"]{
@@ -44,6 +49,10 @@ body {
     &[data-tutorial="finish"]{
         #device {
             transform:translate3d(50%, -50%, 0);
+
+            html.d-tablet & {
+                transform:translate3d(20%, -50%, 0);
+            }
         }
     }
     html.d-no-tablet &,
@@ -85,15 +94,23 @@ body {
                 @extend .opacity-65;
             }
             &[data-help="info"]{
-                @extend .t-20;
+                @extend .t-m;
                 @extend .r100;
                 @extend .mr-m;
                 @extend .pr100;
                 width:230px;
 
+                html.d-mobile & {
+                    @extend .pr-l;
+                    width:180px;
+                }
                 &:before {
                     @extend .pos-centered-v;
                     @extend .r-xs;
+
+                    html.d-mobile & {
+                        @extend .r--50;
+                    }
                 }
             }
             &[data-help="sendmail"]{
@@ -134,6 +151,10 @@ body {
         @extend .willChange-tp;
         @extend .zIndex-2;
 
+        html.d-tablet & {
+            top:11px;
+            right:11px;
+        }
         html.m-no-touch &:hover {
             opacity:1 !important;
 
@@ -184,7 +205,9 @@ body {
             @extend .pos-rel;
             @extend .w40;
             @extend .h40;
+            @extend .borderRadius-circle;
             @extend .cursor-pointer;
+            @include rippleDark();
 
             html.m-no-touch &:hover {
                 &:before {
@@ -233,8 +256,12 @@ body {
         @extend .pos-centered-h;
         @extend .w100p;
         max-width:1400px;
+        @extend .pointerEvents-none;
         @extend .h100p;
 
+        html.d-tablet.r-portrait & {
+            @extend .display-none;
+        }
         .scroll__lens {
             @include accelerate();
             @extend .pos-abs;
@@ -244,22 +271,40 @@ body {
             height:264px;
             @extend .mt--s;
             @extend .ml--m;
-            @extend .borderRadius-circle;
             transform:translate3d(-50%, -50%, 0) scale3d(0, 0, 1);
-            box-shadow:0 0 0 2000px rgba($steel,0.97);
+            // box-shadow:0 0 0 2000px rgba($steel,0.97);
 
-            html.d-safari & {
-                box-sizing:content-box;
-                box-shadow:none;
-                border:2000px solid rgba($steel,0.97);
+            &:before {
+                @include accelerate();
+                @extend .content-empty;
+                @extend .pos-centered;
+                width:250vw;
+                height:250vw;
+                @extend .borderRadius-circle;
+                background-color:rgba($steel,0.97);
             }
+            &:after {
+                @include accelerate(true);
+                @extend .content-empty;
+                @include abs();
+                @extend .borderRadius-circle;
+                background:linear-gradient(to bottom, #e6eaf1 5%, #d1ebf5 50%, #dae7ec);
+
+                html.d-mobile & {
+                    @extend .display-none;
+                }
+            }
+            // html.d-safari & {
+            //     box-sizing:content-box;
+            //     box-shadow:none;
+            //     border:2000px solid rgba($steel,0.97);
+            // }
         }
         &__items {
             @extend .pos-abs;
             left:8%;
             @extend .c-white;
             @extend .h100p;
-            @extend .pointerEvents-none;
             @extend .zIndex-2;
         }
         &__num {
@@ -287,6 +332,10 @@ body {
         @extend .pointerEvents-none;
         @extend .pr-l;
 
+        html.d-tablet & {
+            margin-left:-42.5px;
+            @extend .pr60;
+        }
         &[data-active="true"]{
             @extend .pointerEvents-all;
 
@@ -313,6 +362,12 @@ body {
             @extend .pr0;
             @extend .ml70;
             @extend .text-right;
+
+            .tutorial__screen__text__inner {
+                html.d-tablet & {
+                    width:500px;
+                }
+            }
         }
         &__title {
             @extend .c-yellowBright;
@@ -344,6 +399,37 @@ body {
         &__text__inner {
             transform:translate3d(0, 100%, 0);
             transition-delay:0.3s;
+
+            a {
+                @extend .pos-rel;
+                @extend .display-inlineFlex;
+                @extend .textDecoration-none;
+                @extend .c-breeze;
+                @extend .overflow-hidden;
+                line-height:22px;
+
+                &:hover {
+                    &:after {
+                        @extend .scale-100;
+                    }
+                }
+                &:before,
+                &:after {
+                    @include accelerate();
+                    @extend .content-empty;
+                    @extend .pos-bl;
+                    @extend .bg-breeze;
+                    @extend .w100p;
+                    @extend .h1px;
+                    @extend .opacity-50;
+                }
+                &:after {
+                    @extend .willChange-transform;
+                    @extend .scale-0;
+                    @extend .opacity-70;
+                    transition:transform 0.3s $cubic4001;
+                }
+            }
         }
         &__button:first-child {
             transition-delay:0s;
@@ -361,6 +447,7 @@ body {
         }
         &__button {
             @include accelerate();
+            @include rippleDark();
             @extend .pos-rel;
             @extend .display-inlineBlock;
             @extend .h70;

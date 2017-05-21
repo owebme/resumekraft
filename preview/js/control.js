@@ -70,14 +70,13 @@
                     WD.device.frame = $('<iframe id="frame" src="/premium/demo" frameborder="none"/>').prependTo(WD.device.container);
 
                     WD.device.onLoad(function(){
-                        //$dom.body.attr("data-help", true);
+                        app.workflow.tutorial.show();
                     });
 
                     WD.device.frame.on("mouseenter mouseleave", function(e){
                         if (e.type === "mouseenter"){
-                            if (app.workflow.tutorial.active && !app.workflow.tutorial.help){
-                                app.workflow.tutorial.help = true;
-                                $dom.body.attr("data-tutorial-help", true);
+                            if (app.workflow.tutorial.active && !app.workflow.tutorial.embeds.active){
+                                app.workflow.tutorial.embeds.show();
                             }
                             app.workflow.tutorial.scrollHelp.attr("data-text", "down");
                         }
@@ -87,6 +86,10 @@
                     });
                 }
                 else {
+                    WD.device.frame[0].contentWindow.postMessage({
+                        photo: "/preview/images/prof/" + $State.get("photo") + ".jpg"
+                    }, '*');
+                    WD.device.scrollTo("cover");
                     app.$dom.body.removeClass('apploading');
                     app.workflow.tutorial.show();
                 }
@@ -97,12 +100,14 @@
                     if (app.workflow.control.color){
                         app.workflow.control.color.change($State.get("color"));
                     }
+                    // if (app.workflow.control.font){
+                    //     app.workflow.control.font.change($State.get("font"));
+                    // }
+                    WD.device.frame[0].contentWindow.postMessage({
+                        photo: "/preview/images/prof/" + $State.get("photo") + ".jpg"
+                    }, '*');
                     $dom.body.removeClass('apploading');
-                    //if (!isStart){
-                        app.workflow.tutorial.show();
-                    //}
                     WD.device.loadedFrame = true;
-                    //isStart = true;
                 }
             },
 
@@ -145,7 +150,8 @@
             scrollTo: function(screen){
                 if (screen === undefined) return;
                 WD.device.frame[0].contentWindow.postMessage({
-                    scrollTo: screen
+                    scrollTo: screen,
+                    scrollDuration: app.device.isMobile ? 0 : undefined
                 }, '*');
             }
         },

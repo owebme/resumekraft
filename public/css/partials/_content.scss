@@ -1,0 +1,29 @@
+#content {
+    @extend .display-block;
+    padding-top:$main__nav__height;
+}
+.content__section {
+    @extend .display-block;
+    @extend .overflow-hidden;
+    @extend .pos-rel;
+
+    &[data-gradient="blue"]{
+        background:linear-gradient(to top, $blue 30%, $breeze 200%);
+    }
+    &[data-gradient="black"]{
+        @extend .bg-steel;
+    }
+}
+.content__block {
+    @extend .display-block;
+    @extend .pt-xl;
+    @extend .pb95;
+
+    &[data-light="true"]{
+        background:radial-gradient(ellipse at 50% -10%, rgba(#04f6fb,0.3) 0%, rgba(#04f6fb,0) 70%, rgba(#04f6fb,0) 100%);
+    }
+}
+p.text {
+    @extend .fontFamily-myriad;
+    @extend .fontSize-20;
+}

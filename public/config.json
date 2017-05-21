@@ -51,7 +51,7 @@
         "colors": "blue,blueLight,orange,brown,red,pink,violet,violetLight,green,emerald"
     },
     "blog": {
-        "perPage": "7",
+        "perPage": "8",
         "cache": true,
         "cacheLife": 3600
     },

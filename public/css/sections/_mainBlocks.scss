@@ -1,0 +1,103 @@
+section-main-blocks {
+    .rows {
+        max-width:1350px;
+        @extend .m0-auto;
+    }
+    .blocks {
+        @extend .ml--xss;
+        @extend .mr--xss;
+    }
+    .block {
+        @extend .pos-rel;
+        @extend .plr-xl;
+        @extend .text-center;
+        padding-top:56px;
+        background-color:$snowA;
+
+        &[data-pos="left"],
+        &[data-pos="right"]{
+            height:596px;
+        }
+        &[data-pos="left"]{
+            @extend .mr-xss;
+        }
+        &[data-pos="right"]{
+            @extend .ml-xss;
+        }
+        &[data-pos="down"]{
+            height:423px;
+            @extend .mt30;
+        }
+        &__title {
+            @extend .mt-m;
+            @extend .mb-s;
+        }
+        &__count {
+            @extend .fontSize-46;
+            @extend .fontWeight-bold;
+            @extend .mt-l;
+            @extend .mb-m;
+        }
+        &__opener {
+            @extend .m0-auto;
+            @extend .c-primary;
+            @extend .fontSize-16;
+            @extend .fontWeight-3;
+            @extend .text-center;
+            @extend .transition-default;
+            @extend .cursor-pointer;
+
+            &:hover {
+                @extend .c-green;
+
+                .block__opener__circle {
+                    @extend .bg-green;
+                }
+            }
+            &__circle {
+                @extend .pos-rel;
+                @extend .t--xs;
+                @extend .display-inlineBlock;
+                @extend .w38;
+                @extend .h38;
+                @extend .bg-primary;
+                @extend .borderRadius-circle;
+                @extend .transition-default;
+
+                &:before,
+                &:after {
+                    @extend .content-empty;
+                    @extend .pos-centered;
+                    @extend .bg-white;
+                }
+                &:before {
+                    @extend .w2px;
+                    @extend .h50p;
+                }
+                &:after {
+                    @extend .w50p;
+                    @extend .h2px;
+                }
+            }
+        }
+    }
+    .icon {
+        @extend .flex-centered;
+        @extend .w66;
+        @extend .h66;
+        @extend .m0-auto;
+        @extend .fontFamily-gotham;
+        border-radius:15px;
+        @extend .c-white;
+        font-size:36px;
+        @extend .pt-xxs;
+        @extend .fontWeight-bold;
+
+        &-samples {
+            background:linear-gradient(to top, #006dff, #00c6ff);
+        }
+        &-jobs {
+            background:linear-gradient(to top, $red, $orange);
+        }
+    }
+}

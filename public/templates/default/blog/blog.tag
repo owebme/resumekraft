@@ -1,13 +1,15 @@
-<section-blog class="section blog">
+<section-blog class="section bg-snow7" data-page={ opts.data.page } data-pages={ opts.data.pages }>
 
-    <section-nav section="blog" data-color="blueLight" user={ opts.user }></section-nav>
+    <section-nav section="blog" color="snow" user={ opts.user }></section-nav>
 
-    <blog-header params={ opts }></blog-header>
+    <div id="content">
 
-    <blog-grid params={ opts }></blog-grid>
+        <blog-grid domain={ opts.domain } items={ opts.data.items }></blog-grid>
 
-    <blog-pagination params={ opts }></blog-pagination>
+        <div class="loading"></div>
 
-    <section class="section__overlay"></section>
+    </div>
+
+    <btn-arrow-top></btn-arrow-top>
 
 </section-blog>

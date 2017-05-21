@@ -15,6 +15,7 @@ module.exports = function(){
                 maxImageSize: 16*1024, // bytes
                 debug: false
             }),
+            rename("style.v2.css"),
     		gulp.dest('preview/css'),
     		browserSync.stream()
     	).on('error', notify.onError({

@@ -61,7 +61,7 @@
     <section class="overview__section">
         <div class="container pt-xl pb-xl">
             <div class="row">
-                <div class="col-md-19 col-lg-17 centered">
+                <div class="col-md-18 col-lg-16 centered">
                     <small class="mb-xl">premium аккаунт</small>
                     <h1 class="mb-l mlr-m plr-l pt-m">Представляем резюме следующего поколения в новом формате.</h1>
                     <p class="fontSize-24 lineHeight-xxxl c-gray">Создавая премиальное резюме, мы поставили перед собой цель, которая казалась невозможной: разработать невероятно функциональный, удобный, яркий, мобильный сервис, который позволит выделить вас среди кандидатов и поможет быстрее найти достойную работу. Предлагаем ознакомиться с ними поближе.</p>
@@ -78,7 +78,7 @@
                 <div class="col-md-18 col-lg-16 centered">
                     <small class="mb-l">Легко пользоваться</small>
                     <div class="ptb-l">
-                        <icon-control size="xl"></icon-control>
+                        <icon-control size="xl" color="primary"></icon-control>
                     </div>
                     <h1 class="mb-l pt-m larger">Не нужно объяснять.</h1>
                     <p class="pb-l">Мы убеждены, что комфортная работа в интерфейсе невозможна без его интеллектуальной простоты. Зачем что-то объяснять, когда все работает интуитивно понятно для вас, обеспечивая моментальный доступ ко всем функциям интерфейса. И уже через несколько минут вы получаете то резюме, которое всегда хотели.</p>
@@ -94,7 +94,7 @@
                 <div class="col-md-19 col-lg-16 centered">
                     <small class="mb-l">стильный и запоминающийся дизайн</small>
                     <div class="ptb-l">
-                        <icon-glass size="xl"></icon-glass>
+                        <icon-glass size="xl" color="primary"></icon-glass>
                     </div>
                     <h1 class="mb-l pt-m">Качественный дизайн адаптированный под все современные устройства.</h1>
                     <p class="pb-l">Использование новейших web-технологий позволило создать резюме одинаково прекрасное и для редактирования и для просмотра на абсолютно всех устройствах: декстопах, на смартфонах и планшетах. Мы добились отличной совместимости с мобильными устройствами, сделав 100% адаптацию. Результат — стильное и информативное резюме, что приятно удивит ваших работодателей.</p>
@@ -156,7 +156,7 @@
                     </div>
                 </div>
                 <div class="col-md-11 col-lg-10 text-left pt-xl pr-xl sm-plr0 sm-pt-l">
-                    <h1 class="mt-xl sm-mt0 md-mt-m">В вашем кармане, доступно в облаке.</h1>
+                    <h2 class="mt-xl sm-mt0 md-mt-m">В вашем кармане, доступно в облаке.</h2>
                     <p class="pt-m">Теперь это легко и доступно в вашем кармане, без установки приложений. Мобильное web-приложение находится в облаке, это быстро и современно.</p>
                 </div>
             </div>
@@ -168,7 +168,7 @@
             <div class="row pt-l">
                 <div class="col-md-10 sm-plr0 text-left zIndex-1">
                     <small class="mb-l">Кроссплатформленность</small>
-                    <h1 class="mb-l pt-l">Выбирайте свой девайс для работы.</h1>
+                    <h1 class="mb-l pt-l pr-l md-pr0">Выбирайте свой девайс для работы.</h1>
                     <p class="pb-xl sm-pb0">Понимайте эффективность ваших резюме. Будьте в курсе сколько и когда просмотрели ваши резюме, теперь это доступно на любом мобильном или не мобильном устройстве. Вы можете создать несколько резюме и сравнить их эффективность опираясь на доступные показатели посетителей и просмотров.</p>
                     <div class="chart__radial anim anim-scale-soft" name="chartRadialEl"  data-delta="xs"></div>
                     <small class="hidden-sm slide6__small-text"><span>У вас есть возможность создать продающее резюме и сделать его еще эффективней, используя доступный функционал.</span></small>
@@ -228,11 +228,11 @@
                 <div class="col-md-12 sm-pb-m sm-pt-m">
                     <div class="pr-xl md-pr-m sm-mt-xl sm-mb-l">
                         <small class="mb-l">100% мобильная соместимость</small>
-                        <h1>На любом современном мобильном устройстве.</h1>
+                        <h2>На любом современном мобильном устройстве.</h2>
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="w80 h2px bg-blue mt-xxs mb-l"></div>
+                    <div class="w80 h2px bg-primary mt-xxs mb-l"></div>
                     <p class="pt-m sm-mb-m">Этому моменту мы уделили особое внимание, чтобы просмотр и редактирование ваших резюме, с использованием мобильных устройств, были максимально удобными и комфортными.</p>
                 </div>
             </div>
@@ -267,7 +267,7 @@
                     <h1 class="mt-xl sm-mt0">Мобильный офис.</h1>
                     <p class="pt-m md-pr-l">Вам даже не потребуется устанавливать никаких приложений, просто заходите в свой аккаунт и пользуйтесь. Вы можете добавить web-приложение сервиса на главный экран смартфона для быстрого доступа к сервису.</p>
 
-                    <div class="w80 h2px bg-blue mtb-xl"></div>
+                    <div class="w80 h2px bg-primary mtb-xl"></div>
 
                     <div class="overview__swipe__hand">
                         <div class="overview__swipe__hand__icon" data-arrow="right"></div>
@@ -280,7 +280,7 @@
                     <h1 class="mt-xl">Резюме на ладони.</h1>
                     <p class="pt-m">Посмотрите как органично резюме на экране смартфона. Выглядит очень свежо и современно. У вас будет возможности протестировать резюме на разных платформах.</p>
 
-                    <div class="w80 h2px bg-blue mtb-xl"></div>
+                    <div class="w80 h2px bg-primary mtb-xl"></div>
 
                     <h3 class="mb-xs">Не тратьте время на набор</h3>
                     <p class="mb-m">Если у вас есть резюме на хантинговом сервисе HeadHunter, вы можете его перенести мгновенно в один клик, указав одну ссылку.</p>
@@ -319,7 +319,7 @@
                     <h1 class="mt-xl pt-m sm-mt0 sm-pt0">Получайте приглашения.</h1>
                     <p class="pt-m">Получайте приглашения и отклики от ваших потенциальных работодателей. Не пропустите ни одного сообщения, все входящие в вашем кармане, в вашем мобильном телефоне.</p>
 
-                    <div class="w80 h2px bg-blue mtb-xl"></div>
+                    <div class="w80 h2px bg-primary mtb-xl"></div>
 
                     <h3 class="mb-xs">Лайки на ваши резюме</h3>
                     <p>Любой посетитель, будь это ваш коллега или работодатель, может оставить лайк на ваше резюме, также эта функция доступна на всех устройствах.</p>
@@ -353,7 +353,7 @@
                         <h1 class="pt-l">Мое портфолио.</h1>
                         <p class="pt-m">Есть собственные проекты? Расскажите о них, прикрепив фото и видео материалы</p>
 
-                        <div class="w80 h2px bg-blue mtb-xl"></div>
+                        <div class="w80 h2px bg-primary mtb-xl"></div>
 
                         <h3 class="mb-xs">Расскажите широко о своем опыте</h3>
                         <p class="mb-m">Проекты могут своими или те, в которых вы принимали своё участие. Поделитесь своим опытом со своим работодателем. Это точно не останется без внимания, добавив большой плюс к вашей кандидатуре.</p>
@@ -384,7 +384,7 @@
                     <h1 class="mt-xl pt-m sm-mt0 sm-pt0">Поделитесь своими увлечениями.</h1>
                     <p class="pt-m">Да, большинству работодателей интересно знать о ваших увлечениях и видеть список ваших хобби в резюме.</p>
 
-                    <div class="w80 h2px bg-blue mtb-xl"></div>
+                    <div class="w80 h2px bg-primary mtb-xl"></div>
 
                     <div class="ovpremium__hobby__items anim" data-delta="xs">
                         <div class="ovpremium__hobby__item">
@@ -434,14 +434,14 @@
                         <h1>Укажите силу ваших компетенций.</h1>
                         <p class="pt-m">Расскажите о своих навыках, наглядно показав свои компетенции.</p>
 
-                        <div class="w80 h2px bg-blue mtb-xl"></div>
+                        <div class="w80 h2px bg-primary mtb-xl"></div>
 
                         <h3 class="mb-xs">Отбросьте лишнее</h3>
                         <p class="mb-m mr-m">Выберите свои ключевые компетенции, наглядно показав их в своем резюме. Чем бы вы не занимались система автоподсказок поможет вам быстро и без сложностей выбрать нужные компетенции.</p>
                     </div>
                 </div>
                 <div class="col-md-12 sm-mb-xl">
-                    <div class="w80 h2px bg-blue mtb-xl"></div>
+                    <div class="w80 h2px bg-primary mtb-xl"></div>
                     <div class="ovpremium__tags__items pb-m">
                         <div class="ovpremium__tags__item">Adobe Photoshop</div>
                         <div class="ovpremium__tags__item">InDesign</div>
@@ -506,7 +506,7 @@
                     <h1 class="mt-xl pt-m sm-mt0 sm-pt0">Покажите желаемый график заработной платы.</h1>
                     <p class="pt-m">Выстраивайте желаемый график заработной платы на ближайшие 2 года. Любому работодателю будут интересны ваши амбиции по данному вопросу.</p>
 
-                    <div class="w80 h2px bg-blue mtb-xl"></div>
+                    <div class="w80 h2px bg-primary mtb-xl"></div>
 
                     <h3 class="mb-xs">Гибкая настройка</h3>
                     <p>Все основные секции в резюме имеют гибкую настройку. Для каждой из них доступно управление их активностью, можно настроить их видимость.</p>
@@ -532,35 +532,56 @@
         </div>
     </section>
 
-    <section class="overview__section pt-xl visible-lg">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-22 col-lg-17 centered">
-                    <small class="mb-l nowrap">тест-драйв резюме</small>
-                    <h1 class="mb-l plr-xl anim anim-scale-soft" data-delta="s">Хотите потрогать премиальное резюме на разных платформах?</h1>
-                    <div class="row premium-devices-icons ptb-m">
-                        <div class="col-sm-8 anim anim-lr anim-delay-xs" data-delta="s">
-                            <icon-device-phones color="gray" size="xl"></icon-device-phones>
-                        </div>
-                        <div class="col-sm-8 anim anim-scale" data-delta="s">
-                            <icon-device-desktop color="blue" size="xl"></icon-device-desktop>
-                        </div>
-                        <div class="col-sm-8 anim anim-bt anim-delay-s" data-delta="s">
-                            <icon-device-tablet color="gray" size="xl"></icon-device-tablet>
+    <section class="overview__section" data-section="clouds">
+        <div class="ovpremium__clouds">
+            <small class="ovpremium__clouds__title">Смотрите примеры резюме</small>
+            <div class="ovpremium__clouds__list">
+                <div class="ovpremium__clouds__item ovpremium__clouds__layer ovpremium__clouds__layer_top">
+                    <div class="layer bg-cover progressive-image" data-depth="0.02"></div>
+                </div>
+                <div class="ovpremium__clouds__item ovpremium__clouds__layer ovpremium__clouds__layer_center">
+                    <div class="layer bg-cover progressive-image" data-depth="0.05"></div>
+                </div>
+                <div class="ovpremium__clouds__item ovpremium__clouds__layer ovpremium__clouds__layer_bottom">
+                    <div class="layer bg-cover progressive-image" data-depth="0.1"></div>
+                </div>
+                <div class="ovpremium__prof__items">
+                    <div each={ item in opts.utils.range(10) } no-reorder class="ovpremium__prof__item" style="transition-delay:{ parent.opts.utils.random(item, 20) * 0.05 }s">
+                        <div class="ovpremium__prof__item__inner layer" data-depth="{ parent.opts.utils.random(2, 5) * 0.01 }">
+                            <div class="ovpremium__prof__item__photo" data-active={ parent.larges.indexOf(item) !== -1 }>
+                                <div class="ovpremium__prof__item__photo__image bg-cover progressive-image" style="background-image:url(/preview/images/prof/small/{ getPhoto() }.jpg)"></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="anim anim-scale" data-delta="s">
-                        <a target="_blank" href="/premium/workflow" class="btn btn-default-hover-success btn-upper btn-xl">Перейти на тест-драйв</a>
-                    </div>
+                    <script>
+                        var $ = this;
+                        this.photos = [];
+                        this.getPhoto = function(){
+                            var photo = $.opts.utils.random(1, 42);
+                            if ($.photos.indexOf(photo) === -1){
+                                $.photos.push(photo);
+                                return photo;
+                            }
+                            else {
+                                return $.getPhoto();
+                            }
+                        }
+                    </script>
                 </div>
             </div>
+            <div class="ovpremium__clouds__fly">
+                <div class="ovpremium__clouds__fly__item bg-cover progressive-image"></div>
+                <div class="ovpremium__clouds__fly__item bg-cover progressive-image"></div>
+                <div class="ovpremium__clouds__fly__item bg-cover progressive-image"></div>
+            </div>
+            <a href="/premium/workflow" class="ovpremium__prof__button btn btn-xl btn-rounded btn-default-hover-success">Примеры резюме</a>
         </div>
     </section>
 
     <section class="overview__section mb0" data-section="finish">
         <div class="container">
             <div class="row">
-                <div class="col-md-18 col-lg-16 centered anim anim-scale-soft" data-delta="s">
+                <div class="col-md-18 col-lg-16 centered">
                     <h1 class="mb-m pt-xs larger">Начать легко и доступно.</h1>
                     <p>Вы можете выбрать ежемесячную подписку или на год. Для России и стран СНГ действует программа лояльности, успейте приобрести по сниженной цене.</p>
                 </div>
@@ -570,12 +591,14 @@
             </div>
         </div>
         <div class="pos-rel nowrap" style="height:555px">
-            <div class="pos-tl w50p h100p bg-blackLight">
+            <div class="pos-tl w50p h100p bg-steel">
                 <small class="pos-tr p-xl sm-plr0 text-center-sm w100p-sm c-white">попробовать на 1 месяц</small>
                 <div class="pos-centered">
                     <div class="anim anim-scale-soft" data-delta="s">
-                        <div class="ovpremium__price c-white fontWeight-8 mb-m">369 ₽</div>
-                        <button class="createAccount successPlanMonth btn btn-white-hover btn-upper btn-xl" data-period="month1">попробовать</button>
+                        <div class="ovpremium__price c-white mb-m">369 ₽</div>
+                        <button class="createAccount successPlanMonth btn btn-white-hover btn-rounded btn-xl" data-period="month1">
+                            <span class="btn-label">Попробовать</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -583,8 +606,10 @@
                 <small class="pos-tl p-xl sm-plr0 text-center-sm w100p-sm c-white">подписка на год</small>
                 <div class="pos-centered">
                     <div class="anim anim-scale-soft" data-delta="s">
-                        <div class="ovpremium__price c-white fontWeight-8 textShadow-light mb-m">1,769 ₽</div>
-                        <button class="createAccount successPlanYear btn btn-white-hover btn-upper btn-xl" data-period="year1">подключить</button>
+                        <div class="ovpremium__price c-white textShadow-light mb-m">1,769 ₽</div>
+                        <button class="createAccount successPlanYear btn btn-white-hover btn-rounded btn-xl" data-period="year1">
+                            <span class="btn-label">Подключить</span>
+                        </button>
                     </div>
                     <div class="ovpremium__sale">
                         <div class="ovpremium__sale__badge anim anim-scale-soft" data-delta="s" data-delay="s">-60%</div>

@@ -1,0 +1,71 @@
+#home {
+    .sticky__nav {
+        @extend .pos-centered-v;
+        @extend .pos-fixed;
+        @extend .r-s;
+        @extend .zIndex-2;
+
+        &__button {
+            @include accelerate();
+            @extend .pos-rel;
+            @extend .w40;
+            @extend .h40;
+
+            &__item {
+                @include abs();
+                @extend .scale-80;
+                @extend .willChange-transform;
+                transition:transform 0.3s $cubic4001;
+                @extend .cursor-pointer;
+
+                &:before,
+                &:after {
+                    @extend .content-empty;
+                    @extend .pos-centered;
+                    @extend .borderRadius-circle;
+                }
+                &:before {
+                    @extend .w20;
+                    @extend .h20;
+                    @extend .boxShadowInset-smokeDarken;
+                }
+                &:after {
+                    @extend .w3px;
+                    @extend .h3px;
+                    @extend .bg-smokeDarken;
+                }
+            }
+            &[data-active="true"]{
+                .sticky__nav__button__item {
+                    @extend .pointerEvents-none;
+                    @extend .scale-100;
+
+                    &:before {
+                        box-shadow:inset 0 0 0 1px $breeze;
+                    }
+                    &:after {
+                        @extend .h4px;
+                        @extend .h4px;
+                        @extend .bg-breeze;
+                    }
+                }
+            }
+            &:hover {
+                .sticky__nav__button__item {
+                    @extend .scale-100;
+
+                    &:before {
+                        box-shadow:inset 0 0 0 1px $breeze;
+                        transition:box-shadow 0.3s $cubic4001;
+                    }
+                    &:after {
+                        @extend .h4px;
+                        @extend .h4px;
+                        @extend .bg-breeze;
+                        transition:background-color 0.3s $cubic4001;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,21 +1,16 @@
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans:500,700&subset=cyrillic');
 @import '../../assets/css/fonts/Futura/style';
-@import '../../assets/css/fonts/Govern/style';
+@import '../../assets/css/fonts/Myriad/style';
 @import '../../assets/css/fonts/HelveticaNeue/style';
 
 $futura: "Futura", sans-serif;
-$govern: "Govern", sans-serif;
-$fira: "Fira Sans", sans-serif;
+$myriad: "Myriad", sans-serif;
 $helvetica: "HelveticaNeue", sans-serif;
 
 .fontFamily-futura {
     font-family:$futura;
 }
-.fontFamily-govern {
-    font-family:$govern;
-}
-.fontFamily-fira {
-    font-family:$fira;
+.fontFamily-myriad {
+    font-family:$myriad;
 }
 .fontFamily-default {
     font-family:$helvetica;

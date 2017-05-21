@@ -2,11 +2,14 @@
 
     <div ref="area" class="oScreen__content">
         <div ref="wrapper" class="pos-centered { w100p : app.device.isPhone }">
+            <div class="oScreen__close">
+                <div onClick={ hide } onUpdate="none" class="oScreen__close__button"></div>
+            </div>
             <img style="width:123px; height:70px" src="/public/images/jobs/hh/hh-white-red.png" class="display-block mb30 xs-mb-m centered">
             <div class="xs-plr-m">
                 <div class="mb-s fontSize-22">Импорт резюме из сервиса HeadHunter</div>
                 <input onKeydown={ onEnter } ref="input" class="fontFamily-helvetica letterSpacing-0 pointer-for-input input input-{ app.device.isPhone ? 'l' : 'xl' } input-white input-rounded mb-l text-center" placeholder="Вставьте полный адрес ссылки на резюме" autocomplete="off" style="font-size:21.5px; width:600px">
-                <div onClick={ onSuccess } onUpdate="none" class="btn btn-xl2 btn-success { btn-loading : loading }">Получить резюме</div>
+                <div onClick={ onSuccess } onUpdate="none" class="btn btn-xl2 btn-success { btn-loading : loading }" data-ripple>Получить резюме</div>
             </div>
             <div class="example__link">
                 <div class="example__link__tooltip">Пример ссылки</div>
@@ -25,9 +28,9 @@
         // $afterlag.xl(function(){
         //     $.show();
         // });
-        if (location.hash.match(/#hh/)){
-            $.show();
-        }
+        // if (location.hash.match(/#hh/)){
+        //     $.show();
+        // }
     });
 
     $.show = function(){

@@ -1,119 +1,112 @@
 // base
-@import '../../assets/css/base/normalize';
-@import '../../assets/css/base/reset';
-@import '../../assets/css/base/base';
+@import 'base/normalize';
+@import 'base/reset';
+@import 'base/base';
 @import 'base/fonts';
-@import '../../assets/css/base/keyframes';
-@import '../../assets/css/base/mixins';
-@import '../../assets/css/base/responsive';
-@import '../../assets/css/base/main';
+@import 'base/keyframes';
+@import 'base/mixins';
+@import 'base/responsive';
 @import 'base/main';
+@import 'base/config';
 
 // UI elements
-@import '../../assets/css/ui/icons';
 @import 'ui/icons';
-@import '../../assets/css/ui/basic/button';
-@import '../../assets/css/ui/basic/input';
-@import '../../assets/css/ui/basic/textarea';
-@import '../../assets/css/ui/basic/select';
-@import '../../assets/css/ui/basic/checkbox';
-@import '../../assets/css/ui/basic/switcher';
-@import '../../assets/css/ui/basic/balloon';
-@import '../../assets/css/ui/basic/balloonError';
+@import 'ui/basic/form';
+@import 'ui/basic/button';
+@import 'ui/basic/input';
+@import 'ui/basic/textarea';
+@import 'ui/basic/select';
+@import 'ui/basic/list';
+@import 'ui/basic/range';
+@import 'ui/basic/tags';
+@import 'ui/basic/checkbox';
+@import 'ui/basic/switcher';
+@import 'ui/basic/dropmenu';
+@import 'ui/basic/balloon';
+@import 'ui/basic/alert';
+@import 'ui/basic/modal';
+@import 'ui/basic/notify';
+@import 'ui/basic/spinner';
+@import 'ui/basic/loader';
+@import 'ui/basic/loaderAjax';
+@import 'ui/logotype';
+@import 'ui/typography';
+@import 'ui/button';
+@import 'ui/loading';
 @import '../../assets/css/ui/basic/loaderUser';
-@import '../../assets/css/ui/basic/spinner';
-@import '../../assets/css/ui/basic/notify';
-@import '../../assets/css/ui/basic/popup';
-@import '../../assets/css/ui/basic/range';
-@import '../../assets/css/ui/button';
-@import '../../assets/css/ui/typography';
-@import '../../assets/css/ui/chart/chartRadial';
-@import '../../assets/css/states/fontSize';
+@import '../../assets/css/ui/basic/ripple';
 
-// partials
+// modules
+// @import 'modules/oScreen';
+@import 'modules/screens';
+@import 'modules/chart/chartRadial';
+
+// Partials
+// @import 'partials/auth';
+// @import 'partials/main';
+// @import 'partials/header';
 @import 'partials/nav';
-@import 'partials/navFixed';
-@import 'partials/menu';
+@import 'partials/content';
+// @import 'partials/navbar';
 
-// auth
-@import 'sections/auth';
+// Sections
+@import 'sections/sections';
+@import 'sections/professions';
+@import 'sections/mainBlocks';
 
 // home
 @import 'sections/home/home';
-@import 'sections/home/header';
-@import 'sections/home/functions';
-@import 'sections/home/jptest';
-@import 'sections/home/sections';
-@import 'sections/home/testdrive';
-@import 'sections/home/footer';
-
-// jptest
-@import '../../assets/css/sections/jptest/jptest';
-@import '../../assets/css/sections/jptest/jptestEnter';
-@import '../../assets/css/sections/jptest/result/main';
-@import '../../assets/css/sections/jptest/result/columns';
-@import '../../assets/css/sections/jptest/result/skills';
-@import '../../assets/css/sections/jptest/result/humps';
-@import '../../assets/css/sections/jptest/result/graph';
-@import '../../assets/css/sections/jptest/result/specialties';
-@import '../../assets/css/sections/jptest/result/path';
-@import '../../assets/css/sections/jptest/result/finish';
-@import '../../assets/css/sections/jptest/result/ui';
+@import 'sections/home/stickyNav';
+@import 'sections/home/hero';
+@import 'sections/home/professions';
+@import 'sections/home/promo';
+@import 'sections/home/plans';
+@import 'sections/home/employers';
 
 // blog
-@import 'sections/blog/blog';
-@import 'sections/blog/header';
 @import 'sections/blog/grid';
-@import 'sections/blog/shareButton';
-@import 'sections/blog/pagination';
-@import 'sections/blog/content';
+@import 'sections/blog/article';
 @import 'sections/blog/social';
 
-// modules
-@import '../../assets/css/modules/oScreen';
-@import '../../assets/css/modules/screens';
-
-// Sections
-@import '../../assets/css/sections/sections';
+// samples
+@import 'sections/samples/samples';
 
 // overview
-@import '../../assets/css/sections/overview/main';
-@import '../../assets/css/sections/overview/premium/header';
-@import '../../assets/css/sections/overview/premium/slides';
-@import '../../assets/css/sections/overview/premium/ui';
-@import '../../assets/css/sections/offers/premium/premium';
-@import '../../assets/css/sections/offers/premium/slides';
-@import '../../assets/css/sections/offers/premium/ui';
+@import 'sections/overview/main';
+@import 'sections/overview/premium/header';
+@import 'sections/overview/premium/slides';
+@import 'sections/overview/premium/ui';
+@import 'sections/overview/premium/clouds';
 
 // states
-@import '../../assets/css/states/states';
-@import '../../assets/css/states/display';
-@import '../../assets/css/states/flexbox';
-@import '../../assets/css/states/pageWrap';
-@import '../../assets/css/states/position';
-@import '../../assets/css/states/overflow';
-@import '../../assets/css/states/color';
-@import '../../assets/css/states/links';
-@import '../../assets/css/states/sizes';
-@import '../../assets/css/states/text';
-@import '../../assets/css/states/image';
-@import '../../assets/css/states/padding';
-@import '../../assets/css/states/margin';
-@import '../../assets/css/states/lineHeight';
-@import '../../assets/css/states/fontWeight';
-@import '../../assets/css/states/letterSpacing';
-@import '../../assets/css/states/border';
-@import '../../assets/css/states/boxShadow';
-@import '../../assets/css/states/opacity';
-@import '../../assets/css/states/animations';
-@import '../../assets/css/states/transition';
-@import '../../assets/css/states/transform';
-@import '../../assets/css/states/zIndex';
+@import 'states/states';
+@import 'states/display';
+@import 'states/flexbox';
+@import 'states/pageWrap';
+@import 'states/position';
+@import 'states/overflow';
+@import 'states/color';
+@import 'states/links';
+@import 'states/sizes';
+@import 'states/text';
+@import 'states/padding';
+@import 'states/margin';
+@import 'states/fontSize';
+@import 'states/lineHeight';
+@import 'states/fontWeight';
+@import 'states/letterSpacing';
+@import 'states/border';
+@import 'states/boxShadow';
+@import 'states/opacity';
+@import 'states/image';
+@import 'states/animations';
+@import 'states/transition';
+@import 'states/transform';
+@import 'states/zIndex';
 
 // states responsive
-@import '../../assets/css/states/responsive/border';
-@import '../../assets/css/states/responsive/margin';
-@import '../../assets/css/states/responsive/padding';
-@import '../../assets/css/states/responsive/position';
-@import '../../assets/css/states/responsive/text';
-@import '../../assets/css/states/responsive/sizes';
+@import 'states/responsive/border';
+@import 'states/responsive/position';
+@import 'states/responsive/margin';
+@import 'states/responsive/padding';
+@import 'states/responsive/text';

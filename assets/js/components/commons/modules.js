@@ -91,6 +91,9 @@
 		.addClass(device.isMobile && device.orientation === "landscape" ? 'r-landscape' : device.isMobile ? 'r-portrait' : null)
 		.removeClass(device.isMobile && device.orientation !== "landscape" ? 'r-landscape' : device.isMobile ? 'r-portrait' : null);
 
+		if (!device.isMobile && device.isTablet && width > 768){
+			$dom.html.addClass("r-landscape");
+		}
 		if (app.sizes.size && app.sizes.size.match(/large/)){
 			if (app.sizes.size === "large"){
 				$dom.html.addClass('d-largeScreen')
