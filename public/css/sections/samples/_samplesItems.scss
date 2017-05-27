@@ -1,0 +1,59 @@
+.samples {
+    @extend .bg-snow;
+
+    &__items {
+        @extend .display-block;
+        padding:84px 0 34px;
+
+        &__list {
+            @extend .pos-rel;
+            @extend .pr-l;
+            @extend .mb-l;
+        }
+        &__alpha {
+            @extend .pos-abs;
+            top:-3px;
+            @extend .l--60;
+            @extend .c-silver;
+            @extend .fontWeight-bold;
+            font-size:48px;
+            line-height:1;
+            @extend .opacity-25;
+        }
+        &__item {
+            @extend .fontSize-0;
+            @extend .pb-xxs;
+
+            &__link {
+                @extend .pos-rel;
+                @extend .display-inlineBlock;
+                @extend .fontFamily-myriad;
+                @extend .c-steel;
+                @extend .fontSize-18;
+                @extend .maxW-100p;
+                @extend .text-truncate;
+                transition:color 0.3s $cubic4001;
+
+                &:after {
+                    @extend .opacity-0;
+                    @extend .content-empty;
+                    @extend .pos-bl;
+                    @extend .w100p;
+                    @extend .h1px;
+                    @extend .bg-primary;
+                    transform-origin:0% 50%;
+                    transform:translate3d(0, 0, 0) scale3d(0, 1, 1);
+                    transition:transform 0.3s $cubic4001;
+                }
+                &:hover {
+                    @extend .c-primary;
+
+                    &:after {
+                        @extend .opacity-50;
+                        transform:translate3d(0, 0, 0) scale3d(1, 1, 1);
+                    }
+                }
+            }
+        }
+    }
+}

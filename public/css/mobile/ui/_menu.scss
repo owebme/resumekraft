@@ -24,7 +24,7 @@
         transition:transform 0.3s $cubic345, opacity 0.3s $cubic345;
 
         &__link {
-            @extend .c-steelDark;
+            @extend .c-black;
             @extend .fontFamily-myriad;
             @extend .fontSize-18;
             @extend .fontWeight-5;
@@ -71,9 +71,6 @@
             .blog & {
                 @extend .bg-breeze;
             }
-            .jobs & {
-                @extend .bg-blueBright;
-            }
             &:nth-child(2){
                 width:26px;
             }
@@ -90,10 +87,10 @@
         width:13px;
         height:13px;
         @extend .borderRadius-circle;
-        @extend .bg-blackLight;
+        @extend .bg-steel;
         @extend .cursor-pointer;
         @extend .zIndex-1;
-        box-shadow:0 0 0 12px $blackLight;
+        box-shadow:0 0 0 12px $steel;
         transition:transform 0.3s $cubic215;
 
         &:before,

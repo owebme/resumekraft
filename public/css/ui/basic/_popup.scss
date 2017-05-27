@@ -3,7 +3,7 @@
     @extend .display-block;
     @extend .pos-fixed;
     @extend .bg-white;
-    @extend .c-blackLight;
+    @extend .c-steel;
     @extend .visibility-hidden;
     @extend .pointerEvents-none;
     @extend .opacity-0;
@@ -179,7 +179,7 @@
             @extend .letterSpacing--s;
 
             .d-phone & {
-                @extend .fontSize-26;
+                @extend .fontSize-24;
                 @extend .ml0;
             }
         }

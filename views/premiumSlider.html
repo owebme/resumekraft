@@ -1,25 +1,58 @@
 {% extends "layouts/basic.html" %}
 
-{% block title %}Премиальное резюме нового формата на Resumekraft{% endblock %}
+{% block title %}{% endblock %}
 
-{% block styles %}/public/css/style.css{% endblock %}
+{% block styles %}/assets/css/premiumSlider.css{% endblock %}
 
 {% block body %}
-<body id="renderSide">
+<body class="is-loaded is-discover">
 
-    <offer-premium-content></offer-premium-content>
+    <div class="o-loader"></div>
+
+    <root-main id="app"></root-main>
 
     <!--/ VENDORS /-->
-    <script src="/public/js/app.promo.build.js"></script>
+    <script src="/assets/js/premiumSlider/libs.js"></script>
 
     <!--/ templates /-->
-    <!-- <script src="/assets/templates/sections/offers/premiumContent.html" type="riot/tag"></script> -->
+    <script src="/assets/templates/appResume/premium/template2/root.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-city.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-feedback.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-phone.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-email.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-skype.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/premium/template2/sections/btn-info.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/premium/template2/sections/main-slider.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/premium/template2/sections/button-slider.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/premium/template2/sections/dots-slider.html" type="riot/tag"></script>
 
-    <script>
-        riot.compile(function(e){
-            riot.mount("*", { site: true });
-        });
-    </script>
+    <!--/ components /-->
+    <script src="/assets/templates/appResume/premium/template2/components/discover.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/premium/template2/components/photo.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/premium/template2/components/commons.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/premium/template2/components/education.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/premium/template2/components/courses.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/premium/template2/components/languages.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/premium/template2/components/jobs.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/premium/template2/components/contacts.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/premium/template2/components/social.html" type="riot/tag"></script>
+
+    <!--/ JS components /-->
+    <script src="/assets/js/premiumSlider/app.js"></script>
+    <script src="/assets/js/components/i18n/resume/medium/template/ru.js"></script>
+    <script src="/assets/js/store/resume/commons/resume.js"></script>
+    <script src="/assets/js/store/resume/premium/resume.demo.js"></script>
+    <script src="/assets/js/premiumSlider/config.js"></script>
+
+    {% if resume %}
+        <script>
+            app.json = {};
+            app.json.ip = "{{ ip }}";
+            app.json.resume = {{ resume | safe }};
+        </script>
+    {% endif %}
+
+    <script src="/assets/js/premiumSlider/init.js"></script>
 
 </body>
 {% endblock %}

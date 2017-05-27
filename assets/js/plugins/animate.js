@@ -43,36 +43,51 @@
             var _this = this;
 
             if (this.groups.length){
-                _.each(_.sortArray(this.groups, "num"), function(group, i){
-                    (function(){
-                        if (_this.groups[i + 1]){
-                            var items = null,
-                                lastElem = null;
+                if (this.groups.length > 1){
+                    _.each(_.sortArray(this.groups, "num"), function(group, i){
+                        (function(){
+                            if (_this.groups[i + 1]){
+                                var items = null,
+                                    lastElem = null;
 
-                            if (_this.options && _this.options.showAfter){
-                                items = _.sortArray(group.items, "delay", "asc");
-                                lastElem = items[_this.options.showAfter - 1].elem;
-                            }
-                            else {
-                                items = _.sortArray(group.items, "delay", "desc");
-                                lastElem = items[0].elem;
-                            }
-                            if (lastElem){
-                                _.onEndTransition(lastElem, function(){
+                                if (_this.options && _this.options.showAfter){
+                                    items = _.sortArray(group.items, "delay", "asc");
+                                    lastElem = items[_this.options.showAfter - 1].elem;
+                                }
+                                else {
+                                    items = _.sortArray(group.items, "delay", "desc");
+                                    lastElem = items[0].elem;
+                                }
+                                if (lastElem){
+                                    _.onEndTransition(lastElem, function(){
 
-                                    _this.scope.addClass("showAnim-group" + (group.num * 1 + 1));
+                                        _this.scope.addClass("showAnim-group" + (group.num * 1 + 1));
 
-                                    if (_this.groups.length == (group.num * 1 + 1) && _.isFunction(callback)){
-                                        callback();
-                                    }
-                                });
+                                        if (_this.groups.length == (group.num * 1 + 1) && _.isFunction(callback)){
+                                            callback();
+                                        }
+                                    });
+                                }
                             }
+                        })(group, i);
+
+                        if (i == 0) _this.scope.addClass("showAnim-group" + group.num);
+                    });
+                }
+                else {
+                    _this.scope.addClass("showAnim-group1");
+
+                    if (_.isFunction(callback)){
+                        var items = _.sortArray(this.groups[0].items, "delay", "desc"),
+                            lastElem = items[0].elem;
+
+                        if (lastElem){
+                            _.onEndTransition(lastElem, function(){
+                                callback();
+                            });
                         }
-                    })(group, i);
-
-                    if (i == 0) _this.scope.addClass("showAnim-group" + group.num);
-                });
-
+                    }
+                }
                 this.active = true;
             }
         },

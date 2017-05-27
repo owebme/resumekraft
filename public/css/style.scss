@@ -29,12 +29,12 @@
 @import 'ui/basic/spinner';
 @import 'ui/basic/loader';
 @import 'ui/basic/loaderAjax';
+@import 'ui/basic/waves';
 @import 'ui/logotype';
 @import 'ui/typography';
 @import 'ui/button';
 @import 'ui/loading';
 @import '../../assets/css/ui/basic/loaderUser';
-@import '../../assets/css/ui/basic/ripple';
 
 // modules
 // @import 'modules/oScreen';
@@ -42,17 +42,18 @@
 @import 'modules/chart/chartRadial';
 
 // Partials
-// @import 'partials/auth';
-// @import 'partials/main';
-// @import 'partials/header';
 @import 'partials/nav';
 @import 'partials/content';
-// @import 'partials/navbar';
 
 // Sections
 @import 'sections/sections';
 @import 'sections/professions';
 @import 'sections/mainBlocks';
+
+// auth
+@import 'sections/auth/auth';
+@import 'sections/auth/themes/dark';
+@import 'sections/auth/themes/white';
 
 // home
 @import 'sections/home/home';
@@ -70,6 +71,7 @@
 
 // samples
 @import 'sections/samples/samples';
+@import 'sections/samples/samplesItems';
 
 // overview
 @import 'sections/overview/main';

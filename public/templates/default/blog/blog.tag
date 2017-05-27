@@ -1,4 +1,4 @@
-<section-blog class="section bg-snow7" data-page={ opts.data.page } data-pages={ opts.data.pages }>
+<section-blog class="section" data-page={ opts.data.page } data-pages={ opts.data.pages }>
 
     <section-nav section="blog" color="snow" user={ opts.user }></section-nav>
 

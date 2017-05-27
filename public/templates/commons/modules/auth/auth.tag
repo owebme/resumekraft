@@ -1,14 +1,26 @@
-<section-auth class="{ app.device.isPhone ? 'section' : 'oScreen' } zIndex-100 pos-fixed" data-open="false" style="display:none">
+<section-auth class="section">
 
-    <div if={ app.device.isPhone } class="oScreen__buttons" data-pos="top-right">
-        <div onClick={ close } class="button__close" data-color="gray"></div>
+    <div class="auth">
+        <div class="auth__logo">
+            <a href="/" class="auth__logo__wrapper anim anim-tb-quick">
+                <div class="logotype logotype-xl" data-color="dark">
+                    <div class="logotype__label"></div>
+                </div>
+                <div class="logotype logotype-xl" data-color="white">
+                    <div class="logotype__label"></div>
+                </div>
+            </a>
+        </div>
+        <div ref="title" class="auth__title anim anim-tb-quick"></div>
+        <div class="auth__body">
+            <auth-signin></auth-signin>
+
+            <auth-remember></auth-remember>
+
+            <auth-signup></auth-signup>
+        </div>
+        <auth-social></auth-social>
     </div>
-
-    <auth-signin></auth-signin>
-
-    <auth-remember></auth-remember>
-
-    <auth-signup></auth-signup>
 
 <script>
 
@@ -18,21 +30,65 @@
 
     $.ymaps = false;
 
-    $.firstOpen = false;
+    $.title = function(section){
+        if (section === "signin"){
+            $.root.setAttribute("data-theme", "dark");
+            $.refs.title.innerHTML = 'Авторизация';
+        }
+       else if (section === "signup"){
+            $.root.setAttribute("data-theme", "white");
+            $.refs.title.innerHTML = 'Регистрация';
+       }
+       else if (section === "remember"){
+           $.root.setAttribute("data-theme", "dark");
+           $.refs.title.innerHTML = 'Вспомнить пароль';
+       }
+    };
 
-    $.on("mount", function(){
-        if (location.href.match(/\?signin/)){
+    $.onChange = function(){
+        var url = History.getState().hash;
+
+        if (url.match(/\/signin/)){
             $afterlag.run(function(){
                 $.open("signin");
             });
         }
-        else if (location.href.match(/\?signup/)){
+        else if (url.match(/\/signup/)){
             $afterlag.run(function(){
-                $.open("signup", location.href.match(/\&plan=premium/) ? "premium" : false);
+                $.open("signup");
             });
         }
+        else if (url.match(/\/remember/)){
+            $afterlag.run(function(){
+                $.open("remember");
+            });
+        }
+    };
+
+    $.on("mount", function(){
+        $.scope = $$($.root);
+
+        $.onChange();
+
+        window.addEventListener('popstate', function(e){
+            if (!History.getState().hash.match($.section)){
+                $.tags["auth-" + $.section].hide();
+                $.onChange();
+            }
+        }, false);
+
         app.tag("section-notify", function(tag){
             $.notify = tag;
+        });
+
+        $.scope.find(".input").on("focus blur", function(e){
+            var $item = $$(this).parent();
+            if (e.type == "focusin" || e.type == "focus"){
+                $item.addClass("input-focus");
+            }
+            else {
+                $item.removeClass("input-focus");
+            }
         });
 
         window.ymapsReady = function(){
@@ -114,7 +170,7 @@
     $.notifyOAuth = function(){
         if (!app.metrika.get("notify.oauth") || location.hash.match(/oauth/)){
             app.tag("section-notify").show({
-                color: "info",
+                color: "primary",
                 text: "Для регистрации/авторизации в один клик, выберите свою социальную сеть",
                 pos: app.device.isPhone ? "top-left" : "bottom-left",
                 timeout: app.device.isPhone ? 3.5 : 5
@@ -153,22 +209,11 @@
     };
 
     $.open = function(section, param){
-        if (!$.firstOpen){
-            $.firstOpen = true;
-            $.root.style.display = "block";
-            $afterlag.run(function(){
-                $._open(section, param);
-            });
-        }
-        else {
-            $._open(section, param);
-        }
-    };
-
-    $._open = function(section, param){
         $.active = true;
 
         $.root.setAttribute("data-open", true);
+
+        $.title(section);
 
         var modal = $.tags["auth-" + section];
         if (modal && modal.open) modal.open(param);

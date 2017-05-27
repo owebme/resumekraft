@@ -1,0 +1,51 @@
+// base
+@import 'appResume/premium/template2/base/normalize';
+@import 'appResume/premium/template2/base/base';
+@import 'appResume/premium/template2/base/fonts';
+@import 'appResume/premium/template2/base/main';
+@import 'base/keyframes';
+@import 'base/mixins';
+@import 'base/responsive';
+@import 'appResume/premium/template2/base/app';
+
+// main
+@import 'appResume/premium/template2/discover';
+@import 'appResume/premium/template2/content';
+
+// UI elements
+@import 'appResume/premium/template2/ui/icons';
+@import 'appResume/premium/template2/ui/loader';
+@import 'appResume/premium/template2/ui/button';
+@import 'appResume/premium/template2/ui/dots';
+@import 'appResume/premium/template2/ui/slider';
+@import 'appResume/premium/template2/ui/scroll';
+@import 'appResume/premium/template2/ui/info';
+@import 'appResume/premium/template2/ui/animations';
+@import 'appResume/premium/template2/slides/photo';
+@import 'appResume/premium/template2/slides/commons';
+@import 'appResume/premium/template2/slides/contacts';
+
+// themes
+@import 'appResume/premium/template2/themes/commons/fonts';
+@import 'appResume/premium/template2/themes/commons/fontSize';
+@import 'appResume/premium/template2/themes/commons/colors';
+@import 'appResume/premium/template2/themes/_colorful.scss';
+@import 'appResume/premium/template2/themes/_white.scss';
+
+// states
+@import 'appResume/premium/states/states';
+@import 'appResume/premium/states/display';
+@import 'appResume/premium/states/flexbox';
+@import 'appResume/premium/states/position';
+@import 'appResume/premium/states/overflow';
+@import 'appResume/premium/states/sizes';
+@import 'appResume/premium/states/text';
+@import 'appResume/premium/states/image';
+@import 'appResume/premium/states/padding';
+@import 'appResume/premium/states/margin';
+@import 'appResume/premium/states/fontWeight';
+@import 'appResume/premium/states/border';
+@import 'appResume/premium/states/boxShadow';
+@import 'appResume/premium/states/opacity';
+@import 'appResume/premium/states/transform';
+@import 'appResume/premium/states/zIndex';

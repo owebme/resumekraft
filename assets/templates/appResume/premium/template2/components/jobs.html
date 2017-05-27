@@ -1,0 +1,26 @@
+<ux-jobs class="slider__item" style="background-color:{ $root.colors.jobs }" data-slide="jobs">
+
+    <div class="slider__item__container">
+        <div class="row">
+            <div class="col-md-24 slider__item__content">
+                <div class="slider__item__label -left"><span class="hidden-xs">{ $i18n("resume.medium.template.Experience") }</span><span class="visible-xs">{ $store.resume.take.jobs.experience() }</span><div class="slider__item__label__count">{ $resume.jobs.items.length }</div></div>
+                <div class="slider__item__label level -right hidden-xs">&mdash;&nbsp; { $store.resume.take.jobs.experience() }</div>
+                <div class="row content content__scroll" data-track="box">
+                    <div class="col-xs-24 col-md-18 centered content__scroll__track">
+                        <div each={ item in $store.resume.take.jobs.items() } no-reorder class="item animate">
+                            <h4 class="item__title">{ $store.resume.take.jobs.year(item) } <span class="plr-xss">&mdash;</span> { item.title }, { item.city }</h4>
+                            <p class="item__text text highlight">{ item.post }</p>
+                            <h4 class="item__name -padding">{ $store.resume.take.jobs.period(item) }</h4>
+                            <p class="item__text text highlight -reduce">
+                                { item.text }
+                            </p>
+                        </div>
+                    </div>
+                    <div class="content__gradient -top" style="background-image:linear-gradient(to bottom, { $root.colors.jobs } 50%, { _.hexToRgb($root.colors.jobs, 0) });"></div>
+                    <div class="content__gradient -bottom" style="background-image:linear-gradient(to top, { $root.colors.jobs }, { _.hexToRgb($root.colors.jobs, 0) });"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ux-jobs>

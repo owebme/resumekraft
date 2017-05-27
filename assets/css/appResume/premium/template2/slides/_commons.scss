@@ -1,0 +1,109 @@
+.slider__item {
+    &[data-slide="commons"]{
+        will-change:background-color;
+
+        body:not(.is-discover) & {
+            background-color:transparent !important
+        }
+        body.is-discover & {
+            transition:background-color .9s $cubic4001;
+        }
+        .photo {
+            @extend .pos-centered;
+            width:412px;
+            height:588px;
+            @extend .bg-cover;
+            @extend .boxShadow-default;
+        }
+        .content {
+            html.d-no-phone & {
+                @extend .pos-centered-v;
+                padding-left:42.5px;
+                height:480px;
+            }
+            html.d-phone & {
+                padding-top:63px;
+            }
+        }
+        .content__gradient {
+            html.d-no-phone & {
+                @extend .l-auto;
+                @extend .r0;
+                @extend .w55p;
+                @extend .h170;
+            }
+        }
+        .post {
+            @extend .pos-rel;
+            @extend .mt3;
+            @extend .pt8;
+
+            &:before {
+                @extend .content-empty;
+                @extend .pos-tl;
+                @extend .w100p;
+                @extend .h2px;
+                @extend .opacity-20;
+                background:linear-gradient(to right, #000 70%, rgba(#000,0));
+            }
+            html.d-phone & {
+                @extend .mt8;
+                @extend .pt-xs;
+            }
+        }
+        .salary {
+            @extend .f-primary;
+            @extend .fontSize-36;
+            letter-spacing:0 !important;
+            @extend .fontWeight-bold;
+            margin-top:9px;
+
+            &__currency {
+                @extend .display-inlineBlock;
+                @extend .fontFamily-futura;
+            }
+            &__schedule {
+                @extend .display-inlineBlock;
+                @extend .pos-rel;
+                top:-13px;
+                @extend .fontSize-16;
+                line-height:1;
+                padding:6px 10px 5px;
+                @extend .c-white;
+                @extend .bg-black;
+                @extend .borderRadius-xxxxxl;
+            }
+        }
+        .tag-list {
+            @extend .inline;
+            margin-top:13px;
+            margin-bottom:17px;
+            @extend .ml--3;
+
+            html.no-d-phone & {
+                width:520px;
+            }
+            html.d-phone & {
+                @extend .mt-xs;
+                @extend .mb-s;
+                @extend .ml--xxs;
+                @extend .mr--s;
+            }
+        }
+        .tag {
+            @extend .vAlign-middle;
+            @extend .plr-s;
+            @extend .h40;
+            @extend .borderRadius-xxl;
+            @extend .bg-black;
+            @extend .c-white;
+            @extend .f-primary;
+            @extend .fontSize-16;
+            line-height:40px;
+            margin:5px 6px 5px 0;
+        }
+        .larger {
+            @extend .whiteSpace-preLine;
+        }
+    }
+}

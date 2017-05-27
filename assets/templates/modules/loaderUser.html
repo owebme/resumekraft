@@ -1,4 +1,4 @@
-<section-loader-user class="loader" data-show="{ active }" data-color="{ color }" data-loader="user">
+<section-loader-user class="loader" data-show="{ active }" data-color="{ user.oauth }" data-loader="user">
 
     <div class="loader-container">
         <div if={ user.oauth || user.photo } class="loader-user" style="{ user.photo ? 'background-image:url(' + user.photo + ')' : null }" data-oauth={ user.oauth }>
@@ -18,8 +18,7 @@
 
     $.default = function(){
         return {
-            user: null,
-            color: null,
+            user: {},
             active: true
         }
     };

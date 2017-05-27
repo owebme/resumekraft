@@ -1,30 +1,42 @@
-<auth-remember class="section auth" data-active="false" data-form="remember">
+<auth-remember class="section auth__form" data-active="false" data-form="remember">
 
-    <form ref="form" action="#" class="auth__form anim-group1 anim-scale{ '-zoom' : app.device.isPhone }" duration-show="m" duration-hide="{ app.device.isPhone ? 's' : 'm' }">
+    <form ref="form" action="#">
         <input type="hidden" name="logined" value="true">
-        <div if={ !app.device.isPhone } class="auth__close">
-            <div onClick={ close } onUpdate="none" class="auth__close__button"></div>
+        <div class="pos-abs-full anim anim-bt-ease anim-duration-l anim-delay-s { success ? 'animated' : 'pointerEvents-none' }">
+            <div class="flex-column-centered pos-centered w100p">
+                <div class="flex-centered w85 h85 bg-green borderRadius-circle anim anim-scale anim-delay-m { success ? 'animated' : 'pointerEvents-none' }">
+                    <svg class="w75 h75" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+                        <path d="M15.57,26.49l-3.87-3.7a2.52,2.52,0,0,1,0-3.49l0,0a2.35,2.35,0,0,1,3.39,0L17,21l8-7.35a2.43,2.43,0,0,1,3.3,0l0,0a2.12,2.12,0,0,1,0,3.12L18.16,26.49a1.91,1.91,0,0,1-2.59,0" class="fill-white"/>
+                    </svg>
+                </div>
+                <div class="c-green fontSize-28 mt-l fontWeight-bold">Отлично, письмо отправлено!</div>
+                <div class="c-snowA fontSize-22 fontWeight-3 mt-s pb-xl">Проверьте <a if={ emailLink() } href="{ emailLink() }" class="link-success">свой e-mail</a><span if={ !emailLink() }>свой e-mail</span>, на него отправлено письмо по сбросу пароля.</div>
+            </div>
         </div>
-        <div if={ app.device.isPhone } class="auth__logo anim-group1 anim-fadeIn anim-duration-m"></div>
-        <div class="auth__header">
-            Восстановить пароль
-            <div class="auth__subtitle">Отправить на свой email инструкцию по сбросу пароля.</div>
-        </div>
-        <div class="auth__body">
-            <div class="pos-abs-full anim anim-bt-ease anim-duration-l anim-delay-xs { success ? 'animated' : 'pointerEvents-none' }">
-                <div class="flex-column-centered pos-centered pt-l w80p">
-                    <h2 class="mt-l c-green">Отлично, письмо отправлено!</h2>
-                    <h3 class="c-gray mt-m fontWeight-normal lineHeight-36">Проверьте <a if={ emailLink() } href="{ emailLink() }" class="link-blue link-underline">свой e-mail</a><span if={ !emailLink() }>свой e-mail</span>, на него отправлено письмо по сбросу пароля.</h3>
+        <div class="anim anim-scale-ease anim-duration-m { success ? 'pointerEvents-none' : 'animated' }">
+            <div class="mb-l input-group input-group-icon anim-group1 anim-bt-quick">
+                <input onKeyDown={ onKeydown } onUpdate="none" class="input input-xl" type="text" placeholder="Введите свой e-mail" autocomplete="off" ref="login" value="">
+                <div class="input-icon">
+                    <svg class="input-svg" viewBox="3 -3 24 24"><path class="input-svg-color" d="M15 11.9c-.9 0-1.7-.2-2.3-.7l-5.7-4.4v8.1c0 .1 0 .3.1.4.1.1.2.2.3.2 2.5.4 5 .5 7.5.5s5-.2 7.5-.5c.1 0 .3-.1.4-.2.2-.1.2-.3.2-.4v-8.1l-5.7 4.4c-.6.5-1.4.7-2.3.7zm-1.3-2.3c.3.3.8.4 1.3.4s1-.1 1.3-.4l6.1-4.7c.3-.3.5-.6.6-1v-.8c0-.1 0-.3-.1-.4-.1-.1-.2-.2-.4-.2-2.5-.3-5-.5-7.5-.5s-5 .2-7.5.5c-.1 0-.2.1-.3.2-.2.1-.2.3-.2.4v.9c.1.3.3.6.6 1l6.1 4.6z"></path></svg>
                 </div>
             </div>
-            <div class="anim anim-scale-ease anim-duration-m { success ? 'pointerEvents-none' : 'animated' }">
-                <div class="mb-l input-group input-group-icon">
-                    <input onKeyDown={ onKeydown } onUpdate="none" class="input input-xl" type="text" placeholder="Введите свой email (логин)" autocomplete="off" ref="login" value="">
-                    <div class="input-icon">
-                        <svg class="input-svg" viewBox="3 -3 24 24"><path class="input-svg-color" d="M15 11.9c-.9 0-1.7-.2-2.3-.7l-5.7-4.4v8.1c0 .1 0 .3.1.4.1.1.2.2.3.2 2.5.4 5 .5 7.5.5s5-.2 7.5-.5c.1 0 .3-.1.4-.2.2-.1.2-.3.2-.4v-8.1l-5.7 4.4c-.6.5-1.4.7-2.3.7zm-1.3-2.3c.3.3.8.4 1.3.4s1-.1 1.3-.4l6.1-4.7c.3-.3.5-.6.6-1v-.8c0-.1 0-.3-.1-.4-.1-.1-.2-.2-.4-.2-2.5-.3-5-.5-7.5-.5s-5 .2-7.5.5c-.1 0-.2.1-.3.2-.2.1-.2.3-.2.4v.9c.1.3.3.6.6 1l6.1 4.6z"></path></svg>
+            <div class="anim-group1 anim-bt-quick" delay-show="0.05" delay-hide="none">
+                <div onClick={ sendForm } onUpdate="none" class="btn btn-xl btn-rounded btn-default-hover-success { btn-loading : loading }">Отправить</div>
+            </div>
+            <div class="auth__footer">
+                <div class="rows anim-group1 anim-bt-quick" delay-show="0.2" delay-hide="none">
+                    <div class="row">
+                        <div class="col-xs-11 text-right">
+                            <span onClick={ show.signup } onUpdate="none" class="auth__link">Создать</span>
+                        </div>
+                        <div class="col-xs-2">
+                            <span class="auth__link__divider">|</span>
+                        </div>
+                        <div class="col-xs-11 text-left">
+                            <span onClick={ show.signin } onUpdate="none" class="auth__link">Войти</span>
+                        </div>
                     </div>
                 </div>
-                <div onClick={ sendForm } onUpdate="none" class="btn btn-xxl btn-{ app.device.isPhone ? 'success' : 'default-hover-success' } { btn-loading : loading }">Отправить</div>
             </div>
         </div>
     </form>
@@ -52,7 +64,23 @@
         $.active = true;
         $.parent.section = "remember";
         $.root.setAttribute("data-active", true);
-        $.animate.show();
+
+        $.animate.show(function(){
+            History.pushState(null, null, "/auth/remember");
+        });
+    };
+
+    $.show = {
+        signup: function(){
+            $.hide();
+            $.auth.tags["auth-signup"].open();
+            $.auth.title("signup");
+        },
+        signin: function(){
+            $.hide();
+            $.auth.tags["auth-signin"].open();
+            $.auth.title("signin");
+        }
     };
 
     $.onKeydown = function(e){
@@ -67,7 +95,7 @@
         if ($.loading) return;
 
         if (!_.isEmail($.refs.login.value)){
-            $.auth.onNotify("Введите e-mail, который вы вводили в момент регистрации аккаунта", "info", 3);
+            $.auth.onNotify("Введите e-mail, который вы вводили в момент регистрации аккаунта", "primary", 3);
             return;
         }
 
@@ -91,6 +119,7 @@
                             $.update({
                                 success: true
                             })
+                            $.auth.root.setAttribute("data-open", false);
                         }
                     }
                 },
@@ -128,6 +157,12 @@
         }
         $.parent.section = null;
         $.parent.close();
+    };
+
+    $.hide = function(){
+        $.active = false;
+        $.root.setAttribute("data-active", false);
+        $.animate.hide();
     };
 
 </script>

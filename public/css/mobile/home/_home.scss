@@ -14,7 +14,7 @@
             @include accelerate();
             @extend .pos-abs;
             @extend .l50;
-            @extend .b-25;
+            @extend .b25;
             margin-left:-12px;
             transform:translate3d(0, 66%, 0);
             @extend .pointerEvents-none;
@@ -296,7 +296,7 @@
                         .plan__checkbox {
                             @extend .pos-abs;
                             @extend .t100;
-                            @extend .l-50;
+                            @extend .l50;
                             @extend .pt-xxs;
                             transform-origin:50% 150%;
                         }
@@ -356,7 +356,7 @@
                 }
                 &__button {
                     @extend .pos-centered-h;
-                    @extend .b-45;
+                    @extend .b45;
                 }
             }
             .rub:after {

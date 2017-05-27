@@ -2,6 +2,36 @@
     @extend .pos-rel;
     @extend .display-block;
 
+    &[data-color="white"]{
+        &:before {
+            background-image:url(/public/images/logotype_new_white.svg);
+        }
+        .logotype__title {
+            @extend .c-white;
+
+            span {
+                @extend .opacity-40;
+            }
+        }
+    }
+    &-xl {
+        @extend .w62;
+        @extend .h62;
+
+        &:after {
+            left:-18px;
+            margin-top:-8px;
+            @extend .w32;
+            @extend .h32;
+            @extend .borderRadius-circle;
+            @extend .bg-white;
+        }
+        .logotype__label:after {
+            font-size:43px;
+            line-height:1;
+            transform:translate3d(16px, 1px, 0);
+        }
+    }
     &-l {
         @extend .w48;
         @extend .h48;

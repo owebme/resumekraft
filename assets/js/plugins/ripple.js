@@ -6,7 +6,7 @@
         var options = options || {};
 
         this.active = false;
-        this.classes = options.classes;
+        this.classes = options.classes && _.isArray(options.classes) ? options.classes.join(", ") : "[data-ripple]";
         this.disabled = options.disabled;
         this.init();
     };
@@ -18,7 +18,7 @@
 
             var _this = this;
 
-            $(document).on("mousedown.ripple", _this.classes && _.isArray(_this.classes) ? _this.classes.join(", ") : "[data-ripple]", function(e) {
+            $(document).on("mousedown.ripple", _this.classes, function(e) {
 
                 var $self = $(this);
 
@@ -27,7 +27,7 @@
                         return;
                     }
                 }
-                if ($self.closest("[data-ripple]")) {
+                if ($self.closest(_this.classes)) {
                     e.stopPropagation();
                 }
 

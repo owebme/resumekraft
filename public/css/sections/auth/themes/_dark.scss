@@ -1,0 +1,92 @@
+section-auth {
+    &[data-theme="dark"]{
+        .auth {
+            .input,
+            &__title,
+            &__social__bracket__item:before {
+                @extend .c-white;
+            }
+            &__logo {
+                .logotype {
+                    &[data-color="dark"] {
+                        @extend .opacity-0;
+                    }
+                    &[data-color="white"] {
+                        &:after {
+                            @extend .bg-steel;
+                            transition-delay:0.15s;
+                        }
+                        .logotype__label:after {
+                            @extend .c-steel;
+                        }
+                    }
+                }
+            }
+            &__social {
+                &__title__text__inner {
+                    @extend .opacity-65;
+                    @extend .c-white;
+                }
+                &__button {
+                    .icon-fb, .icon-vk, .icon-tw, .icon-dk {
+                        path {
+                            @extend .fill-snowA;
+                        }
+                    }
+                    &:hover {
+                        .icon {
+                            path {
+                                fill:lighten($blueLight,26%);
+                            }
+                        }
+                    }
+                }
+            }
+            .input {
+                &::-webkit-input-placeholder {
+                    color:$white;
+                }
+                &::-moz-input-placeholder {
+                    color:$white;
+                }
+                &:focus {
+                    + .input-icon .input-svg-color {
+                        fill:lighten($blueLight,26%);
+                    }
+                }
+                &-svg-color {
+                    @extend .fill-snowA;
+                }
+                &-group {
+                    &.input-error {
+                        &:before,
+                        &:after {
+                            @extend .bg-red;
+                        }
+                        .input-svg-color {
+                            @extend .fill-red;
+                        }
+                    }
+                    &:before {
+                        @extend .bg-white;
+                    }
+                    &:after {
+                        background-color:lighten($blueLight,26%);
+                    }
+                }
+            }
+            &__link {
+                @extend .c-white;
+                @extend .opacity-85;
+
+                &:hover {
+                    @extend .opacity-100;
+                }
+                &__divider {
+                    @extend .c-white;
+                    @extend .opacity-30;
+                }
+            }
+        }
+    }
+}

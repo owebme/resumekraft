@@ -9,19 +9,19 @@
 }
 @font-face {
     font-family: "SourceSans";
-    src: url("../fonts/SourceSansProRegular/SourceSansProRegular.eot");
-    src: url("../fonts/SourceSansProRegular/SourceSansProRegular.eot?#iefix")format("embedded-opentype"),
-    url("../fonts/SourceSansProRegular/SourceSansProRegular.woff") format("woff"),
-    url("../fonts/SourceSansProRegular/SourceSansProRegular.ttf") format("truetype");
+    src: url("/assets/css/fonts/SourceSans/SourceSansProRegular.eot");
+    src: url("/assets/css/fonts/SourceSans/SourceSansProRegular.eot?#iefix")format("embedded-opentype"),
+    url("/assets/css/fonts/SourceSans/SourceSansProRegular.woff") format("woff"),
+    url("/assets/css/fonts/SourceSans/SourceSansProRegular.ttf") format("truetype");
     font-style: normal;
     font-weight: 400;
 }
 @font-face {
     font-family: "SourceSans";
-    src: url("../fonts/SourceSansProBold/SourceSansProBold.eot");
-    src: url("../fonts/SourceSansProBold/SourceSansProBold.eot?#iefix")format("embedded-opentype"),
-    url("../fonts/SourceSansProBold/SourceSansProBold.woff") format("woff"),
-    url("../fonts/SourceSansProBold/SourceSansProBold.ttf") format("truetype");
+    src: url("/assets/css/fonts/SourceSans/SourceSansProBold.eot");
+    src: url("/assets/css/fonts/SourceSans/SourceSansProBold.eot?#iefix")format("embedded-opentype"),
+    url("/assets/css/fonts/SourceSans/SourceSansProBold.woff") format("woff"),
+    url("/assets/css/fonts/SourceSans/SourceSansProBold.ttf") format("truetype");
     font-style: normal;
     font-weight: 700;
 }

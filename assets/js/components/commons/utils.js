@@ -450,6 +450,18 @@
 	    return dateArray;
 	};
 
+	utils.hexToRgb = function(hex, opacity) {
+		var h = hex.replace('#', '');
+		h = h.match(new RegExp('(.{'+h.length/3+'})', 'g'));
+
+		for(var i=0; i<h.length; i++)
+		h[i] = parseInt(h[i].length==1? h[i]+h[i]:h[i], 16);
+
+		if (typeof opacity !== undefined) h.push(opacity);
+
+		return 'rgba('+h.join(',')+')';
+	};
+
 	utils.supportClipboard = function(){
 		if (window.clipboardData && window.clipboardData.setData || document.queryCommandSupported && document.queryCommandSupported("copy")) {
 			return true;

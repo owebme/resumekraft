@@ -1,14 +1,26 @@
+$loader_fb: saturate(darken($color_fb, 3%), 8%);
+$loader_vk: saturate(darken($color_vk, 6%), 15%);
+$loader_tw: saturate(darken($color_tw, 22%), 10%);
+$loader_dk: saturate(darken($color_dk, 6%), 10%);
+$loader_gl: saturate(darken($color_gl, 0%), 0%);
+
+section-loader-user {
+    @extend .opacity-0;
+}
 .loader {
+    @extend .display-block;
     @include abs(fixed);
     @extend .opacity-0;
     @extend .visibility-hidden;
-    @extend .bg-blue;
     @extend .zIndex-102;
     @extend .pointerEvents-none;
     @extend .willChange-opacity;
 
-    @each $color in ($green, $emerald, $orange, $red, $violet, $violetLight, $brown, $pink){
-        &[data-color="#{$color}"]{
+    &[data-loader="user"]{
+        background-color:#273444;
+    }
+    @each $title, $color in (fb: $loader_fb, vk: $loader_vk, tw: $loader_tw, dk: $loader_dk, gl: $loader_gl){
+        &[data-color="#{$title}"]{
             background-color:$color;
         }
     }
@@ -32,6 +44,7 @@
     }
     &[data-show="true"]{
         @extend .opacity-100;
+        @extend .pointerEvents-all;
         @extend .visibility-visible;
         transition:opacity 0.2s ease-out, visibility 0s;
 
@@ -135,7 +148,7 @@
     &-text {
         font-family:'Helvetica Neue', 'Helvetica', 'Roboto', sans-serif;
         @extend .pos-centered-h;
-        @extend .t100;
+        top:100%;
         width:200%;
         @extend .c-white;
         @extend .text-center;

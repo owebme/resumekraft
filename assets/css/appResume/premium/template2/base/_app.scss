@@ -1,0 +1,7 @@
+#app {
+	@extend .display-block;
+    @include abs();
+}
+.section {
+	@extend .display-block;
+}

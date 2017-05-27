@@ -1,6 +1,6 @@
 <section-samples class="samples section">
 
-    <section-nav-search section="samples" user={ opts.user }></section-nav-search>
+    <section-nav-samples section="samples" user={ opts.user }></section-nav-samples>
 
     <div id="content">
 

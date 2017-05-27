@@ -1,0 +1,73 @@
+<button-slider class="c-home_button">
+
+    <div class="o-button -nopadding -nocircle">
+        <span class="o-button_wrap">
+            <div onClick={ open } onUpdate="none" class="o-button_link -discover">
+                <span class="o-button_label">{ $i18n("resume.medium.title.Discover") }</span>
+            </div>
+        </span>
+        <span class="o-button_slider-wrap">
+            <div ref="slider" class="o-button_slider -discover js-button-slider">
+                <div if={ app.device.isPhone } class="o-button_slider_item">
+                    <div class="o-button_slider_link">
+                        <span class="o-button_label">{ $i18n("resume.medium.title.My Photo") }</span>
+                    </div>
+                </div>
+                <div class="o-button_slider_item">
+                    <div class="o-button_slider_link">
+                        <span class="o-button_label">{ $i18n("resume.medium.title.About me") }</span>
+                    </div>
+                </div>
+                <div if={ $resume.education && $resume.education.items } class="o-button_slider_item">
+                    <div class="o-button_slider_link">
+                        <span class="o-button_label">{ $i18n("resume.medium.title.Education") }</span>
+                    </div>
+                </div>
+                <div if={ $resume.courses && $resume.courses.items } class="o-button_slider_item">
+                    <div class="o-button_slider_link">
+                        <span class="o-button_label">{ $i18n("resume.medium.title.Courses") }</span>
+                    </div>
+                </div>
+                <div if={ $resume.languages } class="o-button_slider_item">
+                    <div class="o-button_slider_link">
+                        <span class="o-button_label">{ $i18n("resume.medium.title.Languages") }</span>
+                    </div>
+                </div>
+                <div if={ $resume.jobs && $resume.jobs.items } class="o-button_slider_item">
+                    <div class="o-button_slider_link">
+                        <span class="o-button_label">{ $i18n("resume.medium.title.Сareer") }</span>
+                    </div>
+                </div>
+                <div class="o-button_slider_item">
+                    <div class="o-button_slider_link">
+                        <span class="o-button_label">{ $i18n("resume.medium.title.Contacts") }</span>
+                    </div>
+                </div>
+            </div>
+        </span>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.on("mount", function(){
+        $Sections.module("button", $);
+
+        $.slider = $$($.refs.slider);
+
+        $.slider.slick(Object.assign(_.clone($root.default), {
+            draggable: false,
+            swipe: false,
+            asNavFor: ".slider"
+        }));
+    });
+
+    $.open = function(){
+        app.$dom.body.addClass("is-discover");
+        $Sections.main.slider.off("click");
+    };
+
+</script>
+
+</button-slider>

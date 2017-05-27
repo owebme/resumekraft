@@ -1,0 +1,8 @@
+body > #app {
+    &[data-theme="colorful"]{
+        .slider__item__label,
+        .highlight {
+            @extend .c-white;
+        }
+    }
+}

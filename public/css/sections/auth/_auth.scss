@@ -1,0 +1,262 @@
+section-auth {
+    @include abs();
+    @include accelerate();
+    @include perspective();
+    @extend .overflow-hidden;
+    @extend .userSelect-none;
+
+    &:before,
+    &:after {
+        @extend .content-empty;
+        @extend .zIndex-0;
+    }
+    &:before {
+        @include abs();
+        @extend .bg-steel;
+    }
+    &:after {
+        @include accelerate();
+        @extend .willChange-transform;
+        @extend .pos-tl;
+        width:125vw;
+        height:125vw;
+        @extend .borderRadius-circle;
+        transition:transform 0.6s $cubic4021;
+        transform:translate3d(-100%, -100%, 0) rotate(60deg);
+
+        html.d-phone & {
+            width:175vw;
+            height:175vw;
+        }
+    }
+    &[data-open="true"]{
+        .auth {
+            &__social__item,
+            &__social__title__text,
+            &__social__bracket__item,
+            &__logo__wrapper,
+            &__title {
+                @extend .opacity-100;
+                @extend .transform-default;
+            }
+        }
+    }
+    .auth {
+        &__social__title__text__inner,
+        &__social__bracket__item:before,
+        .logotype,
+        .logotype:after,
+        .logotype__label:after,
+        .input,
+        .input-group:before {
+            will-change:color, background-color, opacity;
+            transition:color 0.3s $cubic4021, background-color 0.3s $cubic4021, opacity 0.3s $cubic4021;
+        }
+        &__title {
+            transition:color 0.3s $cubic4021, transform 0.5s $cubic4001;
+        }
+        .input-svg-color {
+            will-change:fill;
+            transition:fill 0.3s $cubic4021;
+        }
+        &::-webkit-input-placeholder {
+            transition:color 0.3s $cubic4021;
+        }
+        &::-moz-input-placeholder {
+            transition:color 0.3s $cubic4021;
+        }
+    }
+}
+.auth {
+    @extend .pos-centered;
+    @extend .text-center;
+    width:470px;
+    @extend .pt85;
+    @extend .zIndex-1;
+
+    &__logo {
+        @extend .pos-centered-h;
+        @extend .t0;
+        @extend .h62;
+
+        &__wrapper {
+            @extend .display-block;
+        }
+        .logotype {
+            @extend .pos-centered-h;
+            @extend .t0;
+
+            &:after {
+                @extend .bg-none;
+            }
+        }
+    }
+    &__body {
+        @extend .pos-rel;
+        height:338px;
+    }
+    &__footer {
+        @extend .pos-centered-h;
+        @extend .b--90;
+        @extend .w100p;
+        @extend .nowrap;
+
+        html.d-phone & {
+            @extend .b--60;
+        }
+        .auth__link {
+            @extend .fontSize-16;
+
+            html.d-phone & {
+                @extend .fontSize-15;
+            }
+        }
+    }
+    &__form {
+        @extend .pos-centered;
+        @extend .w100p;
+        margin-top:-38px;
+        @extend .pointerEvents-none;
+
+        &[data-active="true"]{
+            @extend .pointerEvents-all;
+        }
+        &[data-form="remember"]{
+            margin-top:-58px;
+        }
+    }
+    &__title {
+        @extend .fontFamily-myriad;
+        @extend .fontSize-16;
+        @extend .letterSpacing-xxxl;
+        @extend .mb-l;
+        @extend .opacity-85;
+        @extend .text-uppercase;
+
+        html.d-phone & {
+            @extend .fontSize-15;
+        }
+    }
+    .input {
+        @extend .bg-none;
+        @extend .pl75;
+        @extend .fontSize-20;
+        @extend .fontFamily-helvetica;
+        @extend .fontWeight-normal;
+        @extend .boxShadow-none;
+
+        html.d-phone & {
+            @extend .pl65;
+        }
+        &::-webkit-input-placeholder {
+            font-size:18px;
+            font-weight:300;
+            font-family:$myriad;
+            letter-spacing:0.016em;
+            text-transform:uppercase;
+        }
+        &::-moz-input-placeholder {
+            font-size:18px;
+            font-weight:300;
+            font-family:$myriad;
+            letter-spacing:0.016em;
+            text-transform:uppercase;
+        }
+        &-group {
+            @extend .pos-rel;
+
+            &.input-focus {
+                &:after {
+                    transform:translate3d(0, 0, 0) scale3d(1, 1, 1);
+                }
+            }
+            &:before,
+            &:after {
+                @extend .content-empty;
+                @extend .pos-bl;
+                @extend .w100p;
+                @extend .h1px;
+            }
+            &:before {
+                @extend .opacity-30;
+            }
+            &:after {
+                @extend .willChange-transform;
+                transform:translate3d(0, 0, 0) scale3d(0, 1, 1);
+                transition:transform 0.3s $cubic4021;
+            }
+        }
+        &-svg-color {
+            @extend .transition-default;
+        }
+    }
+    &__social {
+        @extend .pos-centered-v;
+        left:-110px;
+
+        &__title {
+            @extend .pos-centered-v;
+            right:144px;
+            @extend .text-uppercase;
+            @extend .fontSize-14;
+            @extend .lineHeight-20;
+            @extend .fontFamily-myriad;
+            @extend .letterSpacing-l;
+            @extend .text-center;
+            @extend .w120;
+        }
+        &__button {
+            @extend .pos-rel;
+            @extend .w48;
+            @extend .h80;
+            @extend .btn-active;
+
+            .icon {
+                @extend .pos-centered;
+            }
+        }
+        &__bracket {
+            @extend .pos-centered-v;
+            left:-82px;
+            height:570px;
+
+            &__item {
+                font-size:570px;
+                line-height:570px;
+                @extend .fontFamily-myriad;
+                @extend .fontWeight-1;
+
+                &:before {
+                    content:"{";
+                    @extend .display-block;
+                    opacity:0.26;
+                }
+            }
+        }
+    }
+    &__link {
+        @extend .cursor-pointer;
+        @extend .transition-default;
+        @extend .text-uppercase;
+        @extend .fontFamily-myriad;
+        @extend .nowrap;
+        @extend .fontSize-14;
+        @extend .letterSpacing-l;
+    }
+}
+
+@media (max-width:$w1150) {
+    .auth__social__title,
+    .auth__social__bracket {
+        display:none;
+    }
+}
+@media (max-width:$w767) {
+    .auth {
+        width:calc(100% - 36px);
+
+        &__body {
+            height:320px;
+        }
+    }
+}

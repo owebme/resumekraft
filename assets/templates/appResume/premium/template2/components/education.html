@@ -1,0 +1,23 @@
+<ux-education class="slider__item" style="background-color:{ $root.colors.education }" data-slide="education">
+
+    <div class="slider__item__container">
+        <div class="row">
+            <div class="col-md-24 slider__item__content">
+                <div class="slider__item__label -left"><span class="hidden-xs">{ $i18n("resume.medium.template.Education") }</span><span class="visible-xs">{ $store.education.getTitleById($resume.education.level) }</span><div class="slider__item__label__count">{ $resume.education.items.length }</div></div>
+                <div class="slider__item__label level -right text-uppercase hidden-xs">&mdash;&nbsp; { $store.education.getTitleById($resume.education.level) }</div>
+                <div class="row content content__scroll" data-track="box">
+                    <div class="col-xs-24 col-md-18 centered content__scroll__track">
+                        <div each={ item, i in _.sortArray($resume.education.items, "year", "desc") } no-reorder class="item animate">
+                            <h4 class="item__title">{ item.year } <span class="plr-xss">&mdash;</span> { item.speciality }</h4>
+                            <p class="item__text text highlight">{ item.title }</p>
+                            <h4 class="item__name">{ item.faculty }</h4>
+                        </div>
+                    </div>
+                    <div class="content__gradient -top" style="background-image:linear-gradient(to bottom, { $root.colors.education } 50%, { _.hexToRgb($root.colors.education, 0) });"></div>
+                    <div class="content__gradient -bottom" style="background-image:linear-gradient(to top, { $root.colors.education }, { _.hexToRgb($root.colors.education, 0) });"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ux-education>

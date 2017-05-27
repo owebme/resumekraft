@@ -1,0 +1,44 @@
+<main-slider class="slider">
+
+    <ux-photo if={ app.device.isPhone }></ux-photo>
+
+    <ux-commons></ux-commons>
+
+    <ux-education if={ $resume.education && $resume.education.items }></ux-education>
+
+    <ux-courses if={ $resume.courses && $resume.courses.items }></ux-courses>
+
+    <ux-languages if={ $resume.languages }></ux-languages>
+
+    <ux-jobs if={ $resume.jobs && $resume.jobs.items }></ux-jobs>
+
+    <ux-contacts></ux-contacts>
+
+<script>
+
+    var $ = this;
+
+    $.on("mount", function(){
+        $Sections.module("main", $);
+
+        $.slider = $$($.root);
+
+        $.slider.slick(Object.assign(_.clone($root.default), {
+            centerMode: app.device.isPhone ? true : false,
+            centerPadding: false,
+            autoplaySpeed: 5000,
+            autoplay: false,
+            infinite: true,
+            asNavFor: ".js-family-dots, .js-button-slider"
+        }));
+
+        //$.slider.slick("slickPlay");
+
+        $.slider.on("beforeChange", function(e, slick, current, next) {
+            $Sections.dots.slider.slick("slickGoTo", next);
+        })
+    });
+
+</script>
+
+</main-slider>

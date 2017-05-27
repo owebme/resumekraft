@@ -3,14 +3,14 @@
 @import 'base/reset';
 @import 'base/base';
 @import 'base/app';
-@import 'appResume/premium/fonts';
+@import 'appResume/premium/template1/base/fonts';
 @import 'base/keyframes';
 @import 'base/mixins';
 @import 'base/responsive';
 @import 'base/main';
 
 // UI elements
-@import 'appResume/premium/ui/icons';
+@import 'appResume/premium/template1/ui/icons';
 @import 'ui/basic/button';
 @import 'ui/basic/input';
 @import 'ui/basic/textarea';
@@ -45,52 +45,52 @@
 @import 'sections/sections';
 
 // Resume create premium
-@import 'appResume/premium/main';
+@import 'appResume/premium/template1/base/main';
 
 // UI elements
-@import 'appResume/premium/ui/main';
-@import 'appResume/premium/ui/fontSize';
-@import 'appResume/premium/ui/editplace';
-@import 'appResume/premium/ui/button';
-@import 'appResume/premium/ui/input';
-@import 'appResume/premium/ui/textarea';
-@import 'appResume/premium/ui/select';
-@import 'appResume/premium/ui/tags';
-@import 'appResume/premium/ui/social';
-@import 'appResume/premium/ui/hobby';
-@import 'appResume/premium/ui/editing';
-@import 'appResume/premium/ui/noise';
-@import 'appResume/premium/ui/likes';
-@import 'appResume/premium/ui/help';
-@import 'appResume/premium/ui/percentage';
-@import 'appResume/premium/ui/progress';
-@import 'appResume/premium/ui/options';
-@import 'appResume/premium/ui/firefox';
+@import 'appResume/premium/template1/ui/main';
+@import 'appResume/premium/template1/ui/fontSize';
+@import 'appResume/premium/template1/ui/editplace';
+@import 'appResume/premium/template1/ui/button';
+@import 'appResume/premium/template1/ui/input';
+@import 'appResume/premium/template1/ui/textarea';
+@import 'appResume/premium/template1/ui/select';
+@import 'appResume/premium/template1/ui/tags';
+@import 'appResume/premium/template1/ui/social';
+@import 'appResume/premium/template1/ui/hobby';
+@import 'appResume/premium/template1/ui/editing';
+@import 'appResume/premium/template1/ui/noise';
+@import 'appResume/premium/template1/ui/likes';
+@import 'appResume/premium/template1/ui/help';
+@import 'appResume/premium/template1/ui/percentage';
+@import 'appResume/premium/template1/ui/progress';
+@import 'appResume/premium/template1/ui/options';
+@import 'appResume/premium/template1/ui/firefox';
 
 // Resume control
-@import 'appResume/premium/control/fonts';
-@import 'appResume/premium/control/colors';
-@import 'appResume/premium/control/sections';
-@import 'appResume/premium/control/public';
+@import 'appResume/premium/template1/control/fonts';
+@import 'appResume/premium/template1/control/colors';
+@import 'appResume/premium/template1/control/sections';
+@import 'appResume/premium/template1/control/public';
 
 // Resume sections
-@import 'appResume/premium/sections/menu/menu';
-@import 'appResume/premium/sections/menu/sections';
-@import 'appResume/premium/sections/menu/items';
-@import 'appResume/premium/sections/nav';
-@import 'appResume/premium/sections/info';
-@import 'appResume/premium/sections/sendmail';
-@import 'appResume/premium/sections/salaryGraph';
-@import 'appResume/premium/sections/editable';
-@import 'appResume/premium/sections/contacts';
+@import 'appResume/premium/template1/sections/menu/menu';
+@import 'appResume/premium/template1/sections/menu/sections';
+@import 'appResume/premium/template1/sections/menu/items';
+@import 'appResume/premium/template1/sections/nav';
+@import 'appResume/premium/template1/sections/info';
+@import 'appResume/premium/template1/sections/sendmail';
+@import 'appResume/premium/template1/sections/salaryGraph';
+@import 'appResume/premium/template1/sections/editable';
+@import 'appResume/premium/template1/sections/contacts';
 @import 'appResume/commons/ui/textEdit';
 @import 'appResume/commons/ui/buttonSave';
 @import 'appResume/commons/sections/finish';
 
 // Resume templates
-@import 'appResume/premium/templates/colors';
-@import 'appResume/premium/templates/fonts';
-@import 'appResume/premium/templates/template1';
+@import 'appResume/premium/template1/colors';
+@import 'appResume/premium/template1/fonts';
+@import 'appResume/premium/template1/template';
 
 // states
 @import 'states/states';

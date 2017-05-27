@@ -43,7 +43,7 @@ module.exports = function(){
             'public/js/sections/jobs/*.js',
             'public/js/sections/jobs/**/*.js',
             'public/js/jobs/metrika.js',
-            'assets/js/libs/history.js/scripts/bundled/html4+html5/jquery.history.js'])
+            'assets/js/libs/history.js/scripts/bundled/html5/jquery.history.js'])
     		.pipe(concat('app.jobs.js'))
     		.pipe(uglify())
     		.pipe(gulp.dest('./public/js'));

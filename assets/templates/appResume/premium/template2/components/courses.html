@@ -1,0 +1,21 @@
+<ux-courses class="slider__item" style="background-color: { $root.colors.courses }" data-slide="courses">
+
+    <div class="slider__item__container">
+        <div class="row">
+            <div class="col-md-24 slider__item__content">
+                <div class="slider__item__label -left">{ $i18n("resume.medium.template.Courses") }<div class="slider__item__label__count">{ $resume.courses.items.length }</div></div>
+                <div class="row content content__scroll" data-track="box">
+                    <div class="col-xs-24 col-md-18 centered content__scroll__track">
+                        <div each={ item, i in _.sortArray($resume.courses.items, "year", "desc") } no-reorder class="item animate">
+                            <h4 class="item__title">{ item.year } <span class="plr-xss">&mdash;</span> { item.name }</h4>
+                            <h4 class="item__name highlight">{ item.title }</h4>
+                        </div>
+                    </div>
+                    <div class="content__gradient -top" style="background-image:linear-gradient(to bottom, { $root.colors.courses } 50%, { _.hexToRgb($root.colors.courses, 0) });"></div>
+                    <div class="content__gradient -bottom" style="background-image:linear-gradient(to top, { $root.colors.courses }, { _.hexToRgb($root.colors.courses, 0) });"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ux-courses>

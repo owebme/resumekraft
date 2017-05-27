@@ -1,41 +1,45 @@
 // base
-@import '../../assets/css/base/normalize';
-@import '../../assets/css/base/reset';
-@import '../../assets/css/base/base';
+@import 'base/normalize';
+@import 'base/reset';
+@import 'base/base';
 @import 'base/fonts';
-@import '../../assets/css/base/keyframes';
-@import '../../assets/css/base/mixins';
-@import '../../assets/css/base/responsive';
-@import '../../assets/css/base/main';
+@import 'base/keyframes';
+@import 'base/mixins';
+@import 'base/responsive';
+@import 'base/main';
+@import 'base/config';
 
 // UI elements
 @import 'mobile/ui/icons';
-@import '../../assets/css/ui/basic/button';
-@import '../../assets/css/ui/basic/input';
-@import '../../assets/css/ui/basic/textarea';
-@import '../../assets/css/ui/basic/select';
-@import '../../assets/css/ui/basic/checkbox';
-@import '../../assets/css/ui/basic/switcher';
-@import '../../assets/css/ui/basic/balloon';
-@import '../../assets/css/ui/basic/balloonError';
-@import '../../assets/css/ui/basic/loaderUser';
-@import '../../assets/css/ui/basic/spinner';
-@import '../../assets/css/ui/basic/notify';
-@import '../../assets/css/ui/basic/popup';
-@import '../../assets/css/ui/button';
-@import '../../assets/css/ui/logotype';
+@import 'ui/basic/button';
+@import 'ui/basic/input';
+@import 'ui/basic/textarea';
+@import 'ui/basic/select';
+@import 'ui/basic/checkbox';
+@import 'ui/basic/switcher';
+@import 'ui/basic/balloon';
+@import 'ui/basic/spinner';
+@import 'ui/basic/notify';
+@import 'ui/basic/popup';
+// @import '../../assets/css/ui/button';
 @import '../../assets/css/ui/photoswipe';
-@import '../../assets/css/states/fontSize';
+// @import '../../assets/css/states/fontSize';
+@import 'ui/logotype';
+@import 'ui/typography';
+@import 'ui/button';
+@import 'ui/loading';
 @import 'mobile/ui/menu';
 @import 'mobile/ui/nav';
-@import 'mobile/ui/logotype';
-@import 'mobile/ui/typography';
+@import 'mobile/ui/animations';
+// @import 'mobile/ui/typography';
 
 // main
-@import 'mobile/main';
+// @import 'mobile/main';
 
 // auth
-@import 'mobile/auth';
+@import 'sections/auth/auth';
+@import 'sections/auth/themes/dark';
+@import 'sections/auth/themes/white';
 
 // home
 @import 'mobile/home/home';
@@ -47,52 +51,52 @@
 @import 'mobile/blog/social';
 
 // jptest
-@import '../../assets/css/sections/jptest/jptest';
-@import '../../assets/css/sections/jptest/jptestEnter';
-@import '../../assets/css/sections/jptest/result/main';
-@import '../../assets/css/sections/jptest/result/columns';
-@import '../../assets/css/sections/jptest/result/skills';
-@import '../../assets/css/sections/jptest/result/humps';
-@import '../../assets/css/sections/jptest/result/graph';
-@import '../../assets/css/sections/jptest/result/specialties';
-@import '../../assets/css/sections/jptest/result/path';
-@import '../../assets/css/sections/jptest/result/finish';
+// @import '../../assets/css/sections/jptest/jptest';
+// @import '../../assets/css/sections/jptest/jptestEnter';
+// @import '../../assets/css/sections/jptest/result/main';
+// @import '../../assets/css/sections/jptest/result/columns';
+// @import '../../assets/css/sections/jptest/result/skills';
+// @import '../../assets/css/sections/jptest/result/humps';
+// @import '../../assets/css/sections/jptest/result/graph';
+// @import '../../assets/css/sections/jptest/result/specialties';
+// @import '../../assets/css/sections/jptest/result/path';
+// @import '../../assets/css/sections/jptest/result/finish';
 
 // modules
-@import '../../assets/css/modules/oScreen';
-@import '../../assets/css/modules/screens';
+// @import '../../assets/css/modules/oScreen';
+@import 'modules/screens';
 
 // Sections
-@import '../../assets/css/sections/sections';
+@import 'sections/sections';
 
 // states
-@import '../../assets/css/states/states';
-@import '../../assets/css/states/display';
-@import '../../assets/css/states/flexbox';
-@import '../../assets/css/states/pageWrap';
-@import '../../assets/css/states/position';
-@import '../../assets/css/states/overflow';
-@import '../../assets/css/states/color';
-@import '../../assets/css/states/links';
-@import '../../assets/css/states/sizes';
-@import '../../assets/css/states/text';
-@import '../../assets/css/states/image';
-@import '../../assets/css/states/padding';
-@import '../../assets/css/states/margin';
-@import '../../assets/css/states/lineHeight';
-@import '../../assets/css/states/fontWeight';
-@import '../../assets/css/states/letterSpacing';
-@import '../../assets/css/states/border';
-@import '../../assets/css/states/boxShadow';
-@import '../../assets/css/states/opacity';
-@import '../../assets/css/states/animations';
-@import '../../assets/css/states/transition';
-@import '../../assets/css/states/transform';
-@import '../../assets/css/states/zIndex';
+@import 'states/states';
+@import 'states/display';
+@import 'states/flexbox';
+@import 'states/pageWrap';
+@import 'states/position';
+@import 'states/overflow';
+@import 'states/color';
+@import 'states/links';
+@import 'states/sizes';
+@import 'states/text';
+@import 'states/padding';
+@import 'states/margin';
+@import 'states/fontSize';
+@import 'states/lineHeight';
+@import 'states/fontWeight';
+@import 'states/letterSpacing';
+@import 'states/border';
+@import 'states/boxShadow';
+@import 'states/opacity';
+@import 'states/image';
+@import 'states/transition';
+@import 'states/transform';
+@import 'states/zIndex';
 
 // states responsive
-@import '../../assets/css/states/responsive/border';
-@import '../../assets/css/states/responsive/margin';
-@import '../../assets/css/states/responsive/padding';
-@import '../../assets/css/states/responsive/position';
-@import '../../assets/css/states/responsive/text';
+@import 'states/responsive/border';
+@import 'states/responsive/position';
+@import 'states/responsive/margin';
+@import 'states/responsive/padding';
+@import 'states/responsive/text';

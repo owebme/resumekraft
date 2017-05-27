@@ -1,0 +1,254 @@
+.c-home_button {
+    @extend .display-block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 3;
+    text-align: center;
+    padding-bottom: 45px;
+    -webkit-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    transform: translateY(100%);
+    -webkit-transition: -webkit-transform .9s cubic-bezier(.4, 0, 0, 1) 1.5s;
+    transition: -webkit-transform .9s cubic-bezier(.4, 0, 0, 1) 1.5s;
+    transition: transform .9s cubic-bezier(.4, 0, 0, 1) 1.5s;
+    transition: transform .9s cubic-bezier(.4, 0, 0, 1) 1.5s, -webkit-transform .9s cubic-bezier(.4, 0, 0, 1) 1.5s;
+    pointer-events: none;
+}
+@media (max-height:600px) {
+    .c-home_button {
+        html.d-phone & {
+            padding-bottom:25px;
+        }
+    }
+}
+.c-home_button .o-button {
+    pointer-events: auto
+}
+body.is-loaded .c-home_button {
+    transform: translateY(0);
+}
+
+.o-button {
+    color: #FFF;
+    position: relative;
+    letter-spacing: -.01em;
+    font-weight: 300;
+    font-size: 0;
+    padding-right: 35px;
+    -webkit-transition: color .3s cubic-bezier(.4, 0, 0, 1);
+    transition: color .3s cubic-bezier(.4, 0, 0, 1)
+}
+
+.o-button::before {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle
+}
+
+.o-button>* {
+    display: inline-block;
+    font-size: 1rem;
+    vertical-align: middle
+}
+
+@media (max-width:699px) {
+    .o-button, .o-button::after {
+        border-radius: 30px
+    }
+    .o-button {
+        width: 100%;
+        max-width: 180px;
+        height: 60px;
+        padding-left: 65px
+    }
+}
+
+@media (min-width:700px) {
+    .o-button, .o-button::after {
+        border-radius: 35px
+    }
+    .o-button {
+        height: 70px;
+        min-width: 230px;
+        padding-left: 80px
+    }
+}
+
+@media (min-width:700px) and (max-width:999px) {
+    .o-button {
+        width: auto;
+        max-width: 300px
+    }
+}
+
+.o-button::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    @extend .bg-black;
+    @extend .scale-100;
+    -webkit-transition: opacity .15s cubic-bezier(.4, 0, 0, 1), background-color .3s cubic-bezier(.4, 0, 0, 1), -webkit-transform .3s cubic-bezier(.4, 0, 0, 1);
+    transition: opacity .15s cubic-bezier(.4, 0, 0, 1), background-color .3s cubic-bezier(.4, 0, 0, 1), -webkit-transform .3s cubic-bezier(.4, 0, 0, 1);
+    transition: transform .3s cubic-bezier(.4, 0, 0, 1), opacity .15s cubic-bezier(.4, 0, 0, 1), background-color .3s cubic-bezier(.4, 0, 0, 1);
+    transition: transform .3s cubic-bezier(.4, 0, 0, 1), opacity .15s cubic-bezier(.4, 0, 0, 1), background-color .3s cubic-bezier(.4, 0, 0, 1), -webkit-transform .3s cubic-bezier(.4, 0, 0, 1)
+}
+
+html.m-no-touch .o-button:hover::after {
+    @extend .scale-120;
+}
+
+.o-button.-nopadding {
+    padding: 0 0 0 35px
+}
+
+.o-button:-moz-focusring {
+    outline: 0
+}
+
+.o-button.-nocircle {
+    padding-left: 0
+}
+
+@media (min-width:700px) {
+    .o-button.-nocircle {
+        min-width: 180px
+    }
+}
+
+.o-button_label, .o-button_link, .o-button_link>*, .o-button_wrap {
+    display: inline-block
+}
+
+.o-button_wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden
+}
+
+.o-button_link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: -35px;
+    font-size: 0;
+    padding-left: 80px;
+    padding-right: 35px;
+    z-index: 2
+}
+
+.o-button_link::before {
+    display: inline-block;
+    height: 100%;
+    content: "";
+    vertical-align: middle
+}
+
+.o-button_link>* {
+    font-size: 1rem;
+    vertical-align: middle
+}
+
+.o-button.-nocircle .o-button_link {
+    padding-left: 35px;
+    left: 0
+}
+
+.o-button_link.-discover {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-transition: -webkit-transform .9s cubic-bezier(.4, 0, 0, 1);
+    transition: -webkit-transform .9s cubic-bezier(.4, 0, 0, 1);
+    transition: transform .9s cubic-bezier(.4, 0, 0, 1);
+    transition: transform .9s cubic-bezier(.4, 0, 0, 1), -webkit-transform .9s cubic-bezier(.4, 0, 0, 1)
+}
+
+body.is-discover .o-button_link.-discover {
+    -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    transform: translateX(-100%)
+}
+
+.o-button_label {
+    position: relative;
+    z-index: 2;
+    @extend .fontWeight-bold;
+    @extend .fontFamily-futura;
+    margin-bottom: .125em;
+    width: 100%
+}
+
+@media (max-width:699px) {
+    .o-button_label {
+        font-size: 21px !important;
+    }
+}
+
+@media (min-width:700px) {
+    .o-button_label {
+        font-size: 23px !important;
+    }
+}
+
+.o-button_slider-wrap {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden
+}
+
+.o-button_slider {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    left: 100%;
+    -webkit-transition: -webkit-transform .9s cubic-bezier(.4, 0, 0, 1);
+    transition: -webkit-transform .9s cubic-bezier(.4, 0, 0, 1);
+    transition: transform .9s cubic-bezier(.4, 0, 0, 1);
+    transition: transform .9s cubic-bezier(.4, 0, 0, 1), -webkit-transform .9s cubic-bezier(.4, 0, 0, 1)
+}
+
+body.is-discover .o-button_slider {
+    transform: translateX(-100%)
+}
+
+.o-button_slider_item {
+    position: absolute;
+    width: 100%;
+    height: 100%
+}
+
+.o-button_slider_item.slick-active {
+    z-index: 5
+}
+
+.o-button_slider_link {
+    display: block;
+    height: 100%;
+    color: #FFF;
+    font-size: 0;
+    outline: 0
+}
+
+.o-button_slider_link::before {
+    display: inline-block;
+    height: 100%;
+    content: "";
+    vertical-align: middle
+}
+
+.o-button_slider_link>* {
+    display: inline-block;
+    font-size: 1rem;
+    vertical-align: middle
+}

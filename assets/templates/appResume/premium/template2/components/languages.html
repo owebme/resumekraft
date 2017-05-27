@@ -1,0 +1,27 @@
+<ux-languages class="slider__item" style="background-color: { $root.colors.languages }" data-slide="languages">
+
+    <div class="slider__item__container">
+        <div class="row">
+            <div class="col-md-24 slider__item__content">
+                <div class="slider__item__label -left">{ $i18n("resume.medium.template.Languages") }</div>
+                <div class="row content content__scroll" data-track="box">
+                    <div class="col-xs-24 col-md-18 centered content__scroll__track">
+                        <div each={ item, i in $resume.languages.items } no-reorder class="item animate">
+                            <h4 if={ item.title == "native" } class="item__title">
+                                <span>{ $store.languages.getTitleById(item.title) }</span>
+                                <div class="item__lower highlight"><span class="plr-xss">&mdash;</span> { $store.languages.native.getTitleById(item.value) }</div>
+                            </h4>
+                            <h4 if={ item.title != "native" } class="item__title">
+                                <span>{ $store.languages.getTitleById(item.title) }</span>
+                                <div class="item__lower highlight"><span class="plr-xss">&mdash;</span> { $store.languages.select.getTitleById(item.value) }</div>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="content__gradient -top" style="background-image:linear-gradient(to bottom, { $root.colors.languages } 50%, { _.hexToRgb($root.colors.languages, 0) });"></div>
+                    <div class="content__gradient -bottom" style="background-image:linear-gradient(to top, { $root.colors.languages }, { _.hexToRgb($root.colors.languages, 0) });"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ux-languages>

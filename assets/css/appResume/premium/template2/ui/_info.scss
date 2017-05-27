@@ -1,0 +1,58 @@
+.btn-info {
+    @extend .display-block;
+    @extend .pos-tr-fixed;
+    @extend .zIndex-2;
+
+    &-item {
+        @include accelerate();
+        @extend .pos-abs;
+        top:32px;
+        right:32px;
+        @extend .w55;
+        @extend .h55;
+        @extend .userSelect-none;
+        @extend .flex-centered;
+        @extend .cursor-pointer;
+        @extend .borderRadius-circle;
+        @extend .cursor-pointer;
+        @extend .willChange-transform;
+        transition:transform .2s $cubic4001;
+
+        &:before {
+            @extend .content-empty;
+            @include abs();
+            @extend .bg-black;
+            @extend .borderRadius-circle;
+            @extend .willChange-transform;
+            transition:transform 0.3s $cubic4001;
+        }
+        html.m-no-touch &:hover {
+            &:before {
+                @extend .scale-120;
+            }
+        }
+        &:active {
+            @extend .scale-85;
+        }
+        html.d-phone & {
+            @extend .t-s;
+            @extend .r-s;
+            @extend .w38;
+            @extend .h38;
+        }
+        &-icon {
+            @extend .pos-rel;
+            @extend .display-block;
+            width:29px;
+            height:29px;
+
+            &-color {
+                @extend .fill-white;
+            }
+            html.d-phone & {
+                @extend .w26;
+                @extend .h26;
+            }
+        }
+    }
+}

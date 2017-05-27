@@ -6,7 +6,7 @@ $main__nav__height: 95px;
     @include flex("row", "space-between", "center");
     @extend .bg-white;
     @extend .zIndex-5;
-    border-bottom:1px solid $snowB;
+    border-bottom:1px solid $snow456;
 
     &[data-color="snow"]{
         &,
@@ -38,14 +38,14 @@ $main__nav__height: 95px;
             @extend .pr-l;
         }
         &__input {
-            @extend .c-steel;
+            @extend .c-black;
             @extend .w100p;
             @extend .h50;
             @extend .bg-none;
             @extend .border-none;
-            @extend .fontFamily-helvetica;
+            @extend .fontFamily-myriad;
             @extend .fontWeight-3;
-            font-size:19.5px;
+            @extend .fontSize-20;
             line-height:50px;
 
             &:focus ~ svg {

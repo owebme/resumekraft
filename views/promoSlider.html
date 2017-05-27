@@ -1,0 +1,25 @@
+{% extends "layouts/basic.html" %}
+
+{% block title %}Премиальное резюме нового формата на Resumekraft{% endblock %}
+
+{% block styles %}/public/css/style.css{% endblock %}
+
+{% block body %}
+<body id="renderSide">
+
+    <offer-premium-content></offer-premium-content>
+
+    <!--/ VENDORS /-->
+    <script src="/public/js/app.promo.build.js"></script>
+
+    <!--/ templates /-->
+    <!-- <script src="/assets/templates/sections/offers/premiumContent.html" type="riot/tag"></script> -->
+
+    <script>
+        riot.compile(function(e){
+            riot.mount("*", { site: true });
+        });
+    </script>
+
+</body>
+{% endblock %}

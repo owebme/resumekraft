@@ -34,7 +34,7 @@ blog-content-mobile {
     h5, h6 {
         @extend .fontFamily-graphik;
         @extend .fontWeight-bold;
-        @extend .c-blackLight;
+        @extend .c-slate;
         @extend .fontSize-24;
         @extend .letterSpacing--xs;
         @extend .mb-xss;
@@ -48,7 +48,7 @@ blog-content-mobile {
     strong {
         @extend .fontFamily-graphik;
         @extend .fontWeight-bold;
-        @extend .c-blackLight;
+        @extend .c-slate;
         @extend .fontSize-20;
         @extend .letterSpacing--xs;
     }
@@ -68,7 +68,7 @@ blog-content-mobile {
         @extend .pl-l;
         @extend .mt25;
         @extend .mb25;
-        @extend .c-blackLight;
+        @extend .c-slate;
         @extend .fontFamily-graphik;
         @extend .fontSize-22;
         @extend .lineHeight-32;

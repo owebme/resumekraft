@@ -1,0 +1,333 @@
+<root-main data-font="museo" class="resume template2">
+
+    <!-- <div class="screens screens-slick resume template2"></div> -->
+
+    <div class="c-home_content">
+        <div class="c-heading-label">Web-Designer, Art-director, Illustrator</div>
+        <p class="c-heading-text -words"><span>Приветствую</span><span>,</span> <span>посмотрите</span> <span>моё</span> <span>резюме.</span></p>
+    </div>
+
+    <btn-info></btn-info>
+
+    <div class="c-home_button">
+        <div class="o-button -nopadding -nocircle">
+            <span class="o-button_wrap">
+                <div onClick={ discover } onUpdate="none" class="o-button_link -discover">
+                    <span class="o-button_label">Открыть</span>
+                </div>
+            </span>
+            <span class="o-button_slider-wrap">
+                <div ref="ButtonSlider" class="o-button_slider -discover js-button-slider">
+                    <div if={ app.device.isPhone } class="o-button_slider_item">
+                        <div class="o-button_slider_link">
+                            <span class="o-button_label">Это Я ;)</span>
+                        </div>
+                    </div>
+                    <div class="o-button_slider_item">
+                        <div class="o-button_slider_link">
+                            <span class="o-button_label">Обо мне</span>
+                        </div>
+                    </div>
+                    <div class="o-button_slider_item">
+                        <div class="o-button_slider_link">
+                            <span class="o-button_label">Образование</span>
+                        </div>
+                    </div>
+                    <div class="o-button_slider_item">
+                        <div class="o-button_slider_link">
+                            <span class="o-button_label">Курсы</span>
+                        </div>
+                    </div>
+                    <div class="o-button_slider_item">
+                        <div class="o-button_slider_link">
+                            <span class="o-button_label">Языки</span>
+                        </div>
+                    </div>
+                    <div class="o-button_slider_item">
+                        <div class="o-button_slider_link">
+                            <span class="o-button_label">Карьера</span>
+                        </div>
+                    </div>
+                </div>
+            </span>
+        </div>
+    </div>
+
+    <div ref="FamilySlider" class="slider">
+        <div if={ app.device.isPhone } class="slider__item" data-slide="photo" style="background-image:url('/preview/images/prof/{ _.random(1, 42) }.jpg')"></div>
+        <div class="slider__item" style="background-color: { colors[0] }" data-slide="commons">
+            <div class="slider__item__container">
+                <div class="row">
+                    <div if={ !app.device.isPhone } class="hidden-xs col-md-10 slider__item__content">
+                        <div class="photo" style="background-image:url('/preview/images/prof/{ _.random(1, 42) }.jpg')"></div>
+                    </div>
+                    <div class="col-xs-24 col-md-14 slider__item__content">
+                        <div class="content content__scroll" data-track="default">
+                            <div class="content__scroll__track">
+                                <h1 class="title">Виктория Юртаева</h1>
+                                <h3 class="post">Web-Designer, Art-director, Illustrator</h3>
+                                <div class="salary">125.000 <span class="salary__currency">₽</span> <sup class="salary__schedule">full-time</sup></div>
+                                <div class="tag-list">
+                                    <div class="tag">Adobe Photoshop</div>
+                                    <div class="tag">InDesign</div>
+                                    <div class="tag">Illustrator</div>
+                                    <div class="tag">Sketch App</div>
+                                    <div class="tag">MS PowerPoint</div>
+                                    <div class="tag">HTML5</div>
+                                    <div class="tag">JavaScript</div>
+                                    <div class="tag">jQuery</div>
+                                    <div class="tag">UI/UX</div>
+                                </div>
+                                <p class="larger">Я графический дизайнер. В дизайне предпочитаю лаконичный стиль. В тексте — информационный. Убираю всё, что мешает увидеть суть.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slider__item" style="background-color:{ colors[1] }" data-slide="education">
+            <div class="slider__item__container">
+                <div class="row">
+                    <div class="col-md-24 slider__item__content">
+                        <div class="slider__item__label -left"><span class="hidden-xs">Образование</span><span class="visible-xs">Высшее</span><div class="slider__item__label__count">3</div></div>
+                        <div class="slider__item__label level -right hidden-xs">&mdash;&nbsp; Высшее</div>
+                        <div class="row content content__scroll" data-track="box">
+                            <div class="col-xs-24 col-md-18 centered content__scroll__track">
+                                <div class="item animate">
+                                    <h4 class="item__title c-black">2015 <span class="plr-xss">&mdash;</span> Инновационный менеджмент</h4>
+                                    <p class="item__text text">Российская академия народного хозяйства и государственной службы при Президенте РФ, Москва</p>
+                                    <h4 class="item__name c-black">Инновационно-технологического бизнеса</h4>
+                                </div>
+                                <div class="item animate">
+                                    <h4 class="item__title c-black">2015 <span class="plr-xss">&mdash;</span> Инновационный менеджмент</h4>
+                                    <p class="item__text text">Российская академия народного хозяйства и государственной службы при Президенте РФ, Москва</p>
+                                    <h4 class="item__name c-black">Инновационно-технологического бизнеса</h4>
+                                </div>
+                                <div class="item animate">
+                                    <h4 class="item__title c-black">2015 <span class="plr-xss">&mdash;</span> Инновационный менеджмент</h4>
+                                    <p class="item__text text">Российская академия народного хозяйства и государственной службы при Президенте РФ, Москва</p>
+                                    <h4 class="item__name c-black">Инновационно-технологического бизнеса</h4>
+                                </div>
+                            </div>
+                            <div class="content__gradient -top" style="background:linear-gradient(to bottom, { colors[1] } 50%, transparent);"></div>
+                            <div class="content__gradient -bottom" style="background:linear-gradient(to top, { colors[1] }, transparent);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slider__item" style="background-color: { colors[2] }" data-slide="courses">
+            <div class="slider__item__container">
+                <div class="row">
+                    <div class="col-md-24 slider__item__content">
+                        <div class="slider__item__label -left">Курсы<div class="slider__item__label__count">5</div></div>
+                        <div class="row content content__scroll" data-track="box">
+                            <div class="col-xs-24 col-md-18 centered content__scroll__track">
+                                <div class="item animate">
+                                    <h4 class="item__title c-black">2008 <span class="plr-xss">&mdash;</span> Тренинг «Эффективное руководство сотрудниками»</h4>
+                                    <h4 class="item__name">Тренинговое Агентство «Мастер-Класс», Москва</h4>
+                                </div>
+                                <div class="item animate">
+                                    <h4 class="item__title c-black">2008 <span class="plr-xss">&mdash;</span> Семинар «Эффективная рекламная деятельность фирмы»</h4>
+                                    <h4 class="item__name">Тренинговое Агентство «Мастер-Класс», Москва</h4>
+                                </div>
+                                <div class="item animate">
+                                    <h4 class="item__title c-black">2006 <span class="plr-xss">&mdash;</span> Школа Real Time</h4>
+                                    <h4 class="item__name">DIGITAL PAINTING / Painter, Москва</h4>
+                                </div>
+                            </div>
+                            <div class="content__gradient -top" style="background:linear-gradient(to bottom, { colors[2] } 50%, transparent);"></div>
+                            <div class="content__gradient -bottom" style="background:linear-gradient(to top, { colors[2] }, transparent);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slider__item" style="background-color: { colors[3] }" data-slide="languages">
+            <div class="slider__item__container">
+                <div class="row">
+                    <div class="col-md-24 slider__item__content">
+                        <div class="slider__item__label -left">Владение языками</div>
+                        <div class="row content content__scroll" data-track="box">
+                            <div class="col-xs-24 col-md-18 centered content__scroll__track">
+                                <div class="item animate">
+                                    <h4 class="item__title"><span class="c-black">Родной язык</span> <div class="item__lower"><span class="plr-xss">&mdash;</span> Русский</div></h4>
+                                </div>
+                                <div class="item animate">
+                                    <h4 class="item__title"><span class="c-black">Английский</span> <div class="item__lower"><span class="plr-xss">&mdash;</span> Могу проходить интервью</div></h4>
+                                </div>
+                                <div class="item animate">
+                                    <h4 class="item__title"><span class="c-black">Немецкий</span> <div class="item__lower"><span class="plr-xss">&mdash;</span> Не владею</div></h4>
+                                </div>
+                                <div class="item animate">
+                                    <h4 class="item__title"><span class="c-black">Французский</span> <div class="item__lower"><span class="plr-xss">&mdash;</span> Базовые знания</div></h4>
+                                </div>
+                            </div>
+                            <div class="content__gradient -top" style="background:linear-gradient(to bottom, { colors[3] } 50%, transparent);"></div>
+                            <div class="content__gradient -bottom" style="background:linear-gradient(to top, { colors[3] }, transparent);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slider__item" style="background-color:{ colors[4] }" data-slide="jobs">
+            <div class="slider__item__container">
+                <div class="row">
+                    <div class="col-md-24 slider__item__content">
+                        <div class="slider__item__label -left"><span class="hidden-xs">Работа в компаниях</span><span class="visible-xs">6 лет, 4 месяца</span><div class="slider__item__label__count">5</div></div>
+                        <div class="slider__item__label level -right hidden-xs">&mdash;&nbsp; 6 лет, 4 месяца</div>
+                        <div class="row content content__scroll" data-track="box">
+                            <div class="col-xs-24 col-md-18 centered content__scroll__track">
+                                <div class="item animate">
+                                    <h4 class="item__title c-black">2015 <span class="plr-xss">&mdash;</span> Инновационный менеджмент</h4>
+                                    <p class="item__text text">Российская академия народного хозяйства и государственной службы при Президенте РФ, Москва</p>
+                                    <h4 class="item__name c-black">Инновационно-технологического бизнеса</h4>
+                                </div>
+                                <div class="item animate">
+                                    <h4 class="item__title c-black">2015 <span class="plr-xss">&mdash;</span> Инновационный менеджмент</h4>
+                                    <p class="item__text text">Российская академия народного хозяйства и государственной службы при Президенте РФ, Москва</p>
+                                    <h4 class="item__name c-black">Инновационно-технологического бизнеса</h4>
+                                </div>
+                                <div class="item animate">
+                                    <h4 class="item__title c-black">2015 <span class="plr-xss">&mdash;</span> Инновационный менеджмент</h4>
+                                    <p class="item__text text">Российская академия народного хозяйства и государственной службы при Президенте РФ, Москва</p>
+                                    <h4 class="item__name c-black">Инновационно-технологического бизнеса</h4>
+                                </div>
+                            </div>
+                            <div class="content__gradient -top" style="background:linear-gradient(to bottom, { colors[4] } 50%, transparent);"></div>
+                            <div class="content__gradient -bottom" style="background:linear-gradient(to top, { colors[4] }, transparent);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="c-dots -horizontal">
+        <div ref="FamilyDots" class="c-dots_list js-family-dots">
+            <div if={ app.device.isPhone } class="c-dots_item">
+                <button class="c-dots_link" type="button">
+                    <span class="c-dots_dot"></span>
+                </button>
+            </div>
+            <div class="c-dots_item">
+                <button class="c-dots_link" type="button">
+                    <span class="c-dots_dot"></span>
+                </button>
+            </div>
+            <div class="c-dots_item">
+                <button class="c-dots_link" type="button">
+                    <span class="c-dots_dot"></span>
+                </button>
+            </div>
+            <div class="c-dots_item">
+                <button class="c-dots_link" type="button">
+                    <span class="c-dots_dot"></span>
+                </button>
+            </div>
+            <div class="c-dots_item">
+                <button class="c-dots_link" type="button">
+                    <span class="c-dots_dot"></span>
+                </button>
+            </div>
+            <div class="c-dots_item">
+                <button class="c-dots_link" type="button">
+                    <span class="c-dots_dot"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    $root = this;
+
+    $$ = window.jQuery || window.Zepto;
+
+    this.colors = ['#3BADFF', '#FF6F6F', '#B484F7', '#06D6B3', '#FF9B3B', '#FA99D6', '#FFC741'];
+
+    //this.colors = ['#9471DB', '#4D71DB', '#FFB84D', '#B871B8', '#71B84D', '#FFDB71', '#4DB8B8', '#4DB8DB', '#DB94DB', '#FFACC5', '#FF944D', '#B8DB4D', '#FF7194', '#6AD19F'];
+
+    //this.colors = ['rgb(248, 167, 36)', 'rgb(2, 154, 228)', 'rgb(0, 171, 192)', 'rgb(65, 65, 65)', 'rgb(229, 57, 53)', 'rgb(119, 143, 155)', 'rgb(125, 86, 193)', 'rgb(91, 106, 191)', 'rgb(103, 158, 55)', 'rgb(55, 141, 59)', 'rgb(235, 63, 121)', 'rgb(140, 109, 98)', 'rgb(255, 111, 66)', 'rgb(29, 135, 228)', 'rgb(0, 136, 122)', 'rgb(169, 0, 255)'];
+
+    this.on("mount", function(){
+        $afterlag.run(function(){
+            $.default = {
+                arrows: false,
+                speed: app.device.isPhone ? 600 : 900,
+                infinite: false,
+                pauseOnHover: false,
+                cssEase: app.device.isPhone ? "cubic-bezier(0.1, 0.57, 0.1, 1)" : "cubic-bezier(0.4, 0, 0, 1)"
+            };
+            $.FamilySlider = $$($root.refs.FamilySlider);
+            $.FamilySlider.slick(Object.assign(_.clone($.default), {
+                centerMode: app.device.isPhone ? true : false,
+                centerPadding: false,
+                autoplaySpeed: 5000,
+                autoplay: false,
+                infinite: true,
+                asNavFor: ".js-family-dots, .js-button-slider"
+            }));
+
+            //$.FamilySlider.slick("slickPlay");
+
+            $.scope = $$($root.root);
+
+            $afterlag.run(function(){
+                $.scope.find(".content__scroll").each(function(){
+                    var content = new app.plugins.scroll.content(this);
+                    content.init();
+                });
+            });
+
+            $.FamilySlider.on("beforeChange", function(a, b, c, d) {
+                $.FamilyDots.slick("slickGoTo", d);
+            })
+
+            $.FamilyDots = $$($root.refs.FamilyDots);
+            $.FamilyDots.slick(Object.assign(_.clone($.default), {
+                slidesToShow: true,
+                focusOnSelect: true,
+                centerMode: true,
+                variableWidth: true,
+                draggable: false,
+                swipe: false,
+                asNavFor: ".slider, .js-button-slider"
+            }));
+
+            $.ButtonSlider = $$($root.refs.ButtonSlider);
+            $.ButtonSlider.slick(Object.assign(_.clone($.default), {
+                draggable: false,
+                swipe: false,
+                asNavFor: ".slider"
+            }));
+
+            if (!app.$dom.body.hasClass("is-loaded")){
+                $afterlag.xl(function(){
+                    app.$dom.body.addClass("is-loaded");
+
+                    $.slider = $.scope.find(".slider");
+
+                    $.slider.one("click", function(){
+                        $root.discover();
+                    });
+                });
+            }
+            else {
+                if (app.device.isPhone){
+                    $.FamilySlider.slick("slickGoTo", 1);
+                }
+            }
+        });
+
+        new app.plugins.scroll.refreshFix($root.root);
+    });
+
+    this.discover = function(){
+        app.$dom.body.addClass("is-discover");
+        $.slider.off("click");
+    };
+
+</script>
+
+</root-main>

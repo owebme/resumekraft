@@ -21,6 +21,8 @@ $blogGrid_size_sm_height: 270px;
 }
 
 section-blog {
+    @extend .bg-snow7;
+    
     .loading {
         &[data-active="true"]{
             transition:all 0.2s $cubic215 0.1s;

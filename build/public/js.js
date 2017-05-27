@@ -15,6 +15,7 @@ module.exports = function(){
             'assets/js/libs/circliful/js/jquery.circliful.js',
     		'assets/js/libs/afterlag-js/dist/afterlag.min.js',
     		'assets/js/libs/imagesloaded/imagesloaded.pkgd.min.js',
+            'assets/js/libs/waves/waves.min.js',
     		'assets/js/libs/store.min.js'])
     		.pipe(concat('libs.js'))
     		.pipe(uglify())
@@ -56,19 +57,17 @@ module.exports = function(){
             'assets/js/plugins/scroll/scroll.Fix.js',
             'assets/js/plugins/scroll/scroll.Animate.js',
             'assets/js/plugins/scroll/scroll.Parallax.js',
-            'assets/js/libs/skycons/skycons.js',
-            'public/js/sections/*.js'])
+            'assets/js/plugins/scroll/scroll.Content.js',
+            'public/js/sections/*.js',
+            'assets/js/libs/history.js/scripts/bundled/html5/jquery.history.js'])
     		.pipe(concat('app.js'))
     		.pipe(uglify())
     		.pipe(gulp.dest('./public/js'));
     });
 
     gulp.task('public.templates', function() {
-    	return gulp.src(['public/templates/commons/modules/auth/auth.tag',
-            'public/templates/commons/modules/auth/authSocial.tag',
-            'public/templates/commons/modules/auth/forms/signIn.tag',
-            'public/templates/commons/modules/auth/forms/signUp.tag',
-            'public/templates/commons/modules/auth/forms/remember.tag',
+    	return gulp.src(['public/templates/commons/modules/auth/*.tag',
+            'public/templates/commons/modules/auth/**/*.tag',
             'public/templates/default/blog/blogGrid.tag',
             'assets/templates/modules/oScreenLoader.html',
             'assets/templates/v3/modules/notify.html',

@@ -14,8 +14,16 @@ module.exports = function(){
         }
     });
 
+    app.get(['/auth/signin', '/auth/signup', '/auth/remember'], function(req, res) {
+        res.render('index', {
+            section: 'auth',
+            content: '<section-auth data-theme="' + (req.url.match(/signup/) ? 'white' : 'dark') + '"></section-auth>',
+            device: req.device.type,
+            isMobile: req.device.isMobile
+        });
+    });
     app.get('/auth/', function(req, res) {
-        res.redirect(301, '/?signin');
+        res.redirect(301, '/auth/signin');
     });
     app.get('/remember/', function(req, res) {
         res.redirect(301, '/?signin');
@@ -65,6 +73,13 @@ module.exports = function(){
     app.get('/private/resume/:alias', app.checkAuth('/?signin'), app.controllers.resume("editing"));
     app.get('/resume/:alias', app.controllers.resume("view"));
 
+    app.get('/premium/slider', function(req, res) {
+        res.render('premiumSlider', {
+            title: app.config.get('title:premium'),
+            device: req.device.type,
+            isMobile: req.device.isMobile
+        });
+    });
     app.get('/premium/', function(req, res) {
         if (req.device.type == "phone"){
             res.redirect(302, '/');
@@ -94,7 +109,7 @@ module.exports = function(){
             res.redirect(302, '/');
         }
         else {
-            res.render('premiumSlider', {
+            res.render('promoSlider', {
                 device: req.device.type
             });
         }

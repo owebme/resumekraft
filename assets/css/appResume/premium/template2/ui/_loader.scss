@@ -1,0 +1,24 @@
+.o-loader {
+    position: fixed;
+    animation: background-color 1.5s cubic-bezier(.4, 0, 0, 1) infinite;
+    transition: opacity .6s cubic-bezier(.4, 0, 0, 1);
+    z-index: 2000
+}
+
+@keyframes background-color {
+    0%, 100%, 5%, 95% {
+        background-color: #2D68C4
+    }
+    15%, 25% {
+        background-color: #101010
+    }
+    35%, 45% {
+        background-color: #E5554F
+    }
+    55%, 65% {
+        background-color: #EBBC4E
+    }
+    75%, 85% {
+        background-color: #9DB0AC
+    }
+}

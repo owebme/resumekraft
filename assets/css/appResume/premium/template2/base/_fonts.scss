@@ -1,0 +1,29 @@
+@import 'fonts/Gotham/style';
+@import 'fonts/Museo/style';
+@import 'fonts/Futura/style';
+@import 'fonts/Proxima/style';
+@import 'fonts/Myriad/style';
+@import 'fonts/HelveticaNeue/style';
+@import 'fonts/Icons/hobby/style';
+
+.fontFamily-gotham {
+    font-family:$gotham;
+}
+.fontFamily-proxima {
+    font-family:$proxima;
+}
+.fontFamily-myriad {
+    font-family:$myriad;
+}
+.fontFamily-museo {
+    font-family:$museo;
+}
+.fontFamily-futura {
+    font-family:$futura;
+}
+.fontFamily-helvetica {
+    font-family:$helvetica;
+}
+.fontFamily-default {
+    font-family:$systemFont;
+}

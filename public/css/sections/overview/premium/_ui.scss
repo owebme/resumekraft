@@ -1,13 +1,13 @@
-$c_red: #d93663;
-$c_orange: #ea7f07;
-$c_green: #74b027;
-$c_emerald: #0bb5b7;
 $c_blue: #265cdc;
 $c_blueLight: #0084ff;
+$c_green: #74b027;
+$c_emerald: #0bb5b7;
+$c_pink: #ff7272;
+$c_red: #d93663;
+$c_brown: #c1a16b;
+$c_orange: #ea7f07;
 $c_violet: #5856d6;
 $c_violetLight: #ab81cd;
-$c_brown: #c1a16b;
-$c_pink: #ff7272;
 
 @each $title, $color in (primary: $primary, blue: $c_blue, blueLight: $c_blueLight, green: $c_green, emerald: $c_emerald, pink: $c_pink, orange: $c_orange, violetLight: $c_violetLight, slate: $slate){
     .boxShadow-3d-#{$title} {
