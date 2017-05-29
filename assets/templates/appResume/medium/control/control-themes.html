@@ -1,0 +1,21 @@
+<control-themes class="control__item" data-item="themes">
+
+    <div class="control__item__label">Тема</div>
+    <div class="select select-xl">
+        <select onChange={ onSelect }>
+            <option each={ item in $store.themes.getItems() } no-reorder value={ item._id } selected={ $State.get("theme") == item._id }>{ item.title }</option>
+        </select>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.onSelect = function(e){
+        $State.select("theme").set(e.target.value);
+        $.parent.update();
+    };
+
+</script>
+
+</control-themes>

@@ -1,0 +1,205 @@
+@each $title in (16, 17, 24, 28, 32, 36, 40, 48){
+    .fontSize-#{$title} {
+        @if $title == 16 {
+            font-size:16px;
+
+            #app[data-font="gotham"] & {
+                font-size:14.5px;
+            }
+        }
+        @if $title == 17 {
+            font-size:17px;
+
+            #app[data-font="gotham"] & {
+                font-size:15.5px;
+            }
+        }
+        @if $title == 24 {
+            font-size:24px;
+            line-height:28px;
+
+            #app[data-font="futura"] & {
+                html.d-phone & {
+                    font-size:24px;
+                    line-height:25px;
+                    letter-spacing:-0.016em;
+                }
+            }
+            #app[data-font="myriad"] &,
+            #app[data-font="strict"] &,
+            #app[data-font="proxima"] & {
+                html.d-phone & {
+                    font-size:23px;
+                    line-height:25px;
+                }
+            }
+            #app[data-font="gotham"] &,
+            #app[data-font="museo"] & {
+                font-size:22px;
+                line-height:26px;
+                letter-spacing:-0.016em;
+
+                html.d-phone & {
+                    font-size:21px;
+                    line-height:24px;
+                    letter-spacing:-0.01em;
+                }
+            }
+            #app[data-font="helvetica"] & {
+                font-size:21px;
+                line-height:25px;
+                letter-spacing:-0.008em;
+
+                html.d-phone & {
+                    font-size:20px;
+                    line-height:24px;
+                    letter-spacing:0;
+                }
+            }
+        }
+        @if $title == 28 {
+            font-size:28px;
+            line-height:34px;
+            letter-spacing:-0.016em;
+
+            html.d-phone &,
+            html.d-tablet & {
+                font-size:26px;
+                line-height:28px;
+                letter-spacing:-0.012em;
+            }
+            #app[data-font="strict"] & {
+                html.d-phone &,
+                html.d-tablet & {
+                    font-size:24px;
+                }
+            }
+            #app[data-font="gotham"] & {
+                letter-spacing:-0.024em;
+            }
+            #app[data-font="gotham"] &,
+            #app[data-font="museo"] & {
+                font-size:26px;
+                line-height:32px;
+                letter-spacing:-0.02em;
+
+                html.d-phone &,
+                html.d-tablet & {
+                    font-size:24px;
+                    line-height:28px;
+                    letter-spacing:-0.016em;
+                }
+            }
+            #app[data-font="helvetica"] & {
+                font-size:24px;
+                line-height:30px;
+
+                html.d-phone &,
+                html.d-tablet & {
+                    font-size:24px;
+                    line-height:27px;
+                    letter-spacing:-0.008em;
+                }
+            }
+        }
+        @if $title == 32 {
+            font-size:32px;
+            line-height:38px;
+            letter-spacing:-0.016em;
+
+            #app[data-font="strict"] & {
+                html.d-phone & {
+                    font-size:30px;
+                    line-height:38px;
+                }
+            }
+            #app[data-font="gotham"] & {
+                letter-spacing:-0.024em;
+            }
+            #app[data-font="gotham"] &,
+            #app[data-font="museo"] &,
+            #app[data-font="helvetica"] & {
+                font-size:30px;
+                line-height:36px;
+            }
+        }
+        @if $title == 36 {
+            font-size:36px;
+            line-height:42px;
+            letter-spacing:-0.016em;
+
+            #app[data-font="gotham"] & {
+                letter-spacing:-0.024em;
+            }
+            #app[data-font="gotham"] &,
+            #app[data-font="museo"] & {
+                font-size:34px;
+                line-height:40px;
+            }
+            #app[data-font="helvetica"] & {
+                font-size:34px;
+                line-height:40px;
+
+                html.d-phone & {
+                    font-size:30px;
+                    line-height:36px;
+                }
+            }
+        }
+        @if $title == 40 {
+            font-size:40px;
+            line-height:46px;
+            letter-spacing:-0.016em;
+
+            #app[data-font="gotham"] & {
+                letter-spacing:-0.024em;
+            }
+            #app[data-font="gotham"] &,
+            #app[data-font="museo"] & {
+                font-size:36px;
+                line-height:42px;
+            }
+            #app[data-font="helvetica"] & {
+                font-size:36px;
+                line-height:42px;
+            }
+        }
+        @if $title == 48 {
+            font-size:48px;
+            line-height:54px;
+            letter-spacing:-0.02em;
+
+            html.d-tablet & {
+                font-size:44px;
+                line-height:50px;
+            }
+            html.d-phone & {
+                font-size:40px;
+                line-height:40px;
+                letter-spacing:-0.016em;
+            }
+            #app[data-font="gotham"] & {
+                letter-spacing:-0.032em;
+            }
+            #app[data-font="gotham"] &,
+            #app[data-font="museo"] & {
+                font-size:44px;
+                line-height:50px;
+
+                html.d-phone & {
+                    font-size:38px;
+                    line-height:38px;
+                }
+            }
+            #app[data-font="helvetica"] & {
+                font-size:40px;
+                line-height:46px;
+
+                html.d-phone & {
+                    font-size:36px;
+                    line-height:36px;
+                }
+            }
+        }
+    }
+}

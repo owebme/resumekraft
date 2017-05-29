@@ -1,0 +1,16 @@
+@each $icon in (
+    check_white
+){
+    .ui-icon-#{$icon} {
+        background:url('/assets/images/ui/ui-#{$icon}.svg') no-repeat 0 0 / cover;
+    }
+}
+@mixin ui-icon($icon, $width: false, $height: false) {
+    @if $width {
+        width:#{$width};
+    }
+    @if $height {
+        height:#{$height};
+    }
+    @extend .ui-icon-#{$icon};
+}

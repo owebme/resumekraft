@@ -1,0 +1,126 @@
+body > #app {
+    &[data-theme="cosmo"]{
+        .slider__item {
+            background-color:$cosmo !important;
+        }
+        .content__gradient {
+            &.-top {
+                background-image:linear-gradient(to bottom, $cosmo 50%, rgba($cosmo,0)) !important;
+            }
+            &.-bottom {
+                background-image:linear-gradient(to top, $cosmo, rgba($cosmo,0)) !important;
+            }
+        }
+    }
+    &[data-theme="gray"]{
+        .slider__item {
+            background-color:$slate !important;
+        }
+        .content__gradient {
+            &.-top {
+                background-image:linear-gradient(to bottom, $slate 50%, rgba($slate,0)) !important;
+            }
+            &.-bottom {
+                background-image:linear-gradient(to top, $slate, rgba($slate,0)) !important;
+            }
+        }
+    }
+    &[data-theme="cosmo"],
+    &[data-theme="gray"]{
+        .bg-black {
+            background-color:#121212;
+        }
+        .slider__item {
+            @extend .c-white;
+
+            &__label,
+            .highlight,
+            .text,
+            .larger,
+            .item__label {
+                color:#c8c8c8;
+            }
+            &__label {
+                html.d-no-phone & {
+                    &.-right {
+                        @extend .c-white;
+                    }
+                }
+                &__count {
+                    @extend .c-blackDark;
+                    @extend .fontWeight-normal;
+                    @extend .ml2;
+                    @extend .bg-snow;
+                }
+            }
+            &[data-slide="commons"]{
+                .title {
+                    @extend .c-snow;
+                }
+                .post {
+                    &:before {
+                        @extend .opacity-25;
+                        background:linear-gradient(to right, $white 70%, rgba($white,0));
+                    }
+                }
+                .salary {
+                    @extend .c-snow;
+
+                    &__schedule {
+                        @extend .c-black;
+                        @extend .bg-snow;
+                    }
+                }
+            }
+            &[data-slide="contacts"]{
+                a, a:hover {
+                    @extend .c-white;
+                }
+                path {
+                    @extend .fill-white;
+                }
+                .divider:before {
+                    @extend .opacity-25;
+
+                    html.d-no-phone & {
+                        background-image:linear-gradient(to right, rgba($white,0), $white, $white, $white, $white, rgba($white,0));
+                    }
+                    html.d-phone & {
+                        background-image:linear-gradient(to right, $white 75%, rgba($white,0));
+                    }
+                }
+            }
+            .content__scroll {
+                &[data-track="default"]{
+                    .iScrollIndicator {
+            		   background-color:#ddd;
+                    }
+                }
+                &[data-track="box"]{
+                    .iScrollIndicator {
+                        right:-4px;
+                        width:4px !important;
+                        height:20px !important;
+                        @extend .borderRadius-none;
+                        background-color:#eee;
+
+                        &:hover {
+                            @extend .bg-white;
+                        }
+                        &:before {
+                            right:1px;
+                        }
+                        &:after {
+                            @extend .display-none;
+                        }
+                    }
+                }
+            }
+        }
+        .c-dots_dot {
+            &:before {
+                border-width:2px;
+            }
+        }
+    }
+}

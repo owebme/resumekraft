@@ -1,0 +1,85 @@
+.o-spinner-wrap {
+    @extend .display-block;
+    @include abs(fixed);
+    @extend .opacity-0;
+    @extend .zIndex-100;
+    @extend .visibility-hidden;
+    @extend .pointerEvents-none;
+    transition:opacity .3s $cubic4001 .3s, visibility 0s .3s;
+
+    &[data-active="true"]{
+        &,
+        .o-spinner:before,
+        .o-spinner_axis {
+            transition-delay:.6s;
+        }
+        @extend .opacity-100;
+        @extend .visibility-visible;
+        @extend .pointerEvents-all;
+
+        .o-spinner:before {
+            @extend .scale-100;
+        }
+        .o-spinner_axis {
+            @extend .opacity-100;
+        }
+    }
+}
+.o-spinner {
+    @extend .pos-fixed;
+    top:50%;
+    left:50%;
+
+    &:before {
+        @extend .display-block;
+        @extend .w100p;
+        @extend .h100p;
+        @extend .borderRadius-circle;
+        @extend .bg-white;
+        @extend .scale-0;
+        @extend .willChange-transform;
+        transition:transform .3s $cubic4001;
+    }
+    &_axis {
+        @include abs_50(20, 20);
+        @extend .opacity-0;
+        @extend .willChange-opacity;
+        animation:spin .6s steps(100, end) infinite;
+        transition:opacity .15s $cubic4001;
+    }
+    &_container {
+        @extend .overflow-hidden;
+        @extend .w50p;
+        @extend .h50p;
+    }
+    &_inner {
+        width:200%;
+        height:200%;
+        border:2px solid $black;
+        border-radius:100%;
+    }
+}
+@media (max-width:699px) {
+    .o-spinner {
+        margin-top: -20px;
+        margin-left: -20px;
+        width: 40px;
+        height: 40px
+    }
+}
+@media (min-width:700px) {
+    .o-spinner {
+        margin-top: -25px;
+        margin-left: -25px;
+        width: 50px;
+        height: 50px
+    }
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

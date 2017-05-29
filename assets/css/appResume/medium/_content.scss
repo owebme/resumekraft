@@ -1,0 +1,216 @@
+.slider__item {
+    @extend .display-block;
+    @extend .c-black;
+
+    &__container {
+        @extend .container;
+
+        html.d-no-phone & {
+            @extend .pos-centered;
+        }
+        html.d-phone & {
+            @include abs();
+        }
+    }
+    &__content {
+        html.d-no-phone & {
+            @extend .h100v;
+        }
+        html.d-no-phone & {
+            max-height:750px;
+        }
+        html.d-phone & {
+            @include abs();
+            @extend .pl25;
+            padding-right:18px;
+        }
+        .item {
+            @extend .mb-l;
+
+            &__lower {
+                @extend .mt4;
+                @extend .ml-m;
+
+                html.d-phone & {
+                    @extend .mt-xxs;
+                }
+            }
+            &__text {
+                @extend .mt3;
+                @extend .whiteSpace-preLine;
+            }
+            &__name {
+                @extend .mt3;
+
+                html.d-phone & {
+                    @extend .mt4;
+                }
+                &.-padding {
+                    @extend .pt3;
+                    @extend .pb4;
+                }
+            }
+            &__label {
+                font-size:14px;
+                @extend .fontFamily-futura;
+                @extend .text-uppercase;
+            }
+        }
+    }
+    &__label {
+        @extend .f-primary;
+        @extend .fontWeight-bold;
+        @extend .zIndex-2;
+
+        html.d-no-phone & {
+            @extend .pos-abs;
+            @extend .t50;
+        }
+        &.-left {
+            html.d-no-phone & {
+                @extend .l-xss;
+                @extend .fontSize-40;
+            }
+            html.d-phone & {
+                @extend .pos-rel;
+                @extend .display-inlineBlock;
+                @extend .fontSize-32;
+                @extend .mt-m;
+            }
+        }
+        &.-right {
+            @extend .r-xl;
+            @extend .pt-xxs;
+
+            html.d-no-phone & {
+                @extend .fontSize-32;
+            }
+            html.d-phone & {
+                @extend .fontSize-28;
+                @extend .pt-m;
+            }
+        }
+        &__count {
+            @extend .flex-centered;
+            @extend .pos-abs;
+            @extend .l100p;
+            @extend .t--xxs;
+            width:29px;
+            height:29px;
+            @extend .bg-black;
+            @extend .c-white;
+            @extend .borderRadius-circle;
+            @extend .fontSize-17;
+            @extend .pt2;
+        }
+    }
+    .age {
+        @extend .flex-centered;
+        @extend .plr-xs;
+        @extend .h30;
+        @extend .bg-black;
+        @extend .c-white;
+        font-size:17px;
+        line-height:1;
+        @extend .fontWeight-bold;
+        @extend .fontFamily-futura;
+        @extend .borderRadius-xxxxxl;
+    }
+    .text {
+        html.d-no-phone & {
+            font-size:20px;
+            line-height:28px;
+        }
+        html.d-phone & {
+            font-size:19px;
+            line-height:27px;
+        }
+        &.-reduce {
+            html.d-no-phone &,
+            html.d-phone & {
+                font-size:18px;
+                line-height:29px;
+            }
+        }
+    }
+    .larger {
+        font-size:25px;
+        line-height:40px;
+
+        html.d-tablet &,
+        html.d-phone & {
+            font-size:23px;
+            line-height:38px;
+        }
+    }
+    h1, h2, h3, h4 {
+        @extend .f-primary;
+        @extend .fontWeight-bold;
+    }
+    h1 {
+        @extend .fontSize-48;
+    }
+    h2 {
+        @extend .fontSize-36;
+    }
+    h3 {
+        @extend .fontSize-28;
+    }
+    h4 {
+        @extend .fontSize-24;
+    }
+    &__border {
+        @extend .display-none;
+
+        &:before,
+        &:after {
+            @extend .content-empty;
+            @extend .pos-abs;
+            @extend .bg-white;
+            @extend .willChange-transform;
+            transition:transform 0.6s $cubic4001 0.6s;
+        }
+        &.-h {
+            &:before,
+            &:after {
+                @extend .r0;
+                @extend .l0;
+                @extend .h8px;
+                transform:scaleY(0);
+
+                .slick-active & {
+                    transform:scaleY(1);
+                }
+            }
+            &:before {
+                @extend .t0;
+                transform-origin:center top;
+            }
+            &:after {
+                @extend .b0;
+                transform-origin:center bottom;
+            }
+        }
+        &.-v {
+            &:before,
+            &:after {
+                @extend .t0;
+                @extend .b0;
+                @extend .w8px;
+                transform:scaleX(0);
+
+                .slick-active & {
+                    transform:scaleX(1);
+                }
+            }
+            &:before {
+                @extend .l0;
+                transform-origin:center left;
+            }
+            &:after {
+                @extend .r0;
+                transform-origin:center right;
+            }
+        }
+    }
+}

@@ -1,0 +1,45 @@
+body > #app {
+    &[data-theme="colorful"]{
+        .slider__item__label,
+        .highlight {
+            @extend .c-white;
+        }
+    }
+    &[data-theme^="#"]{
+        .slider__item__label,
+        .highlight {
+            @extend .c-white;
+        }
+        .slider__item {
+            &[data-slide="contacts"]{
+                path {
+                    @extend .fill-white;
+                }
+                .relocation {
+                    .item__label {
+                        @extend .c-black;
+                        @extend .fontWeight-bold;
+                    }
+                    .item__name {
+                        @extend .c-white;
+                    }
+                }
+            }
+        }
+    }
+    @each $color in ($blue, $blueLight, $green, $emerald, $orange, $red, $violet, $violetLight, $brown, $pink){
+        &[data-theme="#{$color}"]{
+            .slider__item {
+                background-color:$color !important;
+            }
+            .content__gradient {
+                &.-top {
+                    background-image:linear-gradient(to bottom, $color 50%, rgba($color,0)) !important;
+                }
+                &.-bottom {
+                    background-image:linear-gradient(to top, $color, rgba($color,0)) !important;
+                }
+            }
+        }
+    }
+}

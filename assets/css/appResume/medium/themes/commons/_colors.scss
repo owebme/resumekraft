@@ -1,0 +1,25 @@
+@each $title, $color in (black: $black, blackDark: $blackDark, steel: $steel, slate: $slate, gray: $gray, smoke: $smoke, smokeDark: $smokeDark, smokeDarken: $smokeDarken, snow: $snow, white: $white){
+    .bg-#{$title} {
+        background-color:$color;
+    }
+    .c-#{$title} {
+        color:$color;
+    }
+    .fill-#{$title} {
+        fill:$color;
+    }
+    .borderColor-#{$title} {
+        border-color:$color;
+    }
+    .boxShadow-#{$title} {
+        box-shadow:0 0 0 1px $color;
+    }
+    .boxShadowInset-#{$title} {
+        box-shadow:inset 0 0 0 1px $color;
+    }
+    svg[fill-color="#{$title}"]{
+        path, rect, polygon, circle {
+            fill:$color;
+        }
+    }
+}

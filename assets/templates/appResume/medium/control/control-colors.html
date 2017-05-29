@@ -1,0 +1,16 @@
+<control-colors class="control__item" data-item="colors">
+
+    <div class="control__item__label">Цвет</div>
+    <div class="control__color__items">
+        <div onClick={ onSelect } each={ item in $store.colors.getItems() } no-reorder class="control__color__item" style="background-color:{ item._id }" data-active={ $State.get("color") == item._id } data-ripple></div>
+    </div>
+
+<script>
+
+    this.onSelect = function(e){
+        $State.select("color").set(this.item._id);
+    };
+
+</script>
+
+</control-colors>

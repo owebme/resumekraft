@@ -1,0 +1,15 @@
+.slider__item {
+    &[data-slide="photo"]{
+        @extend .bg-cover;
+
+        html.d-phone body:not(.is-discover) & {
+            @extend .scale-95;
+        }
+        .age {
+            @extend .pos-abs;
+            @extend .t-s;
+            @extend .l-s;
+            @extend .fontWeight-normal;
+        }
+    }
+}

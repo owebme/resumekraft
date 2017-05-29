@@ -1,0 +1,76 @@
+{% extends "layouts/basic.html" %}
+
+{% block title %}{% endblock %}
+
+{% block styles %}/assets/css/medium.css{% endblock %}
+
+{% block body %}
+<body class="is-loaded is-discover">
+
+    <div class="o-loader"></div>
+
+    <root-main id="app"></root-main>
+
+    {% if device != 'phone' %}
+    <control-panel></control-panel>
+    <control-opener></control-opener>
+    <prof-opener></prof-opener>
+    <prof-list></prof-list>
+    <ui-spinner></ui-spinner>
+    {% endif %}
+
+    <!--/ VENDORS /-->
+    <script src="/assets/js/medium/libs.js"></script>
+
+    <!--/ templates /-->
+    <script src="/assets/templates/appResume/medium/root.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-city.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-feedback.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-phone.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-email.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-skype.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-colors.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/medium/sections/btn-info.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/medium/sections/main-slider.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/medium/sections/button-slider.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/medium/sections/dots-slider.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/medium/sections/ui-spinner.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/medium/control/control-opener.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/medium/control/control-panel.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/medium/control/control-themes.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/medium/control/control-colors.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/medium/control/control-fonts.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/medium/control/control-lang.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/medium/choose/prof-opener.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/medium/choose/prof-list.html" type="riot/tag"></script>
+
+    <!--/ components /-->
+    <script src="/assets/templates/appResume/medium/components/discover.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/medium/components/photo.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/medium/components/commons.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/medium/components/education.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/medium/components/courses.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/medium/components/languages.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/medium/components/jobs.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/medium/components/contacts.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/medium/components/social.html" type="riot/tag"></script>
+
+    <!--/ JS components /-->
+    <script src="/assets/js/medium/app.js"></script>
+    <script src="/assets/js/store/resume/premium/fonts.js"></script>
+    <script src="/assets/js/store/resume/commons/resume.js"></script>
+    <script src="/assets/js/store/resume/premium/resume.demo.js"></script>
+    <script src="/assets/js/medium/config.js"></script>
+
+    {% if resume %}
+        <script>
+            app.json = {};
+            app.json.ip = "{{ ip }}";
+            app.json.resume = {{ resume | safe }};
+        </script>
+    {% endif %}
+
+    <script src="/assets/js/medium/init.js"></script>
+
+</body>
+{% endblock %}

@@ -1,0 +1,403 @@
+@mixin prof_xs {
+    @extend .w44;
+    @extend .h44;
+
+    .prof__item__photo__inner {
+        &:hover,
+        &[data-active="true"] {
+            @extend .scale-170;
+        }
+    }
+}
+@mixin prof_s {
+    @extend .w56;
+    @extend .h56;
+
+    .prof__item__photo__inner {
+        &:hover,
+        &[data-active="true"] {
+            @extend .scale-160;
+        }
+    }
+}
+@mixin prof_m {
+    @extend .w64;
+    @extend .h64;
+
+    .prof__item__photo__inner {
+        &:hover,
+        &[data-active="true"] {
+            @extend .scale-150;
+        }
+    }
+}
+@mixin prof_l {
+    @extend .w70;
+    @extend .h70;
+
+    .prof__item__photo__inner {
+        &:hover,
+        &[data-active="true"] {
+            @extend .scale-140;
+        }
+    }
+}
+@mixin prof_xl {
+    @extend .w80;
+    @extend .h80;
+
+    .prof__item__photo__inner {
+        &:hover,
+        &[data-active="true"] {
+            @extend .scale-120;
+        }
+    }
+}
+.prof {
+    &__title {
+        @extend .flex-centered;
+        @extend .pos-abs;
+        @extend .t--30;
+        @extend .l50p;
+        @extend .c-white;
+        @extend .bg-black;
+        @extend .pl35;
+        @extend .pr35;
+        @extend .pt-l;
+        width:300px;
+        padding-bottom:17px;
+        font-size:20px;
+        @extend .fontFamily-futura;
+        @extend .pointerEvents-all;
+        @extend .hidden-md;
+        @extend .hidden-sm;
+        transform:translate3d(-50%, -100%, 0);
+        border-radius:25px 25px 50px 50px;
+        transition:transform 0.9s $cubic4001;
+
+        &__slider {
+            @extend .w100p;
+            @extend .h100p;
+            @extend .l100p;
+            transform:translateX(-100%);
+        }
+        &__item {
+            @extend .text-truncate;
+            @extend .text-center;
+        }
+    }
+    &__wrapper {
+        @include abs();
+        @extend .zIndex-100;
+        @extend .pointerEvents-none;
+        @extend .visibility-hidden;
+        transition:visibility 1s;
+
+        &[data-open="true"]{
+            @extend .pointerEvents-all;
+            @extend .visibility-visible;
+            transition:none;
+
+            .prof__item__photo,
+            .prof__button__center .o-button {
+                @extend .scale-100;
+            }
+            .prof__button__center .o-button {
+                transition:transform 0.6s $cubic4001 1.2s;
+            }
+            .prof__title {
+                transform:translate3d(-50%, 0, 0) scale(1);
+                transition:transform 0.9s $cubic4001 1.2s;
+            }
+        }
+        &[data-open="false"]{
+            .prof__item__photo {
+                transition-delay:0s !important;
+            }
+        }
+    }
+    &__container {
+        @extend .pos-centered;
+        width:72vw;
+        max-width:1170px;
+
+        html.d-tablet & {
+            @extend .w75v;
+        }
+    }
+    &__button__center {
+        @extend .pos-centered;
+        @extend .pointerEvents-none;
+
+        .o-button {
+            @extend .scale-0;
+            @extend .willChange-transform;
+            transition:transform 0.3s $cubic4001;
+        }
+    }
+    &__items {
+        &__photo {
+            @extend .pos-rel;
+            left:-5.25%;
+            @extend .w100p;
+            height:calc(100vh - 80px);
+
+            html.d-tablet & {
+                left:-5.75%;
+            }
+        }
+    }
+    &__item {
+        &__photo {
+            @include accelerate();
+            @extend .pos-abs;
+            @extend .scale-0;
+            @extend .borderRadius-circle;
+            @extend .willChange-transform;
+            @extend .cursor-pointer;
+            transition:transform 0.6s $cubic4001;
+
+            &__inner {
+                @include accelerate();
+                @include abs();
+                @extend .borderRadius-circle;
+                @extend .overflow-hidden;
+                @extend .scale-100;
+                @extend .opacity-80;
+                @extend .boxShadow-default;
+                perspective:200px;
+                @extend .willChange-tp;
+                transition:transform 0.55s $cubic4001, opacity 0.3s $cubic4001;
+
+                html.m-no-touch &:hover,
+                &[data-active="true"] {
+                    @extend .opacity-100;
+
+                    .prof__item__photo__image {
+                        transform:translate3d(0, -5%, 0);
+                    }
+                }
+            }
+            &__image {
+                @include accelerate();
+                @extend .pos-tl;
+                @extend .w100p;
+                height:200%;
+                @extend .bg-cover;
+                @extend .willChange-transform;
+                transform:translate3d(0, -50%, 0);
+                transition:transform 0.55s $cubic4001;
+            }
+            &:nth-of-type(1){
+                @extend .t0;
+                @extend .l0;
+                @include prof_s();
+            }
+            &:nth-of-type(2){
+                top:7.22%;
+                @extend .l20p;
+                @include prof_l();
+            }
+            &:nth-of-type(3){
+                top:3.61%;
+                @extend .l40p;
+                @include prof_s();
+            }
+            &:nth-of-type(4){
+                top:1.8%;
+                @extend .l60p;
+                @include prof_m();
+            }
+            &:nth-of-type(5){
+                top:17.14%;
+                left:82.5%;
+                @include prof_xl();
+            }
+            &:nth-of-type(6){
+                top:10.83%;
+                @extend .l100p;
+                @include prof_m();
+            }
+            &:nth-of-type(7){
+                top:19.85%;
+                @extend .l5p;
+                @include prof_xl();
+            }
+            &:nth-of-type(8){
+                top:23.46%;
+                @extend .l35p;
+                @include prof_s();
+            }
+            &:nth-of-type(9){
+                top:19.85%;
+                @extend .l50p;
+                @include prof_xl();
+            }
+            &:nth-of-type(10){
+                top:36.1%;
+                left:68.5%;
+                @include prof_s();
+            }
+            &:nth-of-type(11){
+                top:41.51%;
+                @extend .l85p;
+                @include prof_l();
+            }
+            &:nth-of-type(12){
+                top:34.29%;
+                left:97.5%;
+                @include prof_xs();
+            }
+            &:nth-of-type(13){
+                top:52.34%;
+                left:-5%;
+                @include prof_l();
+            }
+            &:nth-of-type(14){
+                top:55.95%;
+                left:102.5%;
+                @include prof_s();
+            }
+            &:nth-of-type(15){
+                top:36.1%;
+                left:22.5%;
+                @include prof_m();
+            }
+            &:nth-of-type(16){
+                top:48.73%;
+                left:11.5%;
+                @include prof_s();
+            }
+            &:nth-of-type(17){
+                top:43.93%;
+                left:33.5%;
+                @include prof_xl();
+            }
+            &:nth-of-type(18){
+                top:60.95%;
+                @extend .l55p;
+                @include prof_l();
+            }
+            &:nth-of-type(19){
+                top:55.95%;
+                @extend .l75p;
+                @include prof_s();
+            }
+            &:nth-of-type(20){
+                top:63.17%;
+                @extend .l90p;
+                @include prof_l();
+            }
+            &:nth-of-type(21){
+                top:36.1%;
+                left:-2.5%;
+                @include prof_xs();
+            }
+            &:nth-of-type(22){
+                top:3.61%;
+                @extend .l90p;
+                @include prof_xs();
+            }
+            &:nth-of-type(23){
+                top:18.05%;
+                @extend .l70p;
+                @include prof_xs();
+            }
+            &:nth-of-type(24){
+                top:72.2%;
+                @extend .l5p;
+                @include prof_s();
+            }
+            &:nth-of-type(25){
+                top:64.98%;
+                left:22.5%;
+                @include prof_l();
+            }
+            &:nth-of-type(26){
+                top:72.2%;
+                @extend .l40p;
+                @include prof_l();
+            }
+            &:nth-of-type(27){
+                top:68.59%;
+                left:66%;
+                @include prof_xl();
+            }
+            &:nth-of-type(28){
+                top:77.61%;
+                @extend .l80p;
+                @include prof_s();
+            }
+            &:nth-of-type(29){
+                top:0.9%;
+                @extend .l75p;
+                @include prof_s();
+            }
+            &:nth-of-type(30){
+                top:75.81%;
+                left:-7.5%;
+                @include prof_xs();
+            }
+            &:nth-of-type(31){
+                top:81.22%;
+                @extend .l100p;
+                @include prof_xs();
+            }
+            &:nth-of-type(32){
+                top:18.05%;
+                left:-7.5%;
+                @include prof_xs();
+            }
+            &:nth-of-type(33){
+                top:34.29%;
+                left:110%;
+                @include prof_s();
+            }
+            &:nth-of-type(34){
+                top:86.64%;
+                @extend .l15p;
+                @include prof_m();
+            }
+            &:nth-of-type(35){
+                top:90.25%;
+                left:32.5%;
+                @include prof_s();
+            }
+            &:nth-of-type(36){
+                top:90.25%;
+                @extend .l0;
+                @include prof_s();
+            }
+            &:nth-of-type(37){
+                @extend .t0;
+                left:110%;
+                @include prof_xs();
+            }
+            &:nth-of-type(38){
+                top:86.64%;
+                @extend .l50p;
+                @include prof_m();
+            }
+            &:nth-of-type(39){
+                top:90.25%;
+                left:67.5%;
+                @include prof_s();
+            }
+            &:nth-of-type(40){
+                top:90.25%;
+                left:87.5%;
+                @include prof_m();
+            }
+            &:nth-of-type(41){
+                top:75.81%;
+                left:110%;
+                @include prof_s();
+            }
+            &:nth-of-type(42){
+                top:90.25%;
+                left:107.5%;
+                @include prof_m();
+            }
+        }
+    }
+}

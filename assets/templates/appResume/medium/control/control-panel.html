@@ -1,0 +1,79 @@
+<control-panel class="control__panel" data-open="false" data-changed="false">
+
+    <div onClick={ hide } onUpdate="none" class="button__close control__panel__close">
+        <div class="button__close__item">
+            <div class="button__close__item__icon"></div>
+        </div>
+    </div>
+
+    <div class="control__panel__wrapper">
+        <div class="control__panel__container container">
+            <div class="row">
+                <div class="col-md-6 col-lg-7">
+                    <control-themes></control-themes>
+                </div>
+                <div class="col-lg-9 col-md-10 { $State.get('theme') != 'color' ? 'display-none' : '' }">
+                    <control-colors></control-colors>
+                </div>
+                <div class="col-md-8 { $State.get('theme') != 'colorful' && $State.get('theme') != 'color' ? 'display-none' : '' }">
+                    <control-fonts></control-fonts>
+                </div>
+                <div if={ $State.get('theme') != 'colorful' && $State.get('theme') != 'color' } class="col-md-8">
+                    <div class="control__panel__text">Для выбранной темы установлен оптимальный шрифт и его свойства.</div>
+                </div>
+            </div>
+        </div>
+        <control-lang></control-lang>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.on("mount", function(){
+        $Sections.module("control.panel", $);
+
+        _.bbUpdate($State, function(prop, value, e){
+            if (!$root.ready) return;
+
+            if (prop == "theme"){
+                $store.resume.select("config", "theme").set(value);
+                if (value == "color" || value == "colorful"){
+                    $State.select('font').set($.tags["control-fonts"].refs["select"].value);
+                }
+                $root.setColor();
+                $root.tags["main-slider"].slider.slick('unslick');
+                $root.update();
+                $root.tags["main-slider"].init();
+                $.root.setAttribute("data-changed", true);
+            }
+            else if (prop == "color"){
+                $root.root.setAttribute("data-theme", value);
+                $store.resume.select("config", "color").set(value);
+                $.root.setAttribute("data-changed", true);
+            }
+            else if (prop == "font"){
+                $root.root.setAttribute("data-font", value);
+                $store.resume.select("config", "font").set(value);
+            }
+            else if (prop == "lang"){
+                $i18n.lang(value);
+                moment.locale(value);
+                $store.resume.select("lang").set(value);
+                $root.update();
+            }
+        });
+    });
+
+    $.show = function(){
+        $.root.setAttribute("data-open", true);
+    };
+
+    $.hide = function(){
+        $.root.setAttribute("data-changed", false);
+        $.root.setAttribute("data-open", false);
+    };
+
+</script>
+
+</control-panel>

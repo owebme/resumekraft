@@ -1,0 +1,74 @@
+body > #app {
+    &[data-theme="colorsoft"]{
+        .bg-black {
+            background-color:#121212;
+        }
+        .highlight {
+            @extend .c-slate;
+        }
+        .slider__item {
+            &__label {
+                @extend .c-steel;
+            }
+            .item__label {
+                @extend .c-slate;
+            }
+            &__label {
+                html.d-no-phone & {
+                    &.-right {
+                        @extend .c-black;
+                    }
+                }
+            }
+            &[data-slide="contacts"]{
+                .divider:before {
+                    @extend .opacity-20;
+                }
+            }
+            .content__scroll {
+                &[data-track="default"]{
+                    .iScrollIndicator {
+            			background-color:#ccc;
+                    }
+                }
+                &[data-track="box"]{
+                    .iScrollIndicator {
+                        right:-4px;
+                        width:4px !important;
+                        height:20px !important;
+                        @extend .borderRadius-none;
+                        background-color:#999;
+
+                        &:hover {
+                            @extend .bg-gray;
+                        }
+                        &:before {
+                            right:1px;
+                            background-color:rgba($black,.1);
+                        }
+                        &:after {
+                            @extend .display-none;
+                        }
+                    }
+                }
+            }
+        }
+        .c-dots_dot {
+            background-color:#999;
+
+            &:before {
+                border-color:#aaa;
+                border-width:2px;
+            }
+        }
+        .c-dots.-horizontal .c-dots_item:first-child::before, .c-dots.-horizontal .c-dots_item:last-child::before, .c-dots.-horizontal .c-dots_link::after, .c-dots.-horizontal .c-dots_link::before {
+            border-bottom-color:$black
+        }
+        .c-dots.-vertical .c-dots_item:first-child::before, .c-dots.-vertical .c-dots_item:last-child::before, .c-dots.-horizontal .c-dots_item:first-child::after, .c-dots.-horizontal .c-dots_item:last-child::after, .c-dots.-vertical .c-dots_link::after, .c-dots.-vertical .c-dots_link::before {
+            border-left-color:$black;
+        }
+        .c-dots.-vertical .c-dots_item:first-child::after, .c-dots.-vertical .c-dots_item:last-child::after {
+            border-top-color:$black;
+        }
+    }
+}

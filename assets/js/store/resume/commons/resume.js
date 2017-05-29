@@ -170,6 +170,7 @@ $store.resume = _.extend(new Baobab({},
                             }
                         ],
                         config: {
+                            theme: "colorful",
                             color: "#0084ff",
                             font: "futura",
                             photo: {
@@ -182,6 +183,7 @@ $store.resume = _.extend(new Baobab({},
                                 active: true,
                                 count: true
                             },
+                            welcome: true,
                             animate: false
                         }
                     }, data);

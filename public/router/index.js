@@ -73,13 +73,6 @@ module.exports = function(){
     app.get('/private/resume/:alias', app.checkAuth('/?signin'), app.controllers.resume("editing"));
     app.get('/resume/:alias', app.controllers.resume("view"));
 
-    app.get('/premium/slider', function(req, res) {
-        res.render('premiumSlider', {
-            title: app.config.get('title:premium'),
-            device: req.device.type,
-            isMobile: req.device.isMobile
-        });
-    });
     app.get('/premium/', function(req, res) {
         if (req.device.type == "phone"){
             res.redirect(302, '/');
@@ -116,6 +109,14 @@ module.exports = function(){
     });
     app.get('/premium/demo', app.controllers.resume("demo"));
     app.get('/premium/editing', app.controllers.resume("demo-editing"));
+
+    app.get('/medium/demo', function(req, res) {
+        res.render('medium', {
+            title: app.config.get('title:premium'),
+            device: req.device.type,
+            isMobile: req.device.isMobile
+        });
+    });    
 
     app.get('/jq-test/', function(req, res) {
         res.redirect(301, '/jp-test/');

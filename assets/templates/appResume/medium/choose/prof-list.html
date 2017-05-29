@@ -1,0 +1,93 @@
+<prof-list class="prof__wrapper" data-open="false">
+
+    <div class="prof__title">
+        <div ref="slider" class="prof__title__slider">
+            <div each={ item in _.range(42) } no-reorder class="prof__title__item">
+                { _.shuffle(titles)[0] }
+            </div>
+        </div>
+    </div>
+
+    <div class="prof__container">
+
+        <div class="prof__button__center">
+            <div class="o-button -nopadding -nocircle">
+                <span class="o-button_wrap">
+                    <div class="o-button_link">
+                        <span class="o-button_label">Выберите</span>
+                    </div>
+                </span>
+            </div>
+        </div>
+
+        <div ref="items" class="prof__items__photo">
+            <div onClick={ onSelect } onUpdate="none" each={ item in _.range(42) } no-reorder class="prof__item__photo" data-id={ item } style="transition-delay:{ _.random(item, 20) * 0.05 }s">
+                <div class="prof__item__photo__inner" data-active={ parent.larges.indexOf(item + 1) !== -1 } data-ripple>
+                    <div class="prof__item__photo__image" style="background-image:url(/preview/images/prof/small/{ item + 1 }.jpg)"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.larges = [5, 9, 10, 13, 15, 20, 24, 26, 31, 33];
+
+    $.titles = ["Менеджер по продажам", "Бухгалтер", "Автомеханик специалист", "Менеджер туркомпании", "Юрисконсульт"];
+
+    $.on("mount", function(){
+        $Sections.module("choose.list", $);
+
+        $.slider = $$($.refs.slider);
+
+        new app.plugins.ripple();
+
+        $afterlag.xl(function(){
+            app.$dom.body.addClass("is-loaded");
+        });
+
+        $.slider.slick(Object.assign(_.clone($root.default), {
+            speed: 350,
+            draggable: false,
+            swipe: false
+        }));
+
+        $$($.refs.items).on("mouseenter", ".prof__item__photo", function(e){
+            $.slider.slick("slickGoTo", this.getAttribute('data-id'));
+        });
+    });
+
+    $.onSelect = function(){
+        var id = this.item + 1;
+
+        $store.resume.select("commons", "photo")
+        .set('/preview/images/prof/' + id + '.jpg');
+        $root.tags["main-slider"].tags["ux-commons"].update();
+
+        $Sections.choose.opener.update({
+            id: id
+        })
+
+        $.hide();
+    };
+
+    $.show = function(){
+        $root.marquee.up(function(){
+            $.root.setAttribute("data-open", true);
+        })
+    };
+
+    $.hide = function(){
+        $.root.setAttribute("data-open", false);
+
+        $root.marquee.down(function(){
+            $Sections.main.slider.slick("slickGoTo", 0);
+        })
+    };
+
+</script>
+
+</prof-list>

@@ -1,0 +1,154 @@
+.slider__item {
+    .content {
+        &__scroll {
+            &[data-track="default"]{
+                html.d-phone & {
+                    @extend .h100p;
+                }
+                html.d-mobile & {
+        			.iScrollVerticalScrollbar {
+        				@extend .willChange-opacity;
+        				@extend .opacity-0;
+        				transition:opacity .3s;
+        			}
+        			&.i-scrolling {
+        				.iScrollVerticalScrollbar {
+        					@extend .opacity-100;
+        				}
+        			}
+        		}
+        		.iScrollVerticalScrollbar {
+        			@extend .pos-tr;
+        			@extend .h100p;
+        			width:4px;
+        			transition:width .175s;
+        			@extend .overflow-visible;
+
+        			&:hover {
+        				width:8px;
+        			}
+        		}
+        		.iScrollIndicator {
+        			@extend .pos-tl;
+        			@extend .w100p;
+        			@extend .willChange-transform;
+        			@extend .bg-white;
+        			@extend .zIndex-1;
+
+        			&:before {
+        				@extend .content-empty;
+        				@extend .pos-abs;
+        				@extend .t--m;
+        				@extend .b--m;
+        				@extend .r0;
+        				@extend .w20;
+        			}
+        		}
+            }
+            &[data-track="box"]{
+                @extend .pos-rel;
+                @extend .overflow-hidden;
+
+                html.d-no-phone & {
+                    @extend .mt100;
+                    @extend .pt50;
+                    height:calc(100vh - 235px);
+                }
+                html.d-phone & {
+                    @extend .pt25;
+                    height:calc(100% - 135px);
+                }
+                .iScrollVerticalScrollbar {
+        			@extend .pos-abs;
+                    @extend .t0;
+                    @extend .r25;
+        			@extend .h100p;
+        		    overflow:visible !important;
+
+                    html.d-phone & {
+                        right:6px;
+                    }
+        		}
+        		.iScrollIndicator {
+        			@extend .pos-abs;
+                    @extend .t-xl;
+                    @extend .r--xxs;
+        			width:12px !important;
+                    height:12px !important;
+                    @extend .borderRadius-circle;
+                    @extend .bg-white;
+        			@extend .willChange-transform;
+
+                    html.d-phone & {
+                        @extend .t60;
+                    }
+                    &:hover:after {
+                        @extend .scale-100;
+                    }
+                    &:before {
+        				@extend .content-empty;
+                        @extend .pos-abs;
+                        top:-200vh;
+                        @extend .r-xxs;
+                        @extend .w1px;
+                        height:400vh;
+                        background-color:rgba($white,.25);
+        			}
+        			&:after {
+        				@extend .content-empty;
+                        @include abs_50(50, 50);
+                        @extend .w50;
+                        @extend .h50;
+                        @extend .scale-25;
+                        border:3px solid $white;
+                        @extend .borderRadius-circle;
+                        @extend .willChange-transform;
+                        transition:transform 0.3s $cubic4001;
+        			}
+        		}
+                .content__scroll__track {
+                    @extend .pb70;
+
+                    html.d-phone & {
+                        @extend .pb-l;
+                    }
+                }
+            }
+            &__track {
+                @extend .willChange-transform;
+
+                html.d-no-phone & {
+                    @extend .pb-l;
+                }
+                html.d-phone & {
+                    @extend .pr-s;
+                    padding-bottom:195px;
+                }
+            }
+        }
+        &__gradient {
+            @extend .pos-abs;
+            @extend .l0;
+            @extend .r0;
+            @extend .pointerEvents-none;
+            @extend .zIndex-1;
+
+            &.-top {
+                @extend .t0;
+                @extend .h60;
+
+                html.d-phone & {
+                    @extend .h30;
+                }
+            }
+            &.-bottom {
+                @extend .b0;
+                @extend .h70;
+
+                html.d-phone & {
+                    @extend .h50;
+                }
+            }
+        }
+    }
+}

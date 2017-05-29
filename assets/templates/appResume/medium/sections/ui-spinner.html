@@ -1,0 +1,41 @@
+<ui-spinner class="o-spinner-wrap" data-active={ active }>
+
+    <div class="o-spinner">
+        <div class="o-spinner_axis">
+            <div class="o-spinner_container">
+                <div class="o-spinner_inner"></div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    window.$Loader = $;
+
+    $.show = function(){
+        $.update({
+            active: true
+        })
+        return $.callback();
+    };
+
+    $.hide = function(){
+        $.update({
+            active: false
+        })
+        return $.callback();
+    };
+
+    $.callback = function(){
+        return new Promise(function(resolve, reject){
+            _.onEndTransition($.root, function(){
+                return resolve();
+            });
+        });
+    };
+
+</script>
+
+</ui-spinner>

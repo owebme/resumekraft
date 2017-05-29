@@ -1,30 +1,9 @@
 $store.fonts = _.extend(new Baobab([
     {
-        _id: "futura",
+        _id: "helvetica",
         title: {
             en: "Basic",
             ru: "Базовый"
-        }
-    },
-    {
-        _id: "avant",
-        title: {
-            en: "Classic",
-            ru: "Классический"
-        }
-    },
-    {
-        _id: "gotham",
-        title: {
-            en: "Modern",
-            ru: "Современный"
-        }
-    },
-    {
-        _id: "proxima",
-        title: {
-            en: "Respectable",
-            ru: "Респектабельный"
         }
     },
     {
@@ -32,6 +11,34 @@ $store.fonts = _.extend(new Baobab([
         title: {
             en: "Intelligent",
             ru: "Интеллигентный"
+        }
+    },
+    {
+        _id: "museo",
+        title: {
+            en: "Graceful",
+            ru: "Изящный"
+        }
+    },
+    {
+        _id: "futura",
+        title: {
+            en: "Futuristic",
+            ru: "Футуристичный"
+        }
+    },
+    {
+        _id: "gotham",
+        title: {
+            en: "Massive",
+            ru: "Массивный"
+        }
+    },
+    {
+        _id: "proxima",
+        title: {
+            en: "Respectable",
+            ru: "Респектабельный"
         }
     }
     ]),

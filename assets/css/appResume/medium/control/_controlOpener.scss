@@ -1,0 +1,75 @@
+control-opener {
+    transform:translate3d(-50%, -100%, 0);
+
+    body.is-discover & {
+        transform:translate3d(-50%, 0, 0);
+    }
+}
+.control {
+    &__opener {
+        @extend .pos-abs;
+        @extend .l50p;
+        @extend .t0;
+        padding-top:17px;
+        @extend .w35;
+        @extend .zIndex-2;
+        @extend .willChange-transform;
+        transition:transform .9s $cubic4001;
+        transition-delay:0.8s;
+
+        &__item {
+            @extend .pos-rel;
+            @extend .w40;
+            @extend .h40;
+            @extend .cursor-pointer;
+            @extend .borderRadius-circle;
+            @include rippleDark();
+
+            &:hover {
+                &:before {
+                    @extend .scale-120;
+                    @extend .bg-white;
+                }
+                .control__opener__item__color {
+                    @extend .fill-black;
+                }
+                .control__opener__item__label__text {
+                    @extend .transform-default;
+                }
+            }
+            &:before {
+                @extend .content-empty;
+                @include abs();
+                @extend .bg-black;
+                @extend .borderRadius-circle;
+                transition:transform 0.3s $cubic4001, background-color 0.15s $cubic4001;
+            }
+            svg {
+                @extend .pos-centered;
+                @extend .display-block;
+                @extend .w35;
+                @extend .h35;
+                @extend .mt2;
+                @extend .zIndex-1;
+            }
+            &__color {
+                @extend .fill-white;
+                transition:stroke 0.3s $cubic4001;
+            }
+            &__label {
+                @extend .pos-centered-v;
+                @extend .l100p;
+                @extend .ml-s;
+                @extend .overflow-hidden;
+
+                &__text {
+                    @extend .c-white;
+                    @extend .fontFamily-myriad;
+                    font-size:18px;
+                    transform:translateY(100%) translateZ(0);
+                    transition:transform 0.3s $cubic4001;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,63 @@
+<dots-slider class="c-dots -horizontal">
+
+    <div ref="slider" class="c-dots_list js-family-dots">
+        <div if={ app.device.isPhone } class="c-dots_item">
+            <button class="c-dots_link" type="button">
+                <span class="c-dots_dot"></span>
+            </button>
+        </div>
+        <div class="c-dots_item">
+            <button class="c-dots_link" type="button">
+                <span class="c-dots_dot"></span>
+            </button>
+        </div>
+        <div if={ $resume.education && $resume.education.items } class="c-dots_item">
+            <button class="c-dots_link" type="button">
+                <span class="c-dots_dot"></span>
+            </button>
+        </div>
+        <div if={ $resume.courses && $resume.courses.items } class="c-dots_item">
+            <button class="c-dots_link" type="button">
+                <span class="c-dots_dot"></span>
+            </button>
+        </div>
+        <div if={ $resume.languages } class="c-dots_item">
+            <button class="c-dots_link" type="button">
+                <span class="c-dots_dot"></span>
+            </button>
+        </div>
+        <div if={ $resume.jobs && $resume.jobs.items } class="c-dots_item">
+            <button class="c-dots_link" type="button">
+                <span class="c-dots_dot"></span>
+            </button>
+        </div>
+        <div class="c-dots_item">
+            <button class="c-dots_link" type="button">
+                <span class="c-dots_dot"></span>
+            </button>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.on("mount", function(){
+        $Sections.module("dots", $);
+
+        $.slider = $$($.refs.slider);
+
+        $.slider.slick(Object.assign(_.clone($root.default), {
+            slidesToShow: true,
+            focusOnSelect: true,
+            centerMode: true,
+            variableWidth: true,
+            draggable: false,
+            swipe: false,
+            asNavFor: ".slider, .js-button-slider"
+        }));
+    });
+
+</script>
+
+</dots-slider>

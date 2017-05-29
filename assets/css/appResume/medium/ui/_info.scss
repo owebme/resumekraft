@@ -1,0 +1,73 @@
+.btn-info {
+    @include accelerate();
+    @extend .display-block;
+    @extend .pos-fixed;
+    @extend .willChange-transform;
+    @extend .t0;
+    right:32px;
+    padding-top:32px;
+    transform:translateY(-100%) translateZ(0);
+    transition:transform .9s $cubic4001;
+    transition-delay:1s;
+    @extend .zIndex-2;
+
+    html.d-tablet & {
+        @extend .pt25;
+        @extend .r25;
+    }
+    html.d-phone & {
+        @extend .pt-s;
+        @extend .r-s;
+    }
+    body.is-discover & {
+        @extend .transform-default;
+    }
+    &-item {
+        @include accelerate();
+        @extend .pos-rel;
+        @extend .w55;
+        @extend .h55;
+        @extend .userSelect-none;
+        @extend .flex-centered;
+        @extend .cursor-pointer;
+        @extend .borderRadius-circle;
+        @extend .cursor-pointer;
+        @extend .willChange-transform;
+        transition:transform .2s $cubic4001;
+
+        html.d-phone & {
+            @extend .w38;
+            @extend .h38;
+        }
+        &:before {
+            @extend .content-empty;
+            @include abs();
+            @extend .bg-black;
+            @extend .borderRadius-circle;
+            @extend .willChange-transform;
+            transition:transform 0.3s $cubic4001;
+        }
+        html.m-no-touch &:hover {
+            &:before {
+                @extend .scale-120;
+            }
+        }
+        &:active {
+            @extend .scale-85;
+        }
+        &-icon {
+            @extend .pos-rel;
+            @extend .display-block;
+            width:29px;
+            height:29px;
+
+            &-color {
+                @extend .fill-white;
+            }
+            html.d-phone & {
+                @extend .w26;
+                @extend .h26;
+            }
+        }
+    }
+}

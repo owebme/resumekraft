@@ -1,0 +1,58 @@
+body.is-transitioning-back,
+body.is-transitioning-next {
+    .c-home_button,
+    .c-dots.-horizontal {
+        transition:transform .9s $cubic4001;
+    }
+    .slider__item__container {
+        transition:transform .9s $cubic4001, opacity .6s $cubic4001,
+    }
+    &.is-discover {
+        .o-spinner-wrap {
+            @extend .display-block;
+        }
+    }
+}
+body.is-transitioning-next {
+    .slider__item.slick-active .slider__item__container {
+        transition-delay:.1s;
+        transform:translate3d(-50%, -150vh, 0);
+    }
+    .c-home_button {
+        transition-delay:.4s;
+    }
+    .c-dots.-horizontal {
+        transition-delay:.3s;
+    }
+    .c-home_button,
+    .c-dots.-horizontal {
+        transform:translateY(-100vh) translateZ(0);
+    }
+    &.is-discover {
+        .prof__opener {
+            transform:translateY(-100%) translateZ(0);
+        }
+        .control__opener {
+            transition-delay:0s;
+            transform:translate3d(-50%, -100%, 0);
+        }
+    }
+}
+body.is-transitioning-back {
+    .slider__item.slick-active .slider__item__container {
+        transition-delay:.2s;
+    }
+    .c-home_button {
+        transition-delay:0s;
+    }
+    .c-dots.-horizontal {
+        transition-delay:.1s;
+    }
+}
+body.is-discover .o-spinner-wrap {
+    @extend .display-none;
+}
+.slider__item__container {
+    @include accelerate();
+    @extend .willChange-tp;
+}

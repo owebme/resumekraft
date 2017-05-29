@@ -1,9 +1,0 @@
-.slider__item {
-    &[data-slide="photo"]{
-        @extend .bg-cover;
-
-        html.d-phone body:not(.is-discover) & {
-            @extend .scale-95;
-        }
-    }
-}

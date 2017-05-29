@@ -1,0 +1,14 @@
+<control-lang class="control__lang">
+
+    <div class="control__lang__item" onClick={ onSelect } data-item="ru" data-active={ $State.get("lang") == "ru" }><span>RU</span></div>
+    <div class="control__lang__item" onClick={ onSelect } data-item="en" data-active={ $State.get("lang") == "en" }><span>EN</span></div>
+
+<script>
+
+    this.onSelect = function(e){
+        $State.select("lang").set(e.currentTarget.getAttribute("data-item"));
+    };
+
+</script>
+
+</control-lang>
