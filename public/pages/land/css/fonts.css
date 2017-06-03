@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "HeliosThin";
+  src: url("../fonts/heth-webfont.eot");
+  src: url("../fonts/heth-webfont.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/heth-webfont.woff2") format("woff2"),
+    url("../fonts/heth-webfont.woff") format("woff"),
+    url("../fonts/heth-webfont.ttf") format("truetype"),
+    url("../fonts/heth-webfont.svg") format("svg");
+  font-weight: 200;
+  font-style: normal;
+}

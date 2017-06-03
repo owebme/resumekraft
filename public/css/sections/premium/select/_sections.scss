@@ -1,0 +1,17 @@
+premium-select {
+    .section1 {
+        @extend .bg-snowA;
+        padding-top:100px;
+
+        &:after {
+            @extend .content-empty;
+            @extend .display-block;
+            background-size: 1894px 841px;
+            background-repeat: no-repeat;
+            background-position: center top;
+            // background-image:url("https://images.apple.com/ru/ipad/home/images/home/ipadpro_large_2x.jpg");
+            width: 100%;
+            height: 841px;
+        }
+    }
+}

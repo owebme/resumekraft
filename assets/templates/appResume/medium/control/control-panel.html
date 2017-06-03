@@ -21,6 +21,16 @@
                 <div if={ $State.get('theme') != 'colorful' && $State.get('theme') != 'color' } class="col-md-8">
                     <div class="control__panel__text">Для выбранной темы установлен оптимальный шрифт и его свойства.</div>
                 </div>
+                <div if={ $State.get('theme') != 'color' } class="col-md-8">
+                    <div class="control__item" data-item="text-icon">
+                        <div class="control__panel__text">
+                            <a target="_blank" href="/premium/workflow">
+                                <icon-device-phones></icon-device-phones>
+                            </a>
+                            <div class="text"><strong>Новинка!</strong> Мобильная версия резюме. <a class="link" target="_blank" href="/premium/workflow">Открыть в новой вкладке</a>.</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <control-lang></control-lang>

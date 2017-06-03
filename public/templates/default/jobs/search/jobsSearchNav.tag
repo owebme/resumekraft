@@ -4,7 +4,10 @@
         <div class="rows">
             <div class="row">
                 <div class="col-md-6 col-lg-7">
-                    <a href="/" class="logotype"></a>
+                    <a href="/jobs/search" class="logotype logotype-m">
+                        <div class="logotype__label"></div>
+                        <div class="logotype__title">hunter<span>Next</span></div>
+                    </a>
                     <div if={ parent.opts.countsAll } class="jobs__search__nav__header__vacancy__count visible-lg">
                         { parent.opts.utils.numberFormat(parent.opts.countsAll, 0, ".", ",") } вакансий
                     </div>

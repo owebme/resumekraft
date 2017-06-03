@@ -79,7 +79,7 @@
         margin-bottom:-$i * 5px;
     }
 }
-@for $i from 1 through 5 {
+@for $i from 1 through 10 {
     .mt#{$i} {
         margin-top:#{$i}px;
     }
@@ -107,6 +107,9 @@
 }
 .m0 {
     margin:0;
+}
+.m-auto {
+    margin:auto;
 }
 .m0-auto {
     margin:0 auto;

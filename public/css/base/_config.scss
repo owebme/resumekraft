@@ -1,6 +1,6 @@
 // ---------- ** Tooltips ** ---------- //
 
-$tooltipDefaultColor: $black;
+$tooltipDefaultColor: $steelA;
 
 @mixin tooltip() {
     background-color:$tooltipDefaultColor;

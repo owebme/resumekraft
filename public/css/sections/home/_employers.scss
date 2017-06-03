@@ -2,8 +2,23 @@ home-employers {
     .employers__items {
         div[class^="col-"]{
             @extend .pos-rel;
-            height:150px;
+            @extend .h150;
             @extend .mtb-m;
+        }
+    }
+    .employers__total {
+        @extend .m0-auto;
+        @extend .flex-column-centered;
+        @extend .w180;
+        @extend .h150;
+        @extend .borderRadius-l;
+        box-shadow:0 0 0 1px rgba($white,.3);
+
+        &__title {
+            font-size:68px;
+            line-height:68px;
+            @extend .fontWeight-3;
+            @extend .fontFamily-myriad;
         }
     }
     .employers__logo {
@@ -31,18 +46,18 @@ home-employers {
             background-image:url(/public/images/home/employers/budget.png);
         }
         &[data-logo="aeroflot"]{
-            width:210px;
-            height:150px;
+            width:190px;
+            height:136px;
             background-image:url(/public/images/home/employers/aeroflot.png);
         }
         &[data-logo="enter"]{
-            width:210px;
-            height:150px;
+            width:190px;
+            height:136px;
             background-image:url(/public/images/home/employers/enter.png);
         }
         &[data-logo="nike"]{
-            width:190px;
-            height:136px;
+            width:175px;
+            height:125px;
             background-image:url(/public/images/home/employers/nike.png);
         }
         &[data-logo="ulmart"]{
@@ -56,8 +71,8 @@ home-employers {
             background-image:url(/public/images/home/employers/lamoda.png);
         }
         &[data-logo="deliveryclub"]{
-            width:210px;
-            height:150px;
+            width:190px;
+            height:136px;
             background-image:url(/public/images/home/employers/deliveryclub.png);
         }
         &[data-logo="facebook"]{
@@ -66,8 +81,8 @@ home-employers {
             background-image:url(/public/images/home/employers/facebook.png);
         }
         &[data-logo="sony"]{
-            width:190px;
-            height:90px;
+            width:173px;
+            height:82px;
             background-image:url(/public/images/home/employers/sony.png);
         }
         &[data-logo="walmart"]{
@@ -76,18 +91,18 @@ home-employers {
             background-image:url(/public/images/home/employers/walmart.png);
         }
         &[data-logo="x5"]{
-            width:210px;
-            height:150px;
+            width:190px;
+            height:136px;
             background-image:url(/public/images/home/employers/x5.png);
         }
         &[data-logo="adidas"]{
-            width:210px;
-            height:150px;
+            width:190px;
+            height:136px;
             background-image:url(/public/images/home/employers/adidas.png);
         }
         &[data-logo="apple"]{
-            width:190px;
-            height:136px;
+            width:180px;
+            height:129px;
             background-image:url(/public/images/home/employers/apple.png);
         }
     }

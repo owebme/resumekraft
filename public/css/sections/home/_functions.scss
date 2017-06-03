@@ -1,0 +1,183 @@
+section-functions {
+    @extend .pos-rel;
+    @extend .mt-xl;
+    @extend .pt65;
+    @extend .pb-xl;
+    @extend .c-white;
+    @extend .zIndex-0;
+
+    .icon-pdf {
+        @extend .w60;
+        @extend .h60;
+    }
+    .icon-link,
+    .icon-glass {
+        @extend .w54;
+        @extend .h54;
+    }
+    .icon-devices,
+    .icon-play {
+        @extend .w50;
+        @extend .h50;
+    }
+    .icon-feedback {
+        @extend .w48;
+        @extend .h48;
+    }
+    .icon-print {
+        @extend .w44;
+        @extend .h44;
+    }
+    .icon-chart {
+        @extend .w42;
+        @extend .h42;
+    }
+    .logotype {
+        &:after {
+            background-color:#287FF1;
+        }
+        &__label:after {
+            color:#287FF1;
+        }
+    }
+    .content__text {
+        @extend .flex-column-left-center;
+        height:612px;
+    }
+}
+section-functions .orbit-holder {
+    width:612px;
+    height:612px;
+    @extend .userSelect-none;
+    @extend .overflow-hidden;
+}
+
+section-functions .orbits {
+    @extend .pos-rel;
+    @extend .w100p;
+    @extend .pb100p;
+}
+
+section-functions .orbits.big .component-image {
+    @extend .willChange-transform;
+    transform:scale(1.03);
+    transition:transform .55s ease-out .6s;
+}
+
+section-functions .center-content {
+    @extend .zIndex-10;
+}
+
+section-functions .center-content,
+section-functions .orbit-wave {
+    @extend .pos-centered;
+}
+
+section-functions .orbit-wave {
+    @extend .opacity-0;
+    @extend .borderRadius-circle;
+    @extend .zIndex-0;
+    will-change:opacity, width, height;
+    border:3px solid hsla(0, 0%, 100%, .3);
+}
+
+section-functions .orbit {
+    @extend .m-auto;
+    @extend .pos-tl;
+    @extend .borderRadius-circle;
+    border:1px solid hsla(0, 0%, 100%, .25);
+    animation:orbit 60s linear infinite
+}
+
+section-functions .img {
+    @extend .display-inlineBlock;
+    @extend .pos-abs;
+    @extend .w140;
+    @extend .text-center;
+    @extend .ml--70;
+    @extend .pointerEvents-none;
+    animation:orbit 60s linear infinite reverse;
+}
+
+section-functions .img.candestroy svg {
+    @extend .pointerEvents-all;
+    @extend .cursor-pointer;
+}
+
+section-functions {
+    $d: 0.24;
+    @for $i from 1 through 7 {
+        .orbit-#{$i} {
+            border-color:hsla(0, 0%, 100%, ($d - $i * 0.03));
+        }
+    }
+}
+
+section-functions .orbit-1,
+section-functions .orbit-1 .img {
+    animation-duration: 20s
+}
+
+section-functions .orbit-2,
+section-functions .orbit-2 .img {
+    animation-duration: 24s
+}
+
+section-functions .orbit-3,
+section-functions .orbit-3 .img {
+    animation-duration: 30s
+}
+
+section-functions .orbit-4,
+section-functions .orbit-4 .img {
+    animation-duration: 40s
+}
+
+section-functions .orbit-5,
+section-functions .orbit-5 .img {
+    animation-duration: 60s
+}
+
+section-functions .orbit-6,
+section-functions .orbit-6 .img {
+    animation-duration: 120s
+}
+
+section-functions .orbit-7,
+section-functions .orbit-7 .img {
+    animation-duration: Infinitys
+}
+
+section-functions .orbit-2,
+section-functions .orbit-4 {
+    animation-direction: reverse
+}
+
+section-functions .orbit-2 .img,
+section-functions .orbit-4 .img {
+    animation-direction: normal
+}
+
+section-functions .component-image {
+    @extend .pos-rel;
+}
+
+section-functions .part {
+    @extend .pos-abs;
+    @extend .t50p;
+    @extend .l50p;
+    @extend .w0;
+    @extend .h1px;
+    @extend .zIndex-100;
+    @extend .bg-white;
+    box-shadow:0 0 2px hsla(0, 0%, 100%, .6);
+}
+
+@keyframes orbit {
+    0% {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(-1turn)
+    }
+}

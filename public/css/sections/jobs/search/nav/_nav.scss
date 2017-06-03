@@ -142,27 +142,83 @@
             @extend .pos-rel;
             @extend .opacity-0;
             @extend .display-block;
-            width:77px;
-            height:29px;
-            @extend .bg-cover;
-            @extend .pointerEvents-none;
-            background-image:url(/public/images/logotype_br.png);
-            transform:translate3d(13px, 11px, 0);
+            @extend .w32;
+            @extend .h32;
+            transform:translate3d(9px, 7px, 0);
 
+            &:before {
+                @include abs();
+                @extend .content-empty;
+                background-image:url(/public/images/logotype_new.svg);
+                @extend .bg-cover;
+            }
             &:after {
                 @extend .content-empty;
-                @extend .pos-abs;
-                @extend .t0;
-                @extend .r0;
-                @extend .w16;
-                @extend .h16;
-                @extend .bg-cover;
+                @extend .pos-centered-v;
+                left:-8px;
+                @extend .mt--xxs;
+                @extend .w15;
+                @extend .h15;
                 @extend .borderRadius-circle;
-                box-shadow:0 0 0 4px $white;
-                transform:translate3d(-4px, -4px, 0);
-                background-image:url(/public/images/jobs/hh/min-hh-red.png);
+                @extend .bg-white;
+            }
+            &__label {
+                @include abs();
+                @extend .flex-centered;
+                @extend .borderRadius-circle;
+                @extend .pos-centered;
+                @extend .overflow-hidden;
+
+                &:after {
+                    @extend .display-block;
+                    content:"H";
+                    @extend .c-white;
+                    @extend .fontFamily-gotham;
+                    @extend .fontWeight-bold;
+                    @extend .fontSize-22;
+                    transform:translate3d(3px, 0, 0);
+                }
+            }
+            &__title {
+                @extend .pos-centered-v;
+                @extend .l100;
+                @extend .ml-xxs;
+                @extend .c-gray;
+                @extend .fontFamily-gotham;
+                font-size:16.5px;
+                padding-top:2px;
+                @extend .fontWeight-5;
+
+                span {
+                    @extend .fontWeight-normal;
+                }
             }
         }
+        // &__logo {
+        //     @extend .pos-rel;
+        //     @extend .opacity-0;
+        //     @extend .display-block;
+        //     width:77px;
+        //     height:29px;
+        //     @extend .bg-cover;
+        //     @extend .pointerEvents-none;
+        //     background-image:url(/public/images/logotype_br.png);
+        //     transform:translate3d(13px, 11px, 0);
+        //
+        //     &:after {
+        //         @extend .content-empty;
+        //         @extend .pos-abs;
+        //         @extend .t0;
+        //         @extend .r0;
+        //         @extend .w16;
+        //         @extend .h16;
+        //         @extend .bg-cover;
+        //         @extend .borderRadius-circle;
+        //         box-shadow:0 0 0 4px $white;
+        //         transform:translate3d(-4px, -4px, 0);
+        //         background-image:url(/public/images/jobs/hh/min-hh-red.png);
+        //     }
+        // }
     }
     &__form {
         @extend .opacity-0;

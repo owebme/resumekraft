@@ -5,7 +5,8 @@
 {% block styles %}/assets/css/medium.css{% endblock %}
 
 {% block body %}
-<body class="is-loaded is-discover">
+<body>
+<!-- <body class="is-loaded is-discover"> -->
 
     <div class="o-loader"></div>
 
@@ -16,6 +17,7 @@
     <control-opener></control-opener>
     <prof-opener></prof-opener>
     <prof-list></prof-list>
+    <help-slider></help-slider>
     <ui-spinner></ui-spinner>
     {% endif %}
 
@@ -30,7 +32,11 @@
     <script src="/assets/templates/ui/icons/icon-email.html" type="riot/tag"></script>
     <script src="/assets/templates/ui/icons/icon-skype.html" type="riot/tag"></script>
     <script src="/assets/templates/ui/icons/icon-colors.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-device-desktop.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-device-phones.html" type="riot/tag"></script>
+    <script src="/assets/templates/ui/icons/icon-device-tablet.html" type="riot/tag"></script>
     <script src="/assets/templates/appResume/medium/sections/btn-info.html" type="riot/tag"></script>
+    <script src="/assets/templates/appResume/medium/sections/help-slider.html" type="riot/tag"></script>
     <script src="/assets/templates/appResume/medium/sections/main-slider.html" type="riot/tag"></script>
     <script src="/assets/templates/appResume/medium/sections/button-slider.html" type="riot/tag"></script>
     <script src="/assets/templates/appResume/medium/sections/dots-slider.html" type="riot/tag"></script>
@@ -57,6 +63,7 @@
 
     <!--/ JS components /-->
     <script src="/assets/js/medium/app.js"></script>
+    <script src="/assets/js/store/resume/medium/themes.js"></script>
     <script src="/assets/js/store/resume/premium/fonts.js"></script>
     <script src="/assets/js/store/resume/commons/resume.js"></script>
     <script src="/assets/js/store/resume/premium/resume.demo.js"></script>

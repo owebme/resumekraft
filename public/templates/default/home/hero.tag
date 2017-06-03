@@ -2,8 +2,8 @@
 
     <div class="container text-center">
         <div class="row">
-            <div class="col-md-12 centered">
-                <h1 class="mb-m anim-group2 anim-scale-soft anim-duration-s">Создайте классное резюме</h1>
+            <div class="col-md-16 centered">
+                <h1 class="mb-m anim-group2 anim-scale-soft anim-duration-s">Станьте заметней это просто</h1>
                 <p class="text c-silver anim-group2 anim-scale-soft anim-delay-s anim-duration-s">Встречайте резюме следующего поколения</p>
             </div>
         </div>

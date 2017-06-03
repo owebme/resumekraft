@@ -1,0 +1,66 @@
+<section-plan-premium>
+
+    <p class="swither c-silver text mb-l"><span onClick={ onSelect } class="sw { -active : item == 2 }" data-item="1">Ежемесячная</span> и <span onClick={ onSelect } class="sw { -active : item == 1 }" data-item="2">годовая</span> подписка.</p>
+    <div class="premium">
+        <div class="row">
+            <div class="col-md-5 flex-centered">
+                <icon-premium></icon-premium>
+            </div>
+            <div class="col-md-7 flex-column-left-center text-left">
+                <div class="premium__title">Премиум аккаунт ({ items[item - 1].label })</div>
+                <div class="premium__text">Все 3 предложения на период действия подписки, количество резюме без ограничений.</div>
+            </div>
+            <div class="col-md-6 flex-centered">
+                <a href="/auth/signup" class="btn btn-l btn-rounded btn-default-hover-success">Создать аккаунт</a>
+            </div>
+            <div class="col-md-6 flex-row-left-center">
+                <div if={ items[item - 1].sale } class="premium__sale">{ items[item - 1].sale }</div>
+                <div class="plan__price">
+                    <div class="plan__price__label">₽</div>
+                    <div ref="price" class="plan__price__money">{ _.numberFormat(items[item - 1].price, 0, ".", ",") }</div>
+                    <div class="plan__price__text">{ items[item - 1].title }</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.period = "year";
+
+    $.item = 2;
+
+    $.items = [{
+        title: 'Оплата раз в месяц',
+        label: '1 месяц',
+        price: 449
+    },
+    {
+        title: 'Оплата раз в год',
+        label: '1 год',
+        sale: 'экономия 42%',
+        price: 3149
+    }];
+
+    $.onSelect = function(e){
+        $.item = parseInt(e.currentTarget.getAttribute("data-item"));
+
+        var data = {
+            price: $.item == 2 ? 449 : 3149
+        }
+        anime({
+            targets: data,
+            price: $.item == 2 ? 3149 : 449,
+            round: 1,
+            easing: 'easeOutCubic',
+            update: function() {
+                $.refs.price.innerHTML = _.numberFormat(data.price, 0, ".", ",");
+            }
+        });
+    };
+
+</script>
+
+</section-plan-premium>

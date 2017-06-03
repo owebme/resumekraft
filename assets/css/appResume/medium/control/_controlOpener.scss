@@ -71,5 +71,13 @@ control-opener {
                 }
             }
         }
+        .help {
+            &__pointer {
+                top:-22px;
+                left:-10px;
+                @extend .w60;
+                @extend .h60;
+            }
+        }
     }
 }

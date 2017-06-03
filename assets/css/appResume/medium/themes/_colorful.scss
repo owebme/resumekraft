@@ -1,8 +1,40 @@
 body > #app {
-    &[data-theme="colorful"]{
+    &[data-theme="colorful"],
+    &[data-theme="fire"]{
         .slider__item__label,
         .highlight {
             @extend .c-white;
+        }
+    }
+    &[data-theme="fire"]{
+        .slider__item {
+            background:linear-gradient(216deg, #ff8a40, #fd5068, #dc4588) !important;
+
+            &[data-slide="contacts"]{
+                path {
+                    @extend .fill-white;
+                }
+                .relocation {
+                    .item__name {
+                        @extend .c-white;
+                    }
+                }
+            }
+        }
+        .content__gradient {
+            &.-top {
+                background:none !important;
+            }
+            &.-bottom {
+                background:none !important;
+            }
+        }
+        ux-commons {
+            .content__gradient {
+                &.-bottom {
+                    background:linear-gradient(216deg, #FE635B, #FB4F6A, #F24C73) !important;
+                }
+            }
         }
     }
     &[data-theme^="#"]{
@@ -27,17 +59,32 @@ body > #app {
             }
         }
     }
-    @each $color in ($blue, $blueLight, $green, $emerald, $orange, $red, $violet, $violetLight, $brown, $pink){
+    @each $title, $color in (blue: $blue, blueLight: $blueLight, green: $green, emerald: $emerald, orange: $orange, red: $red, violet: $violet, violetLight: $violetLight, brown: $brown, pink: $pink){
         &[data-theme="#{$color}"]{
-            .slider__item {
-                background-color:$color !important;
-            }
-            .content__gradient {
-                &.-top {
-                    background-image:linear-gradient(to bottom, $color 50%, rgba($color,0)) !important;
+            @if $title == blue or $title == blueLight or $title == red or $title == violet {
+                .slider__item {
+                    background-color:lighten($color,7%) !important;
                 }
-                &.-bottom {
-                    background-image:linear-gradient(to top, $color, rgba($color,0)) !important;
+                .content__gradient {
+                    &.-top {
+                        background-image:linear-gradient(to bottom, lighten($color,7%) 50%, rgba(lighten($color,7%),0)) !important;
+                    }
+                    &.-bottom {
+                        background-image:linear-gradient(to top, lighten($color,7%), rgba(lighten($color,7%),0)) !important;
+                    }
+                }
+            }
+            @else {
+                .slider__item {
+                    background-color:$color !important;
+                }
+                .content__gradient {
+                    &.-top {
+                        background-image:linear-gradient(to bottom, $color 50%, rgba($color,0)) !important;
+                    }
+                    &.-bottom {
+                        background-image:linear-gradient(to top, $color, rgba($color,0)) !important;
+                    }
                 }
             }
         }

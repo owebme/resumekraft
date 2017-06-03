@@ -5,8 +5,13 @@
 
 <script>
 
-    this.onSelect = function(e){
+    var $ = this;
+
+    $.onSelect = function(e){
         $State.select("lang").set(e.currentTarget.getAttribute("data-item"));
+        $afterlag.run(function(){
+            $.parent.update();
+        });
     };
 
 </script>

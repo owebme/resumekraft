@@ -33,7 +33,7 @@
     $root.init = function(){
         $i18n.lang($resume.lang);
         moment.locale($resume.lang);
-        
+
         var config = $store.resume.select("config").deepClone();
 
         //['#3BADFF', '#FF6F6F', '#B484F7', '#06D6B3', '#FF9B3B', '#FA99D6', '#FFC741'];
@@ -100,14 +100,6 @@
                     });
                 });
             }
-            // else {
-            //     if (app.device.isPhone){
-            //         $Sections.main.slider.slick("slickGoTo", 1);
-            //     }
-            //     else {
-            //         //$Sections.main.slider.slick("slickGoTo", 5);
-            //     }
-            // }
 
             $root.ready = true;
         });

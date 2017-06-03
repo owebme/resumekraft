@@ -15,7 +15,9 @@ module.exports = function(){
             'assets/js/libs/circliful/js/jquery.circliful.js',
     		'assets/js/libs/afterlag-js/dist/afterlag.min.js',
     		'assets/js/libs/imagesloaded/imagesloaded.pkgd.min.js',
+            'assets/js/libs/anime/anime.min.js',
             'assets/js/libs/waves/waves.min.js',
+            'assets/js/libs/slick/slick.min.js',
     		'assets/js/libs/store.min.js'])
     		.pipe(concat('libs.js'))
     		.pipe(uglify())
@@ -31,6 +33,7 @@ module.exports = function(){
             'assets/js/components/commons/modules.js',
             'assets/js/components/commons/EventEmitter.js',
             'assets/js/components/commons/EventEmitterMicro.js',
+            'assets/js/components/features/orbits.js',
             'assets/js/components/features/premium.js',
             'assets/js/components/features/jptest.js',
             'assets/js/components/features/navbar.js',
@@ -76,10 +79,12 @@ module.exports = function(){
             'assets/templates/sections/jptest/*.html',
             'assets/templates/sections/jptest/**/*.html',
             '!assets/templates/sections/jptest/jptest.html',
+            'public/templates/client/home/planPremium.html',
             'public/templates/client/blog/popup/blogSubscribe.html',
             'public/templates/client/blog/popup/blogSubscribeForm.html',
             'assets/templates/ui/icons/icon-link.html',
             'assets/templates/ui/icons/icon-replyMail.html',
+            'public/templates/commons/icons/icon-premium.tag',
             'public/templates/commons/icons/social/icon-fb.tag',
             'public/templates/commons/icons/social/icon-vk.tag',
             'public/templates/commons/icons/social/icon-tw.tag',

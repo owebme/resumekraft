@@ -17,13 +17,91 @@
 
             WD.content();
 
-            WD.plans();
+            WD.writing();
+
+            WD.slider();
 
             WD.createAccount();
 
             app.metrika.set("views.home", 1, {
                 action: "inc"
             })
+        },
+
+        slider: function(){
+            WD.navSlider = WD.el.find("home-sticky-nav");
+
+            WD.step = 1;
+
+            app.sections.once("afterMounted", function(){
+
+                WD.updateSlider();
+
+                WD.navSlider.on("click", ".sticky__nav__button", function(e){
+                    var $item = $(e.currentTarget),
+                        step = $item.data("step");
+
+                    if (step) WD.onScrollTo(step.num == 0 ? 0 : step.offsetTop + 1);
+                });
+
+                var onScroll = _.debounce(WD.onScroll, 10),
+                    onResize = _.debounce(WD.updateSlider, 300);
+
+                app.$dom.window.on("scroll", function(){
+                    _.raf(onScroll);
+                });
+
+                app.$dom.window.on("resize", function(){
+                    _.raf(onResize);
+                });
+            })
+        },
+
+        updateSlider: function(){
+            WD.steps = [];
+
+            WD.navSlider.find(".sticky__nav__button").each(function(i){
+                var $button = $(this),
+                    section = this.getAttribute("data-scrollto"),
+                    $section = WD.el.find(section);
+
+                if ($section.length){
+                    var item = {
+                        num: i,
+                        offsetTop: i == 0 ? 0 : $section.offset().top - 95,
+                        offsetBottom: parseInt($section.offset().top + $section.height()) - 95,
+                        button: $button
+                    };
+                    $button.data("step", item);
+                    WD.steps.push(item);
+                }
+            });
+        },
+
+        onScrollTo: function(offset){
+            var delta = Math.abs(offset - app.$dom.document.scrollTop()),
+            duration = delta / 5;
+            duration = duration < 500 ? 500 : duration;
+
+            $('html, body').animate({scrollTop: offset}, duration);
+        },
+
+        onScroll: function(){
+            var step = null,
+                scroll = app.$dom.document.scrollTop();
+
+            _.each(WD.steps, function(item){
+                if (scroll > item.offsetTop && scroll < item.offsetBottom) {
+                    step = item;
+                }
+            });
+
+    		if (step && WD.step.num != step.num) {
+                WD.step = step;
+                WD.step.button.addClass("-active")
+                .siblings()
+                .removeClass("-active");
+    		}
         },
 
         header: function(){
@@ -35,6 +113,9 @@
 
             animHeader.show(function(){
                 $phones.attr("data-show", true);
+                $afterlag.xl(function(){
+                    app.sections.trigger("ready"); // RUN mounting tags
+                });
             });
         },
 
@@ -56,6 +137,13 @@
                         callback: function($elem, i){
                             $elem.attr("data-show", true);
                         }
+                    },
+                    {
+                        delta: "xs",
+                        elem: "section-plans",
+                        callback: function($elem, i){
+                            app.features.orbits.init();
+                        }
                     }
                 ]
             });
@@ -63,8 +151,9 @@
             WD.contentAnimate.start();
         },
 
-        plans: function(){
-            var $plans = WD.el.find(".plans");
+        writing: function(){
+            var $section = WD.el.find("section-writing"),
+                $plans = $section.find(".plans");
 
             $plans.on("click", ".plan__item", function(e){
                 if ($(e.target).hasClass("btn-order")){
@@ -90,16 +179,8 @@
         },
 
         createAccount: function(){
-
             WD.el.on("click", ".createAccount", function(){
-                var period = this.getAttribute("data-period") || "month1";
-                if (WD.auth){
-                    _.opener("/private/?plan=premium&period=" + period);
-                }
-                else {
-                    app.tag("section-auth").open("signup", "premium");
-                    app.metrika.set("plan.period", period);
-                }
+                location.replace('/auth/signup');
             });
         }
     };

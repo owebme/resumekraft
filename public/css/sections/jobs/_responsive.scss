@@ -17,6 +17,9 @@
     .vacancy__description {
         padding-right:27.5px;
     }
+    .jobs__search__progress {
+        width:calc(100vw - ((100vw - 550px) / 3));
+    }
 }
 @media screen and (min-width: 1600px){
     .section__container {
@@ -24,5 +27,8 @@
     }
     .jobs__search__sidebar {
         transform:translate3d(60px, 0, 0);
+    }
+    .jobs__search__progress {
+        width:calc(100vw - ((100vw - 640px) / 3));
     }
 }

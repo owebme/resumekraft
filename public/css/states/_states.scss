@@ -14,7 +14,6 @@
 	box-sizing:border-box;
 }
 .accelerate {
-    // transform-style:preserve-3d;
     transform-style:flat;
     @extend .backVisible-hidden;
 }

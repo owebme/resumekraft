@@ -9,31 +9,69 @@
         .logotype {
             @extend .pos-rel;
             @extend .display-block;
-            width:112px;
-            height:42px;
-            @extend .bg-cover;
             @extend .mt25;
             @extend .ml-l;
-            background-image:url(/public/images/logotype_br.png);
 
+            &-m {
+                @extend .w40;
+                @extend .h40;
+
+                &:after {
+                    @extend .l--xs;
+                    @extend .mt--xxs;
+                    @extend .w18;
+                    @extend .h18;
+                    @extend .borderRadius-circle;
+                    @extend .bg-white;
+                }
+                .logotype__label:after {
+                    @extend .fontSize-28;
+                    transform:translate3d(4px, 0, 0);
+                }
+            }
+            &:before {
+                @include abs();
+                @extend .content-empty;
+                background-image:url(/public/images/logotype_new.svg);
+                @extend .bg-cover;
+            }
             &:after {
                 @extend .content-empty;
-                @extend .pos-abs;
-                @extend .t0;
-                @extend .r0;
-                @extend .w30;
-                @extend .h30;
-                @extend .bg-cover;
+                @extend .pos-centered-v;
+            }
+            &__label {
+                @include abs();
+                @extend .flex-centered;
                 @extend .borderRadius-circle;
-                box-shadow:0 0 0 7px $white;
-                transform:translate3d(5px, -7px, 0);
-                background-image:url(/public/images/jobs/hh/min-hh-red.png);
+                @extend .pos-centered;
+                @extend .overflow-hidden;
+
+                &:after {
+                    @extend .display-block;
+                    content:"H";
+                    @extend .c-white;
+                    @extend .fontFamily-gotham;
+                    @extend .fontWeight-bold;
+                }
+            }
+            &__title {
+                @extend .pos-centered-v;
+                @extend .l100;
+                @extend .ml-xxs;
+                @extend .c-gray;
+                @extend .fontFamily-gotham;
+                font-size:19px;
+                @extend .fontWeight-5;
+
+                span {
+                    @extend .fontWeight-normal;
+                }
             }
         }
         &__vacancy__count {
             @extend .pos-abs;
-            top:48px;
-            left:182px;
+            top:50px;
+            left:217px;
             @extend .fontSize-13;
             @extend .c-gray;
             @extend .hidden-xs;

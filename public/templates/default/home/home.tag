@@ -16,6 +16,10 @@
 
         <section-plans></section-plans>
 
+        <section-functions></section-functions>
+
+        <section-writing></section-writing>
+
         <home-employers></home-employers>
 
     </div>

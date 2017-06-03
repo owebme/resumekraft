@@ -35,7 +35,7 @@
                     @extend .bg-smokeDarken;
                 }
             }
-            &[data-active="true"]{
+            &.-active {
                 .sticky__nav__button__item {
                     @extend .pointerEvents-none;
                     @extend .scale-100;

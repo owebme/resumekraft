@@ -1,5 +1,5 @@
 @each $icon in (
-    check_white
+    check_white, swipeLeft_white
 ){
     .ui-icon-#{$icon} {
         background:url('/assets/images/ui/ui-#{$icon}.svg') no-repeat 0 0 / cover;

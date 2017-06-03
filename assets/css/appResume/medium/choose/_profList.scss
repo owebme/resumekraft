@@ -7,6 +7,11 @@
         &[data-active="true"] {
             @extend .scale-170;
         }
+        &[data-active="true"] {
+            &:hover {
+                transform:translate3d(0, 0, 0) rotateY(180deg) scale(1.7);
+            }
+        }
     }
 }
 @mixin prof_s {
@@ -17,6 +22,11 @@
         &:hover,
         &[data-active="true"] {
             @extend .scale-160;
+        }
+        &[data-active="true"] {
+            &:hover {
+                transform:translate3d(0, 0, 0) rotateY(180deg) scale(1.6);
+            }
         }
     }
 }
@@ -29,6 +39,11 @@
         &[data-active="true"] {
             @extend .scale-150;
         }
+        &[data-active="true"] {
+            &:hover {
+                transform:translate3d(0, 0, 0) rotateY(180deg) scale(1.5);
+            }
+        }
     }
 }
 @mixin prof_l {
@@ -40,6 +55,11 @@
         &[data-active="true"] {
             @extend .scale-140;
         }
+        &[data-active="true"] {
+            &:hover {
+                transform:translate3d(0, 0, 0) rotateY(180deg) scale(1.4);
+            }
+        }
     }
 }
 @mixin prof_xl {
@@ -50,6 +70,11 @@
         &:hover,
         &[data-active="true"] {
             @extend .scale-120;
+        }
+        &[data-active="true"] {
+            &:hover {
+                transform:translate3d(0, 0, 0) rotateY(180deg) scale(1.2);
+            }
         }
     }
 }
@@ -158,8 +183,8 @@
             transition:transform 0.6s $cubic4001;
 
             &__inner {
-                @include accelerate();
                 @include abs();
+                @extend .backVisible-hidden;
                 @extend .borderRadius-circle;
                 @extend .overflow-hidden;
                 @extend .scale-100;
@@ -176,6 +201,14 @@
                     .prof__item__photo__image {
                         transform:translate3d(0, -5%, 0);
                     }
+                }
+                &[data-active="true"] {
+                    transform-style:preserve-3d;
+                    transform:translate3d(0, 0, 0) rotateY(0deg);
+                }
+                &:not([data-active="true"]) {
+                    transform-style:flat;
+                    @extend .transform-default;
                 }
             }
             &__image {

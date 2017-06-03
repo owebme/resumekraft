@@ -29,6 +29,7 @@
     <div class="jobs__webmobile">
         <div class="jobs__webmobile__title">Наш ресурс доступен на мобильных устройствах</div>
     </div>
+    <iframe class="mt-l" src="/public/pages/land/index.html" frameborder="0" style="width:240px; height:460px"></iframe>
 
 <script>
 

@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-md-16 centered">
                 <div class="content__block">
-                    <h1 class="mb-m c-primary">Резюме в мобильном телефоне</h1>
-                    <p class="c-gray text mb25">The iOS 10 SDK includes new APIs and services that enable new categories of apps and features. Your apps can now extend to Messages, Siri, Phone, and Maps to provide more engaging functionality like never before.</p>
+                    <h1 class="mb-m c-primary">На вас обратят внимание</h1>
+                    <p class="c-gray text mb25">Стираем старые стереотипы о резюме. Ваше резюме сегодня это намного больше, не важно кем вы работаете и в какой сфере, какой у вас статус в обществе. Создайте резюме которое обратит на вас внимание.</p>
                 </div>
             </div>
         </div>
@@ -36,9 +36,9 @@
             <div class="col-md-16 centered">
                 <div class="opener">
                     <div class="opener__circle"></div>
-                    <div class="opener__label">Открыть обзор</div>
+                    <div class="opener__label">Открыть примеры</div>
                 </div>
-                <h1 class="mb-m">Смотрите обзор</h1>
+                <h1 class="mb-m">Резюме в смартфоне</h1>
                 <p class="c-gray text mb25">The iOS 10 SDK includes new APIs and services that enable new categories of apps and features. Your apps can now extend to Messages, Siri, Phone, and Maps to provide more engaging functionality like never before.</p>
             </div>
         </div>

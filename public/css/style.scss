@@ -39,6 +39,7 @@
 // modules
 // @import 'modules/oScreen';
 @import 'modules/screens';
+@import 'modules/slickSlider';
 @import 'modules/chart/chartRadial';
 
 // Partials
@@ -62,7 +63,16 @@
 @import 'sections/home/professions';
 @import 'sections/home/promo';
 @import 'sections/home/plans';
+@import 'sections/home/functions';
+@import 'sections/home/writing';
 @import 'sections/home/employers';
+
+// Premium select
+@import 'sections/premium/select/main.scss';
+@import 'sections/premium/select/header.scss';
+@import 'sections/premium/select/slider.scss';
+@import 'sections/premium/select/dots.scss';
+@import 'sections/premium/select/sections.scss';
 
 // blog
 @import 'sections/blog/grid';

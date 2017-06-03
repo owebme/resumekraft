@@ -107,6 +107,15 @@ module.exports = function(){
             });
         }
     });
+    app.get('/premium/select', function(req, res) {
+        var output = app.riot.render(app.tags("premiumSelect", req.device), req.appClient);
+        res.render('index', {
+            title: app.config.get('title:premium'),
+            content: output,
+            device: req.device.type,
+            isMobile: req.device.isMobile
+        });
+    });
     app.get('/premium/demo', app.controllers.resume("demo"));
     app.get('/premium/editing', app.controllers.resume("demo-editing"));
 
@@ -116,7 +125,7 @@ module.exports = function(){
             device: req.device.type,
             isMobile: req.device.isMobile
         });
-    });    
+    });
 
     app.get('/jq-test/', function(req, res) {
         res.redirect(301, '/jp-test/');

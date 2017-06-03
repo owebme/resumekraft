@@ -55,7 +55,7 @@
         padding-bottom:$i * 5%;
     }
 }
-@for $i from 1 through 5 {
+@for $i from 1 through 10 {
     .pt#{$i} {
         padding-top:#{$i}px;
     }

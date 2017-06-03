@@ -92,7 +92,8 @@
             @extend .pl25;
         }
     }
-    &[data-item="fonts"]{
+    &[data-item="fonts"],
+    &[data-item="mobile"]{
         @extend .pl-xl;
 
         &:before {
@@ -103,6 +104,39 @@
             @extend .ml--1;
             @extend .h100p;
             @extend .bg-smoke;
+        }
+    }
+    &[data-item="text-icon"]{
+        .icon-device-phones {
+            width:44px;
+            height:54px;
+
+            path {
+                @extend .fill-black;
+            }
+        }
+        .control__panel__text {
+            @extend .flex-row-left-center;
+            @extend .pl0;
+            @extend .pt25;
+
+            strong {
+                @extend .fontWeight-normal;
+                color:#ff3b30;
+            }
+            .link {
+                color:#007aff;
+                transition:color 0.2s $cubic215;
+
+                &:hover {
+                    color:$blue;
+                }
+            }
+            .text {
+                width:260px;
+                @extend .mr--m;
+                @extend .pl-m;
+            }
         }
     }
     &__label {

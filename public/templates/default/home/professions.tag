@@ -1,4 +1,4 @@
-<home-professions class="content__section c-white" data-section="professions" data-gradient="blue">
+<home-professions class="content__section c-white" data-gradient="blue">
 
     <div class="container text-center">
         <div class="row">

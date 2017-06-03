@@ -24,14 +24,14 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-24">
                     <div class="block" data-pos="down">
                         <h2>Бесплатный аккаунт</h2>
 
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 

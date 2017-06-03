@@ -10,7 +10,7 @@ $i:0;
         }
     }
 }
-@each $title, $color in (primary: $primary, black: $black, blackA: $blackA, blackB: $blackB, steel: $steel, steelA: $steelA, slate: $slate, slateA: $slateA, white: $white, silver: $silver, gray: $gray, smoke: $smoke, smokeDark: $smokeDark, smokeDarken: $smokeDarken, snow: $snow, snowA: $snowA, snow456: $snow456, snow49C: $snow49C, snow357: $snow357, snow2: $snow2, snow7: $snow7, snow788: $snow788, snowDark: $snowDark, snowDarken: $snowDarken, blue: $blue, blueLight: $blueLight, blueDark: $blueDark, blueBright: $blueBright, breeze: $breeze, water: $water, waterLight: $waterLight, yellow: $yellow, yellowLight: $yellowLight, yellowBright: $yellowBright, yellowDark: $yellowDark, red: $red, redDark: $redDark, cherry: $cherry, pink: $pink, pinkLight: $pinkLight, pinkDark: $pinkDark, orange: $orange, orangeLight: $orangeLight, orangeDark: $orangeDark, violet: $violet, violetLight: $violetLight, violetDark: $violetDark, green: $green, greenLight: $greenLight, greenDark: $greenDark){
+@each $title, $color in (primary: $primary, black: $black, blackA: $blackA, blackB: $blackB, steel: $steel, steelA: $steelA, slate: $slate, slateA: $slateA, white: $white, silver: $silver, gray: $gray, smoke: $smoke, smokeDark: $smokeDark, smokeDarken: $smokeDarken, snow: $snow, snowA: $snowA, snow456: $snow456, snow49C: $snow49C, snow357: $snow357, snow2: $snow2, snow7: $snow7, snow788: $snow788, snowDark: $snowDark, snowDarken: $snowDarken, blue: $blue, blueA: $blueA, blueLight: $blueLight, blueDark: $blueDark, blueBright: $blueBright, breeze: $breeze, water: $water, waterLight: $waterLight, yellow: $yellow, yellowLight: $yellowLight, yellowBright: $yellowBright, yellowDark: $yellowDark, red: $red, redDark: $redDark, cherry: $cherry, pink: $pink, pinkLight: $pinkLight, pinkDark: $pinkDark, orange: $orange, orangeLight: $orangeLight, orangeDark: $orangeDark, violet: $violet, violetLight: $violetLight, violetDark: $violetDark, green: $green, greenLight: $greenLight, greenDark: $greenDark){
     .bg-#{$title},
     .text-strike[data-color=#{$title}]:after {
         background-color:$color;
@@ -44,20 +44,38 @@ $i:0;
 }
 @each $title, $color, $hover in (primary, $primary, $blue), (success, $green, $greenLight), (danger, $red, $redDark), (warning, $yellow, $yellowDark), (gray, $silver, $gray), (white, rgba($white,.85), $white){
     .link-#{$title} {
-		color:$color;
-        @extend .transition-default;
+        @extend .pos-rel;
+        @extend .display-inlineBlock;
         @extend .cursor-pointer;
+        color:$color;
+        transition:color 0.2s $cubic215;
 
-	    &:hover,
-        &-hover:hover {
+        &:hover {
             color:$hover;
-	    }
-        &-hover {
-            color:$silver;
+
+            &:after {
+                transform:translate3d(0, 0, 0) scale3d(1, 1, 1);
+            }
+        }
+        &:before,
+        &:after {
+            @extend .content-empty;
+            @extend .pos-bl;
+            @extend .w100p;
+            @extend .h1px;
+            background-color:$color;
+        }
+        &:before {
+            @extend .opacity-30;
+        }
+        &:after {
+            @extend .opacity-40;
+            transform:translate3d(0, 0, 0) scale3d(0, 1, 1);
+            transform-origin:0 50%;
+            transition:transform 0.3s $cubic215;
         }
     }
 }
-.link-underline:hover,
 .btn-link-underline:hover {
     text-decoration:underline;
 }
@@ -297,7 +315,7 @@ $i:0;
         @extend .fill-white;
     }
     &:hover {
-        @extend .c-black;
+        @extend .c-primary;
         @extend .boxShadow-none;
         @extend .bg-white;
 

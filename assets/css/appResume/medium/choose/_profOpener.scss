@@ -1,3 +1,10 @@
+prof-opener {
+    transform:translateY(-100%) translateZ(0);
+
+    body.is-discover & {
+        @extend .transform-default;
+    }    
+}
 .prof {
     &__opener {
         @include accelerate();
@@ -8,16 +15,12 @@
         @extend .cursor-pointer;
         @extend .zIndex-2;
         @extend .willChange-transform;
-        transform:translateY(-100%) translateZ(0);
         transition:transform .9s $cubic4001;
         transition-delay:1s;
 
         html.d-tablet & {
             @extend .pt25;
             @extend .r25;
-        }
-        body.is-discover & {
-            @extend .transform-default;
         }
         html.m-no-touch &:hover {
             &:before {
@@ -111,6 +114,21 @@
                 @extend .opacity-70;
                 will-change:border-color, opacity;
                 transition:border-color 0.15s $cubic4001, opacity 0.15s $cubic4001;
+            }
+        }
+        .help {
+            &__item {
+                @extend .w40;
+                @extend .mt-s;
+            }
+            &__text__inner {
+                @extend .w110;
+            }
+            &__pointer {
+                top:-38px;
+                right:-28px;
+                @extend .w80;
+                @extend .h80;
             }
         }
     }

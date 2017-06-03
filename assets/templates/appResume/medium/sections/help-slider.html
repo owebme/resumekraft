@@ -1,0 +1,80 @@
+<help-slider>
+
+    <div class="help__item__wrapper">
+        <div class="help__item" data-pos="right" data-color="white">
+            <div class="help__pointer"></div>
+            <div class="help__text">
+                <div class="help__text__inner">Смена слайдов: образование, опыт работы...</div>
+                <div class="help__text__pointer"></div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.active = false;
+
+    $.on("mount", function(){
+        if (!app.$dom.body.hasClass("is-loaded")){
+            $.button = $Sections.button.slider.find(".slick-active .o-button_slider_link");
+            $.button = $$('<span class="o-button_label">Перейти</span>').prependTo($.button);
+            $.items = app.$dom.body.find(".help__item");
+
+            $afterlag.xl(function(){
+                app.$dom.body.addClass("is-loaded");
+                $Sections.main.slider.one("click", function(){
+                    $Sections.button.open();
+                });
+                $Sections.button.one("open", function(){
+                    $afterlag.xl(function(){
+                        $.show();
+                    });
+                });
+            });
+        }
+    });
+
+    $.show = function(){
+        if (!$.items) return;
+
+        $.active = true;
+
+        app.$dom.body.attr("data-tutorial", true);
+
+        _.onEndTransition($root.scope[0], function(){
+            $.items.each(function(i){
+                var $item = $$(this);
+                setTimeout(function(){
+                    if ($.active) $item.attr("data-active", true);
+                }, i * 700);
+            });
+            setTimeout(function(){
+                if ($.active) app.$dom.body.attr("data-tutorial-pulse", true);
+            }, 2200);
+
+            app.$dom.body.one("click", function(){
+                $.hide();
+            });
+        });
+    };
+
+    $.hide = function(){
+        if (!$.items) return;
+
+        $.active = false;
+
+        app.$dom.body.attr("data-tutorial", false);
+        app.$dom.body.attr("data-tutorial-pulse", false);
+        $.items.attr("data-active", false);
+
+        _.onEndTransition($root.scope[0], function(){
+            $.items.remove();
+            $.button.remove();
+        });
+    };
+
+</script>
+
+</help-slider>

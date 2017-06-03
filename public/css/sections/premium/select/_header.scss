@@ -1,0 +1,156 @@
+premium-select {
+    .hero {
+        @extend .display-block;
+        @extend .pos-rel;
+        height:110vh;
+        min-height:780px;
+        max-height:900px;
+        @extend .overflow-hidden;
+        @extend .text-center;
+
+        &__bg {
+            @extend .pos-centered-h;
+            top:-9vh;
+            @extend .w100p;
+            height:119vh;
+            min-height:calc(780px + 9vh);
+            max-height:calc(900px + 9vh);
+            @extend .bg-cover;
+            will-change:filter;
+            background-image:url('/public/images/premium/select/desktop@2x.jpg');
+        }
+        &__overlay {
+            @include abs();
+            @extend .opacity-0;
+            @extend .willChange-opacity;
+            background-color:rgba(#000,.4);
+        }
+        &__caption {
+            @extend .pos-rel;
+            @extend .flex-column-centered;
+            height:31vh;
+            min-height:220px;
+            @extend .zIndex-1;
+        }
+        &__text {
+            @extend .pos-abs;
+            top:280px;
+            margin-right:14px;
+            @extend .r100p;
+            @extend .w40v;
+            @extend .text-right;
+            @extend .c-white;
+            font-size:44px;
+            line-height:50px;
+            @extend .pointerEvents-none;
+            @extend .fontWeight-3;
+            @extend .fontFamily-myriad;
+            letter-spacing:-0.016em;
+
+            &__slider {
+                @extend .pos-tr;
+                width:520px;
+
+                &__item.slick-slide {
+                    @include flex("row", "flex-end", "flex-end");
+                    @extend .h100;
+                }
+            }
+        }
+        &__phone {
+            @extend .pos-centered-h;
+            margin-left:22.5vw;
+            top:45.8vh;
+
+            &__wrapper {
+                @include accelerate();
+                width:351px;
+                height:660px;
+                background-size:351px 660px;
+                background-repeat:no-repeat;
+                background-image:url("/public/images/promo/premium/hardware/hardware_full_silver_large.png");
+                @extend .willChange-transform;
+
+                html.d-retina & {
+                    background-image:url("/public/images/promo/premium/hardware/hardware_full_silver_large_2x_light.png");
+                }
+            }
+            &__screen {
+                width:260px;
+                height:462px;
+                transform:translate(47px, 86px);
+
+                &__nav {
+                    @extend .pos-tl;
+                    @extend .w100p;
+                    @extend .userSelect-none;
+                    @extend .pointerEvents-none;
+                    @extend .zIndex-2;
+                    height:111px;
+                    @extend .bg-cover;
+                    //background-image:url(/public/images/promo/premium/mobile_resume_nav.png);
+
+                    &__item {
+                        @extend .pos-abs;
+                        @extend .bg-blueLight;
+                        @extend .borderRadius-circle;
+                        will-change:background-color;
+                        transition:background-color 0.3s $cubic28;
+                    }
+                    &__info {
+                        top:14px;
+                        left:14px;
+                        @extend .w28;
+                        @extend .h28;
+
+                        &__icon {
+                            @extend .pos-centered;
+                            @extend .w20;
+                            @extend .h20;
+
+                            &__color {
+                                @extend .fill-white;
+                            }
+                        }
+                    }
+                    &__sendmail {
+                        @extend .flex-centered;
+                        top:10px;
+                        right:10px;
+                        @extend .w42;
+                        @extend .h42;
+
+                        &__icon {
+                            @extend .display-block;
+                            @extend .w44;
+                            @extend .h44;
+                            @extend .mt9;
+                            transform:translate3d(0, 0, 0) scale3d(1, 1.1, 1);
+
+                            &__color {
+                                @extend .fill-white;
+                            }
+                        }
+                    }
+                    &__salary {
+                        @extend .fontFamily-helvetica;
+                        @extend .fontWeight-3;
+                        @extend .flex-centered;
+                        top:62px;
+                        right:14px;
+                        @extend .w34;
+                        @extend .h34;
+                        @extend .c-white;
+                        @extend .pt3;
+                        font-size:22.5px;
+
+                        span {
+                            @extend .display-block;
+                            transform:translate3d(0, 0, 0) scale3d(1.16, 1, 1);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

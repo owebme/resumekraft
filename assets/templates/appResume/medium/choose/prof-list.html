@@ -45,10 +45,6 @@
 
         new app.plugins.ripple();
 
-        $afterlag.xl(function(){
-            app.$dom.body.addClass("is-loaded");
-        });
-
         $.slider.slick(Object.assign(_.clone($root.default), {
             speed: 350,
             draggable: false,
@@ -74,10 +70,11 @@
         $.hide();
     };
 
-    $.show = function(){
+    $.show = function(callback){
         $root.marquee.up(function(){
             $.root.setAttribute("data-open", true);
         })
+        $.callback = callback;       
     };
 
     $.hide = function(){
@@ -85,6 +82,7 @@
 
         $root.marquee.down(function(){
             $Sections.main.slider.slick("slickGoTo", 0);
+            if (_.isFunction($.callback)) $.callback();
         })
     };
 

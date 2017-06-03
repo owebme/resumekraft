@@ -29,10 +29,10 @@ body.is-transitioning-next {
         transform:translateY(-100vh) translateZ(0);
     }
     &.is-discover {
-        .prof__opener {
+        prof-opener {
             transform:translateY(-100%) translateZ(0);
         }
-        .control__opener {
+        control-opener {
             transition-delay:0s;
             transform:translate3d(-50%, -100%, 0);
         }

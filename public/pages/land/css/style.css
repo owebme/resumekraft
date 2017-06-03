@@ -1,0 +1,270 @@
+*,
+*:after,
+*:before {
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+html,
+body {
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    min-width:320px;
+    text-size-adjust:100%;
+    text-rendering:optimizeLegibility;
+    -webkit-font-smoothing:antialiased;
+    -webkit-overflow-scrolling: touch;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+body {
+    position:absolute;
+    top:0;
+    left:0;
+    user-select:none;
+    background-color:#030303;
+}
+.cover,
+.cover__bg {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-position:top center;
+    background-size:cover;
+}
+[data-progressive="true"]{
+    background-image:none !important;
+}
+.cover__bg {
+    transition:all 1s cubic-bezier(.32,.07,.41,1);
+    transform:translate3d(0, 0, 0) scale(1);
+    will-change:opacity, transform;
+    pointer-events:none;
+    z-index:1;
+}
+.cover__text {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate3d(-50%, -50%, 0);
+    margin:-40px 0 0 -80px;
+    z-index:2;
+}
+.cover__subtitle {
+    position:absolute;
+    bottom:100%;
+    left:-40px;
+    color:#f2f2f2;
+    margin-bottom:30px;
+    font:14px/14px 'HeliosThin';
+    text-transform:uppercase;
+}
+.cover__subtitle .divider {
+    display:inline-block;
+    vertical-align:middle;
+    margin:0 6px;
+    width:1px;
+    height:14px;
+    opacity:0.8;
+    background:linear-gradient(to bottom, #e6e6e6, #676965);
+}
+.cover__subtitle .dark {
+    color:transparent;
+    background:linear-gradient(165deg, #cdb388, #ddd);
+    -webkit-background-clip:text;
+}
+.cover__title {
+    font:46px/53px 'HeliosThin';
+    color:transparent;
+    background:linear-gradient(165deg, #f0f0f0 27%, #676965);
+    -webkit-background-clip:text;
+}
+.cover__time {
+    position:absolute;
+    top:0;
+    left:100%;
+    width:53px;
+    height:53px;
+    top:5px;
+    margin-left:13px;
+}
+.cover__button {
+    position:relative;
+    display:inline-block;
+    box-shadow:0 0 0 1px #cdb388;
+    color:#fff;
+    font:300 14px/40px 'Roboto';
+    height:40px;
+    padding:0 18px;
+    border-radius:25px;
+    cursor:pointer;
+    overflow:hidden;
+    transition:background-color 0.25s ease, transform 0.15s ease;
+}
+.cover__button:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    display: block;
+    content: '';
+    width: 25%;
+    height: 100%;
+    background:linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .3) 100%);
+    transform:translate3d(-150%, 0, 0) skewX(-25deg);
+    pointer-events:none;
+    will-change:transform;
+    animation:reflect infinite 5s;
+}
+@keyframes reflect {
+    0% {
+        transform:translate3d(-150%, 0, 0) skewX(-25deg);
+    }
+    50% {
+        transform:translate3d(500%, 0, 0) skewX(-25deg);
+    }
+    100% {
+        transform:translate3d(500%, 0, 0) skewX(-25deg);
+    }
+}
+.cover__button__label {
+    display:inline-block;
+    -webkit-backface-visibility:hidden;
+    will-change:transform;
+}
+.cover__button__label:hover {
+    animation:btn-label-hover .5s cubic-bezier(.4,0,.2,1);
+}
+@keyframes btn-label-hover {
+    0% {
+        transform:translate3d(0, 0, 0);
+    }
+    1% {
+        transform:translate3d(0, 5%, 0) scale(.96);
+    }
+    to {
+        transform:translate3d(0, 0, 0) scale(1);
+    }
+}
+.cover__button:active {
+    transform:translate3d(0, 0, 0) scale(0.9);
+}
+.cover__button__wrapper {
+    margin-top:26px;
+}
+.cover__button:hover {
+    background-color:#846e48;
+}
+.cover__subtitle,
+.cover__button__wrapper,
+.cover__time {
+    opacity:0;
+    transition:opacity 1s cubic-bezier(.32,.07,.41,1), transform 1s cubic-bezier(.32,.07,.41,1);
+    will-change:opacity, transform;
+}
+.cover__title {
+    opacity:0;
+    transition:opacity 1s cubic-bezier(.28,.11,.32,1), transform 1s cubic-bezier(.28,.11,.32,1);
+    will-change:opacity, transform;
+}
+.cover__title {
+    transition-delay:0.5s;
+    transform:translate3d(0, 40px, 0);
+}
+.cover__subtitle {
+    transition-delay:1.9s;
+    transform:translate3d(-40px, 0, 0);
+}
+.cover__time {
+    transition-delay:1.1s;
+    transform:translate3d(-40px, 0, 0);
+}
+.cover__button__wrapper {
+    transition-delay:1.5s;
+    transform:translate3d(-40px, 0, 0);
+}
+body[data-ready="true"] .cover__bg {
+    opacity:0;
+    transform:translate3d(0, 0, 0) scale(1.1);
+}
+body[data-ready="true"] .cover__title,
+body[data-ready="true"] .cover__subtitle,
+body[data-ready="true"] .cover__time,
+body[data-ready="true"] .cover__button__wrapper {
+    opacity:1;
+    transform:translate3d(0, 0, 0);
+}
+@media (min-width: 737px){
+    .cover,
+    .cover__bg {
+        margin-left:-40px;
+        min-height:1278px;
+    }
+}
+@media (min-width: 737px) and (max-width: 1068px) and (orientation: landscape){
+    .cover,
+    .cover__bg {
+        min-height:920px;
+        margin-left:60px;
+    }
+    .cover__title {
+        font:44px/50px 'HeliosThin';
+    }
+}
+@media (min-width: 737px){
+    .cover {
+        background-image:url(../images/home.jpg);
+    }
+    .cover__bg {
+        background-image:url(../images/home_blur.jpg);
+    }
+}
+@media (max-width: 736px){
+    .cover {
+        background-image:url(../images/home_small.jpg);
+    }
+    .cover__bg {
+        background-image:url(../images/home_blur_small.jpg);
+    }
+    .cover__title {
+        font:38.5px/45px 'HeliosThin';
+    }
+    .cover__time {
+        top:1px;
+        width:48px;
+        height:48px;
+    }
+    .cover__text {
+        margin-left:-40px;
+    }
+}
+@media (max-width: 736px) and (orientation: portrait){
+    .cover__title {
+        max-width:248px;
+    }
+    .cover__time {
+        left:185px;
+        margin-left:0;
+    }
+    .cover__subtitle {
+        left:40px;
+    }
+}
+@media (max-width: 736px) and (orientation: landscape){
+    .cover__text {
+        margin-top:5px;
+    }
+}
+@media (max-width: 320px) {
+    .cover__title {
+        font:35px/42px 'HeliosThin';
+    }
+    .cover__time {
+        left:165px;
+        width:42px;
+        height:42px;
+    }
+}

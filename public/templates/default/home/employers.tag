@@ -1,4 +1,4 @@
-<home-employers class="content__section c-white" data-section="employers" data-gradient="black">
+<home-employers class="content__section c-white" data-gradient="black">
 
     <div class="container text-center">
         <div class="content__block">
@@ -25,7 +25,10 @@
                                 <div class="employers__logo" data-logo="budget"></div>
                             </div>
                             <div class="col-md-8">
-                                <div class="employers__logo" data-logo="enter"></div>
+                                <div class="employers__total">
+                                    <div class="employers__total__title">418</div>
+                                    <div class="employers__total__text">компаний</div>
+                                </div>
                             </div>
                             <div class="col-md-8">
                                 <div class="employers__logo" data-logo="aeroflot"></div>
@@ -34,7 +37,7 @@
                                 <div class="employers__logo" data-logo="nike"></div>
                             </div>
                             <div class="col-md-8">
-                                <div class="employers__logo" data-logo="apple"></div>
+                                <div class="employers__logo" data-logo="enter"></div>
                             </div>
                             <div class="col-md-8">
                                 <div class="employers__logo" data-logo="deliveryclub"></div>

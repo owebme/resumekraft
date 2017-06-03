@@ -1,165 +1,105 @@
-<section-plans class="content__section" data-section="plans">
+<section-plans class="content__section">
 
     <div class="container text-center">
         <div class="row">
-            <div class="col-md-24">
+            <div class="col-md-22 centered">
                 <div class="content__block">
 
-                    <h1 class="mb-m c-primary">Хотите лучшее резюме?</h1>
-                    <p class="c-gray text mb50">Выберите подходящий вариант.</p>
+                    <h1 class="mb-m c-primary">Наши предложения</h1>
+                    <p class="c-gray text mb50">Оплачиваете один раз и пользуетесь всегда.</p>
 
-                    <div class="plans">
-                        <div class="plan">
-                            <div class="row plan__item">
-                                <div class="col-md-12 plan__title">Современное резюме</div>
-                                <div class="col-md-6 plan__buttons">
-                                    <div class="btn-order btn btn-s btn-primary-hover">Быстрый заказ</div>
-                                    <div class="btn-open btn btn-s btn-primary-hover">Подробнее</div>
-                                </div>
-                                <div class="col-md-4 plan__price">3 990 руб.</div>
-                                <div class="col-md-2 plan__open">
-                                    <div class="plan__opener">
-                                        <svg class="plan__opener__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
-                                          <path class="plan__opener__svg__arrow" d="M781,3972.48a0.57,0.57,0,0,1-.24.45l-2.37,1.86a1,1,0,0,1-1.15,0,0.54,0.54,0,0,1,0-.9l1.8-1.41-1.8-1.41a0.55,0.55,0,0,1,0-.9,1,1,0,0,1,1.15,0l2.37,1.86A0.57,0.57,0,0,1,781,3972.48Z" transform="translate(-767.5 -3961.5)"></path>
-                                          <path class="plan__opener__svg__circle" d="M778.5,3983.5a11,11,0,1,1,11-11A11,11,0,0,1,778.5,3983.5Zm0-21a10,10,0,1,0,10,10A10,10,0,0,0,778.5,3962.5Z" transform="translate(-767.5 -3961.5)"></path>
-                                        </svg>
+                    <div class="row">
+                        <div class="col-md-8 plan__wrapper">
+                            <div class="plan" data-plan="free">
+                                <div class="plan__header">
+                                    <div class="plan__title">Free</div>
+                                    <div class="plan__text">9 шаблонов с фотографией в старом формате</div>
+                                    <div class="plan__price">
+                                        <div class="plan__price__label">₽</div>
+                                        <div class="plan__price__money">0</div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="plan__options">
-                                <div class="row plan__option">
-                                    <div class="col-md-6 plan__option__title">
-                                        Написание
-                                    </div>
-                                    <div class="col-md-18 plan__option__text">
-                                        Написание профессионального резюме лучшими специалистами в HR-области, общение с соискателем для составления портрета кандидата.
-                                    </div>
+                                <div class="plan__items">
+                                    <div class="plan__item">1 резюме<span class="plan__item__help" data-balloon-length="m" data-balloon-borderRadius="l" data-balloon="1 резюме бесплатно, каждое последующее 369 руб, весь функционал также бесплатный"><icon-que></icon-que></span></div>
+                                    <div class="plan__item">Старый формат</div>
+                                    <div class="plan__item">на 2-х языках<span class="plan__item__help" data-balloon-borderRadius="l" data-balloon="Резюме на русском и  английском"><icon-que></icon-que></span></div>
+                                    <div class="plan__item">Образцы резюме<span class="plan__item__help" data-balloon-length="m" data-balloon-borderRadius="l" data-balloon="Более 300 образцов для облегчения написания резюме, база пополняется"><icon-que></icon-que></span></div>
+                                    <div class="plan__item">Адаптация<span class="plan__item__help" data-balloon-length="m" data-balloon-borderRadius="l" data-balloon="Адаптация резюме под планшеты, мобильная версия не предусмотрена"><icon-que></icon-que></span></div>
+                                    <div class="plan__item">Базовый функционал</div>
+                                    <div class="plan__item"><svg width="36" height="1" viewBox="0 0 36 1"><path class="fill-silver" d="M0 .5c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5z"></path></svg></div>
+                                    <div class="plan__item"><svg width="36" height="1" viewBox="0 0 36 1"><path class="fill-silver" d="M0 .5c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5z"></path></svg></div>
                                 </div>
-                                <div class="row plan__option">
-                                    <div class="col-md-6 plan__option__title">
-                                        Формат резюме
-                                    </div>
-                                    <div class="col-md-18 plan__option__text">
-                                        Классический вариант + фотография с возможностью выбора из 9 стильных дизайнов. <span class="c-primary">Создание современного резюме для всех мобильных устройств, личный кабинет с возможностью редактирования + 3 месяца премимум аккаунта.</span>
-                                    </div>
-                                </div>
-                                <div class="row plan__option">
-                                    <div class="col-md-6 plan__option__title">
-                                        Срок создания
-                                    </div>
-                                    <div class="col-md-18 plan__option__text">
-                                        <div class="fontSize-28 fontWeight-3">3 рабочих дня</div>
-                                    </div>
-                                </div>
-                                <div class="row plan__option">
-                                    <div class="col-md-6 plan__option__title">
-                                        Срочное резюме
-                                    </div>
-                                    <div class="col-md-18 plan__option__text">
-                                        <div class="fontSize-28 fontWeight-3">1 рабочий день ( + 1 000 руб.)</div>
-                                    </div>
+                                <div class="btn btn-l btn-rounded btn-success">Создать резюме</div>
+                                <div class="plan__footer">
+                                    <div class="btn btn-l btn-rounded btn-primary-hover">Смотреть примеры</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="plan">
-                            <div class="row plan__item">
-                                <div class="col-md-12 plan__title">Только написание</div>
-                                <div class="col-md-6 plan__buttons">
-                                    <div class="btn btn-order btn-s btn-primary-hover">Быстрый заказ</div>
-                                    <div class="btn btn-open btn-s btn-primary-hover">Подробнее</div>
-                                </div>
-                                <div class="col-md-4 plan__price">1 799 руб.</div>
-                                <div class="col-md-2 plan__open">
-                                    <div class="plan__opener">
-                                        <svg class="plan__opener__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
-                                          <path class="plan__opener__svg__arrow" d="M781,3972.48a0.57,0.57,0,0,1-.24.45l-2.37,1.86a1,1,0,0,1-1.15,0,0.54,0.54,0,0,1,0-.9l1.8-1.41-1.8-1.41a0.55,0.55,0,0,1,0-.9,1,1,0,0,1,1.15,0l2.37,1.86A0.57,0.57,0,0,1,781,3972.48Z" transform="translate(-767.5 -3961.5)"></path>
-                                          <path class="plan__opener__svg__circle" d="M778.5,3983.5a11,11,0,1,1,11-11A11,11,0,0,1,778.5,3983.5Zm0-21a10,10,0,1,0,10,10A10,10,0,0,0,778.5,3962.5Z" transform="translate(-767.5 -3961.5)"></path>
-                                        </svg>
+                        <div class="col-md-8 plan__wrapper">
+                            <div class="plan" data-plan="medium">
+                                <div class="plan__header">
+                                    <div class="plan__title">Medium</div>
+                                    <div class="plan__text">Отличный выбор, существенно выделит вас</div>
+                                    <div class="plan__price">
+                                        <div class="plan__price__label">₽</div>
+                                        <div class="plan__price__money">1,169</div>
+                                        <div class="plan__price__text">1 раз навсегда</div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="plan__options">
-                                <div class="row plan__option">
-                                    <div class="col-md-6 plan__option__title">
-                                        Написание
+                                <div class="plan__items">
+                                    <div class="plan__item">1 резюме</div>
+                                    <div class="plan__item">
+                                        <div class="plan__item__label">Резюме-слайдер<div class="plan__badge">Новинка</div></div>
                                     </div>
-                                    <div class="col-md-18 plan__option__text">
-                                        Написание профессионального резюме лучшими специалистами в HR-области, общение с соискателем для составления портрета кандидата.
-                                    </div>
+                                    <div class="plan__item">на 2-х языках</div>
+                                    <div class="plan__item">Образцы резюме</div>
+                                    <div class="plan__item">Мобильное резюме<span class="plan__item__help" data-balloon-length="m" data-balloon-borderRadius="l" data-balloon="Резюме отлично смотрится на всех мобильных устройствах и смартфонах"><icon-que></icon-que></span></div>
+                                    <div class="plan__item">Базовый функционал<span class="plan__item__help" data-balloon-length="m" data-balloon-borderRadius="l" data-balloon="Все необходимые ингридиенты: образование, курсы, ключевые навыки и т.д."><icon-que></icon-que></span></div>
+                                    <div class="plan__item">Настройки оформления<span class="plan__item__help" data-balloon-length="m" data-balloon-borderRadius="l" data-balloon="Выбор из нескольких тем, поменять цвет и стиль"><icon-que></icon-que></span></div>
+                                    <div class="plan__item"><svg width="36" height="1" viewBox="0 0 36 1"><path class="fill-silver" d="M0 .5c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5z"></path></svg></div>
                                 </div>
-                                <div class="row plan__option">
-                                    <div class="col-md-6 plan__option__title">
-                                        Формат резюме
-                                    </div>
-                                    <div class="col-md-18 plan__option__text">
-                                        Классический вариант + фотография с возможностью выбора из 9 стильных дизайнов.
-                                    </div>
+                                <div class="btn btn-l btn-rounded btn-success">Создать резюме</div>
+                                <div class="plan__footer">
+                                    <div class="btn btn-l btn-rounded btn-primary-hover">Смотреть примеры</div>
                                 </div>
-                                <div class="row plan__option">
-                                    <div class="col-md-6 plan__option__title">
-                                        Срок создания
-                                    </div>
-                                    <div class="col-md-18 plan__option__text">
-                                        <div class="fontSize-28 fontWeight-3">3 рабочих дня</div>
-                                    </div>
-                                </div>
-                                <div class="row plan__option">
-                                    <div class="col-md-6 plan__option__title">
-                                        Срочное резюме
-                                    </div>
-                                    <div class="col-md-18 plan__option__text">
-                                        <div class="fontSize-28 fontWeight-3">1 рабочий день ( + 1 000 руб.)</div>
-                                    </div>
-                                </div>                                
                             </div>
                         </div>
-                        <div class="plan">
-                            <div class="row plan__item">
-                                <div class="col-md-12 plan__title">Сделаю сам</div>
-                                <div class="col-md-6 plan__buttons">
-                                    <div class="btn btn-open btn-s btn-primary-hover">Подробнее</div>
-                                </div>
-                                <div class="col-md-4 plan__price">0 &ndash; 369 руб.</div>
-                                <div class="col-md-2 plan__open">
-                                    <div class="plan__opener">
-                                        <svg class="plan__opener__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
-                                          <path class="plan__opener__svg__arrow" d="M781,3972.48a0.57,0.57,0,0,1-.24.45l-2.37,1.86a1,1,0,0,1-1.15,0,0.54,0.54,0,0,1,0-.9l1.8-1.41-1.8-1.41a0.55,0.55,0,0,1,0-.9,1,1,0,0,1,1.15,0l2.37,1.86A0.57,0.57,0,0,1,781,3972.48Z" transform="translate(-767.5 -3961.5)"></path>
-                                          <path class="plan__opener__svg__circle" d="M778.5,3983.5a11,11,0,1,1,11-11A11,11,0,0,1,778.5,3983.5Zm0-21a10,10,0,1,0,10,10A10,10,0,0,0,778.5,3962.5Z" transform="translate(-767.5 -3961.5)"></path>
-                                        </svg>
+                        <div class="col-md-8 plan__wrapper">
+                            <div class="plan" data-plan="premium">
+                                <div class="plan__header">
+                                    <div class="plan__title">Premium</div>
+                                    <div class="plan__text">Позволит обратить на вас еще больше внимания</div>
+                                    <div class="plan__price">
+                                        <div class="plan__price__label">₽</div>
+                                        <div class="plan__price__money">1,769</div>
+                                        <div class="plan__price__text">1 раз навсегда</div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="plan__options">
-                                <div class="row plan__option pt-m">
-                                    <div class="col-md-6 plan__option__title">
-                                        Обычный
-                                    </div>
-                                    <div class="col-md-18 plan__option__text">
-                                        9 стильных дизайнов c фотографией на выбор.
-                                    </div>
+                                <div class="plan__items">
+                                    <div class="plan__item">1 резюме<span class="plan__item__help" data-balloon-length="m" data-balloon-borderRadius="l" data-balloon="1 резюме = разовая оплата, резюме остается навсегда без помесячной оплаты"><icon-que></icon-que></span></div>
+                                    <div class="plan__item">Резюме-лендинг<span class="plan__item__help" data-balloon-borderRadius="l" data-balloon="Смотрите примеры резюме"><icon-que></icon-que></span></div>
+                                    <div class="plan__item">на 2-х языках</div>
+                                    <div class="plan__item">Образцы резюме</div>
+                                    <div class="plan__item">Мобильное резюме</div>
+                                    <div class="plan__item">Расширенный функционал<span class="plan__item__help" data-balloon-length="m" data-balloon-borderRadius="l" data-balloon="Возможность рассказать о себе больше, смотрите примеры резюме"><icon-que></icon-que></span></div>
+                                    <div class="plan__item">Визуальный редактор<span class="plan__item__help" data-balloon-length="m" data-balloon-borderRadius="l" data-balloon="Редактирование в несколько кликов, функция предпросмотра не нужна"><icon-que></icon-que></span></div>
+                                    <div class="plan__item">Рекомендации<span class="plan__item__help" data-balloon-length="m" data-balloon-borderRadius="l" data-balloon="В функционал входят рекомендации по написанию резюме"><icon-que></icon-que></span></div>
                                 </div>
-                                <div class="row plan__option flex-row-center-stretch">
-                                    <div class="col-md-6 plan__option__title">
-                                        Премиум аккаунт
-                                    </div>
-                                    <div class="col-md-14 plan__option__text">
-                                        Создание современного резюме для всех мобильных устройств, личный кабинет с возможностью редактирования.
-                                    </div>
-                                    <div class="col-md-4 plan__option__text flex-centered">
-                                        <a href="#" class="btn btn-s btn-primary-hover">Смотреть промо</a>
-                                    </div>
-                                </div>
-                                <div class="row plan__option">
-                                    <div class="col-md-6 plan__option__title">
-                                        Без регистрации
-                                    </div>
-                                    <div class="col-md-18 plan__option__text">
-                                        <div class="fontSize-28 fontWeight-3"></div>
-                                    </div>
+                                <div class="btn btn-l btn-rounded btn-success">Создать резюме</div>
+                                <div class="plan__footer">
+                                    <div class="btn btn-l btn-rounded btn-primary-hover">Смотреть примеры</div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-24">
+                            <div class="plan__or">или</div>
+                            <section-plan-premium></section-plan-premium>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

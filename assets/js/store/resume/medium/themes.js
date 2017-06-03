@@ -35,6 +35,13 @@ $store.themes = _.extend(new Baobab([
         }
     },
     {
+        _id: "fire",
+        title: {
+            en: "Fire",
+            ru: "Огонь"
+        }
+    },
+    {
         _id: "color",
         title: {
             en: "Select color",
