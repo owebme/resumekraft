@@ -202,6 +202,41 @@ premium-select {
                     }
                 }
             }
+            .btn:hover {
+                ~ .slider__item__devices {
+                    icon-device-desktop path {
+                        @extend .fill-primary;
+                    }
+                }
+            }
+            &__devices {
+                @extend .flex-column-centered;
+                @extend .pos-abs;
+                @extend .r45;
+                bottom:150px;
+            }
+            &__device {
+                @extend .mt25;
+                @extend .cursor-pointer;
+
+                .icon-device-desktop {
+                    width:53px;
+                    height:28px;
+                }
+                .icon-device-phones {
+                    width:30px;
+                    height:37px;
+                }
+                path {
+                    @extend .fill-silver;
+                    transition:fill 0.2s $cubic215;
+                }
+                &:hover {
+                    path {
+                        @extend .fill-primary;
+                    }
+                }
+            }
         }
     }
     @media screen and (max-width:$w1068){

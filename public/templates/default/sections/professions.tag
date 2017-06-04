@@ -1,7 +1,7 @@
 <section-professions class="section__professions">
 
     <div class="section__professions__button">
-        <a href="/premium/workflow" class="btn btn-xl btn-rounded btn-white-hover-success">
+        <a href="/premium/select" class="btn btn-xl btn-rounded btn-white-hover-success">
             <span class="btn-label">Смотреть примеры</span>
         </a>
     </div>

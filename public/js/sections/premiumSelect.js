@@ -17,6 +17,8 @@
 
             WD.slider();
 
+            WD.phones();
+
             app.metrika.set("views.premiumSelect", 1, {
                 action: "inc"
             })
@@ -56,17 +58,18 @@
                 }
             })();
 
-            WD.screens = new app.plugins.screens($header.find(".screens")[0], {
+            var screens = new app.plugins.screens($header.find(".screens")[0], {
                 vertical: false,
                 mousewheel: false,
                 phoneEmulate: true,
                 play: {
                     run: true,
+                    round: true,
                     interval: 5
                 }
             });
-            WD.screens.init();
-            WD.screens.marquee.disableKeyboard();
+            screens.init();
+            screens.marquee.disableKeyboard();
 
             var $slider = $header.find(".hero__text__slider");
 
@@ -80,10 +83,16 @@
                 centerPadding: false
             });
 
-            var $screens = $header.find(".screens .screen");
+            var $screens = $header.find(".screens .screen"),
+                i = 0;
 
             $screens.on('show', function(e){
-                $slider.slick("slickGoTo", parseInt($(this).index()));
+                i++;
+                if (i > 1){
+                    $(this).closest(".screens")
+                    .prev().attr("data-color", _.shuffle($store.colors.get())[0]._id)
+                    $slider.slick("slickGoTo", $(this).index() * 1 - 1);
+                }
             });
         },
 
@@ -130,6 +139,42 @@
                     $total.css("opacity", "1");
                 }
             })
+        },
+
+        phones: function(){
+            var $section = WD.el.find(".section1");
+
+            $section.find(".screens").each(function(i){
+                var screens = new app.plugins.screens(this, {
+                    vertical: this.getAttribute("data-vertical") == "true" ? true : false,
+                    mousewheel: i == 1 && !app.device.isMobile ? true : false,
+                    phoneEmulate: true,
+                    play: {
+                        run: true,
+                        round: true,
+                        interval: parseFloat(this.getAttribute("data-interval"))
+                    }
+                });
+                screens.init();
+                screens.marquee.disableKeyboard();
+            });
+
+            if (!app.device.isMobile){
+                $section.find(".screens:eq(1)").on('click mousemove mouseup mousedown', ".screen__content", function(e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+            }
+
+            $section.find(".screens:eq(0) .screen").on('show', function(e){
+                $(this).closest(".screens")
+                .prev().attr("data-color", _.shuffle($store.colors.get())[0]._id)
+            });
+
+            $section.find(".screens:eq(2) .screen").on('show', function(e){
+                $(this).closest(".screens")
+                .prev().attr("data-color", _.shuffle($store.colors.get())[0]._id)
+            });
         },
 
         clamp: function(t, e, i) {

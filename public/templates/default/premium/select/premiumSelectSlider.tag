@@ -17,6 +17,14 @@
             <div class="slider__item__title">Менеджер по привлечению клиентов</div>
             <div class="slider__item__text">Я графический дизайнер. В дизайне предпочитаю лаконичный стиль. В тексте — информационный. Убираю всё, что мешает увидеть суть.<span>&nbsp;</span></div>
             <div class="btn btn-l btn-rounded btn-primary-hover">Открыть пример</div>
+            <div class="slider__item__devices">
+                <a href="/premium/demo" class="slider__item__device">
+                    <icon-device-desktop color="none"></icon-device-desktop>
+                </a>
+                <a href="/premium/workflow" class="slider__item__device">
+                    <icon-device-phones color="none"></icon-device-phones>
+                </a>
+            </div>
         </div>
 
     </div>

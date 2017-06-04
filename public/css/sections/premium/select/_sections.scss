@@ -1,17 +1,122 @@
 premium-select {
     .section1 {
-        @extend .bg-snowA;
-        padding-top:100px;
+        @extend .pos-rel;
+        background-color:#fbfbfb;
+        background:linear-gradient(to bottom, #fff 0%, #fff 68%, #f7f7f7 100%);
+        padding-top:95px;
 
-        &:after {
-            @extend .content-empty;
-            @extend .display-block;
-            background-size: 1894px 841px;
-            background-repeat: no-repeat;
-            background-position: center top;
-            // background-image:url("https://images.apple.com/ru/ipad/home/images/home/ipadpro_large_2x.jpg");
-            width: 100%;
-            height: 841px;
+        .phones {
+            @extend .pos-rel;
+            @extend .mt70;
+            @extend .ml--xs;
+            @extend .mr--xs;
+
+            &:hover {
+                .button {
+                    @extend .opacity-100;
+                    transform:translate3d(-50%, 0, 0);
+                }
+            }
+        }
+        .phone {
+            @extend .m0-auto;
+            width:362px;
+            height:645px;
+            background-size:362px 645px;
+            background-image:url("/public/images/premium/select/phone_large_2x.png");
+
+            &__screen {
+                @extend .pos-rel;
+                width:312px;
+                height:555px;
+                transform:translate(25px, 90px);
+
+                &__title {
+                    @include flex("column", "flex-end", "flex-start");
+                    @extend .pos-bl;
+                    @extend .w100p;
+                    @extend .p30;
+                    @extend .c-white;
+                    @extend .fontFamily-helvetica;
+                    @extend .fontWeight-5;
+                    @extend .letterSpacing--m;
+                    @extend .text-left;
+                    text-shadow:0 2px 5px rgba($steel,.5);
+                    min-height:180px;
+                    font-size:32px;
+                    line-height:40px;
+                    background:linear-gradient(to top, $blackA, rgba($blackA,0));
+                    @extend .zIndex-1;
+
+                    &__text {
+
+                        @include textEllipsis(100%, 175px, 4);
+                    }
+                }
+                .phone__screen__nav {
+                    height:133px;
+
+                    &__info {
+                        top:16px;
+                        left:16px;
+                        @extend .w32;
+                        @extend .h32;
+
+                        &__icon {
+                            width:23px;
+                            height:23px;
+                        }
+                    }
+                    &__sendmail {
+                        top:12px;
+                        right:12px;
+                        @extend .w50;
+                        @extend .h50;
+
+                        &__icon {
+                            @extend .w50;
+                            @extend .h50;
+                            transform:translate3d(0, 6px, 0) scale3d(1, 1.18, 1);
+                        }
+                    }
+                    &__salary {
+                        top:74px;
+                        right:16px;
+                        width:41px;
+                        height:41px;
+                        @extend .pt-xxs;
+                        font-size:27px;
+
+                        span {
+                            transform:translate3d(1px, 0, 0) scale3d(1.16, 1, 1);
+                        }
+                    }
+                }
+            }
+        }
+        icon-device-phones {
+            @extend .display-inlineBlock;
+            @extend .pos-rel;
+            @extend .w85;
+            @extend .h85;
+            box-shadow:0 0 0 1px rgba($silver,.5);
+            @extend .borderRadius-circle;
+            @extend .mb25;
+        }
+        .icon-device-phones {
+            @extend .pos-centered;
+            width:41px;
+            height:50px;
+        }
+        .button {
+            @extend .pos-abs;
+            @extend .l50p;
+            @extend .b-xl;
+            @extend .zIndex-1;
+            @extend .opacity-0;
+            @extend .willChange-tp;
+            transform:translate3d(-50%, 40px, 0);
+            transition:opacity 0.3s $cubic2501, transform 0.3s $cubic2501;
         }
     }
 }

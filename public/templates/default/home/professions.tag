@@ -5,10 +5,10 @@
             <div class="col-md-16 centered">
                 <div class="content__block">
                     <h1 class="mb-m c-white">Начать очёнь просто</h1>
-                    <p class="text mb25">Открывайте аккаунт и создавайте резюме прямо сейчас.</p>
-                    <div class="btn btn-l btn-rounded btn-white-hover-outline">
+                    <p class="text mb25">Открываем аккаунт и создаём резюме прямо сейчас.</p>
+                    <a href="/auth/signup" class="btn btn-l btn-rounded btn-white-hover-outline">
                         <span class="btn-label fontWeight-5">Создать аккаунт</span>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
