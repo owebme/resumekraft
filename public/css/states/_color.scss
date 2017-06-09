@@ -76,10 +76,14 @@ $i:0;
         }
     }
 }
-.btn-link-underline:hover {
-    text-decoration:underline;
+@each $title, $size, $line in (s, 18px, 28px), (m, 20px, 30px), (l, 22px, 32px), (xl, 24px, 34px){
+    .link-#{$title} {
+        @extend .fontFamily-myriad;
+        font-size:$size;
+        line-height:$line;
+    }
 }
-@each $title, $color in (primary: $primary, success: $green, danger: $red, warning: $yellow, dark: $black){
+@each $title, $color in (primary: $primary, success: $green, danger: $red, warning: $yellow, violet: $violet, pink: $pink, dark: $black){
     .btn-#{$title} {
         color:$white;
         background-color:$color;
@@ -155,6 +159,12 @@ $i:0;
     }
     .arrow-pointer[data-color=#{$title}]:before {
         border-color:$color;
+    }
+    .badge-#{$title} {
+        &,
+        &:after {
+            background-color:$color;
+        }
     }
 }
 @each $title, $color in (info: $primary, success: $green, danger: $orange, warning: $yellow){

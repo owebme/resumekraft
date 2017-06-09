@@ -19,6 +19,37 @@ h4, .h4 {
 	font-size:25px;
     line-height:35px;
 }
+h1, h2 {
+	&.bold {
+		@extend .c-slate;
+		@extend .fontFamily-sfdisplay;
+		@extend .fontWeight-6;
+	}
+}
+h1.bold {
+	font-size:50px;
+	line-height:56px;
+	letter-spacing:-0.004em;
+}
+h2.bold {
+	font-size:44px;
+	line-height:50px;
+	letter-spacing:0.006em;
+}
+p {
+    &.text {
+        @extend .fontFamily-myriad;
+        @extend .fontSize-20;
+
+        &.-light {
+            @extend .fontFamily-sfdisplay;
+            @extend .fontWeight-3;
+            font-size:22px;
+            line-height:32px;
+            letter-spacing:0.016em;
+        }
+    }
+}
 sup, sub {
 	font-size:75%;
 }

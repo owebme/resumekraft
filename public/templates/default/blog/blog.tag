@@ -1,6 +1,6 @@
 <section-blog class="section" data-page={ opts.data.page } data-pages={ opts.data.pages }>
 
-    <section-nav section="blog" color="snow" user={ opts.user }></section-nav>
+    <global-nav section="blog" color="snow" user={ opts.user }></global-nav>
 
     <div id="content">
 

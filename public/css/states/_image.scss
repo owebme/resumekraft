@@ -1,6 +1,10 @@
 body#renderSide {
     .progressive-image {
-        background-image:none !important;
+        &,
+        &:before,
+        &:after {
+            background-image:none !important;
+        }
     }
 }
 .bg-none {

@@ -1,4 +1,25 @@
 .overview-premium {
+    .screens {
+        .screen:not(.screen--active){
+            @extend .display-none;
+        }
+    }
+    .icon {
+        &-control {
+            width:132px;
+            height:132px;
+            margin-top:-26px;
+            margin-bottom:-26px;
+            transform:translateY(14px);
+        }
+        &-glass {
+            width:100px;
+            height:100px;
+            margin-top:-10px;
+            margin-bottom:-10px;
+            transform:translateY(-2px);
+        }
+    }
     .slide1-1 {
         @extend .mlr-auto;
         @extend .bg-cover;

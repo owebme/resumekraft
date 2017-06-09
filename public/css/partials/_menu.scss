@@ -1,123 +1,151 @@
-.menu {
-    @include abs("fixed");
-    @include accelerate();
-    @extend .h100v;
-    @extend .bg-white;
-    @extend .text-center;
-    @extend .zIndex-1000;
-    @extend .opacity-0;
+global-menu {
+    @extend .text-left;
+    @extend .fontFamily-myriad;
+
+    .menu {
+        &.-padding {
+            padding-top:27px;
+        }
+        &__label {
+            @extend .c-slate;
+            @extend .fontWeight-5;
+        }
+        &__item {
+            @include flex("row", "flex-start", "flex-end");
+            @extend .fontSize-15;
+            @extend .h28;
+        }
+    }
+    a {
+        @extend .transition-default;
+
+        &:hover {
+            @extend .c-blue;
+        }
+    }
+}
+global-dropmenu {
+    @extend .display-block;
+    @extend .pos-fixed;
+    @extend .t95;
+    @extend .l0;
+    @extend .w100v;
     @extend .visibility-hidden;
     @extend .pointerEvents-none;
-    @extend .willChange-opacity;
-    transition:opacity 0.35s $cubic40 0.1s, visibility 0.45s 0s;
+    @extend .zIndex-5;
+    height:calc(100vh - 95px);
+    transition:visibility 0s 0.2s;
 
-    &__items {
-        width:600px;
-        margin-top:3.5vh;
-        @extend .pos-centered;
-    }
-    &__item {
-        @include accelerate();
-        margin:8.5vh 0;
-        @extend .opacity-0;
-        @extend .willChange-tp;
-        transform-origin:50% 0;
-        transform:translate3d(0, -35px, 0) scale3d(0.7, 0.4, 0);
-        transition:transform 0.4s $bounceForce, opacity 0.4s $bounceForce;
+    &[data-open="true"]{
+        @extend .visibility-visible;
+        @extend .pointerEvents-all;
+        @extend .transition-none;
 
-        &__link {
-            @extend .c-black;
-            @extend .fontFamily-myriad;
-            font-size:18px;
-            @extend .fontWeight-5;
-            letter-spacing:5px;
-            @extend .text-uppercase;
-            @extend .textDecoration-none;
-            transition:all 0.3s $cubic4001;
-
-            html.m-no-touch &:hover,
-            &[data-active="true"] {
-                @extend .c-pink;
-                @extend .fontWeight-bold;
-                letter-spacing:6px;
+        &:before {
+            @extend .opacity-100;
+        }
+        .wrapper {
+            @extend .bg-white;
+            @extend .opacity-100;
+            @extend .transform-default;
+            transition:transform 0.3s $cubic28, background-color 0.03s ease;
+        }
+        .menu {
+            &,
+            &__label {
+                @extend .opacity-100;
+                @extend .scale-100;
             }
         }
     }
-    &__close {
-        @include accelerate();
-        @extend .pos-abs;
-        top:6vh;
-        @extend .l50;
-        @extend .w40;
-        @extend .h40;
-        @extend .borderRadius-circle;
-        @extend .bg-blackLight;
-        @extend .cursor-pointer;
-        transition:transform 0.3s $cubic215, background-color 0.2s $cubic215;
-        transform:translate3d(-50%, 0, 0) scale3d(0, 0, 1);
-
-        html.m-no-touch &:hover {
-            @extend .bg-pink;
-            transition-delay:0s;
-        }
-        &:before,
-        &:after {
-            @extend .content-empty;
-            @extend .pos-abs;
-            @extend .t50;
-            @extend .l50;
-            @extend .w33p;
-            @extend .h2px;
-            @extend .bg-white;
-            @extend .opacity-0;
-            @extend .willChange-tp;
-            transition:transform 0.4s $cubic215, opacity 0.4s $cubic215;
-        }
-        &:before {
-            transform:translate3d(-50%, -50%, 0) rotate(0deg);
-        }
-        &:after {
-            transform:translate3d(-50%, -50%, 0) rotate(0deg);
+    &[data-open="false"]{
+        .menu {
+            &,
+            &__label {
+                transition:opacity 0s 0.2s, transform 0s 0.2s !important;
+            }
         }
     }
-    &[data-open="true"]{
-        @extend .opacity-100;
-        @extend .visibility-visible;
-        @extend .pointerEvents-all;
-        transition:opacity 0.35s $cubic40, visibility 0s;
+    &:before {
+        @extend .content-empty;
+        @include abs();
+        @extend .opacity-0;
+        @extend .willChange-opacity;
+        background-color:rgba(#000,.2);
+        transition:opacity 0.2s ease;
+    }
+    .wrapper {
+        @include accelerate();
+        @extend .pos-rel;
+        @extend .opacity-0;
+        background-color:rgba($white,.95);
+        padding:28px 0 54px;
+        border-bottom:1px solid #d6d6d6;
+        transform:translate3d(0, -100%, 0);
+        will-change:opacity, transform, background-color;
+        transition:opacity 0.2s ease, transform 0s 0.2s, background-color 0.03s ease;
+        @extend .zIndex-1;
 
-        .menu {
-            &__item {
-                @extend .opacity-100;
-                transform:translate3d(0, 0, 0) scale3d(1, 1, 1);
-                transition:transform 0.6s $bounceForce, opacity 0.35s $cubic40;
+        global-nav[color="snow"] & {
+            @extend .bg-snow7;
+        }
+    }
+    .container {
+        @extend .pos-rel;
+        max-width:995px;
+        @extend .zIndex-1;
+    }
+    [class^="col-"]{
+        transform:translateX(12.5px);
 
-                @for $i from 1 through 6 {
-                    &:nth-child(#{$i}){
-                        transition-delay:#{($i / 20)}s;
+        &:first-child {
+            @extend .transform-default;
+        }
+        $delay: 0.2;
+        @for $i from 1 through 4 {
+            &:nth-of-type(#{$i}) {
+                .menu {
+                    transition-delay:#{($i / 15) + $delay}s;
+
+                    &__label {
+                        transition-delay:#{($i / 20) + $delay}s;
                     }
                 }
             }
-            &__close {
-                transform:translate3d(-50%, 0, 0) scale3d(1, 1, 1);
-                transition-delay:.5s;
-
-                &:before,
-                &:after {
-                    @extend .opacity-100;
-                    transition-delay:.55s;
-                }
-                &:before {
-                    transform:translate3d(-50%, -50%, 0) rotate(45deg);
-                }
-                &:after {
-                    transform:translate3d(-50%, -50%, 0) rotate(-45deg);
-                }
-            }
         }
-        &[data-showed="true"]{
-            .menu__close {
-                transition-delay:0s;
+    }
+    global-menu {
+        .menu {
+            @extend .pos-rel;
+
+            &,
+            &__label {
+                @include accelerate();
+                @extend .opacity-0;
+                @extend .willChange-tp;
+                transform:translate3d(20px, 0, 0) scale(0.98);
+                transition:transform 0.3s $cubic4021, opacity 0.2s $cubic4021;
+            }
+            &.-divider:after {
+                @extend .content-empty;
+                @extend .pos-abs;
+                @extend .t0;
+                right:12.5px;
+                @extend .h100p;
+                @extend .w1px;
+                @extend .bg-smoke;
+            }
+            &.-padding {
+                padding-top:29px;
+            }
+            &__label {
+                font-size:17px;
+                @extend .ml--1;
+            }
+            &__item {
+                @extend .c-gray;
+                @extend .h34;
+                @extend .fontSize-16;
             }
         }
     }

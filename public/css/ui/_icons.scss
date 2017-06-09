@@ -1,12 +1,12 @@
 @each $icon in (
-    swipeRight, facebook_white, vkontakte_white, twitter_white, eyes_white
+    swipeRight, facebook_white, vkontakte_white, twitter_white, eyes_white, device_desktop, device_desktop_silver, device_phones, device_phones_silver, separator, separator_white
 ){
     .ui-icon-#{$icon} {
         background:url('/public/images/ui/ui-#{$icon}.svg') no-repeat 0 0 / cover;
     }
 }
 @each $icon in (
-    loading, loading_mini, loading_mini_white, close_fill, close_fill_gray, close_strong, close_strong_white, minus, minus_white, menu, menu_white, more_v_white, back_white, help, info_white, check_black, check_white, check_gray, check_muted, edit, remove_fill, check, user_oval_white, google, facebook, vkontakte, odnoklassniki, twitter, exit, exit_white, like_fill_pink
+    loading, loading_mini, loading_mini_white, close_fill, close_fill_gray, close_strong, close_strong_white, minus, minus_white, menu, menu_white, more_v_white, back_white, help, info_white, check_black, check_white, check_gray, check_muted, edit, remove_fill, check, user_oval_white, google, facebook, vkontakte, odnoklassniki, twitter, exit, exit_white, like_fill_pink, edit
 ){
     .ui-icon-#{$icon} {
         background:url('/assets/images/ui/ui-#{$icon}.svg') no-repeat 0 0 / cover;

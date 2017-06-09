@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-16 centered">
                 <div class="content__block">
-                    <h1 class="mb-m c-white">Начать очёнь просто</h1>
+                    <h1 class="mb-m c-white">Создайте своё лучшее резюме</h1>
                     <p class="text mb25">Открываем аккаунт и создаём резюме прямо сейчас.</p>
                     <a href="/auth/signup" class="btn btn-l btn-rounded btn-white-hover-outline">
                         <span class="btn-label fontWeight-5">Создать аккаунт</span>

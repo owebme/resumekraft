@@ -62,6 +62,9 @@
 .pos-static {
     position:static;
 }
+.pos-sticky {
+    position:sticky;
+}
 .pos-abs-full {
     @extend .pos-abs;
     @extend .t0;

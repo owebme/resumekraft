@@ -7,7 +7,6 @@ $samples__nav__height: 45px;
     @extend .w100p;
     @extend .bg-white;
     height:$samples__nav__height;
-    border-top:1px solid $snow456;
     border-bottom:1px solid $snow456;
 
     &:before {

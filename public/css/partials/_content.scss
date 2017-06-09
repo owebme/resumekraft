@@ -11,7 +11,7 @@
         background:linear-gradient(to top, $blue 30%, $breeze 200%);
     }
     &[data-gradient="black"]{
-        @extend .bg-steel;
+        background:linear-gradient(to top, $steel 30%, $slateA 200%);
     }
 }
 .content__block {
@@ -22,8 +22,4 @@
     &[data-light="true"]{
         background:radial-gradient(ellipse at 50% -10%, rgba(#04f6fb,0.3) 0%, rgba(#04f6fb,0) 70%, rgba(#04f6fb,0) 100%);
     }
-}
-p.text {
-    @extend .fontFamily-myriad;
-    @extend .fontSize-20;
 }

@@ -3,6 +3,12 @@
     var start = new Date().getTime();
     console.time("process");
 
+    // app.screenShoot = "desktop";
+    //
+    // if (app.screenShoot){
+    //     app.$dom.body.addClass("screenShoot-" + app.screenShoot);
+    // }
+
     riot.compile(function(){
         if (app.demo){
             riot.mount("*");

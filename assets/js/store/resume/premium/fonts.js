@@ -1,6 +1,6 @@
 $store.fonts = _.extend(new Baobab([
     {
-        _id: "helvetica",
+        _id: "sfdisplay",
         title: {
             en: "Basic",
             ru: "Базовый"
@@ -39,6 +39,13 @@ $store.fonts = _.extend(new Baobab([
         title: {
             en: "Respectable",
             ru: "Респектабельный"
+        }
+    },
+    {
+        _id: "thin",
+        title: {
+            en: "Thin",
+            ru: "Утонченный"
         }
     }
     ]),

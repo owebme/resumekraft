@@ -168,33 +168,8 @@ section-plans {
                 @extend .ml-xxs;
                 margin-right:-14px;
             }
-        }
-        &__badge {
-            @extend .pos-abs;
-            @extend .b100p;
-            @extend .l100p;
-            font-size:12px;
-            line-height:18px;
-            height:18px;
-            padding:1px 5px 0;
-            @extend .c-white;
-            @extend .fontWeight-5;
-            @extend .fontFamily-myriad;
-            @extend .borderRadius-m;
-            @extend .text-uppercase;
-            @extend .bg-pink;
-            transform:translate3d(-20px, -3px, 0);
-
-            &:after {
-                @extend .content-empty;
-                @extend .pos-abs;
-                @extend .t100p;
-                @extend .l0;
-                @extend .w10;
-                @extend .h10;
-                @extend .bg-pink;
-                transform:rotate(60deg) translate3d(-2px, -10px, 0);
-                @extend .zIndex--1;
+            .badge {
+                transform:translate3d(-20px, -3px, 0);
             }
         }
         &__footer {

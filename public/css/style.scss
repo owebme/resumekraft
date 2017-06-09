@@ -30,6 +30,7 @@
 @import 'ui/basic/loader';
 @import 'ui/basic/loaderAjax';
 @import 'ui/basic/waves';
+@import 'ui/basic/badge';
 @import 'ui/logotype';
 @import 'ui/typography';
 @import 'ui/button';
@@ -44,7 +45,9 @@
 
 // Partials
 @import 'partials/nav';
+@import 'partials/menu';
 @import 'partials/content';
+@import 'partials/footer';
 
 // Sections
 @import 'sections/sections';
@@ -67,13 +70,15 @@
 @import 'sections/home/writing';
 @import 'sections/home/employers';
 
-// Premium select
-@import 'sections/premium/select/main.scss';
-@import 'sections/premium/select/header.scss';
-@import 'sections/premium/select/slider.scss';
-@import 'sections/premium/select/dots.scss';
-@import 'sections/premium/select/ui.scss';
-@import 'sections/premium/select/sections.scss';
+// Premium samples
+@import 'sections/premium/samples/main.scss';
+@import 'sections/premium/samples/header.scss';
+@import 'sections/premium/samples/slider.scss';
+@import 'sections/premium/samples/dots.scss';
+@import 'sections/premium/samples/ui.scss';
+@import 'sections/premium/samples/gallery.scss';
+@import 'sections/premium/samples/overview.scss';
+@import 'sections/premium/samples/sections.scss';
 
 // blog
 @import 'sections/blog/grid';

@@ -87,7 +87,7 @@ module.exports = function(){
             });
         }
     });
-    app.get('/premium/workflow', function(req, res) {
+    app.get('/premium/samples/mobile', function(req, res) {
         if (req.device.type == "phone"){
             res.redirect(302, '/premium/demo');
         }
@@ -107,8 +107,8 @@ module.exports = function(){
             });
         }
     });
-    app.get('/premium/select', function(req, res) {
-        var output = app.riot.render(app.tags("premiumSelect", req.device), req.appClient);
+    app.get('/premium/samples', function(req, res) {
+        var output = app.riot.render(app.tags("premiumSamples", req.device), req.appClient);
         res.render('index', {
             title: app.config.get('title:premium'),
             content: output,
@@ -119,7 +119,7 @@ module.exports = function(){
     app.get('/premium/demo', app.controllers.resume("demo"));
     app.get('/premium/editing', app.controllers.resume("demo-editing"));
 
-    app.get('/medium/demo', function(req, res) {
+    app.get('/medium/samples', function(req, res) {
         res.render('medium', {
             title: app.config.get('title:premium'),
             device: req.device.type,

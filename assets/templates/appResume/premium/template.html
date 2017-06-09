@@ -202,6 +202,11 @@
         var photo = $store.resume.get('commons', 'photo');
         if (photo) _.onLoadImage(photo);
 
+        if (app.screenShoot){
+            $root.trigger("ready");
+            return;
+        }
+
         if ($State.get('mode') !== "editing"){
 
             $.notTouch = ['name', 'text', 'contacts', 'feedback', 'contacts-content', 'contacts-more', 'likes'];

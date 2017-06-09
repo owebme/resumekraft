@@ -1,0 +1,85 @@
+premium-samples-hero {
+    @extend .display-block;
+    @extend .pos-rel;
+    height:110vh;
+    min-height:780px;
+    max-height:900px;
+    @extend .overflow-hidden;
+    @extend .text-center;
+
+    .hero {
+        &__bg {
+            @extend .pos-centered-h;
+            top:-9vh;
+            @extend .w100p;
+            height:119vh;
+            min-height:calc(780px + 9vh);
+            max-height:calc(900px + 9vh);
+            @extend .bg-cover;
+            will-change:filter;
+            background-image:url('/public/images/premium/samples/hero_large_2x.jpg');
+        }
+        &__overlay {
+            @include abs();
+            @extend .opacity-0;
+            @extend .willChange-opacity;
+            background-color:rgba(#000,.4);
+        }
+        &__caption {
+            @extend .pos-rel;
+            @extend .flex-column-centered;
+            height:31vh;
+            min-height:220px;
+            @extend .zIndex-1;
+        }
+        &__text {
+            @extend .pos-abs;
+            top:280px;
+            margin-right:14px;
+            @extend .r100p;
+            @extend .w40v;
+            @extend .text-right;
+            @extend .c-white;
+            font-size:44px;
+            line-height:50px;
+            @extend .pointerEvents-none;
+            @extend .fontWeight-3;
+            @extend .fontFamily-myriad;
+            letter-spacing:-0.016em;
+
+            &__slider {
+                @extend .pos-tr;
+                width:520px;
+
+                &__item.slick-slide {
+                    @include flex("row", "flex-end", "flex-end");
+                    @extend .h100;
+                }
+            }
+        }
+        &__phone {
+            @extend .pos-centered-h;
+            margin-left:22.5vw;
+            top:45.8vh;
+
+            &__wrapper {
+                @include accelerate();
+                width:351px;
+                height:660px;
+                background-size:351px 660px;
+                background-repeat:no-repeat;
+                background-image:url("/public/images/promo/premium/hardware/hardware_full_silver_large.png");
+                @extend .willChange-transform;
+
+                html.d-retina & {
+                    background-image:url("/public/images/promo/premium/hardware/hardware_full_silver_large_2x_light.png");
+                }
+            }
+            &__screen {
+                width:260px;
+                height:462px;
+                transform:translate(47px, 86px);
+            }
+        }
+    }
+}

@@ -1,6 +1,6 @@
 <section-home id="home">
 
-    <section-nav section="home" user={ opts.user }></section-nav>
+    <global-nav section="home" user={ opts.user }></global-nav>
 
     <div id="content">
 
@@ -23,5 +23,7 @@
         <home-employers></home-employers>
 
     </div>
+
+    <global-footer section="Главная"></global-footer>
 
 </section-home>

@@ -26,7 +26,7 @@
                 }
             }
             #app[data-font="myriad"] &,
-            #app[data-font="strict"] &,
+            #app[data-font="thin"] &,
             #app[data-font="proxima"] & {
                 html.d-phone & {
                     font-size:23px;
@@ -68,7 +68,7 @@
                 line-height:28px;
                 letter-spacing:-0.012em;
             }
-            #app[data-font="strict"] & {
+            #app[data-font="thin"] & {
                 html.d-phone &,
                 html.d-tablet & {
                     font-size:24px;
@@ -107,7 +107,7 @@
             line-height:38px;
             letter-spacing:-0.016em;
 
-            #app[data-font="strict"] & {
+            #app[data-font="thin"] & {
                 html.d-phone & {
                     font-size:30px;
                     line-height:38px;

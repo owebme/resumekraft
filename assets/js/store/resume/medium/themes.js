@@ -8,6 +8,7 @@ $store.themes = _.extend(new Baobab([
     },
     {
         _id: "colorsoft",
+        strict: true,
         title: {
             en: "Gentle",
             ru: "Нежный"
@@ -15,6 +16,7 @@ $store.themes = _.extend(new Baobab([
     },
     {
         _id: "white",
+        strict: true,
         title: {
             en: "Clear white",
             ru: "Белокипельный"
@@ -22,6 +24,7 @@ $store.themes = _.extend(new Baobab([
     },
     {
         _id: "cosmo",
+        strict: true,
         title: {
             en: "Space",
             ru: "Космо"
@@ -29,6 +32,7 @@ $store.themes = _.extend(new Baobab([
     },
     {
         _id: "gray",
+        strict: true,
         title: {
             en: "Space gray",
             ru: "Космо cерый"

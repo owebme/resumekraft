@@ -8,4 +8,6 @@
 
     </div>
 
+    <global-footer data-color="dark" section="Образцы резюме"></global-footer>
+
 </section-samples>

@@ -1,0 +1,254 @@
+premium-samples-overview {
+    .section__hero {
+        @extend .pos-rel;
+        @extend .bg-white;
+        @extend .pt90;
+        @extend .pb95;
+        @extend .zIndex-1;
+
+        h1 {
+            @extend .w60p;
+        }
+        &__ipad,
+        &__iphone {
+            transform:translate3d(80px, 0, 0);
+            transition:opacity 0.5s $cubic2501, transform 1.1s $cubic214;
+        }
+        &__ipad {
+            @extend .pos-rel;
+            width:918px;
+            height:769px;
+            background-size:918px 769px;
+            background-repeat:no-repeat;
+            background-image:url("/public/images/premium/samples/overview/hero_ipad_large_2x.jpg");
+            margin:-25px 0 0 -110px;
+        }
+        &__iphone {
+            @extend .pos-abs;
+            right:-230px;
+            top:270px;
+            width:417px;
+            height:480px;
+            background-size:417px 480px;
+            background-repeat:no-repeat;
+            background-image:url("/public/images/premium/samples/overview/hero_iphone_large_2x.png");
+        }
+        .text {
+            @extend .pt-xs;
+            @extend .w50p;
+        }
+    }
+    .section__phone[data-section="mobile-office"] {
+        min-height:478px;
+
+        .figure {
+            @extend .pos-tl;
+            width:810px;
+            height:773px;
+            @extend .ml--35;
+            @extend .bg-cover;
+            background:url("/public/images/premium/samples/overview/phones_mobile_office_large_2x.jpg");
+        }
+    }
+    .phone__figure__screen[data-section="overview-btn-info"] {
+        .screen {
+            @include accelerate();
+            will-change:filter;
+            transition:filter 0.6s $cubic4021;
+        }
+        .phone__screen__nav {
+            @extend .pointerEvents-all;
+
+            &__info {
+                @extend .cursor-pointer;
+            }
+        }
+        &.-open {
+            .screen {
+                filter:blur(18px) saturate(1.45);
+            }
+            .phone__screen__popup__wrapper {
+                @extend .opacity-100;
+                @extend .scale3d-100;
+            }
+        }
+        .phone__figure__screen__pointer {
+            &[data-item="info"]{
+                top:10px;
+                left:10px;
+                @extend .w42;
+                @extend .h42;
+            }
+        }
+    }
+    .phone__figure__screen[data-section="overview-salary"] {
+        .phone__screen__nav {
+            @extend .pointerEvents-all;
+
+            &__salary {
+                @extend .cursor-pointer;
+            }
+        }
+        .phone__figure__screen__pointer {
+            &[data-item="salary"]{
+                top:66px;
+                right:9px;
+                @extend .w52;
+                @extend .h52;
+            }
+        }
+    }
+    .phone__figure__screen[data-section="overview-inbox"] {
+        @extend .pointerEvents-none;
+
+        .phone__screen__nav {
+            @extend .willChange-tp;
+            text-rendering:50% 0;
+            transition:transform 0.5s $cubic4001, opacity 0.3s $cubic4001;
+
+            &[data-hidden="true"]{
+                @extend .opacity-0;
+                @extend .scale-80;
+            }
+        }
+        .phone__figure__screen__pointer {
+            &[data-item="feedback"]{
+                top:5px;
+                right:5px;
+                @extend .w60;
+                @extend .h60;
+            }
+            &[data-item="inbox"]{
+                top:143px;
+                left:0;
+                @extend .borderRadius-xs;
+                @extend .w100p;
+                height:96px;
+                box-shadow:inset 0 0 0 2px #007ec1, 0 2px 4px 0 rgba(#000,.1);
+            }
+        }
+    }
+    .phone__screen__popup {
+        &__wrapper {
+            @include accelerate();
+            @extend .pos-abs;
+            @extend .t-xl;
+            @extend .l--s;
+            @extend .fontFamily-helvetica;
+            font-size:16px;
+            line-height:21px;
+            @extend .c-white;
+            @extend .bg-blueLight;
+            @extend .pt-s;
+            @extend .pl-l;
+            @extend .pr-s;
+            @extend .pb-m;
+            @extend .opacity-0;
+            @extend .zIndex-2;
+            will-change:transform, opacity;
+            border-radius:15px;
+            transform-origin:0% 50%;
+            box-shadow:5px 10px 35px 0 rgba(31,35,37,.35);
+            transform:translate3d(-20%, 0, 0) scale3d(1, 0.5, 1);
+            transition:transform .6s $cubic4001, opacity .3s $cubic4001;
+        }
+        &__photo {
+            @extend .pos-abs;
+            @extend .b100p;
+            @extend .w46;
+            @extend .h46;
+            @extend .r25;
+            @extend .borderRadius-circle;
+            @extend .bg-cover;
+            @extend .trY-m;
+            box-shadow:0 0 0 3px rgba($white,.6), 5px 10px 30px 0 rgba(31,35,37,.15);
+        }
+        &__name {
+            @extend .fontFamily-sfdisplay;
+            @extend .fontWeight-6;
+            @extend .fontSize-22;
+            @extend .ptb-xxs;
+            letter-spacing:0.004em;
+        }
+        &__salary {
+            @extend .nowrap;
+            @extend .letterSpacing-0;
+            @extend .fontFamily-default;
+        }
+        &__email {
+            @extend .c-yellowBright;
+            @extend .fontSize-18;
+            @extend .ptb-xxs;
+
+            span {
+                @extend .borderColor-yellowBright;
+                @extend .borderStyle-solid;
+                @extend .borderBottomWidth-1;
+            }
+        }
+        &__phone {
+            @extend .fontWeight-bold;
+            @extend .fontSize-21;
+            @extend .mb-xxs;
+            @extend .pt-xss;
+        }
+        &__post {
+            @extend .pb-xxs;
+        }
+        &__social {
+            @extend .flex-row-left-center;
+            @extend .pt-xs;
+            margin:0 -7px;
+
+            &__btn {
+                @extend .pos-rel;
+                @extend .display-block;
+                @extend .w40;
+                @extend .h40;
+                @extend .borderRadius-circle;
+                @extend .bg-smoke;
+                margin:0 7px 8px;
+
+                svg {
+                    @extend .pos-centered;
+                }
+                &-fb {
+                    @extend .w54;
+                    @extend .h54;
+                }
+                &-vk {
+                    @extend .w60;
+                    @extend .h60;
+                }
+                &-in {
+                    @extend .w22;
+                    @extend .h22;
+                }
+                &-lk {
+                    @extend .w20;
+                    @extend .h20;
+                }
+            }
+        }
+    }
+}
+premium-samples-medium {
+    @extend .display-block;
+    @extend .pt95;
+    @extend .bg-snowA;
+    @extend .overflow-hidden;
+
+    .bg {
+        @extend .pos-rel;
+        @extend .centered-h;
+        @extend .mt-l;
+        width: 1814px;
+        height: 984px;
+        @extend .bg-cover;
+        background:url("/public/images/premium/samples/phones_large_2x.jpg");
+    }
+    .button {
+        @extend .pos-centered;
+        margin-top:-43px;
+    }
+}

@@ -45,3 +45,80 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, strong {
 		border-color:rgba($steel,.8);
 	}
 }
+body.screenShoot-desktop,
+body.screenShoot-phone {
+	section-nav,
+	section-info,
+	section-sendmail,
+	salary-graph-opener {
+		display:none !important;
+	}
+}
+body.screenShoot-desktop {
+	div.hidden-xs.hidden-sm,
+	div.hidden-xs.hidden-sm {
+		&.overlay,
+		&.main-line {
+			position:absolute !important;
+			height:9116px !important;
+		}
+	}
+}
+body.screenShoot-phone {
+	background-color:#171719;
+	height:auto !important;
+
+    #app {
+		position:static !important;
+		width:390px !important;
+		height:auto !important;
+		margin:0 auto !important;
+
+		.screen {
+			&:not(.screen--first) .screen__content {
+			    padding-top:120px;
+				padding-bottom:0px;
+			}
+			&[data-section="cover"]{
+				display:none !important;
+			}
+			&[data-section="courses"],
+			&[data-section="languages"]{
+				.screen__content {
+					padding-top:40px;
+				}
+			}
+			&[data-section="jobs"]{
+				.screen__content {
+					padding-top:80px;
+				}
+			}
+			&[data-section="feedback"]{
+				.screen__content {
+					padding-bottom:70px;
+				}
+			}
+			&[data-section="likes"]{
+				.screen__content {
+					padding-top:0px;
+				}
+			}
+		}
+		.screen,
+		.screens {
+			opacity:1 !important;
+			display:block !important;
+			position:relative !important;
+			height:auto !important;
+		}
+		.salary-graph-mini {
+			&,
+			.peity {
+				width:220px !important;
+			}
+		}
+		.likes__cover:before {
+			animation:none !important;
+		}
+    }
+}

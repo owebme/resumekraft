@@ -32,7 +32,7 @@ $store.demo = {
         post: "Web-Designer, Art-director, Illustrator",
         percent: "97",
         commons: {
-            photo: "/preview/images/prof/6.jpg",
+            photo: "/preview/images/photo/photo_phone_large_2x.jpg",
             name: "Виктория",
             surname: "",
             gender: "female",
@@ -494,9 +494,9 @@ $store.demo = {
             }
         ],
         config: {
-            theme: "colorful",
+            theme: "fire",
             color: "#0084ff",
-            font: "myriad",
+            font: "sfdisplay",
             photo: {
                 minWidth: 440,
                 maxHeight: 620,
@@ -511,6 +511,6 @@ $store.demo = {
                 count: true
             },
             welcome: true,
-            animate: true
+            animate: false
         }
     }

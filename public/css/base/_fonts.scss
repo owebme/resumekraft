@@ -4,6 +4,7 @@
 @import '../../../assets/css/fonts/Gotham/style';
 @import '../../../assets/css/fonts/Graphik/style';
 @import '../../../assets/css/fonts/Futura/style';
+@import '../../../assets/css/fonts/SFDisplay/style';
 @import '../../../assets/css/fonts/Icons/hobby/style';
 
 .fontFamily-helvetica {
@@ -20,6 +21,9 @@
 }
 .fontFamily-graphik {
     font-family:$graphik;
+}
+.fontFamily-sfdisplay {
+    font-family:$sfdisplay;
 }
 .fontFamily-futura {
     font-family:$futura;

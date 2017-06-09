@@ -1,0 +1,452 @@
+premium-samples-overview {
+    @extend .display-block;
+
+    h1, h2 {
+        @extend .pos-rel;
+        @extend .zIndex-1;
+    }
+    h2 {
+        @extend .mb-s;
+    }
+    .bg-gradient {
+        background:linear-gradient(to bottom, $white 0%, $white 68%, $snowA 100%);
+    }
+    .-gradient {
+        &-blue {
+            @extend .text-gradient;
+            background-image:linear-gradient(120deg, lighten($blueLight,15%) 25%, $blueLight);
+        }
+        &-emerald {
+            @extend .text-gradient;
+            background-image:linear-gradient(120deg, lighten($emerald,3%) 25%, $emerald);
+        }
+        &-pink {
+            @extend .text-gradient;
+            background-image:linear-gradient(120deg, #ff7272 25%, darken(#ff7272,20%));
+        }
+        &-orange {
+            @extend .text-gradient;
+            background-image:linear-gradient(120deg, lighten(#ea7f07,2.5%) 25%, darken(#ea7f07,8%));
+        }
+    }
+    .section__phone__track {
+        @extend .pos-rel;
+        @extend .zIndex-0;
+        @extend .pointerEvents-none;
+
+        &[data-colorful="true"]{
+            .section__phone__track__bg,
+            .section__phone__track__icons,
+            .section__phone__track__captions {
+                @extend .opacity-100;
+            }
+        }
+        &__bg {
+            @extend .pos-sticky;
+            @extend .t0;
+            @extend .w100v;
+            @extend .h100v;
+            margin-bottom:-100vh;
+            @extend .opacity-0;
+            @extend .pointerEvents-none;
+            will-change:opacity, background-color;
+            transition:background-color 0.475s $cubic214, opacity 0.475s $cubic214;
+        }
+        &__icons,
+        &__captions {
+            @extend .opacity-0;
+            @extend .willChange-opacity;
+            transition:opacity 0.35s $cubic214;
+        }
+        &__icons {
+            @extend .pos-centered-h;
+            width:300px;
+            padding-top:255px;
+            height:100%;
+            margin-left:-385px;
+
+            &__item {
+                &:after {
+                    @extend .display-block;
+                    @extend .content-empty;
+                    @extend .pos-centered;
+                    @extend .pos-sticky;
+                    @extend .bg-cover;
+                }
+                // &[data-item="commons"]{
+                //     &:after {
+                //         width:202px;
+                //         height:202px;
+                //         @extend .mr--35;
+                //         background-image:url(/public/images/premium/samples/overview/icons/commons.svg);
+                //     }
+                // }
+                &[data-item="works"]{
+                    &:after {
+                        width:167px;
+                        height:167px;
+                        background-image:url(/public/images/premium/samples/overview/icons/works.svg);
+                    }
+                }
+                &[data-item="skills"]{
+                    &:after {
+                        width:192px;
+                        height:192px;
+                        background-image:url(/public/images/premium/samples/overview/icons/skills.svg);
+                    }
+                }
+                &[data-item="education"]{
+                    &:after {
+                        width:192px;
+                        height:192px;
+                        background-image:url(/public/images/premium/samples/overview/icons/education.svg);
+                    }
+                }
+                &[data-item="courses"]{
+                    &:after {
+                        width:148px;
+                        height:202px;
+                        @extend .mr-l;
+                        background-image:url(/public/images/premium/samples/overview/icons/courses.svg);
+                    }
+                }
+                &[data-item="languages"]{
+                    &:after {
+                        width:164px;
+                        height:164px;
+                        @extend .mr-m;
+                        background-image:url(/public/images/premium/samples/overview/icons/languages.svg);
+                    }
+                }
+                &[data-item="jobs"]{
+                    &:after {
+                        width:192px;
+                        height:192px;
+                        @extend .mr--s;
+                        background-image:url(/public/images/premium/samples/overview/icons/jobs.svg);
+                    }
+                }
+                &[data-item="hobby"]{
+                    &:after {
+                        width:158px;
+                        height:158px;
+                        @extend .mr25;
+                        background-image:url(/public/images/premium/samples/overview/icons/hobby.svg);
+                    }
+                }
+                &[data-item="contacts"]{
+                    &:after {
+                        width:126px;
+                        height:126px;
+                        margin-right:53px;
+                        background-image:url(/public/images/premium/samples/overview/icons/contacts.svg);
+                    }
+                }
+                &[data-item="businessTrip"]{
+                    @extend .display-none;
+                }
+                &[data-item="feedback"]{
+                    &:after {
+                        width:110px;
+                        height:110px;
+                        @extend .mr70;
+                        background-image:url(/public/images/premium/samples/overview/icons/feedback.svg);
+                    }
+                }
+                &[data-item="likes"]{
+                    &:after {
+                        width:145px;
+                        height:145px;
+                        @extend .mr35;
+                        background-image:url(/public/images/premium/samples/overview/icons/likes.svg);
+                    }
+                }
+            }
+        }
+        &__captions {
+            @extend .pos-centered-v;
+            width:320px;
+            height:240px;
+            margin:-73px 0 0 520px;
+        }
+        &__caption {
+            @extend .pos-tl;
+            @extend .opacity-0;
+            @extend .willChange-opacity;
+            transition:opacity 0.475s $cubic214;
+
+            h2 {
+                will-change:color;
+                transition:color 0.475s $cubic214;
+            }
+            &.-show {
+                @extend .opacity-100;
+            }
+        }
+        .container {
+            @extend .pos-rel;
+            @extend .zIndex-1;
+        }
+        &__viewport {
+            @extend .float-left;
+            padding:128px 0 277px;
+        }
+        &__screen {
+            @extend .pos-rel;
+            margin-right:auto;
+            margin-left:74px;
+            width:339px;
+
+            &__content {
+                @extend .w100p;
+                height:14163px;
+                background-size:339px 14163px;
+                background-repeat: no-repeat;
+                background-image:url(/public/images/premium/samples/overview/screens@phone.png);
+            }
+        }
+        .phone__screen__nav {
+            top:128px;
+            left:74px;
+            width:339px;
+            height:133px;
+
+            &__info {
+                top:17px;
+                left:17px;
+                @extend .w34;
+                @extend .h34;
+
+                &__icon {
+                    width:24px;
+                    height:24px;
+                }
+            }
+            &__sendmail {
+                top:13px;
+                right:13px;
+                @extend .w54;
+                @extend .h54;
+
+                &__icon {
+                    @extend .w54;
+                    @extend .h54;
+                    transform:translate3d(0, 7px, 0) scale3d(1, 1.18, 1);
+                }
+            }
+            &__salary {
+                top:78px;
+                right:17px;
+                width:44px;
+                height:44px;
+                @extend .pt-xxs;
+                font-size:27px;
+
+                span {
+                    transform:translate3d(1px, 0, 0) scale3d(1.16, 1, 1);
+                }
+            }
+        }
+        &__figure {
+            @extend .pos-sticky;
+            top:calc(50vh - 429px);
+            width:616px;
+            height:1007px;
+
+            &__device {
+                @include abs();
+                background-size:616px 1007px;
+                background-repeat:no-repeat;
+                background-image:url("/public/images/premium/samples/overview/phone_zoom_large_2x@tiny.png");
+                @extend .zIndex-1;
+            }
+            &:before,
+            &:after {
+                @extend .content-empty;
+                @extend .pos-abs;
+                @extend .bg-white;
+                left:70px;
+                width:350px;
+                will-change:background-color;
+                transition:background-color 0.475s $cubic214;
+            }
+            &:before {
+                bottom:calc(100% - 45px);
+                height:calc(50vh - 327px + 45px);
+            }
+            &:after {
+                top:calc(100% - 200px);
+                height:calc(50vh - 327px + 200px);
+            }
+        }
+    }
+    .section__overview {
+        @extend .pos-rel;
+        @extend .bg-snowA;
+        @extend .mt--70;
+        @extend .overflow-hidden;
+        @extend .zIndex-1;
+
+        &:before {
+            @extend .content-empty;
+            @extend .pos-tl;
+            @extend .w100p;
+            @extend .h50v;
+            background:linear-gradient(to bottom, $white 0%, $white 68%, $snowA 100%);
+        }
+        .container {
+            @extend .pos-rel;
+            @extend .zIndex-1;
+        }
+    }
+    .phone__figure__screen {
+        @extend .pos-abs;
+        width:294px;
+        height:522px;
+        @extend .overflow-hidden;
+        @extend .bg-cover;
+        @extend .zIndex-1;
+
+        .phone__screen__nav {
+            height:125px;
+
+            &__info {
+                top:16px;
+                left:16px;
+                @extend .w30;
+                @extend .h30;
+
+                &__icon {
+                    @extend .w22;
+                    @extend .h22;
+                }
+            }
+            &__sendmail {
+                top:11px;
+                right:11px;
+                @extend .w48;
+                @extend .h48;
+
+                &__icon {
+                    @extend .w48;
+                    @extend .h48;
+                    transform:translate3d(0, 6px, 0) scale3d(1, 1.18, 1);
+                }
+            }
+            &__salary {
+                top:72px;
+                right:15px;
+                width:39px;
+                height:39px;
+                @extend .pt-xxs;
+                font-size:27px;
+
+                span {
+                    transform:translate3d(1px, 0, 0) scale3d(1.16, 1, 1);
+                }
+            }
+        }
+        &__pointer {
+            @extend .pos-abs;
+            @extend .pointerEvents-none;
+            @extend .borderRadius-circle;
+            box-shadow:inset 0 0 0 2px #007ec1, 0 2px 4px 0 rgba(#000,.1), 0 12px 30px -10px rgba(154,220,255,.48), 0 4px 30px 0px rgba(154,220,255,.2), 0 7px 16px -5px rgba(154,220,255,.3);
+            background-color:rgba(154,220,255,.6);
+            animation:ovpremium-pointer-pulse 1.5s infinite ease-in-out;
+        }
+    }
+    .ipad__figure__screen {
+        @extend .pos-abs;
+        width:982px;
+        height:736px;
+        @extend .bg-cover;
+    }
+    .section__phone {
+        min-height:878px;
+
+        &[data-pos="right"]{
+            .section__phone {
+                &__wrapper {
+                    margin-left:69px;
+                }
+                &__figure {
+                    @extend .centered-h;
+                }
+                &__text {
+                    padding-left:15px;
+                }
+            }
+        }
+        &[data-pos="left"]{
+            .section__phone {
+                &__wrapper {
+                    margin-left:-11px;
+                }
+            }
+        }
+        &__text {
+            padding-top:230px;
+            padding-bottom:250px;
+        }
+        &__figure {
+            @extend .pos-rel;
+            width:342px;
+            height:694px;
+
+            &:after {
+                @extend .content-empty;
+                @include abs();
+                background-size:342px 694px;
+                background-repeat:no-repeat;
+                background-image:url("/public/images/premium/samples/overview/iphone_large_2x.png");
+            }
+            &:before {
+                @extend .content-empty;
+                @extend .pos-abs;
+                top:-20px;
+                left:-36px;
+                width:516px;
+                height:852px;
+                background-size:516px 852px;
+                background-repeat:no-repeat;
+                background-image:url("/public/images/premium/samples/overview/iphone_shadow_large_2x.png");
+            }
+            .phone__figure__screen {
+                top:86px;
+                left:24px;
+            }
+        }
+    }
+    .section__devices {
+        @extend .pt-l;
+
+        &__wrapper {
+            @extend .pos-rel;
+            height:1120px;
+            margin-top:46px;
+        }
+        &__figure {
+            @extend .pos-abs;
+            @extend .l30;
+            top:-105px;
+            width:1602px;
+            height:1226px;
+
+            &:after {
+                @extend .content-empty;
+                @include abs();
+                background-size:1602px 1226px;
+                background-repeat:no-repeat;
+                background-image:url("/public/images/premium/samples/overview/devices_large_2x.png");
+            }
+            .phone__figure__screen {
+                top:106px;
+                left:62px;
+            }
+            .ipad__figure__screen {
+                top:216px;
+                left:304px;
+            }
+        }
+    }
+}

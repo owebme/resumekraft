@@ -53,10 +53,11 @@
     $root.setColor = function(){
         $root.colors = {};
 
-        var theme = $State.get('theme');
+        var theme = $State.get('theme'),
+            strict = $store.themes.get({"_id": theme}, "strict");
 
-        if (theme != "color" && theme != "colorful"){
-            $State.select('font').set('strict');
+        if (strict){
+            $State.select('font').set('thin');
         }
         if (theme == "colorful"){
             $root.colors = {

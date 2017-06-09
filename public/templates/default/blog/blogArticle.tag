@@ -1,6 +1,6 @@
 <blog-article class="section">
 
-    <section-nav user={ opts.user }></section-nav>
+    <global-nav user={ opts.user }></global-nav>
 
     <div id="content">
 
@@ -59,8 +59,6 @@
             </div>
         </div>
 
-        <section-main-blocks></section-main-blocks>
-
     </div>
 
     <btn-arrow-back url="/blog/"></btn-arrow-back>
@@ -80,6 +78,8 @@
             <icon-glc></icon-glc>
         </div>
     </div>
+
+    <global-footer section="Блог[/blog/]//{ opts.data.item.name }"></global-footer>
 
 <script>
 

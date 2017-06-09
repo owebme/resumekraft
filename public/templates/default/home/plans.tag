@@ -49,7 +49,7 @@
                                 <div class="plan__items">
                                     <div class="plan__item">1 резюме</div>
                                     <div class="plan__item">
-                                        <div class="plan__item__label">Резюме-слайдер<div class="plan__badge">Новинка</div></div>
+                                        <div class="plan__item__label">Резюме-слайдер<div class="badge badge-pink">Новинка</div></div>
                                     </div>
                                     <div class="plan__item">на 2-х языках</div>
                                     <div class="plan__item">Образцы резюме</div>

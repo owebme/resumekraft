@@ -15,10 +15,10 @@
                 <div class="col-lg-9 col-md-10 { $State.get('theme') != 'color' ? 'display-none' : '' }">
                     <control-colors></control-colors>
                 </div>
-                <div class="col-md-8 { $State.get('theme') != 'colorful' && $State.get('theme') != 'color' ? 'display-none' : '' }">
+                <div class="col-md-8 { $store.themes.get({'_id': $State.get('theme')}, 'strict') ? 'display-none' : '' }">
                     <control-fonts></control-fonts>
                 </div>
-                <div if={ $State.get('theme') != 'colorful' && $State.get('theme') != 'color' } class="col-md-8">
+                <div if={ $store.themes.get({'_id': $State.get('theme')}, 'strict') } class="col-md-8">
                     <div class="control__panel__text">Для выбранной темы установлен оптимальный шрифт и его свойства.</div>
                 </div>
                 <div if={ $State.get('theme') != 'color' } class="col-md-8">
@@ -48,7 +48,7 @@
 
             if (prop == "theme"){
                 $store.resume.select("config", "theme").set(value);
-                if (value == "color" || value == "colorful"){
+                if (!$store.themes.get({'_id': value}, 'strict')){
                     $State.select('font').set($.tags["control-fonts"].refs["select"].value);
                 }
                 $root.setColor();

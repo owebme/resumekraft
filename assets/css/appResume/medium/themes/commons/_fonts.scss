@@ -1,12 +1,17 @@
 body > #app {
-    @each $font in ('helvetica', 'myriad', 'museo', 'futura', 'gotham', 'proxima'){
+    @each $font in ('myriad', 'museo', 'futura', 'gotham', 'proxima'){
         &[data-font="#{$font}"]{
             .f-primary {
                 font-family:$font;
             }
         }
     }
-    &[data-font="strict"]{
+    &[data-font="sfdisplay"]{
+        .f-primary {
+            font-family:'SF Display';
+        }
+    }
+    &[data-font="thin"]{
         .f-primary {
             @extend .fontFamily-myriad;
         }

@@ -39,17 +39,13 @@
 
     if (location.href.match(/\/auth/)){
         app.sections.trigger("ready");
-        
+
         if (app.device.isPhone){
             $dom.body.removeClass("appLoading");
         }
     }
     else {
         app.sections.init();
-    }
-
-    if (!app.device.isPhone && app.features && app.features.navbar){
-        app.features.navbar.init();
     }
 
     if (app.config.changeStyles){

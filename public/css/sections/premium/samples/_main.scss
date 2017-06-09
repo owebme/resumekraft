@@ -1,0 +1,11 @@
+premium-samples {
+    @extend .display-block;
+    @extend .minH-100v;
+    @extend .w100v;
+
+    .screens {
+        .screen:not(.screen--active){
+            @extend .display-none;
+        }
+    }
+}

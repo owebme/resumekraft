@@ -6,19 +6,27 @@
 
         init: function(){
 
-            this.el = $dom.body.find("section-nav");
+            WD.el = app.$dom.body.find(".main__nav:first");
 
-            if (this.el.length) this.render();
+            if (WD.el.length) WD.render();
         },
 
         render: function(){
+            var $dropmenu = WD.el.find("global-dropmenu"),
+                $wrapper = $dropmenu.find("global-menu")[0],
+                $opener = WD.el.find(".main__nav__menu__opener");
 
-            this.el.find("#openAuth").on("click", function(){
-                app.tag("section-auth").open("signin");
-            });
+            $opener.on("click", function(){
+                var value = $dropmenu.attr("data-open") == "true" ? true : false;
+                $dropmenu.attr("data-open", !value);
+                $opener.attr("data-active", !value);
+            })
 
-            this.el.find("#openReg").on("click", function(){
-                app.tag("section-auth").open("signup");
+            $dropmenu.on("click", function(e){
+                if (!$wrapper.contains(e.target)){
+                    $dropmenu.attr("data-open", false);
+                    $opener.attr("data-active", false);
+                }
             });
         }
     };
