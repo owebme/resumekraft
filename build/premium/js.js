@@ -32,8 +32,8 @@ module.exports = function(){
     });
 
     gulp.task('premium.ui.templates', function() {
-    	return gulp.src(['assets/templates/appResume/premium/template1/ui/*.html',
-    		'assets/templates/appResume/premium/template1/ui/**/*.html',
+    	return gulp.src(['assets/templates/appResume/premium/ui/*.html',
+    		'assets/templates/appResume/premium/ui/**/*.html',
     		'assets/templates/appResume/commons/**/*.html',
             'assets/templates/modules/loader.html',
             'assets/templates/modules/notify.html',
@@ -62,7 +62,7 @@ module.exports = function(){
     });
 
     gulp.task('premium.control.templates', function() {
-    	return gulp.src(['assets/templates/appResume/premium/template1/control/*.html'])
+    	return gulp.src(['assets/templates/appResume/premium/control/*.html'])
     		.pipe(riot())
     		.pipe(concat('templates.control.js'))
     		.pipe(uglify())
@@ -70,8 +70,8 @@ module.exports = function(){
     });
 
     gulp.task('premium.sections.templates', function() {
-    	return gulp.src(['assets/templates/appResume/premium/template1/sections/*.html',
-    		'assets/templates/appResume/premium/template1/sections/**/*.html'])
+    	return gulp.src(['assets/templates/appResume/premium/sections/*.html',
+    		'assets/templates/appResume/premium/sections/**/*.html'])
     		.pipe(riot())
     		.pipe(concat('templates.sections.js'))
     		.pipe(uglify())
@@ -79,7 +79,7 @@ module.exports = function(){
     });
 
     gulp.task('premium.editable.templates', function() {
-    	return gulp.src(['assets/templates/appResume/premium/template1/editable/*.html'])
+    	return gulp.src(['assets/templates/appResume/premium/editable/*.html'])
     		.pipe(riot())
     		.pipe(concat('templates.editable.js'))
     		.pipe(uglify())
@@ -87,7 +87,7 @@ module.exports = function(){
     });
 
     gulp.task('premium.components.templates', function() {
-    	return gulp.src(['assets/templates/appResume/premium/template1/components/*.html'])
+    	return gulp.src(['assets/templates/appResume/premium/components/*.html'])
     		.pipe(riot())
     		.pipe(concat('templates.components.js'))
     		.pipe(uglify())
@@ -95,7 +95,7 @@ module.exports = function(){
     });
 
     gulp.task('premium.templates', function() {
-    	return gulp.src(['assets/templates/appResume/premium/template1/*.html'])
+    	return gulp.src(['assets/templates/appResume/premium/*.html'])
     		.pipe(riot())
     		.pipe(concat('templates.js'))
     		.pipe(uglify())

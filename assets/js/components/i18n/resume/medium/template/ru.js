@@ -5,7 +5,7 @@
                 medium: {
                     title: {
                         "Discover": "Открыть",
-                        "My Photo": "Это Я ;)",
+                        "My Photo": "Моё фото",
                         "About me": "Обо мне",
                         "Education": "Образование",
                         "Courses": "Курсы",

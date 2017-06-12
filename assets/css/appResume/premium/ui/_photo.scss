@@ -1,0 +1,177 @@
+.template1 {
+    html.d-no-phone & {
+        ux-photo {
+            @include accelerate();
+            @extend .float-right;
+            @extend .transform-default;
+            @extend .willChange-transform;
+            @extend .mt-xxs;
+        }
+    }
+    .photo {
+        @include accelerate();
+        @extend .transform-default;
+        @extend .willChange-transform;
+        @extend .display-inlineBlock;
+        width:440px;
+        height:620px;
+        @extend .boxShadow-30;
+        @extend .bg-cover;
+        @extend .userSelect-none;
+        @extend .photo-filters;
+
+        &[data-noise="true"]{
+            @extend .pos-rel;
+            @extend .effect-noise;
+            @extend .overflow-hidden;
+        }
+        &-changer {
+            @extend .pos-rel;
+            @extend .display-inlineBlock;
+            @extend .cursor-pointer;
+
+            &-bg {
+                @extend .pos-bl;
+                @extend .w100p;
+                @extend .text-center;
+                @extend .opacity-0;
+                @extend .willChange-opacity;
+                transition:opacity 0.3s ease;
+                @extend .h35p;
+            }
+            &-title {
+                @extend .display-inlineBlock;
+                @extend .c-white;
+                @extend .m0;
+                @extend .fontFamily-futura;
+                @extend .letterSpacing--m;
+                @extend .willChange-transform;
+                transform:translate3d(0, 30px, 0);
+                transition:transform 0.3s ease;
+                font-size:35px;
+                line-height:4em;
+
+                &:before {
+                    @extend .content-empty;
+                    @extend .display-inlineBlock;
+                    @include ui-icon(upload_white, 54px, 54px);
+                    @extend .ml--30;
+                    @extend .mr-xs;
+                    transform:translate3d(0, 12px, 0);
+                    @extend .opacity-80;
+                }
+            }
+            html.m-no-touch &:hover {
+                .photo-changer {
+                    &-bg {
+                        @extend .opacity-100;
+                        transition:opacity 0.3s ease 0.1s;
+                    }
+                    &-title {
+                        @extend .transform-default;
+                        transition:transform 0.3s $cubic25 0.1s;
+                    }
+                }
+            }
+        }
+        &-placeholder {
+            @extend .pos-rel;
+            @extend .display-inlineBlock;
+            @extend .bg-snow;
+            @extend .text-center;
+            @extend .nowrap;
+            @extend .userSelect-none;
+            width:446px;
+            height:593px;
+            @extend .boxShadow-30;
+
+            &[data-gender]{
+                &:before {
+                    @extend .content-empty;
+                    @extend .pos-centered;
+                    opacity:0.06;
+                }
+            }
+            &[data-gender="male"]{
+                &:before {
+                    @include ui-icon("portrait_man", 250px, 250px);
+                }
+            }
+            &[data-gender="female"]{
+                &:before {
+                    @include ui-icon("portrait_woman", 190px, 190px);
+                }
+            }
+            &-icon {
+                @include accelerate();
+                @extend .pos-centered;
+                @extend .cursor-pointer;
+                @extend .mt--30;
+                @extend .xs-mt-s;
+                width:132px;
+                height:132px;
+
+                &-svg {
+                    @extend .pos-centered;
+                    width:96px;
+                    height:96px;
+                    @extend .mt-xxs;
+
+                    &-color {
+                        @extend .fill-primary;
+                    }
+                }
+                &:before {
+                    @include accelerate();
+                    @extend .content-empty;
+                    @include abs();
+                    border:2px dashed;
+                    @extend .border-primary;
+                    @extend .borderRadius-circle;
+                }
+            }
+            &-title {
+                @extend .pos-centered-h;
+                @extend .t100;
+                @extend .w200;
+                @extend .l0;
+                font-size:20px;
+                @extend .fontWeight-bold;
+                @extend .letterSpacing--s;
+                @extend .pt-s;
+                @extend .c-primary;
+                @extend .text-center;
+            }
+            &:hover {
+                .photo-placeholder-icon:before {
+                    animation:spinner linear 0.6s infinite;
+                }
+            }
+        }
+    }
+    html.d-phone & {
+        .photo {
+            @include abs();
+            @extend .mtb0;
+
+            &-changer {
+                @include abs();
+
+                &-bg {
+                    @extend .display-none;
+                }
+            }
+            &-placeholder {
+                @include abs();
+
+                &-icon {
+                    @extend .t40;
+
+                    &:before {
+                        animation:spinner linear 0.6s infinite;
+                    }
+                }
+            }
+        }
+    }
+}

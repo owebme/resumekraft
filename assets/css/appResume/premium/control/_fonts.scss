@@ -55,6 +55,21 @@
             @extend .c-white;
             @extend .bg-primary;
         }
+        &.fontFamily-basic {
+            @extend .fontFamily-sfdisplay;
+            @extend .fontWeight-5;
+        }
+        &.fontFamily-museo {
+            @extend .fontWeight-5;
+        }
+        &.fontFamily-futura,
+        &.fontFamily-gotham,
+        &.fontFamily-proxima {
+            @extend .fontWeight-bold;
+        }
+        &.fontFamily-thin {
+            @extend .fontFamily-pfhighway;
+        }
     }
     &__items {
         @extend .inline;
@@ -69,7 +84,7 @@
     }
     html.m-no-touch &:hover {
         @extend .overflow-visible;
-        width:440px;
+        width:580px;
         transition:width 0s;
 
         .control__fonts__items {

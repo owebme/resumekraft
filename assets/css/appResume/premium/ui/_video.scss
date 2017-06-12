@@ -1,0 +1,128 @@
+.template1 {
+    .video {
+        @include abs();
+        background:radial-gradient(rgba(64,64,75,.5), rgba(17,17,24,.5)) rgba(34,34,40,.26);
+
+        &__play {
+            @extend .pos-centered;
+            @extend .cursor-pointer;
+
+            &[data-active="true"]{
+                &:before {
+                    @extend .bg-primary;
+                }
+                &:after {
+                    @extend .opacity-100;
+                    @include ui-icon("play_white");
+                }
+            }
+            &:active {
+                &:before {
+                    @extend .scale-85;
+                }
+            }
+            html.m-no-touch &:hover {
+                &:before {
+                    @extend .bg-white;
+                }
+            }
+            &:before {
+                @include accelerate(true);
+                @extend .content-empty;
+                @extend .display-block;
+                width:84px;
+                height:84px;
+                @extend .boxShadow-default;
+                @extend .borderRadius-circle;
+                background-color:rgba($white,.75);
+                transition:transform 0.3s $cubic4001, background-color 0.2s $cubic215;
+            }
+            &:after {
+                @extend .content-empty;
+                @extend .pos-centered;
+                @extend .ml-xxs;
+                @extend .opacity-80;
+                @include ui-icon("play_black", 42px, 42px);
+            }
+            &__rings {
+                @include abs();
+
+                &:before,
+                &:after {
+                    @extend .content-empty;
+                    @extend .willChange-tp;
+                    @extend .borderRadius-circle;
+                }
+                &:before {
+                    @include abs_50(94, 94);
+                    box-shadow:inset 0 0 0 4px #4df5c4;
+                    animation:play_innerCircle 1.2s infinite ease-in-out;
+                    transform-origin:center center;
+                }
+                &:after {
+                    @include abs_50(114, 114);
+                    box-shadow:inset 0 0 0 2px #4df5c4;
+                    animation:play_outerCircle 1.5s infinite ease-in-out;
+                }
+            }
+        }
+        &[data-editing="true"]{
+            @extend .t-25;
+            @extend .l-25;
+            @extend .w60;
+            @extend .h60;
+            background:none;
+            @extend .opacity-85;
+            @extend [data-balloon-pos="right"];
+            @extend [data-balloon-color="gray"];
+            transition:opacity 0.2s $cubic215;
+
+            &:hover {
+                @extend .opacity-100;
+            }
+            .video__play {
+                &:before {
+                    @extend .w60;
+                    @extend .h60;
+                    @extend .boxShadow-30;
+                }
+                &:after {
+                    @extend .w32;
+                    @extend .h32;
+                }
+                &__rings {
+                    &:before,
+                    &:after {
+                        @extend .display-none;
+                        @extend .animation-none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes play_innerCircle{
+  0%{
+    transform: scale(1);
+  }
+  30%{
+    transform:scale(1.15);
+  }
+  50%{
+    transform: scale(1);
+    opacity:0;
+  }
+}
+@keyframes play_outerCircle{
+  0%, 20%{
+    transform: scale(1);
+  }
+  50%{
+    transform:scale(1.15);
+  }
+  70%{
+    transform: scale(1);
+    opacity:0;
+  }
+}

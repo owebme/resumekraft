@@ -2,7 +2,13 @@ premium-samples-slider {
     @extend .display-block;
     @extend .pos-rel;
     @extend .bg-snow357;
+    height:740px;
 
+    &:hover {
+        .c-dots {
+            @extend .pointerEvents-all;
+        }
+    }
     .slider {
         @extend .pt-xl;
 
@@ -107,11 +113,15 @@ premium-samples-slider {
             @extend .fontWeight-3;
             @extend .fontFamily-myriad;
             will-change:box-shadow;
-            transition:transform .3s $cubic28, box-shadow .3s $cubic28;
+            transition:box-shadow .3s $cubic28;
 
             &:hover {
-                box-shadow:0 37.125px 70px -12.125px rgba($slate,.3);
+                box-shadow:0 1px 3px rgba(0,0,0,.13);
 
+                .slider__item__share,
+                .slider__item__icons {
+                    @extend .pointerEvents-all;
+                }
                 .slider__item__share__link {
                     @extend .opacity-100;
                 }
@@ -165,6 +175,7 @@ premium-samples-slider {
                 @extend .pos-abs;
                 @extend .t-l;
                 @extend .r35;
+                @extend .pointerEvents-none;
 
                 &__link {
                     @extend .pos-rel;
@@ -218,6 +229,7 @@ premium-samples-slider {
                 @extend .pos-abs;
                 @extend .r45;
                 bottom:150px;
+                @extend .pointerEvents-none;
             }
             &__icon {
                 @extend .flex-centered;
@@ -296,6 +308,7 @@ premium-samples-slider {
     }
     .c-dots {
         bottom:125px;
+        @extend .pointerEvents-none;
     }
     .c-dots_list {
         @extend .pt45;

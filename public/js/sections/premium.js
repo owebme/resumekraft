@@ -24,6 +24,11 @@
 
             imagesLoaded.once("complete", function(){
                 $afterlag.run(function(){
+                    app.sections.on("afterMounted", function(){
+                        app.tag("section-player", function(tag){
+                            app.features.premium.player = tag;
+                        });
+                    });
                     app.sections.trigger("ready");
                 });
             });

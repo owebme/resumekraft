@@ -1,7 +1,7 @@
 <phone-screen-popup class="phone__screen__popup__wrapper">
 
-    <div class="phone__screen__popup__photo" style="background-image:url('/public/images/premium/samples/overview/phone_screen_popup_photo.jpg')"></div>
-    <div class="phone__screen__popup__name">Виктория, <span class="phone__screen__popup__salary">125.000 ₽</span></div>
+    <div class="phone__screen__popup__photo" style="background-image:url('{ opts.photo }')"></div>
+    <div class="phone__screen__popup__name">Виктория, <span class="phone__screen__popup__salary">80.000 ₽</span></div>
     <div class="phone__screen__popup__city">30 лет, Москва, не готова к переезду</div>
     <div class="phone__screen__popup__email"><span>ibestseller@gmail.com</span></div>
     <div class="phone__screen__popup__phone">+7 (900) 500-5550</div>

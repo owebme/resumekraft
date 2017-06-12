@@ -12,6 +12,8 @@
 
         <home-promo></home-promo>
 
+        <home-video></home-video>
+
         <section-main-blocks></section-main-blocks>
 
         <section-plans></section-plans>
@@ -20,10 +22,14 @@
 
         <section-writing></section-writing>
 
+        <home-quotes></home-quotes>
+
         <home-employers></home-employers>
 
     </div>
 
     <global-footer section="Главная"></global-footer>
+
+    <section-player></section-player>
 
 </section-home>

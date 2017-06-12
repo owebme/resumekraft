@@ -8,16 +8,25 @@ body > #app {
     }
     &[data-theme="fire"]{
         .slider__item {
-            background:linear-gradient(216deg, #ff8a40, #fd5068, #dc4588) !important;
+            &:not([data-slide="photo"]){
+                background:linear-gradient(216deg, #ff8a40, #fd5068, #dc4588) !important;
 
-            &[data-slide="contacts"]{
-                path {
-                    @extend .fill-white;
-                }
-                .relocation {
-                    .item__name {
-                        @extend .c-white;
+                &[data-slide="contacts"]{
+                    path {
+                        @extend .fill-white;
                     }
+                    .relocation {
+                        .item__name {
+                            @extend .c-white;
+                        }
+                    }
+                }
+            }
+            .content__scroll[data-track="box"]{
+                html.d-phone & {
+                    @extend .mt-xs;
+                    @extend .pt-s;
+                    height:calc(100% - 127px);
                 }
             }
         }
@@ -32,7 +41,9 @@ body > #app {
         ux-commons {
             .content__gradient {
                 &.-bottom {
-                    background:linear-gradient(216deg, #FE635B, #FB4F6A, #F24C73) !important;
+                    html.d-no-phone & {
+                        background:linear-gradient(216deg, #FE635B, #FB4F6A, #F24C73) !important;
+                    }
                 }
             }
         }

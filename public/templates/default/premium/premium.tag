@@ -8,4 +8,6 @@
 
     <overview-premium-content utils={ opts.utils }></overview-premium-content>
 
+    <section-player></section-player>
+
 </overview-premium>

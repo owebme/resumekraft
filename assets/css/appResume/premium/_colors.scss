@@ -200,6 +200,16 @@
             text-edit:before {
                 background-color:rgba($color,.95);
             }
+            &[data-player="true"]{
+                .info-opener {
+                    &:before {
+                        html.d-no-phone & {
+                            background-color:$color;
+                            transform:translateZ(0) scale(0.84);
+                        }
+                    }
+                }
+            }
         }
     }
 }

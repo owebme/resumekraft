@@ -49,7 +49,6 @@ premium-samples-gallery {
                 @extend .zIndex-1;
 
                 &__text {
-
                     @include textEllipsis(100%, 175px, 4);
                 }
             }

@@ -1,27 +1,27 @@
-@each $title, $size, $height in (10, 10px, 14px), (12, 12px, 16px), (13, 13px, 15px), (14, 14px, 18px), (15, 15px, 20px), (16, 16px, 22px), (18, 18px, 24px), (20, 20px, 28px), (22, 22px, 28px), (24, 24px, 32px), (26, 26px, 32px), (28, 28px, 34px), (30, 30px, 36px), (32, 32px, 38px), (34, 34px, 38px), (38, 38px, 46px), (46, 46px, 46px), (64, 64px, 64px), (72, 72px, 86px){
+@each $title, $size, $height in (10, 10px, 14px), (12, 12px, 16px), (13, 13px, 15px), (14, 14px, 18px), (15, 15px, 20px), (16, 16px, 22px), (18, 18px, 24px), (20, 20px, 28px), (22, 22px, 28px), (24, 24px, 32px), (26, 26px, 32px), (28, 28px, 34px), (30, 30px, 36px), (32, 32px, 38px), (34, 34px, 38px), (38, 38px, 46px), (46, 46px, 46px), (64, 64px, 64px), (72, 72px, 80px){
     .fontSize-#{$title} {
         font-size:$size;
         line-height:$height;
 
-        @if $title == 72 {
-            margin-left:-4px;
-            letter-spacing:-3px;
-        }
-        @if $title == 64 or $title == 46 {
-            margin-left:-2px;
-            letter-spacing:-2px;
-        }
-        @if $title == 38 or $title == 34 {
-            margin-left:-2px;
-            letter-spacing:-1.4px;
-        }
-        @if $title == 32 or $title == 30 or $title == 28 or $title == 26 or $title == 24 {
-            margin-left:-1px;
-            letter-spacing:-1px;
-        }
-        @if $title == 22 or $title == 20 {
-            letter-spacing:-0.4px;
-        }
+        // @if $title == 72 {
+        //     margin-left:-4px;
+        //     letter-spacing:-3px;
+        // }
+        // @if $title == 64 or $title == 46 {
+        //     margin-left:-2px;
+        //     letter-spacing:-2px;
+        // }
+        // @if $title == 38 or $title == 34 {
+        //     margin-left:-2px;
+        //     letter-spacing:-1.4px;
+        // }
+        // @if $title == 32 or $title == 30 or $title == 28 or $title == 26 or $title == 24 {
+        //     margin-left:-1px;
+        //     letter-spacing:-1px;
+        // }
+        // @if $title == 22 or $title == 20 {
+        //     letter-spacing:-0.4px;
+        // }
     }
 }
 @each $title, $size, $height in (xxs, 10px, 14px), (xs, 12px, 16px), (s, 14px, 18px), (m, 16px, 22px), (l, 18px, 24px), (xl, 20px, 28px), (xxl, 24px, 32px){
@@ -29,36 +29,132 @@
         font-size:$size;
         line-height:$height;
 
-        @if $title == "xxl" {
-            margin-left:-1px;
-            letter-spacing:-1px;
+        // @if $title == "xxl" {
+        //     margin-left:-1px;
+        //     letter-spacing:-1px;
+        // }
+        // @if $title == "xl" {
+        //     letter-spacing:-0.4px;
+        // }
+    }
+}
+#app > .resume:not([data-font="basic"]):not([data-font="thin"]) {
+    .fontSize-64,
+    .fontSize-46 {
+        letter-spacing:-2px;
+    }
+    .fontSize-38,
+    .fontSize-34 {
+        letter-spacing:-1.4px;
+    }
+    .fontSize-32,
+    .fontSize-30,
+    .fontSize-28,
+    .fontSize-26,
+    .fontSize-24 {
+        letter-spacing:-1px;
+    }
+    .fontSize-22,
+    .fontSize-20 {
+        letter-spacing:-0.4px;
+    }
+}
+#app > .resume[data-font="basic"] {
+    .name {
+        html.d-no-phone & {
+            font-weight:bold;
         }
-        @if $title == "xl" {
-            letter-spacing:-0.4px;
+    }
+    .post {
+        font-size:24px !important;
+    }
+    h2 {
+        line-height:44px !important;
+    }
+    .progress-title {
+        font-weight:600 !important;
+    }
+    .hobby-title {
+        @extend .fontWeight-3;
+    }
+    .fontSize-72 {
+        font-size:64px;
+        line-height:74px;
+        letter-spacing:-0.016em;
+
+        html.d-phone & {
+            font-size:54px;
+            line-height:56px;
+            letter-spacing:-0.024em;
+        }
+    }
+    .fontSize-46 {
+        font-size:40px;
+        line-height:40px;
+    }
+    .fontSize-34 {
+        font-size:28.5px;
+        line-height:44px;
+        letter-spacing:-0.008em;
+
+        html.d-phone & {
+            line-height:36px;
+        }
+    }
+    .fontSize-30 {
+        font-size:25px;
+        line-height:34px;
+        letter-spacing:-0.006em;
+    }
+    .fontSize-24 {
+        font-size:22px;
+        line-height:30px;
+    }
+    .fontSize-22 {
+        font-size:21px;
+    }
+    .fontSize-20 {
+        font-size:18px;
+    }
+}
+#app > .resume[data-font="futura"] {
+    .post {
+        font-size:26px !important;
+    }
+    .fontSize-72 {
+        @extend .fontWeight-8;
+        letter-spacing:-3px;
+
+        html.d-phone & {
+            font-size:64px;
+            line-height:68px;
         }
     }
 }
-#app[data-font="avant"] {
-    .fontSize-72 {
-        font-size:64px;
-        line-height:80px;
-        padding-bottom:5px;
+#app > .resume[data-font="museo"] {
+    .post {
+        font-size:25px !important;
     }
-    .fontSize-64 {
-        font-size:56px;
-        line-height:56px;
+    .fontSize-72 {
+        font-size:66px;
+        line-height:78px;
+        letter-spacing:-3px;
+
+        html.d-phone & {
+            font-size:58px;
+            line-height:64px;
+        }
     }
     .fontSize-46 {
         font-size:42px;
         line-height:42px;
     }
     .fontSize-34 {
-        font-size:29px;
-        line-height:45px;
-        letter-spacing:-1px;
+        font-size:30px;
+        line-height:46px;
     }
     .fontSize-30 {
-        font-size:28px;
+        font-size:26px;
     }
     .fontSize-26 {
         font-size:24px;
@@ -66,33 +162,42 @@
     .fontSize-24 {
         font-size:22px;
     }
-    .fontSize-20 {
-        font-size:18px;
+    .fontSize-22 {
+        font-size:21px;
     }
-    .fontSize-18 {
-        font-size:17px;
+    .fontSize-20 {
+        font-size:19px;
     }
     .fontSize-16 {
         font-size:15px;
     }
-    .fontSize-13 {
-        font-size:12px;
-    }
 }
-#app[data-font="gotham"] {
+#app > .resume[data-font="gotham"] {
+    .salary-graph-mini-title {
+        @extend .letterSpacing--m;
+    }
+    .post {
+        font-size:24px !important;
+    }
+    h2 {
+        html.d-phone & {
+            font-size:28px;
+            line-height:44px;
+        }
+    }
     .fontSize-72 {
-        font-size:64px;
-        line-height:80px;
-        padding-bottom:5px;
-        letter-spacing:-4.6px;
+        font-size:66px;
+        line-height:78px;
+        letter-spacing:-3.4px;
+
+        html.d-phone & {
+            font-size:56px;
+            line-height:62px;
+        }
     }
-    .fontSize-64,
     .fontSize-46 {
-        letter-spacing:-0.4px;
-    }
-    .fontSize-46 {
-        font-size:44px;
-        line-height:44px;
+        font-size:42px;
+        line-height:42px;
     }
     .fontSize-34 {
         font-size:30px;
@@ -100,7 +205,7 @@
         letter-spacing:-1.7px;
     }
     .fontSize-30 {
-        font-size:27.5px;
+        font-size:26px;
     }
     .fontSize-26 {
         letter-spacing:-1.4px;
@@ -110,64 +215,133 @@
         letter-spacing:-1.4px;
         font-size:22.5px;
     }
+    .fontSize-22 {
+        font-size:20.5px;
+        letter-spacing:-0.4px;
+
+        html.d-phone & {
+            font-size:20px;
+        }
+    }
     .fontSize-20 {
         letter-spacing:-1px;
         font-size:18.5px;
     }
-    .fontSize-18 {
-        font-size:17px;
-    }
     .fontSize-16 {
         font-size:15px;
     }
-    .fontSize-13 {
-        font-size:11px;
-    }
 }
-#app[data-font="proxima"] {
+#app > .resume[data-font="proxima"] {
+    .post {
+        font-size:26px !important;
+    }
+    h2 {
+        html.d-phone & {
+            line-height:44px;
+        }
+    }
     .fontSize-72 {
-        font-size:64px;
-        line-height:80px;
-        padding-bottom:5px;
-        letter-spacing:-3.2px;
+        font-size:66px;
+        line-height:70px;
+        letter-spacing:-2px;
+
+        html.d-phone & {
+            font-size:56px;
+            line-height:58px;
+        }
+    }
+    .fontSize-46 {
+        font-size:44px;
+        line-height:44px;
     }
     .fontSize-34 {
         font-size:30px;
-        line-height:48px;
+        line-height:46px;
+        letter-spacing:-1.2px;
+    }
+    .fontSize-30 {
+        font-size:27px;
+        line-height:34px;
     }
 }
-#app[data-font="myriad"] {
+#app > .resume[data-font="myriad"] {
+    .name,
+    h2 {
+        font-weight:500;
+    }
+    .post {
+        font-size:26px !important;
+    }
+    h2 {
+        font-size:30px;
+        line-height:44px;
+        letter-spacing:-0.034em;
+    }
     .fontSize-72 {
         font-size:70px;
-        line-height:80px;
-        padding-bottom:5px;
-        letter-spacing:-3.2px;
-    }
-    .fontSize-64 {
-        font-size:68px;
-        line-height:68px;
-    }
-    .fontSize-46 {
-        font-size:50px;
-        line-height:50px;
+        line-height:76px;
+        letter-spacing:-0.034em;
+
+        html.d-phone & {
+            font-size:60px;
+            line-height:62px;
+            letter-spacing:-0.04em;
+        }
     }
     .fontSize-34 {
         font-size:32px;
         line-height:48px;
     }
     .fontSize-30 {
+        font-size:28px;
+        line-height:34px;
         letter-spacing:-0.8px;
     }
 }
-html.d-phone {
-    #app[data-font="avant"],
-    #app[data-font="gotham"],
-    #app[data-font="proxima"],
-    #app[data-font="myriad"] {
-        .fontSize-72 {
-            line-height:72px;
-            padding-bottom:0px;
+#app > .resume[data-font="thin"] {
+    .post {
+        font-size:26px !important;
+        font-weight:600 !important;
+        letter-spacing:-0.016em !important;
+    }
+    h2 {
+        font-size:30px !important;
+        line-height:44px !important;
+    }
+    .progress-title {
+        font-weight:600 !important;
+    }
+    .fontSize-72 {
+        font-size:70px;
+        line-height:74px;
+        letter-spacing:-0.016em;
+        font-weight:600 !important;
+
+        html.d-phone & {
+            font-size:58px;
+            line-height:60px;
+            letter-spacing:-0.02em;
         }
+    }
+    .fontSize-46 {
+        font-size:41px;
+        line-height:41px;
+    }
+    .fontSize-34 {
+        font-size:31.5px;
+        line-height:46px;
+        letter-spacing:-0.016em;
+    }
+    .fontSize-30 {
+        font-size:28px;
+        line-height:34px;
+    }
+    .fontSize-24 {
+        line-height:30px;
+        letter-spacing:0.006em;
+    }
+    .fontSize-18 {
+        font-size:17.5px;
     }
 }
 .fontSize-0 {

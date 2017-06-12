@@ -1,20 +1,20 @@
 home-promo {
-    &:after {
-        @extend .pos-rel;
-        @extend .display-block;
-        @extend .content-empty;
-        @extend .l50p;
-        width:1376px;
-        height:788px;
-        @extend .bg-cover;
-        background-image:url(/public/images/home/screen1_large.jpg);
-        margin-left:-658px;
-        @extend .mb-l;
-
-        html.d-retina.d-no-tablet & {
-            background-image:url(/public/images/home/screen1_large_2x.jpg);
-        }
-    }
+    // &:after {
+    //     @extend .pos-rel;
+    //     @extend .display-block;
+    //     @extend .content-empty;
+    //     @extend .l50p;
+    //     width:1376px;
+    //     height:788px;
+    //     @extend .bg-cover;
+    //     background-image:url(/public/images/home/screen1_large.jpg);
+    //     margin-left:-658px;
+    //     @extend .mb-l;
+    //
+    //     html.d-retina.d-no-tablet & {
+    //         background-image:url(/public/images/home/screen1_large_2x.jpg);
+    //     }
+    // }
     .content__block {
         @extend .pb-m;
     }

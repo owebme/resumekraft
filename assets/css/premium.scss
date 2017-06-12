@@ -27,7 +27,6 @@
 @import 'ui/basic/dropMenu';
 @import 'ui/basic/table';
 @import 'ui/button';
-@import 'ui/typography';
 @import 'ui/rangeslider';
 @import 'ui/switcher';
 @import 'ui/slider';
@@ -40,6 +39,7 @@
 @import 'modules/tutorial';
 @import 'modules/uploadPhoto';
 @import 'modules/userPhoto';
+@import 'modules/player';
 
 // Sections
 @import 'sections/sections';
@@ -48,7 +48,7 @@
 @import 'appResume/premium/base/main';
 
 // UI elements
-@import 'appResume/premium/ui/main';
+@import 'appResume/premium/content';
 @import 'appResume/premium/ui/fontSize';
 @import 'appResume/premium/ui/editplace';
 @import 'appResume/premium/ui/button';
@@ -64,7 +64,9 @@
 @import 'appResume/premium/ui/percentage';
 @import 'appResume/premium/ui/progress';
 @import 'appResume/premium/ui/options';
-@import 'appResume/premium/ui/firefox';
+@import 'appResume/premium/ui/photo';
+@import 'appResume/premium/ui/video';
+// @import 'appResume/premium/ui/firefox';
 
 // Resume control
 @import 'appResume/premium/control/fonts';
@@ -73,6 +75,7 @@
 @import 'appResume/premium/control/public';
 
 // Resume sections
+@import 'appResume/premium/sections/main';
 @import 'appResume/premium/sections/menu/menu';
 @import 'appResume/premium/sections/menu/sections';
 @import 'appResume/premium/sections/menu/items';
@@ -91,7 +94,6 @@
 // Resume templates
 @import 'appResume/premium/colors';
 @import 'appResume/premium/fonts';
-@import 'appResume/premium/template';
 
 // states
 @import 'states/states';

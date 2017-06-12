@@ -6,6 +6,7 @@
         <div name="wrapper" class="section__editable__wrapper container">
             <div class="row">
                 <editable-photo></editable-photo>
+                <editable-video></editable-video>
                 <editable-name></editable-name>
                 <editable-text></editable-text>
                 <editable-salary></editable-salary>
@@ -34,7 +35,7 @@
 
     $.el = $scope;
     $.editable = null;
-    $.editSimple = ['photo', 'name', 'text', 'salary', 'tags', 'social', 'more'];
+    $.editSimple = ['photo', 'video', 'name', 'text', 'salary', 'tags', 'social', 'more'];
 
     $.on("mount", function(){
         if (app.device.isMobile && app.device.isTablet){

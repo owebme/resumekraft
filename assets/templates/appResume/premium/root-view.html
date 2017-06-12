@@ -1,4 +1,4 @@
-<root-main-view class="appResume section" data-lang="{ $resume.lang }" data-color="{ $State.get('color') }" data-font="{ $State.get('font') }" data-mode="{ $State.get('mode') }" data-coverletter={ $State.get('mode') !== "editing" && $store.resume.select("sections").get({"name": "coverletter"}).active } data-animation={ !app.device.isPhone && $State.get('mode') === 'view' && $State.get('animate') } data-app="premium">
+<root-main-view class="appResume section" data-lang="{ $resume.lang }" data-color="{ $State.get('color') }" data-mode="{ $State.get('mode') }" data-coverletter={ $State.get('mode') !== "editing" && $store.resume.select("sections").get({"name": "coverletter"}).active } data-animation={ !app.device.isPhone && $State.get('mode') === 'view' && $State.get('animate') } data-app="premium">
 
     <section-nav if={ !app.device.isMobile }></section-nav>
 
@@ -6,12 +6,13 @@
     <section-sendmail></section-sendmail>
     <salary-graph-opener></salary-graph-opener>
     <salary-graph></salary-graph>
+    <section-player></section-player>
 
     <sections-control if={ $State.get('mode') === "editing" }>
         <control-colors></control-colors>
     </sections-control>
 
-    <resume-template1></resume-template1>
+    <resume-template1 data-font="{ $State.get('font') }"></resume-template1>
 
     <div class="section__overlay zIndex-7"></div>
 
@@ -44,6 +45,7 @@
         $Menu = $root.tags["section-menu"];
         $Nav = $root.tags["section-nav"];
         $Info = $root.tags["section-info"];
+        $Player = $root.tags["section-player"];
         $Sendmail = $root.tags["section-sendmail"];
 
         $Control = {

@@ -1,14 +1,36 @@
-#app {
-    @each $font in ('futura', 'avant', 'gotham', 'proxima', 'myriad'){
+#app > .resume {
+    @each $font in ('futura', 'museo', 'gotham', 'proxima', 'myriad'){
         &[data-font="#{$font}"]{
             .f-primary {
                 font-family:$font;
             }
             .salary__currency {
-                @if $font == 'avant' or $font == 'gotham' or $font == 'proxima' {
+                @if $font == 'museo' or $font == 'gotham' or $font == 'proxima' {
                     font-family:$roboto;
                 }
             }
+        }
+    }
+    &[data-font="basic"]{
+        .f-primary {
+            font-family:'SF Display';
+        }
+        .fontWeight-bold {
+            @extend .fontWeight-6;
+        }
+    }
+    &[data-font="thin"]{
+        .f-primary {
+            @extend .fontFamily-pfhighway;
+        }
+        .fontWeight-8,
+        .fontWeight-bold {
+            @extend .fontWeight-5;
+        }
+    }
+    &:not([data-font="futura"]):not([data-font="thin"]) {
+        .fontWeight-8 {
+            @extend .fontWeight-bold;
         }
     }
 }

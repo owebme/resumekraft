@@ -102,6 +102,9 @@
 .float-none {
 	float:none;
 }
+.listStyle-none {
+	list-style:none;
+}
 .svg-filter {
     @extend .pos-abs;
 	@extend .visibility-hidden;

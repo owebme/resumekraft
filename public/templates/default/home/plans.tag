@@ -29,6 +29,13 @@
                                     <div class="plan__item"><svg width="36" height="1" viewBox="0 0 36 1"><path class="fill-silver" d="M0 .5c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5z"></path></svg></div>
                                     <div class="plan__item"><svg width="36" height="1" viewBox="0 0 36 1"><path class="fill-silver" d="M0 .5c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5z"></path></svg></div>
                                 </div>
+                                <div class="plan__progress">
+                                    <div class="c-gray">Получение работы</div>
+                                    <div>от 14 до 60 дней</div>
+                                    <div class="plan__progress__line w45p">
+                                        <div class="plan__progress__line__item"></div>
+                                    </div>
+                                </div>
                                 <div class="btn btn-l btn-rounded btn-success">Создать резюме</div>
                                 <div class="plan__footer">
                                     <div class="btn btn-l btn-rounded btn-primary-hover">Смотреть примеры</div>
@@ -58,6 +65,13 @@
                                     <div class="plan__item">Настройки оформления<span class="plan__item__help" data-balloon-length="m" data-balloon-borderRadius="l" data-balloon="Выбор из нескольких тем, поменять цвет и стиль"><icon-que></icon-que></span></div>
                                     <div class="plan__item"><svg width="36" height="1" viewBox="0 0 36 1"><path class="fill-silver" d="M0 .5c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5z"></path></svg></div>
                                 </div>
+                                <div class="plan__progress">
+                                    <div class="c-gray">Получение работы</div>
+                                    <div>от 5 до 21 дней</div>
+                                    <div class="plan__progress__line w80p">
+                                        <div class="plan__progress__line__item" data-delay="0.25"></div>
+                                    </div>
+                                </div>
                                 <div class="btn btn-l btn-rounded btn-success">Создать резюме</div>
                                 <div class="plan__footer">
                                     <div class="btn btn-l btn-rounded btn-primary-hover">Смотреть примеры</div>
@@ -83,7 +97,14 @@
                                     <div class="plan__item">Мобильное резюме</div>
                                     <div class="plan__item">Расширенный функционал<span class="plan__item__help" data-balloon-length="m" data-balloon-borderRadius="l" data-balloon="Возможность рассказать о себе больше, смотрите примеры резюме"><icon-que></icon-que></span></div>
                                     <div class="plan__item">Визуальный редактор<span class="plan__item__help" data-balloon-length="m" data-balloon-borderRadius="l" data-balloon="Редактирование в несколько кликов, функция предпросмотра не нужна"><icon-que></icon-que></span></div>
-                                    <div class="plan__item">Рекомендации<span class="plan__item__help" data-balloon-length="m" data-balloon-borderRadius="l" data-balloon="В функционал входят рекомендации по написанию резюме"><icon-que></icon-que></span></div>
+                                    <div class="plan__item">Видео обращение<span class="plan__item__help" data-balloon-length="m" data-balloon-borderRadius="l" data-balloon="Добавьте видео обращение для вашего работодателя"><icon-que></icon-que></span></div>
+                                </div>
+                                <div class="plan__progress">
+                                    <div class="c-gray">Получение работы</div>
+                                    <div>от 2 до 7 дней</div>
+                                    <div class="plan__progress__line w100p">
+                                        <div class="plan__progress__line__item" data-delay="0.5"></div>
+                                    </div>
                                 </div>
                                 <div class="btn btn-l btn-rounded btn-success">Создать резюме</div>
                                 <div class="plan__footer">

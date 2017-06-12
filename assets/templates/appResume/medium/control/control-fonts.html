@@ -3,7 +3,7 @@
     <div class="control__item__label">Шрифт</div>
     <div class="select select-xl">
         <select ref="select" onChange={ onSelect }>
-            <option each={ item in $store.fonts.getItems() } no-reorder value={ item._id } selected={ $State.get("color") == item._id }>{ item.title }</option>
+            <option each={ item in $store.fonts.getItems() } no-reorder value={ item._id } selected={ $State.get("font") == item._id }>{ item.title }</option>
         </select>
     </div>
 

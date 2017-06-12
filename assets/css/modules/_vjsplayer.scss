@@ -1,0 +1,465 @@
+.player {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    background: #000;
+    color: #fff;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0)
+}
+
+.player_theme_dark {
+    color: #151515
+}
+
+.player__block {
+    display: block;
+    position: relative
+}
+
+.player__video {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -28.125%;
+    width: 100%;
+    height: auto;
+    background: #000
+}
+
+.player:before, .player__video:before {
+    display: block;
+    padding-bottom: 56.25%;
+    content: ''
+}
+
+.player_4by3 .player__video {
+    margin-top: -37.5%
+}
+
+.player_4by3 .player__video:before, .player_4by3:before {
+    padding-bottom: 75%
+}
+
+.player_compact:before {
+    padding-bottom: 28.57142857%
+}
+
+.player_middle {
+    position: absolute;
+    width: 960px;
+    height: 540px;
+    top: 50%;
+    left: 50%;
+    margin: -270px 0 0 -480px
+}
+
+@media screen and (max-height:800px), screen and (max-width:1250px) {
+    .player_middle {
+        width: 870px;
+        height: 487px;
+        margin-left: -435px;
+        margin-top: -243px
+    }
+}
+
+@media screen and (max-height:740px), screen and (max-width:1100px) {
+    .player_middle {
+        width: 800px;
+        height: 448px;
+        margin-left: -400px;
+        margin-top: -224px
+    }
+}
+
+@media (max-width:1000px) {
+    .player_middle {
+        width: 680px;
+        height: 380px;
+        margin-left: -340px;
+        margin-top: -190px
+    }
+}
+
+@media (max-width:767px) {
+    .player_middle {
+        width: 280px;
+        height: 156px;
+        margin-left: -140px;
+        margin-top: -78px
+    }
+}
+
+.vjs-poster, .vjs-tech {
+    position: absolute;
+    left: -.25%;
+    top: -.25%;
+    height: 100.5%;
+    width: 100.5%;
+    cursor: pointer
+}
+
+.vjs-tech::-webkit-media-controls-panel {
+    display: none!important;
+    -webkit-appearance: none
+}
+
+.vjs-tech::-webkit-media-controls-play-button {
+    display: none!important;
+    -webkit-appearance: none
+}
+
+.vjs-tech::-webkit-media-controls-start-playback-button {
+    display: none!important;
+    -webkit-appearance: none
+}
+
+.vjs-poster {
+    background: no-repeat 50% 50%/contain
+}
+
+.player_theme_dark .vjs-control-bar:before, .vjs-has-started .vjs-poster, .vjs-using-native-controls .vjs-control-bar {
+    display: none
+}
+
+.vjs-control-bar {
+    position: absolute;
+    box-sizing: border-box;
+    padding: 0 10px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 36px;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 0;
+    -webkit-transition: opacity .7s, visibility .7s;
+    transition: opacity .7s, visibility .7s;
+    visibility: hidden
+}
+
+.vjs-has-started:not(.vjs-user-inactive) .vjs-control-bar {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition-duration: .2625s;
+    transition-duration: .2625s
+}
+
+.vjs-control-bar:before {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    bottom: 0;
+    background: -webkit-linear-gradient(bottom, #000, rgba(0, 0, 0, 0));
+    background: linear-gradient(to top, #000, rgba(0, 0, 0, 0));
+    opacity: .125;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    content: ''
+}
+
+.vjs-control {
+    cursor: pointer;
+    outline: none;
+    color: inherit
+}
+
+.vjs-button {
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: 0 0
+}
+
+.vjs-play-control {
+    float: left;
+    position: relative;
+    margin-right: 5px;
+    width: 36px;
+    height: 36px
+}
+
+.vjs-paused .vjs-play-control:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -8px;
+    margin-left: -6px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 0 8px 13px;
+    border-color: transparent transparent transparent currentColor;
+    content: ''
+}
+
+.vjs-playing .vjs-play-control:after, .vjs-playing .vjs-play-control:before {
+    position: absolute;
+    top: 50%;
+    width: 4px;
+    height: 16px;
+    margin-top: -8px;
+    content: '';
+    background-color: currentColor
+}
+
+.vjs-playing .vjs-play-control:before {
+    right: 50%;
+    margin-right: 2px
+}
+
+.vjs-playing .vjs-play-control:after {
+    left: 50%;
+    margin-left: 2px
+}
+
+.vjs-volume-menu-button {
+    float: left;
+    position: relative;
+    width: 36px;
+    height: 36px
+}
+
+.vjs-volume-menu-button__path {
+    fill: currentColor;
+    opacity: 0;
+    -webkit-transition: opacity .175s;
+    transition: opacity .175s
+}
+
+.vjs-vol-1 .vjs-volume-menu-button__path_1, .vjs-vol-2 .vjs-volume-menu-button__path_1, .vjs-vol-3 .vjs-volume-menu-button__path, .vjs-volume-menu-button:hover .vjs-volume-bar, .vjs-volume-menu-button__path_0 {
+    opacity: 1
+}
+
+.vjs-volume-bar {
+    position: absolute;
+    left: 100%;
+    width: 55px;
+    top: 50%;
+    height: 5px;
+    margin-top: -3px;
+    opacity: 0
+}
+
+.d-mobile .vjs-volume-bar {
+    display: none
+}
+
+.vjs-volume-bar:after, .vjs-volume-bar:before {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    content: ''
+}
+
+.vjs-volume-bar:before {
+    height: 100%;
+    opacity: .33;
+    background: currentColor;
+    top: 0
+}
+
+.vjs-volume-bar:after {
+    top: -12px;
+    bottom: -12px
+}
+
+.vjs-fullscreen-control {
+    float: right;
+    position: relative;
+    width: 36px;
+    height: 36px
+}
+
+.vjs-fullscreen-control__decor {
+    position: absolute;
+    border: 2px solid currentColor;
+    width: 4px;
+    height: 4px
+}
+
+.vjs-fullscreen-control__decor_1, .vjs-fullscreen-control__decor_2 {
+    top: 50%;
+    margin-top: -8px;
+    border-bottom: none
+}
+
+.vjs-fullscreen-control__decor_3, .vjs-fullscreen-control__decor_4 {
+    bottom: 50%;
+    margin-bottom: -8px;
+    border-top: none
+}
+
+.vjs-fullscreen-control__decor_1, .vjs-fullscreen-control__decor_3 {
+    left: 50%;
+    margin-left: -8px;
+    border-right: none
+}
+
+.vjs-fullscreen-control__decor_2, .vjs-fullscreen-control__decor_4 {
+    right: 50%;
+    border-left: none;
+    margin-right: -8px
+}
+
+.vjs-fullscreen-control:hover:not(:active) .vjs-fullscreen-control__decor_1, .vjs-fullscreen-control:hover:not(:active) .vjs-fullscreen-control__decor_2 {
+    margin-top: -9px
+}
+
+.vjs-fullscreen-control:hover:not(:active) .vjs-fullscreen-control__decor_3, .vjs-fullscreen-control:hover:not(:active) .vjs-fullscreen-control__decor_4 {
+    margin-bottom: -9px
+}
+
+.vjs-fullscreen-control:hover:not(:active) .vjs-fullscreen-control__decor_1, .vjs-fullscreen-control:hover:not(:active) .vjs-fullscreen-control__decor_3 {
+    margin-left: -9px
+}
+
+.vjs-fullscreen-control:hover:not(:active) .vjs-fullscreen-control__decor_2, .vjs-fullscreen-control:hover:not(:active) .vjs-fullscreen-control__decor_4 {
+    margin-right: -9px
+}
+
+.vjs-progress-control {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: 100%;
+    height: 5px
+}
+
+.vjs-progress-holder, .vjs-volume-bar {
+    -webkit-transform: scaleY(.6);
+    transform: scaleY(.6);
+    -webkit-transition: -webkit-transform .175s, opacity .35s;
+    transition: transform .175s, opacity .35s;
+    will-change: transform, opacity
+}
+
+.vjs-progress-holder.vjs-sliding, .vjs-progress-holder:hover, .vjs-volume-bar.vjs-sliding, .vjs-volume-bar:hover {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1)
+}
+
+.vjs-progress-holder {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%
+}
+
+.vjs-progress-holder:before {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: -8px;
+    bottom: -8px;
+    content: ''
+}
+
+.vjs-load-progress, .vjs-play-progress, .vjs-volume-level {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: currentColor
+}
+
+.vjs-volume-level {
+    width: 100%
+}
+
+.vjs-load-progress {
+    opacity: .33
+}
+
+.vjs-big-play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: 0 0;
+    margin: -30px 0 0 -20px;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0)
+}
+
+.vjs-big-play-button:before {
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 30px 0 30px 60px;
+    border-color: transparent transparent transparent #fff;
+    -webkit-transition: border-color .175s;
+    transition: border-color .175s;
+    content: ''
+}
+
+.player:hover .vjs-big-play-button:before {
+    border-left-color: #06f
+}
+
+.player_button_dark .vjs-big-play-button:before {
+    border-left-color: #151515
+}
+
+.vjs-audio-button, .vjs-caption-settings, .vjs-captions-button, .vjs-chapters-button, .vjs-control-text, .vjs-controls-disabled .vjs-big-play-button, .vjs-current-time, .vjs-custom-control-spacer, .vjs-descriptions-button, .vjs-duration, .vjs-error-display, .vjs-has-started .vjs-big-play-button, .vjs-live-control, .vjs-mouse-display, .vjs-playback-rate, .vjs-remaining-time, .vjs-subtitles-button, .vjs-time-control {
+    display: none
+}
+
+.vjs-using-native-controls.vjs-has-started.vjs-paused .vjs-big-play-button {
+    display: block
+}
+
+.vjs-using-native-controls.vjs-has-started.vjs-paused .vjs-big-play-button:after {
+    position: absolute;
+    left: -1000px;
+    right: -1000px;
+    bottom: -1000px;
+    top: -1000px;
+    content: ''
+}
+
+@media (max-width:767px) {
+    .vjs-big-play-button {
+        margin-top: -15px;
+        margin-left: -8px
+    }
+    .vjs-big-play-button:before {
+        border-width: 15px 0 15px 30px
+    }
+}
+
+.video-js:-moz-full-screen {
+    position: absolute
+}
+
+.video-js:-webkit-full-screen {
+    width: 100%!important;
+    height: 100%!important
+}
+
+.vjs-full-window .video-js.vjs-fullscreen {
+    position: fixed;
+    overflow: hidden;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0
+}
+
+.video-js.vjs-fullscreen {
+    width: 100%!important;
+    height: 100%!important;
+    padding: 0!important;
+    margin: 0!important;
+    top: 0!important
+}

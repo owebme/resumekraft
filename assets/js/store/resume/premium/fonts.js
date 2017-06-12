@@ -1,6 +1,6 @@
 $store.fonts = _.extend(new Baobab([
     {
-        _id: "sfdisplay",
+        _id: "basic",
         title: {
             en: "Basic",
             ru: "Базовый"

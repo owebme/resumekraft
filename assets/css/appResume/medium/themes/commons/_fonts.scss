@@ -6,9 +6,24 @@ body > #app {
             }
         }
     }
-    &[data-font="sfdisplay"]{
+    &[data-font="basic"]{
         .f-primary {
             font-family:'SF Display';
+        }
+        .fontWeight-bold {
+            @extend .fontWeight-6;
+        }
+    }
+    &[data-font="myriad"],
+    &[data-font="futura"],
+    &[data-font="proxima"],
+    &[data-font="thin"]{
+        .slider__item {
+            &[data-slide="commons"]{
+                .salary__currency {
+                    font-size:95%;
+                }
+            }
         }
     }
     &[data-font="thin"]{
@@ -55,6 +70,10 @@ body > #app {
                 .salary {
                     margin-top:11px;
                     @extend .fontWeight-normal;
+
+                    &__currency {
+                        @extend .fontWeight-3;
+                    }
                 }
             }
             &[data-slide="courses"]{

@@ -62,7 +62,7 @@ gulp.task('watch', function() {
 	gulp.watch([
 		'assets/css/style.scss',
 		'assets/css/**/*.scss'
-	], gulp.series('medium.css'));
+	], gulp.series('premium.css'));
 
 	gulp.watch([
 		'assets/css/**/templates/style.scss',

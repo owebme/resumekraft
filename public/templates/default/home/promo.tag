@@ -34,12 +34,10 @@
     <div class="container text-center">
         <div class="row">
             <div class="col-md-16 centered">
-                <a href="/premium/workflow" class="opener">
+                <a href="/premium/samples/mobile" class="opener">
                     <div class="opener__circle"></div>
                     <div class="opener__label">Открыть примеры</div>
                 </a>
-                <h1 class="mb-m">Резюме в смартфоне</h1>
-                <p class="c-gray text mb25">The iOS 10 SDK includes new APIs and services that enable new categories of apps and features. Your apps can now extend to Messages, Siri, Phone, and Maps to provide more engaging functionality like never before.</p>
             </div>
         </div>
     </div>

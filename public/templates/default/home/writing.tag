@@ -16,7 +16,7 @@
                                     <div class="btn-order btn btn-s btn-primary-hover">Быстрый заказ</div>
                                     <div class="btn-open btn btn-s btn-primary-hover">Подробнее</div>
                                 </div>
-                                <div class="col-md-4 plan__price">2 390 руб.</div>
+                                <div class="col-md-4 plan__price">2,390 руб.</div>
                                 <div class="col-md-2 plan__open">
                                     <div class="plan__opener">
                                         <svg class="plan__opener__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
@@ -68,7 +68,7 @@
                                     <div class="btn btn-order btn-s btn-primary-hover">Быстрый заказ</div>
                                     <div class="btn btn-open btn-s btn-primary-hover">Подробнее</div>
                                 </div>
-                                <div class="col-md-4 plan__price">1 799 руб.</div>
+                                <div class="col-md-4 plan__price">1,799 руб.</div>
                                 <div class="col-md-2 plan__open">
                                     <div class="plan__opener">
                                         <svg class="plan__opener__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
@@ -119,7 +119,7 @@
                                 <div class="col-md-6 plan__buttons">
                                     <div class="btn btn-open btn-s btn-primary-hover">Подробнее</div>
                                 </div>
-                                <div class="col-md-4 plan__price">+ 1 000 руб.</div>
+                                <div class="col-md-4 plan__price">+ 1,000 руб.</div>
                                 <div class="col-md-2 plan__open">
                                     <div class="plan__opener">
                                         <svg class="plan__opener__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">

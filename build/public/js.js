@@ -36,7 +36,6 @@ module.exports = function(){
             'assets/js/components/features/orbits.js',
             'assets/js/components/features/premium.js',
             'assets/js/components/features/jptest.js',
-            'assets/js/components/features/navbar.js',
             'public/js/commons/config.js',
             'public/js/commons/metrika.js',
             'public/js/commons/sections.js',

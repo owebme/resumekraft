@@ -40,14 +40,24 @@
         @extend .h60;
         @extend .userSelect-none;
         @extend .flex-centered;
-        @extend .btn-active;
-        @extend .bg-blackLight;
         @extend .borderRadius-circle;
         @extend .boxShadow-default;
         @extend .cursor-pointer;
+        @extend .zIndex-1;
         will-change:transform, background-color;
         transition:transform .3s $cubic345, background-color 0.2s $cubic215;
 
+        html.d-no-phone & {
+            &:before {
+                @include accelerate(true);
+                @extend .content-empty;
+                @include abs();
+                @extend .borderRadius-circle;
+                @extend .bg-blackLight;
+                @extend .willChange-transform;
+                transition:transform .3s $cubic28, background-color 0.2s $cubic215;
+            }
+        }
         html.d-phone & {
             @extend .t-m;
             @extend .l-m;
@@ -72,6 +82,7 @@
             }
         }
         &-icon {
+            @extend .pos-rel;
             @extend .display-block;
             width:29px;
             height:29px;
@@ -126,11 +137,8 @@
             @extend .fontSize-18;
             @extend .mt-m;
             @extend .w100v;
+            max-width:390px;
             box-shadow:5px 10px 35px 0 rgba(31,35,37,.35);
-        }
-        #app[data-font="gotham"] &,
-        #app[data-font="myriad"] & {
-            @extend .pt-m;
         }
     }
     &-photo {
@@ -153,18 +161,20 @@
         }
     }
     &-name {
-        @extend .fontWeight-bold;
-        letter-spacing:-0.02em;
+        @extend .fontFamily-sfdisplay;
+        @extend .fontWeight-6;
 
         html.d-no-phone & {
             @extend .c-primary;
-            @extend .fontSize-18;
-            @extend .pt-xxs;
-            padding-bottom:2px;
+            font-size:19px;
+            line-height:23px;
+            @extend .ptb-xxs;
         }
         html.d-phone & {
-            @extend .fontSize-22;
-            @extend .ptb-xxs;
+            font-size:25px;
+            line-height:29px;
+            @extend .pt-xxs;
+            @extend .pb-xs;
         }
     }
     &-salary {
@@ -235,5 +245,10 @@
         html.d-phone & {
             @extend .display-none;
         }
+    }
+}
+@media screen and (max-height: 400px) {
+    html.d-phone .info-wrapper {
+        top:20px !important;
     }
 }

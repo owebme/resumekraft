@@ -45,10 +45,11 @@
         @extend .t-30;
         @extend .l-xl;
         @extend .w60p;
-        @extend .f-primary;
+        @extend .fontFamily-futura;
 
         html.d-no-phone & {
-            @extend .fontSize-22;
+            font-size:21px;
+            line-height:25px;
         }
         html.d-tablet.r-portrait & {
             @extend .ml-l;

@@ -13,6 +13,12 @@
             #app[data-font="gotham"] & {
                 font-size:15.5px;
             }
+            #app[data-font="helvetica"] &,
+            #app[data-font="basic"] & {
+                html.d-phone & {
+                    font-size:16px;
+                }
+            }
         }
         @if $title == 24 {
             font-size:24px;
@@ -56,6 +62,17 @@
                     letter-spacing:0;
                 }
             }
+            #app[data-font="basic"] & {
+                font-size:22px;
+                line-height:26px;
+                letter-spacing:0.004em;
+
+                html.d-phone & {
+                    font-size:21px;
+                    line-height:25px;
+                    letter-spacing:0.002em;
+                }
+            }
         }
         @if $title == 28 {
             font-size:28px;
@@ -90,7 +107,8 @@
                     letter-spacing:-0.016em;
                 }
             }
-            #app[data-font="helvetica"] & {
+            #app[data-font="helvetica"] &,
+            #app[data-font="basic"] & {
                 font-size:24px;
                 line-height:30px;
 
@@ -99,6 +117,14 @@
                     font-size:24px;
                     line-height:27px;
                     letter-spacing:-0.008em;
+                }
+            }
+            #app[data-font="basic"] & {
+                letter-spacing:0.002em;
+
+                html.d-phone &,
+                html.d-tablet & {
+                    letter-spacing:0.002em;
                 }
             }
         }
@@ -118,9 +144,18 @@
             }
             #app[data-font="gotham"] &,
             #app[data-font="museo"] &,
-            #app[data-font="helvetica"] & {
+            #app[data-font="helvetica"] &,
+            #app[data-font="basic"] & {
                 font-size:30px;
                 line-height:36px;
+            }
+            #app[data-font="basic"] & {
+                letter-spacing:0.002em;
+
+                html.d-phone & {
+                    font-size:28px;
+                    line-height:32px;
+                }
             }
         }
         @if $title == 36 {
@@ -136,13 +171,21 @@
                 font-size:34px;
                 line-height:40px;
             }
-            #app[data-font="helvetica"] & {
+            #app[data-font="helvetica"] &,
+            #app[data-font="basic"] & {
                 font-size:34px;
                 line-height:40px;
 
                 html.d-phone & {
                     font-size:30px;
                     line-height:36px;
+                }
+            }
+            #app[data-font="basic"] & {
+                letter-spacing:0.002em;
+
+                html.d-phone & {
+                    letter-spacing:0.004em;
                 }
             }
         }
@@ -159,9 +202,13 @@
                 font-size:36px;
                 line-height:42px;
             }
-            #app[data-font="helvetica"] & {
+            #app[data-font="helvetica"] &,
+            #app[data-font="basic"] & {
                 font-size:36px;
                 line-height:42px;
+            }
+            #app[data-font="basic"] & {
+                letter-spacing:0.002em;
             }
         }
         @if $title == 48 {
@@ -198,6 +245,15 @@
                 html.d-phone & {
                     font-size:36px;
                     line-height:36px;
+                }
+            }
+            #app[data-font="basic"] & {
+                font-size:43px;
+                line-height:50px;
+
+                html.d-phone & {
+                    font-size:36px;
+                    line-height:38px;
                 }
             }
         }

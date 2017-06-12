@@ -272,6 +272,18 @@
                     ]
                 });
                 WD.notebooksParallax.start();
+            },
+
+            video: function(){
+                var $section = WD.scope.find(".slide-video");
+
+                $section.find(".ovpremium__video__play").on("click", function(){
+                    WD.player.show(this.getAttribute("data-url"));
+                });
+
+                $section.find(".ovpremium__video__items").on("click", ".ovpremium__video__item__image", function(e){
+                    WD.player.show(e.currentTarget.getAttribute("data-url"));
+                });
             }
         },
 

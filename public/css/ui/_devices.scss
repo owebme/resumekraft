@@ -1,0 +1,225 @@
+$c_blue: #265cdc;
+$c_blueLight: #0084ff;
+$c_green: #74b027;
+$c_emerald: #0bb5b7;
+$c_pink: #ff7272;
+$c_red: #d93663;
+$c_brown: #c1a16b;
+$c_orange: #ea7f07;
+$c_violet: #5856d6;
+$c_violetLight: #ab81cd;
+
+.section__phone {
+    min-height:878px;
+
+    &[data-pos="right"]{
+        .section__phone {
+            &__wrapper {
+                margin-left:69px;
+            }
+            &__figure {
+                @extend .centered-h;
+            }
+            &__text {
+                padding-left:15px;
+            }
+        }
+    }
+    &[data-pos="left"]{
+        .section__phone {
+            &__wrapper {
+                margin-left:-11px;
+            }
+        }
+    }
+    &__text {
+        padding-top:230px;
+        padding-bottom:250px;
+    }
+    &__figure {
+        @extend .pos-rel;
+        width:342px;
+        height:694px;
+
+        &.-centered {
+            @extend .centered-h;
+        }
+        &:after {
+            @extend .content-empty;
+            @include abs();
+            background-size:342px 694px;
+            background-repeat:no-repeat;
+            background-image:url("/public/images/premium/samples/overview/iphone_large_2x.png");
+        }
+        &:before {
+            @extend .content-empty;
+            @extend .pos-abs;
+            top:-20px;
+            left:-36px;
+            width:516px;
+            height:852px;
+            background-size:516px 852px;
+            background-repeat:no-repeat;
+            background-image:url("/public/images/premium/samples/overview/iphone_shadow_large_2x.png");
+        }
+        .phone__figure__screen {
+            top:86px;
+            left:24px;
+        }
+    }
+}
+.phone__figure__screen {
+    @extend .pos-abs;
+    width:294px;
+    height:522px;
+    @extend .overflow-hidden;
+    @extend .bg-cover;
+    @extend .zIndex-1;
+
+    .phone__screen__nav {
+        height:125px;
+
+        &__info {
+            top:16px;
+            left:16px;
+            @extend .w30;
+            @extend .h30;
+
+            &__icon {
+                @extend .w22;
+                @extend .h22;
+            }
+        }
+        &__sendmail {
+            top:11px;
+            right:11px;
+            @extend .w48;
+            @extend .h48;
+
+            &__icon {
+                @extend .w48;
+                @extend .h48;
+                transform:translate3d(0, 6px, 0) scale3d(1, 1.18, 1);
+            }
+        }
+        &__salary {
+            top:72px;
+            right:15px;
+            width:39px;
+            height:39px;
+            @extend .pt-xxs;
+            font-size:27px;
+
+            span {
+                transform:translate3d(1px, 0, 0) scale3d(1.16, 1, 1);
+            }
+        }
+    }
+    &__pointer {
+        @extend .pos-abs;
+        @extend .pointerEvents-none;
+        @extend .borderRadius-circle;
+        box-shadow:inset 0 0 0 2px #007ec1, 0 2px 4px 0 rgba(#000,.1), 0 12px 30px -10px rgba(154,220,255,.48), 0 4px 30px 0px rgba(154,220,255,.2), 0 7px 16px -5px rgba(154,220,255,.3);
+        background-color:rgba(154,220,255,.6);
+        animation:ovpremium-pointer-pulse 1.5s infinite ease-in-out;
+    }
+    .ovpremium__video {
+        height:calc(100% - 57px);
+
+        &__title {
+            @extend .pb25;
+            font-size:30px;
+            line-height:38px;
+        }
+    }
+}
+.phone__screen {
+    &__nav {
+        @extend .display-block;
+        @extend .pos-tl;
+        @extend .w100p;
+        @extend .userSelect-none;
+        @extend .pointerEvents-none;
+        @extend .zIndex-2;
+        height:111px;
+        @extend .bg-cover;
+
+        @each $color in ($white, $c_blue, $c_blueLight, $c_green, $c_emerald, $c_orange, $c_red, $c_violet, $c_violetLight, $c_brown, $c_pink){
+            &[data-color="#{$color}"]{
+                .phone__screen__nav {
+                    &__item {
+                        background-color:$color;
+                    }
+                }
+            }
+            &[data-color-icons="#{$color}"]{
+                .phone__screen__nav__salary {
+                    color:$color;
+                }
+                path {
+                    fill:$color !important;
+                }
+            }
+        }
+        &__item {
+            @extend .pos-abs;
+            @extend .borderRadius-circle;
+            will-change:background-color;
+            transition:background-color 0.2s $cubic215;
+        }
+        &__info {
+            top:12px;
+            left:12px;
+            @extend .w28;
+            @extend .h28;
+            box-shadow:0 1px 15px 0 rgba(#000,.1);
+
+            &__icon {
+                @extend .pos-centered;
+                @extend .w20;
+                @extend .h20;
+
+                &__color {
+                    @extend .fill-white;
+                }
+            }
+        }
+        &__sendmail {
+            @extend .flex-centered;
+            top:10px;
+            right:10px;
+            @extend .w42;
+            @extend .h42;
+            box-shadow:0 6px 22px -6px rgba(#000,.18);
+
+            &__icon {
+                @extend .display-block;
+                @extend .w42;
+                @extend .h42;
+                transform:translate3d(0, 5px, 0) scale3d(1, 1.18, 1);
+
+                &__color {
+                    @extend .fill-white;
+                }
+            }
+        }
+        &__salary {
+            @extend .fontFamily-default;
+            @extend .fontWeight-3;
+            @extend .flex-centered;
+            top:61px;
+            right:14px;
+            width:33px;
+            height:33px;
+            @extend .c-white;
+            @extend .pt3;
+            font-size:22.5px;
+            box-shadow:0 6px 22px -6px rgba(#000,.18);
+
+            span {
+                @extend .display-block;
+                transform:translate3d(1px, 0, 0) scale3d(1.16, 1, 1);
+            }
+        }
+    }
+}

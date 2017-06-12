@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="playback"></div>
+
+<script>
+var tag = document.createElement('script');
+tag.src = 'https://www.youtube.com/iframe_api';
+document.head.appendChild(tag);
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+        console.log("onYouTubeIframeAPIReady");
+        player = new YT.Player('playback', {
+            autoplay: true,
+            color: "white",
+            controls: false,
+            showinfo: false,
+            videoId: '2wtiT2rjFrE',
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+            }
+        })
+    };
+
+    function onPlayerReady(e) {
+        player.setPlaybackQuality("highres")
+
+        console.log("onPlayerReady");
+        player.playVideo();
+
+        setTimeout(function(){
+            //e.target.pauseVideo();
+        }, 2000);
+    }
+
+    function onPlayerStateChange(e) {
+        //console.dir(e.data);
+    }
+</script>
+
+</body>
+</html>

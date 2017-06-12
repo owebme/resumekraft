@@ -16,7 +16,7 @@
             <div class="slider__item__photo" style="background-image:url(/preview/images/prof/small/{ item + 1 }.jpg)"></div>
             <div class="slider__item__title">{ parent.parent.titles[item] }</div>
             <div class="slider__item__text">Я графический дизайнер. В дизайне предпочитаю лаконичный стиль. В тексте — информационный. Убираю всё, что мешает увидеть суть.<span>&nbsp;</span></div>
-            <div class="btn btn-l btn-rounded btn-primary-hover">Просмотр</div>
+            <div class="btn btn-l btn-rounded btn-primary-hover">Смотреть</div>
             <div class="btn btn-l btn-rounded btn-violet-hover ml-s">Редактирование</div>
             <div class="slider__item__icons">
                 <a href="/premium/demo" class="slider__item__icon" data-balloon="Desktop версия">

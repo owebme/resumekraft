@@ -5,35 +5,35 @@
         <btn-editable if={ $State.get('mode') === "editing" } data="true"></btn-editable>
         <div onClick={ openEditable } onUpdate="none">
             <div class="hidden-xs opacity-70 f-primary fontSize-20 fontWeight-bold mb-xs">{ $i18n("resume.premium.template.Citizenship") }</div>
-            <div class="hidden-xs f-primary fontSize-30 fontWeight-8 mb-l">{ $resume.lang == 'en' ?  $i18n("resume.premium.template.Relocation") : $i18n("resume.premium.template.Business trip, relocation") }</div>
+            <div class="hidden-xs f-primary fontSize-30 fontWeight-8 mb-l pr-m">{ $resume.lang == 'en' ?  $i18n("resume.premium.template.Relocation") : $i18n("resume.premium.template.Business trip, relocation") }</div>
             <div class="pt25 xs-pt0">
                 <div class="w100p flex-column-left-center { app.device.isPhone ? 'mb-l' : 'h80' } headline-icons">
-                    <div class="c-header f-primary" data-scrollin-icon>{ $i18n("resume.premium.template.Citizenship") }</div>
+                    <div class="c-header fontFamily-museo" data-scrollin-icon>{ $i18n("resume.premium.template.Citizenship") }</div>
                     <div class="c-text" data-scrollin-icon="\{'stagger':40\}">
                         { $store.country.getTitleById($resume.commons.citizenship) }
                     </div>
                 </div>
             </div>
             <div class="w100p flex-column-left-center { app.device.isPhone ? 'mb-l' : 'h80' } headline-icons">
-                <div class="c-header f-primary" data-scrollin-icon>{ $i18n("resume.premium.template.Relocation") }</div>
+                <div class="c-header fontFamily-museo" data-scrollin-icon>{ $i18n("resume.premium.template.Relocation") }</div>
                 <div class="c-text" data-scrollin-icon="\{'stagger':40\}">
                     { $store.dictionary.getTitleById($resume.commons.relocation, "relocation") }
                 </div>
             </div>
             <div class="w100p flex-column-left-center { app.device.isPhone ? 'mb-l' : 'h80' } headline-icons">
-                <div class="c-header f-primary" data-scrollin-icon>{ $i18n("resume.premium.template.Business trip") }</div>
+                <div class="c-header fontFamily-museo" data-scrollin-icon>{ $i18n("resume.premium.template.Business trip") }</div>
                 <div class="c-text" data-scrollin-icon="\{'stagger':40\}">
                     { $store.dictionary.getTitleById($resume.commons.businessTrip, "businessTrip") }
                 </div>
             </div>
             <div class="w100p flex-column-left-center { app.device.isPhone ? 'mb-l' : 'h80 mb-m' } headline-icons">
-                <div class="c-header f-primary" data-scrollin-icon>{ $i18n("resume.premium.template.Travel time to work") }</div>
+                <div class="c-header fontFamily-museo" data-scrollin-icon>{ $i18n("resume.premium.template.Travel time to work") }</div>
                 <div class="c-text" data-scrollin-icon="\{'stagger':40\}">
                     { $store.dictionary.getTitleById($resume.commons.travelTime, "travelTime") }
                 </div>
             </div>
             <div if={ $store.resume.get('commons', 'schedules').length } class="w100p flex-column-left-center headline-icons">
-                <div class="c-header f-primary" data-scrollin-icon>{ $i18n("resume.premium.template.Work schedule") }</div>
+                <div class="c-header fontFamily-museo" data-scrollin-icon>{ $i18n("resume.premium.template.Work schedule") }</div>
                 <div class="c-text text-lowercase text-uppercase-firstLetter" data-scrollin-icon="\{'stagger':40\}">
                     { get.schedules() }
                 </div>

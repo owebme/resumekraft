@@ -209,7 +209,7 @@
 
         if ($State.get('mode') !== "editing"){
 
-            $.notTouch = ['name', 'text', 'contacts', 'feedback', 'contacts-content', 'contacts-more', 'likes'];
+            $.notTouch = ['name', 'text', 'contacts', 'feedback', 'contacts-content', 'contacts-more', 'likes', 'player'];
 
             _.each(this.tags, function(item) {
                 if (item.root && item.root.tagName && item.root.tagName.toLowerCase().match(/^ux-/)){
@@ -358,7 +358,7 @@
                 }
                 else if (prop == "font"){
                     $Control.fonts.update();
-                    $root.root.setAttribute("data-font", value);
+                    $Resume.el.attr("data-font", value);
                     $store.resume.select("config", "font").set(value);
                     $Resume.render();
                 }
@@ -381,7 +381,7 @@
                     $Resume.sections.salary.graph.refresh();
                 }
                 else if (prop == "font"){
-                    $root.root.setAttribute("data-font", value);
+                    $Resume.el.attr("data-font", value);
                     $afterlag.run(function(){
                         if (app.device.isPhone){
                             $Resume.screens.refresh();

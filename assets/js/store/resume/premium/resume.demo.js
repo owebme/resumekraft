@@ -32,7 +32,8 @@ $store.demo = {
         post: "Web-Designer, Art-director, Illustrator",
         percent: "97",
         commons: {
-            photo: "/preview/images/photo/photo_phone_large_2x.jpg",
+            photo: "/preview/images/photo/video_resume_poster.jpg",
+            video: "https://www.youtube.com/watch?v=2wtiT2rjFrE",
             name: "Виктория",
             surname: "",
             gender: "female",
@@ -494,9 +495,9 @@ $store.demo = {
             }
         ],
         config: {
-            theme: "fire",
+            theme: "colorful",
             color: "#0084ff",
-            font: "sfdisplay",
+            font: "basic",
             photo: {
                 minWidth: 440,
                 maxHeight: 620,

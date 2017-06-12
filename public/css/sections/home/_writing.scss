@@ -51,6 +51,9 @@ section-writing {
                 .plan__title {
                     @extend .c-primary;
                 }
+                .plan__price {
+                    @extend .c-primary;
+                }
                 .plan__opener__svg {
                     @extend .trX-s;
                     @extend .bg-primary;
@@ -94,7 +97,6 @@ section-writing {
         &__price {
             @extend .flex-row-right-center;
             @extend .fontSize-30;
-            @extend .fontWeight-3;
         }
         &__open {
             @extend .flex-row-left-center;

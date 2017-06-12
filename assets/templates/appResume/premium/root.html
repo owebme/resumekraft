@@ -1,4 +1,4 @@
-<root-main class="appResume section" data-color="{ $State.get('color') }" data-font="{ $State.get('font') }" data-mode="{ $State.get('mode') }" data-coverletter={ $State.get('mode') !== "editing" && $store.resume.select("sections").get({"name": "coverletter"}).active } data-app="premium">
+<root-main class="appResume section" data-color="{ $State.get('color') }" data-mode="{ $State.get('mode') }" data-coverletter={ $State.get('mode') !== "editing" && $store.resume.select("sections").get({"name": "coverletter"}).active } data-app="premium">
 
     <section-nav if={ !app.device.isMobile }></section-nav>
 
@@ -6,6 +6,7 @@
     <section-sendmail if={ $State.get('mode') !== "editing" }></section-sendmail>
     <salary-graph-opener if={ $State.get('mode') !== "editing" && $resume.salary.graph.active }></salary-graph-opener>
     <salary-graph></salary-graph>
+    <section-player class="zIndex-101"></section-player>
 
     <sections-control if={ $State.get('mode') === "editing" }>
 
@@ -23,7 +24,7 @@
 
     </sections-control>
 
-    <resume-template1></resume-template1>
+    <resume-template1 data-font="{ $State.get('font') }"></resume-template1>
 
     <div class="section__overlay zIndex-7"></div>
 
@@ -70,6 +71,7 @@
         $Menu = $root.tags["section-menu"];
         $Nav = $root.tags["section-nav"];
         $Info = $root.tags["section-info"];
+        $Player = $root.tags["section-player"];
         $Sendmail = $root.tags["section-sendmail"];
         $Editable = $root.tags["section-editable"];
         $Helper = $Editable.tags["ui-help"];
@@ -88,6 +90,15 @@
             graph: $root.tags["salary-graph"]
         }
         $Resume = $root.tags["resume-template1"];
+
+        if ($Player){
+            $Player.on("show", function(){
+                $root.root.setAttribute("data-player", true);
+            });
+            $Player.on("hide", function(){
+                $root.root.setAttribute("data-player", false);
+            });
+        }
     });
 
     this.one("ready", function(){

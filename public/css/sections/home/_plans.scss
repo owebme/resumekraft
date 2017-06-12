@@ -172,6 +172,45 @@ section-plans {
                 transform:translate3d(-20px, -3px, 0);
             }
         }
+        &__progress {
+            margin:0 -11px;
+            @extend .mb-m;
+
+            &__line {
+                @extend .mt-m;
+                @extend .pos-rel;
+                @extend .h3px;
+                @extend .overflow-hidden;
+
+                &:after {
+                    @extend .content-empty;
+                    @extend .pos-tr;
+                    @extend .w15p;
+                    @extend .h100p;
+                    background:linear-gradient(to left, $white, rgba($white,0));
+                }
+                &__item {
+                    @include accelerate();
+                    @extend .pos-tl;
+                    width:320px;
+                    @extend .h100p;
+                    background:linear-gradient(to right, $red, $orange, $yellow, $yellowLight, $green, $greenLight, $emerald);
+                    @extend .willChange-transform;
+                    transform:translate3d(-100%, 0, 0);
+                    transition:transform 1.7s $cubic215;
+
+                    &.-anim {
+                        @extend .transform-default;
+                    }
+                    &[data-delay="0.25"]{
+                        transition-delay:0.25s;
+                    }
+                    &[data-delay="0.5"]{
+                        transition-delay:0.5s;
+                    }
+                }
+            }
+        }
         &__footer {
             @extend .flex-centered;
             @extend .pos-bl;

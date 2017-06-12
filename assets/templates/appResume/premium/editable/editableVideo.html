@@ -1,0 +1,91 @@
+<editable-video class="col-sm-offset-3 col-sm-20 col-md-offset-4 col-md-16 col-lg-offset-6 col-lg-14 section__editable__container">
+
+    <div class="section__editable__content">
+
+        <div class="title title-main">
+            { title }
+            <div class="pos-tr fontWeight-normal fontSize-20 letterSpacing-0 hidden-xs">
+                Поддержка <strong>Youtube</strong> и <strong>Vimeo</strong>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-24 col-md-16 xs-mb-xs">
+                <input class="input input-xl" name="video" type="text" placeholder="Укажите адрес видео" value={ value } autocomplete="off">
+            </div>
+            <div class="col-xs-24 col-md-8">
+                <button onClick={ onPreview } onUpdate="none" class="btn btn-xl btn-upper fontSize-17 w100p plr-m text-center borderRadius-m" type="button">Предпросмотр</button>
+            </div>
+        </div>
+        <div class="row hidden-xs">
+            <div class="col-xs-24">
+                <div class="pos-abs t-25 l0 flex-row-left-center h80">
+                    <div class="ui-icon-youtube_white w40 h40 ml-m"></div>
+                    <div class="ui-icon-vimeo_white w40 h40 ml30"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="section__editable__footer">
+        <button onClick={ onCancel } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper" type="button">Отменить</button>
+        <button onClick={ onSave } class="btn btn-{ app.device.isPhone ? 'l' : 'xl' } btn-upper ml-xs" type="button">Сохранить</button>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.init = function(data){
+        $.update(data);
+        if (data.value){
+            $.video.value = data.value;
+        }
+    };
+
+    $.onPreview = function(){
+        $.checkUrl(function(url){
+            $Player.show(url);
+        });
+    };
+
+    $.checkUrl = function(callback){
+        var result = $Player.convertLinks($.video.value);
+
+        if (result.valid){
+            callback($.video.value);
+        }
+        else {
+            alert("Ошибка распознавания ссылки, проверьте правильность написания");
+        }
+    };
+
+    $.onCancel = function(){
+        $.hide();
+    };
+
+    $.onSave = function(){
+        if ($.video.value.length){
+            $.checkUrl(function(url){
+                if ($.callback) {
+                    $.callback(url);
+                }
+                $.hide();
+            });
+        }
+        else {
+            if ($.callback) {
+                $.callback(null);
+            }
+            $.hide();
+        }
+    };
+
+    $.hide = function(){
+        $Editable.hide();
+    };
+
+</script>
+
+</editable-video>

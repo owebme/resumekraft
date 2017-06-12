@@ -34,7 +34,7 @@
                         <phone-screen-nav data-color="#0084ff"></phone-screen-nav>
                         <div class="screens screens-tablet screens-desktop" data-vertical="true" data-interval="5">
                             <div each={ item, i in opts.utils.range(1, 12) } no-reorder class="screen { screen--active : i == 0 }">
-                                <div class="screen__content pos-abs-full bg-cover { progressive-image : i == 0 }" style="background-image:url(/public/images/promo/premium/mobile_resume_screen{ item + 1 }.png)"></div>
+                                <div class="screen__content pos-abs-full bg-cover { progressive-image : i == 0 }" style="background-image:url(/public/images/premium/samples/overview/gallery/mobile_resume_screen{ item + 1 }.png)"></div>
                             </div>
                         </div>
                     </div>

@@ -13,8 +13,6 @@
 
         render: function(){
 
-            WD.overview.$section = WD.el.find("premium-samples-overview");
-
             WD.onScroll();
 
             WD.header();
@@ -25,7 +23,7 @@
 
             imagesLoaded.on("complete", function(elem){
                 WD.gallery();
-                WD.overview();
+                WD.overview.init();
             });
 
             imagesLoaded.load({
@@ -41,173 +39,253 @@
             })
         },
 
-        overview: function(){
-            var overviewAnimate = new app.plugins.scroll.animate({
-                container: WD.overview.$section,
-                items: [
-                    {
-                        elem: ".section__hero",
-                        callback: function($elem, i){
-                            WD.tracker();
-                        }
-                    },
-                    {
-                        elem: ".phone__figure__screen[data-section='overview-btn-info']",
-                        callback: function($elem, i){
-                            overviewBtnInfo();
-                        }
-                    },
-                    {
-                        elem: ".phone__figure__screen[data-section='overview-salary']",
-                        callback: function($elem, i){
-                            if ($elem[0].play){
+        overview: {
+
+            $section: null,
+
+            init: function(){
+                WD.overview.$section = WD.el.find("premium-samples-overview");
+                WD.overview.offsetTop = parseInt(WD.overview.$section.offset().top);
+
+                WD.overview.screens();
+                WD.overview.btnInfo();
+                WD.overview.video();
+                WD.overview.colors();
+                WD.overview.salary();
+                WD.overview.inbox();
+                WD.overview.animate();
+
+                app.sections.on("afterMounted", function(){
+                    app.tag("section-player", function(tag){
+                        WD.player = tag;
+                    });
+                });
+                app.sections.trigger("ready");
+            },
+
+            screens: function(){
+                WD.overview.$section.find(".screens").each(function(i){
+                    var screens = new app.plugins.screens(this, {
+                        vertical: this.getAttribute("data-vertical") == "true" ? true : false,
+                        mousewheel: false,
+                        phoneEmulate: true,
+                        play: this.getAttribute("data-play") == "true" && {
+                            run: this.getAttribute("data-autorun") == "true" ? true : false,
+                            interval: 5
+                        } || false
+                    });
+                    screens.init();
+                    screens.marquee.disableKeyboard();
+                    if (this.getAttribute("data-play") == "true") this.play = screens.play;
+                    this.screens = screens;
+                });
+            },
+
+            btnInfo: function(){
+                var $section = WD.overview.$section.find(".phone__figure__screen[data-section='overview-btn-info']"),
+                    timer = null,
+                    show = false;
+
+                    WD.overview.btnInfo.start = function(){
+                    timer = setTimeout(function(){
+                        show = !show;
+                        $section.toggleClass("-open");
+                        WD.overview.btnInfo.start();
+                    }, show ? 7000 : 3000)
+                };
+
+                $section.find(".phone__screen__nav__info").on("click", function(){
+                    clearTimeout(timer);
+                    $section.toggleClass("-open");
+                    show = !show;
+                    WD.overview.btnInfo.start();
+                });
+            },
+
+            video: function(){
+                var $section = WD.overview.$section.find(".section__phone[data-section='overview-video']");
+
+                $section.find(".ovpremium__video__play").on("click", function(){
+                    WD.player.show(this.getAttribute("data-url"));
+                });
+
+                $section.find(".ovpremium__video__items").on("click", ".ovpremium__video__item__image", function(e){
+                    WD.player.show(e.currentTarget.getAttribute("data-url"));
+                });
+            },
+
+            colors: function(){
+                var $slider = WD.overview.$section.find(".phone__figure__screen[data-section='overview-colors'] .slick-slider"),
+                    $nav = $slider.next("phone-screen-nav");
+
+                $slider.slick({
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: false,
+                    fade: true,
+                    infinite: true,
+                    autoplay: true,
+                    cssEase: "cubic-bezier(.32,.07,.41,1)",
+                    speed: 1000,
+                    autoplaySpeed: 3000
+                });
+
+                $slider.on("beforeChange", function(e, slick, current, next) {
+                    $nav.attr("data-color", slick.$slides[next].getAttribute("data-color"));
+                });
+            },
+
+            salary: function(){
+                var $section = WD.overview.$section.find(".phone__figure__screen[data-section='overview-salary'] .screens");
+
+                $section.find(".phone__screen__nav__salary").on("click", function(){
+                    $section[0].screens.nav(0, 700);
+                });
+            },
+
+            inbox: function(){
+                var durationV = 850,
+                    durationH = 700,
+                    pause = 3000,
+                    $section = WD.overview.$section.find(".phone__figure__screen[data-section='overview-inbox']"),
+                    $overviewInboxNav = $section.find(".phone__screen__nav"),
+                    $screensVertical = $section.find(".screens[data-vertical='true']"),
+                    $screensNonVertical = $section.find(".screens[data-vertical='false']");
+
+                WD.overview.inbox.start = function(){
+                    setTimeout(function(){
+                        $screensVertical[0].screens.nav(1, durationV);
+                        setTimeout(function(){
+                            $screensVertical[0].screens.nav(2, durationV);
+                            setTimeout(function(){
+                                $screensNonVertical.css("zIndex", "2");
                                 setTimeout(function(){
-                                    $elem[0].play.run(true);
-                                }, 1500);
+                                    $screensNonVertical[0].screens.nav(1, durationH);
+                                    setTimeout(function(){
+                                        $screensNonVertical[0].screens.nav(0, durationH);
+                                        setTimeout(function(){
+                                            $screensNonVertical.css("zIndex", "1");
+                                            setTimeout(function(){
+                                                $screensVertical[0].screens.nav(1, durationV);
+                                                setTimeout(function(){
+                                                    $screensVertical[0].screens.nav(0, durationV);
+                                                    setTimeout(function(){
+                                                        WD.overview.inbox.start();
+                                                    }, durationV);
+                                                }, pause + durationV);
+                                            }, pause);
+                                        }, durationH);
+                                    }, pause + durationH);
+                                }, pause);
+                            }, durationV);
+                        }, pause);
+                    }, pause + durationV);
+                };
+
+                $screensVertical.find(".screen").on('show hide', function(e){
+                    var index = $(this).index();
+                    if (e.type == "show" && index == 3){
+                        $overviewInboxNav.attr("data-hidden", true);
+                    }
+                    else if (e.type == "hide" && index == 3){
+                        $overviewInboxNav.attr("data-hidden", false);
+                    }
+                });
+            },
+
+            animate: function(){
+                var animateScroll = new app.plugins.scroll.animate({
+                    container: WD.overview.$section,
+                    items: [
+                        {
+                            elem: ".section__hero",
+                            callback: function($elem, i){
+                                WD.overview.tracker();
+                            }
+                        },
+                        {
+                            elem: ".phone__figure__screen[data-section='overview-btn-info']",
+                            callback: function($elem, i){
+                                WD.overview.btnInfo.start();
+                            }
+                        },
+                        {
+                            elem: ".phone__figure__screen[data-section='overview-salary']",
+                            callback: function($elem, i){
+                                var screens = $elem.children(".screens")[0];
+                                if (screens.play){
+                                    setTimeout(function(){
+                                        screens.play.run(true);
+                                    }, 1500);
+                                }
+                            }
+                        },
+                        {
+                            elem: ".phone__figure__screen[data-section='overview-simple']",
+                            callback: function($elem, i){
+                                var screens = $elem.children(".screens")[0];
+                                if (screens.play){
+                                    setTimeout(function(){
+                                        screens.play.run(true);
+                                    }, 1500);
+                                }
+                            }
+                        },
+                        {
+                            elem: ".phone__figure__screen[data-section='overview-inbox']",
+                            callback: function($elem, i){
+                                WD.overview.inbox.start();
                             }
                         }
-                    },
-                    {
-                        elem: ".phone__figure__screen[data-section='overview-inbox']",
-                        callback: function($elem, i){
-                            overviewInbox();
-                        }
-                    }
-                ]
-            });
-
-            var $overviewBtnInfo = WD.overview.$section.find(".phone__figure__screen[data-section='overview-btn-info']"),
-                $overviewSalary = WD.overview.$section.find(".phone__figure__screen[data-section='overview-salary'] .screens"),
-                overviewBtnInfoTimer = null,
-                overviewBtnInfoShow = false,
-                overviewBtnInfo = function(){
-                overviewBtnInfoTimer = setTimeout(function(){
-                    overviewBtnInfoShow = !overviewBtnInfoShow;
-                    $overviewBtnInfo.toggleClass("-open");
-                    overviewBtnInfo();
-                }, overviewBtnInfoShow ? 7000 : 3000)
-            };
-
-            $overviewBtnInfo.find(".phone__screen__nav__info").on("click", function(){
-                clearTimeout(overviewBtnInfoTimer);
-                $overviewBtnInfo.toggleClass("-open");
-                overviewBtnInfoShow = !overviewBtnInfoShow;
-                overviewBtnInfo();
-            });
-
-            $overviewSalary.find(".phone__screen__nav__salary").on("click", function(){
-                $overviewSalary[0].screens.nav(0, 700);
-            });
-
-            WD.overview.$section.find(".screens").each(function(i){
-                var screens = new app.plugins.screens(this, {
-                    vertical: this.getAttribute("data-vertical") == "true" ? true : false,
-                    mousewheel: false,
-                    phoneEmulate: true,
-                    play: this.getAttribute("data-play") == "true" && {
-                        run: this.getAttribute("data-autorun") == "true" ? true : false,
-                        interval: parseFloat(this.getAttribute("data-interval"))
-                    } || false
+                    ]
                 });
-                screens.init();
-                screens.marquee.disableKeyboard();
-                if (this.getAttribute("data-play") == "true") this.play = screens.play;
-                this.screens = screens;
-            });
 
-            var durationV = 850,
-                durationH = 700,
-                pause = 3000,
-                $overviewInbox = WD.overview.$section.find(".phone__figure__screen[data-section='overview-inbox']"),
-                $overviewInboxNav = $overviewInbox.find(".phone__screen__nav"),
-                $screensVertical = $overviewInbox.find(".screens[data-vertical='true']"),
-                $screensNonVertical = $overviewInbox.find(".screens[data-vertical='false']");
+                animateScroll.start();
+            },
 
-            var overviewInbox = function(){
-                setTimeout(function(){
-                    $screensVertical[0].screens.nav(1, durationV);
-                    setTimeout(function(){
-                        $screensVertical[0].screens.nav(2, durationV);
-                        setTimeout(function(){
-                            $screensNonVertical.css("zIndex", "2");
-                            setTimeout(function(){
-                                $screensNonVertical[0].screens.nav(1, durationH);
-                                setTimeout(function(){
-                                    $screensNonVertical[0].screens.nav(0, durationH);
-                                    setTimeout(function(){
-                                        $screensNonVertical.css("zIndex", "1");
-                                        setTimeout(function(){
-                                            $screensVertical[0].screens.nav(1, durationV);
-                                            setTimeout(function(){
-                                                $screensVertical[0].screens.nav(0, durationV);
-                                                setTimeout(function(){
-                                                    overviewInbox();
-                                                }, durationV);
-                                            }, pause + durationV);
-                                        }, pause);
-                                    }, durationH);
-                                }, pause + durationH);
-                            }, pause);
-                        }, durationV);
-                    }, pause);
-                }, pause + durationV);
-            };
-
-            $screensVertical.find(".screen").on('show hide', function(e){
-                var index = $(this).index();
-                if (e.type == "show" && index == 3){
-                    $overviewInboxNav.attr("data-hidden", true);
-                }
-                else if (e.type == "hide" && index == 3){
-                    $overviewInboxNav.attr("data-hidden", false);
-                }
-            });
-
-            overviewAnimate.start();
-        },
-
-        tracker: function(){
-            var $globalNav = WD.el.children("global-nav"),
-                $phoneTrack = WD.overview.$section.find(".section__phone__track"),
-                $phoneCaptions = $phoneTrack.find(".section__phone__track__captions"),
-                $phoneNav = $phoneTrack.find("phone-screen-nav"),
-                $phoneIcons = $phoneTrack.find(".section__phone__track__icons"),
-                offsetTop = parseInt($phoneTrack.find(".section__phone__track__wrapper").offset().top),
-                paddingTop = 120,
-                paddingBottom = app.sizes.height + 128,
-                heightScroll = parseInt($phoneTrack.height()),
-                navVisible = true,
-                gradVisible = false;
-
-            if (!$phoneTrack.length || !$phoneTrack.is(":visible")) return;
-
-            $phoneTrack.find(".sticky").Stickyfill();
-
-            _.each(WD.trackList, function(item, i){
-                $phoneIcons.find(".section__phone__track__icons__item[data-item='" + item.title + "']").height(item.title == "contacts" ? item.height + WD.trackList[i + 1].height : item.height);
-            });
-
-            (function scrollSticky(){
-                _.raf(scrollSticky);
-
-                if (navVisible && (WD.scrollTop > offsetTop - paddingTop && WD.scrollTop < offsetTop + heightScroll - paddingBottom)){
-                    navVisible = false;
-                    $globalNav.attr("data-hidden", true);
-                }
-                else if (!navVisible && (WD.scrollTop > offsetTop + heightScroll - paddingBottom || WD.scrollTop < offsetTop - paddingTop)){
-                    navVisible = true;
-                    $globalNav.attr("data-hidden", false);
-                }
-                if (!gradVisible && (WD.scrollTop > offsetTop + paddingTop && WD.scrollTop < offsetTop + heightScroll - paddingBottom)){
-                    gradVisible = true;
-                    $phoneTrack.attr("data-colorful", true);
-                }
-                else if (gradVisible && (WD.scrollTop > offsetTop + heightScroll - paddingBottom || WD.scrollTop < offsetTop + paddingTop)){
+            tracker: function(){
+                var $globalNav = WD.el.children("global-nav"),
+                    $phoneTrack = WD.overview.$section.find(".section__phone__track"),
+                    $phoneCaptions = $phoneTrack.find(".section__phone__track__captions"),
+                    $phoneNav = $phoneTrack.find("phone-screen-nav"),
+                    $phoneIcons = $phoneTrack.find(".section__phone__track__icons"),
+                    offsetTop = parseInt($phoneTrack.find(".section__phone__track__wrapper").offset().top),
+                    paddingTop = 120,
+                    paddingBottom = app.sizes.height + 128,
+                    heightScroll = parseInt($phoneTrack.height()),
+                    navVisible = true,
                     gradVisible = false;
-                    $phoneTrack.attr("data-colorful", false);
-                }
-                WD.scrollColor(offsetTop, $phoneNav, $phoneTrack, $phoneCaptions);
-            })();
+
+                if (!$phoneTrack.length || !$phoneTrack.is(":visible")) return;
+
+                $phoneTrack.find(".sticky").Stickyfill();
+
+                _.each(WD.trackList, function(item, i){
+                    $phoneIcons.find(".section__phone__track__icons__item[data-item='" + item.title + "']").height(item.title == "contacts" ? item.height + WD.trackList[i + 1].height : item.height);
+                });
+
+                (function scrollSticky(){
+                    _.raf(scrollSticky);
+
+                    if (navVisible && (WD.scrollTop > offsetTop - paddingTop && WD.scrollTop < offsetTop + heightScroll - paddingBottom)){
+                        navVisible = false;
+                        $globalNav.attr("data-hidden", true);
+                    }
+                    else if (!navVisible && (WD.scrollTop > offsetTop + heightScroll - paddingBottom || WD.scrollTop < offsetTop - paddingTop)){
+                        navVisible = true;
+                        $globalNav.attr("data-hidden", false);
+                    }
+                    if (!gradVisible && (WD.scrollTop > offsetTop + paddingTop && WD.scrollTop < offsetTop + heightScroll - paddingBottom)){
+                        gradVisible = true;
+                        $phoneTrack.attr("data-colorful", true);
+                    }
+                    else if (gradVisible && (WD.scrollTop > offsetTop + heightScroll - paddingBottom || WD.scrollTop < offsetTop + paddingTop)){
+                        gradVisible = false;
+                        $phoneTrack.attr("data-colorful", false);
+                    }
+                    WD.scrollColor(offsetTop, $phoneNav, $phoneTrack, $phoneCaptions);
+                })();
+            }
         },
 
         scrollColor: function(offsetTop, $phoneNav, $phoneTrack, $phoneCaptions){
@@ -249,6 +327,7 @@
                 $bg = $header.find(".hero__bg"),
                 $overlay = $header.find(".hero__overlay"),
                 height = $header.height(),
+                scrollSection = null,
                 influence = 0,
                 blurValue = 20,
                 baseSaturationValue = 1,
@@ -275,6 +354,16 @@
                     $bg.css({
                         filter: "blur(" + blur + "px) saturate(" + newSaturate + ")"
                     })
+                }
+                if (WD.overview.offsetTop){
+                    if (scrollSection !== "overview" && WD.scrollTop > WD.overview.offsetTop){
+                        WD.el.attr("data-scroll", "overview");
+                        scrollSection = "overview";
+                    }
+                    else if (scrollSection === "overview" && WD.scrollTop < WD.overview.offsetTop){
+                        WD.el.removeAttr("data-scroll");
+                        scrollSection = null;
+                    }
                 }
             })();
 

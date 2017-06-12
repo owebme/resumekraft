@@ -1,0 +1,102 @@
+home-quotes {
+    padding-bottom:115px;
+
+    &:before {
+        @extend .content-empty;
+        @extend .pos-centered-h;
+        @extend .t0;
+        @extend .w100;
+        @extend .h1px;
+        @extend .bg-smokeDark;
+    }
+    .quotes {
+        @extend .pos-rel;
+        @extend .pt45;
+
+        &:before,
+        &:after {
+            @extend .content-empty;
+            @extend .w80;
+            @extend .h100p;
+            @extend .zIndex-1;
+        }
+        &:before {
+            @extend .pos-tl;
+            background:linear-gradient(to left, rgba($white,0), $white);
+        }
+        &:after {
+            @extend .pos-tr;
+            background:linear-gradient(to right, rgba($white,0), $white);
+        }
+    }
+    .quote {
+        @extend .pos-rel;
+        @extend .c-blackB;
+        font-size:24px;
+        line-height:34px;
+        @extend .plr-xl;
+        @extend .fontFamily-myriad;
+        @extend .fontWeight-3;
+        @extend .fontStyle-italic;
+
+        &.slick-active {
+            .quote__author {
+                @extend .opacity-100;
+                @extend .transform-default;
+                transition:opacity 0.3s $cubic4021 0.45s, transform 0.6s $cubic4021 0.45s;
+            }
+        }
+        &__text {
+            @extend .text-center;
+        }
+        &__author {
+            @extend .pt-m;
+            @extend .c-primary;
+            @extend .text-right;
+            @extend .opacity-0;
+            @extend .willChange-tp;
+            transform:translate3d(100px, 0, 0);
+            transition:opacity 0s 0.9s, transform 0s 0.9s;
+        }
+    }
+    .slick-dots {
+        @extend .pos-centered-h;
+        @extend .b--45;
+        @extend .listStyle-none;
+        @extend .text-center;
+        @extend .fontSize-0;
+        @extend .nowrap;
+    }
+    .slick-dots li {
+        @extend .display-inlineBlock;
+        @extend .pos-rel;
+        @extend .w20;
+        @extend .h20;
+        @extend .mlr-xxs;
+        @extend .cursor-pointer;
+
+        &.slick-active {
+            @extend .pointerEvents-none;
+
+            button {
+                @extend .bg-primary;
+                @extend .opacity-100;
+            }
+        }
+        &:hover {
+            button {
+                @extend .opacity-30;
+            }
+        }
+    }
+    .slick-dots button {
+        @extend .pos-centered;
+        @extend .w5px;
+        @extend .h5px;
+        @extend .border-none;
+        @extend .bg-black;
+        @extend .opacity-10;
+        @extend .borderRadius-circle;
+        @extend .transition-default;
+    }
+}

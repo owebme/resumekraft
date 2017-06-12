@@ -17,7 +17,11 @@
 
             WD.content();
 
+            WD.video();
+
             WD.writing();
+
+            WD.quotes();
 
             WD.slider();
 
@@ -114,6 +118,11 @@
             animHeader.show(function(){
                 $phones.attr("data-show", true);
                 $afterlag.xl(function(){
+                    app.sections.on("afterMounted", function(){
+                        app.tag("section-player", function(tag){
+                            WD.player = tag;
+                        });
+                    });
                     app.sections.trigger("ready"); // RUN mounting tags
                 });
             });
@@ -144,11 +153,49 @@
                         callback: function($elem, i){
                             app.features.orbits.init();
                         }
+                    },
+                    {
+                        delta: "s",
+                        elem: "section-plans .plan__progress:first",
+                        callback: function($elem, i){
+                            $elem.closest("section-plans")
+                            .find(".plan__progress__line__item")
+                            .addClass("-anim");
+                        }
                     }
                 ]
             });
 
             WD.contentAnimate.start();
+        },
+
+        video: function(){
+            var $section = WD.el.find("home-video");
+
+            $section.find(".ovpremium__video__play").on("click", function(){
+                WD.player.show(this.getAttribute("data-url"));
+            });
+
+            $section.find(".video__items").on("click", ".video__item__image", function(e){
+                WD.player.show(e.currentTarget.getAttribute("data-url"));
+            });
+
+            $section.find(".video__item__image").each(function(){
+                var parallax = new app.plugins.scroll.ParallaxController({
+                    items: [
+                        {
+                            elem: this,
+                            from: -30,
+                            to: 30,
+                            off: 0,
+                            scrollOptions: {
+                                startThreshold: (_.random(50, 150) / 100)
+                            }
+                        }
+                    ]
+                });
+                parallax.start();
+            });
         },
 
         writing: function(){
@@ -175,6 +222,24 @@
                         $open.text("Подробнее");
                     }
                 }
+            });
+        },
+
+        quotes: function(){
+            var $section = WD.el.find("home-quotes"),
+                $slider = $section.find(".quotes");
+
+            $slider.slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                pauseOnHover: false,
+                pauseOnFocus: false,
+                dots: true,
+                arrows: false,
+                autoplay: true,
+                cssEase: "cubic-bezier(.4,0,.2,1)",
+                speed: 900,
+                autoplaySpeed: 5000
             });
         },
 

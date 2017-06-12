@@ -7,8 +7,8 @@
         </div>
         <div onClick={ openEditable } onUpdate="none">
             <div class="hidden-xs c-primary f-primary fontSize-20 fontWeight-bold mb-xs">{ $i18n("resume.premium.template.My") }</div>
-            <div class="hidden-xs c-blackLight f-primary fontSize-30 fontWeight-8 mb-l">{ $i18n("resume.premium.template.Contacts info") }</div>
-            <div if={ $store.resume.get('commons', 'contacts', 'city') } class="flex-row-left-center w100p pt30 xs-mb-m headline-icons">
+            <div class="hidden-xs c-blackLight f-primary fontSize-30 fontWeight-8 mb-l pr-m">{ $i18n("resume.premium.template.Contacts info") }</div>
+            <div if={ $store.resume.get('commons', 'contacts', 'city') } class="flex-row-left-center w100p pt30 xs-pt-s xs-mb-m headline-icons">
                 <div class="flex-centered { app.device.isPhone ? 'w100' : 'w80' } h80 ml--m"  data-scrollin-icon>
                     <icon-city color="primary" size="{ app.device.isPhone ? 'l' : 'm' }"></icon-city>
                 </div>
@@ -21,7 +21,7 @@
                 <div class="flex-centered { app.device.isPhone ? 'w100' : 'w80' } h80 ml--m pt-xxs" data-scrollin-icon>
                     <icon-phone color="primary" size="{ app.device.isPhone ? 'l' : 'm' }"></icon-phone>
                 </div>
-                <a href="{ $store.resume.take.phoneLink() }" class="display-block h80 c-blackLight f-primary textDecoration-none { app.device.isPhone ? 'fontSize-22' : 'fontSize-20' } fontWeight-bold pt-m" data-scrollin-icon="\{'stagger':60\}">
+                <a class="c-phone" href="{ $store.resume.take.phoneLink() }" class="display-block h80 c-blackLight textDecoration-none pt-m" data-scrollin-icon="\{'stagger':60\}">
                     { $store.resume.take.phone() }
                 </a>
             </div>
