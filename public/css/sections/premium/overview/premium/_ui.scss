@@ -18,6 +18,25 @@ $c_violetLight: #ab81cd;
     }
 }
 .ovpremium {
+    &__divider {
+        @extend .pos-rel;
+        @extend .w80;
+        @extend .h2px;
+        @extend .overflow-hidden;
+
+        &:before {
+            @include accelerate();
+            @extend .content-empty;
+            @include abs();
+            @extend .willChange-transform;
+            transform:translate3d(-100%, 0, 0);
+            transition:transform 1s $cubic165;
+            background:linear-gradient(to right, #006bed 0%, #00b8f8 100%);
+        }
+        &.animated:before {
+            @extend .transform-default;
+        }
+    }
     &__colors {
         @include flex("row", "space-between", "center");
         @extend .w90p;
@@ -305,11 +324,15 @@ $c_violetLight: #ab81cd;
             @extend .l0;
             @extend .b-xs;
             @extend .w100p;
-            @extend .bg-blue;
+            // background:linear-gradient(to right, #7d58e2 0%, #f8420c 100%);
+            background:linear-gradient(to right, #e3119a 0%, #ff3725 100%);
+            // background:linear-gradient(to right, #ea4774 0%, #7f4ba9 100%);
+            // background:linear-gradient(to right, #544ebe 0%, #105ce0 100%);
+            // background:linear-gradient(to right, #006bed 0%, #00b8f8 100%);
             @extend .h3px;
             @extend .willChange-transform;
             transform:translate3d(-100%, 0, 0);
-            transition:transform 1.4s $cubic215;
+            transition:transform 1.4s $cubic165;
 
             &__peg {
                 @extend .pos-tr;
@@ -322,7 +345,7 @@ $c_violetLight: #ab81cd;
                     @extend .pos-tr;
                     @extend .w100;
                     @extend .h3px;
-                    box-shadow:0 0 10px $blue, 0 0 6px $blue;
+                    box-shadow:0 0 10px #ff3725, 0 0 6px #ff3725;
                     transform:rotate(3deg) translate(0px, -4px);
                 }
             }

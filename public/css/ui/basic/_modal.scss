@@ -1,8 +1,14 @@
 .modal {
-    @extend .p-l;
     @extend .bg-white;
-    @extend .borderRadius-xl;
-    @extend .boxShadow-larger;
+    @extend .fontSize-18;
+    @extend .fontFamily-myriad;
+    @extend .text-left;
+    @extend .whiteSpace-preLine;
+    @extend .pl50;
+    @extend .pr50;
+    @extend .pt100;
+    @extend .pb70;
+    box-shadow:0 16px 62px -10px rgba(31,35,37,.26), 1px 0 0 0 rgba(31,45,61,.08), 0 1px 0 0 rgba(31,45,61,.08), -1px 0 0 0 rgba(31,45,61,.08), 0 -1px 0 0 rgba(31,45,61,.08);
 
     .section__loading {
         @extend .borderRadius-xl;
@@ -30,43 +36,48 @@
     &-s {
         width:480px;
     }
-    &-close {
+    &__close {
         @extend .pos-abs;
-        @extend .t25;
-        @extend .r25;
-        @extend .w40;
-        @extend .h40;
-        @extend .bg-snowDarken;
-        @extend .btn-active;
-        @extend .borderRadius-circle;
+        @extend .l50p;
+        top:74px;
+        margin-left:-16px;
         @extend .zIndex-2;
+        @extend .cursor-pointer;
+        @extend .willChange-transform;
+        transition:transform 0.3s $cubic60;
+        transform:translate3d(0, -40px, 0);
 
-        &:before,
-        &:after {
-            @extend .content-empty;
-            @extend .borderRadius-xs;
-            @extend .bg-silver;
-            @extend .pos-abs;
-            @extend .t50p;
-            @extend .l50p;
-            width:16px;
-            height:2px;
-            margin:-1px 0 0 -8px;
-            @extend .transition-xs;
-        }
-        &:before {
-            transform:rotate(45deg);
-        }
-        &:after {
-            transform:rotate(-45deg);
-        }
-        &:hover {
-            @extend .bg-blue;
+        &__icon {
+            @include accelerate();
+            @extend .pos-rel;
+            @extend .w32;
+            @extend .h32;
+            @extend .borderRadius-circle;
+            @extend .pointerEvents-none;
+            @extend .opacity-0;
+            @extend .willChange-tp;
+            transform:rotate(0deg);
+            transition:opacity 0.3s $cubic60, transform 0.3s $cubic60;
+            background-color:rgba(210,210,210,0.8);
+            box-shadow:0 0 0 1px rgba(210,210,210,0.8);
 
-            &:before,
-            &:after {
-                @extend .bg-white;
+            .oScreen[data-open="true"] & {
+                @extend .opacity-100;
+                transform:rotate(45deg);
+                transition:opacity 0.45s $cubic165, transform 0.6s $cubic165;
             }
+            svg {
+                @include abs();
+                transform:translate3d(-1px, -1px, 0);
+            }
+            polygon {
+                @extend .fill-white;
+            }
+        }
+        .oScreen[data-open="true"] & {
+            @extend .opacity-100;
+            @extend .transform-default;
+            transition:transform 0.6s $cubic165;
         }
     }
 }

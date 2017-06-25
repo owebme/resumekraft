@@ -2,18 +2,6 @@ premium-samples {
     @extend .display-block;
     @extend .minH-100v;
     @extend .w100v;
-
-    &[data-scroll="overview"]{
-        premium-samples-slider .slider,
-        premium-samples-hero .hero__bg {
-            @extend .display-none;
-        }
-    }
-    .screens {
-        .screen:not(.screen--active){
-            @extend .display-none;
-        }
-    }
 }
 premium-samples-slider .slider,
 premium-samples-hero .hero__bg {

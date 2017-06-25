@@ -497,7 +497,7 @@ $store.demo = {
         config: {
             theme: "colorful",
             color: "#0084ff",
-            font: "basic",
+            font: "futura",
             photo: {
                 minWidth: 440,
                 maxHeight: 620,
@@ -512,6 +512,6 @@ $store.demo = {
                 count: true
             },
             welcome: true,
-            animate: false
+            animate: true
         }
     }

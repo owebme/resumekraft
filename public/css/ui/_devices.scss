@@ -76,6 +76,27 @@ $c_violetLight: #ab81cd;
     @extend .bg-cover;
     @extend .zIndex-1;
 
+    &__title {
+        @include flex("column", "flex-end", "flex-start");
+        @extend .pos-bl;
+        @extend .w100p;
+        padding:30px 25px 35px 25px;
+        @extend .c-white;
+        @extend .fontFamily-sfdisplay;
+        @extend .fontWeight-6;
+        @extend .letterSpacing--m;
+        @extend .text-left;
+        text-shadow:0 2px 5px rgba($steel,.5);
+        min-height:180px;
+        font-size:32px;
+        line-height:38px;
+        background:linear-gradient(to top, $blackA, rgba($blackA,0));
+        @extend .zIndex-1;
+
+        &__text {
+            @include textEllipsis(100%, 175px, 4);
+        }
+    }
     .phone__screen__nav {
         height:125px;
 

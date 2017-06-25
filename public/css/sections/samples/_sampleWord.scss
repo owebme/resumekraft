@@ -1,0 +1,51 @@
+sample-button-word {
+    @extend .display-block;
+    @extend .pos-sticky;
+    @extend .b0;
+    @extend .l0;
+    @extend .w140;
+    @extend .h100;
+    @extend .cursor-pointer;
+
+    &:hover {
+        &:before {
+            transform:scaleX(380);
+        }
+        &:after {
+            transform:translate3d(-10px, 2px, 0);
+        }
+        .title {
+            @extend .opacity-100;
+        }
+    }
+    &:before {
+        @extend .content-empty;
+        @extend .pos-tl;
+        @extend .w1px;
+        @extend .h100p;
+        @extend .bg-blueLight;
+        transform:scaleX(140);
+        transform-origin:center left;
+        transition:transform 1s $cubic165;
+    }
+    &:after {
+        @extend .content-empty;
+        @include abs_50(72, 72);
+        @include ui-icon("msword_white");
+        @extend .willChange-transform;
+        transform:translate3d(0, 2px, 0);
+        transition:transform 0.6s $cubic165;
+    }
+    .title {
+        @include accelerate();
+        @extend .pos-centered-v;
+        left:110px;
+        @extend .h4;
+        @extend .nowrap;
+        @extend .c-white;
+        @extend .opacity-0;
+        @extend .willChange-opacity;
+        transition:opacity 0.6s $cubic165;
+        @extend .pointerEvents-none;
+    }
+}

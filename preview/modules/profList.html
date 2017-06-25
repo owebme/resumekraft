@@ -15,7 +15,7 @@
         <div ref="items" class="prof__items__photo">
             <div each={ item in _.range(42) } no-reorder class="prof__item__photo" style="transition-delay:{ _.random(item, 20) * 0.05 }s">
                 <div onClick={ onSelect } onUpdate="none" class="prof__item__photo__inner" data-active={ parent.larges.indexOf(item + 1) !== -1 } data-ripple>
-                    <div class="prof__item__photo__image" style="background-image:url(/preview/images/prof/small/{ item + 1 }.jpg)"></div>
+                    <div class="prof__item__photo__image" style="background-image:url(/public/images/samples/small/{ item + 1 }.jpg)"></div>
                 </div>
             </div>
         </div>

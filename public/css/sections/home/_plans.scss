@@ -1,4 +1,20 @@
 section-plans {
+    @extend .mb-xl;
+
+    // &:after {
+    //     @extend .mt-l;
+    //     @extend .centered-h;
+    //     @extend .display-block;
+    //     @extend .content-empty;
+    //     width:1376px;
+    //     height:788px;
+    //     @extend .bg-cover;
+    //     background-image:url(/public/images/home/screen1_large.jpg);
+    //
+    //     html.d-retina.d-no-tablet & {
+    //         background-image:url(/public/images/home/screen1_large_2x.jpg);
+    //     }
+    // }
     &.content__section {
         @extend .overflow-visible;
     }

@@ -19,13 +19,13 @@ body {
     text-align:center;
 }
 .black {
-    color:#1b1b1b;
+    color:#1A2D3D;
 }
 .gray {
-    color:#7f8c8d;
+    color:#676f78;
 }
 .blue {
-    color:#265cdc;
+    color:#0081ff;
 }
 h1, h2 {
     display:block;
@@ -34,14 +34,14 @@ h1, h2 {
     padding-right:10vw;
 }
 h1 {
-    color:#265cdc;
+    color:#0081ff;
     font-size:240px;
     line-height:1;
     letter-spacing:-.02em;
     margin:0;
 }
 h2 {
-    color:#1b1b1b;
+    color:#1A2D3D;
     font-size:62px;
     line-height:1.2;
     margin:1em 0 0;
@@ -66,7 +66,7 @@ p {
 a {
     display:inline-block;
     position:relative;
-    color:#265cdc;
+    color:#0081ff;
     text-decoration:none;
     margin:0 auto;
 }

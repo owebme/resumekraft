@@ -25,10 +25,10 @@
                                 <div class="employers__logo" data-logo="budget"></div>
                             </div>
                             <div class="col-md-8">
-                                <div class="employers__total">
-                                    <div class="employers__total__title">418</div>
-                                    <div class="employers__total__text">компаний</div>
-                                </div>
+                                <a href="/jobs/search" class="employers__total">
+                                    <div class="employers__total__title" data-count="{ opts.counter }">{ opts.utils.numberFormat(opts.counter, 0, ".", "'") }</div>
+                                    <div class="employers__total__text">Найти работу</div>
+                                </a>
                             </div>
                             <div class="col-md-8">
                                 <div class="employers__logo" data-logo="aeroflot"></div>

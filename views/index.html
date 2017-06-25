@@ -39,44 +39,66 @@
 
     <!--/ VENDORS /-->
     <script src="/public/js/libs.js"></script>
-    <script src="/assets/js/libs/stickyfill/dist/stickyfill.min.js"></script>
+    <script src="/assets/js/libs/typeahead/dist/typeahead.bundle.min.js"></script>
 
     <!--/ templates /-->
     <script src="/public/js/templates.js"></script>
     <script src="/assets/templates/modules/player.html" type="riot/tag"></script>
+    <script src="/public/templates/default/samples/sampleContent.tag" type="riot/tag"></script>
+    <script src="/public/templates/default/samples/samplesItems.tag" type="riot/tag"></script>
+    <script src="/public/templates/default/samples/samplesAlphabet.tag" type="riot/tag"></script>
+    <script src="/public/templates/default/samples/samplesClusters.tag" type="riot/tag"></script>
+    <script src="/public/templates/client/samples/samplePage.html" type="riot/tag"></script>
+    <script src="/public/templates/client/samples/sampleModal.html" type="riot/tag"></script>
 
     <!--/ JS components /-->
     <script src="/public/js/app.js"></script>
     <script src="/public/js/sections/home.js"></script>
+    <script src="/public/js/sections/gift.js"></script>
     <script src="/public/js/sections/premium.js"></script>
+    <script src="/public/js/sections/premiumMobile.js"></script>
     <script src="/public/js/sections/premiumSamples.js"></script>
     <script src="/public/js/sections/samples.js"></script>
+    <script src="/public/js/sections/sample.js"></script>
     <script src="/public/js/sections/nav.js"></script>
+    <script src="/assets/js/components/features/samples.js"></script>
     <script src="/assets/js/components/features/premium.js"></script>
+    <script src="/assets/js/components/features/fireworks.js"></script>
+    <script src="/assets/js/store/samples.js"></script>
     <script src="/assets/js/store/resume/premium/colors.js"></script>
     <!-- <script src="/assets/js/plugins/screens.js"></script>
     <script src="/public/js/sections/home.js"></script>
     <script src="/assets/js/plugins/scroll/scroll.Animate.js"></script>
     <script src="/assets/js/plugins/scroll/scroll.Parallax.js"></script>
     <script src="/assets/js/components/features/premium.js"></script> -->
+
+    {% if samples %}
+    <script>
+        if ($store && $store.samples){
+            $store.samples.set({{ samples | safe }});
+        }
+    </script>
+    {% endif %}
+
+    {% if clusters %}
+    <script>
+        if ($store && $store.samples){
+            $store.samples.clusters = {{ clusters | safe }};
+        }
+    </script>
+    {% endif %}
+
+    {% if sample %}
+    <script>
+        if ($store && $store.resume){
+            $store.resume.set({{ sample | safe }});
+        }
+    </script>
+    {% endif %}
+
     <script src="/public/js/init.js"></script>
 
     {% endif %}
-
-    <!-- <script>
-        var $loader = $("#loader");
-
-        $loader.on("click", function(){
-            var attr = $loader.attr("data-fadeIn");
-            if (attr){
-                $loader.removeAttr("data-fadeIn");
-            }
-            else {
-                $loader.attr("data-fadeIn", true);
-            }
-        });
-
-    </script> -->
 
 </body>
 {% endblock %}

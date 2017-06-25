@@ -1,0 +1,44 @@
+.graffiti {
+    @extend .pos-centered-h;
+    @extend .t0;
+    @extend .pointerEvents-none;
+
+    &__svg {
+        @extend .display-block;
+        @include abs();
+    }
+}
+graffiti {
+    &-1 {
+        width:1486px;
+        height:993px;
+
+        .graffiti__svg {
+            transform:translate(180px, -310px);
+        }
+    }
+    &-2 {
+        width:1138px;
+        height:889px;
+
+        .graffiti__svg {
+            transform:translate(300px, -300px);
+        }
+    }
+    &-3 {
+        width:1200px;
+        height:1100px;
+
+        .graffiti__svg {
+            transform:translate(-250px, -170px);
+        }
+    }
+    &-4 {
+        width:1000px;
+        height:1300px;
+
+        .graffiti__svg {
+            transform:translate(-480px, -350px);
+        }
+    }
+}

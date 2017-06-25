@@ -1,0 +1,29 @@
+.sample {
+    @extend .display-block;
+    @extend .minH-100v;
+    @extend .fontFamily-myriad;
+    @extend .pt30;
+
+    &__title {
+        @extend .fontFamily-helvetica;
+        @extend .fontSize-20;
+        @extend .fontWeight-3;
+        @extend .mb25;
+
+        strong {
+            @extend .fontFamily-myriad;
+            @extend .c-primary;
+            @extend .fontSize-22;
+            @extend .fontWeight-normal;
+            @extend .pl-xxs;
+        }
+    }
+    &__text {
+        @extend .mb35;
+        padding-left:150px;
+        @extend .pr-l;
+    }
+    &__fulltext {
+        @extend .pos-tl;
+    }
+}

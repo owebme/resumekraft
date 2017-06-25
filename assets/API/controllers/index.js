@@ -9,6 +9,7 @@ module.exports = function(){
         blog: require('./blog')(),
         jobs: require('./jobs')(),
         resume: require('./resume')(),
+        samples: require('./samples')(),
         migrate: require('./resume/migrate')(),
         orders: require('./orders')(),
         utils: require('./utils')()

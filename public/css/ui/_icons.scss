@@ -6,7 +6,7 @@
     }
 }
 @each $icon in (
-    loading, loading_mini, loading_mini_white, close_fill, close_fill_gray, close_strong, close_strong_white, minus, minus_white, menu, menu_white, more_v_white, back_white, help, info_white, check_black, check_white, check_gray, check_muted, edit, remove_fill, check, user_oval_white, google, facebook, vkontakte, odnoklassniki, twitter, exit, exit_white, like_fill_pink, edit, close_white, play_black
+    loading, loading_mini, loading_mini_white, close_fill, close_fill_white, close_fill_gray, close_strong, close_strong_white, minus, minus_white, menu, menu_white, more_v_white, back_white, help, info_white, check_black, check_white, check_gray, check_muted, edit, remove_fill, check, user_oval_white, google, facebook, vkontakte, odnoklassniki, twitter, exit, exit_white, like_fill_pink, edit, close_white, play_black, plus_thin_white, portrait_man, portrait_woman, msword_white, hand_finger_up_white
 ){
     .ui-icon-#{$icon} {
         background:url('/assets/images/ui/ui-#{$icon}.svg') no-repeat 0 0 / cover;

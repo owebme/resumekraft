@@ -1,0 +1,452 @@
+premium-mobile-overview {
+    .l-progressive {
+        background-image:none !important;
+    }
+    .section__hero {
+        @extend .pos-rel;
+        @extend .bg-white;
+        @extend .pt90;
+        @extend .pb95;
+        @extend .zIndex-1;
+
+        h1 {
+            @extend .w60p;
+
+            &.anim-text {
+                transition-delay:0.2s;
+            }
+        }
+        .anim-text {
+            @extend .opacity-0;
+            @extend .willChange-tp;
+            transform:translate3d(0, 60px, 0);
+            transition:transform 0.8s $cubic165, opacity 0.6s $cubic4258;
+
+            &:nth-of-type(2){
+                transition-delay:0.2s;
+            }
+            &.animated {
+                @extend .opacity-100;
+                @extend .transform-none;
+            }
+        }
+        &__double__ipad {
+            @extend .pos-rel;
+            min-height:833px;
+            @extend .mt100;
+
+            &__back,
+            &__front {
+                &__image {
+                    @include abs();
+                    @extend .opacity-0;
+                    @extend .bg-cover;
+                    @extend .willChange-tp;
+                }
+            }
+            &__back {
+                @extend .pos-abs;
+                @extend .t0;
+                right:-112px;
+                width:757px;
+                height:543px;
+
+                &__image {
+                    background-image:url("/public/images/premium/samples/overview/hero_ipad_back_large_2x.jpg");
+                    transform:translate3d(0, 60px, 0);
+                    transition:transform 1.2s $cubic165 0.5s, opacity 1s $cubic4258 0.5s;
+                }
+            }
+            &__front {
+                @extend .pos-abs;
+                @extend .t0;
+                left:-94px;
+                width:682px;
+                height:770px;
+                @extend .zIndex-1;
+
+                &__image {
+                    background-image:url("/public/images/premium/samples/overview/hero_ipad_front_large_2x.png");
+                    transform:translate3d(0, 85px, 0);
+                    transition:transform 2.5s $cubic165, opacity 1s $cubic4258;
+                }
+            }
+        }
+        &__devices {
+            @extend .pos-rel;
+            width:918px;
+            height:769px;
+            margin:-25px 0 0 -110px;
+        }
+        &__ipad,
+        &__iphone {
+            transform:translate3d(80px, 0, 0);
+            transition:transform 1.2s $cubic165, opacity 0.8s $cubic4258;
+        }
+        &__ipad {
+            @include abs();
+            background-size:918px 769px;
+            background-repeat:no-repeat;
+            background-image:url("/public/images/premium/samples/overview/hero_ipad_large_2x.jpg");
+
+            &__hand {
+                @extend .pos-tl;
+                width:640px;
+                height:428px;
+                @extend .bg-cover;
+                transition:opacity 0.6s $cubic4258 0.8s;
+                background-image:url("/public/images/premium/samples/overview/hero_ipad_hand_large_2x@tiny.png");
+                @extend .zIndex-1;
+                transform:translate3d(-370px, 100px, 0) !important;
+            }
+        }
+        &__iphone {
+            @extend .pos-abs;
+            right:-230px;
+            top:270px;
+            width:417px;
+            height:480px;
+            background-size:417px 480px;
+            background-repeat:no-repeat;
+            background-image:url("/public/images/premium/samples/overview/hero_iphone_large_2x.png");
+        }
+    }
+    .slider__pointer {
+        @extend .pos-centered-v;
+        @extend .l60;
+        @extend .nowrap;
+        @extend .pointerEvents-none;
+        @extend .willChange-opacity;
+        transition:opacity 0.4s $cubic4258;
+        padding-bottom:135px;
+
+        &__line {
+            @extend .pos-rel;
+            width:360px;
+            @extend .h3px;
+            @extend .overflow-hidden;
+
+            &:before {
+                @include accelerate();
+                @extend .content-empty;
+                @include abs();
+                @extend .willChange-transform;
+                transform:translate3d(-100%, 0, 0);
+                transition:transform 1s $cubic165;
+                background:linear-gradient(to right, #7d58e2 0%, #f8420c 100%);
+            }
+        }
+        &__text {
+            @extend .pt-s;
+            @extend .opacity-0;
+            @extend .willChange-tp;
+            transform:translate3d(0, 50px, 0);
+            transition:transform 1.5s $cubic77 0.1s, opacity 1.5s $cubic77 0.1s;
+        }
+        &.animated {
+            @extend .pos-centered-v;
+
+            .slider__pointer {
+                &__line:before,
+                &__text {
+                    @extend .opacity-100;
+                    @extend .transform-default;
+                }
+            }
+        }
+    }
+    .slick-slider {
+         &[data-section="samples"]{
+             .slick-arrow {
+                 @extend .pos-centered-v;
+                 margin-top:-92px;
+                 @extend .bg-silver;
+                 @extend .cursor-pointer;
+                 box-shadow:inset 0 0 0 1px $silver;
+
+                 &:before {
+                     @extend .opacity-100;
+                 }
+                 &:after {
+                     @extend .opacity-0;
+                 }
+             }
+             .slick-prev {
+                 @extend .l30;
+             }
+             .slick-next {
+                 @extend .r30;
+             }
+             .slick-slide {
+                 width:516px;
+                 height:878px;
+                 @extend .opacity-70;
+                 @extend .pointerEvents-none;
+                 @extend .willChange-opacity;
+                 transition:opacity 0.6s $cubic4258;
+
+                &:hover {
+                    @extend .opacity-100;
+                }
+                 &.slick-current {
+                    @extend .opacity-100;
+                    @extend .pointerEvents-all;
+
+                    &:hover {
+                        .opener {
+                            @extend .opacity-100;
+
+                            &:before {
+                                @extend .scale-85;
+                            }
+                            &:after {
+                                transform:rotate(0deg);
+                            }
+                            &:hover {
+                                &:before {
+                                    @extend .scale-100;
+                                }
+                            }
+                        }
+                    }
+                 }
+             }
+             .opener {
+                 @extend .pos-centered;
+                 @extend .w70;
+                 @extend .h70;
+                 @extend .opacity-0;
+                 @extend .cursor-pointer;
+                 @extend .borderRadius-circle;
+                 transition:opacity 0.3s $cubic4001;
+
+                 &:before {
+                     @include accelerate();
+                     @extend .content-empty;
+                     @include abs();
+                     @extend .scale-40;
+                     @extend .borderRadius-circle;
+                     transition:transform 0.3s $cubic4001;
+                 }
+                 &:after {
+                    @include accelerate();
+                    @extend .content-empty;
+                    @include abs_50(26, 26);
+                    @include ui-icon("plus_thin_white");
+                    transform:rotate(-135deg);
+                    transition:transform 0.5s $cubic68 0.15s;
+                 }
+             }
+         }
+    }
+    .section__phone[data-section="mobile-office"] {
+        min-height:478px;
+
+        .figure {
+            @extend .pos-tl;
+            width:810px;
+            height:773px;
+            @extend .ml--35;
+            @extend .bg-cover;
+            background:url("/public/images/premium/samples/overview/phones_mobile_office_large_2x.jpg");
+        }
+    }
+    .phone__figure__screen[data-section="overview-btn-info"] {
+        .screen {
+            @include accelerate();
+            will-change:filter;
+            transition:filter 0.6s $cubic4021;
+        }
+        .phone__screen__nav {
+            @extend .pointerEvents-all;
+
+            &__info {
+                @extend .cursor-pointer;
+            }
+        }
+        &.-open {
+            .screen {
+                filter:blur(18px) saturate(1.45);
+            }
+            .phone__screen__popup__wrapper {
+                @extend .opacity-100;
+                @extend .scale3d-100;
+            }
+        }
+        .phone__figure__screen__pointer {
+            &[data-item="info"]{
+                top:10px;
+                left:10px;
+                @extend .w42;
+                @extend .h42;
+            }
+        }
+    }
+    .section__phone[data-section="overview-video"] {
+        @extend .mb--xl;
+    }
+    .phone__figure__screen[data-section='overview-colors'] {
+        @extend .bg-white;
+        @extend .pointerEvents-none;
+
+        .slick-slider {
+            @include abs();
+        }
+        .slick-slide {
+            height:522px
+        }
+        .phone__screen__nav__item {
+            transition:background-color 1s $cubic32;
+        }
+    }
+    .phone__figure__screen[data-section="overview-salary"] {
+        .phone__screen__nav {
+            @extend .pointerEvents-all;
+
+            &__salary {
+                @extend .cursor-pointer;
+            }
+        }
+        .phone__figure__screen__pointer {
+            &[data-item="salary"]{
+                top:66px;
+                right:9px;
+                @extend .w52;
+                @extend .h52;
+            }
+        }
+    }
+    .phone__figure__screen[data-section="overview-inbox"] {
+        @extend .pointerEvents-none;
+
+        .phone__screen__nav {
+            @extend .willChange-tp;
+            text-rendering:50% 0;
+            transition:transform 0.5s $cubic4001, opacity 0.3s $cubic4001;
+
+            &[data-hidden="true"]{
+                @extend .opacity-0;
+                @extend .scale-80;
+            }
+        }
+        .phone__figure__screen__pointer {
+            &[data-item="feedback"]{
+                top:5px;
+                right:5px;
+                @extend .w60;
+                @extend .h60;
+            }
+            &[data-item="inbox"]{
+                top:143px;
+                left:0;
+                @extend .borderRadius-xs;
+                @extend .w100p;
+                height:96px;
+                box-shadow:inset 0 0 0 2px #007ec1, 0 2px 4px 0 rgba(#000,.1);
+            }
+        }
+    }
+    .phone__screen__popup {
+        &__wrapper {
+            @include accelerate();
+            @extend .pos-abs;
+            @extend .t-xl;
+            @extend .l--s;
+            @extend .fontFamily-helvetica;
+            font-size:16px;
+            line-height:21px;
+            @extend .c-white;
+            @extend .bg-blueLight;
+            @extend .pt-s;
+            @extend .pl-l;
+            @extend .pr-s;
+            @extend .pb-m;
+            @extend .opacity-0;
+            @extend .zIndex-2;
+            will-change:transform, opacity;
+            border-radius:15px;
+            transform-origin:0% 50%;
+            box-shadow:5px 10px 35px 0 rgba(31,35,37,.35);
+            transform:translate3d(-20%, 0, 0) scale3d(1, 0.5, 1);
+            transition:transform .6s $cubic4001, opacity .3s $cubic4001;
+        }
+        &__photo {
+            @extend .pos-abs;
+            @extend .b100p;
+            @extend .w46;
+            @extend .h46;
+            @extend .r25;
+            @extend .borderRadius-circle;
+            @extend .bg-cover;
+            @extend .trY-m;
+            box-shadow:0 0 0 3px rgba($white,.6), 5px 10px 30px 0 rgba(31,35,37,.15);
+        }
+        &__name {
+            @extend .fontFamily-sfdisplay;
+            @extend .fontWeight-6;
+            @extend .fontSize-22;
+            @extend .ptb-xxs;
+            letter-spacing:0.004em;
+        }
+        &__salary {
+            @extend .nowrap;
+            @extend .letterSpacing-0;
+            @extend .fontFamily-default;
+        }
+        &__email {
+            @extend .c-yellowBright;
+            @extend .fontSize-18;
+            @extend .ptb-xxs;
+
+            span {
+                @extend .borderColor-yellowBright;
+                @extend .borderStyle-solid;
+                @extend .borderBottomWidth-1;
+            }
+        }
+        &__phone {
+            @extend .fontWeight-bold;
+            @extend .fontSize-21;
+            @extend .mb-xxs;
+            @extend .pt-xss;
+        }
+        &__post {
+            @extend .pb-xxs;
+        }
+        &__social {
+            @extend .flex-row-left-center;
+            @extend .pt-xs;
+            margin:0 -7px;
+
+            &__btn {
+                @extend .pos-rel;
+                @extend .display-block;
+                @extend .w40;
+                @extend .h40;
+                @extend .borderRadius-circle;
+                @extend .bg-smoke;
+                margin:0 7px 8px;
+
+                svg {
+                    @extend .pos-centered;
+                }
+                &-fb {
+                    @extend .w54;
+                    @extend .h54;
+                }
+                &-vk {
+                    @extend .w60;
+                    @extend .h60;
+                }
+                &-in {
+                    @extend .w22;
+                    @extend .h22;
+                }
+                &-lk {
+                    @extend .w20;
+                    @extend .h20;
+                }
+            }
+        }
+    }
+}

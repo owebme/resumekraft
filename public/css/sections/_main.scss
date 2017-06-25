@@ -1,0 +1,5 @@
+.screens {
+    .screen:not(.screen--active){
+        @extend .display-none;
+    }
+}

@@ -87,7 +87,7 @@
                 }
                 else {
                     WD.device.frame[0].contentWindow.postMessage({
-                        photo: "/preview/images/prof/" + $State.get("photo") + ".jpg"
+                        photo: "/public/images/samples/" + $State.get("photo") + ".jpg"
                     }, '*');
                     WD.device.scrollTo("cover");
                     app.$dom.body.removeClass('apploading');
@@ -104,7 +104,7 @@
                     //     app.workflow.control.font.change($State.get("font"));
                     // }
                     WD.device.frame[0].contentWindow.postMessage({
-                        photo: "/preview/images/prof/" + $State.get("photo") + ".jpg"
+                        photo: "/public/images/samples/" + $State.get("photo") + ".jpg"
                     }, '*');
                     $dom.body.removeClass('apploading');
                     WD.device.loadedFrame = true;

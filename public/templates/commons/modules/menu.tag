@@ -15,8 +15,9 @@
         <div class="col-md-6">
             <div class="menu__label">Примеры резюме</div>
             <ul class="menu">
-                <li class="menu__item"><a href="#">Старый формат</a></li>
-                <li class="menu__item"><a href="/premium/samples">Резюме-лендинг</a></li>
+                <li class="menu__item"><a href="/premium/samples">Премиальные резюме</a></li>
+                <li class="menu__item"><a href="/premium/mobile">Мобильное резюме</a></li>
+                <li class="menu__item"><a href="/premium/mobile/samples">Примеры в смартфоне</a></li>
                 <li class="menu__item"><a href="/medium/samples">Резюме-слайдер</a></li>
             </ul>
         </div>

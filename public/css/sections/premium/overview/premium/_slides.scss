@@ -1,9 +1,4 @@
 .overview-premium {
-    .screens {
-        .screen:not(.screen--active){
-            @extend .display-none;
-        }
-    }
     .icon {
         &-control {
             width:132px;

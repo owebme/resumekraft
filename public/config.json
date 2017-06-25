@@ -59,6 +59,11 @@
         "cache": true,
         "cacheLife": 86400
     },
+    "samples": {
+        "cache": false,
+        "cacheLife": 3600,
+        "limit": 96
+    },
     "resume": {
         "import": {
             "blockLife": 43200,

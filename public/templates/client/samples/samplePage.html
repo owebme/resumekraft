@@ -1,0 +1,143 @@
+<sample-page>
+
+	<div class="sample-header">
+		<div if={ $sample.get('commons', 'name') } class="sample-header-names">
+			{ $sample.get('commons', 'surname') } { $sample.get('commons', 'name') }
+		</div>
+		<div class="sample-header-post">
+			{ $sample.get('post') }
+		</div>
+		<div if={ $sample.get('salary', 'active') && $sample.get('salary', 'amount') } class="sample-header-salary">
+			{ $sample.take.salary.amount() }
+			<rub if={ $sample.get('salary', 'currency') == "1" }></rub>
+			<valuta if={ $sample.get('salary', 'currency') != "1" }>{ $sample.take.salary.currency() }</valuta> &mdash;
+			<span class="sample-header-salary-currency">{ $sample.take.salary.worktime() }</span>
+		</div>
+        <div class="sample-header-photo" data-gender="{ $sample.get('commons', 'gender') }"></div>
+	</div>
+	<div class="sample-container-wrapper">
+		<div class="sample-container-string sample-container-table">
+			<div class="sample-container-string-left">
+				<div class="sample-container-string-element">
+					<span class="cell cell-name">{ $i18n("resume.basic.template.Age") }:</span>
+					<span class="cell">{ $sample.take.birthday.age() }</span>
+				</div>
+				<div class="sample-container-string-element">
+					<span class="cell cell-name">{ $i18n("resume.basic.template.Citizenship") }:</span>
+					<span class="cell">{ $sample.take.citizenship() }</span>
+				</div>
+				<div if={ $sample.get('commons', 'contacts', 'city') } class="sample-container-string-element">
+					<span class="cell cell-name">{ $i18n("resume.basic.template.City") }:</span>
+					<span class="cell">{ $sample.get('commons', 'contacts', 'city', 'name') }</span>
+				</div>
+				<div class="sample-container-string-element">
+					<span class="cell cell-name">{ $i18n("resume.basic.template.Relocation") }:</span>
+					<span class="cell">{ $sample.take.relocation() }</span>
+				</div>
+				<div class="sample-container-string-element">
+					<span class="cell cell-name">{ $i18n("resume.basic.template.Business trip") }:</span>
+					<span class="cell">{ $sample.take.businessTrip() }</span>
+				</div>
+			</div>
+			<div class="sample-container-string-left">
+				<div if={ $sample.get('commons', 'contacts', 'email') } class="sample-container-string-element">
+					<span class="cell cell-name">Email:</span>
+					<span class="cell"><a class="cell-email" href="mailto:{ $sample.get('commons', 'contacts', 'email') }">{ $sample.get('commons', 'contacts', 'email') }</a></span>
+				</div>
+				<div if={ $sample.get('commons', 'contacts', 'phone', 'number') } class="sample-container-string-element">
+					<span class="cell cell-name">{ $i18n("resume.basic.template.Phone") }:</span>
+					<span class="cell"><a href="{ $store.resume.take.phoneLink() }">{ $store.resume.take.phone() }</a></span>
+				</div>
+				<div if={ $sample.get('commons', 'contacts', 'skype') } class="sample-container-string-element">
+					<span class="cell cell-name">Skype:</span>
+					<span class="cell"><a href="skype:{ $sample.get('commons', 'contacts', 'skype') }">{ $sample.get('commons', 'contacts', 'skype') }</a></span>
+				</div>
+			</div>
+		</div>
+		<div if={ $sample.get('tags').length } class="sample-container-string sample-container-string-tags">
+			<div class="sample-container-string-element">
+				<span class="cell cell-name">{ $i18n("resume.basic.template.Main skills") }</span>
+				<span class="cell cell-text">
+					<span each={ item in $sample.get('tags') } no-reorder class="sample-tag">{ item }</span>
+				</span>
+			</div>
+		</div>
+		<div if={ $sample.get('education', 'items').length } class="sample-container-string sample-container-string-edu">
+			<div class="sample-container-string-element">
+				<span class="cell cell-name">{ $i18n("resume.basic.template.Education") }</span>
+				<span class="cell cell-text cell-text--line">
+					{ $sample.take.education.level() }
+				</span>
+			</div>
+			<div each={ edu, i in $sample.take.education.items() } no-reorder class="sample-container-string-element { sample-container-string-element--first : i == 0 }">
+				<span class="cell cell-name"></span>
+				<span class="cell cell-text">
+					<strong>{ edu.year }</strong>
+					<div>{ edu.title }</div>
+					<div if={ edu.speciality }><strong class="highlight">{ edu.speciality }</strong></div>
+					<div if={ edu.faculty }><strong>{ edu.faculty }</strong></div>
+				</span>
+			</div>
+		</div>
+		<div if={ $sample.get('languages', 'items').length } class="sample-container-string sample-container-string-lang">
+			<virtual each={ lang, i in $sample.get('languages', 'items') } no-reorder>
+				<div if={ lang.title == "native" } class="sample-container-string-element mt--xs">
+					<span class="cell cell-name">{ $i18n("resume.basic.template.Languages") }</span>
+					<span class="cell">
+						<div><strong class="sample-container-string-lang-title">{ $store.languages.getTitleById(lang.title) }</strong>&nbsp; &nbsp; { $store.languages.native.getTitleById(lang.value) }</div>
+					</span>
+				</div>
+				<div if={ lang.title != "native" } class="sample-container-string-element mt--xs">
+					<span class="cell cell-name"></span>
+					<span class="cell cell-text">
+						<div><strong class="sample-container-string-lang-title">{ $store.languages.getTitleById(lang.title) }</strong>&nbsp; &nbsp; { $store.languages.select.getTitleById(lang.value) }</div>
+					</span>
+				</div>
+			</virtual>
+		</div>
+		<div if={ $sample.get('jobs', 'items').length } class="sample-container-string sample-container-string-job">
+			<div class="sample-container-string-element">
+				<span class="cell cell-name">{ $i18n("resume.basic.template.Experience") }</span>
+				<span class="cell cell-text cell-text--line">
+					{ $sample.take.jobs.experience() }
+				</span>
+			</div>
+			<div each={ job, i in $sample.take.jobs.items() } no-reorder class="sample-container-string-element { sample-container-string-element--first : i == 0 }">
+				<span class="cell cell-name"></span>
+				<span class="cell cell-text">
+					<div><strong>{ job.title }</strong></div>
+					<div if={ job.city }>{ job.city }</div>
+					<div><strong class="highlight">{ job.post }</strong></div>
+					<div><strong>{ $sample.take.jobs.period(job) }</strong></div>
+					<div class="preline">{ job.text }</div>
+				</span>
+			</div>
+		</div>
+		<div if={ $sample.get('courses', 'items').length } class="sample-container-string sample-container-string-edu">
+			<div each={ edu, i in $sample.take.courses.items() } no-reorder class="sample-container-string-element">
+				<span class="cell cell-name">{ i == 0 ? $i18n("resume.basic.template.Courses") : ''  }</span>
+				<span class="cell cell-text">
+					<strong class="highlight">{ edu.year }</strong>
+					<div>{ edu.name }</div>
+					<div><strong>{ edu.title }</strong></div>
+				</span>
+			</div>
+		</div>
+		<div if={ $sample.get('about').length } class="sample-container-string sample-container-string-about">
+			<div class="sample-container-string-element">
+				<span class="cell cell-name">{ $i18n("resume.basic.template.About me") }</span>
+				<span class="cell cell-text preline">{ $sample.get('about') }</span>
+			</div>
+		</div>
+	</div>
+
+<script>
+
+	this.$sample = this.opts.item && $store.resume.set(this.opts.item) && $store.resume || $store.resume;
+
+	$i18n.lang($store.resume.get('lang'));
+	moment.locale($store.resume.get('lang'));
+
+</script>
+
+</sample-page>

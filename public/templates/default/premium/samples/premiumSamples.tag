@@ -1,6 +1,6 @@
 <premium-samples>
 
-    <global-nav section="premiumSelect" user={ opts.user }></global-nav>
+    <global-nav section="premiumSamples" user={ opts.user }></global-nav>
 
     <div id="content">
 
@@ -10,17 +10,15 @@
 
         <premium-samples-gallery utils={ opts.utils }></premium-samples-gallery>
 
-        <premium-samples-overview utils={ opts.utils }></premium-samples-overview>
+        <section-create-resume header="Каждый может создать своё лучшее резюме прямо сейчас" text="Открываем аккаунт и создаём резюме прямо сейчас."></section-create-resume>
 
-        <premium-samples-banner utils={ opts.utils }></premium-samples-banner>
+        <section-premium-account></section-premium-account>
 
-        <premium-samples-medium utils={ opts.utils }></premium-samples-medium>
+        <section-resume-medium></section-resume-medium>
 
     </div>
 
     <global-footer data-color="dark" section="Премиум аккаунт[/premium/]//Примеры резюме"></global-footer>
-
-    <section-player></section-player>
 
 <script>
 

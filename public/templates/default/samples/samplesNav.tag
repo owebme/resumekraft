@@ -27,22 +27,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
-                    <div class="samples__nav__select" data-ripple>
-                        <div class="samples__nav__select__label">Выбрать направление</div>
-                        <span class="samples__nav__select__chevron"></span>
-                    </div>
-                    <div class="samples__nav__options section-scroll">
-                        <div class="samples__nav__options__scroll">
-                            <div class="samples__nav__options__container">
-                                <a href="#" each={ item, i in options } class="samples__nav__options__item" data-ripple data-active={ i == 5 }>{ item }<span class="samples__nav__options__item__count">{ parent.parent.opts.utils.random(1, 20) }</span></a>
-                            </div>
-                        </div>
-                    </div>
+                    <samples-clusters cluster={ opts.cluster } clusters={ opts.clusters }></samples-clusters>
                 </div>
                 <div class="col-md-15">
-                    <div class="samples__nav__items">
-                        <a href="#" each={ item, i in alphabet } class="samples__nav__item" data-ripple data-active={ i == 7 }>{ item }</a>
-                    </div>
+                    <samples-alphabet alpha={ opts.alpha }></samples-alphabet>
                 </div>
                 <div class="col-md-4">
                     <div class="samples__nav__share">
@@ -71,49 +59,5 @@
             </div>
         </div>
     </div>
-
-<script>
-
-    this.alphabet = ['а', 'б', 'в', 'г', 'д', 'е', 'з', 'и', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х'];
-
-    this.options = ['Авиация',
-    'Агропромышленный комплекс',
-    'Архитектура и строительство',
-    'Безопасность и Силовые структуры',
-    'Бухгалтерия и банковское дело',
-    'Ветеринария и животноводство',
-    'Воспитание',
-    'Государственное управление',
-    'Делопроизводство',
-    'Дизайн',
-    'Издательcтво и типография',
-    'Инженерное дело',
-    'Информационные технологии',
-    'Искусство',
-    'Коммуникации (СМИ)',
-    'Кадры',
-    'Красота',
-    'Кулинария',
-    'Легкая промышленность',
-    'Лингвистика',
-    'Маркетинг и PR',
-    'Медицина и психология',
-    'Менеджмент',
-    'Налоги',
-    'Наука и образование',
-    'Недвижимость',
-    'Склад логистика таможня',
-    'Социальная сфера',
-    'Спорт',
-    'Страхование',
-    'Торговля',
-    'Транспорт',
-    'Туризм и гостиничная деятельность',
-    'Экономика и Финансы',
-    'Экология',
-    'Энергетика',
-    'Юриспруденция'];
-
-</script>
 
 </section-nav-samples>

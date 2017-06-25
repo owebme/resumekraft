@@ -74,14 +74,15 @@
 
         h1, h2, h3, h4 {
             @extend .pos-rel;
-            @extend .fontFamily-helvetica;
-            @extend .fontWeight-3;
+            @extend .fontFamily-myriad;
+            @extend .fontWeight-5;
             @extend .fontSize-32;
             @extend .c-primary;
             @extend .pt-s;
             @extend .pb-m;
             @extend .m0;
             @extend .maxW-80p;
+            letter-spacing:-0.008em;
 
             &:before {
                 @extend .content-empty;
@@ -94,16 +95,18 @@
             }
         }
         h5, h6 {
-            @extend .fontFamily-helvetica;
-            @extend .c-primary;
-            @extend .fontSize-24;
-            @extend .fontWeight-3;
+            @extend .fontFamily-myriad;
+            @extend .c-orange;
+            font-size:28px;
+            line-height:34px;
+            @extend .fontWeight-normal;
             @extend .m0;
             @extend .pb-s;
 
             strong {
                 @extend .c-primary;
-                @extend .fontSize-24;
+                font-size:28px;
+                line-height:34px;
             }
         }
         strong {
@@ -149,20 +152,21 @@
         blockquote {
             @extend .mt35;
             @extend .mb25;
-            @extend .fontFamily-helvetica;
-            @extend .c-primary;
+            @extend .fontFamily-myriad;
+            @extend .c-orange;
             @extend .ml--m;
-            font-size:26.5px;
-            line-height:39px;
+            font-size:28px;
+            line-height:40px;
             @extend .fontStyle-normal;
-            @extend .fontWeight-3;
+            @extend .fontWeight-normal;
+            letter-spacing:-0.006em;
 
             strong, em, i {
-                @extend .c-primary;
-                font-size:26.5px;
-                line-height:39px;
+                @extend .c-orange;
+                font-size:28px;
+                line-height:40px;
                 @extend .fontStyle-normal;
-                @extend .fontWeight-3;
+                @extend .fontWeight-normal;
             }
         }
     }

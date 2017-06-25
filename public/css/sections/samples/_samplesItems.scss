@@ -1,9 +1,9 @@
 .samples {
-    @extend .bg-snow;
-
     &__items {
         @extend .display-block;
-        padding:84px 0 34px;
+        @extend .minH-100v;
+        padding-top:39px;
+        padding-bottom:34px;
 
         &__list {
             @extend .pos-rel;
@@ -11,14 +11,20 @@
             @extend .mb-l;
         }
         &__alpha {
-            @extend .pos-abs;
-            top:-3px;
-            @extend .l--60;
+            @extend .pos-sticky;
+            top:173px;
             @extend .c-silver;
             @extend .fontWeight-bold;
             font-size:48px;
             line-height:1;
             @extend .opacity-25;
+
+            &__tracker {
+                @extend .pos-abs;
+                top:-2px;
+                left:-74px;
+                @extend .h100p;
+            }
         }
         &__item {
             @extend .fontSize-0;

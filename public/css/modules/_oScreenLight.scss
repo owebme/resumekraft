@@ -174,10 +174,8 @@
         }
     }
     &[data-color="white"]{
-        &[data-open="true"]{
-            &:before {
-                @extend .bg-white;
-            }
+        &:before {
+            background:rgba($snowA,.95);
         }
     }
     &[data-color="dark"]{
@@ -186,7 +184,7 @@
                 background:radial-gradient(rgba(64,64,75,.9), rgba(17,17,24,.9)) rgba(34,34,40,.52);
 
                 html.d-phone & {
-                    background:rgba($blackLight,.95);
+                    background:rgba($blackA,.95);
                 }
             }
         }

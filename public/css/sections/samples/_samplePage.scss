@@ -1,0 +1,143 @@
+.sample__page__wrapper {
+    @extend .pos-rel;
+    @extend .zIndex-0;
+}
+sample-page {
+    @extend .display-block;
+    @extend .pos-rel;
+    @extend .bg-white;
+    @extend .minH-100v;
+    @extend .fontFamily-myriad;
+    font-size:17.5px;
+    box-shadow:0 1px 2px rgba(31,45,61,.22);
+    @extend .pt-l;
+    @extend .plr-l;
+    @extend .zIndex-1;
+    padding-bottom:155px;
+
+    .sample-header {
+        @extend .pos-rel;
+        @extend .text-left;
+        @extend .pb30;
+        @extend .fontSize-20;
+    }
+    .sample-header-photo {
+        @extend .pos-abs;
+        @extend .t--xs;
+        @extend .r0;
+        @extend .w100;
+        @extend .h100;
+        @extend .borderRadius-circle;
+        @extend .bg-smoke;
+
+        &[data-gender]:after {
+            @extend .content-empty;
+            @extend .pos-centered;
+            @extend .opacity-25;
+            @extend .mt--2;
+        }
+        &[data-gender="female"]:after {
+            @include ui-icon("portrait_woman", 64px, 64px);
+        }
+        &[data-gender="male"]:after {
+            @include ui-icon("portrait_man", 80px, 80px);
+        }
+    }
+    .sample-header-names {
+        font-size:23.5px;
+        @extend .mb-s;
+    }
+    .sample-header-post {
+        @extend .mb-m;
+    }
+    .sample-header-salary {
+        @extend .c-primary;
+        @extend .fontSize-20;
+
+        rub {
+            @extend .pos-rel;
+        }
+        rub:before {
+            content: "Р";
+        }
+        rub:after {
+            content:"—";
+            @extend .pos-abs;
+            left:-1px;
+            bottom:-5px;
+            font-size:50%;
+        }
+    }
+    .sample-container-wrapper {
+        @extend .clear;
+    }
+    .sample-container-string {
+        @extend .w100p;
+    }
+    .cell-email {
+        @extend .c-primary;
+    }
+    .sample-container-string {
+        @extend .mb-m;
+    }
+    .sample-container-table {
+        @extend .display-table;
+        @extend .mb-l;
+
+        .cell {
+            @extend .pt-s;
+        }
+    }
+    .sample-container-string-lang-title {
+        @extend .display-inlineBlock;
+        @extend .w170;
+    }
+    .sample-container-string-left {
+        @extend .display-tableCell;
+        @extend .w50p;
+    }
+    .sample-container-string-element {
+        @extend .display-table;
+        @extend .w100p;
+
+        &--first {
+            .cell {
+                @extend .pt-xs;
+            }
+        }
+    }
+    .cell {
+        @extend .display-tableCell;
+        @extend .pt25;
+    }
+    .cell-name {
+        @extend .w170;
+        @extend .c-gray;
+    }
+    .sample-container-string-left .cell-name {
+        @extend .w170;
+    }
+    .cell-text {
+        &--line {
+            @extend .c-gray;
+            @extend .pb-xxs;
+            border-bottom:1px solid #d6d6d6;
+        }
+    }
+    .sample-tag {
+        @extend .display-inlineBlock;
+        @extend .bg-snowDark;
+        @extend .plr-xs;
+        @extend .h30;
+        font-size:16px;
+        line-height:30px;
+        margin:0 6px 6px 0;
+        @extend .borderRadius-l;
+    }
+    .highlight {
+        @extend .c-primary;
+    }
+    .preline {
+        @extend .whiteSpace-preLine;
+    }
+}

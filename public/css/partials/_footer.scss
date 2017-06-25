@@ -1,13 +1,15 @@
 global-footer {
+    @extend .pos-rel;
     @extend .display-block;
     @extend .bg-snow2;
     @extend .c-gray;
     @extend .fontFamily-myriad;
     height:368px;
+    @extend .zIndex-1;
 
     &[data-color="dark"]{
         color:rgba($white,.6);
-        @extend .bg-slate;
+        @extend .bg-steelA;
 
         a {
             color:rgba($white,.6);
@@ -19,7 +21,7 @@ global-footer {
         .breadcrumbs {
             &__home {
                 &:after {
-                    @extend .bg-slate;
+                    @extend .bg-steelA;
                 }
             }
             &__path {

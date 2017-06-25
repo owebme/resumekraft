@@ -36,13 +36,15 @@
 @import 'ui/button';
 @import 'ui/loading';
 @import 'ui/devices';
+@import 'ui/graffiti';
 @import '../../assets/css/ui/basic/loaderUser';
 
 // modules
-// @import 'modules/oScreen';
+@import 'modules/oScreenLight';
 @import '../../assets/css/modules/player';
 @import 'modules/screens';
 @import 'modules/slickSlider';
+@import 'modules/typeahead';
 @import 'modules/chart/chartRadial';
 
 // Partials
@@ -53,52 +55,64 @@
 
 // Sections
 @import 'sections/sections';
-@import 'sections/professions';
-@import 'sections/mainBlocks';
+@import 'sections/main';
+// @import 'sections/gift';
+
+// Blocks
+// @import 'sections/blocks/professions';
+// @import 'sections/blocks/functions';
+// @import 'sections/blocks/medium';
+// @import 'sections/blocks/premium';
+// @import 'sections/blocks/mainBlocks';
 
 // auth
-@import 'sections/auth/auth';
-@import 'sections/auth/themes/dark';
-@import 'sections/auth/themes/white';
+// @import 'sections/auth/auth';
+// @import 'sections/auth/themes/dark';
+// @import 'sections/auth/themes/white';
 
 // home
-@import 'sections/home/home';
-@import 'sections/home/stickyNav';
-@import 'sections/home/hero';
-@import 'sections/home/professions';
-@import 'sections/home/promo';
-@import 'sections/home/video';
-@import 'sections/home/plans';
-@import 'sections/home/functions';
-@import 'sections/home/writing';
-@import 'sections/home/quotes';
-@import 'sections/home/employers';
+// @import 'sections/home/home';
+// @import 'sections/home/stickyNav';
+// @import 'sections/home/hero';
+// @import 'sections/home/professions';
+// @import 'sections/home/promo';
+// @import 'sections/home/video';
+// @import 'sections/home/plans';
+// @import 'sections/home/writing';
+// @import 'sections/home/quotes';
+// @import 'sections/home/employers';
 
 // Premium samples
-@import 'sections/premium/samples/main.scss';
-@import 'sections/premium/samples/header.scss';
-@import 'sections/premium/samples/slider.scss';
-@import 'sections/premium/samples/dots.scss';
-@import 'sections/premium/samples/ui.scss';
-@import 'sections/premium/samples/gallery.scss';
-@import 'sections/premium/samples/overview.scss';
-@import 'sections/premium/samples/sections.scss';
+// @import 'sections/premium/samples/main';
+// @import 'sections/premium/samples/header';
+// @import 'sections/premium/samples/slider';
+// @import 'sections/premium/samples/dots';
+// @import 'sections/premium/samples/gallery';
+
+// Premium mobile
+// @import 'sections/premium/mobile/overview';
+// @import 'sections/premium/mobile/sections';
 
 // Premium account
-@import 'sections/premium/overview/main';
-@import 'sections/premium/overview/premium/header';
-@import 'sections/premium/overview/premium/slides';
-@import 'sections/premium/overview/premium/ui';
-@import 'sections/premium/overview/premium/clouds';
+// @import 'sections/premium/overview/main';
+// @import 'sections/premium/overview/premium/header';
+// @import 'sections/premium/overview/premium/slides';
+// @import 'sections/premium/overview/premium/ui';
+// @import 'sections/premium/overview/premium/clouds';
 
 // blog
-@import 'sections/blog/grid';
-@import 'sections/blog/article';
-@import 'sections/blog/social';
+// @import 'sections/blog/grid';
+// @import 'sections/blog/article';
+// @import 'sections/blog/social';
 
 // samples
 @import 'sections/samples/samples';
+@import 'sections/samples/samplesNav';
 @import 'sections/samples/samplesItems';
+@import 'sections/samples/sample';
+@import 'sections/samples/sampleWord';
+@import 'sections/samples/samplePage';
+@import 'sections/samples/offer';
 
 // states
 @import 'states/states';

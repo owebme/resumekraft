@@ -6,11 +6,15 @@ module.exports = function(){
     		'assets/js/libs/jquery.swipeUpDown.js',
     		'assets/js/libs/modernizr.custom.js',
     		'assets/js/libs/fastclick.js',
-    		'assets/js/libs/riot-3.3.2/riot+compiler.update.js',
+    		'assets/js/libs/riot-3.6.0/riot+compiler.update.js',
+            'assets/js/libs/riot/riot-i18n.js',
             'assets/js/libs/baobab.js',
+            'assets/js/libs/moment.min.js',
+            'assets/js/libs/moment.ru.js',
     		'assets/js/libs/underscore-min.js',
     		'assets/js/libs/iscroll.js',
     		'assets/js/libs/TweenMax-1.19.0.min.js',
+            'assets/js/libs/file-saver/FileSaver.min.js',
             'assets/js/libs/parallax.js',
             'assets/js/libs/circliful/js/jquery.circliful.js',
     		'assets/js/libs/afterlag-js/dist/afterlag.min.js',
@@ -18,7 +22,10 @@ module.exports = function(){
             'assets/js/libs/anime/anime.min.js',
             'assets/js/libs/waves/waves.min.js',
             'assets/js/libs/slick/slick.min.js',
-    		'assets/js/libs/store.min.js'])
+            'assets/js/libs/html-docx.js',
+    		'assets/js/libs/store.min.js',
+            'assets/js/libs/navigo.min.js',
+            'assets/js/libs/stickyfill/dist/stickyfill.min.js'])
     		.pipe(concat('libs.js'))
     		.pipe(uglify())
     		.pipe(gulp.dest('./public/js'));
@@ -60,8 +67,16 @@ module.exports = function(){
             'assets/js/plugins/scroll/scroll.Animate.js',
             'assets/js/plugins/scroll/scroll.Parallax.js',
             'assets/js/plugins/scroll/scroll.Content.js',
-            'public/js/sections/*.js',
-            'assets/js/libs/history.js/scripts/bundled/html5/jquery.history.js'])
+            'assets/js/components/i18n/i18n.js',
+            'assets/js/components/i18n/resume/basic/template/ru.js',
+            'assets/js/store/resume/commons/education.js',
+            'assets/js/store/resume/commons/languages.js',
+            'assets/js/store/resume/commons/resume.js',
+            'assets/js/store/resume/commons/salary.js',
+            'assets/js/store/resume/commons/country.js',
+            'assets/js/store/resume/commons/dictionary.js',
+            'assets/js/store/month.js',
+            'public/js/sections/*.js'])
     		.pipe(concat('app.js'))
     		.pipe(uglify())
     		.pipe(gulp.dest('./public/js'));

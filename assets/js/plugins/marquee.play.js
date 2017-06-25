@@ -73,6 +73,9 @@
                 _this.run();
             }, this.options.pause * 1000);
         },
+        stop: function(){
+            this.clear();
+        },
         clear: function(){
             clearInterval(this.interval);
             clearTimeout(this.timeout);

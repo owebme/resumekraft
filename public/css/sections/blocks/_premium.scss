@@ -1,0 +1,28 @@
+section-premium-account {
+    @extend .display-block;
+    @extend .w100p;
+    @extend .pt95;
+    @extend .bg-snowA;
+    @extend .text-center;
+    @extend .overflow-hidden;
+    @extend .mb--l;
+
+    .bg {
+        @extend .display-block;
+        @extend .centered-h;
+        @extend .mt25;
+        width:1896px;
+        height:831px;
+        @extend .bg-cover;
+        background-image:url('/public/images/sections/macbook_large.jpg');
+
+        html.d-tablet & {
+            width:1124px;
+            height:493px;
+            background-image:url('/public/images/sections/macbook_medium_2x.jpg');
+        }
+        html.d-retina.d-no-tablet & {
+            background-image:url('/public/images/sections/macbook_large_2x.jpg');
+        }
+    }
+}

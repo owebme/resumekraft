@@ -1,0 +1,38 @@
+<sample-modal class="oScreen zIndex-100" data-open={ active } data-show="modal" data-color="white">
+
+    <div class="modal__close" onClick={ hide } onUpdate="none">
+        <div class="modal__close__icon">
+            <svg xmlns="http://www.w3.org/2000/svg">
+                <polygon points="10,16 16,16 16,10 18,10 18,16 24,16 24,18 18,18 18,24 16,24 16,18 10,18"></polygon>
+            </svg>
+        </div>
+    </div>
+
+    <div ref="wrapper" class="oScreen__content">
+        <div class="oScreen__modal modal modal-l">{ content }</div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.show = function(content){
+        app.$dom.body.addClass("no-scroll");
+
+        $.update({
+            content: content || null,
+            active: true
+        })
+    };
+
+    $.hide = function(){
+        app.$dom.body.removeClass("no-scroll");
+
+        $.update({
+            active: false
+        })
+    };
+
+</script>
+
+</sample-modal>

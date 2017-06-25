@@ -17,66 +17,13 @@ premium-samples-slider {
             transform:translate3d(-20vw, 0, 0);
         }
         .slick-arrow {
-            @extend .pos-abs;
             top:52px;
-            @extend .w60;
-            @extend .h60;
-            @extend .border-none;
-            @extend .fontSize-0;
-            @extend .opacity-100;
-            @extend .bg-none;
-            @extend .transition-default;
-            @extend .borderRadius-circle;
-            @extend .cursor-pointer;
-            box-shadow:inset 0 0 0 1px #d8dadc;
-            @extend .zIndex-1;
-
-            &.slick-disabled {
-                @extend .opacity-0;
-                @extend .pointerEvents-none;
-            }
-            &:before,
-            &:after {
-                @extend .content-empty;
-                @include abs_50(20, 12);
-                @extend .bg-cover;
-                @extend .transition-default;
-            }
-            &:before {
-                @extend .opacity-0;
-                background:url('/public/images/premium/samples/arrow_white.svg');
-            }
-            &:after {
-                background:url('/public/images/premium/samples/arrow.svg');
-            }
-            &:hover {
-                @extend .bg-primary;
-                @extend .cursor-pointer;
-                box-shadow:inset 0 0 0 1px $primary;
-
-                &:before {
-                    @extend .opacity-100;
-                }
-                &:after {
-                    @extend .opacity-0;
-                }
-            }
         }
         .slick-prev {
             @extend .l-l;
-
-            &:before,
-            &:after {
-                transform:translate3d(0, 0, 0) rotate(-90deg);
-            }
         }
         .slick-next {
             @extend .r-l;
-
-            &:before,
-            &:after {
-                transform:translate3d(0, 0, 0) rotate(90deg);
-            }
         }
         .slick-track {
             @extend .bg-snow357;

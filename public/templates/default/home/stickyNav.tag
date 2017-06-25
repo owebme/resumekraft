@@ -15,7 +15,7 @@
     <div data-balloon="Наши предложения" data-balloon-pos="left" class="sticky__nav__button" data-scrollto="section-plans">
         <div class="sticky__nav__button__item"></div>
     </div>
-    <div data-balloon="Заказать резюме" data-balloon-pos="left" class="sticky__nav__button" data-scrollto="section-writing">
+    <div data-balloon="Премиум аккаунт" data-balloon-pos="left" class="sticky__nav__button" data-scrollto="section-premium-account">
         <div class="sticky__nav__button__item"></div>
     </div>
 

@@ -1,0 +1,38 @@
+.twitter-typeahead {
+    @extend .w100p;
+}
+.tt-hint {
+    @extend .w100p;
+    @extend .pt1;
+    color:rgba($silver,.8) !important;
+    @extend .pointerEvents-none;
+}
+.tt-menu {
+    width:480px;
+    margin:12px 0;
+    padding:8px 0;
+    @extend .bg-white;
+    @extend .borderRadius-l;
+    box-shadow:0 16px 62px -10px rgba(31,35,37,.4), 1px 0 0 0 rgba(31,45,61,.08), 0 1px 0 0 rgba(31,45,61,.08), -1px 0 0 0 rgba(31,45,61,.08), 0 -1px 0 0 rgba(31,45,61,.08);
+}
+.tt-suggestion {
+    @extend .c-slateA;
+    @extend .fontFamily-myriad;
+    font-size:18px;
+    line-height:24px;
+    padding:3px 20px;
+}
+.tt-suggestion:hover,
+.tt-suggestion.tt-cursor {
+    @extend .cursor-pointer;
+    @extend .c-white;
+    @extend .bg-blueLight;
+
+    .tt-highlight {
+        @extend .c-white;
+    }
+}
+.tt-highlight {
+    @extend .c-primary;
+    @extend .fontWeight-5;
+}

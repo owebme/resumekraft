@@ -14,17 +14,21 @@
 
         <home-video></home-video>
 
-        <section-main-blocks></section-main-blocks>
+        <section-main-blocks counter={ opts.vacancyCounter } utils={ opts.utils }></section-main-blocks>
 
         <section-plans></section-plans>
 
         <section-functions></section-functions>
 
-        <section-writing></section-writing>
+        <!-- <section-writing></section-writing> -->
 
-        <home-quotes></home-quotes>
+        <!-- <home-quotes></home-quotes> -->
 
-        <home-employers></home-employers>
+        <section-premium-account></section-premium-account>
+
+        <section-resume-medium></section-resume-medium>
+
+        <home-employers counter={ opts.vacancyCounter } utils={ opts.utils }></home-employers>
 
     </div>
 

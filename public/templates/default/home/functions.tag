@@ -1,7 +1,7 @@
 <section-functions class="content__section" data-gradient="blue">
 
     <div class="container">
-        <div class="row">
+        <div class="row ptb-l">
             <div class="col-md-14">
                 <div class="orbit-holder">
                 	<div class="orbits">
@@ -78,6 +78,17 @@
                     <div class="btn btn-xl btn-rounded btn-white-hover-success mb50">
                         <span class="btn-label">Создать резюме</span>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="content__block" data-light="true">
+                <div class="col-md-16 centered">
+                    <h1 class="mb-m c-white">Каждый может создать своё лучшее резюме прямо сейчас</h1>
+                    <p class="text mb25">Открываем аккаунт и создаём резюме прямо сейчас.</p>
+                    <a href="/auth/signup" class="btn btn-xl btn-rounded btn-white-hover-outline">
+                        <span class="btn-label fontWeight-5">Создать резюме</span>
+                    </a>
                 </div>
             </div>
         </div>

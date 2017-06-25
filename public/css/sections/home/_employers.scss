@@ -9,16 +9,23 @@ home-employers {
     .employers__total {
         @extend .m0-auto;
         @extend .flex-column-centered;
-        @extend .w180;
-        @extend .h150;
+        @extend .h160;
         @extend .borderRadius-l;
+        @extend .cursor-pointer;
         box-shadow:0 0 0 1px rgba($white,.3);
+        transition:box-shadow 0.3s $cubic215;
 
+        &:hover {
+            box-shadow:0 0 0 1px rgba($white,.4);
+        }
         &__title {
-            font-size:68px;
-            line-height:68px;
+            font-size:58px;
+            line-height:70px;
             @extend .fontWeight-3;
             @extend .fontFamily-myriad;
+        }
+        &__text {
+            @extend .c-breeze;
         }
     }
     .employers__logo {

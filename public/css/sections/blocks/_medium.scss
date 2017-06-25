@@ -1,0 +1,29 @@
+section-resume-medium {
+    @extend .display-block;
+    @extend .pt95;
+    @extend .bg-snowA;
+    @extend .overflow-hidden;
+
+    .bg {
+        @extend .pos-rel;
+        @extend .centered-h;
+        @extend .mt-l;
+        width: 1814px;
+        height: 984px;
+        @extend .bg-cover;
+        background:url("/public/images/sections/phones_large.jpg");
+
+        html.d-tablet & {
+            width:1397px;
+            height:758px;
+            background-image:url('/public/images/sections/phones_medium_2x.jpg');
+        }
+        html.d-retina.d-no-tablet & {
+            background-image:url('/public/images/sections/phones_large_2x.jpg');
+        }
+    }
+    .button {
+        @extend .pos-centered;
+        margin-top:-43px;
+    }
+}

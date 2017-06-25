@@ -5,11 +5,16 @@ module.exports = function(){
             res.redirect('/private');
         }
         else {
-            var output = app.riot.render(app.tags("home", req.device), req.appClient);
-            res.render('index', {
-                content: output,
-                device: req.device.type,
-                isMobile: req.device.isMobile
+            var countsAll = app.config.public.get('hh:vacancy:counter');
+            app.redis.get("jobsCountsAll", function(err, data) {
+                if (!err && data) countsAll = data;
+                req.appClient.vacancyCounter = countsAll;
+                var output = app.riot.render(app.tags("home", req.device), req.appClient);
+                res.render('index', {
+                    content: output,
+                    device: req.device.type,
+                    isMobile: req.device.isMobile
+                });
             });
         }
     });
@@ -87,15 +92,14 @@ module.exports = function(){
             });
         }
     });
-    app.get('/premium/samples/mobile', function(req, res) {
-        if (req.device.type == "phone"){
-            res.redirect(302, '/premium/demo');
-        }
-        else {
-            res.render('workflow', {
-                device: req.device.type
-            });
-        }
+    app.get('/premium/samples', function(req, res) {
+        var output = app.riot.render(app.tags("premiumSamples", req.device), req.appClient);
+        res.render('index', {
+            title: app.config.get('title:premium'),
+            content: output,
+            device: req.device.type,
+            isMobile: req.device.isMobile
+        });
     });
     app.get('/premium/promo', function(req, res) {
         if (req.device.type == "phone"){
@@ -107,8 +111,8 @@ module.exports = function(){
             });
         }
     });
-    app.get('/premium/samples', function(req, res) {
-        var output = app.riot.render(app.tags("premiumSamples", req.device), req.appClient);
+    app.get('/premium/mobile', function(req, res) {
+        var output = app.riot.render(app.tags("premiumMobile", req.device), req.appClient);
         res.render('index', {
             title: app.config.get('title:premium'),
             content: output,
@@ -116,6 +120,17 @@ module.exports = function(){
             isMobile: req.device.isMobile
         });
     });
+    app.get('/premium/mobile/samples', function(req, res) {
+        if (req.device.type == "phone"){
+            res.redirect(302, '/premium/demo');
+        }
+        else {
+            res.render('workflow', {
+                device: req.device.type
+            });
+        }
+    });
+
     app.get('/premium/demo', app.controllers.resume("demo"));
     app.get('/premium/editing', app.controllers.resume("demo-editing"));
 
@@ -145,6 +160,16 @@ module.exports = function(){
         });
     });
 
+    app.get('/gift/:id', function(req, res) {
+        var output = app.riot.render(app.tags("gift", req.device), req.appClient);
+        res.render('index', {
+            title: "Вы обладатель подарка",
+            content: output,
+            device: req.device.type,
+            isMobile: req.device.isMobile
+        });
+    });
+
     app.get('/jobs/', function(req, res) {
         res.redirect(302, '/jobs/search');
     });
@@ -157,6 +182,8 @@ module.exports = function(){
     app.get('/blog/:alias', app.controllers.blog.content);
 
     app.get('/samples/', app.controllers.samples.index);
+    app.get('/samples/alpha/:alpha', app.controllers.samples.alphabet);
+    app.get('/samples/:alias/:name', app.controllers.samples.content);
 
     app.get('/parser/all', app.controllers.parser);
 

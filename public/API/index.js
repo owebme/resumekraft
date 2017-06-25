@@ -18,6 +18,9 @@ module.exports = function(url){
 	// Blog public API
 	require('./blog')(url + '/blog');
 
+	// Samples public API
+	require('./samples')(url + '/samples');
+
 	// JPtest public API
 	require('./jptest')(url + '/jptest');
 

@@ -6,7 +6,9 @@
                 <div class="content__block">
 
                     <h1 class="mb-m c-primary">Наши предложения</h1>
-                    <p class="c-gray text mb50">Оплачиваете один раз и пользуетесь всегда.</p>
+                    <p class="c-gray text mb-s">Оплачиваете один раз и пользуетесь всегда.</p>
+
+                    <a href="/premium/samples/mobile" class="link-primary link-m mb45">У вас есть промокод?</a>
 
                     <div class="row">
                         <div class="col-md-8 plan__wrapper">
@@ -30,7 +32,7 @@
                                     <div class="plan__item"><svg width="36" height="1" viewBox="0 0 36 1"><path class="fill-silver" d="M0 .5c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5z"></path></svg></div>
                                 </div>
                                 <div class="plan__progress">
-                                    <div class="c-gray">Получение работы</div>
+                                    <div class="c-primary">Получение работы</div>
                                     <div>от 14 до 60 дней</div>
                                     <div class="plan__progress__line w45p">
                                         <div class="plan__progress__line__item"></div>
@@ -66,8 +68,8 @@
                                     <div class="plan__item"><svg width="36" height="1" viewBox="0 0 36 1"><path class="fill-silver" d="M0 .5c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5zm10 0c0-.276.228-.5.491-.5h5.018c.271 0 .491.232.491.5 0 .276-.228.5-.491.5h-5.018c-.271 0-.491-.232-.491-.5z"></path></svg></div>
                                 </div>
                                 <div class="plan__progress">
-                                    <div class="c-gray">Получение работы</div>
-                                    <div>от 5 до 21 дней</div>
+                                    <div class="c-primary">Получение работы</div>
+                                    <div>от 5 до 18 дней</div>
                                     <div class="plan__progress__line w80p">
                                         <div class="plan__progress__line__item" data-delay="0.25"></div>
                                     </div>
@@ -100,8 +102,8 @@
                                     <div class="plan__item">Видео обращение<span class="plan__item__help" data-balloon-length="m" data-balloon-borderRadius="l" data-balloon="Добавьте видео обращение для вашего работодателя"><icon-que></icon-que></span></div>
                                 </div>
                                 <div class="plan__progress">
-                                    <div class="c-gray">Получение работы</div>
-                                    <div>от 2 до 7 дней</div>
+                                    <div class="c-primary">Получение работы</div>
+                                    <div>от 2 до 10 дней</div>
                                     <div class="plan__progress__line w100p">
                                         <div class="plan__progress__line__item" data-delay="0.5"></div>
                                     </div>

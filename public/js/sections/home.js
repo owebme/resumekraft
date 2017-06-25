@@ -27,9 +27,21 @@
 
             WD.createAccount();
 
+            WD.imagesLoaded();
+
             app.metrika.set("views.home", 1, {
                 action: "inc"
             })
+        },
+
+        imagesLoaded: function(){
+            var imagesLoaded = new app.plugins.imagesLoaded({
+                container: WD.el[0]
+            });
+
+            imagesLoaded.load({
+                timeout: 2000
+            });
         },
 
         slider: function(){
@@ -161,6 +173,25 @@
                             $elem.closest("section-plans")
                             .find(".plan__progress__line__item")
                             .addClass("-anim");
+                        }
+                    },
+                    {
+                        delta: "s",
+                        elem: "home-employers",
+                        callback: function($elem, i){
+                            var $item = $elem.find(".employers__total__title")[0],
+                                data = {
+                                    changed: 0
+                                }
+                            anime({
+                                targets: data,
+                                changed: parseInt($item.getAttribute("data-count")),
+                                round: 1,
+                                easing: 'easeOutCubic',
+                                update: function() {
+                                    $item.innerHTML = _.numberFormat(data.changed, 0, ".", "'");
+                                }
+                            });
                         }
                     }
                 ]

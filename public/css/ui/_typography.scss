@@ -48,6 +48,20 @@ p {
             line-height:32px;
             letter-spacing:0.016em;
         }
+		&.-caption {
+            @extend .fontFamily-sfdisplay;
+            @extend .fontWeight-normal;
+            font-size:24px;
+            line-height:1.08;
+            letter-spacing:0.016em;
+        }
+		&.-large {
+			@extend .fontFamily-sfdisplay;
+			@extend .fontWeight-5;
+			font-size:32px;
+			line-height:1.25;
+			letter-spacing:.004em;
+		}
     }
 }
 sup, sub {
