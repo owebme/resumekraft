@@ -183,6 +183,7 @@ module.exports = function(){
 
     app.get('/samples/', app.controllers.samples.index);
     app.get('/samples/alpha/:alpha', app.controllers.samples.alphabet);
+    app.get('/samples/clusters/:alias/:name', app.controllers.samples.clusters);
     app.get('/samples/:alias/:name', app.controllers.samples.content);
 
     app.get('/parser/all', app.controllers.parser);

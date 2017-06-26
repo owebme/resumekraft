@@ -38,6 +38,7 @@
                                 alpha_: params.alpha
                             })[0];
                             section.one("updated", function(){
+                                WD.$clusters.clear();
                                 WD.mode("samples");
                             });
                             section.update();
@@ -89,9 +90,8 @@
 
             WD.sample = app.sections.sample;
 
-            app.sections.trigger("ready");
-
             app.sections.on("afterMounted", function(){
+                WD.$clusters = WD.el.find("samples-clusters")[0]._tag;
                 WD.$alphabet = WD.el.find("samples-alphabet")[0]._tag;
                 app.features.samples.init(WD.el);
             });
@@ -99,6 +99,8 @@
             WD.nav();
 
             WD.search();
+
+            app.sections.trigger("ready");
 
             app.metrika.set("views.samples", 1, {
                 action: "inc"

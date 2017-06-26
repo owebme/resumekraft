@@ -62,7 +62,7 @@ gulp.task('watch', function() {
 	gulp.watch([
 		'assets/css/style.scss',
 		'assets/css/**/*.scss'
-	], gulp.series('medium.css'));
+	], gulp.series('premium.css'));
 
 	gulp.watch([
 		'assets/css/**/templates/style.scss',
@@ -130,15 +130,15 @@ gulp.task('sftp', gulp.parallel('sftp-assets.js', 'sftp-assets.css', 'sftp-premi
 
 gulp.task('build', gulp.series(
 	gulp.parallel(
-		//'css.build',
-		// gulp.series('promo.js', 'promo.app.build'),
-		gulp.series('public.js', 'public.app.dev', 'public.app.build')
-		// gulp.series('workflow.js', 'workflow.build'),
-		// gulp.series('public.js.mobile', 'public.app.build.mobile'),
-		// gulp.series('private.js.build', 'private.templates', 'private.app', 'private.app.build'),
-		// gulp.series('premium.js.build', 'premium.app.build'),
-		// gulp.series('jobs.js.build', 'jobs.app.build'),
-		// gulp.series('resumeView.build')
+		'css.build',
+		gulp.series('promo.js', 'promo.app.build'),
+		gulp.series('public.js', 'public.app.dev', 'public.app.build'),
+		gulp.series('workflow.js', 'workflow.build'),
+		gulp.series('public.js.mobile', 'public.app.build.mobile'),
+		gulp.series('private.js.build', 'private.templates', 'private.app', 'private.app.build'),
+		gulp.series('premium.js.build', 'premium.app.build'),
+		gulp.series('jobs.js.build', 'jobs.app.build'),
+		gulp.series('resumeView.build')
 	)
 ));
 

@@ -25,6 +25,7 @@ module.exports = function(){
             'assets/js/libs/html-docx.js',
     		'assets/js/libs/store.min.js',
             'assets/js/libs/navigo.min.js',
+            'assets/js/libs/typeahead/dist/typeahead.bundle.min.js',
             'assets/js/libs/stickyfill/dist/stickyfill.min.js'])
     		.pipe(concat('libs.js'))
     		.pipe(uglify())
@@ -43,6 +44,8 @@ module.exports = function(){
             'assets/js/components/features/orbits.js',
             'assets/js/components/features/premium.js',
             'assets/js/components/features/jptest.js',
+            'assets/js/components/features/samples.js',
+            'assets/js/components/features/fireworks.js',
             'public/js/commons/config.js',
             'public/js/commons/metrika.js',
             'public/js/commons/sections.js',
@@ -75,6 +78,8 @@ module.exports = function(){
             'assets/js/store/resume/commons/salary.js',
             'assets/js/store/resume/commons/country.js',
             'assets/js/store/resume/commons/dictionary.js',
+            'assets/js/store/resume/premium/colors.js',
+            'assets/js/store/samples.js',
             'assets/js/store/month.js',
             'public/js/sections/*.js'])
     		.pipe(concat('app.js'))
@@ -86,6 +91,7 @@ module.exports = function(){
     	return gulp.src(['public/templates/commons/modules/auth/*.tag',
             'public/templates/commons/modules/auth/**/*.tag',
             'public/templates/default/blog/blogGrid.tag',
+            'assets/templates/modules/player.html',
             'assets/templates/modules/oScreenLoader.html',
             'assets/templates/v3/modules/notify.html',
             'assets/templates/modules/loaderUser.html',
@@ -93,11 +99,17 @@ module.exports = function(){
             'assets/templates/sections/jptest/*.html',
             'assets/templates/sections/jptest/**/*.html',
             '!assets/templates/sections/jptest/jptest.html',
+            'public/templates/client/samples/samplePage.html',
+            'public/templates/client/samples/sampleModal.html',
             'public/templates/client/home/planPremium.html',
             'public/templates/client/blog/popup/blogSubscribe.html',
             'public/templates/client/blog/popup/blogSubscribeForm.html',
             'assets/templates/ui/icons/icon-link.html',
             'assets/templates/ui/icons/icon-replyMail.html',
+            'public/templates/default/samples/sampleContent.tag',
+            'public/templates/default/samples/samplesItems.tag',
+            'public/templates/default/samples/samplesAlphabet.tag',
+            'public/templates/default/samples/samplesClusters.tag',
             'public/templates/commons/icons/icon-premium.tag',
             'public/templates/commons/icons/social/icon-fb.tag',
             'public/templates/commons/icons/social/icon-vk.tag',
@@ -167,8 +179,7 @@ module.exports = function(){
     	return gulp.src(['public/js/libs.js',
             'public/js/app.js',
             'assets/js/plugins/scroll/scroll.Parallax.build.js',
-            'public/js/templates.js',
-            'public/js/init.js'])
+            'public/js/templates.js'])
     		.pipe(concat('app.build.js'))
     		.pipe(gulp.dest('./public/js'));
     });

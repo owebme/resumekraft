@@ -10,7 +10,7 @@
 
         <home-professions></home-professions>
 
-        <home-promo></home-promo>
+        <home-promo utils={ opts.utils }></home-promo>
 
         <home-video></home-video>
 

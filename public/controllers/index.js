@@ -19,7 +19,8 @@ module.exports = function(){
     app.controllers.samples = {
         index: require('./samples')(),
         content: require('./samples/content')(),
-        alphabet: require('./samples/alphabet')()
+        alphabet: require('./samples/alphabet')(),
+        clusters: require('./samples/clusters')()
     }
 
     app.controllers.parser = require('./parser')();

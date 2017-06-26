@@ -5,7 +5,7 @@ module.exports = function(){
         app.async.parallel({
 
             items: function(callback){
-                API.samples.items(app.config.public.get('samples:limit'), function(err, data){
+                API.samples.cluster(req.params.alias, function(err, data){
                     callback(err, data);
                 })
             },
@@ -21,6 +21,7 @@ module.exports = function(){
             if (!err && data){
 
                 req.appClient.data = {
+                    cluster: req.params.alias,
                     items: data.items
                 };
                 var output = app.riot.render(app.tags("samples", req.device), req.appClient);

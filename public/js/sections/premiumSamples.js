@@ -33,7 +33,7 @@
                 container: WD.el[0]
             });
 
-            imagesLoaded.on("complete", function(elem){
+            imagesLoaded.once("complete", function(elem){
                 WD.gallery();
             });
 

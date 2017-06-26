@@ -1,8 +1,10 @@
 {
   "watch" : [
-      "/assets/API/**",
+      "/assets/API/*.js",
+      "/assets/API/**/*.js",
       "/libs/*.*",
-      "/public/API/**",
+      "/public/API/*.js",
+      "/public/API/**/*.js",
       "/public/controllers/**",
       "/public/router/*.*",
       "/public/templates/**/*.*",

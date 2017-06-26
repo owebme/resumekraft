@@ -183,14 +183,10 @@
                             <div class="section__phone__figure progressive-image">
                                 <div class="phone__figure__screen" data-section="overview-salary">
                                     <div class="screens screens-tablet screens-desktop" data-vertical="false" data-play="true" data-autorun="false">
-                                        <div class="screen screen--active">
-                                            <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/premium/samples/overview/phone_screen_salary_large_2x.png)"></div>
-                                        </div>
-                                        <div class="screen">
-                                            <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/premium/samples/overview/phone_screen_man1_large_2x.jpg)">
-                                                <phone-screen-nav data-color="#0084ff"></phone-screen-nav>
-                                                <div class="phone__figure__screen__pointer" data-item="salary"></div>
-                                            </div>
+                                        <div class="screen screen--active bg-cover progressive-image" style="background-image:url(/public/images/premium/samples/overview/phone_screen_salary_large_2x.png)"></div>
+                                        <div class="screen bg-cover progressive-image" style="background-image:url(/public/images/premium/samples/overview/phone_screen_man1_large_2x.jpg)">
+                                            <phone-screen-nav data-color="#0084ff"></phone-screen-nav>
+                                            <div class="phone__figure__screen__pointer" data-item="salary"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -271,13 +267,9 @@
                             <div class="section__phone__figure progressive-image">
                                 <div class="phone__figure__screen" data-section="overview-simple">
                                     <div class="screens screens-tablet screens-desktop" data-vertical="false" data-play="true" data-autorun="false">
-                                        <div class="screen screen--active">
-                                            <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/premium/samples/overview/phone_screen_hobby1_large_2x.png)"></div>
-                                        </div>
-                                        <div class="screen">
-                                            <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/premium/samples/overview/phone_screen_hobby2_large_2x.png)">
-                                                <phone-screen-nav data-color="#0084ff"></phone-screen-nav>
-                                            </div>
+                                        <div class="screen screen--active bg-cover progressive-image" style="background-image:url(/public/images/premium/samples/overview/phone_screen_hobby1_large_2x.png)"></div>
+                                        <div class="screen bg-cover progressive-image" style="background-image:url(/public/images/premium/samples/overview/phone_screen_hobby2_large_2x.png)">
+                                            <phone-screen-nav data-color="#0084ff"></phone-screen-nav>
                                         </div>
                                     </div>
                                 </div>
@@ -293,28 +285,18 @@
                             <div class="section__phone__figure progressive-image">
                                 <div class="phone__figure__screen" data-section="overview-inbox">
                                     <div class="screens screens-tablet screens-desktop" data-vertical="false">
-                                        <div class="screen screen--active">
-                                            <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/premium/samples/overview/phone_screen_inbox1_large_2x.png)">
-                                                <div class="phone__figure__screen__pointer" data-item="inbox"></div>
-                                            </div>
+                                        <div class="screen screen--active bg-cover progressive-image" style="background-image:url(/public/images/premium/samples/overview/phone_screen_inbox1_large_2x.png)">
+                                            <div class="phone__figure__screen__pointer" data-item="inbox"></div>
                                         </div>
-                                        <div class="screen">
-                                            <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/premium/samples/overview/phone_screen_inbox2_large_2x.png)"></div>
-                                        </div>
+                                        <div class="screen bg-cover progressive-image" style="background-image:url(/public/images/premium/samples/overview/phone_screen_inbox2_large_2x.png)"></div>
                                     </div>
                                     <div class="screens screens-tablet screens-desktop" data-vertical="true">
-                                        <div class="screen screen--active">
-                                            <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/premium/samples/overview/phone_screen_man2_large_2x.jpg)">
-                                                <div class="phone__figure__screen__pointer" data-item="feedback"></div>
-                                            </div>
+                                        <div class="screen screen--active bg-cover progressive-image" style="background-image:url(/public/images/premium/samples/overview/phone_screen_man2_large_2x.jpg)">
+                                            <div class="phone__figure__screen__pointer" data-item="feedback"></div>
                                         </div>
-                                        <div class="screen">
-                                            <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/premium/samples/overview/phone_screen_feedback_large_2x.png)"></div>
-                                        </div>
-                                        <div class="screen">
-                                            <div class="screen__content pos-abs-full bg-cover progressive-image" style="background-image:url(/public/images/premium/samples/overview/phone_screen_inbox1_large_2x.png)">
-                                                <div class="phone__figure__screen__pointer" data-item="inbox"></div>
-                                            </div>
+                                        <div class="screen bg-cover progressive-image" style="background-image:url(/public/images/premium/samples/overview/phone_screen_feedback_large_2x.png)"></div>
+                                        <div class="screen bg-cover progressive-image" style="background-image:url(/public/images/premium/samples/overview/phone_screen_inbox1_large_2x.png)">
+                                            <div class="phone__figure__screen__pointer" data-item="inbox"></div>
                                         </div>
                                         <phone-screen-nav data-color="#0084ff"></phone-screen-nav>
                                     </div>

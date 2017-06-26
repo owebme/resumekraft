@@ -1,6 +1,6 @@
 module.exports = function(){
 
-    var path = "/var/www/resume/data/www/v2.resumekraft.ru",
+    var path = "/var/www/resume/data/resumenext.ru",
         gulpSSH = new GulpSSH({
     	ignoreErrors: false,
     	sshConfig: {
@@ -46,7 +46,8 @@ module.exports = function(){
             'public/js/app.build.mobile.js',
             'public/js/app.build.resume.js',
             'public/js/app.promo.build.js',
-            'public/js/app.build.jobs.js'
+            'public/js/app.build.jobs.js',
+            'public/js/init.js'
         ])
         .pipe(gulpSSH.dest(path + '/public/js/'));
     });
@@ -54,7 +55,7 @@ module.exports = function(){
     	return gulp.src(['public/js/resume/config.js',
             'public/js/resume/init.js'
         ])
-        .pipe(gulpSSH.dest(path + '/public/js/'));
+        .pipe(gulpSSH.dest(path + '/public/js/resume/'));
     });
     gulp.task('sftp-public.css', function () {
     	return gulp.src(['public/css/style.css',

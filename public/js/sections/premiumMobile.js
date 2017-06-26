@@ -15,31 +15,9 @@
 
             WD.$section = WD.el.find("premium-mobile-overview");
 
-            WD.onScroll()
+            WD.onScroll();
             WD.header();
-            WD.screens();
-            WD.btnInfo();
-            WD.video();
-            WD.colors();
-            WD.salary();
-            WD.inbox();
-            WD.tracker();
-            WD.slider();
-
-            var imagesLoaded = new app.plugins.imagesLoaded({
-                container: WD.el[0]
-            });
-
-            imagesLoaded.load({
-                timeout: 10000
-            });
-
-            app.sections.on("afterMounted", function(){
-                app.tag("section-player", function(tag){
-                    WD.player = tag;
-                });
-            });
-            app.sections.trigger("ready");
+            WD.animate();
 
             app.metrika.set("views.premiumMobile", 1, {
                 action: "inc"
@@ -60,11 +38,37 @@
             });
 
             layersLoaded.load({
-                imageClassName: "l-progressive"
+                imageClassName: "l-progressive",
+                timeout: 5000
             });
 
-            layersLoaded.on("complete", function(){
-                WD.animate();
+            layersLoaded.once("complete", function(){
+                $afterlag.run(function(){
+                    WD.colors();
+                    WD.slider();
+                    WD.screens();
+                    WD.btnInfo();
+                    WD.video();
+                    WD.salary();
+                    WD.inbox();
+                    WD.tracker();
+
+                    app.sections.trigger("ready");
+                });
+            });
+
+            app.sections.on("afterMounted", function(){
+                var imagesLoaded = new app.plugins.imagesLoaded({
+                    container: WD.el[0]
+                });
+
+                imagesLoaded.load({
+                    timeout: 10000
+                });
+
+                app.tag("section-player", function(tag){
+                    WD.player = tag;
+                });
             });
 
             var parallax = new app.plugins.scroll.ParallaxController({
@@ -231,14 +235,14 @@
                     {
                         elem: ".phone__figure__screen[data-section='overview-btn-info']",
                         callback: function($elem, i){
-                            WD.btnInfo.start();
+                            if (WD.btnInfo.start) WD.btnInfo.start();
                         }
                     },
                     {
                         elem: ".phone__figure__screen[data-section='overview-salary']",
                         callback: function($elem, i){
                             var screens = $elem.children(".screens")[0];
-                            if (screens.play){
+                            if (screens && screens.play){
                                 setTimeout(function(){
                                     screens.play.run(true);
                                 }, 1500);
@@ -249,7 +253,7 @@
                         elem: ".phone__figure__screen[data-section='overview-simple']",
                         callback: function($elem, i){
                             var screens = $elem.children(".screens")[0];
-                            if (screens.play){
+                            if (screens && screens.play){
                                 setTimeout(function(){
                                     screens.play.run(true);
                                 }, 1500);
@@ -259,7 +263,7 @@
                     {
                         elem: ".phone__figure__screen[data-section='overview-inbox']",
                         callback: function($elem, i){
-                            WD.inbox.start();
+                            if (WD.inbox.start) WD.inbox.start();
                         }
                     }
                 ]

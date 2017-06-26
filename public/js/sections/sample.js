@@ -18,7 +18,6 @@
             app.sections.on("afterMounted", function(){
                 WD.offer();
                 WD.modal();
-                WD.slider();
                 WD.saveMSWord();
             });
         },
@@ -41,10 +40,12 @@
             };
             WD.offer.render();
 
-            if (WD.offer.offsetTop && !WD.offer.tracker){
+            if (WD.offer.$el.is(":visible") && WD.offer.offsetTop && !WD.offer.tracker){
 
                 WD.offer.tracker = true;
                 WD.offer.show = false;
+
+                WD.slider();
 
                 (function scrollTracker(){
                     _.raf(scrollTracker);

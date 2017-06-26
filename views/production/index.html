@@ -6,6 +6,12 @@
 
 {% block styles %}{% if device == 'phone' %}{{ cachify('/public/css/style.mobile.css') }}{% else %}{{ cachify('/public/css/style.css') }}{% endif %}{% endblock %}
 
+{% block prefetch %}
+    <link rel="prefetch" href="/premium/samples">
+    <link rel="prefetch" href="/premium/mobile">
+    <link rel="prefetch" href="/premium/">
+{% endblock %}
+
 {% block body %}
 <body id="renderSide"{% if device == 'phone' %} class="appLoading"{% endif %}>
 
@@ -22,14 +28,41 @@
         <jptest-result></jptest-result>
     {% endif %}
 
-    <section-auth></section-auth>
-    <section-notify></section-notify>
-    <section-loader-user></section-loader-user>
+    {% if section == "auth" %}
+        <section-notify></section-notify>
+        <section-loader-user></section-loader-user>
+    {% endif %}
 
     {% if device == 'phone' %}
     <script src="{{ cachify('/public/js/app.build.mobile.js') }}"></script>
     {% else %}
     <script src="{{ cachify('/public/js/app.build.js') }}"></script>
     {% endif %}
+
+    {% if samples %}
+    <script>
+        if ($store && $store.samples){
+            $store.samples.set({{ samples | safe }});
+        }
+    </script>
+    {% endif %}
+
+    {% if clusters %}
+    <script>
+        if ($store && $store.samples){
+            $store.samples.clusters = {{ clusters | safe }};
+        }
+    </script>
+    {% endif %}
+
+    {% if sample %}
+    <script>
+        if ($store && $store.resume){
+            $store.resume.set({{ sample | safe }});
+        }
+    </script>
+    {% endif %}
+
+    <script src="{{ cachify('/public/js/init.js') }}"></script>
 
 {% endblock %}

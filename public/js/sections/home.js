@@ -15,23 +15,45 @@
 
             WD.header();
 
-            WD.content();
-
-            WD.video();
-
-            WD.writing();
-
-            WD.quotes();
-
-            WD.slider();
-
-            WD.createAccount();
-
-            WD.imagesLoaded();
-
             app.metrika.set("views.home", 1, {
                 action: "inc"
             })
+        },
+
+        header: function(){
+            var $phones = WD.el.find('home-hero .phones'),
+                $stickyNav = WD.el.find('.stickyNav'),
+                animHeader = new app.plugins.animate(WD.el, {
+                    showAfter: 1
+                });
+
+            animHeader.show(function(){
+                $phones.attr("data-show", true);
+
+                $afterlag.xl(function(){
+
+                    WD.content();
+
+                    WD.video();
+
+                    WD.writing();
+
+                    WD.quotes();
+
+                    WD.slider();
+
+                    WD.createAccount();
+
+                    WD.imagesLoaded();
+
+                    app.sections.on("afterMounted", function(){
+                        app.tag("section-player", function(tag){
+                            WD.player = tag;
+                        });
+                    });
+                    app.sections.trigger("ready"); // RUN mounting tags
+                });
+            });
         },
 
         imagesLoaded: function(){
@@ -118,26 +140,6 @@
                 .siblings()
                 .removeClass("-active");
     		}
-        },
-
-        header: function(){
-            var $phones = WD.el.find('home-hero .phones'),
-                $stickyNav = WD.el.find('.stickyNav'),
-                animHeader = new app.plugins.animate(WD.el, {
-                    showAfter: 1
-                });
-
-            animHeader.show(function(){
-                $phones.attr("data-show", true);
-                $afterlag.xl(function(){
-                    app.sections.on("afterMounted", function(){
-                        app.tag("section-player", function(tag){
-                            WD.player = tag;
-                        });
-                    });
-                    app.sections.trigger("ready"); // RUN mounting tags
-                });
-            });
         },
 
         content: function(){

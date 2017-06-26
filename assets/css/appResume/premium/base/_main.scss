@@ -37,6 +37,11 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, strong {
 	@extend .bg-primary;
 }
 #app {
+	&[data-mode="editing"]{
+		section-player {
+			@extend .zIndex-101;
+		}
+	}
 	.tutorial__message {
 		border-radius:18px;
 	}

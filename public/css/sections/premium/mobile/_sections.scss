@@ -94,7 +94,7 @@ premium-mobile-overview {
                 width:640px;
                 height:428px;
                 @extend .bg-cover;
-                transition:opacity 0.6s $cubic4258 0.8s;
+                transition:opacity 0.6s $cubic4258 0.5s;
                 background-image:url("/public/images/premium/samples/overview/hero_ipad_hand_large_2x@tiny.png");
                 @extend .zIndex-1;
                 transform:translate3d(-370px, 100px, 0) !important;

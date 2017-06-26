@@ -10,8 +10,8 @@
         </div>
         <div class="row">
             <div class="col-md-20 centered">
-                <div class="section__phone__figure -centered">
-                    <div class="phone__figure__screen" style="background-image:url(/public/images/premium/samples/overview/phone_screen_woman2_large_2x.jpg)">
+                <div class="section__phone__figure -centered progressive-image">
+                    <div class="phone__figure__screen progressive-image" style="background-image:url(/public/images/premium/samples/overview/phone_screen_woman2_large_2x.jpg)">
                         <phone-screen-nav data-color="#0084ff"></phone-screen-nav>
                         <div class="ovpremium__video">
                             <div class="ovpremium__video__play" data-url="https://www.youtube.com/watch?v=2wtiT2rjFrE">
@@ -27,7 +27,7 @@
                 </div>
                 <div class="video__items">
                     <div each={ item in videoList } class="video__item">
-                        <div class="video__item__image" data-url="{ item.url }" data-lang="{ item.lang }" style="background-image:url(/public/images/premium/samples/overview/video/{ item.id }.jpg)">
+                        <div class="video__item__image progressive-image" data-url="{ item.url }" data-lang="{ item.lang }" style="background-image:url(/public/images/premium/samples/overview/video/{ item.id }.jpg)">
                             <div class="video__item__play"></div>
                         </div>
                     </div>

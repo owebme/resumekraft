@@ -22,12 +22,8 @@
     <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicons/120.png">
     <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicons/152.png">
     <link rel="manifest" href="/manifest/{% block manifest %}home{% endblock %}.json">
-    <!-- <link rel="preload" href="http://192.168.1.64:3000/assets/css/fonts/HelveticaNeue/HelveticaNeue-Thin.woff2" as="font" type="font/woff2" crossorigin="true"/>
-    <link rel="preload" href="http://192.168.1.64:3000/assets/css/fonts/HelveticaNeue/HelveticaNeueCyrRoman.woff2" as="font" type="font/woff2" crossorigin="true"/>
-    <link rel="preload" href="http://192.168.1.64:3000/assets/css/fonts/Myriad/myriad-set-pro_text.woff" as="font" type="font/woff" crossorigin="true"/>
-    <link rel="preload" href="http://192.168.1.64:3000/assets/css/fonts/SFDisplay/sf-pro-display_light.woff" as="font" type="font/woff" crossorigin="true"/>
-    <link rel="preload" href="http://192.168.1.64:3000/assets/css/fonts/SFDisplay/sf-pro-display_semibold.woff" as="font" type="font/woff" crossorigin="true"/> -->
     <link id="styles" rel="stylesheet" href="{% block styles %}{% endblock %}">
+    {% block prefetch %}{% endblock %}
 </head>
 {% block body %}{% endblock %}
 </html>

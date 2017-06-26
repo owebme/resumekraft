@@ -6,7 +6,7 @@
     <section-sendmail if={ $State.get('mode') !== "editing" }></section-sendmail>
     <salary-graph-opener if={ $State.get('mode') !== "editing" && $resume.salary.graph.active }></salary-graph-opener>
     <salary-graph></salary-graph>
-    <section-player class="zIndex-101"></section-player>
+    <section-player></section-player>
 
     <sections-control if={ $State.get('mode') === "editing" }>
 
@@ -90,15 +90,6 @@
             graph: $root.tags["salary-graph"]
         }
         $Resume = $root.tags["resume-template1"];
-
-        if ($Player){
-            $Player.on("show", function(){
-                $root.root.setAttribute("data-player", true);
-            });
-            $Player.on("hide", function(){
-                $root.root.setAttribute("data-player", false);
-            });
-        }
     });
 
     this.one("ready", function(){

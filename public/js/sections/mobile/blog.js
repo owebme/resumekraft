@@ -39,7 +39,7 @@
         imagesLoader: function(){
             var imagesLoaded = new app.plugins.imagesLoaded();
 
-            imagesLoaded.on("complete", function(){
+            imagesLoaded.once("complete", function(){
                 app.sections.trigger("ready");
             });
 

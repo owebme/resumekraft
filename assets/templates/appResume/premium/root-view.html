@@ -57,6 +57,15 @@
         }
 
         $Resume = $root.tags["resume-template1"];
+
+        if ($Player){
+            $Player.on("show", function(){
+                $root.root.setAttribute("data-player", true);
+            });
+            $Player.on("hide", function(){
+                $root.root.setAttribute("data-player", false);
+            });
+        }        
     });
 
     this.one("ready", function(){

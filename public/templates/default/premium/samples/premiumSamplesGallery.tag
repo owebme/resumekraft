@@ -15,12 +15,10 @@
                     <div class="phone__screen">
                         <phone-screen-nav data-color="#0084ff"></phone-screen-nav>
                         <div class="screens screens-tablet screens-desktop" data-interval="6">
-                            <div each={ item, i in opts.utils.range(0, 21) } no-reorder class="screen { screen--active : i == 0 }">
-                                <div class="screen__content pos-abs-full bg-cover { progressive-image : i == 0 }" style="background-image:url(/public/images/samples/{ item + 1 }.jpg)">
-                                    <div class="phone__screen__title">
-                                        <div class="phone__screen__title__text">
-                                            { parent.parent.titles[item] }
-                                        </div>
+                            <div each={ item, i in opts.utils.range(0, 21) } no-reorder class="screen { 'screen--active progressive-image' : i == 0 } bg-cover" style="background-image:url(/public/images/samples/{ item + 1 }.jpg)">
+                                <div class="phone__screen__title">
+                                    <div class="phone__screen__title__text">
+                                        { parent.parent.titles[item] }
                                     </div>
                                 </div>
                             </div>
@@ -33,8 +31,7 @@
                     <div class="phone__screen">
                         <phone-screen-nav data-color="#0084ff"></phone-screen-nav>
                         <div class="screens screens-tablet screens-desktop" data-vertical="true" data-interval="5">
-                            <div each={ item, i in opts.utils.range(1, 12) } no-reorder class="screen { screen--active : i == 0 }">
-                                <div class="screen__content pos-abs-full bg-cover { progressive-image : i == 0 }" style="background-image:url(/public/images/premium/samples/overview/gallery/mobile_resume_screen{ item + 1 }.png)"></div>
+                            <div each={ item, i in opts.utils.range(1, 12) } no-reorder class="screen { 'screen--active progressive-image' : i == 0 } bg-cover" style="background-image:url(/public/images/premium/samples/overview/gallery/mobile_resume_screen{ item + 1 }.png)">
                             </div>
                         </div>
                     </div>
@@ -45,12 +42,10 @@
                     <div class="phone__screen">
                         <phone-screen-nav data-color="#0084ff"></phone-screen-nav>
                         <div class="screens screens-tablet screens-desktop" data-interval="7">
-                            <div each={ item, i in opts.utils.range(21, 42) } no-reorder class="screen { screen--active : i == 0 }">
-                                <div class="screen__content pos-abs-full bg-cover { progressive-image : i == 0 }" style="background-image:url(/public/images/samples/{ item + 1 }.jpg)">
-                                    <div class="phone__screen__title">
-                                        <div class="phone__screen__title__text">
-                                            { parent.parent.titles[item] }
-                                        </div>
+                            <div each={ item, i in opts.utils.range(21, 42) } no-reorder class="screen { 'screen--active progressive-image' : i == 0 } bg-cover" style="background-image:url(/public/images/samples/{ item + 1 }.jpg)">
+                                <div class="phone__screen__title">
+                                    <div class="phone__screen__title__text">
+                                        { parent.parent.titles[item] }
                                     </div>
                                 </div>
                             </div>

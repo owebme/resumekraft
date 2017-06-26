@@ -7,7 +7,7 @@
     <div ref="container" class="samples__nav__options section-scroll">
         <div class="samples__nav__options__scroll">
             <div class="samples__nav__options__container">
-                <a onClick={ open } onUpdate="none" href="/samples/clusters/{ item._id }/{ item.title }" each={ item, i in items } no-reorder class="samples__nav__options__item" data-ripple data-active={ item._id == parent.cluster }>{ item.title }<span class="samples__nav__options__item__count">{ parent.parent.opts.utils.random(1, 20) }</span></a>
+                <a onClick={ open } href="/samples/clusters/{ item._id }/{ item.title }" each={ item, i in items } no-reorder class="samples__nav__options__item" data-ripple data-active={ item._id == parent.cluster }>{ item.title }<span class="samples__nav__options__item__count">{ item.counts }</span></a>
             </div>
         </div>
     </div>
@@ -45,7 +45,13 @@
     $.open = function(e){
         e.preventDefault();
         $.cluster = this.item._id;
-        $Router.set(e.currentTarget.getAttribute("href"), "Образцы резюме «" + $.cluster + "»");
+        $Router.set(e.currentTarget.getAttribute("href"), "Образцы резюме «" + this.item.title + "»");
+    };
+
+    $.clear = function(){
+        $.update({
+            cluster: null
+        })
     };
 
     try {

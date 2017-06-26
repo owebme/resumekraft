@@ -9,7 +9,7 @@
     <div class="hero__phone">
         <div class="hero__text">
             <div class="hero__text__slider">
-                <div each={ item in opts.utils.range(42) } class="hero__text__slider__item">
+                <div each={ item in opts.utils.range(40) } class="hero__text__slider__item">
                     { parent.parent.titles[item] }
                 </div>
             </div>
@@ -18,9 +18,7 @@
             <div class="hero__phone__screen">
                 <phone-screen-nav data-color="#0084ff"></phone-screen-nav>
                 <div class="screens screens-tablet screens-desktop">
-                    <div each={ item, i in opts.utils.range(42) } no-reorder class="screen { screen--active : i == 0 }">
-                        <div class="screen__content pos-abs-full bg-cover" style="background-image:url(/public/images/samples/{ item + 1 }.jpg)"></div>
-                    </div>
+                    <div each={ item, i in opts.utils.range(40) } no-reorder class="screen { screen--active : i == 0 } bg-cover" style="background-image:url(/public/images/samples/{ item + 1 }.jpg)"></div>
                 </div>
             </div>
         </div>

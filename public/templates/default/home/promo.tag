@@ -13,20 +13,8 @@
 
     <div class="phones">
         <div class="phones__container">
-            <div class="phone">
-                <div class="phone__screen"></div>
-            </div>
-            <div class="phone">
-                <div class="phone__screen"></div>
-            </div>
-            <div class="phone">
-                <div class="phone__screen"></div>
-            </div>
-            <div class="phone">
-                <div class="phone__screen"></div>
-            </div>
-            <div class="phone">
-                <div class="phone__screen"></div>
+            <div each={ opts.utils.range(5) } class="phone progressive-image">
+                <div class="phone__screen progressive-image"></div>
             </div>
         </div>
     </div>

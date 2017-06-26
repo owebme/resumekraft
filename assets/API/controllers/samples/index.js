@@ -40,7 +40,9 @@ module.exports = function(){
 
 	API.items = function(limit, callback){
 		handlerReturn(baseUrl, function(callback){
-			app.db.collection('samples').find({},
+			app.db.collection('samples').find({
+				_status: "public"
+			},
 			{
 				post: 1
 			})
@@ -55,9 +57,14 @@ module.exports = function(){
 		});
     };
 
-	API.clusters = function(callback){
-		handlerReturn(baseUrl + "clusters/", function(callback){
-			app.db.collection('samplesClusters').find({})
+	API.cluster = function(id, callback){
+		if (!app.utils.isObjectId(id)){
+			return callback(true, null);
+		}
+		handlerReturn(baseUrl + "clusters/" + id, function(callback){
+			app.db.collection('samples').find({
+				_clusterId: app.utils.ObjectId(id)
+			})
 			.sort({title: 1})
 			.toArray(function(err, data){
 				callback(err, data);
@@ -68,9 +75,44 @@ module.exports = function(){
 		});
     };
 
+	API.clusters = function(callback){
+		handlerReturn(baseUrl + "clusters/", function(callback){
+			app.db.collection('samplesClusters').find({})
+			.sort({title: 1})
+			.toArray(function(err, data){
+				if (data){
+					var size = data.length,
+						counts = 0;
+
+					app.utils.each(data, function(item, i){
+						app.db.collection('samples').find({
+							_status: "public",
+							_clusterId: item._id
+						})
+						.count(function(err, count){
+							counts++;
+							if (count) item.counts = count;
+							if (size == counts){
+								callback(err, data);
+							}
+						});
+					})
+				}
+				else {
+					callback(err, data);
+				}
+			});
+        },
+        function(err, data){
+			callback(err, data);
+		});
+    };
+
 	API.alpha = function(alpha, callbackReturn){
 		handlerReturn(baseUrl + "alpha/" + alpha, function(callback){
-			app.db.collection('samples').find({},
+			app.db.collection('samples').find({
+				_status: "public"
+			},
 			{
 				post: 1
 			})
@@ -97,7 +139,8 @@ module.exports = function(){
 		handlerReturn(baseUrl + id, function(callback){
 
 			app.db.collection('samples').findOne({
-				_id: app.utils.ObjectId(id)
+				_id: app.utils.ObjectId(id),
+				_status: "public"
 			},
 			function(err, data){
 				if (err || !data){

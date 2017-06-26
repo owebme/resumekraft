@@ -39,6 +39,7 @@ module.exports = function(){
             'assets/templates/modules/notify.html',
             'assets/templates/modules/textEdit.html',
             'assets/templates/modules/tutorial.html',
+            'assets/templates/modules/player.html',
     		'assets/templates/ui/slider.html',
     		'assets/templates/ui/switcher.html',
     		'assets/templates/ui/checkbox.html',
